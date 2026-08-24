@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/prototype_hud.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="HeatPanel" type="PanelContainer" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 230.0
+
+[node name="HeatLayout" type="VBoxContainer" parent="HeatPanel"]
+layout_mode = 2
+
+[node name="HeatTitle" type="Label" parent="HeatPanel/HeatLayout"]
+layout_mode = 2
+text = "HEAT"
+
+[node name="HeatBar" type="ProgressBar" parent="HeatPanel/HeatLayout"]
+custom_minimum_size = Vector2(300, 24)
+layout_mode = 2
+show_percentage = true
+
+[node name="HeatLevel" type="Label" parent="HeatPanel/HeatLayout"]
+layout_mode = 2
+text = "Level 0   ×1.00 speed"
+
+[node name="PlayerHealthTitle" type="Label" parent="HeatPanel/HeatLayout"]
+layout_mode = 2
+text = "PLAYER HEALTH"
+
+[node name="PlayerHealth" type="ProgressBar" parent="HeatPanel/HeatLayout"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+show_percentage = true
+
+[node name="EnemyHealthTitle" type="Label" parent="HeatPanel/HeatLayout"]
+layout_mode = 2
+text = "ENEMY HEALTH"
+
+[node name="EnemyHealth" type="ProgressBar" parent="HeatPanel/HeatLayout"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+show_percentage = true
+
+[node name="DefenceState" type="Label" parent="HeatPanel/HeatLayout"]
+layout_mode = 2
+text = "DEFENCE: READY"
+
+[node name="ComboPanel" type="PanelContainer" parent="."]
+offset_left = 430.0
+offset_top = 16.0
+offset_right = 850.0
+offset_bottom = 178.0
+
+[node name="ComboLayout" type="VBoxContainer" parent="ComboPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="ActiveSchool" type="Label" parent="ComboPanel/ComboLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "FIRE"
+horizontal_alignment = 1
+
+[node name="CurrentCombo" type="HBoxContainer" parent="ComboPanel/ComboLayout"]
+custom_minimum_size = Vector2(400, 36)
+layout_mode = 2
+alignment = 1
+
+[node name="CompletedCombos" type="VBoxContainer" parent="ComboPanel/ComboLayout"]
+layout_mode = 2
+alignment = 1
+
+[node name="StartupError" type="Label" parent="."]
+visible = false
+offset_left = 240.0
+offset_top = 290.0
+offset_right = 1040.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 26
+text = "PROTOTYPE CONFIGURATION ERROR"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

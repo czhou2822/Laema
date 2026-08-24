@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_enemy"]
+[ext_resource type="Script" path="res://scripts/entities/health_component.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/entities/health_resolver.gd" id="3_resolver"]
+[ext_resource type="Script" path="res://scripts/status/status_controller.gd" id="4_status"]
+[ext_resource type="Script" path="res://scripts/entities/hit_reaction.gd" id="5_reaction"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enemy"]
+size = Vector2(50, 58)
+
+[node name="Enemy" type="CharacterBody2D" groups=["status_targets"]]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_enemy")
+
+[node name="BodyVisual" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-25, -29, 25, -29, 25, 29, -25, 29)
+color = Color(0.560784, 0.580392, 0.619608, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_enemy")
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -70.0
+offset_top = -88.0
+offset_right = 70.0
+offset_bottom = -62.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "HP 100 / 100"
+horizontal_alignment = 1
+
+[node name="StatusDisplay" type="HBoxContainer" parent="."]
+offset_left = -130.0
+offset_top = -62.0
+offset_right = 130.0
+offset_bottom = -10.0
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_health")
+
+[node name="HealthResolver" type="Node" parent="."]
+script = ExtResource("3_resolver")
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource("4_status")
+
+[node name="HitReaction" type="Node" parent="."]
+script = ExtResource("5_reaction")
+
+[node name="VFX" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+visible = false
+z_index = 2

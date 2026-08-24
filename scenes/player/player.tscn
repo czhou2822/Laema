@@ -1,0 +1,100 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/player/movement_controller.gd" id="2_movement"]
+[ext_resource type="Script" path="res://scripts/combat/combat_controller.gd" id="3_combat"]
+[ext_resource type="Script" path="res://scripts/combat/input_combo.gd" id="4_combo"]
+[ext_resource type="Script" path="res://scripts/combat/heat_controller.gd" id="5_heat"]
+[ext_resource type="Texture2D" path="res://assets/prototype/player/Shinobi_Idle.png" id="6_idle"]
+[ext_resource type="Script" path="res://scripts/entities/health_component.gd" id="7_health"]
+[ext_resource type="Script" path="res://scripts/entities/health_resolver.gd" id="8_resolver"]
+[ext_resource type="Script" path="res://scripts/status/status_controller.gd" id="9_status"]
+[ext_resource type="Script" path="res://scripts/entities/hit_reaction.gd" id="10_reaction"]
+[ext_resource type="Script" path="res://scripts/combat/defence_controller.gd" id="11_defence"]
+[ext_resource type="AudioStream" path="res://assets/prototype/audio/guard_warning.ogg" id="12_guard_warning"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(26, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+radius = 18.0
+
+[sub_resource type="Animation" id="Animation_attack_clock"]
+resource_name = "attack_clock"
+length = 1.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_player"]
+_data = {
+&"attack_clock": SubResource("Animation_attack_clock")
+}
+
+[sub_resource type="Shader" id="Shader_outline"]
+code = "shader_type canvas_item;\nuniform vec4 outline_color : source_color = vec4(1.0, 0.2, 0.15, 1.0);\nuniform float outline_width = 1.0;\n\nvoid fragment() {\n    vec4 base = texture(TEXTURE, UV);\n    float nearby = 0.0;\n    vec2 px = TEXTURE_PIXEL_SIZE * outline_width;\n    nearby = max(nearby, texture(TEXTURE, UV + vec2(px.x, 0.0)).a);\n    nearby = max(nearby, texture(TEXTURE, UV - vec2(px.x, 0.0)).a);\n    nearby = max(nearby, texture(TEXTURE, UV + vec2(0.0, px.y)).a);\n    nearby = max(nearby, texture(TEXTURE, UV - vec2(0.0, px.y)).a);\n    COLOR = base;\n    if (base.a < 0.01 && nearby > 0.01) {\n        COLOR = outline_color;\n    }\n}\n"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_outline"]
+shader = SubResource("Shader_outline")
+shader_parameter/outline_color = Color(1, 0.231373, 0.188235, 1)
+shader_parameter/outline_width = 1.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_player")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_outline")
+texture = ExtResource("6_idle")
+scale = Vector2(0.5, 0.5)
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_player")
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("2_movement")
+
+[node name="Combat" type="Node" parent="."]
+script = ExtResource("3_combat")
+
+[node name="InputCombo" type="Node" parent="."]
+script = ExtResource("4_combo")
+
+[node name="Heat" type="Node" parent="."]
+script = ExtResource("5_heat")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("7_health")
+
+[node name="HealthResolver" type="Node" parent="."]
+script = ExtResource("8_resolver")
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource("9_status")
+
+[node name="HitReaction" type="Node" parent="."]
+script = ExtResource("10_reaction")
+
+[node name="Defence" type="Node" parent="."]
+script = ExtResource("11_defence")
+
+[node name="GuardWarningAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_guard_warning")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_player")
+}
+
+[node name="AttackCast" type="ShapeCast2D" parent="."]
+enabled = false
+target_position = Vector2(48, 0)
+shape = SubResource("CircleShape2D_attack")
+collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = true
+scale = Vector2(0.5, 0.5)
+position_smoothing_enabled = false
