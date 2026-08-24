@@ -6,39 +6,46 @@ const SECTION_ORDER := [
 	"player",
 	"enemy",
 	"combat",
+	"casting",
 	"heat",
 	"fire",
 	"water",
+	"air",
+	"earth",
 	"defence",
 	"hit_reaction",
 	"ui",
 ]
-const HIDDEN_FIELDS := {
-	"movement": {
-		"stick_deadzone": true,
-		"idle_fps": true,
-		"walk_fps": true,
-	},
-}
 const INTEGER_FIELDS := {
 	"enemy.defensive_level": true,
 	"combat.direct_impact": true,
+	"casting.max_marked_capacity": true,
 	"defence.water_block_defensive_level": true,
 }
 const FIELD_RANGES := {
 	"movement.speed": Vector3(1.0, 600.0, 1.0),
+	"movement.gravity_scale": Vector3(0.05, 5.0, 0.05),
 	"player.max_health": Vector3(1.0, 10000.0, 1.0),
 	"enemy.max_health": Vector3(1.0, 10000.0, 1.0),
 	"enemy.defensive_level": Vector3(0.0, 100.0, 1.0),
 	"combat.attack_duration": Vector3(0.05, 5.0, 0.01),
 	"combat.hit_phase": Vector3(0.0, 1.0, 0.01),
 	"combat.input_window_start": Vector3(0.0, 1.0, 0.01),
-	"combat.input_window_end": Vector3(0.0, 1.0, 0.01),
 	"combat.shape_radius": Vector3(1.0, 200.0, 1.0),
 	"combat.shape_reach": Vector3(1.0, 400.0, 1.0),
 	"combat.light_damage": Vector3(0.0, 1000.0, 1.0),
-	"combat.finisher_damage": Vector3(0.0, 1000.0, 1.0),
+	"combat.casting_damage": Vector3(0.0, 1000.0, 1.0),
 	"combat.direct_impact": Vector3(0.0, 5.0, 1.0),
+	"casting.orb_lifetime": Vector3(0.1, 30.0, 0.1),
+	"casting.charge_step_duration": Vector3(0.05, 5.0, 0.01),
+	"casting.max_marked_capacity": Vector3(5.0, 5.0, 1.0),
+	"casting.trigger_release_max": Vector3(0.0, 1.0, 0.01),
+	"casting.trigger_pause_center": Vector3(0.0, 1.0, 0.01),
+	"casting.trigger_pause_half_width": Vector3(0.0, 0.5, 0.01),
+	"casting.trigger_press_min": Vector3(0.0, 1.0, 0.01),
+	"casting.empowered_primary_multiplier": Vector3(0.1, 5.0, 0.05),
+	"casting.projectile_screen_ratio": Vector3(0.05, 1.0, 0.05),
+	"casting.projectile_travel_duration": Vector3(0.1, 5.0, 0.05),
 	"heat.max_value": Vector3(1.0, 1000.0, 1.0),
 	"heat.gain_per_hit": Vector3(0.0, 100.0, 1.0),
 	"heat.inactivity_grace": Vector3(0.0, 60.0, 0.1),
@@ -217,11 +224,8 @@ func _add_section(section_name: String, section: Dictionary) -> void:
 	fields.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_field_container.add_child(fields)
 	var keys: Array[String] = []
-	var hidden_fields: Dictionary = HIDDEN_FIELDS.get(section_name, {})
 	for key in section:
 		if key == "levels":
-			continue
-		if hidden_fields.has(key):
 			continue
 		keys.append(str(key))
 	keys.sort()
@@ -229,6 +233,12 @@ func _add_section(section_name: String, section: Dictionary) -> void:
 		var label := Label.new()
 		label.text = key.replace("_", " ")
 		fields.add_child(label)
+		if typeof(section[key]) == TYPE_BOOL:
+			var check := CheckBox.new()
+			check.set_pressed_no_signal(bool(section[key]))
+			check.toggled.connect(_on_boolean_changed.bind(section_name, key))
+			fields.add_child(check)
+			continue
 		var spin := _create_spinbox("%s.%s" % [section_name, key], float(section[key]))
 		spin.value_changed.connect(_on_scalar_changed.bind(section_name, key))
 		fields.add_child(spin)
@@ -324,6 +334,14 @@ func _on_scalar_changed(value: float, section_name: String, key: String) -> void
 	var path := "%s.%s" % [section_name, key]
 	var previous_value: Variant = _config[section_name][key]
 	_config[section_name][key] = int(round(value)) if INTEGER_FIELDS.has(path) else value
+	if not _apply_live_tuning():
+		_config[section_name][key] = previous_value
+		call_deferred("_rebuild_fields")
+
+
+func _on_boolean_changed(value: bool, section_name: String, key: String) -> void:
+	var previous_value := bool(_config[section_name][key])
+	_config[section_name][key] = value
 	if not _apply_live_tuning():
 		_config[section_name][key] = previous_value
 		call_deferred("_rebuild_fields")

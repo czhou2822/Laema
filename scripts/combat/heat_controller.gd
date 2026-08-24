@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 		_has_contact = false
 		_recalculate_level()
 		_emit_state()
+		_trace(&"expired", {"value": _value, "level": _level})
 
 
 func add_direct_hit() -> void:
@@ -47,6 +48,7 @@ func add_direct_hit() -> void:
 	_has_contact = true
 	_recalculate_level()
 	_emit_state()
+	_trace(&"direct_hit", {"value": _value, "level": _level, "speed_multiplier": _speed_multiplier})
 
 
 func drain(amount: float) -> void:
@@ -89,3 +91,8 @@ func _recalculate_level() -> void:
 
 func _emit_state() -> void:
 	heat_changed.emit(_value, _level, _speed_multiplier)
+
+
+func _trace(event_name: StringName, data: Dictionary) -> void:
+	if OS.is_debug_build():
+		print("[TRACE][HEAT] %s %s" % [event_name, data])

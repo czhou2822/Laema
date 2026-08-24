@@ -44,6 +44,7 @@ func begin(school: StringName) -> bool:
 	_holding = true
 	_active = true
 	guard_changed.emit(_guard, float(_config["guard_capacity"]))
+	_trace(&"entered", {"mode": "block" if _mode == Mode.BLOCK else "parry", "guard": _guard})
 	return true
 
 
@@ -66,6 +67,7 @@ func intercept(event: HealthEvent) -> int:
 		_active = false
 		_rearm_required = true
 		parry_window_changed.emit(false)
+		_trace(&"parried", {"incoming_amount": event.amount})
 		return HealthResult.Outcome.PARRIED
 	if _mode == Mode.BLOCK:
 		_guard = maxf(
@@ -81,11 +83,16 @@ func intercept(event: HealthEvent) -> int:
 			_active = false
 			_rearm_required = true
 			guard_broken.emit()
+			_trace(&"guard_broken", {"incoming_amount": event.amount})
+		else:
+			_trace(&"blocked", {"incoming_amount": event.amount, "guard": _guard})
 		return HealthResult.Outcome.BLOCKED
 	return HealthResult.Outcome.APPLIED
 
 
 func end_hold() -> void:
+	var previous_mode := _mode
+	var was_holding := _holding
 	if _mode == Mode.PARRY and _active:
 		parry_window_changed.emit(false)
 	_holding = false
@@ -93,6 +100,8 @@ func end_hold() -> void:
 	_rearm_required = false
 	_mode = Mode.NONE
 	_parry_remaining = 0.0
+	if was_holding:
+		_trace(&"released", {"mode": "block" if previous_mode == Mode.BLOCK else "parry", "guard": _guard})
 
 
 func force_cancel() -> void:
@@ -115,3 +124,8 @@ func get_guard() -> float:
 
 func get_guard_break_recovery() -> float:
 	return float(_config["guard_break_recovery"])
+
+
+func _trace(event_name: StringName, data: Dictionary) -> void:
+	if OS.is_debug_build():
+		print("[TRACE][DEFENCE] %s %s" % [event_name, data])

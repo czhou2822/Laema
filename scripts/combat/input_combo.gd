@@ -4,7 +4,7 @@ signal sequence_changed(tokens: Array)
 signal combo_completed(tokens: Array)
 signal combo_reset
 
-const MAX_LIGHT_ATTACKS := 3
+const MAX_POSITIONS := 5
 
 var _tokens: Array[Dictionary] = []
 var _x_schools: Array[StringName] = []
@@ -20,8 +20,12 @@ func light_count() -> int:
 	return _x_schools.size()
 
 
+func get_current_position() -> int:
+	return _tokens.size()
+
+
 func accept_light(school: StringName) -> bool:
-	if _x_schools.size() >= MAX_LIGHT_ATTACKS:
+	if _tokens.size() >= MAX_POSITIONS:
 		return false
 	_active = true
 	_x_schools.append(school)
@@ -37,35 +41,16 @@ func accept_switch(from_school: StringName, to_school: StringName) -> bool:
 	return true
 
 
-func accept_finisher(finishing_school: StringName) -> Dictionary:
+func accept_cast(casting_school: StringName) -> Dictionary:
 	if not _active or _x_schools.is_empty():
 		return {"valid": false}
 
-	_tokens.append({"input": &"Y", "school": finishing_school})
+	var endpoint := _tokens.size() >= MAX_POSITIONS
+	_tokens.append({"input": &"Cast", "school": casting_school})
 	sequence_changed.emit(_tokens.duplicate(true))
-
-	var full_level := _x_schools.size()
-	var earlier_school: StringName = &""
-	for school in _x_schools:
-		if school != finishing_school:
-			earlier_school = school
-			break
-
-	var secondary: Dictionary = {}
-	var secondary_level := full_level - 2
-	if earlier_school != &"" and secondary_level >= 1:
-		secondary = {
-			"school": earlier_school,
-			"level": secondary_level,
-		}
-
 	return {
 		"valid": true,
-		"primary": {
-			"school": finishing_school,
-			"level": full_level,
-		},
-		"secondary": secondary,
+		"endpoint": endpoint,
 	}
 
 

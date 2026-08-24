@@ -1,17 +1,18 @@
-[gd_scene load_steps=18 format=3]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" path="res://scripts/player/movement_controller.gd" id="2_movement"]
 [ext_resource type="Script" path="res://scripts/combat/combat_controller.gd" id="3_combat"]
 [ext_resource type="Script" path="res://scripts/combat/input_combo.gd" id="4_combo"]
 [ext_resource type="Script" path="res://scripts/combat/heat_controller.gd" id="5_heat"]
-[ext_resource type="Texture2D" path="res://assets/prototype/player/Shinobi_Idle.png" id="6_idle"]
+[ext_resource type="Texture2D" path="res://assets/prototype/player/animation/shared_idle.png" id="6_idle"]
 [ext_resource type="Script" path="res://scripts/entities/health_component.gd" id="7_health"]
 [ext_resource type="Script" path="res://scripts/entities/health_resolver.gd" id="8_resolver"]
 [ext_resource type="Script" path="res://scripts/status/status_controller.gd" id="9_status"]
 [ext_resource type="Script" path="res://scripts/entities/hit_reaction.gd" id="10_reaction"]
 [ext_resource type="Script" path="res://scripts/combat/defence_controller.gd" id="11_defence"]
 [ext_resource type="AudioStream" path="res://assets/prototype/audio/guard_warning.ogg" id="12_guard_warning"]
+[ext_resource type="Script" path="res://scripts/combat/orb_casting_controller.gd" id="13_orb_casting"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(26, 30)
@@ -38,7 +39,7 @@ shader_parameter/outline_width = 1.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 1
-collision_mask = 2
+collision_mask = 6
 scale = Vector2(2, 2)
 script = ExtResource("1_player")
 
@@ -62,6 +63,9 @@ script = ExtResource("3_combat")
 [node name="InputCombo" type="Node" parent="."]
 script = ExtResource("4_combo")
 
+[node name="OrbCastingController" type="Node" parent="."]
+script = ExtResource("13_orb_casting")
+
 [node name="Heat" type="Node" parent="."]
 script = ExtResource("5_heat")
 
@@ -82,6 +86,20 @@ script = ExtResource("11_defence")
 
 [node name="GuardWarningAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_guard_warning")
+
+[node name="AttackSwingAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="ElementAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="CastAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="EmpoweredCastAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="CastFailAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="OrbAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="MarkAudio" type="AudioStreamPlayer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -3,9 +3,9 @@ extends "res://scripts/entities/entity.gd"
 signal enemy_health_changed(current_value: float, maximum_value: float)
 
 const VFX_ROOT := "res://assets/prototype/vfx"
-const IDLE_CELL_SIZE := Vector2(64.0, 64.0)
-const IDLE_FRAME_COUNT := 12
-const IDLE_FPS := 8.0
+const IDLE_CELL_SIZE := Vector2(32.0, 96.0)
+const IDLE_FRAME_COUNT := 1
+const IDLE_FPS := 1.0
 const VFX_FRAME_COUNTS := {
 	"fire": 10,
 	"water": 11,

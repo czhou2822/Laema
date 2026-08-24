@@ -11,7 +11,8 @@ func apply(
 	direction: Vector2,
 	level: int,
 	combat_config: Dictionary,
-	air_config: Dictionary
+	air_config: Dictionary,
+	direct_damage_multiplier: float = 1.0
 ) -> void:
 	if level < 1 or world == null or contact_target == null:
 		return
@@ -46,7 +47,7 @@ func apply(
 		var event := HealthEvent.damage(
 			instigator,
 			target,
-			float(combat_config["finisher_damage"]) * damage_multiplier,
+			float(combat_config["casting_damage"]) * damage_multiplier * direct_damage_multiplier,
 			int(combat_config["direct_impact"]),
 			HealthEvent.Delivery.DIRECT,
 			&"air",

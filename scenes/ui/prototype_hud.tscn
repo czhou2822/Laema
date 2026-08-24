@@ -5,74 +5,141 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
 
-[node name="HeatPanel" type="PanelContainer" parent="."]
+[node name="GameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OrbPanel" type="PanelContainer" parent="GameUI"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 626.0
+offset_right = 840.0
+offset_bottom = 704.0
+
+[node name="OrbLayout" type="VBoxContainer" parent="GameUI/OrbPanel"]
+layout_mode = 2
+
+[node name="OrbQueue" type="HBoxContainer" parent="GameUI/OrbPanel/OrbLayout"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+alignment = 1
+
+[node name="MarkProgress" type="ProgressBar" parent="GameUI/OrbPanel/OrbLayout"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+max_value = 1.0
+show_percentage = false
+
+[node name="MarkLabel" type="Label" parent="GameUI/OrbPanel/OrbLayout"]
+layout_mode = 2
+text = "MARK  0 / 5"
+horizontal_alignment = 1
+
+[node name="DeveloperReadout" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HeatPanel" type="PanelContainer" parent="DeveloperReadout"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 336.0
-offset_bottom = 230.0
+offset_bottom = 240.0
 
-[node name="HeatLayout" type="VBoxContainer" parent="HeatPanel"]
+[node name="HeatLayout" type="VBoxContainer" parent="DeveloperReadout/HeatPanel"]
 layout_mode = 2
 
-[node name="HeatTitle" type="Label" parent="HeatPanel/HeatLayout"]
+[node name="HeatTitle" type="Label" parent="DeveloperReadout/HeatPanel/HeatLayout"]
 layout_mode = 2
 text = "HEAT"
 
-[node name="HeatBar" type="ProgressBar" parent="HeatPanel/HeatLayout"]
+[node name="HeatBar" type="ProgressBar" parent="DeveloperReadout/HeatPanel/HeatLayout"]
 custom_minimum_size = Vector2(300, 24)
 layout_mode = 2
 show_percentage = true
 
-[node name="HeatLevel" type="Label" parent="HeatPanel/HeatLayout"]
+[node name="HeatLevel" type="Label" parent="DeveloperReadout/HeatPanel/HeatLayout"]
 layout_mode = 2
 text = "Level 0   ×1.00 speed"
 
-[node name="PlayerHealthTitle" type="Label" parent="HeatPanel/HeatLayout"]
+[node name="PlayerHealthTitle" type="Label" parent="DeveloperReadout/HeatPanel/HeatLayout"]
 layout_mode = 2
 text = "PLAYER HEALTH"
 
-[node name="PlayerHealth" type="ProgressBar" parent="HeatPanel/HeatLayout"]
+[node name="PlayerHealth" type="ProgressBar" parent="DeveloperReadout/HeatPanel/HeatLayout"]
 custom_minimum_size = Vector2(300, 20)
 layout_mode = 2
 show_percentage = true
 
-[node name="EnemyHealthTitle" type="Label" parent="HeatPanel/HeatLayout"]
+[node name="EnemyHealthTitle" type="Label" parent="DeveloperReadout/HeatPanel/HeatLayout"]
 layout_mode = 2
 text = "ENEMY HEALTH"
 
-[node name="EnemyHealth" type="ProgressBar" parent="HeatPanel/HeatLayout"]
+[node name="EnemyHealth" type="ProgressBar" parent="DeveloperReadout/HeatPanel/HeatLayout"]
 custom_minimum_size = Vector2(300, 20)
 layout_mode = 2
 show_percentage = true
 
-[node name="DefenceState" type="Label" parent="HeatPanel/HeatLayout"]
+[node name="DefenceState" type="Label" parent="DeveloperReadout/HeatPanel/HeatLayout"]
 layout_mode = 2
 text = "DEFENCE: READY"
 
-[node name="ComboPanel" type="PanelContainer" parent="."]
+[node name="ComboPanel" type="PanelContainer" parent="DeveloperReadout"]
+layout_mode = 0
 offset_left = 430.0
 offset_top = 16.0
 offset_right = 850.0
 offset_bottom = 178.0
 
-[node name="ComboLayout" type="VBoxContainer" parent="ComboPanel"]
+[node name="ComboLayout" type="VBoxContainer" parent="DeveloperReadout/ComboPanel"]
 layout_mode = 2
 alignment = 1
 
-[node name="ActiveSchool" type="Label" parent="ComboPanel/ComboLayout"]
+[node name="ActiveSchool" type="Label" parent="DeveloperReadout/ComboPanel/ComboLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "FIRE"
 horizontal_alignment = 1
 
-[node name="CurrentCombo" type="HBoxContainer" parent="ComboPanel/ComboLayout"]
+[node name="CurrentCombo" type="HBoxContainer" parent="DeveloperReadout/ComboPanel/ComboLayout"]
 custom_minimum_size = Vector2(400, 36)
 layout_mode = 2
 alignment = 1
 
-[node name="CompletedCombos" type="VBoxContainer" parent="ComboPanel/ComboLayout"]
+[node name="CompletedCombos" type="VBoxContainer" parent="DeveloperReadout/ComboPanel/ComboLayout"]
 layout_mode = 2
 alignment = 1
+
+[node name="PressurePanel" type="PanelContainer" parent="DeveloperReadout"]
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 94.0
+
+[node name="PressureLayout" type="VBoxContainer" parent="DeveloperReadout/PressurePanel"]
+layout_mode = 2
+
+[node name="RawPressureLabel" type="Label" parent="DeveloperReadout/PressurePanel/PressureLayout"]
+layout_mode = 2
+text = "R2 RAW  0%"
+horizontal_alignment = 1
+
+[node name="RawPressure" type="ProgressBar" parent="DeveloperReadout/PressurePanel/PressureLayout"]
+custom_minimum_size = Vector2(230, 20)
+layout_mode = 2
+max_value = 100.0
+show_percentage = false
 
 [node name="StartupError" type="Label" parent="."]
 visible = false

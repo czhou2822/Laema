@@ -7,38 +7,87 @@ signal combo_completed(tokens: Array)
 signal combo_reset
 signal active_school_changed(school: StringName)
 signal defence_status_changed(label: String, current_guard: float, maximum_guard: float)
+signal orb_queue_changed(snapshot: Array, marked_count: int, marking_progress: float)
+signal spell_projectile_requested(payload: Dictionary)
 
 const FireResolver = preload("res://scripts/combat/fire_resolver.gd")
 const WaterResolver = preload("res://scripts/combat/water_resolver.gd")
 const AirResolver = preload("res://scripts/combat/air_resolver.gd")
 const EarthResolver = preload("res://scripts/combat/earth_resolver.gd")
-const IDLE_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Idle.png")
-const WALK_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Walk.png")
-const ATTACK_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Attack_1.png")
-const ATTACK_2_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Attack_2.png")
-const ATTACK_3_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Attack_3.png")
-const FIGHTER_IDLE: Texture2D = preload("res://assets/prototype/player/Fighter_Idle.png")
-const FIGHTER_WALK: Texture2D = preload("res://assets/prototype/player/Fighter_Walk.png")
-const FIGHTER_ATTACK_1: Texture2D = preload("res://assets/prototype/player/Fighter_Attack_1.png")
-const FIGHTER_ATTACK_2: Texture2D = preload("res://assets/prototype/player/Fighter_Attack_2.png")
-const FIGHTER_ATTACK_3: Texture2D = preload("res://assets/prototype/player/Fighter_Attack_3.png")
-const SABER_IDLE: Texture2D = preload("res://assets/prototype/player/Saber_Idle.png")
-const SABER_WALK: Texture2D = preload("res://assets/prototype/player/Saber_Walk.png")
-const SABER_ATTACK_1: Texture2D = preload("res://assets/prototype/player/Saber_Attack_1.png")
-const SABER_ATTACK_2: Texture2D = preload("res://assets/prototype/player/Saber_Attack_2.png")
-const SABER_ATTACK_3: Texture2D = preload("res://assets/prototype/player/Saber_Attack_3.png")
-const SAMURAI_IDLE: Texture2D = preload("res://assets/prototype/player/Samurai_Idle.png")
-const SAMURAI_WALK: Texture2D = preload("res://assets/prototype/player/Samurai_Walk.png")
-const FIRE_FINISHER_VFX: Texture2D = preload("res://assets/prototype/vfx/fire/fire1.png")
-const WATER_FINISHER_VFX: Texture2D = preload("res://assets/prototype/vfx/water/water1.png")
-
+const SHARED_IDLE: Texture2D = preload("res://assets/prototype/player/animation/shared_idle.png")
+const SHARED_WALK: Texture2D = preload("res://assets/prototype/player/animation/shared_walk.png")
+const SHARED_CAST: Texture2D = preload("res://assets/prototype/player/animation/shared_cast.png")
+const FIRE_X1: Texture2D = preload("res://assets/prototype/player/animation/fire_x1.png")
+const FIRE_X2: Texture2D = preload("res://assets/prototype/player/animation/fire_x2.png")
+const FIRE_X3: Texture2D = preload("res://assets/prototype/player/animation/fire_x3.png")
+const FIRE_X4: Texture2D = preload("res://assets/prototype/player/animation/fire_x4.png")
+const FIRE_X5: Texture2D = preload("res://assets/prototype/player/animation/fire_x5.png")
+const WATER_X1: Texture2D = preload("res://assets/prototype/player/animation/water_x1.png")
+const WATER_X2: Texture2D = preload("res://assets/prototype/player/animation/water_x2.png")
+const WATER_X3: Texture2D = preload("res://assets/prototype/player/animation/water_x3.png")
+const WATER_X4: Texture2D = preload("res://assets/prototype/player/animation/water_x4.png")
+const WATER_X5: Texture2D = preload("res://assets/prototype/player/animation/water_x5.png")
+const AIR_X1: Texture2D = preload("res://assets/prototype/player/animation/air_x1.png")
+const AIR_X2: Texture2D = preload("res://assets/prototype/player/animation/air_x2.png")
+const AIR_X3: Texture2D = preload("res://assets/prototype/player/animation/air_x3.png")
+const AIR_X4: Texture2D = preload("res://assets/prototype/player/animation/air_x4.png")
+const AIR_X5: Texture2D = preload("res://assets/prototype/player/animation/air_x5.png")
+const EARTH_X1: Texture2D = preload("res://assets/prototype/player/animation/earth_x1.png")
+const EARTH_X2: Texture2D = preload("res://assets/prototype/player/animation/earth_x2.png")
+const EARTH_X3: Texture2D = preload("res://assets/prototype/player/animation/earth_x3.png")
+const EARTH_X4: Texture2D = preload("res://assets/prototype/player/animation/earth_x4.png")
+const EARTH_X5: Texture2D = preload("res://assets/prototype/player/animation/earth_x5.png")
+const ATTACK_SWING_STREAM_PATHS := [
+	"res://assets/prototype/audio/combat/swing_01.wav",
+	"res://assets/prototype/audio/combat/swing_02.wav",
+	"res://assets/prototype/audio/combat/swing_03.wav",
+]
+const SCHOOL_ATTACK_STREAM_PATHS := {
+	&"fire": [
+		"res://assets/prototype/audio/combat/fire_attack_01.ogg",
+		"res://assets/prototype/audio/combat/fire_attack_02.ogg",
+		"res://assets/prototype/audio/combat/fire_attack_03.ogg",
+		"res://assets/prototype/audio/combat/fire_attack_04.ogg",
+		"res://assets/prototype/audio/combat/fire_attack_05.ogg",
+	],
+	&"water": [
+		"res://assets/prototype/audio/combat/water_attack_01.ogg",
+		"res://assets/prototype/audio/combat/water_attack_02.ogg",
+		"res://assets/prototype/audio/combat/water_attack_03.ogg",
+		"res://assets/prototype/audio/combat/water_attack_04.ogg",
+		"res://assets/prototype/audio/combat/water_attack_05.ogg",
+	],
+	&"air": [
+		"res://assets/prototype/audio/combat/air_attack_01.ogg",
+		"res://assets/prototype/audio/combat/air_attack_02.ogg",
+		"res://assets/prototype/audio/combat/air_attack_03.ogg",
+		"res://assets/prototype/audio/combat/air_attack_04.ogg",
+		"res://assets/prototype/audio/combat/air_attack_05.ogg",
+	],
+	&"earth": [
+		"res://assets/prototype/audio/combat/earth_attack_01.ogg",
+		"res://assets/prototype/audio/combat/earth_attack_02.ogg",
+		"res://assets/prototype/audio/combat/earth_attack_03.ogg",
+		"res://assets/prototype/audio/combat/earth_attack_04.ogg",
+		"res://assets/prototype/audio/combat/earth_attack_05.ogg",
+	],
+}
+const CAST_STREAM_PATHS := {
+	&"fire": "res://assets/prototype/audio/casting/fire_cast.ogg",
+	&"water": "res://assets/prototype/audio/casting/water_cast.ogg",
+	&"air": "res://assets/prototype/audio/casting/air_cast.ogg",
+	&"earth": "res://assets/prototype/audio/casting/earth_cast.ogg",
+}
+const EMPOWERED_CAST_STREAM_PATH := "res://assets/prototype/audio/casting/empowered_cast.ogg"
+const CAST_FAIL_STREAM_PATH := "res://assets/prototype/audio/casting/cast_fail.ogg"
+const ORB_CREATED_STREAM_PATH := "res://assets/prototype/audio/casting/orb_created.ogg"
+const MARK_ORB_STREAM_PATH := "res://assets/prototype/audio/casting/mark_orb.ogg"
 const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
-const WALK_FRAMES := 8
-const WALK_START_FRAME := 2
-const ATTACK_FRAMES := 5
-const ATTACK_2_FRAMES := 3
-const ATTACK_3_FRAMES := 4
+const WALK_FRAMES := 12
+const CAST_FRAMES := 10
+const IDLE_FPS := 8.0
+const WALK_FPS := 10.0
 const ATTACK_HITBOX_DEBUG_WINDOW := 0.14
 const ATTACK_HITBOX_DEBUG_FILL := Color(1.0, 0.78, 0.12, 0.24)
 const ATTACK_HITBOX_DEBUG_OUTLINE := Color(1.0, 0.9, 0.35, 0.95)
@@ -59,9 +108,17 @@ const SCHOOL_TINTS := {
 @onready var movement = $Movement
 @onready var combat = $Combat
 @onready var input_combo = $InputCombo
+@onready var orb_casting = $OrbCastingController
 @onready var heat = $Heat
 @onready var defence: DefenceController = $Defence
 @onready var guard_warning_audio: AudioStreamPlayer = $GuardWarningAudio
+@onready var attack_swing_audio: AudioStreamPlayer = $AttackSwingAudio
+@onready var element_audio: AudioStreamPlayer = $ElementAudio
+@onready var cast_audio: AudioStreamPlayer = $CastAudio
+@onready var empowered_cast_audio: AudioStreamPlayer = $EmpoweredCastAudio
+@onready var cast_fail_audio: AudioStreamPlayer = $CastFailAudio
+@onready var orb_audio: AudioStreamPlayer = $OrbAudio
+@onready var mark_audio: AudioStreamPlayer = $MarkAudio
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_cast: ShapeCast2D = $AttackCast
 
@@ -76,6 +133,8 @@ var _facing_left := false
 var _sprite_rest_position := Vector2.ZERO
 var _sprite_rest_scale := Vector2.ONE
 var _sprite_rest_rotation := 0.0
+var _last_orb_count := 0
+var _last_marked_count := 0
 
 
 func configure(config: Dictionary) -> void:
@@ -87,7 +146,9 @@ func configure(config: Dictionary) -> void:
 	combat.movement_lock_changed.connect(movement.set_movement_locked)
 	combat.active_school_changed.connect(_on_active_school_changed)
 	combat.attack_started.connect(_on_attack_started)
-	combat.finisher_started.connect(_on_finisher_started)
+	combat.empowered_cast_started.connect(_on_empowered_cast_started)
+	combat.cast_launch_requested.connect(_on_cast_launch_requested)
+	combat.cast_failed.connect(_on_cast_failed)
 	combat.defence_status_changed.connect(_on_defence_status_changed)
 	defence.guard_warning.connect(_on_guard_warning)
 	heat.heat_changed.connect(_on_heat_changed)
@@ -95,12 +156,14 @@ func configure(config: Dictionary) -> void:
 	input_combo.sequence_changed.connect(_on_combo_sequence_changed)
 	input_combo.combo_completed.connect(_on_combo_completed)
 	input_combo.combo_reset.connect(_on_combo_reset)
+	orb_casting.queue_changed.connect(_on_orb_queue_changed)
 	status_controller.effect_state_changed.connect(_on_effect_state_changed)
 	hit_reaction.reaction_started.connect(_on_hit_reaction_started)
 	hit_reaction.reaction_ended.connect(_on_hit_reaction_ended)
 
 	movement.configure(self, config["movement"])
 	heat.configure(config["heat"])
+	orb_casting.configure(config["casting"], heat)
 	defence.configure(config["defence"])
 	configure_entity(
 		float(config["player"]["max_health"]),
@@ -116,6 +179,7 @@ func configure(config: Dictionary) -> void:
 		animation_player,
 		attack_cast,
 		input_combo,
+		orb_casting,
 		heat,
 		defence,
 		FireResolver.new(),
@@ -129,6 +193,7 @@ func configure(config: Dictionary) -> void:
 func apply_runtime_tuning() -> void:
 	movement.apply_runtime_tuning()
 	combat.apply_runtime_tuning()
+	orb_casting.apply_runtime_tuning(_config["casting"])
 	heat.apply_runtime_tuning()
 	health.set_maximum(float(_config["player"]["max_health"]))
 	hit_reaction.configure(_config["hit_reaction"])
@@ -167,9 +232,9 @@ func _process(delta: float) -> void:
 	if combat.is_attack_playing():
 		_update_attack_visual()
 	elif not movement.get_motion().is_zero_approx():
-		_update_locomotion_visual(&"walk", _get_walk_texture(combat.get_active_school()), _get_walk_frames(combat.get_active_school()), float(_config["movement"]["walk_fps"]))
+		_update_locomotion_visual(&"walk", _get_walk_texture(combat.get_active_school()), _get_walk_frames(combat.get_active_school()), WALK_FPS)
 	else:
-		_update_locomotion_visual(&"idle", _get_idle_texture(combat.get_active_school()), IDLE_FRAMES, float(_config["movement"]["idle_fps"]))
+		_update_locomotion_visual(&"idle", _get_idle_texture(combat.get_active_school()), IDLE_FRAMES, IDLE_FPS)
 	queue_redraw()
 
 
@@ -203,16 +268,16 @@ func _is_attack_hitbox_debug_visible() -> bool:
 
 func _update_attack_visual() -> void:
 	var school: StringName = combat.get_current_attack_school()
-	var texture := _get_attack_texture(school, _visual_light_position)
-	var frame_count := _get_attack_frames(school, _visual_light_position)
-	var mode := &"attack_heavy"
+	var texture: Texture2D = SHARED_CAST
+	var frame_count := CAST_FRAMES
+	var mode := &"cast"
 	if _visual_attack_kind == &"light":
+		texture = _get_attack_texture(school, _visual_light_position)
+		frame_count = _get_attack_frames(school, _visual_light_position)
 		mode = StringName("attack_x%d" % _visual_light_position)
 	_set_visual_mode(mode, texture)
 	_update_side_facing(_visual_attack_direction)
 	_reset_sprite_motion()
-	if _visual_attack_kind == &"light":
-		sprite.position += _get_light_attack_anchor_offset(_visual_light_position)
 	var exponent := float(_config[String(school)]["visual_motion_exponent"])
 	var visual_progress := pow(combat.get_normalized_attack_progress(), exponent)
 	var frame := mini(int(floor(visual_progress * frame_count)), frame_count - 1)
@@ -228,56 +293,40 @@ func _update_locomotion_visual(
 	_set_visual_mode(mode, texture)
 	_reset_sprite_motion()
 	_update_side_facing(movement.get_facing_direction())
-	var start_frame := WALK_START_FRAME if mode == &"walk" else 0
-	var frame := (int(floor(_visual_time * fps)) + start_frame) % frame_count
+	var frame := int(floor(_visual_time * fps)) % frame_count
 	_set_region(frame)
 
 
-func _get_idle_texture(school: StringName) -> Texture2D:
-	match school:
-		&"fire": return FIGHTER_IDLE
-		&"water": return SABER_IDLE
-		&"earth": return SAMURAI_IDLE
-	return IDLE_TEXTURE
+func _get_idle_texture(_school: StringName) -> Texture2D:
+	return SHARED_IDLE
 
 
-func _get_walk_texture(school: StringName) -> Texture2D:
-	match school:
-		&"fire": return FIGHTER_WALK
-		&"water": return SABER_WALK
-		&"earth": return SAMURAI_WALK
-	return WALK_TEXTURE
+func _get_walk_texture(_school: StringName) -> Texture2D:
+	return SHARED_WALK
 
 
-func _get_walk_frames(school: StringName) -> int:
-	return 12 if school == &"water" else WALK_FRAMES
+func _get_walk_frames(_school: StringName) -> int:
+	return WALK_FRAMES
 
 
 func _get_attack_texture(school: StringName, combo_position: int) -> Texture2D:
-	var position := clampi(combo_position, 1, 3)
-	if school == &"fire":
-		return [FIGHTER_ATTACK_1, FIGHTER_ATTACK_2, FIGHTER_ATTACK_3][position - 1]
-	if school == &"water":
-		return [SABER_ATTACK_1, SABER_ATTACK_2, SABER_ATTACK_3][position - 1]
-	return [ATTACK_TEXTURE, ATTACK_2_TEXTURE, ATTACK_3_TEXTURE][position - 1]
+	var position := clampi(combo_position, 1, 5)
+	match school:
+		&"fire": return [FIRE_X1, FIRE_X2, FIRE_X3, FIRE_X4, FIRE_X5][position - 1]
+		&"water": return [WATER_X1, WATER_X2, WATER_X3, WATER_X4, WATER_X5][position - 1]
+		&"air": return [AIR_X1, AIR_X2, AIR_X3, AIR_X4, AIR_X5][position - 1]
+		&"earth": return [EARTH_X1, EARTH_X2, EARTH_X3, EARTH_X4, EARTH_X5][position - 1]
+	return FIRE_X1
 
 
 func _get_attack_frames(school: StringName, combo_position: int) -> int:
-	var position := clampi(combo_position, 1, 3)
-	if school == &"fire":
-		return [4, 3, 4][position - 1]
-	if school == &"water":
-		return [6, 3, 4][position - 1]
-	return [ATTACK_FRAMES, ATTACK_2_FRAMES, ATTACK_3_FRAMES][position - 1]
-
-
-func _get_light_attack_anchor_offset(combo_position: int) -> Vector2:
-	match combo_position:
-		2:
-			return Vector2(-1.0, 0.0)
-		3:
-			return Vector2(4.0, 0.0)
-	return Vector2.ZERO
+	var position := clampi(combo_position, 1, 5)
+	match school:
+		&"fire": return [5, 3, 11, 9, 11][position - 1]
+		&"water": return [5, 5, 4, 5, 5][position - 1]
+		&"air": return [9, 7, 7, 6, 8][position - 1]
+		&"earth": return [4, 3, 4, 5, 4][position - 1]
+	return 5
 
 
 func _reset_sprite_motion() -> void:
@@ -315,28 +364,49 @@ func _get_attack_direction() -> Vector2:
 	return Vector2.LEFT if _facing_left else Vector2.RIGHT
 
 
+func get_facing_direction() -> Vector2:
+	return _get_attack_direction()
+
+
 func _sync_attack_cast_direction() -> void:
 	if _config.is_empty():
 		return
 	attack_cast.target_position = _get_attack_direction() * float(_config["combat"]["shape_reach"])
 
 
-func _on_attack_started(kind: StringName, _school: StringName, direction: Vector2) -> void:
+func _on_attack_started(kind: StringName, school: StringName, direction: Vector2) -> void:
 	_visual_attack_direction = direction
 	_visual_attack_kind = kind
-	_visual_light_position = clampi(input_combo.light_count(), 1, 5) if kind == &"light" else 0
+	_visual_light_position = clampi(input_combo.get_current_position(), 1, 5) if kind == &"light" else 0
 	_visual_time = 0.0
+	if kind == &"light":
+		_play_audio(attack_swing_audio, _load_audio_stream(ATTACK_SWING_STREAM_PATHS[(_visual_light_position - 1) % ATTACK_SWING_STREAM_PATHS.size()]))
+		_play_audio(element_audio, _school_attack_stream(school, _visual_light_position))
 
 
-func _on_finisher_started(school: StringName, direction: Vector2) -> void:
-	if school != &"fire" and school != &"water":
-		return
-	var vfx := Sprite2D.new()
-	vfx.texture = FIRE_FINISHER_VFX if school == &"fire" else WATER_FINISHER_VFX
-	vfx.position = direction.normalized() * 28.0
-	vfx.scale = Vector2(0.75, 0.75)
-	add_child(vfx)
-	get_tree().create_timer(0.25).timeout.connect(vfx.queue_free)
+func _on_empowered_cast_started(school: StringName, direction: Vector2) -> void:
+	var dot := Polygon2D.new()
+	dot.polygon = PackedVector2Array([
+		Vector2(-4.0, -4.0),
+		Vector2(4.0, -4.0),
+		Vector2(4.0, 4.0),
+		Vector2(-4.0, 4.0),
+	])
+	dot.color = SCHOOL_COLORS[school]
+	dot.position = direction.normalized() * 28.0
+	dot.z_index = 4
+	add_child(dot)
+	get_tree().create_timer(0.22).timeout.connect(dot.queue_free)
+	_play_audio(empowered_cast_audio, _load_audio_stream(EMPOWERED_CAST_STREAM_PATH))
+
+
+func _on_cast_launch_requested(payload: Dictionary) -> void:
+	var request: Dictionary = payload.duplicate(true)
+	var direction: Vector2 = request["direction"]
+	request["origin"] = global_position + direction.normalized() * 42.0
+	var primary_school := StringName(request["primary_school"])
+	_play_audio(cast_audio, _load_audio_stream(str(CAST_STREAM_PATHS.get(primary_school, CAST_STREAM_PATHS[&"fire"]))))
+	spell_projectile_requested.emit(request)
 
 
 func _on_active_school_changed(school: StringName) -> void:
@@ -370,6 +440,16 @@ func _on_combo_reset() -> void:
 	combo_reset.emit()
 
 
+func _on_orb_queue_changed(snapshot: Array, marked_count: int, marking_progress: float) -> void:
+	if snapshot.size() > _last_orb_count:
+		_play_audio(orb_audio, _load_audio_stream(ORB_CREATED_STREAM_PATH))
+	if marked_count > _last_marked_count:
+		_play_audio(mark_audio, _load_audio_stream(MARK_ORB_STREAM_PATH))
+	_last_orb_count = snapshot.size()
+	_last_marked_count = marked_count
+	orb_queue_changed.emit(snapshot, marked_count, marking_progress)
+
+
 func _on_effect_state_changed(snapshot: Dictionary) -> void:
 	movement.set_effect_multiplier(float(snapshot["movement_multiplier"]))
 	combat.set_effect_actions_suppressed(bool(snapshot["actions_suppressed"]))
@@ -389,3 +469,23 @@ func _on_defence_status_changed(label: String, current_guard: float, maximum_gua
 
 func _on_guard_warning() -> void:
 	guard_warning_audio.play()
+
+
+func _on_cast_failed() -> void:
+	_play_audio(cast_fail_audio, _load_audio_stream(CAST_FAIL_STREAM_PATH))
+
+
+func _school_attack_stream(school: StringName, position: int) -> AudioStream:
+	var stream_paths: Array = SCHOOL_ATTACK_STREAM_PATHS.get(school, SCHOOL_ATTACK_STREAM_PATHS[&"fire"])
+	return _load_audio_stream(str(stream_paths[clampi(position - 1, 0, stream_paths.size() - 1)]))
+
+
+func _play_audio(player: AudioStreamPlayer, stream: AudioStream) -> void:
+	if stream == null:
+		return
+	player.stream = stream
+	player.play()
+
+
+func _load_audio_stream(path: String) -> AudioStream:
+	return ResourceLoader.load(path, "AudioStream") as AudioStream

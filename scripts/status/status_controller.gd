@@ -64,18 +64,21 @@ func apply_instruction(instruction: Dictionary, instigator: Node) -> bool:
 	match effect_type:
 		&"fire_dot":
 			_apply_fire_dot(instruction, instigator)
+			_trace(&"fire_dot_applied", {"stacks_added": int(instruction["stacks"]), "active_stacks": _dot_instances.size()})
 			effect_applied.emit(effect_type, instruction.duplicate(true))
 			_emit_state()
 			return true
 		&"water_status":
 			var applied := _apply_water_status(instruction, instigator)
 			if applied:
+				_trace(&"water_status_applied", {"level": instruction["level"], "status": instruction["status"], "duration": instruction["duration"], "slow_percent": instruction.get("slow_percent", 0.0)})
 				effect_applied.emit(effect_type, instruction.duplicate(true))
 				_emit_state()
 			return applied
 		&"earth_slow":
 			var applied := _apply_earth_slow(instruction, instigator)
 			if applied:
+				_trace(&"earth_slow_applied", {"level": instruction["level"], "duration": instruction["duration"], "slow_percent": instruction["slow_percent"]})
 				effect_applied.emit(effect_type, instruction.duplicate(true))
 				_emit_state()
 			return applied
@@ -162,3 +165,8 @@ func get_effect_state() -> Dictionary:
 func _emit_state() -> void:
 	status_changed.emit(get_snapshot())
 	effect_state_changed.emit(get_effect_state())
+
+
+func _trace(event_name: StringName, data: Dictionary) -> void:
+	if OS.is_debug_build():
+		print("[TRACE][STATUS] %s %s" % [event_name, data])

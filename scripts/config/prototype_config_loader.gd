@@ -6,6 +6,7 @@ const REQUIRED_SECTIONS := [
 	"player",
 	"enemy",
 	"combat",
+	"casting",
 	"heat",
 	"fire",
 	"water",
@@ -83,19 +84,25 @@ static func _validate(data: Dictionary) -> String:
 
 	var checks := [
 		["movement", "speed", 0.001, INF],
-		["movement", "stick_deadzone", 0.0, 0.95],
-		["movement", "idle_fps", 0.001, INF],
-		["movement", "walk_fps", 0.001, INF],
+		["movement", "gravity_scale", 0.001, INF],
 		["player", "max_health", 0.001, INF],
 		["enemy", "max_health", 0.001, INF],
 		["combat", "attack_duration", 0.001, INF],
 		["combat", "hit_phase", 0.0, 1.0],
 		["combat", "input_window_start", 0.0, 1.0],
-		["combat", "input_window_end", 0.0, 1.0],
 		["combat", "shape_radius", 0.001, INF],
 		["combat", "shape_reach", 0.001, INF],
 		["combat", "light_damage", 0.0, INF],
-		["combat", "finisher_damage", 0.0, INF],
+		["combat", "casting_damage", 0.0, INF],
+		["casting", "orb_lifetime", 0.001, INF],
+		["casting", "charge_step_duration", 0.001, INF],
+		["casting", "trigger_release_max", 0.0, 1.0],
+		["casting", "trigger_pause_center", 0.0, 1.0],
+		["casting", "trigger_pause_half_width", 0.0, 0.5],
+		["casting", "trigger_press_min", 0.0, 1.0],
+		["casting", "empowered_primary_multiplier", 0.001, INF],
+		["casting", "projectile_screen_ratio", 0.001, 1.0],
+		["casting", "projectile_travel_duration", 0.001, INF],
 		["heat", "max_value", 0.001, INF],
 		["heat", "gain_per_hit", 0.0, INF],
 		["heat", "inactivity_grace", 0.0, INF],
@@ -141,8 +148,13 @@ static func _validate(data: Dictionary) -> String:
 			return error
 
 	var combat: Dictionary = data["combat"]
-	if combat["input_window_start"] >= combat["input_window_end"]:
-		return "combat.input_window_start must be lower than combat.input_window_end."
+	var casting: Dictionary = data["casting"]
+	var pause_lower: float = float(casting["trigger_pause_center"]) - float(casting["trigger_pause_half_width"])
+	var pause_upper: float = float(casting["trigger_pause_center"]) + float(casting["trigger_pause_half_width"])
+	if float(casting["trigger_release_max"]) >= pause_lower or pause_lower >= pause_upper or pause_upper >= float(casting["trigger_press_min"]):
+		return "casting trigger bands must be ordered release, pause, then press."
+	if pause_lower < 0.0 or pause_upper > 1.0:
+		return "casting pause band must remain between 0 and 1."
 	var integer_error := _validate_integer(data, "combat", "direct_impact", 0, 5)
 	if not integer_error.is_empty():
 		return integer_error
@@ -153,6 +165,9 @@ static func _validate(data: Dictionary) -> String:
 	if not integer_error.is_empty():
 		return integer_error
 	integer_error = _validate_integer(data, "air", "max_chain_targets", 1, 32)
+	if not integer_error.is_empty():
+		return integer_error
+	integer_error = _validate_integer(data, "casting", "max_marked_capacity", 5, 5)
 	if not integer_error.is_empty():
 		return integer_error
 
@@ -201,8 +216,8 @@ static func _validate(data: Dictionary) -> String:
 			return "water.levels[%d].slow_percent must be between 0 and 1." % index
 
 	var earth: Dictionary = data["earth"]
-	if not earth.has("levels") or typeof(earth["levels"]) != TYPE_ARRAY or earth["levels"].size() != 3:
-		return "earth.levels must contain exactly three entries."
+	if not earth.has("levels") or typeof(earth["levels"]) != TYPE_ARRAY or earth["levels"].size() != 5:
+		return "earth.levels must contain exactly five entries."
 	for index in range(earth["levels"].size()):
 		var earth_level = earth["levels"][index]
 		if typeof(earth_level) != TYPE_DICTIONARY:
@@ -215,6 +230,10 @@ static func _validate(data: Dictionary) -> String:
 		var earth_slow := float(earth_level["slow_percent"])
 		if earth_slow < 0.0 or earth_slow > 1.0:
 			return "earth.levels[%d].slow_percent must be between 0 and 1." % index
+
+	var ui: Dictionary = data["ui"]
+	if not ui.has("developer_overlay_visible") or typeof(ui["developer_overlay_visible"]) != TYPE_BOOL:
+		return "ui.developer_overlay_visible must be Boolean."
 
 	return ""
 

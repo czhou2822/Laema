@@ -1,369 +1,469 @@
-# Laema Combat Prototype — Technical Design
+# Laema Side-Scrolling Orb Casting — Technical Design
 
-Status: Current architecture for committed baseline `e543a43`; preflight cleared with accepted waivers. User-reported Godot validation covers the exercised first-draft slice, while the incoming-attack boundary remains unverified.
+Status: READY_FOR_ULTRON_OR_DUM-E
 
-## Scope and Current Repository State
+## 1. Scope and Repository Baseline
 
-This document defines the architecture for the combat prototype in [GAME_DESIGN.md](GAME_DESIGN.md). The target scope includes player movement, complete Fire and Water combat packages, selectable Air and Earth visual placeholders, Fire–Water mixed finishers, Heat, Fire parrying, Water blocking, shared damage and hit-reaction processing, one non-attacking Enemy placeholder, combat feedback, and developer tuning tools.
+This document defines the architecture for the user-verified design in GAME_DESIGN.md and replaces the previous top-down/Y-finisher technical design.
 
-The committed repository contains the composed Player and non-attacking Enemy Entities, Combat and Defence FSMs, Input-combo and Heat components, AnimationPlayer timing, ShapeCast2D contact, shared HealthEvent/HealthResult/HealthResolver processing, status and hit-reaction components, HUD, JSON configuration, imported prototype assets, and the Developer Overlay. The user reported the exercised first-draft slice as validated in Godot on 2026-08-24; the agent did not run Godot, a build, a compiler, or automated tests.
+The current source baseline is commit 5d027b5. At that baseline, the repository contains:
 
-Fire parrying, Water blocking, guard state, Air/Earth placeholder selection, shared Entity architecture, and shared hit-reaction processing are implemented in the committed slice. Functional Air and Earth combat packages, Active Enemy behavior, and its attack FSM remain explicitly deferred. Exact balance values, final art, complete enemy content, and final tuning remain open or deferred.
+- shared Player and Enemy Entity roots;
+- HealthEvent, HealthResult, HealthResolver, Health, Status, and HitReaction;
+- Player Movement, Combat, InputCombo, Heat, and Defence components;
+- functional Fire, Water, Air, and Earth resolver scripts;
+- three-position X chains and immediate Y finishers;
+- top-down movement and a Player-child Camera2D;
+- the non-attacking permanent Enemy;
+- combat HUD, JSON tuning, and Developer Overlay; and
+- the preceding prototype character and VFX assets.
 
-The current contact path is `CombatController._perform_hit_query()` in `scripts/combat/combat_controller.gd` → `Entity.receive_health_event()` → `HealthResolver.resolve()` → a synchronous `HealthResult` delivery to the instigator. Fire and Water resolvers construct HealthEvents, while `scripts/status/status_controller.gd` routes DoT ticks through the same Entity boundary. `CombatController` recognizes all four school selections, but only Fire and Water produce attacks; Air and Earth remain presentation-only placeholders.
+The current working tree is intentionally dirty. It additionally stages the accepted 20 X-attack sheets, shared casting and locomotion sheets, Player presentation lookup for X1–X5, and a side-view arena art pass. Those edits do not yet implement five-position chain rules, side-scrolling collision and gravity, OrbCastingController, analog R2 states, marked-orb behavior, SpellProjectile, or the revised HUD/configuration. This report treats those files as concurrent user-owned work and does not mistake presentation staging for completed gameplay.
 
-## Entity Hierarchy and Ownership
+The new GDD materially replaces movement, chain progression, finisher input, casting state, projectile lifetime, HUD, configuration, and animation allocation. Existing user validation applies only to the earlier exercised slice; no side-scrolling Orb Casting runtime evidence exists yet.
 
-`Entity` is the shared parent class for health-bearing combat actors.
+In scope:
 
-```text
-Entity : CharacterBody2D
-├─ Health
-├─ HealthResolver
-├─ Buff/Debuff
-├─ HitReaction
-└─ Hit/status presentation
+- grounded horizontal movement with gravity and one continuous floor;
+- Player-child horizontal-follow camera;
+- five-position X/Cast chains;
+- all four schools’ X attacks and casting specialties;
+- Player-owned OrbCastingController;
+- analog R2 pressure classification, Heat-scaled orb marking, pause/resume, normal/empowered/failed Casting, and punishment flinch;
+- marked-orb hit loss, sequential lifetime fade, and mark transfer;
+- Arena-spawned SpellProjectile scene;
+- current Health/effect/Heat pipelines;
+- accepted 20-sheet X allocation and shared Casting Spell flipbook;
+- orb/charge/chain/projectile UI plus live developer R2 pressure; and
+- existing Fire parry and Water block state entry.
 
-Player : Entity
-├─ Movement
-├─ Combat
-├─ Input-combo
-├─ Heat
-├─ Defence
-├─ School switching
-├─ AnimationPlayer
-├─ ShapeCast2D
-└─ Camera2D
+Excluded:
 
-Enemy : Entity
-└─ Permanent placeholder behavior
-```
+- jumping and non-flat traversal;
+- Air and Earth defence;
+- active Enemy attacks;
+- final projectile art and final Laema art;
+- final balance; and
+- the deferred change from direct-hit Heat to orb-consumption Heat.
 
-The base Entity owns no player input, school selection, AI, or attack decisions. Player and Enemy inherit the common damage/effect foundation and add their own feature components.
+## 2. Current Codebase Map and Migration
 
-| Component | Responsibility |
-|---|---|
-| Entity | Shared lifetime, HealthResult receiver, and references for Health, HealthResolver, Buff/Debuff, HitReaction, and hit/status presentation. |
-| Health | Finite current/maximum Health and health-change signals behind one shared interface. |
-| HealthResolver | Resolves HealthEvent damage or healing operations and damage-only hit reaction against target state. |
-| Buff/Debuff | Owns effect source, stacks, duration, modifiers, expiry, and periodic effect execution. |
-| HitReaction | Executes a resolved reaction level and owns recovery lifetime and reaction-state signals for one Entity. |
-| Combat | Top-level Player action authority, input validation, attack/defence exclusion, animation, contact, and finisher orchestration. |
-| Input-combo | Records only Combat-approved inputs and resolves school levels. |
-| Heat | Owns Heat state and attack-speed multiplier. |
-| Defence | Owns guard, parry windows, L1 rearming, and incoming-damage interception. |
-| HUD / feedback | Observes resolved gameplay state without mutating it. |
+| Current owner | Current responsibility | Required migration |
+|---|---|---|
+| PrototypeArena | Configuration distribution and Player/Enemy/HUD wiring | Add flat-floor composition and Arena-owned SpellProjectile spawning |
+| Player | Entity composition, presentation, camera, resolver injection | Compose OrbCastingController, expose casting/projectile signals, retain Camera2D |
+| MovementController | Two-axis velocity and facing | Consume horizontal input only; apply gravity independently of horizontal locks |
+| CombatController | Sole action arbiter, FSM, timing, contact, current finisher orchestration | Classify raw R2 pressure, orchestrate marking state and release, five-position chain actions, casting timing, failure, and spell impact |
+| InputCombo | Three-X token list, one switch, Y level resolution | Become five-position X/Cast chain bookkeeping; remove spell composition |
+| HeatController | Timed Heat resource and speed multiplier | Preserve current direct-hit behavior for this slice |
+| School resolvers | Fire/Water/Air/Earth direct effects | Reuse at SpellProjectile impact with primary-only empowered damage multiplier |
+| DefenceController | Fire parry and Water block | Preserve; do not add Air/Earth defence |
+| StatusController | DoT, Water status, Earth Slow, EffectState | Preserve; add accepted five-level Earth data |
+| PrototypeHUD | Heat, Health, defence, school, and combo feedback | Split presentation into always-visible GameUI and flag-controlled DeveloperReadout; add marked/unmarked orbs, front fade, marking progress, and upper-right pressure gauge |
+| DeveloperOverlay | Backtick fail-fast tuning menu plus attack-hitbox control | Add the persisted DeveloperReadout visibility checkbox and expose accepted R2 tunables |
+| PrototypeConfigLoader | Fail-fast JSON validation and saving | Validate casting, trigger bands, projectile, gravity, five-level Earth, and revised input-window schema |
 
-GDScript remains the implementation language. Shared behavior uses class inheritance only at the Entity boundary; feature behavior remains composed.
+The shared Entity/Health pipeline remains the architectural foundation. Orb Casting reuses it rather than introducing another damage system.
 
-## Shared Health and Effect Pipeline
+## 3. Selected Ownership and Communication
 
-HealthEvent is the shared contract for damage and healing. The current slice creates direct-damage and DoT-damage events; healing and HoT behavior remain deferred beyond the shared operation and attribution fields.
+    PrototypeArena
+    ├─ FlatFloor / collision
+    ├─ Player : Entity
+    │  ├─ MovementController
+    │  ├─ CombatController
+    │  ├─ InputCombo
+    │  ├─ OrbCastingController
+    │  ├─ HeatController
+    │  ├─ DefenceController
+    │  ├─ Health / HealthResolver
+    │  ├─ Status / HitReaction
+    │  ├─ AnimationPlayer / AttackCast
+    │  └─ Camera2D
+    ├─ Enemy : Entity
+    ├─ PrototypeHUD
+    │  ├─ GameUI
+    │  └─ DeveloperReadout [PROCESS_MODE_ALWAYS]
+    ├─ DeveloperOverlay [backtick tuning menu]
+    └─ SpellProjectile instances
 
-A HealthEvent carries the information required by approved behavior:
+### OrbCastingController
+
+OrbCastingController is a Player-owned sibling component following the existing HeatController pattern. It owns:
+
+- the FIFO orb queue;
+- the active front-orb lifetime;
+- sequential expiration;
+- retained partial marking time;
+- marked capacity from 0 through 5;
+- first-N marked coverage over the FIFO queue;
+- transfer of that coverage when the front orb expires;
+- removal of marked orbs when the accepted owner-hit seam is invoked;
+- immediate FIFO consumption;
+- primary/tie-break/secondary composition; and
+- read-only snapshots containing school, marked state, and front lifetime ratio for UI.
+
+It does not sample raw input, classify trigger pressure, choose action validity, advance the chain, launch projectiles, apply damage, or own animation state. Combat remains the sole input and action authority.
+
+### InputCombo
+
+InputCombo remains the accepted-chain record. It owns:
+
+- progression positions 1–5;
+- accepted X and mid-chain Cast tokens;
+- the optional endpoint-Cast boundary;
+- one school switch and at most two schools;
+- completed-chain token snapshots; and
+- timeout/failure clearing.
+
+It no longer calculates spell levels. OrbCastingController resolves consumed-orb composition.
+
+### SpellProjectile
+
+SpellProjectile.tscn is a reusable scene with an Area2D root, collision shape, placeholder visual, and script. It owns:
+
+- forward movement;
+- maximum-distance tracking;
+- first-valid-hit detection;
+- miss/expiry cleanup;
+- blended-color presentation; and
+- resolved spell fields carried until impact.
+
+The projectile directly stores:
 
 - original instigator;
-- target Entity;
-- operation: damage or heal;
-- requested amount;
-- Impact level for damage operations, from 0 through 5;
-- delivery type, including direct, DoT tick, or future HoT tick;
-- school or originating effect attribution;
-- effect-application instructions carried only by events that instantiate a status; and
-- contact information when physical contact exists.
+- facing/travel direction;
+- primary school and level;
+- optional secondary school and level;
+- empowered state;
+- primary damage multiplier; and
+- primary/secondary color weights.
 
-Every Buff/Debuff instance records the original instigator for its complete lifetime. A Fire DoT tick therefore creates a new damage HealthEvent whose instigator remains the Entity that applied the DoT. Any future HoT tick must create a heal HealthEvent with that same original-instigator attribution.
+There is no CastPlan, ResolvedCast, global projectile manager, global event bus, or orb-queue lookup after release.
 
-Each Entity owns an instance of the same HealthResolver implementation. For damage operations in the current slice:
+### World spawning and resolution
+
+Player emits a typed projectile-spawn request at the casting animation’s launch phase. PrototypeArena:
+
+1. instantiates SpellProjectile.tscn;
+2. initializes its direct fields and travel values;
+3. adds it to world space; and
+4. connects its impact signal to Player Combat’s spell-impact boundary.
+
+Arena owns world-object creation but no spell rules. Combat owns spell-impact orchestration and delegates each resolved school layer to the existing school resolvers.
+
+Communication remains local and explicit:
+
+- Godot `Input.get_action_raw_strength(&"casting")` to Player/Combat pressure classification;
+- Combat to InputCombo and OrbCastingController by direct component calls;
+- Player to Arena by typed spawn signal;
+- SpellProjectile to Combat by an Arena-wired impact signal;
+- school resolvers to target Entity by HealthEvent;
+- Player and Enemy to HUD by observer signals;
+- DeveloperReadout directly sampling the same un-deadzoned `casting` raw-strength API used by Combat; and
+- DeveloperOverlay visibility checkbox to PrototypeArena/PrototypeHUD by a local callback while mutating the shared validated JSON-backed configuration.
+
+No Autoload is added.
+
+## 4. Movement, Camera, and Action State
+
+### Side-scrolling movement
+
+MovementController remains the movement owner.
+
+- It samples only left/right actions.
+- Horizontal velocity is input × movement speed × EffectState movement multiplier.
+- Gravity is Godot’s configured 2D default gravity multiplied by a JSON gravity_scale starting at 1.0.
+- Gravity continues while horizontal movement is combat-locked.
+- Combat lock sets horizontal velocity to zero without erasing vertical velocity.
+- Movement calls move_and_slide and relies on CharacterBody2D floor state.
+- Slow modifies horizontal movement only; gravity remains active.
+- Facing is always left or right.
+
+PrototypeArena adds one continuous StaticBody2D floor and positions Player and Enemy directly on it. No jump or vertical movement action is consumed.
+
+### Camera
+
+Camera2D remains a Player child by explicit decision. The flat floor and grounded spawn keep Player Y stable, so the existing child relationship supplies horizontal following without a new camera controller.
+
+### Combat and orthogonal charging
+
+Combat keeps its explicit FSM for READY, chain activity, defence, guard break, and hit reaction. R2 marking is orthogonal state owned by OrbCastingController; there is no exclusive CHARGING FSM state.
+
+Combat samples `Input.get_action_raw_strength(&"casting")` as the normalized `0.0–1.0` gameplay pressure value. DeveloperReadout independently samples that same raw-strength API while visible so its gauge remains live when the backtick menu pauses the gameplay tree. Both paths explicitly bypass the InputMap action deadzone; neither may substitute deadzone-adjusted `get_action_strength()`. Combat owns a transition-based pressure classifier:
+
+- entering `0.90–1.00` starts or resumes marking;
+- entering `0.35–0.65` pauses marking while retaining partial progress and existing marks;
+- entering `0.00–0.10` attempts one Cast release;
+- values between those bands retain the current semantic pressure state; and
+- the release action is edge-triggered, so a resting trigger does not repeatedly attempt Casting.
+
+X and subsequent Cast actions may occur while marking is active or paused. On a release transition, Combat classifies timing as idle-normal, valid-window empowered, or rushed failure. OrbCastingController validates marked-orb availability and consumes only on an accepted attempt.
+
+The current finisher InputMap action is replaced by `casting`. Controller R2 uses the positive right-trigger axis. Right mouse may remain the developer keyboard/mouse alternative and therefore supplies only digital `0.0/1.0` pressure. Controller Y no longer resolves casting.
+
+### Chain and animation clock
+
+X and Cast use the same base action duration, normalized launch/contact phase, normalized chaining-window start, and Heat-derived speed multiplier.
+
+The chaining window remains open from its configured start through normalized animation end. The old configurable window-end field is no longer consumed.
+
+Combat action state distinguishes X attack, normal Cast, empowered mid-chain Cast, and empowered endpoint Cast.
+
+Active or paused R2 marking preserves an active chain beyond normal idle timeout. A preserved chain retains movement lock and its orbs. X may begin a chain while R2 is already marking.
+
+Successful mid-chain Cast advances one progression position. The optional Cast after position 5 does not create a sixth position and ends the chain.
+
+### Failed casting
+
+Combat rejects a Cast when:
+
+- no orb is marked; or
+- R2 is released before the active X/Cast chaining window opens.
+
+Failure stops the active animation, resets InputCombo and OrbCastingController, creates no projectile, and requests the existing level-1 HitReaction directly. It does not synthesize a damage HealthEvent.
+
+Starting or retaining marking across defence, guard break, Frozen, or externally caused hit reaction remains deferred under the accepted design waiver. Combat prevents new marking while actions are blocked, but the TDR does not decide whether pre-existing marks pause, persist, or clear when defence begins.
+
+## 5. Orb, Projectile, and Effect Flows
+
+### Orb generation and lifetime
+
+One accepted X action generates at most one orb:
+
+    X contact query
+    → at least one valid Enemy contacted
+    → submit normal X HealthEvents
+    → add one active-school orb
+
+Multiple targets do not generate multiple orbs from one X. A miss advances the chain but creates no orb.
+
+OrbCastingController stores school queue order, one front lifetime, retained partial marking time, and an integer marked capacity:
+
+- front lifetime starts at 3.0 seconds;
+- only the front timer advances;
+- UI alpha for the front orb is its remaining-lifetime ratio, producing a linear fade;
+- waiting orbs remain fully visible because their timers have not started;
+- front expiry removes that orb;
+- the next orb begins a fresh 3.0 seconds;
+- the first `min(marked_capacity, queue_size)` entries are marked;
+- when a marked front orb expires, queue compaction transfers marking forward while preserving marked capacity when enough orbs remain;
+- successful mid-chain Cast removes only consumed front orbs;
+- normal Cast, endpoint Cast, timeout, and failure clear the remaining queue.
+
+While pressure is in the active state, partial marking time advances using the current Heat multiplier. One mark completes every effective `0.5 / HeatMultiplier` seconds, and marked capacity caps at 5. Pausing retains partial time and marked capacity. A successful release consumes all currently marked front orbs and resets marking state.
+
+OrbCastingController exposes a bounded owner-hit operation that removes every currently marked front orb, leaves all unmarked orbs in FIFO order, and resets marked capacity. Because the current Enemy cannot attack and R2–defence overlap is waived, this report does not choose which future blocked, parried, zero-impact, or status outcomes invoke that operation.
+
+### Composition and launch
+
+At successful R2 release, OrbCastingController consumes all marked orbs immediately and returns resolved values to Combat’s current casting action:
+
+1. majority consumed school becomes primary;
+2. a tie is won by the final consumed orb;
+3. primary level equals total consumed count;
+4. secondary level equals that school’s consumed count minus 1;
+5. a secondary below level 1 is omitted.
+
+The current action retains those direct fields only until projectile launch. Interrupted casting does not refund orbs.
+
+At the shared normalized contact/release phase, Player asks Arena to spawn SpellProjectile.
+
+- Arena derives visible world width from the active viewport/camera transform.
+- Maximum travel distance is 50% of that width.
+- Travel duration is 1.0 second.
+- Projectile speed is maximum distance divided by travel duration.
+- Direction is Player facing at successful release.
+- Collision targets Enemy Entity bodies.
+- First valid Enemy hit emits one impact and destroys the projectile.
+- Maximum distance destroys it without impact.
+
+For primary level P and secondary level S, color weights are P divided by P + S and S divided by P + S. A primary-only projectile uses the primary color.
+
+### Spell impact
+
+Combat resolves primary first, then secondary, using the projectile’s direct fields and existing resolver boundary.
+
+- Fire: direct damage plus DoT stacks equal to Fire level.
+- Water: direct damage plus existing Wet/Slow/Frozen instruction.
+- Air: level 1 applies the timed attack-speed buff; levels 2–5 use current chain-lightning scaling.
+- Earth: area damage and five-level Slow data.
+
+Empowered 1.3× direct-damage multiplication applies only to the primary resolver. Status strength, DoT stacks, chained-target count, area, Slow, and secondary direct damage remain unchanged.
+
+Resolver interfaces gain an explicit direct-damage multiplier or equivalent resolved amount. They do not read projectile nodes, orb state, or Combat state.
+
+Each direct HealthEvent continues through the shared HealthResolver. Existing synchronous HealthResult delivery and direct-hit Heat behavior remain unchanged. The later orb-consumption Heat design is documented but not implemented.
+
+## 6. Configuration, UI, and Assets
+
+### JSON configuration
+
+The Arena-owned fail-fast JSON model remains. Required additions:
+
+    movement
+    └─ gravity_scale = 1.0
+
+    casting
+    ├─ orb_lifetime = 3.0
+    ├─ charge_step_duration = 0.5
+    ├─ max_marked_capacity = 5
+    ├─ trigger_release_max = 0.10
+    ├─ trigger_pause_center = 0.50
+    ├─ trigger_pause_half_width = 0.15
+    ├─ trigger_press_min = 0.90
+    ├─ empowered_primary_multiplier = 1.3
+    ├─ projectile_screen_ratio = 0.5
+    └─ projectile_travel_duration = 1.0
+
+    ui
+    └─ developer_overlay_visible = true
+
+Casting reuses combat.attack_duration, combat.hit_phase, and combat.input_window_start. The normalized window end is fixed at animation end. The old combat.input_window_end and combat.finisher_damage fields are removed or migrated to revised casting naming in one coordinated config update.
+
+Earth configuration contains:
+
+| Level | Radius | Slow | Duration |
+|---|---:|---:|---:|
+| 1 | 28 | 15% | 1.5s |
+| 2 | 38 | 25% | 2.0s |
+| 3 | 48 | 40% | 2.5s |
+| 4 | 58 | 40% | 3.0s |
+| 5 | 68 | 40% | 4.0s |
+
+PrototypeConfigLoader validates positive durations/distances, marked capacity as integer 5, trigger values in `0.0–1.0`, exactly five Earth levels, and existing school/effect contracts. Trigger validation also requires:
 
 ```text
-HealthEvent
-→ validate instigator, target, damage operation, amount, and Impact
-→ at contact, read the target’s current defensive level
-→ consult optional target interceptors against that same contact state
-   └─ Player Defence: PARRIED / BLOCKED / PASS
-→ resolve final hit-reaction level before the contact changes guard or action state
-→ determine damage remaining after interception
-→ cap actual Health reduction to the target’s current Health and discard excess
-→ apply the negative Health delta
-→ forward any accepted effect-application instruction to the target Buff/Debuff component
-→ create HealthResult with actual Health delta, final reaction level, effect outcome, and zero-reaching state
-→ target HitReaction executes the resolved reaction
-→ deliver HealthResult synchronously to the HealthEvent’s original instigator Entity
-→ instigator-owned consumers process the result, including eligible direct-hit Heat
-→ if the Enemy placeholder reached zero, reset its Health to maximum without creating another HealthEvent
+trigger_release_max
+< trigger_pause_center - trigger_pause_half_width
+< trigger_pause_center + trigger_pause_half_width
+< trigger_press_min
 ```
 
-HealthResult records the operation, resolution outcome, actual signed `health_delta`, final reaction level, contact direction, effect outcome, zero-reaching state, and attribution needed by downstream consumers. Every Entity exposes the same synchronous result-receiver boundary. Player and Enemy use the same resolver; Player-specific defence enters only through the optional Defence interceptor.
-
-Damage and hit reaction are separate outputs. A `BLOCKED` result has zero Health delta but retains its Impact and may still produce a hit reaction. A `PARRIED` result has zero Health delta and no hit reaction because parrying nullifies the incoming attack. DoT ticks use damage HealthEvents with Impact 0, so they grant no Heat and cause no hit reaction.
-
-The Enemy placeholder has finite maximum and current Health. Damage is capped at its remaining Health; excess is discarded. A zero-reaching event resolves with its actual negative Health delta, delivers its HealthResult synchronously to the original instigator, then the Enemy performs an internal lifecycle reset to maximum Health. The reset is not a heal HealthEvent, has no instigator, emits no death, and leaves Buff/Debuff state untouched.
-
-A resolved Fire Y HealthEvent carries an instruction to instantiate the approved number of Fire DoT stacks. HealthResolver forwards that instruction and the event’s original instigator to the victim’s Buff/Debuff component. Buff/Debuff stores stack lifetime and instigator, then creates a new damage HealthEvent for every tick with that same instigator. Tick events use DoT delivery, Impact 0, and no effect-application instruction, so they cannot recursively instantiate another DoT.
-
-Combat owns direct-hit Heat triggering. For each unique target, Combat submits one accepted Fire/Water X or Y damage HealthEvent. The target HealthResolver synchronously delivers HealthResult to the Player Entity’s result receiver, which forwards eligible direct results to Combat. Combat grants one Heat increment only when that direct result has `health_delta < 0`. DoT, status, and future HoT results pass through the same receiver but do not grant Heat.
-
-Every primary or secondary specialty owns its genuine direct-damage HealthEvent. Fire creates one contact-target HealthEvent; Water queries its level-scaled area centered on the confirmed contact point and creates one HealthEvent per unique Enemy in that area. A mixed Fire–Water finisher therefore creates separate Fire and Water HealthEvents, and the contacted Enemy may resolve both. Each direct HealthResult with `health_delta < 0` grants its own Heat increment.
-
-Every Water HealthEvent carries 10 damage and Impact 1 plus the status instruction for its resolved level: level 1 Wet for 1 second; level 2 Wet for 2 seconds; level 3 Slow at 20% for 2 seconds; level 4 Slow at 40% for 2.5 seconds; and level 5 Frozen for 1 second. Water emits no duplicate event for the same Enemy within one area resolution. A miss produces no area or HealthEvent. Wet has no active modifier while Air remains a placeholder.
-
-Every Entity owns one HitReaction component. It has no knowledge of schools, blocking rules, defensive levels, or attack identities. HealthResolver applies the fixed rule synchronously at contact, using the victim’s defensive level at that moment:
-
-```text
-final reaction level = max(0, Impact level - defensive level)
-```
-
-The defensive level is neither copied into nor retained by HealthEvent. Final level 0 emits no reaction. For levels 1 through 5, HitReaction applies the configured linearly increasing flinch magnitude and recovery duration, owns the recovery lifetime, and emits reaction-started and reaction-ended state; visual displacement remains presentation owned.
-
-If HitReaction receives a new nonzero level while recovery is active, it ends the active reaction immediately, discards all remaining movement and recovery, and starts the new level at full magnitude and duration. Presentation cancels the old displacement before beginning the replacement. A level-0 result leaves any active reaction unchanged.
-
-For Player, a nonzero reaction forces Combat into its hit-reaction state, cancels the current action and input-combo, locks movement and further actions, and returns Combat to READY when recovery ends. The Enemy placeholder has no action to cancel; its presentation consumes the same reaction state to reproduce the current light flinch.
-
-Current-slice assignments are explicit: Player and Enemy maximum Health begin at 100; every accepted Fire or Water X and valid Fire or Water Y finisher deals 10 direct damage and has Impact 1; Fire DoT ticks have Impact 0; and the Enemy placeholder has defensive level 0. These Health and direct-damage values are tunable starting points rather than final balance. Air/Earth X and Y inputs produce no attack or HealthEvent. Earth’s defensive levels belong to its deferred full package and are not implemented in this slice. Other defensive levels remain unassigned gameplay data and may not be invented in implementation.
-
-Buff/Debuff is also shared by Player and Enemy:
-
-- Fire DoT stores stacks, duration, original instigator, and emits instruction-free, instigator-attributed HealthEvents on ticks.
-- Water Wet stores source and duration but contributes no current modifier.
-- Water Slow contributes `movement_multiplier = 0.8` at level 3 or `0.6` at level 4 for the approved duration.
-- Water Frozen contributes `actions_suppressed = true` and `movement_multiplier = 0` for 1 second.
-
-Buff/Debuff owns one active Water-status slot containing Water level, status identity, remaining duration, and original instigator. An incoming higher level replaces the slot and starts at full duration. An equal level refreshes the full duration without stacking. A lower level leaves the slot unchanged. HealthResolver still applies the Water HealthEvent’s direct damage and returns its HealthResult when Buff/Debuff rejects the lower-level status instruction.
-
-Fire continues adding the approved independent DoT stacks. Reapplication policies for deferred effects remain outside this slice.
-
-Whenever active effects change, Buff/Debuff publishes one aggregate EffectState:
-
-```text
-EffectState
-├─ actions_suppressed
-└─ movement_multiplier
-```
-
-Buff/Debuff alone interprets individual effects and combines their outputs. Consumers never inspect effect identities or stacks directly.
-
-- Player Combat consumes `actions_suppressed` before accepting actions.
-- Player Movement calculates final movement speed as `base speed × movement_multiplier`.
-- Player Combat calculates attack playback speed from the Heat multiplier in this slice.
-
-If only one active effect contributes to a category, its value passes through unchanged. Fire stack aggregation and the single Water-status priority slot remain internal to Buff/Debuff without changing the consumer interface.
-
-Hit reaction is a transient combat state rather than a Buff/Debuff effect. HitReaction therefore signals Player Combat directly; it does not write into EffectState or create a second top-level input authority.
-
-## Player Input and Action State
-
-Godot InputMap remains the device abstraction; no custom input layer exists. Movement consumes continuous movement actions. Combat receives semantic attack, school, and defence actions and decides whether they are valid.
-
-Input-combo receives only actions accepted by Combat. Defence never consumes input independently.
-
-Combat accepts all four school-selection actions while READY. Fire and Water expose functional attack and defence behavior. Air and Earth update only the active-school identity and Player outline—white for Air, brown for Earth—while X, Y, and L1 are ignored. During COMBO_ACTIVE, only the Fire–Water switch is eligible; Air/Earth selection inputs are ignored without changing the combo or active school.
-
-Combat expands its explicit FSM:
-
-```text
-READY
-├─ Fire/Water: accepted X → COMBO_ACTIVE
-├─ Fire/Water: accepted L1 → DEFENDING
-└─ Air/Earth: X / Y / L1 → ignored
-
-COMBO_ACTIVE
-├─ accepted X → next attack
-├─ accepted Fire–Water switch → update next attack school
-├─ Air/Earth selection → ignored
-├─ accepted Y → resolve → READY
-└─ timeout → reset → READY
-
-DEFENDING
-├─ L1 release → READY
-└─ guard break → GUARD_BROKEN
-
-GUARD_BROKEN
-└─ reaction ends and L1 has been released → READY
-
-READY / COMBO_ACTIVE / DEFENDING
-└─ final hit-reaction level > 0 → HIT_REACTING
-
-HIT_REACTING
-├─ new final reaction > 0 → replace reaction; remain HIT_REACTING
-├─ final reaction = 0 → no state change
-└─ HitReaction recovery ends → READY
-```
-
-Combat remains the sole top-level Player action arbiter. Entering HIT_REACTING stops attack playback, resets the input-combo, exits defence, rejects all input, and keeps movement locked until HitReaction signals recovery completion. This prevents simultaneous attack, defence, movement, school-switch, and reaction states.
-
-## Defence Component
-
-L1 invokes defence only while Fire or Water is active. Defence locks movement, disables school switching, and has no directional aiming. L1 is ignored while Air or Earth is active.
-
-Defence owns:
-
-- current guard value;
-- blocked-damage depletion;
-- parry-window lifetime;
-- L1 release/repress rearming;
-- guard-break reaction timing; and
-- HealthResolver interception results.
-
-### Water blocking
-
-- L1 hold activates block while guard remains.
-- Block returns `BLOCKED`, so incoming damage does not reach Health while Impact continues to HitReaction.
-- Blocked damage depletes guard.
-- Holding block drains Heat.
-- Guard warning feedback is emitted near the configured threshold.
-- The breaking hit remains blocked.
-- Guard break enters the configured input-lock reaction, currently 0.5 seconds.
-- Continued L1 hold cannot rearm.
-- Releasing and pressing L1 again restores full guard and begins a new block.
-- Water’s blocking defensive level remains open and is not selected by this report. Earth blocking is outside the current slice.
-
-### Fire parrying
-
-- L1 press opens one configured parry window.
-- Contact inside that window returns `PARRIED`.
-- `PARRIED` ends damage and hit-reaction resolution for that attack.
-- Holding L1 after the window provides no defence while movement remains locked.
-- Release and repress are required for another parry.
-
-Enemy attack generation is outside the current prototype scope. Defence and HealthResolver retain the interception seam required for the deferred Active Enemy without adding an attack FSM shell now.
-
-## Enemy Placeholder Architecture
-
-The separate permanent Training Target scene is replaced by one Enemy subclass of Entity while preserving its current role as a stationary contact and feedback target.
-
-The Enemy placeholder:
-
-- has defensive level 0;
-- begins with maximum and current Health of 100;
-- never moves or attacks;
-- cannot die;
-- has finite maximum/current Health, caps damage at remaining Health, and discards excess;
-- resets Health to maximum after a zero-reaching HealthResult without emitting death or clearing active effects;
-- owns the shared Health, HealthResolver, Buff/Debuff, and HitReaction components; and
-- presents resolved hit reactions, statuses, and VFX without deciding combat outcomes.
-
-There is no mode switch, attack controller, contact generation, or attack FSM in the current scope. The approved future attack lifecycle remains deferred design context and does not authorize implementation of an empty Active-mode shell.
-
-## School Effect Architecture
-
-Combat continues delegating functional finisher output to the existing Fire and Water resolver boundary:
-
-- Fire constructs one contact-target direct HealthEvent containing 10 damage, Impact 1, and its instigator-attributed DoT application instruction at the resolved specialty level.
-- Water resolves the level-scaled unique target set and constructs one direct HealthEvent per target containing 10 damage, Impact 1, and its level-specific Wet, Slow, or Frozen instruction.
-- Primary and secondary resolvers run as distinct layers in primary-then-secondary order; each HealthEvent independently resolves Health, reaction replacement, status application, and Heat eligibility.
-
-School resolvers retain no ongoing effect state. Buff/Debuff owns lifetimes and modifiers; HealthResolver owns Health-event resolution.
-
-Air and Earth have no resolver, effect state, attack configuration, defence configuration, or HealthEvent generation in this slice. Their deferred full packages must not be represented by speculative component shells.
-
-## Configuration, Communication, and Developer Tools
-
-Prototype Arena continues loading `config/prototype_combat.json` once, validating the complete document, and distributing one Arena-owned runtime snapshot. Invalid required data fails fast with no silent defaults.
-
-JSON remains the tuning source for movement, attacks, Heat, effects, defence, finite entity Health, and hit-reaction magnitude and recovery. The schema adds required positive `player.max_health` and `enemy.max_health` values, both initially 100, plus required non-negative `combat.light_damage` and `combat.finisher_damage` values, both initially 10. Refill-at-zero and excess-damage discard are fixed rules rather than tunables. There are no Enemy attack definitions in the current schema. Fixed gameplay rules—including the subtraction formula and approved Impact and defensive-level assignments—remain validated contracts rather than silent defaults.
-
-Water configuration stores one entry per specialty level with its status identity, duration, and Slow percentage where applicable. Initial entries are Wet/1 second, Wet/2 seconds, Slow/20%/2 seconds, Slow/40%/2.5 seconds, and Frozen/1 second. Water level is the fixed priority key: higher replaces, equal refreshes, and lower is ignored. Water’s existing base-radius and per-level radius fields continue to define area growth; direct damage and Impact remain the shared 10 and 1 values.
-
-Impact fields validate as integers from 0 through 5. Defensive-level fields validate as non-negative integers without inventing an upper bound absent from the GDD. Hit-reaction tuning stores the level-1 magnitude and recovery plus the per-level linear increases used through level 5. The current target’s flinch-distance and flinch-duration values migrate into this shared representation rather than remaining target-owned fields.
-
-Godot InputMap adds `select_air` and `select_earth`. The current JSON schema adds no Air or Earth attack, effect, or defence sections. White and brown outline mappings are fixed placeholder presentation rules and are not exposed as functional school tuning.
-
-In debug builds, the Arena-owned Developer Overlay may edit approved tunables on the live snapshot. **Save to JSON** remains the only persistence path and must validate the complete snapshot before replacing the source file. Invalid data leaves the source unchanged.
-
-Communication follows three explicit boundaries:
-
-- Each Entity composition root wires its own internal components through direct references and local signals. Player owns Combat, Movement, Input-combo, Heat, Defence, and HitReaction wiring; Enemy owns HealthResolver, Health, Buff/Debuff, HitReaction, and presentation wiring.
-- Cross-Entity Health resolution uses the synchronous public Entity boundary: the instigator submits HealthEvent to the target Entity, and the target HealthResolver delivers HealthResult directly to the original instigator Entity’s result receiver before finalizing target lifecycle work. Arena does not relay this transaction.
-- Prototype Arena distributes configuration, holds scene-level Player/Enemy/HUD references, and wires presentation observers such as Player state to HUD. HUD and feedback listeners do not mutate gameplay.
-
-There is no global event bus or gameplay Autoload.
-
-AnimationPlayer remains the attack clock, normalized JSON values remain the timing source, and ShapeCast2D remains the physical contact query. The existing attack-hitbox diagnostic display remains debug-only and may not alter collision or resolution.
-
-## Art and Content Evidence
-
-The imported Shinobi, retained legacy Swordsman, Grassland, Fire, Water, and Ice subset is user-approved under user-confirmed Craftpix entitlement. Shinobi is the active generic side-view stand-in rather than final Laema art. Left-facing presentation mirrors the right-facing sheets, while vertical movement and attacks retain the most recent horizontal facing; the user explicitly accepted this directional compromise for the prototype.
-
-Air/Earth placeholder presentation reuses the existing outline shader with white and brown colors and requires no new school animation or VFX assets. Distinct full-package Air/Earth movement, blocking, parrying, an active Enemy, persistent status overlays, and final UI remain deferred asset needs.
-
-## Current Implementation Slices
-
-1. **Entity foundation — implemented**
-   - Entity, Health, HealthResolver, Buff/Debuff, HitReaction, HealthEvent, and HealthResult are shared components in the committed slice.
-   - Enemy Health is finite, damage is capped, excess is discarded, and a zero-reaching result resets the placeholder to maximum without death or clearing effects.
-   - Nonzero reactions replace active reactions; level-0 results do not start or replace a reaction.
-   - Direct hits and DoT ticks use the common HealthEvent path.
-   - Water resolves one HealthEvent per unique area target, and primary/secondary Fire/Water layers resolve independently.
-   - Buff/Debuff owns Water priority with higher-level replacement, equal-level refresh, and lower-level rejection.
-
-2. **Player defence and reaction state — implemented**
-   - L1, Water block, Fire parry, Combat defence states, movement/switch locks, guard, rearm, guard-break output, and Player HIT_REACTING integration are present.
-
-3. **Enemy placeholder — implemented**
-   - The non-attacking Enemy subclass preserves permanent-target collision, status, VFX, light-flinch presentation, finite Health, refill, and no-death behavior.
-   - Active mode, attack controller, and attack FSM remain excluded.
-
-4. **Air/Earth selection placeholders — implemented**
-   - Air/Earth InputMap actions, active-school identities, white/brown outlines, ignored X/Y/L1 behavior, and active-combo rejection are present.
-   - No Air/Earth resolver, attack, defence, effect, Buff/Debuff, or HealthEvent behavior is included.
-
-5. **Configuration and feedback — implemented**
-   - Fail-fast JSON validation and the Developer Overlay cover the committed Player/Enemy Health, Fire/Water damage, Water statuses, Impact, defensive level, hit reaction, defence, and Entity values.
-   - HUD, status badges, reaction, guard, parry, school, Heat, and Enemy feedback are present.
-
-## Validation Seams and Open Evidence
-
-Validate that:
-
-- Player and Enemy inherit the same Entity foundation;
-- Entity roots own internal component wiring, cross-Entity Health transactions use the synchronous Entity interface, and Arena wiring is limited to scene composition, configuration, and presentation observers;
-- every direct and DoT damage instance produces an original-instigator-attributed damage HealthEvent with an explicit Impact;
-- Fire Y’s direct event carries the DoT application instruction, while generated tick events carry no application instruction;
-- Buff/Debuff preserves the original instigator across every periodic tick; any future HoT must obey the same attribution rule;
-- Player and Enemy use the same HealthResolver implementation;
-- Player and Enemy maximum Health initialize to 100, while functional Fire/Water X and Y direct damage initialize to 10;
-- HealthResult records the actual signed Health delta and zero-reaching state;
-- HealthResolver synchronously delivers HealthResult to the original instigator Entity before any zero-Health lifecycle reset;
-- Enemy damage is capped at remaining Health, excess is discarded, and zero triggers a full lifecycle reset after synchronous result delivery;
-- the refill creates no heal HealthEvent, emits no death, and preserves active Buff/Debuff state;
-- Combat grants one Heat increment per unique direct Fire/Water X/Y result only when `health_delta < 0`;
-- a zero-reaching direct result grants Heat from its negative delta before the lifecycle reset, while zero-delta, DoT, status, and future HoT results grant none;
-- every primary or secondary Fire/Water specialty emits its genuine direct HealthEvent at the resolved level, in primary-then-secondary order;
-- Water emits exactly one 10-damage, Impact-1 HealthEvent per unique area target with Wet at levels 1–2, Slow at levels 3–4, or Frozen at level 5;
-- each target owns at most one Water status: higher replaces, equal refreshes without stacking, and lower is ignored while direct damage still resolves;
-- each separate Fire or Water direct HealthResult grants Heat independently when `health_delta < 0`;
-- Player Defence intercepts damage before Health without adding Player branches to HealthResolver;
-- blocked and parried damage never reaches Health, while blocked Impact reaches HitReaction and parried Impact does not;
-- accepted Fire/Water X and valid Fire/Water Y events use Impact 1, Fire DoT ticks use Impact 0, and the Enemy placeholder uses defensive level 0;
-- HealthResolver calculates `max(0, Impact - defensive level)` for damage at contact identically for Player and Enemy, before resulting guard or action-state changes;
-- final reaction level 0 does nothing, while levels 1 through 5 scale magnitude and recovery linearly;
-- a new nonzero reaction ends and replaces the active reaction at full magnitude and duration, while level 0 leaves it unchanged;
-- a nonzero Player reaction cancels the current action, locks actions and movement, then returns Combat to READY;
-- DoT damage reaches Health but builds no Heat and causes no hit reaction;
-- EffectState action suppression gates Player Combat without owning hit-reaction state;
-- Movement consumes the final EffectState movement multiplier;
-- AnimationPlayer speed follows the Heat multiplier in the current slice;
-- guard break, L1 rearming, movement lock, and school-switch lock match the GDD;
-- the Enemy placeholder preserves permanent-target behavior without a mode switch or attack FSM;
-- Air/Earth selection applies white/brown outlines, ignores X/Y/L1, and cannot enter an active Fire–Water combo;
-- no Air/Earth functional component or configuration silently selects deferred behavior;
-- Developer Overlay edits remain debug-only and validated; and
-- existing Fire/Water combo behavior remains unchanged.
-
-Open evidence and risks:
-
-- the user reported validation for the exercised slice, but the agent did not run Godot, a build, a compiler, or automated tests;
-- incoming Enemy attacks, ordinary-play blocking/parrying, guard depletion/break triggering, and guard-warning triggering remain unverified because the approved Enemy does not attack;
-- the interaction between guard-break recovery and a simultaneous nonzero hit reaction remains deferred with incoming Enemy attacks;
-- original-instigator attribution after the instigator Entity is freed remains an accepted preflight waiver;
-- Player Health/death, healing semantics beyond the shared operation contract, and all active Enemy behavior remain deferred or open;
-- all functional Air/Earth behavior remains deferred;
-- high playback speed may cross narrow normalized phases within one update; and
-- final defence, Enemy, and full-package Air/Earth assets remain deferred.
-
-Diagnostic inventory: debug attack-hitbox sweep display owned by the Developer Overlay. It is toggleable and diagnostic-only.
-
-## Handoff Recommendation
-
-The preflight was completed before implementation with the accepted instigator-lifetime waiver. The source is now committed as `e543a43`, and the user reported the exercised slice as validated in Godot. A new preflight-before-implementation is no longer the current gate. Before a submission-ready or materially expanded source change, synchronize this document with the committed implementation through the user-authorized technical-document workflow and route the coupled change to Ultron `mode=tech-postflight`. Preserve the waiver, the incoming-attack validation boundary, and the explicit Air/Earth and Active Enemy exclusions.
+The starting values produce the accepted `0–10%` release band, `35–65%` pause band, and `90–100%` press/resume band. PrototypeConfigLoader also requires `ui.developer_overlay_visible` to be Boolean. DeveloperOverlay exposes the accepted R2 tunables and the DeveloperReadout visibility checkbox while retaining full-document validation before saving.
+
+There is no save-game migration requirement. The coordinated JSON schema fails fast rather than silently defaulting.
+
+### HUD
+
+HUD remains presentation-only but is divided into two visibility domains.
+
+GameUI is unaffected by the developer visibility flag:
+
+- Orb UI displays the FIFO school-colored queue.
+- Each orb snapshot identifies whether it is currently marked.
+- The front orb’s alpha equals its remaining-lifetime ratio; waiting orbs remain fully visible.
+- A ProgressBar beneath the queue displays partial progress toward the next mark and completed marked capacity.
+- Expired, consumed, and owner-hit-lost marked orbs disappear.
+- Target status and overhead Health presentation remain visible through their existing owners.
+
+DeveloperReadout is one flag-controlled presentation group:
+
+- upper left: Heat, Player Health, Enemy Health, and defence;
+- upper center: active school, five-position chain, and completed-chain feedback; and
+- upper right: live raw R2 pressure gauge.
+
+DeveloperReadout begins visible from `ui.developer_overlay_visible = true`. Its always-processing presentation path polls `Input.get_action_raw_strength(&"casting")` directly while visible, including while DeveloperOverlay has paused the tree. This updates only the diagnostic gauge; Combat, OrbCastingController, and gameplay timing remain paused.
+
+DeveloperOverlay remains the backtick tuning menu. Its checkbox changes the shared Boolean, immediately applies DeveloperReadout visibility through the existing Arena-owned tuning path, and persists through the existing validated Save-to-JSON action.
+
+### Animation allocation
+
+| School | X1 | X2 | X3 | X4 | X5 |
+|---|---|---|---|---|---|
+| Fire | Punch 1 | Punch 2 | Fire Kick | Explosive Strike | Power Strike |
+| Water | Attack 1 | Attack 2 | Attack 3 | Enchanted Attack 1 | Enchanted Attack 2 |
+| Air | Aerial Strike | Double Strike | Energy Wave | Wind Power | Weapon 1 |
+| Earth | Attack 1 | Attack 2 | Attack 3 | Power Punch 1 | Power Punch 2 |
+
+All use 128×128 cells and the shared feet baseline.
+
+- Water and Earth use matching family Idle/Walk sheets.
+- Fire and Air use the Medieval Character Pack 6 locomotion shell.
+- Fire/Air prop discontinuity is accepted.
+- All schools use Free Prototype Character Pack 2 Casting Spell.png.
+- Final projectile art remains open; SpellProjectile uses a code-native colorable placeholder.
+- Empowered Cast uses a visible Player-attached dot.
+
+AnimationPlayer timing remains authoritative. Flipbook frame counts affect presentation sampling, not action duration, launch phase, chain window, hitbox, or damage.
+
+## 7. Implementation Slices, Validation, and Handoff
+
+### Implementation slices
+
+1. Side-scrolling foundation
+   - Convert MovementController to horizontal input plus gravity.
+   - Add continuous floor collision and grounded spawn.
+   - Preserve Player-child Camera2D.
+
+2. Chain and Orb Casting
+   - Add OrbCastingController.
+   - Convert InputCombo to five X/Cast positions and one all-school switch.
+   - Replace Y with analog R2 pressure classification and semantic Casting transitions.
+   - Add Heat-scaled marking, pause/resume, marked-orb snapshots, sequential fade, and mark transfer.
+   - Add normal, empowered, endpoint, consecutive, and failed outcomes.
+
+3. Casting and projectile
+   - Integrate Casting Spell flipbook.
+   - Launch at the shared phase.
+   - Add Arena-owned SpellProjectile spawning and direct fields.
+   - Reuse school resolvers at impact with primary-only empowered damage.
+
+4. Configuration, UI, and assets
+   - Update JSON, trigger-band validation, Developer Overlay, and Earth levels.
+   - Split PrototypeHUD into always-visible GameUI and flag-controlled DeveloperReadout presentation groups.
+   - Add marked-orb queue, front-orb fade, marking-progress bar, upper-right live raw pressure gauge, and persisted visibility checkbox.
+   - Import and wire accepted attack/locomotion flipbooks.
+   - Add placeholder projectile and empowered dot.
+
+5. Validation and synchronization
+   - Preserve Health attribution and accepted instigator-lifetime waiver.
+   - Run static source/config/resource checks only unless the user authorizes more.
+   - Hand the complete source to the user for Godot validation.
+   - Synchronize implementation status only from returned evidence.
+
+### Required human validation
+
+- Player lands on the flat floor, moves horizontally, and retains fixed vertical framing.
+- Every school plays X1–X5 and creates one orb only on an Enemy hit.
+- School switching preserves chain position and FIFO composition.
+- Only the front orb expires and fades linearly; the next starts fully visible at full duration.
+- R2 enters release at `0–10%`, pause at `35–65%`, and press/resume at `90–100%`; intermediate pressure preserves the prior semantic state.
+- Combat and DeveloperReadout independently sample the same un-deadzoned raw R2 API, independent of the InputMap action deadzone.
+- The upper-right pressure gauge remains live while the backtick menu pauses Combat and OrbCastingController.
+- DeveloperReadout defaults visible; its checkbox hides or shows the upper-left, upper-center, and upper-right diagnostic regions together.
+- Saving then reloading the JSON restores DeveloperReadout visibility.
+- The orb queue, marking-progress bar, target statuses, and target overhead Health remain visible regardless of the developer flag.
+- Marking advances every effective `0.5 / HeatMultiplier` seconds, caps at 5, pauses without losing partial progress, and coexists with X/Cast actions.
+- A marked front-orb expiry transfers marking forward when enough orbs remain.
+- Normal, empowered, mid-chain, consecutive, endpoint, rushed, no-orb, and undercharged outcomes match the GDD.
+- Failed Cast flinches and clears the chain.
+- Consumed orbs are not refunded after interruption.
+- SpellProjectile launches, travels, blends color, resolves first hit, and expires correctly.
+- Primary/tie-break/secondary levels and primary-only empowered damage are correct.
+- Fire, Water, Air, and Earth effects use the shared Health pipeline.
+- GameUI, DeveloperReadout, DeveloperOverlay, Heat, status, and accepted animations remain readable.
+
+### Open evidence and boundaries
+
+- The redesign has not been run in Godot.
+- Existing validation applies only to the preceding prototype.
+- The current Enemy cannot exercise marked-orb hit loss; an owner-hit seam is defined, but its runtime behavior remains unverified until an attacking Enemy exists.
+- Active-mark interaction with defence, guard break, Frozen, and external hit reaction is deferred under the accepted design waiver.
+- The prototype has no predefined experiential success/failure criteria under the accepted design waiver.
+- Empowered-window timing relies on animation alone under the accepted design waiver.
+- Active Enemy attacks and ordinary defensive validation remain absent.
+- Original-instigator behavior after the instigator Entity is freed remains the accepted waiver.
+- High Heat speed may cross narrow normalized phases and requires human timing validation.
+- Final projectile and final Laema art remain open.
+- Orb-consumption Heat has no conversion rate and is not implemented.
+
+Instrumentation inventory:
+
+- Existing toggleable attack-hitbox sweep remains.
+- Retained debug-build, event-only traces cover grounded/facing and movement-lock changes; combat action, pressure, contact, cast, launch, and effect resolution; orb creation, marking, expiry, transfer, consumption, and clearing; projectile spawn, impact, and expiry; Heat gain and expiry; status application; and defence entry, block/parry, release, and guard break.
+- Trace ownership remains local to `MovementController`, `CombatController`, `OrbCastingController`, `SpellProjectile`, `PrototypeArena`, `HeatController`, `StatusController`, and `DefenceController`; no Autoload, global event bus, runtime overlay, or gameplay state is added.
+
+Friday recommends optional Ultron mode=tech-preflight because the change replaces movement and chain semantics, adds analog trigger-state classification and a timed Player resource, introduces cross-scene projectile lifetime, changes configuration, touches existing damage/defence seams, and preserves multiple accepted waivers.
+
+After user verification, this report is ready for Ultron or DUM-E. The user chooses the next handoff.

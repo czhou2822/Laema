@@ -2,8 +2,9 @@
 
 `prototype/` contains the user-approved first-draft Craftpix subset:
 
-- Shinobi Idle, Walk, and Attack 1 sheets from the free Shinobi family archive; these are the active player stand-in.
-- Swordsman level 1 Idle, Walk, and Attack sheets from the free Swordsman archive; these remain as unused legacy imports.
+- Pack 6 shared Idle and Walk sheets, plus Pack 2's shared Casting Spell sheet, are the active player locomotion and cast presentation.
+- Twenty 128×128 X sheets are staged by school: Pack 2 Fire, Pack 6 Water, Pack 3 Air, and Pack 5 Earth. The current three-X cap reaches only X1–X3; X4/X5 remain staged for a separately approved combat change.
+- Shinobi, Swordsman, Fighter, Saber, and Samurai sheets remain legacy prototype imports.
 - `ground_grasss.png` from the membership Grassland archive.
 - Fire, Water, and Ice frame sequences from the membership Fantasy Platformer bundle.
 - `guard_warning.ogg`, selected from Kenney Interface Sounds (`error_008.ogg`), for the near-guard-break warning.
@@ -12,4 +13,6 @@ The user confirmed membership entitlement for the premium archives. Craftpix sou
 
 `guard_warning.ogg` is CC0. Its source is [Kenney Interface Sounds](https://opengameart.org/content/interface-sounds); attribution is optional. The original archive and bundled license remain in the user’s external SFX library.
 
-The Shinobi is a generic side-view technical stand-in, not Laema’s final visual design. Left movement mirrors the right-facing sheets; vertical movement retains the most recent horizontal facing. The current first-draft presentation was included in the user’s 2026-08-24 Godot validation pass; final art remains deferred.
+`audio/combat/`, `audio/casting/`, and `audio/projectile/` contain a curated CC0 prototype-audio subset: school X attacks, orb creation and marking, normal/empowered/failed Casting, projectile travel, and impacts. `audio/ambience/wind.ogg` and `audio/music/fairy_battles.ogg` are temporary arena ambience and battle-bed candidates. Their original archives, exact source links, and CC0 licenses remain in `C:\Users\zhouc\OneDrive\Desktop\Library\SFX\SOURCES.md`.
+
+The active presentation is a generic side-view prototype shell, not final Laema art. It shares Pack 6 locomotion, mirrors left-facing presentation, uses the approved school/position X table, and uses the shared cast sheet for the existing cast action. The user validated this strictly animation-only slice in Godot on 2026-08-24; final art remains deferred.

@@ -1,86 +1,219 @@
-# Laema Player Combat Prototype — First Draft
+# Laema Side-Scrolling Orb Casting Prototype
 
-Status: User-verified first draft; Godot validation reported on 2026-08-24.
+Status: User-verified design ready for technical handoff.
 
 ## Overview
 
-This 2D top-down sandbox tests whether switching between the complete Fire and Water combat packages creates meaningful depth and whether Heat-driven acceleration produces a flow state the player wants to maintain. Air and Earth remain selectable visual placeholders for their deferred combat packages. One non-attacking Enemy placeholder serves as the permanent training target.
+This prototype tests the existing four-school combat system in a 2D side-scrolling space. Laema builds a temporary queue of elemental orbs through successful X attacks, charges Casting independently with R2, and releases normal or empowered school spells through timing and resource composition.
 
-Combat should reward deliberate mastery: increasing fluency lets the player perform demanding sequences faster and more confidently. Action timing comes from attack animations and input windows.
+The primary experience remains deliberate combat mastery. The player should learn to maintain an attack chain, build the desired elemental sequence, charge while continuing to attack, and release Casting at an intentional moment.
 
-## Scope
+## Prototype Scope
 
-**Included:** movement, centered camera, complete Fire and Water combat packages, selectable Air and Earth visual placeholders, Fire–Water input-combos and layered finishers, one Fire–Water mid-combo school switch, Heat acceleration, Fire parrying, Water blocking, hit reactions, combat UI, and one non-attacking Enemy placeholder.
+**Included:** grounded left/right movement, gravity, one continuous flat floor, horizontal camera following, functional Fire/Water/Air/Earth X attacks and casting specialties, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, and one non-attacking Enemy target.
 
-**Excluded:** functional Air and Earth attacks and defence, mid-combo switches involving Air or Earth, active Enemy behavior and its attack FSM, final art and UI assets, complete enemy content, and final numerical tuning.
+**Excluded:** jumping, vertical traversal controls, Air and Earth defence, active Enemy behavior and attacks, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
 ## Controls and Movement
 
 | Input | Action |
 |---|---|
-| Left stick | Move and face |
-| X | Light attack |
-| Y | Resolve finisher |
+| Left stick | Move left or right and face that direction |
+| X | Perform the active school’s attack |
+| R2 pressed into the 90–100% upper endpoint deadzone | Start or resume marking orbs for Casting |
+| R2 eased to approximately 50% | Pause orb-marking progress |
+| R2 released into the 0–10% lower endpoint deadzone | Attempt Casting |
 | D-pad Up | Select Fire |
 | D-pad Down | Select Water |
 | D-pad Left | Select Air |
 | D-pad Right | Select Earth |
-| L1 | Use the active school’s defence |
+| L1 | Use the active school’s available defence |
 
-Laema snaps to new movement and facing directions while the camera keeps her centered. An attack uses the current directional input or, when none is supplied, her last facing direction.
+Laema is affected by gravity and remains grounded on solid collision. The first test level is one continuous flat floor. The camera follows Laema horizontally while preserving fixed vertical framing.
 
-Attacking locks Laema’s position until the input-combo finishes or resets. Each chained attack may face a new direction without moving her. The Enemy has a solid body and blocks movement.
+Attacking continues to lock player-controlled movement for the active chain. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
 
-## Input-Combos and Switching
+## Schools and Character Presentation
 
-Valid combos range from `XY` to `XXXY`. Specialty level equals accumulated X inputs; Y resolves the finisher but adds no level. Y without X does nothing. A fourth X is ignored, leaving `XXX` available for Y.
+All four schools have functional X attacks and casting specialties. Active-school selection changes the displayed prototype character:
 
-Each attack animation has a window for the next input. Early inputs are ignored and never buffered. A valid input continues the combo; an expired window resets it. When attacks accelerate, their timeline-based windows shorten proportionally.
+| School | Character | Casting specialty |
+|---|---|---|
+| Fire | Fighter | Stack damage over time |
+| Water | Prototype Saber Fighter | Wet, Slow, and Frozen control |
+| Air | Shinobi | Attack-speed buff and chain lightning |
+| Earth | Samurai | Area damage and Slow |
 
-Outside an active combo, D-pad selection may activate any of the four schools. While Air or Earth is active, X, Y, and L1 inputs are ignored.
+This character mapping is prototype presentation only. It does not define Laema’s final appearance.
 
-During an active combo, only a Fire-to-Water or Water-to-Fire D-pad selection can change the next attack’s school. It does not consume an attack, add a level, or reset the combo. Only one such school change is allowed per combo; further switches do nothing. Air and Earth selections are ignored during an active combo. The selected Fire or Water school remains active afterward. A valid Y immediately spawns its finisher VFX and always ends the combo, hit or miss.
+### Prototype X-Attack Animation Allocation
 
-### Prototype Attack Animation Scope
+The five X positions use the following accepted Craftpix prototype flipbooks:
 
-The three X positions use three different attack animations: X1 through X3. Animation position follows the total input-combo count and does not restart after a school switch. For example, `Fire X1 → X2 → switch to Water → X3` uses Water's character presentation on X3. The switch may snap directly into the next animation; transition animation and pose blending are not required for this prototype.
+| School | Source family | X1 | X2 | X3 | X4 | X5 |
+|---|---|---|---|---|---|---|
+| Fire | Free Prototype Character Pack 2 | Punch 1 | Punch 2 | Fire Kick | Explosive Strike | Power Strike |
+| Water | Medieval Character Pack 6 | Attack 1 | Attack 2 | Attack 3 | Enchanted Attack 1 | Enchanted Attack 2 |
+| Air | Prototype Hero Pack 3 | Aerial Strike | Double Strike | Energy Wave | Wind Power | Weapon 1 |
+| Earth | Medieval Character Pack 5 | Attack 1 | Attack 2 | Attack 3 | Power Punch 1 | Power Punch 2 |
 
-Fire and Water retain identical prototype hitbox shape, reach, timing, damage, and Impact across all three positions. Fire and Water share one Y animation across both schools and all finisher levels. School color treatment, effects, and the active character communicate the selected school. Final animation assets, transition quality, and school-specific motion remain outside this prototype scope.
+All 20 sheets use compatible 128×128 cells and the shared prototype-character baseline. Water and Earth use matching Idle and Walk sheets from their respective source families. Fire and Air use the shared Medieval Character Pack 6 locomotion shell. Their visible weapon may therefore change when transitioning between locomotion and attack animations; this discontinuity is accepted for the prototype.
 
-## Layered Finishers
+All four schools share `Casting Spell.png` from Free Prototype Character Pack 2 as the prototype casting animation. It contains 10 frames using compatible 128×128 cells and the shared feet baseline. Final projectile art remains open.
 
-Within the current Fire–Water slice, the school performing Y resolves at the full specialty level. The earlier school resolves two levels lower; if that result is below level 1, it produces no secondary finisher.
+The existing one-switch chain rule remains: a chain may use at most two schools, and only one school switch may occur during the chain. Switching consumes no progression position and does not clear the chain.
 
-| Combo | Result |
+## Five-Position Chain
+
+A chain contains five progression positions.
+
+- A successful or missed X attack occupies one position.
+- X creates an orb only when it physically hits an Enemy.
+- A successful mid-chain Cast occupies one position and creates no orb.
+- Cast may chain directly into another Cast when the next attempt succeeds.
+- After position 5, the player may perform one optional endpoint Cast.
+- The optional endpoint Cast after position 5 ends the chain.
+- When a chain ends or fails, all remaining orbs are cleared.
+
+Examples:
+
+```text
+X → X → X → X → X
+X → X → Cast → X → X
+X → X → X → X → X → Cast
+X → X → Cast → X → Cast
+X → Cast → X → X → X → Cast
+```
+
+In `X1 → X2 → Cast → X → X`, the Cast occupies position 3; the following attacks use the X4 and X5 presentations.
+
+Every attack and casting animation has a chaining window. Once that window opens, it remains valid through the end of the animation. Inputs before the window opens are rushed inputs.
+
+For this prototype, X attacks and Casting use the same base animation duration and normalized chaining-window timing. Heat accelerates both through the same current speed multiplier.
+
+## Orb Queue
+
+Every X attack that hits an Enemy creates one orb matching the attack’s school:
+
+| School | Orb |
 |---|---|
-| `Fire XXXY` | Fire level 3 |
-| `Fire X → Water Y` | Water level 1; no Fire |
-| `Fire XX → Water XY` | Water level 3 and Fire level 1 |
+| Fire | F |
+| Water | W |
+| Air | A |
+| Earth | E |
 
-Switch position does not alter the result. Combos with the same X count, schools, and finishing school resolve identically; therefore `Fire XX → Water XY` and `Fire X → Water XXY` produce the same finisher.
+Orbs form a first-in, first-out queue.
 
-Every primary or secondary specialty performs its genuine behavior at its resolved level. Separate specialties may therefore create separate direct-damage HealthEvents on the same Enemy. Each such event independently grants Heat when it reduces Health.
+- Only the oldest orb counts down toward expiration.
+- Its lifetime is three seconds.
+- The oldest orb fades linearly from fully visible to invisible across its remaining lifetime.
+- Later orbs retain their full lifetime while another orb remains ahead of them.
+- When the oldest orb expires or is consumed, the next orb immediately begins its full three-second lifetime.
+- Unconsumed orbs remain after a successful mid-chain Cast.
+- Ending or failing the chain clears every remaining orb.
 
-## Schools
+Example:
 
-Fire and Water are the current functional schools. At equal Heat, they share underlying combat timing; presentation makes Fire medium-paced and Water faster and swifter. Air and Earth expose selection feedback only; their complete combat timing, motion, attacks, specialties, and defence remain deferred.
+```text
+Air X hit → Air X hit → switch Water → Water X hit → Water X hit
+Orb queue: A A W W
+```
 
-### Prototype Character Presentation
+## R2 Charging
 
-Active-school selection changes the displayed character for this prototype only:
+R2 charging may begin at any time, with or without available orbs, and continues while Laema attacks or performs casting animations. Charging capacity marks the oldest available orbs in first-in, first-out order.
 
-| School | Character |
-|---|---|
-| Fire | Fighter |
-| Water | Prototype Saber Fighter |
-| Air | Shinobi |
-| Earth | Samurai |
+- Pressing R2 into the 90–100% upper endpoint deadzone starts or resumes marking progress.
+- Easing R2 to approximately 50% pauses marking progress without attempting a Cast. Existing progress and marked orbs remain.
+- Pressing R2 back into the 90–100% upper endpoint deadzone resumes from the paused progress.
+- Releasing R2 into the 0–10% lower endpoint deadzone attempts to resolve Casting.
+- The approximate 50% pause point and its positive/negative tolerance band are tunable. The prototype begins with a ±15% band, so 35–65% pressure counts as paused.
+- For the prototype, 0–10% counts as fully released and 90–100% counts as fully pressed. References below to fully releasing R2 use the lower endpoint deadzone rather than requiring an exact 0% reading.
+- Casting capacity increases by one marked orb every nominal 0.5 seconds.
+- At baseline speed, the first orb becomes marked after 0.5 seconds.
+- At baseline speed, maximum capacity is five marked orbs after 2.5 seconds.
+- Holding longer leaves capacity at five.
+- R2 charging speed uses the same current Heat multiplier as attack and casting animations. At multiplier `M`, effective step duration is `0.5 / M` seconds and full five-orb charge time is `2.5 / M` seconds.
+- Holding or pausing R2 preserves the active chain and its orb queue beyond the normal idle timeout.
+- Marking does not pause expiration. If a marked oldest orb expires, the existing marking coverage transfers forward with the shifted queue, preserving the marked count when enough orbs remain.
+- When Laema is hit, every marked orb is removed. Unmarked orbs remain in the queue and continue their normal expiration countdown.
+- Fully releasing R2 consumes:
 
-This presentation mapping changes neither the Fire/Water combat contracts nor Air/Earth's deferred placeholder status.
+```text
+all currently marked orbs
+```
 
-**Fire:** A red outline identifies Fire. Fire Y applies one DoT stack per resolved Fire level; X never applies DoT directly. DoT ticks add no Heat and cause no flinch.
+Consumption is first-in, first-out. For example, two marked orbs in `A A W W` consume `A A`.
 
-**Water:** A blue outline identifies Water. Whenever Water resolves as a primary or secondary specialty, it creates an area centered on the weapon–target contact point. Every unique Enemy in that area receives one HealthEvent with 10 direct damage and Impact 1, plus the crowd-control effect for Water’s resolved level:
+Marked orbs are consumed immediately when a Cast successfully begins. If casting is interrupted before projectile launch, those orbs are not refunded.
+
+## Casting Outcomes
+
+### Normal Cast
+
+Fully releasing R2 while Laema is idle performs a normal Cast when at least one orb is marked. A normal Cast ends the current chain after consuming its marked orbs.
+
+### Empowered Cast
+
+Fully releasing R2 during an attack or casting animation’s valid chaining window performs an empowered Cast.
+
+- A mid-chain empowered Cast occupies the next progression position and may continue chaining.
+- An empowered Cast released after position 5 is the optional endpoint Cast and ends the chain.
+- Empowered Casting displays a distinct VFX on Laema; a visible dot is sufficient for the prototype.
+- Only the primary school’s direct damage receives the empowered multiplier.
+- Empowered primary direct damage is `1.3×` the corresponding normal-cast damage.
+- Secondary casting damage and other specialty behavior remain unchanged.
+
+### Failed Cast
+
+Casting fails when any of the following is true:
+
+- R2 is fully released before any orb is marked.
+- R2 is fully released during an active attack or casting animation before its chaining window opens.
+
+A failed Cast:
+
+- cancels the active attack or casting animation;
+- produces no projectile or spell effect;
+- ends the chain and clears its orbs; and
+- applies the existing level-1 light flinch and recovery to Laema.
+
+Fully releasing R2 while idle is not a timing failure. It succeeds when at least one orb is marked.
+
+## Mixed-School Resolution
+
+The consumed orb composition determines the spell output.
+
+1. The school with the greatest consumed-orb count becomes the primary school.
+2. If two schools tie, the school of the final consumed orb wins the tie.
+3. Primary casting level equals the total number of consumed orbs.
+4. The secondary school resolves at:
+
+```text
+consumed orbs of that school − 1
+```
+
+5. A secondary result below level 1 produces no secondary casting.
+
+Example:
+
+```text
+Consumed queue: A A W W
+Primary: Water level 4
+Secondary: Air level 1
+```
+
+The primary and secondary results reuse their school’s current specialty behavior.
+
+## School Casting
+
+### Fire
+
+Fire casting deals direct damage and applies one independent DoT stack per resolved Fire level. DoT ticks use Impact 0, cause no flinch, and add no Heat.
+
+### Water
+
+Water casting deals direct damage and applies the resolved Water control effect:
 
 | Water level | Effect |
 |---|---|
@@ -90,93 +223,133 @@ This presentation mapping changes neither the Fire/Water combat contracts nor Ai
 | 4 | 40% Slow for 2.5 seconds |
 | 5 | Frozen for 1 second |
 
-Wet is a status that will increase Air-school lightning damage when Air’s full package is implemented; it has no active modifier in this slice. Frozen prevents movement and attacks. Water’s area grows with resolved level, while damage and Impact remain unchanged. Each affected Enemy resolves the Water hit once. A miss creates no area, damage, status, or Heat but still ends the combo. The Enemy communicates active Water statuses through its status display; Frozen also applies the blue tint.
+Wet remains a future Air-lightning interaction and has no current modifier. Frozen prevents movement and actions. Water statuses remain mutually exclusive: higher level replaces lower, equal level refreshes duration, and lower level is ignored while direct damage still resolves.
 
-Water statuses are mutually exclusive and use Water level as priority. A higher-level Water status replaces an active lower-level status and begins at full duration. A lower-level status is ignored while a higher level remains active. Reapplying the same level resets its duration without stacking. Water’s direct damage still resolves when its status instruction is ignored.
+### Air
 
-**Air:** Selecting Air gives Laema a white outline. X, Y, and L1 do nothing while Air is active. Its intended full package remains the fastest school and uses lightning: a level-1 Air finisher grants a timed multiplicative attack-speed buff based on Laema’s current speed, while level-2 through level-5 finishers use chain lightning whose damage and chained-target count scale with level. That package is not implemented in this slice.
+Air level 1 grants the current timed multiplicative attack-speed buff. Air levels 2 through 5 release chain lightning whose direct damage and chained-target count scale with level. Exact final values remain tunable.
 
-**Earth:** Selecting Earth gives Laema a brown outline. X, Y, and L1 do nothing while Earth is active. Its intended full package remains stable, slow, powerful, defensive, and deliberately cumbersome, with greater damage per hit. In that deferred package, idle Earth grants defensive level 1, sustained Earth blocking grants defensive level 3, and Earth Y applies Slow whose area, slowing percentage, and duration scale with level.
+### Earth
+
+Earth casting deals area damage and applies Slow. The prototype starts with:
+
+| Earth level | Area radius | Slow | Duration |
+|---|---:|---:|---:|
+| 1 | 28 | 15% | 1.5 seconds |
+| 2 | 38 | 25% | 2.0 seconds |
+| 3 | 48 | 40% | 2.5 seconds |
+| 4 | 58 | 40% | 3.0 seconds |
+| 5 | 68 | 40% | 4.0 seconds |
+
+Area continues increasing by 10 per level. Slow strength reaches 40% at level 3 and remains 40% for levels 4 and 5 while duration continues increasing. These remain prototype tuning values rather than final balance.
+
+## Casting Projectile
+
+Every successful Cast begins a casting animation. The projectile launches later at the same normalized phase used by X attacks for contact.
+
+- One combined projectile carries the primary and any secondary school effects.
+- It travels in Laema’s facing direction.
+- It travels approximately 50% of the visible screen width in one second.
+- It disappears on the first valid Enemy hit or after reaching maximum distance.
+- On hit, it resolves all included direct damage and specialty effects.
+- A miss produces no damage, status, or Heat.
+
+The projectile blends its school colors according to resolved casting levels.
+
+Example:
+
+```text
+Air level 5 + Fire level 2
+= 5/7 Air color + 2/7 Fire color
+```
 
 ## Defence
 
-L1 activates Fire or Water’s defence when that functional school is active. Entering defence locks movement, disables school switching, and provides no aiming or directional control. L1 is ignored while Air or Earth is active.
+Only Fire and Water defence are functional in this prototype.
 
-### Sustained Blocking
-
-Water uses sustained blocking in the current slice. Earth’s sustained block remains part of its deferred full package.
+### Water Blocking
 
 - Blocking remains active while L1 is held and guard remains intact.
 - Blocking nullifies incoming damage.
 - Blocked damage depletes guard.
 - Holding block drains Heat.
-- VFX and SFX warn when guard is close to breaking.
-- The hit that breaks guard remains fully blocked.
-- Guard break causes a currently tunable 0.5-second reaction that blocks every player input.
-- Continuing to hold L1 after guard break does not restore defence.
-- Releasing and pressing L1 again restores guard to full immediately.
+- VFX and SFX warn near guard break.
+- The guard-breaking hit remains fully blocked.
+- Guard break applies its configured recovery and blocks player input.
+- Guard requires L1 release and a new press to restore.
 
-### Parrying
-
-Fire uses parrying in the current slice. Air’s parry remains part of its deferred full package.
+### Fire Parrying
 
 - Pressing L1 activates one parry window.
-- A successful parry nullifies the incoming attack and currently grants no additional reward.
-- Continuing to hold L1 after the window closes provides no defence while movement remains locked.
+- A successful parry nullifies the incoming attack and grants no additional reward.
+- Holding L1 after the window closes provides no defence while movement remains locked.
 - Another parry requires releasing and pressing L1 again.
 
-When active Enemy attacks are introduced, every attack may be either blocked or parried. The player chooses a defensive school according to confidence and the offensive package they are willing to give up.
+L1 does nothing while Air or Earth is selected. Air parry and Earth blocking remain deferred.
 
-## Health Events and Hit Reactions
+## Health, Impact, and Heat
 
-HealthEvent is the shared event contract for damage and healing. The event identifies its operation as damage or heal and retains its original instigator. Every buff or debuff also records its original instigator, and any periodic DoT or future HoT tick carries that attribution into its HealthEvent. Every damaging HealthEvent carries an Impact level. Levels 1 through 5 are the five active Impact levels. Impact 0 explicitly produces no hit reaction and is used by Fire DoT ticks.
+HealthEvent remains the shared damage and healing contract. Damage carries Impact, original-instigator attribution, delivery type, school, contact information, and any effect instruction.
 
-For the current slice, every accepted Fire or Water X attack and every valid Fire or Water Y finisher carries Impact 1 and deals 10 direct damage, regardless of specialty level. Player and Enemy maximum Health both begin at 100. These are tunable prototype starting values rather than final balance decisions. Ignored Air and Earth inputs create no attack or HealthEvent.
+The current prototype starts Player and Enemy maximum Health at 100. X attacks retain their current direct-damage and Impact values across all four schools. Casting projectile hits use each school specialty’s existing direct-damage and Impact contracts.
 
-The struck character’s defensive level reduces the incoming Impact:
-
-```text
-final hit-reaction level = max(0, Impact level - defensive level)
-```
-
-Final level 0 causes no hit reaction. Final level 1 reproduces the prototype’s existing light flinch. From levels 1 through 5, flinch magnitude and recovery duration increase linearly.
-
-Blocking can nullify damage while still producing a reduced hit reaction. In the deferred full Earth package, for example, an Impact-4 hit produces final reaction level 3 against idle Earth Laema and final reaction level 1 against sustained-blocking Earth Laema.
-
-Any nonzero hit reaction cancels the struck character’s current action, prevents action and movement throughout recovery, then returns the character to idle. “Defensive level” is a provisional name.
-
-If another hit produces a nonzero reaction during recovery, the active reaction ends immediately and all remaining movement and recovery are discarded. The new reaction begins at its full magnitude and recovery duration. A final reaction level of 0 neither starts a reaction nor replaces one already in progress.
-
-## Enemy Placeholder and Deferred Active Mode
-
-The current prototype uses one permanent Enemy placeholder with defensive level 0 and an initial maximum Health of 100. Its Health is finite and depleting, but it remains stationary, does not attack, and cannot die. When a HealthEvent deals at least the Enemy’s remaining Health, only that remaining Health is removed and all excess damage is discarded. The event resolves normally, including any Heat granted by the actual Health reduction, then the Enemy immediately refills to full. The refill does not clear active buffs or debuffs.
-
-Active Enemy behavior and its attack FSM are deferred. When Active mode is implemented later, its attacks will follow this lifecycle:
+The struck Entity’s defensive level reduces Impact:
 
 ```text
-Begin → recognizable warning → active hit → resolution → recovery → ready
+final hit-reaction level = max(0, Impact level − defensive level)
 ```
 
-Exact attacks, timing, health, damage, and encounter-completion rules remain open.
+Direct X and casting HealthEvents that reduce Health add Heat. Separate primary and secondary direct events may add Heat independently. DoT, status, and future HoT events add none.
 
-## Heat
+Heat levels continue increasing attack and casting animation speed. Inactivity resets Heat according to the current tunable grace period.
 
-Every successful direct X or Y HealthEvent that actually reduces the target’s Health adds the same amount of Heat, regardless of school, attack, or finisher level. Separate direct HealthEvents from one layered finisher grant Heat independently. For example, when Fire performs Y and Water resolves as a secondary specialty, the contacted Enemy may grant one Heat increment for Fire’s direct damage and another for Water’s area damage. A zero-reaching hit grants Heat from its Health reduction before the Enemy refills. DoT, status effects, and any future HoT ticks add none.
+**Deferred direction:** A later iteration will replace direct-hit Heat gain with Heat gain based on the number of orbs consumed by Casting. This change is not part of the current side-scrolling prototype implementation; its conversion rate and tuning remain open.
 
-Heat advances through distinct levels that increase attack speed. Level count, thresholds, and speed increases are tunable. During the inactivity grace period, Heat remains unchanged; when it expires, Heat resets immediately and attack speed returns to baseline. A progress bar displays Heat.
+## Enemy and Feedback
 
-## Enemy and Combat Feedback
+The prototype Enemy remains stationary, non-attacking, permanent, and unable to die. Damage is capped at remaining Health; reaching zero resolves normally and then immediately refills Health without clearing active effects.
 
-The Enemy placeholder never moves, attacks, or dies. Its Health refills immediately after reaching zero, while active buffs and debuffs continue normally. Direct hits use the shared hit-reaction rules; final reaction level 1 is the existing light flinch. DoT ticks use damage HealthEvents with Impact 0 and cause no reaction.
+The target’s status display communicates active DoT, Wet, Slow, Frozen, and Earth Slow effects. Frozen also applies its blue tint.
 
-A WoW-style display above the target shows all buffs and debuffs. Fire DoT appears only after Y resolves; Frozen also applies the blue tint.
+The always-visible game UI includes:
 
-The input-combo UI shows Fire inputs in red and Water inputs in blue. Completed combos remain briefly, then disappear; new combos queue while a completed sequence remains visible. Timed-out incomplete combos disappear immediately. Final UI placement, animation assets, VFX, and visual polish remain open.
+- a school-colored FIFO orb queue; and
+- an R2 marking-progress bar beneath the orb queue.
+
+Consumed, expired, and hit-lost marked orbs disappear. The queue distinguishes marked orbs from unmarked orbs, and the actively expiring oldest orb displays its remaining lifetime through its linear fade.
+
+The prototype developer overlay contains:
+
+- the upper-left Heat, Player Health, Enemy Health, and defence readouts;
+- the upper-center active-school, five-position-chain, and completed-chain readouts; and
+- an upper-right gauge showing R2’s live raw pressure percentage.
+
+The backtick tuning menu contains one flag that shows or hides all three developer-overlay regions together. The flag defaults to visible for this prototype and is saved in the fail-fast JSON configuration. It does not affect the orb queue, R2 marking-progress bar, target status display, or target overhead Health display.
 
 ## Tunables and Validation
 
-Tunables include movement and attack speed, direct damage, input windows, Heat gain, Heat levels and thresholds, acceleration, guard capacity, blocked-damage conversion, parry timing, guard-break reaction, hit-reaction magnitude and recovery, status values, Player and Enemy maximum Health, enemy values, and feedback duration. The supplied Health and direct-damage values are prototype starting points, not final balance decisions.
+Prototype tunables include movement speed, gravity, attack and casting duration, contact/release phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 charge interval and capacity, R2 pause threshold and tolerance band, empowered multiplier, Heat, defence, Impact, hit reactions, statuses, Health, and feedback duration.
 
-The prototype must make movement, directional attacks, Fire–Water combo timing, mixed finishers, Fire and Water school packages, Air and Earth placeholder selection, defensive-state entry, hit-reaction resolution, status feedback, direct-hit Heat gain, and Heat acceleration observable. Because the Enemy placeholder does not attack, incoming-hit validation of blocking, parrying, and guard break remains deferred. The primary empirical question is whether functional Fire–Water switching feels deeper than ordinary weapon switching because it changes offensive specialty, moveset, defensive response, and mixed-finisher composition.
+The prototype must make the following observable:
 
-Still open: the final name for defensive level, defensive levels for other schools and states, complete Air and Earth implementation, Wet’s future lightning-damage multiplier, Air-buff reapplication, exact chain-lightning and Earth-damage scaling, complete active Enemy behavior, Player death and encounter-ending rules, final Health and damage tuning, and final school-specific motion and feedback assets.
+- grounded left/right movement and horizontal camera following;
+- five-position chaining with X and mid-chain Casts;
+- all four school X attacks and hit-generated orbs;
+- FIFO orb expiration, linear lifetime fade, mark transfer, and consumption;
+- simultaneous R2 charging and attacking;
+- R2 upper-deadzone press, approximate-half-pause, upper-deadzone resume, and lower-deadzone release behavior;
+- default-visible developer readouts, upper-right live raw R2 pressure, shared visibility toggling, and saved visibility restoration;
+- an always-visible orb queue and R2 marking-progress bar independent of the developer-overlay flag;
+- marked-orb loss on hit while unmarked orbs remain and expire normally;
+- proportional Heat acceleration of attacks, casting animations, and R2 charging;
+- normal, empowered, endpoint, consecutive, and failed Casts;
+- failure cancellation and punishment flinch;
+- primary, tie-break, and secondary mixed-school resolution;
+- combined projectile travel, collision, color blending, and school effects;
+- empowered player VFX and primary-only `1.3×` damage;
+- Heat and status feedback; and
+- Fire parry and Water defence-state entry.
+
+Incoming Enemy attacks and ordinary-play validation of blocking, parrying, guard depletion, guard warning, and guard break remain deferred because the Enemy does not attack.
+
+Still open or deferred: jumping, non-flat level geometry, Air and Earth defence, active Enemy behavior, final balance, final casting and projectile assets, final Laema presentation, complete enemy content, and detailed charge-to-orb highlighting.
