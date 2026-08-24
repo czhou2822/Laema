@@ -3,6 +3,7 @@ extends Node
 signal movement_lock_changed(locked: bool)
 signal active_school_changed(school: StringName)
 signal attack_started(kind: StringName, school: StringName, direction: Vector2)
+signal finisher_started(school: StringName, direction: Vector2)
 signal defence_status_changed(label: String, current_guard: float, maximum_guard: float)
 
 enum CombatState {
@@ -28,6 +29,8 @@ var _heat
 var _defence: DefenceController
 var _fire_resolver
 var _water_resolver
+var _air_resolver
+var _earth_resolver
 var _active_school := SCHOOL_FIRE
 var _current_action: Dictionary = {}
 var _pending_action: Dictionary = {}
@@ -35,6 +38,8 @@ var _window_open := false
 var _hit_emitted := false
 var _actions_suppressed := false
 var _guard_break_remaining := 0.0
+var _air_speed_multiplier := 1.0
+var _air_speed_remaining := 0.0
 
 
 func configure(
@@ -46,7 +51,9 @@ func configure(
 	heat,
 	defence: DefenceController,
 	fire_resolver,
-	water_resolver
+	water_resolver,
+	air_resolver,
+	earth_resolver
 ) -> void:
 	_config = config
 	_owner_entity = owner_entity
@@ -57,6 +64,8 @@ func configure(
 	_defence = defence
 	_fire_resolver = fire_resolver
 	_water_resolver = water_resolver
+	_air_resolver = air_resolver
+	_earth_resolver = earth_resolver
 	apply_runtime_tuning()
 
 	_animation_player.animation_finished.connect(_on_animation_finished)
@@ -78,6 +87,7 @@ func apply_runtime_tuning() -> void:
 
 
 func _process(delta: float) -> void:
+	_update_air_speed_buff(delta)
 	if _state == CombatState.DEFENDING:
 		_defence.update(delta, _heat)
 	elif _state == CombatState.GUARD_BROKEN:
@@ -201,7 +211,7 @@ func _try_select_school(school: StringName) -> void:
 		return
 	if _state != CombatState.COMBO_ACTIVE or not _window_open:
 		return
-	if not _is_functional_school(school) or not _is_functional_school(_active_school):
+	if not _is_mixed_combo_school(school) or not _is_mixed_combo_school(_active_school):
 		return
 	if _input_combo.accept_switch(_active_school, school):
 		_active_school = school
@@ -246,6 +256,7 @@ func _try_finisher(direction: Vector2) -> void:
 		"direction": direction,
 		"resolution": resolution,
 	}
+	finisher_started.emit(_active_school, direction)
 
 
 func _try_defend() -> void:
@@ -272,7 +283,7 @@ func _start_attack(action: Dictionary) -> void:
 	_pending_action = {}
 	_window_open = false
 	_hit_emitted = false
-	_animation_player.speed_scale = _heat.get_speed_multiplier()
+	_refresh_attack_speed()
 	_animation_player.play(&"attack_clock")
 	attack_started.emit(action["kind"], action["school"], action["direction"])
 
@@ -345,6 +356,12 @@ func _apply_school_effect(
 			_fire_resolver.call("apply", _owner_entity, contact_target, level, _config["combat"], direction, contact_point)
 		SCHOOL_WATER:
 			_water_resolver.call("apply", _owner_entity, _attack_cast.get_world_2d(), contact_point, direction, level, _config["combat"], _config["water"])
+		SCHOOL_AIR:
+			_air_resolver.call("apply", _owner_entity, _attack_cast.get_world_2d(), contact_target, contact_point, direction, level, _config["combat"], _config["air"])
+			if level == 1:
+				_apply_air_speed_buff()
+		SCHOOL_EARTH:
+			_earth_resolver.call("apply", _owner_entity, _attack_cast.get_world_2d(), contact_point, direction, level, _config["combat"], _config["earth"])
 
 
 func _on_animation_finished(animation_name: StringName) -> void:
@@ -378,12 +395,38 @@ func _enter_ready() -> void:
 
 
 func _is_functional_school(school: StringName) -> bool:
+	return school in [SCHOOL_FIRE, SCHOOL_WATER, SCHOOL_AIR, SCHOOL_EARTH]
+
+
+func _is_mixed_combo_school(school: StringName) -> bool:
 	return school == SCHOOL_FIRE or school == SCHOOL_WATER
+
+
+func _apply_air_speed_buff() -> void:
+	_air_speed_multiplier = float(_config["air"]["attack_speed_multiplier"])
+	_air_speed_remaining = float(_config["air"]["buff_duration"])
+	_refresh_attack_speed()
+
+
+func _update_air_speed_buff(delta: float) -> void:
+	if _air_speed_remaining <= 0.0:
+		return
+	_air_speed_remaining = maxf(_air_speed_remaining - delta, 0.0)
+	if _air_speed_remaining <= 0.0:
+		_air_speed_multiplier = 1.0
+		_refresh_attack_speed()
+
+
+func _refresh_attack_speed() -> void:
+	if _animation_player != null:
+		_animation_player.speed_scale = (
+			_heat.get_speed_multiplier() * _air_speed_multiplier
+		)
 
 
 func _on_heat_changed(_value: float, _level: int, speed_multiplier: float) -> void:
 	if _animation_player != null:
-		_animation_player.speed_scale = speed_multiplier
+		_animation_player.speed_scale = speed_multiplier * _air_speed_multiplier
 
 
 func _on_guard_changed(current_value: float, maximum_value: float) -> void:

@@ -89,7 +89,9 @@ libraries = {
 }
 
 [node name="AttackCast" type="ShapeCast2D" parent="."]
+position = Vector2(0, 11)
 enabled = false
+debug_shape_custom_color = Color(1, 0.78, 0.12, 0.12)
 target_position = Vector2(48, 0)
 shape = SubResource("CircleShape2D_attack")
 collision_mask = 2

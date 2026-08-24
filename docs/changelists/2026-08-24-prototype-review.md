@@ -1,13 +1,17 @@
 # Laema prototype changelist for review — 2026-08-24
 
+## Current status
+
+This review artifact is historical and was superseded by commit `e543a43` (`feat: add validated combat prototype slice`). The source/document/instruction scopes below describe the proposed review boundary at the time of the review; they are not a statement that the current branch remains dirty or that the prototype is still uncommitted.
+
 ## Review status
 
-This is a review artifact, not an approval and not a commit request. The proposed scope below remains entirely in the working tree.
+This is a review artifact, not an approval or a current commit request. At the time of this review, the proposed scope remained entirely in the working tree.
 
 - Base commit: `b2507e7 checkpoint: record prototype validation`
 - Branch: `main`
 - Remote: `origin/main`
-- Working tree: dirty by design
+- Working tree at review time: dirty by design
 - Runtime evidence: the user reported `validation passed` for the first-draft prototype on August 24, 2026.
 - Agent validation: static checks were reported as passing; the agent did not run Godot, a build, compiler, or automated tests.
 

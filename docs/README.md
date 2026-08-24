@@ -7,6 +7,7 @@ This directory is intended to hold the durable project state that should travel 
 - `DECISIONS.md` — decision history and rationale
 - `IMPLEMENTATION_STATUS.md` — current implementation state and verification notes
 - `checkpoints/` — dated cross-thread working snapshots; these preserve design state without automatically promoting proposals into canonical documents
+- `changelists/` — reviewable file-scope records for coordinated source and document changes; dated entries remain historical after their scope is committed
 
 ## Checkpoint convention
 

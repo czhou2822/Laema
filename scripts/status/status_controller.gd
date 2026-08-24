@@ -8,6 +8,7 @@ var _owner_entity: Entity
 var _config: Dictionary = {}
 var _dot_instances: Array[Dictionary] = []
 var _water_status: Dictionary = {}
+var _earth_slow: Dictionary = {}
 
 
 func configure(owner_entity: Entity, config: Dictionary) -> void:
@@ -48,6 +49,12 @@ func _process(delta: float) -> void:
 		if float(_water_status["remaining"]) <= 0.0:
 			_water_status = {}
 
+	if not _earth_slow.is_empty():
+		_earth_slow["remaining"] = float(_earth_slow["remaining"]) - delta
+		changed = true
+		if float(_earth_slow["remaining"]) <= 0.0:
+			_earth_slow = {}
+
 	if changed:
 		_emit_state()
 
@@ -62,6 +69,12 @@ func apply_instruction(instruction: Dictionary, instigator: Node) -> bool:
 			return true
 		&"water_status":
 			var applied := _apply_water_status(instruction, instigator)
+			if applied:
+				effect_applied.emit(effect_type, instruction.duplicate(true))
+				_emit_state()
+			return applied
+		&"earth_slow":
+			var applied := _apply_earth_slow(instruction, instigator)
 			if applied:
 				effect_applied.emit(effect_type, instruction.duplicate(true))
 				_emit_state()
@@ -98,6 +111,20 @@ func _apply_water_status(instruction: Dictionary, instigator: Node) -> bool:
 	return true
 
 
+func _apply_earth_slow(instruction: Dictionary, instigator: Node) -> bool:
+	var incoming_level := int(instruction["level"])
+	if not _earth_slow.is_empty() and incoming_level < int(_earth_slow["level"]):
+		return false
+	_earth_slow = {
+		"level": incoming_level,
+		"remaining": float(instruction["duration"]),
+		"duration": float(instruction["duration"]),
+		"slow_percent": float(instruction["slow_percent"]),
+		"instigator": instigator,
+	}
+	return true
+
+
 func get_snapshot() -> Dictionary:
 	return {
 		"dot_stacks": _dot_instances.size(),
@@ -106,6 +133,9 @@ func get_snapshot() -> Dictionary:
 		"water_remaining": float(_water_status.get("remaining", 0.0)),
 		"slow_percent": float(_water_status.get("slow_percent", 0.0)),
 		"frozen": StringName(_water_status.get("status", &"")) == &"frozen",
+		"earth_level": int(_earth_slow.get("level", 0)),
+		"earth_remaining": float(_earth_slow.get("remaining", 0.0)),
+		"earth_slow_percent": float(_earth_slow.get("slow_percent", 0.0)),
 	}
 
 
@@ -118,6 +148,11 @@ func get_effect_state() -> Dictionary:
 	elif status == &"frozen":
 		movement_multiplier = 0.0
 		actions_suppressed = true
+	if not _earth_slow.is_empty():
+		movement_multiplier = minf(
+			movement_multiplier,
+			1.0 - float(_earth_slow.get("slow_percent", 0.0))
+		)
 	return {
 		"actions_suppressed": actions_suppressed,
 		"movement_multiplier": movement_multiplier,

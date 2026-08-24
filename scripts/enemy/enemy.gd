@@ -3,19 +3,22 @@ extends "res://scripts/entities/entity.gd"
 signal enemy_health_changed(current_value: float, maximum_value: float)
 
 const VFX_ROOT := "res://assets/prototype/vfx"
+const IDLE_CELL_SIZE := Vector2(64.0, 64.0)
+const IDLE_FRAME_COUNT := 12
+const IDLE_FPS := 8.0
 const VFX_FRAME_COUNTS := {
 	"fire": 10,
 	"water": 11,
 	"ice": 13,
 }
 
-@onready var body_visual: Polygon2D = $BodyVisual
+@onready var body_visual: Sprite2D = $BodyVisual
 @onready var health_label: Label = $HealthLabel
 @onready var status_display: HBoxContainer = $StatusDisplay
 @onready var vfx: AnimatedSprite2D = $VFX
 
 var _config: Dictionary = {}
-var _base_color := Color("8f949e")
+var _idle_time := 0.0
 var _flinch_tween: Tween
 var _vfx_cache: Dictionary = {}
 var _status_badges: Dictionary = {}
@@ -41,6 +44,12 @@ func configure(config: Dictionary) -> void:
 func apply_runtime_tuning() -> void:
 	health.set_maximum(float(_config["enemy"]["max_health"]))
 	hit_reaction.configure(_config["hit_reaction"])
+
+
+func _process(delta: float) -> void:
+	_idle_time += delta
+	var frame := int(floor(_idle_time * IDLE_FPS)) % IDLE_FRAME_COUNT
+	body_visual.region_rect = Rect2(Vector2(frame, 0) * IDLE_CELL_SIZE, IDLE_CELL_SIZE)
 
 
 func _on_health_changed(current_value: float, maximum_value: float) -> void:
@@ -70,7 +79,19 @@ func _on_status_changed(snapshot: Dictionary) -> void:
 		_set_status_badge(&"water", true, "%s\n%.1fs" % [water_label, remaining])
 	else:
 		_set_status_badge(&"water", false, "")
-	body_visual.color = Color("6cb6ff") if bool(snapshot["frozen"]) else _base_color
+	var earth_remaining := float(snapshot["earth_remaining"])
+	if earth_remaining > 0.0:
+		_set_status_badge(
+			&"earth",
+			true,
+			"SLOW %.0f%%\n%.1fs" % [
+				float(snapshot["earth_slow_percent"]) * 100.0,
+				earth_remaining,
+			]
+		)
+	else:
+		_set_status_badge(&"earth", false, "")
+	body_visual.self_modulate = Color("6cb6ff") if bool(snapshot["frozen"]) else Color.WHITE
 
 
 func _build_status_badges() -> void:
@@ -78,6 +99,7 @@ func _build_status_badges() -> void:
 		return
 	_create_status_badge(&"fire", Color("8f211d"))
 	_create_status_badge(&"water", Color("185d9b"))
+	_create_status_badge(&"earth", Color("6f5425"))
 
 
 func _create_status_badge(key: StringName, color: Color) -> void:

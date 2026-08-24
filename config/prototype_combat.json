@@ -1,75 +1,134 @@
 {
-  "movement": {
-    "speed": 180.0,
-    "stick_deadzone": 0.2,
-    "idle_fps": 8.0,
-    "walk_fps": 10.0
-  },
-  "player": {
-    "max_health": 100.0
-  },
-  "enemy": {
-    "max_health": 100.0,
-    "defensive_level": 0
-  },
-  "combat": {
-    "attack_duration": 1.0,
-    "hit_phase": 0.36,
-    "input_window_start": 0.48,
-    "input_window_end": 0.86,
-    "shape_radius": 18.0,
-    "shape_reach": 48.0,
-    "light_damage": 10.0,
-    "finisher_damage": 10.0,
-    "direct_impact": 1
-  },
-  "heat": {
-    "max_value": 100.0,
-    "gain_per_hit": 10.0,
-    "inactivity_grace": 3.0,
-    "levels": [
-      { "fill_ratio": 0.0, "speed_multiplier": 1.0 },
-      { "fill_ratio": 0.25, "speed_multiplier": 1.1 },
-      { "fill_ratio": 0.55, "speed_multiplier": 1.25 },
-      { "fill_ratio": 0.8, "speed_multiplier": 1.45 }
-    ]
-  },
-  "fire": {
-    "dot_duration": 4.0,
-    "dot_tick_interval": 1.0,
-    "damage_per_stack": 1.0,
-    "visual_motion_exponent": 1.0,
-    "vfx_fps": 12.0
-  },
-  "water": {
-    "base_radius": 28.0,
-    "radius_per_level": 10.0,
-    "visual_motion_exponent": 0.65,
-    "vfx_fps": 14.0,
-    "levels": [
-      { "status": "wet", "duration": 1.0, "slow_percent": 0.0 },
-      { "status": "wet", "duration": 2.0, "slow_percent": 0.0 },
-      { "status": "slow", "duration": 2.0, "slow_percent": 0.2 },
-      { "status": "slow", "duration": 2.5, "slow_percent": 0.4 },
-      { "status": "frozen", "duration": 1.0, "slow_percent": 1.0 }
-    ]
-  },
-  "defence": {
-    "guard_capacity": 100.0,
-    "blocked_damage_to_guard": 1.0,
-    "guard_warning_ratio": 0.25,
-    "parry_window": 0.2,
-    "guard_break_recovery": 0.5,
-    "heat_drain_per_second": 5.0,
-    "water_block_defensive_level": 1
-  },
-  "hit_reaction": {
-    "base_distance": 7.0,
-    "distance_per_level": 3.5,
-    "base_duration": 0.14,
-    "duration_per_level": 0.07
-  },
-  "ui": {
-    "completed_combo_display_duration": 2.0
-  }
+	"air": {
+		"attack_speed_multiplier": 1.15,
+		"buff_duration": 3.0,
+		"chain_radius": 160.0,
+		"damage_per_level": 0.25,
+		"max_chain_targets": 3.0,
+		"visual_motion_exponent": 0.5
+	},
+	"combat": {
+		"attack_duration": 0.699999986216426,
+		"direct_impact": 1.0,
+		"finisher_damage": 10.0,
+		"hit_phase": 0.36,
+		"input_window_end": 0.86,
+		"input_window_start": 0.48,
+		"light_damage": 10.0,
+		"shape_radius": 18.0,
+		"shape_reach": 48.0
+	},
+	"defence": {
+		"blocked_damage_to_guard": 1.0,
+		"guard_break_recovery": 0.5,
+		"guard_capacity": 100.0,
+		"guard_warning_ratio": 0.25,
+		"heat_drain_per_second": 5.0,
+		"parry_window": 0.2,
+		"water_block_defensive_level": 1.0
+	},
+	"earth": {
+		"base_radius": 28.0,
+		"levels": [
+			{
+				"duration": 1.5,
+				"slow_percent": 0.15
+			},
+			{
+				"duration": 2.0,
+				"slow_percent": 0.25
+			},
+			{
+				"duration": 2.5,
+				"slow_percent": 0.4
+			}
+		],
+		"radius_per_level": 10.0,
+		"visual_motion_exponent": 1.4
+	},
+	"enemy": {
+		"defensive_level": 0.0,
+		"max_health": 100.0
+	},
+	"fire": {
+		"damage_per_stack": 1.0,
+		"dot_duration": 4.0,
+		"dot_tick_interval": 1.0,
+		"vfx_fps": 12.0,
+		"visual_motion_exponent": 1.0
+	},
+	"heat": {
+		"gain_per_hit": 10.0,
+		"inactivity_grace": 3.0,
+		"levels": [
+			{
+				"fill_ratio": 0.0,
+				"speed_multiplier": 1.0
+			},
+			{
+				"fill_ratio": 0.25,
+				"speed_multiplier": 1.1
+			},
+			{
+				"fill_ratio": 0.55,
+				"speed_multiplier": 1.25
+			},
+			{
+				"fill_ratio": 0.8,
+				"speed_multiplier": 1.45
+			}
+		],
+		"max_value": 100.0
+	},
+	"hit_reaction": {
+		"base_distance": 7.0,
+		"base_duration": 0.14,
+		"distance_per_level": 3.5,
+		"duration_per_level": 0.07
+	},
+	"movement": {
+		"idle_fps": 8.0,
+		"speed": 180.0,
+		"stick_deadzone": 0.2,
+		"walk_fps": 10.0
+	},
+	"player": {
+		"max_health": 100.0
+	},
+	"ui": {
+		"completed_combo_display_duration": 2.0
+	},
+	"water": {
+		"base_radius": 28.0,
+		"levels": [
+			{
+				"duration": 1.0,
+				"slow_percent": 0.0,
+				"status": "wet"
+			},
+			{
+				"duration": 2.0,
+				"slow_percent": 0.0,
+				"status": "wet"
+			},
+			{
+				"duration": 2.0,
+				"slow_percent": 0.2,
+				"status": "slow"
+			},
+			{
+				"duration": 2.5,
+				"slow_percent": 0.4,
+				"status": "slow"
+			},
+			{
+				"duration": 1.0,
+				"slow_percent": 1.0,
+				"status": "frozen"
+			}
+		],
+		"radius_per_level": 10.0,
+		"vfx_fps": 14.0,
+		"visual_motion_exponent": 0.65
+	}
 }

@@ -1,5 +1,7 @@
 # Laema Player Combat Prototype — First Draft
 
+Status: User-verified first draft; Godot validation reported on 2026-08-24.
+
 ## Overview
 
 This 2D top-down sandbox tests whether switching between the complete Fire and Water combat packages creates meaningful depth and whether Heat-driven acceleration produces a flow state the player wants to maintain. Air and Earth remain selectable visual placeholders for their deferred combat packages. One non-attacking Enemy placeholder serves as the permanent training target.
@@ -31,19 +33,19 @@ Attacking locks Laema’s position until the input-combo finishes or resets. Eac
 
 ## Input-Combos and Switching
 
-Valid combos range from `XY` to `XXXXXY`. Specialty level equals accumulated X inputs; Y resolves the finisher but adds no level. Y without X does nothing. A sixth X is ignored, leaving `XXXXX` available for Y.
+Valid combos range from `XY` to `XXXY`. Specialty level equals accumulated X inputs; Y resolves the finisher but adds no level. Y without X does nothing. A fourth X is ignored, leaving `XXX` available for Y.
 
 Each attack animation has a window for the next input. Early inputs are ignored and never buffered. A valid input continues the combo; an expired window resets it. When attacks accelerate, their timeline-based windows shorten proportionally.
 
 Outside an active combo, D-pad selection may activate any of the four schools. While Air or Earth is active, X, Y, and L1 inputs are ignored.
 
-During an active combo, only a Fire-to-Water or Water-to-Fire D-pad selection can change the next attack’s school. It does not consume an attack, add a level, or reset the combo. Only one such school change is allowed per combo; further switches do nothing. Air and Earth selections are ignored during an active combo. The selected Fire or Water school remains active afterward. A valid Y always ends the combo, hit or miss.
+During an active combo, only a Fire-to-Water or Water-to-Fire D-pad selection can change the next attack’s school. It does not consume an attack, add a level, or reset the combo. Only one such school change is allowed per combo; further switches do nothing. Air and Earth selections are ignored during an active combo. The selected Fire or Water school remains active afterward. A valid Y immediately spawns its finisher VFX and always ends the combo, hit or miss.
 
 ### Prototype Attack Animation Scope
 
-The five X positions use five different attack animations: X1 through X5. Animation position follows the total input-combo count and does not restart after a school switch. For example, `Fire X1 → X2 → switch to Water → X3` uses Water presentation on the shared X3 animation. The switch may snap directly into the next animation; transition animation and pose blending are not required for this prototype.
+The three X positions use three different attack animations: X1 through X3. Animation position follows the total input-combo count and does not restart after a school switch. For example, `Fire X1 → X2 → switch to Water → X3` uses Water's character presentation on X3. The switch may snap directly into the next animation; transition animation and pose blending are not required for this prototype.
 
-Fire and Water share the same X1–X5 animation set. Their X attacks also retain identical prototype hitbox shape, reach, timing, damage, and Impact across all five positions. Fire and Water share one Y animation across both schools and all finisher levels. School color treatment and effects communicate which school performs each shared animation. Final animation assets, transition quality, and school-specific motion remain outside this prototype scope.
+Fire and Water retain identical prototype hitbox shape, reach, timing, damage, and Impact across all three positions. Fire and Water share one Y animation across both schools and all finisher levels. School color treatment, effects, and the active character communicate the selected school. Final animation assets, transition quality, and school-specific motion remain outside this prototype scope.
 
 ## Layered Finishers
 
@@ -62,6 +64,19 @@ Every primary or secondary specialty performs its genuine behavior at its resolv
 ## Schools
 
 Fire and Water are the current functional schools. At equal Heat, they share underlying combat timing; presentation makes Fire medium-paced and Water faster and swifter. Air and Earth expose selection feedback only; their complete combat timing, motion, attacks, specialties, and defence remain deferred.
+
+### Prototype Character Presentation
+
+Active-school selection changes the displayed character for this prototype only:
+
+| School | Character |
+|---|---|
+| Fire | Fighter |
+| Water | Prototype Saber Fighter |
+| Air | Shinobi |
+| Earth | Samurai |
+
+This presentation mapping changes neither the Fire/Water combat contracts nor Air/Earth's deferred placeholder status.
 
 **Fire:** A red outline identifies Fire. Fire Y applies one DoT stack per resolved Fire level; X never applies DoT directly. DoT ticks add no Heat and cause no flinch.
 

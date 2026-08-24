@@ -10,14 +10,35 @@ signal defence_status_changed(label: String, current_guard: float, maximum_guard
 
 const FireResolver = preload("res://scripts/combat/fire_resolver.gd")
 const WaterResolver = preload("res://scripts/combat/water_resolver.gd")
+const AirResolver = preload("res://scripts/combat/air_resolver.gd")
+const EarthResolver = preload("res://scripts/combat/earth_resolver.gd")
 const IDLE_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Idle.png")
 const WALK_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Walk.png")
 const ATTACK_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Attack_1.png")
+const ATTACK_2_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Attack_2.png")
+const ATTACK_3_TEXTURE: Texture2D = preload("res://assets/prototype/player/Shinobi_Attack_3.png")
+const FIGHTER_IDLE: Texture2D = preload("res://assets/prototype/player/Fighter_Idle.png")
+const FIGHTER_WALK: Texture2D = preload("res://assets/prototype/player/Fighter_Walk.png")
+const FIGHTER_ATTACK_1: Texture2D = preload("res://assets/prototype/player/Fighter_Attack_1.png")
+const FIGHTER_ATTACK_2: Texture2D = preload("res://assets/prototype/player/Fighter_Attack_2.png")
+const FIGHTER_ATTACK_3: Texture2D = preload("res://assets/prototype/player/Fighter_Attack_3.png")
+const SABER_IDLE: Texture2D = preload("res://assets/prototype/player/Saber_Idle.png")
+const SABER_WALK: Texture2D = preload("res://assets/prototype/player/Saber_Walk.png")
+const SABER_ATTACK_1: Texture2D = preload("res://assets/prototype/player/Saber_Attack_1.png")
+const SABER_ATTACK_2: Texture2D = preload("res://assets/prototype/player/Saber_Attack_2.png")
+const SABER_ATTACK_3: Texture2D = preload("res://assets/prototype/player/Saber_Attack_3.png")
+const SAMURAI_IDLE: Texture2D = preload("res://assets/prototype/player/Samurai_Idle.png")
+const SAMURAI_WALK: Texture2D = preload("res://assets/prototype/player/Samurai_Walk.png")
+const FIRE_FINISHER_VFX: Texture2D = preload("res://assets/prototype/vfx/fire/fire1.png")
+const WATER_FINISHER_VFX: Texture2D = preload("res://assets/prototype/vfx/water/water1.png")
 
 const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
 const WALK_FRAMES := 8
+const WALK_START_FRAME := 2
 const ATTACK_FRAMES := 5
+const ATTACK_2_FRAMES := 3
+const ATTACK_3_FRAMES := 4
 const ATTACK_HITBOX_DEBUG_WINDOW := 0.14
 const ATTACK_HITBOX_DEBUG_FILL := Color(1.0, 0.78, 0.12, 0.24)
 const ATTACK_HITBOX_DEBUG_OUTLINE := Color(1.0, 0.9, 0.35, 0.95)
@@ -66,6 +87,7 @@ func configure(config: Dictionary) -> void:
 	combat.movement_lock_changed.connect(movement.set_movement_locked)
 	combat.active_school_changed.connect(_on_active_school_changed)
 	combat.attack_started.connect(_on_attack_started)
+	combat.finisher_started.connect(_on_finisher_started)
 	combat.defence_status_changed.connect(_on_defence_status_changed)
 	defence.guard_warning.connect(_on_guard_warning)
 	heat.heat_changed.connect(_on_heat_changed)
@@ -97,7 +119,9 @@ func configure(config: Dictionary) -> void:
 		heat,
 		defence,
 		FireResolver.new(),
-		WaterResolver.new()
+		WaterResolver.new(),
+		AirResolver.new(),
+		EarthResolver.new()
 	)
 	_update_school_outline(combat.get_active_school())
 
@@ -133,7 +157,7 @@ func is_attack_hitbox_debug_enabled() -> bool:
 func _unhandled_input(event: InputEvent) -> void:
 	if _config.is_empty():
 		return
-	combat.handle_input_event(event, movement.sample_attack_direction())
+	combat.handle_input_event(event, _get_attack_direction())
 
 
 func _process(delta: float) -> void:
@@ -143,9 +167,9 @@ func _process(delta: float) -> void:
 	if combat.is_attack_playing():
 		_update_attack_visual()
 	elif not movement.get_motion().is_zero_approx():
-		_update_locomotion_visual(&"walk", WALK_TEXTURE, WALK_FRAMES, float(_config["movement"]["walk_fps"]))
+		_update_locomotion_visual(&"walk", _get_walk_texture(combat.get_active_school()), _get_walk_frames(combat.get_active_school()), float(_config["movement"]["walk_fps"]))
 	else:
-		_update_locomotion_visual(&"idle", IDLE_TEXTURE, IDLE_FRAMES, float(_config["movement"]["idle_fps"]))
+		_update_locomotion_visual(&"idle", _get_idle_texture(combat.get_active_school()), IDLE_FRAMES, float(_config["movement"]["idle_fps"]))
 	queue_redraw()
 
 
@@ -178,16 +202,21 @@ func _is_attack_hitbox_debug_visible() -> bool:
 
 
 func _update_attack_visual() -> void:
-	_set_visual_mode(&"attack", ATTACK_TEXTURE)
+	var school: StringName = combat.get_current_attack_school()
+	var texture := _get_attack_texture(school, _visual_light_position)
+	var frame_count := _get_attack_frames(school, _visual_light_position)
+	var mode := &"attack_heavy"
+	if _visual_attack_kind == &"light":
+		mode = StringName("attack_x%d" % _visual_light_position)
+	_set_visual_mode(mode, texture)
 	_update_side_facing(_visual_attack_direction)
 	_reset_sprite_motion()
-	var school: StringName = combat.get_current_attack_school()
+	if _visual_attack_kind == &"light":
+		sprite.position += _get_light_attack_anchor_offset(_visual_light_position)
 	var exponent := float(_config[String(school)]["visual_motion_exponent"])
 	var visual_progress := pow(combat.get_normalized_attack_progress(), exponent)
-	var frame := mini(int(floor(visual_progress * ATTACK_FRAMES)), ATTACK_FRAMES - 1)
+	var frame := mini(int(floor(visual_progress * frame_count)), frame_count - 1)
 	_set_region(frame)
-	if _visual_attack_kind == &"light":
-		_apply_light_motion(_visual_light_position, visual_progress)
 
 
 func _update_locomotion_visual(
@@ -199,31 +228,56 @@ func _update_locomotion_visual(
 	_set_visual_mode(mode, texture)
 	_reset_sprite_motion()
 	_update_side_facing(movement.get_facing_direction())
-	var frame := int(floor(_visual_time * fps)) % frame_count
+	var start_frame := WALK_START_FRAME if mode == &"walk" else 0
+	var frame := (int(floor(_visual_time * fps)) + start_frame) % frame_count
 	_set_region(frame)
 
 
-func _apply_light_motion(combo_position: int, progress: float) -> void:
-	var pulse := sin(progress * PI)
-	var direction := _visual_attack_direction.normalized()
-	var lateral := direction.orthogonal()
-	var turn_sign := -1.0 if _facing_left else 1.0
+func _get_idle_texture(school: StringName) -> Texture2D:
+	match school:
+		&"fire": return FIGHTER_IDLE
+		&"water": return SABER_IDLE
+		&"earth": return SAMURAI_IDLE
+	return IDLE_TEXTURE
+
+
+func _get_walk_texture(school: StringName) -> Texture2D:
+	match school:
+		&"fire": return FIGHTER_WALK
+		&"water": return SABER_WALK
+		&"earth": return SAMURAI_WALK
+	return WALK_TEXTURE
+
+
+func _get_walk_frames(school: StringName) -> int:
+	return 12 if school == &"water" else WALK_FRAMES
+
+
+func _get_attack_texture(school: StringName, combo_position: int) -> Texture2D:
+	var position := clampi(combo_position, 1, 3)
+	if school == &"fire":
+		return [FIGHTER_ATTACK_1, FIGHTER_ATTACK_2, FIGHTER_ATTACK_3][position - 1]
+	if school == &"water":
+		return [SABER_ATTACK_1, SABER_ATTACK_2, SABER_ATTACK_3][position - 1]
+	return [ATTACK_TEXTURE, ATTACK_2_TEXTURE, ATTACK_3_TEXTURE][position - 1]
+
+
+func _get_attack_frames(school: StringName, combo_position: int) -> int:
+	var position := clampi(combo_position, 1, 3)
+	if school == &"fire":
+		return [4, 3, 4][position - 1]
+	if school == &"water":
+		return [6, 3, 4][position - 1]
+	return [ATTACK_FRAMES, ATTACK_2_FRAMES, ATTACK_3_FRAMES][position - 1]
+
+
+func _get_light_attack_anchor_offset(combo_position: int) -> Vector2:
 	match combo_position:
-		1:
-			sprite.position += direction * (2.0 * pulse)
 		2:
-			sprite.position += lateral * (5.0 * pulse)
-			sprite.rotation += turn_sign * 0.08 * pulse
+			return Vector2(-1.0, 0.0)
 		3:
-			sprite.position += direction * (8.0 * pulse)
-			sprite.rotation -= turn_sign * 0.06 * pulse
-		4:
-			sprite.position += direction * (3.0 * pulse) - lateral * (6.0 * pulse)
-			sprite.rotation += turn_sign * 0.16 * sin(progress * TAU)
-		5:
-			sprite.position += direction * (12.0 * pulse)
-			sprite.scale = _sprite_rest_scale * (1.0 + 0.12 * pulse)
-			sprite.rotation -= turn_sign * 0.1 * pulse
+			return Vector2(4.0, 0.0)
+	return Vector2.ZERO
 
 
 func _reset_sprite_motion() -> void:
@@ -233,7 +287,7 @@ func _reset_sprite_motion() -> void:
 
 
 func _set_visual_mode(mode: StringName, texture: Texture2D) -> void:
-	if mode == _last_visual_mode:
+	if mode == _last_visual_mode and sprite.texture == texture:
 		return
 	_last_visual_mode = mode
 	_visual_time = 0.0
@@ -250,8 +304,21 @@ func _update_side_facing(direction: Vector2) -> void:
 	sprite.flip_h = _facing_left
 
 
-func _on_facing_changed(_direction: Vector2) -> void:
+func _on_facing_changed(direction: Vector2) -> void:
 	_visual_time = 0.0
+	_update_side_facing(direction)
+	_visual_attack_direction = _get_attack_direction()
+	_sync_attack_cast_direction()
+
+
+func _get_attack_direction() -> Vector2:
+	return Vector2.LEFT if _facing_left else Vector2.RIGHT
+
+
+func _sync_attack_cast_direction() -> void:
+	if _config.is_empty():
+		return
+	attack_cast.target_position = _get_attack_direction() * float(_config["combat"]["shape_reach"])
 
 
 func _on_attack_started(kind: StringName, _school: StringName, direction: Vector2) -> void:
@@ -259,6 +326,17 @@ func _on_attack_started(kind: StringName, _school: StringName, direction: Vector
 	_visual_attack_kind = kind
 	_visual_light_position = clampi(input_combo.light_count(), 1, 5) if kind == &"light" else 0
 	_visual_time = 0.0
+
+
+func _on_finisher_started(school: StringName, direction: Vector2) -> void:
+	if school != &"fire" and school != &"water":
+		return
+	var vfx := Sprite2D.new()
+	vfx.texture = FIRE_FINISHER_VFX if school == &"fire" else WATER_FINISHER_VFX
+	vfx.position = direction.normalized() * 28.0
+	vfx.scale = Vector2(0.75, 0.75)
+	add_child(vfx)
+	get_tree().create_timer(0.25).timeout.connect(vfx.queue_free)
 
 
 func _on_active_school_changed(school: StringName) -> void:

@@ -9,6 +9,8 @@ const REQUIRED_SECTIONS := [
 	"heat",
 	"fire",
 	"water",
+	"air",
+	"earth",
 	"defence",
 	"hit_reaction",
 	"ui",
@@ -106,6 +108,14 @@ static func _validate(data: Dictionary) -> String:
 		["water", "radius_per_level", 0.0, INF],
 		["water", "visual_motion_exponent", 0.001, INF],
 		["water", "vfx_fps", 0.001, INF],
+		["air", "visual_motion_exponent", 0.001, INF],
+		["air", "attack_speed_multiplier", 0.001, INF],
+		["air", "buff_duration", 0.001, INF],
+		["air", "chain_radius", 0.001, INF],
+		["air", "damage_per_level", 0.0, INF],
+		["earth", "base_radius", 0.001, INF],
+		["earth", "radius_per_level", 0.0, INF],
+		["earth", "visual_motion_exponent", 0.001, INF],
 		["defence", "guard_capacity", 0.001, INF],
 		["defence", "blocked_damage_to_guard", 0.0, INF],
 		["defence", "guard_warning_ratio", 0.0, 1.0],
@@ -140,6 +150,9 @@ static func _validate(data: Dictionary) -> String:
 	if not integer_error.is_empty():
 		return integer_error
 	integer_error = _validate_integer(data, "defence", "water_block_defensive_level", 0, 2147483647)
+	if not integer_error.is_empty():
+		return integer_error
+	integer_error = _validate_integer(data, "air", "max_chain_targets", 1, 32)
 	if not integer_error.is_empty():
 		return integer_error
 
@@ -186,6 +199,22 @@ static func _validate(data: Dictionary) -> String:
 		var slow_percent := float(water_level["slow_percent"])
 		if slow_percent < 0.0 or slow_percent > 1.0:
 			return "water.levels[%d].slow_percent must be between 0 and 1." % index
+
+	var earth: Dictionary = data["earth"]
+	if not earth.has("levels") or typeof(earth["levels"]) != TYPE_ARRAY or earth["levels"].size() != 3:
+		return "earth.levels must contain exactly three entries."
+	for index in range(earth["levels"].size()):
+		var earth_level = earth["levels"][index]
+		if typeof(earth_level) != TYPE_DICTIONARY:
+			return "earth.levels[%d] must be an object." % index
+		for key in ["duration", "slow_percent"]:
+			if not earth_level.has(key) or not _is_number(earth_level[key]):
+				return "earth.levels[%d].%s must be numeric." % [index, key]
+		if float(earth_level["duration"]) <= 0.0:
+			return "earth.levels[%d].duration must be positive." % index
+		var earth_slow := float(earth_level["slow_percent"])
+		if earth_slow < 0.0 or earth_slow > 1.0:
+			return "earth.levels[%d].slow_percent must be between 0 and 1." % index
 
 	return ""
 

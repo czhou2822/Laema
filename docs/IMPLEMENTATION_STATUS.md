@@ -2,6 +2,8 @@
 
 Status: First-draft prototype user-validated in Godot on 2026-08-24.
 
+Committed baseline: `e543a43` (`feat: add validated combat prototype slice`).
+
 The current prototype source now includes:
 
 - a Godot entry scene and runtime InputMap bindings;

@@ -1,14 +1,16 @@
 # Laema Combat Prototype — Technical Design
 
+Status: Current architecture for committed baseline `e543a43`; preflight cleared with accepted waivers. User-reported Godot validation covers the exercised first-draft slice, while the incoming-attack boundary remains unverified.
+
 ## Scope and Current Repository State
 
 This document defines the architecture for the combat prototype in [GAME_DESIGN.md](GAME_DESIGN.md). The target scope includes player movement, complete Fire and Water combat packages, selectable Air and Earth visual placeholders, Fire–Water mixed finishers, Heat, Fire parrying, Water blocking, shared damage and hit-reaction processing, one non-attacking Enemy placeholder, combat feedback, and developer tuning tools.
 
-The repository currently contains an unverified Fire/Water source slice: a composed Player, Combat FSM, Input-combo, Heat, AnimationPlayer timing, ShapeCast2D contact, a permanent target with a target-local flinch tween, HUD, JSON configuration, imported Craftpix assets, and a debug Developer Overlay. Direct contact currently bypasses the proposed shared HealthEvent and HealthResolver path. Godot runtime behavior remains unverified according to [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md).
+The committed repository contains the composed Player and non-attacking Enemy Entities, Combat and Defence FSMs, Input-combo and Heat components, AnimationPlayer timing, ShapeCast2D contact, shared HealthEvent/HealthResult/HealthResolver processing, status and hit-reaction components, HUD, JSON configuration, imported prototype assets, and the Developer Overlay. The user reported the exercised first-draft slice as validated in Godot on 2026-08-24; the agent did not run Godot, a build, a compiler, or automated tests.
 
-Defence, Air/Earth placeholder selection, shared Entity architecture, and shared hit-reaction processing are not implemented yet. Functional Air and Earth combat packages, Active Enemy behavior, and its attack FSM are explicitly deferred. Exact health values and final art remain open gameplay or content work.
+Fire parrying, Water blocking, guard state, Air/Earth placeholder selection, shared Entity architecture, and shared hit-reaction processing are implemented in the committed slice. Functional Air and Earth combat packages, Active Enemy behavior, and its attack FSM remain explicitly deferred. Exact balance values, final art, complete enemy content, and final tuning remain open or deferred.
 
-The current direct-contact path is `CombatController._perform_hit_query()` in `scripts/combat/combat_controller.gd` → `TrainingTarget.receive_direct_hit()` in `scripts/targets/training_target.gd` → a target-local flinch tween; Heat is incremented directly in Combat. Fire ticking in `scripts/status/status_controller.gd` emits only a damage number. `CombatController` and `Player._update_school_outline()` currently recognize only Fire and Water, which are the concrete seams for adding Air/Earth selection without adding their combat packages.
+The current contact path is `CombatController._perform_hit_query()` in `scripts/combat/combat_controller.gd` → `Entity.receive_health_event()` → `HealthResolver.resolve()` → a synchronous `HealthResult` delivery to the instigator. Fire and Water resolvers construct HealthEvents, while `scripts/status/status_controller.gd` routes DoT ticks through the same Entity boundary. `CombatController` recognizes all four school selections, but only Fire and Water produce attacks; Air and Earth remain presentation-only placeholders.
 
 ## Entity Hierarchy and Ownership
 
@@ -285,33 +287,30 @@ The imported Shinobi, retained legacy Swordsman, Grassland, Fire, Water, and Ice
 
 Air/Earth placeholder presentation reuses the existing outline shader with white and brown colors and requires no new school animation or VFX assets. Distinct full-package Air/Earth movement, blocking, parrying, an active Enemy, persistent status overlays, and final UI remain deferred asset needs.
 
-## Architecture-Level Implementation Slices
+## Current Implementation Slices
 
-1. **Entity foundation**
-   - Establish Entity, Health, shared HealthResolver, Buff/Debuff, HitReaction, HealthEvent, and HealthResult.
-   - Add finite Enemy Health, capped Health reduction, discarded excess, zero-reaching result state, and lifecycle reset to maximum.
-   - Replace an active hit reaction atomically when a new nonzero level arrives; preserve it when a level-0 result arrives.
-   - Route direct hits and DoT ticks through the common event path while preserving existing Fire/Water outcomes.
-   - Replace Water’s effect-only area callback with one HealthEvent per unique area target and suppress duplicate Water events from overlapping colliders.
-   - Execute genuine Fire and Water primary/secondary resolver layers independently, preserving primary-then-secondary order and separate Heat-eligible HealthResults.
-   - Add one Water-status priority slot to Buff/Debuff with higher-level replacement, same-level duration refresh, and lower-level rejection.
+1. **Entity foundation — implemented**
+   - Entity, Health, HealthResolver, Buff/Debuff, HitReaction, HealthEvent, and HealthResult are shared components in the committed slice.
+   - Enemy Health is finite, damage is capped, excess is discarded, and a zero-reaching result resets the placeholder to maximum without death or clearing effects.
+   - Nonzero reactions replace active reactions; level-0 results do not start or replace a reaction.
+   - Direct hits and DoT ticks use the common HealthEvent path.
+   - Water resolves one HealthEvent per unique area target, and primary/secondary Fire/Water layers resolve independently.
+   - Buff/Debuff owns Water priority with higher-level replacement, equal-level refresh, and lower-level rejection.
 
-2. **Player defence and reaction state**
-   - Add L1 InputMap action, Water block, Fire parry, Combat FSM defence states, movement/switch lock, guard, rearm, and guard-break output.
-   - Add Player HIT_REACTING integration so a shared HitReaction cancels the current action, locks the Player, and returns Combat to READY.
+2. **Player defence and reaction state — implemented**
+   - L1, Water block, Fire parry, Combat defence states, movement/switch locks, guard, rearm, guard-break output, and Player HIT_REACTING integration are present.
 
-3. **Enemy placeholder migration**
-   - Replace Training Target with the non-attacking Enemy subclass while preserving permanent-target collision, status, VFX, and light-flinch presentation.
-   - Do not add an Active mode, attack controller, or attack FSM.
+3. **Enemy placeholder — implemented**
+   - The non-attacking Enemy subclass preserves permanent-target collision, status, VFX, light-flinch presentation, finite Health, refill, and no-death behavior.
+   - Active mode, attack controller, and attack FSM remain excluded.
 
-4. **Air/Earth selection placeholders**
-   - Add Air and Earth InputMap actions and active-school identities.
-   - Apply white and brown outlines, ignore X/Y/L1 while either placeholder is active, and reject Air/Earth selections during an active Fire–Water combo.
-   - Add no Air/Earth resolver, attack, defence, effect, Buff/Debuff, or HealthEvent behavior.
+4. **Air/Earth selection placeholders — implemented**
+   - Air/Earth InputMap actions, active-school identities, white/brown outlines, ignored X/Y/L1 behavior, and active-combo rejection are present.
+   - No Air/Earth resolver, attack, defence, effect, Buff/Debuff, or HealthEvent behavior is included.
 
-5. **Configuration and feedback**
-   - Extend fail-fast JSON validation and Developer Overlay for Player/Enemy maximum Health, Fire/Water direct damage, Water’s five status-level entries, approved Impact, defensive-level, hit-reaction, defence, and Entity values.
-   - Add diagnostic feedback for damage outcomes, reaction level, guard, parry, and Enemy status.
+5. **Configuration and feedback — implemented**
+   - Fail-fast JSON validation and the Developer Overlay cover the committed Player/Enemy Health, Fire/Water damage, Water statuses, Impact, defensive level, hit reaction, defence, and Entity values.
+   - HUD, status badges, reaction, guard, parry, school, Heat, and Enemy feedback are present.
 
 ## Validation Seams and Open Evidence
 
@@ -354,18 +353,17 @@ Validate that:
 
 Open evidence and risks:
 
-- current source has not been reported as runtime-verified in Godot;
-- current direct contact and DoT paths bypass HealthEvent and require migration into the shared resolver;
-- migrating StaticBody2D target behavior into CharacterBody2D Enemy may affect collision and ShapeCast contact;
+- the user reported validation for the exercised slice, but the agent did not run Godot, a build, a compiler, or automated tests;
+- incoming Enemy attacks, ordinary-play blocking/parrying, guard depletion/break triggering, and guard-warning triggering remain unverified because the approved Enemy does not attack;
 - the interaction between guard-break recovery and a simultaneous nonzero hit reaction remains deferred with incoming Enemy attacks;
 - original-instigator attribution after the instigator Entity is freed remains an accepted preflight waiver;
 - Player Health/death, healing semantics beyond the shared operation contract, and all active Enemy behavior remain deferred or open;
 - all functional Air/Earth behavior remains deferred;
 - high playback speed may cross narrow normalized phases within one update; and
-- final defence, Enemy, and full-package Air/Earth assets are unavailable.
+- final defence, Enemy, and full-package Air/Earth assets remain deferred.
 
 Diagnostic inventory: debug attack-hitbox sweep display owned by the Developer Overlay. It is toggleable and diagnostic-only.
 
 ## Handoff Recommendation
 
-A fresh Ultron `mode=tech-preflight` audit is recommended before implementation. The verified GDD now defines Air/Earth as placeholders and defers the Active Enemy, while the report adds shared HealthEvent, HealthResolver, HealthResult, synchronous instigator delivery, HitReaction, periodic-effect attribution, finite dummy Health, zero refill, Health-based Heat ownership, and explicit reaction replacement. The audit should carry forward the accepted instigator-lifetime waiver. Air/Earth and Active Enemy omissions are now explicit scope, not unresolved technical claims.
+The preflight was completed before implementation with the accepted instigator-lifetime waiver. The source is now committed as `e543a43`, and the user reported the exercised slice as validated in Godot. A new preflight-before-implementation is no longer the current gate. Before a submission-ready or materially expanded source change, synchronize this document with the committed implementation through the user-authorized technical-document workflow and route the coupled change to Ultron `mode=tech-postflight`. Preserve the waiver, the incoming-attack validation boundary, and the explicit Air/Earth and Active Enemy exclusions.

@@ -11,6 +11,7 @@ The repository contains the expanded 2D top-down combat prototype source. The us
 - Design status: Current prototype GDD verified
 - Technical design status: Current architecture recorded and preflight-cleared with waivers
 - Implementation status: First-draft prototype user-validated
+- Committed prototype baseline: `e543a43`
 
 ## Prototype controls
 

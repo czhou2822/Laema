@@ -4,7 +4,7 @@ signal sequence_changed(tokens: Array)
 signal combo_completed(tokens: Array)
 signal combo_reset
 
-const MAX_LIGHT_ATTACKS := 5
+const MAX_LIGHT_ATTACKS := 3
 
 var _tokens: Array[Dictionary] = []
 var _x_schools: Array[StringName] = []
