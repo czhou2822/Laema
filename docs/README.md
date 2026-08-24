@@ -14,8 +14,10 @@ When the user says “save checkpoint,” “checkpoint this,” or a close equi
 
 1. Sweep all available, unarchived Laema threads, including idle threads; ignore archived and unrelated threads.
 2. Reconcile every update since the previous checkpoint and write a dated Markdown snapshot with the thread IDs and current design state.
-3. Commit the checkpoint on the current branch and push it to `origin`.
-4. Report success only after the push succeeds. If credentials, conflicts, pull/push, or another synchronization step fails, preserve the local state and report the exact incomplete step.
+3. Compile a separate, reviewable changelist covering every modified and untracked project file, including scope, validation evidence, authority mismatches, and the proposed review boundary.
+4. Commit the checkpoint, changelist, and any exact workflow-record update on the current branch and push them to `origin`.
+5. Do not silently stage or publish prototype code, scenes, assets, configuration, or canonical-document drafts as part of checkpointing. Those remain in the working tree for user review unless separately authorized.
+6. Report success only after the record and changelist push succeeds. If credentials, conflicts, pull/push, or another synchronization step fails, preserve the local state and report the exact incomplete step.
 
 When the user says “load checkpoint,” “resume from checkpoint,” or a close equivalent:
 
