@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/prototype/prototype_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="3_enemy"]
 [ext_resource type="PackedScene" path="res://scenes/ui/prototype_hud.tscn" id="4_hud"]
 [ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/ground_h1x9.png" id="5_ground"]
-[ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/training_dummy.png" id="6_dummy"]
 [ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/back_marker_32.png" id="7_marker"]
 [ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/back_diamond.png" id="8_diamond"]
 [ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/back_angle.png" id="9_angle"]
@@ -106,22 +105,19 @@ position = Vector2(0, 0)
 [node name="Enemy" parent="." instance=ExtResource("3_enemy")]
 position = Vector2(500, 16)
 
-[node name="TrainingDummyLeft" type="Sprite2D" parent="."]
-texture = ExtResource("6_dummy")
+[node name="EnemyLeft" parent="." instance=ExtResource("3_enemy")]
 position = Vector2(420, 16)
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 96)
 
-[node name="TrainingDummyRight" type="Sprite2D" parent="."]
-texture = ExtResource("6_dummy")
+[node name="EnemyRight" parent="." instance=ExtResource("3_enemy")]
 position = Vector2(580, 16)
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 96)
 
 [node name="AmbientAudio" type="AudioStreamPlayer" parent="."]
+bus = &"Ambient"
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="."]
+bus = &"BGM"
 
 [node name="ProjectileImpactAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="HUD" parent="." instance=ExtResource("4_hud")]

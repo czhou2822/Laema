@@ -19,5 +19,6 @@ polygon = PackedVector2Array(-12, 0, -4, -9, 8, -7, 12, 0, 8, 7, -4, 9)
 color = Color(1, 0.286275, 0.239216, 1)
 
 [node name="TravelAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

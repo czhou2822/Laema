@@ -9,6 +9,7 @@ var _front_remaining := 0.0
 var _partial_mark_time := 0.0
 var _marked_capacity := 0
 var _marking_active := false
+var _depleting_active := false
 
 
 func configure(config: Dictionary, heat: Node) -> void:
@@ -31,6 +32,8 @@ func _process(delta: float) -> void:
 	var changed := _advance_front_lifetime(delta)
 	if _marking_active:
 		changed = _advance_marking(delta) or changed
+	elif _depleting_active:
+		changed = _advance_depleting(delta) or changed
 	if changed:
 		_emit_snapshot()
 
@@ -45,24 +48,27 @@ func add_orb(school: StringName) -> void:
 	_emit_snapshot()
 
 
-func start_or_resume_marking() -> void:
+func start_charging() -> void:
 	var was_active := _marking_active
 	_marking_active = true
+	_depleting_active = false
 	if not was_active:
-		_trace(&"marking_resumed", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
+		_trace(&"charging_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
 	_emit_snapshot()
 
 
-func pause_marking() -> void:
-	var was_active := _marking_active
+func start_depleting() -> void:
+	var was_active := _depleting_active
 	_marking_active = false
 	if was_active:
-		_trace(&"marking_paused", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
+		return
+	_depleting_active = true
+	_trace(&"depleting_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
 	_emit_snapshot()
 
 
-func is_marking_or_paused() -> bool:
-	return _marking_active or _partial_mark_time > 0.0 or _marked_capacity > 0
+func has_active_marking_state() -> bool:
+	return _marking_active or _depleting_active or _partial_mark_time > 0.0 or _marked_capacity > 0
 
 
 func has_marked_orbs() -> bool:
@@ -110,6 +116,7 @@ func consume_marked_orbs() -> Dictionary:
 	_marked_capacity = 0
 	_partial_mark_time = 0.0
 	_marking_active = false
+	_depleting_active = false
 	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
 	_trace(&"consumed", {"primary_school": primary_school, "primary_level": consumed_count, "secondary_school": secondary_school, "secondary_level": secondary_level, "remaining_queue": _queue.size()})
 	_emit_snapshot()
@@ -131,6 +138,7 @@ func remove_marked_orbs_on_owner_hit() -> void:
 		_queue.remove_at(0)
 	_marked_capacity = 0
 	_partial_mark_time = 0.0
+	_depleting_active = false
 	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
 	_trace(&"marked_orbs_removed_on_owner_hit", {"removed": removed_count, "remaining_queue": _queue.size()})
 	_emit_snapshot()
@@ -153,7 +161,7 @@ func get_snapshot() -> Array:
 		snapshot.append({
 			"school": _queue[index],
 			"marked": index < marked_count,
-			"alpha": front_ratio if index == 0 else 1.0,
+			"remaining_ratio": front_ratio if index == 0 else 1.0,
 		})
 	return snapshot
 
@@ -178,6 +186,7 @@ func _advance_front_lifetime(delta: float) -> bool:
 
 func _advance_marking(delta: float) -> bool:
 	if _marked_capacity >= _maximum_marked_capacity():
+		_partial_mark_time = 0.0
 		return false
 	var speed_multiplier := 1.0
 	if _heat != null and _heat.has_method("get_speed_multiplier"):
@@ -191,6 +200,22 @@ func _advance_marking(delta: float) -> bool:
 		_partial_mark_time -= _charge_step_duration()
 		_marked_capacity += 1
 		_trace(&"mark_incremented", {"marked_capacity": _marked_capacity, "queue_size": _queue.size()})
+	if _marked_capacity >= _maximum_marked_capacity():
+		_partial_mark_time = 0.0
+	return changed
+
+
+func _advance_depleting(delta: float) -> bool:
+	if _marked_capacity <= 0 and _partial_mark_time <= 0.0:
+		return false
+	_partial_mark_time -= delta
+	var changed := true
+	while _partial_mark_time < 0.0 and _marked_capacity > 0:
+		_marked_capacity -= 1
+		_partial_mark_time += _charge_step_duration()
+		_trace(&"mark_decremented", {"marked_capacity": _marked_capacity, "queue_size": _queue.size()})
+	if _marked_capacity <= 0 and _partial_mark_time < 0.0:
+		_partial_mark_time = 0.0
 	return changed
 
 
@@ -200,10 +225,11 @@ func _clear_state() -> void:
 	_partial_mark_time = 0.0
 	_marked_capacity = 0
 	_marking_active = false
+	_depleting_active = false
 
 
 func _emit_snapshot() -> void:
-	queue_changed.emit(get_snapshot(), get_marked_count(), get_marking_progress())
+	queue_changed.emit(get_snapshot(), _marked_capacity, get_marking_progress())
 
 
 func _orb_lifetime() -> float:

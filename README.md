@@ -4,14 +4,14 @@ This repository is the shared source of truth for the project across the home an
 
 ## Current status
 
-The repository contains the expanded 2D top-down combat prototype source. The user reported the current first draft as validated in Godot on 2026-08-24.
+The repository contains the expanded 2D side-scrolling orb-casting prototype. The user reported the expanded implementation as validated in Godot on 2026-08-25; an exact scenario matrix was not supplied.
 
 - Project name: Laema
 - Engine version: Godot 4.7
 - Design status: Current prototype GDD verified
-- Technical design status: Current architecture recorded and preflight-cleared with waivers
-- Implementation status: First-draft prototype user-validated
-- Committed prototype baseline: `e543a43`
+- Technical design status: Current architecture synchronized; postflight review remains available
+- Implementation status: Expanded prototype with user-reported validation; agent-run runtime evidence unavailable
+- Last committed implementation: `2178fbb` (`feat: expand elemental combat and prototype presentation`)
 
 ## Prototype controls
 
@@ -19,14 +19,16 @@ The repository contains the expanded 2D top-down combat prototype source. The us
 |---|---|---|
 | Move and face | Left stick | WASD |
 | Light attack (X) | X | Left mouse button |
-| Finisher (Y) | Y | Right mouse button |
+| Charge and mark | R2 in the 35–65% band | — |
+| Deplete marking meter | R2 in the 0–10% band | — |
+| Cast | R2 entering the 90–100% band | — |
 | Select Fire | D-pad Up | 1 |
 | Select Water | D-pad Down | 2 |
-| Select Air placeholder | D-pad Left | 3 |
-| Select Earth placeholder | D-pad Right | 4 |
-| Defend | Left shoulder | Shift |
+| Select Air | D-pad Left | 3 |
+| Select Earth | D-pad Right | 4 |
+| Defend | L1 | Shift |
 
-In a debug build, backtick opens the paused developer overlay. It exposes validated live tuning, explicit Save-to-JSON, and the attack-hitbox display toggle.
+In a debug build, backtick opens the paused Developer Portal. Its header provides Pause/Unpause, Save to JSON, status, and Close controls; it also exposes the organized General, Audio, and Combat tuning tabs.
 
 ## Repository layout
 

@@ -3,6 +3,7 @@ extends RefCounted
 
 const REQUIRED_SECTIONS := [
 	"movement",
+	"audio",
 	"player",
 	"enemy",
 	"combat",
@@ -90,16 +91,17 @@ static func _validate(data: Dictionary) -> String:
 		["combat", "attack_duration", 0.001, INF],
 		["combat", "hit_phase", 0.0, 1.0],
 		["combat", "input_window_start", 0.0, 1.0],
+		["combat", "x_buffer_width", 0.0, 1.0],
 		["combat", "shape_radius", 0.001, INF],
 		["combat", "shape_reach", 0.001, INF],
 		["combat", "light_damage", 0.0, INF],
 		["combat", "casting_damage", 0.0, INF],
 		["casting", "orb_lifetime", 0.001, INF],
 		["casting", "charge_step_duration", 0.001, INF],
-		["casting", "trigger_release_max", 0.0, 1.0],
-		["casting", "trigger_pause_center", 0.0, 1.0],
-		["casting", "trigger_pause_half_width", 0.0, 0.5],
-		["casting", "trigger_press_min", 0.0, 1.0],
+		["casting", "trigger_deplete_max", 0.0, 1.0],
+		["casting", "trigger_charge_center", 0.0, 1.0],
+		["casting", "trigger_charge_half_width", 0.0, 0.5],
+		["casting", "trigger_cast_min", 0.0, 1.0],
 		["casting", "empowered_primary_multiplier", 0.001, INF],
 		["casting", "projectile_screen_ratio", 0.001, 1.0],
 		["casting", "projectile_travel_duration", 0.001, INF],
@@ -148,13 +150,20 @@ static func _validate(data: Dictionary) -> String:
 			return error
 
 	var combat: Dictionary = data["combat"]
+	if not combat.has("collect_orb_without_contact") or typeof(combat["collect_orb_without_contact"]) != TYPE_BOOL:
+		return "combat.collect_orb_without_contact must be Boolean."
+	if float(combat["x_buffer_width"]) > float(combat["input_window_start"]):
+		return "combat.x_buffer_width must not exceed combat.input_window_start."
+	var audio_error := _validate_audio(data["audio"])
+	if not audio_error.is_empty():
+		return audio_error
 	var casting: Dictionary = data["casting"]
-	var pause_lower: float = float(casting["trigger_pause_center"]) - float(casting["trigger_pause_half_width"])
-	var pause_upper: float = float(casting["trigger_pause_center"]) + float(casting["trigger_pause_half_width"])
-	if float(casting["trigger_release_max"]) >= pause_lower or pause_lower >= pause_upper or pause_upper >= float(casting["trigger_press_min"]):
-		return "casting trigger bands must be ordered release, pause, then press."
-	if pause_lower < 0.0 or pause_upper > 1.0:
-		return "casting pause band must remain between 0 and 1."
+	var charge_lower: float = float(casting["trigger_charge_center"]) - float(casting["trigger_charge_half_width"])
+	var charge_upper: float = float(casting["trigger_charge_center"]) + float(casting["trigger_charge_half_width"])
+	if float(casting["trigger_deplete_max"]) >= charge_lower or charge_lower >= charge_upper or charge_upper >= float(casting["trigger_cast_min"]):
+		return "casting pressure bands must be ordered deplete, charge, then cast."
+	if charge_lower < 0.0 or charge_upper > 1.0:
+		return "casting charge band must remain between 0 and 1."
 	var integer_error := _validate_integer(data, "combat", "direct_impact", 0, 5)
 	if not integer_error.is_empty():
 		return integer_error
@@ -251,6 +260,21 @@ static func _validate_number(
 	var value := float(section[key])
 	if value < minimum or value > maximum:
 		return "%s.%s must be between %s and %s." % [section_name, key, minimum, maximum]
+	return ""
+
+
+static func _validate_audio(audio: Dictionary) -> String:
+	for group_name in ["ambient", "sfx", "bgm"]:
+		if not audio.has(group_name) or typeof(audio[group_name]) != TYPE_DICTIONARY:
+			return "audio.%s must be an object." % group_name
+		var group: Dictionary = audio[group_name]
+		if not group.has("enabled") or typeof(group["enabled"]) != TYPE_BOOL:
+			return "audio.%s.enabled must be Boolean." % group_name
+		if not group.has("volume_db") or not _is_number(group["volume_db"]):
+			return "audio.%s.volume_db must be numeric." % group_name
+		var volume_db := float(group["volume_db"])
+		if volume_db < -80.0 or volume_db > 24.0:
+			return "audio.%s.volume_db must be between -80 and 24." % group_name
 	return ""
 
 

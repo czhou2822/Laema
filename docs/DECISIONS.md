@@ -17,3 +17,10 @@
 - **Constraint:** Incoming Enemy attacks, ordinary-play blocking/parrying/guard-break triggering, functional Air/Earth packages, final art, complete enemy content, and final tuning remain outside that validation.
 - **Constraint:** The accepted instigator-lifetime waiver and the deferred Enemy/Air/Earth scope remain part of the technical record.
 - **Decision:** `docs/TECH_ARCHITECTURE.md` is synchronized to the committed implementation and validation boundary by the current documentation update; future material source changes must keep it synchronized before submission readiness is declared.
+
+## 2026-08-25 — Expanded side-scrolling prototype state
+
+- **Decision:** The active prototype representation is the four-school side-scrolling orb-casting slice with five-position X/Cast chains, seven-second FIFO orb lifetime, R2 DEPLETING/CHARGING/CAST pressure semantics, full-press Casting, shared normalized X/Cast buffering, three non-attacking Enemy targets, and the organized Developer Portal/audio controls recorded in the canonical GDD and technical architecture.
+- **Fact:** The user reported the expanded implementation as validated in Godot on 2026-08-25, but did not provide a scenario-by-scenario matrix or engine-version record.
+- **Constraint:** Agent-run Godot, build, compiler, and automated-test evidence remains unavailable. Incoming Enemy attacks, ordinary-play defence validation, final art, final tuning, and complete enemy content remain outside the current validation boundary.
+- **Decision:** The active summaries and implementation-status record are synchronized to the current implementation. Dated checkpoints and changelists retain their historical wording as an audit trail and do not override the canonical documents.

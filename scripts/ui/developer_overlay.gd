@@ -1,10 +1,13 @@
 extends CanvasLayer
 
 const TOGGLE_KEY := KEY_QUOTELEFT
-const SECTION_ORDER := [
+const GENERAL_SECTION_ORDER := [
 	"movement",
 	"player",
 	"enemy",
+	"ui",
+]
+const COMBAT_SECTION_ORDER := [
 	"combat",
 	"casting",
 	"heat",
@@ -14,8 +17,11 @@ const SECTION_ORDER := [
 	"earth",
 	"defence",
 	"hit_reaction",
-	"ui",
 ]
+const AUDIO_GROUP_ORDER := ["ambient", "sfx", "bgm"]
+const HIDDEN_PORTAL_FIELDS := {
+	"movement.gravity_scale": true,
+}
 const INTEGER_FIELDS := {
 	"enemy.defensive_level": true,
 	"combat.direct_impact": true,
@@ -25,6 +31,9 @@ const INTEGER_FIELDS := {
 const FIELD_RANGES := {
 	"movement.speed": Vector3(1.0, 600.0, 1.0),
 	"movement.gravity_scale": Vector3(0.05, 5.0, 0.05),
+	"audio.ambient.volume_db": Vector3(-80.0, 24.0, 0.5),
+	"audio.sfx.volume_db": Vector3(-80.0, 24.0, 0.5),
+	"audio.bgm.volume_db": Vector3(-80.0, 24.0, 0.5),
 	"player.max_health": Vector3(1.0, 10000.0, 1.0),
 	"enemy.max_health": Vector3(1.0, 10000.0, 1.0),
 	"enemy.defensive_level": Vector3(0.0, 100.0, 1.0),
@@ -39,10 +48,10 @@ const FIELD_RANGES := {
 	"casting.orb_lifetime": Vector3(0.1, 30.0, 0.1),
 	"casting.charge_step_duration": Vector3(0.05, 5.0, 0.01),
 	"casting.max_marked_capacity": Vector3(5.0, 5.0, 1.0),
-	"casting.trigger_release_max": Vector3(0.0, 1.0, 0.01),
-	"casting.trigger_pause_center": Vector3(0.0, 1.0, 0.01),
-	"casting.trigger_pause_half_width": Vector3(0.0, 0.5, 0.01),
-	"casting.trigger_press_min": Vector3(0.0, 1.0, 0.01),
+	"casting.trigger_deplete_max": Vector3(0.0, 1.0, 0.01),
+	"casting.trigger_charge_center": Vector3(0.0, 1.0, 0.01),
+	"casting.trigger_charge_half_width": Vector3(0.0, 0.5, 0.01),
+	"casting.trigger_cast_min": Vector3(0.0, 1.0, 0.01),
 	"casting.empowered_primary_multiplier": Vector3(0.1, 5.0, 0.05),
 	"casting.projectile_screen_ratio": Vector3(0.05, 1.0, 0.05),
 	"casting.projectile_travel_duration": Vector3(0.1, 5.0, 0.05),
@@ -79,6 +88,77 @@ const WATER_LEVEL_RANGES := {
 	"duration": Vector3(0.01, 60.0, 0.01),
 	"slow_percent": Vector3(0.0, 1.0, 0.01),
 }
+const TUNABLE_TOOLTIPS := {
+	"movement.speed": "Horizontal movement speed.",
+	"movement.gravity_scale": "Gravity multiplier for airborne movement.",
+	"player.max_health": "Player maximum Health.",
+	"enemy.max_health": "Maximum Health for each training target.",
+	"enemy.defensive_level": "Impact level that reduces incoming hit reactions.",
+	"combat.attack_duration": "Base duration of X and Casting animations.",
+	"combat.casting_damage": "Base direct damage for school Casting effects.",
+	"combat.direct_impact": "Impact level applied by direct X and Casting damage.",
+	"combat.hit_phase": "Normalized animation phase when X contact or a projectile launch occurs.",
+	"combat.input_window_start": "Normalized phase when the normal X/Cast chaining window opens.",
+	"combat.x_buffer_width": "Normalized pre-window buffer width for X and full-press Cast requests.",
+	"combat.collect_orb_without_contact": "Testing toggle: grant one orb on a missed X without applying damage.",
+	"combat.light_damage": "Direct damage applied by a successful X hit.",
+	"combat.shape_radius": "Radius of the X contact query.",
+	"combat.shape_reach": "Forward reach of the X contact query.",
+	"casting.charge_step_duration": "Seconds required to add one marking-capacity step before Heat scaling.",
+	"casting.empowered_primary_multiplier": "Damage multiplier for the primary school of an empowered Cast.",
+	"casting.max_marked_capacity": "Maximum number of orbs that can be marked for one Cast.",
+	"casting.orb_lifetime": "Lifetime of the oldest orb before FIFO expiration.",
+	"casting.projectile_screen_ratio": "Maximum projectile travel distance as a fraction of visible width.",
+	"casting.projectile_travel_duration": "Seconds for a projectile to travel its maximum distance.",
+	"casting.trigger_charge_center": "R2 pressure center used to charge and mark orbs.",
+	"casting.trigger_charge_half_width": "Tolerance around the R2 charge center.",
+	"casting.trigger_cast_min": "Minimum R2 pressure that triggers Casting.",
+	"casting.trigger_deplete_max": "Maximum R2 pressure that depletes the marking meter.",
+	"heat.max_value": "Maximum Heat resource value.",
+	"heat.gain_per_hit": "Heat gained when direct damage from the Player reduces target Health.",
+	"heat.inactivity_grace": "Seconds without qualifying activity before Heat begins to expire.",
+	"fire.damage_per_stack": "Damage dealt by each Fire DoT stack per tick.",
+	"fire.dot_duration": "Lifetime of each Fire DoT stack.",
+	"fire.dot_tick_interval": "Seconds between Fire DoT ticks.",
+	"fire.visual_motion_exponent": "Exponent shaping Fire attack visual motion.",
+	"fire.vfx_fps": "Playback speed of Fire status VFX.",
+	"water.base_radius": "Base radius of Water area effects.",
+	"water.radius_per_level": "Additional Water area radius per level.",
+	"water.visual_motion_exponent": "Exponent shaping Water attack visual motion.",
+	"water.vfx_fps": "Playback speed of Water status VFX.",
+	"air.attack_speed_multiplier": "Attack-speed multiplier granted by Air level 1.",
+	"air.buff_duration": "Duration of the Air attack-speed buff.",
+	"air.chain_radius": "Radius used to find additional Air chain-lightning targets.",
+	"air.damage_per_level": "Additional Air direct-damage multiplier per level.",
+	"air.max_chain_targets": "Maximum number of targets in an Air chain-lightning result.",
+	"air.visual_motion_exponent": "Exponent shaping Air attack visual motion.",
+	"earth.base_radius": "Starting radius of Earth area effects.",
+	"earth.radius_per_level": "Additional Earth area radius per level.",
+	"earth.visual_motion_exponent": "Exponent shaping Earth attack visual motion.",
+	"defence.guard_capacity": "Maximum Water guard capacity.",
+	"defence.blocked_damage_to_guard": "Guard damage multiplier applied to blocked incoming damage.",
+	"defence.guard_warning_ratio": "Guard ratio at or below which the warning state activates.",
+	"defence.parry_window": "Duration of the Fire parry window.",
+	"defence.guard_break_recovery": "Seconds of recovery after guard break.",
+	"defence.heat_drain_per_second": "Heat drained per second while Water blocking.",
+	"defence.water_block_defensive_level": "Defensive Impact level supplied by Water blocking.",
+	"hit_reaction.base_distance": "Base displacement of a level-1 hit reaction.",
+	"hit_reaction.distance_per_level": "Additional hit-reaction displacement per level.",
+	"hit_reaction.base_duration": "Base duration of a level-1 hit reaction.",
+	"hit_reaction.duration_per_level": "Additional hit-reaction duration per level.",
+	"ui.completed_combo_display_duration": "Seconds completed chains remain in the readout.",
+	"ui.developer_overlay_visible": "Show or hide the DeveloperReadout regions; gameplay UI remains visible.",
+	"heat.levels.fill_ratio": "Heat threshold for this level as a fraction of maximum Heat.",
+	"heat.levels.speed_multiplier": "Attack, Casting, and marking speed multiplier at this Heat level.",
+	"water.levels.duration": "Duration of this Water status level.",
+	"water.levels.slow_percent": "Movement slow percentage for this Water status level.",
+	"audio.ambient.enabled": "Enable or mute the Ambient audio bus.",
+	"audio.ambient.volume_db": "Volume of the Ambient audio bus in decibels.",
+	"audio.sfx.enabled": "Enable or mute the SFX audio bus.",
+	"audio.sfx.volume_db": "Volume of the SFX audio bus in decibels.",
+	"audio.bgm.enabled": "Enable or mute the BGM audio bus.",
+	"audio.bgm.volume_db": "Volume of the BGM audio bus in decibels.",
+}
 
 var _config: Dictionary = {}
 var _apply_tuning: Callable
@@ -87,8 +167,12 @@ var _get_hitbox_enabled: Callable
 var _set_hitbox_enabled: Callable
 var _overlay_root: Control
 var _field_container: VBoxContainer
+var _general_fields: VBoxContainer
+var _combat_fields: Dictionary = {}
+var _audio_fields: VBoxContainer
 var _status_label: Label
 var _hitbox_check: CheckBox
+var _pause_button: Button
 var _was_tree_paused := false
 
 
@@ -112,7 +196,7 @@ func configure(
 	_save_tuning = save_tuning
 	_get_hitbox_enabled = get_hitbox_enabled
 	_set_hitbox_enabled = set_hitbox_enabled
-	if _field_container != null:
+	if _general_fields != null:
 		_rebuild_fields()
 
 
@@ -175,6 +259,10 @@ func _build_ui() -> void:
 	_status_label = Label.new()
 	_status_label.text = "RUN-ONLY"
 	header.add_child(_status_label)
+	_pause_button = Button.new()
+	_pause_button.name = "PauseButton"
+	_pause_button.pressed.connect(_toggle_game_paused)
+	header.add_child(_pause_button)
 	var save_button := Button.new()
 	save_button.text = "Save to JSON"
 	save_button.pressed.connect(_on_save_pressed)
@@ -183,34 +271,85 @@ func _build_ui() -> void:
 	close_button.text = "Close"
 	close_button.pressed.connect(_set_open.bind(false))
 	header.add_child(close_button)
+	_update_pause_button()
 
-	_hitbox_check = CheckBox.new()
-	_hitbox_check.text = "Show attack hitbox"
-	_hitbox_check.toggled.connect(_on_hitbox_toggled)
-	body.add_child(_hitbox_check)
+	var tabs := TabContainer.new()
+	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.add_child(tabs)
 
-	var scroll := ScrollContainer.new()
-	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	body.add_child(scroll)
-	_field_container = VBoxContainer.new()
-	_field_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_field_container.add_theme_constant_override("separation", 10)
-	scroll.add_child(_field_container)
+	var general_tab := VBoxContainer.new()
+	general_tab.name = "General"
+	tabs.add_child(general_tab)
+	_general_fields = _add_tab_scroll(general_tab)
+
+	var audio_tab := VBoxContainer.new()
+	audio_tab.name = "Audio"
+	tabs.add_child(audio_tab)
+	_audio_fields = _add_tab_scroll(audio_tab)
+
+	var combat_tab := VBoxContainer.new()
+	combat_tab.name = "Combat"
+	tabs.add_child(combat_tab)
+	var combat_tabs := TabContainer.new()
+	combat_tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	combat_tab.add_child(combat_tabs)
+	_combat_fields.clear()
+	for section_name in COMBAT_SECTION_ORDER:
+		var category_tab := VBoxContainer.new()
+		category_tab.name = str(section_name).to_upper().replace("_", " ")
+		combat_tabs.add_child(category_tab)
+		if section_name == "combat":
+			_hitbox_check = CheckBox.new()
+			_hitbox_check.text = "Show attack hitbox"
+			_hitbox_check.toggled.connect(_on_hitbox_toggled)
+			category_tab.add_child(_hitbox_check)
+		_combat_fields[section_name] = _add_tab_scroll(category_tab)
 
 
 func _rebuild_fields() -> void:
-	if _field_container == null:
+	if _general_fields == null or _combat_fields.is_empty() or _audio_fields == null:
 		return
-	for child in _field_container.get_children():
-		child.queue_free()
 	if _config.is_empty():
 		return
 	if _get_hitbox_enabled.is_valid():
 		_hitbox_check.set_pressed_no_signal(bool(_get_hitbox_enabled.call()))
-	for section_name in SECTION_ORDER:
-		if not _config.has(section_name):
-			continue
-		_add_section(section_name, _config[section_name])
+	_rebuild_section_group(_general_fields, GENERAL_SECTION_ORDER)
+	for section_name in COMBAT_SECTION_ORDER:
+		var fields: VBoxContainer = _combat_fields[section_name]
+		_rebuild_section_group(fields, [section_name])
+	_rebuild_audio_group()
+
+
+func _add_tab_scroll(tab: VBoxContainer) -> VBoxContainer:
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	tab.add_child(scroll)
+	var fields := VBoxContainer.new()
+	fields.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	fields.add_theme_constant_override("separation", 10)
+	scroll.add_child(fields)
+	return fields
+
+
+func _rebuild_section_group(container: VBoxContainer, section_order: Array) -> void:
+	_clear_field_container(container)
+	_field_container = container
+	for section_name in section_order:
+		if _config.has(section_name):
+			_add_section(section_name, _config[section_name])
+
+
+func _rebuild_audio_group() -> void:
+	_clear_field_container(_audio_fields)
+	_field_container = _audio_fields
+	var audio: Dictionary = _config["audio"]
+	for group_name in AUDIO_GROUP_ORDER:
+		_add_audio_group(group_name, audio[group_name])
+
+
+func _clear_field_container(container: VBoxContainer) -> void:
+	for child in container.get_children():
+		child.queue_free()
 
 
 func _add_section(section_name: String, section: Dictionary) -> void:
@@ -230,16 +369,24 @@ func _add_section(section_name: String, section: Dictionary) -> void:
 		keys.append(str(key))
 	keys.sort()
 	for key in keys:
+		if HIDDEN_PORTAL_FIELDS.has("%s.%s" % [section_name, key]):
+			continue
 		var label := Label.new()
 		label.text = key.replace("_", " ")
+		var path := "%s.%s" % [section_name, key]
+		_set_tuning_tooltip(label, path)
 		fields.add_child(label)
 		if typeof(section[key]) == TYPE_BOOL:
-			var check := CheckBox.new()
-			check.set_pressed_no_signal(bool(section[key]))
-			check.toggled.connect(_on_boolean_changed.bind(section_name, key))
-			fields.add_child(check)
+			var toggle := CheckButton.new()
+			toggle.custom_minimum_size = Vector2(48.0, 24.0)
+			var enabled := bool(section[key])
+			toggle.set_pressed_no_signal(enabled)
+			toggle.text = "ON" if enabled else "OFF"
+			_set_tuning_tooltip(toggle, path)
+			toggle.toggled.connect(_on_boolean_changed.bind(section_name, key, toggle))
+			fields.add_child(toggle)
 			continue
-		var spin := _create_spinbox("%s.%s" % [section_name, key], float(section[key]))
+		var spin := _create_spinbox(path, float(section[key]))
 		spin.value_changed.connect(_on_scalar_changed.bind(section_name, key))
 		fields.add_child(spin)
 
@@ -247,6 +394,36 @@ func _add_section(section_name: String, section: Dictionary) -> void:
 		_add_heat_levels(section["levels"])
 	elif section_name == "water" and section.has("levels"):
 		_add_water_levels(section["levels"])
+
+
+func _add_audio_group(group_name: String, group: Dictionary) -> void:
+	var title := Label.new()
+	title.text = group_name.to_upper()
+	title.add_theme_font_size_override("font_size", 16)
+	_field_container.add_child(title)
+	var fields := GridContainer.new()
+	fields.columns = 2
+	fields.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_field_container.add_child(fields)
+	for key in ["enabled", "volume_db"]:
+		var label := Label.new()
+		label.text = key.replace("_", " ")
+		var path := "audio.%s.%s" % [group_name, key]
+		_set_tuning_tooltip(label, path)
+		fields.add_child(label)
+		if key == "enabled":
+			var toggle := CheckButton.new()
+			toggle.custom_minimum_size = Vector2(48.0, 24.0)
+			var enabled := bool(group[key])
+			toggle.set_pressed_no_signal(enabled)
+			toggle.text = "ON" if enabled else "OFF"
+			_set_tuning_tooltip(toggle, path)
+			toggle.toggled.connect(_on_audio_boolean_changed.bind(group_name, key, toggle))
+			fields.add_child(toggle)
+			continue
+		var spin := _create_spinbox("audio.%s.%s" % [group_name, key], float(group[key]))
+		spin.value_changed.connect(_on_audio_scalar_changed.bind(group_name, key))
+		fields.add_child(spin)
 
 
 func _add_heat_levels(levels: Array) -> void:
@@ -265,6 +442,7 @@ func _add_heat_levels(levels: Array) -> void:
 		rows.add_child(level_label)
 		var ratio_label := Label.new()
 		ratio_label.text = "threshold"
+		_set_tuning_tooltip(ratio_label, "heat.levels.fill_ratio")
 		rows.add_child(ratio_label)
 		var ratio_spin := _create_spinbox("heat.levels.fill_ratio", float(level["fill_ratio"]))
 		ratio_spin.editable = index > 0
@@ -272,6 +450,7 @@ func _add_heat_levels(levels: Array) -> void:
 		rows.add_child(ratio_spin)
 		var speed_label := Label.new()
 		speed_label.text = "speed"
+		_set_tuning_tooltip(speed_label, "heat.levels.speed_multiplier")
 		rows.add_child(speed_label)
 		var speed_spin := _create_spinbox("heat.levels.speed_multiplier", float(level["speed_multiplier"]))
 		speed_spin.value_changed.connect(_on_heat_level_changed.bind(index, "speed_multiplier"))
@@ -294,12 +473,14 @@ func _add_water_levels(levels: Array) -> void:
 		rows.add_child(level_label)
 		var duration_label := Label.new()
 		duration_label.text = "duration"
+		_set_tuning_tooltip(duration_label, "water.levels.duration")
 		rows.add_child(duration_label)
 		var duration_spin := _create_spinbox("water.levels.duration", float(level["duration"]))
 		duration_spin.value_changed.connect(_on_water_level_changed.bind(index, "duration"))
 		rows.add_child(duration_spin)
 		var slow_label := Label.new()
 		slow_label.text = "slow"
+		_set_tuning_tooltip(slow_label, "water.levels.slow_percent")
 		rows.add_child(slow_label)
 		var slow_spin := _create_spinbox("water.levels.slow_percent", float(level["slow_percent"]))
 		slow_spin.editable = str(level["status"]) == "slow"
@@ -327,7 +508,20 @@ func _create_spinbox(path: String, value: float) -> SpinBox:
 	spin.allow_greater = false
 	spin.allow_lesser = false
 	spin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_set_tuning_tooltip(spin, path)
 	return spin
+
+
+func _set_tuning_tooltip(control: Control, path: String) -> void:
+	control.tooltip_text = _tuning_tooltip(path)
+	control.mouse_filter = Control.MOUSE_FILTER_STOP
+	control.mouse_default_cursor_shape = Control.CURSOR_HELP
+
+
+func _tuning_tooltip(path: String) -> String:
+	if TUNABLE_TOOLTIPS.has(path):
+		return str(TUNABLE_TOOLTIPS[path])
+	return "Adjust %s." % path.replace(".", " / ").replace("_", " ")
 
 
 func _on_scalar_changed(value: float, section_name: String, key: String) -> void:
@@ -339,11 +533,33 @@ func _on_scalar_changed(value: float, section_name: String, key: String) -> void
 		call_deferred("_rebuild_fields")
 
 
-func _on_boolean_changed(value: bool, section_name: String, key: String) -> void:
+func _on_boolean_changed(value: bool, section_name: String, key: String, toggle: CheckButton) -> void:
+	toggle.text = "ON" if value else "OFF"
 	var previous_value := bool(_config[section_name][key])
 	_config[section_name][key] = value
 	if not _apply_live_tuning():
 		_config[section_name][key] = previous_value
+		toggle.set_pressed_no_signal(previous_value)
+		toggle.text = "ON" if previous_value else "OFF"
+		call_deferred("_rebuild_fields")
+
+
+func _on_audio_scalar_changed(value: float, group_name: String, key: String) -> void:
+	var previous_value: Variant = _config["audio"][group_name][key]
+	_config["audio"][group_name][key] = value
+	if not _apply_live_tuning():
+		_config["audio"][group_name][key] = previous_value
+		call_deferred("_rebuild_fields")
+
+
+func _on_audio_boolean_changed(value: bool, group_name: String, key: String, toggle: CheckButton) -> void:
+	toggle.text = "ON" if value else "OFF"
+	var previous_value := bool(_config["audio"][group_name][key])
+	_config["audio"][group_name][key] = value
+	if not _apply_live_tuning():
+		_config["audio"][group_name][key] = previous_value
+		toggle.set_pressed_no_signal(previous_value)
+		toggle.text = "ON" if previous_value else "OFF"
 		call_deferred("_rebuild_fields")
 
 
@@ -408,3 +624,17 @@ func _set_open(open: bool) -> void:
 		_rebuild_fields()
 	else:
 		get_tree().paused = _was_tree_paused
+	_update_pause_button()
+
+
+func _toggle_game_paused() -> void:
+	if get_tree() == null:
+		return
+	get_tree().paused = not get_tree().paused
+	_update_pause_button()
+
+
+func _update_pause_button() -> void:
+	if _pause_button == null or get_tree() == null:
+		return
+	_pause_button.text = "Resume Game" if get_tree().paused else "Pause Game"

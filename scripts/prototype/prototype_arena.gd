@@ -12,6 +12,11 @@ const PROJECTILE_IMPACT_STREAM_PATHS := {
 	&"air": "res://assets/prototype/audio/projectile/air_impact.ogg",
 	&"earth": "res://assets/prototype/audio/projectile/earth_impact.ogg",
 }
+const AUDIO_BUS_NAMES := {
+	"ambient": &"Ambient",
+	"sfx": &"SFX",
+	"bgm": &"BGM",
+}
 
 @onready var player = $Player
 @onready var enemy = $Enemy
@@ -22,6 +27,7 @@ const PROJECTILE_IMPACT_STREAM_PATHS := {
 
 var _config: Dictionary = {}
 var _developer_overlay
+var _enemies: Array[Node] = []
 
 
 func _ready() -> void:
@@ -35,10 +41,13 @@ func _ready() -> void:
 		return
 
 	_config = result["data"]
+	_apply_audio_settings()
 	_configure_default_input_map()
 	hud.configure(_config)
 	_connect_feedback()
-	enemy.configure(_config)
+	_enemies = get_tree().get_nodes_in_group("status_targets")
+	for target in _enemies:
+		target.call("configure", _config)
 	player.configure(_config)
 	_start_loop(ambient_audio, _load_audio_stream(AMBIENT_STREAM_PATH))
 	_start_loop(music_audio, _load_audio_stream(MUSIC_STREAM_PATH))
@@ -79,7 +88,9 @@ func _apply_runtime_tuning() -> Dictionary:
 		return validation
 	hud.apply_runtime_tuning(_config)
 	player.apply_runtime_tuning()
-	enemy.apply_runtime_tuning()
+	for target in _enemies:
+		target.call("apply_runtime_tuning")
+	_apply_audio_settings()
 	return validation
 
 
@@ -186,6 +197,20 @@ func _start_loop(player: AudioStreamPlayer, stream: AudioStream) -> void:
 
 func _load_audio_stream(path: String) -> AudioStream:
 	return ResourceLoader.load(path, "AudioStream") as AudioStream
+
+
+func _apply_audio_settings() -> void:
+	var audio: Dictionary = _config["audio"]
+	for group_name_variant in AUDIO_BUS_NAMES:
+		var group_name := str(group_name_variant)
+		var bus_name: StringName = AUDIO_BUS_NAMES[group_name]
+		var bus_index: int = AudioServer.get_bus_index(bus_name)
+		if bus_index < 0:
+			push_error("Missing prototype audio bus: %s" % bus_name)
+			continue
+		var group: Dictionary = audio[group_name]
+		AudioServer.set_bus_mute(bus_index, not bool(group["enabled"]))
+		AudioServer.set_bus_volume_db(bus_index, float(group["volume_db"]))
 
 
 func _trace(event_name: StringName, data: Dictionary) -> void:

@@ -2,468 +2,243 @@
 
 Status: READY_FOR_ULTRON_OR_DUM-E
 
-## 1. Scope and Repository Baseline
+This report is synchronized to the approved gameplay authority in `docs/GAME_DESIGN.md` and the current prototype implementation.
 
-This document defines the architecture for the user-verified design in GAME_DESIGN.md and replaces the previous top-down/Y-finisher technical design.
+## 1. Scope, authority, and repository state
 
-The current source baseline is commit 5d027b5. At that baseline, the repository contains:
+### Authority
 
-- shared Player and Enemy Entity roots;
-- HealthEvent, HealthResult, HealthResolver, Health, Status, and HitReaction;
-- Player Movement, Combat, InputCombo, Heat, and Defence components;
-- functional Fire, Water, Air, and Earth resolver scripts;
-- three-position X chains and immediate Y finishers;
-- top-down movement and a Player-child Camera2D;
-- the non-attacking permanent Enemy;
-- combat HUD, JSON tuning, and Developer Overlay; and
-- the preceding prototype character and VFX assets.
+The technical representation follows this order:
 
-The current working tree is intentionally dirty. It additionally stages the accepted 20 X-attack sheets, shared casting and locomotion sheets, Player presentation lookup for X1–X5, and a side-view arena art pass. Those edits do not yet implement five-position chain rules, side-scrolling collision and gravity, OrbCastingController, analog R2 states, marked-orb behavior, SpellProjectile, or the revised HUD/configuration. This report treats those files as concurrent user-owned work and does not mistake presentation staging for completed gameplay.
+1. the user's latest explicit decision;
+2. the user-verified gameplay and player-experience decisions in `docs/GAME_DESIGN.md`;
+3. this technical representation;
+4. the implementation as repository evidence.
 
-The new GDD materially replaces movement, chain progression, finisher input, casting state, projectile lifetime, HUD, configuration, and animation allocation. Existing user validation applies only to the earlier exercised slice; no side-scrolling Orb Casting runtime evidence exists yet.
+This document does not revise gameplay intent. Where implementation and the GDD differ, the mismatch remains visible for the owning workflow to resolve.
 
-In scope:
+### Reviewed identity
 
-- grounded horizontal movement with gravity and one continuous floor;
-- Player-child horizontal-follow camera;
-- five-position X/Cast chains;
-- all four schools’ X attacks and casting specialties;
-- Player-owned OrbCastingController;
-- analog R2 pressure classification, Heat-scaled orb marking, pause/resume, normal/empowered/failed Casting, and punishment flinch;
-- marked-orb hit loss, sequential lifetime fade, and mark transfer;
-- Arena-spawned SpellProjectile scene;
-- current Health/effect/Heat pipelines;
-- accepted 20-sheet X allocation and shared Casting Spell flipbook;
-- orb/charge/chain/projectile UI plus live developer R2 pressure; and
-- existing Fire parry and Water block state entry.
+- GDD: `docs/GAME_DESIGN.md`, status `User-verified gameplay contract for the current prototype`.
+- Implementation baseline: `e543a43` (`feat: add validated combat prototype slice`).
+- Last committed implementation: `2178fbb` (`feat: expand elemental combat and prototype presentation`).
+- Current source scope: the approved R2 pressure/depletion/Cast state machine, shared X/Cast buffer, orb lifetime presentation, Developer Portal controls, audio-bus integration, and three-target arena fixes are included in the current authorized changeset.
+- Human validation: the user reported, `I verified and validates now`, for the expanded implementation on 2026-08-25. No scenario-level matrix, engine/version, or individual pass/fail breakdown was supplied.
+- Agent checks: the agent did not run Godot, a build, a compiler, or automated tests.
 
-Excluded:
+### Gameplay scope
 
-- jumping and non-flat traversal;
+Included by the GDD:
+
+- grounded left/right movement, gravity, a continuous flat floor, and horizontal camera following;
+- functional Fire, Water, Air, and Earth X attacks and casting specialties;
+- school selection and one school switch per chain;
+- five-position X/Cast chaining and optional endpoint Casting;
+- FIFO elemental orbs, R2 marking, normal Casting, empowered Casting, failed Casting, and casting projectiles;
+- Heat acceleration of attacks, Casting, and R2 marking;
+- Fire parry, Water block, hit reactions, status effects, combat UI, and three non-attacking Enemy targets.
+
+Excluded by the GDD:
+
+- jumping and vertical traversal;
 - Air and Earth defence;
-- active Enemy attacks;
-- final projectile art and final Laema art;
-- final balance; and
-- the deferred change from direct-hit Heat to orb-consumption Heat.
-
-## 2. Current Codebase Map and Migration
-
-| Current owner | Current responsibility | Required migration |
-|---|---|---|
-| PrototypeArena | Configuration distribution and Player/Enemy/HUD wiring | Add flat-floor composition and Arena-owned SpellProjectile spawning |
-| Player | Entity composition, presentation, camera, resolver injection | Compose OrbCastingController, expose casting/projectile signals, retain Camera2D |
-| MovementController | Two-axis velocity and facing | Consume horizontal input only; apply gravity independently of horizontal locks |
-| CombatController | Sole action arbiter, FSM, timing, contact, current finisher orchestration | Classify raw R2 pressure, orchestrate marking state and release, five-position chain actions, casting timing, failure, and spell impact |
-| InputCombo | Three-X token list, one switch, Y level resolution | Become five-position X/Cast chain bookkeeping; remove spell composition |
-| HeatController | Timed Heat resource and speed multiplier | Preserve current direct-hit behavior for this slice |
-| School resolvers | Fire/Water/Air/Earth direct effects | Reuse at SpellProjectile impact with primary-only empowered damage multiplier |
-| DefenceController | Fire parry and Water block | Preserve; do not add Air/Earth defence |
-| StatusController | DoT, Water status, Earth Slow, EffectState | Preserve; add accepted five-level Earth data |
-| PrototypeHUD | Heat, Health, defence, school, and combo feedback | Split presentation into always-visible GameUI and flag-controlled DeveloperReadout; add marked/unmarked orbs, front fade, marking progress, and upper-right pressure gauge |
-| DeveloperOverlay | Backtick fail-fast tuning menu plus attack-hitbox control | Add the persisted DeveloperReadout visibility checkbox and expose accepted R2 tunables |
-| PrototypeConfigLoader | Fail-fast JSON validation and saving | Validate casting, trigger bands, projectile, gravity, five-level Earth, and revised input-window schema |
-
-The shared Entity/Health pipeline remains the architectural foundation. Orb Casting reuses it rather than introducing another damage system.
-
-## 3. Selected Ownership and Communication
-
-    PrototypeArena
-    ├─ FlatFloor / collision
-    ├─ Player : Entity
-    │  ├─ MovementController
-    │  ├─ CombatController
-    │  ├─ InputCombo
-    │  ├─ OrbCastingController
-    │  ├─ HeatController
-    │  ├─ DefenceController
-    │  ├─ Health / HealthResolver
-    │  ├─ Status / HitReaction
-    │  ├─ AnimationPlayer / AttackCast
-    │  └─ Camera2D
-    ├─ Enemy : Entity
-    ├─ PrototypeHUD
-    │  ├─ GameUI
-    │  └─ DeveloperReadout [PROCESS_MODE_ALWAYS]
-    ├─ DeveloperOverlay [backtick tuning menu]
-    └─ SpellProjectile instances
-
-### OrbCastingController
-
-OrbCastingController is a Player-owned sibling component following the existing HeatController pattern. It owns:
-
-- the FIFO orb queue;
-- the active front-orb lifetime;
-- sequential expiration;
-- retained partial marking time;
-- marked capacity from 0 through 5;
-- first-N marked coverage over the FIFO queue;
-- transfer of that coverage when the front orb expires;
-- removal of marked orbs when the accepted owner-hit seam is invoked;
-- immediate FIFO consumption;
-- primary/tie-break/secondary composition; and
-- read-only snapshots containing school, marked state, and front lifetime ratio for UI.
-
-It does not sample raw input, classify trigger pressure, choose action validity, advance the chain, launch projectiles, apply damage, or own animation state. Combat remains the sole input and action authority.
+- active Enemy behaviour and attacks;
+- final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
-### InputCombo
+## 2. Repository map and execution paths
 
-InputCombo remains the accepted-chain record. It owns:
+### Startup and composition
 
-- progression positions 1–5;
-- accepted X and mid-chain Cast tokens;
-- the optional endpoint-Cast boundary;
-- one school switch and at most two schools;
-- completed-chain token snapshots; and
-- timeout/failure clearing.
+`project.godot` selects `scenes/prototype_arena.tscn` as the main scene. `PrototypeArena._ready()` loads and validates `config/prototype_combat.json`, installs runtime InputMap bindings, configures the HUD, Enemy, and Player, connects feedback signals, starts prototype audio, and creates the debug-only DeveloperOverlay (`scripts/prototype/prototype_arena.gd:27-58`). The accepted portal/audio change adds an AudioServer bus-layout resource and applies the validated audio settings through the same Arena-owned tuning path.
 
-It no longer calculates spell levels. OrbCastingController resolves consumed-orb composition.
+The arena scene owns the continuous floor, backdrop, Player instance, three non-attacking Enemy instances, HUD, and arena-level audio (`scenes/prototype_arena.tscn`). `PrototypeArena` configures every `status_targets` group member; the center `Enemy` remains the HUD's primary health-bar source while each target owns its own Health/status presentation. The Player scene composes the movement, combat, chain, orb, Heat, health, status, hit-reaction, and defence components (`scenes/player/player.tscn`).
 
-### SpellProjectile
+### Input and movement
 
-SpellProjectile.tscn is a reusable scene with an Area2D root, collision shape, placeholder visual, and script. It owns:
+Player `_unhandled_input()` forwards school selection, defence, and X input to `CombatController` with the current horizontal facing direction (`scripts/player/player.gd:222-225`).
 
-- forward movement;
-- maximum-distance tracking;
-- first-valid-hit detection;
-- miss/expiry cleanup;
-- blended-color presentation; and
-- resolved spell fields carried until impact.
+`MovementController` samples the left/right axis, updates facing, applies horizontal velocity unless movement is locked, applies gravity while airborne, and calls `CharacterBody2D.move_and_slide()` (`scripts/player/movement_controller.gd:24-41`). The floor is a single `StaticBody2D` on collision layer 4, and Player collision mask 6 permits floor and Enemy interaction (`scenes/prototype_arena.tscn`, `scenes/player/player.tscn`).
 
-The projectile directly stores:
+`Camera2D` remains a Player child. Because the prototype keeps Player grounded on a flat floor, the child camera supplies horizontal following while preserving the intended fixed vertical framing.
 
-- original instigator;
-- facing/travel direction;
-- primary school and level;
-- optional secondary school and level;
-- empowered state;
-- primary damage multiplier; and
-- primary/secondary color weights.
+### Combat and Casting
 
-There is no CastPlan, ResolvedCast, global projectile manager, global event bus, or orb-queue lookup after release.
+`CombatController` owns the action FSM, school selection, chain timing, ShapeCast contact timing, defence entry, hit-reaction interruption, R2 pressure classification, and Cast action creation (`scripts/combat/combat_controller.gd`).
 
-### World spawning and resolution
+The action state is explicit for `READY`, active chain actions, defence, guard break, and hit reaction. R2 pressure state is orthogonal state owned across Combat and `OrbCastingController`; there is no exclusive action-state `CHARGING` mode.
 
-Player emits a typed projectile-spawn request at the casting animation’s launch phase. PrototypeArena:
+The pressure path samples `Input.get_action_raw_strength(&"casting")` and classifies transitions into:
 
-1. instantiates SpellProjectile.tscn;
-2. initializes its direct fields and travel values;
-3. adds it to world space; and
-4. connects its impact signal to Player Combat’s spell-impact boundary.
+- DEPLETING: `0.00–0.10`, fixed-rate marking-meter drain;
+- CHARGING: `0.35–0.65`, Heat-scaled marking;
+- CAST: `0.90–1.00`, one Cast attempt on entry; and
+- intermediate values, retain the previous semantic state.
 
-Arena owns world-object creation but no spell rules. Combat owns spell-impact orchestration and delegates each resolved school layer to the existing school resolvers.
+The CAST transition is edge-triggered, so holding full R2 does not repeatedly Cast. Releasing R2 does not Cast. The same raw API is sampled independently by the HUD's live diagnostic gauge.
 
-Communication remains local and explicit:
+### Shared normalized X/R2 input buffer
 
-- Godot `Input.get_action_raw_strength(&"casting")` to Player/Combat pressure classification;
-- Combat to InputCombo and OrbCastingController by direct component calls;
-- Player to Arena by typed spawn signal;
-- SpellProjectile to Combat by an Arena-wired impact signal;
-- school resolvers to target Entity by HealthEvent;
-- Player and Enemy to HUD by observer signals;
-- DeveloperReadout directly sampling the same un-deadzoned `casting` raw-strength API used by Combat; and
-- DeveloperOverlay visibility checkbox to PrototypeArena/PrototypeHUD by a local callback while mutating the shared validated JSON-backed configuration.
+`CombatController` owns one buffer slot for X presses and R2 full-press Cast requests while a chainable X or Cast animation is active. The persisted `combat.x_buffer_width` is the normalized buffer width; buffer start is derived as `combat.input_window_start - combat.x_buffer_width`. The initial values produce `0.28 <= progress < 0.48`. The loader requires a numeric width in `0.0–1.0` and requires it to be no greater than `combat.input_window_start`.
 
-No Autoload is added.
+The first valid X or full-press Cast request in a buffer period wins. Later requests do not replace it. X stores its school and horizontal direction without calling InputCombo or changing UI state. Full press requires marked orbs, consumes them immediately, and stores a duplicated resolved Cast payload including composition, empowered state, primary multiplier, direction, and instigator. The stored request is promoted at normal-window opening; promotion revalidates the current chain and uses the existing acceptance path. Casts and school switching do not receive any other buffering behavior.
 
-## 4. Movement, Camera, and Action State
+The buffer is cleared on hit reaction, failed Cast, interruption, chain completion/reset, and return to `READY`. Holding X or R2 does not repeat a request. Buffered-Cast presentation and audio begin only when the Cast action is promoted.
 
-### Side-scrolling movement
+### Chain and orb path
 
-MovementController remains the movement owner.
+`InputCombo` owns the five-position token list and one-switch limit (`scripts/combat/input_combo.gd`). A successful or missed X occupies a position; a successful mid-chain Cast occupies a position; the optional Cast after position 5 is an endpoint and does not create a sixth position. Under default rules, an X creates an orb only after valid Enemy contact. The `combat.collect_orb_without_contact` Developer Portal test toggle may grant one orb on a miss without creating a HealthEvent or damage; the current persisted prototype config has this test toggle enabled.
 
-- It samples only left/right actions.
-- Horizontal velocity is input × movement speed × EffectState movement multiplier.
-- Gravity is Godot’s configured 2D default gravity multiplied by a JSON gravity_scale starting at 1.0.
-- Gravity continues while horizontal movement is combat-locked.
-- Combat lock sets horizontal velocity to zero without erasing vertical velocity.
-- Movement calls move_and_slide and relies on CharacterBody2D floor state.
-- Slow modifies horizontal movement only; gravity remains active.
-- Facing is always left or right.
+`OrbCastingController` owns the school FIFO, the single front-orb lifetime, marking capacity, partial mark progress, right-to-left front-orb progress ratio, mark transfer, consumption, and school-composition resolution (`scripts/combat/orb_casting_controller.gd`). Heat supplies the current speed multiplier for marking.
 
-PrototypeArena adds one continuous StaticBody2D floor and positions Player and Enemy directly on it. No jump or vertical movement action is consumed.
+### Projectile and effect path
 
-### Camera
+At the shared normalized contact/launch phase, `CombatController` emits a Cast payload through Player. `PrototypeArena` instantiates and owns `SpellProjectile`, calculates maximum travel distance from visible world width and configuration, and routes the first valid Enemy impact back to Player combat (`scripts/prototype/prototype_arena.gd:154-176`).
 
-Camera2D remains a Player child by explicit decision. The flat floor and grounded spawn keep Player Y stable, so the existing child relationship supplies horizontal following without a new camera controller.
+`SpellProjectile` owns transient travel, visual color blending, travel audio, first valid Enemy collision, and maximum-distance expiry (`scripts/combat/spell_projectile.gd`). Combat passes the resolved primary and secondary school levels to the appropriate resolver. Resolvers create the shared `HealthEvent` and effect instructions consumed by `HealthResolver` and `StatusController`.
 
-### Combat and orthogonal charging
+## 3. Ownership, lifecycle, and interfaces
 
-Combat keeps its explicit FSM for READY, chain activity, defence, guard break, and hit reaction. R2 marking is orthogonal state owned by OrbCastingController; there is no exclusive CHARGING FSM state.
+| Owner | Responsibility and lifetime |
+|---|---|
+| `PrototypeArena` | Scene-level configuration, runtime input binding, feedback wiring, audio-bus application, DeveloperOverlay, and transient `SpellProjectile` instances. |
+| `Player` | Entity root and lifetime owner of movement, Combat, InputCombo, OrbCastingController, Heat, Health, Status, HitReaction, and Defence children. Emits HUD and projectile-request signals. |
+| `MovementController` | Reads horizontal input each physics frame and controls Player velocity, facing, grounding, and movement locks. |
+| `CombatController` | Owns action state, action timing, chain progression calls, pressure transitions, Cast resolution, defence transitions, and resolver dispatch. |
+| `InputCombo` | Owns chain tokens, active state, maximum five positions, and one school switch. |
+| `OrbCastingController` | Owns orb queue state, front expiry, marking state, consumption, and mixed-school composition. |
+| `HeatController` | Owns Heat value, inactivity expiry, and speed multiplier consumed by Combat, animations, and orb marking. |
+| `DefenceController` | Owns Fire parry and Water block state, guard, warning, guard break, and rearm requirement. |
+| `SpellProjectile` | Arena-owned transient Area2D. Emits one impact or expires after its configured travel distance. |
+| School resolvers | RefCounted effect calculators. They do not own entities or persistent combat state. |
+| `HealthResolver` | Entity-owned shared damage/effect resolution, defensive interception, hit reaction request, and instigator result delivery. |
+| `StatusController` | Entity-owned DoT, Water status, Earth Slow, movement multiplier, action suppression, and status snapshots. |
+| `PrototypeHUD` | Presentation-only consumer of Player and Enemy signals. Its GameUI remains visible independently of the developer readout. |
+| `DeveloperOverlay` | Debug-only, always-processing Developer Portal. It pauses the gameplay tree while leaving its own UI responsive, owns the General/Audio/Combat tab presentation, and edits the shared validated configuration. |
 
-Combat samples `Input.get_action_raw_strength(&"casting")` as the normalized `0.0–1.0` gameplay pressure value. DeveloperReadout independently samples that same raw-strength API while visible so its gauge remains live when the backtick menu pauses the gameplay tree. Both paths explicitly bypass the InputMap action deadzone; neither may substitute deadzone-adjusted `get_action_strength()`. Combat owns a transition-based pressure classifier:
+### Material decision ledger
 
-- entering `0.90–1.00` starts or resumes marking;
-- entering `0.35–0.65` pauses marking while retaining partial progress and existing marks;
-- entering `0.00–0.10` attempts one Cast release;
-- values between those bands retain the current semantic pressure state; and
-- the release action is edge-triggered, so a resting trigger does not repeatedly attempt Casting.
+The following are existing technical representations evidenced by the current implementation, not newly invented proposals:
 
-X and subsequent Cast actions may occur while marking is active or paused. On a release transition, Combat classifies timing as idle-normal, valid-window empowered, or rushed failure. OrbCastingController validates marked-orb availability and consumes only on an accepted attempt.
+- Player owns `OrbCastingController` as a sibling to Combat and Heat.
+- Combat remains the action arbiter; OrbCastingController remains the resource/queue owner.
+- PrototypeArena owns SpellProjectile spawning and impact routing.
+- School resolvers reuse the shared HealthEvent pipeline.
+- HUD presentation consumes signals rather than owning gameplay state.
+- Configuration remains fail-fast JSON with validated runtime editing.
 
-The current finisher InputMap action is replaced by `casting`. Controller R2 uses the positive right-trigger axis. Right mouse may remain the developer keyboard/mouse alternative and therefore supplies only digital `0.0/1.0` pressure. Controller Y no longer resolves casting.
+No new material technical choice is selected by this report. The remaining open items are implementation gaps or human validation obligations.
 
-### Chain and animation clock
+## 4. State, data, and effect contracts
 
-X and Cast use the same base action duration, normalized launch/contact phase, normalized chaining-window start, and Heat-derived speed multiplier.
+### Chain and failure transitions
 
-The chaining window remains open from its configured start through normalized animation end. The old configurable window-end field is no longer consumed.
+Combat starts an X action from `READY`, enters chain activity, and accepts subsequent X or Cast input only under the configured chaining-window and marking conditions. A normal Cast ends the chain. An empowered mid-chain Cast occupies the next position; an endpoint Cast after position 5 ends the chain.
 
-Combat action state distinguishes X attack, normal Cast, empowered mid-chain Cast, and empowered endpoint Cast.
+Failed Casting stops the active animation, clears InputCombo and OrbCastingController, emits the Cast-failed feedback signal, and directly requests a level-1 Player hit reaction. It does not synthesize a damage HealthEvent.
 
-Active or paused R2 marking preserves an active chain beyond normal idle timeout. A preserved chain retains movement lock and its orbs. X may begin a chain while R2 is already marking.
+### Orb composition
 
-Successful mid-chain Cast advances one progression position. The optional Cast after position 5 does not create a sixth position and ends the chain.
+At a successful CAST trigger, the consumed FIFO prefix is resolved as follows:
 
-### Failed casting
+1. the majority school is primary;
+2. a primary tie is won by the final consumed orb;
+3. primary level equals total consumed-orb count;
+4. secondary level equals that school's consumed count minus one; and
+5. a secondary result below level 1 is omitted.
 
-Combat rejects a Cast when:
+Consumed orbs are removed immediately on CAST entry, including a buffered full press before the promoted Cast animation begins. They are not refunded if the Cast is later interrupted.
 
-- no orb is marked; or
-- R2 is released before the active X/Cast chaining window opens.
+### Orb lifetime and normal chain timeout
 
-Failure stops the active animation, resets InputCombo and OrbCastingController, creates no projectile, and requests the existing level-1 HitReaction directly. It does not synthesize a damage HealthEvent.
+The front orb lifetime is configured by `casting.orb_lifetime`, currently 7.0 seconds. Only the oldest orb advances its timer; when it expires or is consumed, the next orb receives a fresh full lifetime. The front snapshot exposes a remaining-lifetime ratio rendered as a school-colored circular fill held on the left. The filled region interpolates from full to empty by shrinking from the right edge toward the left, leaving transparent UI space.
 
-Starting or retaining marking across defence, guard break, Frozen, or externally caused hit reaction remains deferred under the accepted design waiver. Combat prevents new marking while actions are blocked, but the TDR does not decide whether pre-existing marks pause, persist, or clear when defence begins.
+When a completed X or Cast action has no pending follow-up and no active CHARGING or DEPLETING pressure state, Combat ends the chain and enters `READY` without clearing `OrbCastingController`. Unconsumed orbs therefore remain visible and continue expiring while Laema is idle or moving. Failed Casting and the existing normal/endpoint Cast completion path retain their clearing behavior.
 
-## 5. Orb, Projectile, and Effect Flows
+### Health and status pipeline
 
-### Orb generation and lifetime
+X contact and SpellProjectile impact create `HealthEvent` values with instigator, target, amount, Impact, delivery type, school, effect instructions, direction, and contact point. `HealthResolver` applies defence, Health, status instructions, and hit reaction, then delivers the result to a still-valid instigator (`scripts/entities/health_resolver.gd:25-105`).
 
-One accepted X action generates at most one orb:
+Fire applies direct damage and independent DoT stacks. Water applies the configured Wet, Slow, or Frozen status with level priority. Air applies its level-1 speed buff or higher-level chain lightning. Earth applies area damage and level-scaled Slow. Status movement and action effects flow back through `StatusController.effect_state_changed` to Player movement and Combat.
 
-    X contact query
-    → at least one valid Enemy contacted
-    → submit normal X HealthEvents
-    → add one active-school orb
+### Defence
 
-Multiple targets do not generate multiple orbs from one X. A miss advances the chain but creates no orb.
+Only Fire parry and Water block are functional. Defence owns guard and rearm state. Combat owns the external action state and movement lock. Air/Earth defence remains excluded. Incoming Enemy attacks are absent from the current scene, so ordinary-play block, parry, guard warning, and guard-break behaviour cannot yet be validated.
 
-OrbCastingController stores school queue order, one front lifetime, retained partial marking time, and an integer marked capacity:
+### Known implementation boundaries
 
-- front lifetime starts at 3.0 seconds;
-- only the front timer advances;
-- UI alpha for the front orb is its remaining-lifetime ratio, producing a linear fade;
-- waiting orbs remain fully visible because their timers have not started;
-- front expiry removes that orb;
-- the next orb begins a fresh 3.0 seconds;
-- the first `min(marked_capacity, queue_size)` entries are marked;
-- when a marked front orb expires, queue compaction transfers marking forward while preserving marked capacity when enough orbs remain;
-- successful mid-chain Cast removes only consumed front orbs;
-- normal Cast, endpoint Cast, timeout, and failure clear the remaining queue.
+- `OrbCastingController.remove_marked_orbs_on_owner_hit()` exists, but no current Player hit path calls it. The GDD requires marked-orb loss on Player hit while retaining unmarked orbs. The current non-attacking Enemy makes this unexercisable; the dispatch remains an open DUM-E implementation item.
+- School-specific idle/walk asset candidates exist in `assets/prototype/player/`, but `Player._get_idle_texture()` and `_get_walk_texture()` currently return the shared locomotion sheets. Per-school X attack sheets are wired; the school-specific locomotion presentation is not yet wired.
 
-While pressure is in the active state, partial marking time advances using the current Heat multiplier. One mark completes every effective `0.5 / HeatMultiplier` seconds, and marked capacity caps at 5. Pausing retains partial time and marked capacity. A successful release consumes all currently marked front orbs and resets marking state.
+## 5. Configuration, persistence, compatibility, and performance
 
-OrbCastingController exposes a bounded owner-hit operation that removes every currently marked front orb, leaves all unmarked orbs in FIFO order, and resets marked capacity. Because the current Enemy cannot attack and R2–defence overlap is waived, this report does not choose which future blocked, parried, zero-impact, or status outcomes invoke that operation.
+`config/prototype_combat.json` contains an `audio` section with three functional groups—Ambient, SFX, and BGM—each with an `enabled` Boolean and `volume_db` numeric value. The current persisted config has Ambient and SFX enabled and BGM disabled; the portal can change each setting. The `combat.collect_orb_without_contact` Boolean is currently enabled as a developer test setting, and `combat.x_buffer_width` is `0.20`. The pressure fields use `trigger_deplete_max`, `trigger_charge_center`, `trigger_charge_half_width`, and `trigger_cast_min`; the loader validates ordered non-overlapping bands, the buffer-width relation to `input_window_start`, five-level Water/Earth arrays, integer marked capacity, developer-readout Boolean, no-contact orb toggle, and all six audio fields.
 
-### Composition and launch
+`DeveloperOverlay` edits the in-memory configuration, applies validated live tuning, and persists the same JSON document through the Arena-owned save callback. Its fixed shared header is followed by top-level General, Audio, and Combat tabs; Combat contains nested tabs for Combat, Casting, Heat, Fire, Water, Air, Earth, Defence, and Hit Reaction. Boolean controls use visible ON/OFF toggles and volume controls remain bounded numeric controls. Gravity Scale is omitted from the Portal control surface while remaining part of movement configuration.
 
-At successful R2 release, OrbCastingController consumes all marked orbs immediately and returns resolved values to Combat’s current casting action:
+The accepted bus-layout resource adds `Ambient`, `SFX`, and `BGM` buses, each routed to untouched `Master`. `enabled` maps to the corresponding AudioServer bus mute state; `volume_db` maps to that bus volume, so a live re-enable resumes the current player stream rather than restarting it. `AmbientAudio` uses `Ambient`; `MusicAudio` uses `BGM`; Player's attack, cast, orb, cast-failure, and guard-warning players plus SpellProjectile travel and Arena projectile-impact players use `SFX`. No audio asset paths are added or replaced.
 
-1. majority consumed school becomes primary;
-2. a tie is won by the final consumed orb;
-3. primary level equals total consumed count;
-4. secondary level equals that school’s consumed count minus 1;
-5. a secondary below level 1 is omitted.
+SpellProjectiles are transient scene instances and carry a duplicated launch payload only for their lifetime. Air chain queries are bounded by the configured target limit and engine query cap; Earth area queries are bounded by the engine query cap. No worker threads, shared global event bus, Autoload gameplay state, or network synchronization is introduced.
 
-The current action retains those direct fields only until projectile launch. Interrupted casting does not refund orbs.
+Debug traces are event-oriented and guarded by `OS.is_debug_build()`. Existing trace ownership remains local to MovementController, CombatController, OrbCastingController, SpellProjectile, PrototypeArena, HeatController, StatusController, and DefenceController. The attack-hitbox sweep remains toggleable through the DeveloperOverlay.
 
-At the shared normalized contact/release phase, Player asks Arena to spawn SpellProjectile.
+## 6. Presentation and asset representation
 
-- Arena derives visible world width from the active viewport/camera transform.
-- Maximum travel distance is 50% of that width.
-- Travel duration is 1.0 second.
-- Projectile speed is maximum distance divided by travel duration.
-- Direction is Player facing at successful release.
-- Collision targets Enemy Entity bodies.
-- First valid Enemy hit emits one impact and destroys the projectile.
-- Maximum distance destroys it without impact.
+The current implementation wires:
 
-For primary level P and secondary level S, color weights are P divided by P + S and S divided by P + S. A primary-only projectile uses the primary color.
+- five X attack sheets for each school;
+- shared casting, idle, and walk sheets;
+- a visible Player-attached empowered-Cast dot;
+- code-native color blending for SpellProjectile;
+- school-specific attack and Cast audio;
+- arena backdrop and floor prototype assets;
+- Enemy status badges, health, flinch, and status VFX; and
+- the always-visible orb queue and marking-progress bar.
 
-### Spell impact
+The accepted prototype mapping is Fire/Fighter, Water/Prototype Saber Fighter, Air/Shinobi, and Earth/Samurai. This mapping is prototype presentation only and does not define final Laema art. Fire/Air locomotion-shell discontinuity remains accepted. Final projectile, final character, final UI, and final tuning remain open.
 
-Combat resolves primary first, then secondary, using the projectile’s direct fields and existing resolver boundary.
+AnimationPlayer timing remains authoritative. Flipbook frame counts affect presentation sampling only; they do not independently change action duration, contact phase, launch phase, chaining window, hitbox, or damage.
 
-- Fire: direct damage plus DoT stacks equal to Fire level.
-- Water: direct damage plus existing Wet/Slow/Frozen instruction.
-- Air: level 1 applies the timed attack-speed buff; levels 2–5 use current chain-lightning scaling.
-- Earth: area damage and five-level Slow data.
+## 7. Validation, waivers, and instrumentation
 
-Empowered 1.3× direct-damage multiplication applies only to the primary resolver. Status strength, DoT stacks, chained-target count, area, Slow, and secondary direct damage remain unchanged.
+### Human validation report and remaining seams
 
-Resolver interfaces gain an explicit direct-damage multiplier or equivalent resolved amount. They do not read projectile nodes, orb state, or Combat state.
+The user report is now present for the expanded implementation. The following remain the required validation seams for any later detailed evidence record:
 
-Each direct HealthEvent continues through the shared HealthResolver. Existing synchronous HealthResult delivery and direct-hit Heat behavior remain unchanged. The later orb-consumption Heat design is documented but not implemented.
+- grounding, horizontal movement, gravity, and camera framing;
+- all four schools' X1–X5 attacks and hit-generated orbs;
+- baseline and high-Heat X→X→X→X→X runs with the normalized X/R2 buffer, including first-request wins, promotion, and clear/invalidation traces;
+- default contact-required orb collection and no-contact orb collection when the Developer Portal test toggle is enabled, with no damage on a no-contact grant;
+- five-position X/Cast chains, school switching, endpoint Casting, and failed Casting;
+- FIFO expiry, right-to-left reverse orb progress, mark transfer, consumption, and simultaneous R2/X activity;
+- seven-second FIFO expiry and unconsumed-orb persistence while idle or moving after normal chain timeout;
+- R2 DEPLETING, CHARGING, and CAST transitions, fixed-rate depletion, and full-press Cast behavior;
+- live DeveloperReadout pressure, developer visibility persistence, and always-visible GameUI;
+- projectile launch, travel, first-hit collision, color blend, expiry, and all four school effects;
+- Air speed buff and chain lightning; Earth area damage and Slow;
+- Heat scaling, status feedback, hit reactions, and empowered primary-only `1.3×` damage; and
+- school presentation switching, attack readability, HUD readability, and audio feedback.
 
-## 6. Configuration, UI, and Assets
+The three current Enemy targets do not attack. Therefore incoming-hit marked-orb loss, Water block, Fire parry, guard depletion, guard warning, and guard break remain outside ordinary-play validation.
 
-### JSON configuration
+### Accepted waivers and deferred boundaries
 
-The Arena-owned fail-fast JSON model remains. Required additions:
+The following remain retained and must not be silently converted into implementation claims:
 
-    movement
-    └─ gravity_scale = 1.0
+- active-mark interaction with defence, guard break, Frozen, and externally caused hit reaction;
+- no predefined experiential success/failure criteria for this prototype;
+- empowered-window timing relies on the animation clock;
+- original-instigator behaviour after the instigator Entity is freed;
+- high-Heat timing crossing narrow normalized phases;
+- direct-hit Heat remains current; orb-consumption Heat conversion is deferred;
+- Air/Earth defence and active Enemy behaviour remain excluded; and
+- final art, final tuning, complete enemy content, and final projectile art remain open.
 
-    casting
-    ├─ orb_lifetime = 3.0
-    ├─ charge_step_duration = 0.5
-    ├─ max_marked_capacity = 5
-    ├─ trigger_release_max = 0.10
-    ├─ trigger_pause_center = 0.50
-    ├─ trigger_pause_half_width = 0.15
-    ├─ trigger_press_min = 0.90
-    ├─ empowered_primary_multiplier = 1.3
-    ├─ projectile_screen_ratio = 0.5
-    └─ projectile_travel_duration = 1.0
+### Instrumentation inventory
 
-    ui
-    └─ developer_overlay_visible = true
+Retained debug-only traces cover grounded/facing transitions, movement locks, Combat actions and pressure-state transitions, contact and launch, orb creation/charging/depletion/expiry/transfer/consumption/clearing, projectile spawn/impact/expiry, the HUD's displayed marking-bar value at five-percent increments or marked-count changes, Heat, status application, and defence entry/block/parry/release/guard break.
 
-Casting reuses combat.attack_duration, combat.hit_phase, and combat.input_window_start. The normalized window end is fixed at animation end. The old combat.input_window_end and combat.finisher_damage fields are removed or migrated to revised casting naming in one coordinated config update.
+## 8. Handoff and submission boundary
 
-Earth configuration contains:
+This technical report describes the current expanded prototype implementation and records the user's expanded validation report.
 
-| Level | Radius | Slow | Duration |
-|---|---:|---:|---:|
-| 1 | 28 | 15% | 1.5s |
-| 2 | 38 | 25% | 2.0s |
-| 3 | 48 | 40% | 2.5s |
-| 4 | 58 | 40% | 3.0s |
-| 5 | 68 | 40% | 4.0s |
-
-PrototypeConfigLoader validates positive durations/distances, marked capacity as integer 5, trigger values in `0.0–1.0`, exactly five Earth levels, and existing school/effect contracts. Trigger validation also requires:
-
-```text
-trigger_release_max
-< trigger_pause_center - trigger_pause_half_width
-< trigger_pause_center + trigger_pause_half_width
-< trigger_press_min
-```
-
-The starting values produce the accepted `0–10%` release band, `35–65%` pause band, and `90–100%` press/resume band. PrototypeConfigLoader also requires `ui.developer_overlay_visible` to be Boolean. DeveloperOverlay exposes the accepted R2 tunables and the DeveloperReadout visibility checkbox while retaining full-document validation before saving.
-
-There is no save-game migration requirement. The coordinated JSON schema fails fast rather than silently defaulting.
-
-### HUD
-
-HUD remains presentation-only but is divided into two visibility domains.
-
-GameUI is unaffected by the developer visibility flag:
-
-- Orb UI displays the FIFO school-colored queue.
-- Each orb snapshot identifies whether it is currently marked.
-- The front orb’s alpha equals its remaining-lifetime ratio; waiting orbs remain fully visible.
-- A ProgressBar beneath the queue displays partial progress toward the next mark and completed marked capacity.
-- Expired, consumed, and owner-hit-lost marked orbs disappear.
-- Target status and overhead Health presentation remain visible through their existing owners.
-
-DeveloperReadout is one flag-controlled presentation group:
-
-- upper left: Heat, Player Health, Enemy Health, and defence;
-- upper center: active school, five-position chain, and completed-chain feedback; and
-- upper right: live raw R2 pressure gauge.
-
-DeveloperReadout begins visible from `ui.developer_overlay_visible = true`. Its always-processing presentation path polls `Input.get_action_raw_strength(&"casting")` directly while visible, including while DeveloperOverlay has paused the tree. This updates only the diagnostic gauge; Combat, OrbCastingController, and gameplay timing remain paused.
-
-DeveloperOverlay remains the backtick tuning menu. Its checkbox changes the shared Boolean, immediately applies DeveloperReadout visibility through the existing Arena-owned tuning path, and persists through the existing validated Save-to-JSON action.
-
-### Animation allocation
-
-| School | X1 | X2 | X3 | X4 | X5 |
-|---|---|---|---|---|---|
-| Fire | Punch 1 | Punch 2 | Fire Kick | Explosive Strike | Power Strike |
-| Water | Attack 1 | Attack 2 | Attack 3 | Enchanted Attack 1 | Enchanted Attack 2 |
-| Air | Aerial Strike | Double Strike | Energy Wave | Wind Power | Weapon 1 |
-| Earth | Attack 1 | Attack 2 | Attack 3 | Power Punch 1 | Power Punch 2 |
-
-All use 128×128 cells and the shared feet baseline.
-
-- Water and Earth use matching family Idle/Walk sheets.
-- Fire and Air use the Medieval Character Pack 6 locomotion shell.
-- Fire/Air prop discontinuity is accepted.
-- All schools use Free Prototype Character Pack 2 Casting Spell.png.
-- Final projectile art remains open; SpellProjectile uses a code-native colorable placeholder.
-- Empowered Cast uses a visible Player-attached dot.
-
-AnimationPlayer timing remains authoritative. Flipbook frame counts affect presentation sampling, not action duration, launch phase, chain window, hitbox, or damage.
-
-## 7. Implementation Slices, Validation, and Handoff
-
-### Implementation slices
-
-1. Side-scrolling foundation
-   - Convert MovementController to horizontal input plus gravity.
-   - Add continuous floor collision and grounded spawn.
-   - Preserve Player-child Camera2D.
-
-2. Chain and Orb Casting
-   - Add OrbCastingController.
-   - Convert InputCombo to five X/Cast positions and one all-school switch.
-   - Replace Y with analog R2 pressure classification and semantic Casting transitions.
-   - Add Heat-scaled marking, pause/resume, marked-orb snapshots, sequential fade, and mark transfer.
-   - Add normal, empowered, endpoint, consecutive, and failed outcomes.
-
-3. Casting and projectile
-   - Integrate Casting Spell flipbook.
-   - Launch at the shared phase.
-   - Add Arena-owned SpellProjectile spawning and direct fields.
-   - Reuse school resolvers at impact with primary-only empowered damage.
-
-4. Configuration, UI, and assets
-   - Update JSON, trigger-band validation, Developer Overlay, and Earth levels.
-   - Split PrototypeHUD into always-visible GameUI and flag-controlled DeveloperReadout presentation groups.
-   - Add marked-orb queue, front-orb fade, marking-progress bar, upper-right live raw pressure gauge, and persisted visibility checkbox.
-   - Import and wire accepted attack/locomotion flipbooks.
-   - Add placeholder projectile and empowered dot.
-
-5. Validation and synchronization
-   - Preserve Health attribution and accepted instigator-lifetime waiver.
-   - Run static source/config/resource checks only unless the user authorizes more.
-   - Hand the complete source to the user for Godot validation.
-   - Synchronize implementation status only from returned evidence.
-
-### Required human validation
-
-- Player lands on the flat floor, moves horizontally, and retains fixed vertical framing.
-- Every school plays X1–X5 and creates one orb only on an Enemy hit.
-- School switching preserves chain position and FIFO composition.
-- Only the front orb expires and fades linearly; the next starts fully visible at full duration.
-- R2 enters release at `0–10%`, pause at `35–65%`, and press/resume at `90–100%`; intermediate pressure preserves the prior semantic state.
-- Combat and DeveloperReadout independently sample the same un-deadzoned raw R2 API, independent of the InputMap action deadzone.
-- The upper-right pressure gauge remains live while the backtick menu pauses Combat and OrbCastingController.
-- DeveloperReadout defaults visible; its checkbox hides or shows the upper-left, upper-center, and upper-right diagnostic regions together.
-- Saving then reloading the JSON restores DeveloperReadout visibility.
-- The orb queue, marking-progress bar, target statuses, and target overhead Health remain visible regardless of the developer flag.
-- Marking advances every effective `0.5 / HeatMultiplier` seconds, caps at 5, pauses without losing partial progress, and coexists with X/Cast actions.
-- A marked front-orb expiry transfers marking forward when enough orbs remain.
-- Normal, empowered, mid-chain, consecutive, endpoint, rushed, no-orb, and undercharged outcomes match the GDD.
-- Failed Cast flinches and clears the chain.
-- Consumed orbs are not refunded after interruption.
-- SpellProjectile launches, travels, blends color, resolves first hit, and expires correctly.
-- Primary/tie-break/secondary levels and primary-only empowered damage are correct.
-- Fire, Water, Air, and Earth effects use the shared Health pipeline.
-- GameUI, DeveloperReadout, DeveloperOverlay, Heat, status, and accepted animations remain readable.
-
-### Open evidence and boundaries
-
-- The redesign has not been run in Godot.
-- Existing validation applies only to the preceding prototype.
-- The current Enemy cannot exercise marked-orb hit loss; an owner-hit seam is defined, but its runtime behavior remains unverified until an attacking Enemy exists.
-- Active-mark interaction with defence, guard break, Frozen, and external hit reaction is deferred under the accepted design waiver.
-- The prototype has no predefined experiential success/failure criteria under the accepted design waiver.
-- Empowered-window timing relies on animation alone under the accepted design waiver.
-- Active Enemy attacks and ordinary defensive validation remain absent.
-- Original-instigator behavior after the instigator Entity is freed remains the accepted waiver.
-- High Heat speed may cross narrow normalized phases and requires human timing validation.
-- Final projectile and final Laema art remain open.
-- Orb-consumption Heat has no conversion rate and is not implemented.
-
-Instrumentation inventory:
-
-- Existing toggleable attack-hitbox sweep remains.
-- Retained debug-build, event-only traces cover grounded/facing and movement-lock changes; combat action, pressure, contact, cast, launch, and effect resolution; orb creation, marking, expiry, transfer, consumption, and clearing; projectile spawn, impact, and expiry; Heat gain and expiry; status application; and defence entry, block/parry, release, and guard break.
-- Trace ownership remains local to `MovementController`, `CombatController`, `OrbCastingController`, `SpellProjectile`, `PrototypeArena`, `HeatController`, `StatusController`, and `DefenceController`; no Autoload, global event bus, runtime overlay, or gameplay state is added.
-
-Friday recommends optional Ultron mode=tech-preflight because the change replaces movement and chain semantics, adds analog trigger-state classification and a timed Player resource, introduces cross-scene projectile lifetime, changes configuration, touches existing damage/defence seams, and preserves multiple accepted waivers.
-
-After user verification, this report is ready for Ultron or DUM-E. The user chooses the next handoff.
+The report is ready for a fresh Ultron `mode=tech-postflight` audit. Local implementation gaps remain assigned to DUM-E; any missing scenario-level human evidence remains assigned to Human. A postflight result does not submit, commit, or approve gameplay.

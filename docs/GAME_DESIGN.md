@@ -1,16 +1,16 @@
 # Laema Side-Scrolling Orb Casting Prototype
 
-Status: User-verified design ready for technical handoff.
+Status: User-verified gameplay contract for the current prototype.
 
 ## Overview
 
-This prototype tests the existing four-school combat system in a 2D side-scrolling space. Laema builds a temporary queue of elemental orbs through successful X attacks, charges Casting independently with R2, and releases normal or empowered school spells through timing and resource composition.
+This prototype tests the existing four-school combat system in a 2D side-scrolling space. Laema builds a temporary queue of elemental orbs through successful X attacks, charges and depletes Casting with R2, and triggers normal or empowered school spells through full-pressure timing and resource composition.
 
-The primary experience remains deliberate combat mastery. The player should learn to maintain an attack chain, build the desired elemental sequence, charge while continuing to attack, and release Casting at an intentional moment.
+The primary experience remains deliberate combat mastery. The player should learn to maintain an attack chain, build the desired elemental sequence, charge while continuing to attack, and trigger Casting at an intentional pressure moment.
 
 ## Prototype Scope
 
-**Included:** grounded left/right movement, gravity, one continuous flat floor, horizontal camera following, functional Fire/Water/Air/Earth X attacks and casting specialties, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, and one non-attacking Enemy target.
+**Included:** grounded left/right movement, gravity, one continuous flat floor, horizontal camera following, functional Fire/Water/Air/Earth X attacks and casting specialties, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, and three non-attacking Enemy targets.
 
 **Excluded:** jumping, vertical traversal controls, Air and Earth defence, active Enemy behavior and attacks, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
@@ -20,9 +20,9 @@ The primary experience remains deliberate combat mastery. The player should lear
 |---|---|
 | Left stick | Move left or right and face that direction |
 | X | Perform the active school’s attack |
-| R2 pressed into the 90–100% upper endpoint deadzone | Start or resume marking orbs for Casting |
-| R2 eased to approximately 50% | Pause orb-marking progress |
-| R2 released into the 0–10% lower endpoint deadzone | Attempt Casting |
+| R2 held in the 35–65% charge band | Charge and mark orbs |
+| R2 entering the 90–100% CAST band | Trigger Casting once on entry |
+| R2 held in the 0–10% lower endpoint deadzone | Deplete the marking meter |
 | D-pad Up | Select Fire |
 | D-pad Down | Select Water |
 | D-pad Left | Select Air |
@@ -87,9 +87,13 @@ X → Cast → X → X → X → Cast
 
 In `X1 → X2 → Cast → X → X`, the Cast occupies position 3; the following attacks use the X4 and X5 presentations.
 
-Every attack and casting animation has a chaining window. Once that window opens, it remains valid through the end of the animation. Inputs before the window opens are rushed inputs.
+Every attack and casting animation has a chaining window. Once that window opens, it remains valid through the end of the animation. Inputs before the applicable buffer zone are rushed inputs.
 
 For this prototype, X attacks and Casting use the same base animation duration and normalized chaining-window timing. Heat accelerates both through the same current speed multiplier.
+
+X presses and full-press Cast requests use one shared normalized pre-window buffer. The buffer width is 20% of normalized action duration. With `combat.input_window_start = 0.48` and `combat.x_buffer_width = 0.20`, the initial buffer zone is `0.28 <= progress < 0.48`. One valid X or full-press Cast request may occupy the buffer slot; later requests in that same buffer period are ignored. The buffer applies while the current chainable animation is X or Cast, and does not apply to school switching.
+
+An X buffer stores one school-and-direction action intention without advancing the chain or UI, then promotes it through the normal X acceptance path when the chaining window opens. A buffered full press requires marked orbs, consumes them immediately, resolves and freezes the Cast composition and existing Cast fields, then promotes the resolved Cast as the appropriate empowered mid-chain or endpoint Cast when the chaining window opens. Early X remains ignored; an early full press before the buffer without a valid request remains a rushed Cast failure. Buffer state does not repeat from held input and clears on interruption, hit reaction, failed Cast, chain completion/reset, or return to `READY`.
 
 ## Orb Queue
 
@@ -105,12 +109,13 @@ Every X attack that hits an Enemy creates one orb matching the attack’s school
 Orbs form a first-in, first-out queue.
 
 - Only the oldest orb counts down toward expiration.
-- Its lifetime is three seconds.
-- The oldest orb fades linearly from fully visible to invisible across its remaining lifetime.
+- Its lifetime is seven seconds.
+- A newly spawned orb is a solid school-colored disc (Fire is red). As its lifetime falls, the filled region interpolates from 100% to 75%, 50%, 25%, and empty by shrinking from the right edge toward the left; the unfilled region is transparent.
 - Later orbs retain their full lifetime while another orb remains ahead of them.
-- When the oldest orb expires or is consumed, the next orb immediately begins its full three-second lifetime.
+- When the oldest orb expires or is consumed, the next orb immediately begins its full seven-second lifetime.
 - Unconsumed orbs remain after a successful mid-chain Cast.
-- Ending or failing the chain clears every remaining orb.
+- When a chain times out after a completed action without a follow-up, the chain state ends but unconsumed orbs remain while Laema is idle or moving and continue their FIFO expiration.
+- A failed Cast clears every remaining orb. Normal and endpoint Cast completion retain their existing clear-after-consumption behavior.
 
 Example:
 
@@ -119,25 +124,34 @@ Air X hit → Air X hit → switch Water → Water X hit → Water X hit
 Orb queue: A A W W
 ```
 
-## R2 Charging
+## R2 Pressure and Charging
 
-R2 charging may begin at any time, with or without available orbs, and continues while Laema attacks or performs casting animations. Charging capacity marks the oldest available orbs in first-in, first-out order.
+R2 pressure has three semantic states. Values between the configured bands retain the previous semantic state, and state changes are transition-based:
 
-- Pressing R2 into the 90–100% upper endpoint deadzone starts or resumes marking progress.
-- Easing R2 to approximately 50% pauses marking progress without attempting a Cast. Existing progress and marked orbs remain.
-- Pressing R2 back into the 90–100% upper endpoint deadzone resumes from the paused progress.
-- Releasing R2 into the 0–10% lower endpoint deadzone attempts to resolve Casting.
-- The approximate 50% pause point and its positive/negative tolerance band are tunable. The prototype begins with a ±15% band, so 35–65% pressure counts as paused.
-- For the prototype, 0–10% counts as fully released and 90–100% counts as fully pressed. References below to fully releasing R2 use the lower endpoint deadzone rather than requiring an exact 0% reading.
-- Casting capacity increases by one marked orb every nominal 0.5 seconds.
+- `0–10%`: **DEPLETING**; marking capacity and partial progress drain.
+- `35–65%`: **CHARGING**; available orb capacity charges and marks in FIFO order.
+- `90–100%`: **CAST**; one Cast attempt occurs on entry.
+
+CHARGING may begin at any time, with or without available orbs, and continues while Laema attacks or performs casting animations. Charging capacity marks the oldest available orbs in first-in, first-out order.
+
+- Entering CHARGING starts or resumes marking progress.
+- Entering DEPLETING drains the continuous marking meter at the baseline `charge_step_duration` rate, without Heat scaling or queue-orb removal.
+- Entering CAST triggers one normal or empowered Cast attempt; holding at full pressure does not repeat it.
+- Releasing R2 no longer triggers Casting.
+- The charge band center and tolerance are tunable. The prototype begins with a ±15% band, so 35–65% pressure counts as CHARGING.
+- For the prototype, 0–10% is DEPLETING and 90–100% is CAST; no exact 0% or 100% reading is required.
+- Casting capacity increases by one marked orb every nominal 0.5 seconds while CHARGING.
 - At baseline speed, the first orb becomes marked after 0.5 seconds.
 - At baseline speed, maximum capacity is five marked orbs after 2.5 seconds.
 - Holding longer leaves capacity at five.
-- R2 charging speed uses the same current Heat multiplier as attack and casting animations. At multiplier `M`, effective step duration is `0.5 / M` seconds and full five-orb charge time is `2.5 / M` seconds.
-- Holding or pausing R2 preserves the active chain and its orb queue beyond the normal idle timeout.
+- CHARGING uses the current Heat multiplier. At multiplier `M`, effective step duration is `0.5 / M` seconds.
+- DEPLETING uses fixed real time at the baseline `0.5` second step duration. Five marked orbs deplete in 2.5 seconds, independent of Heat.
+- Partial DEPLETING progress is continuous. Crossing a completed-mark boundary unmarks the most recently marked orb first.
+- DEPLETING never consumes or removes queue orbs.
+- CHARGING and DEPLETING preserve the active chain and its orb queue beyond the normal idle timeout.
 - Marking does not pause expiration. If a marked oldest orb expires, the existing marking coverage transfers forward with the shifted queue, preserving the marked count when enough orbs remain.
 - When Laema is hit, every marked orb is removed. Unmarked orbs remain in the queue and continue their normal expiration countdown.
-- Fully releasing R2 consumes:
+- Entering CAST consumes:
 
 ```text
 all currently marked orbs
@@ -145,20 +159,20 @@ all currently marked orbs
 
 Consumption is first-in, first-out. For example, two marked orbs in `A A W W` consume `A A`.
 
-Marked orbs are consumed immediately when a Cast successfully begins. If casting is interrupted before projectile launch, those orbs are not refunded.
+Marked orbs are consumed immediately on CAST entry, including a buffered full press before the promoted Cast animation begins. If Casting is interrupted before projectile launch, those orbs are not refunded.
 
 ## Casting Outcomes
 
 ### Normal Cast
 
-Fully releasing R2 while Laema is idle performs a normal Cast when at least one orb is marked. A normal Cast ends the current chain after consuming its marked orbs.
+Entering CAST while Laema is idle performs a normal Cast when at least one orb is marked. A normal Cast ends the current chain after consuming its marked orbs.
 
 ### Empowered Cast
 
-Fully releasing R2 during an attack or casting animation’s valid chaining window performs an empowered Cast.
+Entering CAST during an attack or casting animation’s valid buffer/window performs an empowered Cast.
 
 - A mid-chain empowered Cast occupies the next progression position and may continue chaining.
-- An empowered Cast released after position 5 is the optional endpoint Cast and ends the chain.
+- An empowered Cast triggered after position 5 is the optional endpoint Cast and ends the chain.
 - Empowered Casting displays a distinct VFX on Laema; a visible dot is sufficient for the prototype.
 - Only the primary school’s direct damage receives the empowered multiplier.
 - Empowered primary direct damage is `1.3×` the corresponding normal-cast damage.
@@ -168,8 +182,8 @@ Fully releasing R2 during an attack or casting animation’s valid chaining wind
 
 Casting fails when any of the following is true:
 
-- R2 is fully released before any orb is marked.
-- R2 is fully released during an active attack or casting animation before its chaining window opens.
+- Full press is triggered before any orb is marked.
+- Full press is triggered during an active attack or casting animation before its buffer zone opens.
 
 A failed Cast:
 
@@ -178,7 +192,7 @@ A failed Cast:
 - ends the chain and clears its orbs; and
 - applies the existing level-1 light flinch and recovery to Laema.
 
-Fully releasing R2 while idle is not a timing failure. It succeeds when at least one orb is marked.
+Entering CAST while idle is not a timing failure. It succeeds when at least one orb is marked.
 
 ## Mixed-School Resolution
 
@@ -285,7 +299,7 @@ Only Fire and Water defence are functional in this prototype.
 - Holding L1 after the window closes provides no defence while movement remains locked.
 - Another parry requires releasing and pressing L1 again.
 
-L1 does nothing while Air or Earth is selected. Air parry and Earth blocking remain deferred.
+L1 does nothing while Air or Earth is selected. Air and Earth defence remain deferred.
 
 ## Health, Impact, and Heat
 
@@ -307,16 +321,16 @@ Heat levels continue increasing attack and casting animation speed. Inactivity r
 
 ## Enemy and Feedback
 
-The prototype Enemy remains stationary, non-attacking, permanent, and unable to die. Damage is capped at remaining Health; reaching zero resolves normally and then immediately refills Health without clearing active effects.
+The prototype contains three stationary, non-attacking, permanent Enemy targets that cannot die. Damage is capped at each target's remaining Health; reaching zero resolves normally and then immediately refills that target's Health without clearing active effects.
 
-The target’s status display communicates active DoT, Wet, Slow, Frozen, and Earth Slow effects. Frozen also applies its blue tint.
+Each target’s status display communicates active DoT, Wet, Slow, Frozen, and Earth Slow effects. Frozen also applies its blue tint.
 
 The always-visible game UI includes:
 
 - a school-colored FIFO orb queue; and
 - an R2 marking-progress bar beneath the orb queue.
 
-Consumed, expired, and hit-lost marked orbs disappear. The queue distinguishes marked orbs from unmarked orbs, and the actively expiring oldest orb displays its remaining lifetime through its linear fade.
+Consumed, expired, and hit-lost marked orbs disappear. The queue distinguishes marked orbs from unmarked orbs, and the actively expiring oldest orb displays its remaining lifetime through a left-filled reverse progress indicator whose empty portion grows right to left.
 
 The prototype developer overlay contains:
 
@@ -324,21 +338,31 @@ The prototype developer overlay contains:
 - the upper-center active-school, five-position-chain, and completed-chain readouts; and
 - an upper-right gauge showing R2’s live raw pressure percentage.
 
-The backtick tuning menu contains one flag that shows or hides all three developer-overlay regions together. The flag defaults to visible for this prototype and is saved in the fail-fast JSON configuration. It does not affect the orb queue, R2 marking-progress bar, target status display, or target overhead Health display.
+The backtick Developer Portal has a shared header with Save to JSON, status, and Close controls, followed by three top-level tabs:
+
+- **General:** Movement, Player, Enemy, UI, and the saved developer-overlay visibility flag. Gravity Scale is intentionally omitted from the Portal control surface.
+- **Audio:** Ambient, SFX, and BGM groups. Each group has an Enabled control and a Volume control.
+- **Combat:** nested sub-tabs for Combat, Casting, Heat, Fire, Water, Air, Earth, Defence, and Hit Reaction. The Combat sub-tab contains attack-hitbox visibility, the `collect_orb_without_contact` testing toggle, and the Combat controls. When enabled, a missed X can collect an orb without applying damage; the persisted prototype config currently has this test toggle enabled.
+
+Audio controls apply immediately and persist through the same fail-fast JSON save/load flow. Ambient controls the wind loop; SFX controls attack, cast, orb, projectile, cast-failure, and guard-warning feedback; BGM controls the Fairy Battles music loop. These controls do not affect the orb queue, R2 marking-progress bar, target status display, target overhead Health display, or gameplay rules.
 
 ## Tunables and Validation
 
-Prototype tunables include movement speed, gravity, attack and casting duration, contact/release phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 charge interval and capacity, R2 pause threshold and tolerance band, empowered multiplier, Heat, defence, Impact, hit reactions, statuses, Health, and feedback duration.
+Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 charge interval and capacity, R2 charge band center and tolerance, empowered multiplier, Heat, defence, Impact, hit reactions, statuses, Health, and feedback duration.
 
 The prototype must make the following observable:
 
 - grounded left/right movement and horizontal camera following;
 - five-position chaining with X and mid-chain Casts;
 - all four school X attacks and hit-generated orbs;
-- FIFO orb expiration, linear lifetime fade, mark transfer, and consumption;
+- normalized X/R2 pre-window buffering at baseline and high Heat, including first-request arbitration, promotion, and clear/invalidation behavior;
+- the default contact requirement and the Developer Portal's optional no-contact orb-collection test toggle;
+- all three Enemy targets accept X and projectile contact and display their own Health/status feedback;
+- FIFO orb expiration, right-to-left reverse orb progress, mark transfer, and consumption;
 - simultaneous R2 charging and attacking;
-- R2 upper-deadzone press, approximate-half-pause, upper-deadzone resume, and lower-deadzone release behavior;
+- R2 CHARGING, DEPLETING, and CAST bands, transition behavior, fixed-rate depletion, and full-press Cast behavior;
 - default-visible developer readouts, upper-right live raw R2 pressure, shared visibility toggling, and saved visibility restoration;
+- Developer Portal tab organization plus live, saved Ambient/SFX/BGM enabled and volume controls;
 - an always-visible orb queue and R2 marking-progress bar independent of the developer-overlay flag;
 - marked-orb loss on hit while unmarked orbs remain and expire normally;
 - proportional Heat acceleration of attacks, casting animations, and R2 charging;

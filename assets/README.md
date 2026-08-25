@@ -1,9 +1,9 @@
 # Assets
 
-`prototype/` contains the user-approved first-draft Craftpix subset:
+`prototype/` contains the user-approved Craftpix prototype subset:
 
 - Pack 6 shared Idle and Walk sheets, plus Pack 2's shared Casting Spell sheet, are the active player locomotion and cast presentation.
-- Twenty 128×128 X sheets are staged by school: Pack 2 Fire, Pack 6 Water, Pack 3 Air, and Pack 5 Earth. The current three-X cap reaches only X1–X3; X4/X5 remain staged for a separately approved combat change.
+- Twenty 128×128 X sheets are active by school: Pack 2 Fire, Pack 6 Water, Pack 3 Air, and Pack 5 Earth. They supply X1–X5 for the current five-position chain.
 - Shinobi, Swordsman, Fighter, Saber, and Samurai sheets remain legacy prototype imports.
 - `ground_grasss.png` from the membership Grassland archive.
 - Fire, Water, and Ice frame sequences from the membership Fantasy Platformer bundle.
@@ -15,4 +15,4 @@ The user confirmed membership entitlement for the premium archives. Craftpix sou
 
 `audio/combat/`, `audio/casting/`, and `audio/projectile/` contain a curated CC0 prototype-audio subset: school X attacks, orb creation and marking, normal/empowered/failed Casting, projectile travel, and impacts. `audio/ambience/wind.ogg` and `audio/music/fairy_battles.ogg` are temporary arena ambience and battle-bed candidates. Their original archives, exact source links, and CC0 licenses remain in `C:\Users\zhouc\OneDrive\Desktop\Library\SFX\SOURCES.md`.
 
-The active presentation is a generic side-view prototype shell, not final Laema art. It shares Pack 6 locomotion, mirrors left-facing presentation, uses the approved school/position X table, and uses the shared cast sheet for the existing cast action. The user validated this strictly animation-only slice in Godot on 2026-08-24; final art remains deferred.
+The active presentation is a generic side-view prototype shell, not final Laema art. It shares Pack 6 locomotion, mirrors left-facing presentation, uses the approved school/position X table, and uses the shared cast sheet for the current Cast action. Final art remains deferred.

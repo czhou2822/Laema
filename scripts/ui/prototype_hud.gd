@@ -23,8 +23,32 @@ const SCHOOL_COLORS := {
 @onready var mark_label: Label = $GameUI/OrbPanel/OrbLayout/MarkLabel
 @onready var startup_error: Label = $StartupError
 
+class LifetimeOrb extends Control:
+	const SIZE := 32.0
+	const CENTER := Vector2(16.0, 16.0)
+	const RADIUS := 13.0
+
+	var fill_ratio := 1.0
+	var fill_color := Color.WHITE
+
+	func _draw() -> void:
+		var right_edge := -RADIUS + RADIUS * 2.0 * clampf(fill_ratio, 0.0, 1.0)
+		var x := -RADIUS
+		while x <= right_edge:
+			var half_height := sqrt(maxf(RADIUS * RADIUS - x * x, 0.0))
+			draw_line(
+				CENTER + Vector2(x, -half_height),
+				CENTER + Vector2(x, half_height),
+				fill_color,
+				1.0
+			)
+			x += 1.0
+
+
 var _combo_display_duration := 0.0
 var _max_marked_capacity := 5
+var _last_marked_count := -1
+var _last_mark_progress_step := -1
 
 
 func _ready() -> void:
@@ -118,16 +142,33 @@ func complete_combo(tokens: Array) -> void:
 
 func update_orb_queue(snapshot: Array, marked_count: int, marking_progress: float) -> void:
 	_clear_children(orb_queue)
-	for orb in snapshot:
-		var label := Label.new()
-		label.text = "●" if bool(orb["marked"]) else "○"
-		var orb_color: Color = _school_color(StringName(orb["school"]))
-		orb_color.a = float(orb["alpha"])
-		label.modulate = orb_color
-		label.add_theme_font_size_override("font_size", 30)
-		orb_queue.add_child(label)
-	mark_progress.value = marking_progress
+	var visible_orb_count := mini(snapshot.size(), _max_marked_capacity)
+	for index in range(_max_marked_capacity):
+		var slot := CenterContainer.new()
+		slot.custom_minimum_size = Vector2(0.0, 34.0)
+		slot.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		if index < visible_orb_count:
+			var orb: Dictionary = snapshot[index]
+			slot.add_child(_create_orb_indicator(orb, index))
+		orb_queue.add_child(slot)
+	var total_marking_progress := (
+		float(marked_count) + clampf(marking_progress, 0.0, 1.0)
+	) / maxf(float(_max_marked_capacity), 1.0)
+	mark_progress.value = clampf(total_marking_progress, 0.0, 1.0)
 	mark_label.text = "MARK  %d / %d" % [marked_count, _max_marked_capacity]
+	var progress_step := int(round(mark_progress.value * 20.0))
+	if marked_count != _last_marked_count or progress_step != _last_mark_progress_step:
+		_last_marked_count = marked_count
+		_last_mark_progress_step = progress_step
+		_trace(&"mark_progress_displayed", {"marked_count": marked_count, "partial_progress": marking_progress, "bar_value": mark_progress.value})
+
+
+func _create_orb_indicator(orb: Dictionary, index: int) -> LifetimeOrb:
+	var indicator := LifetimeOrb.new()
+	indicator.custom_minimum_size = Vector2(LifetimeOrb.SIZE, LifetimeOrb.SIZE)
+	indicator.fill_ratio = float(orb["remaining_ratio"]) if index == 0 else 1.0
+	indicator.fill_color = _school_color(StringName(orb["school"]))
+	return indicator
 
 
 func _remove_completed_after_delay(row: HBoxContainer) -> void:
@@ -154,3 +195,8 @@ func _clear_children(parent: Node) -> void:
 func _school_color(school: StringName) -> Color:
 	var color: Color = SCHOOL_COLORS.get(school, Color.WHITE)
 	return color
+
+
+func _trace(event_name: StringName, data: Dictionary) -> void:
+	if OS.is_debug_build():
+		print("[TRACE][HUD] %s %s" % [event_name, data])

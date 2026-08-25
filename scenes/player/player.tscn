@@ -86,20 +86,28 @@ script = ExtResource("11_defence")
 
 [node name="GuardWarningAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_guard_warning")
+bus = &"SFX"
 
 [node name="AttackSwingAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="ElementAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="CastAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="EmpoweredCastAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="CastFailAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="OrbAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="MarkAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

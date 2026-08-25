@@ -16,11 +16,11 @@ enum CombatState {
 	HIT_REACTING,
 }
 
-enum PressureBand {
+enum PressureState {
 	INTERMEDIATE,
-	RELEASE,
-	PAUSE,
-	PRESS,
+	DEPLETING,
+	CHARGING,
+	CAST,
 }
 
 const SCHOOL_FIRE := &"fire"
@@ -52,7 +52,8 @@ var _guard_break_remaining := 0.0
 var _air_speed_multiplier := 1.0
 var _air_speed_remaining := 0.0
 var _pressure_initialized := false
-var _pressure_band := PressureBand.INTERMEDIATE
+var _pressure_state := PressureState.INTERMEDIATE
+var _buffered_request: Dictionary = {}
 
 
 func configure(
@@ -123,11 +124,13 @@ func _process(delta: float) -> void:
 		_launch_emitted = true
 		_emit_projectile_launch()
 	_window_open = progress >= float(combat_config["input_window_start"])
+	_promote_buffered_request_if_ready()
 
 
 func handle_input_event(event: InputEvent, attack_direction: Vector2) -> void:
 	if event.is_echo():
 		return
+	_promote_buffered_request_if_ready()
 	for school_action in [
 		[&"select_fire", SCHOOL_FIRE],
 		[&"select_water", SCHOOL_WATER],
@@ -213,6 +216,7 @@ func resolve_spell_projectile_impact(target: Entity, contact_point: Vector2, pay
 
 
 func on_hit_reaction_started() -> void:
+	_clear_buffered_request("hit_reaction")
 	if _animation_player != null:
 		_animation_player.stop()
 	if _input_combo.is_active():
@@ -237,47 +241,65 @@ func _update_casting_pressure() -> void:
 		return
 	var raw_strength: float = Input.get_action_raw_strength(&"casting")
 	var candidate := _classify_pressure(raw_strength)
-	if candidate == PressureBand.INTERMEDIATE:
+	if candidate == PressureState.INTERMEDIATE:
 		return
 	if not _pressure_initialized:
 		_pressure_initialized = true
-		_pressure_band = candidate
-		_trace(&"pressure_band_entered", {"raw_strength": raw_strength, "band": candidate, "initial": true})
-		if candidate == PressureBand.PRESS:
-			_try_start_or_resume_marking()
-		elif candidate == PressureBand.PAUSE:
-			_orb_casting.pause_marking()
+		_pressure_state = candidate
+		_trace(&"pressure_state_changed", {"raw_strength": raw_strength, "state": _pressure_state_name(candidate), "initial": true})
+		_apply_pressure_state(candidate)
 		return
-	if candidate == _pressure_band:
+	if candidate == _pressure_state:
 		return
-	_pressure_band = candidate
-	_trace(&"pressure_band_entered", {"raw_strength": raw_strength, "band": candidate, "initial": false})
-	match candidate:
-		PressureBand.PRESS:
-			_try_start_or_resume_marking()
-		PressureBand.PAUSE:
-			_orb_casting.pause_marking()
-		PressureBand.RELEASE:
-			_try_cast_release()
+	_pressure_state = candidate
+	_trace(&"pressure_state_changed", {"raw_strength": raw_strength, "state": _pressure_state_name(candidate), "initial": false})
+	_apply_pressure_state(candidate)
+
+
+func _apply_pressure_state(state: int) -> void:
+	match state:
+		PressureState.DEPLETING:
+			_try_start_depleting()
+		PressureState.CHARGING:
+			_try_start_charging()
+		PressureState.CAST:
+			_try_cast_trigger()
+
+
+func _pressure_state_name(state: int) -> String:
+	match state:
+		PressureState.DEPLETING:
+			return "DEPLETING"
+		PressureState.CHARGING:
+			return "CHARGING"
+		PressureState.CAST:
+			return "CAST"
+	return "INTERMEDIATE"
 
 
 func _classify_pressure(raw_strength: float) -> int:
 	var casting: Dictionary = _config["casting"]
-	if raw_strength <= float(casting["trigger_release_max"]):
-		return PressureBand.RELEASE
-	var pause_lower: float = float(casting["trigger_pause_center"]) - float(casting["trigger_pause_half_width"])
-	var pause_upper: float = float(casting["trigger_pause_center"]) + float(casting["trigger_pause_half_width"])
-	if raw_strength >= pause_lower and raw_strength <= pause_upper:
-		return PressureBand.PAUSE
-	if raw_strength >= float(casting["trigger_press_min"]):
-		return PressureBand.PRESS
-	return PressureBand.INTERMEDIATE
+	if raw_strength <= float(casting["trigger_deplete_max"]):
+		return PressureState.DEPLETING
+	var charge_lower: float = float(casting["trigger_charge_center"]) - float(casting["trigger_charge_half_width"])
+	var charge_upper: float = float(casting["trigger_charge_center"]) + float(casting["trigger_charge_half_width"])
+	if raw_strength >= charge_lower and raw_strength <= charge_upper:
+		return PressureState.CHARGING
+	if raw_strength >= float(casting["trigger_cast_min"]):
+		return PressureState.CAST
+	return PressureState.INTERMEDIATE
 
 
-func _try_start_or_resume_marking() -> void:
+func _try_start_charging() -> void:
 	if _actions_suppressed or _state in [CombatState.DEFENDING, CombatState.GUARD_BROKEN, CombatState.HIT_REACTING]:
 		return
-	_orb_casting.start_or_resume_marking()
+	_orb_casting.start_charging()
+
+
+func _try_start_depleting() -> void:
+	if _actions_suppressed or _state in [CombatState.DEFENDING, CombatState.GUARD_BROKEN, CombatState.HIT_REACTING]:
+		return
+	_orb_casting.start_depleting()
 
 
 func _try_select_school(school: StringName) -> void:
@@ -291,7 +313,7 @@ func _try_select_school(school: StringName) -> void:
 		return
 	if _state != CombatState.COMBO_ACTIVE:
 		return
-	var can_switch: bool = _window_open or (_current_action.is_empty() and _orb_casting.is_marking_or_paused())
+	var can_switch: bool = _window_open or (_current_action.is_empty() and _orb_casting.has_active_marking_state())
 	if not can_switch:
 		return
 	if _input_combo.accept_switch(_active_school, school):
@@ -303,40 +325,213 @@ func _try_select_school(school: StringName) -> void:
 
 func _try_light_attack(direction: Vector2) -> void:
 	if not _is_functional_school(_active_school):
+		_trace_light_attempt("rejected", "nonfunctional_school")
 		return
 	if _state == CombatState.READY:
 		if not _input_combo.accept_light(_active_school):
+			_trace_light_attempt("rejected", "five_position_limit_or_input_combo_rejection")
 			return
 		_state = CombatState.COMBO_ACTIVE
 		movement_lock_changed.emit(true)
 		_start_action(_make_light_action(direction))
+		_trace_light_attempt("accepted-started", "accepted")
 		return
 	if _state != CombatState.COMBO_ACTIVE or not _pending_action.is_empty():
+		_trace_light_attempt(
+			"rejected",
+			"wrong_combat_state" if _state != CombatState.COMBO_ACTIVE else "pending_action_occupied"
+		)
 		return
 	if not _current_action.is_empty() and not _window_open:
+		if _is_chainable_action() and _is_buffer_zone(get_normalized_attack_progress()):
+			_buffer_light_attack(direction)
+		else:
+			_trace_light_attempt("rejected", "before_buffer")
 		return
-	if _current_action.is_empty() and not _orb_casting.is_marking_or_paused():
+	if _current_action.is_empty() and not _orb_casting.has_active_marking_state():
+		_trace_light_attempt("rejected", "post_action_chain_not_preserved")
 		return
 	if not _input_combo.accept_light(_active_school):
+		_trace_light_attempt("rejected", "five_position_limit_or_input_combo_rejection")
 		return
 	var action := _make_light_action(direction)
 	if _current_action.is_empty():
 		_start_action(action)
+		_trace_light_attempt("accepted-started", "accepted")
 	else:
 		_pending_action = action
+		_trace_light_attempt("accepted-queued", "accepted")
 
 
-func _try_cast_release() -> void:
+func _is_chainable_action() -> bool:
+	return (
+		_state == CombatState.COMBO_ACTIVE
+		and _input_combo.is_active()
+		and not _current_action.is_empty()
+		and _animation_player != null
+		and _animation_player.is_playing()
+	)
+
+
+func _is_buffer_zone(progress: float) -> bool:
+	var combat_config: Dictionary = _config["combat"]
+	var buffer_start := float(combat_config["input_window_start"]) - float(combat_config["x_buffer_width"])
+	return progress >= buffer_start and progress < float(combat_config["input_window_start"])
+
+
+func _buffer_light_attack(direction: Vector2) -> void:
+	if not _buffered_request.is_empty():
+		_trace_light_attempt("rejected", "first_request_wins")
+		return
+	_buffered_request = {
+		"kind": &"light",
+		"school": _active_school,
+		"direction": direction,
+	}
+	_trace_light_attempt("buffered", "x_buffered")
+
+
+func _buffer_cast_request() -> void:
+	if not _buffered_request.is_empty():
+		_trace(&"input_buffer_rejected", {"kind": "cast", "reason": "first_request_wins", "progress": get_normalized_attack_progress()})
+		return
+	var resolution: Dictionary = _orb_casting.consume_marked_orbs()
+	if not bool(resolution["valid"]):
+		_trace(&"cast_rejected", {"reason": "orb_consumption_failed"})
+		_fail_cast()
+		return
+	_buffered_request = {
+		"kind": &"cast",
+		"casting_school": _active_school,
+		"direction": _current_action["direction"],
+		"resolution": resolution.duplicate(true),
+		"empowered": true,
+		"primary_damage_multiplier": float(_config["casting"]["empowered_primary_multiplier"]),
+		"instigator": _owner_entity,
+	}
+	_trace(&"input_buffered", {
+		"kind": "cast",
+		"reason": "full_press_buffered",
+		"primary_school": resolution["primary_school"],
+		"primary_level": resolution["primary_level"],
+		"secondary_school": resolution["secondary_school"],
+		"secondary_level": resolution["secondary_level"],
+		"progress": get_normalized_attack_progress(),
+	})
+
+
+func _promote_buffered_request_if_ready() -> void:
+	if _buffered_request.is_empty() or not _is_normal_window_open():
+		return
+	var request: Dictionary = _buffered_request.duplicate(true)
+	var kind := StringName(request["kind"])
+	if kind == &"light":
+		_promote_buffered_light(request)
+	elif kind == &"cast":
+		_promote_buffered_cast(request)
+	else:
+		_clear_buffered_request("unknown_request_kind")
+
+
+func _is_normal_window_open() -> bool:
+	return _is_chainable_action() and get_normalized_attack_progress() >= float(_config["combat"]["input_window_start"])
+
+
+func _promote_buffered_light(request: Dictionary) -> void:
+	if not _is_chainable_action() or not _pending_action.is_empty():
+		_clear_buffered_request("light_revalidation_failed")
+		return
+	var school := StringName(request["school"])
+	if not _is_functional_school(school) or not _input_combo.accept_light(school):
+		_clear_buffered_request("light_input_combo_rejection")
+		return
+	_pending_action = _make_light_action(Vector2(request["direction"]), school)
+	_buffered_request.clear()
+	_trace(&"input_buffer_promoted", {"kind": "light", "outcome": "accepted-queued", "school": school, "position": _input_combo.get_current_position()})
+
+
+func _promote_buffered_cast(request: Dictionary) -> void:
+	if not _is_chainable_action() or not _pending_action.is_empty():
+		_clear_buffered_request("cast_revalidation_failed")
+		return
+	var progression: Dictionary = _input_combo.accept_cast(StringName(request["casting_school"]))
+	if not bool(progression["valid"]):
+		_clear_buffered_request("cast_input_combo_rejection")
+		return
+	var action := _make_cast_action(
+		request["resolution"],
+		bool(progression["endpoint"]),
+		true,
+		Vector2(request["direction"]),
+		float(request["primary_damage_multiplier"]),
+		request["instigator"]
+	)
+	_pending_action = action
+	_buffered_request.clear()
+	_trace(&"input_buffer_promoted", {"kind": "cast", "outcome": "endpoint" if bool(progression["endpoint"]) else "empowered", "primary_school": action["school"], "primary_level": action["resolution"]["primary_level"]})
+	empowered_cast_started.emit(StringName(action["school"]), action["direction"])
+
+
+func _clear_buffered_request(reason: String) -> void:
+	if _buffered_request.is_empty():
+		return
+	var kind := StringName(_buffered_request.get("kind", &""))
+	_buffered_request.clear()
+	_trace(&"input_buffer_cleared", {"kind": kind, "reason": reason, "progress": get_normalized_attack_progress()})
+
+
+func _trace_light_attempt(outcome: String, reason: String) -> void:
+	var current_action_present := not _current_action.is_empty()
+	var current_action_kind: StringName = _current_action.get("kind", &"")
+	var current_action_school: StringName = _current_action.get("school", &"")
+	var heat_speed_multiplier := 1.0
+	if _heat != null:
+		heat_speed_multiplier = float(_heat.get_speed_multiplier())
+	_trace(&"light_attempt", {
+		"outcome": outcome,
+		"reason": reason,
+		"active_school": _active_school,
+		"combat_state": _state,
+		"chain_position": _input_combo.get_current_position(),
+		"action_progress": get_normalized_attack_progress(),
+		"window_open": _window_open,
+		"current_action_present": current_action_present,
+		"current_action_kind": current_action_kind,
+		"current_action_school": current_action_school,
+		"pending_action_present": not _pending_action.is_empty(),
+		"buffered_request_kind": _buffered_request.get("kind", &""),
+		"animation_playing": _animation_player != null and _animation_player.is_playing(),
+		"heat_speed_multiplier": heat_speed_multiplier,
+	})
+
+
+func _try_cast_trigger() -> void:
 	if _actions_suppressed or _state in [CombatState.DEFENDING, CombatState.GUARD_BROKEN, CombatState.HIT_REACTING]:
 		return
+	_promote_buffered_request_if_ready()
+	if not _pending_action.is_empty():
+		return
+	if _is_chainable_action() and not _window_open:
+		var buffer_progress := get_normalized_attack_progress()
+		if _is_buffer_zone(buffer_progress):
+			if not _buffered_request.is_empty():
+				_trace(&"input_buffer_rejected", {"kind": "cast", "reason": "first_request_wins", "progress": buffer_progress})
+				return
+			if not _orb_casting.has_marked_orbs():
+				_trace(&"cast_rejected", {"reason": "no_marked_orbs", "state": _state})
+				_fail_cast()
+				return
+			_buffer_cast_request()
+			return
 	if not _orb_casting.has_marked_orbs():
-		if _state == CombatState.COMBO_ACTIVE or _orb_casting.is_marking_or_paused():
+		if _state == CombatState.COMBO_ACTIVE or _orb_casting.has_active_marking_state():
 			_trace(&"cast_rejected", {"reason": "no_marked_orbs", "state": _state})
 			_fail_cast()
 		return
 	if _state == CombatState.COMBO_ACTIVE and not _current_action.is_empty():
 		if not _window_open:
-			_trace(&"cast_rejected", {"reason": "released_before_chain_window", "progress": get_normalized_attack_progress()})
+			var current_progress := get_normalized_attack_progress()
+			_trace(&"cast_rejected", {"reason": "before_buffer" if not _is_buffer_zone(current_progress) else "full_press_before_window", "progress": current_progress})
 			_fail_cast()
 			return
 		var progression: Dictionary = _input_combo.accept_cast(_active_school)
@@ -372,10 +567,11 @@ func _try_cast_release() -> void:
 	_start_action(_make_cast_action(normal_resolution, false, false, _current_facing_direction()))
 
 
-func _make_light_action(direction: Vector2) -> Dictionary:
+func _make_light_action(direction: Vector2, school: StringName = &"") -> Dictionary:
+	var action_school := _active_school if school == &"" else school
 	return {
 		"kind": &"light",
-		"school": _active_school,
+		"school": action_school,
 		"direction": direction,
 		"end_chain_after_action": false,
 	}
@@ -385,17 +581,26 @@ func _make_cast_action(
 	resolution: Dictionary,
 	endpoint: bool,
 	empowered: bool,
-	direction: Vector2
+	direction: Vector2,
+	primary_damage_multiplier: float = -1.0,
+	instigator: Entity = null
 ) -> Dictionary:
 	var kind: StringName = &"cast_normal"
 	if empowered:
 		kind = &"cast_endpoint" if endpoint else &"cast_empowered"
+	var resolved_multiplier := 1.0
+	if empowered:
+		resolved_multiplier = float(_config["casting"]["empowered_primary_multiplier"])
+	if primary_damage_multiplier >= 0.0:
+		resolved_multiplier = primary_damage_multiplier
 	return {
 		"kind": kind,
 		"school": StringName(resolution["primary_school"]),
 		"direction": direction,
 		"resolution": resolution,
 		"empowered": empowered,
+		"primary_damage_multiplier": resolved_multiplier,
+		"instigator": _owner_entity if instigator == null else instigator,
 		"end_chain_after_action": not empowered or endpoint,
 	}
 
@@ -450,6 +655,10 @@ func _perform_light_hit_query() -> void:
 			"contact_point": _attack_cast.get_collision_point(index),
 		})
 	if hits.is_empty():
+		if bool(_config["combat"]["collect_orb_without_contact"]):
+			_orb_casting.add_orb(StringName(_current_action["school"]))
+			_trace(&"light_contact_resolved", {"result": "orb_without_contact", "school": _current_action["school"], "position": _input_combo.get_current_position()})
+			return
 		_trace(&"light_contact_resolved", {"result": "miss", "school": _current_action["school"], "position": _input_combo.get_current_position()})
 		return
 	for hit in hits:
@@ -471,9 +680,9 @@ func _perform_light_hit_query() -> void:
 
 func _emit_projectile_launch() -> void:
 	var resolution: Dictionary = _current_action["resolution"]
-	var multiplier: float = float(_config["casting"]["empowered_primary_multiplier"]) if bool(_current_action["empowered"]) else 1.0
+	var multiplier: float = float(_current_action.get("primary_damage_multiplier", 1.0))
 	var launch_payload: Dictionary = {
-		"instigator": _owner_entity,
+		"instigator": _current_action.get("instigator", _owner_entity),
 		"direction": _current_action["direction"],
 		"primary_school": resolution["primary_school"],
 		"primary_level": resolution["primary_level"],
@@ -507,23 +716,24 @@ func _apply_spell_effect(contact_target: Entity, contact_point: Vector2, directi
 func _on_animation_finished(animation_name: StringName) -> void:
 	if animation_name != &"attack_clock" or _state != CombatState.COMBO_ACTIVE:
 		return
-	_trace(&"action_finished", {"kind": _current_action.get("kind", &""), "school": _current_action.get("school", &""), "pending_action": not _pending_action.is_empty(), "marking_preserved": _orb_casting.is_marking_or_paused()})
+	_trace(&"action_finished", {"kind": _current_action.get("kind", &""), "school": _current_action.get("school", &""), "pending_action": not _pending_action.is_empty(), "marking_state_active": _orb_casting.has_active_marking_state()})
 	if not _pending_action.is_empty():
 		_start_action(_pending_action)
 		return
 	if bool(_current_action.get("end_chain_after_action", false)):
 		_complete_chain_and_clear()
 		return
-	if _orb_casting.is_marking_or_paused():
+	if _orb_casting.has_active_marking_state():
 		_current_action = {}
 		_window_open = false
 		_hit_emitted = false
 		_launch_emitted = false
 		return
-	_reset_chain_timeout()
+	_end_chain_preserving_orbs()
 
 
 func _fail_cast() -> void:
+	_clear_buffered_request("failed_cast")
 	if _animation_player != null:
 		_animation_player.stop()
 	_trace(&"cast_failed", {"state": _state, "position": _input_combo.get_current_position()})
@@ -549,14 +759,14 @@ func _complete_chain_and_clear() -> void:
 	_enter_ready()
 
 
-func _reset_chain_timeout() -> void:
+func _end_chain_preserving_orbs() -> void:
 	_animation_player.stop()
 	_input_combo.timeout_reset()
-	_orb_casting.clear()
 	_enter_ready()
 
 
 func _enter_ready() -> void:
+	_clear_buffered_request("return_ready")
 	_state = CombatState.READY
 	_current_action = {}
 	_pending_action = {}
