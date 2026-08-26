@@ -11,7 +11,7 @@ The repository contains the expanded 2D side-scrolling orb-casting prototype. Th
 - Design status: Current prototype GDD verified
 - Technical design status: Current architecture synchronized; postflight review remains available
 - Implementation status: Expanded prototype with user-reported validation; agent-run runtime evidence unavailable
-- Last committed implementation: `2178fbb` (`feat: expand elemental combat and prototype presentation`)
+- Last committed implementation: `358684b` (`feat: add side-scrolling orb casting prototype`)
 
 ## Prototype controls
 

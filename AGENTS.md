@@ -4,7 +4,7 @@
 
 Laema is an in-progress 2D top-down combat prototype. The working tree may contain substantial uncommitted draft code, scenes, assets, configuration, or documents. Inspect `git status` and the relevant diff before acting, preserve unrelated work, and never mistake a file's existence for user approval.
 
-The current committed prototype baseline is `e543a43` (`feat: add validated combat prototype slice`). The user reported the current first-draft Fire/Water slice as validated in Godot on 2026-08-24. That report does not validate incoming Enemy attacks, guard-break triggering through ordinary play, functional Air/Earth packages, final art, or final tuning; do not claim those results without new user evidence.
+The current committed prototype baseline is `358684b` (`feat: add side-scrolling orb casting prototype`). The user reported the expanded implementation as validated in Godot on 2026-08-25, but did not provide an exact scenario matrix or engine-version record. Do not claim agent-run runtime evidence, and keep incoming Enemy attacks, ordinary-play defence validation, final art, final tuning, complete enemy content, and other explicitly deferred seams separate from that report.
 
 Godot runtime behavior remains unverified unless the user explicitly reports that the relevant version was run and checked in Godot.
 

@@ -20,9 +20,10 @@ This document does not revise gameplay intent. Where implementation and the GDD 
 ### Reviewed identity
 
 - GDD: `docs/GAME_DESIGN.md`, status `User-verified gameplay contract for the current prototype`.
-- Implementation baseline: `e543a43` (`feat: add validated combat prototype slice`).
-- Last committed implementation: `2178fbb` (`feat: expand elemental combat and prototype presentation`).
+- Validated baseline: `e543a43` (`feat: add validated combat prototype slice`).
+- Last committed implementation: `358684b` (`feat: add side-scrolling orb casting prototype`).
 - Current source scope: the approved R2 pressure/depletion/Cast state machine, shared X/Cast buffer, orb lifetime presentation, Developer Portal controls, audio-bus integration, and three-target arena fixes are included in the current authorized changeset.
+- Current uncommitted source delta: `CombatController` releases horizontal movement when CHARGING or DEPLETING preserves a chain between active actions; no other implementation file is changed in this review range.
 - Human validation: the user reported, `I verified and validates now`, for the expanded implementation on 2026-08-25. No scenario-level matrix, engine/version, or individual pass/fail breakdown was supplied.
 - Agent checks: the agent did not run Godot, a build, a compiler, or automated tests.
 
@@ -58,6 +59,8 @@ The arena scene owns the continuous floor, backdrop, Player instance, three non-
 Player `_unhandled_input()` forwards school selection, defence, and X input to `CombatController` with the current horizontal facing direction (`scripts/player/player.gd:222-225`).
 
 `MovementController` samples the left/right axis, updates facing, applies horizontal velocity unless movement is locked, applies gravity while airborne, and calls `CharacterBody2D.move_and_slide()` (`scripts/player/movement_controller.gd:24-41`). The floor is a single `StaticBody2D` on collision layer 4, and Player collision mask 6 permits floor and Enemy interaction (`scenes/prototype_arena.tscn`, `scenes/player/player.tscn`).
+
+Movement locking is action-scoped rather than chain-scoped. `CombatController` locks horizontal movement while an X or Cast animation is active. If an action finishes with no pending follow-up while CHARGING or DEPLETING remains active, Combat clears the active-action fields and emits `movement_lock_changed(false)` without clearing the chain or orb state. Entering CHARGING or DEPLETING while no action is active also releases the movement lock. Defence, guard break, failed-Cast reaction, and external hit reaction retain their existing locks (`scripts/combat/combat_controller.gd:_try_start_charging`, `_try_start_depleting`, `_unlock_movement_for_orb_state`, `_on_animation_finished`).
 
 `Camera2D` remains a Player child. Because the prototype keeps Player grounded on a flat floor, the child camera supplies horizontal following while preserving the intended fixed vertical framing.
 
@@ -211,6 +214,7 @@ The user report is now present for the expanded implementation. The following re
 - five-position X/Cast chains, school switching, endpoint Casting, and failed Casting;
 - FIFO expiry, right-to-left reverse orb progress, mark transfer, consumption, and simultaneous R2/X activity;
 - seven-second FIFO expiry and unconsumed-orb persistence while idle or moving after normal chain timeout;
+- movement locked during active X/Cast animations and restored between actions when CHARGING or DEPLETING preserves the chain;
 - R2 DEPLETING, CHARGING, and CAST transitions, fixed-rate depletion, and full-press Cast behavior;
 - live DeveloperReadout pressure, developer visibility persistence, and always-visible GameUI;
 - projectile launch, travel, first-hit collision, color blend, expiry, and all four school effects;

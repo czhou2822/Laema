@@ -2,7 +2,7 @@
 
 Status: Expanded prototype implementation with user-reported validation on 2026-08-25. An exact scenario matrix was not supplied.
 
-Last committed implementation: `2178fbb` (`feat: expand elemental combat and prototype presentation`). The current authorized changeset extends that implementation with the finalized R2 pressure state machine, shared X/Cast input buffer, fixed-rate depletion, orb presentation, Developer Portal controls, and audio-bus integration.
+Last committed implementation: `358684b` (`feat: add side-scrolling orb casting prototype`). This commit contains the finalized R2 pressure state machine, shared X/Cast input buffer, fixed-rate depletion, orb presentation, Developer Portal controls, audio-bus integration, and the side-scrolling orb-casting source/configuration/docs.
 
 The current prototype source includes:
 

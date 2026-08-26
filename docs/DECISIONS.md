@@ -24,3 +24,4 @@
 - **Fact:** The user reported the expanded implementation as validated in Godot on 2026-08-25, but did not provide a scenario-by-scenario matrix or engine-version record.
 - **Constraint:** Agent-run Godot, build, compiler, and automated-test evidence remains unavailable. Incoming Enemy attacks, ordinary-play defence validation, final art, final tuning, and complete enemy content remain outside the current validation boundary.
 - **Decision:** The active summaries and implementation-status record are synchronized to the current implementation. Dated checkpoints and changelists retain their historical wording as an audit trail and do not override the canonical documents.
+- **Fact:** The current committed implementation is `358684b` (`feat: add side-scrolling orb casting prototype`). The user-reported validation applies to the expanded implementation, while agent-run runtime/build/test evidence remains unavailable.

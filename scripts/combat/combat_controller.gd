@@ -294,12 +294,19 @@ func _try_start_charging() -> void:
 	if _actions_suppressed or _state in [CombatState.DEFENDING, CombatState.GUARD_BROKEN, CombatState.HIT_REACTING]:
 		return
 	_orb_casting.start_charging()
+	_unlock_movement_for_orb_state()
 
 
 func _try_start_depleting() -> void:
 	if _actions_suppressed or _state in [CombatState.DEFENDING, CombatState.GUARD_BROKEN, CombatState.HIT_REACTING]:
 		return
 	_orb_casting.start_depleting()
+	_unlock_movement_for_orb_state()
+
+
+func _unlock_movement_for_orb_state() -> void:
+	if _current_action.is_empty():
+		movement_lock_changed.emit(false)
 
 
 func _try_select_school(school: StringName) -> void:
@@ -728,6 +735,7 @@ func _on_animation_finished(animation_name: StringName) -> void:
 		_window_open = false
 		_hit_emitted = false
 		_launch_emitted = false
+		movement_lock_changed.emit(false)
 		return
 	_end_chain_preserving_orbs()
 

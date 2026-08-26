@@ -31,7 +31,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 Laema is affected by gravity and remains grounded on solid collision. The first test level is one continuous flat floor. The camera follows Laema horizontally while preserving fixed vertical framing.
 
-Attacking continues to lock player-controlled movement for the active chain. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
+Active X and Cast animations lock player-controlled movement. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
 
 ## Schools and Character Presentation
 
@@ -149,6 +149,7 @@ CHARGING may begin at any time, with or without available orbs, and continues wh
 - Partial DEPLETING progress is continuous. Crossing a completed-mark boundary unmarks the most recently marked orb first.
 - DEPLETING never consumes or removes queue orbs.
 - CHARGING and DEPLETING preserve the active chain and its orb queue beyond the normal idle timeout.
+- CHARGING and DEPLETING do not keep movement locked between active X or Cast animations.
 - Marking does not pause expiration. If a marked oldest orb expires, the existing marking coverage transfers forward with the shifted queue, preserving the marked count when enough orbs remain.
 - When Laema is hit, every marked orb is removed. Unmarked orbs remain in the queue and continue their normal expiration countdown.
 - Entering CAST consumes:
@@ -366,6 +367,7 @@ The prototype must make the following observable:
 - an always-visible orb queue and R2 marking-progress bar independent of the developer-overlay flag;
 - marked-orb loss on hit while unmarked orbs remain and expire normally;
 - proportional Heat acceleration of attacks, casting animations, and R2 charging;
+- movement locked during active X/Cast animations and restored between actions while CHARGING or DEPLETING preserves the chain;
 - normal, empowered, endpoint, consecutive, and failed Casts;
 - failure cancellation and punishment flinch;
 - primary, tie-break, and secondary mixed-school resolution;
