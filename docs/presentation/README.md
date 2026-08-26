@@ -10,6 +10,7 @@ These files support Laema’s internal presentation preparation. They are refere
 ## Generated decks
 
 - `decks/Laema_Internal_Combat_Pitch.pptx` — 11-slide internal combat-pitch deck.
+- `decks/Laema_Internal_Combat_Pitch_Reconciled.pptx` — source-preserving reconciliation of the internal combat pitch against the current prototype-status records.
 - `decks/Laema_Internal_Combat_Pitch_Explainer.pptx` — 11-slide internal explainer deck.
 
 The generated decks are presentation working outputs. They should be updated when the pitch contract changes, but they do not independently promote proposals into project decisions.
