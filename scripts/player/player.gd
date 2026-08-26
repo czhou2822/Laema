@@ -437,12 +437,16 @@ func _on_combo_reset() -> void:
 
 
 func _on_orb_queue_changed(snapshot: Array, marked_count: int, marking_progress: float) -> void:
+	var visible_marked_count := 0
+	for orb in snapshot:
+		if bool(orb.get("marked", false)):
+			visible_marked_count += 1
 	if snapshot.size() > _last_orb_count:
 		_play_audio(orb_audio, _load_audio_stream(ORB_CREATED_STREAM_PATH))
-	if marked_count > _last_marked_count:
+	if visible_marked_count > _last_marked_count:
 		_play_audio(mark_audio, _load_audio_stream(MARK_ORB_STREAM_PATH))
 	_last_orb_count = snapshot.size()
-	_last_marked_count = marked_count
+	_last_marked_count = visible_marked_count
 	orb_queue_changed.emit(snapshot, marked_count, marking_progress)
 
 

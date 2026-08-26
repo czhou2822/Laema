@@ -471,6 +471,9 @@ func _on_animation_finished(animation_name: StringName) -> void:
 	if bool(_current_action.get("end_chain_after_action", false)):
 		_complete_chain_and_clear()
 		return
+	if _input_combo.get_current_position() >= 5:
+		_complete_chain_and_clear()
+		return
 	if _magic.has_active_marking_state():
 		_current_action = {}
 		_window_open = false
