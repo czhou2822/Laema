@@ -4,6 +4,15 @@ Status: Expanded prototype implementation with user-reported validation on 2026-
 
 Last committed implementation: `358684b` (`feat: add side-scrolling orb casting prototype`). This commit contains the finalized R2 pressure state machine, shared X/Cast input buffer, fixed-rate depletion, orb presentation, Developer Portal controls, audio-bus integration, and the side-scrolling orb-casting source/configuration/docs.
 
+## Current uncommitted implementation candidate
+
+Status: `AWAITING_USER_VALIDATION`.
+
+- Combat is composed as a thin `CombatComponent` facade with `MightComponent`, `MagicComponent`, the existing Heat implementation, and Defence beneath it. Might owns action timing, chains, movement locks, and the shared X/Cast buffer; Magic owns the queue, pressure marking/depletion, immediate frozen Cast commitments, configured-spell execution, and marked-only Player-hit removal.
+- The prototype configuration supplies fixed default school/level spell assignments and a final-only, data-driven tutorial objective. There is no persistence, unlock, new-spell, or balance implementation.
+- Public immutable combat and encounter outcomes feed the Arena-owned StageDirector. The three existing practice targets retain their permanent refill; one distinct final Enemy emits the authoritative completion fact when it reaches zero Health without refilling.
+- This candidate has not been run in Godot, built, compiled, or exercised by automated tests. The prior user-reported validation applies only to the earlier expanded prototype, not this restructure.
+
 The current prototype source includes:
 
 - a Godot entry scene with runtime InputMap bindings for controller, keyboard, and mouse input;
@@ -16,7 +25,7 @@ The current prototype source includes:
 - a FIFO elemental-orb queue with seven-second front lifetime, right-to-left circular lifetime presentation, continuous marking progress, consumption, transfer, and fixed-rate depletion;
 - R2 DEPLETING, CHARGING, and CAST pressure bands, transition-based Cast entry, and no Cast-on-release behavior;
 - one normalized pre-window buffer shared by X and full-press Cast requests, with earliest-request arbitration and event-level debug traces;
-- a finite-Health, permanent, non-attacking Enemy target implementation instantiated three times in the prototype arena;
+- a finite-Health, non-attacking Enemy target implementation instantiated as three permanent practice targets plus one distinct killable final target in the prototype arena;
 - Fire parry and Water block state scaffolding with guard-warning feedback and a CC0 warning sound;
 - an always-visible gameplay HUD plus a paused Developer Portal with General, Audio, and nested Combat tabs, visible toggles, tooltips, pause/unpause, and Save to JSON;
 - Ambient, SFX, and BGM bus routing with persisted enabled and volume controls; and

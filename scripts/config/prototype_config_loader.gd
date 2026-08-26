@@ -15,6 +15,8 @@ const REQUIRED_SECTIONS := [
 	"earth",
 	"defence",
 	"hit_reaction",
+	"spell_loadout",
+	"tutorial",
 	"ui",
 ]
 
@@ -157,6 +159,12 @@ static func _validate(data: Dictionary) -> String:
 	var audio_error := _validate_audio(data["audio"])
 	if not audio_error.is_empty():
 		return audio_error
+	var loadout_error := _validate_spell_loadout(data["spell_loadout"])
+	if not loadout_error.is_empty():
+		return loadout_error
+	var tutorial_error := _validate_tutorial(data["tutorial"])
+	if not tutorial_error.is_empty():
+		return tutorial_error
 	var casting: Dictionary = data["casting"]
 	var charge_lower: float = float(casting["trigger_charge_center"]) - float(casting["trigger_charge_half_width"])
 	var charge_upper: float = float(casting["trigger_charge_center"]) + float(casting["trigger_charge_half_width"])
@@ -275,6 +283,50 @@ static func _validate_audio(audio: Dictionary) -> String:
 		var volume_db := float(group["volume_db"])
 		if volume_db < -80.0 or volume_db > 24.0:
 			return "audio.%s.volume_db must be between -80 and 24." % group_name
+	return ""
+
+
+static func _validate_spell_loadout(loadout: Dictionary) -> String:
+	for school in ["fire", "water", "air", "earth"]:
+		if not loadout.has(school) or typeof(loadout[school]) != TYPE_DICTIONARY:
+			return "spell_loadout.%s must be an object." % school
+		var school_loadout: Dictionary = loadout[school]
+		for level in range(1, 6):
+			var key := str(level)
+			if not school_loadout.has(key) or typeof(school_loadout[key]) != TYPE_STRING:
+				return "spell_loadout.%s.%s must be a spell identifier." % [school, key]
+			if school_loadout[key] != "%s_default" % school:
+				return "spell_loadout.%s.%s must retain the prototype default spell." % [school, key]
+	return ""
+
+
+static func _validate_tutorial(tutorial: Dictionary) -> String:
+	if not tutorial.has("failure_feedback") or typeof(tutorial["failure_feedback"]) != TYPE_STRING:
+		return "tutorial.failure_feedback must be a string."
+	if not tutorial.has("objectives") or typeof(tutorial["objectives"]) != TYPE_ARRAY or tutorial["objectives"].is_empty():
+		return "tutorial.objectives must be a non-empty array."
+	for index in range(tutorial["objectives"].size()):
+		var objective = tutorial["objectives"][index]
+		if typeof(objective) != TYPE_DICTIONARY:
+			return "tutorial.objectives[%d] must be an object." % index
+		for key in ["id", "label", "success", "failures"]:
+			if not objective.has(key):
+				return "tutorial.objectives[%d].%s is required." % [index, key]
+		if typeof(objective["id"]) != TYPE_STRING or typeof(objective["label"]) != TYPE_STRING:
+			return "tutorial.objectives[%d] id and label must be strings." % index
+		var success = objective["success"]
+		if typeof(success) != TYPE_DICTIONARY or typeof(success.get("kind", null)) != TYPE_STRING or typeof(success.get("facts", null)) != TYPE_DICTIONARY:
+			return "tutorial.objectives[%d].success must define kind and facts." % index
+		if typeof(objective["failures"]) != TYPE_ARRAY:
+			return "tutorial.objectives[%d].failures must be an array." % index
+		for failure in objective["failures"]:
+			if typeof(failure) != TYPE_DICTIONARY or typeof(failure.get("kind", null)) != TYPE_STRING or typeof(failure.get("facts", null)) != TYPE_DICTIONARY:
+				return "tutorial.objectives[%d].failures entries must define kind and facts." % index
+			if failure.has("feedback") and typeof(failure["feedback"]) != TYPE_STRING:
+				return "tutorial.objectives[%d] failure feedback must be a string." % index
+	var final_success: Dictionary = tutorial["objectives"][tutorial["objectives"].size() - 1]["success"]
+	if final_success["kind"] != "final_enemy_defeated" or final_success["facts"].get("encounter_id", "") != "final_enemy":
+		return "The final tutorial objective must complete on final_enemy_defeated for final_enemy."
 	return ""
 
 

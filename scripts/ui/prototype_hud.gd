@@ -21,6 +21,8 @@ const SCHOOL_COLORS := {
 @onready var orb_queue: HBoxContainer = $GameUI/OrbPanel/OrbLayout/OrbQueue
 @onready var mark_progress: ProgressBar = $GameUI/OrbPanel/OrbLayout/MarkProgress
 @onready var mark_label: Label = $GameUI/OrbPanel/OrbLayout/MarkLabel
+@onready var tutorial_objective: Label = $GameUI/TutorialPanel/TutorialLayout/TutorialObjective
+@onready var tutorial_feedback: Label = $GameUI/TutorialPanel/TutorialLayout/TutorialFeedback
 @onready var startup_error: Label = $StartupError
 
 class LifetimeOrb extends Control:
@@ -73,6 +75,8 @@ func configure(config: Dictionary) -> void:
 	update_player_health(float(config["player"]["max_health"]), float(config["player"]["max_health"]))
 	update_enemy_health(float(config["enemy"]["max_health"]), float(config["enemy"]["max_health"]))
 	update_orb_queue([], 0, 0.0)
+	tutorial_objective.text = ""
+	tutorial_feedback.text = ""
 
 
 func apply_runtime_tuning(config: Dictionary) -> void:
@@ -121,6 +125,20 @@ func update_defence(label: String, current_guard: float, maximum_guard: float) -
 			defence_state.modulate = Color("ff493d")
 		_:
 			defence_state.modulate = Color.WHITE
+
+
+func update_tutorial_objective(objective: Dictionary) -> void:
+	tutorial_objective.text = str(objective["label"])
+	tutorial_feedback.text = ""
+
+
+func show_tutorial_feedback(text: String) -> void:
+	tutorial_feedback.text = text
+
+
+func show_tutorial_completed() -> void:
+	tutorial_objective.text = "Tutorial complete"
+	tutorial_feedback.text = ""
 
 
 func update_combo(tokens: Array) -> void:

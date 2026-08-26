@@ -220,6 +220,12 @@ Secondary: Air level 1
 
 The primary and secondary results reuse their school’s current specialty behavior.
 
+### Future Configurable Spell Mapping
+
+For the final product, the player configures outside combat which spell is assigned to each school and casting level, choosing from the spells available for that slot. Casting invocation remains unchanged during combat; when a school and casting level resolve, the configured spell determines the resulting behavior.
+
+The prototype's fixed school-level casting outcomes remain the current behavior. The available spell lists and individual spell behaviors remain open.
+
 ## School Casting
 
 ### Fire
@@ -346,6 +352,24 @@ The backtick Developer Portal has a shared header with Save to JSON, status, and
 - **Combat:** nested sub-tabs for Combat, Casting, Heat, Fire, Water, Air, Earth, Defence, and Hit Reaction. The Combat sub-tab contains attack-hitbox visibility, the `collect_orb_without_contact` testing toggle, and the Combat controls. When enabled, a missed X can collect an orb without applying damage; the persisted prototype config currently has this test toggle enabled.
 
 Audio controls apply immediately and persist through the same fail-fast JSON save/load flow. Ambient controls the wind loop; SFX controls attack, cast, orb, projectile, cast-failure, and guard-warning feedback; BGM controls the Fairy Battles music loop. These controls do not affect the orb queue, R2 marking-progress bar, target status display, target overhead Health display, or gameplay rules.
+
+## Tutorial Stage Director
+
+The end product of this prototype is a tutorial-like combat level governed by a stage Director. The Director presents one current task and advances only after detecting that task's successful objective.
+
+The player remains free to perform other actions while attempting the current task. Unrelated or unsuccessful actions do not reset progress or prevent later success. A simple `No` UI message is sufficient failure feedback. The player cannot proceed to the next task until the current objective succeeds.
+
+The current intermediate lesson list is provisional:
+
+1. perform a five-X combo;
+2. perform X, then Cast;
+3. perform two X attacks, then cast a level-2 spell;
+4. perform a five-X combo, then cast a level-5 spell;
+5. perform X, X, Cast, X;
+6. perform X, Cast, X, Cast; and
+7. sustain charging by holding R2 at half pressure.
+
+The final lesson is fixed: fight an Enemy. The lesson and tutorial complete when that Enemy dies. The current three permanent practice targets remain the current prototype behavior and do not yet satisfy this final-stage requirement.
 
 ## Tunables and Validation
 

@@ -78,9 +78,9 @@ func resolve(event: HealthEvent) -> HealthResult:
 		zero_reached
 	)
 	_hit_reaction.execute(reaction_level, event.contact_direction)
-	_deliver_result(result)
 	if zero_reached and _owner_entity.should_refill_health_at_zero():
 		_health.reset_to_maximum()
+	_deliver_result(result)
 	return result
 
 
@@ -97,6 +97,9 @@ func _is_valid_event(event: HealthEvent) -> bool:
 func _deliver_result(result: HealthResult) -> void:
 	if result.event == null:
 		return
+	var target := result.event.target
+	if is_instance_valid(target) and target.has_method("receive_health_result"):
+		target.call("receive_health_result", result)
 	var instigator := result.event.instigator
-	if is_instance_valid(instigator) and instigator.has_method("receive_health_result"):
+	if instigator != target and is_instance_valid(instigator) and instigator.has_method("receive_health_result"):
 		instigator.call("receive_health_result", result)

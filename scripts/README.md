@@ -5,7 +5,7 @@
 - `entities/` — shared Entity, HealthEvent/Result, HealthResolver, Health, and hit reaction.
 - `player/` — Player composition and movement.
 - `enemy/` — permanent Enemy health, status, reaction, and VFX presentation.
-- `combat/` — Combat/defence FSMs, input-combo, Heat, OrbCastingController, SpellProjectile, and four-school resolvers.
+- `combat/` — Combat facade, Might/Magic/Heat/defence components, input-combo, SpellProjectile, and four-school resolvers.
 - `status/` — Buff/Debuff lifetimes, Water priority, and periodic HealthEvents.
 - `ui/` — always-visible prototype HUD and paused Developer Portal presentation.
 

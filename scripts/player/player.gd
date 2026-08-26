@@ -107,10 +107,11 @@ const SCHOOL_TINTS := {
 @onready var sprite: Sprite2D = $Sprite
 @onready var movement = $Movement
 @onready var combat = $Combat
-@onready var input_combo = $InputCombo
-@onready var orb_casting = $OrbCastingController
-@onready var heat = $Heat
-@onready var defence: DefenceController = $Defence
+@onready var might: MightComponent = $Combat/Might
+@onready var magic: MagicComponent = $Combat/Magic
+@onready var input_combo = $Combat/Might/InputCombo
+@onready var heat: HeatComponent = $Combat/Heat
+@onready var defence: DefenceController = $Combat/Defence
 @onready var guard_warning_audio: AudioStreamPlayer = $GuardWarningAudio
 @onready var attack_swing_audio: AudioStreamPlayer = $AttackSwingAudio
 @onready var element_audio: AudioStreamPlayer = $ElementAudio
@@ -150,21 +151,35 @@ func configure(config: Dictionary) -> void:
 	combat.cast_launch_requested.connect(_on_cast_launch_requested)
 	combat.cast_failed.connect(_on_cast_failed)
 	combat.defence_status_changed.connect(_on_defence_status_changed)
+	combat.heat_changed.connect(_on_heat_changed)
+	combat.combo_sequence_changed.connect(_on_combo_sequence_changed)
+	combat.combo_completed.connect(_on_combo_completed)
+	combat.combo_reset.connect(_on_combo_reset)
+	combat.orb_queue_changed.connect(_on_orb_queue_changed)
 	defence.guard_warning.connect(_on_guard_warning)
-	heat.heat_changed.connect(_on_heat_changed)
 	health.health_changed.connect(_on_health_changed)
-	input_combo.sequence_changed.connect(_on_combo_sequence_changed)
-	input_combo.combo_completed.connect(_on_combo_completed)
-	input_combo.combo_reset.connect(_on_combo_reset)
-	orb_casting.queue_changed.connect(_on_orb_queue_changed)
 	status_controller.effect_state_changed.connect(_on_effect_state_changed)
 	hit_reaction.reaction_started.connect(_on_hit_reaction_started)
 	hit_reaction.reaction_ended.connect(_on_hit_reaction_ended)
 
 	movement.configure(self, config["movement"])
-	heat.configure(config["heat"])
-	orb_casting.configure(config["casting"], heat)
-	defence.configure(config["defence"])
+	combat.configure(
+		config,
+		self,
+		animation_player,
+		attack_cast,
+		input_combo,
+		might,
+		magic,
+		heat,
+		defence,
+		{
+			&"fire": FireResolver.new(),
+			&"water": WaterResolver.new(),
+			&"air": AirResolver.new(),
+			&"earth": EarthResolver.new(),
+		}
+	)
 	configure_entity(
 		float(config["player"]["max_health"]),
 		0,
@@ -173,31 +188,14 @@ func configure(config: Dictionary) -> void:
 		config,
 		defence
 	)
-	combat.configure(
-		config,
-		self,
-		animation_player,
-		attack_cast,
-		input_combo,
-		orb_casting,
-		heat,
-		defence,
-		FireResolver.new(),
-		WaterResolver.new(),
-		AirResolver.new(),
-		EarthResolver.new()
-	)
 	_update_school_outline(combat.get_active_school())
 
 
 func apply_runtime_tuning() -> void:
 	movement.apply_runtime_tuning()
 	combat.apply_runtime_tuning()
-	orb_casting.apply_runtime_tuning(_config["casting"])
-	heat.apply_runtime_tuning()
 	health.set_maximum(float(_config["player"]["max_health"]))
 	hit_reaction.configure(_config["hit_reaction"])
-	defence.configure(_config["defence"])
 
 
 func receive_health_result(result: HealthResult) -> void:
@@ -205,9 +203,7 @@ func receive_health_result(result: HealthResult) -> void:
 
 
 func get_defensive_level() -> int:
-	if combat != null and combat.is_defending():
-		return defence.get_defensive_level()
-	return 0
+	return combat.get_defensive_level() if combat != null else 0
 
 
 func set_attack_hitbox_debug_enabled(enabled: bool) -> void:
@@ -377,7 +373,7 @@ func _sync_attack_cast_direction() -> void:
 func _on_attack_started(kind: StringName, school: StringName, direction: Vector2) -> void:
 	_visual_attack_direction = direction
 	_visual_attack_kind = kind
-	_visual_light_position = clampi(input_combo.get_current_position(), 1, 5) if kind == &"light" else 0
+	_visual_light_position = clampi(combat.get_current_chain_position(), 1, 5) if kind == &"light" else 0
 	_visual_time = 0.0
 	if kind == &"light":
 		_play_audio(attack_swing_audio, _load_audio_stream(ATTACK_SWING_STREAM_PATHS[(_visual_light_position - 1) % ATTACK_SWING_STREAM_PATHS.size()]))

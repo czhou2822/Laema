@@ -1,3 +1,4 @@
+class_name HeatComponent
 extends Node
 
 signal heat_changed(value: float, level: int, speed_multiplier: float)

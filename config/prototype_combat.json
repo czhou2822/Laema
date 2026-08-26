@@ -128,6 +128,58 @@
 	"player": {
 		"max_health": 100.0
 	},
+	"spell_loadout": {
+		"fire": {
+			"1": "fire_default",
+			"2": "fire_default",
+			"3": "fire_default",
+			"4": "fire_default",
+			"5": "fire_default"
+		},
+		"water": {
+			"1": "water_default",
+			"2": "water_default",
+			"3": "water_default",
+			"4": "water_default",
+			"5": "water_default"
+		},
+		"air": {
+			"1": "air_default",
+			"2": "air_default",
+			"3": "air_default",
+			"4": "air_default",
+			"5": "air_default"
+		},
+		"earth": {
+			"1": "earth_default",
+			"2": "earth_default",
+			"3": "earth_default",
+			"4": "earth_default",
+			"5": "earth_default"
+		}
+	},
+	"tutorial": {
+		"failure_feedback": "No",
+		"objectives": [
+			{
+				"id": "defeat_final_enemy",
+				"label": "Defeat the final Enemy.",
+				"success": {
+					"kind": "final_enemy_defeated",
+					"facts": {
+						"encounter_id": "final_enemy"
+					}
+				},
+				"failures": [
+					{
+						"kind": "cast_failed",
+						"facts": {},
+						"feedback": "No"
+					}
+				]
+			}
+		]
+	},
 	"ui": {
 		"completed_combo_display_duration": 2.0,
 		"developer_overlay_visible": true

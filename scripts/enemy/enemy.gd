@@ -1,7 +1,9 @@
 extends "res://scripts/entities/entity.gd"
 
 signal enemy_health_changed(current_value: float, maximum_value: float)
+signal outcome_published(outcome)
 
+const CombatOutcomeResource = preload("res://scripts/combat/combat_outcome.gd")
 const VFX_ROOT := "res://assets/prototype/vfx"
 const IDLE_CELL_SIZE := Vector2(32.0, 96.0)
 const IDLE_FRAME_COUNT := 1
@@ -17,15 +19,21 @@ const VFX_FRAME_COUNTS := {
 @onready var status_display: HBoxContainer = $StatusDisplay
 @onready var vfx: AnimatedSprite2D = $VFX
 
+@export var encounter_id: StringName = &"practice_target"
+@export var refills_at_zero := true
+@export var is_final_enemy := false
+
 var _config: Dictionary = {}
 var _idle_time := 0.0
 var _flinch_tween: Tween
 var _vfx_cache: Dictionary = {}
 var _status_badges: Dictionary = {}
+var _defeated := false
 
 
 func configure(config: Dictionary) -> void:
 	_config = config
+	_defeated = false
 	_build_status_badges()
 	health.health_changed.connect(_on_health_changed)
 	status_controller.status_changed.connect(_on_status_changed)
@@ -34,16 +42,32 @@ func configure(config: Dictionary) -> void:
 	configure_entity(
 		float(config["enemy"]["max_health"]),
 		int(config["enemy"]["defensive_level"]),
-		true,
+		refills_at_zero,
 		config["hit_reaction"],
 		config
 	)
 	_on_status_changed(status_controller.get_snapshot())
+	_publish_outcome(&"encounter_activated", {"encounter_id": encounter_id, "final_enemy": is_final_enemy})
 
 
 func apply_runtime_tuning() -> void:
 	health.set_maximum(float(_config["enemy"]["max_health"]))
 	hit_reaction.configure(_config["hit_reaction"])
+
+
+func receive_health_result(result: HealthResult) -> void:
+	if result == null or result.event == null or result.event.target != self or not result.zero_reached or _defeated:
+		return
+	_publish_outcome(&"enemy_zero_health", {"encounter_id": encounter_id, "final_enemy": is_final_enemy})
+	if refills_at_zero:
+		_publish_outcome(&"practice_target_refilled", {"encounter_id": encounter_id})
+		return
+	_defeated = true
+	if is_final_enemy:
+		set_collision_layer_value(2, false)
+		_publish_outcome(&"final_enemy_defeated", {"encounter_id": encounter_id})
+	else:
+		_publish_outcome(&"enemy_defeated", {"encounter_id": encounter_id})
 
 
 func _process(delta: float) -> void:
@@ -193,3 +217,7 @@ func _build_vfx_frames(family: StringName, fps: float) -> SpriteFrames:
 		var path := "%s/%s/%s%d.png" % [VFX_ROOT, family, family, index]
 		frames.add_frame(family, load(path))
 	return frames
+
+
+func _publish_outcome(kind: StringName, facts: Dictionary = {}) -> void:
+	outcome_published.emit(CombatOutcomeResource.create(kind, facts))

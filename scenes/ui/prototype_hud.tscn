@@ -40,6 +40,30 @@ layout_mode = 2
 text = "MARK  0 / 5"
 horizontal_alignment = 1
 
+[node name="TutorialPanel" type="PanelContainer" parent="GameUI"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 104.0
+offset_right = 890.0
+offset_bottom = 174.0
+
+[node name="TutorialLayout" type="VBoxContainer" parent="GameUI/TutorialPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="TutorialObjective" type="Label" parent="GameUI/TutorialPanel/TutorialLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = ""
+horizontal_alignment = 1
+
+[node name="TutorialFeedback" type="Label" parent="GameUI/TutorialPanel/TutorialLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.55, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = ""
+horizontal_alignment = 1
+
 [node name="DeveloperReadout" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15

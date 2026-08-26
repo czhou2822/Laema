@@ -21,6 +21,7 @@ const AUDIO_BUS_NAMES := {
 @onready var player = $Player
 @onready var enemy = $Enemy
 @onready var hud = $HUD
+@onready var stage_director: StageDirector = $StageDirector
 @onready var ambient_audio: AudioStreamPlayer = $AmbientAudio
 @onready var music_audio: AudioStreamPlayer = $MusicAudio
 @onready var projectile_impact_audio: AudioStreamPlayer = $ProjectileImpactAudio
@@ -44,8 +45,9 @@ func _ready() -> void:
 	_apply_audio_settings()
 	_configure_default_input_map()
 	hud.configure(_config)
-	_connect_feedback()
 	_enemies = get_tree().get_nodes_in_group("status_targets")
+	_connect_feedback()
+	stage_director.configure(_config["tutorial"])
 	for target in _enemies:
 		target.call("configure", _config)
 	player.configure(_config)
@@ -64,7 +66,17 @@ func _connect_feedback() -> void:
 	player.defence_status_changed.connect(hud.update_defence)
 	player.orb_queue_changed.connect(hud.update_orb_queue)
 	player.spell_projectile_requested.connect(_spawn_spell_projectile)
+	player.combat.outcome_published.connect(_consume_public_outcome)
 	enemy.enemy_health_changed.connect(hud.update_enemy_health)
+	stage_director.objective_changed.connect(hud.update_tutorial_objective)
+	stage_director.feedback_requested.connect(hud.show_tutorial_feedback)
+	stage_director.tutorial_completed.connect(hud.show_tutorial_completed)
+	for target in _enemies:
+		target.connect(&"outcome_published", _consume_public_outcome)
+
+
+func _consume_public_outcome(outcome) -> void:
+	stage_director.consume_outcome(outcome)
 
 
 func _create_developer_overlay() -> void:

@@ -17,16 +17,14 @@ Apply this order when sources disagree:
 3. User-verified technical representation in `docs/TECH_ARCHITECTURE.md`.
 4. Implementation.
 
-Use each document's stated status and the user's verification, not its filename, to determine whether it is authoritative. Dated files under `docs/checkpoints/` are working snapshots; they do not override canonical documents or silently promote proposals into decisions. If current documents, checkpoints, and implementation disagree materially, report the mismatch rather than reconciling it silently.
+Use each document's stated status and the user's verification, not its filename, to determine whether it is authoritative. If current documents and implementation disagree materially, report the mismatch rather than reconciling it silently.
 
 ## Read before acting
 
-- `docs/README.md` — document map and checkpoint rules.
+- `docs/README.md` — document map.
 - `docs/GAME_DESIGN.md` — gameplay and player-experience state.
 - `docs/TECH_ARCHITECTURE.md` — technical ownership and data-flow state.
 - `docs/IMPLEMENTATION_STATUS.md` — implemented and verified state.
-- The latest relevant file under `docs/checkpoints/` when continuing prior work.
-- `docs/changelists/` — review boundaries and file-scope records for coordinated source/document changes.
 
 Read only the sources relevant to the request, but inspect the current Git state before any edit.
 
