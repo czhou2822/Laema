@@ -6,3 +6,6 @@ This directory is intended to hold the durable project state that should travel 
 - `TECH_ARCHITECTURE.md` — accepted technical representation and ownership decisions
 - `DECISIONS.md` — decision history and rationale
 - `IMPLEMENTATION_STATUS.md` — current implementation state and verification notes
+- `checkpoints/` — dated project snapshots that preserve cross-thread working state
+- `changelists/` — reviewable file-scope records for coordinated changes
+- `presentation/` — tournament-guideline references and generated internal pitch decks
