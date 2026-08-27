@@ -202,20 +202,19 @@ The consumed orb composition determines the spell output.
 1. The school with the greatest consumed-orb count becomes the primary school.
 2. If two schools tie, the school of the final consumed orb wins the tie.
 3. Primary casting level equals the total number of consumed orbs.
-4. The secondary school resolves at:
-
-```text
-consumed orbs of that school − 1
-```
-
-5. A secondary result below level 1 produces no secondary casting.
+4. Every secondary school resolves at its own consumed-orb count.
+5. A school with zero consumed orbs produces no casting.
 
 Example:
 
 ```text
 Consumed queue: A A W W
 Primary: Water level 4
-Secondary: Air level 1
+Secondary: Air level 2
+
+Consumed queue: F F E E E
+Primary: Earth level 5
+Secondary: Fire level 2
 ```
 
 The primary and secondary results reuse their school’s current specialty behavior.
@@ -248,7 +247,7 @@ Wet remains a future Air-lightning interaction and has no current modifier. Froz
 
 ### Air
 
-Air level 1 grants the current timed multiplicative attack-speed buff. Air levels 2 through 5 release chain lightning whose direct damage and chained-target count scale with level. Exact final values remain tunable.
+Air level 1 adds ten attack-speed percentage points directly to Heat when its spell effect resolves. It has no separate timed attack-speed multiplier; the added Heat follows the ordinary Heat cap, loss, drain, and reset rules. Air levels 2 through 5 release chain lightning whose direct damage and chained-target count scale with level. Exact final values remain tunable.
 
 ### Earth
 
@@ -320,11 +319,13 @@ The struck Entity’s defensive level reduces Impact:
 final hit-reaction level = max(0, Impact level − defensive level)
 ```
 
-Direct X and casting HealthEvents that reduce Health add Heat. Separate primary and secondary direct events may add Heat independently. DoT, status, and future HoT events add none.
+Attack speed begins at the `100%` baseline and cannot exceed `150%`. Each orb consumed by Casting increases attack speed by one percentage point: five total consumed orbs produce `105%` attack speed, and ten total consumed orbs produce `110%` attack speed.
 
-Heat levels continue increasing attack and casting animation speed. Inactivity resets Heat according to the current tunable grace period.
+Orb consumption and the Air level-1 spell effect are the current sources of this attack-speed increase. Their gains stack: casting Air level 1 with one consumed orb at `105%` attack speed first produces `106%` at Cast commitment, then `116%` when the Air effect resolves. Direct X hits, other casting impacts, DoT, status, and future HoT events add none. Three seconds after the last qualifying Heat gain, the Heat Reset Timer resets Heat and attack speed fully to the `100%` baseline.
 
-**Deferred direction:** A later iteration will replace direct-hit Heat gain with Heat gain based on the number of orbs consumed by Casting. This change is not part of the current side-scrolling prototype implementation; its conversion rate and tuning remain open.
+When Laema is hit, attack speed decreases by five percentage points and cannot fall below the `100%` baseline. For example, a hit at `110%` attack speed reduces it to `105%` attack speed.
+
+**Deferred direction:** Additional future spells may add Heat directly. Air level 1 is the only current spell with that behavior; rules and values for any additional spell remain open.
 
 ## Enemy and Feedback
 
@@ -390,7 +391,7 @@ The prototype must make the following observable:
 - Developer Portal tab organization plus live, saved Ambient/SFX/BGM enabled and volume controls;
 - an always-visible orb queue and R2 marking-progress bar independent of the developer-overlay flag;
 - marked-orb loss on hit while unmarked orbs remain and expire normally;
-- proportional Heat acceleration of attacks, casting animations, and R2 charging;
+- proportional Heat acceleration of attacks, casting animations, and R2 charging, including Air level 1's ten-point Heat gain without a separate timed multiplier;
 - movement locked during active X/Cast animations and restored between actions while CHARGING or DEPLETING preserves the chain;
 - normal, empowered, endpoint, consecutive, and failed Casts;
 - failure cancellation and punishment flinch;
