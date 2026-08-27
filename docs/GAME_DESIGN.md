@@ -20,9 +20,9 @@ The primary experience remains deliberate combat mastery. The player should lear
 |---|---|
 | Left stick | Move left or right and face that direction |
 | X | Perform the active school’s attack |
-| R2 held in the 35–65% charge band | Charge and mark orbs |
-| R2 entering the 90–100% CAST band | Trigger Casting once on entry |
-| R2 held in the 0–10% lower endpoint deadzone | Deplete the marking meter |
+| R2 held in the 95–100% charge band | Charge and mark orbs |
+| R2 held between 5–95% | Hold the current charge and marked orbs |
+| R2 released below 5% | Trigger Casting once on release |
 | D-pad Up | Select Fire |
 | D-pad Down | Select Water |
 | D-pad Left | Select Air |
@@ -31,7 +31,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 Laema is affected by gravity and remains grounded on solid collision. The first test level is one continuous flat floor. The camera follows Laema horizontally while preserving fixed vertical framing.
 
-Active X and Cast animations lock player-controlled movement. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
+Active X and Cast animations lock player-controlled movement. When CHARGING or HOLDING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
 
 ## Schools and Character Presentation
 
@@ -91,9 +91,9 @@ Every attack and casting animation has a chaining window. Once that window opens
 
 For this prototype, X attacks and Casting use the same base animation duration and normalized chaining-window timing. Heat accelerates both through the same current speed multiplier.
 
-X presses and full-press Cast requests use one shared normalized pre-window buffer. The buffer width is 20% of normalized action duration. With `combat.input_window_start = 0.48` and `combat.x_buffer_width = 0.20`, the initial buffer zone is `0.28 <= progress < 0.48`. One valid X or full-press Cast request may occupy the buffer slot; later requests in that same buffer period are ignored. The buffer applies while the current chainable animation is X or Cast, and does not apply to school switching.
+X presses and release-Cast requests use one shared normalized pre-window buffer. The buffer width is 20% of normalized action duration. With `combat.input_window_start = 0.48` and `combat.x_buffer_width = 0.20`, the initial buffer zone is `0.28 <= progress < 0.48`. One valid X or release-Cast request may occupy the buffer slot; later requests in that same buffer period are ignored. The buffer applies while the current chainable animation is X or Cast, and does not apply to school switching.
 
-An X buffer stores one school-and-direction action intention without advancing the chain or UI, then promotes it through the normal X acceptance path when the chaining window opens. A buffered full press requires marked orbs, consumes them immediately, resolves and freezes the Cast composition and existing Cast fields, then promotes the resolved Cast as the appropriate empowered mid-chain or endpoint Cast when the chaining window opens. Early X remains ignored; an early full press before the buffer without a valid request remains a rushed Cast failure. Buffer state does not repeat from held input and clears on interruption, hit reaction, failed Cast, chain completion/reset, or return to `READY`.
+An X buffer stores one school-and-direction action intention without advancing the chain or UI, then promotes it through the normal X acceptance path when the chaining window opens. A buffered release requires marked orbs, consumes them immediately, resolves and freezes the Cast composition and existing Cast fields, then promotes the resolved Cast as the appropriate empowered mid-chain or endpoint Cast when the chaining window opens. Early X remains ignored; an early release before the buffer without a valid request remains a rushed Cast failure. Buffer state does not repeat from held input and clears on interruption, hit reaction, failed Cast, chain completion/reset, or return to `READY`.
 
 ## Orb Queue
 
@@ -126,33 +126,29 @@ Orb queue: A A W W
 
 ## R2 Pressure and Charging
 
-R2 pressure has three semantic states. Values between the configured bands retain the previous semantic state, and state changes are transition-based:
+R2 pressure has three semantic states, and state changes are transition-based:
 
-- `0–10%`: **DEPLETING**; marking capacity and partial progress drain.
-- `35–65%`: **CHARGING**; available orb capacity charges and marks in FIFO order.
-- `90–100%`: **CAST**; one Cast attempt occurs on entry.
+- Below `5%`: **RELEASE**; one Cast attempt occurs on entry.
+- `5–95%`: **HOLD**; marking capacity and partial progress remain unchanged.
+- `95–100%`: **CHARGING**; available orb capacity charges and marks in FIFO order.
 
 CHARGING may begin at any time, with or without available orbs, and continues while Laema attacks or performs casting animations. Charging capacity marks the oldest available orbs in first-in, first-out order.
 
 - Entering CHARGING starts or resumes marking progress.
-- Entering DEPLETING drains the continuous marking meter at the baseline `charge_step_duration` rate, without Heat scaling or queue-orb removal.
-- Entering CAST triggers one normal or empowered Cast attempt; holding at full pressure does not repeat it.
-- Releasing R2 no longer triggers Casting.
-- The charge band center and tolerance are tunable. The prototype begins with a ±15% band, so 35–65% pressure counts as CHARGING.
-- For the prototype, 0–10% is DEPLETING and 90–100% is CAST; no exact 0% or 100% reading is required.
+- Entering HOLD stops charging and preserves the continuous marking meter and all marked orbs.
+- Entering RELEASE triggers one normal or empowered Cast attempt; holding at full release does not repeat it.
+- The prototype begins with 95–100% as CHARGING, 5–95% as HOLD, and below 5% as RELEASE; no exact 0% or 100% reading is required.
 - Casting capacity increases by one marked orb every nominal 0.5 seconds while CHARGING.
 - At baseline speed, the first orb becomes marked after 0.5 seconds.
 - At baseline speed, maximum capacity is five marked orbs after 2.5 seconds.
 - Holding longer leaves capacity at five.
 - CHARGING uses the current Heat multiplier. At multiplier `M`, effective step duration is `0.5 / M` seconds.
-- DEPLETING uses fixed real time at the baseline `0.5` second step duration. Five marked orbs deplete in 2.5 seconds, independent of Heat.
-- Partial DEPLETING progress is continuous. Crossing a completed-mark boundary unmarks the most recently marked orb first.
-- DEPLETING never consumes or removes queue orbs.
-- CHARGING and DEPLETING preserve the active chain and its orb queue beyond the normal idle timeout.
-- CHARGING and DEPLETING do not keep movement locked between active X or Cast animations.
+- HOLD preserves partial charge and marked capacity without changing either value or removing queue orbs.
+- CHARGING and HOLD preserve the active chain and its orb queue beyond the normal idle timeout.
+- CHARGING and HOLD do not keep movement locked between active X or Cast animations.
 - Marking does not pause expiration. If a marked oldest orb expires, the existing marking coverage transfers forward with the shifted queue, preserving the marked count when enough orbs remain.
 - When Laema is hit, every marked orb is removed. Unmarked orbs remain in the queue and continue their normal expiration countdown.
-- Entering CAST consumes:
+- Entering RELEASE consumes:
 
 ```text
 all currently marked orbs
@@ -160,17 +156,17 @@ all currently marked orbs
 
 Consumption is first-in, first-out. For example, two marked orbs in `A A W W` consume `A A`.
 
-Marked orbs are consumed immediately on CAST entry, including a buffered full press before the promoted Cast animation begins. If Casting is interrupted before projectile launch, those orbs are not refunded.
+Marked orbs are consumed immediately on RELEASE entry, including a buffered release before the promoted Cast animation begins. If Casting is interrupted before projectile launch, those orbs are not refunded.
 
 ## Casting Outcomes
 
 ### Normal Cast
 
-Entering CAST while Laema is idle performs a normal Cast when at least one orb is marked. A normal Cast ends the current chain after consuming its marked orbs.
+Entering RELEASE while Laema is idle performs a normal Cast when at least one orb is marked. A normal Cast ends the current chain after consuming its marked orbs.
 
 ### Empowered Cast
 
-Entering CAST during an attack or casting animation’s valid buffer/window performs an empowered Cast.
+Entering RELEASE during an attack or casting animation’s valid buffer/window performs an empowered Cast.
 
 - A mid-chain empowered Cast occupies the next progression position and may continue chaining.
 - An empowered Cast triggered after position 5 is the optional endpoint Cast and ends the chain.
@@ -183,8 +179,8 @@ Entering CAST during an attack or casting animation’s valid buffer/window perf
 
 Casting fails when any of the following is true:
 
-- Full press is triggered before any orb is marked.
-- Full press is triggered during an active attack or casting animation before its buffer zone opens.
+- Release is triggered before any orb is marked.
+- Release is triggered during an active attack or casting animation before its buffer zone opens.
 
 A failed Cast:
 
@@ -193,7 +189,7 @@ A failed Cast:
 - ends the chain and clears its orbs; and
 - applies the existing level-1 light flinch and recovery to Laema.
 
-Entering CAST while idle is not a timing failure. It succeeds when at least one orb is marked.
+Entering RELEASE while idle is not a timing failure. It succeeds when at least one orb is marked.
 
 ## Mixed-School Resolution
 
@@ -368,7 +364,7 @@ The current intermediate lesson list is provisional:
 4. perform a five-X combo, then cast a level-5 spell;
 5. perform X, X, Cast, X;
 6. perform X, Cast, X, Cast; and
-7. sustain charging by holding R2 at half pressure.
+7. sustain charging by holding R2 at full pressure.
 
 The final lesson is fixed: fight an Enemy. The lesson and tutorial complete when that Enemy dies. The current three permanent practice targets remain the current prototype behavior and do not yet satisfy this final-stage requirement.
 
@@ -386,13 +382,13 @@ The prototype must make the following observable:
 - all three Enemy targets accept X and projectile contact and display their own Health/status feedback;
 - FIFO orb expiration, right-to-left reverse orb progress, mark transfer, and consumption;
 - simultaneous R2 charging and attacking;
-- R2 CHARGING, DEPLETING, and CAST bands, transition behavior, fixed-rate depletion, and full-press Cast behavior;
+- R2 CHARGING, HOLD, and RELEASE bands, transition behavior, preserved partial charge, and release-Cast behavior;
 - default-visible developer readouts, upper-right live raw R2 pressure, shared visibility toggling, and saved visibility restoration;
 - Developer Portal tab organization plus live, saved Ambient/SFX/BGM enabled and volume controls;
 - an always-visible orb queue and R2 marking-progress bar independent of the developer-overlay flag;
 - marked-orb loss on hit while unmarked orbs remain and expire normally;
 - proportional Heat acceleration of attacks, casting animations, and R2 charging, including Air level 1's ten-point Heat gain without a separate timed multiplier;
-- movement locked during active X/Cast animations and restored between actions while CHARGING or DEPLETING preserves the chain;
+- movement locked during active X/Cast animations and restored between actions while CHARGING or HOLD preserves the chain;
 - normal, empowered, endpoint, consecutive, and failed Casts;
 - failure cancellation and punishment flinch;
 - primary, tie-break, and secondary mixed-school resolution;

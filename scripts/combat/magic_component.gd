@@ -10,9 +10,9 @@ signal action_speed_multiplier_changed(multiplier: float)
 
 enum PressureState {
 	INTERMEDIATE,
-	DEPLETING,
+	RELEASE,
+	HOLD,
 	CHARGING,
-	CAST,
 }
 
 var _config: Dictionary = {}
@@ -27,7 +27,7 @@ var _front_remaining := 0.0
 var _partial_mark_time := 0.0
 var _marked_capacity := 0
 var _marking_active := false
-var _depleting_active := false
+var _holding_charge := false
 var _pressure_initialized := false
 var _pressure_state := PressureState.INTERMEDIATE
 var _committed_casts: Dictionary = {}
@@ -77,8 +77,6 @@ func _process(delta: float) -> void:
 	var changed := _advance_front_lifetime(delta)
 	if _marking_active:
 		changed = _advance_marking(delta) or changed
-	elif _depleting_active:
-		changed = _advance_depleting(delta) or changed
 	_update_air_speed_buff(delta)
 	if changed:
 		_emit_snapshot()
@@ -98,7 +96,7 @@ func update_pressure(raw_strength: float) -> int:
 			"initial": true,
 		})
 		_trace(&"pressure_state_changed", {"raw_strength": raw_strength, "state": _pressure_state_name(candidate), "initial": true})
-		return candidate
+		return PressureState.INTERMEDIATE if candidate == PressureState.RELEASE else candidate
 	if candidate == _pressure_state:
 		return PressureState.INTERMEDIATE
 	_pressure_state = candidate
@@ -113,26 +111,26 @@ func update_pressure(raw_strength: float) -> int:
 func start_charging() -> void:
 	var was_active := _marking_active
 	_marking_active = true
-	_depleting_active = false
+	_holding_charge = false
 	if not was_active:
 		_trace(&"charging_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
 		_publish_outcome(&"charging_started", {"marked_count": get_marked_count()})
 		_emit_snapshot()
 
 
-func start_depleting() -> void:
-	var was_active := _depleting_active
+func hold_charge() -> void:
+	var was_holding := _holding_charge
 	_marking_active = false
-	if was_active:
+	if was_holding:
 		return
-	_depleting_active = true
-	_trace(&"depleting_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
-	_publish_outcome(&"depleting_started", {"marked_count": get_marked_count()})
+	_holding_charge = true
+	_trace(&"charge_held", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
+	_publish_outcome(&"charge_held", {"marked_count": get_marked_count()})
 	_emit_snapshot()
 
 
 func has_active_marking_state() -> bool:
-	return _marking_active or _depleting_active or _partial_mark_time > 0.0 or _marked_capacity > 0
+	return _marking_active or _holding_charge or _partial_mark_time > 0.0 or _marked_capacity > 0
 
 
 func has_marked_orbs() -> bool:
@@ -246,7 +244,7 @@ func remove_marked_orbs_on_player_hit() -> void:
 		_queue.remove_at(0)
 	_marked_capacity = 0
 	_partial_mark_time = 0.0
-	_depleting_active = false
+	_holding_charge = false
 	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
 	_publish_outcome(&"marked_orbs_removed_on_player_hit", {"removed_count": removed_count, "remaining_queue": _queue.size()})
 	_trace(&"marked_orbs_removed_on_owner_hit", {"removed": removed_count, "remaining_queue": _queue.size()})
@@ -336,7 +334,7 @@ func _consume_marked_orbs() -> Dictionary:
 	_marked_capacity = 0
 	_partial_mark_time = 0.0
 	_marking_active = false
-	_depleting_active = false
+	_holding_charge = false
 	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
 	_emit_snapshot()
 	return {
@@ -382,25 +380,21 @@ func _equipped_spell(school: StringName, level: int) -> StringName:
 
 
 func _classify_pressure(raw_strength: float) -> int:
-	if raw_strength <= float(_casting_config["trigger_deplete_max"]):
-		return PressureState.DEPLETING
-	var charge_lower: float = float(_casting_config["trigger_charge_center"]) - float(_casting_config["trigger_charge_half_width"])
-	var charge_upper: float = float(_casting_config["trigger_charge_center"]) + float(_casting_config["trigger_charge_half_width"])
-	if raw_strength >= charge_lower and raw_strength <= charge_upper:
+	if raw_strength < float(_casting_config["trigger_release_max"]):
+		return PressureState.RELEASE
+	if raw_strength >= float(_casting_config["trigger_charge_min"]):
 		return PressureState.CHARGING
-	if raw_strength >= float(_casting_config["trigger_cast_min"]):
-		return PressureState.CAST
-	return PressureState.INTERMEDIATE
+	return PressureState.HOLD
 
 
 func _pressure_state_name(state: int) -> StringName:
 	match state:
-		PressureState.DEPLETING:
-			return &"DEPLETING"
+		PressureState.RELEASE:
+			return &"RELEASE"
+		PressureState.HOLD:
+			return &"HOLD"
 		PressureState.CHARGING:
 			return &"CHARGING"
-		PressureState.CAST:
-			return &"CAST"
 	return &"INTERMEDIATE"
 
 
@@ -438,21 +432,6 @@ func _advance_marking(delta: float) -> bool:
 	return changed
 
 
-func _advance_depleting(delta: float) -> bool:
-	if _marked_capacity <= 0 and _partial_mark_time <= 0.0:
-		return false
-	_partial_mark_time -= delta
-	var changed := true
-	while _partial_mark_time < 0.0 and _marked_capacity > 0:
-		_marked_capacity -= 1
-		_partial_mark_time += _charge_step_duration()
-		_trace(&"mark_decremented", {"marked_capacity": _marked_capacity, "queue_size": _queue.size()})
-		_publish_outcome(&"orb_unmarked", {"marked_count": get_marked_count()})
-	if _marked_capacity <= 0 and _partial_mark_time < 0.0:
-		_partial_mark_time = 0.0
-	return changed
-
-
 func _apply_air_speed_buff() -> void:
 	_air_speed_multiplier = float(_config["air"]["attack_speed_multiplier"])
 	_air_speed_remaining = float(_config["air"]["buff_duration"])
@@ -477,7 +456,7 @@ func _clear_orb_state() -> void:
 	_partial_mark_time = 0.0
 	_marked_capacity = 0
 	_marking_active = false
-	_depleting_active = false
+	_holding_charge = false
 
 
 func _emit_snapshot() -> void:

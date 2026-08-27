@@ -39,9 +39,9 @@ CombatComponent is a thin facade: it owns/configures the three children, connect
 
 Might owns input eligibility, melee/casting action state, the one shared X/Cast first-request buffer, chain position/switching, animation/contact/launch/window timing, pending/current actions, and action-caused movement locks.
 
-Magic owns orb queue lifetime/marking/depletion, Cast commitment/consumption, marked-only owner-hit removal, composition, configured spell lookup, committed payloads, and spell/projectile execution.
+Magic owns orb queue lifetime, full-press marking, held-charge preservation, release-Cast commitment/consumption, marked-only owner-hit removal, composition, configured spell lookup, committed payloads, and spell/projectile execution.
 
-Heat owns the sole mutable attack-speed bonus, reset timing, multiplier, gain/loss operations, and publication. Its bonus ranges from zero to fifty percentage points, producing `100%` through `150%` attack speed. Might reads its multiplier for action speed; Magic reads it for marking; DEPLETING remains fixed-time; Defence drains only through Heat.
+Heat owns the sole mutable attack-speed bonus, reset timing, multiplier, gain/loss operations, and publication. Its bonus ranges from zero to fifty percentage points, producing `100%` through `150%` attack speed. Might reads its multiplier for action speed; Magic reads it for full-press marking; HOLD preserves charge without a timing operation; Defence drains only through Heat.
 
 Outside-combat loadout data maps `(school, casting level) -> equipped spell`. Current fixed effects are defaults; persistence is excluded.
 
@@ -50,7 +50,7 @@ Outside-combat loadout data maps `(school, casting level) -> equipped spell`. Cu
 ### Cast commitment
 
 ```text
-R2 enters CAST
+R2 enters RELEASE below 5%
   -> Might performs timing and shared-buffer arbitration
   -> Magic immediately consumes marked orbs
   -> Magic freezes composition, levels, equipped spell, multiplier,
@@ -76,7 +76,7 @@ Orb consumption and Air level 1 are the only current gain sources. Melee hits, o
 
 An authoritative Player-hit outcome routes a loss of five attack-speed percentage points to Heat in the same cross-domain transaction, floored at zero bonus / `100%` attack speed. The Heat Reset Timer restarts on each qualifying orb-consumption gain; when its configured duration expires without another qualifying gain, Heat resets fully to zero bonus / `100%` attack speed. Loss operations do not restart the timer. Existing Water-block drain continues through Heat's bounded loss operation. Future spells that add Heat directly remain deferred and have no current implementation contract.
 
-Heat publishes the resulting attack-speed multiplier once per authoritative mutation. Combat forwards it to Might for X/Cast animation speed, Magic for CHARGING speed, and Player/HUD/debug presentation. DEPLETING remains fixed-time and ignores the multiplier.
+Heat publishes the resulting attack-speed multiplier once per authoritative mutation. Combat forwards it to Might for X/Cast animation speed, Magic for 95–100% CHARGING speed, and Player/HUD/debug presentation. HOLD preserves charge and ignores the multiplier because it performs no timed operation.
 
 #### Configuration replacement
 
@@ -122,6 +122,6 @@ Practice targets retain refill. The final Enemy has a distinct authoritative def
 
 ## Validation
 
-Human validation must confirm unchanged X/Cast buffering; immediate frozen no-refund Casts with no double consumption; simplified primary/secondary levels; `+1` attack-speed point per committed consumed orb; `+10` on resolved Air level-1 impact with no separate timed multiplier; stacked `105% -> 106% -> 116%` sequencing; no attack-speed gain from melee, other spell impacts, DoT, status, or HoT; no Air gain on miss or pre-launch interruption; `-5` points on Player hit with a `100%` floor; `150%` cap; timer restart from either qualifying gain and full reset after the three-second Heat Reset Timer; unchanged Water-block drain; proportional X/Cast/CHARGING acceleration with fixed-time DEPLETING; updated configuration rejection and Developer Portal controls; continuous HUD bar and actual attack-speed label; marked-only Player-hit orb loss; immutable one-per-transition outcomes; Director freedom/No/single advancement; practice refill; and final Enemy completion.
+Human validation must confirm unchanged X/release-Cast buffering; immediate frozen no-refund Casts with no double consumption; simplified primary/secondary levels; `+1` attack-speed point per committed consumed orb; `+10` on resolved Air level-1 impact with no separate timed multiplier; stacked `105% -> 106% -> 116%` sequencing; no attack-speed gain from melee, other spell impacts, DoT, status, or HoT; no Air gain on miss or pre-launch interruption; `-5` points on Player hit with a `100%` floor; `150%` cap; timer restart from either qualifying gain and full reset after the three-second Heat Reset Timer; unchanged Water-block drain; proportional X/Cast/95–100% CHARGING acceleration; 5–95% HOLD preservation; below-5% RELEASE Casting; updated configuration rejection and Developer Portal controls; continuous HUD bar and actual attack-speed label; marked-only Player-hit orb loss; immutable one-per-transition outcomes; Director freedom/No/single advancement; practice refill; and final Enemy completion.
 
 No Godot, build, compiler, or automated test was run by the agent. Runtime validation remains required.

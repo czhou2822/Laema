@@ -100,10 +100,8 @@ static func _validate(data: Dictionary) -> String:
 		["combat", "casting_damage", 0.0, INF],
 		["casting", "orb_lifetime", 0.001, INF],
 		["casting", "charge_step_duration", 0.001, INF],
-		["casting", "trigger_deplete_max", 0.0, 1.0],
-		["casting", "trigger_charge_center", 0.0, 1.0],
-		["casting", "trigger_charge_half_width", 0.0, 0.5],
-		["casting", "trigger_cast_min", 0.0, 1.0],
+		["casting", "trigger_release_max", 0.0, 1.0],
+		["casting", "trigger_charge_min", 0.0, 1.0],
 		["casting", "empowered_primary_multiplier", 0.001, INF],
 		["casting", "projectile_screen_ratio", 0.001, 1.0],
 		["casting", "projectile_travel_duration", 0.001, INF],
@@ -166,12 +164,8 @@ static func _validate(data: Dictionary) -> String:
 	if not tutorial_error.is_empty():
 		return tutorial_error
 	var casting: Dictionary = data["casting"]
-	var charge_lower: float = float(casting["trigger_charge_center"]) - float(casting["trigger_charge_half_width"])
-	var charge_upper: float = float(casting["trigger_charge_center"]) + float(casting["trigger_charge_half_width"])
-	if float(casting["trigger_deplete_max"]) >= charge_lower or charge_lower >= charge_upper or charge_upper >= float(casting["trigger_cast_min"]):
-		return "casting pressure bands must be ordered deplete, charge, then cast."
-	if charge_lower < 0.0 or charge_upper > 1.0:
-		return "casting charge band must remain between 0 and 1."
+	if float(casting["trigger_release_max"]) >= float(casting["trigger_charge_min"]):
+		return "casting.trigger_release_max must be lower than casting.trigger_charge_min."
 	var integer_error := _validate_integer(data, "combat", "direct_impact", 0, 5)
 	if not integer_error.is_empty():
 		return integer_error

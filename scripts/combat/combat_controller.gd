@@ -171,13 +171,13 @@ func _update_casting_pressure() -> void:
 	if not _might.can_handle_pressure() or _defending or _guard_broken:
 		return
 	match transition:
-		MagicComponent.PressureState.DEPLETING:
-			_magic.start_depleting()
+		MagicComponent.PressureState.HOLD:
+			_magic.hold_charge()
 			_might.release_movement_for_orb_state()
 		MagicComponent.PressureState.CHARGING:
 			_magic.start_charging()
 			_might.release_movement_for_orb_state()
-		MagicComponent.PressureState.CAST:
+		MagicComponent.PressureState.RELEASE:
 			_might.try_cast_trigger()
 
 
