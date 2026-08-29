@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var health_resolver: HealthResolver = $HealthResolver
 @onready var status_controller = $Status
 @onready var hit_reaction: HitReaction = $HitReaction
+@onready var feedback: FeedbackComponent = $Feedback
 
 var _base_defensive_level := 0
 var _refill_at_zero := false
@@ -20,6 +21,7 @@ func configure_entity(
 ) -> void:
 	_base_defensive_level = maxi(defensive_level, 0)
 	_refill_at_zero = refill_at_zero
+	feedback.configure(self, float(status_config["ui"]["cast_feedback_duration"]))
 	health.configure(maximum_health)
 	hit_reaction.configure(hit_reaction_config)
 	status_controller.configure(self, status_config)
@@ -30,6 +32,10 @@ func configure_entity(
 		hit_reaction,
 		defence_component
 	)
+
+
+func apply_feedback_runtime_tuning(duration: float) -> void:
+	feedback.apply_runtime_tuning(duration)
 
 
 func receive_health_event(event: HealthEvent) -> HealthResult:

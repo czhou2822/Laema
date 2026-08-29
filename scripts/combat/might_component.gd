@@ -472,7 +472,7 @@ func _on_animation_finished(animation_name: StringName) -> void:
 		_complete_chain_and_clear()
 		return
 	if _input_combo.get_current_position() >= 5:
-		_complete_chain_and_clear()
+		_end_chain_preserving_orbs()
 		return
 	if _magic.has_active_marking_state():
 		_current_action = {}

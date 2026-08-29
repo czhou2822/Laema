@@ -32,6 +32,7 @@ class LifetimeOrb extends Control:
 
 	var fill_ratio := 1.0
 	var fill_color := Color.WHITE
+	var marked := false
 
 	func _draw() -> void:
 		var right_edge := -RADIUS + RADIUS * 2.0 * clampf(fill_ratio, 0.0, 1.0)
@@ -45,10 +46,13 @@ class LifetimeOrb extends Control:
 				1.0
 			)
 			x += 1.0
+		if marked:
+			draw_arc(CENTER, RADIUS, 0.0, TAU, 32, Color("ffd700"), 2.0)
 
 
 var _combo_display_duration := 0.0
 var _max_marked_capacity := 5
+var _max_storage_capacity := 10
 var _last_marked_count := -1
 var _last_mark_progress_step := -1
 
@@ -80,10 +84,11 @@ func configure(config: Dictionary) -> void:
 
 
 func apply_runtime_tuning(config: Dictionary) -> void:
-	heat_bar.max_value = float(config["heat"]["max_value"])
+	heat_bar.max_value = float(config["heat"]["max_attack_speed_percent"])
 	heat_bar.value = minf(heat_bar.value, heat_bar.max_value)
 	_combo_display_duration = float(config["ui"]["completed_combo_display_duration"])
 	_max_marked_capacity = int(config["casting"]["max_marked_capacity"])
+	_max_storage_capacity = int(config["casting"]["max_storage_capacity"])
 	set_developer_readout_visible(bool(config["ui"]["developer_overlay_visible"]))
 
 
@@ -98,7 +103,7 @@ func show_startup_error(message: String) -> void:
 
 func update_heat(value: float, level: int, speed_multiplier: float) -> void:
 	heat_bar.value = value
-	heat_level_label.text = "Level %d   ×%.2f speed" % [level, speed_multiplier]
+	heat_level_label.text = "%.0f%%   ×%.2f speed" % [value, speed_multiplier]
 
 
 func update_active_school(school: StringName) -> void:
@@ -160,8 +165,8 @@ func complete_combo(tokens: Array) -> void:
 
 func update_orb_queue(snapshot: Array, marked_count: int, marking_progress: float) -> void:
 	_clear_children(orb_queue)
-	var visible_orb_count := mini(snapshot.size(), _max_marked_capacity)
-	for index in range(_max_marked_capacity):
+	var visible_orb_count := mini(snapshot.size(), _max_storage_capacity)
+	for index in range(_max_storage_capacity):
 		var slot := CenterContainer.new()
 		slot.custom_minimum_size = Vector2(0.0, 34.0)
 		slot.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -186,6 +191,7 @@ func _create_orb_indicator(orb: Dictionary, index: int) -> LifetimeOrb:
 	indicator.custom_minimum_size = Vector2(LifetimeOrb.SIZE, LifetimeOrb.SIZE)
 	indicator.fill_ratio = float(orb["remaining_ratio"]) if index == 0 else 1.0
 	indicator.fill_color = _school_color(StringName(orb["school"]))
+	indicator.marked = bool(orb["marked"])
 	return indicator
 
 

@@ -1,16 +1,14 @@
 # Laema Side-Scrolling Orb Casting Prototype
 
-Status: User-verified gameplay contract for the current prototype.
-
 ## Overview
 
-This prototype tests the existing four-school combat system in a 2D side-scrolling space. Laema builds a temporary queue of elemental orbs through successful X attacks, charges and depletes Casting with R2, and triggers normal or empowered school spells through full-pressure timing and resource composition.
+This prototype tests the existing four-school combat system in a 2D side-scrolling space. Laema builds a temporary queue of elemental orbs through successful X attacks, charges Casting at full R2 pressure, depletes that charge below full pressure, and triggers normal or empowered school spells by releasing R2 below the Cast threshold.
 
 The primary experience remains deliberate combat mastery. The player should learn to maintain an attack chain, build the desired elemental sequence, charge while continuing to attack, and trigger Casting at an intentional pressure moment.
 
 ## Prototype Scope
 
-**Included:** grounded left/right movement, gravity, one continuous flat floor, horizontal camera following, functional Fire/Water/Air/Earth X attacks and casting specialties, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, and three non-attacking Enemy targets.
+**Included:** grounded left/right movement, gravity, one continuous flat floor, horizontal camera following, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, and three non-attacking Enemy targets.
 
 **Excluded:** jumping, vertical traversal controls, Air and Earth defence, active Enemy behavior and attacks, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
@@ -21,7 +19,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 | Left stick | Move left or right and face that direction |
 | X | Perform the active school’s attack |
 | R2 held in the 95–100% charge band | Charge and mark orbs |
-| R2 held between 5–95% | Hold the current charge and marked orbs |
+| R2 held between 5–95% | Deplete marking progress at the fixed baseline rate |
 | R2 released below 5% | Trigger Casting once on release |
 | D-pad Up | Select Fire |
 | D-pad Down | Select Water |
@@ -31,18 +29,18 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 Laema is affected by gravity and remains grounded on solid collision. The first test level is one continuous flat floor. The camera follows Laema horizontally while preserving fixed vertical framing.
 
-Active X and Cast animations lock player-controlled movement. When CHARGING or HOLDING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
+Active X and Cast animations lock player-controlled movement. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
 
 ## Schools and Character Presentation
 
-All four schools have functional X attacks and casting specialties. Active-school selection changes the displayed prototype character:
+All four schools have functional X attacks and generic school-and-level Cast outputs. Active-school selection changes the displayed prototype character:
 
-| School | Character | Casting specialty |
+| School | Character | Prototype Cast output |
 |---|---|---|
-| Fire | Fighter | Stack damage over time |
-| Water | Prototype Saber Fighter | Wet, Slow, and Frozen control |
-| Air | Shinobi | Attack-speed buff and chain lightning |
-| Earth | Samurai | Area damage and Slow |
+| Fire | Fighter | Generic direct damage plus `Fire Lv.N` display |
+| Water | Prototype Saber Fighter | Generic direct damage plus `Water Lv.N` display |
+| Air | Shinobi | Generic direct damage plus `Air Lv.N` display |
+| Earth | Samurai | Generic direct damage plus `Earth Lv.N` display |
 
 This character mapping is prototype presentation only. It does not define Laema’s final appearance.
 
@@ -73,7 +71,7 @@ A chain contains five progression positions.
 - Cast may chain directly into another Cast when the next attempt succeeds.
 - After position 5, the player may perform one optional endpoint Cast.
 - The optional endpoint Cast after position 5 ends the chain.
-- When a chain ends or fails, all remaining orbs are cleared.
+- Ending or failing a chain does not remove stored orbs. Failed Casting resets their marking state as defined below.
 
 Examples:
 
@@ -108,14 +106,16 @@ Every X attack that hits an Enemy creates one orb matching the attack’s school
 
 Orbs form a first-in, first-out queue.
 
+- The queue stores at most 10 orbs.
+- If all 10 slots are occupied, an additional generated orb is discarded without changing the stored queue.
 - Only the oldest orb counts down toward expiration.
 - Its lifetime is seven seconds.
 - A newly spawned orb is a solid school-colored disc (Fire is red). As its lifetime falls, the filled region interpolates from 100% to 75%, 50%, 25%, and empty by shrinking from the right edge toward the left; the unfilled region is transparent.
 - Later orbs retain their full lifetime while another orb remains ahead of them.
 - When the oldest orb expires or is consumed, the next orb immediately begins its full seven-second lifetime.
-- Unconsumed orbs remain after a successful mid-chain Cast.
+- Every successful Cast consumes at most the five marked front orbs. All unconsumed orbs remain and shift forward into the vacated slots while preserving FIFO order.
 - When a chain times out after a completed action without a follow-up, the chain state ends but unconsumed orbs remain while Laema is idle or moving and continue their FIFO expiration.
-- A failed Cast clears every remaining orb. Normal and endpoint Cast completion retain their existing clear-after-consumption behavior.
+- A failed Cast removes no orbs. It makes every stored orb unmarked and resets partial marking progress to zero.
 
 Example:
 
@@ -129,23 +129,25 @@ Orb queue: A A W W
 R2 pressure has three semantic states, and state changes are transition-based:
 
 - Below `5%`: **RELEASE**; one Cast attempt occurs on entry.
-- `5–95%`: **HOLD**; marking capacity and partial progress remain unchanged.
+- `5–95%`: **DEPLETING**; marking capacity and partial progress drain at a fixed rate.
 - `95–100%`: **CHARGING**; available orb capacity charges and marks in FIFO order.
 
 CHARGING may begin at any time, with or without available orbs, and continues while Laema attacks or performs casting animations. Charging capacity marks the oldest available orbs in first-in, first-out order.
 
 - Entering CHARGING starts or resumes marking progress.
-- Entering HOLD stops charging and preserves the continuous marking meter and all marked orbs.
+- Entering DEPLETING drains the continuous marking meter at the baseline `charge_step_duration` rate without Heat scaling.
 - Entering RELEASE triggers one normal or empowered Cast attempt; holding at full release does not repeat it.
-- The prototype begins with 95–100% as CHARGING, 5–95% as HOLD, and below 5% as RELEASE; no exact 0% or 100% reading is required.
+- The prototype begins with 95–100% as CHARGING, 5–95% as DEPLETING, and below 5% as RELEASE; no exact 0% or 100% reading is required.
 - Casting capacity increases by one marked orb every nominal 0.5 seconds while CHARGING.
 - At baseline speed, the first orb becomes marked after 0.5 seconds.
 - At baseline speed, maximum capacity is five marked orbs after 2.5 seconds.
 - Holding longer leaves capacity at five.
 - CHARGING uses the current Heat multiplier. At multiplier `M`, effective step duration is `0.5 / M` seconds.
-- HOLD preserves partial charge and marked capacity without changing either value or removing queue orbs.
-- CHARGING and HOLD preserve the active chain and its orb queue beyond the normal idle timeout.
-- CHARGING and HOLD do not keep movement locked between active X or Cast animations.
+- DEPLETING uses the fixed zero-Heat charging rate: one mark-equivalent per baseline `charge_step_duration`, currently 0.5 seconds. It does not scale with Heat.
+- Partial progress depletes continuously. Crossing a completed-mark boundary unmarks the most recently marked orb first.
+- DEPLETING never consumes or removes queue orbs.
+- CHARGING and DEPLETING preserve the active chain and its orb queue beyond the normal idle timeout.
+- CHARGING and DEPLETING do not keep movement locked between active X or Cast animations.
 - Marking does not pause expiration. If a marked oldest orb expires, the existing marking coverage transfers forward with the shifted queue, preserving the marked count when enough orbs remain.
 - When Laema is hit, every marked orb is removed. Unmarked orbs remain in the queue and continue their normal expiration countdown.
 - Entering RELEASE consumes:
@@ -157,6 +159,8 @@ all currently marked orbs
 Consumption is first-in, first-out. For example, two marked orbs in `A A W W` consume `A A`.
 
 Marked orbs are consumed immediately on RELEASE entry, including a buffered release before the promoted Cast animation begins. If Casting is interrupted before projectile launch, those orbs are not refunded.
+
+After consumption, every unconsumed orb shifts forward into the consumed slots while preserving FIFO order. This applies to normal, mid-chain, and endpoint Casts.
 
 ## Casting Outcomes
 
@@ -173,7 +177,7 @@ Entering RELEASE during an attack or casting animation’s valid buffer/window p
 - Empowered Casting displays a distinct VFX on Laema; a visible dot is sufficient for the prototype.
 - Only the primary school’s direct damage receives the empowered multiplier.
 - Empowered primary direct damage is `1.3×` the corresponding normal-cast damage.
-- Secondary casting damage and other specialty behavior remain unchanged.
+- Secondary generic direct damage remains unchanged. No school-specific Cast behavior resolves in this prototype.
 
 ### Failed Cast
 
@@ -186,7 +190,7 @@ A failed Cast:
 
 - cancels the active attack or casting animation;
 - produces no projectile or spell effect;
-- ends the chain and clears its orbs; and
+- ends the chain, leaves every stored orb in the queue, makes all of them unmarked, resets partial marking progress to zero; and
 - applies the existing level-1 light flinch and recovery to Laema.
 
 Entering RELEASE while idle is not a timing failure. It succeeds when at least one orb is marked.
@@ -195,11 +199,12 @@ Entering RELEASE while idle is not a timing failure. It succeeds when at least o
 
 The consumed orb composition determines the spell output.
 
-1. The school with the greatest consumed-orb count becomes the primary school.
-2. If two schools tie, the school of the final consumed orb wins the tie.
-3. Primary casting level equals the total number of consumed orbs.
-4. Every secondary school resolves at its own consumed-orb count.
-5. A school with zero consumed orbs produces no casting.
+1. The school of the final consumed orb becomes the primary school, using last-in, first-out selection.
+2. Primary casting level equals the total number of consumed orbs.
+3. After removing the primary school from consideration, the remaining school with the greatest consumed-orb count becomes the single secondary school.
+4. If secondary candidates tie, whichever tied school appears last in the consumed sequence becomes secondary, using a last-in, first-out tie-break.
+5. Secondary casting level equals that school's own consumed-orb count.
+6. A Cast resolves at most one secondary layer. Other represented schools produce no casting layer, although their marked orbs are still consumed and still count toward the primary casting level and commitment-time Heat.
 
 Example:
 
@@ -211,64 +216,46 @@ Secondary: Air level 2
 Consumed queue: F F E E E
 Primary: Earth level 5
 Secondary: Fire level 2
+
+Consumed queue: E E E F W
+Primary: Water level 5, because Water is the final consumed orb
+Secondary: Earth level 3, because Earth has the highest remaining count
+Fire: no casting layer
+
+Consumed queue: E E W W F
+Primary: Fire level 5, because Fire is the final consumed orb
+Secondary: Water level 2, because Earth and Water tie and Water appears last in the consumed sequence
+Earth: no casting layer
 ```
 
-The primary and secondary results reuse their school’s current specialty behavior.
+The primary and optional secondary results each deal the existing generic direct Cast damage and display their school and resolved level on the struck Enemy.
 
 ### Future Configurable Spell Mapping
 
 For the final product, the player configures outside combat which spell is assigned to each school and casting level, choosing from the spells available for that slot. Casting invocation remains unchanged during combat; when a school and casting level resolve, the configured spell determines the resulting behavior.
 
-The prototype's fixed school-level casting outcomes remain the current behavior. The available spell lists and individual spell behaviors remain open.
+The prototype uses generic direct Cast damage plus school-and-level display instead of fixed school-specific behavior. Available spell lists and every individual school-level spell behavior remain open for a separate design session.
 
-## School Casting
+## Prototype School-and-Level Cast Feedback
 
-### Fire
+Every resolved school layer—the primary and optional secondary—in a successful projectile hit:
 
-Fire casting deals direct damage and applies one independent DoT stack per resolved Fire level. DoT ticks use Impact 0, cause no flinch, and add no Heat.
+- deals the existing generic direct Cast damage;
+- uses the existing generic Cast Impact contract; and
+- displays `<School> Lv.<N>` on the struck Enemy.
 
-### Water
-
-Water casting deals direct damage and applies the resolved Water control effect:
-
-| Water level | Effect |
-|---|---|
-| 1 | Wet for 1 second |
-| 2 | Wet for 2 seconds |
-| 3 | 20% Slow for 2 seconds |
-| 4 | 40% Slow for 2.5 seconds |
-| 5 | Frozen for 1 second |
-
-Wet remains a future Air-lightning interaction and has no current modifier. Frozen prevents movement and actions. Water statuses remain mutually exclusive: higher level replaces lower, equal level refreshes duration, and lower level is ignored while direct damage still resolves.
-
-### Air
-
-Air level 1 adds ten attack-speed percentage points directly to Heat when its spell effect resolves. It has no separate timed attack-speed multiplier; the added Heat follows the ordinary Heat cap, loss, drain, and reset rules. Air levels 2 through 5 release chain lightning whose direct damage and chained-target count scale with level. Exact final values remain tunable.
-
-### Earth
-
-Earth casting deals area damage and applies Slow. The prototype starts with:
-
-| Earth level | Area radius | Slow | Duration |
-|---|---:|---:|---:|
-| 1 | 28 | 15% | 1.5 seconds |
-| 2 | 38 | 25% | 2.0 seconds |
-| 3 | 48 | 40% | 2.5 seconds |
-| 4 | 58 | 40% | 3.0 seconds |
-| 5 | 68 | 40% | 4.0 seconds |
-
-Area continues increasing by 10 per level. Slow strength reaches 40% at level 3 and remains 40% for levels 4 and 5 while duration continues increasing. These remain prototype tuning values rather than final balance.
+A mixed Cast displays its resolved primary and optional secondary results, such as `Water Lv.4` and `Air Lv.2`. The exact display duration and presentation remain prototype feedback tuning. Fire DoT, Water Wet/Slow/Frozen, Air Heat/chain lightning, Earth area/Slow, and every other school-level spell behavior are deferred to a separate design session.
 
 ## Casting Projectile
 
 Every successful Cast begins a casting animation. The projectile launches later at the same normalized phase used by X attacks for contact.
 
-- One combined projectile carries the primary and any secondary school effects.
+- One combined projectile carries the primary and at most one secondary school layer.
 - It travels in Laema’s facing direction.
 - It travels approximately 50% of the visible screen width in one second.
 - It disappears on the first valid Enemy hit or after reaching maximum distance.
-- On hit, it resolves all included direct damage and specialty effects.
-- A miss produces no damage, status, or Heat.
+- On hit, it resolves each included generic direct-damage layer and displays every resolved school and level on the Enemy.
+- A miss produces no impact damage or school-and-level display. It does not revoke Heat already granted at Cast commitment.
 
 The projectile blends its school colors according to resolved casting levels.
 
@@ -307,7 +294,7 @@ L1 does nothing while Air or Earth is selected. Air and Earth defence remain def
 
 HealthEvent remains the shared damage and healing contract. Damage carries Impact, original-instigator attribution, delivery type, school, contact information, and any effect instruction.
 
-The current prototype starts Player and Enemy maximum Health at 100. X attacks retain their current direct-damage and Impact values across all four schools. Casting projectile hits use each school specialty’s existing direct-damage and Impact contracts.
+The current prototype starts Player and Enemy maximum Health at 100. X attacks retain their current direct-damage and Impact values across all four schools. Casting projectile hits use the existing generic Cast damage and Impact contracts for the resolved primary and optional secondary layers.
 
 The struck Entity’s defensive level reduces Impact:
 
@@ -315,26 +302,28 @@ The struck Entity’s defensive level reduces Impact:
 final hit-reaction level = max(0, Impact level − defensive level)
 ```
 
-Attack speed begins at the `100%` baseline and cannot exceed `150%`. Each orb consumed by Casting increases attack speed by one percentage point: five total consumed orbs produce `105%` attack speed, and ten total consumed orbs produce `110%` attack speed.
+Attack speed begins at the `100%` baseline and cannot exceed `150%`. Each orb consumed by Casting increases attack speed by one percentage point: five total consumed orbs produce `105%` attack speed, and ten total consumed orbs across multiple Casts produce `110%` attack speed.
 
-Orb consumption and the Air level-1 spell effect are the current sources of this attack-speed increase. Their gains stack: casting Air level 1 with one consumed orb at `105%` attack speed first produces `106%` at Cast commitment, then `116%` when the Air effect resolves. Direct X hits, other casting impacts, DoT, status, and future HoT events add none. Three seconds after the last qualifying Heat gain, the Heat Reset Timer resets Heat and attack speed fully to the `100%` baseline.
+Orb consumption is the only current source of this attack-speed increase. Heat is granted immediately when a Cast commits and consumes marked orbs, including a buffered Cast committed before its animation begins. Interruption before launch and projectile miss do not revoke that Heat. Direct X hits, projectile impacts, and any deferred spell behavior add none. Three seconds after the last qualifying Cast commitment, the Heat Reset Timer resets Heat and attack speed fully to the `100%` baseline.
 
 When Laema is hit, attack speed decreases by five percentage points and cannot fall below the `100%` baseline. For example, a hit at `110%` attack speed reduces it to `105%` attack speed.
 
-**Deferred direction:** Additional future spells may add Heat directly. Air level 1 is the only current spell with that behavior; rules and values for any additional spell remain open.
+**Deferred direction:** Future school-level spells may add Heat directly. Every such rule and value remains open.
 
 ## Enemy and Feedback
 
 The prototype contains three stationary, non-attacking, permanent Enemy targets that cannot die. Damage is capped at each target's remaining Health; reaching zero resolves normally and then immediately refills that target's Health without clearing active effects.
 
-Each target’s status display communicates active DoT, Wet, Slow, Frozen, and Earth Slow effects. Frozen also applies its blue tint.
+Each target displays the school and level of every successful Cast layer applied to it. School-specific status displays are deferred with the spell behaviors they would represent.
 
 The always-visible game UI includes:
 
-- a school-colored FIFO orb queue; and
+- a school-colored FIFO orb queue with all 10 storage slots always visible, including empty slots; and
 - an R2 marking-progress bar beneath the orb queue.
 
-Consumed, expired, and hit-lost marked orbs disappear. The queue distinguishes marked orbs from unmarked orbs, and the actively expiring oldest orb displays its remaining lifetime through a left-filled reverse progress indicator whose empty portion grows right to left.
+Consumed, expired, and hit-lost marked orbs disappear. Each marked orb uses a 2 px gold outline while retaining its school-colored fill. The actively expiring oldest orb displays its remaining lifetime through a left-filled reverse progress indicator whose empty portion grows right to left.
+
+When a generated orb is discarded because all 10 slots are occupied, the entire orb widget performs a UI-only horizontal flinch: 4 px left, 4 px right, then back to rest over approximately 0.12 seconds. Each discarded orb restarts the flinch from the widget's resting position. This feedback never interrupts Laema, movement, actions, or chain state.
 
 The prototype developer overlay contains:
 
@@ -370,33 +359,36 @@ The final lesson is fixed: fight an Enemy. The lesson and tutorial complete when
 
 ## Tunables and Validation
 
-Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 charge interval and capacity, R2 charge band center and tolerance, empowered multiplier, Heat, defence, Impact, hit reactions, statuses, Health, and feedback duration.
+Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 charge interval and capacity, R2 pressure thresholds, empowered multiplier, Heat, defence, Impact, hit reactions, statuses, Health, and feedback duration.
 
 The prototype must make the following observable:
 
 - grounded left/right movement and horizontal camera following;
 - five-position chaining with X and mid-chain Casts;
 - all four school X attacks and hit-generated orbs;
+- 10-orb FIFO storage with all slots permanently visible, a five-orb marking/Cast limit, and preserved queue order after every successful Cast;
+- failed Casts preserving stored orbs while resetting all marks and partial marking progress;
+- gold marked-orb outlines plus full-queue discard and whole-widget flinch feedback;
 - normalized X/R2 pre-window buffering at baseline and high Heat, including first-request arbitration, promotion, and clear/invalidation behavior;
 - the default contact requirement and the Developer Portal's optional no-contact orb-collection test toggle;
-- all three Enemy targets accept X and projectile contact and display their own Health/status feedback;
+- all three Enemy targets accept X and projectile contact and display their own Health and Cast-level feedback;
 - FIFO orb expiration, right-to-left reverse orb progress, mark transfer, and consumption;
 - simultaneous R2 charging and attacking;
-- R2 CHARGING, HOLD, and RELEASE bands, transition behavior, preserved partial charge, and release-Cast behavior;
+- R2 CHARGING, DEPLETING, and RELEASE bands, transition behavior, fixed-rate newest-mark-first depletion, and release-Cast behavior;
 - default-visible developer readouts, upper-right live raw R2 pressure, shared visibility toggling, and saved visibility restoration;
 - Developer Portal tab organization plus live, saved Ambient/SFX/BGM enabled and volume controls;
 - an always-visible orb queue and R2 marking-progress bar independent of the developer-overlay flag;
 - marked-orb loss on hit while unmarked orbs remain and expire normally;
-- proportional Heat acceleration of attacks, casting animations, and R2 charging, including Air level 1's ten-point Heat gain without a separate timed multiplier;
-- movement locked during active X/Cast animations and restored between actions while CHARGING or HOLD preserves the chain;
+- proportional Heat acceleration of attacks, casting animations, and R2 charging, with orb consumption as the only current Heat-gain source;
+- movement locked during active X/Cast animations and restored between actions while CHARGING or DEPLETING preserves the chain;
 - normal, empowered, endpoint, consecutive, and failed Casts;
 - failure cancellation and punishment flinch;
-- primary, tie-break, and secondary mixed-school resolution;
-- combined projectile travel, collision, color blending, and school effects;
+- last-consumed-orb primary selection, single-secondary majority selection, and LIFO secondary tie-break;
+- combined projectile travel, collision, color blending, generic direct damage, and school-and-level Enemy display;
 - empowered player VFX and primary-only `1.3×` damage;
-- Heat and status feedback; and
+- commitment-time Heat and Cast-level feedback; and
 - Fire parry and Water defence-state entry.
 
 Incoming Enemy attacks and ordinary-play validation of blocking, parrying, guard depletion, guard warning, and guard break remain deferred because the Enemy does not attack.
 
-Still open or deferred: jumping, non-flat level geometry, Air and Earth defence, active Enemy behavior, final balance, final casting and projectile assets, final Laema presentation, complete enemy content, and detailed charge-to-orb highlighting.
+Still open or deferred: jumping, non-flat level geometry, Air and Earth defence, active Enemy behavior, all school-level spell behaviors, final balance, final casting and projectile assets, final Laema presentation, and complete enemy content.

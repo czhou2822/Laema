@@ -196,6 +196,7 @@ func apply_runtime_tuning() -> void:
 	combat.apply_runtime_tuning()
 	health.set_maximum(float(_config["player"]["max_health"]))
 	hit_reaction.configure(_config["hit_reaction"])
+	apply_feedback_runtime_tuning(float(_config["ui"]["cast_feedback_duration"]))
 
 
 func receive_health_result(result: HealthResult) -> void:

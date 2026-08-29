@@ -51,7 +51,7 @@ func configure(
 	_defence = defence
 	_heat.configure(_config["heat"])
 	_defence.configure(_config["defence"])
-	_magic.configure(_config, _heat, _config["spell_loadout"], _owner_entity, attack_cast, resolvers)
+	_magic.configure(_config, _heat, {}, _owner_entity, attack_cast, resolvers)
 	_might.configure(_config, _owner_entity, animation_player, attack_cast, input_combo, _magic, _heat)
 	_connect_public_interfaces(input_combo)
 	active_school_changed.emit(_might.get_active_school())
@@ -62,7 +62,7 @@ func apply_runtime_tuning() -> void:
 		return
 	_heat.apply_runtime_tuning()
 	_defence.configure(_config["defence"])
-	_magic.apply_runtime_tuning(_config, _config["spell_loadout"])
+	_magic.apply_runtime_tuning(_config, {})
 	_might.apply_runtime_tuning()
 
 
@@ -136,10 +136,7 @@ func set_effect_actions_suppressed(suppressed: bool) -> void:
 
 
 func handle_outgoing_health_result(result: HealthResult) -> void:
-	if result == null or result.event == null or result.event.instigator != _owner_entity:
-		return
-	if result.event.is_direct_damage() and result.health_delta < 0.0:
-		_heat.add_direct_hit()
+	pass
 
 
 func resolve_spell_projectile_impact(target: Entity, contact_point: Vector2, payload: Dictionary) -> void:
@@ -171,8 +168,8 @@ func _update_casting_pressure() -> void:
 	if not _might.can_handle_pressure() or _defending or _guard_broken:
 		return
 	match transition:
-		MagicComponent.PressureState.HOLD:
-			_magic.hold_charge()
+		MagicComponent.PressureState.DEPLETING:
+			_magic.start_depleting()
 			_might.release_movement_for_orb_state()
 		MagicComponent.PressureState.CHARGING:
 			_magic.start_charging()
@@ -211,6 +208,7 @@ func _connect_public_interfaces(input_combo) -> void:
 	_might.cast_failed.connect(cast_failed.emit)
 	_might.outcome_published.connect(_forward_outcome)
 	_magic.queue_changed.connect(orb_queue_changed.emit)
+	_magic.cast_committed.connect(_on_cast_committed)
 	_magic.projectile_launch_requested.connect(cast_launch_requested.emit)
 	_magic.outcome_published.connect(_forward_outcome)
 	_heat.heat_changed.connect(heat_changed.emit)
@@ -225,6 +223,10 @@ func _connect_public_interfaces(input_combo) -> void:
 
 func _forward_outcome(outcome) -> void:
 	outcome_published.emit(outcome)
+
+
+func _on_cast_committed(_commit_id: int, consumed_count: int) -> void:
+	_heat.gain_from_commit(consumed_count)
 
 
 func _on_guard_changed(current_value: float, maximum_value: float) -> void:

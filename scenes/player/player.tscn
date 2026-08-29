@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3]
+[gd_scene load_steps=21 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" path="res://scripts/player/movement_controller.gd" id="2_movement"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" path="res://assets/prototype/audio/guard_warning.ogg" id="12_guard_warning"]
 [ext_resource type="Script" path="res://scripts/combat/might_component.gd" id="13_might"]
 [ext_resource type="Script" path="res://scripts/combat/magic_component.gd" id="14_magic"]
+[ext_resource type="Script" path="res://scripts/entities/feedback_component.gd" id="15_feedback"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(26, 30)
@@ -84,6 +85,9 @@ script = ExtResource("9_status")
 
 [node name="HitReaction" type="Node" parent="."]
 script = ExtResource("10_reaction")
+
+[node name="Feedback" type="Node" parent="."]
+script = ExtResource("15_feedback")
 
 [node name="Defence" type="Node" parent="Combat"]
 script = ExtResource("11_defence")

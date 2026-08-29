@@ -7,11 +7,12 @@ signal queue_changed(snapshot: Array, marked_count: int, marking_progress: float
 signal outcome_published(outcome)
 signal projectile_launch_requested(payload: Dictionary)
 signal action_speed_multiplier_changed(multiplier: float)
+signal cast_committed(commit_id: int, consumed_count: int)
 
 enum PressureState {
 	INTERMEDIATE,
 	RELEASE,
-	HOLD,
+	DEPLETING,
 	CHARGING,
 }
 
@@ -27,7 +28,7 @@ var _front_remaining := 0.0
 var _partial_mark_time := 0.0
 var _marked_capacity := 0
 var _marking_active := false
-var _holding_charge := false
+var _depleting_active := false
 var _pressure_initialized := false
 var _pressure_state := PressureState.INTERMEDIATE
 var _committed_casts: Dictionary = {}
@@ -77,6 +78,8 @@ func _process(delta: float) -> void:
 	var changed := _advance_front_lifetime(delta)
 	if _marking_active:
 		changed = _advance_marking(delta) or changed
+	elif _depleting_active:
+		changed = _advance_depleting(delta) or changed
 	_update_air_speed_buff(delta)
 	if changed:
 		_emit_snapshot()
@@ -111,26 +114,26 @@ func update_pressure(raw_strength: float) -> int:
 func start_charging() -> void:
 	var was_active := _marking_active
 	_marking_active = true
-	_holding_charge = false
+	_depleting_active = false
 	if not was_active:
 		_trace(&"charging_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
 		_publish_outcome(&"charging_started", {"marked_count": get_marked_count()})
 		_emit_snapshot()
 
 
-func hold_charge() -> void:
-	var was_holding := _holding_charge
+func start_depleting() -> void:
+	var was_active := _depleting_active
 	_marking_active = false
-	if was_holding:
+	if was_active:
 		return
-	_holding_charge = true
-	_trace(&"charge_held", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
-	_publish_outcome(&"charge_held", {"marked_count": get_marked_count()})
+	_depleting_active = true
+	_trace(&"depleting_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
+	_publish_outcome(&"depleting_started", {"marked_count": get_marked_count()})
 	_emit_snapshot()
 
 
 func has_active_marking_state() -> bool:
-	return _marking_active or _holding_charge or _partial_mark_time > 0.0 or _marked_capacity > 0
+	return _marking_active or _depleting_active
 
 
 func has_marked_orbs() -> bool:
@@ -143,6 +146,9 @@ func get_marked_count() -> int:
 
 func add_orb(school: StringName) -> void:
 	if school == &"":
+		return
+	if _queue.size() >= _maximum_storage_capacity():
+		_publish_outcome(&"orb_overflow", {"queue_size": _queue.size()})
 		return
 	if _queue.is_empty():
 		_front_remaining = _orb_lifetime()
@@ -162,6 +168,7 @@ func commit_cast(
 	var resolution := _consume_marked_orbs()
 	if not bool(resolution.get("valid", false)):
 		return resolution
+	var consumed_count := int(resolution["composition"].size())
 	var primary_school := StringName(resolution["primary_school"])
 	var primary_level := int(resolution["primary_level"])
 	var secondary_school := StringName(resolution["secondary_school"])
@@ -184,6 +191,7 @@ func commit_cast(
 		"instigator": instigator,
 	}
 	_committed_casts[commit_id] = payload.duplicate(true)
+	cast_committed.emit(commit_id, consumed_count)
 	_publish_outcome(&"cast_committed", {
 		"commit_id": commit_id,
 		"primary_school": primary_school,
@@ -244,7 +252,7 @@ func remove_marked_orbs_on_player_hit() -> void:
 		_queue.remove_at(0)
 	_marked_capacity = 0
 	_partial_mark_time = 0.0
-	_holding_charge = false
+	_depleting_active = false
 	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
 	_publish_outcome(&"marked_orbs_removed_on_player_hit", {"removed_count": removed_count, "remaining_queue": _queue.size()})
 	_trace(&"marked_orbs_removed_on_owner_hit", {"removed": removed_count, "remaining_queue": _queue.size()})
@@ -253,7 +261,12 @@ func remove_marked_orbs_on_player_hit() -> void:
 
 func clear_after_failed_cast() -> void:
 	discard_committed_casts(&"failed_cast")
-	clear_orbs(&"failed_cast")
+	_marked_capacity = 0
+	_partial_mark_time = 0.0
+	_marking_active = false
+	_depleting_active = false
+	_publish_outcome(&"orb_marks_cleared", {"reason": &"failed_cast", "queue_size": _queue.size()})
+	_emit_snapshot()
 
 
 func clear_orbs(reason: StringName) -> void:
@@ -312,29 +325,26 @@ func _consume_marked_orbs() -> Dictionary:
 	var counts: Dictionary = {}
 	for school in consumed:
 		counts[school] = int(counts.get(school, 0)) + 1
-	var primary_school: StringName = &""
-	var primary_count := -1
-	for school in consumed:
-		var count := int(counts[school])
-		if count >= primary_count:
-			primary_school = school
-			primary_count = count
+	var primary_school: StringName = consumed[consumed.size() - 1]
 	var secondary_school: StringName = &""
 	var secondary_level := 0
+	var secondary_last_index := -1
 	for school_variant in counts:
 		var school := StringName(school_variant)
 		if school == primary_school:
 			continue
-		var level := int(counts[school]) - 1
-		if level >= secondary_level and level >= 1:
+		var level := int(counts[school])
+		var last_index := consumed.rfind(school)
+		if level > secondary_level or (level == secondary_level and last_index > secondary_last_index):
 			secondary_school = school
 			secondary_level = level
+			secondary_last_index = last_index
 	for _index in range(consumed_count):
 		_queue.remove_at(0)
 	_marked_capacity = 0
 	_partial_mark_time = 0.0
 	_marking_active = false
-	_holding_charge = false
+	_depleting_active = false
 	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
 	_emit_snapshot()
 	return {
@@ -357,19 +367,10 @@ func _apply_equipped_spell(
 	direction: Vector2
 ) -> void:
 	_trace(&"spell_effect_resolved", {"target": target.name, "spell": spell, "school": school, "level": level, "damage_multiplier": damage_multiplier, "contact_point": contact_point})
-	match spell:
-		&"fire_default":
-			_resolvers[&"fire"].call("apply", _owner_entity, target, level, _config["combat"], direction, contact_point, damage_multiplier)
-		&"water_default":
-			_resolvers[&"water"].call("apply", _owner_entity, _attack_cast.get_world_2d(), contact_point, direction, level, _config["combat"], _config["water"], damage_multiplier)
-		&"air_default":
-			_resolvers[&"air"].call("apply", _owner_entity, _attack_cast.get_world_2d(), target, contact_point, direction, level, _config["combat"], _config["air"], damage_multiplier)
-			if level == 1:
-				_apply_air_speed_buff()
-		&"earth_default":
-			_resolvers[&"earth"].call("apply", _owner_entity, _attack_cast.get_world_2d(), contact_point, direction, level, _config["combat"], _config["earth"], damage_multiplier)
-		_:
-			push_error("Unknown equipped prototype spell: %s" % spell)
+	var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"]["casting_damage"]) * damage_multiplier, int(_config["combat"]["direct_impact"]), HealthEvent.Delivery.DIRECT, school, {}, direction, contact_point)
+	var result: HealthResult = target.receive_health_event(event)
+	if result.outcome == HealthResult.Outcome.APPLIED and result.health_delta < 0.0:
+		target.feedback.show_cast_level(school, level)
 
 
 func _equipped_spell(school: StringName, level: int) -> StringName:
@@ -384,15 +385,15 @@ func _classify_pressure(raw_strength: float) -> int:
 		return PressureState.RELEASE
 	if raw_strength >= float(_casting_config["trigger_charge_min"]):
 		return PressureState.CHARGING
-	return PressureState.HOLD
+	return PressureState.DEPLETING
 
 
 func _pressure_state_name(state: int) -> StringName:
 	match state:
 		PressureState.RELEASE:
 			return &"RELEASE"
-		PressureState.HOLD:
-			return &"HOLD"
+		PressureState.DEPLETING:
+			return &"DEPLETING"
 		PressureState.CHARGING:
 			return &"CHARGING"
 	return &"INTERMEDIATE"
@@ -432,6 +433,18 @@ func _advance_marking(delta: float) -> bool:
 	return changed
 
 
+func _advance_depleting(delta: float) -> bool:
+	if _marked_capacity <= 0 and _partial_mark_time <= 0.0:
+		return false
+	_partial_mark_time -= delta
+	while _partial_mark_time < 0.0 and _marked_capacity > 0:
+		_marked_capacity -= 1
+		_partial_mark_time += _charge_step_duration()
+	if _marked_capacity <= 0 and _partial_mark_time < 0.0:
+		_partial_mark_time = 0.0
+	return true
+
+
 func _apply_air_speed_buff() -> void:
 	_air_speed_multiplier = float(_config["air"]["attack_speed_multiplier"])
 	_air_speed_remaining = float(_config["air"]["buff_duration"])
@@ -456,7 +469,7 @@ func _clear_orb_state() -> void:
 	_partial_mark_time = 0.0
 	_marked_capacity = 0
 	_marking_active = false
-	_holding_charge = false
+	_depleting_active = false
 
 
 func _emit_snapshot() -> void:
@@ -490,6 +503,10 @@ func _charge_step_duration() -> float:
 
 func _maximum_marked_capacity() -> int:
 	return int(_casting_config["max_marked_capacity"])
+
+
+func _maximum_storage_capacity() -> int:
+	return int(_casting_config["max_storage_capacity"])
 
 
 func _publish_outcome(kind: StringName, facts: Dictionary = {}) -> void:

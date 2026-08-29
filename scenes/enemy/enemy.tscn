@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_enemy"]
 [ext_resource type="Script" path="res://scripts/entities/health_component.gd" id="2_health"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/status/status_controller.gd" id="4_status"]
 [ext_resource type="Script" path="res://scripts/entities/hit_reaction.gd" id="5_reaction"]
 [ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/training_dummy.png" id="6_dummy"]
+[ext_resource type="Script" path="res://scripts/entities/feedback_component.gd" id="7_feedback"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enemy"]
 size = Vector2(50, 58)
@@ -54,6 +55,9 @@ script = ExtResource("4_status")
 
 [node name="HitReaction" type="Node" parent="."]
 script = ExtResource("5_reaction")
+
+[node name="Feedback" type="Node" parent="."]
+script = ExtResource("7_feedback")
 
 [node name="VFX" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)

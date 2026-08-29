@@ -1,86 +1,165 @@
-# Technical Design Report — Might/Magic Combat Restructure and Tutorial Director
+# Technical Design Report — Orb Casting Prototype Synchronization
 
 Status: `READY_FOR_ULTRON_OR_DUM-E`
 
-Revision: U-001 through U-004 incorporated; the accepted Heat configuration/UI finding and accepted attack-speed-composition finding from later Ultron `mode=tech-preflight` reviews are incorporated. A fresh preflight is required before implementation.
+Repository basis: `f29c0c8` (`refactor: simplify magic and casting configuration`) plus the user-verified, uncommitted `docs/GAME_DESIGN.md` draft present when this report was generated. This report defines the approved target architecture; it does not claim that the current source implements that target.
 
-## Scope
+No Godot runtime, build, compiler, or automated test was run while preparing this report.
 
-Preserve verified GDD behavior while adding outside-combat school-level spell assignments, shared X/Cast buffering, immediate no-refund Cast commitment, marked-only orb loss on Player hit, authoritative Heat under Combat, simplified mixed-school levels, an orb-consumption- and Air-spell-driven attack-speed measure, a success-gated tutorial, and final completion on Enemy death.
+## Scope and selected decisions
 
-Excluded: fractional/multiple orb contributions, new spells/balance/unlocks/profile persistence, defence redesign, final intermediate objectives, final presentation, and final enemy behavior.
+This synchronization covers the current side-scrolling prototype: five-position X/Cast chains, the shared normalized input buffer, a ten-orb FIFO queue with a five-orb marking limit, R2 RELEASE/DEPLETING/CHARGING behavior, immutable Cast commitments, generic per-school Cast damage, entity-local school-and-level feedback, and commitment-time Heat.
 
-## Current source surface and mismatch
+The Material Decision Ledger is closed:
 
-The committed source at `e26b00f` uses `scripts/combat/combat_controller.gd` as the stable `CombatComponent` facade, with `Might`, `Magic`, `Heat`, and Defence composed below its Player-scene node. The former standalone orb controller is superseded by `MagicComponent`; retained orb and combat trace points remain with their new owners.
+1. **Direct generic Cast path.** `MagicComponent` resolves generic direct damage for the primary and optional secondary layers. Active prototype Casting does not read a spell loadout or dispatch school-specialty resolvers.
+2. **Shared Entity feedback.** A reusable `FeedbackComponent` belongs to the base `Entity` contract. Enemy uses it now for Cast-level feedback; Player receives the same capability without gaining a new current feedback rule.
+3. **Strict configuration replacement.** Obsolete spell-loadout, school-effect, discrete-Heat, and independent Air-speed fields are removed and rejected rather than retained as ignored compatibility data.
+4. **Dedicated commitment-to-Heat interface.** After successful orb consumption and immutable payload storage, Magic emits one internal commitment fact carrying `commit_id` and `consumed_count`. Combat receives it synchronously and grants Heat exactly once. Promotion, launch, interruption, discard, and impact do not emit this fact.
+5. **Last-in primary and single-secondary ordering.** The final consumed orb selects the primary school, whose level equals total consumed orbs. The highest-count remaining school becomes the optional secondary; a secondary tie selects the school appearing latest in the consumed sequence. Impact and feedback resolve primary first, then secondary.
+6. **Pressure state owns chain preservation.** Magic reports CHARGING and DEPLETING as chain-preserving states independently of queue contents, marked count, and partial progress. CHARGING banks capacity while the queue is empty; DEPLETING remains preserving at zero progress until R2 leaves that band. Might consumes this state for timeout and between-action movement decisions.
+7. **Shared configured feedback lifetime.** Both Entity scenes configure their `FeedbackComponent` from `ui.cast_feedback_duration`, default `2.0` seconds and validated from `0.1` through `20.0`. Developer Portal live tuning affects future entries only; each visible entry retains the duration captured when it was created.
+8. **Initial RELEASE is side-effect-free.** The first raw-pressure sample always establishes Magic's initial pressure state. If that state is RELEASE, initialization emits no Cast request or failure. Only a later transition from CHARGING or DEPLETING into RELEASE dispatches one Cast attempt; initial CHARGING or DEPLETING may begin their ordinary state behavior immediately.
 
-The committed source does not yet implement the newly verified rules. `MagicComponent` still reduces secondary casting level by one. `CombatComponent` still adds Heat from direct outgoing Health results, while `HeatComponent` still uses `gain_per_hit` plus configured level thresholds. Air level 1 still stores and applies a separate timed multiplier through `MagicComponent`, `MightComponent`, `air.attack_speed_multiplier`, and `air.buff_duration`. These paths are now stale and require DUM-E synchronization.
+Excluded from this implementation slice: school-level spell behavior, configurable spell assignment, resolver/status cleanup, active Enemy attacks, a killable final tutorial Enemy, defence redesign, Air/Earth defence, final presentation, asset remapping, and final tuning. Existing deferred school resolvers may remain in the repository but must be unreferenced by active prototype Casting.
 
-`config/prototype_combat.json` carries the default `(school, level)` mappings and the current final-only tutorial objective. The configuration loader validates the fixed defaults and requires the final objective to match the final Enemy's public defeated fact. No profile persistence or extra spell content is represented.
-
-`PrototypeArena` connects public Combat and Enemy outcomes to its `StageDirector`; the Director owns no combat state. The three existing practice targets still refill, while the distinct `FinalEnemy` does not refill and publishes `final_enemy_defeated` exactly once.
-
-## Ownership
+## Current codebase map and mismatch
 
 ```text
 Player
-├── CombatComponent
-│   ├── MightComponent
-│   ├── MagicComponent
-│   └── HeatComponent
-└── outside-combat loadout data
+└── CombatComponent                         thin public facade
+    ├── MightComponent                     actions, chain, buffer, timing
+    ├── MagicComponent                     pressure, queue, Cast commitments
+    ├── HeatComponent                      attack-speed state and timer
+    └── DefenceController                  current Fire/Water defence
 
 PrototypeArena
-├── practice targets / final enemy
-└── StageDirector
+├── SpellProjectile instances              movement and collision carrier
+├── stationary Enemy entities
+├── PrototypeHUD / Developer Portal
+└── StageDirector                          consumes public outcomes only
+
+Entity
+├── HealthComponent / HealthResolver
+├── StatusController
+└── HitReaction
 ```
 
-CombatComponent is a thin facade: it owns/configures the three children, connects their public interfaces, orders cross-domain transactions, aggregates immutable outcomes, and preserves Player/HUD/Arena-facing signals. It stores no duplicate Might, Magic, or Heat state.
+The current ownership split is suitable and remains in place. The source at `f29c0c8` is nevertheless behind the verified GDD in these material ways:
 
-Might owns input eligibility, melee/casting action state, the one shared X/Cast first-request buffer, chain position/switching, animation/contact/launch/window timing, pending/current actions, and action-caused movement locks.
+- `MagicComponent` classifies the middle R2 band as HOLD, has no ten-orb storage cap, clears the queue after a failed Cast, selects the primary by majority rather than the final consumed orb, reduces the secondary level by one, and does not guarantee the verified LIFO secondary tie-break.
+- Projectile impact still looks up `spell_loadout` and dispatches Fire/Water/Air/Earth specialty resolvers.
+- `CombatComponent` gains Heat from direct outgoing damage, while `HeatComponent` still uses hit gain, discrete levels, and an old inactivity model. `MagicComponent` also owns a separate timed Air speed multiplier.
+- `PrototypeHUD` renders only five orb slots and still displays a discrete Heat level.
+- `prototype_combat.json`, its fail-fast loader, and Developer Portal controls still require obsolete loadout and school-effect fields.
+- `Entity` has no shared feedback component; Enemy currently owns status-specific display code directly.
 
-Magic owns orb queue lifetime, full-press marking, held-charge preservation, release-Cast commitment/consumption, marked-only owner-hit removal, composition, configured spell lookup, committed payloads, and spell/projectile execution.
+`SpellProjectile` already carries a copied payload from commitment through collision. Preserve that model and the `SpellProjectile` name; no separate Cast-plan object is introduced.
 
-Heat owns the sole mutable attack-speed bonus, reset timing, multiplier, gain/loss operations, and publication. Its bonus ranges from zero to fifty percentage points, producing `100%` through `150%` attack speed. Might reads its multiplier for action speed; Magic reads it for full-press marking; HOLD preserves charge without a timing operation; Defence drains only through Heat.
+## Target ownership
 
-Outside-combat loadout data maps `(school, casting level) -> equipped spell`. Current fixed effects are defaults; persistence is excluded.
+### Might, Magic, Heat, and Combat
 
-## Contracts
+`MightComponent` continues to own action eligibility, X/Cast timing, the one-slot earliest-request buffer, chain progression, animation/contact/launch phases, and action-caused movement locks. It decides whether a release-Cast request is normal, empowered, buffered, an endpoint Cast, or a timing failure. After an action and when evaluating timeout, Might reads Magic's pressure-state preservation contract rather than deriving preservation from queue or meter values.
 
-### Cast commitment
+`MagicComponent` owns the ten-orb FIFO queue, front-orb lifetime, five-orb marking capacity, pressure state, CHARGING and DEPLETING progression, Cast composition, immediate consumption, and immutable committed payloads. Its first raw-pressure sample establishes the initial state before transition behavior is allowed. Initial RELEASE is side-effect-free; initial CHARGING or DEPLETING may begin ordinary state behavior. Its current pressure state is the sole preservation authority: CHARGING and DEPLETING preserve the chain; RELEASE does not. This state remains authoritative even when the queue, marked count, and partial progress are all zero. Only after a successful commitment has consumed its marked prefix and stored its payload does Magic emit a dedicated internal commitment fact containing `commit_id` and `consumed_count`. Failed commitment attempts emit nothing.
+
+`HeatComponent` remains the sole owner of attack-speed bonus points, the `100%..150%` multiplier, loss, Water-block drain, and the three-second reset timer. `CombatComponent` subscribes to Magic's dedicated commitment fact during configuration and synchronously routes `consumed_count` to Heat once. Might reads the resulting multiplier for X/Cast animation timing; Magic reads it only for CHARGING speed.
+
+`CombatComponent` remains a thin facade. It forwards Player/HUD/Arena-facing signals and orders cross-component transactions without duplicating Might, Magic, Heat, queue, or feedback state. Generic public `CombatOutcome` events remain observational and never drive the authoritative Heat mutation.
+
+### Entity feedback
+
+The base `Entity` script gains a required `FeedbackComponent` reference alongside Health, Status, and HitReaction. The project uses a shared base script rather than a shared inherited Entity scene, so both Player and Enemy scenes compose their own `Feedback` child satisfying that contract; no base-scene refactor is required.
+
+`FeedbackComponent` owns transient entity-local feedback entries and their expiration. It is separate from `StatusController`: Cast-level text is presentation evidence, not a buff, debuff, or gameplay status. The base Entity configuration injects `ui.cast_feedback_duration` into each Player and Enemy component. Every entry captures that duration at creation, so a live tuning change affects only later entries and never extends or truncates feedback already visible. The current slice publishes `<School> Lv.<N>` only on a struck Entity after that school layer successfully applies direct damage. Enemy presents those entries now. Player has the same public capability for future use, but this slice introduces no new Player-facing feedback trigger.
+
+### Arena and projectile
+
+`PrototypeArena` continues to instantiate projectiles and route their collision back through Combat. `SpellProjectile` owns travel, maximum distance, first-valid-target collision, and blended presentation. It carries the immutable resolved Cast payload rather than reading the live orb queue later.
+
+The payload carries an explicit primary school and level plus one optional secondary school and level. It also retains empowered state, the primary-only damage multiplier, original instigator, direction, and the information needed to derive color weights. The final consumed orb always selects the primary school; primary level equals total consumed orbs. After excluding the primary, the highest-count remaining school becomes secondary. A secondary-count tie selects the tied school appearing latest in the consumed sequence. Other represented schools create no layer, although their orbs remain consumed and still contribute to primary level and commitment-time Heat.
+
+Impact resolution is ordered: primary first, optional secondary second. Feedback presentation uses that same order. This preserves one deterministic sequence across payload construction, HealthEvents, immediate target refill, hit reactions, and Cast-level labels.
+
+## Core flows and contracts
+
+### Queue and R2 pressure
 
 ```text
-R2 enters RELEASE below 5%
-  -> Might performs timing and shared-buffer arbitration
-  -> Magic immediately consumes marked orbs
-  -> Magic freezes composition, levels, equipped spell, multiplier,
-     direction, and instigator
-  -> Might later launches that committed payload exactly once
+X contacts an Enemy
+  -> Magic attempts to append that school orb
+  -> queue below 10: append and publish the new snapshot
+  -> queue at 10: discard only the new orb and publish overflow feedback
+
+R2 >= 95%
+  -> CHARGING advances at the current Heat multiplier
+  -> banks marking capacity up to five even when no orb is available
+  -> marks the oldest available orbs covered by that capacity
+  -> preserves the chain and releases movement between actions
+
+5% <= R2 < 95%
+  -> DEPLETING drains at the fixed baseline charge-step rate
+  -> partial progress drains first
+  -> completed boundaries unmark newest marked orbs first
+  -> remains chain-preserving even after progress reaches zero
+  -> releases movement between actions
+
+R2 < 5% on state entry
+  -> stops pressure-state preservation
+  -> one Cast attempt only when this is a later transition
 ```
 
-Buffered Casts commit before promotion. Interruption discards payloads without refund or execution. Failed Casts remain separate full-queue clear transactions.
+Before evaluating these transitions, Magic classifies the first raw-pressure sample and stores it without dispatching RELEASE behavior. This prevents a resting trigger from producing a startup Cast failure. Initial CHARGING or DEPLETING still activates its ordinary state behavior. After initialization, only a change from CHARGING or DEPLETING into RELEASE dispatches one Cast attempt.
 
-### Mixed-school resolution
+Magic exposes one pressure-preservation result to Might. Might uses it after an animation and for idle-timeout eligibility. Queue size, marked count, and partial progress are presentation/resource values and never substitute for this state result. Active X and Cast animations remain movement-locked; Combat releases movement only between actions while Magic reports CHARGING or DEPLETING.
 
-Magic retains the existing primary selection: the school with the greatest consumed count is primary, with the final consumed orb breaking ties. Primary casting level equals total consumed orbs. Every represented non-primary school resolves at its own consumed-orb count, without subtracting one. Thus `FFEEE` resolves Earth level 5 and Fire level 2.
+Only the front queue orb counts down. Consumption or expiration shifts the remaining queue forward and starts the new front orb at its full lifetime. Marking coverage transfers with the shifted queue when enough orbs remain.
 
-### Attack speed and Heat
+A failed Cast ends the chain, unmarks all stored orbs, and resets partial marking progress to zero without removing queue contents. A Player hit removes currently marked orbs, preserves unmarked order, and resets marking progress. Orbs already consumed by a committed Cast are never refunded.
 
-Heat represents attack-speed bonus percentage points above the fixed `100%` baseline. Its authoritative range is `0..50`, mapped continuously to a `1.00..1.50` attack-speed multiplier.
+Magic publishes enough queue state for the HUD to render all ten slots, current contents, marked state, front lifetime, and marking progress. Overflow reaches the HUD through the existing Combat/Player presentation path and restarts the whole-widget flinch from rest.
 
-When Magic commits a Cast and consumes `N` marked orbs, it reports that committed consumed count to Combat. Combat routes exactly one gain of `N` attack-speed percentage points to Heat. The gain occurs at commitment, so an interrupted no-refund Cast retains the attack speed already earned from its consumed orbs.
+### Commitment, buffering, and Heat
 
-When an Air level-1 spell effect resolves on a valid projectile impact, Magic reports the configured ten-point Air Heat gain to Combat, and Combat routes it once to Heat. This is not a separate multiplier or timed Magic state. It uses Heat's ordinary cap, loss, Water-block drain, and Heat Reset Timer, and it restarts that timer as a qualifying gain. A miss or interrupted pre-launch Cast receives only the earlier orb-consumption gain and no Air-effect gain. The gains stack: at `105%`, a one-orb Air level-1 Cast reaches `106%` at commitment and `116%` on impact.
+```text
+Might accepts a normal/windowed/buffered release-Cast
+  -> Magic consumes the marked FIFO prefix immediately
+  -> Magic resolves the last-in primary and optional majority secondary
+  -> immutable Cast payload is stored under one commitment
+  -> Magic emits one internal commitment fact
+  -> Combat grants Heat from its consumed_count immediately
+  -> Might launches that payload at the Cast contact phase
+```
 
-Orb consumption and Air level 1 are the only current gain sources. Melee hits, other spell impacts, DoT, status, and HoT results do not mutate Heat.
+A buffered Cast commits before its later promotion. The dedicated fact is emitted during commitment, not promotion, launch, interruption, discard, or impact. Those later transitions therefore cannot duplicate or revoke the Heat gain. If the action is interrupted before launch, its payload is discarded without refund; the Heat already granted at commitment remains. A projectile miss likewise does not revoke Heat.
 
-An authoritative Player-hit outcome routes a loss of five attack-speed percentage points to Heat in the same cross-domain transaction, floored at zero bonus / `100%` attack speed. The Heat Reset Timer restarts on each qualifying orb-consumption gain; when its configured duration expires without another qualifying gain, Heat resets fully to zero bonus / `100%` attack speed. Loss operations do not restart the timer. Existing Water-block drain continues through Heat's bounded loss operation. Future spells that add Heat directly remain deferred and have no current implementation contract.
+Heat is stored as bonus percentage points above the fixed `100%` baseline. Its range is `0..50`, producing a continuous `1.00..1.50` multiplier. Each committed consumed orb grants one point. A Player hit removes five points with a zero-point floor. Three seconds after the latest qualifying Cast commitment, Heat resets fully to zero bonus points. Loss and Water-block drain do not create Heat or change its authority.
 
-Heat publishes the resulting attack-speed multiplier once per authoritative mutation. Combat forwards it to Might for X/Cast animation speed, Magic for 95–100% CHARGING speed, and Player/HUD/debug presentation. HOLD preserves charge and ignores the multiplier because it performs no timed operation.
+Direct X hits, projectile impact, feedback, and deferred school effects grant no Heat. There is no independent Air speed buff or Air-specific Heat source in this prototype.
 
-#### Configuration replacement
+### Generic projectile impact and feedback
 
-The Heat configuration is a strict replacement of the prototype's discrete-level schema:
+```text
+SpellProjectile contacts a valid Entity
+  -> Combat routes the frozen payload to Magic
+  -> resolve the primary, then the optional secondary:
+       create one direct-damage HealthEvent
+       use combat.casting_damage and combat.direct_impact
+       apply the empowered multiplier only to the primary layer
+       resolve through the target's shared HealthResolver
+       if HealthResult is APPLIED and health_delta is negative:
+           publish <School> Lv.<N> through target FeedbackComponent
+  -> projectile disappears
+```
+
+The direct path does not read `spell_loadout`, call a school resolver, or create a status instruction. A mixed Cast intentionally produces one generic damage event and one feedback entry for the primary and optional secondary layers, in that order. A blocked, parried, invalid, zero-damage, interrupted, or missed layer produces no Cast-level display. Existing HealthEvent instigator, school, Impact, contact direction, and contact point attribution remain intact.
+
+## Configuration, persistence, and UI
+
+`config/prototype_combat.json`, `PrototypeConfigLoader`, and Developer Portal controls change as one fail-fast schema migration. There is no player-profile migration.
+
+The active Heat schema is:
 
 ```yaml
 heat:
@@ -88,40 +167,46 @@ heat:
   attack_speed_gain_per_orb: 1
   attack_speed_loss_per_hit: 5
   heat_reset_timer: 3
-
-air:
-  heat_gain: 10
 ```
 
-`max_attack_speed_percent` must be numeric and greater than `100`; its default is `150`. `attack_speed_gain_per_orb` must be numeric and greater than `0`; its default is `1`. `attack_speed_loss_per_hit` must be numeric and at least `0`; its default is `5`. `heat_reset_timer` must be numeric and at least `0`; its default is `3` seconds. The `100%` baseline is fixed behavior and is not stored as configuration.
+The active shared feedback-lifetime field is:
 
-`air.heat_gain` must be numeric and at least `0`; its default is `10`. It replaces `air.attack_speed_multiplier` and `air.buff_duration`, which are removed and rejected with the obsolete Heat fields. No independent Air attack-speed state, timer, multiplier, or publication remains.
+```yaml
+ui:
+  cast_feedback_duration: 2.0
+```
 
-The repository configuration and fail-fast loader change together. The obsolete Heat `max_value`, `gain_per_hit`, `inactivity_grace`, and `levels` fields and obsolete Air `attack_speed_multiplier` and `buff_duration` fields are removed and rejected rather than migrated. No shipped player-profile format depends on this prototype configuration, so legacy compatibility and profile migration are excluded.
+`ui.cast_feedback_duration` must be numeric from `0.1` through `20.0` seconds. It follows the same fail-fast save/load path as the existing UI duration. Player and Enemy receive the value during Entity configuration and forward later runtime-tuning changes to their Feedback components. A changed value applies to future entries only; active entries retain their captured expiry.
 
-The Developer Portal replaces its old Heat-value and discrete-level controls with the four Heat fields above, replaces the two obsolete Air controls with `air.heat_gain`, and applies the same validation ranges. The HUD removes `Level N`; its Heat bar represents zero through `max_attack_speed_percent - 100` attack-speed bonus points, and its label displays the actual attack speed, for example `105% attack speed`. Heat's public change signal carries attack-speed bonus points and the attack-speed multiplier, with no discrete level.
+The fixed `100%` baseline is behavior, not configuration. Remove and reject the old Heat `max_value`, `gain_per_hit`, `inactivity_grace`, and `levels` fields. Remove and reject Air's independent `attack_speed_multiplier` and `buff_duration`.
 
-### Implementation slices
+Casting configuration retains the existing timing, pressure, projectile, and five-orb marking fields and adds a distinct ten-orb storage capacity. `max_marked_capacity` remains five; storage capacity is ten. School sections retain only fields still consumed by current X/presentation behavior. Remove and reject `spell_loadout` plus Fire DoT, Water status-level, Air chain-lightning, Earth area/Slow, and other school-effect-only fields and controls.
 
-- Establish Heat as the only attack-speed state and multiplier across `HeatComponent`, `CombatComponent`, `MightComponent`, and `MagicComponent`; remove Magic's independent Air multiplier, timer, and action-speed publication.
-- Route committed orb count and resolved Air level-1 effect gain through Combat to Heat exactly once at their distinct authoritative transitions.
-- Replace the persisted schema and fail-fast validation in `config/prototype_combat.json` and `PrototypeConfigLoader`, including rejection of the obsolete Heat and Air fields.
-- Synchronize Developer Portal controls and the Heat signal relay through Player/Arena to the continuous HUD bar and actual attack-speed label.
+The Developer Portal keeps its General, Audio, and Combat organization. General → UI exposes `cast_feedback_duration` beside the existing presentation duration. Its Heat controls use the continuous fields above; school tabs may retain current presentation/motion tuning but expose no deferred spell-effect knobs.
 
-### Player hit
+The always-visible HUD renders ten queue slots even when empty, a gold outline on marked orbs, the marking-progress bar, and the front-orb lifetime. The overflow signal drives the whole-widget horizontal flinch. The developer Heat readout removes `Level N` and shows actual attack speed with a continuous bar. The upper-right raw R2 pressure gauge and existing developer-overlay visibility behavior remain unchanged.
 
-An authoritative Player-hit outcome orders: Might cancels actions/buffer/animation/chain; committed payload is discarded without refund; Magic removes marked orbs only and preserves unmarked order/expiration; Defence cancels; hit reaction and movement lock continue. Failed Cast clearing never reuses this marked-only path.
+## Implementation slices and validation seams
 
-### Outcomes and tutorial
+1. **Strict schema and portal:** replace configuration validation and controls first so stale school/loadout/Heat paths fail immediately instead of remaining half-active.
+2. **Magic state synchronization:** implement ten-slot storage, overflow publication, side-effect-free initial RELEASE classification, DEPLETING, state-owned chain preservation, empty-queue capacity banking, failed-Cast preservation, last-in primary selection, single-secondary majority/LIFO selection, and exact secondary levels while preserving commitment and buffer timing.
+3. **Generic impact and shared feedback:** add `FeedbackComponent` to the Entity contract and both concrete scenes, configure its shared future-entry lifetime through the strict UI schema, replace resolver dispatch with per-layer generic HealthEvents, and present feedback only from successful applied damage.
+4. **Heat synchronization:** establish the one-shot Magic-to-Combat commitment interface, then replace discrete/hit-driven and Air-specific speed state with commitment-count gain, hit loss, reset timing, and one continuous multiplier.
+5. **HUD synchronization:** render ten slots, marked outlines, overflow flinch, depletion progress, and continuous attack-speed feedback through the existing public facade path.
 
-After authoritative transitions, owners publish immutable tutorial-agnostic facts. Might publishes action, chain, buffer, and launch facts; Magic publishes pressure, commitment, launch/failure/interruption, impact, and orb facts; Arena/Entity publish encounter activation, practice refill, zero Health, and final Enemy defeat facts.
+Human runtime validation should establish:
 
-StageDirector is Arena-owned. It consumes only public facts, owns ordered objective data and one-time advancement, ignores unrelated actions, emits configured `No` feedback only for defined failed attempts, and completes only on final Enemy defeat. It never reads raw input, private state, animation internals, orb queues, or debug traces.
+- all ten storage slots, overflow discard, and UI-only flinch;
+- FIFO expiration, empty-queue capacity banking, five-orb marking, fixed-rate newest-first depletion, CHARGING/DEPLETING preservation at zero resources, between-action movement release, transfer, consumption, failed-Cast preservation, and marked-only Player-hit loss;
+- side-effect-free initial RELEASE, active initial CHARGING/DEPLETING behavior, and exactly one Cast attempt on each later transition into RELEASE;
+- unchanged X/Cast first-request buffering at baseline and high Heat;
+- last-in primary selection, single-secondary majority/LIFO selection, primary-then-secondary ordering, and one generic damage result plus one feedback entry per resolved layer;
+- no active school specialty, status instruction, loadout lookup, or independent Air multiplier;
+- commitment-time Heat on normal and buffered Casts, retention after interruption or miss, hit loss, cap, reset, Water-block drain, and proportional X/Cast/CHARGING speed;
+- Enemy Cast-level feedback and absence of feedback on misses or rejected damage;
+- shared two-second feedback lifetime, `0.1–20.0` fail-fast tuning, identical Player/Enemy configuration, and future-entry-only live updates; and
+- fail-fast JSON save/load plus synchronized Developer Portal and HUD presentation.
 
-Practice targets retain refill. The final Enemy has a distinct authoritative defeated outcome.
+Incoming Enemy attacks and ordinary-play defence remain unverified. The fixed final tutorial Enemy objective is still not achievable with the current permanent targets and is intentionally outside this slice. The accepted Air X5 presentation-mapping waiver is likewise untouched.
 
-## Validation
-
-Human validation must confirm unchanged X/release-Cast buffering; immediate frozen no-refund Casts with no double consumption; simplified primary/secondary levels; `+1` attack-speed point per committed consumed orb; `+10` on resolved Air level-1 impact with no separate timed multiplier; stacked `105% -> 106% -> 116%` sequencing; no attack-speed gain from melee, other spell impacts, DoT, status, or HoT; no Air gain on miss or pre-launch interruption; `-5` points on Player hit with a `100%` floor; `150%` cap; timer restart from either qualifying gain and full reset after the three-second Heat Reset Timer; unchanged Water-block drain; proportional X/Cast/95–100% CHARGING acceleration; 5–95% HOLD preservation; below-5% RELEASE Casting; updated configuration rejection and Developer Portal controls; continuous HUD bar and actual attack-speed label; marked-only Player-hit orb loss; immutable one-per-transition outcomes; Director freedom/No/single advancement; practice refill; and final Enemy completion.
-
-No Godot, build, compiler, or automated test was run by the agent. Runtime validation remains required.
+Because this change crosses shared Entity composition, combat transactions, projectile payloads, configuration persistence, and HUD interfaces, Friday recommends optional Ultron `mode=tech-preflight` before implementation. The report is also sufficiently bounded for the user to hand directly to DUM-E.

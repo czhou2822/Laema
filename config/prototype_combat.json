@@ -25,6 +25,7 @@
 		"charge_step_duration": 0.5,
 		"empowered_primary_multiplier": 1.3,
 		"max_marked_capacity": 5.0,
+		"max_storage_capacity": 10.0,
 		"orb_lifetime": 7.0,
 		"projectile_screen_ratio": 0.5,
 		"projectile_travel_duration": 1.0,
@@ -91,27 +92,10 @@
 		"visual_motion_exponent": 1.0
 	},
 	"heat": {
-		"gain_per_hit": 10.0,
-		"inactivity_grace": 3.0,
-		"levels": [
-			{
-				"fill_ratio": 0.0,
-				"speed_multiplier": 1.0
-			},
-			{
-				"fill_ratio": 0.25,
-				"speed_multiplier": 1.1
-			},
-			{
-				"fill_ratio": 0.55,
-				"speed_multiplier": 1.25
-			},
-			{
-				"fill_ratio": 0.8,
-				"speed_multiplier": 1.45
-			}
-		],
-		"max_value": 100.0
+		"attack_speed_gain_per_orb": 1.0,
+		"attack_speed_loss_per_hit": 5.0,
+		"heat_reset_timer": 3.0,
+		"max_attack_speed_percent": 150.0
 	},
 	"hit_reaction": {
 		"base_distance": 7.0,
@@ -125,36 +109,6 @@
 	},
 	"player": {
 		"max_health": 100.0
-	},
-	"spell_loadout": {
-		"fire": {
-			"1": "fire_default",
-			"2": "fire_default",
-			"3": "fire_default",
-			"4": "fire_default",
-			"5": "fire_default"
-		},
-		"water": {
-			"1": "water_default",
-			"2": "water_default",
-			"3": "water_default",
-			"4": "water_default",
-			"5": "water_default"
-		},
-		"air": {
-			"1": "air_default",
-			"2": "air_default",
-			"3": "air_default",
-			"4": "air_default",
-			"5": "air_default"
-		},
-		"earth": {
-			"1": "earth_default",
-			"2": "earth_default",
-			"3": "earth_default",
-			"4": "earth_default",
-			"5": "earth_default"
-		}
 	},
 	"tutorial": {
 		"failure_feedback": "No",
@@ -179,6 +133,7 @@
 		]
 	},
 	"ui": {
+		"cast_feedback_duration": 2.0,
 		"completed_combo_display_duration": 2.0,
 		"developer_overlay_visible": true
 	},

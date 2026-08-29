@@ -15,7 +15,6 @@ const REQUIRED_SECTIONS := [
 	"earth",
 	"defence",
 	"hit_reaction",
-	"spell_loadout",
 	"tutorial",
 	"ui",
 ]
@@ -105,9 +104,10 @@ static func _validate(data: Dictionary) -> String:
 		["casting", "empowered_primary_multiplier", 0.001, INF],
 		["casting", "projectile_screen_ratio", 0.001, 1.0],
 		["casting", "projectile_travel_duration", 0.001, INF],
-		["heat", "max_value", 0.001, INF],
-		["heat", "gain_per_hit", 0.0, INF],
-		["heat", "inactivity_grace", 0.0, INF],
+		["heat", "max_attack_speed_percent", 100.0, 150.0],
+		["heat", "attack_speed_gain_per_orb", 0.0, INF],
+		["heat", "attack_speed_loss_per_hit", 0.0, INF],
+		["heat", "heat_reset_timer", 0.001, INF],
 		["fire", "dot_duration", 0.001, INF],
 		["fire", "dot_tick_interval", 0.001, INF],
 		["fire", "damage_per_stack", 0.0, INF],
@@ -157,9 +157,6 @@ static func _validate(data: Dictionary) -> String:
 	var audio_error := _validate_audio(data["audio"])
 	if not audio_error.is_empty():
 		return audio_error
-	var loadout_error := _validate_spell_loadout(data["spell_loadout"])
-	if not loadout_error.is_empty():
-		return loadout_error
 	var tutorial_error := _validate_tutorial(data["tutorial"])
 	if not tutorial_error.is_empty():
 		return tutorial_error
@@ -181,29 +178,9 @@ static func _validate(data: Dictionary) -> String:
 	integer_error = _validate_integer(data, "casting", "max_marked_capacity", 5, 5)
 	if not integer_error.is_empty():
 		return integer_error
-
-	var heat: Dictionary = data["heat"]
-	if not heat.has("levels") or typeof(heat["levels"]) != TYPE_ARRAY or heat["levels"].is_empty():
-		return "heat.levels must be a non-empty array."
-
-	var previous_ratio := -1.0
-	for index in range(heat["levels"].size()):
-		var level = heat["levels"][index]
-		if typeof(level) != TYPE_DICTIONARY:
-			return "heat.levels[%d] must be an object." % index
-		for key in ["fill_ratio", "speed_multiplier"]:
-			if not level.has(key) or not _is_number(level[key]):
-				return "heat.levels[%d].%s must be numeric." % [index, key]
-		if level["fill_ratio"] < 0.0 or level["fill_ratio"] > 1.0:
-			return "heat.levels[%d].fill_ratio must be between 0 and 1." % index
-		if level["fill_ratio"] <= previous_ratio:
-			return "heat.levels fill ratios must be strictly increasing."
-		if level["speed_multiplier"] <= 0.0:
-			return "heat.levels[%d].speed_multiplier must be positive." % index
-		previous_ratio = level["fill_ratio"]
-
-	if heat["levels"][0]["fill_ratio"] != 0.0:
-		return "The first Heat level must begin at fill_ratio 0."
+	integer_error = _validate_integer(data, "casting", "max_storage_capacity", 10, 10)
+	if not integer_error.is_empty():
+		return integer_error
 
 	var water: Dictionary = data["water"]
 	if not water.has("levels") or typeof(water["levels"]) != TYPE_ARRAY or water["levels"].size() != 5:
@@ -245,6 +222,9 @@ static func _validate(data: Dictionary) -> String:
 	var ui: Dictionary = data["ui"]
 	if not ui.has("developer_overlay_visible") or typeof(ui["developer_overlay_visible"]) != TYPE_BOOL:
 		return "ui.developer_overlay_visible must be Boolean."
+	var feedback_error := _validate_number(data, "ui", "cast_feedback_duration", 0.1, 20.0)
+	if not feedback_error.is_empty():
+		return feedback_error
 
 	return ""
 
@@ -277,20 +257,6 @@ static func _validate_audio(audio: Dictionary) -> String:
 		var volume_db := float(group["volume_db"])
 		if volume_db < -80.0 or volume_db > 24.0:
 			return "audio.%s.volume_db must be between -80 and 24." % group_name
-	return ""
-
-
-static func _validate_spell_loadout(loadout: Dictionary) -> String:
-	for school in ["fire", "water", "air", "earth"]:
-		if not loadout.has(school) or typeof(loadout[school]) != TYPE_DICTIONARY:
-			return "spell_loadout.%s must be an object." % school
-		var school_loadout: Dictionary = loadout[school]
-		for level in range(1, 6):
-			var key := str(level)
-			if not school_loadout.has(key) or typeof(school_loadout[key]) != TYPE_STRING:
-				return "spell_loadout.%s.%s must be a spell identifier." % [school, key]
-			if school_loadout[key] != "%s_default" % school:
-				return "spell_loadout.%s.%s must retain the prototype default spell." % [school, key]
 	return ""
 
 
