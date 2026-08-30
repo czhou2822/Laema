@@ -261,32 +261,43 @@ static func _validate_audio(audio: Dictionary) -> String:
 
 
 static func _validate_tutorial(tutorial: Dictionary) -> String:
-	if not tutorial.has("failure_feedback") or typeof(tutorial["failure_feedback"]) != TYPE_STRING:
-		return "tutorial.failure_feedback must be a string."
-	if not tutorial.has("objectives") or typeof(tutorial["objectives"]) != TYPE_ARRAY or tutorial["objectives"].is_empty():
-		return "tutorial.objectives must be a non-empty array."
-	for index in range(tutorial["objectives"].size()):
-		var objective = tutorial["objectives"][index]
-		if typeof(objective) != TYPE_DICTIONARY:
-			return "tutorial.objectives[%d] must be an object." % index
-		for key in ["id", "label", "success", "failures"]:
-			if not objective.has(key):
-				return "tutorial.objectives[%d].%s is required." % [index, key]
-		if typeof(objective["id"]) != TYPE_STRING or typeof(objective["label"]) != TYPE_STRING:
-			return "tutorial.objectives[%d] id and label must be strings." % index
-		var success = objective["success"]
-		if typeof(success) != TYPE_DICTIONARY or typeof(success.get("kind", null)) != TYPE_STRING or typeof(success.get("facts", null)) != TYPE_DICTIONARY:
-			return "tutorial.objectives[%d].success must define kind and facts." % index
-		if typeof(objective["failures"]) != TYPE_ARRAY:
-			return "tutorial.objectives[%d].failures must be an array." % index
-		for failure in objective["failures"]:
-			if typeof(failure) != TYPE_DICTIONARY or typeof(failure.get("kind", null)) != TYPE_STRING or typeof(failure.get("facts", null)) != TYPE_DICTIONARY:
-				return "tutorial.objectives[%d].failures entries must define kind and facts." % index
-			if failure.has("feedback") and typeof(failure["feedback"]) != TYPE_STRING:
-				return "tutorial.objectives[%d] failure feedback must be a string." % index
-	var final_success: Dictionary = tutorial["objectives"][tutorial["objectives"].size() - 1]["success"]
-	if final_success["kind"] != "final_enemy_defeated" or final_success["facts"].get("encounter_id", "") != "final_enemy":
-		return "The final tutorial objective must complete on final_enemy_defeated for final_enemy."
+	if tutorial.has("objectives") or tutorial.has("failure_feedback"):
+		return "tutorial.objectives and tutorial.failure_feedback are obsolete."
+	if not tutorial.has("initial_school") or StringName(tutorial["initial_school"]) not in [&"fire", &"water", &"air", &"earth"]:
+		return "tutorial.initial_school must be a functional school."
+	if not tutorial.has("transition_duration") or not _is_number(tutorial["transition_duration"]):
+		return "tutorial.transition_duration must be numeric."
+	if float(tutorial["transition_duration"]) < 0.1 or float(tutorial["transition_duration"]) > 5.0:
+		return "tutorial.transition_duration must be between 0.1 and 5.0."
+	if not tutorial.has("stages") or typeof(tutorial["stages"]) != TYPE_ARRAY or tutorial["stages"].is_empty():
+		return "tutorial.stages must be a non-empty array."
+	var ids: Dictionary = {}
+	for index in range(tutorial["stages"].size()):
+		var stage = tutorial["stages"][index]
+		if typeof(stage) != TYPE_DICTIONARY:
+			return "tutorial.stages[%d] must be an object." % index
+		for key in ["id", "area_scene", "objective", "final"]:
+			if not stage.has(key):
+				return "tutorial.stages[%d].%s is required." % [index, key]
+		if typeof(stage["id"]) != TYPE_STRING or String(stage["id"]).is_empty() or ids.has(stage["id"]):
+			return "tutorial stage ids must be unique non-empty strings."
+		ids[stage["id"]] = true
+		if typeof(stage["area_scene"]) != TYPE_STRING or not ResourceLoader.exists(str(stage["area_scene"]), "PackedScene"):
+			return "tutorial.stages[%d].area_scene must reference a loadable PackedScene." % index
+		if typeof(stage["final"]) != TYPE_BOOL or bool(stage["final"]) != (index == tutorial["stages"].size() - 1):
+			return "tutorial must have exactly one final stage at the end."
+		var objective = stage["objective"]
+		if typeof(objective) != TYPE_DICTIONARY or typeof(objective.get("type", null)) != TYPE_STRING or typeof(objective.get("label", null)) != TYPE_STRING:
+			return "tutorial.stages[%d].objective must define type and label." % index
+		match StringName(objective["type"]):
+			&"five_hit_fire_chain":
+				if StringName(objective.get("school", &"")) not in [&"fire", &"water", &"air", &"earth"] or int(objective.get("required_hits", 0)) <= 0 or typeof(objective.get("tokens", null)) != TYPE_ARRAY:
+					return "five_hit_fire_chain requires school, positive required_hits, and tokens."
+			&"final_enemy":
+				if StringName(objective.get("encounter_id", &"")) != &"final_enemy" or not stage.has("free_practice_text") or typeof(stage["free_practice_text"]) != TYPE_STRING:
+					return "final_enemy requires final_enemy encounter_id and free_practice_text."
+			_:
+				return "tutorial objective type is unsupported."
 	return ""
 
 

@@ -234,6 +234,7 @@ func cancel_for_player_hit() -> void:
 	if _animation_player != null:
 		_animation_player.stop()
 	if _input_combo.is_active():
+		_publish_outcome(&"chain_terminated", {"reason": &"interruption"})
 		_input_combo.timeout_reset()
 	_current_action = {}
 	_pending_action = {}
@@ -420,7 +421,7 @@ func _start_action(action: Dictionary) -> void:
 	_animation_player.play(&"attack_clock")
 	_trace(&"action_started", {"kind": action["kind"], "school": action["school"], "direction": action["direction"], "position": _input_combo.get_current_position()})
 	attack_started.emit(action["kind"], action["school"], action["direction"])
-	_publish_outcome(&"action_accepted", {"kind": action["kind"], "school": action["school"], "position": _input_combo.get_current_position()})
+	_publish_outcome(&"action_accepted", {"action_kind": action["kind"], "school": action["school"], "position": _input_combo.get_current_position()})
 
 
 func _perform_light_hit_query() -> void:
@@ -492,6 +493,7 @@ func _fail_cast() -> void:
 	_magic.clear_after_failed_cast()
 	cast_failed.emit()
 	_publish_outcome(&"cast_failed", {"position": _input_combo.get_current_position()})
+	_publish_outcome(&"chain_terminated", {"reason": &"failed_cast"})
 	_input_combo.timeout_reset()
 	_current_action = {}
 	_pending_action = {}
@@ -506,6 +508,7 @@ func _fail_cast() -> void:
 
 
 func _complete_chain_and_clear() -> void:
+	_publish_outcome(&"chain_terminated", {"reason": &"completed"})
 	_input_combo.complete()
 	_magic.clear_orbs(&"chain_completed")
 	_publish_outcome(&"chain_completed")
@@ -514,6 +517,7 @@ func _complete_chain_and_clear() -> void:
 
 func _end_chain_preserving_orbs() -> void:
 	_animation_player.stop()
+	_publish_outcome(&"chain_terminated", {"reason": &"timeout"})
 	_input_combo.timeout_reset()
 	_publish_outcome(&"chain_reset", {"reason": &"action_finished_without_follow_up"})
 	_enter_ready()
@@ -527,6 +531,24 @@ func _enter_ready() -> void:
 	_window_open = false
 	_hit_emitted = false
 	_launch_emitted = false
+	movement_lock_changed.emit(false)
+
+
+func reset_for_stage() -> void:
+	var had_chain: bool = _input_combo != null and _input_combo.is_active()
+	_clear_buffered_request(&"stage_transition")
+	if _animation_player != null:
+		_animation_player.stop()
+	if had_chain:
+		_publish_outcome(&"chain_terminated", {"reason": &"stage_transition"})
+		_input_combo.timeout_reset()
+	_current_action = {}
+	_pending_action = {}
+	_window_open = false
+	_hit_emitted = false
+	_launch_emitted = false
+	_failed_cast_reaction_pending = false
+	_state = State.READY
 	movement_lock_changed.emit(false)
 
 

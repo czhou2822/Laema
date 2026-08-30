@@ -78,6 +78,7 @@ const FIELD_RANGES := {
 	"hit_reaction.base_duration": Vector3(0.01, 10.0, 0.01),
 	"hit_reaction.duration_per_level": Vector3(0.0, 10.0, 0.01),
 	"ui.completed_combo_display_duration": Vector3(0.0, 20.0, 0.1),
+	"tutorial.transition_duration": Vector3(0.1, 5.0, 0.1),
 }
 const HEAT_LEVEL_RANGES := {
 	"fill_ratio": Vector3(0.0, 1.0, 0.01),
@@ -146,6 +147,7 @@ const TUNABLE_TOOLTIPS := {
 	"hit_reaction.duration_per_level": "Additional hit-reaction duration per level.",
 	"ui.completed_combo_display_duration": "Seconds completed chains remain in the readout.",
 	"ui.developer_overlay_visible": "Show or hide the DeveloperReadout regions; gameplay UI remains visible.",
+	"tutorial.transition_duration": "Seconds used by future tutorial camera pans.",
 	"heat.levels.fill_ratio": "Heat threshold for this level as a fraction of maximum Heat.",
 	"heat.levels.speed_multiplier": "Attack, Casting, and marking speed multiplier at this Heat level.",
 	"water.levels.duration": "Duration of this Water status level.",
@@ -392,6 +394,21 @@ func _add_section(section_name: String, section: Dictionary) -> void:
 		_add_heat_levels(section["levels"])
 	elif section_name == "water" and section.has("levels"):
 		_add_water_levels(section["levels"])
+	elif section_name == "ui":
+		_add_tutorial_transition_duration(_config["tutorial"])
+
+
+func _add_tutorial_transition_duration(section: Dictionary) -> void:
+	var fields := GridContainer.new()
+	fields.columns = 2
+	_field_container.add_child(fields)
+	var label := Label.new()
+	label.text = "transition duration"
+	_set_tuning_tooltip(label, "tutorial.transition_duration")
+	fields.add_child(label)
+	var spin := _create_spinbox("tutorial.transition_duration", float(section["transition_duration"]))
+	spin.value_changed.connect(_on_scalar_changed.bind("tutorial", "transition_duration"))
+	fields.add_child(spin)
 
 
 func _add_audio_group(group_name: String, group: Dictionary) -> void:

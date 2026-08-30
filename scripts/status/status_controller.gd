@@ -162,6 +162,13 @@ func get_effect_state() -> Dictionary:
 	}
 
 
+func clear_for_stage() -> void:
+	_dot_instances.clear()
+	_water_status.clear()
+	_earth_slow.clear()
+	_emit_state()
+
+
 func _emit_state() -> void:
 	status_changed.emit(get_snapshot())
 	effect_state_changed.emit(get_effect_state())

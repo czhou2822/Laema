@@ -46,3 +46,9 @@ func _process(delta: float) -> void:
 
 func is_active() -> bool:
 	return _active
+
+
+func reset_for_stage() -> void:
+	_active = false
+	_remaining = 0.0
+	set_process(false)

@@ -45,6 +45,8 @@ func set_movement_locked(locked: bool) -> void:
 	if _locked != locked:
 		_trace(&"movement_lock_changed", {"locked": locked})
 	_locked = locked
+	if _locked and _body != null:
+		_body.velocity.x = 0.0
 
 
 func set_effect_multiplier(multiplier: float) -> void:

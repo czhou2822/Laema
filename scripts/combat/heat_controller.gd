@@ -60,6 +60,12 @@ func get_level() -> int:
 	return 0
 
 
+func reset_for_stage() -> void:
+	_bonus_points = 0.0
+	_reset_remaining = 0.0
+	_emit_state()
+
+
 func _apply_loss(amount: float) -> void:
 	if amount <= 0.0 or _bonus_points <= 0.0:
 		return

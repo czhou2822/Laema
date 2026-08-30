@@ -8,7 +8,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 ## Prototype Scope
 
-**Included:** grounded left/right movement, gravity, one continuous flat floor, horizontal camera following, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, and three non-attacking Enemy targets.
+**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, and stage-owned target sets.
 
 **Excluded:** jumping, vertical traversal controls, Air and Earth defence, active Enemy behavior and attacks, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
@@ -27,7 +27,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 | D-pad Right | Select Earth |
 | L1 | Use the active school’s available defence |
 
-Laema is affected by gravity and remains grounded on solid collision. The first test level is one continuous flat floor. The camera follows Laema horizontally while preserving fixed vertical framing.
+Laema is affected by gravity and remains grounded on solid collision. Every current stage area uses the same continuous flat ground height, and adjacent ground sections overlap at stage boundaries so transitions do not introduce a gap. The camera follows Laema horizontally while preserving fixed vertical framing.
 
 Active X and Cast animations lock player-controlled movement. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
 
@@ -312,7 +312,9 @@ When Laema is hit, attack speed decreases by five percentage points and cannot f
 
 ## Enemy and Feedback
 
-The prototype contains three stationary, non-attacking, permanent Enemy targets that cannot die. Damage is capped at each target's remaining Health; reaching zero resolves normally and then immediately refills that target's Health without clearing active effects.
+Each tutorial stage owns its area contents and entity instances independently; later stages may deliberately duplicate earlier targets or enemies. Stage 1 contains exactly one stationary, non-attacking, permanent target. Damage is capped at its remaining Health; reaching zero resolves normally and then immediately refills it to full Health without clearing active effects. The existing prototype arena is the final tutorial area and retains its three permanent practice targets plus its killable final Enemy.
+
+All current prototype targets—including training dummies and the final Enemy—are pass-through: they never physically block Laema's movement. They remain valid X and projectile targets. Body-blocking behavior is outside the current prototype rule.
 
 Each target displays the school and level of every successful Cast layer applied to it. School-specific status displays are deferred with the spell behaviors they would represent.
 
@@ -341,13 +343,63 @@ Audio controls apply immediately and persist through the same fail-fast JSON sav
 
 ## Tutorial Stage Director
 
-The end product of this prototype is a tutorial-like combat level governed by a stage Director. The Director presents one current task and advances only after detecting that task's successful objective.
+The prototype is a one-way sequence of side-scrolling tutorial areas governed by a stage Director. Each stage owns its objective rules, objective presentation, area contents, completion state, exit gate, and transition into the next area.
 
-The player remains free to perform other actions while attempting the current task. Unrelated or unsuccessful actions do not reset progress or prevent later success. A simple `No` UI message is sufficient failure feedback. The player cannot proceed to the next task until the current objective succeeds.
+### Reusable Stage Progression
 
-The current intermediate lesson list is provisional:
+Every non-final tutorial stage uses the same progression shell:
 
-1. perform a five-X combo;
+1. A stage begins when its area is revealed and Laema is waiting there.
+2. Its objective widget initializes in the upper-right game UI.
+3. The player may move, attack, Cast, defend, switch schools, and perform unrelated actions freely. These actions do not fail the stage or prevent later success.
+4. Each stage separately defines what begins an attempt, advances it, invalidates and resets it, completes the objective, and counts as unrelated behavior.
+5. Invalidating an active attempt resets only that attempt. The stage remains available indefinitely until its objective succeeds.
+6. Objective success is permanent. Later actions cannot undo a completed stage.
+7. On success, the objective widget turns green, displays `moving on ->`, and the solid right-side boundary unlocks.
+8. The player chooses when to move right and exit the visible frame.
+9. Once Laema leaves the frame, player input locks and the camera pans horizontally to the next area.
+10. During the pan, Laema is repositioned into the next area. She is already visible there in an idle waiting state when the pan finishes.
+11. The next stage begins when the pan finishes. Its objective widget initializes, player input returns, and backward travel into the completed area is blocked.
+
+At the beginning of every stage after Stage 1, Laema receives a full combat reset: full Health, baseline Heat, an empty orb queue, no marking progress, no active chain, no buffs or debuffs, and a ready defence state. The currently selected school carries forward instead of resetting. Stage 1 begins with Fire selected.
+
+### Reusable Objective Widget
+
+Every stage reuses the upper-right objective-widget shell while supplying its own instruction and progress display.
+
+- Valid progress turns the corresponding display elements green.
+- An invalid attempt lightly flinches the whole widget and resets that attempt's progress colors.
+- Invalid-attempt feedback never interrupts Laema, movement, or combat state.
+- Completing an objective turns the whole widget green and adds `moving on ->`.
+- The completed widget remains visible until the next stage begins.
+
+### Stage 1 — Five-Hit Fire Chain
+
+Stage 1 begins immediately when the game starts. Fire is selected, the upper-right objective widget is visible with no progress, the solid right boundary is locked, and one stationary non-attacking permanent target is available.
+
+The objective widget displays:
+
+```text
+perform a 5 hit combo
+X-X-X-X-X
+```
+
+Stage 1 succeeds only when all five positions of one uninterrupted chain are landed Fire X attacks against the target.
+
+- The first landed Fire X begins an attempt and turns the first `X` green.
+- Each subsequent valid Fire X hit in that chain turns the next `X` green.
+- Any Fire X miss lightly flinches and resets the widget, including a miss before the first valid hit.
+- Before the first green `X`, non-Fire attacks, Casts, defence, movement, school switching, and other unrelated actions leave the widget unchanged.
+- After progress begins, inserting a Cast, landing a non-Fire X, missing an X, or ending the chain before five valid hits invalidates the attempt. The widget flinches and all progress colors reset.
+- School-switch inputs alone do not invalidate the attempt, provided every landed attack in the successful chain is a Fire X.
+- The fifth valid hit permanently completes Stage 1. The whole widget turns green, `moving on ->` appears, and the right boundary unlocks immediately.
+
+The player may remain in the completed Stage 1 area and act freely without losing completion. Moving right eventually carries Laema out of frame and begins the standard transition into Stage 2.
+
+### Later Tutorial Stages
+
+Stage 1 is locked. The remaining intermediate lesson list is provisional:
+
 2. perform X, then Cast;
 3. perform two X attacks, then cast a level-2 spell;
 4. perform a five-X combo, then cast a level-5 spell;
@@ -355,7 +407,19 @@ The current intermediate lesson list is provisional:
 6. perform X, Cast, X, Cast; and
 7. sustain charging by holding R2 at full pressure.
 
-The final lesson is fixed: fight an Enemy. The lesson and tutorial complete when that Enemy dies. The current three permanent practice targets remain the current prototype behavior and do not yet satisfy this final-stage requirement.
+Each later stage defines its own area contents and attempt rules through the reusable progression and widget shells.
+
+### Tutorial Completion and Free Practice
+
+Until additional lessons are defined, Stage 1 transitions directly into the existing prototype arena, which serves as the legitimate final tutorial stage. Future tutorial stages are inserted between Stage 1 and this final arena.
+
+The final tutorial objective remains `Defeat the final Enemy`. When that Enemy dies, the tutorial completes permanently and the objective widget immediately changes to the free-form text below. There is no separate completion screen, delay, animation, or intermediate message. The final arena remains loaded and becomes the indefinite free-form practice area; there is no additional right exit or camera-pan transition. Its permanent practice targets remain available.
+
+The objective widget switches to the free-form state, remains visible indefinitely, has no progress row, and displays:
+
+```text
+now you are free
+```
 
 ## Tunables and Validation
 
@@ -371,7 +435,7 @@ The prototype must make the following observable:
 - gold marked-orb outlines plus full-queue discard and whole-widget flinch feedback;
 - normalized X/R2 pre-window buffering at baseline and high Heat, including first-request arbitration, promotion, and clear/invalidation behavior;
 - the default contact requirement and the Developer Portal's optional no-contact orb-collection test toggle;
-- all three Enemy targets accept X and projectile contact and display their own Health and Cast-level feedback;
+- the Stage 1 area contains one stationary, non-attacking, permanent target that accepts X and projectile contact, displays its own Health and Cast-level feedback, and refills at zero Health;
 - FIFO orb expiration, right-to-left reverse orb progress, mark transfer, and consumption;
 - simultaneous R2 charging and attacking;
 - R2 CHARGING, DEPLETING, and RELEASE bands, transition behavior, fixed-rate newest-mark-first depletion, and release-Cast behavior;
@@ -386,8 +450,13 @@ The prototype must make the following observable:
 - last-consumed-orb primary selection, single-secondary majority selection, and LIFO secondary tie-break;
 - combined projectile travel, collision, color blending, generic direct damage, and school-and-level Enemy display;
 - empowered player VFX and primary-only `1.3×` damage;
-- commitment-time Heat and Cast-level feedback; and
-- Fire parry and Water defence-state entry.
+- commitment-time Heat and Cast-level feedback;
+- Fire parry and Water defence-state entry;
+- the reusable one-way lifecycle for non-final tutorial stages, including independent area contents, completion latch, right-exit gate, input-locked camera pan, waiting-state arrival, and no-backtracking rule;
+- stage-start combat reset with active-school carryover;
+- the reusable upper-right objective widget with green progress, invalid-attempt flinch/reset, whole-widget completion, and `moving on ->` prompt;
+- the complete Stage 1 five-hit Fire-chain success, invalidation, target, UI, and transition behavior; and
+- the existing prototype arena as the final tutorial area, followed in place by its indefinite `now you are free` free-practice state.
 
 Incoming Enemy attacks and ordinary-play validation of blocking, parrying, guard depletion, guard warning, and guard break remain deferred because the Enemy does not attack.
 

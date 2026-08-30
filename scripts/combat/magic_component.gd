@@ -280,6 +280,19 @@ func clear_orbs(reason: StringName) -> void:
 	_emit_snapshot()
 
 
+func reset_for_stage() -> void:
+	discard_committed_casts(&"stage_transition")
+	_clear_orb_state()
+	_marking_active = false
+	_depleting_active = false
+	_pressure_initialized = false
+	_pressure_state = PressureState.INTERMEDIATE
+	_air_speed_multiplier = 1.0
+	_air_speed_remaining = 0.0
+	_emit_snapshot()
+	action_speed_multiplier_changed.emit(_air_speed_multiplier)
+
+
 func resolve_projectile_impact(target: Entity, contact_point: Vector2, payload: Dictionary) -> void:
 	if target == null or payload.is_empty():
 		return

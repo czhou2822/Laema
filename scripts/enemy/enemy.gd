@@ -29,6 +29,7 @@ var _flinch_tween: Tween
 var _vfx_cache: Dictionary = {}
 var _status_badges: Dictionary = {}
 var _defeated := false
+var _stage_active := true
 
 
 func configure(config: Dictionary) -> void:
@@ -56,8 +57,21 @@ func apply_runtime_tuning() -> void:
 	apply_feedback_runtime_tuning(float(_config["ui"]["cast_feedback_duration"]))
 
 
+func set_stage_active(active: bool) -> void:
+	_stage_active = active
+	set_process(active)
+	set_collision_layer_value(2, active and not _defeated)
+	set_collision_mask_value(1, false)
+
+
+func receive_health_event(event: HealthEvent) -> HealthResult:
+	if not _stage_active:
+		return HealthResult.new()
+	return super.receive_health_event(event)
+
+
 func receive_health_result(result: HealthResult) -> void:
-	if result == null or result.event == null or result.event.target != self or not result.zero_reached or _defeated:
+	if not _stage_active or result == null or result.event == null or result.event.target != self or not result.zero_reached or _defeated:
 		return
 	_publish_outcome(&"enemy_zero_health", {"encounter_id": encounter_id, "final_enemy": is_final_enemy})
 	if refills_at_zero:

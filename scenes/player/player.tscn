@@ -41,7 +41,7 @@ shader_parameter/outline_width = 1.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 1
-collision_mask = 6
+collision_mask = 4
 scale = Vector2(2, 2)
 script = ExtResource("1_player")
 
@@ -129,8 +129,3 @@ debug_shape_custom_color = Color(1, 0.78, 0.12, 0.12)
 target_position = Vector2(48, 0)
 shape = SubResource("CircleShape2D_attack")
 collision_mask = 2
-
-[node name="Camera2D" type="Camera2D" parent="."]
-enabled = true
-scale = Vector2(0.5, 0.5)
-position_smoothing_enabled = false

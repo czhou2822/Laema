@@ -111,24 +111,31 @@
 		"max_health": 100.0
 	},
 	"tutorial": {
-		"failure_feedback": "No",
-		"objectives": [
+		"initial_school": "fire",
+		"transition_duration": 1.0,
+		"stages": [
 			{
-				"id": "defeat_final_enemy",
-				"label": "Defeat the final Enemy.",
-				"success": {
-					"kind": "final_enemy_defeated",
-					"facts": {
-						"encounter_id": "final_enemy"
-					}
+				"id": "stage_1",
+				"area_scene": "res://scenes/stages/stage_1.tscn",
+				"objective": {
+					"type": "five_hit_fire_chain",
+					"label": "perform a 5 hit combo",
+					"tokens": ["X", "X", "X", "X", "X"],
+					"school": "fire",
+					"required_hits": 5
 				},
-				"failures": [
-					{
-						"kind": "cast_failed",
-						"facts": {},
-						"feedback": "No"
-					}
-				]
+				"final": false
+			},
+			{
+				"id": "final_arena",
+				"area_scene": "res://scenes/stages/final_arena.tscn",
+				"objective": {
+					"type": "final_enemy",
+					"label": "Defeat the final Enemy.",
+					"encounter_id": "final_enemy"
+				},
+				"final": true,
+				"free_practice_text": "now you are free"
 			}
 		]
 	},

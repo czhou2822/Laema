@@ -29,6 +29,7 @@ var _defence: DefenceController
 var _defending := false
 var _guard_broken := false
 var _guard_break_remaining := 0.0
+var _stage_input_locked := false
 
 
 func configure(
@@ -67,7 +68,8 @@ func apply_runtime_tuning() -> void:
 
 
 func _process(delta: float) -> void:
-	_update_casting_pressure()
+	if not _stage_input_locked:
+		_update_casting_pressure()
 	if _defending:
 		_defence.update(delta, _heat)
 	elif _guard_broken:
@@ -78,6 +80,8 @@ func _process(delta: float) -> void:
 
 
 func handle_input_event(event: InputEvent, attack_direction: Vector2) -> void:
+	if _stage_input_locked:
+		return
 	if event.is_echo():
 		return
 	for school_action in [
@@ -127,6 +131,10 @@ func get_current_chain_position() -> int:
 	return _might.get_current_chain_position()
 
 
+func select_stage_school(school: StringName) -> void:
+	_might.try_select_school(school)
+
+
 func get_defensive_level() -> int:
 	return _defence.get_defensive_level() if _defending else 0
 
@@ -159,6 +167,29 @@ func on_hit_reaction_started() -> void:
 
 func on_hit_reaction_ended() -> void:
 	_might.on_hit_reaction_ended()
+
+
+func set_stage_input_locked(locked: bool) -> void:
+	_stage_input_locked = locked
+	if locked:
+		_defence.force_cancel()
+		_defending = false
+		_guard_broken = false
+		_guard_break_remaining = 0.0
+		movement_lock_changed.emit(true)
+
+
+func reset_for_stage() -> void:
+	_might.reset_for_stage()
+	_magic.reset_for_stage()
+	_heat.reset_for_stage()
+	_defence.configure(_config["defence"])
+	_defending = false
+	_guard_broken = false
+	_guard_break_remaining = 0.0
+	defence_status_changed.emit("READY", _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
+	if _stage_input_locked:
+		movement_lock_changed.emit(true)
 
 
 func _update_casting_pressure() -> void:

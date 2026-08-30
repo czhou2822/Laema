@@ -12,23 +12,25 @@ const PROJECTILE_IMPACT_STREAM_PATHS := {
 	&"air": "res://assets/prototype/audio/projectile/air_impact.ogg",
 	&"earth": "res://assets/prototype/audio/projectile/earth_impact.ogg",
 }
-const AUDIO_BUS_NAMES := {
-	"ambient": &"Ambient",
-	"sfx": &"SFX",
-	"bgm": &"BGM",
-}
+const AUDIO_BUS_NAMES := {"ambient": &"Ambient", "sfx": &"SFX", "bgm": &"BGM"}
 
 @onready var player = $Player
-@onready var enemy = $Enemy
 @onready var hud = $HUD
 @onready var stage_director: StageDirector = $StageDirector
+@onready var stage_areas: Node2D = $StageAreas
+@onready var transition_camera: Camera2D = $Camera2D
 @onready var ambient_audio: AudioStreamPlayer = $AmbientAudio
 @onready var music_audio: AudioStreamPlayer = $MusicAudio
 @onready var projectile_impact_audio: AudioStreamPlayer = $ProjectileImpactAudio
 
 var _config: Dictionary = {}
 var _developer_overlay
-var _enemies: Array[Node] = []
+var _current_area: StageArea
+var _next_area: StageArea
+var _current_descriptor: Dictionary = {}
+var _next_descriptor: Dictionary = {}
+var _preloaded_next_scene: PackedScene
+var _transitioning := false
 
 
 func _ready() -> void:
@@ -40,23 +42,11 @@ func _ready() -> void:
 		set_process(false)
 		set_physics_process(false)
 		return
-
 	_config = result["data"]
 	_apply_audio_settings()
 	_configure_default_input_map()
 	hud.configure(_config)
-	_enemies = get_tree().get_nodes_in_group("status_targets")
-	_connect_feedback()
-	stage_director.configure(_config["tutorial"])
-	for target in _enemies:
-		target.call("configure", _config)
 	player.configure(_config)
-	_start_loop(ambient_audio, _load_audio_stream(AMBIENT_STREAM_PATH))
-	_start_loop(music_audio, _load_audio_stream(MUSIC_STREAM_PATH))
-	_create_developer_overlay()
-
-
-func _connect_feedback() -> void:
 	player.heat_changed.connect(hud.update_heat)
 	player.combo_sequence_changed.connect(hud.update_combo)
 	player.combo_completed.connect(hud.complete_combo)
@@ -67,16 +57,135 @@ func _connect_feedback() -> void:
 	player.orb_queue_changed.connect(hud.update_orb_queue)
 	player.spell_projectile_requested.connect(_spawn_spell_projectile)
 	player.combat.outcome_published.connect(_consume_public_outcome)
-	enemy.enemy_health_changed.connect(hud.update_enemy_health)
-	stage_director.objective_changed.connect(hud.update_tutorial_objective)
-	stage_director.feedback_requested.connect(hud.show_tutorial_feedback)
-	stage_director.tutorial_completed.connect(hud.show_tutorial_completed)
-	for target in _enemies:
+	stage_director.presentation_changed.connect(hud.update_tutorial_objective)
+	stage_director.stage_completed.connect(_on_stage_completed)
+	stage_director.transition_requested.connect(_on_transition_requested)
+	stage_director.configure(_config["tutorial"])
+	_start_loop(ambient_audio, _load_audio_stream(AMBIENT_STREAM_PATH))
+	_start_loop(music_audio, _load_audio_stream(MUSIC_STREAM_PATH))
+	_create_developer_overlay()
+	call_deferred("_start_initial_stage")
+
+
+func _process(_delta: float) -> void:
+	if _current_area == null or _transitioning:
+		return
+	var bounds := _current_area.get_camera_world_bounds()
+	transition_camera.global_position = Vector2(clampf(player.global_position.x, bounds.x, bounds.y), _current_area.get_camera_world_position().y)
+
+
+func _start_initial_stage() -> void:
+	_current_descriptor = stage_director.get_initial_descriptor()
+	_current_area = _instantiate_stage(_current_descriptor, null)
+	stage_areas.add_child(_current_area)
+	await get_tree().process_frame
+	_prepare_area(_current_area)
+	stage_director.activate_stage(_current_descriptor)
+	_bind_active_area(_current_area)
+	_current_area.set_lifecycle(StageArea.Lifecycle.ACTIVE)
+	_current_area.authorize_exit(false)
+	player.global_position = _current_area.get_spawn_world_position()
+	player.select_stage_school(StringName(_config["tutorial"]["initial_school"]))
+	transition_camera.global_position = _current_area.get_camera_world_position()
+	_trace(&"stage_activated", {"stage_id": _current_descriptor["id"], "initial": true})
+
+
+func _instantiate_stage(descriptor: Dictionary, previous_area: StageArea) -> StageArea:
+	var scene: PackedScene
+	if _preloaded_next_scene != null and _next_descriptor.get("id", "") == descriptor.get("id", ""):
+		scene = _preloaded_next_scene
+	else:
+		scene = load(str(descriptor["area_scene"])) as PackedScene
+	var area := scene.instantiate() as StageArea
+	var entry_anchor := area.get_node("EntryAnchor") as Marker2D
+	if previous_area == null:
+		area.global_position = -entry_anchor.position
+	else:
+		area.global_position = previous_area.get_exit_world_position() - entry_anchor.position
+	return area
+
+
+func _prepare_area(area: StageArea) -> void:
+	area.exit_reached.connect(stage_director.report_exit_reached)
+	for target in area.get_targets():
+		target.call("configure", _config)
+		if target.has_method("set_stage_active"):
+			target.call("set_stage_active", false)
+	area.set_lifecycle(StageArea.Lifecycle.PREPARED)
+
+
+func _bind_active_area(area: StageArea) -> void:
+	for target in area.get_targets():
 		target.connect(&"outcome_published", _consume_public_outcome)
+		target.connect(&"enemy_health_changed", hud.update_enemy_health)
+
+
+func _on_stage_completed(descriptor: Dictionary) -> void:
+	if _current_area == null:
+		return
+	_current_area.authorize_exit(true)
+	_next_descriptor = stage_director.get_next_descriptor()
+	_preloaded_next_scene = load(str(_next_descriptor["area_scene"])) as PackedScene
+	_trace(&"stage_completed", {"stage_id": descriptor["id"], "next_preloaded": _next_descriptor["id"]})
+
+
+func _on_transition_requested(next_descriptor: Dictionary) -> void:
+	if _transitioning or _current_area == null:
+		return
+	_transitioning = true
+	_next_descriptor = next_descriptor.duplicate(true)
+	player.set_stage_input_locked(true)
+	_clear_root_owned_projectiles()
+	_next_area = _instantiate_stage(_next_descriptor, _current_area)
+	stage_areas.add_child(_next_area)
+	await get_tree().process_frame
+	_prepare_area(_next_area)
+	player.global_position = _next_area.get_spawn_world_position()
+	player.reset_for_stage()
+	var duration := float(_config["tutorial"]["transition_duration"])
+	var tween := create_tween()
+	tween.tween_property(transition_camera, "global_position", _next_area.get_camera_world_position(), duration)
+	await tween.finished
+	_current_area.set_lifecycle(StageArea.Lifecycle.RETIRED)
+	_current_area.queue_free()
+	_current_area = _next_area
+	_current_descriptor = _next_descriptor
+	_next_area = null
+	stage_director.report_transition_finished()
+	_bind_active_area(_current_area)
+	_current_area.set_lifecycle(StageArea.Lifecycle.ACTIVE)
+	_current_area.authorize_exit(false)
+	player.set_stage_input_locked(false)
+	_transitioning = false
+	_trace(&"stage_activated", {"stage_id": _current_descriptor["id"], "initial": false})
 
 
 func _consume_public_outcome(outcome) -> void:
 	stage_director.consume_outcome(outcome)
+
+
+func _clear_root_owned_projectiles() -> void:
+	for child in get_children():
+		if child is SpellProjectile:
+			child.queue_free()
+
+
+func _spawn_spell_projectile(payload: Dictionary) -> void:
+	var projectile: SpellProjectile = SpellProjectileScene.instantiate() as SpellProjectile
+	var world_width := get_viewport().get_visible_rect().size.x / maxf(transition_camera.zoom.x, 0.001)
+	var casting: Dictionary = _config["casting"]
+	projectile.initialize(payload, world_width * float(casting["projectile_screen_ratio"]), float(casting["projectile_travel_duration"]))
+	add_child(projectile)
+	projectile.impact.connect(_on_spell_projectile_impact)
+
+
+func _on_spell_projectile_impact(target: Entity, contact_point: Vector2, payload: Dictionary) -> void:
+	var primary_school := StringName(payload.get("primary_school", &"fire"))
+	var stream := _load_audio_stream(str(PROJECTILE_IMPACT_STREAM_PATHS.get(primary_school, PROJECTILE_IMPACT_STREAM_PATHS[&"fire"])))
+	if stream != null:
+		projectile_impact_audio.stream = stream
+		projectile_impact_audio.play()
+	player.combat.resolve_spell_projectile_impact(target, contact_point, payload)
 
 
 func _create_developer_overlay() -> void:
@@ -85,13 +194,7 @@ func _create_developer_overlay() -> void:
 	_developer_overlay = DeveloperOverlay.new()
 	_developer_overlay.name = "DeveloperOverlay"
 	add_child(_developer_overlay)
-	_developer_overlay.configure(
-		_config,
-		_apply_runtime_tuning,
-		_save_runtime_tuning,
-		player.is_attack_hitbox_debug_enabled,
-		player.set_attack_hitbox_debug_enabled
-	)
+	_developer_overlay.configure(_config, _apply_runtime_tuning, _save_runtime_tuning, player.is_attack_hitbox_debug_enabled, player.set_attack_hitbox_debug_enabled)
 
 
 func _apply_runtime_tuning() -> Dictionary:
@@ -100,8 +203,9 @@ func _apply_runtime_tuning() -> Dictionary:
 		return validation
 	hud.apply_runtime_tuning(_config)
 	player.apply_runtime_tuning()
-	for target in _enemies:
-		target.call("apply_runtime_tuning")
+	if _current_area != null:
+		for target in _current_area.get_targets():
+			target.call("apply_runtime_tuning")
 	_apply_audio_settings()
 	return validation
 
@@ -138,9 +242,8 @@ func _bind_axis(action: StringName, axis: JoyAxis, value: float) -> void:
 	input_event.device = -1
 	input_event.axis = axis
 	input_event.axis_value = value
-	if InputMap.action_has_event(action, input_event):
-		return
-	InputMap.action_add_event(action, input_event)
+	if not InputMap.action_has_event(action, input_event):
+		InputMap.action_add_event(action, input_event)
 
 
 func _bind_button(action: StringName, button: JoyButton) -> void:
@@ -149,9 +252,8 @@ func _bind_button(action: StringName, button: JoyButton) -> void:
 	var input_event := InputEventJoypadButton.new()
 	input_event.device = -1
 	input_event.button_index = button
-	if InputMap.action_has_event(action, input_event):
-		return
-	InputMap.action_add_event(action, input_event)
+	if not InputMap.action_has_event(action, input_event):
+		InputMap.action_add_event(action, input_event)
 
 
 func _bind_key(action: StringName, keycode: Key) -> void:
@@ -159,9 +261,8 @@ func _bind_key(action: StringName, keycode: Key) -> void:
 		InputMap.add_action(action)
 	var input_event := InputEventKey.new()
 	input_event.physical_keycode = keycode
-	if InputMap.action_has_event(action, input_event):
-		return
-	InputMap.action_add_event(action, input_event)
+	if not InputMap.action_has_event(action, input_event):
+		InputMap.action_add_event(action, input_event)
 
 
 func _bind_mouse_button(action: StringName, button: MouseButton) -> void:
@@ -169,42 +270,16 @@ func _bind_mouse_button(action: StringName, button: MouseButton) -> void:
 		InputMap.add_action(action)
 	var input_event := InputEventMouseButton.new()
 	input_event.button_index = button
-	if InputMap.action_has_event(action, input_event):
-		return
-	InputMap.action_add_event(action, input_event)
+	if not InputMap.action_has_event(action, input_event):
+		InputMap.action_add_event(action, input_event)
 
 
-func _spawn_spell_projectile(payload: Dictionary) -> void:
-	var projectile: SpellProjectile = SpellProjectileScene.instantiate() as SpellProjectile
-	var camera := get_viewport().get_camera_2d()
-	var world_width := get_viewport().get_visible_rect().size.x
-	if camera != null and camera.zoom.x > 0.0:
-		world_width /= camera.zoom.x
-	var casting: Dictionary = _config["casting"]
-	var maximum_distance: float = world_width * float(casting["projectile_screen_ratio"])
-	projectile.initialize(payload, maximum_distance, float(casting["projectile_travel_duration"]))
-	add_child(projectile)
-	projectile.impact.connect(_on_spell_projectile_impact)
-	_trace(&"projectile_spawn_requested", {"primary_school": payload["primary_school"], "primary_level": payload["primary_level"], "maximum_distance": maximum_distance})
-
-
-func _on_spell_projectile_impact(target: Entity, contact_point: Vector2, payload: Dictionary) -> void:
-	var primary_school := StringName(payload.get("primary_school", &"fire"))
-	var stream_path := str(PROJECTILE_IMPACT_STREAM_PATHS.get(primary_school, PROJECTILE_IMPACT_STREAM_PATHS[&"fire"]))
-	var stream: AudioStream = _load_audio_stream(stream_path)
-	if stream != null:
-		projectile_impact_audio.stream = stream
-		projectile_impact_audio.play()
-	_trace(&"projectile_impact_routed", {"target": target.name, "primary_school": payload["primary_school"], "primary_level": payload["primary_level"], "contact_point": contact_point})
-	player.combat.resolve_spell_projectile_impact(target, contact_point, payload)
-
-
-func _start_loop(player: AudioStreamPlayer, stream: AudioStream) -> void:
+func _start_loop(audio_player: AudioStreamPlayer, stream: AudioStream) -> void:
 	if stream == null:
 		return
-	player.stream = stream
-	player.finished.connect(player.play)
-	player.play()
+	audio_player.stream = stream
+	audio_player.finished.connect(audio_player.play)
+	audio_player.play()
 
 
 func _load_audio_stream(path: String) -> AudioStream:
@@ -212,15 +287,13 @@ func _load_audio_stream(path: String) -> AudioStream:
 
 
 func _apply_audio_settings() -> void:
-	var audio: Dictionary = _config["audio"]
 	for group_name_variant in AUDIO_BUS_NAMES:
 		var group_name := str(group_name_variant)
-		var bus_name: StringName = AUDIO_BUS_NAMES[group_name]
-		var bus_index: int = AudioServer.get_bus_index(bus_name)
+		var bus_index := AudioServer.get_bus_index(AUDIO_BUS_NAMES[group_name])
 		if bus_index < 0:
-			push_error("Missing prototype audio bus: %s" % bus_name)
+			push_error("Missing prototype audio bus: %s" % AUDIO_BUS_NAMES[group_name])
 			continue
-		var group: Dictionary = audio[group_name]
+		var group: Dictionary = _config["audio"][group_name]
 		AudioServer.set_bus_mute(bus_index, not bool(group["enabled"]))
 		AudioServer.set_bus_volume_db(bus_index, float(group["volume_db"]))
 

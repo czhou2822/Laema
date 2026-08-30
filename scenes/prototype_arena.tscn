@@ -1,125 +1,23 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/prototype/prototype_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="3_enemy"]
-[ext_resource type="PackedScene" path="res://scenes/ui/prototype_hud.tscn" id="4_hud"]
-[ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/ground_h1x9.png" id="5_ground"]
-[ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/back_marker_32.png" id="7_marker"]
-[ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/back_diamond.png" id="8_diamond"]
-[ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/back_angle.png" id="9_angle"]
-[ext_resource type="Script" path="res://scripts/prototype/stage_director.gd" id="10_stage_director"]
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
-size = Vector2(4000, 32)
+[ext_resource type="PackedScene" path="res://scenes/ui/prototype_hud.tscn" id="3_hud"]
+[ext_resource type="Script" path="res://scripts/prototype/stage_director.gd" id="4_director"]
 
 [node name="PrototypeArena" type="Node2D"]
 script = ExtResource("1_arena")
 
-[node name="BackdropBase" type="Polygon2D" parent="."]
-z_index = -4
-polygon = PackedVector2Array(-2000, -2000, 2000, -2000, 2000, 2000, -2000, 2000)
-color = Color(0.027451, 0.0627451, 0.145098, 1)
-
-[node name="BackdropMarkerLeft" type="Sprite2D" parent="."]
-z_index = -3
-texture = ExtResource("7_marker")
-position = Vector2(-560, -220)
-scale = Vector2(4, 4)
-modulate = Color(0.25, 0.8, 0.85, 0.3)
-
-[node name="BackdropMarkerRight" type="Sprite2D" parent="."]
-z_index = -3
-texture = ExtResource("7_marker")
-position = Vector2(560, -220)
-scale = Vector2(4, 4)
-modulate = Color(0.25, 0.8, 0.85, 0.3)
-
-[node name="BackdropDiamondLeft" type="Sprite2D" parent="."]
-z_index = -3
-texture = ExtResource("8_diamond")
-position = Vector2(-340, -150)
-scale = Vector2(4, 4)
-modulate = Color(0.25, 0.8, 0.85, 0.22)
-
-[node name="BackdropDiamondRight" type="Sprite2D" parent="."]
-z_index = -3
-texture = ExtResource("8_diamond")
-position = Vector2(340, -150)
-scale = Vector2(4, 4)
-modulate = Color(0.25, 0.8, 0.85, 0.22)
-
-[node name="BackdropAngleLeft" type="Sprite2D" parent="."]
-z_index = -3
-texture = ExtResource("9_angle")
-position = Vector2(-500, 220)
-scale = Vector2(4, 4)
-modulate = Color(0.25, 0.8, 0.85, 0.24)
-
-[node name="BackdropAngleRight" type="Sprite2D" parent="."]
-z_index = -3
-texture = ExtResource("9_angle")
-position = Vector2(500, 220)
-scale = Vector2(4, 4)
-modulate = Color(0.25, 0.8, 0.85, 0.24)
-
-[node name="GroundLeft" type="Sprite2D" parent="."]
-z_index = -2
-texture = ExtResource("5_ground")
-position = Vector2(-720, 80)
-
-[node name="GroundLeftCenter" type="Sprite2D" parent="."]
-z_index = -2
-texture = ExtResource("5_ground")
-position = Vector2(-432, 80)
-
-[node name="GroundCenterLeft" type="Sprite2D" parent="."]
-z_index = -2
-texture = ExtResource("5_ground")
-position = Vector2(-144, 80)
-
-[node name="GroundCenterRight" type="Sprite2D" parent="."]
-z_index = -2
-texture = ExtResource("5_ground")
-position = Vector2(144, 80)
-
-[node name="GroundRightCenter" type="Sprite2D" parent="."]
-z_index = -2
-texture = ExtResource("5_ground")
-position = Vector2(432, 80)
-
-[node name="GroundRight" type="Sprite2D" parent="."]
-z_index = -2
-texture = ExtResource("5_ground")
-position = Vector2(720, 80)
-
-[node name="Floor" type="StaticBody2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(0, 68)
-shape = SubResource("RectangleShape2D_floor")
+[node name="StageAreas" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_player")]
-position = Vector2(0, 0)
 
-[node name="Enemy" parent="." instance=ExtResource("3_enemy")]
-position = Vector2(500, 16)
-
-[node name="EnemyLeft" parent="." instance=ExtResource("3_enemy")]
-position = Vector2(420, 16)
-
-[node name="EnemyRight" parent="." instance=ExtResource("3_enemy")]
-position = Vector2(580, 16)
-
-[node name="FinalEnemy" parent="." instance=ExtResource("3_enemy")]
-position = Vector2(820, 16)
-encounter_id = &"final_enemy"
-refills_at_zero = false
-is_final_enemy = true
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = true
+zoom = Vector2(1, 1)
 
 [node name="StageDirector" type="Node" parent="."]
-script = ExtResource("10_stage_director")
+script = ExtResource("4_director")
 
 [node name="AmbientAudio" type="AudioStreamPlayer" parent="."]
 bus = &"Ambient"
@@ -130,4 +28,4 @@ bus = &"BGM"
 [node name="ProjectileImpactAudio" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
 
-[node name="HUD" parent="." instance=ExtResource("4_hud")]
+[node name="HUD" parent="." instance=ExtResource("3_hud")]

@@ -136,6 +136,7 @@ var _sprite_rest_scale := Vector2.ONE
 var _sprite_rest_rotation := 0.0
 var _last_orb_count := 0
 var _last_marked_count := 0
+var _stage_input_locked := false
 
 
 func configure(config: Dictionary) -> void:
@@ -214,6 +215,24 @@ func set_attack_hitbox_debug_enabled(enabled: bool) -> void:
 
 func is_attack_hitbox_debug_enabled() -> bool:
 	return _attack_hitbox_debug_enabled
+
+
+func set_stage_input_locked(locked: bool) -> void:
+	_stage_input_locked = locked
+	combat.set_stage_input_locked(locked)
+	movement.set_movement_locked(locked)
+
+
+func reset_for_stage() -> void:
+	combat.reset_for_stage()
+	status_controller.clear_for_stage()
+	hit_reaction.reset_for_stage()
+	health.reset_to_maximum()
+	velocity = Vector2.ZERO
+
+
+func select_stage_school(school: StringName) -> void:
+	combat.select_stage_school(school)
 
 
 func _unhandled_input(event: InputEvent) -> void:
