@@ -161,6 +161,8 @@ func _on_transition_requested(next_descriptor: Dictionary) -> void:
 
 
 func _consume_public_outcome(outcome) -> void:
+	if outcome != null and outcome.get_kind() == &"orb_overflow":
+		hud.flinch_orb_widget()
 	stage_director.consume_outcome(outcome)
 
 

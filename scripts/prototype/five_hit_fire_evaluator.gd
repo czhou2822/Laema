@@ -22,8 +22,10 @@ func consume_outcome(outcome: Dictionary) -> Dictionary:
 	var outcome_kind := StringName(outcome.get("kind", &""))
 	if outcome_kind == &"light_contact_resolved":
 		return _consume_light_contact(outcome)
-	if outcome_kind == &"action_accepted" and StringName(outcome.get("action_kind", &"")) == &"cast" and _attempt_active:
-		return _invalidate()
+	if outcome_kind == &"action_accepted" and _attempt_active:
+		var action_kind := StringName(outcome.get("action_kind", &""))
+		if action_kind in [&"cast_normal", &"cast_empowered", &"cast_endpoint"]:
+			return _invalidate()
 	if outcome_kind == &"chain_terminated" and _attempt_active:
 		return _invalidate()
 	return {"kind": &"unchanged"}

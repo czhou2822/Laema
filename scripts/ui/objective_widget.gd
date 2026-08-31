@@ -2,28 +2,29 @@ class_name ObjectiveWidget
 extends Control
 
 var _panel: PanelContainer
+var _panel_style: StyleBoxFlat
 var _label: Label
 var _tokens: HBoxContainer
 var _prompt: Label
 var _tween: Tween
+var _rest_position := Vector2.ZERO
 
 
 func _ready() -> void:
+	_rest_position = position
 	_panel = PanelContainer.new()
 	_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_panel)
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.015, 0.025, 0.055, 0.86)
-	style.border_width_left = 2
-	style.border_width_top = 2
-	style.border_width_right = 2
-	style.border_width_bottom = 2
-	style.border_color = Color(0.18, 0.55, 0.72, 0.85)
-	style.corner_radius_top_left = 8
-	style.corner_radius_top_right = 8
-	style.corner_radius_bottom_left = 8
-	style.corner_radius_bottom_right = 8
-	_panel.add_theme_stylebox_override("panel", style)
+	_panel_style = StyleBoxFlat.new()
+	_panel_style.border_width_left = 2
+	_panel_style.border_width_top = 2
+	_panel_style.border_width_right = 2
+	_panel_style.border_width_bottom = 2
+	_panel_style.corner_radius_top_left = 8
+	_panel_style.corner_radius_top_right = 8
+	_panel_style.corner_radius_bottom_left = 8
+	_panel_style.corner_radius_bottom_right = 8
+	_panel.add_theme_stylebox_override("panel", _panel_style)
 	var layout := VBoxContainer.new()
 	layout.add_theme_constant_override("separation", 6)
 	_panel.add_child(layout)
@@ -44,9 +45,10 @@ func _ready() -> void:
 func present(snapshot: Dictionary) -> void:
 	_label.text = str(snapshot.get("label", ""))
 	var completed := bool(snapshot.get("completed", false))
+	_apply_completion_style(completed)
 	_label.modulate = Color("68dc81") if completed else Color.WHITE
 	_prompt.text = str(snapshot.get("prompt", ""))
-	_prompt.modulate = Color("68dc81")
+	_prompt.modulate = Color("68dc81") if completed else Color.WHITE
 	for child in _tokens.get_children():
 		child.queue_free()
 	var tokens: Array = snapshot.get("tokens", [])
@@ -64,8 +66,17 @@ func present(snapshot: Dictionary) -> void:
 func _flinch() -> void:
 	if _tween != null and _tween.is_valid():
 		_tween.kill()
-	position = Vector2.ZERO
+	position = _rest_position
 	_tween = create_tween()
-	_tween.tween_property(self, "position:x", 8.0, 0.05)
-	_tween.tween_property(self, "position:x", -8.0, 0.08)
-	_tween.tween_property(self, "position:x", 0.0, 0.06)
+	_tween.tween_property(self, "position:x", _rest_position.x + 8.0, 0.05)
+	_tween.tween_property(self, "position:x", _rest_position.x - 8.0, 0.08)
+	_tween.tween_property(self, "position:x", _rest_position.x, 0.06)
+
+
+func _apply_completion_style(completed: bool) -> void:
+	if completed:
+		_panel_style.bg_color = Color(0.04, 0.22, 0.11, 0.92)
+		_panel_style.border_color = Color("68dc81")
+	else:
+		_panel_style.bg_color = Color(0.015, 0.025, 0.055, 0.86)
+		_panel_style.border_color = Color(0.18, 0.55, 0.72, 0.85)

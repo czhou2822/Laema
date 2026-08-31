@@ -1,10 +1,10 @@
 # Technical Design Report — Orb Casting and Tutorial Stage Architecture
 
-Status: `READY_FOR_ULTRON_OR_DUM-E`
+Status: `IMPLEMENTED_USER_VALIDATED_AWAITING_FRESH_POSTFLIGHT`
 
-Repository basis: `04b4c6c` (`feat: add combat feedback state`) plus the user-verified, uncommitted `docs/GAME_DESIGN.md` draft with SHA-256 `1993E5842E581779A72B26B5D9474884CA6EA5F00CF71B58D7635D51EAEE67CB`. The committed source is the combat baseline; this report defines the additional tutorial-stage target architecture and does not claim that the new stage flow is implemented.
+Repository basis: implementation commit `582e141` (`feat: add stage one tutorial flow`), synchronized `docs/GAME_DESIGN.md` Git blob identity `bbd62fb48fbba4d3e61a3be32bab0cb5f1e42d99`, and the user-verified uncommitted U-001/U-002 corrections in `might_component.gd`, `combat_controller.gd`, and `player.gd`. Commit `04b4c6c` established the combat-feedback baseline; `582e141` implements the tutorial-stage architecture.
 
-No Godot runtime, build, compiler, or automated test was run while preparing this report.
+The user reported the current feature set and the later U-001/U-002 corrections verified in Godot on 2026-08-31. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
 ## Scope and selected decisions
 
@@ -34,36 +34,38 @@ The Material Decision Ledger is closed:
 
 Excluded from this implementation slice: defining or implementing Stages 2–7, changing the existing final-arena combat objective or contents, school-level spell behavior, legacy school-effect configuration/Portal cleanup, active Enemy attacks, defence redesign, Air/Earth defence, final presentation, asset remapping, save/resume persistence, and final numerical tuning.
 
-## Current codebase map and mismatch
+## Implemented codebase map and postflight basis
 
 ```text
-PrototypeArena                              current monolithic root
-├── Player
-│   ├── Camera2D                           currently Player-owned
-│   └── CombatComponent
-│       ├── MightComponent
-│       ├── MagicComponent
-│       ├── HeatComponent
-│       └── DefenceController
-├── three permanent practice targets
-├── one killable FinalEnemy
-├── StageDirector                          flat outcome matcher
-├── PrototypeHUD / Developer Portal
-└── arena geometry, backdrop, and audio
+PrototypeArena                              persistent root
+├── Arena-owned Camera2D
+├── Player / CombatComponent
+│   ├── MightComponent
+│   ├── MagicComponent
+│   ├── HeatComponent
+│   └── DefenceController
+├── StageDirector / active evaluator
+├── StageAreas
+│   ├── active StageArea
+│   └── next StageArea during transition
+├── PrototypeHUD / ObjectiveWidget / Developer Portal
+└── audio and projectile orchestration
 ```
 
-Static inspection at `04b4c6c` shows that the accepted combat component, queue, Heat, generic Cast, and Entity feedback structures are present and are the baseline for this slice. The tutorial-stage target is not present:
+Static inspection at `582e141` confirms that the combat baseline and tutorial-stage target are implemented:
 
-- `prototype_arena.tscn` hardcodes geometry, three practice targets, the FinalEnemy, Player, HUD, and StageDirector into one scene.
-- Player owns the active `Camera2D`, so the camera cannot pan independently after Laema exits the frame.
-- `StageDirector` stores one flat objective list and matches one immutable outcome at a time. It owns no stage FSM, attempt evaluator, exit gate, transition, or free-practice state.
-- `prototype_combat.json` contains only the current final-enemy objective and no ordered Stage Area descriptors.
-- `PrototypeHUD` has a text-only tutorial panel rather than the reusable token/progress widget.
-- Player has no public stage-transition boundary for all-input lock and ordered combat reset.
+- `prototype_arena.tscn` is the persistent root; `stage_1.tscn` and `final_arena.tscn` own their independent physical contents.
+- Arena owns the active `Camera2D`, Stage Area placement, transition pan, current-plus-next lifetime, projectile cleanup, and activation ordering.
+- `StageDirector` owns the stage lifecycle and delegates objective logic to the five-hit Fire and final-enemy evaluators.
+- `prototype_combat.json` contains validated ordered Stage Area descriptors and transition configuration.
+- `PrototypeHUD` instantiates the reusable `ObjectiveWidget` for progress, invalidation, completion, and free-practice presentation.
+- Player exposes the stage input-lock and ordered combat-reset boundary while preserving the selected school.
 
-The current combat outcomes provide Stage 1's action and contact evidence, but current chain termination is fragmented across `chain_reset`, `chain_completed`, `cast_failed`, and `action_interrupted`. The target adds one normalized `chain_terminated` CombatOutcome while preserving specialized outcomes where they remain useful. `orb_without_contact` is not a physical hit and therefore follows Stage 1's miss path. No second tutorial event bus is introduced.
+Might publishes one normalized `chain_terminated` CombatOutcome while preserving specialized outcomes where they remain useful. Stage 1 consumes immutable contact and termination evidence through its evaluator; `orb_without_contact` is not a physical hit and follows the miss path. No second tutorial event bus exists.
 
-## Target ownership
+The previously accepted U-001/U-002 postflight findings are implemented in the current working tree: successful normal and endpoint Cast completion preserves unconsumed queue entries, and the Player resource-loss transaction is routed from an incoming `APPLIED` direct-damage result independently of reaction strength. The user reported these corrections verified; a fresh postflight is still required before submission.
+
+## Implemented ownership
 
 ### Might, Magic, Heat, and Combat
 
@@ -255,7 +257,7 @@ Magic exposes one pressure-preservation result to Might. Might uses it after an 
 
 Only the front queue orb counts down. Consumption or expiration shifts the remaining queue forward and starts the new front orb at its full lifetime. Marking coverage transfers with the shifted queue when enough orbs remain.
 
-A failed Cast ends the chain, unmarks all stored orbs, and resets partial marking progress to zero without removing queue contents. A Player hit removes currently marked orbs, preserves unmarked order, and resets marking progress. Orbs already consumed by a committed Cast are never refunded.
+A failed Cast ends the chain, unmarks all stored orbs, and resets partial marking progress to zero without removing queue contents. An incoming direct-damage `HealthResult` qualifies for the resource-loss transaction only when its outcome is `APPLIED`: Magic removes currently marked orbs, preserves unmarked order, and resets marking progress. `BLOCKED`, `PARRIED`, and DoT results do not enter this transaction. Final reaction strength is not part of the predicate. Orbs already consumed by a committed Cast are never refunded.
 
 Magic publishes enough queue state for the HUD to render all ten slots, current contents, marked state, front lifetime, and marking progress. Overflow reaches the HUD through the existing Combat/Player presentation path and restarts the whole-widget flinch from rest.
 
@@ -273,7 +275,7 @@ Might accepts a normal/windowed/buffered release-Cast
 
 A buffered Cast commits before its later promotion. The dedicated fact is emitted during commitment, not promotion, launch, interruption, discard, or impact. Those later transitions therefore cannot duplicate or revoke the Heat gain. If the action is interrupted before launch, its payload is discarded without refund; the Heat already granted at commitment remains. A projectile miss likewise does not revoke Heat.
 
-Heat is stored as bonus percentage points above the fixed `100%` baseline. Its range is `0..50`, producing a continuous `1.00..1.50` multiplier. Each committed consumed orb grants one point. A Player hit removes five points with a zero-point floor. Three seconds after the latest qualifying Cast commitment, Heat resets fully to zero bonus points. Loss and Water-block drain do not create Heat or change its authority.
+Heat is stored as bonus percentage points above the fixed `100%` baseline. Its range is `0..50`, producing a continuous `1.00..1.50` multiplier. Each committed consumed orb grants one point. The same incoming `APPLIED` direct-damage result that triggers marked-orb removal also removes five Heat points with a zero-point floor. `BLOCKED`, `PARRIED`, and DoT results remove none, regardless of reaction strength. Three seconds after the latest qualifying Cast commitment, Heat resets fully to zero bonus points. Loss and Water-block drain do not create Heat or change its authority.
 
 Direct X hits, projectile impact, feedback, and deferred school effects grant no Heat. There is no independent Air speed buff or Air-specific Heat source in this prototype.
 
@@ -352,15 +354,15 @@ The Developer Portal keeps its General, Audio, and Combat organization. General 
 
 The always-visible HUD renders ten queue slots even when empty, a gold outline on marked orbs, the marking-progress bar, and the front-orb lifetime. The overflow signal drives the whole-widget horizontal flinch. The developer Heat readout removes `Level N` and shows actual attack speed with a continuous bar. The upper-right raw R2 pressure gauge and existing developer-overlay visibility behavior remain unchanged.
 
-## Implementation slices and validation seams
+## Implemented slices and validation seams
 
-1. **Persistent root and Stage Areas:** retain Player/HUD/audio/projectile orchestration in the root, move the Camera2D to Arena ownership, extract the existing final-arena content into a Final Arena Stage Area, and create the Stage 1 Stage Area plus shared entry/exit/spawn/camera/bounds/gate/trigger and PREPARED/ACTIVE/RETIRED contracts.
-2. **Stage configuration and lifecycle:** replace the flat tutorial schema, add strict stage/evaluator/resource validation, establish the StageDirector FSM and dedicated Arena milestone handshake, and enforce the current-plus-next loading window.
-3. **Objective evidence, evaluation, and presentation:** add the normalized one-per-exit `chain_terminated` outcome, Node evaluator registry, Stage 1 five-hit Fire evaluator, existing final-enemy evaluator, immutable presentation snapshots, and reusable upper-right ObjectiveWidget.
-4. **Player transition boundary:** add all-input transition lock and one ordered stage reset through Player/Combat facades while preserving active school; clear root-owned transient combat objects and wire PREPARED instantiation, reposition, camera pan, evaluator/outcome binding, activation, unlock, and completed-area unloading.
-5. **Stage 1 through free practice:** initialize Stage 1 at startup, enforce its gate/progress/invalidation/completion rules, transition to the existing Final Arena, and switch that arena in place to indefinite `now you are free` practice after final-enemy defeat.
+1. **Persistent root and Stage Areas:** Player/HUD/audio/projectile orchestration persists in the root; Arena owns the Camera2D; Stage 1 and Final Arena use the shared Stage Area contracts.
+2. **Stage configuration and lifecycle:** the flat tutorial schema is replaced by validated ordered stages, evaluator configuration, StageDirector lifecycle, and the current-plus-next loading window.
+3. **Objective evidence, evaluation, and presentation:** normalized `chain_terminated`, the evaluator registry, Stage 1 Fire-chain evaluator, final-enemy evaluator, immutable presentation snapshots, and ObjectiveWidget are implemented.
+4. **Player transition boundary:** Player exposes input lock and ordered stage reset; Arena orders PREPARED instantiation, placement, camera pan, evaluator binding, activation, unlock, and completed-area unloading.
+5. **Stage 1 through free practice:** Stage 1 initializes at startup, transitions into the Final Arena, and final-enemy defeat switches that arena in place to indefinite `now you are free` practice.
 
-Human runtime validation should establish:
+The user reported broad Godot validation of the current feature set and U-001/U-002 corrections on 2026-08-31. Because no exact scenario matrix was supplied, postflight must not infer individual results for these validation seams:
 
 - Stage 1 starts immediately with Fire selected, one refill target, empty green-token progress, and a locked right gate;
 - only physical Fire X hits advance progress, while Fire misses—including `orb_without_contact`—flinch/reset even before progress;
@@ -374,12 +376,13 @@ Human runtime validation should establish:
 - Final Arena placement aligns its EntryAnchor to Stage 1's world ExitAnchor, all transformed markers land on valid floor geometry, and active camera following respects each area's transformed horizontal bounds;
 - no Final Arena combat node exists while the player remains in completed Stage 1; PREPARED targets cannot collide, receive HealthEvents, process gameplay, or publish outcomes;
 - root-owned projectiles are removed before Final Arena instantiation, and Final Arena outcomes bind only after its evaluator exists;
+- incoming `APPLIED` direct damage triggers marked-orb removal and five-point Heat loss exactly once even at zero final reaction, while `BLOCKED`, `PARRIED`, and DoT results trigger neither loss;
 - camera pans use the default one-second duration, reject values outside `0.1–5.0`, persist Portal changes, and do not retime a transition already in progress;
 - the existing final-enemy objective and practice targets remain functional after scene extraction; and
 - final-enemy defeat immediately changes the widget to persistent `now you are free` with no progress row or further transition.
 
 Existing Orb Casting, generic damage, Entity feedback, audio, Developer Portal—including its dormant legacy school controls—and final-arena combat behavior are regression boundaries. Incoming Enemy attacks and ordinary-play defence remain outside the existing validation boundary. Stages 2–7 and legacy school-effect cleanup remain separate future slices.
 
-Light widget-flinch values remain reversible prototype tuning. Individual area dimensions and internal marker placement are authored in their Stage Area scenes rather than inferred from one global spacing value. No Godot runtime, build, compiler, or automated test was run while preparing this report; human runtime validation is required.
+Light widget-flinch values remain reversible prototype tuning. Individual area dimensions and internal marker placement are authored in their Stage Area scenes rather than inferred from one global spacing value. The user reported broad current-feature validation; no agent-run Godot, build, compiler, or automated-test evidence exists.
 
-Because this slice restructures scene ownership, camera ownership, stage configuration, Player reset ordering, and HUD interfaces, Friday recommends optional Ultron `mode=tech-preflight` before implementation. The report is also sufficiently bounded for direct DUM-E implementation if the user waives that optional audit.
+Because this implemented slice restructures scene ownership, camera ownership, stage configuration, Player reset ordering, and HUD interfaces, Friday recommends a fresh Ultron `mode=tech-postflight` before submission.

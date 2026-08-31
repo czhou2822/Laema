@@ -510,7 +510,6 @@ func _fail_cast() -> void:
 func _complete_chain_and_clear() -> void:
 	_publish_outcome(&"chain_terminated", {"reason": &"completed"})
 	_input_combo.complete()
-	_magic.clear_orbs(&"chain_completed")
 	_publish_outcome(&"chain_completed")
 	_enter_ready()
 

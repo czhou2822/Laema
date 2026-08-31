@@ -4,14 +4,14 @@ This repository is the shared source of truth for the project across the home an
 
 ## Current status
 
-The repository contains the expanded 2D side-scrolling orb-casting prototype. The user reported the expanded implementation as validated in Godot on 2026-08-25; an exact scenario matrix was not supplied.
+The repository contains the expanded 2D side-scrolling orb-casting prototype plus the implemented Stage 1 tutorial flow and Final Arena/free-practice path. The user reported the current feature set verified in Godot on 2026-08-31; an exact scenario matrix, tested-tree identity, and engine-version record were not supplied.
 
 - Project name: Laema
 - Engine version: Godot 4.7
 - Design status: Current prototype GDD verified
-- Technical design status: Current architecture synchronized; postflight review remains available
-- Implementation status: Expanded prototype with user-reported validation; agent-run runtime evidence unavailable
-- Last committed implementation: `358684b` (`feat: add side-scrolling orb casting prototype`)
+- Technical design status: Implemented architecture synchronized to `582e141`; tech-postflight is the current gate
+- Implementation status: Broad user-reported validation on 2026-08-31; agent-run runtime evidence unavailable
+- Last committed implementation: `582e141` (`feat: add stage one tutorial flow`)
 
 ## Prototype controls
 
@@ -19,9 +19,9 @@ The repository contains the expanded 2D side-scrolling orb-casting prototype. Th
 |---|---|---|
 | Move and face | Left stick | WASD |
 | Light attack (X) | X | Left mouse button |
-| Charge and mark | R2 in the 35–65% band | — |
-| Deplete marking meter | R2 in the 0–10% band | — |
-| Cast | R2 entering the 90–100% band | — |
+| Charge and mark | R2 in the 95–100% band | — |
+| Deplete marking meter | R2 in the 5–95% band | — |
+| Cast | Release R2 below 5% | — |
 | Select Fire | D-pad Up | 1 |
 | Select Water | D-pad Down | 2 |
 | Select Air | D-pad Left | 3 |
@@ -29,6 +29,8 @@ The repository contains the expanded 2D side-scrolling orb-casting prototype. Th
 | Defend | L1 | Shift |
 
 In a debug build, backtick opens the paused Developer Portal. Its header provides Pause/Unpause, Save to JSON, status, and Close controls; it also exposes the organized General, Audio, and Combat tuning tabs.
+
+The current tutorial begins in Stage 1 with a five-hit Fire-chain objective, transitions through the reusable stage structure into the Final Arena, and enters indefinite free practice when the final Enemy is defeated.
 
 ## Repository layout
 

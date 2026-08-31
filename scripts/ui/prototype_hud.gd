@@ -18,6 +18,7 @@ const SCHOOL_COLORS := {
 @onready var completed_combos: VBoxContainer = $DeveloperReadout/ComboPanel/ComboLayout/CompletedCombos
 @onready var raw_pressure: ProgressBar = $DeveloperReadout/PressurePanel/PressureLayout/RawPressure
 @onready var raw_pressure_label: Label = $DeveloperReadout/PressurePanel/PressureLayout/RawPressureLabel
+@onready var orb_panel: PanelContainer = $GameUI/OrbPanel
 @onready var orb_queue: HBoxContainer = $GameUI/OrbPanel/OrbLayout/OrbQueue
 @onready var mark_progress: ProgressBar = $GameUI/OrbPanel/OrbLayout/MarkProgress
 @onready var mark_label: Label = $GameUI/OrbPanel/OrbLayout/MarkLabel
@@ -54,10 +55,13 @@ var _max_marked_capacity := 5
 var _max_storage_capacity := 10
 var _last_marked_count := -1
 var _last_mark_progress_step := -1
+var _orb_panel_rest_position := Vector2.ZERO
+var _orb_panel_flinch_tween: Tween
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	_orb_panel_rest_position = orb_panel.position
 
 
 func _process(_delta: float) -> void:
@@ -132,6 +136,16 @@ func update_defence(label: String, current_guard: float, maximum_guard: float) -
 
 func update_tutorial_objective(objective: Dictionary) -> void:
 	objective_widget.present(objective)
+
+
+func flinch_orb_widget() -> void:
+	if _orb_panel_flinch_tween != null and _orb_panel_flinch_tween.is_valid():
+		_orb_panel_flinch_tween.kill()
+	orb_panel.position = _orb_panel_rest_position
+	_orb_panel_flinch_tween = create_tween()
+	_orb_panel_flinch_tween.tween_property(orb_panel, "position:x", _orb_panel_rest_position.x - 4.0, 0.04)
+	_orb_panel_flinch_tween.tween_property(orb_panel, "position:x", _orb_panel_rest_position.x + 4.0, 0.04)
+	_orb_panel_flinch_tween.tween_property(orb_panel, "position:x", _orb_panel_rest_position.x, 0.04)
 
 
 func update_combo(tokens: Array) -> void:

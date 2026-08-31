@@ -143,8 +143,13 @@ func set_effect_actions_suppressed(suppressed: bool) -> void:
 	_might.set_effect_actions_suppressed(suppressed)
 
 
-func handle_outgoing_health_result(result: HealthResult) -> void:
-	pass
+func handle_received_health_result(result: HealthResult) -> void:
+	if result == null or result.event == null or result.event.target != _owner_entity:
+		return
+	if result.outcome != HealthResult.Outcome.APPLIED or not result.event.is_direct_damage():
+		return
+	_heat.remove_for_player_hit()
+	_magic.remove_marked_orbs_on_player_hit()
 
 
 func resolve_spell_projectile_impact(target: Entity, contact_point: Vector2, payload: Dictionary) -> void:
@@ -156,7 +161,6 @@ func on_hit_reaction_started() -> void:
 		return
 	_might.cancel_for_player_hit()
 	_magic.discard_committed_casts(&"player_hit")
-	_magic.remove_marked_orbs_on_player_hit()
 	_defence.force_cancel()
 	_defending = false
 	_guard_broken = false

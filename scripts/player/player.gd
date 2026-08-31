@@ -201,7 +201,7 @@ func apply_runtime_tuning() -> void:
 
 
 func receive_health_result(result: HealthResult) -> void:
-	combat.handle_outgoing_health_result(result)
+	combat.handle_received_health_result(result)
 
 
 func get_defensive_level() -> int:

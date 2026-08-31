@@ -141,6 +141,14 @@ collision_mask = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightGate"]
 shape = SubResource("gate_shape")
 
+[node name="LeftBoundary" type="StaticBody2D" parent="."]
+position = Vector2(-850, 0)
+collision_layer = 4
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary"]
+shape = SubResource("gate_shape")
+
 [node name="ExitTrigger" type="Area2D" parent="."]
 position = Vector2(900, 0)
 collision_layer = 0

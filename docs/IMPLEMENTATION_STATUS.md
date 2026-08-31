@@ -1,17 +1,21 @@
 # Implementation Status
 
-Status: Expanded prototype implementation with user-reported validation on 2026-08-25. An exact scenario matrix was not supplied.
+Status: `IMPLEMENTED_USER_VALIDATED_AWAITING_POSTFLIGHT`.
 
-Last committed implementation: `358684b` (`feat: add side-scrolling orb casting prototype`). This commit contains the finalized R2 pressure state machine, shared X/Cast input buffer, fixed-rate depletion, orb presentation, Developer Portal controls, audio-bus integration, and the side-scrolling orb-casting source/configuration/docs.
+Last committed implementation: `582e141` (`feat: add stage one tutorial flow`). Commit `04b4c6c` added the current combat-feedback state; `582e141` added Stage 1, reusable objective presentation and evaluation, Stage Area transitions, the Final Arena path, and indefinite free practice. The current working tree additionally contains the user-verified U-001/U-002 corrections in three combat files.
 
-## Current uncommitted implementation candidate
+## Current working-tree implementation
 
-Status: `AWAITING_USER_VALIDATION`.
+The user reported the current feature set and U-001/U-002 corrections verified in Godot on 2026-08-31. The report was broad: no exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
-- Combat is composed as a thin `CombatComponent` facade with `MightComponent`, `MagicComponent`, the existing Heat implementation, and Defence beneath it. Might owns action timing, chains, movement locks, and the shared X/Cast buffer; Magic owns the queue, pressure marking/depletion, immediate frozen Cast commitments, configured-spell execution, and marked-only Player-hit removal.
-- The prototype configuration supplies fixed default school/level spell assignments and a final-only, data-driven tutorial objective. There is no persistence, unlock, new-spell, or balance implementation.
-- Public immutable combat and encounter outcomes feed the Arena-owned StageDirector. The three existing practice targets retain their permanent refill; one distinct final Enemy emits the authoritative completion fact when it reaches zero Health without refilling.
-- This candidate has not been run in Godot, built, compiled, or exercised by automated tests. The prior user-reported validation applies only to the earlier expanded prototype, not this restructure.
+- Combat is composed as a thin `CombatComponent` facade with `MightComponent`, `MagicComponent`, the existing Heat implementation, and Defence beneath it. Might owns action timing, chains, movement locks, and the shared X/Cast buffer; Magic owns the queue, pressure marking/depletion, immediate frozen Cast commitments, generic Cast execution, and marked-only qualifying Player-hit removal.
+- Successful normal and endpoint Cast completion now preserves every unconsumed FIFO queue entry.
+- Incoming `APPLIED` direct damage now routes one five-point Heat loss and marked-orb removal through Combat; `BLOCKED`, `PARRIED`, and DoT results cause neither resource loss, regardless of reaction strength.
+- Shared `FeedbackComponent` state provides current generic Cast-level feedback.
+- Public immutable combat and encounter outcomes feed the Arena-owned StageDirector and stage-specific evaluators.
+- Stage 1 contains one refillable target and requires five uninterrupted landed Fire X attacks. Completion unlocks its right gate and transition into the Final Arena.
+- The persistent Arena root owns Player, HUD, audio, projectiles, camera, StageDirector, and the current-plus-next Stage Area lifecycle.
+- Final-enemy defeat completes the tutorial and changes the loaded Final Arena into indefinite free practice.
 
 The current prototype source includes:
 
@@ -23,19 +27,22 @@ The current prototype source includes:
 - twenty active school/position X sheets covering X1–X5 for Fire, Water, Air, and Earth, with shared locomotion and Cast presentation;
 - functional Fire, Water, Air, and Earth X/casting specialties and their current status/effect pipelines;
 - a FIFO elemental-orb queue with seven-second front lifetime, right-to-left circular lifetime presentation, continuous marking progress, consumption, transfer, and fixed-rate depletion;
-- R2 DEPLETING, CHARGING, and CAST pressure bands, transition-based Cast entry, and no Cast-on-release behavior;
-- one normalized pre-window buffer shared by X and full-press Cast requests, with earliest-request arbitration and event-level debug traces;
-- a finite-Health, non-attacking Enemy target implementation instantiated as three permanent practice targets plus one distinct killable final target in the prototype arena;
+- R2 95–100% CHARGING, 5–95% fixed-rate DEPLETING, and below-5% RELEASE semantics with transition-based Cast-on-release behavior;
+- one normalized pre-window buffer shared by X and release-Cast requests, with earliest-request arbitration and event-level debug traces;
+- a Stage 1 refill target plus the extracted Final Arena's three permanent practice targets and distinct killable final target;
 - Fire parry and Water block state scaffolding with guard-warning feedback and a CC0 warning sound;
-- an always-visible gameplay HUD plus a paused Developer Portal with General, Audio, and nested Combat tabs, visible toggles, tooltips, pause/unpause, and Save to JSON;
+- an always-visible gameplay HUD with reusable ObjectiveWidget plus a paused Developer Portal with General, Audio, and nested Combat tabs, visible toggles, tooltips, pause/unpause, and Save to JSON;
+- reusable Stage Area scenes, StageDirector lifecycle, five-hit Fire and final-enemy evaluators, transition camera flow, stage reset, and final free-practice presentation;
 - Ambient, SFX, and BGM bus routing with persisted enabled and volume controls; and
 - the approved prototype asset and audio subsets.
 
-No Godot runtime, build, compiler, or automated test was run by the agent. The user reported the expanded implementation as validated in Godot on 2026-08-25, but did not provide a scenario-by-scenario result or engine-version record.
+At synchronization time, `scenes/ui/prototype_hud.tscn` contains an unrelated uncommitted ObjectiveWidget layout adjustment. It is not part of `582e141` or this document-only synchronization scope and was preserved untouched. The exact tested-tree identity was not supplied.
 
 The following remain outside the current validation boundary or intentionally open:
 
 - incoming Enemy attacks and ordinary-play validation of Water block, Fire parry, guard depletion, guard warning, guard break, and marked-orb loss on Player hit;
+- scenario-level results for Stage 1 progress/invalidation/completion, transition ordering, Final Arena activation, and free-practice entry, because the user supplied only a broad validation report;
+- Stages 2–7;
 - Air and Earth defence;
 - school-specific idle/walk locomotion switching; the current prototype uses the shared locomotion shell;
 - final character, projectile, UI, level, and audio presentation;
