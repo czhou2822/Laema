@@ -30,6 +30,16 @@ Use each document's stated status and the user's verification, not its filename,
 
 Read only the sources relevant to the request, but inspect the current Git state before any edit.
 
+## Git checkpoint and thread recovery
+
+The repository checkpoint contract is:
+
+- `save checkpoint` means inspect the current status and diff, query every currently listed and unarchived Laema task (including idle or not-loaded tasks), and record at least its latest completed message round: the newest user message and the corresponding assistant response, with the task ID, exact title, status, and recovery cursor or timestamp when available. If a task has changed since the previous checkpoint, capture its new latest round. Store this recovery manifest and transcript material in a new dated file under `docs/checkpoints/`, with a matching reviewable file-scope record under `docs/changelists/`. Preserve older records as history.
+- As part of `save checkpoint`, stage all current tracked modifications and untracked project files with `git add -A`; do not filter out source, scene, asset, configuration, or documentation changes. Saving a checkpoint does not commit or push unless the user separately asks for that.
+- `load checkpoint` means inspect local Git state first. If staged, unstaged, or untracked work exists, stop and ask the user to resolve it; never stash, reset, revert, discard, or overwrite it automatically. When the checkout is safe to synchronize, pull committed repository state with fast-forward-only behavior, read the newest checkpoint and changelist, then query every currently listed and unarchived task named in the recovery manifest and reopen/read at least its saved latest completed message round. If a task has newer messages, read and report its newest round as well. Restore context by reading the conversations; do not send duplicate messages or mutate the tasks unless the user explicitly asks.
+- If the Codex thread service is unavailable, report that only the Git files were loaded and that thread conversations were not restored. Never claim that a repository pull restored chat history.
+- Commit and push remain separate explicit actions.
+
 ## Working boundaries
 
 - Do not invent gameplay rules, project scope, or technical architecture.
