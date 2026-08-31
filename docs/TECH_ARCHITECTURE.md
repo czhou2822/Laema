@@ -17,9 +17,9 @@ The Material Decision Ledger is closed:
 3. **Stage 1 preserves the committed combat schema.** The current continuous Heat and generic-Cast schema remains authoritative. Legacy Fire/Water/Air/Earth effect fields and their Developer Portal controls remain dormant but intact during Stage 1 work; their previously accepted strict removal is deferred to a separate future cleanup slice.
 4. **Dedicated commitment-to-Heat interface.** After successful orb consumption and immutable payload storage, Magic emits one internal commitment fact carrying `commit_id` and `consumed_count`. Combat receives it synchronously and grants Heat exactly once. Promotion, launch, interruption, discard, and impact do not emit this fact.
 5. **Last-in primary and single-secondary ordering.** The final consumed orb selects the primary school, whose level equals total consumed orbs. The highest-count remaining school becomes the optional secondary; a secondary tie selects the school appearing latest in the consumed sequence. Impact and feedback resolve primary first, then secondary.
-6. **Pressure state owns chain preservation.** Magic reports CHARGING and DEPLETING as chain-preserving states independently of queue contents, marked count, and partial progress. CHARGING banks capacity while the queue is empty; DEPLETING remains preserving at zero progress until R2 leaves that band. Might consumes this state for timeout and between-action movement decisions.
+6. **Pressure state owns chain preservation.** Magic reports CHARGING and the 5–95% intermediate band as chain-preserving states independently of queue contents, marked count, and partial progress. CHARGING banks capacity while the queue is empty; the intermediate band waits 0.3 seconds before DEPLETING begins, resets that timer on return to CHARGING, and remains preserving at zero progress until R2 leaves the band. Might consumes this state for timeout and between-action movement decisions.
 7. **Shared configured feedback lifetime.** Both Entity scenes configure their `FeedbackComponent` from `ui.cast_feedback_duration`, default `2.0` seconds and validated from `0.1` through `20.0`. Developer Portal live tuning affects future entries only; each visible entry retains the duration captured when it was created.
-8. **Initial RELEASE is side-effect-free.** The first raw-pressure sample always establishes Magic's initial pressure state. If that state is RELEASE, initialization emits no Cast request or failure. Only a later transition from CHARGING or DEPLETING into RELEASE dispatches one Cast attempt; initial CHARGING or DEPLETING may begin their ordinary state behavior immediately.
+8. **Initial RELEASE is side-effect-free.** The first raw-pressure sample always establishes Magic's initial pressure state. If that state is RELEASE, initialization emits no Cast request or failure. Only a later transition from CHARGING or the 5–95% intermediate band into RELEASE dispatches one Cast attempt; initial CHARGING begins marking and an initial intermediate-band sample begins its no-drain timer.
 9. **Persistent tutorial root and reusable Stage Areas.** Player, HUD, audio, StageDirector, and an Arena-owned camera persist. Physical stage content is supplied by independently instantiated Stage Area scenes.
 10. **Stage-specific objective evaluators.** StageDirector owns lifecycle and delegates attempt state to one evaluator instance for the active stage. HUD never interprets combat outcomes.
 11. **Scene-plus-JSON stage definitions.** Stage Area `.tscn` scenes own physical content; the validated prototype JSON owns ordered descriptors, objective type, UI content, and evaluator parameters.
@@ -240,6 +240,9 @@ R2 >= 95%
   -> preserves the chain and releases movement between actions
 
 5% <= R2 < 95%
+  -> enters a 0.3-second no-drain intermediate hold
+  -> returning to CHARGING before the timer expires resets that timer
+  -> only a continuous hold beyond 0.3 seconds starts DEPLETING
   -> DEPLETING drains at the fixed baseline charge-step rate
   -> partial progress drains first
   -> completed boundaries unmark newest marked orbs first
@@ -251,7 +254,7 @@ R2 < 5% on state entry
   -> one Cast attempt only when this is a later transition
 ```
 
-Before evaluating these transitions, Magic classifies the first raw-pressure sample and stores it without dispatching RELEASE behavior. This prevents a resting trigger from producing a startup Cast failure. Initial CHARGING or DEPLETING still activates its ordinary state behavior. After initialization, only a change from CHARGING or DEPLETING into RELEASE dispatches one Cast attempt.
+Before evaluating these transitions, Magic classifies the first raw-pressure sample and stores it without dispatching RELEASE behavior. This prevents a resting trigger from producing a startup Cast failure. Initial CHARGING activates ordinary marking; an initial intermediate-band sample starts its no-drain timer. After initialization, only a change from CHARGING or the intermediate band into RELEASE dispatches one Cast attempt.
 
 Magic exposes one pressure-preservation result to Might. Might uses it after an animation and for idle-timeout eligibility. Queue size, marked count, and partial progress are presentation/resource values and never substitute for this state result. Active X and Cast animations remain movement-locked; Combat releases movement only between actions while Magic reports CHARGING or DEPLETING.
 

@@ -1,7 +1,7 @@
 class_name StageDirector
 extends Node
 
-const FiveHitFireEvaluatorScript = preload("res://scripts/prototype/five_hit_fire_evaluator.gd")
+const SequenceObjectiveEvaluatorScript = preload("res://scripts/prototype/sequence_objective_evaluator.gd")
 const FinalEnemyEvaluatorScript = preload("res://scripts/prototype/final_enemy_evaluator.gd")
 
 signal presentation_changed(snapshot: Dictionary)
@@ -49,7 +49,7 @@ func activate_stage(descriptor: Dictionary) -> void:
 	add_child(_evaluator)
 	_evaluator.configure(Dictionary(_active_descriptor["objective"]))
 	_lifecycle = Lifecycle.FINAL_ACTIVE if bool(_active_descriptor.get("final", false)) else Lifecycle.ACTIVE
-	_emit_objective(false, 0, false)
+	_emit_objective(false, 0, false, _evaluator.get_highlight_index() if _evaluator.has_method("get_highlight_index") else -1)
 
 
 func consume_outcome(outcome) -> void:
@@ -61,11 +61,11 @@ func consume_outcome(outcome) -> void:
 	var result: Dictionary = _evaluator.consume_outcome(snapshot)
 	match StringName(result.get("kind", &"unchanged")):
 		&"progress":
-			_emit_objective(false, int(result["progress"]), false)
+			_emit_objective(false, int(result["progress"]), false, int(result.get("highlight_index", -1)))
 		&"invalidated":
-			_emit_objective(false, 0, true)
+			_emit_objective(false, 0, true, int(result.get("highlight_index", -1)))
 		&"completed":
-			_on_objective_completed()
+			_on_objective_completed(int(result.get("progress", 0)))
 
 
 func report_exit_reached() -> void:
@@ -87,7 +87,7 @@ func is_exit_authorized() -> bool:
 	return _lifecycle == Lifecycle.COMPLETED_WAITING_FOR_EXIT
 
 
-func _on_objective_completed() -> void:
+func _on_objective_completed(progress: int) -> void:
 	if _lifecycle == Lifecycle.FINAL_ACTIVE:
 		_lifecycle = Lifecycle.FREE_PRACTICE
 		_dispose_evaluator()
@@ -95,16 +95,17 @@ func _on_objective_completed() -> void:
 		free_practice_entered.emit()
 		return
 	_lifecycle = Lifecycle.COMPLETED_WAITING_FOR_EXIT
-	_emit_objective(true, int(Dictionary(_active_descriptor["objective"])["required_hits"]), false)
+	_emit_objective(true, progress, false, -1)
 	stage_completed.emit(_active_descriptor.duplicate(true))
 
 
-func _emit_objective(completed: bool, progress: int, flinch: bool) -> void:
+func _emit_objective(completed: bool, progress: int, flinch: bool, highlight_index: int) -> void:
 	var objective: Dictionary = _active_descriptor["objective"]
 	presentation_changed.emit({
 		"label": str(objective["label"]),
 		"tokens": Array(objective.get("tokens", [])).duplicate(),
 		"progress": progress,
+		"highlight_index": highlight_index,
 		"completed": completed,
 		"prompt": "moving on ->" if completed else "",
 		"flinch": flinch,
@@ -113,8 +114,8 @@ func _emit_objective(completed: bool, progress: int, flinch: bool) -> void:
 
 func _create_evaluator(objective: Dictionary) -> ObjectiveEvaluator:
 	match StringName(objective["type"]):
-		&"five_hit_fire_chain":
-			return FiveHitFireEvaluatorScript.new()
+		&"sequence":
+			return SequenceObjectiveEvaluatorScript.new()
 		&"final_enemy":
 			return FinalEnemyEvaluatorScript.new()
 	push_error("Unsupported tutorial evaluator: %s" % objective["type"])

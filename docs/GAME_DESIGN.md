@@ -19,7 +19,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 | Left stick | Move left or right and face that direction |
 | X | Perform the active school’s attack |
 | R2 held in the 95–100% Marking band | Mark charged orbs for the upcoming Cast |
-| R2 held between 5–95% | Deplete marking progress at the fixed baseline rate |
+| R2 held between 5–95% for more than 0.3 seconds | Deplete marking progress at the fixed baseline rate |
 | R2 released below 5% | Trigger Casting once on release |
 | D-pad Up | Select Fire |
 | D-pad Down | Select Water |
@@ -129,15 +129,16 @@ Orb queue: A A W W
 R2 pressure has three semantic states, and state changes are transition-based:
 
 - Below `5%`: **RELEASE**; one Cast attempt occurs on entry.
-- `5–95%`: **DEPLETING**; marking capacity and partial progress drain at a fixed rate.
+- `5–95%`: an intermediate hold. It begins **DEPLETING** only after remaining in that band continuously for more than 0.3 seconds; before then it preserves marks for a release.
 - `95–100%`: **MARKING**; available marking capacity selects charged orbs in FIFO order.
 
 MARKING may begin at any time, with or without available charged orbs, and continues while Laema attacks or performs casting animations. Marking capacity selects the oldest available charged orbs in first-in, first-out order.
 
 - Entering MARKING starts or resumes marking progress.
-- Entering DEPLETING drains the continuous marking meter at the baseline `charge_step_duration` rate without Heat scaling.
+- Entering the 5–95% intermediate band starts a 0.3-second no-drain hold timer. Returning to MARKING resets that timer.
+- Holding continuously in the intermediate band for more than 0.3 seconds begins DEPLETING, which drains the continuous marking meter at the baseline `charge_step_duration` rate without Heat scaling.
 - Entering RELEASE triggers one normal or empowered Cast attempt; holding at full release does not repeat it.
-- The prototype begins with 95–100% as MARKING, 5–95% as DEPLETING, and below 5% as RELEASE; no exact 0% or 100% reading is required.
+- The prototype begins with 95–100% as MARKING, 5–95% as the intermediate no-drain hold band, and below 5% as RELEASE; no exact 0% or 100% reading is required.
 - Marking capacity increases by one marked orb every nominal 0.5 seconds while MARKING.
 - At baseline speed, the first orb becomes marked after 0.5 seconds.
 - At baseline speed, maximum capacity is five marked orbs after 2.5 seconds.
@@ -419,21 +420,105 @@ Stage 2 succeeds when the player releases any level-5 Cast.
 
 Completion is permanent, turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
 
+### Stage 3 — Five-Hit Chain into Level-5 Cast
+
+Stage 3 teaches the player to finish a complete five-position attack chain by launching an endpoint Cast. It contains one stationary, non-attacking, permanent refill target matching the targets in Stages 1 and 2.
+
+The objective widget displays:
+
+```text
+perform a 5-hit combo, then cast
+X - X - X - X - X - CAST
+```
+
+Stage 3 succeeds when the player lands five X attacks in one uninterrupted chain, then enters a level-5 Cast in the endpoint chaining window after X5.
+
+- All five X attacks must physically hit the target.
+- The five X attacks may use any school composition permitted by the existing chain rules.
+- The Cast's school composition does not affect success.
+- The Cast must launch at level 5; projectile impact is unnecessary.
+- Each valid X hit turns the corresponding `X` green.
+- After X5 lands, `CAST` receives a bright white highlight to show that it is the required next input.
+- A valid level-5 endpoint Cast turns `CAST` green and permanently completes the stage.
+- An X miss, a broken chain, a failed Cast, or a launched Cast below level 5 lightly flinches the whole widget and resets the attempt.
+
+Completion turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
+
+### Stage 4 — Mid-Chain Cast Continuation
+
+Stage 4 teaches that Cast can occupy a position inside an active chain and that the player may continue the chain afterward. It contains one stationary, non-attacking, permanent refill target.
+
+The objective widget displays:
+
+```text
+perform X, X, Cast, X
+X - X - CAST - X
+```
+
+Stage 4 succeeds through one uninterrupted `X -> X -> Cast -> X` chain.
+
+- All three X attacks must physically hit the target.
+- The Cast must be accepted as position 3 of the active chain; an isolated Cast does not count.
+- The Cast may use any available level or school composition.
+- The Cast counts when it launches; projectile impact is unnecessary.
+- The final X uses position 4 and must physically hit. Stage completion occurs on that X4 hit, not on Cast launch.
+- The objective tokens use the established green progress and bright-white next-step highlight behavior.
+- An X miss, broken chain, failed or isolated Cast, or wrong action order lightly flinches the whole widget and resets the attempt.
+
+Completion turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
+
+### Stage 5 — Multiple Casts in One Chain
+
+Stage 5 teaches that Cast is an alternative chain input to X and that a chain may contain more than one Cast. It contains one stationary, non-attacking, permanent refill target.
+
+The objective widget displays:
+
+```text
+perform X, Cast, X, Cast
+X - CAST - X - CAST
+```
+
+Stage 5 succeeds through the exact uninterrupted `X -> Cast -> X -> Cast` sequence.
+
+- Both X attacks must physically hit the target.
+- The two Casts occupy positions 2 and 4.
+- Each Cast may use any available level or school composition.
+- Each Cast counts when it launches; projectile impact is unnecessary.
+- Stage completion occurs when the second chained Cast launches.
+- The objective tokens use the established green progress and bright-white next-step highlight behavior.
+- An X miss, broken chain, failed or isolated Cast, or wrong action order lightly flinches the whole widget and resets the attempt.
+
+Completion turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
+
+### Stage 6 — School Switch During a Chain
+
+Stage 6 teaches that the player may change schools without ending an active chain. It contains one stationary, non-attacking, permanent refill target.
+
+The objective widget displays:
+
+```text
+change school during a 5-hit combo
+X - X - SWITCH - X - X - X
+```
+
+Stage 6 succeeds through one uninterrupted five-X chain with a school switch specifically between X2 and X3.
+
+- All five X attacks must physically hit the target.
+- The school selected after X2 must differ from the starting school; any two distinct schools qualify.
+- The switch input does not consume a chain position.
+- The objective tokens use the established green progress and bright-white next-step highlight behavior.
+- An X miss, broken chain, missing or mistimed switch, or attempted switch back to the original school lightly flinches the whole widget and resets the attempt.
+- Stage completion occurs when the final X5 physically hits the target.
+
+Completion turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
+
 ### Later Tutorial Stages
 
-Stage 1 and Stage 2 are locked. The remaining intermediate lesson list is provisional:
-
-3. perform two X attacks, then cast a level-2 spell;
-4. perform a five-X combo, then cast a level-5 spell;
-5. perform X, X, Cast, X;
-6. perform X, Cast, X, Cast; and
-7. sustain Marking by holding R2 at full pressure.
-
-Each later stage defines its own area contents and attempt rules through the reusable progression and widget shells.
+Stages 1 through 6 are locked. No Stage 7 objective is currently locked. Any later stage must define its own area contents and attempt rules through the reusable progression and widget shells.
 
 ### Tutorial Completion and Free Practice
 
-Until Stage 3 is defined, Stage 1 transitions into Stage 2, and Stage 2 transitions directly into the existing prototype arena, which serves as the legitimate final tutorial stage. Future tutorial stages are inserted between Stage 2 and this final arena.
+Stage 1 transitions through Stages 2, 3, 4, 5, and 6 in order. Stage 6 transitions directly into the existing prototype arena, which serves as the legitimate final tutorial stage. Any future tutorial stages are inserted between Stage 6 and this final arena.
 
 The final tutorial objective remains `Defeat the final Enemy`. When that Enemy dies, the tutorial completes permanently and the objective widget immediately changes to the free-form text below. There is no separate completion screen, delay, animation, or intermediate message. The final arena remains loaded and becomes the indefinite free-form practice area; there is no additional right exit or camera-pan transition. Its permanent practice targets remain available.
 
@@ -478,7 +563,11 @@ The prototype must make the following observable:
 - stage-start combat reset with active-school carryover;
 - the reusable upper-right objective widget with green progress, invalid-attempt flinch/reset, whole-widget completion, and `moving on ->` prompt;
 - the complete Stage 1 five-hit Fire-chain success, invalidation, target, UI, and transition behavior;
-- the complete Stage 2 level-5 Cast success, lower-level and empty-Cast failure feedback, target, text-only UI, and transition behavior; and
+- the complete Stage 2 level-5 Cast success, lower-level and empty-Cast failure feedback, target, text-only UI, and transition behavior;
+- the complete Stage 3 five-hit chain into a level-5 endpoint Cast, including launch-based success, invalidation, target, six-step UI, and transition behavior;
+- the complete Stage 4 mid-chain Cast continuation sequence, including X4-hit completion, invalidation, target, four-step UI, and transition behavior;
+- the complete Stage 5 multiple-Cast sequence, including second-Cast launch completion, invalidation, target, four-step UI, and transition behavior;
+- the complete Stage 6 school-switch sequence, including switch timing, five-hit completion, invalidation, target, six-step UI, and transition behavior; and
 - the existing prototype arena as the final tutorial area, followed in place by its indefinite `now you are free` free-practice state.
 
 Incoming Enemy attacks and ordinary-play validation of blocking, parrying, guard depletion, guard warning, and guard break remain deferred because the Enemy does not attack.

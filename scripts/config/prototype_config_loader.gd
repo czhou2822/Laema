@@ -290,14 +290,43 @@ static func _validate_tutorial(tutorial: Dictionary) -> String:
 		if typeof(objective) != TYPE_DICTIONARY or typeof(objective.get("type", null)) != TYPE_STRING or typeof(objective.get("label", null)) != TYPE_STRING:
 			return "tutorial.stages[%d].objective must define type and label." % index
 		match StringName(objective["type"]):
-			&"five_hit_fire_chain":
-				if StringName(objective.get("school", &"")) not in [&"fire", &"water", &"air", &"earth"] or int(objective.get("required_hits", 0)) <= 0 or typeof(objective.get("tokens", null)) != TYPE_ARRAY:
-					return "five_hit_fire_chain requires school, positive required_hits, and tokens."
+			&"sequence":
+				var sequence_error := _validate_sequence_objective(objective)
+				if not sequence_error.is_empty():
+					return sequence_error
 			&"final_enemy":
 				if StringName(objective.get("encounter_id", &"")) != &"final_enemy" or not stage.has("free_practice_text") or typeof(stage["free_practice_text"]) != TYPE_STRING:
 					return "final_enemy requires final_enemy encounter_id and free_practice_text."
 			_:
 				return "tutorial objective type is unsupported."
+	return ""
+
+
+static func _validate_sequence_objective(objective: Dictionary) -> String:
+	for key in ["tokens", "success_steps", "prestart", "active", "completion_progress"]:
+		if not objective.has(key):
+			return "sequence.%s is required." % key
+	if typeof(objective["tokens"]) != TYPE_ARRAY or typeof(objective["success_steps"]) != TYPE_ARRAY or objective["success_steps"].is_empty():
+		return "sequence requires tokens and a non-empty success_steps array."
+	if typeof(objective["prestart"]) != TYPE_DICTIONARY or typeof(objective["active"]) != TYPE_DICTIONARY or not _is_number(objective["completion_progress"]):
+		return "sequence prestart, active, and completion_progress are invalid."
+	if objective.has("highlight_next") and typeof(objective["highlight_next"]) != TYPE_BOOL:
+		return "sequence.highlight_next must be Boolean."
+	for step_variant in objective["success_steps"]:
+		if typeof(step_variant) != TYPE_DICTIONARY:
+			return "sequence success steps must be objects."
+		var step: Dictionary = step_variant
+		var step_type := StringName(step.get("type", &""))
+		if step_type not in [&"light", &"cast", &"switch"]:
+			return "sequence step type is unsupported."
+		if step.has("school") and StringName(step["school"]) not in [&"fire", &"water", &"air", &"earth"]:
+			return "sequence light school must be functional."
+		if step.has("required_level") and (not _is_number(step["required_level"]) or int(step["required_level"]) < 1 or int(step["required_level"]) > 5):
+			return "sequence required_level must be an integer from 1 through 5."
+		if step.has("endpoint") and typeof(step["endpoint"]) != TYPE_BOOL:
+			return "sequence endpoint must be Boolean."
+		if step.has("chain_position") and (not _is_number(step["chain_position"]) or not is_equal_approx(float(step["chain_position"]), round(float(step["chain_position"])) )):
+			return "sequence chain_position must be an integer."
 	return ""
 
 

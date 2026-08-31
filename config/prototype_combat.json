@@ -118,11 +118,104 @@
 				"id": "stage_1",
 				"area_scene": "res://scenes/stages/stage_1.tscn",
 				"objective": {
-					"type": "five_hit_fire_chain",
+					"type": "sequence",
 					"label": "perform a 5 hit combo",
 					"tokens": ["X", "X", "X", "X", "X"],
-					"school": "fire",
-					"required_hits": 5
+					"highlight_next": false,
+					"prestart": {"ignore_unexpected": true, "fire_miss_invalid": true},
+					"active": {},
+					"completion_progress": 5,
+					"success_steps": [
+						{"type": "light", "school": "fire"},
+						{"type": "light", "school": "fire"},
+						{"type": "light", "school": "fire"},
+						{"type": "light", "school": "fire"},
+						{"type": "light", "school": "fire"}
+					]
+				},
+				"final": false
+			},
+			{
+				"id": "stage_2",
+				"area_scene": "res://scenes/stages/stage_2.tscn",
+				"objective": {
+					"type": "sequence",
+					"label": "perform a level 5 spell",
+					"tokens": [],
+					"highlight_next": false,
+					"prestart": {"ignore_unexpected": true},
+					"active": {},
+					"completion_progress": 0,
+					"success_steps": [{"type": "cast", "required_level": 5}]
+				},
+				"final": false
+			},
+			{
+				"id": "stage_3",
+				"area_scene": "res://scenes/stages/sequence_training.tscn",
+				"objective": {
+					"type": "sequence",
+					"label": "perform a 5-hit combo, then cast",
+					"tokens": ["X", "X", "X", "X", "X", "CAST"],
+					"highlight_next": true,
+					"prestart": {},
+					"active": {},
+					"completion_progress": 6,
+					"success_steps": [
+						{"type": "light"}, {"type": "light"}, {"type": "light"}, {"type": "light"}, {"type": "light"},
+						{"type": "cast", "endpoint": true, "required_level": 5}
+					]
+				},
+				"final": false
+			},
+			{
+				"id": "stage_4",
+				"area_scene": "res://scenes/stages/sequence_training.tscn",
+				"objective": {
+					"type": "sequence",
+					"label": "perform X, X, Cast, X",
+					"tokens": ["X", "X", "CAST", "X"],
+					"highlight_next": true,
+					"prestart": {},
+					"active": {},
+					"completion_progress": 4,
+					"success_steps": [
+						{"type": "light"}, {"type": "light"}, {"type": "cast", "endpoint": false, "chain_position": 3}, {"type": "light"}
+					]
+				},
+				"final": false
+			},
+			{
+				"id": "stage_5",
+				"area_scene": "res://scenes/stages/sequence_training.tscn",
+				"objective": {
+					"type": "sequence",
+					"label": "perform X, Cast, X, Cast",
+					"tokens": ["X", "CAST", "X", "CAST"],
+					"highlight_next": true,
+					"prestart": {},
+					"active": {},
+					"completion_progress": 4,
+					"success_steps": [
+						{"type": "light"}, {"type": "cast", "endpoint": false, "chain_position": 2}, {"type": "light"}, {"type": "cast", "endpoint": false, "chain_position": 4}
+					]
+				},
+				"final": false
+			},
+			{
+				"id": "stage_6",
+				"area_scene": "res://scenes/stages/sequence_training.tscn",
+				"objective": {
+					"type": "sequence",
+					"label": "change school during a 5-hit combo",
+					"tokens": ["X", "X", "SWITCH", "X", "X", "X"],
+					"highlight_next": true,
+					"prestart": {},
+					"active": {"rejected_switch_invalid": true},
+					"completion_progress": 6,
+					"success_steps": [
+						{"type": "light"}, {"type": "light"}, {"type": "switch", "chain_position": 2}, {"type": "light"}, {"type": "light"}, {"type": "light"}
+					]
 				},
 				"final": false
 			},

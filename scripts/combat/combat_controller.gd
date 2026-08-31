@@ -19,6 +19,7 @@ const SCHOOL_FIRE := &"fire"
 const SCHOOL_WATER := &"water"
 const SCHOOL_AIR := &"air"
 const SCHOOL_EARTH := &"earth"
+const CombatOutcomeResource = preload("res://scripts/combat/combat_outcome.gd")
 
 var _config: Dictionary = {}
 var _owner_entity: Entity
@@ -200,6 +201,14 @@ func _update_casting_pressure() -> void:
 	var transition := _magic.update_pressure(Input.get_action_raw_strength(&"casting"))
 	if transition == MagicComponent.PressureState.INTERMEDIATE:
 		return
+	if transition == MagicComponent.PressureState.RELEASE:
+		var block_reason := &""
+		if _defending:
+			block_reason = &"defence_active"
+		elif _guard_broken:
+			block_reason = &"guard_broken"
+		_might.try_cast_trigger(block_reason)
+		return
 	if not _might.can_handle_pressure() or _defending or _guard_broken:
 		return
 	match transition:
@@ -209,8 +218,7 @@ func _update_casting_pressure() -> void:
 		MagicComponent.PressureState.CHARGING:
 			_magic.start_charging()
 			_might.release_movement_for_orb_state()
-		MagicComponent.PressureState.RELEASE:
-			_might.try_cast_trigger()
+
 
 
 func _try_defend() -> void:
@@ -241,6 +249,7 @@ func _connect_public_interfaces(input_combo) -> void:
 	_might.attack_started.connect(attack_started.emit)
 	_might.empowered_cast_started.connect(empowered_cast_started.emit)
 	_might.cast_failed.connect(cast_failed.emit)
+	_might.cast_attempt_resolved.connect(_on_cast_attempt_resolved)
 	_might.outcome_published.connect(_forward_outcome)
 	_magic.queue_changed.connect(orb_queue_changed.emit)
 	_magic.cast_committed.connect(_on_cast_committed)
@@ -258,6 +267,10 @@ func _connect_public_interfaces(input_combo) -> void:
 
 func _forward_outcome(outcome) -> void:
 	outcome_published.emit(outcome)
+
+
+func _on_cast_attempt_resolved(result: Dictionary) -> void:
+	outcome_published.emit(CombatOutcomeResource.create(&"cast_attempt_resolved", result))
 
 
 func _on_cast_committed(_commit_id: int, consumed_count: int) -> void:

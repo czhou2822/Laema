@@ -2,6 +2,7 @@ class_name MagicComponent
 extends Node
 
 const CombatOutcomeResource = preload("res://scripts/combat/combat_outcome.gd")
+const DEPLETION_HOLD_DELAY := 0.3
 
 signal queue_changed(snapshot: Array, marked_count: int, marking_progress: float)
 signal outcome_published(outcome)
@@ -29,6 +30,7 @@ var _partial_mark_time := 0.0
 var _marked_capacity := 0
 var _marking_active := false
 var _depleting_active := false
+var _depletion_hold_elapsed := 0.0
 var _pressure_initialized := false
 var _pressure_state := PressureState.INTERMEDIATE
 var _committed_casts: Dictionary = {}
@@ -115,6 +117,7 @@ func start_charging() -> void:
 	var was_active := _marking_active
 	_marking_active = true
 	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
 	if not was_active:
 		_trace(&"charging_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
 		_publish_outcome(&"charging_started", {"marked_count": get_marked_count()})
@@ -127,7 +130,8 @@ func start_depleting() -> void:
 	if was_active:
 		return
 	_depleting_active = true
-	_trace(&"depleting_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
+	_depletion_hold_elapsed = 0.0
+	_trace(&"depleting_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress(), "hold_delay": DEPLETION_HOLD_DELAY})
 	_publish_outcome(&"depleting_started", {"marked_count": get_marked_count()})
 	_emit_snapshot()
 
@@ -210,9 +214,9 @@ func get_committed_cast(commit_id: int) -> Dictionary:
 	return Dictionary(_committed_casts[commit_id]).duplicate(true)
 
 
-func launch_committed_cast(commit_id: int) -> void:
+func launch_committed_cast(commit_id: int) -> Dictionary:
 	if not _committed_casts.has(commit_id):
-		return
+		return {}
 	var payload: Dictionary = Dictionary(_committed_casts[commit_id]).duplicate(true)
 	_committed_casts.erase(commit_id)
 	_publish_outcome(&"cast_launched", {
@@ -225,6 +229,7 @@ func launch_committed_cast(commit_id: int) -> void:
 	})
 	_trace(&"projectile_launch_requested", {"commit_id": commit_id, "primary_school": payload["primary_school"], "primary_level": payload["primary_level"]})
 	projectile_launch_requested.emit(payload)
+	return payload
 
 
 func discard_committed_cast(commit_id: int, reason: StringName) -> void:
@@ -253,6 +258,7 @@ func remove_marked_orbs_on_player_hit() -> void:
 	_marked_capacity = 0
 	_partial_mark_time = 0.0
 	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
 	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
 	_publish_outcome(&"marked_orbs_removed_on_player_hit", {"removed_count": removed_count, "remaining_queue": _queue.size()})
 	_trace(&"marked_orbs_removed_on_owner_hit", {"removed": removed_count, "remaining_queue": _queue.size()})
@@ -265,6 +271,7 @@ func clear_after_failed_cast() -> void:
 	_partial_mark_time = 0.0
 	_marking_active = false
 	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
 	_publish_outcome(&"orb_marks_cleared", {"reason": &"failed_cast", "queue_size": _queue.size()})
 	_emit_snapshot()
 
@@ -358,6 +365,7 @@ func _consume_marked_orbs() -> Dictionary:
 	_partial_mark_time = 0.0
 	_marking_active = false
 	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
 	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
 	_emit_snapshot()
 	return {
@@ -447,6 +455,13 @@ func _advance_marking(delta: float) -> bool:
 
 
 func _advance_depleting(delta: float) -> bool:
+	if _depletion_hold_elapsed < DEPLETION_HOLD_DELAY:
+		var grace_remaining := DEPLETION_HOLD_DELAY - _depletion_hold_elapsed
+		var grace_delta := minf(delta, grace_remaining)
+		_depletion_hold_elapsed += grace_delta
+		delta -= grace_delta
+		if delta <= 0.0:
+			return false
 	if _marked_capacity <= 0 and _partial_mark_time <= 0.0:
 		return false
 	_partial_mark_time -= delta
@@ -483,6 +498,7 @@ func _clear_orb_state() -> void:
 	_marked_capacity = 0
 	_marking_active = false
 	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
 
 
 func _emit_snapshot() -> void:

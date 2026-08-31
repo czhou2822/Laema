@@ -8,6 +8,7 @@ signal active_school_changed(school: StringName)
 signal attack_started(kind: StringName, school: StringName, direction: Vector2)
 signal empowered_cast_started(school: StringName, direction: Vector2)
 signal cast_failed
+signal cast_attempt_resolved(result: Dictionary)
 signal outcome_published(outcome)
 
 enum State {
@@ -38,6 +39,9 @@ var _launch_emitted := false
 var _actions_suppressed := false
 var _buffered_request: Dictionary = {}
 var _failed_cast_reaction_pending := false
+var _next_attempt_id := 1
+var _resolved_attempt_ids: Dictionary = {}
+var _attempt_contexts: Dictionary = {}
 
 
 func configure(
@@ -103,6 +107,7 @@ func try_select_school(school: StringName) -> void:
 		return
 	var can_switch: bool = _window_open or (_current_action.is_empty() and _magic.has_active_marking_state())
 	if not can_switch:
+		_publish_outcome(&"school_switch_rejected", {"from_school": _active_school, "to_school": school, "position": _input_combo.get_current_position(), "reason": &"wrong_window"})
 		return
 	if _input_combo.accept_switch(_active_school, school):
 		var previous_school := _active_school
@@ -110,6 +115,8 @@ func try_select_school(school: StringName) -> void:
 		active_school_changed.emit(_active_school)
 		_publish_outcome(&"school_switched", {"from_school": previous_school, "to_school": school, "position": _input_combo.get_current_position()})
 		_trace(&"school_switched", {"from": previous_school, "to": school, "position": _input_combo.get_current_position()})
+	else:
+		_publish_outcome(&"school_switch_rejected", {"from_school": _active_school, "to_school": school, "position": _input_combo.get_current_position(), "reason": &"input_combo_rejected"})
 
 
 func try_light_attack(direction: Vector2) -> void:
@@ -136,7 +143,7 @@ func try_light_attack(direction: Vector2) -> void:
 		else:
 			_trace_light_attempt("rejected", "before_buffer")
 		return
-	if _current_action.is_empty() and not _magic.has_active_marking_state():
+	if _current_action.is_empty() and not _magic.has_active_marking_state() and not _input_combo.is_active():
 		_trace_light_attempt("rejected", "post_action_chain_not_preserved")
 		return
 	if not _input_combo.accept_light(_active_school):
@@ -151,47 +158,58 @@ func try_light_attack(direction: Vector2) -> void:
 		_trace_light_attempt("accepted-queued", "accepted")
 
 
-func try_cast_trigger() -> void:
-	if _actions_suppressed or _state == State.HIT_REACTING:
-		return
-	_promote_buffered_request_if_ready()
-	if not _pending_action.is_empty():
-		return
+func try_cast_trigger(external_block_reason: StringName = &"") -> void:
 	if _is_chainable_action() and not _window_open:
 		var buffer_progress := get_normalized_attack_progress()
 		if _is_buffer_zone(buffer_progress):
 			if not _buffered_request.is_empty():
 				_trace(&"input_buffer_rejected", {"kind": "cast", "reason": "first_request_wins", "progress": buffer_progress})
 				return
+	var attempt_id := _begin_cast_attempt()
+	if external_block_reason != &"":
+		_resolve_cast_attempt(attempt_id, &"failed", {"reason": external_block_reason})
+		return
+	if _actions_suppressed:
+		_resolve_cast_attempt(attempt_id, &"failed", {"reason": &"actions_suppressed"})
+		return
+	if _state == State.HIT_REACTING:
+		_resolve_cast_attempt(attempt_id, &"failed", {"reason": &"hit_reaction"})
+		return
+	_promote_buffered_request_if_ready()
+	if not _pending_action.is_empty():
+		_resolve_cast_attempt(attempt_id, &"failed", {"reason": &"pending_action_occupied"})
+		return
+	if _is_chainable_action() and not _window_open:
+		var buffer_progress := get_normalized_attack_progress()
+		if _is_buffer_zone(buffer_progress):
 			if not _magic.has_marked_orbs():
 				_trace(&"cast_rejected", {"reason": "no_marked_orbs", "state": _state})
-				_fail_cast()
+				_fail_cast(attempt_id, &"no_marked_orbs")
 				return
-			_buffer_cast_request()
+			_buffer_cast_request(attempt_id)
 			return
 	if not _magic.has_marked_orbs():
-		if _state == State.COMBO_ACTIVE or _magic.has_active_marking_state():
-			_trace(&"cast_rejected", {"reason": "no_marked_orbs", "state": _state})
-			_fail_cast()
+		_trace(&"cast_rejected", {"reason": "no_marked_orbs", "state": _state})
+		_fail_cast(attempt_id, &"no_marked_orbs")
 		return
 	if _state == State.COMBO_ACTIVE and not _current_action.is_empty():
 		if not _window_open:
 			var current_progress := get_normalized_attack_progress()
 			_trace(&"cast_rejected", {"reason": "before_buffer" if not _is_buffer_zone(current_progress) else "full_press_before_window", "progress": current_progress})
-			_fail_cast()
+			_fail_cast(attempt_id, &"before_cast_window")
 			return
 		var progression: Dictionary = _input_combo.accept_cast(_active_school)
 		if not bool(progression["valid"]):
 			_trace(&"cast_rejected", {"reason": "invalid_chain_progression"})
-			_fail_cast()
+			_fail_cast(attempt_id, &"invalid_chain_progression")
 			return
 		var commitment := _commit_cast(true, _current_action["direction"])
 		if not bool(commitment["valid"]):
-			_fail_cast()
+			_fail_cast(attempt_id, &"orb_consumption_failed")
 			return
-		var empowered_action := _make_cast_action(int(commitment["commit_id"]), bool(progression["endpoint"]), true)
+		var empowered_action := _make_cast_action(int(commitment["commit_id"]), bool(progression["endpoint"]), true, attempt_id)
 		if empowered_action.is_empty():
-			_fail_cast()
+			_fail_cast(attempt_id, &"commitment_missing")
 			return
 		_pending_action = empowered_action
 		_trace(&"cast_classified", {"outcome": "endpoint" if bool(progression["endpoint"]) else "empowered", "commit_id": commitment["commit_id"]})
@@ -199,14 +217,14 @@ func try_cast_trigger() -> void:
 		return
 	var normal_commitment := _commit_cast(false, _current_facing_direction())
 	if not bool(normal_commitment["valid"]):
-		_fail_cast()
+		_fail_cast(attempt_id, &"orb_consumption_failed")
 		return
 	if _state == State.READY:
 		_state = State.COMBO_ACTIVE
 		movement_lock_changed.emit(true)
-	var normal_action := _make_cast_action(int(normal_commitment["commit_id"]), false, false)
+	var normal_action := _make_cast_action(int(normal_commitment["commit_id"]), false, false, attempt_id)
 	if normal_action.is_empty():
-		_fail_cast()
+		_fail_cast(attempt_id, &"commitment_missing")
 		return
 	_trace(&"cast_classified", {"outcome": "normal", "commit_id": normal_commitment["commit_id"]})
 	_start_action(normal_action)
@@ -231,6 +249,7 @@ func set_effect_actions_suppressed(suppressed: bool) -> void:
 
 func cancel_for_player_hit() -> void:
 	_clear_buffered_request(&"player_hit", false)
+	_resolve_active_cast_attempt(&"player_hit")
 	if _animation_player != null:
 		_animation_player.stop()
 	if _input_combo.is_active():
@@ -306,18 +325,19 @@ func _buffer_light_attack(direction: Vector2) -> void:
 	_trace_light_attempt("buffered", "x_buffered")
 
 
-func _buffer_cast_request() -> void:
+func _buffer_cast_request(attempt_id: int) -> void:
 	var commitment := _commit_cast(true, _current_action["direction"])
 	if not bool(commitment["valid"]):
 		_trace(&"cast_rejected", {"reason": "orb_consumption_failed"})
-		_fail_cast()
+		_fail_cast(attempt_id, &"orb_consumption_failed")
 		return
 	_buffered_request = {
 		"kind": &"cast",
 		"casting_school": _active_school,
 		"commit_id": int(commitment["commit_id"]),
+		"attempt_id": attempt_id,
 	}
-	_publish_outcome(&"action_buffered", {"kind": &"cast", "commit_id": commitment["commit_id"]})
+	_publish_outcome(&"action_buffered", {"kind": &"cast", "commit_id": commitment["commit_id"], "attempt_id": attempt_id})
 	_trace(&"input_buffered", {"kind": "cast", "reason": "full_press_buffered", "commit_id": commitment["commit_id"], "progress": get_normalized_attack_progress()})
 
 
@@ -360,23 +380,25 @@ func _promote_buffered_cast(request: Dictionary) -> void:
 	if not bool(progression["valid"]):
 		_clear_buffered_request(&"cast_input_combo_rejection")
 		return
-	var action := _make_cast_action(int(request["commit_id"]), bool(progression["endpoint"]), true)
+	var action := _make_cast_action(int(request["commit_id"]), bool(progression["endpoint"]), true, int(request["attempt_id"]))
 	if action.is_empty():
 		_clear_buffered_request(&"cast_commitment_missing")
 		return
 	_pending_action = action
 	_buffered_request.clear()
-	_publish_outcome(&"action_buffer_promoted", {"kind": &"cast", "commit_id": request["commit_id"], "position": _input_combo.get_current_position()})
+	_publish_outcome(&"action_buffer_promoted", {"kind": &"cast", "commit_id": request["commit_id"], "attempt_id": request["attempt_id"], "position": _input_combo.get_current_position()})
 	_trace(&"input_buffer_promoted", {"kind": "cast", "outcome": "endpoint" if bool(progression["endpoint"]) else "empowered", "commit_id": request["commit_id"]})
 	empowered_cast_started.emit(StringName(action["school"]), action["direction"])
 
 
-func _clear_buffered_request(reason: StringName, discard_cast_commitment := true) -> void:
+func _clear_buffered_request(reason: StringName, discard_cast_commitment := true, resolve_attempt := true) -> void:
 	if _buffered_request.is_empty():
 		return
 	var kind := StringName(_buffered_request.get("kind", &""))
 	if kind == &"cast" and discard_cast_commitment:
 		_magic.discard_committed_cast(int(_buffered_request.get("commit_id", -1)), reason)
+	if kind == &"cast" and resolve_attempt:
+		_resolve_cast_attempt(int(_buffered_request.get("attempt_id", -1)), &"interrupted", {"reason": reason, "commit_id": int(_buffered_request.get("commit_id", -1))})
 	_buffered_request.clear()
 	_publish_outcome(&"action_buffer_cleared", {"kind": kind, "reason": reason})
 	_trace(&"input_buffer_cleared", {"kind": kind, "reason": reason, "progress": get_normalized_attack_progress()})
@@ -398,15 +420,26 @@ func _make_light_action(direction: Vector2, school: StringName = &"") -> Diction
 	}
 
 
-func _make_cast_action(commit_id: int, endpoint: bool, empowered: bool) -> Dictionary:
+func _make_cast_action(commit_id: int, endpoint: bool, empowered: bool, attempt_id: int) -> Dictionary:
 	var payload := _magic.get_committed_cast(commit_id)
 	if payload.is_empty():
 		return {}
+	var classification: StringName = &"cast_endpoint" if endpoint else (&"cast_empowered" if empowered else &"cast_normal")
+	var chain_position := _input_combo.get_current_position()
+	_attempt_contexts[attempt_id] = {
+		"chain_position": chain_position,
+		"classification": classification,
+		"endpoint": endpoint,
+		"commit_id": commit_id,
+	}
 	return {
-		"kind": &"cast_endpoint" if endpoint else (&"cast_empowered" if empowered else &"cast_normal"),
+		"kind": classification,
 		"school": StringName(payload["primary_school"]),
 		"direction": payload["direction"],
 		"commit_id": commit_id,
+		"attempt_id": attempt_id,
+		"chain_position": chain_position,
+		"endpoint": endpoint,
 		"end_chain_after_action": not empowered or endpoint,
 	}
 
@@ -419,9 +452,15 @@ func _start_action(action: Dictionary) -> void:
 	_launch_emitted = false
 	_refresh_action_speed()
 	_animation_player.play(&"attack_clock")
-	_trace(&"action_started", {"kind": action["kind"], "school": action["school"], "direction": action["direction"], "position": _input_combo.get_current_position()})
+	var action_facts := {"kind": action["kind"], "school": action["school"], "position": _input_combo.get_current_position()}
+	if action.has("attempt_id"):
+		action_facts["attempt_id"] = action["attempt_id"]
+		action_facts["commit_id"] = action["commit_id"]
+	_trace(&"action_started", action_facts)
 	attack_started.emit(action["kind"], action["school"], action["direction"])
-	_publish_outcome(&"action_accepted", {"action_kind": action["kind"], "school": action["school"], "position": _input_combo.get_current_position()})
+	action_facts["action_kind"] = action_facts["kind"]
+	action_facts.erase("kind")
+	_publish_outcome(&"action_accepted", action_facts)
 
 
 func _perform_light_hit_query() -> void:
@@ -457,8 +496,12 @@ func _perform_light_hit_query() -> void:
 
 
 func _emit_projectile_launch() -> void:
-	_magic.launch_committed_cast(int(_current_action["commit_id"]))
-	_publish_outcome(&"cast_launch_phase_reached", {"commit_id": _current_action["commit_id"]})
+	var payload := _magic.launch_committed_cast(int(_current_action["commit_id"]))
+	if payload.is_empty():
+		_resolve_cast_attempt(int(_current_action.get("attempt_id", -1)), &"interrupted", {"reason": &"commitment_missing_at_launch", "commit_id": int(_current_action["commit_id"])})
+		return
+	_resolve_cast_attempt(int(_current_action.get("attempt_id", -1)), &"launched", {"commit_id": int(_current_action["commit_id"]), "primary_level": int(payload["primary_level"])})
+	_publish_outcome(&"cast_launch_phase_reached", {"commit_id": _current_action["commit_id"], "attempt_id": _current_action.get("attempt_id", -1)})
 
 
 func _on_animation_finished(animation_name: StringName) -> void:
@@ -471,6 +514,13 @@ func _on_animation_finished(animation_name: StringName) -> void:
 		return
 	if bool(_current_action.get("end_chain_after_action", false)):
 		_complete_chain_and_clear()
+		return
+	if StringName(_current_action.get("kind", &"")) == &"cast_empowered":
+		_current_action = {}
+		_window_open = false
+		_hit_emitted = false
+		_launch_emitted = false
+		movement_lock_changed.emit(false)
 		return
 	if _input_combo.get_current_position() >= 5:
 		_end_chain_preserving_orbs()
@@ -485,14 +535,15 @@ func _on_animation_finished(animation_name: StringName) -> void:
 	_end_chain_preserving_orbs()
 
 
-func _fail_cast() -> void:
+func _fail_cast(attempt_id: int, reason: StringName) -> void:
 	_clear_buffered_request(&"failed_cast")
 	if _animation_player != null:
 		_animation_player.stop()
-	_trace(&"cast_failed", {"state": _state, "position": _input_combo.get_current_position()})
+	_trace(&"cast_failed", {"attempt_id": attempt_id, "reason": reason, "state": _state, "position": _input_combo.get_current_position()})
 	_magic.clear_after_failed_cast()
 	cast_failed.emit()
-	_publish_outcome(&"cast_failed", {"position": _input_combo.get_current_position()})
+	_publish_outcome(&"cast_failed", {"attempt_id": attempt_id, "reason": reason, "position": _input_combo.get_current_position()})
+	_resolve_cast_attempt(attempt_id, &"failed", {"reason": reason})
 	_publish_outcome(&"chain_terminated", {"reason": &"failed_cast"})
 	_input_combo.timeout_reset()
 	_current_action = {}
@@ -535,7 +586,8 @@ func _enter_ready() -> void:
 
 func reset_for_stage() -> void:
 	var had_chain: bool = _input_combo != null and _input_combo.is_active()
-	_clear_buffered_request(&"stage_transition")
+	_clear_buffered_request(&"stage_transition", true, false)
+	_resolve_active_cast_attempt(&"stage_transition", false)
 	if _animation_player != null:
 		_animation_player.stop()
 	if had_chain:
@@ -549,6 +601,44 @@ func reset_for_stage() -> void:
 	_failed_cast_reaction_pending = false
 	_state = State.READY
 	movement_lock_changed.emit(false)
+
+
+func _begin_cast_attempt() -> int:
+	var attempt_id := _next_attempt_id
+	_next_attempt_id += 1
+	_attempt_contexts[attempt_id] = {
+		"chain_position": _input_combo.get_current_position(),
+		"classification": &"",
+		"endpoint": false,
+		"commit_id": -1,
+	}
+	return attempt_id
+
+
+func _resolve_active_cast_attempt(reason: StringName, publish_tutorial_result := true) -> void:
+	if _current_action.is_empty() or not String(_current_action.get("kind", &"")).begins_with("cast_"):
+		return
+	if not publish_tutorial_result:
+		return
+	_resolve_cast_attempt(
+		int(_current_action.get("attempt_id", -1)),
+		&"interrupted",
+		{"reason": reason, "commit_id": int(_current_action.get("commit_id", -1))}
+	)
+
+
+func _resolve_cast_attempt(attempt_id: int, terminal: StringName, facts: Dictionary = {}) -> void:
+	if attempt_id <= 0 or _resolved_attempt_ids.has(attempt_id):
+		return
+	_resolved_attempt_ids[attempt_id] = true
+	var result: Dictionary = Dictionary(_attempt_contexts.get(attempt_id, {})).duplicate(true)
+	for key in facts:
+		result[key] = facts[key]
+	result["attempt_id"] = attempt_id
+	result["terminal"] = terminal
+	_attempt_contexts.erase(attempt_id)
+	cast_attempt_resolved.emit(result)
+	_trace(&"cast_attempt_resolved", result)
 
 
 func _current_facing_direction() -> Vector2:

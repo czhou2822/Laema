@@ -53,11 +53,17 @@ func present(snapshot: Dictionary) -> void:
 		child.queue_free()
 	var tokens: Array = snapshot.get("tokens", [])
 	var progress := int(snapshot.get("progress", 0))
+	var highlight_index := int(snapshot.get("highlight_index", -1))
 	for index in range(tokens.size()):
 		var token := Label.new()
 		token.text = str(tokens[index])
 		token.add_theme_font_size_override("font_size", 26)
-		token.modulate = Color("68dc81") if completed or index < progress else Color("d7e7f1")
+		if completed or index < progress:
+			token.modulate = Color("68dc81")
+		elif index == highlight_index:
+			token.modulate = Color.WHITE
+		else:
+			token.modulate = Color("d7e7f1")
 		_tokens.add_child(token)
 	if bool(snapshot.get("flinch", false)):
 		_flinch()
