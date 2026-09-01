@@ -6,6 +6,7 @@ const REQUIRED_SECTIONS := [
 	"audio",
 	"player",
 	"enemy",
+	"enemy_ai",
 	"combat",
 	"casting",
 	"heat",
@@ -89,6 +90,12 @@ static func _validate(data: Dictionary) -> String:
 		["movement", "gravity_scale", 0.001, INF],
 		["player", "max_health", 0.001, INF],
 		["enemy", "max_health", 0.001, INF],
+		["enemy_ai", "aggro_range", 1.0, INF],
+		["enemy_ai", "attack_range", 1.0, INF],
+		["enemy_ai", "movement_speed", 0.0, INF],
+		["enemy_ai", "windup_duration", 0.001, INF],
+		["enemy_ai", "recovery_duration", 0.0, INF],
+		["enemy_ai", "damage", 0.0, INF],
 		["combat", "attack_duration", 0.001, INF],
 		["combat", "hit_phase", 0.0, 1.0],
 		["combat", "input_window_start", 0.0, 1.0],
@@ -175,6 +182,11 @@ static func _validate(data: Dictionary) -> String:
 	integer_error = _validate_integer(data, "enemy", "defensive_level", 0, 2147483647)
 	if not integer_error.is_empty():
 		return integer_error
+	integer_error = _validate_integer(data, "enemy_ai", "impact", 0, 5)
+	if not integer_error.is_empty():
+		return integer_error
+	if not data["enemy_ai"].has("enabled") or typeof(data["enemy_ai"]["enabled"]) != TYPE_BOOL:
+		return "enemy_ai.enabled must be Boolean."
 	integer_error = _validate_integer(data, "defence", "water_block_defensive_level", 0, 2147483647)
 	if not integer_error.is_empty():
 		return integer_error

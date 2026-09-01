@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/enemy/combat_enemy.gd" id="2_script"]
+
+[sub_resource type="CircleShape2D" id="attack_shape"]
+radius = 24.0
+
+[node name="CombatEnemy" instance=ExtResource("1_base")]
+collision_mask = 4
+script = ExtResource("2_script")
+
+[node name="AttackCast" type="ShapeCast2D" parent="."]
+position = Vector2(0, 8)
+enabled = true
+target_position = Vector2(72, 0)
+shape = SubResource("attack_shape")
+collision_mask = 1
+
+[node name="WarningMarker" type="Polygon2D" parent="."]
+position = Vector2(0, -108)
+polygon = PackedVector2Array(-10, 10, 0, -10, 10, 10)
+color = Color(1, 0.18, 0.12, 1)
+visible = false
+z_index = 4
+
+[node name="AttackFlash" type="Polygon2D" parent="."]
+position = Vector2(52, 4)
+polygon = PackedVector2Array(-8, -22, 58, -8, 58, 8, -8, 22)
+color = Color(1, 0.22, 0.12, 0.78)
+visible = false
+z_index = 5

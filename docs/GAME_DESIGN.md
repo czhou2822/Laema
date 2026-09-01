@@ -61,22 +61,24 @@ All four schools share `Casting Spell.png` from Free Prototype Character Pack 2 
 
 School switching is always available and changes the school used by future X attacks. It does not depend on the current chaining window, CHARGING or DEPLETING state, or any prior switch in the active chain. Switching consumes no progression position, buffered input, or other chain/input capacity, and it never clears or ends the chain. The currently selected school never directly determines Cast output.
 
-## Five-Position Chain
+## Six-Slot Chain
 
-A chain contains five progression positions.
+A chain contains six available slots. Slots 1–5 are progression slots that may each contain X or Cast. Slot 6 is an optional Cast-only endpoint.
 
-- A successful or missed X attack occupies one position.
+- A successful or missed X attack occupies one of slots 1–5.
 - X creates an orb only when it physically hits an Enemy.
-- A successful mid-chain Cast occupies one position and creates no orb.
+- A successful Cast in slots 1–5 occupies one slot, creates no orb, and may continue chaining.
+- Cast may establish the chain in slot 1; no previous X is required.
 - Cast may chain directly into another Cast when the next attempt succeeds.
-- After position 5, the player may perform one optional endpoint Cast.
-- The optional endpoint Cast after position 5 ends the chain.
+- Slot 6 accepts Cast only. A successful slot-6 Cast is the endpoint and ends the chain.
+- A failed Cast in any slot immediately breaks the chain.
 - Ending or failing a chain does not remove stored orbs. Failed Casting resets their charged state as defined below.
 
 Examples:
 
 ```text
 X → X → X → X → X
+Cast → Cast
 X → X → Cast → X → X
 X → X → X → X → X → Cast
 X → X → Cast → X → Cast
@@ -167,7 +169,7 @@ After consumption, every unconsumed orb shifts forward into the consumed slots w
 
 ### Normal Cast
 
-Entering RELEASE while Laema is idle performs a normal Cast when at least one orb is charged. A normal Cast ends the current chain after consuming its charged orbs.
+Entering RELEASE while Laema is idle performs a normal Cast when at least one orb is charged. A successful normal Cast occupies the next available slot among slots 1–5 and may establish or continue the chain. `Normal` describes how the Cast was initiated; it does not force the chain to end.
 
 ### Empowered Cast
 

@@ -198,6 +198,12 @@ func try_cast_trigger(external_block_reason: StringName = &"") -> void:
 		_trace(&"cast_classified", {"outcome": "endpoint" if bool(progression["endpoint"]) else "empowered", "commit_id": commitment["commit_id"]})
 		empowered_cast_started.emit(StringName(empowered_action["school"]), empowered_action["direction"])
 		return
+	var continuation: Dictionary = _input_combo.accept_cast(_active_school)
+	if not bool(continuation["valid"]):
+		_trace(&"cast_rejected", {"reason": "invalid_chain_progression"})
+		_fail_cast(attempt_id, &"invalid_chain_progression")
+		return
+	var continuation_endpoint := bool(continuation["endpoint"])
 	var normal_commitment := _commit_cast(false, _current_facing_direction())
 	if not bool(normal_commitment["valid"]):
 		_fail_cast(attempt_id, &"orb_consumption_failed")
@@ -205,7 +211,7 @@ func try_cast_trigger(external_block_reason: StringName = &"") -> void:
 	if _state == State.READY:
 		_state = State.COMBO_ACTIVE
 		movement_lock_changed.emit(true)
-	var normal_action := _make_cast_action(int(normal_commitment["commit_id"]), false, false, attempt_id)
+	var normal_action := _make_cast_action(int(normal_commitment["commit_id"]), continuation_endpoint, false, attempt_id)
 	if normal_action.is_empty():
 		_fail_cast(attempt_id, &"commitment_missing")
 		return
@@ -423,7 +429,7 @@ func _make_cast_action(commit_id: int, endpoint: bool, empowered: bool, attempt_
 		"attempt_id": attempt_id,
 		"chain_position": chain_position,
 		"endpoint": endpoint,
-		"end_chain_after_action": not empowered or endpoint,
+		"end_chain_after_action": endpoint,
 	}
 
 

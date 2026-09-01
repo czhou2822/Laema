@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scripts/prototype/stage_area.gd" id="1_area"]
 [ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="2_enemy"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/combat_enemy.tscn" id="7_combat_enemy"]
 [ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/ground_h1x9.png" id="3_ground"]
 [ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/back_marker_32.png" id="4_marker"]
 [ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/back_diamond.png" id="5_diamond"]
@@ -106,16 +107,7 @@ collision_mask = 0
 position = Vector2(0, 68)
 shape = SubResource("floor_shape")
 
-[node name="Enemy" parent="." instance=ExtResource("2_enemy")]
-position = Vector2(300, 16)
-
-[node name="EnemyLeft" parent="." instance=ExtResource("2_enemy")]
-position = Vector2(220, 16)
-
-[node name="EnemyRight" parent="." instance=ExtResource("2_enemy")]
-position = Vector2(380, 16)
-
-[node name="FinalEnemy" parent="." instance=ExtResource("2_enemy")]
+[node name="FinalEnemy" parent="." instance=ExtResource("7_combat_enemy")]
 position = Vector2(620, 16)
 encounter_id = &"final_enemy"
 refills_at_zero = false

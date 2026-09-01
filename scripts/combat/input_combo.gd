@@ -34,9 +34,9 @@ func accept_light(school: StringName) -> bool:
 
 
 func accept_cast(casting_school: StringName) -> Dictionary:
-	if not _active or _x_schools.is_empty():
+	if _tokens.size() >= MAX_POSITIONS + 1:
 		return {"valid": false}
-
+	_active = true
 	var endpoint := _tokens.size() >= MAX_POSITIONS
 	_tokens.append({"input": &"Cast", "school": casting_school})
 	sequence_changed.emit(_tokens.duplicate(true))
