@@ -3,6 +3,8 @@ extends Node
 
 const SequenceObjectiveEvaluatorScript = preload("res://scripts/prototype/sequence_objective_evaluator.gd")
 const FinalEnemyEvaluatorScript = preload("res://scripts/prototype/final_enemy_evaluator.gd")
+const HeatThresholdEvaluatorScript = preload("res://scripts/prototype/heat_threshold_evaluator.gd")
+const HeatGuardSequenceEvaluatorScript = preload("res://scripts/prototype/heat_guard_sequence_evaluator.gd")
 
 signal presentation_changed(snapshot: Dictionary)
 signal stage_completed(descriptor: Dictionary)
@@ -43,6 +45,29 @@ func get_next_descriptor() -> Dictionary:
 	return _stages[_index + 1].duplicate(true)
 
 
+func get_stage_options() -> Array[Dictionary]:
+	var options: Array[Dictionary] = []
+	for stage_index in range(_stages.size()):
+		var descriptor: Dictionary = _stages[stage_index]
+		var objective: Dictionary = descriptor["objective"]
+		options.append({
+			"index": stage_index,
+			"label": "Stage %d — %s" % [stage_index + 1, str(objective["label"])],
+			"active": stage_index == _index,
+		})
+	return options
+
+
+func select_debug_stage(stage_index: int) -> Dictionary:
+	if stage_index < 0 or stage_index >= _stages.size():
+		return {}
+	_dispose_evaluator()
+	_index = stage_index
+	_active_descriptor = {}
+	_lifecycle = Lifecycle.ACTIVE
+	return _stages[_index].duplicate(true)
+
+
 func activate_stage(descriptor: Dictionary) -> void:
 	_active_descriptor = descriptor.duplicate(true)
 	_evaluator = _create_evaluator(Dictionary(_active_descriptor["objective"]))
@@ -59,6 +84,20 @@ func consume_outcome(outcome) -> void:
 	if snapshot.is_empty():
 		return
 	var result: Dictionary = _evaluator.consume_outcome(snapshot)
+	match StringName(result.get("kind", &"unchanged")):
+		&"progress":
+			_emit_objective(false, int(result["progress"]), false, int(result.get("highlight_index", -1)))
+		&"invalidated":
+			_emit_objective(false, 0, true, int(result.get("highlight_index", -1)))
+		&"completed":
+			_on_objective_completed(int(result.get("progress", 0)))
+
+func consume_heat(value: float, level: int, speed_multiplier: float) -> void:
+	if _evaluator == null or not _evaluator.has_method("consume_heat"):
+		return
+	_consume_result(_evaluator.call("consume_heat", value, level, speed_multiplier))
+
+func _consume_result(result: Dictionary) -> void:
 	match StringName(result.get("kind", &"unchanged")):
 		&"progress":
 			_emit_objective(false, int(result["progress"]), false, int(result.get("highlight_index", -1)))
@@ -91,7 +130,7 @@ func _on_objective_completed(progress: int) -> void:
 	if _lifecycle == Lifecycle.FINAL_ACTIVE:
 		_lifecycle = Lifecycle.FREE_PRACTICE
 		_dispose_evaluator()
-		presentation_changed.emit({"label": str(_active_descriptor.get("free_practice_text", "now you are free")), "tokens": [], "progress": 0, "completed": true, "prompt": "", "flinch": false})
+		presentation_changed.emit({"stage_number": 0, "label": str(_active_descriptor.get("free_practice_text", "now you are free")), "tokens": [], "progress": 0, "completed": true, "prompt": "", "flinch": false})
 		free_practice_entered.emit()
 		return
 	_lifecycle = Lifecycle.COMPLETED_WAITING_FOR_EXIT
@@ -102,6 +141,7 @@ func _on_objective_completed(progress: int) -> void:
 func _emit_objective(completed: bool, progress: int, flinch: bool, highlight_index: int) -> void:
 	var objective: Dictionary = _active_descriptor["objective"]
 	presentation_changed.emit({
+		"stage_number": _index + 1,
 		"label": str(objective["label"]),
 		"tokens": Array(objective.get("tokens", [])).duplicate(),
 		"progress": progress,
@@ -116,6 +156,10 @@ func _create_evaluator(objective: Dictionary) -> ObjectiveEvaluator:
 	match StringName(objective["type"]):
 		&"sequence":
 			return SequenceObjectiveEvaluatorScript.new()
+		&"heat_threshold":
+			return HeatThresholdEvaluatorScript.new()
+		&"heat_guard_sequence":
+			return HeatGuardSequenceEvaluatorScript.new()
 		&"final_enemy":
 			return FinalEnemyEvaluatorScript.new()
 	push_error("Unsupported tutorial evaluator: %s" % objective["type"])

@@ -53,10 +53,11 @@ const FIELD_RANGES := {
 	"casting.empowered_primary_multiplier": Vector3(0.1, 5.0, 0.05),
 	"casting.projectile_screen_ratio": Vector3(0.05, 1.0, 0.05),
 	"casting.projectile_travel_duration": Vector3(0.1, 5.0, 0.05),
-	"heat.max_attack_speed_percent": Vector3(100.0, 150.0, 1.0),
-	"heat.attack_speed_gain_per_orb": Vector3(0.0, 10.0, 0.1),
-	"heat.attack_speed_loss_per_hit": Vector3(0.0, 50.0, 0.1),
-	"heat.heat_reset_timer": Vector3(0.1, 60.0, 0.1),
+	"heat.max_heat": Vector3(100.0, 100.0, 1.0),
+	"heat.gain_per_charged_orb": Vector3(0.0, 10.0, 0.1),
+	"heat.loss_per_direct_hit": Vector3(0.0, 50.0, 0.1),
+	"heat.reset_timer": Vector3(0.1, 60.0, 0.1),
+	"heat.depletion_per_second": Vector3(0.0, 20.0, 0.1),
 	"fire.dot_duration": Vector3(0.01, 60.0, 0.01),
 	"fire.dot_tick_interval": Vector3(0.01, 30.0, 0.01),
 	"fire.damage_per_stack": Vector3(0.0, 100.0, 0.1),
@@ -112,10 +113,11 @@ const TUNABLE_TOOLTIPS := {
 	"casting.projectile_travel_duration": "Seconds for a projectile to travel its maximum distance.",
 	"casting.trigger_charge_min": "Minimum R2 pressure that charges and marks orbs.",
 	"casting.trigger_release_max": "Maximum R2 pressure that triggers Casting on release.",
-	"heat.max_attack_speed_percent": "Maximum attack speed percentage.",
-	"heat.attack_speed_gain_per_orb": "Attack-speed points gained per committed orb.",
-	"heat.attack_speed_loss_per_hit": "Attack-speed points lost when the Player is hit.",
-	"heat.heat_reset_timer": "Seconds after a commitment before Heat resets.",
+	"heat.max_heat": "Maximum Heat units.",
+	"heat.gain_per_charged_orb": "Heat units gained per consumed charged orb.",
+	"heat.loss_per_direct_hit": "Heat units lost on an incoming applied direct hit.",
+	"heat.reset_timer": "Seconds after a landed direct hit before Heat depletes.",
+	"heat.depletion_per_second": "Heat units depleted each second after the reset timer.",
 	"fire.damage_per_stack": "Damage dealt by each Fire DoT stack per tick.",
 	"fire.dot_duration": "Lifetime of each Fire DoT stack.",
 	"fire.dot_tick_interval": "Seconds between Fire DoT ticks.",
@@ -125,8 +127,6 @@ const TUNABLE_TOOLTIPS := {
 	"water.radius_per_level": "Additional Water area radius per level.",
 	"water.visual_motion_exponent": "Exponent shaping Water attack visual motion.",
 	"water.vfx_fps": "Playback speed of Water status VFX.",
-	"air.attack_speed_multiplier": "Attack-speed multiplier granted by Air level 1.",
-	"air.buff_duration": "Duration of the Air attack-speed buff.",
 	"air.chain_radius": "Radius used to find additional Air chain-lightning targets.",
 	"air.damage_per_level": "Additional Air direct-damage multiplier per level.",
 	"air.max_chain_targets": "Maximum number of targets in an Air chain-lightning result.",
@@ -165,6 +165,8 @@ var _apply_tuning: Callable
 var _save_tuning: Callable
 var _get_hitbox_enabled: Callable
 var _set_hitbox_enabled: Callable
+var _get_stage_options: Callable
+var _load_stage: Callable
 var _overlay_root: Control
 var _field_container: VBoxContainer
 var _general_fields: VBoxContainer
@@ -189,13 +191,17 @@ func configure(
 	apply_tuning: Callable,
 	save_tuning: Callable,
 	get_hitbox_enabled: Callable,
-	set_hitbox_enabled: Callable
+	set_hitbox_enabled: Callable,
+	get_stage_options: Callable,
+	load_stage: Callable
 ) -> void:
 	_config = config
 	_apply_tuning = apply_tuning
 	_save_tuning = save_tuning
 	_get_hitbox_enabled = get_hitbox_enabled
 	_set_hitbox_enabled = set_hitbox_enabled
+	_get_stage_options = get_stage_options
+	_load_stage = load_stage
 	if _general_fields != null:
 		_rebuild_fields()
 
@@ -396,6 +402,7 @@ func _add_section(section_name: String, section: Dictionary) -> void:
 		_add_water_levels(section["levels"])
 	elif section_name == "ui":
 		_add_tutorial_transition_duration(_config["tutorial"])
+		_add_stage_selector()
 
 
 func _add_tutorial_transition_duration(section: Dictionary) -> void:
@@ -409,6 +416,35 @@ func _add_tutorial_transition_duration(section: Dictionary) -> void:
 	var spin := _create_spinbox("tutorial.transition_duration", float(section["transition_duration"]))
 	spin.value_changed.connect(_on_scalar_changed.bind("tutorial", "transition_duration"))
 	fields.add_child(spin)
+
+
+func _add_stage_selector() -> void:
+	if not _get_stage_options.is_valid() or not _load_stage.is_valid():
+		return
+	var options: Array = _get_stage_options.call()
+	if options.is_empty():
+		return
+	var fields := GridContainer.new()
+	fields.columns = 2
+	_field_container.add_child(fields)
+	var label := Label.new()
+	label.text = "runtime stage"
+	label.tooltip_text = "Immediately load a tutorial stage without changing saved configuration."
+	fields.add_child(label)
+	var selector := OptionButton.new()
+	selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	for option_variant in options:
+		var option: Dictionary = option_variant
+		selector.add_item(str(option["label"]), int(option["index"]))
+		if bool(option.get("active", false)):
+			selector.select(selector.item_count - 1)
+	fields.add_child(selector)
+	var spacer := Label.new()
+	fields.add_child(spacer)
+	var load_button := Button.new()
+	load_button.text = "Load Stage"
+	load_button.pressed.connect(_on_load_stage_pressed.bind(selector))
+	fields.add_child(load_button)
 
 
 func _add_audio_group(group_name: String, group: Dictionary) -> void:
@@ -599,7 +635,15 @@ func _on_water_level_changed(value: float, index: int, key: String) -> void:
 func _on_hitbox_toggled(enabled: bool) -> void:
 	if _set_hitbox_enabled.is_valid():
 		_set_hitbox_enabled.call(enabled)
-	_status_label.text = "RUN-ONLY"
+		_status_label.text = "RUN-ONLY"
+
+
+func _on_load_stage_pressed(selector: OptionButton) -> void:
+	if not _load_stage.is_valid() or selector.get_selected() < 0:
+		return
+	var stage_index := selector.get_selected_id()
+	_set_open(false)
+	_load_stage.call(stage_index)
 
 
 func _apply_live_tuning() -> bool:

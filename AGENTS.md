@@ -4,9 +4,11 @@
 
 Laema is an in-progress 2D side-scrolling orb-casting and tutorial-stage prototype. The working tree may contain substantial uncommitted draft code, scenes, assets, configuration, or documents. Inspect `git status` and the relevant diff before acting, preserve unrelated work, and never mistake a file's existence for user approval.
 
-The current committed prototype baseline is `582e141` (`feat: add stage one tutorial flow`). It includes the Might/Magic combat composition, continuous combat feedback, Stage 1 five-hit Fire-chain objective, reusable ObjectiveWidget, persistent tutorial root, reusable Stage Areas, transition into the Final Arena, and final-enemy completion into indefinite free practice.
+The current committed recovery baseline is `6b06dc2` (`checkpoint: save cross-thread recovery state`). It includes the Might/Magic combat composition, continuous combat feedback, the declarative Stage 1–6 sequence-objective candidate, reusable ObjectiveWidget, persistent tutorial root, reusable Stage Areas, transition into the Final Arena, and final-enemy completion into indefinite free practice.
 
-The user reported the current feature set verified in Godot on 2026-08-31. The report was broad: no exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists. Keep incoming Enemy attacks, ordinary-play defence validation, final art, final tuning, complete enemy content, Stages 2–7, and other explicitly deferred seams separate from that report.
+The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. The report was broad: no exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists. Keep incoming Enemy attacks, ordinary-play defence validation, final art, final tuning, complete enemy content, future stages, and other explicitly deferred seams separate from that report.
+
+Player-facing orb terminology is authoritative: a landed melee hit performs **Generating** and creates a generated orb; holding R2 performs **Charging** and turns selected generated orbs into charged orbs ready for the next Cast. Existing private code identifiers using `marked` remain implementation details unless separately refactored; game-facing text and canonical records use generated/charged terminology.
 
 Godot runtime behavior remains unverified unless the user explicitly reports that the relevant version was run and checked in Godot. A broad report establishes only broad validation; do not invent scenario-level coverage.
 

@@ -7,7 +7,6 @@ const DEPLETION_HOLD_DELAY := 0.3
 signal queue_changed(snapshot: Array, marked_count: int, marking_progress: float)
 signal outcome_published(outcome)
 signal projectile_launch_requested(payload: Dictionary)
-signal action_speed_multiplier_changed(multiplier: float)
 signal cast_committed(commit_id: int, consumed_count: int)
 
 enum PressureState {
@@ -35,8 +34,6 @@ var _pressure_initialized := false
 var _pressure_state := PressureState.INTERMEDIATE
 var _committed_casts: Dictionary = {}
 var _next_commit_id := 1
-var _air_speed_multiplier := 1.0
-var _air_speed_remaining := 0.0
 
 
 func configure(
@@ -59,10 +56,7 @@ func configure(
 	_next_commit_id = 1
 	_pressure_initialized = false
 	_pressure_state = PressureState.INTERMEDIATE
-	_air_speed_multiplier = 1.0
-	_air_speed_remaining = 0.0
 	_emit_snapshot()
-	action_speed_multiplier_changed.emit(_air_speed_multiplier)
 
 
 func apply_runtime_tuning(config: Dictionary, loadout: Dictionary) -> void:
@@ -82,7 +76,6 @@ func _process(delta: float) -> void:
 		changed = _advance_marking(delta) or changed
 	elif _depleting_active:
 		changed = _advance_depleting(delta) or changed
-	_update_air_speed_buff(delta)
 	if changed:
 		_emit_snapshot()
 
@@ -294,10 +287,7 @@ func reset_for_stage() -> void:
 	_depleting_active = false
 	_pressure_initialized = false
 	_pressure_state = PressureState.INTERMEDIATE
-	_air_speed_multiplier = 1.0
-	_air_speed_remaining = 0.0
 	_emit_snapshot()
-	action_speed_multiplier_changed.emit(_air_speed_multiplier)
 
 
 func resolve_projectile_impact(target: Entity, contact_point: Vector2, payload: Dictionary) -> void:
@@ -329,10 +319,6 @@ func resolve_projectile_impact(target: Entity, contact_point: Vector2, payload: 
 		"primary_level": payload["primary_level"],
 		"target": target.name,
 	})
-
-
-func get_action_speed_multiplier() -> float:
-	return _air_speed_multiplier
 
 
 func _consume_marked_orbs() -> Dictionary:
@@ -471,24 +457,6 @@ func _advance_depleting(delta: float) -> bool:
 	if _marked_capacity <= 0 and _partial_mark_time < 0.0:
 		_partial_mark_time = 0.0
 	return true
-
-
-func _apply_air_speed_buff() -> void:
-	_air_speed_multiplier = float(_config["air"]["attack_speed_multiplier"])
-	_air_speed_remaining = float(_config["air"]["buff_duration"])
-	action_speed_multiplier_changed.emit(_air_speed_multiplier)
-	_publish_outcome(&"air_action_speed_buff_started", {"multiplier": _air_speed_multiplier})
-
-
-func _update_air_speed_buff(delta: float) -> void:
-	if _air_speed_remaining <= 0.0:
-		return
-	_air_speed_remaining = maxf(_air_speed_remaining - delta, 0.0)
-	if _air_speed_remaining > 0.0:
-		return
-	_air_speed_multiplier = 1.0
-	action_speed_multiplier_changed.emit(_air_speed_multiplier)
-	_publish_outcome(&"air_action_speed_buff_expired")
 
 
 func _clear_orb_state() -> void:

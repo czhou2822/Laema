@@ -1,7 +1,5 @@
 {
 	"air": {
-		"attack_speed_multiplier": 1.15,
-		"buff_duration": 3.0,
 		"chain_radius": 160.0,
 		"damage_per_level": 0.25,
 		"max_chain_targets": 3.0,
@@ -26,7 +24,7 @@
 		"empowered_primary_multiplier": 1.3,
 		"max_marked_capacity": 5.0,
 		"max_storage_capacity": 10.0,
-		"orb_lifetime": 7.0,
+		"orb_lifetime": 10.0000001490116,
 		"projectile_screen_ratio": 0.5,
 		"projectile_travel_duration": 1.0,
 		"trigger_charge_min": 0.95,
@@ -92,10 +90,11 @@
 		"visual_motion_exponent": 1.0
 	},
 	"heat": {
-		"attack_speed_gain_per_orb": 1.0,
-		"attack_speed_loss_per_hit": 5.0,
-		"heat_reset_timer": 3.0,
-		"max_attack_speed_percent": 150.0
+		"depletion_per_second": 3.0,
+		"gain_per_charged_orb": 2.00000002980232,
+		"loss_per_direct_hit": 5.0,
+		"max_heat": 100.0,
+		"reset_timer": 5.0
 	},
 	"hit_reaction": {
 		"base_distance": 7.0,
@@ -105,132 +104,300 @@
 	},
 	"movement": {
 		"gravity_scale": 1.0,
-		"speed": 180.0
+		"speed": 300.0
 	},
 	"player": {
 		"max_health": 100.0
 	},
 	"tutorial": {
 		"initial_school": "fire",
-		"transition_duration": 1.0,
 		"stages": [
 			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"final": false,
 				"id": "stage_1",
-				"area_scene": "res://scenes/stages/stage_1.tscn",
 				"objective": {
-					"type": "sequence",
+					"active": {},
+					"completion_progress": 5.0,
+					"highlight_next": false,
 					"label": "perform a 5 hit combo",
-					"tokens": ["X", "X", "X", "X", "X"],
-					"highlight_next": false,
-					"prestart": {"ignore_unexpected": true, "fire_miss_invalid": true},
-					"active": {},
-					"completion_progress": 5,
+					"prestart": {
+						"fire_miss_invalid": true,
+						"ignore_unexpected": true
+					},
 					"success_steps": [
-						{"type": "light", "school": "fire"},
-						{"type": "light", "school": "fire"},
-						{"type": "light", "school": "fire"},
-						{"type": "light", "school": "fire"},
-						{"type": "light", "school": "fire"}
-					]
-				},
-				"final": false
+						{
+							"school": "fire",
+							"type": "light"
+						},
+						{
+							"school": "fire",
+							"type": "light"
+						},
+						{
+							"school": "fire",
+							"type": "light"
+						},
+						{
+							"school": "fire",
+							"type": "light"
+						},
+						{
+							"school": "fire",
+							"type": "light"
+						}
+					],
+					"tokens": [
+						"X",
+						"X",
+						"X",
+						"X",
+						"X"
+					],
+					"type": "sequence"
+				}
 			},
 			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"final": false,
 				"id": "stage_2",
-				"area_scene": "res://scenes/stages/stage_2.tscn",
 				"objective": {
-					"type": "sequence",
-					"label": "perform a level 5 spell",
-					"tokens": [],
+					"active": {},
+					"completion_progress": 0.0,
 					"highlight_next": false,
-					"prestart": {"ignore_unexpected": true},
-					"active": {},
-					"completion_progress": 0,
-					"success_steps": [{"type": "cast", "required_level": 5}]
-				},
-				"final": false
+					"label": "perform a level 5 spell",
+					"prestart": {
+						"ignore_unexpected": true
+					},
+					"success_steps": [
+						{
+							"required_level": 5.0,
+							"type": "cast"
+						}
+					],
+					"tokens": [],
+					"type": "sequence"
+				}
 			},
 			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"final": false,
 				"id": "stage_3",
-				"area_scene": "res://scenes/stages/sequence_training.tscn",
 				"objective": {
-					"type": "sequence",
+					"active": {},
+					"completion_progress": 6.0,
+					"highlight_next": true,
 					"label": "perform a 5-hit combo, then cast",
-					"tokens": ["X", "X", "X", "X", "X", "CAST"],
-					"highlight_next": true,
 					"prestart": {},
-					"active": {},
-					"completion_progress": 6,
 					"success_steps": [
-						{"type": "light"}, {"type": "light"}, {"type": "light"}, {"type": "light"}, {"type": "light"},
-						{"type": "cast", "endpoint": true, "required_level": 5}
-					]
-				},
-				"final": false
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"endpoint": true,
+							"required_level": 5.0,
+							"type": "cast"
+						}
+					],
+					"tokens": [
+						"X",
+						"X",
+						"X",
+						"X",
+						"X",
+						"CAST"
+					],
+					"type": "sequence"
+				}
 			},
 			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"final": false,
 				"id": "stage_4",
-				"area_scene": "res://scenes/stages/sequence_training.tscn",
 				"objective": {
-					"type": "sequence",
+					"active": {},
+					"completion_progress": 4.0,
+					"highlight_next": true,
 					"label": "perform X, X, Cast, X",
-					"tokens": ["X", "X", "CAST", "X"],
-					"highlight_next": true,
 					"prestart": {},
-					"active": {},
-					"completion_progress": 4,
 					"success_steps": [
-						{"type": "light"}, {"type": "light"}, {"type": "cast", "endpoint": false, "chain_position": 3}, {"type": "light"}
-					]
-				},
-				"final": false
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"chain_position": 3.0,
+							"endpoint": false,
+							"type": "cast"
+						},
+						{
+							"type": "light"
+						}
+					],
+					"tokens": [
+						"X",
+						"X",
+						"CAST",
+						"X"
+					],
+					"type": "sequence"
+				}
 			},
 			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"final": false,
 				"id": "stage_5",
-				"area_scene": "res://scenes/stages/sequence_training.tscn",
 				"objective": {
-					"type": "sequence",
-					"label": "perform X, Cast, X, Cast",
-					"tokens": ["X", "CAST", "X", "CAST"],
-					"highlight_next": true,
-					"prestart": {},
 					"active": {},
-					"completion_progress": 4,
-					"success_steps": [
-						{"type": "light"}, {"type": "cast", "endpoint": false, "chain_position": 2}, {"type": "light"}, {"type": "cast", "endpoint": false, "chain_position": 4}
-					]
-				},
-				"final": false
-			},
-			{
-				"id": "stage_6",
-				"area_scene": "res://scenes/stages/sequence_training.tscn",
-				"objective": {
-					"type": "sequence",
-					"label": "change school during a 5-hit combo",
-					"tokens": ["X", "X", "SWITCH", "X", "X", "X"],
+					"completion_progress": 4.0,
 					"highlight_next": true,
+					"label": "perform X, Cast, X, Cast",
 					"prestart": {},
-					"active": {"rejected_switch_invalid": true},
-					"completion_progress": 6,
 					"success_steps": [
-						{"type": "light"}, {"type": "light"}, {"type": "switch", "chain_position": 2}, {"type": "light"}, {"type": "light"}, {"type": "light"}
-					]
-				},
-				"final": false
+						{
+							"type": "light"
+						},
+						{
+							"chain_position": 2.0,
+							"endpoint": false,
+							"type": "cast"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"chain_position": 4.0,
+							"endpoint": false,
+							"type": "cast"
+						}
+					],
+					"tokens": [
+						"X",
+						"CAST",
+						"X",
+						"CAST"
+					],
+					"type": "sequence"
+				}
 			},
 			{
-				"id": "final_arena",
-				"area_scene": "res://scenes/stages/final_arena.tscn",
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"final": false,
+				"id": "stage_6",
 				"objective": {
-					"type": "final_enemy",
-					"label": "Defeat the final Enemy.",
-					"encounter_id": "final_enemy"
-				},
+					"active": {
+						"rejected_switch_invalid": true
+					},
+					"completion_progress": 6.0,
+					"highlight_next": true,
+					"label": "change school during a 5-hit combo",
+					"prestart": {},
+					"success_steps": [
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"chain_position": 2.0,
+							"type": "switch"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						}
+					],
+					"tokens": [
+						"X",
+						"X",
+						"SWITCH",
+						"X",
+						"X",
+						"X"
+					],
+					"type": "sequence"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"final": false,
+				"id": "stage_7",
+				"objective": {
+					"label": "achieve heat above 80",
+					"threshold": 80.0,
+					"tokens": [],
+					"type": "heat_threshold"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"final": false,
+				"id": "stage_8",
+				"objective": {
+					"active": {
+						"allow_school_switch": true
+					},
+					"completion_progress": 5.0,
+					"highlight_next": false,
+					"label": "perform xxxxx combo while heat is above 80",
+					"prestart": {
+						"ignore_unexpected": true
+					},
+					"success_steps": [
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						}
+					],
+					"threshold": 80.0,
+					"tokens": [],
+					"type": "heat_guard_sequence"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/final_arena.tscn",
 				"final": true,
-				"free_practice_text": "now you are free"
+				"free_practice_text": "now you are free",
+				"id": "final_arena",
+				"objective": {
+					"encounter_id": "final_enemy",
+					"label": "Defeat the final Enemy.",
+					"type": "final_enemy"
+				}
 			}
-		]
+		],
+		"transition_duration": 1.0
 	},
 	"ui": {
 		"cast_feedback_duration": 2.0,

@@ -15,6 +15,7 @@ var _prestart_ignore_unexpected := false
 var _prestart_fire_miss_invalid := false
 var _highlight_enabled := false
 var _active_rejected_switch_invalid := false
+var _active_allow_school_switch := false
 var _completion_progress := 0
 
 
@@ -31,6 +32,7 @@ func configure(objective: Dictionary) -> void:
 	_highlight_enabled = bool(objective.get("highlight_next", false))
 	var active: Dictionary = Dictionary(objective.get("active", {}))
 	_active_rejected_switch_invalid = bool(active.get("rejected_switch_invalid", false))
+	_active_allow_school_switch = bool(active.get("allow_school_switch", false))
 	_completion_progress = int(objective["completion_progress"])
 
 
@@ -113,10 +115,8 @@ func _consume_cast_attempt(outcome: Dictionary) -> Dictionary:
 
 
 func _consume_school_switched(outcome: Dictionary) -> Dictionary:
-	if _phase == Phase.PRESTART:
+	if _phase == Phase.PRESTART or _active_allow_school_switch or not _expects(&"switch"):
 		return {"kind": &"unchanged"}
-	if not _expects(&"switch"):
-		return _invalidate()
 	if StringName(outcome.get("from_school", &"")) == StringName(outcome.get("to_school", &"")):
 		return _invalidate()
 	if int(outcome.get("position", -1)) != int(_current_step().get("chain_position", -1)):

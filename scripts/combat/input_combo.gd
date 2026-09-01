@@ -8,7 +8,6 @@ const MAX_POSITIONS := 5
 
 var _tokens: Array[Dictionary] = []
 var _x_schools: Array[StringName] = []
-var _switch_count := 0
 var _active := false
 
 
@@ -31,13 +30,6 @@ func accept_light(school: StringName) -> bool:
 	_x_schools.append(school)
 	_tokens.append({"input": &"X", "school": school})
 	sequence_changed.emit(_tokens.duplicate(true))
-	return true
-
-
-func accept_switch(from_school: StringName, to_school: StringName) -> bool:
-	if not _active or from_school == to_school or _switch_count >= 1:
-		return false
-	_switch_count += 1
 	return true
 
 
@@ -71,5 +63,4 @@ func timeout_reset() -> void:
 func _clear() -> void:
 	_tokens.clear()
 	_x_schools.clear()
-	_switch_count = 0
 	_active = false

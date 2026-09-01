@@ -18,6 +18,8 @@ const SCHOOL_COLORS := {
 @onready var completed_combos: VBoxContainer = $DeveloperReadout/ComboPanel/ComboLayout/CompletedCombos
 @onready var raw_pressure: ProgressBar = $DeveloperReadout/PressurePanel/PressureLayout/RawPressure
 @onready var raw_pressure_label: Label = $DeveloperReadout/PressurePanel/PressureLayout/RawPressureLabel
+@onready var game_heat_bar: ProgressBar = $GameUI/HeatPanel/HeatLayout/HeatBar
+@onready var game_heat_label: Label = $GameUI/HeatPanel/HeatLayout/HeatLabel
 @onready var orb_panel: PanelContainer = $GameUI/OrbPanel
 @onready var orb_queue: HBoxContainer = $GameUI/OrbPanel/OrbLayout/OrbQueue
 @onready var mark_progress: ProgressBar = $GameUI/OrbPanel/OrbLayout/MarkProgress
@@ -86,7 +88,8 @@ func configure(config: Dictionary) -> void:
 
 
 func apply_runtime_tuning(config: Dictionary) -> void:
-	heat_bar.max_value = float(config["heat"]["max_attack_speed_percent"])
+	heat_bar.max_value = float(config["heat"]["max_heat"])
+	game_heat_bar.max_value = float(config["heat"]["max_heat"])
 	heat_bar.value = minf(heat_bar.value, heat_bar.max_value)
 	_combo_display_duration = float(config["ui"]["completed_combo_display_duration"])
 	_max_marked_capacity = int(config["casting"]["max_marked_capacity"])
@@ -105,7 +108,9 @@ func show_startup_error(message: String) -> void:
 
 func update_heat(value: float, level: int, speed_multiplier: float) -> void:
 	heat_bar.value = value
-	heat_level_label.text = "%.0f%%   ×%.2f speed" % [value, speed_multiplier]
+	heat_level_label.text = "HEAT %.0f   ×%.2f speed" % [value, speed_multiplier]
+	game_heat_bar.value = value
+	game_heat_label.text = "HEAT %.0f / 100   SPEED %.1f%%" % [value, speed_multiplier * 100.0]
 
 
 func update_active_school(school: StringName) -> void:

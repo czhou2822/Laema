@@ -104,10 +104,11 @@ static func _validate(data: Dictionary) -> String:
 		["casting", "empowered_primary_multiplier", 0.001, INF],
 		["casting", "projectile_screen_ratio", 0.001, 1.0],
 		["casting", "projectile_travel_duration", 0.001, INF],
-		["heat", "max_attack_speed_percent", 100.0, 150.0],
-		["heat", "attack_speed_gain_per_orb", 0.0, INF],
-		["heat", "attack_speed_loss_per_hit", 0.0, INF],
-		["heat", "heat_reset_timer", 0.001, INF],
+		["heat", "max_heat", 100.0, 100.0],
+		["heat", "gain_per_charged_orb", 0.0, INF],
+		["heat", "loss_per_direct_hit", 0.0, INF],
+		["heat", "reset_timer", 0.001, INF],
+		["heat", "depletion_per_second", 0.0, INF],
 		["fire", "dot_duration", 0.001, INF],
 		["fire", "dot_tick_interval", 0.001, INF],
 		["fire", "damage_per_stack", 0.0, INF],
@@ -118,8 +119,6 @@ static func _validate(data: Dictionary) -> String:
 		["water", "visual_motion_exponent", 0.001, INF],
 		["water", "vfx_fps", 0.001, INF],
 		["air", "visual_motion_exponent", 0.001, INF],
-		["air", "attack_speed_multiplier", 0.001, INF],
-		["air", "buff_duration", 0.001, INF],
 		["air", "chain_radius", 0.001, INF],
 		["air", "damage_per_level", 0.0, INF],
 		["earth", "base_radius", 0.001, INF],
@@ -150,6 +149,13 @@ static func _validate(data: Dictionary) -> String:
 			return error
 
 	var combat: Dictionary = data["combat"]
+	var heat: Dictionary = data["heat"]
+	for obsolete_heat_key in ["max_attack_speed_percent", "attack_speed_gain_per_orb", "attack_speed_loss_per_hit", "heat_reset_timer"]:
+		if heat.has(obsolete_heat_key):
+			return "heat.%s is obsolete." % obsolete_heat_key
+	for obsolete_air_key in ["attack_speed_multiplier", "buff_duration"]:
+		if data["air"].has(obsolete_air_key):
+			return "air.%s is obsolete." % obsolete_air_key
 	if not combat.has("collect_orb_without_contact") or typeof(combat["collect_orb_without_contact"]) != TYPE_BOOL:
 		return "combat.collect_orb_without_contact must be Boolean."
 	if float(combat["x_buffer_width"]) > float(combat["input_window_start"]):
@@ -297,6 +303,15 @@ static func _validate_tutorial(tutorial: Dictionary) -> String:
 			&"final_enemy":
 				if StringName(objective.get("encounter_id", &"")) != &"final_enemy" or not stage.has("free_practice_text") or typeof(stage["free_practice_text"]) != TYPE_STRING:
 					return "final_enemy requires final_enemy encounter_id and free_practice_text."
+			&"heat_threshold":
+				if not _is_number(objective.get("threshold", null)):
+					return "heat_threshold requires numeric threshold."
+			&"heat_guard_sequence":
+				if not _is_number(objective.get("threshold", null)):
+					return "heat_guard_sequence requires numeric threshold."
+				var guarded_sequence_error := _validate_sequence_objective(objective)
+				if not guarded_sequence_error.is_empty():
+					return guarded_sequence_error
 			_:
 				return "tutorial objective type is unsupported."
 	return ""

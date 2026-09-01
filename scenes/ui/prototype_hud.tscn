@@ -15,6 +15,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="HeatPanel" type="PanelContainer" parent="GameUI"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 400.0
+offset_right = 336.0
+offset_bottom = 470.0
+
+[node name="HeatLayout" type="VBoxContainer" parent="GameUI/HeatPanel"]
+layout_mode = 2
+
+[node name="HeatLabel" type="Label" parent="GameUI/HeatPanel/HeatLayout"]
+layout_mode = 2
+text = "HEAT 0 / 100   SPEED 100%"
+horizontal_alignment = 1
+
+[node name="HeatBar" type="ProgressBar" parent="GameUI/HeatPanel/HeatLayout"]
+layout_mode = 2
+max_value = 100.0
+show_percentage = false
+
 [node name="OrbPanel" type="PanelContainer" parent="GameUI"]
 layout_mode = 0
 offset_left = 440.0

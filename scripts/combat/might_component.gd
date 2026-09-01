@@ -62,7 +62,6 @@ func configure(
 	_heat = heat
 	_animation_player.animation_finished.connect(_on_animation_finished)
 	_heat.heat_changed.connect(_on_heat_changed)
-	_magic.action_speed_multiplier_changed.connect(_on_magic_action_speed_changed)
 	apply_runtime_tuning()
 	active_school_changed.emit(_active_school)
 
@@ -96,27 +95,11 @@ func _process(_delta: float) -> void:
 func try_select_school(school: StringName) -> void:
 	if school == _active_school:
 		return
-	if _state == State.READY:
-		var previous_school := _active_school
-		_active_school = school
-		active_school_changed.emit(_active_school)
-		_publish_outcome(&"school_selected", {"from_school": previous_school, "to_school": school})
-		_trace(&"school_selected", {"from": previous_school, "to": school})
-		return
-	if _state != State.COMBO_ACTIVE:
-		return
-	var can_switch: bool = _window_open or (_current_action.is_empty() and _magic.has_active_marking_state())
-	if not can_switch:
-		_publish_outcome(&"school_switch_rejected", {"from_school": _active_school, "to_school": school, "position": _input_combo.get_current_position(), "reason": &"wrong_window"})
-		return
-	if _input_combo.accept_switch(_active_school, school):
-		var previous_school := _active_school
-		_active_school = school
-		active_school_changed.emit(_active_school)
-		_publish_outcome(&"school_switched", {"from_school": previous_school, "to_school": school, "position": _input_combo.get_current_position()})
-		_trace(&"school_switched", {"from": previous_school, "to": school, "position": _input_combo.get_current_position()})
-	else:
-		_publish_outcome(&"school_switch_rejected", {"from_school": _active_school, "to_school": school, "position": _input_combo.get_current_position(), "reason": &"input_combo_rejected"})
+	var previous_school := _active_school
+	_active_school = school
+	active_school_changed.emit(_active_school)
+	_publish_outcome(&"school_switched", {"from_school": previous_school, "to_school": school, "position": _input_combo.get_current_position()})
+	_trace(&"school_switched", {"from": previous_school, "to": school, "position": _input_combo.get_current_position()})
 
 
 func try_light_attack(direction: Vector2) -> void:
@@ -425,7 +408,7 @@ func _make_cast_action(commit_id: int, endpoint: bool, empowered: bool, attempt_
 	if payload.is_empty():
 		return {}
 	var classification: StringName = &"cast_endpoint" if endpoint else (&"cast_empowered" if empowered else &"cast_normal")
-	var chain_position := _input_combo.get_current_position()
+	var chain_position: int = int(_input_combo.get_current_position())
 	_attempt_contexts[attempt_id] = {
 		"chain_position": chain_position,
 		"classification": classification,
@@ -456,6 +439,8 @@ func _start_action(action: Dictionary) -> void:
 	if action.has("attempt_id"):
 		action_facts["attempt_id"] = action["attempt_id"]
 		action_facts["commit_id"] = action["commit_id"]
+	if action.has("endpoint"):
+		action_facts["endpoint"] = action["endpoint"]
 	_trace(&"action_started", action_facts)
 	attack_started.emit(action["kind"], action["school"], action["direction"])
 	action_facts["action_kind"] = action_facts["kind"]
@@ -515,15 +500,15 @@ func _on_animation_finished(animation_name: StringName) -> void:
 	if bool(_current_action.get("end_chain_after_action", false)):
 		_complete_chain_and_clear()
 		return
+	if _input_combo.get_current_position() >= 5:
+		_end_chain_preserving_orbs()
+		return
 	if StringName(_current_action.get("kind", &"")) == &"cast_empowered":
 		_current_action = {}
 		_window_open = false
 		_hit_emitted = false
 		_launch_emitted = false
 		movement_lock_changed.emit(false)
-		return
-	if _input_combo.get_current_position() >= 5:
-		_end_chain_preserving_orbs()
 		return
 	if _magic.has_active_marking_state():
 		_current_action = {}
@@ -653,14 +638,10 @@ func _is_functional_school(school: StringName) -> bool:
 
 func _refresh_action_speed() -> void:
 	if _animation_player != null:
-		_animation_player.speed_scale = _heat.get_speed_multiplier() * _magic.get_action_speed_multiplier()
+		_animation_player.speed_scale = _heat.get_speed_multiplier()
 
 
 func _on_heat_changed(_value: float, _level: int, _speed_multiplier: float) -> void:
-	_refresh_action_speed()
-
-
-func _on_magic_action_speed_changed(_multiplier: float) -> void:
 	_refresh_action_speed()
 
 

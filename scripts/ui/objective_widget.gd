@@ -3,6 +3,7 @@ extends Control
 
 var _panel: PanelContainer
 var _panel_style: StyleBoxFlat
+var _stage_label: Label
 var _label: Label
 var _tokens: HBoxContainer
 var _prompt: Label
@@ -28,6 +29,11 @@ func _ready() -> void:
 	var layout := VBoxContainer.new()
 	layout.add_theme_constant_override("separation", 6)
 	_panel.add_child(layout)
+	_stage_label = Label.new()
+	_stage_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_stage_label.add_theme_font_size_override("font_size", 14)
+	_stage_label.modulate = Color("8db9cb")
+	layout.add_child(_stage_label)
 	_label = Label.new()
 	_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_label.add_theme_font_size_override("font_size", 20)
@@ -43,6 +49,9 @@ func _ready() -> void:
 
 
 func present(snapshot: Dictionary) -> void:
+	var stage_number := int(snapshot.get("stage_number", 0))
+	_stage_label.visible = stage_number > 0
+	_stage_label.text = "STAGE %d" % stage_number if stage_number > 0 else ""
 	_label.text = str(snapshot.get("label", ""))
 	var completed := bool(snapshot.get("completed", false))
 	_apply_completion_style(completed)

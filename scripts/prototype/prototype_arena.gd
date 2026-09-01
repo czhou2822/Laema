@@ -48,6 +48,7 @@ func _ready() -> void:
 	hud.configure(_config)
 	player.configure(_config)
 	player.heat_changed.connect(hud.update_heat)
+	player.heat_changed.connect(stage_director.consume_heat)
 	player.combo_sequence_changed.connect(hud.update_combo)
 	player.combo_completed.connect(hud.complete_combo)
 	player.combo_reset.connect(hud.reset_combo)
@@ -196,7 +197,42 @@ func _create_developer_overlay() -> void:
 	_developer_overlay = DeveloperOverlay.new()
 	_developer_overlay.name = "DeveloperOverlay"
 	add_child(_developer_overlay)
-	_developer_overlay.configure(_config, _apply_runtime_tuning, _save_runtime_tuning, player.is_attack_hitbox_debug_enabled, player.set_attack_hitbox_debug_enabled)
+	_developer_overlay.configure(_config, _apply_runtime_tuning, _save_runtime_tuning, player.is_attack_hitbox_debug_enabled, player.set_attack_hitbox_debug_enabled, stage_director.get_stage_options, _load_stage_from_developer)
+
+
+func _load_stage_from_developer(stage_index: int) -> void:
+	if _transitioning:
+		return
+	var descriptor := stage_director.select_debug_stage(stage_index)
+	if descriptor.is_empty():
+		return
+	_transitioning = true
+	player.set_stage_input_locked(true)
+	_clear_root_owned_projectiles()
+	if _next_area != null:
+		_next_area.set_lifecycle(StageArea.Lifecycle.RETIRED)
+		_next_area.queue_free()
+		_next_area = null
+	if _current_area != null:
+		_current_area.set_lifecycle(StageArea.Lifecycle.RETIRED)
+		_current_area.queue_free()
+	_preloaded_next_scene = null
+	_next_descriptor = {}
+	_current_descriptor = descriptor
+	_current_area = _instantiate_stage(_current_descriptor, null)
+	stage_areas.add_child(_current_area)
+	await get_tree().process_frame
+	_prepare_area(_current_area)
+	player.global_position = _current_area.get_spawn_world_position()
+	player.reset_for_stage()
+	transition_camera.global_position = _current_area.get_camera_world_position()
+	stage_director.activate_stage(_current_descriptor)
+	_bind_active_area(_current_area)
+	_current_area.set_lifecycle(StageArea.Lifecycle.ACTIVE)
+	_current_area.authorize_exit(false)
+	player.set_stage_input_locked(false)
+	_transitioning = false
+	_trace(&"developer_stage_loaded", {"stage_id": _current_descriptor["id"]})
 
 
 func _apply_runtime_tuning() -> Dictionary:
