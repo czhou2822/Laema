@@ -24,19 +24,25 @@ var _index := 0
 var _lifecycle := Lifecycle.ACTIVE
 var _evaluator: ObjectiveEvaluator
 var _active_descriptor: Dictionary = {}
+var _default_stage_id := ""
 
 
 func configure(tutorial: Dictionary) -> void:
 	_stages.clear()
 	for descriptor_variant in tutorial["stages"]:
 		_stages.append(Dictionary(descriptor_variant).duplicate(true))
+	_default_stage_id = str(tutorial["default_stage_id"])
 	_index = 0
+	for stage_index in range(_stages.size()):
+		if str(_stages[stage_index]["id"]) == _default_stage_id:
+			_index = stage_index
+			break
 	_active_descriptor = {}
 	_lifecycle = Lifecycle.ACTIVE
 
 
 func get_initial_descriptor() -> Dictionary:
-	return _stages[0].duplicate(true)
+	return _stages[_index].duplicate(true)
 
 
 func get_next_descriptor() -> Dictionary:

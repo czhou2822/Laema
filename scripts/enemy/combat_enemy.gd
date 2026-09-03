@@ -1,12 +1,16 @@
 extends "res://scripts/enemy/enemy.gd"
 
-const IDLE_TEXTURE = preload("res://assets/prototype/player/Swordsman_lvl1_Idle_with_shadow.png")
-const WALK_TEXTURE = preload("res://assets/prototype/player/Swordsman_lvl1_Walk_with_shadow.png")
-const ATTACK_TEXTURE = preload("res://assets/prototype/player/Swordsman_lvl1_attack_with_shadow.png")
-const CELL_SIZE := Vector2(64.0, 64.0)
-const IDLE_FRAMES := 12
-const WALK_FRAMES := 6
-const ATTACK_FRAMES := 8
+const IDLE_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Idle.png")
+const WALK_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Walk.png")
+const ATTACK_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Attack_1.png")
+const DEAD_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Dead.png")
+const HURT_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Hurt.png")
+const CELL_SIZE := Vector2(128.0, 128.0)
+const IDLE_FRAMES := 6
+const WALK_FRAMES := 12
+const ATTACK_FRAMES := 4
+const DEAD_FRAMES := 5
+const HURT_FRAMES := 4
 
 enum State {
 	DORMANT,
@@ -28,6 +32,11 @@ var _state_remaining := 0.0
 var _facing := Vector2.RIGHT
 var _animation_time := 0.0
 var _attack_flash_remaining := 0.0
+var _body_rest_position := Vector2.ZERO
+var _hit_visual_tween: Tween
+var _hit_visual_active := false
+var _hit_visual_time := 0.0
+var _hit_visual_duration := 0.0
 
 
 func configure(config: Dictionary) -> void:
@@ -35,8 +44,10 @@ func configure(config: Dictionary) -> void:
 	_ai_config = Dictionary(config["enemy_ai"])
 	warning_marker.visible = false
 	attack_flash.visible = false
-	body_visual.scale = Vector2(1.5, 1.5)
-	body_visual.position = Vector2(0.0, -18.0)
+	body_visual.scale = Vector2.ONE
+	body_visual.position = Vector2(0.0, -21.0)
+	body_visual.modulate = Color("a77991")
+	_body_rest_position = body_visual.position
 	_set_state(State.DORMANT)
 
 
@@ -148,13 +159,24 @@ func _apply_gravity_and_move(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	_animation_time += delta
 	var texture: Texture2D = IDLE_TEXTURE
-	var frame := int(floor(_animation_time * 8.0)) % IDLE_FRAMES
-	if _state == State.APPROACH:
+	var frame := 0
+	if _state == State.DEAD:
+		_animation_time += delta
+		texture = DEAD_TEXTURE
+		frame = clampi(int(floor(_animation_time * 8.0)), 0, DEAD_FRAMES - 1)
+	elif _hit_visual_active:
+		_hit_visual_time += delta
+		texture = HURT_TEXTURE
+		var duration := maxf(_hit_visual_duration, 0.001)
+		frame = clampi(int(floor(_hit_visual_time / duration * float(HURT_FRAMES))), 0, HURT_FRAMES - 1)
+	else:
+		_animation_time += delta
+		frame = int(floor(_animation_time * 8.0)) % IDLE_FRAMES
+	if _state == State.APPROACH and not _hit_visual_active:
 		texture = WALK_TEXTURE
 		frame = int(floor(_animation_time * 9.0)) % WALK_FRAMES
-	elif _state == State.WINDUP:
+	elif _state == State.WINDUP and not _hit_visual_active:
 		texture = ATTACK_TEXTURE
 		var duration := maxf(float(_ai_config.get("windup_duration", 0.6)), 0.001)
 		frame = clampi(int(floor((1.0 - _state_remaining / duration) * float(ATTACK_FRAMES))), 0, ATTACK_FRAMES - 1)
@@ -170,6 +192,29 @@ func _update_attack_flash(delta: float) -> void:
 	_attack_flash_remaining = maxf(_attack_flash_remaining - delta, 0.0)
 	if _attack_flash_remaining <= 0.0:
 		attack_flash.visible = false
+
+
+func _on_reaction_started(_level: int, direction: Vector2, distance: float, duration: float) -> void:
+	if _state == State.DEAD:
+		return
+	if _hit_visual_tween != null and _hit_visual_tween.is_valid():
+		_hit_visual_tween.kill()
+	_hit_visual_active = true
+	_hit_visual_time = 0.0
+	_hit_visual_duration = duration
+	body_visual.position = _body_rest_position
+	var offset := direction.normalized() * distance
+	_hit_visual_tween = create_tween()
+	_hit_visual_tween.tween_property(body_visual, "position", _body_rest_position + offset, duration * 0.4)
+	_hit_visual_tween.tween_property(body_visual, "position", _body_rest_position, duration * 0.6)
+	_hit_visual_tween.tween_callback(_finish_hit_visual)
+
+
+func _finish_hit_visual() -> void:
+	_hit_visual_active = false
+	_hit_visual_time = 0.0
+	_hit_visual_duration = 0.0
+	body_visual.position = _body_rest_position
 
 
 func _get_player() -> Entity:

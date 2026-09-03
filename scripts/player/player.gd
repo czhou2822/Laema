@@ -17,6 +17,7 @@ const EarthResolver = preload("res://scripts/combat/earth_resolver.gd")
 const SHARED_IDLE: Texture2D = preload("res://assets/prototype/player/animation/shared_idle.png")
 const SHARED_WALK: Texture2D = preload("res://assets/prototype/player/animation/shared_walk.png")
 const SHARED_CAST: Texture2D = preload("res://assets/prototype/player/animation/shared_cast.png")
+const HURT_TEXTURE: Texture2D = preload("res://assets/prototype/player/animation/hurt.png")
 const FIRE_X1: Texture2D = preload("res://assets/prototype/player/animation/fire_x1.png")
 const FIRE_X2: Texture2D = preload("res://assets/prototype/player/animation/fire_x2.png")
 const FIRE_X3: Texture2D = preload("res://assets/prototype/player/animation/fire_x3.png")
@@ -86,6 +87,7 @@ const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
 const WALK_FRAMES := 12
 const CAST_FRAMES := 10
+const HURT_FRAMES := 4
 const IDLE_FPS := 8.0
 const WALK_FPS := 10.0
 const ATTACK_HITBOX_DEBUG_WINDOW := 0.14
@@ -137,6 +139,10 @@ var _sprite_rest_rotation := 0.0
 var _last_orb_count := 0
 var _last_marked_count := 0
 var _stage_input_locked := false
+var _hit_reaction_tween: Tween
+var _hit_visual_active := false
+var _hit_visual_time := 0.0
+var _hit_visual_duration := 0.0
 
 
 func configure(config: Dictionary) -> void:
@@ -245,7 +251,9 @@ func _process(delta: float) -> void:
 	if _config.is_empty():
 		return
 	_visual_time += delta
-	if combat.is_attack_playing():
+	if _hit_visual_active:
+		_update_hit_reaction_visual(delta)
+	elif combat.is_attack_playing():
 		_update_attack_visual()
 	elif not movement.get_motion().is_zero_approx():
 		_update_locomotion_visual(&"walk", _get_walk_texture(combat.get_active_school()), _get_walk_frames(combat.get_active_school()), WALK_FPS)
@@ -346,9 +354,18 @@ func _get_attack_frames(school: StringName, combo_position: int) -> int:
 
 
 func _reset_sprite_motion() -> void:
-	sprite.position = _sprite_rest_position
+	if not _hit_visual_active:
+		sprite.position = _sprite_rest_position
 	sprite.scale = _sprite_rest_scale
 	sprite.rotation = _sprite_rest_rotation
+
+
+func _update_hit_reaction_visual(delta: float) -> void:
+	_hit_visual_time += delta
+	_set_visual_mode(&"hurt", HURT_TEXTURE)
+	var duration := maxf(_hit_visual_duration, 0.001)
+	var frame := clampi(int(floor(_hit_visual_time / duration * float(HURT_FRAMES))), 0, HURT_FRAMES - 1)
+	_set_region(frame)
 
 
 func _set_visual_mode(mode: StringName, texture: Texture2D) -> void:
@@ -475,12 +492,29 @@ func _on_effect_state_changed(snapshot: Dictionary) -> void:
 	combat.set_effect_actions_suppressed(bool(snapshot["actions_suppressed"]))
 
 
-func _on_hit_reaction_started(_level: int, _direction: Vector2, _distance: float, _duration: float) -> void:
+func _on_hit_reaction_started(_level: int, direction: Vector2, distance: float, duration: float) -> void:
 	combat.on_hit_reaction_started()
+	if _hit_reaction_tween != null and _hit_reaction_tween.is_valid():
+		_hit_reaction_tween.kill()
+	_hit_visual_active = true
+	_hit_visual_time = 0.0
+	_hit_visual_duration = duration
+	var offset := direction.normalized() * distance
+	sprite.position = _sprite_rest_position + offset
+	_hit_reaction_tween = create_tween()
+	_hit_reaction_tween.tween_property(sprite, "position", _sprite_rest_position, duration)
+	_hit_reaction_tween.tween_callback(_finish_hit_visual)
 
 
 func _on_hit_reaction_ended() -> void:
 	combat.on_hit_reaction_ended()
+
+
+func _finish_hit_visual() -> void:
+	_hit_visual_active = false
+	_hit_visual_time = 0.0
+	_hit_visual_duration = 0.0
+	sprite.position = _sprite_rest_position
 
 
 func _on_defence_status_changed(label: String, current_guard: float, maximum_guard: float) -> void:

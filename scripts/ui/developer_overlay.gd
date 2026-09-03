@@ -463,6 +463,22 @@ func _add_stage_selector() -> void:
 	load_button.pressed.connect(_on_load_stage_pressed.bind(selector))
 	fields.add_child(load_button)
 
+	var default_label := Label.new()
+	default_label.text = "default startup stage"
+	default_label.tooltip_text = "Stage loaded on the next startup after Save to JSON."
+	fields.add_child(default_label)
+	var default_selector := OptionButton.new()
+	default_selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var default_stage_id := str(_config["tutorial"]["default_stage_id"])
+	for option_variant in options:
+		var option: Dictionary = option_variant
+		var stage_index := int(option["index"])
+		default_selector.add_item(str(option["label"]), stage_index)
+		if stage_index < _config["tutorial"]["stages"].size() and str(_config["tutorial"]["stages"][stage_index]["id"]) == default_stage_id:
+			default_selector.select(default_selector.item_count - 1)
+	default_selector.item_selected.connect(_on_default_stage_selected.bind(default_selector))
+	fields.add_child(default_selector)
+
 
 func _add_audio_group(group_name: String, group: Dictionary) -> void:
 	var title := Label.new()
@@ -661,6 +677,20 @@ func _on_load_stage_pressed(selector: OptionButton) -> void:
 	var stage_index := selector.get_selected_id()
 	_set_open(false)
 	_load_stage.call(stage_index)
+
+
+func _on_default_stage_selected(_selected_index: int, selector: OptionButton) -> void:
+	if selector.get_selected() < 0:
+		return
+	var stage_index := selector.get_selected_id()
+	var stages: Array = _config["tutorial"]["stages"]
+	if stage_index < 0 or stage_index >= stages.size():
+		return
+	var previous_stage_id := str(_config["tutorial"]["default_stage_id"])
+	_config["tutorial"]["default_stage_id"] = str(stages[stage_index]["id"])
+	if not _apply_live_tuning():
+		_config["tutorial"]["default_stage_id"] = previous_stage_id
+		call_deferred("_rebuild_fields")
 
 
 func _apply_live_tuning() -> bool:

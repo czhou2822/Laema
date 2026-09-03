@@ -283,6 +283,8 @@ static func _validate_tutorial(tutorial: Dictionary) -> String:
 		return "tutorial.objectives and tutorial.failure_feedback are obsolete."
 	if not tutorial.has("initial_school") or StringName(tutorial["initial_school"]) not in [&"fire", &"water", &"air", &"earth"]:
 		return "tutorial.initial_school must be a functional school."
+	if not tutorial.has("default_stage_id") or typeof(tutorial["default_stage_id"]) != TYPE_STRING or String(tutorial["default_stage_id"]).is_empty():
+		return "tutorial.default_stage_id must be a non-empty string."
 	if not tutorial.has("transition_duration") or not _is_number(tutorial["transition_duration"]):
 		return "tutorial.transition_duration must be numeric."
 	if float(tutorial["transition_duration"]) < 0.1 or float(tutorial["transition_duration"]) > 5.0:
@@ -326,6 +328,8 @@ static func _validate_tutorial(tutorial: Dictionary) -> String:
 					return guarded_sequence_error
 			_:
 				return "tutorial objective type is unsupported."
+	if not ids.has(tutorial["default_stage_id"]):
+		return "tutorial.default_stage_id must reference a configured stage."
 	return ""
 
 
