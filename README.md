@@ -28,7 +28,7 @@ The repository contains the expanded 2D side-scrolling orb-casting prototype plu
 | Select Earth | D-pad Right | 4 |
 | Defend | L1 | Shift |
 
-In a debug build, backtick opens the paused Developer Portal. Its header provides Pause/Unpause, Save to JSON, status, and Close controls; it also exposes the organized General, Audio, and Combat tuning tabs.
+Backtick opens the paused Developer Portal. Its header provides Pause/Unpause, Save to JSON, status, and Close controls; it also exposes the organized General, Audio, and Combat tuning tabs.
 
 Melee hits perform Generating and add generated orbs to the queue. Holding R2 performs Charging and makes selected generated orbs charged for the next Cast. The current tutorial runs through Stages 1–6, transitions into the Final Arena, and enters indefinite free practice when the final Enemy is defeated.
 
@@ -49,4 +49,4 @@ Melee hits perform Generating and add generated orbs to the queue. Holding R2 pe
 3. Work locally with Godot and Codex.
 4. Record accepted decisions and verification state in `docs/`.
 5. Commit and push only after the relevant human validation gate.
-6. Use `publish live version` only for the separate clean-source Web export and `laema-live` publication workflow.
+6. Use `publish live version` for the separate current-working-tree Web snapshot and `laema-live` publication workflow.

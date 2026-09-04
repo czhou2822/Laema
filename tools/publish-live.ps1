@@ -126,14 +126,11 @@ if (-not (Test-Path -LiteralPath (Join-Path $LiveRepo '.git'))) {
     throw "LiveRepoPath is not a Git repository: $LiveRepo"
 }
 
-Assert-CleanRepository -Repository $ProjectRoot
 Assert-CleanRepository -Repository $LiveRepo
 
+$sourceStatus = @(Invoke-Git -Repository $ProjectRoot -GitArgs @('status', '--porcelain=v1'))
+$sourceDirty = $sourceStatus.Count -gt 0
 $sourceHead = Get-Revision -Repository $ProjectRoot -Revision 'HEAD'
-$sourceRemote = Get-Revision -Repository $ProjectRoot -Revision 'origin/main'
-if ($sourceHead -ne $sourceRemote) {
-    throw "Source HEAD is not published to origin/main. Local=$sourceHead Remote=$sourceRemote"
-}
 
 $tempExport = Join-Path ([IO.Path]::GetTempPath()) ("laema-live-" + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $tempExport -Force | Out-Null
@@ -175,6 +172,8 @@ try {
             published = $false
             reason = 'artifact_bytes_unchanged'
             source_commit = $sourceHead
+            source_dirty = $sourceDirty
+            source_change_count = $sourceStatus.Count
             live_commit = Get-Revision -Repository $LiveRepo -Revision 'HEAD'
         } | ConvertTo-Json -Depth 8
         exit 0
@@ -185,6 +184,8 @@ try {
             published = $false
             reason = 'what_if'
             source_commit = $sourceHead
+            source_dirty = $sourceDirty
+            source_change_count = $sourceStatus.Count
             planned_changes = $allChanges
         } | ConvertTo-Json -Depth 8
         exit 0
@@ -203,7 +204,11 @@ try {
 
     Invoke-Git -Repository $LiveRepo -GitArgs @('add', '-A') | Out-Null
     Invoke-Git -Repository $LiveRepo -GitArgs @('diff', '--cached', '--check') | Out-Null
-    $message = if ($CommitMessage) { $CommitMessage } else { "Publish Laema web build ($($sourceHead.Substring(0, 7)))" }
+    $sourceLabel = $sourceHead.Substring(0, 7)
+    if ($sourceDirty) {
+        $sourceLabel += '+working'
+    }
+    $message = if ($CommitMessage) { $CommitMessage } else { "Publish Laema working snapshot ($sourceLabel)" }
     Invoke-Git -Repository $LiveRepo -GitArgs @('commit', '-m', $message) | Out-Null
     Invoke-Git -Repository $LiveRepo -GitArgs @('push', 'origin', $LiveBranch) | Out-Null
 
@@ -216,6 +221,8 @@ try {
     [ordered]@{
         published = $true
         source_commit = $sourceHead
+        source_dirty = $sourceDirty
+        source_change_count = $sourceStatus.Count
         live_commit = $liveHead
         changed_artifacts = $allChanges
     } | ConvertTo-Json -Depth 8

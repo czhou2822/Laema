@@ -49,7 +49,7 @@ The repository checkpoint contract is:
 ## Live publication
 
 - `publish live version` is separate from checkpointing. Use `tools/publish-live.ps1` to export the Godot `Web` preset to a temporary directory, compare only generated `index.*` artifacts, then publish the clean `laema-live` repository.
-- Refuse publication when the source checkout or live repository has uncommitted changes, or when the source `HEAD` is not already published to `origin/main`. Resolve Godot from PATH, `LAEMA_GODOT_PATH`, or an explicit path; resolve the live repository as a sibling checkout or through `LAEMA_LIVE_REPO_PATH`. Never store a user-specific absolute path in the repository.
+- `publish live version` publishes a shareable snapshot of the current working source, including permitted uncommitted source changes. It records the source commit and whether the tree was dirty in its result and live commit message. The live repository itself must be clean before artifact replacement. Resolve Godot from PATH, `LAEMA_GODOT_PATH`, or an explicit path; resolve the live repository as a sibling checkout or through `LAEMA_LIVE_REPO_PATH`. Never store a user-specific absolute path in the repository.
 - If Godot, matching Web export templates, or the live repository is unavailable, the publication workflow must return the missing prerequisite and ask the user for the installation or location. Do not continue into artifact replacement or Git publication.
 - A byte-identical export is a no-op, not an empty live commit. Do not claim an exported build ran successfully unless the user reports it.
 

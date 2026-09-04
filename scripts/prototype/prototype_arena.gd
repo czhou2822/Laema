@@ -192,7 +192,7 @@ func _on_spell_projectile_impact(target: Entity, contact_point: Vector2, payload
 
 
 func _create_developer_overlay() -> void:
-	if not OS.is_debug_build() or _developer_overlay != null:
+	if _developer_overlay != null:
 		return
 	_developer_overlay = DeveloperOverlay.new()
 	_developer_overlay.name = "DeveloperOverlay"
