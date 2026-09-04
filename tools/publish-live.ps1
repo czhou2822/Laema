@@ -40,7 +40,7 @@ function Invoke-Git {
 function Assert-CleanRepository {
     param([Parameter(Mandatory)][string]$Repository)
 
-    $status = Invoke-Git -Repository $Repository -GitArgs @('status', '--porcelain=v1')
+    $status = @(Invoke-Git -Repository $Repository -GitArgs @('status', '--porcelain=v1'))
     if ($status.Count -gt 0) {
         throw "Repository has local changes and cannot publish safely: $Repository`n$($status -join "`n")"
     }
