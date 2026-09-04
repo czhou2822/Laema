@@ -140,7 +140,7 @@ try {
         throw "Godot Web export failed:`n$($exportOutput -join "`n")"
     }
     if (-not (Test-Path -LiteralPath $entryPoint -PathType Leaf)) {
-        throw "Godot export completed without creating $entryPoint"
+        throw "Godot export completed without creating ${entryPoint}:`n$($exportOutput -join "`n")"
     }
 
     $generated = @(Get-ChildItem -LiteralPath $tempExport -File)
