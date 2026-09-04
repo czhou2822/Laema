@@ -176,7 +176,7 @@ if ($Mode -eq 'Save') {
     Invoke-Git @('add', '-A') | Out-Null
     Invoke-Git @('diff', '--cached', '--check') | Out-Null
 
-    $stagedPaths = Invoke-Git @('diff', '--cached', '--name-only')
+    $stagedPaths = @(Invoke-Git @('diff', '--cached', '--name-only'))
     if ($stagedPaths.Count -eq 0) {
         [ordered]@{
             mode = 'save'
@@ -208,7 +208,7 @@ if ($Mode -eq 'Save') {
     exit 0
 }
 
-$dirty = Invoke-Git @('status', '--porcelain=v1')
+$dirty = @(Invoke-Git @('status', '--porcelain=v1'))
 if ($dirty.Count -gt 0) {
     throw "load checkpoint blocked by local changes:`n$($dirty -join "`n")"
 }
