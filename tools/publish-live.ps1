@@ -90,6 +90,15 @@ function Exit-Prerequisite {
     exit 3
 }
 
+function ConvertTo-ProcessArgument {
+    param([Parameter(Mandatory)][string]$Value)
+
+    if ($Value -notmatch '[\s"]') {
+        return $Value
+    }
+    return '"' + $Value.Replace('"', '\"') + '"'
+}
+
 if ([string]::IsNullOrWhiteSpace($GodotPath)) {
     $godotCommand = Get-Command godot -ErrorAction SilentlyContinue
     if ($null -ne $godotCommand) {
@@ -131,8 +140,19 @@ New-Item -ItemType Directory -Path $tempExport -Force | Out-Null
 
 try {
     $entryPoint = Join-Path $tempExport ("$ArtifactPrefix.html")
-    $exportOutput = & $GodotPath --headless --path $ProjectRoot --export-release $Preset $entryPoint 2>&1
-    if ($LASTEXITCODE -ne 0) {
+    $stdoutPath = Join-Path $tempExport '.godot.stdout.log'
+    $stderrPath = Join-Path $tempExport '.godot.stderr.log'
+    $godotArgs = @('--headless', '--path', $ProjectRoot, '--export-release', $Preset, $entryPoint) |
+        ForEach-Object { ConvertTo-ProcessArgument $_ }
+    $godotProcess = Start-Process -FilePath $GodotPath -ArgumentList $godotArgs -Wait -PassThru -RedirectStandardOutput $stdoutPath -RedirectStandardError $stderrPath
+    $exportOutput = @()
+    if (Test-Path -LiteralPath $stdoutPath) {
+        $exportOutput += Get-Content -LiteralPath $stdoutPath
+    }
+    if (Test-Path -LiteralPath $stderrPath) {
+        $exportOutput += Get-Content -LiteralPath $stderrPath
+    }
+    if ($godotProcess.ExitCode -ne 0) {
         $exportText = $exportOutput -join "`n"
         if ($exportText -match '(?i)export template|templates?.*(missing|not found)|missing.*templates?') {
             Exit-Prerequisite -Reason 'missing_export_templates' -Action "Install Godot export templates matching this editor, including the $Preset preset, then retry publish live version." -Details $exportText
@@ -143,7 +163,7 @@ try {
         throw "Godot export completed without creating ${entryPoint}:`n$($exportOutput -join "`n")"
     }
 
-    $generated = @(Get-ChildItem -LiteralPath $tempExport -File)
+    $generated = @(Get-ChildItem -LiteralPath $tempExport -File | Where-Object { $_.Name -notlike '.godot.*.log' })
     $existing = @(Get-ChildItem -LiteralPath $LiveRepo -File -Filter "$ArtifactPrefix.*")
     $generatedNames = @($generated | ForEach-Object { $_.Name })
     $removedNames = @($existing | Where-Object { $generatedNames -notcontains $_.Name } | ForEach-Object { $_.Name })
