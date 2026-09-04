@@ -37,6 +37,7 @@ Melee hits perform Generating and add generated orbs to the queue. Holding R2 pe
 - `docs/` — durable design, architecture, decision, and status records
 - `scenes/` — Godot scenes
 - `scripts/` — project scripts
+- `tools/` — repository workflow automation
 - `assets/` — project assets
 - `.agents/skills/` — project-specific Codex skills, when approved
 - `AGENTS.md` — repository-level working guidance
