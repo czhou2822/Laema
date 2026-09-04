@@ -43,3 +43,11 @@ The script refuses a dirty tree, pulls fast-forward-only, and prints a JSON upda
 ```
 
 The companion bindings file uses the same project ID and contains `tasks` with `task_key`, `title`, `thread_id`, and `host_id` fields. The script does not create summaries, infer aliases, or call the Codex thread service.
+
+## Publish live version
+
+```powershell
+pwsh -NoProfile -File tools/publish-live.ps1
+```
+
+The script resolves the source repository relative to its own location and defaults the live repository to a sibling `laema-live` checkout. Override that location per machine with `LAEMA_LIVE_REPO_PATH` or `-LiveRepoPath`. It uses `godot` from PATH, then `LAEMA_GODOT_PATH`, then `-GodotPath`; no user-specific path is stored in the repository. When a prerequisite is missing, normal agent use returns structured JSON so the agent can ask the user what to install or where to find it. Manual terminal use can pass `-Interactive` to prompt for `godot.exe`. Missing Web export templates are reported separately with the matching installation action. The script requires a clean, already-pushed source checkout and a clean live repository, exports the `Web` preset into a temporary directory, compares generated `index.*` files by SHA-256, and only replaces those artifacts when bytes changed. It then commits, pushes, and verifies the live repository. Use `-WhatIf` to see planned artifact changes without replacing or publishing them.

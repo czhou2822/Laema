@@ -46,6 +46,13 @@ The repository checkpoint contract is:
 - If the Codex thread service is unavailable, report that only the Git files were loaded and that thread conversations were not restored. Never claim that a repository pull restored chat history.
 - Outside `save checkpoint` and `load checkpoint`, commit and push remain separate explicit actions.
 
+## Live publication
+
+- `publish live version` is separate from checkpointing. Use `tools/publish-live.ps1` to export the Godot `Web` preset to a temporary directory, compare only generated `index.*` artifacts, then publish the clean `laema-live` repository.
+- Refuse publication when the source checkout or live repository has uncommitted changes, or when the source `HEAD` is not already published to `origin/main`. Resolve Godot from PATH, `LAEMA_GODOT_PATH`, or an explicit path; resolve the live repository as a sibling checkout or through `LAEMA_LIVE_REPO_PATH`. Never store a user-specific absolute path in the repository.
+- If Godot, matching Web export templates, or the live repository is unavailable, the publication workflow must return the missing prerequisite and ask the user for the installation or location. Do not continue into artifact replacement or Git publication.
+- A byte-identical export is a no-op, not an empty live commit. Do not claim an exported build ran successfully unless the user reports it.
+
 ## Working boundaries
 
 - Do not invent gameplay rules, project scope, or technical architecture.

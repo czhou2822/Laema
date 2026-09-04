@@ -49,3 +49,4 @@ Melee hits perform Generating and add generated orbs to the queue. Holding R2 pe
 3. Work locally with Godot and Codex.
 4. Record accepted decisions and verification state in `docs/`.
 5. Commit and push only after the relevant human validation gate.
+6. Use `publish live version` only for the separate clean-source Web export and `laema-live` publication workflow.
