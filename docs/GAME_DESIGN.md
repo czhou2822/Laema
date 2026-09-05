@@ -321,7 +321,47 @@ Each tutorial stage owns its area contents and entity instances independently; l
 
 All current prototype targets—including training dummies and the final Enemy—are pass-through: they never physically block Laema's movement. They remain valid X and projectile targets. Body-blocking behavior is outside the current prototype rule.
 
-Each target displays the school and level of every successful Cast layer applied to it. School-specific status displays are deferred with the spell behaviors they would represent.
+Each target displays the school and level of every successful Cast layer applied to it. School-specific status displays other than the tutorial-only Elemental Endurance buff below are deferred with the spell behaviors they would represent.
+
+### Elemental Endurance — Tutorial-Only Buff
+
+Elemental Endurance is currently a tutorial-only protective buff for the tutorial's final Enemy. It showcases Laema's school-changing and Casting systems without becoming the later boss-like skill test. This buff is not yet a general rule for other enemies or the final game.
+
+The Enemy is intended to remain defeatable through single-school melee, but repeatedly relying on one school becomes increasingly inefficient.
+
+Only landed, applied attacks participate in Elemental Endurance. One player action advances its school streak at most once, regardless of how many direct-damage `HealthEvent`s the action produces. Blocked and parried actions neither advance nor reset the streak.
+
+Consecutive landed actions from the same school use the following damage percentages:
+
+| Same-school hit | Damage dealt |
+|---|---:|
+| 1–5 | 100% |
+| 6 | 50% |
+| 7 | 40% |
+| 8 | 30% |
+| 9 | 20% |
+| 10 and later | 0% |
+
+Hit 6 activates the protective buff. The 0% state persists until an action from another school successfully lands.
+
+A landed action from another school:
+
+- deals full damage;
+- clears the previous school streak;
+- removes the existing protective buff; and
+- becomes hit 1 of the new school's streak.
+
+A mixed-school Cast is an exception to ordinary streak replacement. It clears Elemental Endurance, removes the protective buff, deals full damage with both school-damage layers, and leaves no active school streak. The next landed single-school action becomes hit 1. Its primary and secondary layers display separate floating damage numbers, each showing that layer's final Health loss after modifiers.
+
+DoT ticks use the Enemy's current damage percentage for their school, but they never advance, reset, or replace the streak. A landed same-school action at hit 10 or later remains capped at 0% damage until a different school successfully lands.
+
+At `50%`, `40%`, `30%`, or `20%` damage, the action's non-damage effects still apply normally. At `0%` damage, non-damage effects carried by that same-school action are also suppressed. Existing effects are not removed; for example, an already active same-school DoT continues ticking at the current 0% damage percentage without changing the streak.
+
+A same-school direct hit that lands at `0%` damage still refreshes the Heat Reset Timer and resolves its normal Impact and Enemy hit reaction. A same-school X hit at `0%` does not generate an orb. A fully resisted Cast layer still displays its final damage feedback as `0`.
+
+When active, the protective buff displays an icon above the Enemy's head. The icon color identifies the resisted school. A number in the icon's lower-right corner displays the percentage of incoming same-school damage that remains: `50`, `40`, `30`, `20`, or `0`.
+
+Floating damage numbers always display the final Health actually lost after Elemental Endurance, blocking, and every other damage modifier. A final Health loss of zero still displays `0`.
 
 The always-visible game UI includes:
 
@@ -572,7 +612,7 @@ now you are free
 
 ## Tunables and Validation
 
-Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 Charging interval and capacity, R2 pressure thresholds, empowered multiplier, Heat gain, Heat Reset Timer duration, Heat depletion rate, defence, Impact, hit reactions, statuses, Health, and feedback duration.
+Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 Charging interval and capacity, R2 pressure thresholds, empowered multiplier, Heat gain, Heat Reset Timer duration, Heat depletion rate, Elemental Endurance percentages, defence, Impact, hit reactions, statuses, Health, and feedback duration.
 
 The prototype must make the following observable:
 
@@ -616,7 +656,8 @@ The prototype must make the following observable:
 - the complete Stage 5 multiple-Cast sequence, including second-Cast launch completion, invalidation, target, four-step UI, and transition behavior;
 - the complete Stage 6 school-switch sequence, including switch timing, five-hit completion, invalidation, target, six-step UI, and transition behavior;
 - Stage 7 beginning at `0` Heat, completing immediately above `80` Heat without a sustain requirement, ignoring actions below the threshold, displaying Heat and attack speed through the persistent HUD, and transitioning through the standard shell;
-- Stage 8 beginning at `0` Heat, ignoring preparation at `80` Heat or below, beginning on the first landed X above `80` Heat, allowing school switching, invalidating on an X miss, premature chain termination, or Heat reaching `80` or below, completing on five uninterrupted landed X attacks while Heat remains above `80`, and transitioning through the standard shell; and
+- Stage 8 beginning at `0` Heat, ignoring preparation at `80` Heat or below, beginning on the first landed X above `80` Heat, allowing school switching, invalidating on an X miss, premature chain termination, or Heat reaching `80` or below, completing on five uninterrupted landed X attacks while Heat remains above `80`, and transitioning through the standard shell;
+- tutorial-only Elemental Endurance counting each landed applied action at most once, excluding blocked/parried actions and DoT ticks from streak changes, applying current resistance to DoT damage, allowing non-damage effects at partial resistance while suppressing new same-school effects at 0%, withholding orb generation while preserving Heat Reset Timer refresh and normal Impact/hit reaction on a 0%-damage same-school X hit, clearing on a different-school hit or mixed-school Cast as defined, displaying its school and remaining damage percentage, and showing final post-modifier floating damage including `0`; and
 - the existing prototype arena as the final tutorial area, followed in place by its indefinite `now you are free` free-practice state.
 
 Incoming Enemy attacks and ordinary-play validation of blocking, parrying, guard depletion, guard warning, and guard break remain deferred because the Enemy does not attack.
