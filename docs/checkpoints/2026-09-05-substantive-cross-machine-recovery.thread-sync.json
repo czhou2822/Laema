@@ -1,0 +1,190 @@
+{
+  "schema_version": 2,
+  "checkpoint_id": "2026-09-05-substantive-cross-machine-recovery",
+  "previous_manifest": "docs/checkpoints/2026-09-04-cross-machine-retrieval.thread-sync.json",
+  "project_id": "66d70521-6484-4bf3-b170-ba142e9e0ad9",
+  "tasks": [
+    {
+      "task_key": "combat", "canonical_title": "Combat", "aliases": ["Combat"], "status": "notLoaded", "latest_turn_id": "01a06c01-84ed-7073-9beb-2750eff3a79c", "changed": true,
+      "summary": "Elemental Endurance was consolidated into a copy-paste-friendly candidate. It is not a GDD decision: same-school resistance, its feedback, damage-event counting, and all active Enemy behavior remain unresolved.",
+      "recovery": {
+        "role": "Own player-facing combat-design discussion without promoting candidates into canonical gameplay.",
+        "decisions_and_rationale": ["Existing prototype authority remains the current GAME_DESIGN.md: target enemies are non-attacking and active Enemy AI is excluded.", "No Elemental Endurance rule is accepted into GAME_DESIGN.md; the discussion is a candidate intended to make school switching and mixed Casting meaningful before a later boss-like test."],
+        "proposals": ["Same-school hits 1–5 deal 100%; hit 6 deals 50% and enables a school-colored protective icon; hits 7–9 decrease; hit 10+ deals 0% until another school lands.", "A different-school hit clears the previous streak and buff; a mixed-school Cast resets the endurance counter, clears the buff, and applies both damage layers at full damage.", "The icon’s lower-right number would show remaining damage percentage from 50 down to 0."],
+        "open_questions": ["Exact hit-7–9 percentages.", "What counts as one endurance hit when one spell produces multiple damage events.", "Whether damage numbers represent actual post-resistance, post-blocking, post-modifier Health loss.", "Enemy movement, attacks, perception, and all other active AI behavior."],
+        "conflicts": ["The candidate is absent from canonical gameplay records and must not be implemented or treated as verified merely because the task has a copy-paste artifact."],
+        "validation_limits": ["No Enemy-AI or Elemental Endurance runtime validation exists. Existing user-reported Stage 1–6 validation is broad only; no agent-run Godot, build, compiler, or automated-test evidence exists."],
+        "sources": ["docs/GAME_DESIGN.md", "docs/IMPLEMENTATION_STATUS.md", "docs/checkpoints/2026-09-04-cross-machine-retrieval.thread-sync.json", "Combat turn 01a06c01-84ed-7073-9beb-2750eff3a79c"],
+        "resume_point": "If design resumes, resolve one open interaction at a time—most immediately how multi-event spell damage counts—before any technical handoff.",
+        "latest_round": "Turn 01a06c01-84ed-7073-9beb-2750eff3a79c (completed 1788518446). User: ‘copy paste friendly version’. Assistant: supplied the Elemental Endurance candidate with purpose, 1–5/6/7–9/10+ resistance progression, cross-school and mixed-Cast reset behavior, icon feedback, and the four open questions preserved above.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a0150a-3101-7611-910e-4e9dc6d55728", "checkout": "C:/Users/zhouc/OneDrive/Documents/ChatGPT/Laema", "title": "Combat", "note": "Preserved source binding; portable transcript fallback is docs/checkpoints/2026-09-03-cross-thread-recovery.md."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a01768-b38f-7480-a74b-70e29cc50fae", "checkout": "C:/Users/ckzhou/.codex/worktrees/5f33/Laema", "title": "Combat", "status": "notLoaded", "latest_turn_id": "01a06c01-84ed-7073-9beb-2750eff3a79c", "completed_at": 1788518446}
+        ]
+      }
+    },
+    {
+      "task_key": "marketing", "canonical_title": "Marketing", "aliases": ["Marketing"], "status": "notLoaded", "latest_turn_id": "01a0552b-edf5-71c1-89d8-eb755f5e0c97", "changed": false, "summary": "",
+      "recovery": {
+        "role": "Maintain the presentation and pitch boundary without inventing unsupported product, market, or studio claims.",
+        "decisions_and_rationale": ["Pitch PDFs, decks, and animation assets are presentation references, not gameplay or technical authority.", "The GDD carries the tutorial and combat contract; unsupported world, market, audience, platform, business-model, studio-fit, and long-term progression claims remain Open."],
+        "proposals": ["Use current combat/tutorial facts and visual materials for an internal pitch only within the documented authority boundary."],
+        "open_questions": ["World/setting framing, market and audience, platform/business model, studio fit, and long-term progression."],
+        "conflicts": ["The latest completed turn names historical commit 582e141; it is recovery context, not the current repository revision."],
+        "validation_limits": ["Pitch artifacts and committed source do not prove gameplay, browser, or presentation runtime behavior."],
+        "sources": ["docs/presentation/README.md", "docs/GAME_DESIGN.md", "docs/IMPLEMENTATION_STATUS.md", "Marketing turn 01a0552b-edf5-71c1-89d8-eb755f5e0c97"],
+        "resume_point": "Resume only when the user asks to prepare or revise a pitch; keep claims traceable to current canonical records.",
+        "latest_round": "Turn 01a0552b-edf5-71c1-89d8-eb755f5e0c97 (completed 1788135383). User supplied a read-only 582e141 presentation handoff. Assistant reported the Stage 1/tutorial facts, retained presentation materials as non-authoritative, and left unsupported pitch claims open.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a03d58-c058-7f10-a30a-3185b3dfc8ce", "checkout": "C:/Users/zhouc/.codex/worktrees/0c16/Laema", "title": "Marketing", "note": "Preserved source binding."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a03c62-0713-7f72-9237-38ed6e1b42d1", "checkout": "C:/Users/ckzhou/Documents/GitHub/Laema", "title": "Marketing", "status": "notLoaded", "latest_turn_id": "01a0552b-edf5-71c1-89d8-eb755f5e0c97", "completed_at": 1788135383}
+        ]
+      }
+    },
+    {
+      "task_key": "production_manager", "canonical_title": "Production Manager", "aliases": ["PM", "Production Manager"], "status": "active", "latest_turn_id": "01a06bf6-1024-71d1-a4ac-cdac81692081", "changed": true,
+      "summary": "The prior save published portable bindings but could not prove other-machine retrieval. The current checkpoint upgrades every task to a schema-2 substantive recovery package and records the full local sweep; loading still requires a clean checkout and explicit verification of restored task responses.",
+      "recovery": {
+        "role": "Coordinate repository checkpoints, portable task recovery, and truthful Git/publication status across machines.",
+        "decisions_and_rationale": ["Save checkpoint stages all project changes, commits, and pushes as one operation; it is incomplete until push succeeds.", "Portable identity is task_key plus confirmed aliases; thread IDs, host, checkout, status, cursor, and timestamp are machine-specific bindings.", "The current tool requires schema_version 2 for new saves and validates recovery packages, explicit preceding-manifest linkage, and preservation of bindings after the first schema-2 generation."],
+        "proposals": ["None accepted beyond the current checkpoint contract."],
+        "open_questions": ["Whether the other computer can now resolve every local task uniquely and retrieve substantive context after pull/load.", "For each load, whether a local thread has a newer message or an ambiguous/missing binding that must be reported rather than substituted."],
+        "conflicts": ["The preceding manifest is schema 1 and therefore cannot itself carry the required schema-2 package; this checkpoint is the first complete package baseline, while preserving the earlier records as history."],
+        "validation_limits": ["Successful Git publication proves only repository availability. It does not prove another machine ran load checkpoint, resolved bindings, or restored conversations."],
+        "sources": ["AGENTS.md", "docs/README.md", "tools/checkpoint.ps1", "docs/checkpoints/2026-09-04-cross-machine-thread-bindings.md", "docs/checkpoints/2026-09-03-cross-thread-recovery.md", "Production Manager turn 01a06bf6-1024-71d1-a4ac-cdac81692081"],
+        "resume_point": "On the other computer, make the checkout clean, pull main, request load checkpoint, and inspect each substantive task response before recording any acknowledgement/binding update.",
+        "latest_round": "Turn 01a06bf6-1024-71d1-a4ac-cdac81692081 (completed 1788517932). User: ‘save checkpoint. I cannot retrive on my other computer.’ Assistant: published edacf18 with task-key/alias recovery material, stated that the other computer must be clean, pull main, then load checkpoint, and did not claim that retrieval had been tested.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a014f7-f5ea-7e70-9474-117c6ca3728d", "checkout": "C:/Users/zhouc/OneDrive/Documents/ChatGPT/Laema", "title": "Production Manager", "note": "Preserved source binding."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e", "checkout": "C:/Users/ckzhou/Documents/GitHub/Laema", "title": "Production Manager", "status": "active", "latest_turn_id": "01a06bf6-1024-71d1-a4ac-cdac81692081", "completed_at": 1788517932}
+        ]
+      }
+    },
+    {
+      "task_key": "art", "canonical_title": "Art", "aliases": ["Art"], "status": "notLoaded", "latest_turn_id": "01a06b68-6a23-7ff0-ac72-c29e78228db0", "changed": false, "summary": "",
+      "recovery": {
+        "role": "Own prototype art direction and presentation critique, keeping visual direction separate from final-art claims and implementation evidence.",
+        "decisions_and_rationale": ["docs/art/ART_DIRECTION.md records approved prototype Developer Overlay live telemetry and event-confirmation direction.", "The document is prototype visual direction, not final art or proof of live behavior."],
+        "proposals": ["Keep the optional Developer Overlay visually subordinate to gameplay HUD information."],
+        "open_questions": ["Final character, projectile, HUD, level, and audio presentation; any additional art scope beyond the recorded prototype direction."],
+        "conflicts": ["No conflict is resolved by the art record; implementation and browser behavior require separate evidence."],
+        "validation_limits": ["No agent-run browser, Godot, build, or visual playtest evidence is available for this direction."],
+        "sources": ["docs/art/ART_DIRECTION.md", "docs/GAME_DESIGN.md", "Art turn 01a06b68-6a23-7ff0-ac72-c29e78228db0"],
+        "resume_point": "Resume only for a new art-direction or presentation request; do not expand prototype direction into final art decisions by inference.",
+        "latest_round": "Turn 01a06b68-6a23-7ff0-ac72-c29e78228db0 (completed 1788508576). User: ‘yes’. Assistant: updated ART_DIRECTION.md with approved live telemetry and event-confirmation direction, preserving unrelated changes.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a01e79-b350-7b81-8643-3ee1681c062f", "checkout": "C:/Users/zhouc/.codex/worktrees/cb05/Laema", "title": "Art", "note": "Preserved source binding."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a01d0a-ced6-77c0-a98a-e94ec3c5c10e", "checkout": "C:/Users/ckzhou/Documents/GitHub/Laema", "title": "Art", "status": "notLoaded", "latest_turn_id": "01a06b68-6a23-7ff0-ac72-c29e78228db0", "completed_at": 1788508576}
+        ]
+      }
+    },
+    {
+      "task_key": "u", "canonical_title": "U", "aliases": ["U"], "status": "notLoaded", "latest_turn_id": "01a069c3-e7b6-7782-9634-d08c53f094fa", "changed": false, "summary": "",
+      "recovery": {
+        "role": "Map HUD technical architecture and prepare a focused technical-design route once a player-facing HUD scope is settled.",
+        "decisions_and_rationale": ["User confirmed fixed 720p/16:9 as the target; that alone does not require a scaling refactor.", "Current HUD ownership is event-driven: gameplay state remains outside views; the persistent HUD renders received state while the Developer Overlay is a paused modal."],
+        "proposals": ["Keep the current event-driven ownership model if a HUD technical design proceeds."],
+        "open_questions": ["Which HUD change needs technical design: layout polish, information hierarchy, objective/Heat/orb placement, Developer Portal focus behavior, or another explicit scope."],
+        "conflicts": ["The latest technical mapping predates the current repository revision; its architecture findings are context, not proof of current source state."],
+        "validation_limits": ["The mapping reported Godot 4.7.2 and static architecture only; no HUD runtime or input/focus validation was performed in this checkpoint."],
+        "sources": ["docs/GAME_DESIGN.md", "docs/TECH_ARCHITECTURE.md", "U turn 01a069c3-e7b6-7782-9634-d08c53f094fa"],
+        "resume_point": "Obtain one concrete HUD change scope before preparing an implementation-ready technical design.",
+        "latest_round": "Turn 01a069c3-e7b6-7782-9634-d08c53f094fa (completed 1788480858). User: ‘ok friday go’. Assistant: requested the concrete HUD change scope, noting that fixed 720p/16:9 alone does not justify a scaling refactor.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a02d6a-8dfd-75f1-8b1f-230ababb3f22", "checkout": "C:/Users/zhouc/OneDrive/Documents/ChatGPT/Laema", "title": "U", "note": "Preserved source binding."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a03c06-1c70-7b13-9717-249b021f1cd8", "checkout": "C:/Users/ckzhou/Documents/GitHub/Laema", "title": "U", "status": "notLoaded", "latest_turn_id": "01a069c3-e7b6-7782-9634-d08c53f094fa", "completed_at": 1788480858}
+        ]
+      }
+    },
+    {
+      "task_key": "dummy", "canonical_title": "Dummy", "aliases": ["Dummy"], "status": "notLoaded", "latest_turn_id": "01a05a55-a76a-7fd0-96ce-c347a530989d", "changed": false, "summary": "",
+      "recovery": {
+        "role": "Diagnose bounded prototype target and combat initialization/parser issues without inventing defects.",
+        "decisions_and_rationale": ["The target remains finite-health, permanent, and non-attacking; no dummy-health-refill defect is established merely from checkpoint context.", "A source-only cast repair was made for dynamically typed chain position in MightComponent; separate user-reported startup verification belongs to its own bounded initialization-order repair."],
+        "proposals": ["None."],
+        "open_questions": ["Any newly observed target or combat defect must be supplied with actual symptoms/logs before diagnosis."],
+        "conflicts": ["Older task context can describe a stale worktree or pre-fix state; inspect the current authority checkout before drawing conclusions."],
+        "validation_limits": ["The latest parser repair had diff-check evidence only. No agent-run Godot, compiler, build, or automated test evidence is claimed."],
+        "sources": ["scripts/combat/might_component.gd", "scripts/player/player.gd", "docs/IMPLEMENTATION_STATUS.md", "Dummy turn 01a05a55-a76a-7fd0-96ce-c347a530989d"],
+        "resume_point": "Remain dormant until the user provides a new observed target/combat mismatch; then inspect the exact current log and source path before changing code.",
+        "latest_round": "Turn 01a05a55-a76a-7fd0-96ce-c347a530989d (completed 1788222031). User: ‘fix them’. Assistant: cast get_current_position() to int in might_component.gd, reported diff-check success, and left Godot parser/runtime validation pending.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a02eea-fb2f-7c32-aa95-5aed9642a14b", "checkout": "C:/Users/zhouc/OneDrive/Documents/ChatGPT/Laema", "title": "Dummy", "note": "Preserved source binding."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a0312b-7bf3-7c93-b16a-343f45cfcff2", "checkout": "C:/Users/ckzhou/.codex/worktrees/b792/Laema", "title": "Dummy", "status": "notLoaded", "latest_turn_id": "01a05a55-a76a-7fd0-96ce-c347a530989d", "completed_at": 1788222031}
+        ]
+      }
+    },
+    {
+      "task_key": "narrative_room", "canonical_title": "Narrative Room", "aliases": ["NarrativeRoom", "Narrative Room"], "status": "idle", "latest_turn_id": "01a06a62-0fc2-73c0-ac49-0ec5f3699d1b", "changed": false, "summary": "",
+      "recovery": {
+        "role": "Preserve dormant Laema narrative context through Socratic design without turning candidate lore into canon.",
+        "decisions_and_rationale": ["Recorded backbone: Laema develops Mirham near Cloudfire; she recognizes symptoms of poison later used on King Nicolas Gryphonheart; Cloudfire falls; survivors retreat; Mirham’s final defence occurs before Catherine reaches ruined Cloudfire in the RoE opening.", "Mirham, Cloudfire, and Steadwick are distinct places; the current combat/tutorial prototype does not authorize narrative implementation."],
+        "proposals": ["The story is a local tragedy immediately before Restoration of Erathia rather than a claim to a final canonical pitch."],
+        "open_questions": ["Antagonist, Laema’s precise investigative role and poison connection, causal transitions into both invasions, the defence outcome, and emotional heart."],
+        "conflicts": ["The latest Chinese recap restates narrative context; it adds no new canon."],
+        "validation_limits": ["No narrative gameplay implementation or runtime validation exists."],
+        "sources": ["docs/checkpoints/2026-09-03-cross-thread-recovery.md", "docs/GAME_DESIGN.md", "Narrative Room turn 01a06a62-0fc2-73c0-ac49-0ec5f3699d1b"],
+        "resume_point": "Remain dormant unless the user explicitly resumes narrative design; then ask one focused authorship-preserving question rather than resolving an Open item by inference.",
+        "latest_round": "Turn 01a06a62-0fc2-73c0-ac49-0ec5f3699d1b (completed 1788491233). User: ‘in chinese’. Assistant: gave a Chinese recap of the Mirham/poison/Cloudfire/final-defence backbone and retained antagonist, causality, outcome, and emotional core as Open.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a014f2-6363-7c20-b67e-1d80689ff86e", "checkout": "C:/Users/zhouc/OneDrive/Documents/ChatGPT/Laema", "title": "Narrative Room", "note": "Preserved source binding."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a01768-b391-7c61-b31f-2d4be4310c73", "checkout": "C:/Users/ckzhou/.codex/worktrees/37a6/Laema", "title": "Narrative Room", "status": "idle", "latest_turn_id": "01a06a62-0fc2-73c0-ac49-0ec5f3699d1b", "completed_at": 1788491233}
+        ]
+      }
+    },
+    {
+      "task_key": "town_design", "canonical_title": "Town Design", "aliases": ["Town Design"], "status": "notLoaded", "latest_turn_id": "01a06a66-2e35-75b2-b882-3082899fe9ff", "changed": false, "summary": "",
+      "recovery": {
+        "role": "Preserve dormant Mirham town-design proposals without creating a town gameplay contract or implementation scope.",
+        "decisions_and_rationale": ["No town gameplay contract is in GAME_DESIGN.md; Mirham remains outside the active combat/tutorial prototype.", "Narrative context records a distinct buildable settlement near Cloudfire and a final defence before Catherine reaches Cloudfire."],
+        "proposals": ["A lived-in action-RPG hub inspired by Whiterun, Novigrad, and Vernworth, with merchants, services, residents, quests, visible cumulative growth, meaningful resource contribution, and eventual final defence.", "The player suggests construction to the town owner rather than directly ruling it; a parked candidate links creature quests to inhabitants moving in."],
+        "open_questions": ["Construction/resource loop, owner and player agency, investment tradeoffs, growth effects, attachment, failure consequences, geographic/political relationship to Cloudfire, reference qualities, and whether creature settlement survives."],
+        "conflicts": ["Fair Feather is parked, not the confirmed settlement. The latest Chinese recap adds no town decision."],
+        "validation_limits": ["No town implementation or runtime validation exists."],
+        "sources": ["docs/checkpoints/2026-09-03-cross-thread-recovery.md", "docs/GAME_DESIGN.md", "Town Design turn 01a06a66-2e35-75b2-b882-3082899fe9ff"],
+        "resume_point": "Remain dormant until explicitly resumed; then use one focused Socratic question to develop a single Open design seam.",
+        "latest_round": "Turn 01a06a66-2e35-75b2-b882-3082899fe9ff (completed 1788491497). User: ‘in chinese’. Assistant: gave a Chinese status-labeled recap of Mirham’s narrative context, hub proposals, and unresolved town questions; no files changed.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a01e79-b349-7f13-a083-4e9224cf1968", "checkout": "C:/Users/zhouc/.codex/worktrees/425b/Laema", "title": "Town Design", "note": "Preserved source binding."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a018cb-7c14-7fe2-af09-569b2f3faf97", "checkout": "C:/Users/ckzhou/Documents/GitHub/Laema", "title": "Town Design", "status": "notLoaded", "latest_turn_id": "01a06a66-2e35-75b2-b882-3082899fe9ff", "completed_at": 1788491497}
+        ]
+      }
+    },
+    {
+      "task_key": "design_overseer", "canonical_title": "Design overseer", "aliases": ["Design Overseer", "Design overseer"], "status": "notLoaded", "latest_turn_id": "01a0552c-46b3-7811-bb30-7cd38d9ec6cb", "changed": false, "summary": "",
+      "recovery": {
+        "role": "Reconcile design authority, implementation status, validation boundaries, and postflight readiness without silently correcting source-of-truth mismatches.",
+        "decisions_and_rationale": ["Current authority order remains latest user decision, GAME_DESIGN.md, TECH_ARCHITECTURE.md, then implementation.", "Committed source and broad user validation must remain separate from scenario-level or agent-run evidence."],
+        "proposals": ["None; this task is an oversight/reconciliation function."],
+        "open_questions": ["Any remaining current-document synchronization and the appropriate postflight gate after user verification of a reviewed source revision."],
+        "conflicts": ["The latest completed turn describes document mismatch at historical 582e141. Do not assume that mismatch persists; inspect current canonical records and source before reporting it again."],
+        "validation_limits": ["The historical report establishes no agent-run Godot, build, compiler, or automated-test evidence, and cannot become scenario evidence by repetition."],
+        "sources": ["docs/GAME_DESIGN.md", "docs/TECH_ARCHITECTURE.md", "docs/IMPLEMENTATION_STATUS.md", "docs/DECISIONS.md", "Design overseer turn 01a0552c-46b3-7811-bb30-7cd38d9ec6cb"],
+        "resume_point": "When explicitly asked, recheck the current checkout and authority documents, then report only present mismatches and the next valid human gate.",
+        "latest_round": "Turn 01a0552c-46b3-7811-bb30-7cd38d9ec6cb (completed 1788135489). User supplied a read-only 582e141 handoff. Assistant separated GDD design, source evidence, historical document mismatches, and missing user/agent runtime coverage.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a01e79-b347-74e3-ba8e-6ed09d54e2bc", "checkout": "C:/Users/zhouc/.codex/worktrees/7584/Laema", "title": "Design overseer", "note": "Preserved source binding."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a018d6-9097-7d53-8a42-1fe65472ceb1", "checkout": "C:/Users/ckzhou/Documents/GitHub/Laema", "title": "Design overseer", "status": "notLoaded", "latest_turn_id": "01a0552c-46b3-7811-bb30-7cd38d9ec6cb", "completed_at": 1788135489}
+        ]
+      }
+    },
+    {
+      "task_key": "audio", "canonical_title": "Laema Audio", "aliases": ["Audio", "Laema Audio"], "status": "notLoaded", "latest_turn_id": "01a0552c-2516-7361-bef6-7eed0b901c16", "changed": false, "summary": "",
+      "recovery": {
+        "role": "Preserve audio asset/wiring provenance and distinguish committed presence from audible runtime validation.",
+        "decisions_and_rationale": ["Audio streams and presentation references are recorded as committed source/presentation materials, not cue-level gameplay proof.", "guard_warning.ogg is Kenney Interface Sounds error_008.ogg under CC0; Craftpix source art remains licensed project-only material."],
+        "proposals": ["None."],
+        "open_questions": ["Ordinary-play guard-warning audition and any individual cue behavior while the Enemy remains non-attacking."],
+        "conflicts": ["The latest completed turn is a historical 582e141 sync; current source must be inspected before treating asset counts or documentation mismatch as current fact."],
+        "validation_limits": ["No agent-run audio, Godot, build, compiler, or automated test evidence exists. Broad user validation has no scenario matrix."],
+        "sources": ["assets/README.md", "docs/presentation/README.md", "docs/IMPLEMENTATION_STATUS.md", "Laema Audio turn 01a0552c-2516-7361-bef6-7eed0b901c16"],
+        "resume_point": "Remain read-only unless the user asks for an audio-specific investigation or change, and retain provenance plus runtime-evidence boundaries.",
+        "latest_round": "Turn 01a0552c-2516-7361-bef6-7eed0b901c16 (completed 1788135416). User supplied a read-only 582e141 audio handoff. Assistant reported committed stream/presentation presence and provenance, while retaining the missing ordinary-play audio validation boundary.",
+        "bindings": [
+          {"machine": "historical-source", "thread_id": "01a02e1a-babc-7200-991f-d48f8f4bf4f2", "checkout": "C:/Users/zhouc/OneDrive/Documents/ChatGPT/Laema", "title": "Laema Audio", "note": "Preserved source binding."},
+          {"machine": "local", "host_id": "local", "thread_id": "01a0312b-7be4-7b81-82d9-1085237e5bb6", "checkout": "C:/Users/ckzhou/.codex/worktrees/cdbf/Laema", "title": "Laema Audio", "status": "notLoaded", "latest_turn_id": "01a0552c-2516-7361-bef6-7eed0b901c16", "completed_at": 1788135416}
+        ]
+      }
+    }
+  ]
+}
