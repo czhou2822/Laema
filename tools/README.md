@@ -20,9 +20,36 @@ The agent produces a transient local-binding JSON from the current Codex task li
 pwsh -NoProfile -File tools/checkpoint.ps1 -Mode Load -ManifestPath docs/checkpoints/<checkpoint>.thread-sync.json -BindingsPath <local-bindings>.json
 ```
 
-The script refuses a dirty tree, pulls fast-forward-only, and prints a JSON update plan. The agent sends one `delivery_message` to every plan entry, and sends nothing to unchanged or unresolved tasks. If two tasks changed, the plan contains two messages; the Codex app decides whether those messages render as two blue update indicators.
+Resolve every saved task using verified portable identity. The load plan includes every task lacking a verified acknowledgement of this snapshot, even if unchanged since the previous save. Send its restoration request once, then wait for and inspect a substantive response in that task covering sources, governing decisions, proposals, open questions/conflicts, validation limits, and the resume point. Record the recovery token and response turn only after inspection. Delivery alone does not complete restoration; report missing responses, source conflicts, and unresolved bindings.
 
 ## Manifest shape
+
+New saves use schema_version 2 and explicitly set previous_manifest to the repository-relative path of the preceding sidecar. Existing schema 1 checkpoints remain loadable; their missing context is reported, never invented. The agent writes complete packages before calling Save; the script validates them and rejects changes to packages marked unchanged or removal of historical bindings. Save still stages all project files, commits, and pushes.
+
+Each schema 2 task retains the existing fields and adds:
+
+```json
+"recovery": {
+  "role": "Design oversight",
+  "decisions_and_rationale": ["Accepted decisions with their reasons and sources"],
+  "proposals": [],
+  "open_questions": ["Unresolved foundation relationship"],
+  "conflicts": [],
+  "validation_limits": ["Broad user report only; exact tested tree unknown"],
+  "sources": ["docs/GAME_DESIGN.md", "docs/TECH_ARCHITECTURE.md"],
+  "resume_point": "Await user direction on the unresolved foundation relationship",
+  "latest_round": "Faithful recap of latest completed user request and assistant response",
+  "bindings": [{"thread_id": "verified-id", "host_id": "local", "checkout": "recorded path", "turn_id": "saved-turn"}]
+}
+```
+
+These values illustrate the shape, not approved project facts. Use empty arrays only when there is nothing in that category; explicitly record unavailable evidence. Never omit unchanged task context from a new save.
+
+Load emits recovery_token and requires_response for each request. In the transient bindings, restored_token plus response_turn_id may suppress a repeat only after the agent has read that exact task response, verified the token and substantive restoration, and checked for material newer local context. Preserve response receipts in the next authorized recovery record; reconstruct them from task history when needed. An interrupted send must be checked in task history before resending. A token alone or a successful send is not proof of restoration. For PM's own task, incorporate the package and provide its substantive restoration here; avoid waiting for the active task to finish itself.
+
+The helper outputs awaiting_agent_verification until the agent performs these checks. Only then may PM report restoration complete. Missing bindings or responses remain explicitly incomplete. Source conflicts must be reported without silently changing decisions. Current main-checkout documents take precedence over stale worktree documents under the project's authority order.
+
+Use Mode Plan with the same arguments to inspect the generated requests without Git writes, pulls, commits, pushes, or task dispatch. It permits a dirty tree for local development and must never be reported as a completed Load. The example below is the legacy schema, retained for reference.
 
 ```json
 {

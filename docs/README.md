@@ -18,7 +18,7 @@ This directory is intended to hold the durable project state that should travel 
 
 1. Inspect the current Git status and diff.
 2. Query every currently listed, unarchived Laema task, including idle or not-loaded tasks.
-3. For each task, assign or preserve a stable canonical `task_key`, canonical title, and explicitly confirmed aliases. Record its machine-specific thread ID, host, checkout, status, recovery cursor or timestamp when available, and at least the latest completed message round. For tasks changed since the prior checkpoint, store a concise material summary rather than a word-for-word transcript.
+- Save schema 2 recovery packages for every unarchived task: role, decisions and rationale, proposals, open questions, conflicts, validation limits, source references, resume point, latest completed round, and historical machine bindings. Keep the concise change summary as a supplement. Carry unchanged packages forward intact; explicitly name the preceding manifest. Preserve historical records.
 4. Write a new dated checkpoint in `checkpoints/` and a separate reviewable file-scope record in `changelists/`. Keep prior records unchanged as history.
 5. Stage every current tracked and untracked project file with `git add -A`, then commit and push the complete checkpoint in the same operation. A save is not published until the push succeeds; report partial state if either step fails.
 
@@ -26,7 +26,7 @@ This directory is intended to hold the durable project state that should travel 
 
 1. Inspect local Git state before synchronizing. Any staged, unstaged, or untracked work must be reported to the user for resolution; never auto-stash, reset, revert, discard, or overwrite it.
 2. When safe, synchronize committed repository state using fast-forward-only behavior, then read the newest checkpoint and matching changelist.
-3. Query every currently listed, unarchived task named in the checkpoint recovery manifest and resolve it by project identity, stable `task_key`, and user-confirmed aliases. Reopen/read at least its saved latest completed message round and verify the saved transcript or turn metadata. If a task has newer messages, read and report its newest round too. For each changed task with one verified local binding, send exactly one concise checkpoint-update message to that dedicated task; do not message unchanged or unresolved tasks. A thread ID is only a machine-specific binding; if it is unavailable, use a verified local binding or the transcript embedded in the checkpoint.
+Resolve every saved task using verified portable identity. The load plan includes every task lacking a verified acknowledgement of this snapshot, even if unchanged since the previous save. Send its restoration request once, then wait for and inspect a substantive response in that task covering sources, governing decisions, proposals, open questions/conflicts, validation limits, and the resume point. Record the recovery token and response turn only after inspection. Delivery alone does not complete restoration; report missing responses, source conflicts, and unresolved bindings.
 4. If thread access is unavailable, state clearly that only the Git files were loaded and the conversations were not restored.
 
 If a safe load writes or updates a recovery record, binding, or other explicitly authorized project file, it must stage, commit, and push that result before reporting completion. A read-only load with no file changes reports a no-op; a dirty-tree safety stop performs no pull, commit, or push.

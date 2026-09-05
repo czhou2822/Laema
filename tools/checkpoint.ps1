@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)]
-    [ValidateSet('Save', 'Load')]
+    [ValidateSet('Save', 'Load', 'Plan')]
     [string]$Mode,
 
     [Parameter(Mandatory)]
@@ -58,7 +58,7 @@ function Assert-Manifest {
             throw "Manifest is missing required field '$key'."
         }
     }
-    if ([int]$Manifest['schema_version'] -ne 1) {
+    if ([int]$Manifest['schema_version'] -notin @(1, 2)) {
         throw "Unsupported manifest schema_version '$($Manifest['schema_version'])'."
     }
     if ([string]::IsNullOrWhiteSpace([string]$Manifest['checkpoint_id'])) {
@@ -68,7 +68,10 @@ function Assert-Manifest {
         throw 'Manifest must contain at least one task.'
     }
 
+    $seenKeys = @{}
     foreach ($task in @($Manifest['tasks'])) {
+        if ($seenKeys.ContainsKey([string]$task['task_key'])) { throw 'Duplicate task_key.' }
+        $seenKeys[[string]$task['task_key']] = $true
         foreach ($key in @('task_key', 'canonical_title', 'changed', 'summary', 'latest_turn_id')) {
             if (-not $task.ContainsKey($key)) {
                 throw "Task manifest entry is missing required field '$key'."
@@ -85,6 +88,20 @@ function Assert-Manifest {
         }
         if ([string]$task['summary'] -and ([string]$task['summary']).Length -gt 1200) {
             throw "Task '$($task['task_key'])' summary exceeds 1200 characters."
+        }
+        if ([int]$Manifest['schema_version'] -eq 2) {
+            if ($task['recovery'] -isnot [hashtable]) { throw "Task '$($task['task_key'])' requires recovery context." }
+            foreach ($field in @('role', 'decisions_and_rationale', 'proposals', 'open_questions', 'conflicts', 'validation_limits', 'sources', 'resume_point', 'latest_round', 'bindings')) {
+                if (-not $task['recovery'].ContainsKey($field) -or $null -eq $task['recovery'][$field]) {
+                    throw "Task '$($task['task_key'])' recovery is missing '$field'."
+                }
+            }
+            foreach ($field in @('role', 'resume_point', 'latest_round')) {
+                if ([string]::IsNullOrWhiteSpace([string]$task['recovery'][$field])) { throw "Recovery '$field' cannot be empty." }
+            }
+            if (@($task['recovery']['sources']).Count -eq 0 -or @($task['recovery']['bindings']).Count -eq 0) {
+                throw 'Recovery must retain source references and machine bindings.'
+            }
         }
     }
 }
@@ -142,6 +159,14 @@ function Normalize-Title {
     return (($Value -replace '\s+', ' ').Trim().ToLowerInvariant())
 }
 
+function Get-RecoveryToken {
+    param([hashtable]$Task, [hashtable]$Manifest)
+    # Include checkpoint identity so an acknowledgement of an older snapshot is never reused.
+    $payload = "$($Manifest['checkpoint_id'])/$($Task['task_key'])/" + ($Task | ConvertTo-Json -Depth 30 -Compress)
+    $bytes = [Text.Encoding]::UTF8.GetBytes($payload)
+    return [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes)).ToLowerInvariant()
+}
+
 function Resolve-LocalBinding {
     param(
         [Parameter(Mandatory)][hashtable]$Task,
@@ -152,11 +177,8 @@ function Resolve-LocalBinding {
     $allowedTitles = @($allowedTitles | ForEach-Object { Normalize-Title ([string]$_) } | Where-Object { $_ })
 
     $matches = @($Bindings['tasks'] | Where-Object {
-        if ($_['task_key'] -eq $Task['task_key']) {
-            return $true
-        }
         $bindingTitle = Normalize-Title ([string]$_['title'])
-        return $allowedTitles -contains $bindingTitle
+        return $_['task_key'] -eq $Task['task_key'] -and $allowedTitles -contains $bindingTitle
     })
 
     if ($matches.Count -eq 1) {
@@ -169,8 +191,33 @@ if ($Mode -eq 'Save') {
     $ManifestFullPath = Assert-UnderCheckpointRoot $ManifestPath
     $Manifest = Read-JsonFile $ManifestFullPath
     Assert-Manifest $Manifest
-    $PreviousManifest = Get-PreviousManifest $ManifestFullPath
+    if ([int]$Manifest['schema_version'] -ne 2) { throw 'New saves require schema_version 2 recovery packages; legacy manifests remain loadable.' }
+    $PreviousManifest = $null
+    if ($Manifest.ContainsKey('previous_manifest')) {
+        $previousPath = Join-Path $ProjectRoot ([string]$Manifest['previous_manifest'])
+        $previousPath = Assert-UnderCheckpointRoot $previousPath
+        if ($previousPath -eq $ManifestFullPath) { throw 'previous_manifest cannot reference itself.' }
+        $PreviousManifest = Read-JsonFile $previousPath
+        Assert-Manifest $PreviousManifest
+    } else {
+        throw 'Schema 2 saves must explicitly name previous_manifest (repository-relative path).'
+    }
     Assert-ChangedTaskSummaries -Manifest $Manifest -PreviousManifest $PreviousManifest
+    if ($null -ne $PreviousManifest -and [int]$PreviousManifest['schema_version'] -eq 2) {
+        foreach ($previousTask in @($PreviousManifest['tasks'])) {
+            $current = @($Manifest['tasks'] | Where-Object { $_['task_key'] -eq $previousTask['task_key'] })
+            if ($current.Count -eq 1) {
+                $oldRecovery = $previousTask['recovery'] | ConvertTo-Json -Depth 30 -Compress
+                $newRecovery = $current[0]['recovery'] | ConvertTo-Json -Depth 30 -Compress
+                if (-not $current[0]['changed'] -and $oldRecovery -ne $newRecovery) { throw 'Unchanged tasks must carry forward their complete recovery package.' }
+                foreach ($oldBinding in @($previousTask['recovery']['bindings'])) {
+                    $encoded = $oldBinding | ConvertTo-Json -Depth 30 -Compress
+                    $retained = @($current[0]['recovery']['bindings'] | Where-Object { ($_ | ConvertTo-Json -Depth 30 -Compress) -eq $encoded })
+                    if ($retained.Count -eq 0) { throw 'Preserve historical bindings; append new bindings instead of replacing them.' }
+                }
+            }
+        }
+    }
 
     Invoke-Git @('diff', '--check') | Out-Null
     Invoke-Git @('add', '-A') | Out-Null
@@ -208,12 +255,14 @@ if ($Mode -eq 'Save') {
     exit 0
 }
 
+if ($Mode -eq 'Load') {
 $dirty = @(Invoke-Git @('status', '--porcelain=v1'))
 if ($dirty.Count -gt 0) {
     throw "load checkpoint blocked by local changes:`n$($dirty -join "`n")"
 }
 
 Invoke-Git @('pull', '--ff-only', 'origin', $Branch) | Out-Null
+}
 
 $ManifestFullPath = Assert-UnderCheckpointRoot $ManifestPath
 $Manifest = Read-JsonFile $ManifestFullPath
@@ -238,7 +287,8 @@ if ($Bindings['project_id'] -ne $Manifest['project_id']) {
 
 $updates = @()
 $unresolved = @()
-foreach ($task in @($Manifest['tasks'] | Where-Object { $_['changed'] })) {
+$alreadyCurrent = @()
+foreach ($task in @($Manifest['tasks'])) {
     $binding = Resolve-LocalBinding -Task $task -Bindings $Bindings
     if ($null -eq $binding) {
         $unresolved += [ordered]@{
@@ -250,6 +300,22 @@ foreach ($task in @($Manifest['tasks'] | Where-Object { $_['changed'] })) {
         }
         continue
     }
+    $token = Get-RecoveryToken -Task $task -Manifest $Manifest
+    if ($binding['restored_token'] -eq $token -and -not [string]::IsNullOrWhiteSpace([string]$binding['response_turn_id'])) {
+        $alreadyCurrent += $task['task_key']
+        continue
+    }
+    $legacy = [int]$Manifest['schema_version'] -eq 1
+    $context = if ($legacy) { "Legacy snapshot: $($task['summary']). Full recovery package unavailable. Read the checkpoint and its referenced historical records; report any unrecoverable gaps." } else { $task['recovery'] | ConvertTo-Json -Depth 30 }
+    $message = @"
+Restore Laema task context from checkpoint $($Manifest['checkpoint_id']) for $($task['canonical_title']).
+Recovery token: $token
+Read the checkpoint at $ManifestFullPath, its matching Markdown checkpoint/changelist and referenced recovery records, and relevant current canonical documents in the main checkout $ProjectRoot. Historical snapshots and other worktrees may be stale. Preserve current explicit user decisions and surface source conflicts; do not invent reconciliation.
+Material delta: $($task['summary'])
+Recovery context:
+$context
+Respond substantively in this task: identify the sources/revision read, governing decisions and rationale, proposals, open questions/conflicts, validation limits, and the exact resume point. Distinguish historical context from current authority. A bare acknowledgement is insufficient. Do not implement, edit files, or initiate another handoff. Include the recovery token in your response. If source access or context is incomplete, report the gap instead of claiming restoration.
+"@
     $updates += [ordered]@{
         task_key = $task['task_key']
         title = $binding['title']
@@ -257,16 +323,21 @@ foreach ($task in @($Manifest['tasks'] | Where-Object { $_['changed'] })) {
         host_id = $binding['host_id']
         source_turn_id = $task['latest_turn_id']
         summary = $task['summary']
-        delivery_message = "Checkpoint update ($($Manifest['checkpoint_id'])):`n$($task['summary'])"
+        recovery_token = $token
+        legacy_context = $legacy
+        requires_response = $true
+        delivery_message = $message
     }
 }
 
 [ordered]@{
-    mode = 'load'
+    mode = $Mode.ToLowerInvariant()
     checkpoint_id = $Manifest['checkpoint_id']
     publication = 'no_op_read_only_load'
+    restoration_status = 'awaiting_agent_verification'
+    already_current = $alreadyCurrent
     changed_task_count = @($Manifest['tasks'] | Where-Object { $_['changed'] }).Count
     update_count = $updates.Count
     updates = $updates
     unresolved = $unresolved
-} | ConvertTo-Json -Depth 12
+} | ConvertTo-Json -Depth 30
