@@ -207,6 +207,11 @@ func get_committed_cast(commit_id: int) -> Dictionary:
 	return Dictionary(_committed_casts[commit_id]).duplicate(true)
 
 
+func set_committed_source_action_id(commit_id: int, source_action_id: int) -> void:
+	if _committed_casts.has(commit_id):
+		_committed_casts[commit_id]["source_action_id"] = source_action_id
+
+
 func launch_committed_cast(commit_id: int) -> Dictionary:
 	if not _committed_casts.has(commit_id):
 		return {}
@@ -301,7 +306,9 @@ func resolve_projectile_impact(target: Entity, contact_point: Vector2, payload: 
 		float(payload["primary_damage_multiplier"]),
 		target,
 		contact_point,
-		direction
+		direction,
+		int(payload.get("source_action_id", 0)),
+		payload.get("composition", [])
 	)
 	var secondary_level := int(payload.get("secondary_level", 0))
 	if secondary_level >= 1:
@@ -312,7 +319,9 @@ func resolve_projectile_impact(target: Entity, contact_point: Vector2, payload: 
 			1.0,
 			target,
 			contact_point,
-			direction
+			direction,
+			int(payload.get("source_action_id", 0)),
+			payload.get("composition", [])
 		)
 	_publish_outcome(&"spell_projectile_impacted", {
 		"primary_school": payload["primary_school"],
@@ -371,10 +380,12 @@ func _apply_equipped_spell(
 	damage_multiplier: float,
 	target: Entity,
 	contact_point: Vector2,
-	direction: Vector2
+	direction: Vector2,
+	source_action_id: int,
+	composition: Array
 ) -> void:
 	_trace(&"spell_effect_resolved", {"target": target.name, "spell": spell, "school": school, "level": level, "damage_multiplier": damage_multiplier, "contact_point": contact_point})
-	var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"]["casting_damage"]) * damage_multiplier, int(_config["combat"]["direct_impact"]), HealthEvent.Delivery.DIRECT, school, {}, direction, contact_point)
+	var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"]["casting_damage"]) * damage_multiplier, int(_config["combat"]["direct_impact"]), HealthEvent.Delivery.DIRECT, school, {}, direction, contact_point, source_action_id, composition)
 	var result: HealthResult = target.receive_health_event(event)
 	if result.outcome == HealthResult.Outcome.APPLIED and result.health_delta < 0.0:
 		target.feedback.show_cast_level(school, level)

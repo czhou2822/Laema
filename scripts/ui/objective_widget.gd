@@ -63,10 +63,11 @@ func present(snapshot: Dictionary) -> void:
 	var tokens: Array = snapshot.get("tokens", [])
 	var progress := int(snapshot.get("progress", 0))
 	var highlight_index := int(snapshot.get("highlight_index", -1))
+	var token_font_size := 18 if _uses_compact_token_font(tokens) else 26
 	for index in range(tokens.size()):
 		var token := Label.new()
 		token.text = str(tokens[index])
-		token.add_theme_font_size_override("font_size", 26)
+		token.add_theme_font_size_override("font_size", token_font_size)
 		if completed or index < progress:
 			token.modulate = Color("68dc81")
 		elif index == highlight_index:
@@ -76,6 +77,13 @@ func present(snapshot: Dictionary) -> void:
 		_tokens.add_child(token)
 	if bool(snapshot.get("flinch", false)):
 		_flinch()
+
+
+func _uses_compact_token_font(tokens: Array) -> bool:
+	for token in tokens:
+		if str(token).length() > 4:
+			return true
+	return false
 
 
 func _flinch() -> void:

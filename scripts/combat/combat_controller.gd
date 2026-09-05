@@ -150,7 +150,7 @@ func handle_health_result(result: HealthResult) -> void:
 	if result.event.target == _owner_entity:
 		_heat.remove_for_player_hit()
 		_magic.remove_marked_orbs_on_player_hit()
-	elif result.event.instigator == _owner_entity and result.health_delta < 0.0:
+	elif result.event.instigator == _owner_entity:
 		_heat.refresh_from_landed_direct_hit()
 
 

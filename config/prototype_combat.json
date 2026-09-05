@@ -51,6 +51,13 @@
 		"parry_window": 0.2,
 		"water_block_defensive_level": 1.0
 	},
+	"elemental_endurance": {
+		"hit_6_damage_percent": 0.5,
+		"hit_7_damage_percent": 0.4,
+		"hit_8_damage_percent": 0.3,
+		"hit_9_damage_percent": 0.2,
+		"hit_10_damage_percent": 0.0
+	},
 	"earth": {
 		"base_radius": 28.0,
 		"levels": [
@@ -117,7 +124,8 @@
 		"speed": 300.0
 	},
 	"player": {
-		"max_health": 100.0
+		"max_health": 100.0,
+		"one_hp_floor_enabled": true
 	},
 	"tutorial": {
 		"default_stage_id": "final_arena",
@@ -198,7 +206,7 @@
 					"active": {},
 					"completion_progress": 6.0,
 					"highlight_next": true,
-					"label": "perform a 5-hit combo, then cast",
+					"label": "Charge while attacking, then Cast",
 					"prestart": {},
 					"success_steps": [
 						{
@@ -223,12 +231,12 @@
 						}
 					],
 					"tokens": [
+						"Hold R2 + X",
 						"X",
 						"X",
 						"X",
 						"X",
-						"X",
-						"CAST"
+						"Release R2"
 					],
 					"type": "sequence"
 				}
@@ -260,9 +268,9 @@
 						}
 					],
 					"tokens": [
+						"Hold R2 + X",
 						"X",
-						"X",
-						"CAST",
+						"Release R2",
 						"X"
 					],
 					"type": "sequence"
@@ -297,10 +305,10 @@
 						}
 					],
 					"tokens": [
-						"X",
-						"CAST",
-						"X",
-						"CAST"
+						"Hold R2 + X",
+						"Release R2",
+						"Hold R2 + X",
+						"Release R2"
 					],
 					"type": "sequence"
 				}

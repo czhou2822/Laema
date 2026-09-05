@@ -17,6 +17,7 @@ const COMBAT_SECTION_ORDER := [
 	"air",
 	"earth",
 	"defence",
+	"elemental_endurance",
 	"hit_reaction",
 ]
 const AUDIO_GROUP_ORDER := ["ambient", "sfx", "bgm"]
@@ -33,9 +34,6 @@ const INTEGER_FIELDS := {
 const FIELD_RANGES := {
 	"movement.speed": Vector3(1.0, 600.0, 1.0),
 	"movement.gravity_scale": Vector3(0.05, 5.0, 0.05),
-	"audio.ambient.volume_db": Vector3(-80.0, 24.0, 0.5),
-	"audio.sfx.volume_db": Vector3(-80.0, 24.0, 0.5),
-	"audio.bgm.volume_db": Vector3(-80.0, 24.0, 0.5),
 	"player.max_health": Vector3(1.0, 10000.0, 1.0),
 	"enemy.max_health": Vector3(1.0, 10000.0, 1.0),
 	"enemy.defensive_level": Vector3(0.0, 100.0, 1.0),
@@ -83,6 +81,11 @@ const FIELD_RANGES := {
 	"defence.guard_break_recovery": Vector3(0.0, 5.0, 0.01),
 	"defence.heat_drain_per_second": Vector3(0.0, 100.0, 0.1),
 	"defence.water_block_defensive_level": Vector3(0.0, 100.0, 1.0),
+	"elemental_endurance.hit_6_damage_percent": Vector3(0.0, 1.0, 0.05),
+	"elemental_endurance.hit_7_damage_percent": Vector3(0.0, 1.0, 0.05),
+	"elemental_endurance.hit_8_damage_percent": Vector3(0.0, 1.0, 0.05),
+	"elemental_endurance.hit_9_damage_percent": Vector3(0.0, 1.0, 0.05),
+	"elemental_endurance.hit_10_damage_percent": Vector3(0.0, 1.0, 0.05),
 	"hit_reaction.base_distance": Vector3(0.0, 100.0, 0.1),
 	"hit_reaction.distance_per_level": Vector3(0.0, 100.0, 0.1),
 	"hit_reaction.base_duration": Vector3(0.01, 10.0, 0.01),
@@ -102,6 +105,7 @@ const TUNABLE_TOOLTIPS := {
 	"movement.speed": "Horizontal movement speed.",
 	"movement.gravity_scale": "Gravity multiplier for airborne movement.",
 	"player.max_health": "Player maximum Health.",
+	"player.one_hp_floor_enabled": "Keep Player Health at a minimum of 1 against all damage.",
 	"enemy.max_health": "Maximum Health for each training target.",
 	"enemy.defensive_level": "Impact level that reduces incoming hit reactions.",
 	"enemy_ai.enabled": "Enable the reversible prototype Final Enemy AI.",
@@ -158,6 +162,11 @@ const TUNABLE_TOOLTIPS := {
 	"defence.guard_break_recovery": "Seconds of recovery after guard break.",
 	"defence.heat_drain_per_second": "Heat drained per second while Water blocking.",
 	"defence.water_block_defensive_level": "Defensive Impact level supplied by Water blocking.",
+	"elemental_endurance.hit_6_damage_percent": "Final Enemy same-school damage multiplier at streak hit 6.",
+	"elemental_endurance.hit_7_damage_percent": "Final Enemy same-school damage multiplier at streak hit 7.",
+	"elemental_endurance.hit_8_damage_percent": "Final Enemy same-school damage multiplier at streak hit 8.",
+	"elemental_endurance.hit_9_damage_percent": "Final Enemy same-school damage multiplier at streak hit 9.",
+	"elemental_endurance.hit_10_damage_percent": "Final Enemy same-school damage multiplier at streak hit 10 and later.",
 	"hit_reaction.base_distance": "Base displacement of a level-1 hit reaction.",
 	"hit_reaction.distance_per_level": "Additional hit-reaction displacement per level.",
 	"hit_reaction.base_duration": "Base duration of a level-1 hit reaction.",
@@ -170,11 +179,11 @@ const TUNABLE_TOOLTIPS := {
 	"water.levels.duration": "Duration of this Water status level.",
 	"water.levels.slow_percent": "Movement slow percentage for this Water status level.",
 	"audio.ambient.enabled": "Enable or mute the Ambient audio bus.",
-	"audio.ambient.volume_db": "Volume of the Ambient audio bus in decibels.",
+	"audio.ambient.volume_db": "Ambient volume as a percentage of the normal mix level.",
 	"audio.sfx.enabled": "Enable or mute the SFX audio bus.",
-	"audio.sfx.volume_db": "Volume of the SFX audio bus in decibels.",
+	"audio.sfx.volume_db": "SFX volume as a percentage of the normal mix level.",
 	"audio.bgm.enabled": "Enable or mute the BGM audio bus.",
-	"audio.bgm.volume_db": "Volume of the BGM audio bus in decibels.",
+	"audio.bgm.volume_db": "BGM volume as a percentage of the normal mix level.",
 }
 
 var _config: Dictionary = {}
@@ -491,7 +500,7 @@ func _add_audio_group(group_name: String, group: Dictionary) -> void:
 	_field_container.add_child(fields)
 	for key in ["enabled", "volume_db"]:
 		var label := Label.new()
-		label.text = key.replace("_", " ")
+		label.text = "volume %" if key == "volume_db" else key.replace("_", " ")
 		var path := "audio.%s.%s" % [group_name, key]
 		_set_tuning_tooltip(label, path)
 		fields.add_child(label)
@@ -505,8 +514,8 @@ func _add_audio_group(group_name: String, group: Dictionary) -> void:
 			toggle.toggled.connect(_on_audio_boolean_changed.bind(group_name, key, toggle))
 			fields.add_child(toggle)
 			continue
-		var spin := _create_spinbox("audio.%s.%s" % [group_name, key], float(group[key]))
-		spin.value_changed.connect(_on_audio_scalar_changed.bind(group_name, key))
+		var spin := _create_audio_volume_spinbox(float(group[key]), path)
+		spin.value_changed.connect(_on_audio_volume_percent_changed.bind(group_name))
 		fields.add_child(spin)
 
 
@@ -596,6 +605,19 @@ func _create_spinbox(path: String, value: float) -> SpinBox:
 	return spin
 
 
+func _create_audio_volume_spinbox(volume_db: float, path: String) -> SpinBox:
+	var spin := SpinBox.new()
+	spin.min_value = 0.0
+	spin.max_value = 100.0
+	spin.step = 1.0
+	spin.value = roundf(clampf(db_to_linear(volume_db) * 100.0, 0.0, 100.0))
+	spin.allow_greater = false
+	spin.allow_lesser = false
+	spin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_set_tuning_tooltip(spin, path)
+	return spin
+
+
 func _set_tuning_tooltip(control: Control, path: String) -> void:
 	control.tooltip_text = _tuning_tooltip(path)
 	control.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -628,11 +650,12 @@ func _on_boolean_changed(value: bool, section_name: String, key: String, toggle:
 		call_deferred("_rebuild_fields")
 
 
-func _on_audio_scalar_changed(value: float, group_name: String, key: String) -> void:
-	var previous_value: Variant = _config["audio"][group_name][key]
-	_config["audio"][group_name][key] = value
+func _on_audio_volume_percent_changed(value: float, group_name: String) -> void:
+	var previous_value: Variant = _config["audio"][group_name]["volume_db"]
+	var linear_volume := value / 100.0
+	_config["audio"][group_name]["volume_db"] = -80.0 if is_zero_approx(linear_volume) else linear_to_db(linear_volume)
 	if not _apply_live_tuning():
-		_config["audio"][group_name][key] = previous_value
+		_config["audio"][group_name]["volume_db"] = previous_value
 		call_deferred("_rebuild_fields")
 
 

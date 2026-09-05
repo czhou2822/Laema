@@ -8,14 +8,11 @@ const SCHOOL_COLORS := {
 }
 
 @onready var developer_readout: Control = $DeveloperReadout
-@onready var heat_bar: ProgressBar = $DeveloperReadout/HeatPanel/HeatLayout/HeatBar
-@onready var heat_level_label: Label = $DeveloperReadout/HeatPanel/HeatLayout/HeatLevel
-@onready var player_health: ProgressBar = $DeveloperReadout/HeatPanel/HeatLayout/PlayerHealth
-@onready var enemy_health: ProgressBar = $DeveloperReadout/HeatPanel/HeatLayout/EnemyHealth
-@onready var defence_state: Label = $DeveloperReadout/HeatPanel/HeatLayout/DefenceState
-@onready var active_school_label: Label = $DeveloperReadout/ComboPanel/ComboLayout/ActiveSchool
-@onready var current_combo: HBoxContainer = $DeveloperReadout/ComboPanel/ComboLayout/CurrentCombo
-@onready var completed_combos: VBoxContainer = $DeveloperReadout/ComboPanel/ComboLayout/CompletedCombos
+@onready var telemetry_primary: Label = $DeveloperReadout/TelemetryPanel/TelemetryLayout/TelemetryPrimary
+@onready var telemetry_secondary: Label = $DeveloperReadout/TelemetryPanel/TelemetryLayout/TelemetrySecondary
+@onready var active_school_label: Label = $DeveloperReadout/ComboPanel/ComboLayout/ChainRow/ActiveSchool
+@onready var current_combo: HBoxContainer = $DeveloperReadout/ComboPanel/ComboLayout/ChainRow/CurrentCombo
+@onready var completed_combos: VBoxContainer = $DeveloperReadout/EventPanel/EventLayout/CompletedCombos
 @onready var raw_pressure: ProgressBar = $DeveloperReadout/PressurePanel/PressureLayout/RawPressure
 @onready var raw_pressure_label: Label = $DeveloperReadout/PressurePanel/PressureLayout/RawPressureLabel
 @onready var game_heat_bar: ProgressBar = $GameUI/HeatPanel/HeatLayout/HeatBar
@@ -59,6 +56,13 @@ var _last_marked_count := -1
 var _last_mark_progress_step := -1
 var _orb_panel_rest_position := Vector2.ZERO
 var _orb_panel_flinch_tween: Tween
+var _heat_value := 0.0
+var _speed_multiplier := 1.0
+var _player_health_value := 0.0
+var _player_health_maximum := 1.0
+var _enemy_health_value := 0.0
+var _enemy_health_maximum := 1.0
+var _defence_label := "READY"
 
 
 func _ready() -> void:
@@ -71,12 +75,11 @@ func _process(_delta: float) -> void:
 		return
 	var raw_strength: float = Input.get_action_raw_strength(&"casting")
 	raw_pressure.value = raw_strength * 100.0
-	raw_pressure_label.text = "R2 RAW  %.0f%%" % raw_pressure.value
+	raw_pressure_label.text = "RAW %.0f%%" % raw_pressure.value
 
 
 func configure(config: Dictionary) -> void:
 	apply_runtime_tuning(config)
-	heat_bar.value = 0.0
 	mark_progress.value = 0.0
 	startup_error.visible = false
 	update_active_school(&"fire")
@@ -88,9 +91,8 @@ func configure(config: Dictionary) -> void:
 
 
 func apply_runtime_tuning(config: Dictionary) -> void:
-	heat_bar.max_value = float(config["heat"]["max_heat"])
 	game_heat_bar.max_value = float(config["heat"]["max_heat"])
-	heat_bar.value = minf(heat_bar.value, heat_bar.max_value)
+	game_heat_bar.value = minf(game_heat_bar.value, game_heat_bar.max_value)
 	_combo_display_duration = float(config["ui"]["completed_combo_display_duration"])
 	_max_marked_capacity = int(config["casting"]["max_marked_capacity"])
 	_max_storage_capacity = int(config["casting"]["max_storage_capacity"])
@@ -107,10 +109,11 @@ func show_startup_error(message: String) -> void:
 
 
 func update_heat(value: float, level: int, speed_multiplier: float) -> void:
-	heat_bar.value = value
-	heat_level_label.text = "HEAT %.0f   ×%.2f speed" % [value, speed_multiplier]
+	_heat_value = value
+	_speed_multiplier = speed_multiplier
 	game_heat_bar.value = value
-	game_heat_label.text = "HEAT %.0f / 100   SPEED %.1f%%" % [value, speed_multiplier * 100.0]
+	game_heat_label.text = "%.0f / 100      %.0f%%" % [value, speed_multiplier * 100.0]
+	_refresh_telemetry()
 
 
 func update_active_school(school: StringName) -> void:
@@ -119,24 +122,27 @@ func update_active_school(school: StringName) -> void:
 
 
 func update_player_health(current_value: float, maximum_value: float) -> void:
-	player_health.max_value = maximum_value
-	player_health.value = current_value
+	_player_health_value = current_value
+	_player_health_maximum = maximum_value
+	_refresh_telemetry()
 
 
 func update_enemy_health(current_value: float, maximum_value: float) -> void:
-	enemy_health.max_value = maximum_value
-	enemy_health.value = current_value
+	_enemy_health_value = current_value
+	_enemy_health_maximum = maximum_value
+	_refresh_telemetry()
 
 
 func update_defence(label: String, current_guard: float, maximum_guard: float) -> void:
-	defence_state.text = "DEFENCE: %s   GUARD %.0f / %.0f" % [label, current_guard, maximum_guard]
+	_defence_label = label
+	_refresh_telemetry()
 	match label:
 		"GUARD WARNING":
-			defence_state.modulate = Color("ffbf3f")
+			telemetry_secondary.modulate = Color("ffbf3f")
 		"GUARD BROKEN":
-			defence_state.modulate = Color("ff493d")
+			telemetry_secondary.modulate = Color("ff493d")
 		_:
-			defence_state.modulate = Color.WHITE
+			telemetry_secondary.modulate = Color.WHITE
 
 
 func update_tutorial_objective(objective: Dictionary) -> void:
@@ -185,7 +191,7 @@ func update_orb_queue(snapshot: Array, marked_count: int, marking_progress: floa
 		float(marked_count) + clampf(marking_progress, 0.0, 1.0)
 	) / maxf(float(_max_marked_capacity), 1.0)
 	mark_progress.value = clampf(total_marking_progress, 0.0, 1.0)
-	mark_label.text = "MARK  %d / %d" % [marked_count, _max_marked_capacity]
+	mark_label.text = "CHARGING / CHARGED  %d / %d" % [marked_count, _max_marked_capacity]
 	var progress_step := int(round(mark_progress.value * 20.0))
 	if marked_count != _last_marked_count or progress_step != _last_mark_progress_step:
 		_last_marked_count = marked_count
@@ -214,8 +220,22 @@ func _rebuild_token_row(row: HBoxContainer, tokens: Array) -> void:
 		var label := Label.new()
 		label.text = String(token["input"])
 		label.modulate = _school_color(StringName(token["school"]))
-		label.add_theme_font_size_override("font_size", 28)
+		label.add_theme_font_size_override("font_size", 20)
 		row.add_child(label)
+
+
+func _refresh_telemetry() -> void:
+	telemetry_primary.text = "HP %.0f/%.0f   ENEMY %.0f/%.0f" % [
+		_player_health_value,
+		_player_health_maximum,
+		_enemy_health_value,
+		_enemy_health_maximum,
+	]
+	telemetry_secondary.text = "HEAT %.0f   SPEED %.0f%%   DEFENCE %s" % [
+		_heat_value,
+		_speed_multiplier * 100.0,
+		_defence_label,
+	]
 
 
 func _clear_children(parent: Node) -> void:

@@ -42,6 +42,7 @@ var _failed_cast_reaction_pending := false
 var _next_attempt_id := 1
 var _resolved_attempt_ids: Dictionary = {}
 var _attempt_contexts: Dictionary = {}
+var _next_source_action_id := 1
 
 
 func configure(
@@ -406,6 +407,7 @@ func _make_light_action(direction: Vector2, school: StringName = &"") -> Diction
 		"school": _active_school if school == &"" else school,
 		"direction": direction,
 		"end_chain_after_action": false,
+		"source_action_id": _allocate_source_action_id(),
 	}
 
 
@@ -415,11 +417,14 @@ func _make_cast_action(commit_id: int, endpoint: bool, empowered: bool, attempt_
 		return {}
 	var classification: StringName = &"cast_endpoint" if endpoint else (&"cast_empowered" if empowered else &"cast_normal")
 	var chain_position: int = int(_input_combo.get_current_position())
+	var source_action_id := _allocate_source_action_id()
+	_magic.set_committed_source_action_id(commit_id, source_action_id)
 	_attempt_contexts[attempt_id] = {
 		"chain_position": chain_position,
 		"classification": classification,
 		"endpoint": endpoint,
 		"commit_id": commit_id,
+		"source_action_id": source_action_id,
 	}
 	return {
 		"kind": classification,
@@ -478,10 +483,14 @@ func _perform_light_hit_query() -> void:
 		_publish_outcome(&"light_contact_resolved", {"result": &"miss", "school": _current_action["school"], "position": _input_combo.get_current_position()})
 		_trace(&"light_contact_resolved", {"result": "miss", "school": _current_action["school"], "position": _input_combo.get_current_position()})
 		return
+	var every_target_fully_resisted := true
 	for hit in hits:
-		var event := HealthEvent.damage(_owner_entity, hit["target"], float(_config["combat"]["light_damage"]), int(_config["combat"]["direct_impact"]), HealthEvent.Delivery.DIRECT, StringName(_current_action["school"]), {}, direction, hit["contact_point"])
-		hit["target"].receive_health_event(event)
-	_magic.add_orb(StringName(_current_action["school"]))
+		var event := HealthEvent.damage(_owner_entity, hit["target"], float(_config["combat"]["light_damage"]), int(_config["combat"]["direct_impact"]), HealthEvent.Delivery.DIRECT, StringName(_current_action["school"]), {}, direction, hit["contact_point"], int(_current_action.get("source_action_id", 0)), [StringName(_current_action["school"])])
+		var result: HealthResult = hit["target"].receive_health_event(event)
+		if result.resolution_tag != &"elemental_endurance_full_resist":
+			every_target_fully_resisted = false
+	if not every_target_fully_resisted:
+		_magic.add_orb(StringName(_current_action["school"]))
 	_publish_outcome(&"light_contact_resolved", {"result": &"hit", "school": _current_action["school"], "position": _input_combo.get_current_position(), "target_count": hits.size()})
 	_trace(&"light_contact_resolved", {"result": "hit", "school": _current_action["school"], "position": _input_combo.get_current_position(), "target_count": hits.size()})
 
@@ -604,6 +613,12 @@ func _begin_cast_attempt() -> int:
 		"commit_id": -1,
 	}
 	return attempt_id
+
+
+func _allocate_source_action_id() -> int:
+	var source_action_id := _next_source_action_id
+	_next_source_action_id += 1
+	return source_action_id
 
 
 func _resolve_active_cast_attempt(reason: StringName, publish_tutorial_result := true) -> void:

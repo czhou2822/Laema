@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3]
+[gd_scene load_steps=22 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" path="res://scripts/player/movement_controller.gd" id="2_movement"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/combat/might_component.gd" id="13_might"]
 [ext_resource type="Script" path="res://scripts/combat/magic_component.gd" id="14_magic"]
 [ext_resource type="Script" path="res://scripts/entities/feedback_component.gd" id="15_feedback"]
+[ext_resource type="AudioStream" path="res://assets/prototype/audio/hit_reaction/impactPunch_medium_002.ogg" id="16_hit_reaction"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(26, 30)
@@ -41,7 +42,7 @@ shader_parameter/outline_width = 1.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 1
-collision_mask = 4
+collision_mask = 12
 scale = Vector2(2, 2)
 script = ExtResource("1_player")
 
@@ -115,6 +116,10 @@ bus = &"SFX"
 bus = &"SFX"
 
 [node name="MarkAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="HitReactionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_hit_reaction")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

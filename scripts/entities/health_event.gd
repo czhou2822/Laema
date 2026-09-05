@@ -22,6 +22,8 @@ var school: StringName = &""
 var effect_instruction: Dictionary = {}
 var contact_direction := Vector2.ZERO
 var contact_point := Vector2.ZERO
+var source_action_id := 0
+var action_composition: Array = []
 
 
 static func damage(
@@ -33,7 +35,9 @@ static func damage(
 	source_school: StringName,
 	instruction: Dictionary = {},
 	direction: Vector2 = Vector2.ZERO,
-	point: Vector2 = Vector2.ZERO
+	point: Vector2 = Vector2.ZERO,
+	action_id := 0,
+	composition: Array = []
 ) -> HealthEvent:
 	var event := HealthEvent.new()
 	event.instigator = instigator_node
@@ -46,6 +50,8 @@ static func damage(
 	event.effect_instruction = instruction.duplicate(true)
 	event.contact_direction = direction
 	event.contact_point = point
+	event.source_action_id = action_id
+	event.action_composition = composition.duplicate()
 	return event
 
 

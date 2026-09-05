@@ -82,7 +82,9 @@ const CAST_STREAM_PATHS := {
 const EMPOWERED_CAST_STREAM_PATH := "res://assets/prototype/audio/casting/empowered_cast.ogg"
 const CAST_FAIL_STREAM_PATH := "res://assets/prototype/audio/casting/cast_fail.ogg"
 const ORB_CREATED_STREAM_PATH := "res://assets/prototype/audio/casting/orb_created.ogg"
-const MARK_ORB_STREAM_PATH := "res://assets/prototype/audio/casting/mark_orb.ogg"
+const MARK_ORB_STREAM_PATH := "res://assets/prototype/audio/casting/mark_orb_scale.ogg"
+const MARK_AUDIO_VOLUME_DB := 0.0
+const MARK_AUDIO_PITCH_SCALES: Array[float] = [1.0, 9.0 / 8.0, 5.0 / 4.0, 4.0 / 3.0, 3.0 / 2.0]
 const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
 const WALK_FRAMES := 12
@@ -122,6 +124,7 @@ const SCHOOL_TINTS := {
 @onready var cast_fail_audio: AudioStreamPlayer = $CastFailAudio
 @onready var orb_audio: AudioStreamPlayer = $OrbAudio
 @onready var mark_audio: AudioStreamPlayer = $MarkAudio
+@onready var hit_reaction_audio: AudioStreamPlayer = $HitReactionAudio
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_cast: ShapeCast2D = $AttackCast
 
@@ -195,6 +198,7 @@ func configure(config: Dictionary) -> void:
 		config,
 		defence
 	)
+	health.set_minimum(1.0 if bool(config["player"]["one_hp_floor_enabled"]) else 0.0)
 	_update_school_outline(combat.get_active_school())
 
 
@@ -202,12 +206,19 @@ func apply_runtime_tuning() -> void:
 	movement.apply_runtime_tuning()
 	combat.apply_runtime_tuning()
 	health.set_maximum(float(_config["player"]["max_health"]))
+	health.set_minimum(1.0 if bool(_config["player"]["one_hp_floor_enabled"]) else 0.0)
 	hit_reaction.configure(_config["hit_reaction"])
 	apply_feedback_runtime_tuning(float(_config["ui"]["cast_feedback_duration"]))
 
 
 func receive_health_result(result: HealthResult) -> void:
 	combat.handle_health_result(result)
+	if result == null or result.event == null or result.event.target != self or result.outcome != HealthResult.Outcome.APPLIED:
+		return
+	if result.event.is_direct_damage():
+		feedback.show_damage(result.event.school, -result.health_delta)
+	elif result.event.delivery == HealthEvent.Delivery.DOT_TICK:
+		feedback.show_dot_damage(result.event.school, -result.health_delta)
 
 
 func get_defensive_level() -> int:
@@ -481,7 +492,7 @@ func _on_orb_queue_changed(snapshot: Array, marked_count: int, marking_progress:
 	if snapshot.size() > _last_orb_count:
 		_play_audio(orb_audio, _load_audio_stream(ORB_CREATED_STREAM_PATH))
 	if visible_marked_count > _last_marked_count:
-		_play_audio(mark_audio, _load_audio_stream(MARK_ORB_STREAM_PATH))
+		_play_mark_audio(visible_marked_count)
 	_last_orb_count = snapshot.size()
 	_last_marked_count = visible_marked_count
 	orb_queue_changed.emit(snapshot, marked_count, marking_progress)
@@ -492,8 +503,10 @@ func _on_effect_state_changed(snapshot: Dictionary) -> void:
 	combat.set_effect_actions_suppressed(bool(snapshot["actions_suppressed"]))
 
 
-func _on_hit_reaction_started(_level: int, direction: Vector2, distance: float, duration: float) -> void:
+func _on_hit_reaction_started(level: int, direction: Vector2, distance: float, duration: float) -> void:
 	combat.on_hit_reaction_started()
+	if level > 0:
+		hit_reaction_audio.play()
 	if _hit_reaction_tween != null and _hit_reaction_tween.is_valid():
 		_hit_reaction_tween.kill()
 	_hit_visual_active = true
@@ -527,6 +540,13 @@ func _on_guard_warning() -> void:
 
 func _on_cast_failed() -> void:
 	_play_audio(cast_fail_audio, _load_audio_stream(CAST_FAIL_STREAM_PATH))
+
+
+func _play_mark_audio(charged_orb_count: int) -> void:
+	var pitch_index: int = clampi(charged_orb_count - 1, 0, MARK_AUDIO_PITCH_SCALES.size() - 1)
+	mark_audio.pitch_scale = MARK_AUDIO_PITCH_SCALES[pitch_index]
+	mark_audio.volume_db = MARK_AUDIO_VOLUME_DB
+	_play_audio(mark_audio, _load_audio_stream(MARK_ORB_STREAM_PATH))
 
 
 func _school_attack_stream(school: StringName, position: int) -> AudioStream:

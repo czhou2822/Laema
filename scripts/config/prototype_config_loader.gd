@@ -15,6 +15,7 @@ const REQUIRED_SECTIONS := [
 	"air",
 	"earth",
 	"defence",
+	"elemental_endurance",
 	"hit_reaction",
 	"tutorial",
 	"ui",
@@ -137,6 +138,11 @@ static func _validate(data: Dictionary) -> String:
 		["defence", "parry_window", 0.001, INF],
 		["defence", "guard_break_recovery", 0.0, INF],
 		["defence", "heat_drain_per_second", 0.0, INF],
+		["elemental_endurance", "hit_6_damage_percent", 0.0, 1.0],
+		["elemental_endurance", "hit_7_damage_percent", 0.0, 1.0],
+		["elemental_endurance", "hit_8_damage_percent", 0.0, 1.0],
+		["elemental_endurance", "hit_9_damage_percent", 0.0, 1.0],
+		["elemental_endurance", "hit_10_damage_percent", 0.0, 1.0],
 		["hit_reaction", "base_distance", 0.0, INF],
 		["hit_reaction", "distance_per_level", 0.0, INF],
 		["hit_reaction", "base_duration", 0.001, INF],
@@ -156,6 +162,9 @@ static func _validate(data: Dictionary) -> String:
 			return error
 
 	var combat: Dictionary = data["combat"]
+	var player: Dictionary = data["player"]
+	if not player.has("one_hp_floor_enabled") or typeof(player["one_hp_floor_enabled"]) != TYPE_BOOL:
+		return "player.one_hp_floor_enabled must be Boolean."
 	var heat: Dictionary = data["heat"]
 	for obsolete_heat_key in ["max_attack_speed_percent", "attack_speed_gain_per_orb", "attack_speed_loss_per_hit", "heat_reset_timer"]:
 		if heat.has(obsolete_heat_key):

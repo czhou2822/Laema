@@ -27,6 +27,7 @@ enum State {
 
 var _ai_config: Dictionary = {}
 var _stage_enabled := false
+var _area_active := false
 var _state := State.DORMANT
 var _state_remaining := 0.0
 var _facing := Vector2.RIGHT
@@ -37,6 +38,8 @@ var _hit_visual_tween: Tween
 var _hit_visual_active := false
 var _hit_visual_time := 0.0
 var _hit_visual_duration := 0.0
+var _committed_attack_origin := Vector2.ZERO
+var _committed_attack_target_position := Vector2.RIGHT
 
 
 func configure(config: Dictionary) -> void:
@@ -54,15 +57,18 @@ func configure(config: Dictionary) -> void:
 func apply_runtime_tuning() -> void:
 	super.apply_runtime_tuning()
 	_ai_config = Dictionary(_config["enemy_ai"])
-	if not bool(_ai_config["enabled"]):
-		_set_state(State.DORMANT)
-		set_physics_process(false)
+	_stage_enabled = _area_active and not _defeated and bool(_ai_config["enabled"])
+	_set_state(State.IDLE if _stage_enabled else State.DORMANT)
+	set_collision_layer_value(4, _stage_enabled)
+	set_physics_process(_stage_enabled)
 
 
 func set_stage_active(active: bool) -> void:
 	super.set_stage_active(active)
-	_stage_enabled = active and not _defeated and not _ai_config.is_empty() and bool(_ai_config["enabled"])
+	_area_active = active
+	_stage_enabled = _area_active and not _defeated and not _ai_config.is_empty() and bool(_ai_config["enabled"])
 	_set_state(State.IDLE if _stage_enabled else State.DORMANT)
+	set_collision_layer_value(4, _stage_enabled)
 	set_physics_process(_stage_enabled)
 
 
@@ -71,6 +77,7 @@ func receive_health_result(result: HealthResult) -> void:
 	if result != null and result.event != null and result.event.target == self and result.zero_reached:
 		_set_state(State.DEAD)
 		velocity = Vector2.ZERO
+		set_collision_layer_value(4, false)
 		set_physics_process(false)
 
 
@@ -118,13 +125,19 @@ func _begin_windup(horizontal_distance: float) -> void:
 	velocity.x = 0.0
 	_facing = Vector2.RIGHT if horizontal_distance >= 0.0 else Vector2.LEFT
 	body_visual.flip_h = _facing.x < 0.0
+	_committed_attack_origin = attack_cast.global_position
+	_committed_attack_target_position = _facing * float(_ai_config["attack_range"])
 	_set_state(State.WINDUP)
 	_state_remaining = float(_ai_config["windup_duration"])
 
 
 func _resolve_melee_hit(player: Entity) -> void:
-	attack_cast.target_position = _facing * float(_ai_config["attack_range"])
+	var live_origin := attack_cast.global_position
+	var live_target_position := attack_cast.target_position
+	attack_cast.global_position = _committed_attack_origin
+	attack_cast.target_position = _committed_attack_target_position
 	attack_cast.force_shapecast_update()
+	var did_hit := false
 	for index in range(attack_cast.get_collision_count()):
 		if attack_cast.get_collider(index) != player:
 			continue
@@ -144,8 +157,12 @@ func _resolve_melee_hit(player: Entity) -> void:
 		attack_flash.scale.x = _facing.x
 		_attack_flash_remaining = 0.14
 		_trace_ai(&"melee_hit", {"target": player.name, "damage": event.amount})
-		return
-	_trace_ai(&"melee_miss", {"target": player.name})
+		did_hit = true
+		break
+	attack_cast.global_position = live_origin
+	attack_cast.target_position = live_target_position
+	if not did_hit:
+		_trace_ai(&"melee_miss", {"target": player.name})
 
 
 func _apply_gravity_and_move(delta: float) -> void:
@@ -194,9 +211,11 @@ func _update_attack_flash(delta: float) -> void:
 		attack_flash.visible = false
 
 
-func _on_reaction_started(_level: int, direction: Vector2, distance: float, duration: float) -> void:
+func _on_reaction_started(level: int, direction: Vector2, distance: float, duration: float) -> void:
 	if _state == State.DEAD:
 		return
+	if level > 0:
+		hit_reaction_audio.play()
 	if _hit_visual_tween != null and _hit_visual_tween.is_valid():
 		_hit_visual_tween.kill()
 	_hit_visual_active = true

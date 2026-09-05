@@ -8,9 +8,9 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 ## Prototype Scope
 
-**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 8 objectives, and stage-owned target sets.
+**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 8 objectives, stage-owned target sets, and one attacking final Enemy with one committed melee pattern.
 
-**Excluded:** jumping, vertical traversal controls, Air and Earth defence, active Enemy behavior and attacks, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
+**Excluded:** jumping, vertical traversal controls, Air and Earth defence, additional Enemy behaviors and attack patterns, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
 ## Controls and Movement
 
@@ -319,17 +319,17 @@ When Laema receives an incoming direct-damage `HealthResult` from an opponent wh
 
 Each tutorial stage owns its area contents and entity instances independently; later stages may deliberately duplicate earlier targets or enemies. Stage 1 and Stage 2 each contain exactly one stationary, non-attacking, permanent target with identical behavior. Damage is capped at its remaining Health; reaching zero resolves normally and then immediately refills it to full Health without clearing active effects. The existing prototype arena is the final tutorial area and retains its three permanent practice targets plus its killable final Enemy.
 
-All current prototype targets—including training dummies and the final Enemy—are pass-through: they never physically block Laema's movement. They remain valid X and projectile targets. Body-blocking behavior is outside the current prototype rule.
+Training targets are pass-through and never physically block Laema's movement. The final Enemy is solid: Laema cannot move through or pass it. All current targets remain valid X and projectile targets.
 
-Each target displays the school and level of every successful Cast layer applied to it. School-specific status displays other than the tutorial-only Elemental Endurance buff below are deferred with the spell behaviors they would represent.
+Each target displays the school and level of every successful Cast layer that deals Health damage. A fully resisted Cast layer displays `0` damage without its school-and-level label. School-specific status displays other than the tutorial-only Elemental Endurance buff below are deferred with the spell behaviors they would represent.
 
 ### Elemental Endurance — Tutorial-Only Buff
 
 Elemental Endurance is currently a tutorial-only protective buff for the tutorial's final Enemy. It showcases Laema's school-changing and Casting systems without becoming the later boss-like skill test. This buff is not yet a general rule for other enemies or the final game.
 
-The Enemy is intended to remain defeatable through single-school melee, but repeatedly relying on one school becomes increasingly inefficient.
+The Enemy tests whether the player recognizes Elemental Endurance and changes schools. If it survives through hit 9 of one school's streak, hit 10 and later become fully resisted and a school change is required to resume direct damage. Single-school melee is therefore not guaranteed to defeat this Enemy.
 
-Only landed, applied attacks participate in Elemental Endurance. One player action advances its school streak at most once, regardless of how many direct-damage `HealthEvent`s the action produces. Blocked and parried actions neither advance nor reset the streak.
+Only physically landed attacks whose defence resolution is `APPLIED` participate in Elemental Endurance. A fully resisted same-school attack remains an `APPLIED` contact, but it does not advance the streak beyond the hit-10 cap. One player action advances its school streak at most once, regardless of how many direct-damage `HealthEvent`s the action produces. Blocked and parried actions neither advance nor reset the streak.
 
 Consecutive landed actions from the same school use the following damage percentages:
 
@@ -355,13 +355,31 @@ A mixed-school Cast is an exception to ordinary streak replacement. It clears El
 
 DoT ticks use the Enemy's current damage percentage for their school, but they never advance, reset, or replace the streak. A landed same-school action at hit 10 or later remains capped at 0% damage until a different school successfully lands.
 
-At `50%`, `40%`, `30%`, or `20%` damage, the action's non-damage effects still apply normally. At `0%` damage, non-damage effects carried by that same-school action are also suppressed. Existing effects are not removed; for example, an already active same-school DoT continues ticking at the current 0% damage percentage without changing the streak.
+At `50%`, `40%`, `30%`, or `20%` damage, the action's non-damage effects still apply normally. At `0%` damage, newly applied same-school status effects and orb generation are suppressed. Existing effects are not removed; for example, an already active same-school DoT continues ticking at the current 0% damage percentage without changing the streak. Impact, Enemy hit reaction, and Heat Reset Timer refresh remain explicit exceptions to this suppression.
 
-A same-school direct hit that lands at `0%` damage still refreshes the Heat Reset Timer and resolves its normal Impact and Enemy hit reaction. A same-school X hit at `0%` does not generate an orb. A fully resisted Cast layer still displays its final damage feedback as `0`.
+A same-school direct hit that lands at `0%` damage still refreshes the Heat Reset Timer and resolves its normal Impact and Enemy hit reaction. A same-school X hit at `0%` does not generate an orb. A fully resisted Cast layer displays its final damage feedback as `0` without displaying its school-and-level label.
 
 When active, the protective buff displays an icon above the Enemy's head. The icon color identifies the resisted school. A number in the icon's lower-right corner displays the percentage of incoming same-school damage that remains: `50`, `40`, `30`, `20`, or `0`.
 
-Floating damage numbers always display the final Health actually lost after Elemental Endurance, blocking, and every other damage modifier. A final Health loss of zero still displays `0`.
+Floating damage numbers always display the final Health actually lost after Elemental Endurance, blocking, and every other damage modifier. A final Health loss of zero still displays `0`. Every DoT tick displays its final damage number using a much smaller font than direct-hit damage.
+
+### First Enemy Attack Pattern
+
+The final Enemy attacks while the player works through the school-switching test. Its first-pass behavior uses one repeating pattern:
+
+```text
+approach → commit to Laema's current position → wind up → strike → recover → repeat
+```
+
+- The attack commits to its position and direction when windup begins.
+- Damage taken during windup does not interrupt the attack.
+- The attack does not track Laema after committing.
+- If Laema leaves the committed attack area before contact, the attack misses completely.
+- Hits and misses use the same recovery period.
+- No separate miss indicator is required; unchanged Player Health communicates the miss.
+- The Developer Portal includes a Player 1-HP Floor option, enabled by default for this prototype. While enabled, no damage source can reduce Laema below `1` Health. Disabling it removes the floor. No Player death or restart state is introduced.
+
+The current first-pass values remain tunable placeholders: `600 px` awareness range, `72 px` attack range, `90 px/s` approach speed, `0.6 s` windup, `10` damage at Impact `1`, and `0.9 s` recovery.
 
 The always-visible game UI includes:
 
@@ -381,10 +399,10 @@ The prototype developer overlay contains:
 The backtick Developer Portal has a shared header with Save to JSON, status, and Close controls, followed by three top-level tabs:
 
 - **General:** Movement, Player, Enemy, UI, and the saved developer-overlay visibility flag. Gravity Scale is intentionally omitted from the Portal control surface.
-- **Audio:** Ambient, SFX, and BGM groups. Each group has an Enabled control and a Volume control.
+- **Audio:** Ambient, SFX, and BGM groups. Each group has an Enabled control and a `0–100%` Volume control.
 - **Combat:** nested sub-tabs for Combat, Casting, Heat, Fire, Water, Air, Earth, Defence, and Hit Reaction. The Combat sub-tab contains attack-hitbox visibility, the `collect_orb_without_contact` testing toggle, and the Combat controls. When enabled, a missed X can collect an orb without applying damage; the persisted prototype config currently has this test toggle enabled.
 
-Audio controls apply immediately and persist through the same fail-fast JSON save/load flow. Ambient controls the wind loop; SFX controls attack, cast, orb, projectile, cast-failure, and guard-warning feedback; BGM controls the Fairy Battles music loop. These controls do not affect the orb queue, R2 charging-progress bar, target status display, target overhead Health display, or gameplay rules.
+Audio controls apply immediately and persist through the same fail-fast JSON save/load flow. Ambient controls the wind loop; SFX controls attack, cast, orb, projectile, cast-failure, and guard-warning feedback; BGM controls the Fairy Battles music loop. The Portal expresses normal mix volume as `100%` and silence as `0%`; its internal mixer representation is not player-facing. These controls do not affect the orb queue, R2 charging-progress bar, target status display, target overhead Health display, or gameplay rules.
 
 ## Tutorial Stage Director
 
@@ -464,26 +482,27 @@ Stage 2 succeeds when the player releases any level-5 Cast.
 
 Completion is permanent, turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
 
-### Stage 3 — Five-Hit Chain into Level-5 Cast
+### Stage 3 — Charge While Attacking, then Cast
 
-Stage 3 teaches the player to finish a complete five-position attack chain by launching an endpoint Cast. It contains one stationary, non-attacking, permanent refill target matching the targets in Stages 1 and 2.
+Stage 3 teaches the player to begin Charging while starting a five-position attack chain, continue Charging while attacking, and release R2 for an endpoint Cast. It contains one stationary, non-attacking, permanent refill target matching the targets in Stages 1 and 2.
 
 The objective widget displays:
 
 ```text
-perform a 5-hit combo, then cast
-X - X - X - X - X - CAST
+Charge while attacking, then Cast
+Hold R2 + X → X → X → X → X → Release R2
 ```
 
 Stage 3 succeeds when the player lands five X attacks in one uninterrupted chain, then enters a level-5 Cast in the endpoint chaining window after X5.
 
+- The R2 timing is instructional guidance only. The evaluator does not require R2 and the first X to begin simultaneously, and it does not fail when Charging begins later.
 - All five X attacks must physically hit the target.
 - The five X attacks may use any school composition permitted by the existing chain rules.
 - The Cast's school composition does not affect success.
 - The Cast must launch at level 5; projectile impact is unnecessary.
-- Each valid X hit turns the corresponding `X` green.
-- After X5 lands, `CAST` receives a bright white highlight to show that it is the required next input.
-- A valid level-5 endpoint Cast turns `CAST` green and permanently completes the stage.
+- Each valid X hit turns the corresponding attack step green; the first step advances on the first valid X regardless of when R2 Charging began.
+- After X5 lands, `Release R2` receives a bright white highlight to show that it is the required next input.
+- A valid level-5 endpoint Cast turns `Release R2` green and permanently completes the stage.
 - An X miss, a broken chain, a failed Cast, or a launched Cast below level 5 lightly flinches the whole widget and resets the attempt.
 
 Completion turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
@@ -496,7 +515,7 @@ The objective widget displays:
 
 ```text
 perform X, X, Cast, X
-X - X - CAST - X
+Hold R2 + X → X → Release R2 → X
 ```
 
 Stage 4 succeeds through one uninterrupted `X -> X -> Cast -> X` chain.
@@ -519,7 +538,7 @@ The objective widget displays:
 
 ```text
 perform X, Cast, X, Cast
-X - CAST - X - CAST
+Hold R2 + X → Release R2 → Hold R2 + X → Release R2
 ```
 
 Stage 5 succeeds through the exact uninterrupted `X -> Cast -> X -> Cast` sequence.
@@ -612,7 +631,7 @@ now you are free
 
 ## Tunables and Validation
 
-Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 Charging interval and capacity, R2 pressure thresholds, empowered multiplier, Heat gain, Heat Reset Timer duration, Heat depletion rate, Elemental Endurance percentages, defence, Impact, hit reactions, statuses, Health, and feedback duration.
+Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 Charging interval and capacity, R2 pressure thresholds, empowered multiplier, Heat gain, Heat Reset Timer duration, Heat depletion rate, Elemental Endurance percentages, the Player 1-HP Floor option, defence, Impact, hit reactions, statuses, Health, and feedback duration.
 
 The prototype must make the following observable:
 
@@ -657,9 +676,10 @@ The prototype must make the following observable:
 - the complete Stage 6 school-switch sequence, including switch timing, five-hit completion, invalidation, target, six-step UI, and transition behavior;
 - Stage 7 beginning at `0` Heat, completing immediately above `80` Heat without a sustain requirement, ignoring actions below the threshold, displaying Heat and attack speed through the persistent HUD, and transitioning through the standard shell;
 - Stage 8 beginning at `0` Heat, ignoring preparation at `80` Heat or below, beginning on the first landed X above `80` Heat, allowing school switching, invalidating on an X miss, premature chain termination, or Heat reaching `80` or below, completing on five uninterrupted landed X attacks while Heat remains above `80`, and transitioning through the standard shell;
-- tutorial-only Elemental Endurance counting each landed applied action at most once, excluding blocked/parried actions and DoT ticks from streak changes, applying current resistance to DoT damage, allowing non-damage effects at partial resistance while suppressing new same-school effects at 0%, withholding orb generation while preserving Heat Reset Timer refresh and normal Impact/hit reaction on a 0%-damage same-school X hit, clearing on a different-school hit or mixed-school Cast as defined, displaying its school and remaining damage percentage, and showing final post-modifier floating damage including `0`; and
+- tutorial-only Elemental Endurance counting each landed applied action at most once, excluding blocked/parried actions and DoT ticks from streak changes, applying current resistance to DoT damage, allowing non-damage effects at partial resistance while suppressing new same-school effects at 0%, withholding orb generation while preserving Heat Reset Timer refresh and normal Impact/hit reaction on a 0%-damage same-school X hit, clearing on a different-school hit or mixed-school Cast as defined, displaying its school and remaining damage percentage, showing smaller final-damage numbers for DoT ticks including `0`, and showing `0` without a school-and-level label for a fully resisted Cast layer; and
+- the final Enemy physically blocking Laema, approaching, committing one non-interruptible attack to Laema's position at windup start, missing when she leaves that area, using the same recovery after hits and misses, and all incoming damage respecting the default-enabled Player 1-HP Floor option; and
 - the existing prototype arena as the final tutorial area, followed in place by its indefinite `now you are free` free-practice state.
 
-Incoming Enemy attacks and ordinary-play validation of blocking, parrying, guard depletion, guard warning, and guard break remain deferred because the Enemy does not attack.
+Incoming Enemy attacks, body blocking, committed-position misses, both states of the Player 1-HP Floor option, and ordinary-play blocking, parrying, guard depletion, guard warning, and guard break require user validation in Godot.
 
-Still open or deferred: jumping, non-flat level geometry, Air and Earth defence, active Enemy behavior, all school-level spell behaviors, final balance, final casting and projectile assets, final Laema presentation, and complete enemy content.
+Still open or deferred: jumping, non-flat level geometry, Air and Earth defence, additional Enemy behavior and attack patterns, Player defeat behavior when the Player 1-HP Floor option is disabled, all school-level spell behaviors, final balance, final casting and projectile assets, final Laema presentation, and complete enemy content.

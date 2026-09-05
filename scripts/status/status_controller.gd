@@ -9,12 +9,65 @@ var _config: Dictionary = {}
 var _dot_instances: Array[Dictionary] = []
 var _water_status: Dictionary = {}
 var _earth_slow: Dictionary = {}
+var _endurance_enabled := false
+var _endurance_school: StringName = &""
+var _endurance_hits := 0
+var _last_action_key := ""
+var _last_action_multiplier := 1.0
+var _last_action_full_resist := false
 
 
 func configure(owner_entity: Entity, config: Dictionary) -> void:
 	_owner_entity = owner_entity
 	_config = config
 	_emit_state()
+
+
+func set_elemental_endurance_enabled(enabled: bool) -> void:
+	_endurance_enabled = enabled
+	_endurance_school = &""
+	_endurance_hits = 0
+	_last_action_key = ""
+	_emit_state()
+
+
+func resolve_elemental_endurance(event: HealthEvent) -> Dictionary:
+	if not _endurance_enabled or event.operation != HealthEvent.Operation.DAMAGE:
+		return {"multiplier": 1.0, "full_resist": false}
+	if event.delivery == HealthEvent.Delivery.DOT_TICK:
+		return {"multiplier": _endurance_multiplier() if event.school == _endurance_school else 1.0, "full_resist": false}
+	if not event.is_direct_damage() or event.school == &"":
+		return {"multiplier": 1.0, "full_resist": false}
+	var action_key := "%s:%d" % [event.instigator.get_instance_id() if is_instance_valid(event.instigator) else 0, event.source_action_id]
+	if action_key == _last_action_key:
+		return {"multiplier": _last_action_multiplier, "full_resist": _last_action_full_resist}
+	_last_action_key = action_key
+	var represented_schools: Dictionary = {}
+	for school_variant in event.action_composition:
+		represented_schools[StringName(school_variant)] = true
+	if represented_schools.size() > 1:
+		_endurance_school = &""
+		_endurance_hits = 0
+		_last_action_multiplier = 1.0
+		_last_action_full_resist = false
+		_emit_state()
+		return {"multiplier": 1.0, "full_resist": false}
+	if event.school != _endurance_school:
+		_endurance_school = event.school
+		_endurance_hits = 1
+	else:
+		_endurance_hits = mini(_endurance_hits + 1, 10)
+	_last_action_multiplier = _endurance_multiplier()
+	_last_action_full_resist = is_zero_approx(_last_action_multiplier)
+	_emit_state()
+	return {"multiplier": _last_action_multiplier, "full_resist": _last_action_full_resist}
+
+
+func _endurance_multiplier() -> float:
+	if _endurance_hits <= 5:
+		return 1.0
+	var key := "hit_%d_damage_percent" % mini(_endurance_hits, 10)
+	return float(_config["elemental_endurance"][key])
 
 
 func _process(delta: float) -> void:
@@ -139,6 +192,8 @@ func get_snapshot() -> Dictionary:
 		"earth_level": int(_earth_slow.get("level", 0)),
 		"earth_remaining": float(_earth_slow.get("remaining", 0.0)),
 		"earth_slow_percent": float(_earth_slow.get("slow_percent", 0.0)),
+		"endurance_school": _endurance_school,
+		"endurance_percent": int(round(_endurance_multiplier() * 100.0)) if _endurance_school != &"" else 100,
 	}
 
 
@@ -166,6 +221,11 @@ func clear_for_stage() -> void:
 	_dot_instances.clear()
 	_water_status.clear()
 	_earth_slow.clear()
+	_endurance_school = &""
+	_endurance_hits = 0
+	_last_action_key = ""
+	_last_action_multiplier = 1.0
+	_last_action_full_resist = false
 	_emit_state()
 
 

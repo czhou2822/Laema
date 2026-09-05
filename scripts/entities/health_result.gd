@@ -14,6 +14,7 @@ var health_delta := 0.0
 var final_reaction_level := 0
 var effect_applied := false
 var zero_reached := false
+var resolution_tag: StringName = &""
 
 
 static func create(
@@ -22,7 +23,8 @@ static func create(
 	actual_health_delta: float,
 	reaction_level: int,
 	did_apply_effect: bool,
-	did_reach_zero: bool
+	did_reach_zero: bool,
+	tag: StringName = &""
 ) -> HealthResult:
 	var result := HealthResult.new()
 	result.event = source_event
@@ -31,4 +33,5 @@ static func create(
 	result.final_reaction_level = reaction_level
 	result.effect_applied = did_apply_effect
 	result.zero_reached = did_reach_zero
+	result.resolution_tag = tag
 	return result

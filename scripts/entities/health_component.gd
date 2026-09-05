@@ -5,11 +5,13 @@ signal health_changed(current_value: float, maximum_value: float)
 
 var _maximum := 1.0
 var _current := 1.0
+var _minimum := 0.0
 
 
 func configure(maximum_value: float) -> void:
 	_maximum = maxf(maximum_value, 0.001)
 	_current = _maximum
+	_minimum = 0.0
 	_emit_state()
 
 
@@ -19,8 +21,12 @@ func set_maximum(maximum_value: float) -> void:
 	_emit_state()
 
 
+func set_minimum(minimum_value: float) -> void:
+	_minimum = clampf(minimum_value, 0.0, _maximum)
+
+
 func apply_damage(amount: float) -> float:
-	var removed := minf(maxf(amount, 0.0), _current)
+	var removed := minf(maxf(amount, 0.0), maxf(_current - _minimum, 0.0))
 	_current -= removed
 	_emit_state()
 	return -removed

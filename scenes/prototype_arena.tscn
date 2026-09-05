@@ -1,31 +1,29 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://botreihvj2l3f"]
 
-[ext_resource type="Script" path="res://scripts/prototype/prototype_arena.gd" id="1_arena"]
+[ext_resource type="Script" uid="uid://ckm833lcyd0bj" path="res://scripts/prototype/prototype_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://scenes/ui/prototype_hud.tscn" id="3_hud"]
-[ext_resource type="Script" path="res://scripts/prototype/stage_director.gd" id="4_director"]
+[ext_resource type="Script" uid="uid://bhvkk2tqxbiou" path="res://scripts/prototype/stage_director.gd" id="4_director"]
 
-[node name="PrototypeArena" type="Node2D"]
+[node name="PrototypeArena" type="Node2D" unique_id=430143871]
 script = ExtResource("1_arena")
 
-[node name="StageAreas" type="Node2D" parent="."]
+[node name="StageAreas" type="Node2D" parent="." unique_id=16931293]
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
+[node name="Player" parent="." unique_id=1928722324 instance=ExtResource("2_player")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-enabled = true
-zoom = Vector2(1, 1)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=117319377]
 
-[node name="StageDirector" type="Node" parent="."]
+[node name="StageDirector" type="Node" parent="." unique_id=978391524]
 script = ExtResource("4_director")
 
-[node name="AmbientAudio" type="AudioStreamPlayer" parent="."]
+[node name="AmbientAudio" type="AudioStreamPlayer" parent="." unique_id=453362172]
 bus = &"Ambient"
 
-[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
+[node name="MusicAudio" type="AudioStreamPlayer" parent="." unique_id=1100234125]
 bus = &"BGM"
 
-[node name="ProjectileImpactAudio" type="AudioStreamPlayer" parent="."]
+[node name="ProjectileImpactAudio" type="AudioStreamPlayer" parent="." unique_id=1746518885]
 bus = &"SFX"
 
-[node name="HUD" parent="." instance=ExtResource("3_hud")]
+[node name="HUD" parent="." unique_id=1747972485 instance=ExtResource("3_hud")]

@@ -13,11 +13,21 @@ const VFX_FRAME_COUNTS := {
 	"water": 11,
 	"ice": 13,
 }
+const ENDURANCE_ICONS := {
+	&"fire": preload("res://assets/prototype/ui/elemental_endurance/endurance_fire.png"),
+	&"water": preload("res://assets/prototype/ui/elemental_endurance/endurance_water.png"),
+	&"air": preload("res://assets/prototype/ui/elemental_endurance/endurance_air.png"),
+	&"earth": preload("res://assets/prototype/ui/elemental_endurance/endurance_earth.png"),
+}
+const VIEWPORT_MARGIN := 12.0
+const HEALTH_READOUT_OFFSET := Vector2(-70.0, -88.0)
+const STATUS_READOUT_OFFSET := Vector2(-130.0, -176.0)
 
 @onready var body_visual: Sprite2D = $BodyVisual
 @onready var health_label: Label = $HealthLabel
 @onready var status_display: HBoxContainer = $StatusDisplay
 @onready var vfx: AnimatedSprite2D = $VFX
+@onready var hit_reaction_audio: AudioStreamPlayer = $HitReactionAudio
 
 @export var encounter_id: StringName = &"practice_target"
 @export var refills_at_zero := true
@@ -47,6 +57,7 @@ func configure(config: Dictionary) -> void:
 		config["hit_reaction"],
 		config
 	)
+	status_controller.set_elemental_endurance_enabled(is_final_enemy)
 	_on_status_changed(status_controller.get_snapshot())
 	_publish_outcome(&"encounter_activated", {"encounter_id": encounter_id, "final_enemy": is_final_enemy})
 
@@ -71,6 +82,11 @@ func receive_health_event(event: HealthEvent) -> HealthResult:
 
 
 func receive_health_result(result: HealthResult) -> void:
+	if result != null and result.event != null and result.event.target == self and result.outcome == HealthResult.Outcome.APPLIED:
+		if result.event.is_direct_damage():
+			feedback.show_damage(result.event.school, -result.health_delta)
+		elif result.event.delivery == HealthEvent.Delivery.DOT_TICK:
+			feedback.show_dot_damage(result.event.school, -result.health_delta)
 	if not _stage_active or result == null or result.event == null or result.event.target != self or not result.zero_reached or _defeated:
 		return
 	_publish_outcome(&"enemy_zero_health", {"encounter_id": encounter_id, "final_enemy": is_final_enemy})
@@ -89,6 +105,24 @@ func _process(delta: float) -> void:
 	_idle_time += delta
 	var frame := int(floor(_idle_time * IDLE_FPS)) % IDLE_FRAME_COUNT
 	body_visual.region_rect = Rect2(Vector2(frame, 0) * IDLE_CELL_SIZE, IDLE_CELL_SIZE)
+	_clamp_target_readouts()
+
+
+func _clamp_target_readouts() -> void:
+	_place_readout_in_viewport(health_label, HEALTH_READOUT_OFFSET)
+	_place_readout_in_viewport(status_display, STATUS_READOUT_OFFSET)
+
+
+func _place_readout_in_viewport(readout: Control, local_offset: Vector2) -> void:
+	var viewport := get_viewport()
+	var canvas_transform: Transform2D = viewport.get_canvas_transform()
+	var inverse_canvas_transform: Transform2D = canvas_transform.affine_inverse()
+	var viewport_size: Vector2 = viewport.get_visible_rect().size
+	var readout_size: Vector2 = readout.get_combined_minimum_size()
+	var screen_position: Vector2 = canvas_transform * (global_position + local_offset)
+	screen_position.x = clampf(screen_position.x, VIEWPORT_MARGIN, viewport_size.x - readout_size.x - VIEWPORT_MARGIN)
+	screen_position.y = clampf(screen_position.y, VIEWPORT_MARGIN, viewport_size.y - readout_size.y - VIEWPORT_MARGIN)
+	readout.global_position = inverse_canvas_transform * screen_position
 
 
 func _on_health_changed(current_value: float, maximum_value: float) -> void:
@@ -96,7 +130,9 @@ func _on_health_changed(current_value: float, maximum_value: float) -> void:
 	enemy_health_changed.emit(current_value, maximum_value)
 
 
-func _on_reaction_started(_level: int, direction: Vector2, distance: float, duration: float) -> void:
+func _on_reaction_started(level: int, direction: Vector2, distance: float, duration: float) -> void:
+	if level > 0:
+		hit_reaction_audio.play()
 	if _flinch_tween != null and _flinch_tween.is_valid():
 		_flinch_tween.kill()
 	body_visual.position = Vector2.ZERO
@@ -130,6 +166,13 @@ func _on_status_changed(snapshot: Dictionary) -> void:
 		)
 	else:
 		_set_status_badge(&"earth", false, "")
+	var endurance_school := StringName(snapshot.get("endurance_school", &""))
+	var endurance_percent := int(snapshot.get("endurance_percent", 100))
+	_set_status_badge(&"endurance", endurance_school != &"" and endurance_percent < 100, "%d%%" % endurance_percent)
+	if endurance_school != &"" and _status_badges.has(&"endurance"):
+		var endurance_badge: Dictionary = _status_badges[&"endurance"]
+		(endurance_badge["panel"] as PanelContainer).modulate = Color.WHITE
+		(endurance_badge["icon"] as TextureRect).texture = ENDURANCE_ICONS[endurance_school]
 	body_visual.self_modulate = Color("6cb6ff") if bool(snapshot["frozen"]) else Color.WHITE
 
 
@@ -139,25 +182,41 @@ func _build_status_badges() -> void:
 	_create_status_badge(&"fire", Color("8f211d"))
 	_create_status_badge(&"water", Color("185d9b"))
 	_create_status_badge(&"earth", Color("6f5425"))
+	_create_status_badge(&"endurance", Color.WHITE)
+
+
+func _school_color(school: StringName) -> Color:
+	match school:
+		&"fire": return Color("ff493d")
+		&"water": return Color("3a96ff")
+		&"air": return Color("f4f6ff")
+		&"earth": return Color("8b5a2b")
+	return Color.WHITE
 
 
 func _create_status_badge(key: StringName, color: Color) -> void:
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(64.0, 48.0)
+	panel.custom_minimum_size = Vector2(48.0, 48.0) if key == &"endurance" else Vector2(64.0, 48.0)
 	panel.visible = false
 	var style := StyleBoxFlat.new()
-	style.bg_color = color
-	style.border_width_left = 2
-	style.border_width_top = 2
-	style.border_width_right = 2
-	style.border_width_bottom = 2
-	style.border_color = color.lightened(0.35)
+	style.bg_color = Color.TRANSPARENT if key == &"endurance" else color
+	if key != &"endurance":
+		style.border_width_left = 2
+		style.border_width_top = 2
+		style.border_width_right = 2
+		style.border_width_bottom = 2
+		style.border_color = color.lightened(0.35)
 	style.corner_radius_top_left = 4
 	style.corner_radius_top_right = 4
 	style.corner_radius_bottom_left = 4
 	style.corner_radius_bottom_right = 4
 	panel.add_theme_stylebox_override("panel", style)
 	status_display.add_child(panel)
+	var icon := TextureRect.new()
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.visible = key == &"endurance"
+	panel.add_child(icon)
 
 	var label := Label.new()
 	label.add_theme_color_override("font_color", Color.WHITE)
@@ -166,10 +225,15 @@ func _create_status_badge(key: StringName, color: Color) -> void:
 	label.add_theme_font_size_override("font_size", 12)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	if key == &"endurance":
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+		label.add_theme_font_size_override("font_size", 12)
 	panel.add_child(label)
 	_status_badges[key] = {
 		"panel": panel,
 		"label": label,
+		"icon": icon,
 	}
 
 

@@ -1,27 +1,27 @@
 # Technical Design Report — Orb Casting and Tutorial Stage Architecture
 
-Status: `DESIGN_SYNCED_AWAITING_TERMINOLOGY_IMPLEMENTATION`
+Status: `IMPLEMENTED_WITH_REMAINING_RUNTIME_VALIDATION_WAIVED_FOR_TUNING`
 
-Repository basis: committed recovery baseline `6b06dc2` (`checkpoint: save cross-thread recovery state`), synchronized `docs/GAME_DESIGN.md` Git blob identity `032fe58900a6595cb11ab377023cde7835e0510f`, and the current working-tree consolidation of shared training-area/debug-stage navigation. Commit `23fa85b` preserves the accepted U-001–U-007 corrections; `6b06dc2` commits the declarative Stage 1–6 sequence-objective candidate.
+Repository basis: committed recovery baseline `6b06dc2` (`checkpoint: save cross-thread recovery state`), the current approved working-copy `docs/GAME_DESIGN.md`, and the current working-tree implementation. Commit `23fa85b` preserves the accepted U-001–U-007 corrections; `6b06dc2` remains the historical Stage 1–6 sequence-objective checkpoint.
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
 ## Scope and selected decisions
 
-This report preserves the implemented side-scrolling Orb Casting combat baseline and records the user-confirmed reusable tutorial-stage framework, declarative Stage 1–6 objectives, ordered transitions into the existing Final Arena, and in-place free-practice completion state.
+This report preserves the implemented side-scrolling Orb Casting combat baseline and records the reusable tutorial-stage framework through Stage 8, ordered transitions into the existing Final Arena, the tutorial-only Elemental Endurance demonstration, and in-place free-practice completion state.
 
 The Material Decision Ledger is closed:
 
 1. **Direct generic Cast path.** `MagicComponent` resolves generic direct damage for the primary and optional secondary layers. Active prototype Casting does not read a spell loadout or dispatch school-specialty resolvers.
-2. **Shared Entity feedback.** A reusable `FeedbackComponent` belongs to the base `Entity` contract. Enemy uses it now for Cast-level feedback; Player receives the same capability without gaining a new current feedback rule.
-3. **Stages 1–6 preserve the committed combat schema.** The current continuous Heat and generic-Cast schema remains authoritative. Legacy Fire/Water/Air/Earth effect fields and their Developer Portal controls remain dormant but intact; their previously accepted strict removal is deferred to a separate future cleanup slice.
+2. **Shared Entity feedback.** A reusable `FeedbackComponent` belongs to the base `Entity` contract. Target-side `HealthResult` handling displays final direct-hit damage, including `0` for a fully resisted Cast layer; it displays the school-and-level label only for a direct Cast layer whose final loss is negative. Applied DoT ticks use the same final `health_delta` with a smaller number and no Cast-level label.
+3. **Stages 1–8 preserve the committed combat schema.** The current continuous Heat and generic-Cast schema remains authoritative. Legacy Fire/Water/Air/Earth effect fields and their Developer Portal controls remain dormant but intact; their previously accepted strict removal is deferred to a separate future cleanup slice.
 4. **Dedicated commitment-to-Heat interface.** After successful orb consumption and immutable payload storage, Magic emits one internal commitment fact carrying `commit_id` and `consumed_count`. Combat receives it synchronously and grants Heat exactly once. Promotion, launch, interruption, discard, and impact do not emit this fact.
 5. **Last-in primary and single-secondary ordering.** The final consumed orb selects the primary school, whose level equals total consumed orbs. The highest-count remaining school becomes the optional secondary; a secondary tie selects the school appearing latest in the consumed sequence. Impact and feedback resolve primary first, then secondary.
 6. **Pressure state owns chain preservation.** Magic reports CHARGING and the 5–95% intermediate band as chain-preserving states independently of queue contents, charged count, and partial progress. CHARGING banks capacity while the queue is empty; the intermediate band waits 0.3 seconds before DEPLETING begins, resets that timer on return to CHARGING, and remains preserving at zero progress until R2 leaves the band. Might consumes this state for timeout and between-action movement decisions.
 7. **Shared configured feedback lifetime.** Both Entity scenes configure their `FeedbackComponent` from `ui.cast_feedback_duration`, default `2.0` seconds and validated from `0.1` through `20.0`. Developer Portal live tuning affects future entries only; each visible entry retains the duration captured when it was created.
 8. **Initial RELEASE is side-effect-free.** The first raw-pressure sample always establishes Magic's initial pressure state. If that state is RELEASE, initialization emits no Cast request or failure. Only a later transition from CHARGING or the 5–95% intermediate band into RELEASE dispatches one Cast attempt; initial CHARGING begins charging generated orbs and an initial intermediate-band sample begins its no-drain timer.
 9. **Persistent tutorial root and reusable Stage Areas.** Player, HUD, audio, StageDirector, and an Arena-owned camera persist. Physical stage content is supplied by independently instantiated Stage Area scenes.
-10. **Declarative sequence objectives.** StageDirector owns lifecycle and delegates Stage 1–6 attempt state to one `SequenceObjectiveEvaluator` instance configured by the active stage descriptor. HUD never interprets combat outcomes.
+10. **Declarative objectives.** StageDirector owns lifecycle and delegates Stage 1–6 attempt state to one `SequenceObjectiveEvaluator`; Stage 7 uses the configured Heat threshold evaluator and Stage 8 uses the configured Heat-gated sequence evaluator. HUD never interprets combat outcomes.
 11. **Scene-plus-JSON stage definitions.** Stage Area `.tscn` scenes own physical content; the validated prototype JSON owns ordered descriptors, objective type, UI content, and evaluator parameters.
 12. **Player transition facade.** Arena locks input and requests one ordered combat reset through Player rather than reaching into Player components. Active school is preserved.
 13. **Current-plus-next Stage Area lifetime.** Only the active and next areas coexist during a transition. Completed non-final areas unload after the next stage activates; the final arena remains indefinitely.
@@ -32,10 +32,12 @@ The Material Decision Ledger is closed:
 18. **Anchor-aligned Stage Area placement.** Arena owns Stage Area world transforms and aligns the next area's local EntryAnchor to the current area's world-space ExitAnchor. Each area supplies its own spawn, camera target, and horizontal camera bounds.
 19. **Configured transition duration.** Arena captures `tutorial.transition_duration` when a pan begins. The default is `1.0` second, valid from `0.1` through `5.0`; live tuning affects future transitions only.
 20. **Normalized Cast-attempt evidence.** Might assigns one `attempt_id` to each Cast attempt. Accepted actions and their later launched/failed/discarded terminal facts carry that ID, so objectives advance only on the correct terminal result rather than on input acceptance or projectile impact.
-21. **Shared training-area content.** Stages 1–6 instantiate independent copies of one shared training-area scene. Each instance owns its dummy, floor, anchors, gate, trigger, and lifecycle while stage-specific rules remain entirely data/evaluator-owned.
-22. **Generating/Charging terminology boundary.** Player-facing design and UI use Generating/generated orbs and Charging/charged orbs. The runtime pressure state and persisted threshold remain `CHARGING`/`trigger_charge_min`. Existing private identifiers using `marked` may remain implementation details; game-facing labels and canonical records must use generated/charged terminology.
+21. **Shared training-area content.** Stages 1–8 instantiate independent copies of one shared training-area scene. Each instance owns its dummy, floor, anchors, gate, trigger, and lifecycle while stage-specific rules remain entirely data/evaluator-owned.
+22. **Generating/Charging terminology boundary.** Player-facing design and HUD use Generating/generated orbs and Charging/charged orbs. The runtime pressure state and persisted threshold remain `CHARGING`/`trigger_charge_min`; private identifiers using `marked` remain compatibility details only.
+23. **Tutorial-only Elemental Endurance.** Final Enemy `StatusController` owns the active school, capped hit count, action cache, and current multiplier. `MightComponent` supplies one `source_action_id` per X/Cast action and forwards it through committed Cast payloads. `HealthResolver` obtains the multiplier before applying Health, emits the full-resist tag when a direct action reaches zero, suppresses new effects at zero, and returns the actual `health_delta` for presentation. DoT reads the current multiplier without changing the streak.
+24. **First active Final Enemy and Player Health floor.** `CombatEnemy` owns the one-pattern AI and final-Enemy-only solid collision. `HealthComponent` owns the optional minimum Health invariant; Player applies the validated, Developer-Portal-backed `player.one_hp_floor_enabled` flag. Changing the flag affects future damage only and never heals.
 
-Excluded from this implementation slice: stages after Stage 6, changing the existing Final Arena combat objective or contents, school-level spell behavior, legacy school-effect configuration/Portal cleanup, active Enemy attacks, defence redesign, Air/Earth defence, final presentation, asset remapping, save/resume persistence, and final numerical tuning.
+Excluded from this implementation slice: additional Enemy attacks or behaviors, school-level spell behavior, legacy school-effect configuration/Portal cleanup, defence redesign, Air/Earth defence, Player defeat behavior while the 1-HP Floor is disabled, final presentation, asset remapping, save/resume persistence, and final numerical tuning.
 
 ## Implemented codebase map and postflight basis
 
@@ -55,16 +57,16 @@ PrototypeArena                              persistent root
 └── audio and projectile orchestration
 ```
 
-Static inspection of the current `6b06dc2`-based working candidate confirms that the combat baseline and Stage 1–6 tutorial target are implemented:
+Static inspection of the current working candidate confirms the combat baseline, Stage 1–8 tutorial descriptors, active Final Enemy candidate, and Elemental Endurance path are implemented:
 
-- `prototype_arena.tscn` is the persistent root; Stages 1–6 instantiate independent copies of `training_area.tscn`, while `final_arena.tscn` owns the final combat area.
+- `prototype_arena.tscn` is the persistent root; Stages 1–8 instantiate independent copies of `training_area.tscn`, while `final_arena.tscn` owns the final combat area.
 - Arena owns the active `Camera2D`, Stage Area placement, transition pan, current-plus-next lifetime, projectile cleanup, and activation ordering.
-- `StageDirector` owns the stage lifecycle and delegates Stage 1–6 objective logic to the declarative sequence evaluator; the Final Arena retains its final-enemy evaluator.
-- `prototype_combat.json` contains seven validated ordered descriptors: Stages 1–6 plus the Final Arena.
+- `StageDirector` owns the stage lifecycle and delegates Stage 1–6 sequence logic, Stage 7 Heat observation, and Stage 8 Heat-gated sequence logic to configured evaluators; the Final Arena retains its final-enemy evaluator.
+- `prototype_combat.json` contains validated ordered descriptors for Stages 1–8 plus the Final Arena and a Portal-persisted default-stage selector.
 - `PrototypeHUD` instantiates the reusable `ObjectiveWidget` for progress, invalidation, completion, and free-practice presentation.
 - Player exposes the stage input-lock and ordered combat-reset boundary while preserving the selected school.
 
-The remaining authority mismatch is terminology-only: runtime behavior already uses CHARGING, but the HUD label and public presentation fields still expose `MARK`/`marked`. DUM-E must synchronize those game-facing surfaces to generated/charged terminology while preserving private compatibility identifiers where useful. The user-confirmed Stage 1–6 behavior is not changed by this delta.
+The current HUD uses generated-orb and charging/charged presentation terminology. Private `marked` fields remain internal compatibility data; no terminology-only implementation delta remains.
 
 Might publishes normalized light-contact, action, Cast-attempt, school-switch, and chain-termination facts while preserving specialized outcomes where useful. The sequence evaluator consumes only immutable outcomes and stage data; `orb_without_contact` is never a physical hit. No second tutorial event bus exists.
 
@@ -86,7 +88,23 @@ The accepted U-001–U-007 postflight corrections are committed in the recovery 
 
 The base `Entity` script owns a required `FeedbackComponent` reference alongside Health, Status, and HitReaction. The project uses a shared base script rather than a shared inherited Entity scene, so both Player and Enemy scenes compose their own `Feedback` child satisfying that contract.
 
-`FeedbackComponent` owns transient entity-local feedback entries and their expiration. It is separate from `StatusController`: Cast-level text is presentation evidence, not a buff, debuff, or gameplay status. The base Entity configuration injects `ui.cast_feedback_duration` into each Player and Enemy component. Every entry captures that duration at creation, so a live tuning change affects only later entries and never extends or truncates feedback already visible. The current slice publishes `<School> Lv.<N>` only on a struck Entity after that school layer successfully applies direct damage. Enemy presents those entries now. Player has the same public capability for future use, but this slice introduces no new Player-facing feedback trigger.
+`FeedbackComponent` owns transient entity-local feedback entries and their expiration. It is separate from `StatusController`: Cast-level text is presentation evidence, not a buff, debuff, or gameplay status. The base Entity configuration injects `ui.cast_feedback_duration` into each Player and Enemy component. Every entry captures that duration at creation, so a live tuning change affects only later entries and never extends or truncates feedback already visible.
+
+`HealthResolver` delivers each `HealthResult` first to the target and then, when distinct, to the instigator. Player and Enemy gate feedback on `result.event.target == self`, preventing duplicate target/instigator numbers. Applied direct damage displays the final negative `health_delta` as a normal-size number, including `0` after direct full resistance. Magic retains `<School> Lv.<N>` only when its direct Cast layer is applied with a negative loss; a fully resisted Cast layer therefore has a `0` number without a school/level label. Applied `DOT_TICK` events display the same final post-modifier loss through the smaller DoT-number path and never create a Cast-level label.
+
+### Elemental Endurance
+
+Elemental Endurance is enabled only when base Enemy configuration identifies the Final Enemy. `StatusController` owns the enabled flag, active school, capped hit count, cached source-action multiplier, and snapshot values used by the overhead badge. For a direct damage event, `HealthResolver` resolves defence first and calls `StatusController.resolve_elemental_endurance()` only for an `APPLIED` result. The returned multiplier is applied before `HealthComponent.apply_damage()`; the latter remains the source of the final delta, including any Player minimum-Health cap.
+
+`MightComponent` allocates one `source_action_id` for each light action. It supplies that ID and single-school composition to each physical X contact, and writes the same ID into the committed Cast payload that `MagicComponent` forwards to both primary and optional secondary layers. StatusController uses the shared action ID to count one action at most once; a mixed Cast clears the streak instead. At zero multiplier, HealthResolver tags the direct result `elemental_endurance_full_resist`, suppresses new effect instructions, and leaves actual loss at `0`. Might reads that tag to withhold orb generation while Combat still refreshes Heat for the landed direct hit and the normal Impact/hit-reaction path remains available. DoT ticks read the current multiplier for their school but do not advance, reset, or replace the streak.
+
+Enemy builds the active-school Endurance icon and remaining percentage from the StatusController snapshot. It hides the badge at 100%; direct and DoT feedback use the resolved final loss rather than the requested damage.
+
+### First active Final Enemy and Player Health floor
+
+`CombatEnemy` extends the base Enemy with one `DORMANT -> IDLE -> APPROACH -> WINDUP -> RECOVERY` loop and a terminal `DEAD` state. While the Portal-backed `enemy_ai.enabled` setting and active-stage state both permit it, it approaches within range, captures the ShapeCast origin and target vector at windup start, then resolves that frozen geometry after windup. Movement after commitment can therefore produce a complete miss. Hits and misses enter the same configured recovery; an ordinary landed Player hit updates feedback/reaction but does not interrupt the committed Enemy attack. The Final Enemy alone enables the solid collision layer while active; its death removes that layer. Training targets remain pass-through detection targets.
+
+`HealthComponent` owns a configurable `_minimum` Health bound and caps damage at `current - minimum`. Player sets that bound to `1` when `player.one_hp_floor_enabled` is true and `0` otherwise, both during configure and later Portal runtime tuning. This setting is validated and persisted through the existing configuration path. Toggling it changes only future damage calculations; it never changes current Health or creates a Player defeat/restart state.
 
 ### Arena and projectile
 
@@ -127,9 +145,9 @@ Arena owns placement. The first Stage Area is positioned with its EntryAnchor at
 
 PREPARED displays the area's environment and supplies floor collision needed for the waiting Player, but every stage-owned combat Entity has combat collision, Health-event reception, and gameplay processing disabled. Arena has not yet connected Entity outcomes to StageDirector. ACTIVE enables stage-owned combat and exit behavior only after the evaluator and outcome subscriptions exist. RETIRED disables all interaction immediately and precedes unloading.
 
-Stage-owned Enemy bodies remain on the target-detection layer used by X and projectiles, but do not mask the Player body. Training dummies and the final Enemy are therefore pass-through while still receiving combat contact.
+Stage-owned Enemy bodies remain on the target-detection layer used by X and projectiles. Training dummies do not mask the Player body and remain pass-through. The active Final Enemy additionally enables its solid collision layer, so Player cannot pass through it while its AI is active; the layer is disabled when the Final Enemy dies or its AI/stage activation is disabled.
 
-The existing `prototype_arena.tscn` is split mechanically: its final-arena geometry and four Enemy instances move into the Final Arena Stage Area, while its Player, HUD, audio, StageDirector, projectile routing, and new Arena-owned Camera2D remain in the persistent root. A new Stage 1 Stage Area contains one permanent refill target and its own gate/exit markers.
+The existing `prototype_arena.tscn` is split mechanically: its final-arena geometry and four target instances move into the Final Arena Stage Area, while its Player, HUD, audio, StageDirector, projectile routing, and new Arena-owned Camera2D remain in the persistent root. Final Arena contains three permanent, refillable, pass-through practice targets and one solid, killable Final Enemy. The shared training Stage Area contains one permanent refill target plus its own gate/exit markers.
 
 The Arena-owned camera has two modes. During an active stage it follows Player horizontally while clamped to the active Stage Area's transformed horizontal camera bounds and fixed vertical framing. During transition it stops following Player and pans to the transformed next CameraAnchor. Laema exits the old frame under ordinary movement; after exit, Arena locks Player input, repositions Laema to the transformed next PlayerSpawn during the pan, and reveals her waiting when the camera arrives.
 
@@ -204,16 +222,18 @@ chain_terminated while attempt active
 
 The objective uses physical `light_contact_resolved` evidence rather than accepted input or orb creation. Completion is latched before the subsequent `chain_terminated` fact can arrive. Once complete, the evaluator ignores later combat and StageDirector unlocks the Stage 1 right gate while publishing the green widget plus `moving on ->`.
 
-### Declarative Stage 1–6 evaluation
+### Declarative Stage 1–8 evaluation
 
 Stages 1–6 share one data-driven `SequenceObjectiveEvaluator`. Each descriptor supplies ordered `success_steps`, optional prestart and active invalidation flags, completion progress, presentation tokens, and whether the next expected token is highlighted. The evaluator maintains only PRESTART/ACTIVE/COMPLETED phase, progress, and one pending Cast attempt ID.
 
 - **Stage 1:** five landed Fire X steps; a Fire miss invalidates even before progress.
 - **Stage 2:** one Cast step requiring level 5. The evaluator waits for the matching Cast-attempt terminal fact; only `launched` at level 5 succeeds. Any non-launched terminal or launched lower-level Cast invalidates. Projectile impact is irrelevant.
-- **Stage 3:** five landed X steps followed by a level-5 endpoint Cast launch.
+- **Stage 3:** five landed X steps followed by a level-5 endpoint Cast launch. Its presentation instructs `Hold R2 + X -> X -> X -> X -> X -> Release R2`; compact token rendering accommodates the longer first and final labels. R2 timing remains guidance and is not evaluated.
 - **Stage 4:** `X -> X -> Cast -> X`, with the Cast occupying chain position 3 and the final X occupying position 4.
 - **Stage 5:** `X -> Cast -> X -> Cast`, with Casts occupying positions 2 and 4; the second launch completes the objective.
 - **Stage 6:** `X -> X -> school switch -> X -> X -> X`; the accepted switch must occur at chain position 2, and rejected or mistimed switches invalidate the active attempt.
+- **Stage 7:** the configured Heat-threshold evaluator completes immediately once Heat rises above the configured threshold.
+- **Stage 8:** the configured Heat-gated sequence evaluator starts only above threshold, then requires the configured uninterrupted five-X sequence while Heat remains above threshold.
 
 Unexpected actions follow each descriptor's phase rules. Prestart `ignore_unexpected` allows the player to prepare freely where approved. Once an attempt is active, a wrong expected step, an applicable rejected switch, or `chain_terminated` invalidates and resets only the objective attempt. Completion remains latched permanently.
 
@@ -363,7 +383,7 @@ tutorial:
         tokens: []
         success_steps: [level-5 Cast launch]
         completion_progress: 0
-    - id: stage_3 ... stage_6
+    - id: stage_3 ... stage_8
       area_scene: res://scenes/stages/training_area.tscn
       objective:
         type: sequence
@@ -384,17 +404,17 @@ The fixed `100%` baseline is behavior, not configuration. The committed continuo
 
 Casting configuration retains the committed timing, pressure, projectile, five-orb charging, and ten-orb storage fields unchanged. `spell_loadout` remains absent. The persisted key `max_marked_capacity` remains a private compatibility detail for this prototype; game-facing terminology is charged capacity. The currently persisted Fire DoT, Water status-level, Air chain-lightning, Earth area/Slow, and related school-effect fields remain validated and exposed through their existing Portal controls, but generic prototype Casting does not read or dispatch them. Removing those dormant fields and dependent paths is a separate future cleanup slice.
 
-The Developer Portal keeps its General, Audio, and Combat organization. General → UI exposes `cast_feedback_duration` and `tutorial.transition_duration` beside the existing presentation duration. Transition-duration changes persist through the existing JSON path; each pan captures the value at start, so live changes affect future transitions only. Existing Combat-tab school controls remain untouched and dormant where their effects are deferred.
+The Developer Portal keeps its General, Audio, and Combat organization. General → UI exposes `cast_feedback_duration` and `tutorial.transition_duration` beside the existing presentation duration. Transition-duration changes persist through the existing JSON path; each pan captures the value at start, so live changes affect future transitions only. Audio presents `0–100%` linear volume controls, converts them to the existing persisted `audio.<group>.volume_db` values, and leaves Arena's AudioServer bus application unchanged; `0%` stores the validated silence floor of `-80 dB`, while `100%` stores `0 dB`. Existing Combat-tab school controls remain untouched and dormant where their effects are deferred.
 
-The always-visible HUD renders ten queue slots even when empty, a gold outline on charged orbs, the charging-progress bar, and the front-orb lifetime. Game-facing labels must use `CHARGE`, while private snapshot fields may remain `marked` for compatibility. The current `MARK` label is stale and belongs to the terminology-only implementation delta. The overflow signal drives the whole-widget horizontal flinch. The developer Heat readout shows actual attack speed with a continuous bar. The upper-right raw R2 pressure gauge and existing developer-overlay visibility behavior remain unchanged.
+The always-visible HUD renders ten generated-orb slots even when empty, a gold outline on charged orbs, the charging-progress bar, and the front-orb lifetime. Its game-facing label uses `CHARGING / CHARGED`; private snapshot fields may remain `marked` for compatibility. The overflow signal drives the whole-widget horizontal flinch. The developer telemetry rail shows live Health, Enemy Health, Heat, speed, defence, school/chain, event confirmations, and raw R2 pressure; its visibility remains Portal-controlled.
 
 ## Implemented slices and validation seams
 
-1. **Persistent root and Stage Areas:** Player/HUD/audio/projectile orchestration persists in the root; Arena owns the Camera2D; Stages 1–6 instantiate the shared training-area contract and Final Arena uses its dedicated scene.
+1. **Persistent root and Stage Areas:** Player/HUD/audio/projectile orchestration persists in the root; Arena owns the Camera2D; Stages 1–8 instantiate the shared training-area contract and Final Arena uses its dedicated scene.
 2. **Stage configuration and lifecycle:** the flat tutorial schema is replaced by validated ordered stages, evaluator configuration, StageDirector lifecycle, and the current-plus-next loading window.
-3. **Objective evidence, evaluation, and presentation:** normalized light/Cast-attempt/switch/termination facts, the declarative sequence evaluator, final-enemy evaluator, immutable presentation snapshots, and ObjectiveWidget are implemented.
+3. **Objective evidence, evaluation, and presentation:** normalized light/Cast-attempt/switch/termination facts, Stage 1–6 sequence plus Stage 7–8 Heat evaluators, final-enemy evaluator, immutable presentation snapshots, and ObjectiveWidget are implemented.
 4. **Player transition boundary:** Player exposes input lock and ordered stage reset; Arena orders PREPARED instantiation, placement, camera pan, evaluator binding, activation, unlock, and completed-area unloading.
-5. **Stage 1 through free practice:** Stage 1 initializes at startup, progresses through Stages 2–6, transitions into the Final Arena, and final-enemy defeat switches that arena in place to indefinite `now you are free` practice.
+5. **Stage 1 through free practice:** Stage 1 initializes at startup, progresses through Stages 2–8, transitions into the Final Arena, and final-enemy defeat switches that arena in place to indefinite `now you are free` practice.
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. Because no exact scenario matrix was supplied, postflight must not infer individual results for these validation seams:
 
@@ -406,6 +426,7 @@ The user reported the complete Stage 1–6 flow run and confirmed in Godot on 20
 - later combat in the completed Stage 1 area cannot revoke completion;
 - Stage 2 completes only on a launched level-5 Cast; non-launched attempts and lower-level launches invalidate, while projectile impact is irrelevant;
 - Stages 3–6 enforce their exact declarative X/Cast/switch sequences and invalidation rules;
+- Stage 7 Heat observation and Stage 8 high-Heat chain behavior require separate user validation;
 - each completed stage locks input, pans to the next independently instantiated area, resets combat state, preserves active school, unloads the completed area, and prevents return;
 - only current and next Stage Areas coexist during transition; PREPARED targets cannot collide, receive HealthEvents, process gameplay, or publish outcomes;
 - shared training-area and Final Arena placement align anchors, preserve continuous ground, and respect transformed camera bounds;
@@ -415,8 +436,8 @@ The user reported the complete Stage 1–6 flow run and confirmed in Godot on 20
 - the existing final-enemy objective and practice targets remain functional after scene extraction; and
 - final-enemy defeat immediately changes the widget to persistent `now you are free` with no progress row or further transition.
 
-Existing Orb Casting, generic damage, Entity feedback, audio, Developer Portal—including its dormant legacy school controls—and Final Arena combat behavior are regression boundaries. Incoming Enemy attacks and ordinary-play defence remain outside the existing validation boundary. Stages after Stage 6 and legacy school-effect cleanup remain separate future slices.
+Existing Orb Casting, generic damage, Entity feedback, audio, Developer Portal—including its dormant legacy school controls—and Final Arena combat behavior are regression boundaries. Elemental Endurance, live AI enable/disable, Player 1-HP Floor behavior, and ordinary-play defence remain outside the reported runtime-validation boundary. Additional Enemy attacks and legacy school-effect cleanup remain separate future slices.
 
 Light widget-flinch values remain reversible prototype tuning. Shared training-area dimensions and internal marker placement are authored in the Stage Area scene. The user reported broad current-feature validation; no agent-run Godot, build, compiler, or automated-test evidence exists.
 
-After the game-facing terminology delta is implemented and user-verified, Friday recommends a fresh Ultron `mode=tech-postflight` because this candidate spans scene ownership, stage configuration, objective evaluation, Player reset ordering, combat outcomes, and HUD interfaces.
+The user has specifically reported validating the smaller DoT floating-damage feedback. On 2026-09-05, the user also reported that the Final Enemy's solid-body collision works, the three restored practice targets remain pass-through, leaving the committed attack area during windup produces a miss without retargeting, and hitting the Enemy during windup does not interrupt its committed attack. The user then explicitly waived all remaining targeted verification passes for the current tuning phase. Those waivers do not establish the untested combat, Portal, defence, or Stage 7–8 behaviors. A fresh Ultron `mode=tech-postflight` remains appropriate if broader runtime evidence is supplied later.

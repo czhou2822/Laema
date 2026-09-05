@@ -58,9 +58,14 @@ func resolve(event: HealthEvent) -> HealthResult:
 
 	var health_delta := 0.0
 	var effect_applied := false
+	var resolution_tag: StringName = &""
 	if outcome == HealthResult.Outcome.APPLIED:
-		health_delta = _health.apply_damage(event.amount)
-		if not event.effect_instruction.is_empty():
+		var endurance: Dictionary = _status_controller.resolve_elemental_endurance(event)
+		var multiplier := float(endurance["multiplier"])
+		health_delta = _health.apply_damage(event.amount * multiplier)
+		if bool(endurance["full_resist"]):
+			resolution_tag = &"elemental_endurance_full_resist"
+		if not event.effect_instruction.is_empty() and multiplier > 0.0:
 			effect_applied = bool(
 				_status_controller.apply_instruction(
 					event.effect_instruction,
@@ -75,7 +80,8 @@ func resolve(event: HealthEvent) -> HealthResult:
 		health_delta,
 		reaction_level,
 		effect_applied,
-		zero_reached
+		zero_reached,
+		resolution_tag
 	)
 	_hit_reaction.execute(reaction_level, event.contact_direction)
 	if zero_reached and _owner_entity.should_refill_health_at_zero():
