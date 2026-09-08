@@ -1,0 +1,192 @@
+{
+  "schema_version": 3,
+  "checkpoint_id": "2026-09-08-shared-checkout-handoff",
+  "previous_manifest": "docs/checkpoints/2026-09-05-active-enemy-tuning/manifest.json",
+  "project_id": "66d70521-6484-4bf3-b170-ba142e9e0ad9",
+  "tasks": [
+    {
+      "task_key": "production_manager",
+      "canonical_title": "Production Manager",
+      "aliases": [
+        "PM",
+        "Production Manager"
+      ],
+      "changed": true,
+      "summary": "Shared-checkout handoffs completed for Art, Marketing, Town Design, and Design Overseer; the checkpoint workflow remains the publication boundary.",
+      "latest_turn_id": "01a07f40-a86a-77f3-ac73-5c3e9bc24a73",
+      "task_file": "production-manager.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a014f7-f5ea-7e70-9474-117c6ca3728d",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "active",
+        "latest_completed_at": 1788841624
+      }
+    },
+    {
+      "task_key": "combat",
+      "canonical_title": "Combat",
+      "aliases": [
+        "Combat"
+      ],
+      "changed": true,
+      "summary": "The full decision chain was reconstructed; active-enemy, Endurance, charging, Heat, and tutorial tuning remain the current combat context.",
+      "latest_turn_id": "01a075c5-2539-7843-bfcd-6d9c39330132",
+      "task_file": "combat.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a0150a-3101-7611-910e-4e9dc6d55728",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788682489
+      }
+    },
+    {
+      "task_key": "art",
+      "canonical_title": "Art",
+      "aliases": [
+        "Art"
+      ],
+      "changed": true,
+      "summary": "Art now uses the shared checkout; the HUD wireframe remains a layout reference and no final-art decision was added.",
+      "latest_turn_id": "no-message-bearing-turn",
+      "task_file": "art.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f41-7159-70f1-ac7d-e6217941c130",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "idle",
+        "latest_completed_at": null
+      }
+    },
+    {
+      "task_key": "marketing",
+      "canonical_title": "Marketing",
+      "aliases": [
+        "Marketing"
+      ],
+      "changed": true,
+      "summary": "Tournament Pitch v0.3 and the locked pitch-flow README were published to main; temporary generation scratch remains outside the repository.",
+      "latest_turn_id": "01a07eb5-ebcc-7bf1-ad2f-03a295009084",
+      "task_file": "marketing.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f41-8b3c-70f1-ae94-6f829627eb7f",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1788833769
+      }
+    },
+    {
+      "task_key": "u",
+      "canonical_title": "U",
+      "aliases": [
+        "U"
+      ],
+      "changed": true,
+      "summary": "Eight-level Charging was user-verified and current documentation was synchronized; no agent-run runtime evidence was added.",
+      "latest_turn_id": "01a0748c-4b44-7140-a843-e06d67d824e0",
+      "task_file": "u.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a02d6a-8dfd-75f1-8b1f-230ababb3f22",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788661758
+      }
+    },
+    {
+      "task_key": "audio",
+      "canonical_title": "Laema Audio",
+      "aliases": [
+        "Audio",
+        "Laema Audio"
+      ],
+      "changed": true,
+      "summary": "Compound-Cast harmony is a new audio proposal; no timing decision has been made.",
+      "latest_turn_id": "01a07498-52e6-7843-9aed-a4dca6e01a3a",
+      "task_file": "audio.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a02e1a-babc-7200-991f-d48f8f4bf4f2",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788662606
+      }
+    },
+    {
+      "task_key": "dummy",
+      "canonical_title": "Dummy",
+      "aliases": [
+        "Dummy"
+      ],
+      "changed": true,
+      "summary": "The HealthResolver endurance type-inference parser fix was applied and awaits user validation.",
+      "latest_turn_id": "01a0707c-5741-7b92-9a09-b567ff699baf",
+      "task_file": "dummy.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a02eea-fb2f-7c32-aa95-5aed9642a14b",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788593628
+      }
+    },
+    {
+      "task_key": "design_overseer",
+      "canonical_title": "Design Overseer",
+      "aliases": [
+        "Design Overseer",
+        "Design overseer"
+      ],
+      "changed": true,
+      "summary": "Design Overseer now uses the shared checkout; current postflight and document-reconciliation gates remain open.",
+      "latest_turn_id": "01a06f5e-87b6-7ec3-a4a9-8cf08f1e9a24",
+      "task_file": "design-overseer.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f43-a5a4-7f83-a065-dc2f6a4b8c1e",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1788574968
+      }
+    },
+    {
+      "task_key": "town_design",
+      "canonical_title": "Town Design",
+      "aliases": [
+        "Town Design"
+      ],
+      "changed": true,
+      "summary": "Town Design now uses the shared checkout; Mirham remains dormant proposal context.",
+      "latest_turn_id": "01a07696-c5df-7c92-abb7-7c543f318684",
+      "task_file": "town-design.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f43-9652-7530-b974-61197ada0e59",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1788696032
+      }
+    },
+    {
+      "task_key": "narrative_room",
+      "canonical_title": "Narrative Room",
+      "aliases": [
+        "NarrativeRoom",
+        "Narrative Room"
+      ],
+      "changed": true,
+      "summary": "Narrative handoff text was prepared; no new canon was added.",
+      "latest_turn_id": "01a07696-de80-70c0-a7d8-0583f1dd9b89",
+      "task_file": "narrative-room.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a014f2-6363-7c20-b67e-1d80689ff86e",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1788696075
+      }
+    }
+  ]
+}
