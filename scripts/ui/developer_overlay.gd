@@ -54,7 +54,7 @@ const FIELD_RANGES := {
 	"combat.direct_impact": Vector3(0.0, 5.0, 1.0),
 	"casting.orb_lifetime": Vector3(0.1, 30.0, 0.1),
 	"casting.charge_step_duration": Vector3(0.05, 5.0, 0.01),
-	"casting.max_marked_capacity": Vector3(5.0, 5.0, 1.0),
+	"casting.max_marked_capacity": Vector3(8.0, 8.0, 1.0),
 	"casting.trigger_release_max": Vector3(0.0, 1.0, 0.01),
 	"casting.trigger_charge_min": Vector3(0.0, 1.0, 0.01),
 	"casting.empowered_primary_multiplier": Vector3(0.1, 5.0, 0.05),

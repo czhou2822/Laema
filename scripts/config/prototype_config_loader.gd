@@ -38,6 +38,7 @@ static func load_and_validate(path: String) -> Dictionary:
 		return _failure("Configuration root must be a JSON object.")
 
 	var data: Dictionary = json.data
+	_normalize_legacy_audio_volumes(data)
 	var validation_error := _validate(data)
 	if not validation_error.is_empty():
 		return _failure(validation_error)
@@ -202,7 +203,7 @@ static func _validate(data: Dictionary) -> String:
 	integer_error = _validate_integer(data, "air", "max_chain_targets", 1, 32)
 	if not integer_error.is_empty():
 		return integer_error
-	integer_error = _validate_integer(data, "casting", "max_marked_capacity", 5, 5)
+	integer_error = _validate_integer(data, "casting", "max_marked_capacity", 8, 8)
 	if not integer_error.is_empty():
 		return integer_error
 	integer_error = _validate_integer(data, "casting", "max_storage_capacity", 10, 10)
@@ -282,9 +283,21 @@ static func _validate_audio(audio: Dictionary) -> String:
 		if not group.has("volume_db") or not _is_number(group["volume_db"]):
 			return "audio.%s.volume_db must be numeric." % group_name
 		var volume_db := float(group["volume_db"])
-		if volume_db < -80.0 or volume_db > 24.0:
-			return "audio.%s.volume_db must be between -80 and 24." % group_name
+		if volume_db < -80.0 or volume_db > 0.0:
+			return "audio.%s.volume_db must be between -80 and 0." % group_name
 	return ""
+
+
+static func _normalize_legacy_audio_volumes(data: Dictionary) -> void:
+	if not data.has("audio") or typeof(data["audio"]) != TYPE_DICTIONARY:
+		return
+	var audio: Dictionary = data["audio"]
+	for group_name in ["ambient", "sfx", "bgm"]:
+		if not audio.has(group_name) or typeof(audio[group_name]) != TYPE_DICTIONARY:
+			continue
+		var group: Dictionary = audio[group_name]
+		if group.has("volume_db") and _is_number(group["volume_db"]):
+			group["volume_db"] = minf(float(group["volume_db"]), 0.0)
 
 
 static func _validate_tutorial(tutorial: Dictionary) -> String:
@@ -305,33 +318,44 @@ static func _validate_tutorial(tutorial: Dictionary) -> String:
 		var stage = tutorial["stages"][index]
 		if typeof(stage) != TYPE_DICTIONARY:
 			return "tutorial.stages[%d] must be an object." % index
-		for key in ["id", "area_scene", "objective", "final"]:
+		for key in ["id", "display_name", "area_scene", "objective", "final"]:
 			if not stage.has(key):
 				return "tutorial.stages[%d].%s is required." % [index, key]
 		if typeof(stage["id"]) != TYPE_STRING or String(stage["id"]).is_empty() or ids.has(stage["id"]):
 			return "tutorial stage ids must be unique non-empty strings."
+		if typeof(stage["display_name"]) != TYPE_STRING or String(stage["display_name"]).is_empty():
+			return "tutorial stage display_name must be a non-empty string."
 		ids[stage["id"]] = true
 		if typeof(stage["area_scene"]) != TYPE_STRING or not ResourceLoader.exists(str(stage["area_scene"]), "PackedScene"):
 			return "tutorial.stages[%d].area_scene must reference a loadable PackedScene." % index
 		if typeof(stage["final"]) != TYPE_BOOL or bool(stage["final"]) != (index == tutorial["stages"].size() - 1):
 			return "tutorial must have exactly one final stage at the end."
 		var objective = stage["objective"]
-		if typeof(objective) != TYPE_DICTIONARY or typeof(objective.get("type", null)) != TYPE_STRING or typeof(objective.get("label", null)) != TYPE_STRING:
-			return "tutorial.stages[%d].objective must define type and label." % index
+		if typeof(objective) != TYPE_DICTIONARY or typeof(objective.get("type", null)) != TYPE_STRING:
+			return "tutorial.stages[%d].objective must define type." % index
+		var presentation_error := _validate_presentation(objective.get("presentation", {}))
+		if not presentation_error.is_empty():
+			return "tutorial.stages[%d].objective.%s" % [index, presentation_error]
 		match StringName(objective["type"]):
 			&"sequence":
 				var sequence_error := _validate_sequence_objective(objective)
 				if not sequence_error.is_empty():
 					return sequence_error
 			&"final_enemy":
-				if StringName(objective.get("encounter_id", &"")) != &"final_enemy" or not stage.has("free_practice_text") or typeof(stage["free_practice_text"]) != TYPE_STRING:
-					return "final_enemy requires final_enemy encounter_id and free_practice_text."
+				if StringName(objective.get("encounter_id", &"")) != &"final_enemy" or not stage.has("free_practice_presentation"):
+					return "final_enemy requires final_enemy encounter_id and free_practice_presentation."
+				var free_presentation_error := _validate_presentation(stage["free_practice_presentation"])
+				if not free_presentation_error.is_empty():
+					return "final_enemy.free_practice_%s" % free_presentation_error
 			&"heat_threshold":
 				if not _is_number(objective.get("threshold", null)):
 					return "heat_threshold requires numeric threshold."
 			&"heat_guard_sequence":
 				if not _is_number(objective.get("threshold", null)):
 					return "heat_guard_sequence requires numeric threshold."
+				var guarded_presentation: Dictionary = objective["presentation"]
+				if not _presentation_has_row(guarded_presentation, &"heat") or not objective.has("sequence_row_id"):
+					return "heat_guard_sequence requires heat and sequence presentation rows."
 				var guarded_sequence_error := _validate_sequence_objective(objective)
 				if not guarded_sequence_error.is_empty():
 					return guarded_sequence_error
@@ -343,15 +367,18 @@ static func _validate_tutorial(tutorial: Dictionary) -> String:
 
 
 static func _validate_sequence_objective(objective: Dictionary) -> String:
-	for key in ["tokens", "success_steps", "prestart", "active", "completion_progress"]:
+	for key in ["success_steps", "prestart", "active", "completion_progress"]:
 		if not objective.has(key):
 			return "sequence.%s is required." % key
-	if typeof(objective["tokens"]) != TYPE_ARRAY or typeof(objective["success_steps"]) != TYPE_ARRAY or objective["success_steps"].is_empty():
-		return "sequence requires tokens and a non-empty success_steps array."
+	if typeof(objective["success_steps"]) != TYPE_ARRAY or objective["success_steps"].is_empty():
+		return "sequence requires a non-empty success_steps array."
 	if typeof(objective["prestart"]) != TYPE_DICTIONARY or typeof(objective["active"]) != TYPE_DICTIONARY or not _is_number(objective["completion_progress"]):
 		return "sequence prestart, active, and completion_progress are invalid."
 	if objective.has("highlight_next") and typeof(objective["highlight_next"]) != TYPE_BOOL:
 		return "sequence.highlight_next must be Boolean."
+	if objective.has("sequence_row_id"):
+		if typeof(objective["sequence_row_id"]) != TYPE_STRING or String(objective["sequence_row_id"]).is_empty() or not _presentation_has_row(Dictionary(objective["presentation"]), StringName(objective["sequence_row_id"])):
+			return "sequence.sequence_row_id must reference a presentation row."
 	for step_variant in objective["success_steps"]:
 		if typeof(step_variant) != TYPE_DICTIONARY:
 			return "sequence success steps must be objects."
@@ -361,12 +388,45 @@ static func _validate_sequence_objective(objective: Dictionary) -> String:
 			return "sequence step type is unsupported."
 		if step.has("school") and StringName(step["school"]) not in [&"fire", &"water", &"air", &"earth"]:
 			return "sequence light school must be functional."
-		if step.has("required_level") and (not _is_number(step["required_level"]) or int(step["required_level"]) < 1 or int(step["required_level"]) > 5):
-			return "sequence required_level must be an integer from 1 through 5."
+		if step.has("required_level") and (not _is_number(step["required_level"]) or int(step["required_level"]) < 1 or int(step["required_level"]) > 8):
+			return "sequence required_level must be an integer from 1 through 8."
 		if step.has("endpoint") and typeof(step["endpoint"]) != TYPE_BOOL:
 			return "sequence endpoint must be Boolean."
 		if step.has("chain_position") and (not _is_number(step["chain_position"]) or not is_equal_approx(float(step["chain_position"]), round(float(step["chain_position"])) )):
 			return "sequence chain_position must be an integer."
+	return ""
+
+
+static func _presentation_has_row(presentation: Dictionary, row_id: StringName) -> bool:
+	for row_variant in presentation["rows"]:
+		var row: Dictionary = row_variant
+		if StringName(row["id"]) == row_id:
+			return true
+	return false
+
+
+static func _validate_presentation(presentation: Variant) -> String:
+	if typeof(presentation) != TYPE_DICTIONARY:
+		return "presentation must be an object."
+	var presentation_data: Dictionary = presentation
+	if not presentation_data.has("rows") or typeof(presentation_data["rows"]) != TYPE_ARRAY or presentation_data["rows"].is_empty():
+		return "presentation.rows must be a non-empty array."
+	var ids: Dictionary = {}
+	for row_variant in presentation_data["rows"]:
+		if typeof(row_variant) != TYPE_DICTIONARY:
+			return "presentation.rows entries must be objects."
+		var row: Dictionary = row_variant
+		if typeof(row.get("id", null)) != TYPE_STRING or String(row["id"]).is_empty() or ids.has(row["id"]):
+			return "presentation row ids must be unique non-empty strings."
+		if typeof(row.get("label", null)) != TYPE_STRING or String(row["label"]).is_empty():
+			return "presentation row labels must be non-empty strings."
+		if row.has("tokens"):
+			if typeof(row["tokens"]) != TYPE_ARRAY:
+				return "presentation row tokens must be an array."
+			for token in row["tokens"]:
+				if typeof(token) != TYPE_STRING:
+					return "presentation row tokens must contain strings."
+		ids[row["id"]] = true
 	return ""
 
 

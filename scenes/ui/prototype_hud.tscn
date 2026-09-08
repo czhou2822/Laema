@@ -67,7 +67,7 @@ show_percentage = false
 
 [node name="MarkLabel" type="Label" parent="GameUI/OrbPanel/OrbLayout"]
 layout_mode = 2
-text = "CHARGING / CHARGED  0 / 5"
+text = "SPELL LEVEL  0 / 8"
 horizontal_alignment = 1
 
 [node name="ObjectiveWidget" parent="GameUI" instance=ExtResource("2_widget")]
@@ -75,7 +75,7 @@ layout_mode = 0
 offset_left = 930.0
 offset_top = 126.0
 offset_right = 1260.0
-offset_bottom = 230.0
+offset_bottom = 282.0
 
 [node name="DeveloperReadout" type="Control" parent="."]
 layout_mode = 3

@@ -55,10 +55,9 @@ func get_stage_options() -> Array[Dictionary]:
 	var options: Array[Dictionary] = []
 	for stage_index in range(_stages.size()):
 		var descriptor: Dictionary = _stages[stage_index]
-		var objective: Dictionary = descriptor["objective"]
 		options.append({
 			"index": stage_index,
-			"label": "Stage %d — %s" % [stage_index + 1, str(objective["label"])],
+			"label": str(descriptor["display_name"]),
 			"active": stage_index == _index,
 		})
 	return options
@@ -80,7 +79,7 @@ func activate_stage(descriptor: Dictionary) -> void:
 	add_child(_evaluator)
 	_evaluator.configure(Dictionary(_active_descriptor["objective"]))
 	_lifecycle = Lifecycle.FINAL_ACTIVE if bool(_active_descriptor.get("final", false)) else Lifecycle.ACTIVE
-	_emit_objective(false, 0, false, _evaluator.get_highlight_index() if _evaluator.has_method("get_highlight_index") else -1)
+	_emit_objective(false, false)
 
 
 func consume_outcome(outcome) -> void:
@@ -92,11 +91,11 @@ func consume_outcome(outcome) -> void:
 	var result: Dictionary = _evaluator.consume_outcome(snapshot)
 	match StringName(result.get("kind", &"unchanged")):
 		&"progress":
-			_emit_objective(false, int(result["progress"]), false, int(result.get("highlight_index", -1)))
+			_emit_objective(false, false)
 		&"invalidated":
-			_emit_objective(false, 0, true, int(result.get("highlight_index", -1)))
+			_emit_objective(false, true)
 		&"completed":
-			_on_objective_completed(int(result.get("progress", 0)))
+			_on_objective_completed()
 
 func consume_heat(value: float, level: int, speed_multiplier: float) -> void:
 	if _evaluator == null or not _evaluator.has_method("consume_heat"):
@@ -106,11 +105,11 @@ func consume_heat(value: float, level: int, speed_multiplier: float) -> void:
 func _consume_result(result: Dictionary) -> void:
 	match StringName(result.get("kind", &"unchanged")):
 		&"progress":
-			_emit_objective(false, int(result["progress"]), false, int(result.get("highlight_index", -1)))
+			_emit_objective(false, false)
 		&"invalidated":
-			_emit_objective(false, 0, true, int(result.get("highlight_index", -1)))
+			_emit_objective(false, true)
 		&"completed":
-			_on_objective_completed(int(result.get("progress", 0)))
+			_on_objective_completed()
 
 
 func report_exit_reached() -> void:
@@ -132,30 +131,52 @@ func is_exit_authorized() -> bool:
 	return _lifecycle == Lifecycle.COMPLETED_WAITING_FOR_EXIT
 
 
-func _on_objective_completed(progress: int) -> void:
+func _on_objective_completed() -> void:
 	if _lifecycle == Lifecycle.FINAL_ACTIVE:
 		_lifecycle = Lifecycle.FREE_PRACTICE
 		_dispose_evaluator()
-		presentation_changed.emit({"stage_number": 0, "label": str(_active_descriptor.get("free_practice_text", "now you are free")), "tokens": [], "progress": 0, "completed": true, "prompt": "", "flinch": false})
+		presentation_changed.emit({"stage_number": 0, "rows": _free_practice_rows(), "completed": true, "prompt": "", "flinch": false})
 		free_practice_entered.emit()
 		return
 	_lifecycle = Lifecycle.COMPLETED_WAITING_FOR_EXIT
-	_emit_objective(true, progress, false, -1)
+	_emit_objective(true, false)
 	stage_completed.emit(_active_descriptor.duplicate(true))
 
 
-func _emit_objective(completed: bool, progress: int, flinch: bool, highlight_index: int) -> void:
+func _emit_objective(completed: bool, flinch: bool) -> void:
 	var objective: Dictionary = _active_descriptor["objective"]
 	presentation_changed.emit({
 		"stage_number": _index + 1,
-		"label": str(objective["label"]),
-		"tokens": Array(objective.get("tokens", [])).duplicate(),
-		"progress": progress,
-		"highlight_index": highlight_index,
+		"rows": _merge_rows(Dictionary(objective["presentation"])),
 		"completed": completed,
 		"prompt": "moving on ->" if completed else "",
 		"flinch": flinch,
 	})
+
+
+func _merge_rows(presentation: Dictionary) -> Array:
+	var row_state: Dictionary = _evaluator.get_row_state()
+	var rows: Array = []
+	for row_variant in presentation["rows"]:
+		var row: Dictionary = Dictionary(row_variant).duplicate(true)
+		var state: Dictionary = Dictionary(row_state.get(StringName(row["id"]), {}))
+		row["progress"] = int(state.get("progress", 0))
+		row["highlight_index"] = int(state.get("highlight_index", -1))
+		row["completed"] = bool(state.get("completed", false))
+		rows.append(row)
+	return rows
+
+
+func _free_practice_rows() -> Array:
+	var presentation: Dictionary = _active_descriptor["free_practice_presentation"]
+	var rows: Array = []
+	for row_variant in presentation["rows"]:
+		var row: Dictionary = Dictionary(row_variant).duplicate(true)
+		row["progress"] = 0
+		row["highlight_index"] = -1
+		row["completed"] = true
+		rows.append(row)
+	return rows
 
 
 func _create_evaluator(objective: Dictionary) -> ObjectiveEvaluator:

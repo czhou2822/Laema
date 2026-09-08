@@ -3,11 +3,19 @@ extends ObjectiveEvaluator
 
 var _encounter_id := &"final_enemy"
 var _completed := false
+var _row_id := &""
 
 
 func configure(objective: Dictionary) -> void:
 	_encounter_id = StringName(objective["encounter_id"])
 	_completed = false
+	var presentation: Dictionary = objective["presentation"]
+	var rows: Array = presentation["rows"]
+	_row_id = StringName(rows[0]["id"])
+
+
+func get_row_state() -> Dictionary:
+	return {_row_id: {"completed": _completed}}
 
 
 func consume_outcome(outcome: Dictionary) -> Dictionary:

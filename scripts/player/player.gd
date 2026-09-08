@@ -21,8 +21,8 @@ const HURT_TEXTURE: Texture2D = preload("res://assets/prototype/player/animation
 const FIRE_X1: Texture2D = preload("res://assets/prototype/player/animation/fire_x1.png")
 const FIRE_X2: Texture2D = preload("res://assets/prototype/player/animation/fire_x2.png")
 const FIRE_X3: Texture2D = preload("res://assets/prototype/player/animation/fire_x3.png")
-const FIRE_X4: Texture2D = preload("res://assets/prototype/player/animation/fire_x4.png")
-const FIRE_X5: Texture2D = preload("res://assets/prototype/player/animation/fire_x5.png")
+const FIRE_X4: Texture2D = preload("res://assets/prototype/player/animation/fire_x4_opposite_limb_trial.png")
+const FIRE_X5: Texture2D = preload("res://assets/prototype/player/animation/fire_x4.png")
 const WATER_X1: Texture2D = preload("res://assets/prototype/player/animation/water_x1.png")
 const WATER_X2: Texture2D = preload("res://assets/prototype/player/animation/water_x2.png")
 const WATER_X3: Texture2D = preload("res://assets/prototype/player/animation/water_x3.png")
@@ -84,7 +84,7 @@ const CAST_FAIL_STREAM_PATH := "res://assets/prototype/audio/casting/cast_fail.o
 const ORB_CREATED_STREAM_PATH := "res://assets/prototype/audio/casting/orb_created.ogg"
 const MARK_ORB_STREAM_PATH := "res://assets/prototype/audio/casting/mark_orb_scale.ogg"
 const MARK_AUDIO_VOLUME_DB := 0.0
-const MARK_AUDIO_PITCH_SCALES: Array[float] = [1.0, 9.0 / 8.0, 5.0 / 4.0, 4.0 / 3.0, 3.0 / 2.0]
+const MARK_AUDIO_PITCH_SCALES: Array[float] = [1.0, 9.0 / 8.0, 5.0 / 4.0, 4.0 / 3.0, 3.0 / 2.0, 5.0 / 3.0, 15.0 / 8.0, 2.0]
 const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
 const WALK_FRAMES := 12
@@ -141,6 +141,8 @@ var _sprite_rest_scale := Vector2.ONE
 var _sprite_rest_rotation := 0.0
 var _last_orb_count := 0
 var _last_marked_count := 0
+var _pending_mark_audio_levels: Array[int] = []
+var _mark_audio_draining := false
 var _stage_input_locked := false
 var _hit_reaction_tween: Tween
 var _hit_visual_active := false
@@ -166,6 +168,8 @@ func configure(config: Dictionary) -> void:
 	combat.combo_completed.connect(_on_combo_completed)
 	combat.combo_reset.connect(_on_combo_reset)
 	combat.orb_queue_changed.connect(_on_orb_queue_changed)
+	if not mark_audio.finished.is_connected(_on_mark_audio_finished):
+		mark_audio.finished.connect(_on_mark_audio_finished)
 	defence.guard_warning.connect(_on_guard_warning)
 	health.health_changed.connect(_on_health_changed)
 	status_controller.effect_state_changed.connect(_on_effect_state_changed)
@@ -242,6 +246,7 @@ func set_stage_input_locked(locked: bool) -> void:
 
 func reset_for_stage() -> void:
 	combat.reset_for_stage()
+	_clear_pending_mark_audio()
 	status_controller.clear_for_stage()
 	hit_reaction.reset_for_stage()
 	health.reset_to_maximum()
@@ -357,7 +362,7 @@ func _get_attack_texture(school: StringName, combo_position: int) -> Texture2D:
 func _get_attack_frames(school: StringName, combo_position: int) -> int:
 	var position := clampi(combo_position, 1, 5)
 	match school:
-		&"fire": return [5, 3, 11, 9, 11][position - 1]
+		&"fire": return [5, 3, 11, 11, 9][position - 1]
 		&"water": return [5, 5, 4, 5, 5][position - 1]
 		&"air": return [9, 7, 7, 6, 8][position - 1]
 		&"earth": return [4, 3, 4, 5, 4][position - 1]
@@ -492,7 +497,9 @@ func _on_orb_queue_changed(snapshot: Array, marked_count: int, marking_progress:
 	if snapshot.size() > _last_orb_count:
 		_play_audio(orb_audio, _load_audio_stream(ORB_CREATED_STREAM_PATH))
 	if visible_marked_count > _last_marked_count:
-		_play_mark_audio(visible_marked_count)
+		for level in range(_last_marked_count + 1, visible_marked_count + 1):
+			_pending_mark_audio_levels.append(level)
+		_drain_mark_audio_queue()
 	_last_orb_count = snapshot.size()
 	_last_marked_count = visible_marked_count
 	orb_queue_changed.emit(snapshot, marked_count, marking_progress)
@@ -547,6 +554,30 @@ func _play_mark_audio(charged_orb_count: int) -> void:
 	mark_audio.pitch_scale = MARK_AUDIO_PITCH_SCALES[pitch_index]
 	mark_audio.volume_db = MARK_AUDIO_VOLUME_DB
 	_play_audio(mark_audio, _load_audio_stream(MARK_ORB_STREAM_PATH))
+
+
+func _drain_mark_audio_queue() -> void:
+	if _mark_audio_draining or _pending_mark_audio_levels.is_empty():
+		return
+	_mark_audio_draining = true
+	var level: int = _pending_mark_audio_levels.pop_front()
+	_play_mark_audio(level)
+
+
+func _on_mark_audio_finished() -> void:
+	_mark_audio_draining = false
+	_drain_mark_audio_queue()
+
+
+func _clear_pending_mark_audio() -> void:
+	_pending_mark_audio_levels.clear()
+	_mark_audio_draining = false
+	if mark_audio != null:
+		mark_audio.stop()
+
+
+func _exit_tree() -> void:
+	_clear_pending_mark_audio()
 
 
 func _school_attack_stream(school: StringName, position: int) -> AudioStream:

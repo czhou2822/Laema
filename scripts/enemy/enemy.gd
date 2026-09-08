@@ -19,9 +19,6 @@ const ENDURANCE_ICONS := {
 	&"air": preload("res://assets/prototype/ui/elemental_endurance/endurance_air.png"),
 	&"earth": preload("res://assets/prototype/ui/elemental_endurance/endurance_earth.png"),
 }
-const VIEWPORT_MARGIN := 12.0
-const HEALTH_READOUT_OFFSET := Vector2(-70.0, -88.0)
-const STATUS_READOUT_OFFSET := Vector2(-130.0, -176.0)
 
 @onready var body_visual: Sprite2D = $BodyVisual
 @onready var health_label: Label = $HealthLabel
@@ -105,24 +102,6 @@ func _process(delta: float) -> void:
 	_idle_time += delta
 	var frame := int(floor(_idle_time * IDLE_FPS)) % IDLE_FRAME_COUNT
 	body_visual.region_rect = Rect2(Vector2(frame, 0) * IDLE_CELL_SIZE, IDLE_CELL_SIZE)
-	_clamp_target_readouts()
-
-
-func _clamp_target_readouts() -> void:
-	_place_readout_in_viewport(health_label, HEALTH_READOUT_OFFSET)
-	_place_readout_in_viewport(status_display, STATUS_READOUT_OFFSET)
-
-
-func _place_readout_in_viewport(readout: Control, local_offset: Vector2) -> void:
-	var viewport := get_viewport()
-	var canvas_transform: Transform2D = viewport.get_canvas_transform()
-	var inverse_canvas_transform: Transform2D = canvas_transform.affine_inverse()
-	var viewport_size: Vector2 = viewport.get_visible_rect().size
-	var readout_size: Vector2 = readout.get_combined_minimum_size()
-	var screen_position: Vector2 = canvas_transform * (global_position + local_offset)
-	screen_position.x = clampf(screen_position.x, VIEWPORT_MARGIN, viewport_size.x - readout_size.x - VIEWPORT_MARGIN)
-	screen_position.y = clampf(screen_position.y, VIEWPORT_MARGIN, viewport_size.y - readout_size.y - VIEWPORT_MARGIN)
-	readout.global_position = inverse_canvas_transform * screen_position
 
 
 func _on_health_changed(current_value: float, maximum_value: float) -> void:

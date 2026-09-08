@@ -8,7 +8,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 ## Prototype Scope
 
-**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 8 objectives, stage-owned target sets, and one attacking final Enemy with one committed melee pattern.
+**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 7 objectives, stage-owned target sets, and one attacking final Enemy with one committed melee pattern.
 
 **Excluded:** jumping, vertical traversal controls, Air and Earth defence, additional Enemy behaviors and attack patterns, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
@@ -29,7 +29,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 Laema is affected by gravity and remains grounded on solid collision. Every current stage area uses the same continuous flat ground height, and adjacent ground sections overlap at stage boundaries so transitions do not introduce a gap. The camera follows Laema horizontally while preserving fixed vertical framing.
 
-Active X and Cast animations lock player-controlled movement. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
+Active X and Cast animations lock player-controlled movement and facing. Once an action begins, left/right input cannot flip Laema until that action finishes. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
 
 ## Schools and Character Presentation
 
@@ -111,11 +111,11 @@ Generated orbs form a first-in, first-out queue. A generated orb is an orb produ
 - The queue stores at most 10 orbs.
 - If all 10 slots are occupied, the landed hit still counts as Generating, but the additional generated orb is discarded without changing the stored queue.
 - Only the oldest orb counts down toward expiration.
-- Its lifetime is seven seconds.
+- Its lifetime is ten seconds.
 - A newly spawned orb is a solid school-colored disc (Fire is red). As its lifetime falls, the filled region interpolates from 100% to 75%, 50%, 25%, and empty by shrinking from the right edge toward the left; the unfilled region is transparent.
 - Later orbs retain their full lifetime while another orb remains ahead of them.
-- When the oldest orb expires or is consumed, the next orb immediately begins its full seven-second lifetime.
-- Every successful Cast consumes at most the five charged front orbs. All unconsumed orbs remain and shift forward into the vacated slots while preserving FIFO order.
+- When the oldest orb expires or is consumed, the next orb immediately begins its full ten-second lifetime.
+- Every successful Cast consumes at most the eight charged front orbs. All unconsumed orbs remain and shift forward into the vacated slots while preserving FIFO order.
 - When a chain times out after a completed action without a follow-up, the chain state ends but unconsumed orbs remain while Laema is idle or moving and continue their FIFO expiration.
 - A failed Cast removes no orbs. It returns every charged orb to the generated state and resets partial charging progress to zero.
 
@@ -143,8 +143,8 @@ CHARGING may begin at any time, with or without available generated orbs, and co
 - The prototype begins with 95–100% as CHARGING, 5–95% as the intermediate no-drain hold band, and below 5% as RELEASE; no exact 0% or 100% reading is required.
 - Charging capacity increases by one charged orb every nominal 0.5 seconds while CHARGING.
 - At baseline speed, the first generated orb becomes charged after 0.5 seconds.
-- At baseline speed, maximum capacity is five charged orbs after 2.5 seconds.
-- Holding longer leaves capacity at five.
+- At baseline speed, maximum capacity is eight charged orbs after 4 seconds.
+- Holding longer leaves capacity at eight.
 - CHARGING uses the current Heat multiplier. At multiplier `M`, effective step duration is `0.5 / M` seconds.
 - DEPLETING uses the fixed zero-Heat Charging rate: one charge-equivalent per baseline `charge_step_duration`, currently 0.5 seconds. It does not scale with Heat.
 - Partial progress depletes continuously. Crossing a completed-charge boundary returns the most recently charged orb to the generated state first.
@@ -203,7 +203,7 @@ Entering RELEASE while idle is not a timing failure. It succeeds when at least o
 The consumed charged-orb sequence alone determines the spell output. The currently selected school does not override or otherwise modify this resolution.
 
 1. The school of the final consumed orb becomes the primary school, using last-in, first-out selection.
-2. Primary casting level equals the total number of consumed orbs.
+2. Primary casting level equals the total number of consumed orbs, from level 1 through level 8.
 3. After removing the primary school from consideration, the remaining school with the greatest consumed-orb count becomes the single secondary school.
 4. If secondary candidates tie, whichever tied school appears last in the consumed sequence becomes secondary, using a last-in, first-out tie-break.
 5. Secondary casting level equals that school's own consumed-orb count.
@@ -307,7 +307,7 @@ final hit-reaction level = max(0, Impact level − defensive level)
 
 Heat ranges from `0` to `100`. Attack speed scales linearly with Heat: `0` Heat produces the `100%` baseline attack speed, and `100` Heat produces `150%` attack speed. Intermediate Heat values produce proportionate attack speed.
 
-Each charged orb consumed by Casting adds `1` Heat. Orb consumption is the only current source of Heat gain. Heat is granted immediately when a Cast commits and consumes charged orbs, including a buffered Cast committed before its animation begins. Interruption before launch and projectile miss do not revoke that Heat. Direct X hits, projectile impacts, and any deferred spell behavior add no Heat.
+Each charged orb consumed by Casting adds `2` Heat. Orb consumption is the only current source of Heat gain. Heat is granted immediately when a Cast commits and consumes charged orbs, including a buffered Cast committed before its animation begins. Interruption before launch and projectile miss do not revoke that Heat. Direct X hits, projectile impacts, and any deferred spell behavior add no Heat.
 
 The Heat Reset Timer is refreshed by either a landed direct X hit or a landed direct spell projectile hit. DoT ticks do not refresh it. After five seconds without either qualifying landed hit, Heat begins depleting smoothly and linearly at `3` Heat per second until it reaches `0`.
 
@@ -384,7 +384,8 @@ The current first-pass values remain tunable placeholders: `600 px` awareness ra
 The always-visible game UI includes:
 
 - a school-colored FIFO orb queue with all 10 storage slots always visible, including empty slots; and
-- an R2 charging-progress bar beneath the orb queue.
+- an R2 charging-progress bar beneath the orb queue; and
+- a Spell Level readout equal to the current number of charged orbs, from level 0 through level 8.
 
 Consumed, expired, and hit-lost charged orbs disappear. Each charged orb uses a 2 px gold outline while retaining its school-colored fill. The actively expiring oldest orb displays its remaining lifetime through a left-filled reverse progress indicator whose empty portion grows right to left.
 
@@ -402,7 +403,7 @@ The backtick Developer Portal has a shared header with Save to JSON, status, and
 - **Audio:** Ambient, SFX, and BGM groups. Each group has an Enabled control and a `0–100%` Volume control.
 - **Combat:** nested sub-tabs for Combat, Casting, Heat, Fire, Water, Air, Earth, Defence, and Hit Reaction. The Combat sub-tab contains attack-hitbox visibility, the `collect_orb_without_contact` testing toggle, and the Combat controls. When enabled, a missed X can collect an orb without applying damage; the persisted prototype config currently has this test toggle enabled.
 
-Audio controls apply immediately and persist through the same fail-fast JSON save/load flow. Ambient controls the wind loop; SFX controls attack, cast, orb, projectile, cast-failure, and guard-warning feedback; BGM controls the Fairy Battles music loop. The Portal expresses normal mix volume as `100%` and silence as `0%`; its internal mixer representation is not player-facing. These controls do not affect the orb queue, R2 charging-progress bar, target status display, target overhead Health display, or gameplay rules.
+Audio controls apply immediately and persist through the same fail-fast JSON save/load flow. Ambient controls the wind loop; SFX controls attack, cast, orb, projectile, cast-failure, guard-warning, and hit-reaction feedback; BGM controls the Fairy Battles music loop. Each newly charged orb uses the fixed-volume charged-orb cue at eight ascending pitches: Do, Re, Mi, Fa, Sol, La, Ti, Do. Charging all eight orbs completes the scale. The Portal expresses normal mix volume as `100%` and silence as `0%`; its internal mixer representation is not player-facing. These controls do not affect the orb queue, R2 charging-progress bar, target status display, target overhead Health display, or gameplay rules.
 
 ## Tutorial Stage Director
 
@@ -575,51 +576,38 @@ Stage 6 succeeds through one uninterrupted five-X chain with a school switch spe
 
 Completion turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
 
-### Stage 7 — Observe Heat Acceleration
+### Stage 7 — Build Heat and Complete a High-Heat Chain
 
-Stage 7 introduces the relationship between Heat and action speed. It begins at `0` Heat and contains one stationary, non-attacking, permanent refill target.
+Stage 7 combines observing Heat acceleration with demonstrating a complete five-X chain at high Heat. It begins at `0` Heat and contains one stationary, non-attacking, permanent refill target.
 
-The objective widget is text-only and displays:
-
-```text
-achieve heat above 80
-```
-
-Stage 7 succeeds immediately when Heat becomes greater than `80`.
-
-- No sustain duration is required.
-- Actions taken while Heat is `80` or below neither complete nor fail the objective.
-- The persistent Heat HUD shows both current Heat and attack speed so the player can observe that higher Heat makes actions faster.
-
-Completion turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
-
-### Stage 8 — Five-Hit Chain at High Heat
-
-Stage 8 asks the player to rebuild a high-Heat state and convert it into a complete five-X chain. It begins at `0` Heat and contains one stationary, non-attacking, permanent refill target.
-
-The objective widget is text-only and displays:
+Both objectives remain visible throughout the stage:
 
 ```text
-perform xxxxx combo while heat is above 80
+Build Heat to 80
+Perform an XXXXX combo at 80 Heat or higher
 ```
 
-Preparation while Heat is `80` or below neither begins nor fails an attempt. An attempt begins on the first landed X while Heat is greater than `80` and succeeds when five X attacks land in one uninterrupted chain while Heat remains greater than `80` throughout.
+The first objective is live rather than permanently completed. It turns green while Heat is `80` or higher and returns to its default color whenever Heat falls below `80`.
 
+The second objective begins only when X1 of a fresh chain lands while Heat is `80` or higher. Reaching `80` Heat during X2–X5 of an existing chain does not begin an attempt; the player must begin a new chain. The stage succeeds when X1 through X5 all land in that uninterrupted chain while Heat remains at least `80` throughout.
+
+- The second objective displays five `X` markers, and each valid landed X turns its corresponding marker green.
 - Each landed X refreshes the Heat Reset Timer.
 - Any school composition is valid, and school switching is allowed.
-- A missed X, premature chain termination, or Heat reaching `80` or below invalidates the active attempt.
-- Invalidation lightly flinches the whole objective widget and resets the attempt.
+- A missed X, premature chain termination, or Heat falling below `80` invalidates the active attempt.
+- Invalidation lightly flinches the whole objective widget and resets all five `X` markers. The first objective's color continues to reflect current Heat.
 - Unrelated actions taken before an attempt begins do not fail the stage.
+- Reaching `80` Heat alone does not complete the stage or trigger a transition.
 
-Completion turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
+Completing the five-X objective turns the whole widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
 
 ### Later Tutorial Stages
 
-Stages 1 through 8 are locked. No Stage 9 objective is currently locked. Any later stage must define its own area contents and attempt rules through the reusable progression and widget shells.
+Stages 1 through 7 are locked. No Stage 8 objective is currently locked. Any later stage must define its own area contents and attempt rules through the reusable progression and widget shells.
 
 ### Tutorial Completion and Free Practice
 
-Stage 1 transitions through Stages 2, 3, 4, 5, 6, 7, and 8 in order. Stage 8 transitions directly into the existing prototype arena, which serves as the legitimate final tutorial stage. Any future tutorial stages are inserted between Stage 8 and this final arena.
+Stage 1 transitions through Stages 2, 3, 4, 5, 6, and 7 in order. Stage 7 transitions directly into the existing prototype arena, which serves as the legitimate final tutorial stage. Any future tutorial stages are inserted between Stage 7 and this final arena.
 
 The final tutorial objective remains `Defeat the final Enemy`. When that Enemy dies, the tutorial completes permanently and the objective widget immediately changes to the free-form text below. There is no separate completion screen, delay, animation, or intermediate message. The final arena remains loaded and becomes the indefinite free-form practice area; there is no additional right exit or camera-pan transition. Its permanent practice targets remain available.
 
@@ -638,7 +626,7 @@ The prototype must make the following observable:
 - grounded left/right movement and horizontal camera following;
 - five-position chaining with X and mid-chain Casts;
 - all four school X attacks and hit-generated orbs;
-- 10-orb FIFO storage with all slots permanently visible, a five-orb Charging/Cast limit, and preserved queue order after every successful Cast;
+- 10-orb FIFO storage with all slots permanently visible, an eight-orb Charging/Cast limit, Spell Level presentation from 0 through 8, and preserved queue order after every successful Cast;
 - failed Casts preserving stored orbs while returning charged orbs to the generated state and resetting partial charging progress;
 - gold charged-orb outlines plus full-queue discard and whole-widget flinch feedback;
 - normalized X/R2 pre-window buffering at baseline and high Heat, including first-request arbitration, promotion, and clear/invalidation behavior;
@@ -654,7 +642,7 @@ The prototype must make the following observable:
 - charged-orb and five-point Heat loss only on incoming `APPLIED` direct damage, including zero-reaction results, while `BLOCKED`, `PARRIED`, and DoT results cause neither resource loss;
 - every stage beginning at `0` Heat;
 - linear Heat-to-attack-speed mapping from `0` Heat at `100%` attack speed to `100` Heat at `150%` attack speed, including intermediate values;
-- one Heat gained per consumed charged orb, with orb consumption as the only current Heat-gain source;
+- two Heat gained per consumed charged orb, with orb consumption as the only current Heat-gain source;
 - direct landed X and spell-projectile hits refreshing the five-second Heat Reset Timer while DoT ticks do not, followed by smooth linear depletion at `3` Heat per second;
 - proportional Heat acceleration of attacks, casting animations, and R2 Charging;
 - movement locked during active X/Cast animations and restored between actions while CHARGING or DEPLETING preserves the chain;
@@ -674,8 +662,7 @@ The prototype must make the following observable:
 - the complete Stage 4 mid-chain Cast continuation sequence, including X4-hit completion, invalidation, target, four-step UI, and transition behavior;
 - the complete Stage 5 multiple-Cast sequence, including second-Cast launch completion, invalidation, target, four-step UI, and transition behavior;
 - the complete Stage 6 school-switch sequence, including switch timing, five-hit completion, invalidation, target, six-step UI, and transition behavior;
-- Stage 7 beginning at `0` Heat, completing immediately above `80` Heat without a sustain requirement, ignoring actions below the threshold, displaying Heat and attack speed through the persistent HUD, and transitioning through the standard shell;
-- Stage 8 beginning at `0` Heat, ignoring preparation at `80` Heat or below, beginning on the first landed X above `80` Heat, allowing school switching, invalidating on an X miss, premature chain termination, or Heat reaching `80` or below, completing on five uninterrupted landed X attacks while Heat remains above `80`, and transitioning through the standard shell;
+- Stage 7 beginning at `0` Heat with both objectives visible, showing its first objective green only while Heat is at least `80`, ignoring threshold crossings during X2–X5, beginning its second objective only when X1 of a fresh chain lands at `80` Heat or higher, advancing five green `X` markers through landed attacks, allowing school switching, invalidating on an X miss, premature chain termination, or Heat falling below `80`, completing only after five uninterrupted landed X attacks while Heat remains at least `80`, and transitioning directly into the Final Arena;
 - tutorial-only Elemental Endurance counting each landed applied action at most once, excluding blocked/parried actions and DoT ticks from streak changes, applying current resistance to DoT damage, allowing non-damage effects at partial resistance while suppressing new same-school effects at 0%, withholding orb generation while preserving Heat Reset Timer refresh and normal Impact/hit reaction on a 0%-damage same-school X hit, clearing on a different-school hit or mixed-school Cast as defined, displaying its school and remaining damage percentage, showing smaller final-damage numbers for DoT ticks including `0`, and showing `0` without a school-and-level label for a fully resisted Cast layer; and
 - the final Enemy physically blocking Laema, approaching, committing one non-interruptible attack to Laema's position at windup start, missing when she leaves that area, using the same recovery after hits and misses, and all incoming damage respecting the default-enabled Player 1-HP Floor option; and
 - the existing prototype arena as the final tutorial area, followed in place by its indefinite `now you are free` free-practice state.

@@ -17,6 +17,7 @@ var _highlight_enabled := false
 var _active_rejected_switch_invalid := false
 var _active_allow_school_switch := false
 var _completion_progress := 0
+var _row_id := &""
 
 
 func configure(objective: Dictionary) -> void:
@@ -34,10 +35,21 @@ func configure(objective: Dictionary) -> void:
 	_active_rejected_switch_invalid = bool(active.get("rejected_switch_invalid", false))
 	_active_allow_school_switch = bool(active.get("allow_school_switch", false))
 	_completion_progress = int(objective["completion_progress"])
+	_row_id = StringName(objective.get("sequence_row_id", _first_row_id(objective)))
 
 
 func get_highlight_index() -> int:
 	return _progress if _highlight_enabled and _phase != Phase.COMPLETED else -1
+
+
+func get_row_state() -> Dictionary:
+	return {
+		_row_id: {
+			"progress": _progress,
+			"highlight_index": get_highlight_index(),
+			"completed": _phase == Phase.COMPLETED,
+		}
+	}
 
 
 func consume_outcome(outcome: Dictionary) -> Dictionary:
@@ -150,3 +162,9 @@ func _invalidate() -> Dictionary:
 
 func _presentation_result() -> Dictionary:
 	return {"kind": &"progress", "progress": _progress, "highlight_index": get_highlight_index()}
+
+
+func _first_row_id(objective: Dictionary) -> StringName:
+	var presentation: Dictionary = objective["presentation"]
+	var rows: Array = presentation["rows"]
+	return StringName(rows[0]["id"])

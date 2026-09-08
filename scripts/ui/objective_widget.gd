@@ -4,8 +4,7 @@ extends Control
 var _panel: PanelContainer
 var _panel_style: StyleBoxFlat
 var _stage_label: Label
-var _label: Label
-var _tokens: HBoxContainer
+var _rows: VBoxContainer
 var _prompt: Label
 var _tween: Tween
 var _rest_position := Vector2.ZERO
@@ -34,14 +33,9 @@ func _ready() -> void:
 	_stage_label.add_theme_font_size_override("font_size", 14)
 	_stage_label.modulate = Color("8db9cb")
 	layout.add_child(_stage_label)
-	_label = Label.new()
-	_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_label.add_theme_font_size_override("font_size", 20)
-	layout.add_child(_label)
-	_tokens = HBoxContainer.new()
-	_tokens.alignment = BoxContainer.ALIGNMENT_CENTER
-	_tokens.add_theme_constant_override("separation", 8)
-	layout.add_child(_tokens)
+	_rows = VBoxContainer.new()
+	_rows.add_theme_constant_override("separation", 4)
+	layout.add_child(_rows)
 	_prompt = Label.new()
 	_prompt.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_prompt.add_theme_font_size_override("font_size", 16)
@@ -52,31 +46,50 @@ func present(snapshot: Dictionary) -> void:
 	var stage_number := int(snapshot.get("stage_number", 0))
 	_stage_label.visible = stage_number > 0
 	_stage_label.text = "STAGE %d" % stage_number if stage_number > 0 else ""
-	_label.text = str(snapshot.get("label", ""))
 	var completed := bool(snapshot.get("completed", false))
 	_apply_completion_style(completed)
-	_label.modulate = Color("68dc81") if completed else Color.WHITE
 	_prompt.text = str(snapshot.get("prompt", ""))
 	_prompt.modulate = Color("68dc81") if completed else Color.WHITE
-	for child in _tokens.get_children():
+	for child in _rows.get_children():
 		child.queue_free()
-	var tokens: Array = snapshot.get("tokens", [])
-	var progress := int(snapshot.get("progress", 0))
-	var highlight_index := int(snapshot.get("highlight_index", -1))
+	for row_variant in snapshot.get("rows", []):
+		_add_row(Dictionary(row_variant), completed)
+	if bool(snapshot.get("flinch", false)):
+		_flinch()
+
+
+func _add_row(row: Dictionary, whole_completed: bool) -> void:
+	var row_layout := VBoxContainer.new()
+	row_layout.add_theme_constant_override("separation", 2)
+	_rows.add_child(row_layout)
+	var row_completed := whole_completed or bool(row.get("completed", false))
+	var label := Label.new()
+	label.text = str(row["label"])
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.add_theme_font_size_override("font_size", 20)
+	label.modulate = Color("68dc81") if row_completed else Color.WHITE
+	row_layout.add_child(label)
+	var tokens: Array = Array(row.get("tokens", []))
+	if tokens.is_empty():
+		return
+	var token_layout := HBoxContainer.new()
+	token_layout.alignment = BoxContainer.ALIGNMENT_CENTER
+	token_layout.add_theme_constant_override("separation", 8)
+	row_layout.add_child(token_layout)
+	var progress := int(row.get("progress", 0))
+	var highlight_index := int(row.get("highlight_index", -1))
 	var token_font_size := 18 if _uses_compact_token_font(tokens) else 26
 	for index in range(tokens.size()):
 		var token := Label.new()
 		token.text = str(tokens[index])
 		token.add_theme_font_size_override("font_size", token_font_size)
-		if completed or index < progress:
+		if row_completed or index < progress:
 			token.modulate = Color("68dc81")
 		elif index == highlight_index:
 			token.modulate = Color.WHITE
 		else:
 			token.modulate = Color("d7e7f1")
-		_tokens.add_child(token)
-	if bool(snapshot.get("flinch", false)):
-		_flinch()
+		token_layout.add_child(token)
 
 
 func _uses_compact_token_font(tokens: Array) -> bool:

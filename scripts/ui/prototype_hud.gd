@@ -87,7 +87,7 @@ func configure(config: Dictionary) -> void:
 	update_player_health(float(config["player"]["max_health"]), float(config["player"]["max_health"]))
 	update_enemy_health(float(config["enemy"]["max_health"]), float(config["enemy"]["max_health"]))
 	update_orb_queue([], 0, 0.0)
-	objective_widget.present({"label": "", "tokens": [], "progress": 0, "completed": false, "prompt": "", "flinch": false})
+	objective_widget.present({"rows": [], "completed": false, "prompt": "", "flinch": false})
 
 
 func apply_runtime_tuning(config: Dictionary) -> void:
@@ -191,7 +191,11 @@ func update_orb_queue(snapshot: Array, marked_count: int, marking_progress: floa
 		float(marked_count) + clampf(marking_progress, 0.0, 1.0)
 	) / maxf(float(_max_marked_capacity), 1.0)
 	mark_progress.value = clampf(total_marking_progress, 0.0, 1.0)
-	mark_label.text = "CHARGING / CHARGED  %d / %d" % [marked_count, _max_marked_capacity]
+	var visible_charged_count := 0
+	for orb in snapshot:
+		if bool(orb.get("marked", false)):
+			visible_charged_count += 1
+	mark_label.text = "SPELL LEVEL  %d / %d" % [visible_charged_count, _max_marked_capacity]
 	var progress_step := int(round(mark_progress.value * 20.0))
 	if marked_count != _last_marked_count or progress_step != _last_mark_progress_step:
 		_last_marked_count = marked_count
