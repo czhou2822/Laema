@@ -69,6 +69,28 @@ function Assert-TaskNote {
     if ($text.Length -gt 5000) { throw "Task '$TaskKey' note is too long. Keep recovery notes compact." }
 }
 
+function Get-ExplicitProgressUid {
+    param([AllowNull()][hashtable]$Value)
+
+    if ($null -ne $Value -and $Value.ContainsKey('progress_uid')) {
+        $uid = [string]$Value['progress_uid']
+        if (-not [string]::IsNullOrWhiteSpace($uid)) {
+            return $uid.Trim()
+        }
+    }
+    return $null
+}
+
+function Get-ProgressUid {
+    param([Parameter(Mandatory)][hashtable]$Task)
+
+    $uid = Get-ExplicitProgressUid $Task
+    if ($null -ne $uid) {
+        return $uid
+    }
+    return [string]$Task['latest_turn_id']
+}
+
 function Assert-Manifest {
     param([Parameter(Mandatory)][hashtable]$Manifest)
     foreach ($key in @('schema_version', 'checkpoint_id', 'project_id', 'tasks')) {
@@ -89,6 +111,7 @@ function Assert-Manifest {
         if ([string]::IsNullOrWhiteSpace($taskKey) -or $seenKeys.ContainsKey($taskKey)) { throw 'Task keys must be non-empty and unique.' }
         $seenKeys[$taskKey] = $true
         if (@($task['aliases']).Count -eq 0) { throw "Task '$taskKey' requires at least one confirmed title alias." }
+        if ($task.ContainsKey('progress_uid') -and [string]::IsNullOrWhiteSpace([string]$task['progress_uid'])) { throw "Task '$taskKey' progress_uid cannot be empty." }
         if ($task['changed'] -isnot [bool]) { throw "Task '$taskKey' changed must be true or false." }
         if ($task['changed'] -and [string]::IsNullOrWhiteSpace([string]$task['summary'])) { throw "Changed task '$taskKey' requires a compact summary." }
         if ([string]$task['summary'] -and ([string]$task['summary']).Length -gt 600) { throw "Task '$taskKey' summary exceeds 600 characters." }
@@ -118,8 +141,23 @@ function Assert-ChangedTaskSummaries {
             if (-not $task['changed']) { throw "New task '$($task['task_key'])' must be marked changed and summarized." }
             continue
         }
-        if ($previousByKey[$task['task_key']]['latest_turn_id'] -ne $task['latest_turn_id'] -and -not $task['changed']) {
+        $previousTask = $previousByKey[$task['task_key']]
+        $previousExplicitUid = Get-ExplicitProgressUid $previousTask
+        $currentExplicitUid = Get-ExplicitProgressUid $task
+        if ($null -ne $previousExplicitUid -and $null -ne $currentExplicitUid) {
+            $previousIdentity = $previousExplicitUid
+            $currentIdentity = $currentExplicitUid
+        }
+        else {
+            # Legacy manifests predate progress_uid; use their turn binding only for this migration comparison.
+            $previousIdentity = [string]$previousTask['latest_turn_id']
+            $currentIdentity = [string]$task['latest_turn_id']
+        }
+        if ($previousIdentity -ne $currentIdentity -and -not $task['changed']) {
             throw "Task '$($task['task_key'])' has a newer turn but is not marked changed."
+        }
+        if ($previousIdentity -eq $currentIdentity -and $task['changed'] -and $null -ne $previousExplicitUid -and $null -ne $currentExplicitUid) {
+            throw "Task '$($task['task_key'])' is marked changed but progress_uid did not change."
         }
     }
 }
@@ -161,6 +199,9 @@ if ($schema -eq 3) {
 
 if ($Mode -eq 'Save') {
     if ($schema -ne 3) { throw 'New saves require schema_version 3 with one Markdown note per task.' }
+    foreach ($task in @($manifest['tasks'])) {
+        if ($null -eq (Get-ExplicitProgressUid $task)) { throw "New schema 3 saves require progress_uid for task '$($task['task_key'])'." }
+    }
     $previous = Get-PreviousManifest -Manifest $manifest -ManifestFullPath $manifestFullPath
     Assert-ChangedTaskSummaries -Manifest $manifest -PreviousManifest $previous
     Invoke-Git @('diff', '--check') | Out-Null
@@ -200,16 +241,29 @@ if ($bindings.ContainsKey('checkpoint_project_id')) {
 
 $updates = @()
 $unresolved = @()
+$skippedDormant = @()
 foreach ($task in @($manifest['tasks'])) {
     $binding = Resolve-LocalBinding -Task $task -Bindings $bindings
     if ($null -eq $binding) {
         $unresolved += [ordered]@{ task_key = $task['task_key']; canonical_title = $task['canonical_title']; aliases = @($task['aliases']); reason = 'no_unique_local_binding' }
         continue
     }
+    $sourceProgressUid = Get-ExplicitProgressUid $task
+    $localProgressUid = Get-ExplicitProgressUid $binding
+    if ($null -ne $sourceProgressUid -and $null -ne $localProgressUid -and $sourceProgressUid -eq $localProgressUid) {
+        $skippedDormant += [ordered]@{
+            task_key = $task['task_key']
+            title = $binding['title']
+            progress_uid = $sourceProgressUid
+            reason = 'progress_uid_match'
+        }
+        continue
+    }
     $taskNotePath = if ($schema -eq 3) { Get-TaskNotePath -ManifestFullPath $manifestFullPath -Task $task } else { $manifestFullPath }
     $updates += [ordered]@{
         task_key = $task['task_key']; title = $binding['title']; thread_id = $binding['thread_id']; host_id = $binding['host_id']
         changed = $task['changed']; summary = $task['summary']; task_file = $taskNotePath; requires_response = $true
+        source_progress_uid = $sourceProgressUid; local_progress_uid = $localProgressUid
         delivery_message = New-RestorePrompt -Task $task -TaskNotePath $taskNotePath -Legacy ($schema -ne 3)
     }
 }
@@ -217,5 +271,6 @@ foreach ($task in @($manifest['tasks'])) {
 [ordered]@{
     mode = $Mode.ToLowerInvariant(); checkpoint_id = $manifest['checkpoint_id']; task_count = @($manifest['tasks']).Count
     changed_task_count = @($manifest['tasks'] | Where-Object { $_['changed'] }).Count
-    update_count = $updates.Count; updates = $updates; unresolved = $unresolved
+    dormant_count = $skippedDormant.Count
+    update_count = $updates.Count; updates = $updates; skipped_dormant = $skippedDormant; unresolved = $unresolved
 } | ConvertTo-Json -Depth 12

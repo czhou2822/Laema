@@ -31,12 +31,13 @@ The schema 3 manifest contains task identity and routing data:
           "changed": true,
           "summary": "Compact material delta.",
           "latest_turn_id": "turn-id",
+          "progress_uid": "sha256:portable-latest-completed-round-digest",
           "task_file": "design-overseer.md"
         }
       ]
     }
 
-The agent creates one note for every current unarchived Laema task, including tasks with no material change. The manifest carries the current machine binding; historical bindings remain in earlier checkpoint records.
+The agent creates one note for every current unarchived Laema task, including tasks with no material change. `progress_uid` is a portable digest of the latest completed user/assistant round (including the project and task key), not a thread ID, host ID, timestamp, or checkout path. The transient local-binding JSON carries the corresponding digest for the local task. Historical bindings remain in earlier checkpoint records.
 
 ## Save
 
@@ -44,7 +45,7 @@ After the agent has written the manifest, task notes, and changelist:
 
     pwsh -NoProfile -File tools/checkpoint.ps1 -Mode Save -ManifestPath docs/checkpoints/<checkpoint-id>/manifest.json
 
-The script validates schema 3, verifies each note has the required headings, checks changed-turn summaries, stages all project files, commits, pushes, and verifies HEAD equals origin/main.
+The script validates schema 3, verifies each note has the required headings and a `progress_uid`, compares progress UIDs when checking changed-task summaries, stages all project files, commits, pushes, and verifies HEAD equals origin/main.
 
 ## Load
 
@@ -52,12 +53,14 @@ The agent creates a transient local-binding JSON from the current Codex task lis
 
     pwsh -NoProfile -File tools/checkpoint.ps1 -Mode Load -ManifestPath docs/checkpoints/<checkpoint-id>/manifest.json -BindingsPath <local-bindings>.json
 
-The script checks that Git is clean, fast-forwards the checkout, resolves task bindings, and emits one short request per resolved task. That request points only to the task note. The agent sends it, reads the response, and reports:
+The script checks that Git is clean, fast-forwards the checkout, resolves task bindings, and compares each checkpoint `progress_uid` with the local binding `progress_uid`. If both match, it emits the task in `skipped_dormant` and sends no request. Otherwise it emits one short request per resolved task; that request points only to the task note. The agent sends it, reads the response, and reports:
 
 - Carried context
 - Changed since checkpoint
 - Conflict, if any
 - Resume point
+
+The output also includes `dormant_count` and `skipped_dormant`. A missing UID is handled conservatively and is not treated as a match; legacy schema 1/2 and older schema-3 manifests remain loadable without dormant skipping.
 
 If authority does not resolve a material conflict, the task asks the user to decide. It does not edit files as part of restoration.
 

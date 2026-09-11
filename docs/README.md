@@ -21,7 +21,7 @@ This directory holds durable project state that travels with the repository.
    - Carried context — decisions, proposals, open questions, conflicts, and validation limits that still matter.
    - Resume point — the exact next question, task, or dormant condition.
    - Sources — current canonical records and relevant task history.
-4. The manifest records each task key, canonical title, confirmed aliases, current binding, latest completed turn, changed flag, compact summary, and relative task-note path. It points to the preceding manifest.
+4. The manifest records each task key, canonical title, confirmed aliases, current binding, latest completed turn, portable `progress_uid`, changed flag, compact summary, and relative task-note path. `progress_uid` is a deterministic digest of the latest completed user/assistant round, not a machine-specific thread ID. It points to the preceding manifest.
 5. Write a matching changelist, then run checkpoint.ps1 Save. Save stages the full project tree, commits, pushes, and verifies origin/main.
 
 ### Load checkpoint
@@ -29,7 +29,7 @@ This directory holds durable project state that travels with the repository.
 1. Inspect local Git state. If local work exists, stop for the user to resolve it.
 2. Fast-forward the checkout and read the newest manifest and changelist.
 3. Resolve every saved task by project identity, stable task key, and confirmed aliases.
-4. Send each resolved task one short restore request pointing to its own Markdown note. The task reads that note and its current canonical sources, carries compatible context forward, distinguishes changes, and reports any material conflict and resume point.
+4. Compare the checkpoint `progress_uid` with the local binding's `progress_uid` first. If they agree, skip that dormant task. Otherwise send one short restore request pointing to its own Markdown note. The task reads that note and its current canonical sources, carries compatible context forward, distinguishes changes, and reports any material conflict and resume point.
 5. Read the response before reporting completion. A task with a missing binding, missing response, or unresolved conflict remains explicitly incomplete.
 
 If the thread service is unavailable, report that Git was synchronized but task conversations were not restored.

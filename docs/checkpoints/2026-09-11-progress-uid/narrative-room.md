@@ -1,0 +1,24 @@
+# Narrative Room checkpoint — 2026-09-11
+
+Task key: narrative_room
+
+## Since last checkpoint
+
+- No new narrative decision was recorded.
+- Town presentation imagery adds no canon to the dormant Mirham/Cloudfire backbone.
+
+## Carried context
+
+- Decision: Mirham, Cloudfire, and Steadwick remain distinct; the local tragedy remains background context before *Restoration of Erathia*.
+- Open: antagonist, investigation, poison connection, causal transitions, final-defence outcome, and emotional core.
+- Validation: no narrative implementation or runtime evidence exists.
+
+## Resume point
+
+Remain dormant until the user explicitly resumes one focused narrative question.
+
+## Sources
+
+- docs/checkpoints/2026-09-10-presentation-assets/narrative-room.md
+- docs/checkpoints/2026-09-03-cross-thread-recovery.md
+- Narrative Room turn 01a07f7a-a6d5-7542-8dae-2d868d477f39
