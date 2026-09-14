@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Published Laema snapshots: the playable prototype and the Act I opening pitch.">
+  <meta name="theme-color" content="#080f15">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080f15'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23d9b27b' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23ecc68e'/%3E%3C/svg%3E">
+  <title>LAEMA — Published</title>
+  <style>
+    :root { color-scheme: dark; --navy: #080f15; --ink: #f2eee7; --gold: #d9b27b; --gold-light: #ecc68e; --muted: #a5adb2; }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; background: radial-gradient(circle at 50% 20%, #1a2b36, var(--navy) 68%); color: var(--ink); font: 1rem/1.6 Georgia, 'Times New Roman', serif; }
+    main { width: min(760px, calc(100% - 40px)); padding: clamp(2rem, 7vw, 5rem); border: 1px solid #79786c; background: #080f15dd; box-shadow: 0 24px 80px #0008; }
+    .kicker { margin: 0 0 1rem; color: var(--gold); font: .78rem/1.2 Arial, sans-serif; letter-spacing: .28em; }
+    h1 { margin: 0; color: var(--gold-light); font-size: clamp(2.4rem, 7vw, 5rem); font-weight: 400; letter-spacing: .04em; line-height: 1.05; }
+    .intro { max-width: 38rem; margin: 1.5rem 0 2rem; color: #d4cabb; font-size: 1.1rem; }
+    .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .choices a { min-height: 9rem; display: flex; flex-direction: column; justify-content: space-between; padding: 1.25rem; border: 1px solid #8a7558; color: var(--gold-light); text-decoration: none; background: linear-gradient(145deg, #162833, #0b141b); transition: border-color .2s ease, transform .2s ease, background .2s ease; }
+    .choices a:hover, .choices a:focus-visible { border-color: var(--gold-light); background: #1a2b36; transform: translateY(-2px); }
+    .choices a:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+    .choices strong { font-size: 1.45rem; font-weight: 400; }
+    .choices span { color: var(--muted); font: .9rem/1.4 Arial, sans-serif; }
+    .note { margin: 2rem 0 0; color: var(--muted); font: .85rem/1.5 Arial, sans-serif; }
+    @media (max-width: 560px) { main { width: min(100% - 24px, 760px); padding: 2rem 1.25rem; } .choices { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="kicker">LAEMA / PUBLISHED SNAPSHOTS</p>
+    <h1>Choose a way in.</h1>
+    <p class="intro">The published prototype and the Act I opening pitch now travel with the working repository, while their editable sources remain separate.</p>
+    <nav class="choices" aria-label="Published Laema snapshots">
+      <a href="game/"><strong>Play Laema</strong><span>Browser-playable Godot prototype</span></a>
+      <a href="pitch/"><strong>Open the pitch</strong><span>Act I opening presentation</span></a>
+    </nav>
+    <p class="note">Published files live here. Continue editing the game and pitch from their working locations in the repository.</p>
+  </main>
+</body>
+</html>

@@ -74,4 +74,4 @@ Schema 1 and 2 checkpoints remain loadable. They route each task to the older ma
 
     pwsh -NoProfile -File tools/publish-live.ps1
 
-The script resolves the source repository relative to its own location and defaults the live repository to a sibling laema-live checkout. Override that location per machine with LAEMA_LIVE_REPO_PATH or -LiveRepoPath. It uses godot from PATH, then LAEMA_GODOT_PATH, then -GodotPath. The source checkout may be dirty because this publishes a shareable working snapshot; the live repository itself must be clean. The script exports the Web preset into a temporary directory, compares generated index.* files by SHA-256, replaces changed artifacts, commits, pushes, and verifies the live repository.
+The script exports the Web preset into a temporary directory, compares generated `index.*` files by SHA-256, replaces only `live/game`, commits that published folder to the working repository, pushes `main`, and verifies the repository remote. The source checkout may be dirty because this publishes a shareable working snapshot. Godot is resolved from PATH or `LAEMA_GODOT_PATH`; the former `laema-live` checkout is no longer used.

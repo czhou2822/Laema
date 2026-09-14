@@ -49,4 +49,4 @@ Melee hits perform Generating and add generated orbs to the queue. Holding R2 pe
 3. Work locally with Godot and Codex.
 4. Record accepted decisions and verification state in `docs/`.
 5. Commit and push only after the relevant human validation gate.
-6. Use `publish live version` for the separate current-working-tree Web snapshot and `laema-live` publication workflow.
+6. Use `publish live version` for the current-working-tree Web snapshot under `live/game`; the editable pitch remains under `docs/presentation/decks/laema-html-draft` and its published copy under `live/pitch`.
