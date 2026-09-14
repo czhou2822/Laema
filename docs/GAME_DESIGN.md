@@ -670,3 +670,39 @@ The prototype must make the following observable:
 Incoming Enemy attacks, body blocking, committed-position misses, both states of the Player 1-HP Floor option, and ordinary-play blocking, parrying, guard depletion, guard warning, and guard break require user validation in Godot.
 
 Still open or deferred: jumping, non-flat level geometry, Air and Earth defence, additional Enemy behavior and attack patterns, Player defeat behavior when the Player 1-HP Floor option is disabled, all school-level spell behaviors, final balance, final casting and projectile assets, final Laema presentation, and complete enemy content.
+
+## Future Game Direction — Mirham
+
+**Implementation boundary:** This section is outside the active prototype scope. It creates no prototype requirement, acceptance criterion, or implementation task. Code work must skip it unless the user explicitly assigns a Town Design slice.
+
+**Decision:** Mirham is Laema's recurring buildable hub. Laema helps develop it across the campaign. Mirham is distinct from Cloudfire and Steadwick.
+
+**Decision:** Cloudfire is a nearby recurring location, not the buildable hub. Its people, routines, and places become familiar before its destruction.
+
+**Narrative context:** Mirham is near and readily accessible from Cloudfire. After Cloudfire falls, survivors retreat toward Mirham; the eventual final defence occurs at Mirham before Catherine reaches Cloudfire. The exact outcome and wider narrative consequences remain open.
+
+### Narrative Context
+
+**Decision:** Laema is a local original protagonist with no personal connection to the royal court. She helps develop Mirham across the campaign.
+
+**Decision:** Laema recognizes the symptoms of a poison previously encountered near her town. The same poison is later used against King Nicolas Gryphonheart.
+
+**Decision:** The established late sequence is: Cloudfire falls; its defenders and survivors retreat toward Mirham; Mirham faces its final defence; Catherine later reaches ruined Cloudfire; and the opening of *Heroes of Might and Magic III: The Restoration of Erathia* begins.
+
+**Proposal:** The Laema story is a local tragedy immediately before *Restoration of Erathia*, following people trying to preserve a home while the wider historical catastrophe reaches them.
+
+**Narrative source material — not decisions:** Earlier Miro notes explored a message-delivery and hold-the-line premise, a possible bridge into the Heroes III opening, alternate-history outcomes, settlement growth, and Sandro-era reinterpretations. These remain reference material only; they create no current story requirement.
+
+**Historical reference — not canon:** The relevant Heroes III setting chronology places *The Shadow of Death* before *Restoration of Erathia*, with *Armageddon's Blade* following later. Laema's exact placement, scope, and relationship to those events remain unresolved.
+
+**Open:** The antagonist; Laema's precise investigation and poison connection; causal transitions into the invasions; what causes Cloudfire's fall to lead to Mirham; the outcome and cost of Mirham's final defence; what Laema wants before the war intrudes; and the emotional heart of the story.
+
+**Validation:** No narrative gameplay implementation, runtime validation, or narrative playtest evidence exists.
+
+**Proposal:** Mirham becomes a lived-in action-RPG hub inspired by Whiterun, Novigrad, and Vernworth. It has services, merchants, residents, quests, visible cumulative growth, and meaningful resource contribution.
+
+**Proposal:** Laema suggests construction to the town owner rather than directly ruling Mirham. A parked candidate links creature-related quests to new inhabitants settling in the town.
+
+**Open:** What makes Mirham worth building from the beginning; the construction and resource loop; town ownership; player agency; investment tradeoffs; the effects of growth; player attachment; failure consequences; Mirham's geographic and political relationship to Cloudfire; the qualities to carry forward from its reference cities; whether the creature-settlement candidate survives; and how earlier development changes the final defence.
+
+**Validation:** No Town Design implementation or runtime evidence exists.
