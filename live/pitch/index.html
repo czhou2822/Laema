@@ -16,7 +16,7 @@
   </aside>
   <div class="preview-controls"><button id="present" type="button" aria-label="Start presentation" aria-keyshortcuts="Enter Space">Present</button><span id="presentation-status" role="status" aria-live="polite"></span></div>
   <noscript><p class="no-script">JavaScript is disabled. The complete deck remains readable below; presentation controls need JavaScript.</p></noscript>
-  <main class="deck" aria-label="LAEMA pitch deck, thirteen slides">
+  <main class="deck" aria-label="LAEMA pitch deck, thirty-two slides">
     <!-- Image replacement: add an img inside its .art container, e.g.
          <img src="assets/01-castle.jpg" alt="Laema, the female protagonist, overlooking a castle">
          The image fills and crops to the container. Remove the placeholder span.
@@ -123,7 +123,7 @@
       </div>
     </section>
 
-    <section class="slide combat-slide attack-chain" aria-label="Slide 7: Attack chain">
+    <section class="slide combat-slide attack-chain stateful-slide melee-baseline" data-state="3" aria-label="Slide 7: Attack chain">
       <div class="art full-art gameplay-slot">
         <!-- Add src="assets/attack-chain.mp4" or source children; remove placeholder when ready. -->
         <video muted playsinline preload="metadata" aria-label="Five-hit melee gameplay clip"></video>
@@ -132,9 +132,12 @@
       <div class="shade combat-shade"></div>
       <span class="slide-number">07</span>
       <h2 class="combat-title">ATTACK CHAIN</h2>
-      <ol class="attack-numbers" aria-label="Five-hit attack chain"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
-      <p class="combat-caption">A simple five-hit chain to keep you in the fight.</p>
-      <p class="attack-familiar" data-build="1">SOMETHING FAMILIAR</p>
+      <ol data-build="2" class="attack-numbers" aria-label="Five-hit attack chain"><li>X1</li><li>X2</li><li>X3</li><li>X4</li><li>X5</li></ol>
+      <div class="melee-cues">
+        <p data-build="1">SOMETHING FAMILIAR</p>
+        <p data-build="2">A FIVE-HIT MELEE CHAIN</p>
+        <p data-build="3">DELIBERATELY SIMPLE</p>
+      </div>
     </section>
 
     <section class="slide combat-slide attacks-orbs" aria-label="Slide 8: Attacks create orbs">
@@ -146,69 +149,101 @@
       <div class="shade combat-shade"></div>
       <span class="slide-number">08</span>
       <h2 class="combat-title">ATTACKS CREATE ORBS</h2>
-      <ol class="attack-numbers" aria-label="Five attacks"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
+      <ol class="attack-numbers" aria-label="Five attacks"><li>X1</li><li>X2</li><li>X3</li><li>X4</li><li>X5</li></ol>
       <div class="generated-orbs" aria-label="Five generated orbs">
         <span class="generated-orb" data-build="1" role="img" aria-label="Orb 1"></span>
-        <span class="generated-orb" data-build="1" role="img" aria-label="Orb 2"></span>
-        <span class="generated-orb" data-build="1" role="img" aria-label="Orb 3"></span>
-        <span class="generated-orb" data-build="1" role="img" aria-label="Orb 4"></span>
-        <span class="generated-orb" data-build="1" role="img" aria-label="Orb 5"></span>
+        <span class="generated-orb" data-build="2" role="img" aria-label="Orb 2"></span>
+        <span class="generated-orb" data-build="2" role="img" aria-label="Orb 3"></span>
+        <span class="generated-orb" data-build="2" role="img" aria-label="Orb 4"></span>
+        <span class="generated-orb" data-build="2" role="img" aria-label="Orb 5"></span>
       </div>
-      <p class="combat-caption">Your attacks create orbs.</p>
+      <p class="orb-rule" data-build="1">LANDED HIT → ORB</p>
+      <p class="combat-caption" data-build="2">FIVE HITS → FIVE ORBS</p>
     </section>
 
-    <section class="slide combat-slide combat-flow" aria-label="Slide 9: Combat flow">
-      <h2 class="combat-title">COMBAT FLOW</h2>
+    <section class="slide combat-slide combat-flow magic-lesson" aria-label="Slide 9: Orbs become magic">
+      <span class="slide-number">09</span>
+      <h2 class="combat-title">ORBS BECOME MAGIC</h2>
       <div class="flow-ornament" aria-hidden="true">◇</div>
-      <p class="flow-labels"><span>COMBO</span><b>→</b><span>GENERATE ORBS</span><b>→</b><span>HOLD TO CHARGE</span><b>→</b><span>RELEASE TO CAST</span></p>
+      <div class="flow-sections">
+        <section class="magic-resource" data-build="1" aria-label="Orbs feed the Cast">
+          <h3 class="magic-anchor">ORBS FEED THE CAST</h3>
+          <div class="magic-orb-bank" aria-label="Generated orbs">
+            <span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span>
+          </div>
+          <span class="magic-feed-arrow" aria-hidden="true">↓</span>
+          <div class="magic-preparation">CAST PREPARATION</div>
+        </section>
+        <section class="flow-charge" data-build="2" aria-label="Hold R2 to charge">
+          <h3 class="magic-anchor">HOLD R2 TO CHARGE</h3>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <div class="art flow-art"><span class="placeholder">CHARGING VISUAL SLOT<br>GENERATED ORBS BECOME CHARGED</span></div>
+          <div class="trigger"><span>R2</span><strong>HOLD</strong></div>
+          <div class="magic-charge-indicator" aria-label="Charged orbs"><span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span></div>
+        </section>
+        <section class="flow-cast" data-build="3" aria-label="Release R2 to Cast">
+          <h3 class="magic-anchor">RELEASE R2 TO CAST</h3>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <div class="art flow-art"><span class="placeholder">CAST RESULT SLOT<br>FEMALE PROTAGONIST RELEASES THE CAST</span></div>
+          <div class="trigger"><span>R2</span><strong>RELEASE</strong></div>
+          <p class="flow-description">CAST</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="slide combat-slide combat-flow serial-play" aria-label="Slide 10: The obvious way to play">
+      <span class="slide-number">10</span>
+      <h2 class="combat-title">THE OBVIOUS WAY TO PLAY</h2>
+      <div class="flow-ornament" aria-hidden="true">◇</div>
+      <p class="flow-labels serial-play-labels"><span data-build="1">FIGHT</span><b data-build="2">→</b><span data-build="2">PREPARE</span><b data-build="3">→</b><span data-build="3">CAST</span></p>
       <div class="flow-sections">
         <section class="flow-combo" data-build="1" aria-label="Combo and generate orbs">
-          <div class="art flow-art"><span class="placeholder">09A · MELEE COMBO ARTWORK<br>Five successive attacks · dark town street</span></div>
+          <div class="art flow-art"><span class="placeholder">10A · MELEE COMBO ARTWORK<br>Five successive attacks · dark town street</span></div>
           <ol class="attack-numbers" aria-label="Five-hit combo"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
           <div class="generated-orbs" aria-label="Generated orbs"><span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span></div>
-          <p class="flow-description combo-description">MELEE COMBO GENERATES ORBS</p>
+          <p class="flow-description combo-description">FIGHT</p>
         </section>
         <section class="flow-charge" data-build="2" aria-label="Hold to charge">
           <span class="flow-arrow" aria-hidden="true">→</span>
-          <div class="art flow-art"><span class="placeholder">09B · CHARGE ARTWORK<br>Traveller drawing gold orbs into a blue-gold charge</span></div>
+          <div class="art flow-art"><span class="placeholder">10B · CHARGE ARTWORK<br>Traveller drawing gold orbs into a blue-gold charge</span></div>
           <div class="trigger"><span>R2</span><strong>HOLD</strong></div>
-          <p class="flow-description">Hold to charge.<br>Orbs fuel your power.</p>
+          <p class="flow-description">PREPARE</p>
         </section>
         <section class="flow-cast" data-build="3" aria-label="Release to cast">
           <span class="flow-arrow" aria-hidden="true">→</span>
-          <div class="art flow-art"><span class="placeholder">09C · CAST ARTWORK<br>Traveller releasing a blue blast toward an enemy</span></div>
+          <div class="art flow-art"><span class="placeholder">10C · CAST ARTWORK<br>Traveller releasing a blue blast toward an enemy</span></div>
           <div class="trigger"><span>R2</span><strong>RELEASE</strong></div>
-          <p class="flow-description">Release to cast.<br>Spend your stored power.</p>
+          <p class="flow-description">CAST</p>
         </section>
       </div>
     </section>
 
-    <section class="slide combat-slide combat-flow stateful-slide multitask-reveal" data-state="3" aria-label="Slide 10: Simple inputs, parallel decisions">
+    <section class="slide combat-slide combat-flow stateful-slide multitask-reveal" data-state="3" aria-label="Slide 11: Simple inputs, parallel decisions">
       <h2 class="combat-title serial-copy">COMBAT FLOW</h2>
       <div class="flow-ornament" aria-hidden="true">◇</div>
       <p class="flow-labels serial-copy"><span>COMBO</span><b>→</b><span>GENERATE ORBS</span><b>→</b><span>HOLD TO CHARGE</span><b>→</b><span>RELEASE TO CAST</span></p>
       <div class="flow-sections">
         <section class="flow-combo" aria-label="Combo and generate orbs">
-          <div class="art flow-art"><span class="placeholder">09A · MELEE COMBO ARTWORK<br>Five successive attacks · dark town street</span></div>
+          <div class="art flow-art"><span class="placeholder">10A · MELEE COMBO ARTWORK<br>Five successive attacks · dark town street</span></div>
           <ol class="attack-numbers" aria-label="Five-hit combo"><li><span class="serial-number">1</span><span class="parallel-number">X1</span></li><li><span class="serial-number">2</span><span class="parallel-number">X2</span></li><li><span class="serial-number">3</span><span class="parallel-number">X3</span></li><li><span class="serial-number">4</span><span class="parallel-number">X4</span></li><li><span class="serial-number">5</span><span class="parallel-number">X5</span></li></ol>
           <div class="generated-orbs" aria-label="Generated orbs"><span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span><span class="generated-orb"></span></div>
           <p class="serial-copy flow-description combo-description">MELEE COMBO GENERATES ORBS</p>
         </section>
         <section class="flow-charge" aria-label="Hold to charge">
           <span class="flow-arrow" aria-hidden="true">→</span>
-          <div class="art flow-art"><span class="placeholder">09B · CHARGE ARTWORK<br>Traveller drawing gold orbs into a blue-gold charge</span></div>
+          <div class="art flow-art"><span class="placeholder">10B · CHARGE ARTWORK<br>Traveller drawing gold orbs into a blue-gold charge</span></div>
           <div class="trigger"><span>R2</span><strong>HOLD</strong></div>
           <p class="serial-copy flow-description">Hold to charge.<br>Orbs fuel your power.</p>
         </section>
         <section class="flow-cast" aria-label="Release to cast">
           <span class="flow-arrow" aria-hidden="true">→</span>
-          <div class="art flow-art"><span class="placeholder">09C · CAST ARTWORK<br>Traveller releasing a blue blast toward an enemy</span></div>
+          <div class="art flow-art"><span class="placeholder">10C · CAST ARTWORK<br>Traveller releasing a blue blast toward an enemy</span></div>
           <div class="trigger"><span>R2</span><strong>RELEASE</strong></div>
           <p class="serial-copy flow-description">Release to cast.<br>Spend your stored power.</p>
         </section>
       </div>
       <h2 class="parallel-heading" data-build="1">SIMPLE INPUTS.<br>PARALLEL DECISIONS.</h2>
-      <span class="slide-number" data-build="1">10</span>
+      <span class="slide-number" data-build="1">11</span>
       <div class="parallel-lane-details" data-build="2">
         <span class="fight-label">FIGHT</span><span class="prepare-label">PREPARE</span>
         <span class="sustained-line" aria-hidden="true"></span>
@@ -219,8 +254,8 @@
       </div>
     </section>
 
-    <section class="slide combat-slide stateful-slide challenge-moves" data-state="3" aria-label="Slide 11: The challenge moves from inputs to attention">
-      <span class="slide-number">11</span>
+    <section class="slide combat-slide stateful-slide challenge-moves" data-state="3" aria-label="Slide 12: The challenge moves from inputs to attention">
+      <span class="slide-number">12</span>
       <h2 class="thesis-title">THE CHALLENGE MOVES<br><span>FROM INPUTS TO ATTENTION</span></h2>
       <div class="thesis-rule" aria-hidden="true">◇</div>
 
@@ -247,8 +282,8 @@
       </div>
     </section>
 
-    <section class="slide combat-slide stateful-slide actual-fight" data-state="4" aria-label="Slide 12: Why multitasking feels different">
-      <span class="slide-number">12</span>
+    <section class="slide combat-slide stateful-slide actual-fight" data-state="4" aria-label="Slide 13: Why multitasking feels different">
+      <span class="slide-number">13</span>
       <h2 class="combat-title">WHY MULTITASKING FEELS DIFFERENT</h2>
       <p class="proof-subtitle">NORMAL COMBAT KEEPS CHANGING.<br>THE SPELL STAYS ALIVE UNDERNEATH IT.</p>
       <div class="proof-ornament" aria-hidden="true">◇</div>
@@ -292,17 +327,383 @@
       <p class="proof-conclusion">YOU ARE NOT PERFORMING A HARDER COMBO.<br><strong>YOU ARE MAINTAINING A SECOND OFFENSIVE LAYER WHILE FIGHTING NORMALLY.</strong></p>
     </section>
 
-    <section class="slide combat-slide stateful-slide mastery-payoff" data-state="4" aria-label="Slide 13: The climax">
+    <section class="slide combat-slide stateful-slide mastery-payoff" data-state="4" aria-label="Slide 14: The climax">
       <div class="art full-art gameplay-slot payoff-media">
         <!-- Illustrative poster edited from the approved mockup; replace with real MP4/WebM using src. -->
         <video muted playsinline preload="metadata" poster="assets/cast-climax-v1.png" aria-label="Illustrative successful Cast artwork; future gameplay video slot"></video>
       </div>
       <div class="shade payoff-shade"></div>
-      <span class="slide-number">13</span>
+      <span class="slide-number">14</span>
       <p class="payoff-setup" data-build="1">THIS IS WHY CASTING FEELS REWARDING.</p>
       <div class="payoff-responsibilities" data-build="2"><p>THE FIGHT NEVER STOPPED.</p><p>THE CAST STAYED ALIVE.</p></div>
       <h2 class="payoff-main" data-build="3">I KEPT BOTH<br>UNDER CONTROL.</h2>
       <p class="payoff-final" data-build="4">THAT IS THE MASTERY.</p>
+    </section>
+    <section class="slide combat-slide stateful-slide expansion combo-magic" data-state="3" aria-label="Slide 15: Magic enters the combo">
+      <span class="slide-number">15</span><h2 class="combat-title">MAGIC ENTERS THE COMBO</h2>
+      <div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="exp-chain" aria-label="Five-position chain with Cast replacing position three">
+        <figure class="exp-position"><div class="art"><span class="placeholder">MELEE X1 ART</span></div><figcaption>X1</figcaption></figure><b class="exp-arrow" aria-hidden="true">→</b>
+        <figure class="exp-position"><div class="art"><span class="placeholder">MELEE X2 ART</span></div><figcaption>X2</figcaption></figure><b class="exp-arrow" aria-hidden="true">→</b>
+        <figure class="exp-position combo-third"><div class="art"><span class="placeholder combo-original">MELEE X3 ART</span><span class="placeholder combo-cast">CAST ART<br>FEMALE PROTAGONIST</span></div><figcaption><span class="combo-original">X3</span><span class="combo-cast">CAST</span></figcaption></figure><b class="exp-arrow combo-continuation" aria-hidden="true">→</b>
+        <figure class="exp-position combo-continuation"><div class="art"><span class="placeholder">MELEE X4 ART</span></div><figcaption>X4</figcaption></figure><b class="exp-arrow combo-continuation" aria-hidden="true">→</b>
+        <figure class="exp-position combo-continuation"><div class="art"><span class="placeholder">MELEE X5 ART</span></div><figcaption>X5</figcaption></figure>
+      </div>
+      <div class="exp-cues"><p data-build="1">CAST IS A COMBO INPUT</p><p data-build="2">THE CHAIN CONTINUES</p><p data-build="3">MAGIC ENTERS THE COMBO</p></div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion four-schools" data-state="3" aria-label="Slide 16: Four schools">
+      <span class="slide-number">16</span><h2 class="combat-title">FOUR SCHOOLS</h2>
+      <div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="school-cards" data-build="1">
+        <article class="school-card school-fire"><div class="art"><span class="placeholder">FIRE<br>ELEMENT SCHOOL CARD</span></div><span class="school-symbol" aria-hidden="true">♨</span><h3>FIRE</h3></article>
+        <article class="school-card school-water"><div class="art"><span class="placeholder">WATER<br>ELEMENT SCHOOL CARD</span></div><span class="school-symbol" aria-hidden="true">◇</span><h3>WATER</h3></article>
+        <article class="school-card school-air"><div class="art"><span class="placeholder">AIR<br>ELEMENT SCHOOL CARD</span></div><span class="school-symbol" aria-hidden="true">≋</span><h3>AIR</h3></article>
+        <article class="school-card school-earth"><div class="art"><span class="placeholder">EARTH<br>ELEMENT SCHOOL CARD</span></div><span class="school-symbol" aria-hidden="true">△</span><h3>EARTH</h3></article>
+      </div>
+      <div class="school-spectrum" data-build="2">
+        <div class="spectrum-extremes"><span>HEAVY · SLOW · POWERFUL</span><b aria-hidden="true">←────────────→</b><span>FAST · LIGHT</span></div>
+        <div class="spectrum-markers"><span class="school-fire">♨ FIRE</span><span class="school-earth">△ EARTH</span><span class="school-water">◇ WATER</span><span class="school-air">≋ AIR</span></div>
+        <small>CONCEPTUAL SPECTRUM · SCHOOL POSITIONS ARE PROVISIONAL</small>
+      </div>
+      <div class="exp-cues"><p data-build="1">FOUR SCHOOLS</p><p data-build="2">FOUR FIGHTING STYLES</p><p data-build="3">NOT JUST THE SPELL.<br>THE FIGHT CHANGES TOO.</p></div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion switch-chain chain-spell-link" data-state="3" aria-label="Slide 17: Switch mid-chain">
+      <span class="slide-number">17</span><h2 class="combat-title">SWITCH MID-CHAIN</h2>
+      <div class="flow-ornament" aria-hidden="true">◇</div>
+      <span class="switch-school-start school-fire combat-representation">♨ FIRE</span><span class="switch-school-end school-air combat-representation" data-build="1">≋ AIR</span>
+      <div class="exp-chain switch-positions" aria-label="Fire X1, Fire X2, switch, Air X3, Air X4, Air X5; generated orbs F F A A A">
+        <figure class="exp-position school-fire">
+          <div class="art combat-representation"><span class="placeholder">FIRE X1 ART</span></div>
+          <figcaption class="combat-representation">X1</figcaption>
+          <span class="generated-orb chain-orb school-fire" data-build="1" role="img" aria-label="Fire orb from X1">F</span>
+        </figure>
+        <b class="exp-arrow combat-representation" aria-hidden="true">→</b>
+        <figure class="exp-position school-fire">
+          <div class="art combat-representation"><span class="placeholder">FIRE X2 ART</span></div>
+          <figcaption class="combat-representation">X2</figcaption>
+          <span class="generated-orb chain-orb school-fire" data-build="1" role="img" aria-label="Fire orb from X2">F</span>
+        </figure>
+        <div class="between-positions combat-representation"><span class="switch-entry-arrow" aria-hidden="true">→</span><span class="switch-marker" data-build="1">→<br>SWITCH<br>→</span></div>
+        <figure class="exp-position switched-position">
+          <div class="art combat-representation"><span class="placeholder switch-before">FIRE X3 ART</span><span class="placeholder switch-after">AIR X3 ART</span></div>
+          <figcaption class="combat-representation">X3</figcaption>
+          <span class="generated-orb chain-orb school-air" data-build="1" role="img" aria-label="Air orb from X3">A</span>
+        </figure>
+        <b class="exp-arrow combat-representation" aria-hidden="true">→</b>
+        <figure class="exp-position switched-position">
+          <div class="art combat-representation"><span class="placeholder switch-before">FIRE X4 ART</span><span class="placeholder switch-after">AIR X4 ART</span></div>
+          <figcaption class="combat-representation">X4</figcaption>
+          <span class="generated-orb chain-orb school-air" data-build="1" role="img" aria-label="Air orb from X4">A</span>
+        </figure>
+        <b class="exp-arrow combat-representation" aria-hidden="true">→</b>
+        <figure class="exp-position switched-position">
+          <div class="art combat-representation"><span class="placeholder switch-before">FIRE X5 ART</span><span class="placeholder switch-after">AIR X5 ART</span></div>
+          <figcaption class="combat-representation">X5</figcaption>
+          <span class="generated-orb chain-orb school-air last-chain-orb" data-build="1" role="img" aria-label="Air orb from X5">A</span>
+        </figure>
+      </div>
+      <div class="exp-cues"><p data-build="1">SWITCH MID-CHAIN</p><p data-build="2">THE SWITCH COSTS<br>NO COMBO POSITION</p><p data-build="3">SAME CHAIN.<br>DIFFERENT FIGHTING STYLE.</p></div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion ffaaa-cast chain-spell-link" data-state="5" aria-label="Slide 18: The attacks write the spell">
+      <span class="slide-number">18</span><h2 class="combat-title">THE ATTACKS WRITE THE SPELL</h2>
+      <div class="flow-ornament" aria-hidden="true">◇</div>
+      <span class="switch-school-start school-fire combat-representation">♨ FIRE</span><span class="switch-school-end school-air combat-representation">≋ AIR</span>
+      <div class="exp-chain switch-positions" aria-label="Fire X1, Fire X2, switch, Air X3, Air X4, Air X5; generated orbs F F A A A">
+        <figure class="exp-position school-fire">
+          <div class="art combat-representation"><span class="placeholder">FIRE X1 ART</span></div>
+          <figcaption class="combat-representation">X1</figcaption>
+          <span class="generated-orb chain-orb school-fire" role="img" aria-label="Fire orb from X1">F</span>
+        </figure>
+        <b class="exp-arrow combat-representation" aria-hidden="true">→</b>
+        <figure class="exp-position school-fire">
+          <div class="art combat-representation"><span class="placeholder">FIRE X2 ART</span></div>
+          <figcaption class="combat-representation">X2</figcaption>
+          <span class="generated-orb chain-orb school-fire" role="img" aria-label="Fire orb from X2">F</span>
+        </figure>
+        <div class="between-positions combat-representation"><span class="switch-marker">→<br>SWITCH<br>→</span></div>
+        <figure class="exp-position school-air">
+          <div class="art combat-representation"><span class="placeholder">AIR X3 ART</span></div>
+          <figcaption class="combat-representation">X3</figcaption>
+          <span class="generated-orb chain-orb school-air" role="img" aria-label="Air orb from X3">A</span>
+        </figure>
+        <b class="exp-arrow combat-representation" aria-hidden="true">→</b>
+        <figure class="exp-position school-air">
+          <div class="art combat-representation"><span class="placeholder">AIR X4 ART</span></div>
+          <figcaption class="combat-representation">X4</figcaption>
+          <span class="generated-orb chain-orb school-air" role="img" aria-label="Air orb from X4">A</span>
+        </figure>
+        <b class="exp-arrow combat-representation" aria-hidden="true">→</b>
+        <figure class="exp-position school-air">
+          <div class="art combat-representation"><span class="placeholder">AIR X5 ART</span></div>
+          <figcaption class="combat-representation">X5</figcaption>
+          <span class="generated-orb chain-orb school-air last-chain-orb" role="img" aria-label="Air orb from X5">A</span>
+        </figure>
+      </div>
+      <p class="chain-carry-anchor">SAME CHAIN.<br>DIFFERENT FIGHTING STYLE.</p>
+      <span class="ffaaa-last-pointer" data-build="2" aria-hidden="true">↓</span>
+      <p class="ffaaa-total" data-build="3">5 ORBS</p>
+      <div class="ffaaa-result" data-build="2">
+        <span class="ffaaa-primary school-air">AIR <span data-build="3">Lv.5</span></span>
+        <span class="ffaaa-secondary school-fire" data-build="4">+ FIRE Lv.2</span>
+      </div>
+      <div class="exp-cues"><p data-build="1">THE SAME ATTACKS<br>BECOME THE CAST</p><p data-build="2">LAST ORB<br>→ PRIMARY SCHOOL</p><p data-build="3">ALL ORBS<br>→ PRIMARY LEVEL</p><p data-build="4">SECOND SCHOOL<br>→ SECONDARY LAYER</p><p data-build="5">ATTACK NOW.<br>SHAPE THE NEXT CAST.</p></div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion ffaaa-cast chain-spell-link heat-source" data-state="2" aria-label="Slide 19: Casting builds Heat">
+      <span class="slide-number">19</span><h2 class="combat-title">CASTING BUILDS HEAT</h2>
+      <div class="flow-ornament" aria-hidden="true">◇</div>
+      <span class="switch-school-start school-fire combat-representation">♨ FIRE</span><span class="switch-school-end school-air combat-representation">≋ AIR</span>
+      <div class="exp-chain switch-positions" aria-label="Fire X1, Fire X2, switch, Air X3, Air X4, Air X5; generated orbs F F A A A">
+        <figure class="exp-position school-fire">
+          <div class="art combat-representation"><span class="placeholder">FIRE X1 ART</span></div>
+          <figcaption class="combat-representation">X1</figcaption>
+          <span class="generated-orb chain-orb school-fire" role="img" aria-label="Fire orb from X1">F</span>
+        </figure>
+        <b class="exp-arrow combat-representation" aria-hidden="true">→</b>
+        <figure class="exp-position school-fire">
+          <div class="art combat-representation"><span class="placeholder">FIRE X2 ART</span></div>
+          <figcaption class="combat-representation">X2</figcaption>
+          <span class="generated-orb chain-orb school-fire" role="img" aria-label="Fire orb from X2">F</span>
+        </figure>
+        <div class="between-positions combat-representation"><span class="switch-marker">→<br>SWITCH<br>→</span></div>
+        <figure class="exp-position school-air">
+          <div class="art combat-representation"><span class="placeholder">AIR X3 ART</span></div>
+          <figcaption class="combat-representation">X3</figcaption>
+          <span class="generated-orb chain-orb school-air" role="img" aria-label="Air orb from X3">A</span>
+        </figure>
+        <b class="exp-arrow combat-representation" aria-hidden="true">→</b>
+        <figure class="exp-position school-air">
+          <div class="art combat-representation"><span class="placeholder">AIR X4 ART</span></div>
+          <figcaption class="combat-representation">X4</figcaption>
+          <span class="generated-orb chain-orb school-air" role="img" aria-label="Air orb from X4">A</span>
+        </figure>
+        <b class="exp-arrow combat-representation" aria-hidden="true">→</b>
+        <figure class="exp-position school-air">
+          <div class="art combat-representation"><span class="placeholder">AIR X5 ART</span></div>
+          <figcaption class="combat-representation">X5</figcaption>
+          <span class="generated-orb chain-orb school-air last-chain-orb" role="img" aria-label="Air orb from X5">A</span>
+        </figure>
+      </div>
+      <span class="ffaaa-last-pointer" aria-hidden="true">↓</span>
+      <p class="ffaaa-total">5 ORBS</p>
+      <div class="ffaaa-result">
+        <span class="ffaaa-primary school-air">AIR <span>Lv.5</span></span>
+        <span class="ffaaa-secondary school-fire">+ FIRE Lv.2</span>
+      </div>
+      <p class="heat-entry-anchor">SAME CAST.<br>ONE NEW IDEA.</p>
+      <div class="heat-intention" data-build="1"><kbd>R2</kbd><span>RELEASE TO CAST</span></div>
+      <div class="heat-release" data-build="2"><span aria-hidden="true">↓</span><strong>CAST</strong></div>
+      <div class="heat-gauge-build"><div class="heat-gauge" role="img" aria-label="Heat gauge: empty until the Cast releases"><strong>HEAT <span class="heat-rise-mark" aria-hidden="true">↑</span></strong><div class="heat-track"><span class="heat-fill"></span></div></div></div>
+      <div class="exp-cues"><p data-build="1">CAST SPENDS THE ORBS</p><p data-build="2">SPEND ORBS<br>→ BUILD HEAT</p></div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion heat-speed" data-state="3" aria-label="Slide 20: Heat makes combat faster">
+      <span class="slide-number">20</span><h2 class="combat-title">HEAT MAKES COMBAT FASTER</h2>
+      <div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="heat-gauge" role="img" aria-label="Illustrative Heat gauge held at a fixed level"><strong>HEAT ↑</strong><div class="heat-track"><span class="heat-fill"></span></div></div>
+      <div class="heat-timelines">
+        <section class="heat-comparison" data-build="1"><h3>ATTACK FASTER</h3><div class="timing-comparison"><p class="time-direction">TIME →</p><div class="timing-row"><strong>LOW HEAT</strong><div class="timing-axis"><div class="timing-events later attack-events"><span>X1</span><span>X2</span><span>X3</span><span>X4</span><span>X5</span></div></div></div><div class="timing-row"><strong>HIGH HEAT</strong><div class="timing-axis"><div class="timing-events sooner attack-events"><span>X1</span><span>X2</span><span>X3</span><span>X4</span><span>X5</span></div></div></div></div></section>
+        <section class="heat-comparison" data-build="2"><h3>CAST FASTER</h3><div class="timing-comparison"><p class="time-direction">TIME →</p><div class="timing-row"><strong>LOW HEAT</strong><div class="timing-axis"><div class="timing-events later cast-events"><span class="timeline-input"><kbd>R2</kbd> RELEASE</span><span class="timeline-outcome">✧ CAST</span></div></div></div><div class="timing-row"><strong>HIGH HEAT</strong><div class="timing-axis"><div class="timing-events sooner cast-events"><span class="timeline-input"><kbd>R2</kbd> RELEASE</span><span class="timeline-outcome">✧ CAST</span></div></div></div></div></section>
+        <section class="heat-comparison" data-build="3"><h3>CHARGE FASTER</h3><div class="timing-comparison"><p class="time-direction">TIME →</p><div class="timing-row"><strong>LOW HEAT</strong><div class="timing-axis"><div class="timing-events later charge-events"><span class="timeline-input"><kbd>R2</kbd> HOLD</span><span class="timeline-outcome">● CHARGED</span></div></div></div><div class="timing-row"><strong>HIGH HEAT</strong><div class="timing-axis"><div class="timing-events sooner charge-events"><span class="timeline-input"><kbd>R2</kbd> HOLD</span><span class="timeline-outcome">● CHARGED</span></div></div></div></div></section>
+      </div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion heat-loop" data-state="4" aria-label="Slide 21: Stay in the zone">
+      <span class="slide-number">21</span><h2 class="combat-title">STAY IN THE ZONE</h2>
+      <div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="heat-circle" aria-label="Three-node clockwise cycle: Attack, Cast, Faster combat">
+        <svg class="heat-circle-paths" viewBox="0 0 600 400" aria-hidden="true">
+          <defs><marker id="heat-cycle-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="currentColor"/></marker></defs>
+          <circle class="heat-circle-guide" cx="300" cy="205" r="150"/>
+          <path class="heat-circle-arc" data-build="2" d="M388 100 Q470 112 463 186" marker-end="url(#heat-cycle-arrow)"/>
+          <path class="heat-circle-arc" data-build="3" d="M400 342 Q300 390 200 342" marker-end="url(#heat-cycle-arrow)"/>
+          <path class="heat-circle-arc" data-build="4" d="M137 187 Q130 110 191 91" marker-end="url(#heat-cycle-arrow)"/>
+        </svg>
+        <section class="heat-loop-node cycle-attack" data-build="1"><h3>ATTACK</h3><p>GENERATE ORBS</p><div class="heat-loop-symbol">X → <span class="generated-orb" aria-label="Generated orb"></span></div></section>
+        <section class="heat-loop-node cycle-cast" data-build="2"><h3>CAST</h3><p>SPEND ORBS</p><strong class="heat-mechanism">HEAT ↑</strong></section>
+        <section class="heat-loop-node cycle-faster" data-build="3"><h3>FASTER COMBAT</h3><p>ATTACK FASTER<br>CAST FASTER<br>CHARGE FASTER</p></section>
+      </div>
+      <div class="exp-cues"><p data-build="1">ATTACK</p><p data-build="2">CAST</p><p data-build="3">FASTER COMBAT</p><p data-build="4">STAY IN THE ZONE.</p></div>
+    </section>
+    <section class="slide combat-slide stateful-slide expansion progression-system" data-state="3" aria-label="Slide 22: Spells are collectibles">
+      <span class="slide-number">22</span><h2 class="combat-title">SPELLS ARE COLLECTIBLES</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="progression-route">
+        <figure class="act-media progression-explore"><div class="art"><span class="placeholder">WORLD DISCOVERY<br>FEMALE PROTAGONIST · RUIN / POINT OF INTEREST</span></div><figcaption>EXPLORE</figcaption></figure>
+        <span class="progression-route-arrow" data-build="1" aria-hidden="true">→</span>
+        <figure class="act-media progression-find"><div class="art"><span class="placeholder">SPELL DISCOVERY<br>REPLACEABLE PICKUP ART</span></div><figcaption>FIND SPELL</figcaption></figure>
+        <span class="progression-route-arrow" data-build="1" aria-hidden="true">→</span>
+        <section class="progression-collection"><h3>COLLECTION</h3><div class="spell-card-grid"><span class="spell-card school-fire"><i aria-hidden="true">♨</i>SPELL</span><span class="spell-card school-water"><i aria-hidden="true">◇</i>SPELL</span><span class="spell-card school-air"><i aria-hidden="true">≋</i>SPELL</span><span class="spell-card school-earth"><i aria-hidden="true">△</i>SPELL</span></div></section>
+      </div>
+      <span class="collection-to-slots" data-build="2" aria-hidden="true">→</span>
+      <section class="progression-loadout" aria-label="Outside-combat school and level assignments"><h3>BUILD YOUR LOADOUT</h3><table class="loadout-table"><thead><tr><th scope="col">SCHOOL</th><th scope="col">Lv.1</th><th scope="col">Lv.2</th><th scope="col">Lv.3</th><th scope="col">Lv.4</th><th scope="col">Lv.5</th></tr></thead><tbody><tr class="school-fire"><th scope="row">FIRE</th><td class="generic-slot"><span class="spell-card" aria-label="FIRE level 1 equipped spell slot">SPELL</span></td><td class="selected-fire"><span class="spell-card" aria-label="FIRE level 2 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="FIRE level 3 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="FIRE level 4 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="FIRE level 5 equipped spell slot">SPELL</span></td></tr><tr class="school-water"><th scope="row">WATER</th><td class="generic-slot"><span class="spell-card" aria-label="WATER level 1 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="WATER level 2 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="WATER level 3 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="WATER level 4 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="WATER level 5 equipped spell slot">SPELL</span></td></tr><tr class="school-air"><th scope="row">AIR</th><td class="generic-slot"><span class="spell-card" aria-label="AIR level 1 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="AIR level 2 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="AIR level 3 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="AIR level 4 equipped spell slot">SPELL</span></td><td class="selected-air"><span class="spell-card" aria-label="AIR level 5 equipped spell slot">SPELL</span></td></tr><tr class="school-earth"><th scope="row">EARTH</th><td class="generic-slot"><span class="spell-card" aria-label="EARTH level 1 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="EARTH level 2 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="EARTH level 3 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="EARTH level 4 equipped spell slot">SPELL</span></td><td class="generic-slot"><span class="spell-card" aria-label="EARTH level 5 equipped spell slot">SPELL</span></td></tr></tbody></table></section>
+      <div class="progression-mapping" data-build="3">
+        <div class="progress-orbs" aria-label="Fire, Fire, Air, Air, Air"><span class="generated-orb school-fire">F</span><span class="generated-orb school-fire">F</span><span class="generated-orb school-air">A</span><span class="generated-orb school-air">A</span><span class="generated-orb school-air">A</span></div><span class="mapping-arrow" aria-hidden="true">→</span>
+        <div class="mapping-result"><p class="school-air">AIR Lv.5</p><span>+</span><p class="school-fire">FIRE Lv.2</p></div>
+        <span class="mapping-arrow" aria-hidden="true">→</span>
+        <div class="mapping-equipped"><p class="school-air">AIR Lv.5 → <span class="spell-card">EQUIPPED SPELL</span></p><p class="school-fire">FIRE Lv.2 → <span class="spell-card">EQUIPPED SPELL</span></p></div>
+      </div>
+      <div class="exp-cues"><p data-build="1">FIND THEM IN THE WORLD</p><p data-build="2">BUILD YOUR LOADOUT</p><p data-build="3">THE CAST SELECTS THE SPELL</p></div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion combat-callback" data-state="3" aria-label="Slide 23: Same controls, more possibilities">
+      <span class="slide-number">23</span><h2 class="combat-title">SAME CONTROLS.<br>MORE POSSIBILITIES.</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <section class="callback-input"><h3>SAME SIMPLE INPUTS</h3><div class="progress-inputs"><kbd>X</kbd><div><kbd>R2</kbd><span>HOLD → RELEASE</span></div></div><small>THE BASICS STAY THE SAME.</small></section>
+      <section class="callback-possibilities" data-build="1"><h3>MORE WAYS TO FIGHT</h3>
+        <div class="callback-cards">
+          <article><h4>FOUR<br>SCHOOLS</h4><div class="callback-elements" aria-hidden="true"><span class="school-fire">♨</span><span class="school-water">◇</span><span class="school-air">≋</span><span class="school-earth">△</span></div></article>
+          <article><h4>SWITCH<br>MID-CHAIN</h4><div class="callback-switch" aria-hidden="true"><span class="school-fire">♨</span>→<span class="school-air">≋</span></div></article>
+          <article><h4>COMPOUND<br>CASTING</h4><div class="progress-orbs" aria-hidden="true"><span class="generated-orb school-air">A</span><span class="generated-orb school-fire">F</span></div></article>
+          <article><h4>SPELL<br>LOADOUT</h4><div class="callback-spells" aria-hidden="true"><span class="spell-card">◇</span><span class="spell-card">◇</span></div></article>
+          <article><h4>HEAT</h4><div class="callback-heat" aria-hidden="true">♨<span></span></div></article>
+        </div>
+      </section>
+      <section class="callback-attention" data-build="2"><h3>ATTENTION</h3><div class="callback-decisions">
+        <div><span aria-hidden="true">♨</span><p>WHICH<br>SCHOOL?</p></div>
+        <div><span aria-hidden="true">↻</span><p>WHEN DO<br>I SWITCH?</p></div>
+        <div><span aria-hidden="true">◇</span><p>WHAT AM<br>I BUILDING?</p></div>
+        <div><span aria-hidden="true">◷</span><p>WHEN DO<br>I RELEASE?</p></div>
+      </div></section>
+      <div class="exp-cues"><p data-build="1">MORE POSSIBILITIES.</p><p data-build="2">NOT MORE TO EXECUTE.<br>MORE TO MANAGE.</p><p data-build="3">THE COMPLEXITY<br>MOVES INTO ATTENTION.</p></div>
+    </section>
+    <section class="slide combat-slide stateful-slide expansion world-town-loop" data-state="4" aria-label="Slide 24: The town sends me out">
+      <span class="slide-number">24</span><h2 class="combat-title">THE TOWN SENDS ME OUT</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="world-cycle" aria-label="Home has a need, go out, bring it home, home changes, back to a new need">
+        <svg class="world-cycle-paths" viewBox="0 0 600 340" aria-hidden="true">
+          <defs><marker id="world-cycle-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="currentColor"/></marker></defs>
+          <circle class="world-cycle-guide" cx="300" cy="170" r="125"/>
+          <path class="world-cycle-arc" data-build="2" d="M410 60 Q450 85 450 130" marker-end="url(#world-cycle-arrow)"/>
+          <path class="world-cycle-arc" data-build="3" d="M450 210 Q440 260 410 280" marker-end="url(#world-cycle-arrow)"/>
+          <path class="world-cycle-arc" data-build="4" d="M190 280 Q160 260 150 210" marker-end="url(#world-cycle-arrow)"/>
+          <path class="world-cycle-arc" data-build="4" d="M150 130 Q160 85 190 60" marker-end="url(#world-cycle-arrow)"/>
+        </svg>
+        <figure class="world-home act-media"><div class="art"><span class="placeholder">MIRHAM / HOME<br>TOWN ART PLACEHOLDER</span></div><figcaption><strong>MIRHAM</strong><span>HOME</span></figcaption></figure>
+        <section class="world-node world-need"><div data-build="1"><span class="world-node-icon" aria-hidden="true">♟</span><h3>HOME HAS A NEED</h3></div></section>
+        <section class="world-node world-out"><div data-build="2"><span class="world-node-icon" aria-hidden="true">✧</span><h3>GO OUT</h3><p>EXPLORE · FIGHT · DISCOVER</p></div></section>
+        <section class="world-node world-return"><div data-build="3"><span class="world-node-icon" aria-hidden="true">▱</span><h3>BRING IT HOME</h3><p>RESOURCE · DISCOVERY<br>QUEST RESULT</p></div></section>
+        <section class="world-node world-change"><div data-build="4"><span class="world-node-icon" aria-hidden="true">⌂</span><h3>HOME CHANGES</h3><p>NEW BUILDING · NEW PEOPLE<br>NEW POSSIBILITIES</p></div></section>
+      </div>
+      <div class="exp-cues"><p data-build="1">HOME HAS A NEED.</p><p data-build="2">GO OUT.</p><p data-build="3">BRING IT HOME.</p><p data-build="4">HOME CHANGES.</p></div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion world-map-places" data-state="2" aria-label="Slide 25: From map icon to real place">
+      <span class="slide-number">25</span><h2 class="combat-title">FROM MAP ICON → REAL PLACE</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="poi-map">
+        <div class="art"><span class="placeholder">STRATEGY MAP SOURCE SLOT<br>REPLACE WITH AUTHENTIC HEROES SOURCE</span></div>
+        <span class="poi-map-icon poi-windmill" aria-label="WINDMILL-LIKE representative map icon, not an official source"><span aria-hidden="true">⚒</span><small>1</small></span>
+        <span class="poi-map-icon poi-tower" aria-label="TOWER-LIKE representative map icon, not an official source"><span aria-hidden="true">♜</span><small>2</small></span>
+        <span class="poi-map-icon poi-ruin" aria-label="RUIN / SHRINE-LIKE representative map icon, not an official source"><span aria-hidden="true">▥</span><small>3</small></span>
+        <span class="poi-map-icon poi-treasure" aria-label="TREASURE / CAVE-LIKE representative map icon, not an official source"><span aria-hidden="true">◇</span><small>4</small></span>
+        <p>REPRESENTATIVE ICON SLOTS</p>
+      </div>
+      <div class="poi-realizations" aria-label="Four corresponding icon-to-place realizations">
+        <article class="poi-realization"><div data-build="2"><div class="poi-pair-icon"><span aria-hidden="true">⚒</span><small>1</small><span class="poi-pair-label">ICON → PLACE</span></div><div class="art"><span class="placeholder">GROUND-LEVEL MILL / FIELDS<br>REALIZATION PLACEHOLDER<br>FEMALE PROTAGONIST</span></div></div></article>
+        <article class="poi-realization"><div data-build="2"><div class="poi-pair-icon"><span aria-hidden="true">♜</span><small>2</small><span class="poi-pair-label">ICON → PLACE</span></div><div class="art"><span class="placeholder">GROUND-LEVEL TOWER / APPROACH<br>REALIZATION PLACEHOLDER<br>FEMALE PROTAGONIST</span></div></div></article>
+        <article class="poi-realization"><div data-build="2"><div class="poi-pair-icon"><span aria-hidden="true">▥</span><small>3</small><span class="poi-pair-label">ICON → PLACE</span></div><div class="art"><span class="placeholder">GROUND-LEVEL RUIN / ENTRANCE<br>REALIZATION PLACEHOLDER<br>FEMALE PROTAGONIST</span></div></div></article>
+        <article class="poi-realization"><div data-build="2"><div class="poi-pair-icon"><span aria-hidden="true">◇</span><small>4</small><span class="poi-pair-label">ICON → PLACE</span></div><div class="art"><span class="placeholder">GROUND-LEVEL CAVE / DISCOVERY<br>REALIZATION PLACEHOLDER<br>FEMALE PROTAGONIST</span></div></div></article>
+      </div>
+      <span class="poi-transform-arrow" data-build="2" aria-hidden="true">→</span>
+      <div class="exp-cues"><p data-build="1">THE MAP IS ALREADY FULL<br>OF FAMILIAR PLACES.</p><p data-build="2">FROM MAP ICON<br>→ REAL PLACE.</p></div>
+      <p class="poi-landing" data-build="2">FAMILIAR FROM ABOVE. NEW FROM THE GROUND.</p>
+    </section>
+    <section class="slide combat-slide stateful-slide expansion narrative narrative-opening" data-state="2" aria-label="Slide 26: The opening players already know">
+      <span class="slide-number">26</span><h2 class="combat-title">THE OPENING PLAYERS ALREADY KNOW</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="narrative-hero">
+        <div class="art gameplay-slot opening-source">
+          <!-- Supply authentic Heroes III opening media only. -->
+          <video muted playsinline preload="metadata" aria-label="Authentic Heroes III opening CG source slot"></video>
+          <span class="placeholder">AUTHENTIC HEROES III OPENING CG<br>SOURCE PLACEHOLDER — DO NOT GENERATE</span>
+        </div>
+        <div class="art opening-aftermath" data-build="2"><span class="placeholder">RUINED CLOUDFIRE<br>ORIGINAL HMM3 OPENING / AFTERMATH FRAME<br>SOURCE PLACEHOLDER — DO NOT GENERATE</span></div>
+        <p class="narrative-image-label" data-build="2">HEROES III — AFTERMATH</p>
+      </div>
+      <div class="exp-cues"><p data-build="1">THIS IS WHERE<br>HEROES III BEGINS.</p><p data-build="2">WE ARRIVE<br>AFTER IT HAPPENED.</p></div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion narrative narrative-local" data-state="4" aria-label="Slide 27: Now you live through it">
+      <span class="slide-number">27</span><h2 class="combat-title">NOW YOU LIVE THROUGH IT</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="narrative-stages">
+        <article class="narrative-stage local-life">
+          <div class="art history-echo"><span class="placeholder">RUINED CLOUDFIRE / AFTERMATH<br>ORIGINAL HMM3 SOURCE SLOT<br>DO NOT GENERATE</span></div>
+          <div class="art local-before"><span class="placeholder">LAEMA / LOCAL LIFE<br>CLOUDFIRE BEFORE THE FALL<br>FEMALE PROTAGONIST · LOCAL PEOPLE · STREETS<br>CONCEPT ART PLACEHOLDER</span></div><h3>LOCAL LIFE</h3>
+        </article>
+        <span class="narrative-arrow" data-build="2" aria-hidden="true">→</span>
+        <article class="narrative-stage local-poison"><div class="art"><span class="placeholder">LOCAL POISON INCIDENT<br>LAEMA · LOCAL PERSON<br>SYMPTOMS / CLUE<br>CONCEPT ART PLACEHOLDER</span></div><h3>LOCAL MYSTERY</h3></article>
+        <span class="narrative-arrow" data-build="3" aria-hidden="true">→</span>
+        <article class="narrative-stage local-history"><p class="poison-link" data-build="3">SAME POISON</p><div class="art"><span class="placeholder">ORIGINAL HMM3 / CANONICAL KING REFERENCE<br>SOURCE PLACEHOLDER — DO NOT GENERATE</span></div><h3>KING NICOLAS</h3></article>
+        <span class="narrative-arrow" data-build="4" aria-hidden="true">→</span>
+        <article class="narrative-stage local-fall">
+          <div class="fall-sequence"><div class="art"><span class="placeholder">LAEMA — CLOUDFIRE BEFORE THE FALL<br>CONCEPT ART PLACEHOLDER</span></div><span aria-hidden="true">↓</span><div class="art"><span class="placeholder">LAEMA — CLOUDFIRE FALL<br>CONCEPT ART PLACEHOLDER</span></div><span aria-hidden="true">↓</span><div class="art"><span class="placeholder">ORIGINAL HMM3 CLOUDFIRE AFTERMATH<br>SOURCE PLACEHOLDER — DO NOT GENERATE</span></div></div><h3>CLOUDFIRE FALLS</h3>
+        </article>
+      </div>
+      <div class="exp-cues"><p data-build="1">LAEMA IS LOCAL.</p><p data-build="2">THE STORY STARTS<br>WITH SOMETHING SMALL.</p><p data-build="3">THE SAME POISON<br>LATER KILLS THE KING.</p><p data-build="4">THEN HISTORY<br>HAPPENS HERE.</p></div>
+      <p class="narrative-landing" data-build="4">THE OPENING CG BECOMES A MEMORY.</p>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion narrative narrative-home" data-state="3" aria-label="Slide 28: The last stand is at home">
+      <span class="slide-number">28</span><h2 class="combat-title">THE LAST STAND IS AT HOME</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="narrative-stages home-stages">
+        <article class="narrative-stage home-cloudfire"><div class="art"><span class="placeholder">ORIGINAL HMM3 CLOUDFIRE FRAME<br>SOURCE PLACEHOLDER — DO NOT GENERATE</span></div><h3>CLOUDFIRE</h3></article>
+        <span class="narrative-arrow" data-build="1" aria-hidden="true">→</span>
+        <article class="narrative-stage home-survivors"><div class="art"><span class="placeholder">SURVIVORS / CONSEQUENCES MOVING TOWARD MIRHAM<br>CONCEPT ART PLACEHOLDER</span></div><h3>THE WAR MOVES OUTWARD</h3></article>
+        <span class="narrative-arrow" data-build="1" aria-hidden="true">→</span>
+        <article class="narrative-stage home-mirham"><div class="art"><span class="placeholder">MIRHAM / HOME<br>SAME TOWN IDENTITY AS SLIDES 4, 5 AND 24<br>CONCEPT ART PLACEHOLDER</span></div><h3>MIRHAM</h3></article>
+        <span class="narrative-arrow" data-build="2" aria-hidden="true">→</span>
+        <article class="narrative-stage home-threat"><div class="art"><span class="placeholder">THE SAME MIRHAM UNDER THREAT<br>SAME STREETS · BUILDINGS · PEOPLE · LANDMARK<br>CONCEPT ART PLACEHOLDER</span></div><h3>HOME UNDER THREAT</h3></article>
+      </div>
+      <p class="home-callbacks" data-build="2">STREET · BUILDING · PEOPLE · TOWN LANDMARK</p>
+      <div class="art narrative-hero home-last-stand" data-build="3"><span class="placeholder">MIRHAM LAST STAND<br>FEMALE PROTAGONIST DEFENDING THE RECOGNIZABLE HOME TOWN<br>REUSE THE SAME STREETS, BUILDINGS AND LANDMARK<br>CONCEPT ART PLACEHOLDER</span></div>
+      <div class="exp-cues"><p data-build="1">THE WAR REACHES HOME.</p><p data-build="2">THE TOWN I BUILT<br>BECOMES THE TOWN I DEFEND.</p><p data-build="3">THE FINAL BATTLE<br>IS AT HOME.</p></div>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion narrative narrative-handoff" data-state="3" aria-label="Slide 29: The known story takes over">
+      <span class="slide-number">29</span><h2 class="combat-title">THE KNOWN STORY TAKES OVER</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="narrative-hero handoff-scene">
+        <div class="art handoff-laema"><span class="placeholder">LAEMA / LOCAL STORY<br>FEMALE PROTAGONIST · MIRHAM / CLOUDFIRE<br>CONCEPT ART PLACEHOLDER</span></div>
+        <div class="art handoff-catherine"><span class="placeholder">ORIGINAL HMM3 CATHERINE ASSET<br>SOURCE PLACEHOLDER — DO NOT GENERATE</span></div>
+        <p class="handoff-ending" data-build="1">LAEMA'S STORY<br>ENDS HERE</p>
+        <p class="handoff-beginning" data-build="2">CATHERINE'S STORY<br>BEGINS HERE</p>
+        <div class="handoff-divider"><span aria-hidden="true">◇</span></div>
+        <p class="handoff-event" data-build="1">CLOUDFIRE<br>HEROES III OPENING</p>
+      </div>
+      <div class="exp-cues"><p data-build="1">OUR STORY ENDS<br>AT THE OPENING.</p><p data-build="2">FOR CATHERINE,<br>THIS IS THE BEGINNING.</p><p data-build="3">SAME HISTORY.<br>GROUND-LEVEL POINT OF VIEW.</p></div>
+    </section>
+    <section class="slide combat-slide stateful-slide expansion pitch-audience" data-state="3" aria-label="Slide 30: Who is this for?">
+      <span class="slide-number">30</span><h2 class="combat-title">WHO IS THIS FOR?</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <section class="audience-heroes"><h3>HEROES PLAYERS</h3><div class="audience-transformations">
+        <div class="audience-pair" aria-label="TOWN SCREEN → REAL TOWN"><div class="art"><span class="placeholder">HEROES TOWN<br>AUTHENTIC SOURCE SLOT</span></div><span class="audience-arrow" aria-hidden="true">→</span><div class="art"><span class="placeholder">LAEMA — REAL TOWN<br>CONCEPT ART PLACEHOLDER</span></div></div>
+        <div class="audience-pair" aria-label="UNIT → CREATURE"><div class="art"><span class="placeholder">HEROES CREATURE<br>AUTHENTIC SOURCE SLOT</span></div><span class="audience-arrow" aria-hidden="true">→</span><div class="art"><span class="placeholder">LAEMA — GROUND ENCOUNTER<br>CONCEPT ART PLACEHOLDER</span></div></div>
+        <div class="audience-pair" aria-label="MAP ICON → REAL PLACE"><div class="art"><span class="placeholder">HEROES MAP / POI<br>AUTHENTIC SOURCE SLOT</span></div><span class="audience-arrow" aria-hidden="true">→</span><div class="art"><span class="placeholder">LAEMA — REAL PLACE<br>CONCEPT ART PLACEHOLDER</span></div></div>
+      </div></section>
+      <section class="audience-action"><h3>ACTION RPG PLAYERS</h3><div class="art audience-combat"><span class="placeholder">LAEMA — COMBAT<br>FEMALE PROTAGONIST<br>CONCEPT ART PLACEHOLDER</span></div>
+        <div class="audience-lineage" data-build="3" aria-label="Might & Magic RPG lineage, Heroes strategy perspective, LAEMA action-RPG perspective"><span>MIGHT &amp; MAGIC<small>RPG</small></span><b aria-hidden="true">→</b><span>HEROES<small>STRATEGY</small></span><b aria-hidden="true">→</b><span>LAEMA<small>ACTION RPG</small></span></div>
+      </section>
+      <div class="exp-cues"><p data-build="1">FOR PLAYERS<br>WHO ALREADY KNOW THIS WORLD.</p><p data-build="2">BUT YOU DON'T NEED<br>TO KNOW HEROES FIRST.</p><p data-build="3">A MODERN ACTION-RPG VIEW<br>OF MIGHT &amp; MAGIC.</p></div>
+      <p class="audience-product">PREMIUM SINGLE-PLAYER ACTION RPG · ~20 HOURS · ONE-TIME PURCHASE</p>
+    </section>
+
+    <section class="slide combat-slide stateful-slide expansion pitch-synthesis" data-state="3" aria-label="Slide 31: Why Laema?">
+      <span class="slide-number">31</span><h2 class="combat-title">WHY LAEMA?</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="synthesis-halves">
+        <section class="synthesis-world"><h3>THE WORLD</h3><div class="synthesis-world-image">
+          <div class="art"><span class="placeholder">STRATEGY LAYER<br>AUTHENTIC HEROES SOURCE SLOT</span></div><span class="audience-arrow" data-build="1" aria-hidden="true">→</span><div class="art"><span class="placeholder">PHYSICAL / GROUND-LEVEL WORLD<br>LAEMA CONCEPT ART PLACEHOLDER</span></div>
+        </div><p class="synthesis-world-recalls">TOWN · CREATURE · MAP POI · CLOUDFIRE / STORY</p></section>
+        <section class="synthesis-combat"><h3>THE COMBAT</h3><div class="art"><span class="placeholder">LAEMA — FEMALE PROTAGONIST IN COMBAT<br>CONCEPT ART PLACEHOLDER</span></div>
+          <div class="synthesis-inputs" aria-hidden="true"><kbd>X</kbd><kbd>R2</kbd><span class="generated-orb"></span></div>
+          <p class="synthesis-thesis" data-build="2">SIMPLE INPUTS<br><span aria-hidden="true">↓</span><br>PARALLEL DECISIONS<br><span aria-hidden="true">↓</span><br>ATTENTION MANAGEMENT</p>
+        </section>
+      </div>
+      <div class="art synthesis-hero" data-build="3"><span class="placeholder">LAEMA — SAME WORLD, A NEW PERSPECTIVE<br>FEMALE PROTAGONIST OVERLOOKING HER WORLD<br>REUSE SLIDE 1'S WORLD / CASTLE COMPOSITION<br>CONCEPT ART PLACEHOLDER</span></div>
+      <div class="exp-cues"><p data-build="1">A HEROES WORLD<br>I CAN ACTUALLY LIVE IN.</p><p data-build="2">A COMBAT SYSTEM<br>WITH ITS OWN IDENTITY.</p><p data-build="3">SAME WORLD.<br>A NEW PERSPECTIVE.</p></div>
+    </section>
+
+    <section class="slide combat-slide expansion pitch-questions" aria-label="Slide 32: Q&A">
+      <div class="art full-art"><span class="placeholder">LAEMA — WORLD / CASTLE END-CARD ART<br>FEMALE PROTAGONIST IN THE LEFT FOREGROUND<br>CONCEPT ART PLACEHOLDER</span></div><div class="shade cover-shade"></div>
+      <span class="slide-number">32</span><h2 class="combat-title">Q&amp;A</h2><div class="flow-ornament" aria-hidden="true">◇</div>
+      <div class="title-lockup"><span class="orbit" aria-hidden="true"></span><h1>LAEMA</h1></div>
+      <p class="questions-tagline">SAME WORLD. A NEW PERSPECTIVE.</p>
     </section>
   </main>
   <footer class="page-footer"><span>PITCH DECK</span><span>LAEMA — ACT I — OPENING</span><span>FOR A BRIGHTER TOMORROW</span></footer>
