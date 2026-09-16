@@ -1,10 +1,158 @@
 # LAEMA editable opening draft
 
-Open `index.html` directly in a modern browser, or serve this folder with any static web server. No installation, dependency, or build step is needed. Thirty-two separate 16:9 slides scale with the browser width.
+Open `index.html` directly in a modern browser, or serve this folder with any static web server. No installation, dependency, or build step is needed. Thirty-one separate 16:9 slides scale with the browser width.
 
 Edit text in `index.html`; shared colors, fonts, dimensions and spacing are in `styles.css`. The draft uses system serif fonts and approximate Unicode icons. It does not bake slide text into screenshots or use external dependencies.
 
+## Current systems beauty / composition pass — Slides 15–23 only
+
+This subsequent scoped pass recomposes Slides 15–23 using `.systems-beauty` and exclusive `s3-` rules. Slides 1–14 (including the preceding combat composition pass) and 24–31 were left untouched. Numbering, assets and `presentation.js` were not changed. No China slide or reserved slot was added.
+
+- **15:** one action panorama and a central Cast substitution; X4–X5 remain visibly connected.
+- **16:** unboxed school symbols and names; SPELL + MOVES becomes the second-beat focus. The conceptual spectrum remains explicitly provisional.
+- **17–19:** the same five fixed positions and F F A A A orbs carry through switching, spell derivation, consumption and Heat. X3 keeps its position. AIR Lv.5 + FIRE Lv.2 remains the worked result. The single Heat meter is illustrative and has no numerical value.
+- **20:** one aligned timing field. Low/High Heat share identical start/end coordinates and action endpoints; one-shot tracers use different durations and hold at the end, without reversing or shortening the path. Arrival labels support the static/reduced-motion view.
+- **21:** three unboxed concepts around a clockwise ring; the return arc closes on beat 4.
+- **22:** discovery imagery recedes into an outside-combat 4 × 5 assignment model. The combat example highlights AIR Lv.5 and FIRE Lv.2 equipped slots. This is not an in-combat selection menu or a collection-size claim.
+- **23:** stable X/R2 controls, an expanding constellation of callbacks, foreground attention questions, then the large final attention thesis.
+
+Locked build counts are **3 / 2 / 3 / 5 / 2 / 3 / 4 / 3 / 3**. Mechanics and current presenter anchors are preserved; redundant framing and repeated labels were simplified. Existing imagery and schematic symbols only: no new art, dependencies, source imagery, commit or publication.
+
+Per explicit user instruction, no browser, presentation mode, screenshots, visual QA or automated tests were run. This is saved composition work awaiting manual review. Original-HMM3 source selection remains a separate audit for identity, chronology, relevance, provenance and visual usefulness; a filled source slot is not approval.
+
+## Prior beauty / composition pass 3 — Slides 7–14 only
+
+The user authorized substantial recomposition of the combat teaching sequence. Slides 7–14 now opt into `.beauty-three` and exclusive `b3-` elements/styles; no other slide opts into these rules. Slides 1–6 and 15–31, slide numbering, all assets and `presentation.js` were left unchanged by this pass. The China slide remains dropped.
+
+- Slides 7–8 share an enlarged attack-art field, a quiet X1–X5 spine and a second resource line.
+- Slide 9 progresses from large orbs through an R2 hold gesture into the Cast image without three framed columns.
+- Slides 10–11 share the same serial DOM/coordinates. Existing state changes move those same elements into concurrent fight/preparation lanes.
+- Slide 12 uses open typographic contrast and an enlarged attention thesis; repeated explanatory prose and panels were removed.
+- Slide 13 uses sparse changing combat gestures above a persistent Cast line; its fourth beat retains the full concluding statement. The removed release question remains absent.
+- Slide 14 uses full-bleed artwork, asymmetric type, receding support and a quiet final signature.
+
+Locked build counts remain **3, 2, 3, 3, 3, 3, 4, 4**. All locked presenter anchors and mechanics are preserved. Removed copy was redundant supporting explanation, not the locked spoken anchors. No art generation or new dependencies. No browser, presentation mode, screenshots, visual QA or automated tests were run, as explicitly requested; the user will review manually. No commit or publication.
+
+**Source approval remains open:** Original-HMM3 source imagery requires a separate source-audit pass. Verify identity, relevance, chronology and visual quality before final approval. Do not preserve a source solely because it is already wired.
+
+## Earlier user revision and authentic sources — 2026-09-16
+
+The former Slide 31 (Why Laema?) was removed at the user's request; Q&A is now Slide 31. Requested copy edits are applied to Slides 13–16, 22 and 27. Slide 16 now has two beats, as explicitly confirmed: FOUR SCHOOLS, then AFFECTS BOTH SPELLS AND MOVES. Slide 13's release question is removed; its existing fourth beat now belongs to its existing concluding statement. All other retained slides keep their build counts.
+
+All 14 authentic-source slots are now filled with online-sourced original media. **No concept or source placeholders remain.** The original Griffin sprite, Catherine portrait, Catherine/Cloudfire intro stills, Nicolas's tomb frame, original intro video and publisher-hosted manual screenshot are documented with direct links in `assets/AUTHENTIC-SOURCES.md`. The adventure map is the original manual's monochrome screenshot; cinematic stills retain legacy resolution. Original media was not generated, recoloured or enhanced.
+
+The intro is connected to Slide 26's existing muted video slot. Post-edit slide layout and playback still need user review because browser access remains blocked. Previous dated checkpoints below describe earlier states and do not supersede this revision.
+
+## Earlier concept-art completion — 2026-09-16
+
+After passes 1–2, the user approved generation and integration for the remaining 12 concept slots. They are now filled. Nine scene concepts and four tall-card adaptations are saved in `assets/`; one rejected survivors candidate was revised to avoid resembling Laema. Ten of the retained files are referenced by the deck; three wide POI masters remain available as source variants. No slide layout, text, order, build marker or controller logic changed.
+
+| Slides | New artwork |
+| --- | --- |
+| 22 | Ruin exploration and illustrative spell discovery |
+| 25 | Portrait-format mill, tower, ruin and cave approaches |
+| 27 | Cloudfire local life, poison incident, and a matching street during the fall |
+| 28 | Anonymous civilian survivors |
+| 29 | Local-life image reused on Laema's side of the story handoff |
+
+These images are LAEMA concepts, not source-game frames, gameplay captures or new canon. Cloudfire's street is an illustrative setting distinct from Mirham. The spell folio and poison-scene cup are staging choices, not approved mechanics or narrative causes. Exact prompts, filenames and provenance are in `assets/CONCEPT-COMPLETION-PROMPTS.md`.
+
+**Current checks:** 32 slides, presenter wording and every build marker unchanged against HEAD; `presentation.js` unchanged; all 75 media/script references resolve; HTML balanced; IDs unique; whitespace diff clean. **Zero concept placeholders remain.** The 14 remaining placeholders are authentic-source slots in Slides 2, 6, 25–30.
+
+**Visual limit:** generated images were inspected individually and four were adapted for the narrow POI cards. The browser access block persists, so post-edit slide rendering, crops and playback are not verified. Refresh and check Slide 22, Slide 25 build 2, Slide 27 through its builds, Slide 28's survivors card, and Slide 29's local-story half before final presentation review.
+
+## Earlier polish checkpoint — passes 1–2
+
+Passes 1 and 2 are saved. This checkpoint supersedes the older implementation-status paragraphs below; the existing pitch order, wording, compositions and build counts remain fixed. No controller changes, generated artwork, new dependencies, commit or publication were made in these passes.
+
+- **7–8:** user-supplied five-attack panorama as an illustrative video poster, retaining editable attack/orb diagrams.
+- **9–11:** matching melee/Cast art and a schematic charge graphic; the existing serial-to-parallel build logic is retained.
+- **13–19:** schematic combat-demand graphics, new supplied Slide 14 poster, per-position crops of the supplied attack strip, and school-colour accents. These school illustrations do not demonstrate distinct implemented moves. The four-school cards use their existing symbols instead of artwork placeholders.
+- **24, 28, 30–32:** existing Mirham/Griffin/cover artwork reused; supplied Mirham defence image fills the threat and last-stand slots. Authentic Castle-town imagery fills compatible source slots in the closing section.
+- **7–32 shared finish:** warm ivory serif titles, consistent sans-serif controls and anchors, quiet rectangular framing, reduced decorative glow, and localized artwork contrast. Existing element coordinates and animation timings remain intact.
+
+**Verified statically:** 32 slides; all `data-build` markers and non-placeholder presenter wording unchanged against the pre-pass commit; `presentation.js` unchanged; all 63 media/script references resolve; no duplicate HTML/SVG IDs; balanced HTML and CSS blocks; clean whitespace diff. Placeholder elements decreased from 82 to 26, including four replaced by the existing school-card graphics.
+
+**Visual evidence:** the user supplied pre-edit screenshots of Slides 7, 8, 14 and 28. Browser Use policy blocked access to the local deck and prohibited a workaround. No post-edit browser rendering, animation/playback review or whole-deck presentation walkthrough is claimed. Refresh the local deck before reviewing.
+
+**First refresh checks:** (1) Slides 7–8, 14 and 28 for artwork crop and text contrast; (2) Slides 10→11, 15 and 17→18→19 through their builds; (3) Slides 30→31→32 for small crops and closing readability.
+
+**Remaining 26 media slots:** 14 authentic-source placeholders across Slides 2, 6, 25–30; 12 concept placeholders across Slides 22, 25, 27–29. Specific gaps include the adventure map, hero/creature/Griffin, opening/Cloudfire, King Nicolas, Catherine, discovery/pickup, tower/ruin/cave/mill, local poison/fall scenes, survivors and the local-story handoff. Do not substitute generated imagery into source slots or label Mirham art as Cloudfire. See `LAEMA_POLISH_STATUS.md` for the resume point.
+
+## LAEMA Art Bible / Visual Production Rules
+
+**V1 — locked production constraints supplied by the user.** These rules govern the pitch's visual production. They do not change the GDD, mechanics, narrative, prototype art, or the styling of Slides 7–32. This first beauty pass is limited to Slides 1–6 and has not been rendered, tested or visually validated.
+
+1. **Source is source.** Original Heroes III screenshots, CG, town screens, map views, creatures, sprites and UI must use authentic supplied material. Never generate replacements or present a modern imitation as original HMM3 content.
+2. **Generated art is LAEMA concept art.** Future generation may illustrate the approved ground-level interpretation, including Mirham, Laema, town life and Griffin encounters. It must remain distinct from original source material.
+3. **Art is text-free.** No baked titles, logos, labels, controller prompts, HUD, subtitles, slide copy or ornamental lettering. Every presentation word remains HTML.
+4. **Laema stays the same character.** Laema v1 is female, dark-haired, in blue/ivory/brown practical fantasy clothing and light armor, with a sword as the primary weapon silhouette and blue/gold Castle accents. The supplied `assets/laema key visual.png` is the standalone character reference; `assets/slide 1 key visual.png` carries the same character into wide key art. Preserve face, age, body type, hair, outfit language and weapon identity. Pose, lighting, weather and damage may vary.
+5. **Castle / Erathia world language.** Grey stone, warm plaster, dark timber, red roofs, blue/gold faction accents and bright heroic medieval fantasy. Grounded architecture must not drift into generic muddy grimdark. Illustrations can have rich world color within the restrained navy/gold deck.
+6. **Mirham is a recurring place.** Keep gate/tower silhouette, wall language, market-square/street relationship and landmarks recognizable at peace, during growth, under threat and at the last stand.
+7. **Continuity beats isolated beauty.** Same-building, same-street, same-creature and before/after imagery should reuse camera, footprint, composition, landmarks, scale and silhouette or derive directly from an approved earlier image.
+8. **No new game content through art.** Do not invent companions, mounts, army control, settlement management, factions, story characters, weapons, spells, quests, UI or buildings implying new mechanics. Art illustrates the approved content.
+9. **Compose for the real slot.** Use the asset map below. Preserve text-safe regions, subject placement and crop; do not default every future asset to an unrelated 16:9 painting.
+10. **Support the current anchor.** Each image must make the current spoken idea easier to understand. Spectacle without that purpose is unnecessary.
+11. **Keep useful graphics.** Arrows, comparisons, labels and diagrams may communicate better than another painting. Not every panel needs new art.
+12. **Concept art is not gameplay.** Until authentic gameplay is supplied, images remain illustrative pitch material and must not imply captured play.
+13. **Deck palette.** Very dark navy/black, restrained gold, warm ivory text and quiet rules. Do not force all future art into a monochrome palette.
+14. **Polish by removal.** Fewer ornamental boxes/icons and production captions; better hierarchy, negative space and larger visual regions. Preserve the approved words, meanings, order and click counts.
+
+### Implemented visual foundation — Slides 1–6
+
+The opt-in `.act-beauty` class scopes all new visual rules to these six slides. Its local tokens define one title scale, presenter-anchor scale, label scale and metadata scale. Headers share a baseline and short gold rule; frames and image borders use one restrained family. Source slots use cool-grey edge/label treatment, while LAEMA/Mirham slots use warm neutral accents. These distinctions identify production provenance, not different in-game rendering styles.
+
+The unchanged build counts are **1, 2, 2, 3, 4, 4**. Slides 2–5 now opt into the controller's existing state classes so older revealed captions can recede while the current anchor remains prominent. This adds no beats. Images continue accumulating where comparison/continuity needs them; Slide 6 shows one active encounter anchor at a time. All approved anchors retain their wording. The normal preview shows completed states. presentation.js is unchanged.
+
+### Mirham continuity staging v1
+
+These are visual staging instructions for future pitch artwork, not new locations or gameplay systems:
+
+- **Reference set: `mirham-gate-square-v1`.** The approved `assets/town key visual.png` is now the concrete staging reference: a central stone gateway flanked by red-roofed towers, blue/gold banners, market stalls on the left, a working blacksmith beneath an anvil sign on the right, and the castle skyline above the town wall. This supersedes the earlier single-square-tower planning description. Grey stone, warm plaster, dark timber, red roofs and the market/gate/workshop relationship anchor future views. The wider Mirham v1 direction includes the approved mountain/waterfall/Castle geography; incidental details in any image do not establish new lore or mechanics.
+- **Shared street axis.** Establish the master camera at human eye level, looking through the square toward the gate tower. The market, workshop doorway and connected-street shots must preserve their spatial relationship. When the camera changes, retain the gate silhouette and wall line as orientation cues.
+- **Construction set: `mirham-building-sequence-v1`.** Select one approved building footprint beside that same square. Lock camera, lens/framing, horizon, neighboring roofs and gate location for foundation, construction and finished images. Show delivery at that location too; Laema can change pose, but the site must not change. Building function is not invented by this art plan.
+- **Character and creature sets.** `laema-character-v1` carries the female/dark-hair/light-armor/sword lock. `griffin-v1` is derived from the authentic HMM3 Griffin source once supplied; keep anatomy, silhouette, markings and Laema-relative scale across close encounter, confrontation and non-combat interaction. No Griffin companion or settlement system is implied.
+
+The supplied Laema v1 and Mirham v1 images and visual board are the approved references. Eight text-free concept assets now fill the missing street, construction and Griffin regions; their exact prompts and provenance are in `assets/GENERATED-ART.md`. The Griffin board establishes a golden-brown eagle/lion hybrid, but its generated source inset is not authentic HMM3 material. The reference sets are encoded in the HTML's `data-continuity` attributes.
+
+### Slides 1–6 asset map
+
+Ratios below are approximate design-slot targets, not rendered measurements. Slot identifiers are carried by `data-asset-slot`; `aria-label` describes the subject without filling the presentation canvas with production instructions.
+
+| Slide | Asset slots / classification | Future composition and continuity |
+| --- | --- | --- |
+| 1 | `act1-key-art` — **generate later, LAEMA concept** | Full-bleed 16:9 key art. Laema occupies the left foreground; reserve the right-center for the editable wordmark/subtitle. Mirham's gate, walls and roofs support Castle/Erathia identity. Future closing imagery may reuse this composition; no later slide was changed here. |
+| 2 | `act2-adventure-map`, `act2-town-detail`, `act2-hero-detail`, `act2-creature-detail` — **authentic HMM3 source only** | One broad map field (about 2.7:1) with related source details nested in it (about 1.3:1 each). Keep relevant towns/heroes/creatures legible in the crops. The right side holds the question; these are related views of one familiar world, not arbitrary screenshots. |
+| 3 | `act3-living-town`, `act3-combat-toy` — **reuse / graphic / light concept** | Two approximately 1.7:1 visual fields with separate, generous anchor bands below. Reuse the Mirham master and approved Laema concept when available. This is a concise two-pillar answer, not another elaborate poster. |
+| 4 | `act4-market`, `act4-blacksmith`, `act4-street` — **generate later, Mirham concept** | Three near-square fields (about 1.1:1), one shared image horizon. Market place, workshop/person and connected street are discoveries within `mirham-gate-square-v1`. Keep recognizable materials, gate/wall orientation and Laema's ground-level presence. |
+| 5 | `act5-foundation`, `act5-delivery`, `act5-construction`, `act5-finished` — **generate later, continuity sequence** | Four portrait-leaning crops (about 0.9:1), identical visual horizon and enough image area to show physical change. The three construction states must share footprint, site and camera; delivery illustrates contribution without implying building-placement controls. |
+| 6 | `act6-griffin-source` — **authentic HMM3 Griffin only**; `act6-griffin-portrait`, `act6-griffin-encounter`, `act6-griffin-facing`, `act6-griffin-interaction` — **generate later, LAEMA Griffin concept** | Small source region on the left (about 1.2:1) against one larger wide concept stage on the right (about 2.3:1). Clearly separate HMM3 source from LAEMA interpretation. Replace the concept stage per click while retaining the same creature identity and human/Griffin scale. |
+
+On-slide labels are limited to **AUTHENTIC HMM3 SOURCE / PLACEHOLDER**, **LAEMA CONCEPT ART / PLACEHOLDER**, or **MIRHAM CONTINUITY ART / PLACEHOLDER**. Detailed instructions belong here and in slot metadata. Existing gameplay/source restrictions elsewhere in this document remain in force. No images were searched for, downloaded or generated; no browser, rendering, screenshots, visual QA, tests, navigation checks or animation checks were run.
+
 ## Replace artwork
+
+### Current Slides 1–6 asset wiring
+
+Existing source files remain unmodified; reuse and crops are expressed in HTML/CSS. All slide text is still editable HTML. Counts remain 1, 2, 2, 3, 4, 4, with no controller edits or changes to Slides 7–32.
+
+| Slide / slot | Wired image or remaining requirement |
+| --- | --- |
+| 1 — `act1-key-art` | `assets/slide 1 key visual.png`, full bleed. This actual file places Laema on the right, so CSS mirrors its display to place her in the left foreground while preserving the original file. Title/subtitle remain in the right-hand text region with localized contrast support rather than monochrome art grading. |
+| 2 — `act2-town-detail` | `assets/hmm3-castle-source.png`, copied without modification from the existing `../../assets/marketing-town/h3-castle-authentic-reference.png`. The project handoff identifies it as authentic Heroes III Castle-town art. It is contained rather than stretched/cropped in the source-detail slot. |
+| 2 — `act2-ground-realization` | `assets/town key visual.png` as the separate LAEMA ground-level realization, revealed with the existing second build. Adventure-map, hero and creature details remain authentic-source placeholders. |
+| 3 — `act3-living-town` / `act3-combat-toy` | Reuse `assets/town key visual.png` and `assets/slide 1 key visual.png` respectively. The latter is an illustrative fighter/caster image, not gameplay capture. |
+| 4 — `act4-market` / `act4-blacksmith` | Left-market and closer bottom-right blacksmith display crops of the same approved `assets/town key visual.png`. These share actual architecture and place identity. |
+| 4 — `act4-street` | `assets/mirham-connected-street-v1.png`: a distinct ground-level lane with Laema, recurring gate architecture and Castle skyline. |
+| 5 — all four slots | `assets/mirham-building-foundation-v1.png`, `assets/mirham-building-delivery-v1.png`, `assets/mirham-building-construction-v1.png`, `assets/mirham-building-finished-v1.png`. The earlier stages derive from one finished-building master; delivery derives from foundation. Shared camera, site and skyline carry the sequence. |
+| 6 — authentic source | `act6-griffin-source` remains an authentic HMM3 Griffin placeholder. Its metadata now correctly says `source`, not `concept`. No generated board inset is used. |
+| 6 — concept stage | `assets/griffin-close-v1.png` supplies the first creature reveal and close encounter; `assets/griffin-facing-v1.png` supplies confrontation; `assets/griffin-world-v1.png` shows the same wild creature beyond combat. The latter two derive from the close-encounter image, retaining creature, character and environment references. |
+
+`assets/slide 2 key visual.png` is a generated overhead interpretation, not an authentic Heroes III screenshot; it was deliberately not inserted into any source slot. `assets/laema key visual.png` remains the portrait character reference; the wide image supplies the slide composition. The supplied reference board remains a production reference and is not embedded in any slide as artwork.
+
+Castle source credit/provenance: Heroes of Might and Magic III / Ubisoft, existing community-hosted reproduction documented in `../../assets/marketing-town/HANDOFF.md`; original recorded image URL is https://heroes.thelazy.net/images/5/57/Castle-in.png . This pass used only the local copy and made no web request or download.
+
+The asset integration pass inspected the generated image files before wiring them; no post-edit browser review, screenshot rendering, tests or animation validation was performed. All concept-image slots in Slides 1–6 now contain artwork. Authentic adventure-map, hero, creature-detail and Griffin source media remain intentionally missing. Generated architecture and costume details remain first-pass approximations; the volcanic mountain carried from the town reference is incidental concept imagery, not a lore decision. The current wiring table takes precedence over earlier placeholder planning notes. Layout, text, build counts, CSS, presentation.js and Slides 7–32 were not changed by this integration.
 
 Each `.art` element is an independent image slot. Insert `<img src="assets/your-image.jpg" alt="Description">` inside it and remove its placeholder span (the label also hides automatically when an image exists). Create an `assets` folder beside the HTML for your source images. Images use `object-fit: cover`; set `style="object-position: 65% 50%"` on an image to adjust the crop. Gradients above the artwork retain text contrast.
 
