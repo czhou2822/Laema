@@ -31,10 +31,28 @@
     <h1>Choose a way in.</h1>
     <p class="intro">The published prototype and the Act I opening pitch now travel with the working repository, while their editable sources remain separate.</p>
     <nav class="choices" aria-label="Published Laema snapshots">
-      <a href="game/"><strong>Play Laema</strong><span>Browser-playable Godot prototype</span></a>
+      <a href="game/" id="play-laema-link"><strong>Play Laema</strong><span>Browser-playable Godot prototype</span></a>
       <a href="pitch/"><strong>Open the pitch</strong><span>Act I opening presentation</span></a>
     </nav>
     <p class="note">Published files live here. Continue editing the game and pitch from their working locations in the repository.</p>
   </main>
+  <script>
+    (() => {
+      const playLink = document.getElementById('play-laema-link');
+      const presentationCode = 'LAEMA-DEMO';
+
+      playLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        const attempt = window.prompt('Enter the Laema presentation access code:');
+        if (attempt === presentationCode) {
+          window.location.assign(playLink.href);
+          return;
+        }
+        if (attempt !== null) {
+          window.alert('Incorrect access code.');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
