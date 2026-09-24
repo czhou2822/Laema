@@ -1,23 +1,20 @@
 # DONE
-- Systems beauty/composition pass implemented for Slides 15–23 only: continuous combo substitution; elemental identity field; linked switch → spell → Heat example; aligned timing field; three-node circular loop; discovery/configuration/combat test; controls-to-attention synthesis.
-- Locked build counts retained: 15=3, 16=2, 17=3, 18=5, 19=2, 20=3, 21=4, 22=3, 23=3. Current presenter anchors and mechanics preserved.
-- X3 remains X3 across switching; F F A A A derives AIR Lv.5 + FIRE Lv.2; orbs are spent before illustrative Heat rises. Speed comparisons retain identical start/end coordinates and action endpoints. Exactly three loop nodes. Loadout remains outside-combat configuration, not an in-combat menu.
-- Slides 1–14 and 24–31 untouched in this pass, including the preceding 7–14 recomposition. New CSS exclusively opts in via .systems-beauty on Slides 15–23. Numbering, presentation.js and assets unchanged. No new art, source imagery, dependencies, China slide or reserved slot.
+- FINAL VISUAL INTEGRATION PASS saved. 31 slides: Slide 30 WHO IS THIS FOR? = 3 builds; Slide 31 Q&A = 0 builds. No China slide; former WHY LAEMA slide remains removed.
+- Slides 30–31 received final visual composition work: primary Castle→Mirham recall with quiet Griffin/map echoes; action-RPG focus on beat 2; lineage synthesis on beat 3; static closing echo of Slide 1's key art and wordmark family.
+- Slides 1–29 received consistency/integration changes only. No earlier section was intentionally redesigned. All received the common secondary number rule; additional changes on 1–6 (opening titles/frame/brand), 2/6 (provenance labels), 16/22 (qualification readability), and 25–29 (source/concept labels). Exact per-slide touch list is at the top of README.md.
+- Audited HMM3 active assets remain authoritative and byte-unchanged. No source research reopened, no unaudited substitution. All existing mechanics, narrative, presenter anchors, product model and build counts preserved; no new art or dependencies; presentation.js untouched.
+- Major visual-production passes completed in implementation. Saved locally, not committed or published.
 
 # CURRENT
-- Saved locally: index.html, styles.css, README.md and this note. Not committed or published. Implementation only, not visual approval.
-- Per explicit user instruction: no browser, presentation mode, screenshots, visual QA or automated tests run. Only source reading/editing and textual diff inspection.
+- Changed index.html, styles.css, README.md and this note. Only Slides 2/6 had earlier-slide HTML label changes; other earlier touches are CSS integration. Off-slide stale Act I/32-slide metadata corrected.
+- Static checks passed: all 31 build sets unchanged; Slide 30=3, Slide 31=0; all media references and audited source hashes unchanged; files resolve; markup/CSS blocks balanced; controller unchanged.
 
 # NEXT
-- User manually reviews Slides 15–23, especially the continuous 17→18→19 example, identical endpoints on Slide 20, circular closure on Slide 21 and phase changes on Slide 22.
-- Review feedback should remain bounded to the requested slides. The OG-source audit is a separate next step.
+- FULL PRESENTATION-MODE QA.
+- First confirm static closing composition and whole-deck consistency in the user-visible browser, then the dedicated interaction/reverse-navigation/animation/rehearsal pass.
 
 # REMAINING SOURCE ASSETS
-- Original-HMM3 source imagery requires a dedicated source-audit pass.
-  Every source must be verified for identity, chronology, relevance,
-  provenance and visual usefulness before final approval.
-  A filled source slot is not an approved source.
-- Existing source assets elsewhere in the deck were not changed in this pass.
+- No source replacements requested or made. Continue using the active audited assets/provenance in AUTHENTIC-SOURCES.md. Previously documented narrative/variant questions remain explicit; this visual pass does not resolve them.
 
 # IMPORTANT UNRESOLVED ISSUE
-- This composition pass is intentionally unrendered and untested. Final crops, type fit, visual hierarchy and transition behavior await the user's manual review.
+- Zero slides rendered in this pass. Local Browser Use access remains blocked; no security workaround used. Markup/CSS across the deck and the cover image directly inspected. Final visual crop/type-fit/spacing and full presentation behavior remain unconfirmed; this is not presentation QA clearance.

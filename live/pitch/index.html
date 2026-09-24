@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LAEMA Act I opening presentation: from the Heroes of Might &amp; Magic world to a living action-RPG combat perspective.">
+  <meta name="description" content="LAEMA pitch presentation: from the Heroes of Might &amp; Magic world to a living action-RPG combat perspective.">
   <meta name="theme-color" content="#080f15">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080f15'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23d9b27b' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23ecc68e'/%3E%3C/svg%3E">
-  <title>LAEMA — Act I — Opening</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>LAEMA — Pitch</title>
+  <link rel="stylesheet" href="styles.css?v=b340664a869f">
 </head>
 <body>
   <aside class="slide-navigation" aria-label="Slide navigation">
@@ -16,7 +16,7 @@
   </aside>
   <div class="preview-controls"><button id="present" type="button" aria-label="Start presentation" aria-keyshortcuts="Enter Space">Present</button><span id="presentation-status" role="status" aria-live="polite"></span></div>
   <noscript><p class="no-script">JavaScript is disabled. The complete deck remains readable below; presentation controls need JavaScript.</p></noscript>
-  <main class="deck" aria-label="LAEMA pitch deck, thirty-two slides">
+  <main class="deck" aria-label="LAEMA pitch deck, thirty-one slides">
     <!-- Image replacement: add an img inside its .art container, e.g.
          <img src="assets/01-castle.jpg" alt="Laema, the female protagonist, overlooking a castle">
          The image fills and crops to the container. Remove the placeholder span.
@@ -36,14 +36,15 @@
     <section class="slide act-beauty stateful-slide act-concept six-above storyboard-above" data-state="2" aria-label="Slide 2: A world I've known from above">
       <span class="slide-number">02</span><div class="brand">LAEMA<span>ACT I</span></div>
       <h2 class="act-heading">A WORLD I'VE KNOWN FROM ABOVE</h2>
-      <div class="art storyboard-map" data-art-kind="source" data-asset-slot="act2-adventure-map" aria-label="Authentic HMM3 adventure-map source"><img class="authentic-source-art" src="assets/h3-adventure-map-manual-source.jpg" alt="Authentic Heroes III adventure-map screenshot extracted unchanged from the publisher-hosted 1999 manual; monochrome source"></div>
+      <div class="art storyboard-map" data-art-kind="source" data-asset-slot="act2-adventure-map" aria-label="Authentic HMM3 adventure-map source"><img class="authentic-source-art" src="assets/hmm3-source/h3-adventure-map-colour-gog.jpg" alt="Colour Heroes III Complete adventure-map screenshot from GOG: terrain, structures, resources and a mounted hero; exact scenario unverified"></div>
       <div class="art approved-world-realization" data-build="2" data-art-kind="mirham" data-asset-slot="act2-ground-realization" data-continuity="mirham-gate-square-v1" aria-label="LAEMA Mirham ground-level concept, distinct from the authentic source region"><img src="assets/town%20key%20visual.png" alt="Mirham's lived-in market street, red-roofed gate towers and blue-gold banners"></div>
       <div class="storyboard-strategy-row" data-build="1" aria-label="Towns, heroes and creatures">
-        <figure class="act-media"><div class="art" data-art-kind="source" data-asset-slot="act2-town-detail" aria-label="Authentic Heroes III Castle town image"><img src="assets/hmm3-castle-source.png" alt="Authentic Heroes III Castle town source image"></div><figcaption>TOWNS</figcaption></figure>
-        <figure class="act-media"><div class="art" data-art-kind="source" data-asset-slot="act2-hero-detail" aria-label="Authentic HMM3 strategy-layer hero source detail"><img class="authentic-source-art authentic-pixel-art" src="assets/h3-catherine-portrait-source.png" alt="Authentic Restoration of Erathia Catherine hero portrait"></div><figcaption>HEROES</figcaption></figure>
-        <figure class="act-media"><div class="art" data-art-kind="source" data-asset-slot="act2-creature-detail" aria-label="Authentic HMM3 creature or unit source detail"><img class="authentic-source-art authentic-pixel-art" src="assets/h3-griffin-source.png" alt="Authentic original Heroes III Griffin creature sprite"></div><figcaption>CREATURES</figcaption></figure>
+        <figure class="act-media"><div class="art" data-art-kind="source" data-asset-slot="act2-town-detail" aria-label="Authentic Heroes III Castle town image"><img src="assets/hmm3-source/h3-castle-town-original.png" alt="Authentic Heroes III Castle town source image"></div><figcaption>TOWNS</figcaption></figure>
+        <figure class="act-media"><div class="art" data-art-kind="source" data-asset-slot="act2-hero-detail" aria-label="Original Heroes III mounted hero in the adventure-map context"><img class="authentic-source-art h3-strategy-hero-detail" src="assets/hmm3-source/h3-adventure-map-colour-gog.jpg" alt="Original Heroes III strategy-layer mounted hero beside a town; CSS detail of the GOG Complete adventure-map screenshot"></div><figcaption>HEROES</figcaption></figure>
+        <figure class="act-media"><div class="art" data-art-kind="source" data-asset-slot="act2-creature-detail" aria-label="Authentic HMM3 creature or unit source detail"><img class="authentic-source-art authentic-pixel-art" src="assets/hmm3-source/h3-griffin-base-sprite.png" alt="Authentic original Heroes III Griffin creature sprite"></div><figcaption>CREATURES</figcaption></figure>
         <p>FROM THE STRATEGY LAYER</p>
       </div>
+      <div class="integration-origin-labels"><span>HEROES III · SOURCE</span><span data-build="2">LAEMA · CONCEPT</span></div>
       <p class="six-above-question" data-build="2">WHAT'S IT LIKE DOWN THERE?</p>
     </section>
 
@@ -109,14 +110,14 @@
         <figure class="act-media">
           <div class="art gameplay-slot" data-art-kind="source" data-asset-slot="act6-griffin-source" aria-label="Authentic HMM3 Griffin sprite or animation source only; not the generated board inset">
             <!-- Authentic HMM3 Griffin source only. Detailed asset direction is in README. -->
-            <img class="authentic-source-art authentic-pixel-art" src="assets/h3-griffin-source.png" alt="Authentic original Heroes III Griffin creature sprite">
+            <img class="authentic-source-art authentic-pixel-art" src="assets/hmm3-source/h3-griffin-base-sprite.png" alt="Authentic original Heroes III Griffin creature sprite">
 
           </div>
         </figure>
         <span class="act-arrow" data-build="1" aria-hidden="true">→</span>
         <figure class="act-media" data-build="1"><div class="art" data-art-kind="concept" data-asset-slot="act6-griffin-portrait" data-continuity="griffin-v1" aria-label="LAEMA's golden-brown eagle and lion Griffin interpretation"><img src="assets/griffin-close-v1.png" alt="LAEMA concept: a cream-headed, golden-brown Griffin towering beside Laema"></div></figure>
       </div>
-      <div class="beauty-griffin-labels"><span>HMM3 — GRIFFIN</span><span data-build="1">LAEMA — GRIFFIN</span></div>
+      <div class="beauty-griffin-labels"><span>HEROES III · GRIFFIN</span><span data-build="1">LAEMA · GRIFFIN CONCEPT</span></div>
       <p class="storyboard-unit-context" data-build="1">LITTLE UNITS AND ATTACK ANIMATIONS</p>
       <div class="act-creature-anchors">
         <section data-build="2"><h3>WHAT IS IT LIKE<br>UP CLOSE?</h3></section>
@@ -278,130 +279,91 @@
       <div class="s3-decisions" data-build="2"><p>WHICH SCHOOL?</p><p>WHEN DO I SWITCH?</p><p>WHAT AM I BUILDING?</p><p>WHEN DO I RELEASE?</p></div>
       <div class="s3-cues"><p data-build="1">MORE POSSIBILITIES.</p><p data-build="2">NOT MORE TO EXECUTE.<br>MORE TO MANAGE.</p><p data-build="3">THE COMPLEXITY<br>MOVES INTO ATTENTION.</p></div>
     </section>
-    <section class="slide combat-slide stateful-slide expansion world-town-loop" data-state="4" aria-label="Slide 24: The town sends me out">
-      <span class="slide-number">24</span><h2 class="combat-title">THE TOWN SENDS ME OUT</h2><div class="flow-ornament" aria-hidden="true">◇</div>
-      <div class="world-cycle" aria-label="Home has a need, go out, bring it home, home changes, back to a new need">
-        <svg class="world-cycle-paths" viewBox="0 0 600 340" aria-hidden="true">
-          <defs><marker id="world-cycle-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="currentColor"/></marker></defs>
-          <circle class="world-cycle-guide" cx="300" cy="170" r="125"/>
-          <path class="world-cycle-arc" data-build="2" d="M410 60 Q450 85 450 130" marker-end="url(#world-cycle-arrow)"/>
-          <path class="world-cycle-arc" data-build="3" d="M450 210 Q440 260 410 280" marker-end="url(#world-cycle-arrow)"/>
-          <path class="world-cycle-arc" data-build="4" d="M190 280 Q160 260 150 210" marker-end="url(#world-cycle-arrow)"/>
-          <path class="world-cycle-arc" data-build="4" d="M150 130 Q160 85 190 60" marker-end="url(#world-cycle-arrow)"/>
-        </svg>
-        <figure class="world-home act-media"><div class="art"><img src="assets/town%20key%20visual.png" alt="LAEMA concept: Mirham market square, gate towers and Castle skyline"></div><figcaption><strong>MIRHAM</strong><span>HOME</span></figcaption></figure>
-        <section class="world-node world-need"><div data-build="1"><span class="world-node-icon" aria-hidden="true">♟</span><h3>HOME HAS A NEED</h3></div></section>
-        <section class="world-node world-out"><div data-build="2"><span class="world-node-icon" aria-hidden="true">✧</span><h3>GO OUT</h3><p>EXPLORE · FIGHT · DISCOVER</p></div></section>
-        <section class="world-node world-return"><div data-build="3"><span class="world-node-icon" aria-hidden="true">▱</span><h3>BRING IT HOME</h3><p>RESOURCE · DISCOVERY<br>QUEST RESULT</p></div></section>
-        <section class="world-node world-change"><div data-build="4"><span class="world-node-icon" aria-hidden="true">⌂</span><h3>HOME CHANGES</h3><p>NEW BUILDING · NEW PEOPLE<br>NEW POSSIBILITIES</p></div></section>
-      </div>
-      <div class="exp-cues"><p data-build="1">HOME HAS A NEED.</p><p data-build="2">GO OUT.</p><p data-build="3">BRING IT HOME.</p><p data-build="4">HOME CHANGES.</p></div>
+    <!-- World/narrative composition pass: Slides 24–29 only. Source selections remain provisional. -->
+    <section class="slide combat-slide stateful-slide world-beauty w3-home-loop" data-state="4" aria-label="Slide 24: The town sends me out">
+      <span class="slide-number">24</span><h2 class="w3-title">THE TOWN SENDS ME OUT</h2>
+      <svg class="w3-home-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><marker id="w3-home-arrow" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="currentColor"/></marker></defs><circle cx="50" cy="50" r="44"/><path data-build="2" d="M50 6A44 44 0 0 1 94 50" marker-end="url(#w3-home-arrow)"/><path data-build="3" d="M94 50A44 44 0 0 1 50 94" marker-end="url(#w3-home-arrow)"/><path data-build="4" d="M50 94A44 44 0 0 1 6 50" marker-end="url(#w3-home-arrow)"/><path data-build="4" d="M6 50A44 44 0 0 1 50 6" marker-end="url(#w3-home-arrow)"/></svg>
+      <figure class="w3-home-heart"><img src="assets/town%20key%20visual.png" alt="LAEMA concept art: Mirham, the familiar gate and market street; not original Heroes imagery"><figcaption><strong>MIRHAM</strong><span>HOME</span></figcaption></figure>
+      <section class="w3-loop-node w3-need" data-build="1"><h3>HOME HAS A NEED</h3></section>
+      <section class="w3-loop-node w3-out" data-build="2"><h3>GO OUT</h3><p>EXPLORE · FIGHT · DISCOVER</p></section>
+      <section class="w3-loop-node w3-return" data-build="3"><h3>BRING IT HOME</h3><p>RESOURCE · DISCOVERY · QUEST RESULT</p></section>
+      <section class="w3-loop-node w3-change" data-build="4"><h3>HOME CHANGES</h3><p>NEW BUILDING · NEW PEOPLE<br>NEW POSSIBILITIES</p></section>
+      <div class="w3-cues"><p data-build="1">HOME HAS A NEED.</p><p data-build="2">GO OUT.</p><p data-build="3">BRING IT HOME.</p><p data-build="4">HOME CHANGES.</p></div>
     </section>
 
-    <section class="slide combat-slide stateful-slide expansion world-map-places" data-state="2" aria-label="Slide 25: From map icon to real place">
-      <span class="slide-number">25</span><h2 class="combat-title">FROM MAP ICON → REAL PLACE</h2><div class="flow-ornament" aria-hidden="true">◇</div>
-      <div class="poi-map">
-        <div class="art"><img class="authentic-source-art" src="assets/h3-adventure-map-manual-source.jpg" alt="Authentic Heroes III adventure-map screenshot extracted unchanged from the publisher-hosted 1999 manual; monochrome source"></div>
-        <span class="poi-map-icon poi-windmill" aria-label="WINDMILL-LIKE representative map icon, not an official source"><span aria-hidden="true">⚒</span><small>1</small></span>
-        <span class="poi-map-icon poi-tower" aria-label="TOWER-LIKE representative map icon, not an official source"><span aria-hidden="true">♜</span><small>2</small></span>
-        <span class="poi-map-icon poi-ruin" aria-label="RUIN / SHRINE-LIKE representative map icon, not an official source"><span aria-hidden="true">▥</span><small>3</small></span>
-        <span class="poi-map-icon poi-treasure" aria-label="TREASURE / CAVE-LIKE representative map icon, not an official source"><span aria-hidden="true">◇</span><small>4</small></span>
-        <p>REPRESENTATIVE ICON SLOTS</p>
-      </div>
-      <div class="poi-realizations" aria-label="Four corresponding icon-to-place realizations">
-        <article class="poi-realization"><div data-build="2"><div class="poi-pair-icon"><span aria-hidden="true">⚒</span><small>1</small><span class="poi-pair-label">ICON → PLACE</span></div><div class="art"><img class="generated-concept " src="assets/laema-mill-card-v1.png" alt="LAEMA concept art: Laema approaches a windmill and fields"></div></div></article>
-        <article class="poi-realization"><div data-build="2"><div class="poi-pair-icon"><span aria-hidden="true">♜</span><small>2</small><span class="poi-pair-label">ICON → PLACE</span></div><div class="art"><img class="generated-concept " src="assets/laema-tower-card-v1.png" alt="LAEMA concept art: Laema approaches a stone watchtower"></div></div></article>
-        <article class="poi-realization"><div data-build="2"><div class="poi-pair-icon"><span aria-hidden="true">▥</span><small>3</small><span class="poi-pair-label">ICON → PLACE</span></div><div class="art"><img class="generated-concept " src="assets/laema-ruin-card-v1.png" alt="LAEMA concept art: Laema at the entrance of a stone ruin"></div></div></article>
-        <article class="poi-realization"><div data-build="2"><div class="poi-pair-icon"><span aria-hidden="true">◇</span><small>4</small><span class="poi-pair-label">ICON → PLACE</span></div><div class="art"><img class="generated-concept " src="assets/laema-cave-card-v1.png" alt="LAEMA concept art: Laema explores a natural cave entrance"></div></div></article>
-      </div>
-      <span class="poi-transform-arrow" data-build="2" aria-hidden="true">→</span>
-      <div class="exp-cues"><p data-build="1">THE MAP IS ALREADY FULL<br>OF FAMILIAR PLACES.</p><p data-build="2">FROM MAP ICON<br>→ REAL PLACE.</p></div>
-      <p class="poi-landing" data-build="2">FAMILIAR FROM ABOVE. NEW FROM THE GROUND.</p>
-    </section>
-    <section class="slide combat-slide stateful-slide expansion narrative narrative-opening" data-state="2" aria-label="Slide 26: The opening players already know">
-      <span class="slide-number">26</span><h2 class="combat-title">THE OPENING PLAYERS ALREADY KNOW</h2><div class="flow-ornament" aria-hidden="true">◇</div>
-      <div class="narrative-hero">
-        <div class="art gameplay-slot opening-source">
-          <!-- Supply authentic Heroes III opening media only. -->
-          <video muted playsinline preload="metadata" src="assets/h3-roe-intro-source.webm" poster="assets/h3-catherine-intro-source.jpg" aria-label="Authentic Heroes III Restoration of Erathia original opening cinematic; muted"></video>
-
-        </div>
-        <div class="art opening-aftermath" data-build="2"><img class="authentic-source-art" src="assets/h3-cloudfire-intro-source.jpg" alt="Authentic Restoration of Erathia intro at 2:18: Catherine on a Griffin at ruined Cloudfire"></div>
-        <p class="narrative-image-label" data-build="2">HEROES III — AFTERMATH</p>
-      </div>
-      <div class="exp-cues"><p data-build="1">THIS IS WHERE<br>HEROES III BEGINS.</p><p data-build="2">WE ARRIVE<br>AFTER IT HAPPENED.</p></div>
+    <section class="slide combat-slide stateful-slide world-beauty w3-map-world" data-state="2" aria-label="Slide 25: From map icon to real place">
+      <span class="slide-number">25</span><h2 class="w3-title">FROM MAP ICON → REAL PLACE</h2>
+      <figure class="w3-source-media w3-map-source" data-source-slot="world-map" aria-label="Audited original-game source region; general strategy-map context"><img src="assets/hmm3-source/h3-adventure-map-colour-gog.jpg" alt="Heroes III Complete colour adventure-map capture from GOG; general POI context, not a one-to-one match to the concept locations"><figcaption>HEROES III · SOURCE</figcaption></figure>
+      <div class="w3-location-slices" data-build="2" aria-label="Illustrative LAEMA ground-level realizations, not original game icons"><figure><img src="assets/laema-mill-card-v1.png" alt="LAEMA concept art: ground-level mill approach; not original Heroes imagery"><figcaption>MILL / FIELDS</figcaption></figure><figure><img src="assets/laema-tower-card-v1.png" alt="LAEMA concept art: ground-level tower approach; not original Heroes imagery"><figcaption>TOWER</figcaption></figure><figure><img src="assets/laema-ruin-card-v1.png" alt="LAEMA concept art: ground-level ruin approach; not original Heroes imagery"><figcaption>RUIN</figcaption></figure><figure><img src="assets/laema-cave-card-v1.png" alt="LAEMA concept art: ground-level cave approach; not original Heroes imagery"><figcaption>CAVE</figcaption></figure></div>
+      <p class="w3-concept-tag w3-location-tag" data-build="2">LAEMA · CONCEPT</p><span class="w3-map-direction" data-build="2" aria-hidden="true">→</span>
+      <div class="w3-cues"><p data-build="1">THE MAP IS ALREADY FULL<br>OF FAMILIAR PLACES.</p><p data-build="2">FROM MAP ICON<br>→ REAL PLACE.</p></div>
+      <p class="w3-world-landing" data-build="2">FAMILIAR FROM ABOVE.<br>NEW FROM THE GROUND.</p>
     </section>
 
-    <section class="slide combat-slide stateful-slide expansion narrative narrative-local" data-state="4" aria-label="Slide 27: Now you live through it">
-      <span class="slide-number">27</span><h2 class="combat-title">NOW YOU LIVE THROUGH IT</h2><div class="flow-ornament" aria-hidden="true">◇</div>
-      <div class="narrative-stages">
-        <article class="narrative-stage local-life">
-          <div class="art history-echo"><img class="authentic-source-art" src="assets/h3-cloudfire-intro-source.jpg" alt="Authentic Restoration of Erathia intro at 2:18: Catherine on a Griffin at ruined Cloudfire"></div>
-          <div class="art local-before"><img class="generated-concept cloudfire-before-art" src="assets/cloudfire-local-life-concept-v1.png" alt="LAEMA concept art: Laema with local residents before Cloudfire falls; not original Heroes footage"></div><h3>LOCAL LIFE</h3>
-        </article>
-        <span class="narrative-arrow" data-build="2" aria-hidden="true">→</span>
-        <article class="narrative-stage local-poison"><div class="art"><img class="generated-concept poison-incident-art" src="assets/cloudfire-poison-incident-concept-v1.png" alt="LAEMA concept art: Laema attends to an unwell local resident; no culprit or cause established"></div><h3>LOCAL MYSTERY</h3></article>
-        <span class="narrative-arrow" data-build="3" aria-hidden="true">→</span>
-        <article class="narrative-stage local-history"><p class="poison-link" data-build="3">SAME POISON</p><div class="art"><img class="authentic-source-art" src="assets/h3-nicolas-tomb-source.jpg" alt="Authentic Heroes III campaign prologue: King Nicolas Gryphonheart's tomb at Stonecastle"></div><h3>KING NICOLAS</h3></article>
-        <span class="narrative-arrow" data-build="4" aria-hidden="true">→</span>
-        <article class="narrative-stage local-fall">
-          <div class="fall-sequence"><div class="art"><img class="generated-concept cloudfire-sequence-art" src="assets/cloudfire-local-life-concept-v1.png" alt="LAEMA concept art: The same Cloudfire street before the fall"></div><span aria-hidden="true">↓</span><div class="art"><img class="generated-concept cloudfire-sequence-art" src="assets/cloudfire-fall-concept-v1.png" alt="LAEMA concept art: The same Cloudfire street during its fall; illustrative, not original CG"></div><span aria-hidden="true">↓</span><div class="art"><img class="authentic-source-art" src="assets/h3-cloudfire-intro-source.jpg" alt="Authentic Restoration of Erathia intro at 2:18: Catherine on a Griffin at ruined Cloudfire"></div></div><h3>CLOUDFIRE FALLS</h3>
-        </article>
+    <section class="slide combat-slide stateful-slide world-beauty w3-opening og-storyboard" data-state="2" aria-label="Slide 26: The opening players already know">
+      <div class="og-opening-storyboard" data-build="1" aria-label="Four authentic opening-cinematic frames in original order">
+        <figure class="w3-source-media og-frame og-frame-1" data-source-slot="opening-frame-1" data-source-time="17.998" data-source-video="assets/hmm3-source/archive/roe-h3intro-community-transcode.webm"><img src="assets/hmm3-source/roe-opening-catherine-0018.png" alt="Original RoE opening: Catherine aboard ship; context for her return from Enroth; source timestamp 17.998 seconds"><figcaption><span>01</span> CATHERINE</figcaption></figure>
+        <figure class="w3-source-media og-frame og-frame-2" data-source-slot="opening-frame-2" data-source-time="31.997" data-source-video="assets/hmm3-source/archive/roe-h3intro-community-transcode.webm"><img src="assets/hmm3-source/roe-opening-arrival-0032.png" alt="Original RoE opening: Catherine and troops landing beside battlefield remains; source timestamp 31.997 seconds"><figcaption><span>02</span> ARRIVAL</figcaption></figure>
+        <figure class="w3-source-media og-frame og-frame-3" data-source-slot="opening-frame-3" data-source-time="49.995" data-source-video="assets/hmm3-source/archive/roe-h3intro-community-transcode.webm"><img src="assets/hmm3-source/roe-opening-aftermath-0050.png" alt="Original RoE opening: Ruined Cloudfire and fallen statue; the aftermath to which LAEMA connects; source timestamp 49.995 seconds"><figcaption><span>03</span> AFTERMATH</figcaption></figure>
+        <figure class="w3-source-media og-frame og-frame-4" data-source-slot="opening-frame-4" data-source-time="150.052" data-source-video="assets/hmm3-source/archive/roe-h3intro-community-transcode.webm"><img src="assets/hmm3-source/roe-opening-resolve-0150.png" alt="Original RoE opening: Catherine beside the raised Erathian banner in the opening conclusion; source timestamp 150.052 seconds"><figcaption><span>04</span> RESOLVE</figcaption></figure>
       </div>
-      <div class="exp-cues"><p data-build="1">LAEMA IS LOCAL.</p><p data-build="2">THE STORY STARTS<br>WITH SOMETHING SMALL.</p><p data-build="3">THE SAME POISON<br>LATER KILLS THE KING.</p><p data-build="4">FALLEN KING<br>→ COLLAPSED KINGDOM</p></div>
-      <p class="narrative-landing" data-build="4">THE OPENING CG BECOMES A MEMORY.</p>
+      <div class="w3-cinema-shade" aria-hidden="true"></div><span class="slide-number">26</span><h2 class="w3-title">THE OPENING PLAYERS ALREADY KNOW</h2>
+      <p class="w3-source-tag">HEROES III · SOURCE</p><p class="w3-aftermath-label" data-build="2">HEROES III — AFTERMATH</p>
+      <div class="w3-cues"><p data-build="1">THIS IS WHERE<br>HEROES III BEGINS.</p><p data-build="2">WE ARRIVE<br>AFTER IT HAPPENED.</p></div>
     </section>
 
-    <section class="slide combat-slide stateful-slide expansion narrative narrative-home" data-state="3" aria-label="Slide 28: The last stand is at home">
-      <span class="slide-number">28</span><h2 class="combat-title">THE LAST STAND IS AT HOME</h2><div class="flow-ornament" aria-hidden="true">◇</div>
-      <div class="narrative-stages home-stages">
-        <article class="narrative-stage home-cloudfire"><div class="art"><img class="authentic-source-art" src="assets/h3-cloudfire-intro-source.jpg" alt="Authentic Restoration of Erathia intro at 2:18: Catherine on a Griffin at ruined Cloudfire"></div><h3>CLOUDFIRE</h3></article>
-        <span class="narrative-arrow" data-build="1" aria-hidden="true">→</span>
-        <article class="narrative-stage home-survivors"><div class="art"><img class="generated-concept survivors-art" src="assets/cloudfire-survivors-concept-v2.png" alt="LAEMA concept art: Anonymous civilian survivors carrying bundles away from distant destruction"></div><h3>THE WAR MOVES OUTWARD</h3></article>
-        <span class="narrative-arrow" data-build="1" aria-hidden="true">→</span>
-        <article class="narrative-stage home-mirham"><div class="art"><img src="assets/town%20key%20visual.png" alt="LAEMA concept: Mirham market square, gate towers and Castle skyline"></div><h3>MIRHAM</h3></article>
-        <span class="narrative-arrow" data-build="2" aria-hidden="true">→</span>
-        <article class="narrative-stage home-threat"><div class="art"><img class="mirham-defence-art" src="assets/mirham-last-stand-v1.png" alt="LAEMA concept: Laema defends the familiar Mirham gate and market street"></div><h3>HOME UNDER THREAT</h3></article>
-      </div>
-      <p class="home-callbacks" data-build="2">STREET · BUILDING · PEOPLE · TOWN LANDMARK</p>
-      <div class="art narrative-hero home-last-stand" data-build="3"><img class="mirham-defence-art" src="assets/mirham-last-stand-v1.png" alt="LAEMA concept: Laema defends the familiar Mirham gate and market street"></div>
-      <div class="exp-cues"><p data-build="1">THE WAR REACHES HOME.</p><p data-build="2">THE TOWN I BUILT<br>BECOMES THE TOWN I DEFEND.</p><p data-build="3">THE FINAL BATTLE<br>IS AT HOME.</p></div>
+    <section class="slide combat-slide stateful-slide world-beauty w3-memory" data-state="4" aria-label="Slide 27: Now you live through it">
+      <figure class="w3-source-media w3-source-canvas w3-memory-echo" data-source-slot="memory-aftermath"><img src="assets/hmm3-source/roe-opening-aftermath-0050.png" alt="Original Restoration of Erathia opening: Catherine beside a fallen statue in ruined Cloudfire; source time 00:49.995"><figcaption>HEROES III · SOURCE</figcaption></figure>
+      <div class="w3-memory-life w3-concept-field" data-build="1"><img src="assets/cloudfire-local-life-concept-v1.png" alt="LAEMA concept art: Cloudfire local life before the fall; not original Heroes imagery"><span class="w3-image-caption">LOCAL LIFE · LAEMA CONCEPT</span></div>
+      <div class="w3-memory-mystery w3-concept-field" data-build="2"><img src="assets/cloudfire-poison-incident-concept-v1.png" alt="LAEMA concept art: Laema with an unwell local resident; no cause or culprit established; not original Heroes imagery"><span class="w3-image-caption">LOCAL MYSTERY · LAEMA CONCEPT</span></div>
+      <figure class="w3-source-media w3-king-source" data-build="3" data-source-slot="king-nicolas"><img src="assets/hmm3-source/roe-nicolas-tomb-0000.png" alt="Original A Gryphon’s Heart prologue: Nicolas Gryphonheart’s tomb at Stonecastle, source time 00:00.007; not a living portrait or depiction of poisoning"><figcaption>KING NICOLAS · HEROES III SOURCE</figcaption></figure>
+      <span class="w3-poison-connection" data-build="3">SAME POISON</span>
+      <div class="w3-memory-fall w3-concept-field" data-build="4"><img src="assets/cloudfire-fall-concept-v1.png" alt="LAEMA concept art: the same Cloudfire street during its fall; not original Heroes imagery"><span class="w3-image-caption">CLOUDFIRE FALLS · LAEMA CONCEPT</span></div>
+      <figure class="w3-source-media w3-memory-return" data-build="4" data-source-slot="remembered-opening"><img src="assets/hmm3-source/roe-opening-aftermath-0050.png" alt="Original Restoration of Erathia opening: Catherine beside a fallen statue in ruined Cloudfire; source time 00:49.995"><figcaption>HEROES III · SOURCE</figcaption></figure>
+      <span class="slide-number">27</span><h2 class="w3-title">NOW YOU LIVE THROUGH IT</h2>
+      <div class="w3-cues"><p data-build="1">LAEMA IS LOCAL.</p><p data-build="2">THE STORY STARTS<br>WITH SOMETHING SMALL.</p><p data-build="3">THE SAME POISON<br>LATER KILLS THE KING.</p><p data-build="4">FALLEN KING<br>→ COLLAPSED KINGDOM</p></div>
+      <p class="w3-memory-landing" data-build="4">THE OPENING CG<br>BECOMES A MEMORY.</p>
     </section>
 
-    <section class="slide combat-slide stateful-slide expansion narrative narrative-handoff" data-state="3" aria-label="Slide 29: The known story takes over">
-      <span class="slide-number">29</span><h2 class="combat-title">THE KNOWN STORY TAKES OVER</h2><div class="flow-ornament" aria-hidden="true">◇</div>
-      <div class="narrative-hero handoff-scene">
-        <div class="art handoff-laema"><img class="generated-concept handoff-local-art" src="assets/cloudfire-local-life-concept-v1.png" alt="LAEMA concept art: Laema and local life, distinct from the adjacent authentic Catherine source slot"></div>
-        <div class="art handoff-catherine"><img class="authentic-source-art" src="assets/h3-catherine-intro-source.jpg" alt="Authentic Catherine frame from the original Restoration of Erathia intro"></div>
-        <p class="handoff-ending" data-build="1">LAEMA'S STORY<br>ENDS HERE</p>
-        <p class="handoff-beginning" data-build="2">CATHERINE'S STORY<br>BEGINS HERE</p>
-        <div class="handoff-divider"><span aria-hidden="true">◇</span></div>
-        <p class="handoff-event" data-build="1">CLOUDFIRE<br>HEROES III OPENING</p>
-      </div>
-      <div class="exp-cues"><p data-build="1">OUR STORY ENDS<br>AT THE OPENING.</p><p data-build="2">FOR CATHERINE,<br>THIS IS THE BEGINNING.</p><p data-build="3">SAME HISTORY.<br>GROUND-LEVEL POINT OF VIEW.</p></div>
+    <section class="slide combat-slide stateful-slide world-beauty w3-defend-home" data-state="3" aria-label="Slide 28: The last stand is at home">
+      <div class="w3-home-expands w3-concept-field"><img src="assets/town%20key%20visual.png" alt="LAEMA concept art: Mirham, the familiar gate and market street; not original Heroes imagery"><span class="w3-image-caption">MIRHAM · HOME · LAEMA CONCEPT</span></div>
+      <div class="w3-consequences" data-build="1"><figure class="w3-source-media w3-cloudfire-origin" data-source-slot="war-origin"><img src="assets/hmm3-source/roe-opening-aftermath-0050.png" alt="Original Restoration of Erathia opening: Catherine beside a fallen statue in ruined Cloudfire; source time 00:49.995"><figcaption>CLOUDFIRE · HEROES III SOURCE</figcaption></figure><figure class="w3-survivors"><img src="assets/cloudfire-survivors-concept-v2.png" alt="LAEMA concept art: anonymous civilian survivors; not original Heroes imagery"><figcaption>THE WAR MOVES OUTWARD<br><small>LAEMA CONCEPT</small></figcaption></figure><span class="w3-consequence-arrow" aria-hidden="true">→</span></div>
+      <div class="w3-threat-glimpse w3-concept-field" data-build="2"><img src="assets/mirham-last-stand-v1.png" alt="LAEMA concept art: the familiar Mirham gate and street under threat; not original Heroes imagery"></div>
+      <div class="w3-last-stand w3-concept-field" data-build="3"><img src="assets/mirham-last-stand-v1.png" alt="LAEMA concept art: Laema defends the familiar Mirham gate and street; not original Heroes imagery"><span class="w3-image-caption">MIRHAM · LAEMA CONCEPT</span></div>
+      <span class="slide-number">28</span><h2 class="w3-title">THE LAST STAND IS AT HOME</h2>
+      <p class="w3-home-recalls" data-build="2">STREET · BUILDING · PEOPLE · TOWN LANDMARK</p>
+      <div class="w3-cues"><p data-build="1">THE WAR REACHES HOME.</p><p data-build="2">THE TOWN I BUILT<br>BECOMES THE TOWN I DEFEND.</p><p data-build="3">THE FINAL BATTLE<br>IS AT HOME.</p></div>
     </section>
-    <section class="slide combat-slide stateful-slide expansion pitch-audience" data-state="3" aria-label="Slide 30: Who is this for?">
-      <span class="slide-number">30</span><h2 class="combat-title">WHO IS THIS FOR?</h2><div class="flow-ornament" aria-hidden="true">◇</div>
-      <section class="audience-heroes"><h3>HEROES PLAYERS</h3><div class="audience-transformations">
-        <div class="audience-pair" aria-label="TOWN SCREEN → REAL TOWN"><div class="art"><img class="authentic-town-art" src="assets/hmm3-castle-source.png" alt="Authentic Heroes III Castle town screen"></div><span class="audience-arrow" aria-hidden="true">→</span><div class="art"><img src="assets/town%20key%20visual.png" alt="LAEMA concept: Mirham market square, gate towers and Castle skyline"></div></div>
-        <div class="audience-pair" aria-label="UNIT → CREATURE"><div class="art"><img class="authentic-source-art authentic-pixel-art" src="assets/h3-griffin-source.png" alt="Authentic original Heroes III Griffin creature sprite"></div><span class="audience-arrow" aria-hidden="true">→</span><div class="art"><img src="assets/griffin-close-v1.png" alt="LAEMA concept: the Griffin encountered at human scale"></div></div>
-        <div class="audience-pair" aria-label="MAP ICON → REAL PLACE"><div class="art"><img class="authentic-source-art" src="assets/h3-adventure-map-manual-source.jpg" alt="Authentic Heroes III adventure-map screenshot extracted unchanged from the publisher-hosted 1999 manual; monochrome source"></div><span class="audience-arrow" aria-hidden="true">→</span><div class="art"><img src="assets/mirham-connected-street-v1.png" alt="LAEMA concept: a ground-level Mirham street"></div></div>
-      </div></section>
-      <section class="audience-action"><h3>ACTION RPG PLAYERS</h3><div class="art audience-combat"><img class="combat-concept" src="assets/laema-sword-and-magic-v1.png" alt="LAEMA concept: Laema fights with sword and magic"></div>
-        <div class="audience-lineage" data-build="3" aria-label="Might & Magic RPG lineage, Heroes strategy perspective, LAEMA action-RPG perspective"><span>MIGHT &amp; MAGIC<small>RPG</small></span><b aria-hidden="true">→</b><span>HEROES<small>STRATEGY</small></span><b aria-hidden="true">→</b><span>LAEMA<small>ACTION RPG</small></span></div>
+
+    <section class="slide combat-slide stateful-slide world-beauty w3-handoff" data-state="3" aria-label="Slide 29: The known story takes over">
+      <figure class="w3-handoff-local w3-concept-field"><img src="assets/cloudfire-local-life-concept-v1.png" alt="LAEMA concept art: Laema and the local world; not original Heroes imagery"><figcaption>LAEMA · CONCEPT</figcaption></figure>
+      <figure class="w3-source-media w3-handoff-history" data-source-slot="catherine"><img src="assets/hmm3-source/roe-opening-resolve-0150.png" alt="Catherine beside the Erathian banner in the original Restoration of Erathia opening, source time 02:30.052; before the later campaign victories"><figcaption>CATHERINE · HEROES III SOURCE</figcaption></figure>
+      <div class="w3-history-boundary" aria-hidden="true"></div><p class="w3-history-event" data-build="1">CLOUDFIRE<br>HEROES III OPENING</p>
+      <span class="slide-number">29</span><h2 class="w3-title">THE KNOWN STORY TAKES OVER</h2>
+      <div class="w3-cues"><p data-build="1">OUR STORY ENDS<br>AT THE OPENING.</p><p data-build="2">FOR CATHERINE,<br>THIS IS THE BEGINNING.</p><p data-build="3">SAME HISTORY.<br>GROUND-LEVEL POINT OF VIEW.</p></div>
+    </section>
+    <!-- Final closing compositions. Slide 30 retains three beats; Slide 31 is static. -->
+    <section class="slide combat-slide stateful-slide final-closing fin-audience" data-state="3" aria-label="Slide 30: Who is this for?">
+      <span class="slide-number">30</span><h2 class="fin-title">WHO IS THIS FOR?</h2>
+      <section class="fin-world" data-build="1" aria-label="Heroes players: original world becomes the LAEMA perspective">
+        <h3>HEROES PLAYERS</h3><p class="fin-origin-tag">HEROES III · SOURCE</p><p class="fin-concept-tag">LAEMA · CONCEPT</p>
+        <div class="fin-town-recall" aria-label="TOWN SCREEN → REAL TOWN"><figure class="fin-source fin-town-source" data-source-slot="audience-castle"><img src="assets/hmm3-source/h3-castle-town-original.png" alt="Audited original Heroes III Castle town screen"></figure><span class="fin-town-arrow" aria-hidden="true">→</span><figure class="fin-town-concept"><img src="assets/town%20key%20visual.png" alt="LAEMA concept: the familiar Mirham gate and market street"></figure></div>
+        <div class="fin-creature-recall fin-supporting-recall" aria-label="UNIT → CREATURE"><figure class="fin-source fin-creature-source" data-source-slot="audience-griffin"><img class="fin-pixel-source" src="assets/hmm3-source/h3-griffin-base-sprite.png" alt="Audited original Heroes III base Griffin sprite"></figure><span aria-hidden="true">→</span><figure class="fin-creature-concept"><img src="assets/griffin-close-v1.png" alt="LAEMA concept: Griffin encountered at human scale"></figure></div>
+        <div class="fin-map-recall fin-supporting-recall" aria-label="MAP ICON → REAL PLACE"><figure class="fin-source fin-map-source" data-source-slot="audience-map"><img src="assets/hmm3-source/h3-adventure-map-colour-gog.jpg" alt="Audited original-game Heroes III Complete strategy-map capture from GOG"></figure><span aria-hidden="true">→</span><figure class="fin-place-concept"><img src="assets/mirham-connected-street-v1.png" alt="LAEMA concept: a ground-level Mirham street, not an exact replica of a specific map object"></figure></div>
       </section>
-      <div class="exp-cues"><p data-build="1">FOR PLAYERS<br>WHO ALREADY KNOW THIS WORLD.</p><p data-build="2">BUT YOU DON'T NEED<br>TO KNOW HEROES FIRST.</p><p data-build="3">A MODERN ACTION-RPG VIEW<br>OF MIGHT &amp; MAGIC.</p></div>
-      <p class="audience-product">PREMIUM SINGLE-PLAYER ACTION RPG · ~20 HOURS · ONE-TIME PURCHASE</p>
+      <section class="fin-action" aria-label="Action RPG players"><div class="fin-action-art"><img src="assets/laema-sword-and-magic-v1.png" alt="LAEMA concept: sword and magic combat, not captured gameplay"></div><h3>ACTION RPG PLAYERS</h3></section>
+      <div class="fin-lineage" data-build="3" aria-label="Might and Magic RPG, Heroes strategy, LAEMA action RPG"><span>MIGHT &amp; MAGIC<small>RPG</small></span><b aria-hidden="true">→</b><span>HEROES<small>STRATEGY</small></span><b aria-hidden="true">→</b><span>LAEMA<small>ACTION RPG</small></span></div>
+      <div class="fin-cues"><p data-build="1">FOR PLAYERS<br>WHO ALREADY KNOW THIS WORLD.</p><p data-build="2">BUT YOU DON'T NEED<br>TO KNOW HEROES FIRST.</p><p data-build="3">A MODERN ACTION-RPG VIEW<br>OF MIGHT &amp; MAGIC.</p></div>
+      <p class="fin-product">PREMIUM SINGLE-PLAYER ACTION RPG · ~20 HOURS · ONE-TIME PURCHASE</p>
     </section>
 
-    <section class="slide combat-slide expansion pitch-questions" aria-label="Slide 31: Q&A">
-      <div class="art full-art"><img class="closing-key-art" src="assets/slide%201%20key%20visual.png" alt="LAEMA concept: Laema overlooking the Castle world"></div><div class="shade cover-shade"></div>
-      <span class="slide-number">31</span><h2 class="combat-title">Q&amp;A</h2><div class="flow-ornament" aria-hidden="true">◇</div>
-      <div class="title-lockup"><span class="orbit" aria-hidden="true"></span><h1>LAEMA</h1></div>
-      <p class="questions-tagline">SAME WORLD. A NEW PERSPECTIVE.</p>
+    <section class="slide combat-slide final-closing fin-end" aria-label="Slide 31: Q&A">
+      <div class="fin-end-art"><img src="assets/slide%201%20key%20visual.png" alt="LAEMA concept: the same Laema and Castle world as the opening cover"></div><div class="fin-end-shade" aria-hidden="true"></div>
+      <span class="slide-number">31</span>
+      <div class="fin-end-lockup"><h1 class="fin-wordmark">LAEMA</h1><h2 class="fin-qa">Q&amp;A</h2><p class="fin-end-line">SAME WORLD.<br>A NEW PERSPECTIVE.</p></div>
     </section>
   </main>
-  <footer class="page-footer"><span>PITCH DECK</span><span>LAEMA — ACT I — OPENING</span><span>FOR A BRIGHTER TOMORROW</span></footer>
-  <script src="presentation.js"></script>
+  <footer class="page-footer"><span>PITCH DECK</span><span>LAEMA — PITCH</span><span>FOR A BRIGHTER TOMORROW</span></footer>
+  <script src="presentation.js?v=db20ed39c199"></script>
 </body>
 </html>
