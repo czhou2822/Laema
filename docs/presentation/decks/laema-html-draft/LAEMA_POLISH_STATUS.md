@@ -1,17 +1,20 @@
 # DONE
-- Existing 32-slide deck and approved beat structure retained.
-- Eight Act I concept images generated; seven copied into assets. Delivery image exists at generated_images/01a09dc8-0721-7772-9dda-d08f29012292/exec-abf97281-e844-4630-b408-cb7d21a9410a.png and still needs copying/wiring.
+- FINAL VISUAL INTEGRATION PASS saved. 31 slides: Slide 30 WHO IS THIS FOR? = 3 builds; Slide 31 Q&A = 0 builds. No China slide; former WHY LAEMA slide remains removed.
+- Slides 30–31 received final visual composition work: primary Castle→Mirham recall with quiet Griffin/map echoes; action-RPG focus on beat 2; lineage synthesis on beat 3; static closing echo of Slide 1's key art and wordmark family.
+- Slides 1–29 received consistency/integration changes only. No earlier section was intentionally redesigned. All received the common secondary number rule; additional changes on 1–6 (opening titles/frame/brand), 2/6 (provenance labels), 16/22 (qualification readability), and 25–29 (source/concept labels). Exact per-slide touch list is at the top of README.md.
+- Audited HMM3 active assets remain authoritative and byte-unchanged. No source research reopened, no unaudited substitution. All existing mechanics, narrative, presenter anchors, product model and build counts preserved; no new art or dependencies; presentation.js untouched.
+- Major visual-production passes completed in implementation. Saved locally, not committed or published.
 
 # CURRENT
-- Initial whole-deck browser inspection before broader visual changes.
+- Changed index.html, styles.css, README.md and this note. Only Slides 2/6 had earlier-slide HTML label changes; other earlier touches are CSS integration. Off-slide stale Act I/32-slide metadata corrected.
+- Static checks passed: all 31 build sets unchanged; Slide 30=3, Slide 31=0; all media references and audited source hashes unchanged; files resolve; markup/CSS blocks balanced; controller unchanged.
 
 # NEXT
-- Wire the generated street, four construction stages, and three Griffin scenes.
-- Unify core/system slides; repair continuity, readability and anchor hierarchy.
-- Add/reuse character-consistent narrative/world/climax art, then review all slides and important builds.
+- FULL PRESENTATION-MODE QA.
+- First confirm static closing composition and whole-deck consistency in the user-visible browser, then the dedicated interaction/reverse-navigation/animation/rehearsal pass.
 
 # REMAINING SOURCE ASSETS
-- Authentic HMM3 map/hero/creature/Griffin, original opening/Cloudfire, Catherine and King Nicolas where used; deliberate source placeholders are acceptable.
+- No source replacements requested or made. Continue using the active audited assets/provenance in AUTHENTIC-SOURCES.md. Previously documented narrative/variant questions remain explicit; this visual pass does not resolve them.
 
 # IMPORTANT UNRESOLVED ISSUE
-- New overnight goal supersedes earlier no-testing passes. Completion requires final actual whole-deck presentation review; not complete yet.
+- Zero slides rendered in this pass. Local Browser Use access remains blocked; no security workaround used. Markup/CSS across the deck and the cover image directly inspected. Final visual crop/type-fit/spacing and full presentation behavior remain unconfirmed; this is not presentation QA clearance.

@@ -1,0 +1,68 @@
+[
+  {
+    "file": "roe-opening-catherine-0018.png",
+    "source": "roe-h3intro-community-transcode.webm",
+    "requested_seek_seconds": 18,
+    "source_pts_seconds": "17.998",
+    "scene": "Catherine aboard ship",
+    "purpose": "Opening context: the return from Enroth",
+    "command": "ffmpeg -ss 18 -copyts -i SOURCE -vf showinfo -frames:v 1 -fps_mode passthrough OUTPUT.png",
+    "sha256": "362a59f9064fd38f69507aead76c91b0aa45979a8aaeba24bd0349619c8ceadf",
+    "active": true
+  },
+  {
+    "file": "roe-opening-arrival-0032.png",
+    "source": "roe-h3intro-community-transcode.webm",
+    "requested_seek_seconds": 32,
+    "source_pts_seconds": "31.997",
+    "scene": "Catherine and troops land beside battlefield remains",
+    "purpose": "Arrival, not a later campaign victory",
+    "command": "ffmpeg -ss 32 -copyts -i SOURCE -vf showinfo -frames:v 1 -fps_mode passthrough OUTPUT.png",
+    "sha256": "79f8fa115ad99dcf219480798a451dbca4029bae5f26d26a83ddf47961c31ded",
+    "active": true
+  },
+  {
+    "file": "roe-opening-aftermath-0050.png",
+    "source": "roe-h3intro-community-transcode.webm",
+    "requested_seek_seconds": 50,
+    "source_pts_seconds": "49.995",
+    "scene": "Catherine among ruined walls and a fallen statue at Cloudfire",
+    "purpose": "Aftermath focal frame; before the battle-reconstruction flashback",
+    "command": "ffmpeg -ss 50 -copyts -i SOURCE -vf showinfo -frames:v 1 -fps_mode passthrough OUTPUT.png",
+    "sha256": "8e24b913c5d1de6f7f87603d6918bb7995c1bcfe28f076d38ca0d7487104d5cb",
+    "active": true
+  },
+  {
+    "file": "roe-opening-resolve-0120.png",
+    "source": "roe-h3intro-community-transcode.webm",
+    "requested_seek_seconds": 120,
+    "source_pts_seconds": "120.055",
+    "scene": "Catherine surveys the devastation before raising the banner",
+    "purpose": "Her resolve at the start of the Restoration; historical handoff",
+    "command": "ffmpeg -ss 120 -copyts -i SOURCE -vf showinfo -frames:v 1 -fps_mode passthrough OUTPUT.png",
+    "sha256": "12908b90cb0ba903318897ec426db70b88438a80b1f2d037a7a6c19d7afcf0ce",
+    "active": false
+  },
+  {
+    "file": "roe-nicolas-tomb-0000.png",
+    "source": "roe-gryphons-heart-prologue-community-transcode.webm",
+    "requested_seek_seconds": 0,
+    "source_pts_seconds": "0.007",
+    "scene": "Nicolas Gryphonheart tomb at Stonecastle, A Gryphons Heart prologue",
+    "purpose": "Death reference, not a living portrait or image of poisoning",
+    "command": "ffmpeg -copyts -i SOURCE -vf showinfo -frames:v 1 -fps_mode passthrough OUTPUT.png",
+    "sha256": "60389f5ab95bb5e12ed870260b76c4da488e0f93138ef01443ad9f8638eba5c8",
+    "active": true
+  },
+  {
+    "file": "roe-opening-resolve-0150.png",
+    "source": "roe-h3intro-community-transcode.webm",
+    "requested_seek_seconds": 150,
+    "source_pts_seconds": "150.052",
+    "scene": "Catherine beside the raised Erathian banner in the closing opening-cinematic sequence",
+    "purpose": "Resolve and transition into the known campaign; clearer Catherine/bannner recognition than the earlier reflective shot",
+    "command": "ffmpeg -ss 150 -copyts -i SOURCE -vf showinfo -frames:v 1 -fps_mode passthrough OUTPUT.png",
+    "sha256": "e1ec7fab728682b114a161385109de34fd768400d09acc5c6cd34d49b9ba50a7",
+    "active": true
+  }
+]

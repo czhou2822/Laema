@@ -1,8 +1,166 @@
-# LAEMA editable opening draft
+# LAEMA — 31-slide pitch deck
 
-Open `index.html` directly in a modern browser, or serve this folder with any static web server. No installation, dependency, or build step is needed. Thirty-two separate 16:9 slides scale with the browser width.
+Open `index.html` directly in a modern browser, or serve this folder with any static web server. No installation, dependency, or build step is needed. Thirty-one separate 16:9 slides scale with the browser width.
 
 Edit text in `index.html`; shared colors, fonts, dimensions and spacing are in `styles.css`. The draft uses system serif fonts and approximate Unicode icons. It does not bake slide text into screenshots or use external dependencies.
+
+## CURRENT — final visual integration
+
+**31 slides. Slide 30 = WHO IS THIS FOR? (3 builds). Slide 31 = Q&A (0 builds). No China slide. No WHY LAEMA slide.** Earlier historical sections below describe earlier revisions and do not override this current structure.
+
+Slides 30–31 received final composition work. Slide 30 now has one dominant Castle-to-Mirham recall and quieter Griffin/map callbacks; combat becomes dominant on beat 2, then recedes for the Might & Magic → Heroes → LAEMA lineage on beat 3. The premium single-player / ~20 hours / one-time purchase line remains static and subordinate. Slide 31 reuses the cover's exact key art and mirrored orientation with a smaller, calmer wordmark, Q&A and the existing tagline. Its diamond/orbit decoration was removed; no build or animation was added.
+
+Slides 1–29 received a consistency/integration sweep only. No earlier section was intentionally redesigned. Their body compositions, mechanics, narrative, presenter anchors, assets and build counts survive. Audited active HMM3 assets and provenance remain authoritative for this pass; no old provisional asset was restored and no source research was reopened. Open narrative questions recorded in the audit were not silently resolved.
+
+### Exact earlier-slide touch list
+
+**N** below means the common secondary number treatment: top 5.1cqw, right 5.5%, 0.8cqw Segoe UI, muted colour/spacing and a restrained contrast shadow. This rule applies to every slide; later sections were already close to it. The list includes these small CSS touches, even where the visible difference is slight.
+
+| Slide | Changes in this integration pass |
+| --- | --- |
+| 1 | N; removed outer/inset decorative frame; subdued repeated corner brand. Main wordmark/art composition retained. |
+| 2 | N; title scale/baseline/margins aligned with later sections; short gold rule reduced; frame removed and brand subdued; explicit source/concept labels added without another beat. |
+| 3 | N; same opening-title, rule, frame and corner-brand normalization; two-pillar body retained. |
+| 4 | N; same opening-title, rule, frame and corner-brand normalization; town discoveries retained. |
+| 5 | N; same opening-title, rule, frame and corner-brand normalization; construction sequence retained. |
+| 6 | N; same opening-title, rule, frame and corner-brand normalization; source/concept label wording/colour standardized; small unit-context line enlarged. Encounter composition retained. |
+| 7 | N only. |
+| 8 | N only. |
+| 9 | N only. |
+| 10 | N only. |
+| 11 | N only. |
+| 12 | N only; larger conceptual title/thesis intentionally retained. |
+| 13 | N only. |
+| 14 | N only; cinematic payoff intentionally retained. |
+| 15 | N only. |
+| 16 | N; provisional-spectrum qualification enlarged from 0.7 to 0.9cqw. No diagram or school-position change. |
+| 17 | N only. |
+| 18 | N only. |
+| 19 | N only. |
+| 20 | N only. |
+| 21 | N only. |
+| 22 | N; outside-combat configuration label and teaching-model qualification enlarged. Matrix/highlighting retained. |
+| 23 | N only; thesis scale intentionally retained. |
+| 24 | N only; circular home composition retained. |
+| 25 | N; source/concept label font/colour harmonized. Map-to-location expansion retained. |
+| 26 | N; source-label treatment harmonized. Audited storyboard, frames and timestamps retained. |
+| 27 | N; source/concept labels harmonized, including the small archival callback label. Narrative stages retained. |
+| 28 | N; concept/source labels harmonized. Mirham/last-stand composition retained. |
+| 29 | N; source/concept labels harmonized on both sides. Historical handoff retained. |
+
+Only Slides 2 and 6 had earlier-slide HTML changes; all other earlier touches are the listed CSS integration rules. Off-slide browser title, description prefix, deck accessibility count and preview footer were corrected from the old Act I/32-slide metadata. Unused historical CSS was not removed merely because it exists.
+
+### Integration boundary and next step
+
+Major visual-production passes are complete in implementation. Static checks confirmed 31 slides, identical build sets on every slide, Slide 30's three anchors/product positioning, zero builds on Slide 31, unchanged media-reference multiset, unchanged audited-source hashes, resolving files, balanced markup/CSS blocks and unchanged presentation.js. No artwork generated, source files modified, dependencies added, commit or publication.
+
+**Visual limitation:** zero slides were rendered in this pass. Browser Use still blocks the local deck; no alternate rendering/browser workaround was used. Markup/CSS across the 31-slide deck was reviewed and the existing cover asset inspected directly to compose its closing echo. Final crop, type-fit and static slide-to-slide appearance remain unconfirmed. Interaction, reverse navigation, animation timing and rehearsal QA were not performed.
+
+**NEXT: FULL PRESENTATION-MODE QA.**
+
+## Completed OG source audit and opening storyboard — reference
+
+The dedicated source audit is recorded in `assets/AUTHENTIC-SOURCES.md`, including every active use, identification/version, provenance, alternatives, confidence and unresolved content issues. Active media is organized in `assets/hmm3-source/`; prior assets remain for history. `asset-manifest.json` records hashes/dimensions, and `frame-provenance.json` records exact cinematic timestamps and extraction commands.
+
+The monochrome manual map was replaced by an official-distributor colour original-game capture. Slide 2's HERO detail now shows a mounted hero in map context. Castle and the base Griffin were retained after comparison; Griffin animation remains unavailable rather than being fabricated. Nicolas's tomb uses the full archived frame but remains a qualified death reference, not proof of the local poisoning story.
+
+**Slide 26 is now a four-frame archival storyboard:** Catherine aboard ship (00:17.998), arrival (00:31.997), Cloudfire aftermath (00:49.995), and Catherine beside the Erathian banner (02:30.052). Beat 1 presents the original sequence; beat 2 enlarges the aftermath frame. Its two anchors and build count are unchanged. The full original-game cinematic is retained in `assets/hmm3-source/archive/roe-h3intro-community-transcode.webm` for provenance/backup, but is not a player in the main pitch. Original cinematics should be represented by curated authentic stills in normal presentation, with original file, timestamp, scene and purpose documented.
+
+No concept art, mechanics, narrative anchors, slide order, numbering, build counts or presentation.js changed. Layout work was limited to source fitting and the expressly requested Slide 26 storyboard. No generated OG imagery, AI restoration or invented detail. Media was inspected individually and static checks run; local-deck browser review remains blocked and was not circumvented.
+
+**Open content issues:** the OG narration says Catherine found no survivors at Cloudfire; a specific refugee route to Mirham is not established. Nicolas's poisoning is canonical, but identity with Laema's local poison is not established by OG evidence. Cloudfire is a wizard outpost; the concept street is illustrative. The intended base/Royal Griffin relationship remains unresolved. The pitch was not silently rewritten to resolve these questions.
+
+## Prior world / narrative composition pass — Slides 24–29 only
+
+This pass recomposes only Slides 24–29, using `.world-beauty` and exclusive `w3-` rules. Slides 1–23 and 30–31 remain untouched, including the earlier combat/systems passes. Slide numbering, `presentation.js`, source files and concept assets are unchanged. No China slide or reserved slot.
+
+- **24:** a prominent Mirham image inside a large circular loop; four unboxed ideas build around home, which gains emphasis when the circle closes.
+- **25:** the current source map dominates first, then recedes beside four larger concept-art slices. Representative glyph overlays were removed rather than presented as authenticated icons. The landing receives headline scale.
+- **26:** the current opening movie and aftermath frame use a full source canvas with minimal overlaid typography; no small media-card treatment.
+- **27:** the aftermath gives way to large local-life and mystery scenes. A modular King Nicolas source region enters at beat 3; beat 4 widens into the fall, with an archival opening reference and the large memory landing.
+- **28:** a restrained consequence path gives way to the familiar Mirham image, followed by near-full-bleed last-stand artwork. The diagram elements recede.
+- **29:** a changing local-concept/source split separated by a thin historical-event boundary; emphasis transfers to Catherine's source region, then balances at the final beat.
+
+Build counts remain **4 / 2 / 2 / 4 / 3 / 3**. Current presenter anchors and narrative/mechanical meaning are preserved. Source and concept images retain distinct labels and treatments. Each original-game region has a `data-source-slot` identity and generic contained-media styling, so a later source replacement does not require the composition to be rebuilt.
+
+**Provisional source warning:** Slides 24–29 received a composition/beauty pass using the currently wired Heroes III source material provisionally. Original-game source selection has NOT been audited or approved. Some source assets may still require replacement for correctness, relevance, chronology or visual quality. Layouts should therefore remain source-swappable.
+
+No artwork was generated, sourced, replaced or validated in this pass. No dependencies, commit or publication. Per user instruction, no browser, presentation mode, screenshots, visual QA or automated tests were run. Manual review is pending.
+
+## Prior systems beauty / composition pass — Slides 15–23 only
+
+This subsequent scoped pass recomposes Slides 15–23 using `.systems-beauty` and exclusive `s3-` rules. Slides 1–14 (including the preceding combat composition pass) and 24–31 were left untouched. Numbering, assets and `presentation.js` were not changed. No China slide or reserved slot was added.
+
+- **15:** one action panorama and a central Cast substitution; X4–X5 remain visibly connected.
+- **16:** unboxed school symbols and names; SPELL + MOVES becomes the second-beat focus. The conceptual spectrum remains explicitly provisional.
+- **17–19:** the same five fixed positions and F F A A A orbs carry through switching, spell derivation, consumption and Heat. X3 keeps its position. AIR Lv.5 + FIRE Lv.2 remains the worked result. The single Heat meter is illustrative and has no numerical value.
+- **20:** one aligned timing field. Low/High Heat share identical start/end coordinates and action endpoints; one-shot tracers use different durations and hold at the end, without reversing or shortening the path. Arrival labels support the static/reduced-motion view.
+- **21:** three unboxed concepts around a clockwise ring; the return arc closes on beat 4.
+- **22:** discovery imagery recedes into an outside-combat 4 × 5 assignment model. The combat example highlights AIR Lv.5 and FIRE Lv.2 equipped slots. This is not an in-combat selection menu or a collection-size claim.
+- **23:** stable X/R2 controls, an expanding constellation of callbacks, foreground attention questions, then the large final attention thesis.
+
+Locked build counts are **3 / 2 / 3 / 5 / 2 / 3 / 4 / 3 / 3**. Mechanics and current presenter anchors are preserved; redundant framing and repeated labels were simplified. Existing imagery and schematic symbols only: no new art, dependencies, source imagery, commit or publication.
+
+Per explicit user instruction, no browser, presentation mode, screenshots, visual QA or automated tests were run. This is saved composition work awaiting manual review. Original-HMM3 source selection remains a separate audit for identity, chronology, relevance, provenance and visual usefulness; a filled source slot is not approval.
+
+## Prior beauty / composition pass 3 — Slides 7–14 only
+
+The user authorized substantial recomposition of the combat teaching sequence. Slides 7–14 now opt into `.beauty-three` and exclusive `b3-` elements/styles; no other slide opts into these rules. Slides 1–6 and 15–31, slide numbering, all assets and `presentation.js` were left unchanged by this pass. The China slide remains dropped.
+
+- Slides 7–8 share an enlarged attack-art field, a quiet X1–X5 spine and a second resource line.
+- Slide 9 progresses from large orbs through an R2 hold gesture into the Cast image without three framed columns.
+- Slides 10–11 share the same serial DOM/coordinates. Existing state changes move those same elements into concurrent fight/preparation lanes.
+- Slide 12 uses open typographic contrast and an enlarged attention thesis; repeated explanatory prose and panels were removed.
+- Slide 13 uses sparse changing combat gestures above a persistent Cast line; its fourth beat retains the full concluding statement. The removed release question remains absent.
+- Slide 14 uses full-bleed artwork, asymmetric type, receding support and a quiet final signature.
+
+Locked build counts remain **3, 2, 3, 3, 3, 3, 4, 4**. All locked presenter anchors and mechanics are preserved. Removed copy was redundant supporting explanation, not the locked spoken anchors. No art generation or new dependencies. No browser, presentation mode, screenshots, visual QA or automated tests were run, as explicitly requested; the user will review manually. No commit or publication.
+
+**Source approval remains open:** Original-HMM3 source imagery requires a separate source-audit pass. Verify identity, relevance, chronology and visual quality before final approval. Do not preserve a source solely because it is already wired.
+
+## Earlier user revision and authentic sources — 2026-09-16
+
+The former Slide 31 (Why Laema?) was removed at the user's request; Q&A is now Slide 31. Requested copy edits are applied to Slides 13–16, 22 and 27. Slide 16 now has two beats, as explicitly confirmed: FOUR SCHOOLS, then AFFECTS BOTH SPELLS AND MOVES. Slide 13's release question is removed; its existing fourth beat now belongs to its existing concluding statement. All other retained slides keep their build counts.
+
+All 14 authentic-source slots are now filled with online-sourced original media. **No concept or source placeholders remain.** The original Griffin sprite, Catherine portrait, Catherine/Cloudfire intro stills, Nicolas's tomb frame, original intro video and publisher-hosted manual screenshot are documented with direct links in `assets/AUTHENTIC-SOURCES.md`. The adventure map is the original manual's monochrome screenshot; cinematic stills retain legacy resolution. Original media was not generated, recoloured or enhanced.
+
+The intro is connected to Slide 26's existing muted video slot. Post-edit slide layout and playback still need user review because browser access remains blocked. Previous dated checkpoints below describe earlier states and do not supersede this revision.
+
+## Earlier concept-art completion — 2026-09-16
+
+After passes 1–2, the user approved generation and integration for the remaining 12 concept slots. They are now filled. Nine scene concepts and four tall-card adaptations are saved in `assets/`; one rejected survivors candidate was revised to avoid resembling Laema. Ten of the retained files are referenced by the deck; three wide POI masters remain available as source variants. No slide layout, text, order, build marker or controller logic changed.
+
+| Slides | New artwork |
+| --- | --- |
+| 22 | Ruin exploration and illustrative spell discovery |
+| 25 | Portrait-format mill, tower, ruin and cave approaches |
+| 27 | Cloudfire local life, poison incident, and a matching street during the fall |
+| 28 | Anonymous civilian survivors |
+| 29 | Local-life image reused on Laema's side of the story handoff |
+
+These images are LAEMA concepts, not source-game frames, gameplay captures or new canon. Cloudfire's street is an illustrative setting distinct from Mirham. The spell folio and poison-scene cup are staging choices, not approved mechanics or narrative causes. Exact prompts, filenames and provenance are in `assets/CONCEPT-COMPLETION-PROMPTS.md`.
+
+**Current checks:** 32 slides, presenter wording and every build marker unchanged against HEAD; `presentation.js` unchanged; all 75 media/script references resolve; HTML balanced; IDs unique; whitespace diff clean. **Zero concept placeholders remain.** The 14 remaining placeholders are authentic-source slots in Slides 2, 6, 25–30.
+
+**Visual limit:** generated images were inspected individually and four were adapted for the narrow POI cards. The browser access block persists, so post-edit slide rendering, crops and playback are not verified. Refresh and check Slide 22, Slide 25 build 2, Slide 27 through its builds, Slide 28's survivors card, and Slide 29's local-story half before final presentation review.
+
+## Earlier polish checkpoint — passes 1–2
+
+Passes 1 and 2 are saved. This checkpoint supersedes the older implementation-status paragraphs below; the existing pitch order, wording, compositions and build counts remain fixed. No controller changes, generated artwork, new dependencies, commit or publication were made in these passes.
+
+- **7–8:** user-supplied five-attack panorama as an illustrative video poster, retaining editable attack/orb diagrams.
+- **9–11:** matching melee/Cast art and a schematic charge graphic; the existing serial-to-parallel build logic is retained.
+- **13–19:** schematic combat-demand graphics, new supplied Slide 14 poster, per-position crops of the supplied attack strip, and school-colour accents. These school illustrations do not demonstrate distinct implemented moves. The four-school cards use their existing symbols instead of artwork placeholders.
+- **24, 28, 30–32:** existing Mirham/Griffin/cover artwork reused; supplied Mirham defence image fills the threat and last-stand slots. Authentic Castle-town imagery fills compatible source slots in the closing section.
+- **7–32 shared finish:** warm ivory serif titles, consistent sans-serif controls and anchors, quiet rectangular framing, reduced decorative glow, and localized artwork contrast. Existing element coordinates and animation timings remain intact.
+
+**Verified statically:** 32 slides; all `data-build` markers and non-placeholder presenter wording unchanged against the pre-pass commit; `presentation.js` unchanged; all 63 media/script references resolve; no duplicate HTML/SVG IDs; balanced HTML and CSS blocks; clean whitespace diff. Placeholder elements decreased from 82 to 26, including four replaced by the existing school-card graphics.
+
+**Visual evidence:** the user supplied pre-edit screenshots of Slides 7, 8, 14 and 28. Browser Use policy blocked access to the local deck and prohibited a workaround. No post-edit browser rendering, animation/playback review or whole-deck presentation walkthrough is claimed. Refresh the local deck before reviewing.
+
+**First refresh checks:** (1) Slides 7–8, 14 and 28 for artwork crop and text contrast; (2) Slides 10→11, 15 and 17→18→19 through their builds; (3) Slides 30→31→32 for small crops and closing readability.
+
+**Remaining 26 media slots:** 14 authentic-source placeholders across Slides 2, 6, 25–30; 12 concept placeholders across Slides 22, 25, 27–29. Specific gaps include the adventure map, hero/creature/Griffin, opening/Cloudfire, King Nicolas, Catherine, discovery/pickup, tower/ruin/cave/mill, local poison/fall scenes, survivors and the local-story handoff. Do not substitute generated imagery into source slots or label Mirham art as Cloudfire. See `LAEMA_POLISH_STATUS.md` for the resume point.
 
 ## LAEMA Art Bible / Visual Production Rules
 

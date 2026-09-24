@@ -1,4 +1,26 @@
-# Slides 1–6 generated artwork
+# Generated and supplied concept artwork
+
+## Concept completion — 2026-09-16
+
+The subsequently approved generation pass filled all 12 remaining concept slots in Slides 22, 25 and 27–29. Nine scene concepts plus four portrait adaptations are retained in this folder. Exact prompts, generation output identifiers, scope and review limitations are recorded in [CONCEPT-COMPLETION-PROMPTS.md](CONCEPT-COMPLETION-PROMPTS.md). The first survivors candidate was rejected and corrected; only the corrected `cloudfire-survivors-concept-v2.png` was copied here. All 14 authentic-source placeholders remain untouched by this generation pass.
+
+## User-supplied artwork integrated on 2026-09-16
+
+The following images were supplied by the user in this task and copied without pixel edits. No new images were generated during polish passes 1–2. Framing/crops and contrast treatments are HTML/CSS only; source images are preserved. None are captured gameplay or authentic Heroes III media.
+
+| Deck asset | Supplied filename | Uses |
+| --- | --- | --- |
+| `laema-five-attacks-v1.png` | `codex-clipboard-d74ace6f-20c6-45d5-a97f-2891dda6089b.png` | Slides 7–8 posters; Slides 10–11 melee; Slides 15 and 17–19 per-position crops |
+| `laema-sword-and-magic-v1.png` | `codex-clipboard-4077adf7-8620-40c7-ad92-c61bcfd33989.png` | Slides 9–11 Cast illustration, 14 payoff, 15 substitution, 30–31 combat callbacks |
+| `mirham-last-stand-v1.png` | `codex-clipboard-e4dacf63-bd2a-4d29-b501-1c4b979b3b81.png` | Slide 28 threat and last-stand states |
+
+The attack crops are schematic pose illustrations. School colours and the existing orb labels carry Fire/Air identity; the images do not establish different school moves, damage, hit effects or animation fidelity. The sword-and-magic scene illustrates combat mastery, not the exact appearance or operation of Charging. Charging and Slide 13 combat demands use editable inline SVG diagrams with no new mechanics or text.
+
+Existing Mirham, Griffin and cover art is reused in the closing/world section. The existing authentic `hmm3-castle-source.png` is reused in Slides 30–31 with its previously recorded Heroes III / Ubisoft provenance. `cast-climax-v1.png` is retained as an unused earlier option. No source artwork was deleted or replaced on disk.
+
+Post-edit slide crops and contrast await user screenshot review because the browser tool cannot access the local deck. Static file/build checks do not constitute visual validation.
+
+## Slides 1–6 generated artwork
 
 Generated with the built-in image-generation tool, using the supplied storyboard and approved Laema/Mirham references. These are illustrative LAEMA concepts, never authentic Heroes III source media. All presentation text remains separate HTML. Original reference images remain unchanged.
 

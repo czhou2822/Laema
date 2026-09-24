@@ -1,0 +1,409 @@
+{
+  "schema_version": 3,
+  "checkpoint_id": "2026-09-24-complete-save",
+  "previous_manifest": "docs/checkpoints/2026-09-16-pitch-publication/manifest.json",
+  "project_id": "66d70521-6484-4bf3-b170-ba142e9e0ad9",
+  "tasks": [
+    {
+      "task_key": "production_manager",
+      "canonical_title": "Production Manager",
+      "aliases": [
+        "PM",
+        "Production Manager"
+      ],
+      "changed": true,
+      "summary": "Published pitch layout repair from the latest editable CSS: restored missing layout rules and content-versioned asset URLs, then pushed commit 738020d. This full depot save will include the editable pitch sources and assets. Browser rendering remains unverified; GitHub Pages is public static content, not code-only access control.",
+      "latest_turn_id": "01a0d0d8-7dac-7420-bbf6-d7ba4ee24122",
+      "latest_completed_turn_id": "01a0a912-2c44-7190-8099-bf9798ffe7cb",
+      "latest_round_status": "in_progress",
+      "progress_uid": "sha256:13d83a267d8ffed5b4f39aa020b0f09f18f81a70c30212a5c5bdd2dbfe7ab46b",
+      "task_file": "production-manager.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e",
+        "title": "Production Manager",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "active",
+        "latest_completed_at": 1789543260,
+        "latest_visible_updated_at": 1790212308
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a014f7-f5ea-7e70-9474-117c6ca3728d",
+          "title": "Production Manager",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a0a778-f5ed-7090-a0f1-db7e1fae87d6",
+          "progress_uid": "sha256:49fb4ee286085c8aacaf1d2d8aa27d9c8fb3013a5a7a13606501e388769740a8",
+          "latest_completed_at": 1789549016
+        },
+        {
+          "checkpoint": "2026-09-16-pitch-release",
+          "host_id": "local",
+          "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e",
+          "title": "Production Manager",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "active",
+          "latest_turn_id": "01a0a8c4-a8ea-7712-8e46-66684bb61327",
+          "progress_uid": "sha256:pm-01a0a8c4-a8ea-7712-8e46-66684bb61327",
+          "latest_completed_at": 1789537884
+        }
+      ]
+    },
+    {
+      "task_key": "build_pitch_deck",
+      "canonical_title": "Build LAEMA pitch deck draft",
+      "aliases": [
+        "Build LAEMA pitch deck draft",
+        "LAEMA pitch deck draft"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a0a6fc-411e-7b72-8125-e74df8db9da5",
+      "progress_uid": "sha256:59d5da34b7eac91becd37256931600d4cade234521d0087d57c690702d6fb676",
+      "task_file": "build-pitch-deck.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a09dc8-0721-7772-9dda-d08f29012292",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1789516103,
+        "local_read_status": "not_found_on_this_host"
+      },
+      "binding_history": []
+    },
+    {
+      "task_key": "polish_deck_presentation",
+      "canonical_title": "Polish deck presentation",
+      "aliases": [
+        "Polish deck presentation"
+      ],
+      "changed": true,
+      "summary": "The 31-slide editable deck's final visual integration (Slides 30–31 plus the consistency pass) and source audit are saved; manual visual approval remains pending. The public snapshot had a CSS-copy mismatch; that separate published copy was repaired and pushed, without browser verification.",
+      "latest_turn_id": "01a0a8db-1368-7e13-8994-cc34d31c6d37",
+      "progress_uid": "sha256:c056de7d1f3a25c6ae85bdeb3f4a332b33f899d9c0a405f53bbb1237147f95d2",
+      "task_file": "polish-deck-presentation.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a0a792-c734-7630-830c-5f6c9661d434",
+        "title": "Polish deck presentation",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1789540464,
+        "latest_visible_updated_at": 1789540464
+      },
+      "binding_history": []
+    },
+    {
+      "task_key": "marketing",
+      "canonical_title": "Marketing",
+      "aliases": [
+        "Marketing"
+      ],
+      "changed": true,
+      "summary": "The latest task restoration confirms the current deck flow is combat toy first, then town; an older checkpoint reverses it. Preserve the current locked flow. No source establishes Ubisoft Shanghai as Q&A material; do not rearchitect without approval.",
+      "latest_turn_id": "01a0a78f-54d3-7fe0-9611-bbca2cc04779",
+      "progress_uid": "sha256:f5c2046b3bd376e5f34b5e3de032018bc9eb953bf05b5770ec1737b7a32ef368",
+      "task_file": "marketing.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a03c62-0713-7f72-9237-38ed6e1b42d1",
+        "title": "Marketing",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1789517793,
+        "latest_visible_updated_at": 1789517793
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f41-8b3c-70f1-ae94-6f829627eb7f",
+          "title": "Marketing",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a09d98-4b37-7980-83d0-2179d36aae95",
+          "progress_uid": "sha256:8d76d84b4398bb0185e002ddfef02e075da23cd47ce5c802085562fb33297eed",
+          "latest_completed_at": 1789350404
+        }
+      ]
+    },
+    {
+      "task_key": "town_design",
+      "canonical_title": "Town Design",
+      "aliases": [
+        "Town Design"
+      ],
+      "changed": true,
+      "summary": "Restoration reconciled current GDD Decisions: Mirham is the recurring buildable hub, distinct from Cloudfire and Steadwick, with the late-story order recorded. Town mechanics, ownership, progression, and defence cost remain open; keep dormant.",
+      "latest_turn_id": "01a0a78f-6707-79b1-9d1a-996f9fd46088",
+      "progress_uid": "sha256:65ba8372fabf380dba57bb1a6725a4f970db38ceace58e06dc3db24fc014e435",
+      "task_file": "town-design.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a018cb-7c14-7fe2-af09-569b2f3faf97",
+        "title": "Town Design",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1789517663,
+        "latest_visible_updated_at": 1789517663
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f43-9652-7530-b974-61197ada0e59",
+          "title": "Town Design",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a09ae7-50d6-7e63-9fb0-1b76f0f64009",
+          "progress_uid": "sha256:68421bca53979da1227ba6f1a93bd20d06c952456adc0fd7337280ce69e032ef",
+          "latest_completed_at": 1789305251
+        }
+      ]
+    },
+    {
+      "task_key": "narrative_room",
+      "canonical_title": "Narrative Room",
+      "aliases": [
+        "NarrativeRoom",
+        "Narrative Room"
+      ],
+      "changed": true,
+      "summary": "Restoration confirms the GDD's background narrative distinctions and local-tragedy proposal; no narrative decision changed. Antagonist, investigation, causality, defence outcome, and emotional core remain open; keep dormant.",
+      "latest_turn_id": "01a0a78f-74ea-7a60-8da4-c98743dc40c1",
+      "progress_uid": "sha256:1f8417b96ba6a6b3ec8d343e7129c855a85c149fac9e9c06d3c399feacefa05a",
+      "task_file": "narrative-room.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f74-0257-74a1-9259-e472228e5b2c",
+        "title": "Narrative Room",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1789517738,
+        "latest_visible_updated_at": 1789517738
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a014f2-6363-7c20-b67e-1d80689ff86e",
+          "title": "Narrative Room",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a09aeb-7f71-7b42-ba55-9d88cc61fadc",
+          "progress_uid": "sha256:537e2109f647f4dee9833bae9b4b8ba02d715fff847dba8ec61a0c64263d6761",
+          "latest_completed_at": 1789305534
+        }
+      ]
+    },
+    {
+      "task_key": "combat",
+      "canonical_title": "Combat",
+      "aliases": [
+        "Combat"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a07f79-c6cd-7a60-9b82-7f0c92044aee",
+      "progress_uid": "sha256:5a3439eb25997fbdefd281e073cd273388e437ec2d0a0cddfaa9bee31b458338",
+      "task_file": "combat.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f71-17fd-7171-9f63-5859c0a9797d",
+        "title": "Combat",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788845134,
+        "latest_visible_updated_at": 1789517563
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a0150a-3101-7611-910e-4e9dc6d55728",
+          "title": "Combat",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f79-c6cd-7a60-9b82-7f0c92044aee",
+          "progress_uid": "sha256:5a3439eb25997fbdefd281e073cd273388e437ec2d0a0cddfaa9bee31b458338",
+          "latest_completed_at": 1788954503
+        }
+      ]
+    },
+    {
+      "task_key": "art",
+      "canonical_title": "Art",
+      "aliases": [
+        "Art"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a08947-24f6-79b1-913d-c6a7520a3253",
+      "progress_uid": "sha256:art-latest-completed-01a08947-24f6-79b1-913d-c6a7520a3253",
+      "task_file": "art.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a01d0a-ced6-77c0-a98a-e94ec3c5c10e",
+        "title": "Art",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1789010003,
+        "latest_visible_updated_at": 1789010003
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f41-7159-70f1-ac7d-e6217941c130",
+          "title": "Art",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a08947-24f6-79b1-913d-c6a7520a3253",
+          "progress_uid": "sha256:art-latest-completed-01a08947-24f6-79b1-913d-c6a7520a3253",
+          "latest_completed_at": 1789119419
+        }
+      ]
+    },
+    {
+      "task_key": "u",
+      "canonical_title": "U",
+      "aliases": [
+        "U"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a08a11-83e8-7d10-9814-f0c7e6dabdac",
+      "progress_uid": "sha256:973bab173bd81948df275142a6221cd0403c653c5642871b7b8c906bbe4d8deb",
+      "task_file": "u.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a03c06-1c70-7b13-9717-249b021f1cd8",
+        "title": "U",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1789024034,
+        "latest_visible_updated_at": 1789517602
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a02d6a-8dfd-75f1-8b1f-230ababb3f22",
+          "title": "U",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a08a11-83e8-7d10-9814-f0c7e6dabdac",
+          "progress_uid": "sha256:973bab173bd81948df275142a6221cd0403c653c5642871b7b8c906bbe4d8deb",
+          "latest_completed_at": 1788954658
+        }
+      ]
+    },
+    {
+      "task_key": "audio",
+      "canonical_title": "Laema Audio",
+      "aliases": [
+        "Audio",
+        "Laema Audio"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a07f7a-5b52-7573-bfb7-005f326d3660",
+      "progress_uid": "sha256:370a585ff06274e57976e740c383efc283e51b5ea0e35e9e1757b94f8c7d42af",
+      "task_file": "audio.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f73-b9b0-75e1-bc7d-6d91e6d5270b",
+        "title": "Laema Audio",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788845146,
+        "latest_visible_updated_at": 1789517556
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a02e1a-babc-7200-991f-d48f8f4bf4f2",
+          "title": "Laema Audio",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f7a-5b52-7573-bfb7-005f326d3660",
+          "progress_uid": "sha256:370a585ff06274e57976e740c383efc283e51b5ea0e35e9e1757b94f8c7d42af",
+          "latest_completed_at": 1788954502
+        }
+      ]
+    },
+    {
+      "task_key": "dummy",
+      "canonical_title": "Dummy",
+      "aliases": [
+        "Dummy"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a07f7a-35fa-78a3-9f7b-87a8c7a5fbf1",
+      "progress_uid": "sha256:28163f26fada01e05c2b502987ff69947a09feb1ecf06b8c93c48f4ed77861d5",
+      "task_file": "dummy.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f71-ffdf-7160-bb0d-8ff06a78a0af",
+        "title": "Dummy",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788845148,
+        "latest_visible_updated_at": 1789517571
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a02eea-fb2f-7c32-aa95-5aed9642a14b",
+          "title": "Dummy",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f7a-35fa-78a3-9f7b-87a8c7a5fbf1",
+          "progress_uid": "sha256:28163f26fada01e05c2b502987ff69947a09feb1ec06b8c93c48f4ed77861d5",
+          "latest_completed_at": 1788954541
+        }
+      ]
+    },
+    {
+      "task_key": "design_overseer",
+      "canonical_title": "Design Overseer",
+      "aliases": [
+        "Design Overseer",
+        "Design overseer"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a07f7a-75ca-78f0-bff5-664b8bd71924",
+      "progress_uid": "sha256:ee82eb59d43a11d5de0c28a78e112f42a2476b9c96e5ffc75b4b8ba8a059d360",
+      "task_file": "design-overseer.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a018d6-9097-7d53-8a42-1fe65472ceb1",
+        "title": "Design Overseer",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788845334,
+        "latest_visible_updated_at": 1789517580
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f43-a5a4-7f83-a065-dc2f6a4b8c1e",
+          "title": "Design Overseer",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f7a-75ca-78f0-bff5-664b8bd71924",
+          "progress_uid": "sha256:ee82eb59d43a11d5de0c28a78e112f42a2476b9c96e5ffc75b4b8ba8a059d360",
+          "latest_completed_at": 1788954574
+        }
+      ]
+    }
+  ]
+}
