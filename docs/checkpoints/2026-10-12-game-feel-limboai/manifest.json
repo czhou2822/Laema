@@ -1,0 +1,682 @@
+{
+  "schema_version": 4,
+  "checkpoint_id": "2026-10-12-game-feel-limboai",
+  "previous_manifest": "docs/checkpoints/2026-09-24-complete-save/manifest.json",
+  "project_id": "66d70521-6484-4bf3-b170-ba142e9e0ad9",
+  "repository": "czhou2822/Laema",
+  "progress_uid_algorithm": "sha256 of UTF-8 JSON array of ordered {role,text} user/assistant messages from the latest completed round; no tool outputs or reasoning",
+  "discovery": {
+    "status": "partial",
+    "listed_project_tasks": 2,
+    "read_unarchived_bindings": 11,
+    "message": "The current 50-task app listing contains Production Manager and Combat. Nine additional saved bindings were read directly and absent from the complete archive listing; older undiscovered tasks are not assumed absent."
+  },
+  "tasks": [
+    {
+      "task_key": "production_manager",
+      "canonical_title": "Production Manager",
+      "aliases": [
+        "PM",
+        "Production Manager"
+      ],
+      "changed": true,
+      "summary": "Presentation work is closed. Target is a semi-polished combat/tutorial playtest build by December 31, 2026; provisional schedule and user-owned editor-tuning workflow were accepted. The discussion was transferred to Combat. This save includes the new schema 4/Cory/department integration and all current candidates.",
+      "latest_turn_id": "01a12f24-e37c-7c73-b364-ac9de03f8a2e",
+      "latest_round_status": "completed",
+      "progress_uid": "sha256:84fd6485553fe22b524c97d4f78dda7dd1e5d23ffa36f650fec6a366a61b5243",
+      "task_file": "production-manager.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e",
+        "title": "Production Manager",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "active",
+        "latest_completed_at": 1791793519,
+        "latest_visible_updated_at": 1791793796
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a014f7-f5ea-7e70-9474-117c6ca3728d",
+          "title": "Production Manager",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a0a778-f5ed-7090-a0f1-db7e1fae87d6",
+          "progress_uid": "sha256:49fb4ee286085c8aacaf1d2d8aa27d9c8fb3013a5a7a13606501e388769740a8",
+          "latest_completed_at": 1789549016
+        },
+        {
+          "checkpoint": "2026-09-16-pitch-release",
+          "host_id": "local",
+          "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e",
+          "title": "Production Manager",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "active",
+          "latest_turn_id": "01a0a8c4-a8ea-7712-8e46-66684bb61327",
+          "progress_uid": "sha256:pm-01a0a8c4-a8ea-7712-8e46-66684bb61327",
+          "latest_completed_at": 1789537884
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e",
+          "title": "Production Manager",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "active",
+          "latest_completed_at": 1789543260,
+          "latest_visible_updated_at": 1790212308,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a912-2c44-7190-8099-bf9798ffe7cb",
+          "progress_uid": "sha256:3166eae65523dd2c330c7ae7149b86e9e0a3886c22b1c61d70ce9ad6617e9c20"
+        }
+      ],
+      "captured_in_progress_turn_id": "01a12f38-b9ee-7673-8806-b8060e938564",
+      "department_key": null,
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      },
+      "department_assignment_evidence": "User explicitly kept Production Manager as its own standalone coordination position on 2026-10-12.",
+      "position_key": "production_manager"
+    },
+    {
+      "task_key": "polish_deck_presentation",
+      "canonical_title": "Polish deck presentation",
+      "aliases": [
+        "Polish deck presentation"
+      ],
+      "changed": true,
+      "summary": "A later task round identified full browser/build/rehearsal QA as historical unfinished pitch work. The user's newer decision closes presentation preparation; preserve the artifacts and keep the task dormant until explicitly resumed.",
+      "latest_turn_id": "01a0d132-35ce-77b2-be77-d49767b71805",
+      "progress_uid": "sha256:b378259b01d501e93877ed12ca195cb67ada971b2c467ad32bce0141f8ab00cc",
+      "task_file": "polish-deck-presentation.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a0a792-c734-7630-830c-5f6c9661d434",
+        "title": "Polish deck presentation",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1790216285,
+        "latest_visible_updated_at": 1791792321
+      },
+      "binding_history": [
+        {
+          "host_id": "local",
+          "thread_id": "01a0a792-c734-7630-830c-5f6c9661d434",
+          "title": "Polish deck presentation",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789540464,
+          "latest_visible_updated_at": 1789540464,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a8db-1368-7e13-8994-cc34d31c6d37",
+          "progress_uid": "sha256:b96aa901bf426fb54b872ccc6cbc79edcc620d31654fb49535e464d7d5d7ce5c"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "marketing",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      },
+      "department_assignment_evidence": "User confirmed Polish deck presentation belongs to marketing on 2026-10-12."
+    },
+    {
+      "task_key": "marketing",
+      "canonical_title": "Marketing",
+      "aliases": [
+        "Marketing"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a0a78f-54d3-7fe0-9611-bbca2cc04779",
+      "progress_uid": "sha256:0f078e1ef1a850075e10323869b7c604c6f10e59e18c27ed40eacd6bb9c8d68f",
+      "task_file": "marketing.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a03c62-0713-7f72-9237-38ed6e1b42d1",
+        "title": "Marketing",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1789517793,
+        "latest_visible_updated_at": 1791792339
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f41-8b3c-70f1-ae94-6f829627eb7f",
+          "title": "Marketing",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a09d98-4b37-7980-83d0-2179d36aae95",
+          "progress_uid": "sha256:8d76d84b4398bb0185e002ddfef02e075da23cd47ce5c802085562fb33297eed",
+          "latest_completed_at": 1789350404
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a03c62-0713-7f72-9237-38ed6e1b42d1",
+          "title": "Marketing",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789517793,
+          "latest_visible_updated_at": 1789517793,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a78f-54d3-7fe0-9611-bbca2cc04779",
+          "progress_uid": "sha256:0f078e1ef1a850075e10323869b7c604c6f10e59e18c27ed40eacd6bb9c8d68f"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "marketing",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      }
+    },
+    {
+      "task_key": "town_design",
+      "canonical_title": "Town Design",
+      "aliases": [
+        "Town Design"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a0a78f-6707-79b1-9d1a-996f9fd46088",
+      "progress_uid": "sha256:0cb0ea7403db0fe660fe08aa0c85eb8a43ca0efb1e1c47a4b9392b50338f1203",
+      "task_file": "town-design.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a018cb-7c14-7fe2-af09-569b2f3faf97",
+        "title": "Town Design",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1789517663,
+        "latest_visible_updated_at": 1791792332
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f43-9652-7530-b974-61197ada0e59",
+          "title": "Town Design",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a09ae7-50d6-7e63-9fb0-1b76f0f64009",
+          "progress_uid": "sha256:68421bca53979da1227ba6f1a93bd20d06c952456adc0fd7337280ce69e032ef",
+          "latest_completed_at": 1789305251
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a018cb-7c14-7fe2-af09-569b2f3faf97",
+          "title": "Town Design",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789517663,
+          "latest_visible_updated_at": 1789517663,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a78f-6707-79b1-9d1a-996f9fd46088",
+          "progress_uid": "sha256:0cb0ea7403db0fe660fe08aa0c85eb8a43ca0efb1e1c47a4b9392b50338f1203"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "town_design",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      }
+    },
+    {
+      "task_key": "narrative_room",
+      "canonical_title": "Narrative Room",
+      "aliases": [
+        "NarrativeRoom",
+        "Narrative Room"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a0a78f-74ea-7a60-8da4-c98743dc40c1",
+      "progress_uid": "sha256:aaef6c6bdad0088358ffb78055a37dbe989fbbc1c8425c6c18e004be1861a47c",
+      "task_file": "narrative-room.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f74-0257-74a1-9259-e472228e5b2c",
+        "title": "Narrative Room",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1789517738,
+        "latest_visible_updated_at": 1791792327
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a014f2-6363-7c20-b67e-1d80689ff86e",
+          "title": "Narrative Room",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a09aeb-7f71-7b42-ba55-9d88cc61fadc",
+          "progress_uid": "sha256:537e2109f647f4dee9833bae9b4b8ba02d715fff847dba8ec61a0c64263d6761",
+          "latest_completed_at": 1789305534
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f74-0257-74a1-9259-e472228e5b2c",
+          "title": "Narrative Room",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789517738,
+          "latest_visible_updated_at": 1789517738,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a78f-74ea-7a60-8da4-c98743dc40c1",
+          "progress_uid": "sha256:aaef6c6bdad0088358ffb78055a37dbe989fbbc1c8425c6c18e004be1861a47c"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "narrative",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      }
+    },
+    {
+      "task_key": "combat",
+      "canonical_title": "Combat",
+      "aliases": [
+        "Combat"
+      ],
+      "changed": true,
+      "summary": "User identified the short Enemy hurt reaction and immediate return to attack as the awkward moment. Approved LimboAI 1.8.1 Final Enemy conversion is implemented as a candidate; reported grammar/resource checks passed, but Godot/Web remain unverified. Impact/reaction definition and visual recoil versus body displacement are still open.",
+      "latest_turn_id": "01a12f1d-0d8a-79a1-a2a0-0420efee312b",
+      "progress_uid": "sha256:01903af1b35a21c0c0edb9299c95a5dda62a04a07054acdf41e59d7b8e3acee8",
+      "task_file": "combat.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f71-17fd-7171-9f63-5859c0a9797d",
+        "title": "Combat",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1791792119,
+        "latest_visible_updated_at": 1791792119
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a0150a-3101-7611-910e-4e9dc6d55728",
+          "title": "Combat",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f79-c6cd-7a60-9b82-7f0c92044aee",
+          "progress_uid": "sha256:5a3439eb25997fbdefd281e073cd273388e437ec2d0a0cddfaa9bee31b458338",
+          "latest_completed_at": 1788954503
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f71-17fd-7171-9f63-5859c0a9797d",
+          "title": "Combat",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1788845134,
+          "latest_visible_updated_at": 1789517563,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a07f79-c6cd-7a60-9b82-7f0c92044aee",
+          "progress_uid": "sha256:5a3439eb25997fbdefd281e073cd273388e437ec2d0a0cddfaa9bee31b458338"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "combat",
+      "read_coverage": {
+        "turns_read": 8,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      }
+    },
+    {
+      "task_key": "art",
+      "canonical_title": "Art",
+      "aliases": [
+        "Art"
+      ],
+      "changed": true,
+      "summary": "The same latest Art round is now readable. Its legacy placeholder UID was replaced by a digest of the actual completed user/assistant round; no new art work, acceptance, or runtime evidence is inferred.",
+      "latest_turn_id": "01a08947-24f6-79b1-913d-c6a7520a3253",
+      "progress_uid": "sha256:d3d68ab31efadc6b305b082573887e758dbaf27ee8fb8b883d467a5d94914eb7",
+      "task_file": "art.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a01d0a-ced6-77c0-a98a-e94ec3c5c10e",
+        "title": "Art",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1789010003,
+        "latest_visible_updated_at": 1791792353
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f41-7159-70f1-ac7d-e6217941c130",
+          "title": "Art",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a08947-24f6-79b1-913d-c6a7520a3253",
+          "progress_uid": "sha256:art-latest-completed-01a08947-24f6-79b1-913d-c6a7520a3253",
+          "latest_completed_at": 1789119419
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a01d0a-ced6-77c0-a98a-e94ec3c5c10e",
+          "title": "Art",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789010003,
+          "latest_visible_updated_at": 1789010003,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a08947-24f6-79b1-913d-c6a7520a3253",
+          "progress_uid": "sha256:art-latest-completed-01a08947-24f6-79b1-913d-c6a7520a3253"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "art",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      },
+      "uid_migration": "Legacy UID normalized from an actual read of the same completed round; does not denote a new interaction or decision."
+    },
+    {
+      "task_key": "u",
+      "canonical_title": "U",
+      "aliases": [
+        "U"
+      ],
+      "changed": true,
+      "summary": "No new completed U round. The old progress UID was normalized from the actual last completed user/assistant round; carry the historical Slide 16 repair result without starting new presentation work.",
+      "latest_turn_id": "01a08a11-83e8-7d10-9814-f0c7e6dabdac",
+      "progress_uid": "sha256:b55218ccf5c5e2a7057ff426d556718481ce812ff0e0b97ce04868e24457cd97",
+      "task_file": "u.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a03c06-1c70-7b13-9717-249b021f1cd8",
+        "title": "U",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1789024034,
+        "latest_visible_updated_at": 1791792347
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a02d6a-8dfd-75f1-8b1f-230ababb3f22",
+          "title": "U",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a08a11-83e8-7d10-9814-f0c7e6dabdac",
+          "progress_uid": "sha256:973bab173bd81948df275142a6221cd0403c653c5642871b7b8c906bbe4d8deb",
+          "latest_completed_at": 1788954658
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a03c06-1c70-7b13-9717-249b021f1cd8",
+          "title": "U",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789024034,
+          "latest_visible_updated_at": 1789517602,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a08a11-83e8-7d10-9814-f0c7e6dabdac",
+          "progress_uid": "sha256:973bab173bd81948df275142a6221cd0403c653c5642871b7b8c906bbe4d8deb"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "other",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      },
+      "uid_migration": "Legacy UID normalized from an actual read of the same completed round; does not denote a new interaction or decision.",
+      "department_assignment_evidence": "User confirmed U belongs to other on 2026-10-12."
+    },
+    {
+      "task_key": "audio",
+      "canonical_title": "Laema Audio",
+      "aliases": [
+        "Audio",
+        "Laema Audio"
+      ],
+      "changed": true,
+      "summary": "No new completed Audio round. The old progress UID was normalized from the actual completed user/assistant round; harmony timing remains undecided and no audible validation is added.",
+      "latest_turn_id": "01a07f7a-5b52-7573-bfb7-005f326d3660",
+      "progress_uid": "sha256:4e0e93b7534d74e0bdfcd5706e8c9cc2c1c2ed6942b306482f7d3fd724e68351",
+      "task_file": "audio.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f73-b9b0-75e1-bc7d-6d91e6d5270b",
+        "title": "Laema Audio",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1788845146,
+        "latest_visible_updated_at": 1791792363
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a02e1a-babc-7200-991f-d48f8f4bf4f2",
+          "title": "Laema Audio",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f7a-5b52-7573-bfb7-005f326d3660",
+          "progress_uid": "sha256:370a585ff06274e57976e740c383efc283e51b5ea0e35e9e1757b94f8c7d42af",
+          "latest_completed_at": 1788954502
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f73-b9b0-75e1-bc7d-6d91e6d5270b",
+          "title": "Laema Audio",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1788845146,
+          "latest_visible_updated_at": 1789517556,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a07f7a-5b52-7573-bfb7-005f326d3660",
+          "progress_uid": "sha256:370a585ff06274e57976e740c383efc283e51b5ea0e35e9e1757b94f8c7d42af"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "audio",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      },
+      "uid_migration": "Legacy UID normalized from an actual read of the same completed round; does not denote a new interaction or decision."
+    },
+    {
+      "task_key": "dummy",
+      "canonical_title": "Dummy",
+      "aliases": [
+        "Dummy"
+      ],
+      "changed": true,
+      "summary": "No new completed Dummy round. The old progress UID was normalized from the actual completed user/assistant round; keep parser reload confirmation and observed-symptom boundaries separate from new target defects.",
+      "latest_turn_id": "01a07f7a-35fa-78a3-9f7b-87a8c7a5fbf1",
+      "progress_uid": "sha256:490379ca5580d8aa892cb8ca21dd26c482675cd27b7bd844716c561f43e6748b",
+      "task_file": "dummy.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f71-ffdf-7160-bb0d-8ff06a78a0af",
+        "title": "Dummy",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1788845148,
+        "latest_visible_updated_at": 1791792368
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a02eea-fb2f-7c32-aa95-5aed9642a14b",
+          "title": "Dummy",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f7a-35fa-78a3-9f7b-87a8c7a5fbf1",
+          "progress_uid": "sha256:28163f26fada01e05c2b502987ff69947a09feb1ec06b8c93c48f4ed77861d5",
+          "latest_completed_at": 1788954541
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f71-ffdf-7160-bb0d-8ff06a78a0af",
+          "title": "Dummy",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1788845148,
+          "latest_visible_updated_at": 1789517571,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a07f7a-35fa-78a3-9f7b-87a8c7a5fbf1",
+          "progress_uid": "sha256:28163f26fada01e05c2b502987ff69947a09feb1ecf06b8c93c48f4ed77861d5"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "combat",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      },
+      "uid_migration": "Legacy UID normalized from an actual read of the same completed round; does not denote a new interaction or decision.",
+      "department_assignment_evidence": "User confirmed Dummy belongs to combat on 2026-10-12."
+    },
+    {
+      "task_key": "design_overseer",
+      "canonical_title": "Design Overseer",
+      "aliases": [
+        "Design Overseer",
+        "Design overseer"
+      ],
+      "changed": true,
+      "summary": "No new completed oversight round. The old progress UID was normalized from the actual completed user/assistant round. Preserve scoped user evidence and Open foundations; the LimboAI candidate is not independently cleared.",
+      "latest_turn_id": "01a07f7a-75ca-78f0-bff5-664b8bd71924",
+      "progress_uid": "sha256:7632d3709fb53285e28719fc3f3405128b2d930693b5c0f09fb6961bdf9c0111",
+      "task_file": "design-overseer.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a018d6-9097-7d53-8a42-1fe65472ceb1",
+        "title": "Design overseer",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1788845334,
+        "latest_visible_updated_at": 1791792358
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f43-a5a4-7f83-a065-dc2f6a4b8c1e",
+          "title": "Design Overseer",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f7a-75ca-78f0-bff5-664b8bd71924",
+          "progress_uid": "sha256:ee82eb59d43a11d5de0c28a78e112f42a2476b9c96e5ffc75b4b8ba8a059d360",
+          "latest_completed_at": 1788954574
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a018d6-9097-7d53-8a42-1fe65472ceb1",
+          "title": "Design Overseer",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1788845334,
+          "latest_visible_updated_at": 1789517580,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a07f7a-75ca-78f0-bff5-664b8bd71924",
+          "progress_uid": "sha256:ee82eb59d43a11d5de0c28a78e112f42a2476b9c96e5ffc75b4b8ba8a059d360"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "design_overseer",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      },
+      "uid_migration": "Legacy UID normalized from an actual read of the same completed round; does not denote a new interaction or decision."
+    }
+  ],
+  "unresolved_saved_tasks": [
+    {
+      "task_key": "build_pitch_deck",
+      "canonical_title": "Build LAEMA pitch deck draft",
+      "aliases": [
+        "Build LAEMA pitch deck draft",
+        "LAEMA pitch deck draft"
+      ],
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a09dc8-0721-7772-9dda-d08f29012292",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1789516103,
+        "local_read_status": "not_found_on_this_host"
+      },
+      "binding_history": [],
+      "latest_turn_id": "01a0a6fc-411e-7b72-8125-e74df8db9da5",
+      "progress_uid": "sha256:59d5da34b7eac91becd37256931600d4cade234521d0087d57c690702d6fb676",
+      "previous_task_note": "docs/checkpoints/2026-09-24-complete-save/build-pitch-deck.md",
+      "reason": "Saved binding not readable on this host; preserved as reference, not recreated or treated as a current independent task."
+    }
+  ],
+  "capture_status": "Assignments explicitly confirmed; ready for complete checkpoint publication.",
+  "departments": [
+    {
+      "department_key": "combat",
+      "department_file": "departments/combat.md"
+    },
+    {
+      "department_key": "narrative",
+      "department_file": "departments/narrative.md"
+    },
+    {
+      "department_key": "town_design",
+      "department_file": "departments/town_design.md"
+    },
+    {
+      "department_key": "marketing",
+      "department_file": "departments/marketing.md"
+    },
+    {
+      "department_key": "art",
+      "department_file": "departments/art.md"
+    },
+    {
+      "department_key": "design_overseer",
+      "department_file": "departments/design_overseer.md"
+    },
+    {
+      "department_key": "audio",
+      "department_file": "departments/audio.md"
+    },
+    {
+      "department_key": "other",
+      "department_file": "departments/other.md"
+    }
+  ],
+  "department_context_uids": {
+    "combat": "6eda66854c91ec077309651059265b3bdffa436b00669be16ddf9f162640cb35",
+    "narrative": "016de6d4e584412b06ab402a06042aa2d3400e9a6f64e898f9f453a4025ea750",
+    "town_design": "5d4b96fa24822c72a2bf9f5b6e00b4b6acf98a6378024ab9064e0486ccbf7249",
+    "marketing": "997b3b0fd18493554c1a96fd99eeee0e8800f4a1738df0201de11c8772a6d5a8",
+    "art": "e1bd2b0cd763618f37cc10997ea7a32af57675cee063f38743201847c76472db",
+    "design_overseer": "dd727351a98075efe1f15a1eecb142c41f00c38c2f699e0454b0b3bb0299a345",
+    "audio": "8fdcff42fc4ae25b374f51eba056ccf5d54d04696b1ed5e88f2eaa3a71ac71cc",
+    "other": "3a611ea0169548614d88eff5e15c6bc9f4b2d49b02a8bd9e5ce690096cf40d68"
+  }
+}

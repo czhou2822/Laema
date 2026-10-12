@@ -16,7 +16,7 @@ A new checkpoint uses this shape:
 
 Each task note follows [checkpoint-task-template.md](checkpoint-task-template.md). Keep it short: the last material delta, the context worth carrying, a resume point, and sources. The note should read like the restoration benchmark, not a raw transcript.
 
-The schema 3 manifest contains task identity and routing data:
+The schema 4 manifest contains task identity and routing data:
 
     {
       "schema_version": 3,
@@ -45,7 +45,7 @@ After the agent has written the manifest, task notes, and changelist:
 
     pwsh -NoProfile -File tools/checkpoint.ps1 -Mode Save -ManifestPath docs/checkpoints/<checkpoint-id>/manifest.json
 
-The script validates schema 3, verifies each note has the required headings and a `progress_uid`, compares progress UIDs when checking changed-task summaries, stages all project files, commits, pushes, and verifies HEAD equals origin/main.
+The script validates schema 4, verifies each note has the required headings and a `progress_uid`, compares progress UIDs when checking changed-task summaries, stages all project files, commits, pushes, and verifies HEAD equals origin/main.
 
 ## Load
 
@@ -75,3 +75,21 @@ Schema 1 and 2 checkpoints remain loadable. They route each task to the older ma
     pwsh -NoProfile -File tools/publish-live.ps1
 
 The script exports the Web preset into a temporary directory, compares generated `index.*` files by SHA-256, replaces only `live/game`, commits that published folder to the working repository, pushes `main`, and verifies the repository remote. The source checkout may be dirty because this publishes a shareable working snapshot. Godot is resolved from PATH or `LAEMA_GODOT_PATH`; the former `laema-live` checkout is no longer used.
+
+## Cory depot snapshot
+
+Save creates a bounded development-only cory-context.json next to the manifest and updates docs/checkpoints/latest.json before the existing complete commit/push. Load/Plan emits cory_snapshot for comparison with fresh home-PC context in Cory. Load can omit ManifestPath to resolve the latest committed pointer. Read-only inspection: node tools/cory-checkpoint.mjs --read <project-root>. It never writes or publishes; legacy notes remain labelled partial. No cloud snapshot store or chat transcript synchronization is installed.
+
+### Persistent departments and independent tasks
+
+Combat, Narrative, Town Design, Marketing, Art, Design Overseer, Audio and Other each have one persistent Markdown record in docs/departments/. These records carry development context across task creation, closure and machine changes. They do not supersede user decisions, the GDD or accepted technical records. Keep facts, decisions, proposals, Open items, conflicts, validation limits and sources distinct.
+
+Tasks retain independent task_key, title, bindings, history, progress UID and task note. A department is not a task identity: several tasks may belong to one department, and a new task must not masquerade as an older same-department chat. Ask which department a new task belongs to unless the user already specifies it. Other is an explicit choice; do not silently classify new work by title or Skill. Persist choices in docs/departments/task-departments.json. On save/load, ask about unassigned tasks and preserve existing confirmed choices.
+
+Production Manager is the user-confirmed standalone coordination position. Its task key and position_key are both production_manager; department_key stays null. It carries its own task note and bindings and uses the ordinary verified task-UID dormant check. This exception does not exempt any other task from explicit department assignment. Cory's existing nullable departmentKey transports its task context while all eight specialist department records remain intact.
+
+New saves use schema 4. Reconcile material task developments into the appropriate department record while keeping independent task notes. Never blindly overwrite department memory with one task's latest response. Include all eight department records, task assignments and ordinary candidate scope. The checkpoint adapter freezes department copies under the new checkpoint's departments/ folder, computes their content UIDs, writes cory-context.json and latest.json, and publishes through the existing complete checkpoint save. Historical schemas 1–3 remain readable.
+
+Load the latest saved department records first, then read the selected current task context. Restore matched independent tasks with both their task note and department record. A genuinely new task loads its chosen department without stealing another task's identity or transcript. Missing saved tasks remain reference context, not a requirement to recreate them. Equal task UIDs permit a dormant skip only when the department UID is also verified unchanged; unknown or changed department context must be reconciled. Update confirmed bindings and department-read UIDs only from actual reads. Preserve dormant domains and report unresolved conflicts; do not infer approval or restore unread history.
+
+Department records and checkpoint snapshots contain development summaries only. Preserve the existing dirty-tree Load gate and complete Save publication rules. Do not publish this integration outside an explicitly authorized checkpoint or commit/push request.

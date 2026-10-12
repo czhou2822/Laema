@@ -1,10 +1,18 @@
 # Implementation Status
 
-Status: `IMPLEMENTED_WITH_REMAINING_RUNTIME_VALIDATION_WAIVED_FOR_TUNING`.
+Status: `IMPLEMENTED_AWAITING_LIMBOAI_USER_VALIDATION`.
 
-Last committed recovery baseline: `6b06dc2` (`checkpoint: save cross-thread recovery state`). It commits the historical Stage 1–6 sequence-objective candidate and recovery records. The current working tree contains the later combined Stage 7, Final Enemy, Elemental Endurance, minimum-Health, feedback, and presentation additions described below.
+Historical gameplay recovery baseline: `6b06dc2` (`checkpoint: save cross-thread recovery state`). It commits the Stage 1–6 sequence-objective candidate and recovery records. Later combined Stage 7, Final Enemy, Elemental Endurance, minimum-Health, feedback, and presentation candidates are preserved by subsequent checkpoint history. The current LimboAI candidate is captured separately below; recovery publication does not establish runtime validation.
 
-## Current working-tree implementation
+## Current implementation candidate
+
+### LimboAI conversion — 2026-10-12
+
+The user approved a behavior-preserving conversion of the active Final Enemy to LimboAI after exploring the separate official demo. The conversion candidate was introduced against `23ccc29b6436776a729d071cf4a73038af5b52e6` and is recorded by `docs/checkpoints/2026-10-12-game-feel-limboai/manifest.json`. It includes the pinned official LimboAI 1.8.1 GDExtension, one manually ticked BTPlayer, `ai/trees/final_enemy.tres`, six Enemy tasks, task discovery settings, and Web extension support. The tree owns awareness/approach/windup/strike/recovery decisions and timers; Enemy retains collision, movement, committed strike geometry, damage, and visual presentation. Existing Portal configuration supplies blackboard timing/range/damage values.
+
+Only source/dependency/static checks have been performed. This conversion has no user-reported Godot comparison or agent-run editor/runtime/build/test evidence. The existing historical tuning waivers do not cover it. User validation must confirm extension loading, tree editor/debugger access, normal attack cadence, committed hit/miss geometry, hurt non-interruption, AI enable/disable, tuning resets, death, and stage unload/reload. Web export remains unverified.
+
+### Earlier feature and validation record
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. The report was broad: no exact scenario matrix, tested-tree identity, or engine-version record was supplied. The user later reported validating the small DoT floating-damage feedback. On 2026-09-05, the user also followed targeted checks and reported that the Final Enemy's body blocking works while the three restored practice targets remain pass-through, that leaving the committed attack area during windup produces a miss without retargeting, and that hitting the Enemy during windup does not interrupt its committed attack. The user then explicitly waived the remaining targeted verification passes for the current tuning phase. After the Stage 7/8 merge, the user broadly reported the combined Stage 7 implementation verified; no scenario matrix was supplied. Those waivers and broad reports do not establish untested scenario details. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
@@ -18,7 +26,7 @@ The user reported the complete Stage 1–6 flow run and confirmed in Godot on 20
 - Player-facing terminology distinguishes Generating/generated orbs from Charging/charged orbs; private `marked` identifiers remain implementation details. The HUD now uses generated-orb and Charging/charged wording.
 - Tutorial-only Elemental Endurance is implemented for Final Enemy: StatusController owns the streak/multiplier, Might propagates source-action identity through X and Cast, HealthResolver applies the multiplier and full-resist tag before Health, and final feedback reflects post-modifier loss. At full resistance, new effects and orb generation are suppressed while direct Impact, hit reaction, and Heat refresh remain available.
 - Player-wide minimum Health is implemented in HealthComponent. The default-enabled, Portal-backed `player.one_hp_floor_enabled` option applies a minimum of `1` only to future damage and never heals on toggle.
-- Final Arena contains three permanent refillable pass-through practice targets plus one solid, killable Final Enemy. The active Final Enemy uses its one approach/committed-windup/strike/recovery loop with frozen attack geometry, equal hit/miss recovery, ordinary-hit non-interruption, and live AI enable/disable behavior.
+- Final Arena contains three permanent refillable pass-through practice targets plus one solid, killable Final Enemy. Its current candidate uses LimboAI's visible approach/committed-windup/strike/recovery sequence with frozen attack geometry, equal hit/miss recovery, ordinary-hit non-interruption, and live AI enable/disable behavior; the new representation awaits comparison in Godot.
 - The persistent Arena root owns Player, HUD, audio, projectiles, camera, StageDirector, and the current-plus-next Stage Area lifecycle.
 - Final-enemy defeat completes the tutorial and changes the loaded Final Arena into indefinite free practice.
 

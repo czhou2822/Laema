@@ -1,8 +1,10 @@
 # Technical Design Report — Orb Casting and Tutorial Stage Architecture
 
-Status: `READY_FOR_ULTRON_OR_DUM-E`
+Status: `IMPLEMENTED_AWAITING_LIMBOAI_USER_VALIDATION`
 
 Repository basis: committed recovery baseline `6b06dc2` (`checkpoint: save cross-thread recovery state`), the current approved working-copy `docs/GAME_DESIGN.md`, and the current working-tree implementation. Commit `23fa85b` preserves the accepted U-001–U-007 corrections; `6b06dc2` remains the historical Stage 1–6 sequence-objective checkpoint.
+
+The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23ccc29b6436776a729d071cf4a73038af5b52e6` and captured by `docs/checkpoints/2026-10-12-game-feel-limboai/manifest.json`. It replaces only the Final Enemy decision/timer loop with a visible behavior tree. Source and dependency checks do not establish Godot execution or Web export success; prior tuning validation and waivers do not cover this conversion.
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
@@ -106,7 +108,15 @@ Enemy builds the active-school Endurance icon and remaining percentage from the 
 
 ### First active Final Enemy and Player Health floor
 
-`CombatEnemy` extends the base Enemy with one `DORMANT -> IDLE -> APPROACH -> WINDUP -> RECOVERY` loop and a terminal `DEAD` state. While the Portal-backed `enemy_ai.enabled` setting and active-stage state both permit it, it approaches within range, captures the ShapeCast origin and target vector at windup start, then resolves that frozen geometry after windup. Movement after commitment can therefore produce a complete miss. Hits and misses enter the same configured recovery; an ordinary landed Player hit updates feedback/reaction but does not interrupt the committed Enemy attack. The Final Enemy alone enables the solid collision layer while active; its death removes that layer. Training targets remain pass-through detection targets.
+`CombatEnemy` extends the base Enemy and owns one child `BTPlayer` running the visible `ai/trees/final_enemy.tres` resource. LimboAI 1.8.1 is vendored as the official MIT-licensed GDExtension under `addons/limboai`. The tree is the decision/progression authority: a memory `BTSelector` chooses a committed melee `BTSequence` (awareness condition, approach, windup, strike, recovery) or idle. Six custom tasks under `ai/tasks/enemy` expose those operations in the LimboAI editor. The Enemy's existing phase enum now mirrors the tree's actions for animation, warning, and telemetry; it no longer drives an independent decision loop.
+
+Arena still supplies the validated `enemy_ai` configuration. Enemy copies its numerical values into the BTPlayer blackboard on configuration and Portal tuning; the tree's blackboard defaults describe the same values but do not override saved configuration. Tasks export the variable names they consume. The target is refreshed from the current Player each physics update, and the blackboard's `phase` reports the current presentation phase. Native task status plus the remote blackboard can be inspected through Debugger -> LimboAI. Timing and range tuning remains in General -> Enemy AI; changing graph structure is a behavior-authoring operation. `project.godot` registers `res://ai/tasks` and `res://ai/trees` for discovery.
+
+BTPlayer uses MANUAL update mode. Enemy checks active-stage state, AI enablement, target validity, and death before ticking the tree exactly once, then applies gravity and movement. The awareness condition runs at the start of each melee cycle; approach also checks awareness/attack range while running. Once windup begins, the memory sequence continues through strike and recovery without reevaluating awareness or tracking the Player. Windup and recovery tasks own their timers. Their entry tick does not spend elapsed time, preserving the previous transition-frame timing and preventing the strike frame's delta from being charged again to recovery. Strike executes once before the sequence advances to recovery.
+
+Enemy retains the existing ShapeCast/HealthEvent strike, locomotion, hurt presentation, and committed geometry. It captures the ShapeCast origin and target vector at windup start and resolves that frozen geometry after windup; leaving the area can produce a complete miss. Hits and misses enter the same configured recovery. Ordinary Player hits still update feedback/reaction without pausing or interrupting the committed attack. AI disablement, Portal tuning, stage deactivation, target loss, death, and teardown abort the running tree before clearing its target/timing state. Reactivation starts a fresh cycle; death remains terminal. The Final Enemy alone enables the solid collision layer while active; death removes that layer. Training targets remain pass-through detection targets.
+
+The existing Web preset now enables GDExtension support, and the vendored package includes the Windows and Web libraries referenced by its extension manifest. A Web export has not been run for this candidate. No custom engine build is required for the approved GDExtension installation.
 
 `HealthComponent` owns a configurable `_minimum` Health bound and caps damage at `current - minimum`. Player sets that bound to `1` when `player.one_hp_floor_enabled` is true and `0` otherwise, both during configure and later Portal runtime tuning. This setting is validated and persisted through the existing configuration path. Toggling it changes only future damage calculations; it never changes current Health or creates a Player defeat/restart state.
 
@@ -452,6 +462,6 @@ The user has specifically reported validating the smaller DoT floating-damage fe
 
 ## Handoff
 
-Status: `READY_FOR_ULTRON_OR_DUM-E`.
+Status: `IMPLEMENTED_AWAITING_LIMBOAI_USER_VALIDATION`.
 
-Friday recommends an optional Ultron `mode=tech-preflight` audit because the bounded behavior crosses four existing fixed assumptions—configuration validation, tutorial level validation, HUD presentation, and Player audio—while leaving the core Magic/Cast ownership unchanged. No instrumentation is proposed or retained for this slice.
+The approved LimboAI conversion awaits the user's Godot comparison: reload the project to discover the native extension, open `ai/trees/final_enemy.tres`, inspect the active Final Enemy in Debugger -> LimboAI, and compare approach, windup, committed hit/miss, equal recovery, ordinary-hit non-interruption, Portal tuning/enable resets, death, and stage transitions. Web export requires a separate requested export check. No new diagnostic logs or automated tests were added. The existing trace output remains retained. A fresh Ultron `mode=tech-postflight` is appropriate for implementation review; submission clearance still requires its evidence gates.

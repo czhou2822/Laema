@@ -3,7 +3,6 @@ param(
     [Parameter(Mandatory)]
     [ValidateSet('Save', 'Load', 'Plan')]
     [string]$Mode,
-    [Parameter(Mandatory)]
     [string]$ManifestPath,
     [string]$BindingsPath,
     [string]$Branch = 'main',
@@ -97,16 +96,19 @@ function Assert-Manifest {
         if (-not $Manifest.ContainsKey($key)) { throw "Manifest is missing required field '$key'." }
     }
     $schema = [int]$Manifest['schema_version']
-    if ($schema -notin @(1, 2, 3)) { throw "Unsupported manifest schema_version '$schema'." }
+    if ($schema -notin @(1, 2, 3, 4)) { throw "Unsupported manifest schema_version '$schema'." }
     if ([string]::IsNullOrWhiteSpace([string]$Manifest['checkpoint_id'])) { throw 'Manifest checkpoint_id cannot be empty.' }
     if (@($Manifest['tasks']).Count -eq 0) { throw 'Manifest must contain at least one task.' }
-    if ($schema -eq 3 -and [string]::IsNullOrWhiteSpace([string]$Manifest['previous_manifest'])) { throw 'Schema 3 manifests must name previous_manifest.' }
+    if ($schema -ge 3 -and [string]::IsNullOrWhiteSpace([string]$Manifest['previous_manifest'])) { throw 'Schema 3 manifests must name previous_manifest.' }
 
     $seenKeys = @{}
     foreach ($task in @($Manifest['tasks'])) {
         foreach ($key in @('task_key', 'canonical_title', 'aliases', 'changed', 'summary', 'latest_turn_id')) {
             if (-not $task.ContainsKey($key)) { throw "Task manifest entry is missing required field '$key'." }
         }
+        # Persistent departments, independent tasks
+        $standaloneManager = $task['task_key'] -eq 'production_manager' -and $task['position_key'] -eq 'production_manager' -and [string]::IsNullOrWhiteSpace([string]$task['department_key'])
+        if ($schema -eq 4 -and -not $standaloneManager -and [string]$task['department_key'] -notin @('combat','narrative','town_design','marketing','art','design_overseer','audio','other')) { throw "Choose a department or Other for '$($task['canonical_title'])'." }
         $taskKey = [string]$task['task_key']
         if ([string]::IsNullOrWhiteSpace($taskKey) -or $seenKeys.ContainsKey($taskKey)) { throw 'Task keys must be non-empty and unique.' }
         $seenKeys[$taskKey] = $true
@@ -115,7 +117,7 @@ function Assert-Manifest {
         if ($task['changed'] -isnot [bool]) { throw "Task '$taskKey' changed must be true or false." }
         if ($task['changed'] -and [string]::IsNullOrWhiteSpace([string]$task['summary'])) { throw "Changed task '$taskKey' requires a compact summary." }
         if ([string]$task['summary'] -and ([string]$task['summary']).Length -gt 600) { throw "Task '$taskKey' summary exceeds 600 characters." }
-        if ($schema -eq 3 -and -not $task.ContainsKey('task_file')) { throw "Task '$taskKey' requires task_file in schema 3." }
+        if ($schema -ge 3 -and -not $task.ContainsKey('task_file')) { throw "Task '$taskKey' requires task_file in schema 3." }
     }
 }
 
@@ -181,29 +183,43 @@ function New-RestorePrompt {
     return "Restore the latest Laema $($Task['canonical_title']) context from $TaskNotePath. Compare its Since last checkpoint and Carried context with your current task history and the current canonical sources it names. Carry forward compatible context. If authority does not resolve a material conflict, state it plainly for the user. Reply briefly with Carried, Changed, Conflict (or none), and Resume point. Do not edit files or start new work."
 }
 
-$manifestFullPath = Assert-UnderCheckpointRoot $ManifestPath
+# Cory checkpoint context adapter: development summaries travel in the depot.
+$CoryHelper = Join-Path $PSScriptRoot 'cory-checkpoint.mjs'
+$CoryNodeCommand = Get-Command node -ErrorAction SilentlyContinue
+$CoryNode = if ($CoryNodeCommand) { $CoryNodeCommand.Source } else { Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' }
+if (-not (Test-Path -LiteralPath $CoryNode -PathType Leaf)) { throw 'Cory checkpoint adapter requires Node from PATH or the installed Codex runtime; no Git publication attempted.' }
 if ($Mode -eq 'Load') {
     $dirty = @(Invoke-Git @('status', '--porcelain=v1'))
     if ($dirty.Count -gt 0) { throw "load checkpoint blocked by local changes: $($dirty -join [Environment]::NewLine)" }
     Invoke-Git @('pull', '--ff-only', 'origin', $Branch) | Out-Null
 }
 
+if ([string]::IsNullOrWhiteSpace($ManifestPath)) {
+    if ($Mode -eq 'Save') { throw 'Save requires the new checkpoint manifest path.' }
+    $latestResult = & $CoryNode $CoryHelper --read $ProjectRoot
+    if ($LASTEXITCODE -ne 0) { throw 'Cannot resolve the latest depot checkpoint.' }
+    $latestCory = $latestResult | ConvertFrom-Json -AsHashtable
+    $ManifestPath = Join-Path $ProjectRoot $latestCory['manifest']
+}
+$manifestFullPath = Assert-UnderCheckpointRoot $ManifestPath
 $manifest = Read-JsonFile $manifestFullPath
 Assert-Manifest $manifest
 $schema = [int]$manifest['schema_version']
-if ($schema -eq 3) {
+if ($schema -ge 3) {
     foreach ($task in @($manifest['tasks'])) {
         Assert-TaskNote -TaskNotePath (Get-TaskNotePath -ManifestFullPath $manifestFullPath -Task $task) -TaskKey $task['task_key']
     }
 }
 
 if ($Mode -eq 'Save') {
-    if ($schema -ne 3) { throw 'New saves require schema_version 3 with one Markdown note per task.' }
+    if ($schema -ne 4) { throw 'New saves require schema_version 4: persistent departments plus independent task notes.' }
     foreach ($task in @($manifest['tasks'])) {
-        if ($null -eq (Get-ExplicitProgressUid $task)) { throw "New schema 3 saves require progress_uid for task '$($task['task_key'])'." }
+        if ($null -eq (Get-ExplicitProgressUid $task)) { throw "New schema 4 saves require progress_uid for task '$($task['task_key'])'." }
     }
     $previous = Get-PreviousManifest -Manifest $manifest -ManifestFullPath $manifestFullPath
     Assert-ChangedTaskSummaries -Manifest $manifest -PreviousManifest $previous
+    $coryResult = & $CoryNode $CoryHelper --write $ProjectRoot ([IO.Path]::GetRelativePath($ProjectRoot, $manifestFullPath))
+    if ($LASTEXITCODE -ne 0) { throw 'Cory checkpoint snapshot validation failed; no Git publication attempted.' }
     Invoke-Git @('diff', '--check') | Out-Null
     Invoke-Git @('add', '-A') | Out-Null
     Invoke-Git @('diff', '--cached', '--check') | Out-Null
@@ -239,6 +255,9 @@ if ($bindings.ContainsKey('checkpoint_project_id')) {
     if ($bindings['project_id'] -ne $manifest['project_id']) { throw 'Bindings project_id does not match manifest project_id.' }
 } else { throw 'Bindings require checkpoint_project_id or project_id.' }
 
+$coryRead = & $CoryNode $CoryHelper --read $ProjectRoot ([IO.Path]::GetRelativePath($ProjectRoot, $manifestFullPath))
+if ($LASTEXITCODE -ne 0) { throw 'Cory checkpoint context could not be read.' }
+$corySnapshot = $coryRead | ConvertFrom-Json -AsHashtable
 $updates = @()
 $unresolved = @()
 $skippedDormant = @()
@@ -250,7 +269,12 @@ foreach ($task in @($manifest['tasks'])) {
     }
     $sourceProgressUid = Get-ExplicitProgressUid $task
     $localProgressUid = Get-ExplicitProgressUid $binding
-    if ($null -ne $sourceProgressUid -and $null -ne $localProgressUid -and $sourceProgressUid -eq $localProgressUid) {
+    $departmentKey = if ($schema -eq 4) { [string]$task['department_key'] } else { $null }
+    $sourceDepartmentUid = if ($schema -eq 4 -and $manifest.ContainsKey('department_context_uids')) { [string]$manifest['department_context_uids'][$departmentKey] } else { $null }
+    $localDepartmentUid = if ($binding.ContainsKey('department_uid')) { [string]$binding['department_uid'] } else { $null }
+    $standaloneManager = $task['task_key'] -eq 'production_manager' -and $task['position_key'] -eq 'production_manager' -and [string]::IsNullOrWhiteSpace($departmentKey)
+    $departmentUnchanged = $schema -lt 4 -or $standaloneManager -or (-not [string]::IsNullOrWhiteSpace($sourceDepartmentUid) -and $sourceDepartmentUid -eq $localDepartmentUid)
+    if ($null -ne $sourceProgressUid -and $null -ne $localProgressUid -and $sourceProgressUid -eq $localProgressUid -and $departmentUnchanged) {
         $skippedDormant += [ordered]@{
             task_key = $task['task_key']
             title = $binding['title']
@@ -259,18 +283,23 @@ foreach ($task in @($manifest['tasks'])) {
         }
         continue
     }
-    $taskNotePath = if ($schema -eq 3) { Get-TaskNotePath -ManifestFullPath $manifestFullPath -Task $task } else { $manifestFullPath }
+    $taskNotePath = if ($schema -ge 3) { Get-TaskNotePath -ManifestFullPath $manifestFullPath -Task $task } else { $manifestFullPath }
+    $departmentNotePath = if ($schema -eq 4 -and -not $standaloneManager -and -not [string]::IsNullOrWhiteSpace($departmentKey)) { Join-Path (Split-Path -Parent $manifestFullPath) ("departments/" + $departmentKey + '.md') } else { $null }
+    $departmentPrompt = if ($departmentNotePath) { " Also read department context $departmentNotePath. Department memory persists independently of this task. Preserve user decisions, Open items and conflicts; do not pretend another same-department task is this chat." } else { '' }
     $updates += [ordered]@{
         task_key = $task['task_key']; title = $binding['title']; thread_id = $binding['thread_id']; host_id = $binding['host_id']
         changed = $task['changed']; summary = $task['summary']; task_file = $taskNotePath; requires_response = $true
         source_progress_uid = $sourceProgressUid; local_progress_uid = $localProgressUid
-        delivery_message = New-RestorePrompt -Task $task -TaskNotePath $taskNotePath -Legacy ($schema -ne 3)
+        department_key = $departmentKey; department_file = $departmentNotePath; source_department_uid = $sourceDepartmentUid; local_department_uid = $localDepartmentUid
+        delivery_message = (New-RestorePrompt -Task $task -TaskNotePath $taskNotePath -Legacy ($schema -lt 3)) + $departmentPrompt
     }
 }
 
 [ordered]@{
     mode = $Mode.ToLowerInvariant(); checkpoint_id = $manifest['checkpoint_id']; task_count = @($manifest['tasks']).Count
     changed_task_count = @($manifest['tasks'] | Where-Object { $_['changed'] }).Count
+    cory_snapshot = $corySnapshot
+    cory_instruction = 'Read current unarchived project chats and compare them with cory_snapshot.packet.threadContext in open_reconciliation_dashboard. Stable task keys and confirmed aliases govern continuity; preserve conflicts, partial coverage and dormant work. This comparison does not authorize extra restoration messages.'
     dormant_count = $skippedDormant.Count
     update_count = $updates.Count; updates = $updates; skipped_dormant = $skippedDormant; unresolved = $unresolved
 } | ConvertTo-Json -Depth 12

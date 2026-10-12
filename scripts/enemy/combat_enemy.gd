@@ -24,12 +24,14 @@ enum State {
 @onready var attack_cast: ShapeCast2D = $AttackCast
 @onready var warning_marker: Polygon2D = $WarningMarker
 @onready var attack_flash: Polygon2D = $AttackFlash
+@onready var bt_player: BTPlayer = $BTPlayer
 
 var _ai_config: Dictionary = {}
 var _stage_enabled := false
 var _area_active := false
 var _state := State.DORMANT
 var _state_remaining := 0.0
+var _windup_duration := 0.0
 var _facing := Vector2.RIGHT
 var _animation_time := 0.0
 var _attack_flash_remaining := 0.0
@@ -51,6 +53,8 @@ func configure(config: Dictionary) -> void:
 	body_visual.position = Vector2(0.0, -21.0)
 	body_visual.modulate = Color("a77991")
 	_body_rest_position = body_visual.position
+	_sync_ai_blackboard()
+	_abort_ai_tree()
 	_set_state(State.DORMANT)
 
 
@@ -58,7 +62,8 @@ func apply_runtime_tuning() -> void:
 	super.apply_runtime_tuning()
 	_ai_config = Dictionary(_config["enemy_ai"])
 	_stage_enabled = _area_active and not _defeated and bool(_ai_config["enabled"])
-	_set_state(State.IDLE if _stage_enabled else State.DORMANT)
+	_sync_ai_blackboard()
+	_reset_ai_execution()
 	set_collision_layer_value(4, _stage_enabled)
 	set_physics_process(_stage_enabled)
 
@@ -67,7 +72,7 @@ func set_stage_active(active: bool) -> void:
 	super.set_stage_active(active)
 	_area_active = active
 	_stage_enabled = _area_active and not _defeated and not _ai_config.is_empty() and bool(_ai_config["enabled"])
-	_set_state(State.IDLE if _stage_enabled else State.DORMANT)
+	_reset_ai_execution()
 	set_collision_layer_value(4, _stage_enabled)
 	set_physics_process(_stage_enabled)
 
@@ -75,6 +80,8 @@ func set_stage_active(active: bool) -> void:
 func receive_health_result(result: HealthResult) -> void:
 	super.receive_health_result(result)
 	if result != null and result.event != null and result.event.target == self and result.zero_reached:
+		_stage_enabled = false
+		_abort_ai_tree()
 		_set_state(State.DEAD)
 		velocity = Vector2.ZERO
 		set_collision_layer_value(4, false)
@@ -87,51 +94,90 @@ func _physics_process(delta: float) -> void:
 		return
 	var player := _get_player()
 	if player == null or player.health.is_zero():
+		_abort_ai_tree()
 		_set_state(State.DORMANT)
 		velocity = Vector2.ZERO
 		set_physics_process(false)
 		return
-	var horizontal_distance := player.global_position.x - global_position.x
-	var distance := absf(horizontal_distance)
-	if _state == State.IDLE:
-		if distance <= float(_ai_config["aggro_range"]):
-			if distance <= float(_ai_config["attack_range"]):
-				_begin_windup(horizontal_distance)
-			else:
-				_set_state(State.APPROACH)
-	elif _state == State.APPROACH:
-		if distance > float(_ai_config["aggro_range"]):
-			_set_state(State.IDLE)
-		elif distance <= float(_ai_config["attack_range"]):
-			_begin_windup(horizontal_distance)
-		else:
-			_facing = Vector2.RIGHT if horizontal_distance >= 0.0 else Vector2.LEFT
-			body_visual.flip_h = _facing.x < 0.0
-			velocity.x = _facing.x * float(_ai_config["movement_speed"])
-	elif _state == State.WINDUP:
-		_state_remaining = maxf(_state_remaining - delta, 0.0)
-		if _state_remaining <= 0.0:
-			_resolve_melee_hit(player)
-			_set_state(State.RECOVERY)
-			_state_remaining = float(_ai_config["recovery_duration"])
-	elif _state == State.RECOVERY:
-		_state_remaining = maxf(_state_remaining - delta, 0.0)
-		if _state_remaining <= 0.0:
-			_set_state(State.IDLE)
+	bt_player.blackboard.set_var(&"target", player)
+	# Tick once before movement; BTPlayer is configured for manual updates.
+	bt_player.update(delta)
 	_apply_gravity_and_move(delta)
 
 
-func _begin_windup(horizontal_distance: float) -> void:
+func ai_begin_approach() -> void:
+	_set_state(State.APPROACH)
+
+
+func ai_move_toward(target: Entity, speed: float) -> void:
+	_facing = Vector2.RIGHT if target.global_position.x >= global_position.x else Vector2.LEFT
+	body_visual.flip_h = _facing.x < 0.0
+	velocity.x = _facing.x * speed
+
+
+func ai_stop_moving() -> void:
 	velocity.x = 0.0
+
+
+func ai_begin_windup(target: Entity, attack_range: float, duration: float) -> void:
+	velocity.x = 0.0
+	var horizontal_distance := target.global_position.x - global_position.x
 	_facing = Vector2.RIGHT if horizontal_distance >= 0.0 else Vector2.LEFT
 	body_visual.flip_h = _facing.x < 0.0
 	_committed_attack_origin = attack_cast.global_position
-	_committed_attack_target_position = _facing * float(_ai_config["attack_range"])
+	_committed_attack_target_position = _facing * attack_range
 	_set_state(State.WINDUP)
-	_state_remaining = float(_ai_config["windup_duration"])
+	_windup_duration = duration
+	_state_remaining = duration
 
 
-func _resolve_melee_hit(player: Entity) -> void:
+func ai_show_windup_remaining(remaining: float) -> void:
+	_state_remaining = remaining
+
+
+func ai_strike(target: Entity, damage: float, impact: int) -> void:
+	_resolve_melee_hit(target, damage, impact)
+
+
+func ai_begin_recovery() -> void:
+	velocity.x = 0.0
+	_set_state(State.RECOVERY)
+
+
+func ai_idle() -> void:
+	velocity.x = 0.0
+	if not _defeated:
+		_set_state(State.IDLE)
+
+
+func _sync_ai_blackboard() -> void:
+	for key in _ai_config:
+		if key != "enabled":
+			bt_player.blackboard.set_var(StringName(key), _ai_config[key])
+
+
+func _abort_ai_tree() -> void:
+	var instance := bt_player.get_bt_instance()
+	if instance != null:
+		instance.get_root_task().abort()
+	bt_player.active = false
+	bt_player.blackboard.set_var(&"target", null)
+	velocity.x = 0.0
+	_state_remaining = 0.0
+
+
+func _reset_ai_execution() -> void:
+	_abort_ai_tree()
+	_set_state(State.DEAD if _defeated else (State.IDLE if _stage_enabled else State.DORMANT))
+	bt_player.active = _stage_enabled
+
+
+func _exit_tree() -> void:
+	if is_instance_valid(bt_player):
+		_abort_ai_tree()
+
+
+func _resolve_melee_hit(player: Entity, damage: float, impact: int) -> void:
 	var live_origin := attack_cast.global_position
 	var live_target_position := attack_cast.target_position
 	attack_cast.global_position = _committed_attack_origin
@@ -144,8 +190,8 @@ func _resolve_melee_hit(player: Entity) -> void:
 		var event := HealthEvent.damage(
 			self,
 			player,
-			float(_ai_config["damage"]),
-			int(_ai_config["impact"]),
+			damage,
+			impact,
 			HealthEvent.Delivery.DIRECT,
 			&"",
 			{},
@@ -195,7 +241,7 @@ func _process(delta: float) -> void:
 		frame = int(floor(_animation_time * 9.0)) % WALK_FRAMES
 	elif _state == State.WINDUP and not _hit_visual_active:
 		texture = ATTACK_TEXTURE
-		var duration := maxf(float(_ai_config.get("windup_duration", 0.6)), 0.001)
+		var duration := maxf(_windup_duration, 0.001)
 		frame = clampi(int(floor((1.0 - _state_remaining / duration) * float(ATTACK_FRAMES))), 0, ATTACK_FRAMES - 1)
 	body_visual.texture = texture
 	body_visual.region_enabled = true
@@ -247,6 +293,7 @@ func _set_state(next_state: State) -> void:
 	if _state == next_state:
 		return
 	_state = next_state
+	bt_player.blackboard.set_var(&"phase", _state_name())
 	_animation_time = 0.0
 	warning_marker.visible = _state == State.WINDUP
 	if _state in [State.DORMANT, State.DEAD]:

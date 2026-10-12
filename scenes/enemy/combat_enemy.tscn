@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="1_base"]
 [ext_resource type="Script" path="res://scripts/enemy/combat_enemy.gd" id="2_script"]
+[ext_resource type="BehaviorTree" path="res://ai/trees/final_enemy.tres" id="3_tree"]
 
 [sub_resource type="CircleShape2D" id="attack_shape"]
 radius = 24.0
@@ -10,6 +11,11 @@ radius = 24.0
 collision_layer = 10
 collision_mask = 5
 script = ExtResource("2_script")
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = ExtResource("3_tree")
+update_mode = 2
+active = false
 
 [node name="AttackCast" type="ShapeCast2D" parent="."]
 position = Vector2(0, 8)
