@@ -7,7 +7,7 @@ Status: first static review sample under the user's instruction to make the orig
 - `laema-fire-ready-generated-source.png`: cleaned, enlarged transparent generation, 1024×1536. Original generated output ID: `exec-5fe725d2-5ed3-419d-be07-63c3398ec876.png`.
 - `laema-fire-ready-proposal-128.png`: transparent 128×128 RGBA review sprite. The substantial visible source silhouette is normalized to 54×96 pixels including the sword, centered with foot baseline at y=116. Body height is smaller than that full sword-inclusive height. Export uses Lanczos reduction, not a claim of hand-authored native pixels.
 - `export-spec.json`: measured bounds, dimensions and alpha verification.
-- Comparison preview (outside the depot): `C:/Users/ckzhou/.codex/visualizations/2026/08/20/01a01d0a-ced6-77c0-a98a-e94ec3c5c10e/laema-h3-native-comparison.png`. It displays the proposal beside unmodified native crops from `Csword.def` group 1/frame 0 and `Ccrusd.def` group 11/frame 2, first at native size and then at nearest-neighbour 4×. Original reference pixels were not repainted or recolored.
+- `laema-h3-native-comparison.png`: the displayed comparison preview, copied byte-for-byte into the depot during the complete checkpoint audit so it travels with the review sprite. It displays the proposal beside unmodified native crops from `Csword.def` group 1/frame 0 and `Ccrusd.def` group 11/frame 2, first at native size and then at nearest-neighbour 4×. Original reference pixels were not repainted or recolored. This is a review reference, not a production game asset; the full original collection remains external.
 
 ## Source authority and observations
 

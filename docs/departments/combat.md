@@ -40,12 +40,12 @@ User playtests the school presets and the integrated tuning/Gym workflow, report
 ## Sources and coverage
 
 - Current docs/GAME_DESIGN.md, DECISIONS.md, TECH_ARCHITECTURE.md, IMPLEMENTATION_STATUS.md, ATTACK_STYLES.md and GYM.md.
-- Combat 01a07f71-17fd-7171-9f63-5859c0a9797d, latest round 01a13ec4-bec9-7620-9d7d-435d666c0b69; six recent turns read on October 16.
+- Combat 01a07f71-17fd-7171-9f63-5859c0a9797d, latest round 01a14388-9766-7111-8d73-2831b07a25d4; four recent turns reread October 16. The user senses a change, not final acceptance. Explicit X windup/recovery overrides supersede shared Attack Duration; Fire X1 is 0.14 + 0.34 s before Heat. Diagnose one observed cause before guided tuning.
 - DUM.E 01a07f71-ffdf-7160-bb0d-8ff06a78a0af, latest round 01a1396d-5770-7693-a892-c9c6b251112e; three recent turns read. Dummy-to-Combat assignment was confirmed October 12.
-- RAE dead cell 01a14283-95da-78a3-9b36-8ed8e0cfb7c1, latest round 01a142e1-725b-7962-89b0-3017cf61d1e2; three recent turns read, including explicit Combat assignment.
+- RAE dead cell 01a14283-95da-78a3-9b36-8ed8e0cfb7c1, latest round 01a143a4-89b6-7f90-94ad-af941e928aa7; four recent turns reread. Explained provisional timing/lunges/geometry and Fire X5's 2× qualifying push with Impact 50 retained. Air's real-time input buffer shortens with faster playback. No new tuning or final approval.
 - Prior checkpoint 2026-10-12-game-feel-limboai carries older sources/bindings. Earlier dialogue remains partial; preserve independent notes and current authority.
 
 ## Additional independent tasks — confirmed October 16
 
 - Random notes: feedback (task_key feedback_notes, chat 01a13833-9b9c-7641-89ff-908a3c391812) records only: desired Cast school/count may not match the FIFO/lifetime orb queue, and representative HoMM spells could be prototyped later. These are notes, not approved new rules. Do not analyze, question or extend this task's notes.
-- Improve Laema iteration tools (task_key iteration_tools, chat 01a13d51-3252-7470-b60f-5d9d1f52c1aa) remains independent. Its latest round 01a14292-308e-7401-b625-73e839f01d15 reports the unified overlay correction and 221 engine checks; interactive validation remains separate.
+- Improve Laema iteration tools (iteration_tools, 01a13d51-3252-7470-b60f-5d9d1f52c1aa) and DUM.E are now archived. Preserve their preceding checkpoint notes/bindings as references, not active restoration targets. The former's saved round reports the overlay correction and 221 engine checks; interactive validation remains separate.

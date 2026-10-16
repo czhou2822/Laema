@@ -14,7 +14,7 @@ Persistent department context shared by independently identified tasks. Current 
 
 - The Fire X1–X5 GIFs and Castle-town concepts remain presentation/illustrative references, not final gameplay assets.
 - October 16 lit-seam reference and scale-study images are exploratory. Art noted Air needed separation from steel and Earth appeared too golden; these are observations, not final acceptance.
-- A first original-style Laema Fire-ready static sample is saved under docs/art/explorations/2026-10-16-h3-sprite-study and shown alongside unmodified native reference crops. It is one pose; animation and final approval remain pending.
+- A first original-style Laema Fire-ready static sample and its displayed native-size comparison are saved under docs/art/explorations/2026-10-16-h3-sprite-study. The comparison was copied byte-for-byte into the depot during the complete audit. It is one pose beside reference crops, not production game art; animation and final approval remain pending.
 - The HMM3 source task reports 39,923 frames/3,121 PNG sheets from two installed sprite archives with original/indexed/provenance records. Historical retail-byte identity is not established; export shadow/transparency handling is interpretive. Full originals/ZIP are outside Laema's depot and are not carried as files by this checkpoint.
 
 ## Open items and validation
@@ -36,4 +36,4 @@ Obtain user feedback on the first static sample beside the originals; develop th
 
 ## Task assignment — confirmed October 16
 
-The user explicitly assigned HMM3 (task_key hmm3_reference_assets, chat 01a142bd-e72a-7f03-b3fb-1b28d222492b) to Art. Its extraction/source-reference task remains independent of Art. Preserve the external-collection portability gap; the assignment does not copy or publish those original assets.
+The user explicitly assigned HMM3 (task_key hmm3_reference_assets, chat 01a142bd-e72a-7f03-b3fb-1b28d222492b) to Art. It is now archived; retain its preceding checkpoint note/binding as reference without restoring the chat. Preserve the full external-collection portability gap; the assignment does not copy or publish that collection.
