@@ -52,3 +52,34 @@ func get_defensive_level() -> int:
 
 func should_refill_health_at_zero() -> bool:
 	return _refill_at_zero
+
+func uses_combat_hit_reaction() -> bool:
+	return false
+
+
+func is_player_combatant() -> bool:
+	return false
+
+
+func get_poise() -> int:
+	return _base_defensive_level
+
+
+func get_melee_snapshot() -> Dictionary:
+	return {}
+
+
+func cancel_combat_attack() -> void:
+	pass
+
+
+func begin_hit_transaction() -> void:
+	health_resolver.begin_hit_transaction()
+
+
+func end_hit_transaction() -> void:
+	health_resolver.end_hit_transaction()
+
+
+func on_clash_contact_resolved(_result: HealthResult) -> void:
+	pass

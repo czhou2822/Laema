@@ -1,65 +1,65 @@
 {
 	"air": {
-		"chain_radius": 160.0,
+		"chain_radius": 160,
 		"damage_per_level": 0.25,
-		"max_chain_targets": 3.0,
+		"max_chain_targets": 3,
 		"visual_motion_exponent": 0.5
 	},
 	"audio": {
 		"ambient": {
 			"enabled": true,
-			"volume_db": 0.0
+			"volume_db": 0
 		},
 		"bgm": {
 			"enabled": false,
-			"volume_db": 0.0
+			"volume_db": 0
 		},
 		"sfx": {
 			"enabled": true,
-			"volume_db": 0.0
+			"volume_db": 0
 		}
 	},
 	"casting": {
 		"charge_step_duration": 0.5,
 		"empowered_primary_multiplier": 1.3,
-		"max_marked_capacity": 8.0,
-		"max_storage_capacity": 10.0,
+		"max_marked_capacity": 8,
+		"max_storage_capacity": 10,
 		"orb_lifetime": 10.0000001490116,
 		"projectile_screen_ratio": 0.5,
-		"projectile_travel_duration": 1.0,
+		"projectile_travel_duration": 1,
 		"trigger_charge_min": 0.95,
 		"trigger_release_max": 0.05
 	},
 	"combat": {
-		"attack_duration": 0.999999979510903,
-		"casting_damage": 10.0,
+		"attack_duration": 0.799999983981252,
+		"casting_damage": 10,
 		"collect_orb_without_contact": true,
-		"direct_impact": 1.0,
+		"direct_impact": 1,
 		"hit_phase": 0.36,
 		"input_window_start": 0.48,
-		"light_damage": 10.0,
-		"shape_radius": 18.0,
-		"shape_reach": 48.0,
+		"light_damage": 10,
+		"shape_radius": 18,
+		"shape_reach": 48,
 		"x_buffer_width": 0.2
 	},
 	"defence": {
-		"blocked_damage_to_guard": 1.0,
+		"blocked_damage_to_guard": 1,
 		"guard_break_recovery": 0.5,
-		"guard_capacity": 100.0,
+		"guard_capacity": 100,
 		"guard_warning_ratio": 0.25,
-		"heat_drain_per_second": 5.0,
+		"heat_drain_per_second": 5,
 		"parry_window": 0.2,
-		"water_block_defensive_level": 1.0
+		"water_block_defensive_level": 1
 	},
 	"earth": {
-		"base_radius": 28.0,
+		"base_radius": 28,
 		"levels": [
 			{
 				"duration": 1.5,
 				"slow_percent": 0.15
 			},
 			{
-				"duration": 2.0,
+				"duration": 2,
 				"slow_percent": 0.25
 			},
 			{
@@ -67,65 +67,430 @@
 				"slow_percent": 0.4
 			},
 			{
-				"duration": 3.0,
+				"duration": 3,
 				"slow_percent": 0.4
 			},
 			{
-				"duration": 4.0,
+				"duration": 4,
 				"slow_percent": 0.4
 			}
 		],
-		"radius_per_level": 10.0,
+		"radius_per_level": 10,
 		"visual_motion_exponent": 1.4
 	},
 	"elemental_endurance": {
-		"hit_10_damage_percent": 0.0,
+		"hit_10_damage_percent": 0,
 		"hit_6_damage_percent": 0.5,
 		"hit_7_damage_percent": 0.4,
 		"hit_8_damage_percent": 0.3,
 		"hit_9_damage_percent": 0.2
 	},
 	"enemy": {
-		"defensive_level": 0.0,
-		"max_health": 100.0
+		"defensive_level": 0,
+		"max_health": 100
 	},
 	"enemy_ai": {
-		"aggro_range": 600.0,
-		"attack_range": 72.0,
-		"damage": 10.0,
+		"aggro_range": 600,
+		"attack_range": 72,
+		"damage": 10,
 		"enabled": true,
-		"impact": 1.0,
-		"movement_speed": 90.0,
+		"impact": 1,
+		"movement_speed": 90,
+		"poise": 0,
 		"recovery_duration": 0.9,
 		"windup_duration": 0.6
 	},
 	"fire": {
-		"damage_per_stack": 1.0,
-		"dot_duration": 4.0,
-		"dot_tick_interval": 1.0,
-		"vfx_fps": 12.0,
-		"visual_motion_exponent": 1.0
+		"damage_per_stack": 1,
+		"dot_duration": 4,
+		"dot_tick_interval": 1,
+		"vfx_fps": 12,
+		"visual_motion_exponent": 1
 	},
 	"heat": {
-		"depletion_per_second": 3.0,
+		"depletion_per_second": 3,
 		"gain_per_charged_orb": 2.00000002980232,
-		"loss_per_direct_hit": 5.0,
-		"max_heat": 100.0,
-		"reset_timer": 5.0
+		"loss_per_direct_hit": 5,
+		"max_heat": 100,
+		"reset_timer": 5
 	},
 	"hit_reaction": {
-		"base_distance": 7.0,
+		"base_distance": 7,
 		"base_duration": 0.14,
+		"combat_levels": [
+			{
+				"distance": 5,
+				"duration": 0.25,
+				"minimum_value": 0
+			},
+			{
+				"distance": 10,
+				"duration": 0.55,
+				"minimum_value": 11
+			},
+			{
+				"distance": 15,
+				"duration": 0.85,
+				"minimum_value": 21
+			},
+			{
+				"distance": 20,
+				"duration": 1.15,
+				"minimum_value": 31
+			},
+			{
+				"distance": 25,
+				"duration": 1.45,
+				"minimum_value": 41
+			}
+		],
 		"distance_per_level": 3.5,
 		"duration_per_level": 0.07
 	},
 	"movement": {
-		"gravity_scale": 1.0,
-		"speed": 300.0
+		"gravity_scale": 1,
+		"speed": 300
+	},
+	"moves": {
+		"air_x1": {
+			"animation": "air_x1",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 5,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.12,
+			"recovery_duration": 0.16,
+			"shape_reach": 42,
+			"shape_radius": 14,
+			"push_scale": 0.5
+		},
+		"air_x2": {
+			"animation": "air_x2",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 2,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.11,
+			"recovery_duration": 0.16,
+			"shape_reach": 43,
+			"shape_radius": 14,
+			"push_scale": 0.5
+		},
+		"air_x3": {
+			"animation": "air_x3",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 8,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.1,
+			"recovery_duration": 0.16,
+			"shape_reach": 44,
+			"shape_radius": 14,
+			"push_scale": 0.5
+		},
+		"air_x4": {
+			"animation": "air_x4",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 2,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.12,
+			"recovery_duration": 0.16,
+			"shape_reach": 45,
+			"shape_radius": 14,
+			"push_scale": 0.5
+		},
+		"air_x5": {
+			"animation": "air_x5",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 7,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.18,
+			"recovery_duration": 0.22,
+			"shape_reach": 50,
+			"shape_radius": 17,
+			"push_scale": 1
+		},
+		"cast": {
+			"animation": "attack_clock",
+			"damage_key": "casting_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": null,
+			"impact": 1
+		},
+		"earth_x1": {
+			"animation": "earth_x1",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 4,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.48,
+			"recovery_duration": 0.42,
+			"shape_reach": 52,
+			"shape_radius": 24,
+			"push_scale": 1
+		},
+		"earth_x2": {
+			"animation": "earth_x2",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 4,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.54,
+			"recovery_duration": 0.42,
+			"shape_reach": 54,
+			"shape_radius": 24,
+			"push_scale": 1
+		},
+		"earth_x3": {
+			"animation": "earth_x3",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 2,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.28,
+			"recovery_duration": 0.38,
+			"shape_reach": 42,
+			"shape_radius": 20,
+			"push_scale": 0.7
+		},
+		"earth_x4": {
+			"animation": "earth_x4",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 5,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.62,
+			"recovery_duration": 0.42,
+			"shape_reach": 58,
+			"shape_radius": 26,
+			"push_scale": 1.2
+		},
+		"earth_x5": {
+			"animation": "earth_x5",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 7,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.74,
+			"recovery_duration": 0.46,
+			"shape_reach": 62,
+			"shape_radius": 28,
+			"push_scale": 1.5
+		},
+		"final_enemy_attack": {
+			"animation": "melee_swing",
+			"damage_key": "damage",
+			"duration_key": "windup_duration",
+			"forward_lunge": null,
+			"impact": 1
+		},
+		"fire_x1": {
+			"animation": "fire_x1",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 3,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.14,
+			"recovery_duration": 0.34,
+			"shape_reach": 40,
+			"shape_radius": 16,
+			"push_scale": 0.5
+		},
+		"fire_x2": {
+			"animation": "fire_x2",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 8,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.16,
+			"recovery_duration": 0.34,
+			"shape_reach": 43,
+			"shape_radius": 16,
+			"push_scale": 0.5
+		},
+		"fire_x3": {
+			"animation": "fire_x3",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 2,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.13,
+			"recovery_duration": 0.3,
+			"shape_reach": 42,
+			"shape_radius": 18,
+			"push_scale": 0.4
+		},
+		"fire_x4": {
+			"animation": "fire_x4",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 10,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.22,
+			"recovery_duration": 0.34,
+			"shape_reach": 46,
+			"shape_radius": 18,
+			"push_scale": 0.75
+		},
+		"fire_x5": {
+			"animation": "fire_x5",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 12,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 50,
+			"windup_duration": 0.3,
+			"recovery_duration": 0.42,
+			"shape_reach": 50,
+			"shape_radius": 20,
+			"push_scale": 2
+		},
+		"water_x1": {
+			"animation": "water_x1",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 3,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.3,
+			"recovery_duration": 0.32,
+			"shape_reach": 66,
+			"shape_radius": 10,
+			"push_scale": 0.6
+		},
+		"water_x2": {
+			"animation": "water_x2",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 4,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.15,
+			"recovery_duration": 0.28,
+			"shape_reach": 68,
+			"shape_radius": 10,
+			"push_scale": 0.6
+		},
+		"water_x3": {
+			"animation": "water_x3",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 1,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.16,
+			"recovery_duration": 0.3,
+			"shape_reach": 48,
+			"shape_radius": 12,
+			"push_scale": 0.5
+		},
+		"water_x4": {
+			"animation": "water_x4",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 7,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.22,
+			"recovery_duration": 0.31,
+			"shape_reach": 74,
+			"shape_radius": 10,
+			"push_scale": 0.75
+		},
+		"water_x5": {
+			"animation": "water_x5",
+			"damage_key": "light_damage",
+			"duration_key": "attack_duration",
+			"forward_lunge": {
+				"distance": 12,
+				"start_phase": 0.15,
+				"end_phase": 0.55
+			},
+			"impact": 1,
+			"windup_duration": 0.34,
+			"recovery_duration": 0.38,
+			"shape_reach": 80,
+			"shape_radius": 11,
+			"push_scale": 1.2
+		}
 	},
 	"player": {
-		"max_health": 100.0,
-		"one_hp_floor_enabled": true
+		"max_health": 100,
+		"one_hp_floor_enabled": true,
+		"poise": 0
 	},
 	"tutorial": {
 		"default_stage_id": "final_arena",
@@ -138,7 +503,7 @@
 				"id": "stage_1",
 				"objective": {
 					"active": {},
-					"completion_progress": 5.0,
+					"completion_progress": 5,
 					"highlight_next": false,
 					"presentation": {
 						"rows": [
@@ -191,7 +556,7 @@
 				"id": "stage_2",
 				"objective": {
 					"active": {},
-					"completion_progress": 0.0,
+					"completion_progress": 0,
 					"highlight_next": false,
 					"presentation": {
 						"rows": [
@@ -206,7 +571,7 @@
 					},
 					"success_steps": [
 						{
-							"required_level": 5.0,
+							"required_level": 5,
 							"type": "cast"
 						}
 					],
@@ -220,7 +585,7 @@
 				"id": "stage_3",
 				"objective": {
 					"active": {},
-					"completion_progress": 6.0,
+					"completion_progress": 6,
 					"highlight_next": true,
 					"presentation": {
 						"rows": [
@@ -257,7 +622,7 @@
 						},
 						{
 							"endpoint": true,
-							"required_level": 5.0,
+							"required_level": 5,
 							"type": "cast"
 						}
 					],
@@ -271,7 +636,7 @@
 				"id": "stage_4",
 				"objective": {
 					"active": {},
-					"completion_progress": 4.0,
+					"completion_progress": 4,
 					"highlight_next": true,
 					"presentation": {
 						"rows": [
@@ -296,7 +661,7 @@
 							"type": "light"
 						},
 						{
-							"chain_position": 3.0,
+							"chain_position": 3,
 							"endpoint": false,
 							"type": "cast"
 						},
@@ -314,7 +679,7 @@
 				"id": "stage_5",
 				"objective": {
 					"active": {},
-					"completion_progress": 4.0,
+					"completion_progress": 4,
 					"highlight_next": true,
 					"presentation": {
 						"rows": [
@@ -336,7 +701,7 @@
 							"type": "light"
 						},
 						{
-							"chain_position": 2.0,
+							"chain_position": 2,
 							"endpoint": false,
 							"type": "cast"
 						},
@@ -344,7 +709,7 @@
 							"type": "light"
 						},
 						{
-							"chain_position": 4.0,
+							"chain_position": 4,
 							"endpoint": false,
 							"type": "cast"
 						}
@@ -361,7 +726,7 @@
 					"active": {
 						"rejected_switch_invalid": true
 					},
-					"completion_progress": 6.0,
+					"completion_progress": 6,
 					"highlight_next": true,
 					"presentation": {
 						"rows": [
@@ -388,7 +753,7 @@
 							"type": "light"
 						},
 						{
-							"chain_position": 2.0,
+							"chain_position": 2,
 							"type": "switch"
 						},
 						{
@@ -413,7 +778,7 @@
 					"active": {
 						"allow_school_switch": true
 					},
-					"completion_progress": 5.0,
+					"completion_progress": 5,
 					"highlight_next": false,
 					"presentation": {
 						"rows": [
@@ -455,7 +820,7 @@
 							"type": "light"
 						}
 					],
-					"threshold": 80.0,
+					"threshold": 80,
 					"type": "heat_guard_sequence"
 				}
 			},
@@ -486,28 +851,29 @@
 				}
 			}
 		],
-		"transition_duration": 1.0
+		"transition_duration": 1
 	},
 	"ui": {
-		"cast_feedback_duration": 2.0,
-		"completed_combo_display_duration": 2.0,
+		"attack_hitbox_visible": true,
+		"cast_feedback_duration": 2,
+		"completed_combo_display_duration": 2,
 		"developer_overlay_visible": true
 	},
 	"water": {
-		"base_radius": 28.0,
+		"base_radius": 28,
 		"levels": [
 			{
-				"duration": 1.0,
-				"slow_percent": 0.0,
+				"duration": 1,
+				"slow_percent": 0,
 				"status": "wet"
 			},
 			{
-				"duration": 2.0,
-				"slow_percent": 0.0,
+				"duration": 2,
+				"slow_percent": 0,
 				"status": "wet"
 			},
 			{
-				"duration": 2.0,
+				"duration": 2,
 				"slow_percent": 0.2,
 				"status": "slow"
 			},
@@ -517,13 +883,13 @@
 				"status": "slow"
 			},
 			{
-				"duration": 1.0,
-				"slow_percent": 1.0,
+				"duration": 1,
+				"slow_percent": 1,
 				"status": "frozen"
 			}
 		],
-		"radius_per_level": 10.0,
-		"vfx_fps": 14.0,
+		"radius_per_level": 10,
+		"vfx_fps": 14,
 		"visual_motion_exponent": 0.65
 	}
 }

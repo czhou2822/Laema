@@ -1,33 +1,51 @@
 # Combat
 
-Persistent department context. Tasks belong to this department without becoming its identity.
+Persistent development context shared by independent tasks. User decisions and the current GDD outrank summaries.
 
-## Context (reported)
-The user is investigating enemy interaction and wants cause analysis before guided editor tuning they perform themselves. The five-hit combo was reported okay; the concrete encounter concern is the Enemy's short hurt reaction and immediate return to attacking. Task analysis reports hurt presentation running alongside uninterrupted Enemy decisions.
+## Direction and constraints
 
-The user approved a behavior-preserving LimboAI 1.8.1 Final Enemy conversion. The current source candidate includes the official extension, a visible tree, six custom tasks and Portal-fed blackboard values. The task reports grammar and resource/dependency checks passed; Godot behavior and Web export remain unverified. Historical tuning waivers do not cover this conversion.
+- Target a semi-polished combat/tutorial playtest version by December 31, 2026. Analyze causes before guiding the user's own editor tuning. Presentation preparation remains closed.
+- Preserve four schools, five global X/Cast progression positions and the optional sixth Cast endpoint. The proposed variable-length chain was withdrawn.
+- L2 Casting/R1 defence is the user's recorded control expression; current canonical R2/L1 wording and implementation need explicit reconciliation before claiming remapping. Historical Heat-timer wording remains an Open documentation seam.
 
-## Decisions and constraints
-- Investigate causes before guiding the user's own editor adjustments.
-- Target a semi-polished combat/tutorial playtest version by December 31, 2026. Presentation preparation is closed.
-- Approved LimboAI conversion preserves the existing committed attack/recovery behavior as the comparison baseline; it does not approve a new hit-stun or knockback rule.
+## Current combat decisions
 
-## Open items
-- Validate extension loading, tree authoring/debugging, attack cadence, committed hit/miss, ordinary-hit non-interruption, AI/tuning resets, death and stage transitions in Godot. Web export has not been run for this candidate.
-- Define Impact and hit-reaction meaning before tuning pixel translation. The latest question distinguishes a visible sprite recoil that returns from displacement of the collision body; the user has not selected one.
-- The task reports current sprite-only reaction shifts of 7, 10.5, 14, 17.5 and 21 pixels for levels 1–5. That existing presentation does not settle the proposed body-displacement behavior.
-- Preserve the intended L2 Casting/R1 defence control expression; implementation and playtesting remain separate.
-- Canonical R2 wording and the newer L2/R1 expression must be reconciled before a control change is claimed. The historical Heat-timer wording mismatch remains Open.
-- The separately identified Dummy task is assigned to Combat. Its last completed round awaits user reload confirmation for the explicit Dictionary/parser fix; no new refill defect is inferred. Keep practice targets' finite-health, non-attacking, pass-through refill behavior distinct from the solid killable Final Enemy.
+- The October 16 receiver-side formula supersedes earlier offensive-power descriptions: reaction value = incoming Attack Impact minus receiver Poise minus receiver move Impact during its authored hit-capable active interval. Startup, recovery and idle contribute zero move Impact. Attacker Poise adds no offensive power; Impact/Poise tuning is 0–100.
+- Physical melee contact with overlapping active intervals captures both receiver-side values. A positive result interrupts its receiver and cancels that attack before damage; Enemy abandons it and reassesses. If neither value is positive, connected damage applies and both attacks continue; reverse damage still requires contact. Only an exact 0/0 active clash favors Player with Level 1. Zero elsewhere does not qualify.
+- Level selection follows eligibility. Default bands are 0–10, 11–20, 21–30, 31–40 and 41+, capped at Level 5. Current duration/distance pairs are 0.6 s/5 px, 0.9 s/10 px, 1.2 s/15 px, 1.5 s/20 px and 1.8 s/25 px. Ordered configurable starting values define the ranges; they do not change eligibility.
+- Qualifying reactions move the collision body uniformly over the full duration, leave it displaced and grant invincibility for that duration. Walls block movement. Failed-Cast self-reactions remain vulnerable. Mixed-Cast primary/secondary layers resolve before one reaction begins. Existing effects continue advancing; invincible damage is rejected.
+- Each move has individual Impact and motion data. Forward lunge maintains reach as targets are pushed away, but need not match their displacement. Animation active_start/contact/active_end markers author phase/contact; provisional active_end is swing completion.
+- Practice targets retain non-attacking, pass-through, stationary visual recoil and finite-health refill behavior. Historical ordinary-hit non-interruption reports describe the old comparison baseline, not the new qualifying-reaction rule. Defence redesign, spell-versus-melee clashes and additional school/status interactions remain deferred.
+
+## Implemented candidates
+
+- LimboAI 1.8.1 supplies the Final Enemy tree and a preempting reaction branch; Entity/HealthResolver own snapshots, contact judgment, cancellation and mixed-hit transactions. Existing movement owners consume collision-aware reaction displacement. The independent DUM.E task retains task_key dummy and its earlier parser/refill history.
+- Typed combat_tuning.tres and Inspector views share validated JSON with both Dev Portal surfaces. JSON supplies startup values; opening the editor/game does not write settings. Reaction-only tuning preserves an active reaction's captured lifetime; AI decision changes keep their reset behavior.
+- Laema Dev Portal provides an offline editor dock, shared field catalog/renderer, guarded draft/save/reload and explicit debugger apply/session commands. Conflicting edits and ambiguous sessions are rejected. Series fill previews changes before updating drafts; level/range/legacy controls remain distinct. Legacy reaction tooltips must say they do not control new combat reactions.
+- The standalone Gym reuses Arena/StageDirector without replacing tutorial configuration: Player and one refillable Final Enemy start 160 px apart in a bounded room. Run gym, encounter reload, Start/Esc pause/restart and a Gym formula display support tuning. Developer Overlay Visible/F4 is the single telemetry/formula visibility preference.
+- Approved school references use current animations for all 20 X moves: slow Earth/Broadsword, medium Fire/Spartan Sandals, medium Water/War Spear and fast Air/Twin Daggers. X3/X4 vary the opener/follow-up; X5 finishes. Each move tunes windup/recovery, geometry, collision-aware forward motion and qualifying-reaction push scale. Heat scales timing once. Damage, Impact/Poise, reaction eligibility/duration/invincibility and Casting rules remain separate. Styles are captured at action start; provisional numbers need playtesting.
+- RAE dead cell is independently identified by task_key dead_cells_attack_styles and directly assigned to Combat; it does not replace Combat or DUM.E.
+
+## Evidence and Open items
+
+- October 16 source/status records and task reports include isolated Godot 4.7.2 checks. The style slice reports 199 style/physics, 179 Portal/config/layout/Gym and 59 clash checks (437 total). Other iteration-tool checks have their own scopes; do not sum overlapping runs or claim this checkpoint reran them.
+- Agent engine checks do not establish interactive feel, physical-controller/visual acceptance, ordinary-play coverage, a Web export or submission clearance. Earlier tuning waivers do not validate later candidates.
+- Compare school rhythms on practice targets, then reactions/invincibility against the attacking Enemy. Verify marker placement, range, lunge, wall interactions, cancellation, Portal/Inspector persistence, pause/reload and user-visible layout.
+- Final numbers, controls reconciliation, deferred defence/spell interactions and final art remain Open. The prior Dummy parser reload confirmation stays historical; no new refill defect is inferred.
 
 ## Resume point
-Resume the visual recoil versus collision-body displacement question, then settle the intended reaction rule before guiding editor tuning. The user runs the LimboAI comparison.
+
+User playtests the school presets and the integrated tuning/Gym workflow, reports a specific mismatch, and adjusts one cause at a time. Keep current approved reaction semantics and independently identified task history intact.
 
 ## Sources and coverage
-- Initial development-summary seed from Combat.
-- Source chat: 01a07f71-17fd-7171-9f63-5859c0a9797d; read 2026-10-12T07:20:15.656Z. Latest six turns only; older history remains partial.
-- Checkpoint reconciliation on 2026-10-12 read 12 recent Combat turns. Latest completed round: 01a12f1d-0d8a-79a1-a2a0-0420efee312b; conversion result: 01a12f14-27e8-7703-b8ec-2f81d452c3c5. Older history remains partial.
-- Current source candidate: ai/trees/final_enemy.tres, scripts/enemy/combat_enemy.gd, docs/TECH_ARCHITECTURE.md and docs/IMPLEMENTATION_STATUS.md. Static reports and runtime validation remain separate.
-- User confirmed Dummy's department on 2026-10-12; its independent round 01a07f7a-35fa-78a3-9f7b-87a8c7a5fbf1 was read in this save.
-- Current user decisions and docs/GAME_DESIGN.md outrank historical handoffs.
-- No Godot runtime, Web-export, new hit-reaction rule or final-art acceptance is inferred.
+
+- Current docs/GAME_DESIGN.md, DECISIONS.md, TECH_ARCHITECTURE.md, IMPLEMENTATION_STATUS.md, ATTACK_STYLES.md and GYM.md.
+- Combat 01a07f71-17fd-7171-9f63-5859c0a9797d, latest round 01a13ec4-bec9-7620-9d7d-435d666c0b69; six recent turns read on October 16.
+- DUM.E 01a07f71-ffdf-7160-bb0d-8ff06a78a0af, latest round 01a1396d-5770-7693-a892-c9c6b251112e; three recent turns read. Dummy-to-Combat assignment was confirmed October 12.
+- RAE dead cell 01a14283-95da-78a3-9b36-8ed8e0cfb7c1, latest round 01a142e1-725b-7962-89b0-3017cf61d1e2; three recent turns read, including explicit Combat assignment.
+- Prior checkpoint 2026-10-12-game-feel-limboai carries older sources/bindings. Earlier dialogue remains partial; preserve independent notes and current authority.
+
+## Additional independent tasks — confirmed October 16
+
+- Random notes: feedback (task_key feedback_notes, chat 01a13833-9b9c-7641-89ff-908a3c391812) records only: desired Cast school/count may not match the FIFO/lifetime orb queue, and representative HoMM spells could be prototyped later. These are notes, not approved new rules. Do not analyze, question or extend this task's notes.
+- Improve Laema iteration tools (task_key iteration_tools, chat 01a13d51-3252-7470-b60f-5d9d1f52c1aa) remains independent. Its latest round 01a14292-308e-7401-b625-73e839f01d15 reports the unified overlay correction and 221 engine checks; interactive validation remains separate.

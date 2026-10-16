@@ -56,6 +56,7 @@ func get_stage_options() -> Array[Dictionary]:
 	for stage_index in range(_stages.size()):
 		var descriptor: Dictionary = _stages[stage_index]
 		options.append({
+			"id": str(descriptor["id"]),
 			"index": stage_index,
 			"label": str(descriptor["display_name"]),
 			"active": stage_index == _index,

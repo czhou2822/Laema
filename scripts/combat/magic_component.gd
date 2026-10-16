@@ -299,6 +299,7 @@ func resolve_projectile_impact(target: Entity, contact_point: Vector2, payload: 
 	if target == null or payload.is_empty():
 		return
 	var direction: Vector2 = payload["direction"]
+	target.begin_hit_transaction()
 	_apply_equipped_spell(
 		StringName(payload["primary_spell"]),
 		StringName(payload["primary_school"]),
@@ -323,6 +324,7 @@ func resolve_projectile_impact(target: Entity, contact_point: Vector2, payload: 
 			int(payload.get("source_action_id", 0)),
 			payload.get("composition", [])
 		)
+	target.end_hit_transaction()
 	_publish_outcome(&"spell_projectile_impacted", {
 		"primary_school": payload["primary_school"],
 		"primary_level": payload["primary_level"],
@@ -385,7 +387,7 @@ func _apply_equipped_spell(
 	composition: Array
 ) -> void:
 	_trace(&"spell_effect_resolved", {"target": target.name, "spell": spell, "school": school, "level": level, "damage_multiplier": damage_multiplier, "contact_point": contact_point})
-	var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"]["casting_damage"]) * damage_multiplier, int(_config["combat"]["direct_impact"]), HealthEvent.Delivery.DIRECT, school, {}, direction, contact_point, source_action_id, composition)
+	var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"]["casting_damage"]) * damage_multiplier, int(_config["moves"]["cast"]["impact"]), HealthEvent.Delivery.DIRECT, school, {}, direction, contact_point, source_action_id, composition)
 	var result: HealthResult = target.receive_health_event(event)
 	if result.outcome == HealthResult.Outcome.APPLIED and result.health_delta < 0.0:
 		target.feedback.show_cast_level(school, level)

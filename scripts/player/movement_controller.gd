@@ -9,6 +9,7 @@ var _facing := Vector2.RIGHT
 var _effect_multiplier := 1.0
 var _grounded_known := false
 var _was_grounded := false
+var _attack_motion: Callable
 
 
 func configure(body: CharacterBody2D, config: Dictionary) -> void:
@@ -28,13 +29,20 @@ func _physics_process(_delta: float) -> void:
 	if not input_direction.is_zero_approx():
 		if not _locked:
 			_set_facing(input_direction)
-	_body.velocity.x = 0.0 if _locked else input_direction.x * float(_config["speed"]) * _effect_multiplier
+	var entity := _body as Entity
+	var reacting := entity != null and entity.hit_reaction.is_invincible()
+	var push := entity.hit_reaction.consume_body_motion(_delta) if reacting else Vector2.ZERO
+	var attack_push: Vector2 = _attack_motion.call(_delta) if not reacting and _attack_motion.is_valid() else Vector2.ZERO
+	var locked_velocity := attack_push.x / _delta if _delta > 0.0 else 0.0
+	_body.velocity.x = push.x / _delta if reacting and _delta > 0.0 else (locked_velocity if _locked else input_direction.x * float(_config["speed"]) * _effect_multiplier)
 	if not _body.is_on_floor():
 		var default_gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity", 980.0))
 		_body.velocity.y += default_gravity * float(_config["gravity_scale"]) * _delta
 	elif _body.velocity.y > 0.0:
 		_body.velocity.y = 0.0
 	_body.move_and_slide()
+	if reacting:
+		entity.hit_reaction.finish_body_motion()
 	var grounded: bool = _body.is_on_floor()
 	if not _grounded_known or grounded != _was_grounded:
 		_grounded_known = true
@@ -48,6 +56,10 @@ func set_movement_locked(locked: bool) -> void:
 	_locked = locked
 	if _locked and _body != null:
 		_body.velocity.x = 0.0
+
+
+func set_attack_motion_provider(provider: Callable) -> void:
+	_attack_motion = provider
 
 
 func set_effect_multiplier(multiplier: float) -> void:

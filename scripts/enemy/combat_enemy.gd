@@ -5,6 +5,7 @@ const WALK_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Walk
 const ATTACK_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Attack_1.png")
 const DEAD_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Dead.png")
 const HURT_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Hurt.png")
+const ImpactProbe = preload("res://scripts/debug/impact_probe.gd")
 const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
 const WALK_FRAMES := 12
@@ -17,6 +18,8 @@ enum State {
 	IDLE,
 	APPROACH,
 	WINDUP,
+	ACTIVE,
+	HIT_REACTING,
 	RECOVERY,
 	DEAD,
 }
@@ -25,6 +28,7 @@ enum State {
 @onready var warning_marker: Polygon2D = $WarningMarker
 @onready var attack_flash: Polygon2D = $AttackFlash
 @onready var bt_player: BTPlayer = $BTPlayer
+@onready var attack_animation: AnimationPlayer = $AnimationPlayer
 
 var _ai_config: Dictionary = {}
 var _stage_enabled := false
@@ -42,10 +46,19 @@ var _hit_visual_time := 0.0
 var _hit_visual_duration := 0.0
 var _committed_attack_origin := Vector2.ZERO
 var _committed_attack_target_position := Vector2.RIGHT
+var _next_attack_id := 1
+var _attack_id := 0
+var _strike_emitted := false
+var _hit_targets: Array[int] = []
+var _ticking_tree := false
+var _preempt_requested := false
+var _reaction_probe_origin := Vector2.ZERO
+var _reaction_probe_started_ms := 0
 
 
 func configure(config: Dictionary) -> void:
 	super.configure(config)
+	hit_reaction.reaction_ended.connect(_finish_hit_visual)
 	_ai_config = Dictionary(config["enemy_ai"])
 	warning_marker.visible = false
 	attack_flash.visible = false
@@ -60,12 +73,19 @@ func configure(config: Dictionary) -> void:
 
 func apply_runtime_tuning() -> void:
 	super.apply_runtime_tuning()
-	_ai_config = Dictionary(_config["enemy_ai"])
-	_stage_enabled = _area_active and not _defeated and bool(_ai_config["enabled"])
+	var next_ai: Dictionary = _config["enemy_ai"]
+	var decision_tuning_changed := false
+	for key in ["enabled", "aggro_range", "attack_range", "movement_speed", "windup_duration", "recovery_duration", "damage"]:
+		if _ai_config.get(key) != next_ai.get(key):
+			decision_tuning_changed = true
+	_ai_config = next_ai.duplicate(true)
 	_sync_ai_blackboard()
+	if not decision_tuning_changed:
+		return
+	_stage_enabled = _area_active and not _defeated and bool(_ai_config["enabled"])
 	_reset_ai_execution()
 	set_collision_layer_value(4, _stage_enabled)
-	set_physics_process(_stage_enabled)
+	set_physics_process(_area_active and not _defeated)
 
 
 func set_stage_active(active: bool) -> void:
@@ -74,14 +94,21 @@ func set_stage_active(active: bool) -> void:
 	_stage_enabled = _area_active and not _defeated and not _ai_config.is_empty() and bool(_ai_config["enabled"])
 	_reset_ai_execution()
 	set_collision_layer_value(4, _stage_enabled)
-	set_physics_process(_stage_enabled)
+	set_physics_process(_area_active and not _defeated)
 
 
 func receive_health_result(result: HealthResult) -> void:
 	super.receive_health_result(result)
-	if result != null and result.event != null and result.event.target == self and result.zero_reached:
+	if result != null and result.event != null and result.event.target == self and result.zero_reached and not should_refill_health_at_zero():
 		_stage_enabled = false
-		_abort_ai_tree()
+		hit_reaction.reset_for_stage()
+		health_resolver.reset_for_stage()
+		attack_animation.stop()
+		_attack_id = 0
+		if _ticking_tree:
+			_preempt_requested = true
+		else:
+			_abort_ai_tree()
 		_set_state(State.DEAD)
 		velocity = Vector2.ZERO
 		set_collision_layer_value(4, false)
@@ -90,18 +117,44 @@ func receive_health_result(result: HealthResult) -> void:
 
 func _physics_process(delta: float) -> void:
 	_update_attack_flash(delta)
-	if not _stage_enabled or _state in [State.DORMANT, State.DEAD]:
+	if _state == State.DEAD:
+		return
+	if not _stage_enabled:
+		# Disabling decisions does not freeze a later combat reaction's lifetime.
+		if hit_reaction.is_invincible():
+			_apply_gravity_and_move(delta)
+		else:
+			_set_state(State.DORMANT)
+		return
+	if _state == State.DORMANT:
 		return
 	var player := _get_player()
 	if player == null or player.health.is_zero():
+		hit_reaction.reset_for_stage()
+		health_resolver.reset_for_stage()
+		attack_animation.stop()
+		_attack_id = 0
+		_finish_hit_visual()
 		_abort_ai_tree()
 		_set_state(State.DORMANT)
+		_stage_enabled = false
 		velocity = Vector2.ZERO
-		set_physics_process(false)
+		set_physics_process(_area_active and not _defeated)
 		return
 	bt_player.blackboard.set_var(&"target", player)
-	# Tick once before movement; BTPlayer is configured for manual updates.
+	if attack_animation.is_playing():
+		attack_animation.advance(delta)
+	_ticking_tree = true
 	bt_player.update(delta)
+	_ticking_tree = false
+	if _preempt_requested:
+		_preempt_requested = false
+		_abort_ai_tree()
+		bt_player.active = _stage_enabled
+		if hit_reaction.is_invincible():
+			_set_state(State.HIT_REACTING)
+	if _state == State.DEAD:
+		return
 	_apply_gravity_and_move(delta)
 
 
@@ -124,6 +177,14 @@ func ai_begin_windup(target: Entity, attack_range: float, duration: float) -> vo
 	var horizontal_distance := target.global_position.x - global_position.x
 	_facing = Vector2.RIGHT if horizontal_distance >= 0.0 else Vector2.LEFT
 	body_visual.flip_h = _facing.x < 0.0
+	_attack_id = _next_attack_id
+	_next_attack_id += 1
+	_hit_targets.clear()
+	_strike_emitted = false
+	var clock: Animation = attack_animation.get_animation(&"melee_swing")
+	attack_animation.speed_scale = clock.get_marker_time(&"active_start") / maxf(duration, 0.001)
+	attack_animation.play(&"melee_swing")
+	attack_animation.advance(0.0)
 	_committed_attack_origin = attack_cast.global_position
 	_committed_attack_target_position = _facing * attack_range
 	_set_state(State.WINDUP)
@@ -135,11 +196,25 @@ func ai_show_windup_remaining(remaining: float) -> void:
 	_state_remaining = remaining
 
 
-func ai_strike(target: Entity, damage: float, impact: int) -> void:
-	_resolve_melee_hit(target, damage, impact)
+func ai_strike(target: Entity, damage: float, _impact: int) -> bool:
+	if _state == State.HIT_REACTING or hit_reaction.is_invincible():
+		return false
+	_set_state(State.ACTIVE)
+	var clock: Animation = attack_animation.get_animation(&"melee_swing")
+	var time := attack_animation.current_animation_position
+	if not _strike_emitted and time >= clock.get_marker_time(&"contact"):
+		_strike_emitted = true
+		_resolve_melee_hit(target, damage, int(_config["moves"]["final_enemy_attack"]["impact"]))
+	return _state != State.HIT_REACTING
+
+
+func ai_strike_finished() -> bool:
+	return not attack_animation.is_playing() or attack_animation.current_animation_position >= attack_animation.get_animation(&"melee_swing").get_marker_time(&"active_end")
 
 
 func ai_begin_recovery() -> void:
+	attack_animation.stop()
+	_attack_id = 0
 	velocity.x = 0.0
 	_set_state(State.RECOVERY)
 
@@ -167,6 +242,13 @@ func _abort_ai_tree() -> void:
 
 
 func _reset_ai_execution() -> void:
+	hit_reaction.reset_for_stage()
+	health_resolver.reset_for_stage()
+	_finish_hit_visual()
+	attack_animation.stop()
+	_attack_id = 0
+	_strike_emitted = false
+	_preempt_requested = false
 	_abort_ai_tree()
 	_set_state(State.DEAD if _defeated else (State.IDLE if _stage_enabled else State.DORMANT))
 	bt_player.active = _stage_enabled
@@ -174,6 +256,8 @@ func _reset_ai_execution() -> void:
 
 func _exit_tree() -> void:
 	if is_instance_valid(bt_player):
+		hit_reaction.reset_for_stage()
+		health_resolver.reset_for_stage()
 		_abort_ai_tree()
 
 
@@ -198,7 +282,12 @@ func _resolve_melee_hit(player: Entity, damage: float, impact: int) -> void:
 			_facing,
 			attack_cast.get_collision_point(index)
 		)
-		player.receive_health_event(event)
+		event.source_action_id = _attack_id
+		event.melee_contact = true
+		var result: HealthResult = player.receive_health_event(event)
+		if result.outcome != HealthResult.Outcome.APPLIED:
+			break
+		_hit_targets.append(player.get_instance_id())
 		attack_flash.visible = true
 		attack_flash.scale.x = _facing.x
 		_attack_flash_remaining = 0.14
@@ -212,13 +301,19 @@ func _resolve_melee_hit(player: Entity, damage: float, impact: int) -> void:
 
 
 func _apply_gravity_and_move(delta: float) -> void:
-	if _state != State.APPROACH:
+	var reacting := hit_reaction.is_invincible()
+	var push := hit_reaction.consume_body_motion(delta) if reacting else Vector2.ZERO
+	if reacting:
+		velocity.x = push.x / delta if delta > 0.0 else 0.0
+	elif _state != State.APPROACH:
 		velocity.x = 0.0
 	if not is_on_floor():
 		velocity.y += float(ProjectSettings.get_setting("physics/2d/default_gravity", 980.0)) * float(_config["movement"]["gravity_scale"]) * delta
 	elif velocity.y > 0.0:
 		velocity.y = 0.0
 	move_and_slide()
+	if reacting:
+		hit_reaction.finish_body_motion()
 
 
 func _process(delta: float) -> void:
@@ -239,10 +334,10 @@ func _process(delta: float) -> void:
 	if _state == State.APPROACH and not _hit_visual_active:
 		texture = WALK_TEXTURE
 		frame = int(floor(_animation_time * 9.0)) % WALK_FRAMES
-	elif _state == State.WINDUP and not _hit_visual_active:
+	elif _state in [State.WINDUP, State.ACTIVE] and not _hit_visual_active:
 		texture = ATTACK_TEXTURE
-		var duration := maxf(_windup_duration, 0.001)
-		frame = clampi(int(floor((1.0 - _state_remaining / duration) * float(ATTACK_FRAMES))), 0, ATTACK_FRAMES - 1)
+		var clock: Animation = attack_animation.get_animation(&"melee_swing")
+		frame = clampi(int(floor(attack_animation.current_animation_position / clock.length * float(ATTACK_FRAMES))), 0, ATTACK_FRAMES - 1)
 	body_visual.texture = texture
 	body_visual.region_enabled = true
 	body_visual.region_rect = Rect2(Vector2(frame, 0.0) * CELL_SIZE, CELL_SIZE)
@@ -260,6 +355,9 @@ func _update_attack_flash(delta: float) -> void:
 func _on_reaction_started(level: int, direction: Vector2, distance: float, duration: float) -> void:
 	if _state == State.DEAD:
 		return
+	_reaction_probe_origin = global_position
+	_reaction_probe_started_ms = Time.get_ticks_msec()
+	ImpactProbe.record("enemy_reaction_visual", {"target": str(get_path()), "reaction_level": level, "duration": duration, "distance": distance, "combat_reaction": hit_reaction.is_invincible()})
 	if level > 0:
 		hit_reaction_audio.play()
 	if _hit_visual_tween != null and _hit_visual_tween.is_valid():
@@ -268,14 +366,21 @@ func _on_reaction_started(level: int, direction: Vector2, distance: float, durat
 	_hit_visual_time = 0.0
 	_hit_visual_duration = duration
 	body_visual.position = _body_rest_position
-	var offset := direction.normalized() * distance
-	_hit_visual_tween = create_tween()
-	_hit_visual_tween.tween_property(body_visual, "position", _body_rest_position + offset, duration * 0.4)
-	_hit_visual_tween.tween_property(body_visual, "position", _body_rest_position, duration * 0.6)
-	_hit_visual_tween.tween_callback(_finish_hit_visual)
+	if hit_reaction.is_invincible():
+		cancel_combat_attack()
+	else:
+		var offset := direction.normalized() * distance
+		_hit_visual_tween = create_tween()
+		_hit_visual_tween.tween_property(body_visual, "position", _body_rest_position + offset, duration * 0.4)
+		_hit_visual_tween.tween_property(body_visual, "position", _body_rest_position, duration * 0.6)
+		_hit_visual_tween.tween_callback(_finish_hit_visual)
 
 
 func _finish_hit_visual() -> void:
+	if _hit_visual_active:
+		ImpactProbe.record("enemy_reaction_finished", {"target": str(get_path()), "body_displacement_x": global_position.x - _reaction_probe_origin.x, "elapsed_ms": Time.get_ticks_msec() - _reaction_probe_started_ms, "remaining": hit_reaction.get("_remaining")})
+	if _hit_visual_tween != null and _hit_visual_tween.is_valid():
+		_hit_visual_tween.kill()
 	_hit_visual_active = false
 	_hit_visual_time = 0.0
 	_hit_visual_duration = 0.0
@@ -303,7 +408,7 @@ func _set_state(next_state: State) -> void:
 
 
 func _state_name() -> StringName:
-	return StringName(["DORMANT", "IDLE", "APPROACH", "WINDUP", "RECOVERY", "DEAD"][_state])
+	return StringName(["DORMANT", "IDLE", "APPROACH", "WINDUP", "ACTIVE", "HIT_REACTING", "RECOVERY", "DEAD"][_state])
 
 
 func _distance_to_player() -> float:
@@ -314,3 +419,61 @@ func _distance_to_player() -> float:
 func _trace_ai(event_name: StringName, data: Dictionary) -> void:
 	if OS.is_debug_build():
 		print("[TRACE][COMBAT_ENEMY] %s %s" % [event_name, data])
+
+
+func uses_combat_hit_reaction() -> bool:
+	return true
+
+
+func get_poise() -> int:
+	return int(_config["enemy_ai"]["poise"])
+
+
+func get_melee_snapshot() -> Dictionary:
+	if _attack_id == 0 or _state not in [State.WINDUP, State.ACTIVE]:
+		return {}
+	var clock: Animation = attack_animation.get_animation(&"melee_swing")
+	var time := attack_animation.current_animation_position
+	return {
+		"active": attack_animation.is_playing() and time >= clock.get_marker_time(&"active_start") and time <= clock.get_marker_time(&"active_end"),
+		"move_id": &"final_enemy_attack",
+		"impact": int(_config["moves"]["final_enemy_attack"]["impact"]),
+		"damage": float(_ai_config["damage"]),
+		"school": &"",
+		"action_id": _attack_id,
+		"composition": [],
+		"hit_targets": _hit_targets.duplicate(),
+	}
+
+
+func cancel_combat_attack() -> void:
+	if _state == State.DEAD:
+		return
+	attack_animation.stop()
+	_attack_id = 0
+	_strike_emitted = true
+	_committed_attack_origin = Vector2.ZERO
+	_committed_attack_target_position = Vector2.ZERO
+	attack_flash.visible = false
+	_attack_flash_remaining = 0.0
+	_set_state(State.HIT_REACTING)
+	if _ticking_tree:
+		_preempt_requested = true
+	else:
+		_abort_ai_tree()
+		bt_player.active = _stage_enabled
+
+
+func ai_is_reacting() -> bool:
+	return hit_reaction.is_invincible()
+
+
+func ai_hold_hit_reaction() -> void:
+	_set_state(State.HIT_REACTING)
+	velocity.x = 0.0
+
+
+func on_clash_contact_resolved(result: HealthResult) -> void:
+	if result.outcome == HealthResult.Outcome.APPLIED:
+		_hit_targets.append(result.event.target.get_instance_id())
+		_strike_emitted = true

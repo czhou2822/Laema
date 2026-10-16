@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="1_base"]
 [ext_resource type="Script" path="res://scripts/enemy/combat_enemy.gd" id="2_script"]
@@ -6,6 +6,25 @@
 
 [sub_resource type="CircleShape2D" id="attack_shape"]
 radius = 24.0
+
+[sub_resource type="Animation" id="Animation_melee_swing"]
+resource_name = "melee_swing"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.8
+}, {
+"name": &"contact",
+"time": 0.8
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_enemy"]
+_data = {
+&"melee_swing": SubResource("Animation_melee_swing")
+}
 
 [node name="CombatEnemy" instance=ExtResource("1_base")]
 collision_layer = 10
@@ -37,3 +56,9 @@ polygon = PackedVector2Array(-8, -22, 58, -8, 58, 8, -8, 22)
 color = Color(1, 0.22, 0.12, 0.78)
 visible = false
 z_index = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 2
+libraries = {
+&"": SubResource("AnimationLibrary_enemy")
+}

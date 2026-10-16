@@ -6,6 +6,9 @@ enum Outcome {
 	BLOCKED,
 	PARRIED,
 	INVALID,
+	INVINCIBLE,
+	CLASH_LOST,
+	CANCELLED,
 }
 
 var event: HealthEvent

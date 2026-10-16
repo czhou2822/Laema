@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-16",
+  "engine": "Godot 4.7.2 stable Windows x64",
+  "basis": {
+    "head": "8043baf7e2096381817897c849133eedf5c9543e",
+    "dirty": true
+  },
+  "scope": "Isolated headless copies only; user project/editor profiles not run by tests.",
+  "suites": [
+    {
+      "script": "tools/tests/attack_style_test.gd",
+      "checks": 199,
+      "status": "passed"
+    },
+    {
+      "script": "tools/tests/dev_portal_test.gd",
+      "checks": 179,
+      "status": "passed"
+    },
+    {
+      "script": "tools/tests/clash_formula_test.gd",
+      "checks": 59,
+      "status": "passed"
+    }
+  ],
+  "runtimeFiles": [
+    {
+      "path": "scripts/combat/attack_style.gd",
+      "sha256": "09a82ab4f6814f38b75078f6fbf20fcdcb0522b0586c029cf66dc020dce7a5ca",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/combat/might_component.gd",
+      "sha256": "c3c776dd4509401322695c66d42dbdd0b1e7cd1b8177dea614d1aa93226a99de",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/config/move_style_tuning.gd",
+      "sha256": "dd4456fdc988bc7b30dccd8429f7a0ea953a6579c1b5832ddd8a1185d514203f",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/config/combat_tuning_settings.gd",
+      "sha256": "95d9d49efe37cd4b487de18bcd30132b9fe0440f8b232013f107c5d412bf93e2",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/config/prototype_config_loader.gd",
+      "sha256": "bfbd2b63c77a32eec9b09c98682af167e87c18dcb19ba05354686ac6cdb70daf",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/config/developer_settings_catalog.gd",
+      "sha256": "f04fc7c7d0f15f75b3cf21defd37fc7e1b3e357a0e107e51294d7a1f51db5702",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/ui/developer_settings_fields.gd",
+      "sha256": "27bfe072e5c2a5367f04e911470d2979f5866450a6e227ea89d4e2f0a6500b28",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/player/movement_controller.gd",
+      "sha256": "3066789bf37e0456fd816f9feed3674ebad7a70748cee71164f3e22a4b329fb6",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/player/player.gd",
+      "sha256": "0e44f45c4d6323ce97967376da463b9ccfb0193d7d9ac4c4f5af4f5e06e34d71",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/entities/health_event.gd",
+      "sha256": "5219bb0df2b567a51d6147cc5ed06c039eb95f7dc66ba1d66c6bb4573306c334",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/entities/health_resolver.gd",
+      "sha256": "07185b3e1a9e0b32fbc9fc1f73224adae439595420043a1cff44814c396c8860",
+      "matchesTested": true
+    },
+    {
+      "path": "scripts/entities/hit_reaction.gd",
+      "sha256": "74fd6ce57653cc65cf546e6921000760ab7768a2266a05a3c4ef5919c06da4c0",
+      "matchesTested": true
+    },
+    {
+      "path": "config/prototype_combat.json",
+      "sha256": "688c1cd8bc410292125db78ef1ce24fdcf375be80b86c5825913a9af475d7f74",
+      "matchesTested": true
+    },
+    {
+      "path": "config/combat_tuning.tres",
+      "sha256": "4e7f60732555ab7011ce978153bf108bf645baec54bb1d36974c0962c7069af2",
+      "matchesTested": true
+    },
+    {
+      "path": "addons/laema_dev_portal/focus_dock.gd",
+      "sha256": "dedffd1f497b3ca4967e6ca5ae4a6e56e19b923a8d462630b9184227c7e63087",
+      "matchesTested": true
+    }
+  ],
+  "limitations": [
+    "No interactive game-feel or controller acceptance.",
+    "No Web export validation.",
+    "Default numeric style values are provisional."
+  ],
+  "totalChecks": 437,
+  "provenance": "All listed runtime files match the final isolated clash copy byte for byte. Portal save tests intentionally modify their own isolated JSON/Resource fixtures."
+}

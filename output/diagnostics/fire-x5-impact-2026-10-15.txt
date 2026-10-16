@@ -1,0 +1,9 @@
+Fire X5 Impact investigation — 2026-10-15
+Evidence: two real X1–X5 animation/ShapeCast chains in an isolated Godot 4.7.2 gym. Enemy AI decisions held still; collision and reaction physics retained.
+Saved source config SHA256: 7c04b5ee0315951f70bee706764d7682ed9e817271904d2a7a150e159d6149f9
+Source config unchanged. Impact 41 was an in-memory comparison only.
+Saved Impact 5, enemy Poise 0: difference 5 -> reaction Level 1, duration 0.25 s, actual push approximately 5 px.
+Comparison Impact 41, enemy Poise 0: difference 41 -> reaction Level 5, duration 1.45 s, actual push approximately 25 px.
+Cause: Impact is raw power. Difference bands are 0–10 / 11–20 / 21–30 / 31–40 / 41+. The saved Impact 5 does not select reaction Level 5.
+This reproduction establishes config propagation, reaction-band selection and body displacement under controlled conditions, not the exact previous interactive session.
+Default debug runs write [PROBE][IMPACT] entries to Godot app_userdata/Laema/logs/godot.log. Probes cover action identity/Impact, contact, eligibility/clash, result/rejection, reaction tuning, and enemy visual/body completion.

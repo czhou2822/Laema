@@ -157,6 +157,7 @@ func configure(config: Dictionary) -> void:
 	_sprite_rest_rotation = sprite.rotation
 	movement.facing_changed.connect(_on_facing_changed)
 	combat.movement_lock_changed.connect(movement.set_movement_locked)
+	movement.set_attack_motion_provider(might.consume_attack_body_motion)
 	combat.active_school_changed.connect(_on_active_school_changed)
 	combat.attack_started.connect(_on_attack_started)
 	combat.empowered_cast_started.connect(_on_empowered_cast_started)
@@ -249,6 +250,7 @@ func reset_for_stage() -> void:
 	_clear_pending_mark_audio()
 	status_controller.clear_for_stage()
 	hit_reaction.reset_for_stage()
+	health_resolver.reset_for_stage()
 	health.reset_to_maximum()
 	velocity = Vector2.ZERO
 
@@ -286,8 +288,9 @@ func _draw() -> void:
 		return
 	var start := attack_cast.position
 	var direction := _visual_attack_direction.normalized()
-	var end := start + direction * float(_config["combat"]["shape_reach"])
-	var radius := cast_shape.radius
+	var geometry: Dictionary = might.get_attack_geometry()
+	var end := start + direction * float(geometry["shape_reach"])
+	var radius := float(geometry["shape_radius"])
 	var edge_offset := direction.orthogonal() * radius
 	draw_line(start, end, ATTACK_HITBOX_DEBUG_FILL, radius * 2.0, true)
 	draw_circle(start, radius, ATTACK_HITBOX_DEBUG_FILL)
@@ -302,7 +305,7 @@ func _is_attack_hitbox_debug_visible() -> bool:
 	if not _attack_hitbox_debug_enabled or not combat.is_attack_playing():
 		return false
 	var progress: float = combat.get_normalized_attack_progress()
-	var hit_phase := float(_config["combat"]["hit_phase"])
+	var hit_phase: float = combat.get_contact_phase()
 	return progress >= hit_phase and progress <= minf(hit_phase + ATTACK_HITBOX_DEBUG_WINDOW, 1.0)
 
 
@@ -519,15 +522,19 @@ func _on_hit_reaction_started(level: int, direction: Vector2, distance: float, d
 	_hit_visual_active = true
 	_hit_visual_time = 0.0
 	_hit_visual_duration = duration
-	var offset := direction.normalized() * distance
-	sprite.position = _sprite_rest_position + offset
-	_hit_reaction_tween = create_tween()
-	_hit_reaction_tween.tween_property(sprite, "position", _sprite_rest_position, duration)
-	_hit_reaction_tween.tween_callback(_finish_hit_visual)
+	if hit_reaction.is_invincible():
+		sprite.position = _sprite_rest_position
+	else:
+		var offset := direction.normalized() * distance
+		sprite.position = _sprite_rest_position + offset
+		_hit_reaction_tween = create_tween()
+		_hit_reaction_tween.tween_property(sprite, "position", _sprite_rest_position, duration)
+		_hit_reaction_tween.tween_callback(_finish_hit_visual)
 
 
 func _on_hit_reaction_ended() -> void:
 	combat.on_hit_reaction_ended()
+	_finish_hit_visual()
 
 
 func _finish_hit_visual() -> void:
@@ -594,3 +601,27 @@ func _play_audio(player: AudioStreamPlayer, stream: AudioStream) -> void:
 
 func _load_audio_stream(path: String) -> AudioStream:
 	return ResourceLoader.load(path, "AudioStream") as AudioStream
+
+
+func uses_combat_hit_reaction() -> bool:
+	return true
+
+
+func is_player_combatant() -> bool:
+	return true
+
+
+func get_poise() -> int:
+	return int(_config["player"]["poise"])
+
+
+func get_melee_snapshot() -> Dictionary:
+	return combat.get_melee_snapshot()
+
+
+func cancel_combat_attack() -> void:
+	combat.cancel_combat_attack()
+
+
+func on_clash_contact_resolved(result: HealthResult) -> void:
+	combat.on_clash_contact_resolved(result)

@@ -1,0 +1,439 @@
+[gd_resource type="Resource" script_class="CombatTuningSettings" format=3 uid="uid://cnmparaicavk5"]
+
+[ext_resource type="Script" uid="uid://cvbk41an50p0f" path="res://scripts/config/combat_reaction_level_tuning.gd" id="1_6hcl4"]
+[ext_resource type="Script" uid="uid://cr8r7idv3dq5g" path="res://scripts/config/move_impact_tuning.gd" id="2_jl1ym"]
+[ext_resource type="Script" uid="uid://cea1sq3knghe6" path="res://scripts/config/combat_tuning_settings.gd" id="3_hucao"]
+
+[ext_resource type="Script" path="res://scripts/config/move_style_tuning.gd" id="4_styles"]
+
+[sub_resource type="Resource" id="Reaction_1"]
+script = ExtResource("1_6hcl4")
+resource_name = "Level 1"
+duration = 0.25
+
+[sub_resource type="Resource" id="Reaction_2"]
+script = ExtResource("1_6hcl4")
+minimum_value = 11
+resource_name = "Level 2"
+duration = 0.55
+distance = 10.0
+
+[sub_resource type="Resource" id="Reaction_3"]
+script = ExtResource("1_6hcl4")
+minimum_value = 21
+resource_name = "Level 3"
+duration = 0.85
+distance = 15.0
+
+[sub_resource type="Resource" id="Reaction_4"]
+script = ExtResource("1_6hcl4")
+minimum_value = 31
+resource_name = "Level 4"
+duration = 1.15
+distance = 20.0
+
+[sub_resource type="Resource" id="Reaction_5"]
+script = ExtResource("1_6hcl4")
+minimum_value = 41
+resource_name = "Level 5"
+duration = 1.45
+distance = 25.0
+
+[sub_resource type="Resource" id="Move_air_x1"]
+resource_name = "air_x1"
+script = ExtResource("2_jl1ym")
+move_id = &"air_x1"
+impact = 1
+
+[sub_resource type="Resource" id="Move_air_x2"]
+resource_name = "air_x2"
+script = ExtResource("2_jl1ym")
+move_id = &"air_x2"
+impact = 1
+
+[sub_resource type="Resource" id="Move_air_x3"]
+resource_name = "air_x3"
+script = ExtResource("2_jl1ym")
+move_id = &"air_x3"
+impact = 1
+
+[sub_resource type="Resource" id="Move_air_x4"]
+resource_name = "air_x4"
+script = ExtResource("2_jl1ym")
+move_id = &"air_x4"
+impact = 1
+
+[sub_resource type="Resource" id="Move_air_x5"]
+resource_name = "air_x5"
+script = ExtResource("2_jl1ym")
+move_id = &"air_x5"
+impact = 1
+
+[sub_resource type="Resource" id="Move_cast"]
+resource_name = "cast"
+script = ExtResource("2_jl1ym")
+move_id = &"cast"
+impact = 1
+
+[sub_resource type="Resource" id="Move_earth_x1"]
+resource_name = "earth_x1"
+script = ExtResource("2_jl1ym")
+move_id = &"earth_x1"
+impact = 1
+
+[sub_resource type="Resource" id="Move_earth_x2"]
+resource_name = "earth_x2"
+script = ExtResource("2_jl1ym")
+move_id = &"earth_x2"
+impact = 1
+
+[sub_resource type="Resource" id="Move_earth_x3"]
+resource_name = "earth_x3"
+script = ExtResource("2_jl1ym")
+move_id = &"earth_x3"
+impact = 1
+
+[sub_resource type="Resource" id="Move_earth_x4"]
+resource_name = "earth_x4"
+script = ExtResource("2_jl1ym")
+move_id = &"earth_x4"
+impact = 1
+
+[sub_resource type="Resource" id="Move_earth_x5"]
+resource_name = "earth_x5"
+script = ExtResource("2_jl1ym")
+move_id = &"earth_x5"
+impact = 1
+
+[sub_resource type="Resource" id="Move_final_enemy_attack"]
+resource_name = "final_enemy_attack"
+script = ExtResource("2_jl1ym")
+move_id = &"final_enemy_attack"
+impact = 1
+
+[sub_resource type="Resource" id="Move_fire_x1"]
+resource_name = "fire_x1"
+script = ExtResource("2_jl1ym")
+move_id = &"fire_x1"
+impact = 1
+
+[sub_resource type="Resource" id="Move_fire_x2"]
+resource_name = "fire_x2"
+script = ExtResource("2_jl1ym")
+move_id = &"fire_x2"
+impact = 1
+
+[sub_resource type="Resource" id="Move_fire_x3"]
+resource_name = "fire_x3"
+script = ExtResource("2_jl1ym")
+move_id = &"fire_x3"
+impact = 1
+
+[sub_resource type="Resource" id="Move_fire_x4"]
+resource_name = "fire_x4"
+script = ExtResource("2_jl1ym")
+move_id = &"fire_x4"
+impact = 1
+
+[sub_resource type="Resource" id="Move_fire_x5"]
+resource_name = "fire_x5"
+script = ExtResource("2_jl1ym")
+move_id = &"fire_x5"
+impact = 50
+
+[sub_resource type="Resource" id="Move_water_x1"]
+resource_name = "water_x1"
+script = ExtResource("2_jl1ym")
+move_id = &"water_x1"
+impact = 1
+
+[sub_resource type="Resource" id="Move_water_x2"]
+resource_name = "water_x2"
+script = ExtResource("2_jl1ym")
+move_id = &"water_x2"
+impact = 1
+
+[sub_resource type="Resource" id="Move_water_x3"]
+resource_name = "water_x3"
+script = ExtResource("2_jl1ym")
+move_id = &"water_x3"
+impact = 1
+
+[sub_resource type="Resource" id="Move_water_x4"]
+resource_name = "water_x4"
+script = ExtResource("2_jl1ym")
+move_id = &"water_x4"
+impact = 1
+
+[sub_resource type="Resource" id="Move_water_x5"]
+resource_name = "water_x5"
+script = ExtResource("2_jl1ym")
+move_id = &"water_x5"
+impact = 1
+
+[sub_resource type="Resource" id="Style_fire_x1"]
+resource_name = "fire_x1"
+script = ExtResource("4_styles")
+move_id = &"fire_x1"
+windup_duration = 0.14
+recovery_duration = 0.34
+shape_reach = 40
+shape_radius = 16
+lunge_distance = 3
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.5
+
+[sub_resource type="Resource" id="Style_fire_x2"]
+resource_name = "fire_x2"
+script = ExtResource("4_styles")
+move_id = &"fire_x2"
+windup_duration = 0.16
+recovery_duration = 0.34
+shape_reach = 43
+shape_radius = 16
+lunge_distance = 8
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.5
+
+[sub_resource type="Resource" id="Style_fire_x3"]
+resource_name = "fire_x3"
+script = ExtResource("4_styles")
+move_id = &"fire_x3"
+windup_duration = 0.13
+recovery_duration = 0.3
+shape_reach = 42
+shape_radius = 18
+lunge_distance = 2
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.4
+
+[sub_resource type="Resource" id="Style_fire_x4"]
+resource_name = "fire_x4"
+script = ExtResource("4_styles")
+move_id = &"fire_x4"
+windup_duration = 0.22
+recovery_duration = 0.34
+shape_reach = 46
+shape_radius = 18
+lunge_distance = 10
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.75
+
+[sub_resource type="Resource" id="Style_fire_x5"]
+resource_name = "fire_x5"
+script = ExtResource("4_styles")
+move_id = &"fire_x5"
+windup_duration = 0.3
+recovery_duration = 0.42
+shape_reach = 50
+shape_radius = 20
+lunge_distance = 12
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 2
+
+[sub_resource type="Resource" id="Style_water_x1"]
+resource_name = "water_x1"
+script = ExtResource("4_styles")
+move_id = &"water_x1"
+windup_duration = 0.3
+recovery_duration = 0.32
+shape_reach = 66
+shape_radius = 10
+lunge_distance = 3
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.6
+
+[sub_resource type="Resource" id="Style_water_x2"]
+resource_name = "water_x2"
+script = ExtResource("4_styles")
+move_id = &"water_x2"
+windup_duration = 0.15
+recovery_duration = 0.28
+shape_reach = 68
+shape_radius = 10
+lunge_distance = 4
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.6
+
+[sub_resource type="Resource" id="Style_water_x3"]
+resource_name = "water_x3"
+script = ExtResource("4_styles")
+move_id = &"water_x3"
+windup_duration = 0.16
+recovery_duration = 0.3
+shape_reach = 48
+shape_radius = 12
+lunge_distance = 1
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.5
+
+[sub_resource type="Resource" id="Style_water_x4"]
+resource_name = "water_x4"
+script = ExtResource("4_styles")
+move_id = &"water_x4"
+windup_duration = 0.22
+recovery_duration = 0.31
+shape_reach = 74
+shape_radius = 10
+lunge_distance = 7
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.75
+
+[sub_resource type="Resource" id="Style_water_x5"]
+resource_name = "water_x5"
+script = ExtResource("4_styles")
+move_id = &"water_x5"
+windup_duration = 0.34
+recovery_duration = 0.38
+shape_reach = 80
+shape_radius = 11
+lunge_distance = 12
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 1.2
+
+[sub_resource type="Resource" id="Style_air_x1"]
+resource_name = "air_x1"
+script = ExtResource("4_styles")
+move_id = &"air_x1"
+windup_duration = 0.12
+recovery_duration = 0.16
+shape_reach = 42
+shape_radius = 14
+lunge_distance = 5
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.5
+
+[sub_resource type="Resource" id="Style_air_x2"]
+resource_name = "air_x2"
+script = ExtResource("4_styles")
+move_id = &"air_x2"
+windup_duration = 0.11
+recovery_duration = 0.16
+shape_reach = 43
+shape_radius = 14
+lunge_distance = 2
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.5
+
+[sub_resource type="Resource" id="Style_air_x3"]
+resource_name = "air_x3"
+script = ExtResource("4_styles")
+move_id = &"air_x3"
+windup_duration = 0.1
+recovery_duration = 0.16
+shape_reach = 44
+shape_radius = 14
+lunge_distance = 8
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.5
+
+[sub_resource type="Resource" id="Style_air_x4"]
+resource_name = "air_x4"
+script = ExtResource("4_styles")
+move_id = &"air_x4"
+windup_duration = 0.12
+recovery_duration = 0.16
+shape_reach = 45
+shape_radius = 14
+lunge_distance = 2
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.5
+
+[sub_resource type="Resource" id="Style_air_x5"]
+resource_name = "air_x5"
+script = ExtResource("4_styles")
+move_id = &"air_x5"
+windup_duration = 0.18
+recovery_duration = 0.22
+shape_reach = 50
+shape_radius = 17
+lunge_distance = 7
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 1
+
+[sub_resource type="Resource" id="Style_earth_x1"]
+resource_name = "earth_x1"
+script = ExtResource("4_styles")
+move_id = &"earth_x1"
+windup_duration = 0.48
+recovery_duration = 0.42
+shape_reach = 52
+shape_radius = 24
+lunge_distance = 4
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 1
+
+[sub_resource type="Resource" id="Style_earth_x2"]
+resource_name = "earth_x2"
+script = ExtResource("4_styles")
+move_id = &"earth_x2"
+windup_duration = 0.54
+recovery_duration = 0.42
+shape_reach = 54
+shape_radius = 24
+lunge_distance = 4
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 1
+
+[sub_resource type="Resource" id="Style_earth_x3"]
+resource_name = "earth_x3"
+script = ExtResource("4_styles")
+move_id = &"earth_x3"
+windup_duration = 0.28
+recovery_duration = 0.38
+shape_reach = 42
+shape_radius = 20
+lunge_distance = 2
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.7
+
+[sub_resource type="Resource" id="Style_earth_x4"]
+resource_name = "earth_x4"
+script = ExtResource("4_styles")
+move_id = &"earth_x4"
+windup_duration = 0.62
+recovery_duration = 0.42
+shape_reach = 58
+shape_radius = 26
+lunge_distance = 5
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 1.2
+
+[sub_resource type="Resource" id="Style_earth_x5"]
+resource_name = "earth_x5"
+script = ExtResource("4_styles")
+move_id = &"earth_x5"
+windup_duration = 0.74
+recovery_duration = 0.46
+shape_reach = 62
+shape_radius = 28
+lunge_distance = 7
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 1.5
+
+[resource]
+resource_name = "Shared Combat Tuning"
+script = ExtResource("3_hucao")
+moves = Array[ExtResource("2_jl1ym")]([SubResource("Move_air_x1"), SubResource("Move_air_x2"), SubResource("Move_air_x3"), SubResource("Move_air_x4"), SubResource("Move_air_x5"), SubResource("Move_cast"), SubResource("Move_earth_x1"), SubResource("Move_earth_x2"), SubResource("Move_earth_x3"), SubResource("Move_earth_x4"), SubResource("Move_earth_x5"), SubResource("Move_final_enemy_attack"), SubResource("Move_fire_x1"), SubResource("Move_fire_x2"), SubResource("Move_fire_x3"), SubResource("Move_fire_x4"), SubResource("Move_fire_x5"), SubResource("Move_water_x1"), SubResource("Move_water_x2"), SubResource("Move_water_x3"), SubResource("Move_water_x4"), SubResource("Move_water_x5")])
+combat_levels = Array[ExtResource("1_6hcl4")]([SubResource("Reaction_1"), SubResource("Reaction_2"), SubResource("Reaction_3"), SubResource("Reaction_4"), SubResource("Reaction_5")])
+attack_styles = Array[ExtResource("4_styles")]([SubResource("Style_fire_x1"), SubResource("Style_fire_x2"), SubResource("Style_fire_x3"), SubResource("Style_fire_x4"), SubResource("Style_fire_x5"), SubResource("Style_water_x1"), SubResource("Style_water_x2"), SubResource("Style_water_x3"), SubResource("Style_water_x4"), SubResource("Style_water_x5"), SubResource("Style_air_x1"), SubResource("Style_air_x2"), SubResource("Style_air_x3"), SubResource("Style_air_x4"), SubResource("Style_air_x5"), SubResource("Style_earth_x1"), SubResource("Style_earth_x2"), SubResource("Style_earth_x3"), SubResource("Style_earth_x4"), SubResource("Style_earth_x5")])

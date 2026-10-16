@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/prototype/stage_area.gd" id="1_area"]
+[ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/ground_h1x9.png" id="2_ground"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/combat_enemy.tscn" id="3_enemy"]
+
+[sub_resource type="RectangleShape2D" id="floor_shape"]
+size = Vector2(1280, 32)
+
+[sub_resource type="RectangleShape2D" id="wall_shape"]
+size = Vector2(24, 180)
+
+[sub_resource type="RectangleShape2D" id="exit_shape"]
+size = Vector2(48, 180)
+
+[node name="GymArea" type="Node2D"]
+script = ExtResource("1_area")
+camera_left = 0.0
+camera_right = 0.0
+
+[node name="Backdrop" type="Polygon2D" parent="."]
+z_index = -4
+color = Color(0.027, 0.063, 0.145, 1)
+polygon = PackedVector2Array(-960, -520, 960, -520, 960, 340, -960, 340)
+
+[node name="GroundA" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-720, 80)
+texture = ExtResource("2_ground")
+
+[node name="GroundB" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-432, 80)
+texture = ExtResource("2_ground")
+
+[node name="GroundC" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-144, 80)
+texture = ExtResource("2_ground")
+
+[node name="GroundD" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(144, 80)
+texture = ExtResource("2_ground")
+
+[node name="GroundE" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(432, 80)
+texture = ExtResource("2_ground")
+
+[node name="GroundF" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(720, 80)
+texture = ExtResource("2_ground")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, 68)
+shape = SubResource("floor_shape")
+
+[node name="FinalEnemy" parent="." instance=ExtResource("3_enemy")]
+position = Vector2(80, 16)
+encounter_id = &"final_enemy"
+refills_at_zero = true
+is_final_enemy = true
+
+[node name="EntryAnchor" type="Marker2D" parent="."]
+
+[node name="ExitAnchor" type="Marker2D" parent="."]
+position = Vector2(600, 0)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(-80, 0)
+
+[node name="CameraAnchor" type="Marker2D" parent="."]
+
+[node name="RightGate" type="StaticBody2D" parent="."]
+position = Vector2(600, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGate"]
+shape = SubResource("wall_shape")
+
+[node name="LeftBoundary" type="StaticBody2D" parent="."]
+position = Vector2(-600, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary"]
+shape = SubResource("wall_shape")
+
+[node name="ExitTrigger" type="Area2D" parent="."]
+position = Vector2(650, 0)
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitTrigger"]
+shape = SubResource("exit_shape")

@@ -1,12 +1,44 @@
 # Technical Design Report — Orb Casting and Tutorial Stage Architecture
 
-Status: `IMPLEMENTED_AWAITING_LIMBOAI_USER_VALIDATION`
+Status: `IMPLEMENTED_AWAITING_USER_VALIDATION`
 
 Repository basis: committed recovery baseline `6b06dc2` (`checkpoint: save cross-thread recovery state`), the current approved working-copy `docs/GAME_DESIGN.md`, and the current working-tree implementation. Commit `23fa85b` preserves the accepted U-001–U-007 corrections; `6b06dc2` remains the historical Stage 1–6 sequence-objective checkpoint.
 
 The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23ccc29b6436776a729d071cf4a73038af5b52e6` and captured by `docs/checkpoints/2026-10-12-game-feel-limboai/manifest.json`. It replaces only the Final Enemy decision/timer loop with a visible behavior tree. Source and dependency checks do not establish Godot execution or Web export success; prior tuning validation and waivers do not cover this conversion.
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
+
+## School attack styles — 2026-10-16
+
+Authorized implementation uses the current 20 prototype animations and the existing global five-position X/Cast chain. AttackStyle captures per-X timing/spacing data. MightComponent advances the native animation clock in two segments around its contact marker: windup seconds before contact, post-contact seconds afterward, each scaled once by Heat. Casting keeps uniform shared-duration playback. Input windows remain normalized, pending actions start on animation completion, and action IDs prevent leftover frame time from advancing a newly queued action.
+
+MovementController remains the sole Player body mover. Before Might’s later-priority physics query it consumes predicted phase-overlap lunge displacement, including steps spanning contact/end. Lunge distance is consumed even when collision blocks it; cancellation/reset leaves no deferred burst. Per-move reach/radius feed the existing ShapeCast and debug geometry. The style is captured on action start, so Portal changes do not change an in-progress lunge.
+
+HealthEvent.push_scale defaults to 1 and is propagated through direct melee contacts, clash counter-events and deferred reaction transactions. It scales only the selected qualifying reaction’s distance. Formula, band selection, damage, invincibility and duration remain with their existing owners. Legacy practice/defence/failed-Cast reactions are unaffected.
+
+MoveStyleTuning provides 20 Inspector entries beside the existing Impact entries. CombatTuningSettings and the existing bridge round-trip styles through the JSON authority; Combat / Attack styles uses the shared field catalog/renderer in both Portal surfaces. Legacy missing X style fields normalize to inherited timing/geometry and zero lunge without startup writes. Cast/Enemy lunge overrides remain invalid. Reaction Resource properties are serialized after their script attachment so stored range starts load correctly.
+
+Validation evidence for this slice is recorded in IMPLEMENTATION_STATUS.md. Interactive editor/controller feel remains awaiting the user; prior validation and waivers do not prove these presets.
+
+## Hit-reaction implementation candidate — 2026-10-14
+
+Status: `IMPLEMENTED_AWAITING_USER_VALIDATION`. Based on `8043baf` plus the accepted October 14 handoff and later marker/mixed-Cast clarifications. Existing unrelated LimboAI import/UID/output work is preserved. No new Godot, build, runtime, export or automated-test evidence exists.
+
+- Entity supplies poise, melee action snapshots, cancellation and hit-transaction boundaries. Player and CombatEnemy opt into the new contract; base practice Enemy retains stationary recoil/refill behavior.
+- HealthResolver orders invincibility rejection, existing defence interception, physical melee clash judgment, reaction eligibility, Health/Endurance/status application and result delivery. It accepts Attack Impact in 0–100, independently of derived reaction levels 1–5. Rejected results have explicit INVINCIBLE, CLASH_LOST or CANCELLED outcomes.
+- Each active melee snapshot carries the move Impact, damage, school, source action ID, authored phase and targets already hit. At one physical contact, overlapping active intervals calculate each receiver's value: incoming Impact minus receiver Poise minus receiver active-move Impact. Attacker Poise is never added offensively. A positive-value winner resolves against the interrupted receiver without requiring a second same-update collision. If neither value is positive, only the established incoming hit applies and both attacks continue; any reverse damage still needs contact. An exact 0/0 tie favors Player with Level 1. A move does not deal its damage to the same target twice.
+- Might owns per-move Player animation clocks and advances them manually on physics updates. The contact marker is visited even when accelerated playback would cross the entire remaining animation. Active intervals are sampled from native Animation markers. JSON move records select the animation and Impact and refer to existing shared damage/duration tuning; forward_lunge remains null and does not execute.
+- CombatEnemy owns the marked melee AnimationPlayer, frozen geometry and action identity. Its tree retains decision ownership. A qualifying reaction aborts the memory tree's running branch and clears the committed strike. If the tree is currently ticking, the strike returns failure and root abort happens after that update, before another update can resume it.
+- The tree's first branch is a reaction condition plus a RUNNING reaction task. It holds until HitReaction completes, then returns to fresh awareness/approach decisions. The active strike task stays RUNNING through active_end, so the active interval is not reduced to one immediate strike-task tick. Recovery still uses the existing recovery task.
+- HitReaction owns combat-reaction lifetime, invincibility and the remaining world-space displacement. The existing Player/Enemy movement owner consumes that displacement once per physics update through move_and_slide; there is no second body mover or sprite-return tween for combat knockback. Uniform speed spreads the selected distance over the full duration. The final displacement step is collision-resolved before reaction_ended clears invincibility.
+- Failed Cast continues calling the non-invincible execute path. Practice-target and deferred blocked-hit reactions retain the old configurable visual path. The five bands use ordered minimum_value starts in hit_reaction.combat_levels (default 0/11/21/31/41). Combat duration/distance come from that same table, separate from the legacy Portal duration/distance knobs.
+- Magic brackets the primary/secondary events of one mixed Cast in one HealthResolver transaction. Cancellation occurs on eligibility, both layers retain primary-first ordering, and one reaction/invincibility starts at transaction end. Already active DoT/status timers continue; incoming damage events during invincibility are rejected before Endurance, guard or status mutation.
+- Player stage reset and Enemy AI/tuning reset, target loss, death and teardown clear reaction and transaction state. An active but AI-disabled Enemy keeps its passive body-reaction physics path available, so later hits cannot freeze invincibility forever. Cancellation never refunds committed Casts. Existing result consumers gate resource changes on APPLIED outcomes; the winning Player clash contact uses the same one-orb/Endurance contact contract.
+- The shared combat_tuning.tres Resource and CombatTuningBridge expose Player/Final Enemy poise, individual move Impact, all five combat reaction duration/distance pairs, and separate legacy reaction scalars in the Inspector and Portal. Legacy global Impact/contact fields are retained as hidden compatibility data; contact/active timing is edited in Animation markers.
+
+Required user checks: ordinary hits above/equal/below poise; both clash winners and Player ties with offset contact updates; cancelled attacks producing no damage and never resuming; every difference band; body displacement against a wall; repeated damage and DoT during invincibility; failed-Cast vulnerability; ordered mixed-Cast layers followed by one reaction; practice-target stationarity/refill; and reset, AI disable/enable, death and stage unload.
+
+Open: final poise/Impact tuning, forward-lunge settings/execution, spell-vs-melee clash semantics and additional school/status interactions. Marker placement and uniform motion require user tuning/validation. Historical ordinary-hit non-interruption evidence belongs to the earlier comparison baseline.
 
 ## Scope and selected decisions
 
@@ -462,6 +494,196 @@ The user has specifically reported validating the smaller DoT floating-damage fe
 
 ## Handoff
 
+The October 14 hit-reaction candidate now supersedes blanket hurt-with-continuing-attack behavior. Validate the new candidate before submission clearance; historical LimboAI comparison checks below are the earlier baseline.
+
+
 Status: `IMPLEMENTED_AWAITING_LIMBOAI_USER_VALIDATION`.
 
 The approved LimboAI conversion awaits the user's Godot comparison: reload the project to discover the native extension, open `ai/trees/final_enemy.tres`, inspect the active Final Enemy in Debugger -> LimboAI, and compare approach, windup, committed hit/miss, equal recovery, ordinary-hit non-interruption, Portal tuning/enable resets, death, and stage transitions. Web export requires a separate requested export check. No new diagnostic logs or automated tests were added. The existing trace output remains retained. A fresh Ultron `mode=tech-postflight` is appropriate for implementation review; submission clearance still requires its evidence gates.
+
+
+## Inspector / Portal tuning synchronization — 2026-10-14
+
+Status: `IMPLEMENTED_AWAITING_USER_VALIDATION`.
+
+PrototypeArena owns one CombatTuningBridge node with an exported CombatTuningSettings Resource. That Resource composes named MoveImpactTuning entries and five CombatReactionLevelTuning entries. Custom setters emit Resource.changed; the bridge subscribes to the root and nested resources, suppresses recursive synchronization, validates candidate configuration and restores the last valid selected values on invalid edits.
+
+Superseded by the 2026-10-15 Focus editor integration below: JSON is now authoritative on startup. The Resource is an Inspector view and cannot override JSON by timestamp. Opening the editor or starting the game does not write either representation.
+
+In the editor, Inspector changes are deferred into one validated save. Only fields changed from the previous Inspector snapshot are merged into freshly read JSON; independent Portal/text changes in other fields are preserved. The bridge saves the Resource and JSON mirror, and its editor-only hash watcher refreshes the Inspector in memory after valid JSON changes. Open the Arena scene to keep that Inspector bridge active; the Focus editor dock does not depend on an open scene.
+
+At runtime, Remote Inspector changes update the shared configuration through Arena's existing tuning callback and refresh Portal controls. Portal changes update the same Resource in memory through that callback. Save Tuning writes validated JSON and the Resource; a partial save reports which representation failed. Runtime edits remain unsaved until that action.
+
+HitReaction reads the selected duration/distance from hit_reaction.combat_levels after selecting the configured value band, then captures remaining time and push velocity. CombatEnemy no longer resets its tree/reaction when only reaction, poise, or move-Impact values change. Changes to AI decision parameters still reset execution. Legacy practice/defence/failed-Cast configuration remains a separate tunable path.
+
+Required user validation: Inspector property registration; one-field edits in both local and Remote Inspector; Portal readback and persistence; JSON text reload; invalid duration/duplicate or missing move rejection; unrelated-field preservation; save/restart round trip; and changing duration during an active reaction without early recovery. No editor/runtime/build/test execution is established by the static checks.
+
+## Focus editor integration — 2026-10-15
+
+Candidate source change against the existing dirty working tree; this section
+does not claim synchronization with a new committed baseline or submission
+clearance. It supersedes the earlier timestamp-based Inspector/JSON selection.
+
+`addons/laema_dev_portal` registers a right-hand native Godot dock and an
+EditorDebuggerPlugin. The dock loads validated JSON directly, independent of
+scene/game lifetime. `developer_settings_catalog.gd` owns the shared field
+catalogue; `developer_settings_fields.gd` builds native controls for both dock
+and runtime Portal, including nested arrays and audio percentage conversion.
+`developer_config_store.gd` compares edited leaves against a fresh validated
+file, preserves independent edits and rejects same-field conflicts. The loader
+writes a sibling temporary file, checks the expected file hash, then renames it
+over the original. These are optimistic file checks, not an interprocess lock.
+
+`config/prototype_combat.json` is the persisted authority. CombatTuningBridge
+initializes its Resource view from JSON, never from file timestamps. Opening a
+dock/scene and starting the game do not write configuration. Local Inspector
+edits use the same merge/save path. The Resource can still be saved as a mirror
+after explicit Inspector or in-game saves; it does not select startup values.
+
+Arena owns the active dictionary and a baseline for its unsaved edits. Applying
+saved settings preserves dictionary references held by components. The existing
+runtime tuning callback retains gameplay ownership, reaction capture and AI
+decision-reset behavior. Apply rejects stale snapshots and unsaved runtime
+changes. Externally changed tutorial stage definitions require a restart.
+
+The runtime debug-only session adapter exchanges snapshots and explicit apply,
+stage-load and pause commands over Godot's debugger connection. It creates no
+separate server. The editor requires exactly one connected Laema session for
+commands. Editor file watching preserves a dirty draft; a clean draft follows
+valid file updates. `ui.attack_hitbox_visible` persists the prior enabled debug
+default; older files receive that default in memory on load.
+
+See `addons/laema_dev_portal/README.md` for usage and the isolated validation
+runner. Headless checks do not establish visual UX, an interactive debugger
+round trip, gameplay feel, export success or postflight clearance.
+
+`developer_settings_series.gd` discovers repeated numeric columns from catalogue
+array paths. It offers a shared preview/fill dialog for combat reaction, Water
+and Earth level tables, retaining field bounds, precision, integer metadata and
+read-only cells. Each rule starts at the first editable row and advances by the
+original level-index difference; fixed cells are skipped. Fill applies only the
+selected changed paths to the draft. Table snapshot checks reject stale previews;
+the ordinary save/apply pipeline remains separate.
+
+The shared native renderer puts all five combat reactions beneath one Levels 1–5
+foldout, with plain level headings and no individual level toggles. Legacy reaction
+and move-Impact groups retain separate foldouts with draft-value summaries.
+Foldouts are collapsed by default. Their expansion state is UI-only
+and owned by each Portal, independent of saved gameplay configuration. The Impact
+page retains all 22 existing moves; X1–X5 are ordered/grouped by school and Cast
+and Enemy attack remain separate. The series adapter represents each school as
+five ordered move-record paths, reusing the same numeric rules/preview and
+writing only moves.<school>_xN.impact. It never adds a parallel Impact schema.
+
+## Development gym — 2026-10-15
+
+`scenes/gym.tscn` inherits the existing persistent Arena root. `gym.gd` overrides
+the root's tutorial-configuration hook with one in-memory final encounter derived
+from the saved final-stage descriptor, using `gym_area.tscn` for physical content.
+The canonical `_config` remains unchanged, so saving tuning cannot publish a gym
+stage override into the tutorial configuration. StageDirector's options now carry
+their own descriptor IDs; debug/session selectors no longer reconstruct IDs by
+indexing the canonical tutorial list. The gym's single-stage selector can reload
+the encounter through the existing reset path. Actor behavior, HUD, audio,
+projectile routing and config ownership remain with their existing components.
+
+The StageArea has one CombatEnemy, PlayerSpawn and the existing floor/anchor/gate
+contract. Horizontal spawn gap is 160 pixels; both camera bounds are zero and
+walls enclose the room. The editor plugin's persistent bottom action area emits a Run gym request
+that starts the custom scene through Godot's EditorInterface. The main scene is
+not replaced. See GYM.md for usage and validation limits.
+
+The gym instance sets refills_at_zero=true. HealthResolver already refills before
+delivering a zero-Health result; CombatEnemy's death branch now respects that
+refill contract instead of shutting down every zero-Health recipient. Base Enemy
+still publishes refill rather than final_enemy_defeated for refilling actors, so
+the gym's final-encounter evaluator remains active indefinitely. Damage feedback,
+Endurance and qualifying hit reactions retain their normal paths. The tutorial's
+non-refilling Final Enemy still enters its existing death path.
+
+## Runtime pause menu — 2026-10-15
+
+The shared Arena scene instances `scenes/ui/pause_menu.tscn`, so the tutorial and
+inherited Gym share one HUD. Its CanvasLayer uses PROCESS_MODE_ALWAYS, handles
+the pause action before gameplay's unhandled input, and consumes Start/Esc plus
+menu cancel events. Default runtime input bindings map the action to controller
+Start and physical Esc. Native focused buttons provide UI navigation and accept.
+
+Arena connects the pause menu and runtime Portal's opening signals so only one
+modal owns gameplay pause at a time. Opening either closes the other before it
+captures/changes pause state. Editor debugger pause commands route through
+Arena.set_game_paused and use the visible menu. Restart requests reuse the active
+StageDirector option and Arena's existing reload/reset path, with transitions
+guarded. Neither pause nor restart writes configuration. The pause overlay is
+independent of the developer-readout visibility flag.
+
+## Configurable hit-reaction ranges — 2026-10-15
+
+The dedicated Hit-reaction levels page edits five combat_levels records, each with
+minimum_value, duration and distance. combat_reaction_ranges.gd owns shared
+validation, level selection and range display. Level 1 starts at 0, later integer
+starts strictly increase, ends derive from the next start minus one, and the fifth
+level is open-ended. HealthResolver and HitReaction both use the configured table;
+range help and headings derive from the same data. This does not change reaction
+eligibility or tie handling. The later October 16 formula implementation below
+resolves the previously pending receiver-side clash alignment.
+
+The JSON loader supplies default starts in memory only for older tables with all
+starts absent; partially specified tables fail validation. The Inspector Resource
+mirrors all three fields. Shared fill validates the whole proposed start sequence
+before changing the draft. Legacy reactions have their own page and remain separate.
+
+## Receiver-side clash formula — 2026-10-16
+
+HealthResolver.calculate_reaction_value subtracts receiver Poise and only the
+receiver's active melee-snapshot Impact from incoming Impact. Clashes capture both
+snapshots before cancellation, compute the incoming and counter values separately,
+and override counter events with their captured signed value. Negative values are
+not reused as an unresolved sentinel. Eligibility is separate from level selection:
+positive values react; an explicit player_winning_clash_tie flag permits zero only
+for the user-confirmed exact 0/0 active clash. Other non-positive contacts apply
+normal damage without cancellation or reaction. Existing invincibility, hit-target
+tracking, cancelled-action rejection, counter result delivery and transactions remain.
+
+Move Impact, Player/Final Enemy Poise, editor controls and Inspector hints now use
+0–100; invalid configuration is rejected without clamping existing values. Runtime
+HealthEvents reject Impact outside that range. The selected reaction still comes
+from configured range starts and captures its duration/distance once.
+
+Focused headless engine checks cover both contact orders, each winning side,
+attacker-Poise invariance, non-positive damage, the 0/0 exception, phase snapshots
+from real Player/Enemy animations, duplicate counters and input limits. These are
+automated checks, separate from user gameplay/visual validation.
+
+## Gym contact-time formula display — 2026-10-16
+
+HealthEvent carries an optional development-only reaction_debug dictionary. The
+resolver captures incoming move identity/Impact, receiver Poise and active-move
+contribution before cancellation. reaction_evaluated emits copied scalar facts,
+the actual selected level and result status after normal result delivery. Counter
+contexts use both pre-cancellation snapshots; the duplicate-damage guard can report
+its real reaction-only result without fabricating another HealthResult or damage.
+Rejected invincible/defended events do not claim a new formula calculation.
+
+Only gym.gd creates GymCombatReadout and subscribes to Player plus the currently
+bound Enemy. It keeps separate last-calculation and latest-attempt records by
+receiver, clears/rebinds on encounter reload, and ignores retired actor IDs. Live
+move/Poise rows are observational. The click-through CanvasLayer sits below modal
+UI and follows ordinary developer-readout visibility. The normal Arena
+HUD and saved configuration remain unchanged.
+
+## Unified developer overlay visibility — 2026-10-16
+
+ui.developer_overlay_visible is the one saved developer-readout preference. Gym
+mirrors HUD.DeveloperReadout's visibility_changed signal to its formula panel,
+including direct HUD visibility changes; it no longer has a separate runtime-tuning
+override or formula preference. F4 updates the canonical setting through the existing
+runtime Portal callback and unsaved/save flow. The always-processing shortcut listener
+still works while the formula panel is hidden or gameplay is paused.
+
+Loading erases deprecated ui.gym_formula_visible in memory. The canonical developer
+preference takes precedence; the deprecated value is used only if the canonical one
+is absent. Explicit save writes the normalized configuration. Catalog metadata also
+hides the obsolete field in stale live dictionaries so it cannot appear as a second
+checkbox. Gameplay HUD, capture history and combat tuning remain separate from this
+presentation toggle.

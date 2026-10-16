@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Laema"
-run/main_scene="res://scenes/prototype_arena.tscn"
+run/main_scene="res://scenes/gym.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,8 +28,16 @@ window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/laema_dev_portal/plugin.cfg")
+
 [input]
 
+pause={
+"deadzone": 0.5,
+"events": []
+}
 move_left={
 "deadzone": 0.2,
 "events": []
@@ -77,8 +85,6 @@ defend={
 
 [limbo_ai]
 
-behavior_tree/behavior_tree_default_dir="res://ai/trees"
-behavior_tree/user_task_dirs=PackedStringArray("res://ai/tasks")
 behavior_tree/favorite_tasks=PackedStringArray("BTSequence", "BTSelector", "BTComment")
 
 [physics]

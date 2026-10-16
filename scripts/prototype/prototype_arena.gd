@@ -12,10 +12,15 @@ const PROJECTILE_IMPACT_STREAM_PATHS := {
 	&"air": "res://assets/prototype/audio/projectile/air_impact.ogg",
 	&"earth": "res://assets/prototype/audio/projectile/earth_impact.ogg",
 }
+const DevStore = preload("res://scripts/config/developer_config_store.gd")
+const DevSession = preload("res://scripts/config/developer_portal_session.gd")
+
 const AUDIO_BUS_NAMES := {"ambient": &"Ambient", "sfx": &"SFX", "bgm": &"BGM"}
 
+@onready var combat_tuning: CombatTuningBridge = $CombatTuning
 @onready var player = $Player
 @onready var hud = $HUD
+@onready var pause_menu = $PauseMenu
 @onready var stage_director: StageDirector = $StageDirector
 @onready var stage_areas: Node2D = $StageAreas
 @onready var transition_camera: Camera2D = $Camera2D
@@ -24,6 +29,7 @@ const AUDIO_BUS_NAMES := {"ambient": &"Ambient", "sfx": &"SFX", "bgm": &"BGM"}
 @onready var projectile_impact_audio: AudioStreamPlayer = $ProjectileImpactAudio
 
 var _config: Dictionary = {}
+var _persisted_config: Dictionary = {}
 var _developer_overlay
 var _current_area: StageArea
 var _next_area: StageArea
@@ -43,6 +49,15 @@ func _ready() -> void:
 		set_physics_process(false)
 		return
 	_config = result["data"]
+	var tuning_result := combat_tuning.initialize(_config, _apply_runtime_tuning)
+	if not bool(tuning_result["ok"]):
+		push_error(str(tuning_result["error"]))
+		hud.show_startup_error(str(tuning_result["error"]))
+		set_process(false)
+		set_physics_process(false)
+		return
+	_persisted_config = _config.duplicate(true)
+	combat_tuning.inspector_tuning_applied.connect(_refresh_portal_tuning)
 	_apply_audio_settings()
 	_configure_default_input_map()
 	hud.configure(_config)
@@ -61,11 +76,27 @@ func _ready() -> void:
 	stage_director.presentation_changed.connect(hud.update_tutorial_objective)
 	stage_director.stage_completed.connect(_on_stage_completed)
 	stage_director.transition_requested.connect(_on_transition_requested)
-	stage_director.configure(_config["tutorial"])
+	stage_director.configure(_get_tutorial_configuration())
 	_start_loop(ambient_audio, _load_audio_stream(AMBIENT_STREAM_PATH))
 	_start_loop(music_audio, _load_audio_stream(MUSIC_STREAM_PATH))
 	_create_developer_overlay()
+	pause_menu.configure(func(): return not _transitioning and _current_area != null, _get_pause_restart_label())
+	pause_menu.opening_requested.connect(func(): _developer_overlay._set_open(false))
+	_developer_overlay.opening_requested.connect(pause_menu.close)
+	pause_menu.restart_requested.connect(_restart_current_encounter)
+	player.set_attack_hitbox_debug_enabled(bool(_config["ui"]["attack_hitbox_visible"]))
+	var dev_session := DevSession.new()
+	add_child(dev_session)
+	dev_session.initialize(self)
 	call_deferred("_start_initial_stage")
+
+
+func _get_tutorial_configuration() -> Dictionary:
+	return _config["tutorial"]
+
+
+func _get_pause_restart_label() -> String:
+	return "Restart encounter"
 
 
 func _process(_delta: float) -> void:
@@ -239,6 +270,8 @@ func _apply_runtime_tuning() -> Dictionary:
 	var validation := ConfigLoader.validate(_config)
 	if not bool(validation["ok"]):
 		return validation
+	combat_tuning.sync_from_config(_config)
+	player.set_attack_hitbox_debug_enabled(bool(_config["ui"]["attack_hitbox_visible"]))
 	hud.apply_runtime_tuning(_config)
 	player.apply_runtime_tuning()
 	if _current_area != null:
@@ -249,10 +282,78 @@ func _apply_runtime_tuning() -> Dictionary:
 
 
 func _save_runtime_tuning() -> Dictionary:
-	return ConfigLoader.validate_and_save(CONFIG_PATH, _config)
+	var result := DevStore.save_changes(_persisted_config, _config)
+	if not bool(result["ok"]):
+		return result
+	_persisted_config = _config.duplicate(true)
+	result = combat_tuning.save_resource()
+	if not bool(result["ok"]):
+		result["error"] = "JSON saved; Resource save failed: %s" % result["error"]
+	return result
+
+
+func _refresh_portal_tuning() -> void:
+	if _developer_overlay != null:
+		_developer_overlay.call_deferred("refresh_tuning_fields")
+
+
+func get_developer_stage_options() -> Array:
+	return stage_director.get_stage_options()
+
+
+func set_game_paused(paused: bool) -> void:
+	_developer_overlay._set_open(false)
+	pause_menu.set_open(paused)
+	# An explicit editor resume also clears a pause set outside the pause menu.
+	if not paused:
+		get_tree().paused = false
+
+
+func _restart_current_encounter() -> void:
+	if _transitioning or _current_area == null:
+		return
+	for option in stage_director.get_stage_options():
+		if option["active"]:
+			pause_menu.close()
+			call_deferred("_load_stage_from_developer", int(option["index"]))
+			return
+
+
+func get_developer_config_state() -> Dictionary:
+	return {
+		"config": _config.duplicate(true),
+		"unsaved": not DevStore.changes(_persisted_config, _config).is_empty(),
+		"paused": get_tree().paused,
+		"stages": get_developer_stage_options(),
+	}
+
+
+func apply_saved_developer_config(expected_active: Dictionary) -> Dictionary:
+	if _config != expected_active:
+		return {"ok": false, "error": "Game tuning changed after the editor snapshot. Try applying again."}
+	if not DevStore.changes(_persisted_config, _config).is_empty():
+		return {"ok": false, "error": "Save unsaved in-game tuning before applying the editor configuration."}
+	var loaded := DevStore.load_config()
+	if not loaded["ok"]:
+		return loaded
+	if loaded["data"]["tutorial"]["stages"] != _config["tutorial"]["stages"]:
+		return {"ok": false, "error": "Tutorial stage definitions changed. Restart the game to load them."}
+	var previous := _config.duplicate(true)
+	DevStore.copy_into(_config, loaded["data"])
+	var result := _apply_runtime_tuning()
+	if not result["ok"]:
+		DevStore.copy_into(_config, previous)
+		return result
+	_persisted_config = _config.duplicate(true)
+	_refresh_portal_tuning()
+	return {"ok": true, "error": ""}
 
 
 func _configure_default_input_map() -> void:
+	_bind_button(&"pause", JOY_BUTTON_START)
+	_bind_key(&"pause", KEY_ESCAPE)
+	_bind_button(&"ui_accept", JOY_BUTTON_A)
+	_bind_button(&"ui_cancel", JOY_BUTTON_B)
 	_bind_axis(&"move_left", JOY_AXIS_LEFT_X, -1.0)
 	_bind_axis(&"move_right", JOY_AXIS_LEFT_X, 1.0)
 	_bind_key(&"move_left", KEY_A)

@@ -24,6 +24,12 @@ var contact_direction := Vector2.ZERO
 var contact_point := Vector2.ZERO
 var source_action_id := 0
 var action_composition: Array = []
+var melee_contact := false
+var push_scale := 1.0 # Scales distance only after existing reaction eligibility.
+var reaction_difference := -1
+var clash_resolved := false
+var player_winning_clash_tie := false
+var reaction_debug: Dictionary = {} # Contact-time facts for development UI only.
 
 
 static func damage(

@@ -6,6 +6,8 @@ This directory holds durable project state that travels with the repository.
 - TECH_ARCHITECTURE.md — accepted technical representation and ownership decisions
 - DECISIONS.md — decision history and rationale
 - IMPLEMENTATION_STATUS.md — current implementation state and verification notes
+- GYM.md — standalone Player-vs-Enemy development scene and quick launch
+- ATTACK_STYLES.md — four school melee presets and per-move timing/movement tuning
 - checkpoints/ — dated project snapshots and per-task recovery notes
 - departments/ — eight persistent development-context records and confirmed task assignments
 - changelists/ — reviewable file-scope records for coordinated changes

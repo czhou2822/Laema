@@ -1,5 +1,9 @@
+@tool
 class_name PrototypeConfigLoader
 extends RefCounted
+
+const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
+const Style = preload("res://scripts/combat/attack_style.gd")
 
 const REQUIRED_SECTIONS := [
 	"movement",
@@ -8,6 +12,7 @@ const REQUIRED_SECTIONS := [
 	"enemy",
 	"enemy_ai",
 	"combat",
+	"moves",
 	"casting",
 	"heat",
 	"fire",
@@ -39,6 +44,16 @@ static func load_and_validate(path: String) -> Dictionary:
 
 	var data: Dictionary = json.data
 	_normalize_legacy_audio_volumes(data)
+	ReactionRanges.normalize_legacy(data)
+	_normalize_attack_styles(data)
+	if data.get("ui") is Dictionary and not data["ui"].has("attack_hitbox_visible"):
+		# Preserve the previous Player debug default in older configurations.
+		data["ui"]["attack_hitbox_visible"] = true
+	if data.get("ui") is Dictionary and data["ui"].has("gym_formula_visible"):
+		# One visibility preference. Existing developer visibility takes precedence.
+		if not data["ui"].has("developer_overlay_visible"):
+			data["ui"]["developer_overlay_visible"] = data["ui"]["gym_formula_visible"]
+		data["ui"].erase("gym_formula_visible")
 	var validation_error := _validate(data)
 	if not validation_error.is_empty():
 		return _failure(validation_error)
@@ -61,19 +76,28 @@ static func validate(data: Dictionary) -> Dictionary:
 	}
 
 
-static func validate_and_save(path: String, data: Dictionary) -> Dictionary:
+static func validate_and_save(path: String, data: Dictionary, expected_hash: String = "") -> Dictionary:
 	var validation_error := _validate(data)
 	if not validation_error.is_empty():
 		return _failure(validation_error)
 
-	var file := FileAccess.open(path, FileAccess.WRITE)
+	var temporary := "%s.pending-%d" % [path, OS.get_process_id()]
+	var file := FileAccess.open(temporary, FileAccess.WRITE)
 	if file == null:
 		return _failure("Cannot save configuration: %s" % path)
 	file.store_string(JSON.stringify(data, "\t") + "\n")
 	var write_error := file.get_error()
 	file.close()
 	if write_error != OK:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(temporary))
 		return _failure("Cannot save configuration: %s" % error_string(write_error))
+	if not expected_hash.is_empty() and FileAccess.get_sha256(path) != expected_hash:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(temporary))
+		return _failure("Configuration changed while saving. Reload and review the latest values.")
+	var rename_error := DirAccess.rename_absolute(ProjectSettings.globalize_path(temporary), ProjectSettings.globalize_path(path))
+	if rename_error != OK:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(temporary))
+		return _failure("Cannot replace configuration: %s" % error_string(rename_error))
 
 	return {
 		"ok": true,
@@ -162,6 +186,28 @@ static func _validate(data: Dictionary) -> String:
 		if not error.is_empty():
 			return error
 
+	var reaction: Dictionary = data["hit_reaction"]
+	if typeof(reaction.get("combat_levels", null)) != TYPE_ARRAY or reaction["combat_levels"].size() != 5:
+		return "hit_reaction.combat_levels must contain exactly five levels."
+	var ranges_error := ReactionRanges.validation_error(reaction["combat_levels"])
+	if not ranges_error.is_empty():
+		return ranges_error
+	for index in range(5):
+		var level = reaction["combat_levels"][index]
+		if typeof(level) != TYPE_DICTIONARY:
+			return "hit_reaction.combat_levels[%d] must be an object." % index
+		for key in ["duration", "distance"]:
+			if not _is_number(level.get(key, null)) or is_nan(float(level[key])) or is_inf(float(level[key])):
+				return "hit_reaction.combat_levels[%d].%s must be finite numeric data." % [index, key]
+		if float(level["duration"]) <= 0.0 or float(level["distance"]) < 0.0:
+			return "Combat reaction duration must be positive and distance non-negative."
+	var move_error := _validate_moves(data["moves"])
+	if not move_error.is_empty():
+		return move_error
+	for section in ["player", "enemy_ai"]:
+		var poise_error := _validate_integer(data, section, "poise", 0, 100)
+		if not poise_error.is_empty():
+			return poise_error
 	var combat: Dictionary = data["combat"]
 	var player: Dictionary = data["player"]
 	if not player.has("one_hp_floor_enabled") or typeof(player["one_hp_floor_enabled"]) != TYPE_BOOL:
@@ -186,13 +232,13 @@ static func _validate(data: Dictionary) -> String:
 	var casting: Dictionary = data["casting"]
 	if float(casting["trigger_release_max"]) >= float(casting["trigger_charge_min"]):
 		return "casting.trigger_release_max must be lower than casting.trigger_charge_min."
-	var integer_error := _validate_integer(data, "combat", "direct_impact", 0, 5)
+	var integer_error := _validate_integer(data, "combat", "direct_impact", 0, 2147483647)
 	if not integer_error.is_empty():
 		return integer_error
 	integer_error = _validate_integer(data, "enemy", "defensive_level", 0, 2147483647)
 	if not integer_error.is_empty():
 		return integer_error
-	integer_error = _validate_integer(data, "enemy_ai", "impact", 0, 5)
+	integer_error = _validate_integer(data, "enemy_ai", "impact", 0, 2147483647)
 	if not integer_error.is_empty():
 		return integer_error
 	if not data["enemy_ai"].has("enabled") or typeof(data["enemy_ai"]["enabled"]) != TYPE_BOOL:
@@ -250,6 +296,8 @@ static func _validate(data: Dictionary) -> String:
 	var ui: Dictionary = data["ui"]
 	if not ui.has("developer_overlay_visible") or typeof(ui["developer_overlay_visible"]) != TYPE_BOOL:
 		return "ui.developer_overlay_visible must be Boolean."
+	if not ui.has("attack_hitbox_visible") or typeof(ui["attack_hitbox_visible"]) != TYPE_BOOL:
+		return "ui.attack_hitbox_visible must be Boolean."
 	var feedback_error := _validate_number(data, "ui", "cast_feedback_duration", 0.1, 20.0)
 	if not feedback_error.is_empty():
 		return feedback_error
@@ -459,3 +507,66 @@ static func _failure(message: String) -> Dictionary:
 		"data": {},
 		"error": message,
 	}
+
+
+static func _validate_moves(moves: Dictionary) -> String:
+	var required: Array[String] = ["cast", "final_enemy_attack"]
+	for school in ["fire", "water", "air", "earth"]:
+		for position in range(1, 6):
+			required.append("%s_x%d" % [school, position])
+	for id in required:
+		if not moves.has(id) or typeof(moves[id]) != TYPE_DICTIONARY:
+			return "moves.%s is required." % id
+		var move: Dictionary = moves[id]
+		if typeof(move.get("animation", null)) != TYPE_STRING or String(move["animation"]).is_empty():
+			return "moves.%s.animation must name an animation." % id
+		var impact = move.get("impact", null)
+		if not _is_number(impact) or not is_finite(float(impact)) or float(impact) < 0.0 or float(impact) > 100.0 or float(impact) != round(float(impact)):
+			return "moves.%s.impact must be a whole number from 0 to 100." % id
+		if not move.has("forward_lunge"):
+			return "moves.%s.forward_lunge is required." % id
+		if id not in ["cast", "final_enemy_attack"]:
+			var style_error := _validate_attack_style(move, id)
+			if not style_error.is_empty():
+				return style_error
+		elif move["forward_lunge"] != null:
+			return "moves.%s.forward_lunge must remain null; styles apply to Player X attacks only." % id
+		var damage_key := "damage" if id == "final_enemy_attack" else ("casting_damage" if id == "cast" else "light_damage")
+		var duration_key := "windup_duration" if id == "final_enemy_attack" else "attack_duration"
+		if move.get("damage_key", "") != damage_key or move.get("duration_key", "") != duration_key:
+			return "moves.%s must reference its existing damage and duration tuning." % id
+	return ""
+
+
+static func _validate_attack_style(move: Dictionary, id: String) -> String:
+	for key in ["windup_duration", "recovery_duration", "shape_reach", "shape_radius", "push_scale"]:
+		var value = move.get(key, 1.0 if key == "push_scale" else 0.0)
+		if not _is_number(value) or not is_finite(float(value)) or float(value) < 0.0:
+			return "moves.%s.%s must be finite and non-negative." % [id, key]
+	if move["forward_lunge"] == null:
+		return ""
+	if not move["forward_lunge"] is Dictionary:
+		return "moves.%s.forward_lunge must be an object or null." % id
+	var lunge: Dictionary = move["forward_lunge"]
+	for key in ["distance", "start_phase", "end_phase"]:
+		if not _is_number(lunge.get(key)) or not is_finite(float(lunge[key])):
+			return "moves.%s.forward_lunge.%s must be finite numeric data." % [id, key]
+	if float(lunge["distance"]) < 0.0 or float(lunge["start_phase"]) < 0.0 or float(lunge["end_phase"]) > 1.0 or float(lunge["start_phase"]) >= float(lunge["end_phase"]):
+		return "moves.%s lunge needs non-negative distance and 0 <= start phase < end phase <= 1." % id
+	return ""
+
+
+static func _normalize_attack_styles(data: Dictionary) -> void:
+	if not data.get("moves") is Dictionary:
+		return
+	for school in ["fire", "water", "air", "earth"]:
+		for position in range(1, 6):
+			var id := "%s_x%d" % [school, position]
+			if not data["moves"].get(id) is Dictionary:
+				continue
+			var move: Dictionary = data["moves"][id]
+			for key in Style.DEFAULTS:
+				if not move.has(key):
+					move[key] = Style.DEFAULTS[key]
+			if move.get("forward_lunge") == null:
+				move["forward_lunge"] = Style.LUNGE_DEFAULTS.duplicate()

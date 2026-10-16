@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3]
+[gd_scene load_steps=43 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" path="res://scripts/player/movement_controller.gd" id="2_movement"]
@@ -26,10 +26,320 @@ radius = 18.0
 [sub_resource type="Animation" id="Animation_attack_clock"]
 resource_name = "attack_clock"
 length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_fire_x1"]
+resource_name = "fire_x1"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_fire_x2"]
+resource_name = "fire_x2"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_fire_x3"]
+resource_name = "fire_x3"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_fire_x4"]
+resource_name = "fire_x4"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_fire_x5"]
+resource_name = "fire_x5"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_water_x1"]
+resource_name = "water_x1"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_water_x2"]
+resource_name = "water_x2"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_water_x3"]
+resource_name = "water_x3"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_water_x4"]
+resource_name = "water_x4"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_water_x5"]
+resource_name = "water_x5"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_air_x1"]
+resource_name = "air_x1"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_air_x2"]
+resource_name = "air_x2"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_air_x3"]
+resource_name = "air_x3"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_air_x4"]
+resource_name = "air_x4"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_air_x5"]
+resource_name = "air_x5"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_earth_x1"]
+resource_name = "earth_x1"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_earth_x2"]
+resource_name = "earth_x2"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_earth_x3"]
+resource_name = "earth_x3"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_earth_x4"]
+resource_name = "earth_x4"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_earth_x5"]
+resource_name = "earth_x5"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_player"]
 _data = {
-&"attack_clock": SubResource("Animation_attack_clock")
+&"attack_clock": SubResource("Animation_attack_clock"),
+&"fire_x1": SubResource("Animation_fire_x1"),
+&"fire_x2": SubResource("Animation_fire_x2"),
+&"fire_x3": SubResource("Animation_fire_x3"),
+&"fire_x4": SubResource("Animation_fire_x4"),
+&"fire_x5": SubResource("Animation_fire_x5"),
+&"water_x1": SubResource("Animation_water_x1"),
+&"water_x2": SubResource("Animation_water_x2"),
+&"water_x3": SubResource("Animation_water_x3"),
+&"water_x4": SubResource("Animation_water_x4"),
+&"water_x5": SubResource("Animation_water_x5"),
+&"air_x1": SubResource("Animation_air_x1"),
+&"air_x2": SubResource("Animation_air_x2"),
+&"air_x3": SubResource("Animation_air_x3"),
+&"air_x4": SubResource("Animation_air_x4"),
+&"air_x5": SubResource("Animation_air_x5"),
+&"earth_x1": SubResource("Animation_earth_x1"),
+&"earth_x2": SubResource("Animation_earth_x2"),
+&"earth_x3": SubResource("Animation_earth_x3"),
+&"earth_x4": SubResource("Animation_earth_x4"),
+&"earth_x5": SubResource("Animation_earth_x5")
 }
 
 [sub_resource type="Shader" id="Shader_outline"]
@@ -123,6 +433,7 @@ stream = ExtResource("16_hit_reaction")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 2
 libraries = {
 &"": SubResource("AnimationLibrary_player")
 }

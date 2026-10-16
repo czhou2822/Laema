@@ -23,3 +23,7 @@ Do not restart presentation work without a new user request.
 - User confirmed Polish deck presentation's department on 2026-10-12; round 01a0d132-35ce-77b2-be77-d49767b71805 was read. Keep that task's identity independent from Marketing.
 - Current user decisions and docs/GAME_DESIGN.md outrank historical handoffs.
 - No gameplay, runtime, installation or art acceptance is inferred.
+
+## Archived reference update — 2026-10-16
+
+Polish deck presentation is now archived on this host. Its task note remains in the previous checkpoint as reference and is not recreated or restored. The earlier HTML/PowerPoint exports inside output/presentation-space-2026-10-13 are preserved in the current complete candidate scope; the cloud presentation Page remains a separate copy. No new pitch development or marketing approval is inferred. Archive metadata was read; its archived conversation was not reopened.

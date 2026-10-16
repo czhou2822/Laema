@@ -2,6 +2,8 @@ class_name MightComponent
 extends Node
 
 const CombatOutcomeResource = preload("res://scripts/combat/combat_outcome.gd")
+const ImpactProbe = preload("res://scripts/debug/impact_probe.gd")
+const Style = preload("res://scripts/combat/attack_style.gd")
 
 signal movement_lock_changed(locked: bool)
 signal active_school_changed(school: StringName)
@@ -61,6 +63,8 @@ func configure(
 	_input_combo = input_combo
 	_magic = magic
 	_heat = heat
+	# Player input and the existing Movement node run first; queries see moved bodies.
+	process_physics_priority = 1
 	_animation_player.animation_finished.connect(_on_animation_finished)
 	_heat.heat_changed.connect(_on_heat_changed)
 	apply_runtime_tuning()
@@ -70,26 +74,39 @@ func configure(
 func apply_runtime_tuning() -> void:
 	if _config.is_empty() or _animation_player == null or _attack_cast == null:
 		return
-	var clock: Animation = _animation_player.get_animation(&"attack_clock")
-	clock.length = float(_config["combat"]["attack_duration"])
 	var cast_shape := _attack_cast.shape as CircleShape2D
 	cast_shape.radius = float(_config["combat"]["shape_radius"])
 	_refresh_action_speed()
 
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if _state != State.COMBO_ACTIVE or _current_action.is_empty() or not _animation_player.is_playing():
 		return
-	var progress := get_normalized_attack_progress()
-	var combat_config: Dictionary = _config["combat"]
-	if _current_action["kind"] == &"light":
-		if not _hit_emitted and progress >= float(combat_config["hit_phase"]):
+	var clock: Animation = _animation_player.get_animation(_animation_player.current_animation)
+	var contact_time := clock.get_marker_time(&"contact")
+	var time := _animation_player.current_animation_position
+	_refresh_action_speed()
+	var speed := _animation_player.speed_scale
+	var action_id := int(_current_action["source_action_id"])
+	var needs_contact := not _hit_emitted if _current_action["kind"] == &"light" else not _launch_emitted
+	var advanced := 0.0
+	# Visit the contact marker even if a fast frame would cross animation end.
+	if speed > 0.0 and ((needs_contact and time >= contact_time) or (time < contact_time and time + delta * speed >= contact_time)):
+		advanced = clampf((contact_time - time) / speed, 0.0, delta)
+		_animation_player.advance(advanced)
+		if needs_contact and _current_action["kind"] == &"light":
 			_hit_emitted = true
 			_perform_light_hit_query()
-	elif not _launch_emitted and progress >= float(combat_config["hit_phase"]):
-		_launch_emitted = true
-		_emit_projectile_launch()
-	_window_open = progress >= float(combat_config["input_window_start"])
+		elif needs_contact:
+			_launch_emitted = true
+			_emit_projectile_launch()
+	if _state != State.COMBO_ACTIVE or _current_action.is_empty() or int(_current_action["source_action_id"]) != action_id:
+		return
+	_refresh_action_speed()
+	_animation_player.advance(maxf(delta - advanced, 0.0))
+	if _state != State.COMBO_ACTIVE or _current_action.is_empty() or int(_current_action["source_action_id"]) != action_id:
+		return
+	_window_open = get_normalized_attack_progress() >= float(_config["combat"]["input_window_start"])
 	_promote_buffered_request_if_ready()
 
 
@@ -402,7 +419,12 @@ func _commit_cast(empowered: bool, direction: Vector2) -> Dictionary:
 
 
 func _make_light_action(direction: Vector2, school: StringName = &"") -> Dictionary:
+	var attack_school := _active_school if school == &"" else school
+	var position: int = clampi(int(_input_combo.get_current_position()), 1, 5)
+	var move_id := StringName("%s_x%d" % [attack_school, position])
 	return {
+		"move_id": move_id,
+		"hit_targets": [],
 		"kind": &"light",
 		"school": _active_school if school == &"" else school,
 		"direction": direction,
@@ -427,6 +449,7 @@ func _make_cast_action(commit_id: int, endpoint: bool, empowered: bool, attempt_
 		"source_action_id": source_action_id,
 	}
 	return {
+		"move_id": &"cast",
 		"kind": classification,
 		"school": StringName(payload["primary_school"]),
 		"direction": payload["direction"],
@@ -444,8 +467,14 @@ func _start_action(action: Dictionary) -> void:
 	_window_open = false
 	_hit_emitted = false
 	_launch_emitted = false
+	var move: Dictionary = _config["moves"][String(action["move_id"])]
+	if action["kind"] == &"light":
+		_current_action["style"] = Style.capture(move, _config["combat"])
+		_current_action["lunge_fraction"] = 0.0
+	ImpactProbe.record("action_started", {"actor": str(_owner_entity.get_path()), "move_id": action["move_id"], "action_id": action.get("source_action_id", 0), "impact": move["impact"]})
+	_animation_player.play(StringName(move["animation"]))
 	_refresh_action_speed()
-	_animation_player.play(&"attack_clock")
+	_animation_player.advance(0.0)
 	var action_facts := {"kind": action["kind"], "school": action["school"], "position": _input_combo.get_current_position()}
 	if action.has("attempt_id"):
 		action_facts["attempt_id"] = action["attempt_id"]
@@ -461,8 +490,11 @@ func _start_action(action: Dictionary) -> void:
 
 func _perform_light_hit_query() -> void:
 	var direction: Vector2 = _current_action["direction"]
-	_attack_cast.target_position = direction.normalized() * float(_config["combat"]["shape_reach"])
+	var profile: Dictionary = _current_action["style"]
+	(_attack_cast.shape as CircleShape2D).radius = float(profile["shape_radius"])
+	_attack_cast.target_position = direction.normalized() * float(profile["shape_reach"])
 	_attack_cast.force_shapecast_update()
+	ImpactProbe.record("contact_query", {"actor": str(_owner_entity.get_path()), "move_id": _current_action["move_id"], "action_id": _current_action["source_action_id"], "collisions": _attack_cast.get_collision_count()})
 	var hits: Array[Dictionary] = []
 	var seen: Dictionary = {}
 	for index in range(_attack_cast.get_collision_count()):
@@ -483,14 +515,30 @@ func _perform_light_hit_query() -> void:
 		_publish_outcome(&"light_contact_resolved", {"result": &"miss", "school": _current_action["school"], "position": _input_combo.get_current_position()})
 		_trace(&"light_contact_resolved", {"result": "miss", "school": _current_action["school"], "position": _input_combo.get_current_position()})
 		return
-	var every_target_fully_resisted := true
+	var action: Dictionary = _current_action.duplicate(true)
+	var move: Dictionary = _config["moves"][String(action["move_id"])]
+	var applied_contact := false
+	var generates_orb := false
 	for hit in hits:
-		var event := HealthEvent.damage(_owner_entity, hit["target"], float(_config["combat"]["light_damage"]), int(_config["combat"]["direct_impact"]), HealthEvent.Delivery.DIRECT, StringName(_current_action["school"]), {}, direction, hit["contact_point"], int(_current_action.get("source_action_id", 0)), [StringName(_current_action["school"])])
+		if _current_action.is_empty() or int(_current_action.get("source_action_id", -1)) != int(action["source_action_id"]):
+			return
+		var event := HealthEvent.damage(_owner_entity, hit["target"], float(_config["combat"][move["damage_key"]]), int(move["impact"]), HealthEvent.Delivery.DIRECT, StringName(action["school"]), {}, direction, hit["contact_point"], int(action["source_action_id"]), [StringName(action["school"])])
+		event.melee_contact = true
+		event.push_scale = float(profile["push_scale"])
+		ImpactProbe.record("contact_event", {"actor": str(_owner_entity.get_path()), "move_id": action["move_id"], "action_id": event.source_action_id, "target": str(event.target.get_path()), "impact": event.impact, "target_poise": event.target.get_poise()})
 		var result: HealthResult = hit["target"].receive_health_event(event)
-		if result.resolution_tag != &"elemental_endurance_full_resist":
-			every_target_fully_resisted = false
-	if not every_target_fully_resisted:
-		_magic.add_orb(StringName(_current_action["school"]))
+		if result.outcome == HealthResult.Outcome.APPLIED:
+			if not _current_action.is_empty():
+				_current_action["hit_targets"].append(hit["target"].get_instance_id())
+			applied_contact = true
+			if result.resolution_tag != &"elemental_endurance_full_resist":
+				generates_orb = true
+	if _current_action.is_empty():
+		return
+	if generates_orb:
+		_magic.add_orb(StringName(action["school"]))
+	if not applied_contact:
+		return
 	_publish_outcome(&"light_contact_resolved", {"result": &"hit", "school": _current_action["school"], "position": _input_combo.get_current_position(), "target_count": hits.size()})
 	_trace(&"light_contact_resolved", {"result": "hit", "school": _current_action["school"], "position": _input_combo.get_current_position(), "target_count": hits.size()})
 
@@ -505,7 +553,7 @@ func _emit_projectile_launch() -> void:
 
 
 func _on_animation_finished(animation_name: StringName) -> void:
-	if animation_name != &"attack_clock" or _state != State.COMBO_ACTIVE:
+	if _current_action.is_empty() or animation_name != StringName(_config["moves"][String(_current_action["move_id"])]["animation"]) or _state != State.COMBO_ACTIVE:
 		return
 	_trace(&"action_finished", {"kind": _current_action.get("kind", &""), "school": _current_action.get("school", &""), "pending_action": not _pending_action.is_empty(), "marking_state_active": _magic.has_active_marking_state()})
 	_publish_outcome(&"action_finished", {"kind": _current_action.get("kind", &""), "school": _current_action.get("school", &"")})
@@ -659,7 +707,32 @@ func _is_functional_school(school: StringName) -> bool:
 
 func _refresh_action_speed() -> void:
 	if _animation_player != null:
-		_animation_player.speed_scale = _heat.get_speed_multiplier()
+		var duration := float(_config["combat"]["attack_duration"])
+		var clock: Animation = _animation_player.get_animation(_animation_player.current_animation if _animation_player.current_animation != &"" else &"attack_clock")
+		if _current_action.get("kind") == &"light" and _current_action.has("style"):
+			_animation_player.speed_scale = Style.phase_speed(clock, _current_action["style"], _animation_player.current_animation_position, _heat.get_speed_multiplier())
+		else:
+			_animation_player.speed_scale = _heat.get_speed_multiplier() * clock.length / duration
+
+
+func consume_attack_body_motion(delta: float) -> Vector2:
+	if _state != State.COMBO_ACTIVE or _current_action.get("kind") != &"light" or not _animation_player.is_playing():
+		return Vector2.ZERO
+	var profile: Dictionary = _current_action["style"]
+	var lunge: Dictionary = profile["forward_lunge"]
+	var clock: Animation = _animation_player.get_animation(_animation_player.current_animation)
+	var predicted := Style.predict_time(clock, profile, _animation_player.current_animation_position, delta, _heat.get_speed_multiplier())
+	var fraction := Style.lunge_fraction(predicted / clock.length, lunge)
+	var step := maxf(fraction - float(_current_action["lunge_fraction"]), 0.0)
+	_current_action["lunge_fraction"] = fraction
+	# Blocked displacement is consumed, so walls cannot store up a later burst.
+	return Vector2(signf(Vector2(_current_action["direction"]).x) * float(lunge["distance"]) * step, 0.0)
+
+
+func get_attack_geometry() -> Dictionary:
+	if _current_action.get("kind") == &"light":
+		return _current_action["style"]
+	return _config["combat"]
 
 
 func _on_heat_changed(_value: float, _level: int, _speed_multiplier: float) -> void:
@@ -690,3 +763,45 @@ func _publish_outcome(kind: StringName, facts: Dictionary = {}) -> void:
 func _trace(event_name: StringName, data: Dictionary) -> void:
 	if OS.is_debug_build():
 		print("[TRACE][COMBAT] %s %s" % [event_name, data])
+
+
+func get_melee_snapshot() -> Dictionary:
+	if _state != State.COMBO_ACTIVE or _current_action.is_empty() or _current_action["kind"] != &"light":
+		return {}
+	var move: Dictionary = _config["moves"][String(_current_action["move_id"])]
+	var clock: Animation = _animation_player.get_animation(StringName(move["animation"]))
+	var time := _animation_player.current_animation_position
+	return {
+		"active": _animation_player.is_playing() and time >= clock.get_marker_time(&"active_start") and time <= clock.get_marker_time(&"active_end"),
+		"move_id": _current_action["move_id"],
+		"impact": int(move["impact"]),
+		"damage": float(_config["combat"]["light_damage"]),
+		"school": _current_action["school"],
+		"action_id": _current_action["source_action_id"],
+		"composition": [_current_action["school"]],
+		"hit_targets": _current_action["hit_targets"].duplicate(),
+		"push_scale": float(_current_action["style"]["push_scale"]),
+	}
+
+
+func on_clash_contact_resolved(result: HealthResult) -> void:
+	if result.outcome != HealthResult.Outcome.APPLIED or _current_action.is_empty():
+		return
+	if int(_current_action.get("source_action_id", -1)) != result.event.source_action_id or _hit_emitted:
+		return
+	_hit_emitted = true
+	_current_action["hit_targets"].append(result.event.target.get_instance_id())
+	if result.resolution_tag != &"elemental_endurance_full_resist":
+		_magic.add_orb(StringName(_current_action["school"]))
+	_publish_outcome(&"light_contact_resolved", {"result": &"hit", "school": _current_action["school"], "position": _input_combo.get_current_position(), "target_count": 1})
+
+
+func is_hit_reacting() -> bool:
+	return _state == State.HIT_REACTING
+
+
+func get_contact_phase() -> float:
+	if _current_action.is_empty():
+		return 0.0
+	var clock: Animation = _animation_player.get_animation(StringName(_config["moves"][String(_current_action["move_id"])]["animation"]))
+	return clock.get_marker_time(&"contact") / clock.length

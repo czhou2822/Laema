@@ -1,0 +1,929 @@
+{
+  "schema_version": 4,
+  "checkpoint_id": "2026-10-16-game-feel",
+  "previous_manifest": "docs/checkpoints/2026-10-12-game-feel-limboai/manifest.json",
+  "project_id": "66d70521-6484-4bf3-b170-ba142e9e0ad9",
+  "repository": "czhou2822/Laema",
+  "capture_host": {
+    "computer_name": "SHA-WKS-AD586",
+    "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+    "timezone": "Asia/Hong_Kong",
+    "date": "2026-10-16"
+  },
+  "source_commit": "8043baf7e2096381817897c849133eedf5c9543e",
+  "source_was_dirty": true,
+  "progress_uid_algorithm": "sha256 of UTF-8 JSON array of ordered {role,text} user/assistant messages from the latest completed round; no tool outputs or reasoning",
+  "discovery": {
+    "status": "partial",
+    "listed_project_tasks": 8,
+    "read_unarchived_bindings": 13,
+    "message": "Native listing is capped at 50. Project-specific metadata pagination failed; previous known bindings were read directly after archive exclusion. Archive listing was exhausted. Other undiscovered tasks are not assumed absent."
+  },
+  "tasks": [
+    {
+      "task_key": "combat",
+      "canonical_title": "Combat",
+      "aliases": [
+        "Combat"
+      ],
+      "changed": true,
+      "summary": "Accepted receiving-side Impact/Poise and active-move formula, exact 0/0 Player tie, configurable level ranges and later physical reactions supersede the old sprite-only/non-interruption baseline. Latest request sends accurate legacy/new-reaction tooltip definitions and default level bands to the iteration-tools task. User gameplay validation remains scoped.",
+      "latest_turn_id": "01a13ec4-bec9-7620-9d7d-435d666c0b69",
+      "progress_uid": "sha256:66abfe86e6251ac1c62a4e94e080d51795fb0d3ae5f2cc10e06c8393fe11d455",
+      "task_file": "combat.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f71-17fd-7171-9f63-5859c0a9797d",
+        "title": "Combat",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1792054479,
+        "latest_visible_updated_at": 1792054479
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a0150a-3101-7611-910e-4e9dc6d55728",
+          "title": "Combat",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f79-c6cd-7a60-9b82-7f0c92044aee",
+          "progress_uid": "sha256:5a3439eb25997fbdefd281e073cd273388e437ec2d0a0cddfaa9bee31b458338",
+          "latest_completed_at": 1788954503
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f71-17fd-7171-9f63-5859c0a9797d",
+          "title": "Combat",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1788845134,
+          "latest_visible_updated_at": 1789517563,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a07f79-c6cd-7a60-9b82-7f0c92044aee",
+          "progress_uid": "sha256:5a3439eb25997fbdefd281e073cd273388e437ec2d0a0cddfaa9bee31b458338"
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f71-17fd-7171-9f63-5859c0a9797d",
+          "title": "Combat",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "idle",
+          "latest_completed_at": 1791792119,
+          "latest_visible_updated_at": 1791792119,
+          "checkpoint": "2026-10-12-game-feel-limboai",
+          "latest_turn_id": "01a12f1d-0d8a-79a1-a2a0-0420efee312b",
+          "progress_uid": "sha256:01903af1b35a21c0c0edb9299c95a5dda62a04a07054acdf41e59d7b8e3acee8"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "combat",
+      "read_coverage": {
+        "turns_read": 6,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User named this existing compartment; migrated its matching established department room."
+    },
+    {
+      "task_key": "production_manager",
+      "canonical_title": "Production Manager",
+      "aliases": [
+        "PM",
+        "Production Manager"
+      ],
+      "changed": true,
+      "summary": "Complete checkpoint requested after the handoff Page was created. Capture current combat/tuning/Gym, Dev Portal, school-style and art candidates, plus confirmed independent task identities. Production Manager remains standalone; checkpoint publication is separate from gameplay acceptance and live export.",
+      "latest_turn_id": "01a14385-5704-7d10-9425-ecb92d335fdc",
+      "latest_round_status": "completed",
+      "progress_uid": "sha256:8d8effbaea76974585a8d9bca4652a6d66742a245b3282b55369f00d5534675a",
+      "task_file": "production-manager.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e",
+        "title": "Production Manager",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "active",
+        "latest_completed_at": 1792135193,
+        "latest_visible_updated_at": 1792136226
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a014f7-f5ea-7e70-9474-117c6ca3728d",
+          "title": "Production Manager",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a0a778-f5ed-7090-a0f1-db7e1fae87d6",
+          "progress_uid": "sha256:49fb4ee286085c8aacaf1d2d8aa27d9c8fb3013a5a7a13606501e388769740a8",
+          "latest_completed_at": 1789549016
+        },
+        {
+          "checkpoint": "2026-09-16-pitch-release",
+          "host_id": "local",
+          "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e",
+          "title": "Production Manager",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "active",
+          "latest_turn_id": "01a0a8c4-a8ea-7712-8e46-66684bb61327",
+          "progress_uid": "sha256:pm-01a0a8c4-a8ea-7712-8e46-66684bb61327",
+          "latest_completed_at": 1789537884
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e",
+          "title": "Production Manager",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "active",
+          "latest_completed_at": 1789543260,
+          "latest_visible_updated_at": 1790212308,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a912-2c44-7190-8099-bf9798ffe7cb",
+          "progress_uid": "sha256:3166eae65523dd2c330c7ae7149b86e9e0a3886c22b1c61d70ce9ad6617e9c20"
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a01766-1781-7800-a3cb-fc38aca5bb1e",
+          "title": "Production Manager",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "active",
+          "latest_completed_at": 1791793519,
+          "latest_visible_updated_at": 1791793796,
+          "checkpoint": "2026-10-12-game-feel-limboai",
+          "latest_turn_id": "01a12f24-e37c-7c73-b364-ac9de03f8a2e",
+          "progress_uid": "sha256:84fd6485553fe22b524c97d4f78dda7dd1e5d23ffa36f650fec6a366a61b5243"
+        }
+      ],
+      "department_key": null,
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User explicitly kept Production Manager as its own standalone coordination position on 2026-10-12.",
+      "position_key": "production_manager",
+      "captured_in_progress_turn_id": "01a143a3-9342-7311-91e4-e9407c7e5952"
+    },
+    {
+      "task_key": "feedback_notes",
+      "aliases": [
+        "Random notes: feedback"
+      ],
+      "binding_history": [],
+      "canonical_title": "Random notes: feedback",
+      "latest_turn_id": "01a1383d-8a1b-7240-b5c5-c257b8a0213d",
+      "latest_round_status": "completed",
+      "progress_uid": "sha256:f6e5dedce513a34919330b3e8032f892634ab14da30ad5632c478b31157328f3",
+      "changed": true,
+      "summary": "Record-only random notes identify a mismatch between desired in-combat Casts and the four-school FIFO/lifetime orb queue, and record an idea to prototype representative HoMM spells. No rule change or specific spell implementation is approved; do not analyze, question or extend notes in this task.",
+      "task_file": "feedback-notes.md",
+      "department_key": "combat",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a13833-9b9c-7641-89ff-908a3c391812",
+        "title": "Random notes: feedback",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1791944927,
+        "latest_visible_updated_at": 1791944927
+      },
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": false,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User explicitly confirmed the suggested mapping for Random notes: feedback → combat on 2026-10-16."
+    },
+    {
+      "task_key": "dead_cells_attack_styles",
+      "aliases": [
+        "RAE dead cell"
+      ],
+      "binding_history": [],
+      "canonical_title": "RAE dead cell",
+      "latest_turn_id": "01a142e1-725b-7962-89b0-3017cf61d1e2",
+      "latest_round_status": "completed",
+      "progress_uid": "sha256:7caf7947845acb7cb53c94abe30ec709e9321efe0ce19a4986db7fe4fd354af7",
+      "changed": true,
+      "summary": "User approved implementing four school melee styles with current animations while retaining the five-position chain and Casting rules. All 20 X moves have JSON/Inspector/Dev Portal timing, geometry, lunge and qualifying-reaction push tuning. Task reports 437 isolated checks; numerical presets and interactive feel remain provisional.",
+      "task_file": "dead-cells-attack-styles.md",
+      "department_key": "combat",
+      "department_assignment_evidence": "User explicitly assigned this independent task to Combat on 2026-10-16. Current local binding: 01a14283-95da-78a3-9b36-8ed8e0cfb7c1; title read from the host task list.",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a14283-95da-78a3-9b36-8ed8e0cfb7c1",
+        "title": "RAE dead cell",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1792124930,
+        "latest_visible_updated_at": 1792124930
+      },
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      }
+    },
+    {
+      "task_key": "art",
+      "canonical_title": "Art",
+      "aliases": [
+        "Art"
+      ],
+      "changed": true,
+      "summary": "User selected original HMM3 extracted assets as visual-style authority over generated interpretations. Textured direction A, a lit seam, four-school colors and provisional sword joining/extension directions carry forward. Static native-scale sample is ready; animation, exact scale, transformation and final acceptance remain open.",
+      "latest_turn_id": "01a142d5-87a9-78a0-9157-61979966c377",
+      "progress_uid": "sha256:185ca047c9670b4201af8d0be83e99d15affd384f5d0fe2d57d315b6fc634a1f",
+      "task_file": "art.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a01d0a-ced6-77c0-a98a-e94ec3c5c10e",
+        "title": "Art",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1792123104,
+        "latest_visible_updated_at": 1792123104
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f41-7159-70f1-ac7d-e6217941c130",
+          "title": "Art",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a08947-24f6-79b1-913d-c6a7520a3253",
+          "progress_uid": "sha256:art-latest-completed-01a08947-24f6-79b1-913d-c6a7520a3253",
+          "latest_completed_at": 1789119419
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a01d0a-ced6-77c0-a98a-e94ec3c5c10e",
+          "title": "Art",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789010003,
+          "latest_visible_updated_at": 1789010003,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a08947-24f6-79b1-913d-c6a7520a3253",
+          "progress_uid": "sha256:art-latest-completed-01a08947-24f6-79b1-913d-c6a7520a3253"
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a01d0a-ced6-77c0-a98a-e94ec3c5c10e",
+          "title": "Art",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "idle",
+          "latest_completed_at": 1789010003,
+          "latest_visible_updated_at": 1791792353,
+          "checkpoint": "2026-10-12-game-feel-limboai",
+          "latest_turn_id": "01a08947-24f6-79b1-913d-c6a7520a3253",
+          "progress_uid": "sha256:d3d68ab31efadc6b305b082573887e758dbaf27ee8fb8b883d467a5d94914eb7"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "art",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User named this existing compartment; migrated its matching established department room."
+    },
+    {
+      "task_key": "hmm3_reference_assets",
+      "aliases": [
+        "HMM3"
+      ],
+      "binding_history": [],
+      "canonical_title": "HMM3",
+      "latest_turn_id": "01a142c0-c694-72d3-9275-daad502664c0",
+      "latest_round_status": "completed",
+      "progress_uid": "sha256:f37fca2fd572fa1f9efc432437c055e529ff47c3e21289ccc68051b69af306ca",
+      "changed": true,
+      "summary": "Task reports extracting 39,923 original sprite frames into 3,121 PNG sheets from two archives, with metadata/provenance. The source collection and 414 MB ZIP are outside the Laema repository, so this checkpoint carries their development summary and references but does not copy or publish those external assets.",
+      "task_file": "hmm3-reference-assets.md",
+      "department_key": "art",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a142bd-e72a-7f03-b3fb-1b28d222492b",
+        "title": "HMM3",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1792121813,
+        "latest_visible_updated_at": 1792121813
+      },
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User explicitly confirmed the suggested mapping for HMM3 → art on 2026-10-16."
+    },
+    {
+      "task_key": "iteration_tools",
+      "aliases": [
+        "Improve Laema iteration tools"
+      ],
+      "binding_history": [],
+      "canonical_title": "Improve Laema iteration tools",
+      "latest_turn_id": "01a14292-308e-7401-b625-73e839f01d15",
+      "latest_round_status": "completed",
+      "progress_uid": "sha256:c0ef260c04b135aa1563c737e6250497423cd71e69fcf692da18b588f8d21967",
+      "changed": true,
+      "summary": "Implemented shared native editor/runtime Dev Portal, JSON-authoritative persistence and conflict protection, reaction-level/series controls, standalone refillable-Enemy Gym, pause/restart and formula display. Latest correction unifies Developer Overlay Visible/F4 for telemetry and formula. Task reports 221 engine checks; interactive usability and feel remain for user validation.",
+      "task_file": "iteration-tools.md",
+      "department_key": "combat",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a13d51-3252-7470-b60f-5d9d1f52c1aa",
+        "title": "Improve Laema iteration tools",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1792118661,
+        "latest_visible_updated_at": 1792118661
+      },
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User explicitly confirmed the suggested mapping for Improve Laema iteration tools → combat on 2026-10-16."
+    },
+    {
+      "task_key": "dummy",
+      "canonical_title": "DUM.E",
+      "aliases": [
+        "Dummy"
+      ],
+      "changed": true,
+      "summary": "The existing independent Dummy execution task is now displayed as DUM.E, with the same binding/task key. It implemented the qualifying-reaction/Inspector-Portal candidate and latest user tuning sets durations 0.6/0.9/1.2/1.5/1.8 seconds, preserving distances. Current source and later isolated engine checks are recorded separately from human gameplay acceptance.",
+      "latest_turn_id": "01a1396d-5770-7693-a892-c9c6b251112e",
+      "progress_uid": "sha256:2daa6aebceb1f32605c97e86ceae80af3ac4d4ec7a8fdc0cdde49b2e2bc5e268",
+      "task_file": "dummy.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f71-ffdf-7160-bb0d-8ff06a78a0af",
+        "title": "DUM.E",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1791964913,
+        "latest_visible_updated_at": 1792028402
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a02eea-fb2f-7c32-aa95-5aed9642a14b",
+          "title": "Dummy",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f7a-35fa-78a3-9f7b-87a8c7a5fbf1",
+          "progress_uid": "sha256:28163f26fada01e05c2b502987ff69947a09feb1ec06b8c93c48f4ed77861d5",
+          "latest_completed_at": 1788954541
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f71-ffdf-7160-bb0d-8ff06a78a0af",
+          "title": "Dummy",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1788845148,
+          "latest_visible_updated_at": 1789517571,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a07f7a-35fa-78a3-9f7b-87a8c7a5fbf1",
+          "progress_uid": "sha256:28163f26fada01e05c2b502987ff69947a09feb1ecf06b8c93c48f4ed77861d5"
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f71-ffdf-7160-bb0d-8ff06a78a0af",
+          "title": "Dummy",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "idle",
+          "latest_completed_at": 1788845148,
+          "latest_visible_updated_at": 1791792368,
+          "checkpoint": "2026-10-12-game-feel-limboai",
+          "latest_turn_id": "01a07f7a-35fa-78a3-9f7b-87a8c7a5fbf1",
+          "progress_uid": "sha256:490379ca5580d8aa892cb8ca21dd26c482675cd27b7bd844716c561f43e6748b"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "combat",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User confirmed Dummy belongs to combat on 2026-10-12."
+    },
+    {
+      "task_key": "marketing",
+      "canonical_title": "Marketing",
+      "aliases": [
+        "Marketing"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a0a78f-54d3-7fe0-9611-bbca2cc04779",
+      "progress_uid": "sha256:0f078e1ef1a850075e10323869b7c604c6f10e59e18c27ed40eacd6bb9c8d68f",
+      "task_file": "marketing.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a03c62-0713-7f72-9237-38ed6e1b42d1",
+        "title": "Marketing",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1789517793,
+        "latest_visible_updated_at": 1791792339
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f41-8b3c-70f1-ae94-6f829627eb7f",
+          "title": "Marketing",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a09d98-4b37-7980-83d0-2179d36aae95",
+          "progress_uid": "sha256:8d76d84b4398bb0185e002ddfef02e075da23cd47ce5c802085562fb33297eed",
+          "latest_completed_at": 1789350404
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a03c62-0713-7f72-9237-38ed6e1b42d1",
+          "title": "Marketing",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789517793,
+          "latest_visible_updated_at": 1789517793,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a78f-54d3-7fe0-9611-bbca2cc04779",
+          "progress_uid": "sha256:0f078e1ef1a850075e10323869b7c604c6f10e59e18c27ed40eacd6bb9c8d68f"
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a03c62-0713-7f72-9237-38ed6e1b42d1",
+          "title": "Marketing",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "idle",
+          "latest_completed_at": 1789517793,
+          "latest_visible_updated_at": 1791792339,
+          "checkpoint": "2026-10-12-game-feel-limboai",
+          "latest_turn_id": "01a0a78f-54d3-7fe0-9611-bbca2cc04779",
+          "progress_uid": "sha256:0f078e1ef1a850075e10323869b7c604c6f10e59e18c27ed40eacd6bb9c8d68f"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "marketing",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User named this existing compartment; migrated its matching established department room."
+    },
+    {
+      "task_key": "town_design",
+      "canonical_title": "Town Design",
+      "aliases": [
+        "Town Design"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a0a78f-6707-79b1-9d1a-996f9fd46088",
+      "progress_uid": "sha256:0cb0ea7403db0fe660fe08aa0c85eb8a43ca0efb1e1c47a4b9392b50338f1203",
+      "task_file": "town-design.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a018cb-7c14-7fe2-af09-569b2f3faf97",
+        "title": "Town Design",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1789517663,
+        "latest_visible_updated_at": 1791792332
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f43-9652-7530-b974-61197ada0e59",
+          "title": "Town Design",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a09ae7-50d6-7e63-9fb0-1b76f0f64009",
+          "progress_uid": "sha256:68421bca53979da1227ba6f1a93bd20d06c952456adc0fd7337280ce69e032ef",
+          "latest_completed_at": 1789305251
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a018cb-7c14-7fe2-af09-569b2f3faf97",
+          "title": "Town Design",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789517663,
+          "latest_visible_updated_at": 1789517663,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a78f-6707-79b1-9d1a-996f9fd46088",
+          "progress_uid": "sha256:0cb0ea7403db0fe660fe08aa0c85eb8a43ca0efb1e1c47a4b9392b50338f1203"
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a018cb-7c14-7fe2-af09-569b2f3faf97",
+          "title": "Town Design",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "idle",
+          "latest_completed_at": 1789517663,
+          "latest_visible_updated_at": 1791792332,
+          "checkpoint": "2026-10-12-game-feel-limboai",
+          "latest_turn_id": "01a0a78f-6707-79b1-9d1a-996f9fd46088",
+          "progress_uid": "sha256:0cb0ea7403db0fe660fe08aa0c85eb8a43ca0efb1e1c47a4b9392b50338f1203"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "town_design",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User named this existing compartment; migrated its matching established department room."
+    },
+    {
+      "task_key": "narrative_room",
+      "canonical_title": "Narrative Room",
+      "aliases": [
+        "NarrativeRoom",
+        "Narrative Room"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a0a78f-74ea-7a60-8da4-c98743dc40c1",
+      "progress_uid": "sha256:aaef6c6bdad0088358ffb78055a37dbe989fbbc1c8425c6c18e004be1861a47c",
+      "task_file": "narrative-room.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f74-0257-74a1-9259-e472228e5b2c",
+        "title": "Narrative Room",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1789517738,
+        "latest_visible_updated_at": 1791792327
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a014f2-6363-7c20-b67e-1d80689ff86e",
+          "title": "Narrative Room",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a09aeb-7f71-7b42-ba55-9d88cc61fadc",
+          "progress_uid": "sha256:537e2109f647f4dee9833bae9b4b8ba02d715fff847dba8ec61a0c64263d6761",
+          "latest_completed_at": 1789305534
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f74-0257-74a1-9259-e472228e5b2c",
+          "title": "Narrative Room",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789517738,
+          "latest_visible_updated_at": 1789517738,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a78f-74ea-7a60-8da4-c98743dc40c1",
+          "progress_uid": "sha256:aaef6c6bdad0088358ffb78055a37dbe989fbbc1c8425c6c18e004be1861a47c"
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f74-0257-74a1-9259-e472228e5b2c",
+          "title": "Narrative Room",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "idle",
+          "latest_completed_at": 1789517738,
+          "latest_visible_updated_at": 1791792327,
+          "checkpoint": "2026-10-12-game-feel-limboai",
+          "latest_turn_id": "01a0a78f-74ea-7a60-8da4-c98743dc40c1",
+          "progress_uid": "sha256:aaef6c6bdad0088358ffb78055a37dbe989fbbc1c8425c6c18e004be1861a47c"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "narrative",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User named this existing compartment; migrated its matching established department room."
+    },
+    {
+      "task_key": "audio",
+      "canonical_title": "Laema Audio",
+      "aliases": [
+        "Audio",
+        "Laema Audio"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a07f7a-5b52-7573-bfb7-005f326d3660",
+      "progress_uid": "sha256:4e0e93b7534d74e0bdfcd5706e8c9cc2c1c2ed6942b306482f7d3fd724e68351",
+      "task_file": "audio.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a07f73-b9b0-75e1-bc7d-6d91e6d5270b",
+        "title": "Laema Audio",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788845146,
+        "latest_visible_updated_at": 1791792363
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a02e1a-babc-7200-991f-d48f8f4bf4f2",
+          "title": "Laema Audio",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f7a-5b52-7573-bfb7-005f326d3660",
+          "progress_uid": "sha256:370a585ff06274e57976e740c383efc283e51b5ea0e35e9e1757b94f8c7d42af",
+          "latest_completed_at": 1788954502
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f73-b9b0-75e1-bc7d-6d91e6d5270b",
+          "title": "Laema Audio",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1788845146,
+          "latest_visible_updated_at": 1789517556,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a07f7a-5b52-7573-bfb7-005f326d3660",
+          "progress_uid": "sha256:370a585ff06274e57976e740c383efc283e51b5ea0e35e9e1757b94f8c7d42af"
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a07f73-b9b0-75e1-bc7d-6d91e6d5270b",
+          "title": "Laema Audio",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "idle",
+          "latest_completed_at": 1788845146,
+          "latest_visible_updated_at": 1791792363,
+          "checkpoint": "2026-10-12-game-feel-limboai",
+          "latest_turn_id": "01a07f7a-5b52-7573-bfb7-005f326d3660",
+          "progress_uid": "sha256:4e0e93b7534d74e0bdfcd5706e8c9cc2c1c2ed6942b306482f7d3fd724e68351"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "audio",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User named this existing compartment; migrated its matching established department room."
+    },
+    {
+      "task_key": "design_overseer",
+      "canonical_title": "Design overseer",
+      "aliases": [
+        "Design Overseer",
+        "Design overseer"
+      ],
+      "changed": false,
+      "summary": "",
+      "latest_turn_id": "01a07f7a-75ca-78f0-bff5-664b8bd71924",
+      "progress_uid": "sha256:7632d3709fb53285e28719fc3f3405128b2d930693b5c0f09fb6961bdf9c0111",
+      "task_file": "design-overseer.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a018d6-9097-7d53-8a42-1fe65472ceb1",
+        "title": "Design overseer",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "notLoaded",
+        "latest_completed_at": 1788845334,
+        "latest_visible_updated_at": 1791792358
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a07f43-a5a4-7f83-a065-dc2f6a4b8c1e",
+          "title": "Design Overseer",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a07f7a-75ca-78f0-bff5-664b8bd71924",
+          "progress_uid": "sha256:ee82eb59d43a11d5de0c28a78e112f42a2476b9c96e5ffc75b4b8ba8a059d360",
+          "latest_completed_at": 1788954574
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a018d6-9097-7d53-8a42-1fe65472ceb1",
+          "title": "Design Overseer",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1788845334,
+          "latest_visible_updated_at": 1789517580,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a07f7a-75ca-78f0-bff5-664b8bd71924",
+          "progress_uid": "sha256:ee82eb59d43a11d5de0c28a78e112f42a2476b9c96e5ffc75b4b8ba8a059d360"
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a018d6-9097-7d53-8a42-1fe65472ceb1",
+          "title": "Design overseer",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "idle",
+          "latest_completed_at": 1788845334,
+          "latest_visible_updated_at": 1791792358,
+          "checkpoint": "2026-10-12-game-feel-limboai",
+          "latest_turn_id": "01a07f7a-75ca-78f0-bff5-664b8bd71924",
+          "progress_uid": "sha256:7632d3709fb53285e28719fc3f3405128b2d930693b5c0f09fb6961bdf9c0111"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "design_overseer",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Actual recent user/assistant development rounds, current canonical records, department context and prior checkpoint. Older unread history remains partial."
+      },
+      "department_assignment_evidence": "User named this existing compartment; migrated its matching established department room."
+    }
+  ],
+  "reference_tasks": [
+    {
+      "task_key": "polish_deck_presentation",
+      "canonical_title": "Polish deck presentation",
+      "aliases": [
+        "Polish deck presentation"
+      ],
+      "changed": true,
+      "summary": "A later task round identified full browser/build/rehearsal QA as historical unfinished pitch work. The user's newer decision closes presentation preparation; preserve the artifacts and keep the task dormant until explicitly resumed.",
+      "latest_turn_id": "01a0d132-35ce-77b2-be77-d49767b71805",
+      "progress_uid": "sha256:b378259b01d501e93877ed12ca195cb67ada971b2c467ad32bce0141f8ab00cc",
+      "task_file": "polish-deck-presentation.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a0a792-c734-7630-830c-5f6c9661d434",
+        "title": "Polish deck presentation",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1790216285,
+        "latest_visible_updated_at": 1791792321
+      },
+      "binding_history": [
+        {
+          "host_id": "local",
+          "thread_id": "01a0a792-c734-7630-830c-5f6c9661d434",
+          "title": "Polish deck presentation",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789540464,
+          "latest_visible_updated_at": 1789540464,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a0a8db-1368-7e13-8994-cc34d31c6d37",
+          "progress_uid": "sha256:b96aa901bf426fb54b872ccc6cbc79edcc620d31654fb49535e464d7d5d7ce5c"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "marketing",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      },
+      "department_assignment_evidence": "User confirmed Polish deck presentation belongs to marketing on 2026-10-12.",
+      "reference_reason": "Task is archived on this host; preserve prior checkpoint context and binding history without reading or restoring its archived conversation.",
+      "previous_task_note": "docs/checkpoints/2026-10-12-game-feel-limboai/polish-deck-presentation.md"
+    },
+    {
+      "task_key": "u",
+      "canonical_title": "U",
+      "aliases": [
+        "U"
+      ],
+      "changed": true,
+      "summary": "No new completed U round. The old progress UID was normalized from the actual last completed user/assistant round; carry the historical Slide 16 repair result without starting new presentation work.",
+      "latest_turn_id": "01a08a11-83e8-7d10-9814-f0c7e6dabdac",
+      "progress_uid": "sha256:b55218ccf5c5e2a7057ff426d556718481ce812ff0e0b97ce04868e24457cd97",
+      "task_file": "u.md",
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a03c06-1c70-7b13-9717-249b021f1cd8",
+        "title": "U",
+        "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1789024034,
+        "latest_visible_updated_at": 1791792347
+      },
+      "binding_history": [
+        {
+          "checkpoint": "2026-09-16-pitch-publication",
+          "host_id": "local",
+          "thread_id": "01a02d6a-8dfd-75f1-8b1f-230ababb3f22",
+          "title": "U",
+          "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+          "status": "notLoaded",
+          "latest_turn_id": "01a08a11-83e8-7d10-9814-f0c7e6dabdac",
+          "progress_uid": "sha256:973bab173bd81948df275142a6221cd0403c653c5642871b7b8c906bbe4d8deb",
+          "latest_completed_at": 1788954658
+        },
+        {
+          "host_id": "local",
+          "thread_id": "01a03c06-1c70-7b13-9717-249b021f1cd8",
+          "title": "U",
+          "checkout": "C:\\Users\\ckzhou\\Documents\\GitHub\\Laema",
+          "status": "notLoaded",
+          "latest_completed_at": 1789024034,
+          "latest_visible_updated_at": 1789517602,
+          "checkpoint": "2026-09-24-complete-save",
+          "latest_turn_id": "01a08a11-83e8-7d10-9814-f0c7e6dabdac",
+          "progress_uid": "sha256:973bab173bd81948df275142a6221cd0403c653c5642871b7b8c906bbe4d8deb"
+        }
+      ],
+      "latest_round_status": "completed",
+      "department_key": "other",
+      "read_coverage": {
+        "turns_read": 3,
+        "has_older": true,
+        "coverage": "Recent task turns plus the prior checkpoint and current department records; older conversation remains partial."
+      },
+      "uid_migration": "Legacy UID normalized from an actual read of the same completed round; does not denote a new interaction or decision.",
+      "department_assignment_evidence": "User confirmed U belongs to other on 2026-10-12.",
+      "reference_reason": "Task is archived on this host; preserve prior checkpoint context and binding history without reading or restoring its archived conversation.",
+      "previous_task_note": "docs/checkpoints/2026-10-12-game-feel-limboai/u.md"
+    }
+  ],
+  "unresolved_saved_tasks": [
+    {
+      "task_key": "build_pitch_deck",
+      "canonical_title": "Build LAEMA pitch deck draft",
+      "aliases": [
+        "Build LAEMA pitch deck draft",
+        "LAEMA pitch deck draft"
+      ],
+      "binding": {
+        "host_id": "local",
+        "thread_id": "01a09dc8-0721-7772-9dda-d08f29012292",
+        "checkout": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema",
+        "status": "idle",
+        "latest_completed_at": 1789516103,
+        "local_read_status": "not_found_on_this_host"
+      },
+      "binding_history": [],
+      "latest_turn_id": "01a0a6fc-411e-7b72-8125-e74df8db9da5",
+      "progress_uid": "sha256:59d5da34b7eac91becd37256931600d4cade234521d0087d57c690702d6fb676",
+      "previous_task_note": "docs/checkpoints/2026-09-24-complete-save/build-pitch-deck.md",
+      "reason": "Saved binding not readable on this host; preserved as reference, not recreated or treated as a current independent task."
+    }
+  ],
+  "carry_gaps": [
+    "The complete original HMM3 sprite export and ZIP reside outside this depot. Their summary/reference is carried; those external files are not part of this Git save."
+  ],
+  "departments": [
+    {
+      "department_key": "combat",
+      "department_file": "departments/combat.md"
+    },
+    {
+      "department_key": "narrative",
+      "department_file": "departments/narrative.md"
+    },
+    {
+      "department_key": "town_design",
+      "department_file": "departments/town_design.md"
+    },
+    {
+      "department_key": "marketing",
+      "department_file": "departments/marketing.md"
+    },
+    {
+      "department_key": "art",
+      "department_file": "departments/art.md"
+    },
+    {
+      "department_key": "design_overseer",
+      "department_file": "departments/design_overseer.md"
+    },
+    {
+      "department_key": "audio",
+      "department_file": "departments/audio.md"
+    },
+    {
+      "department_key": "other",
+      "department_file": "departments/other.md"
+    }
+  ],
+  "department_context_uids": {
+    "combat": "b9bfe9dc8fb9b915bdeed3b510a896346caad2a70b1f6ae0e045f956fd56aeee",
+    "narrative": "016de6d4e584412b06ab402a06042aa2d3400e9a6f64e898f9f453a4025ea750",
+    "town_design": "5d4b96fa24822c72a2bf9f5b6e00b4b6acf98a6378024ab9064e0486ccbf7249",
+    "marketing": "342012c879d830d64ad9a71ae5ab9681db3e8bb7d3eaec9c7a1e370d5b9e76e3",
+    "art": "9754b88c2e3f3e432d1b5df72bf796016119fd74621e5d991814f29e2017e242",
+    "design_overseer": "dd727351a98075efe1f15a1eecb142c41f00c38c2f699e0454b0b3bb0299a345",
+    "audio": "8fdcff42fc4ae25b374f51eba056ccf5d54d04696b1ed5e88f2eaa3a71ac71cc",
+    "other": "6656c6006752e6a18bceedde67b25c79f9f29cdac57537c11170101956b5b2bd"
+  }
+}

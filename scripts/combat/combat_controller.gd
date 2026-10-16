@@ -161,6 +161,8 @@ func resolve_spell_projectile_impact(target: Entity, contact_point: Vector2, pay
 func on_hit_reaction_started() -> void:
 	if _might.consume_failed_cast_reaction():
 		return
+	if _might.is_hit_reacting():
+		return
 	_might.cancel_for_player_hit()
 	_magic.discard_committed_casts(&"player_hit")
 	_defence.force_cancel()
@@ -301,3 +303,21 @@ func _on_guard_broken() -> void:
 
 func _on_parry_window_changed(active: bool) -> void:
 	defence_status_changed.emit("PARRY" if active else "PARRY CLOSED", _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
+
+
+func get_melee_snapshot() -> Dictionary:
+	return _might.get_melee_snapshot()
+
+
+func cancel_combat_attack() -> void:
+	if _might.is_hit_reacting():
+		return
+	on_hit_reaction_started()
+
+
+func on_clash_contact_resolved(result: HealthResult) -> void:
+	_might.on_clash_contact_resolved(result)
+
+
+func get_contact_phase() -> float:
+	return _might.get_contact_phase()

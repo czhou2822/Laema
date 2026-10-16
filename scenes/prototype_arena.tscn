@@ -4,6 +4,156 @@
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://scenes/ui/prototype_hud.tscn" id="3_hud"]
 [ext_resource type="Script" uid="uid://bhvkk2tqxbiou" path="res://scripts/prototype/stage_director.gd" id="4_director"]
+[ext_resource type="Script" uid="uid://d3awtwglwmrfh" path="res://scripts/config/combat_tuning_bridge.gd" id="5_tuning_bridge"]
+[ext_resource type="Script" uid="uid://cvbk41an50p0f" path="res://scripts/config/combat_reaction_level_tuning.gd" id="6_ynxs5"]
+[ext_resource type="Script" uid="uid://cr8r7idv3dq5g" path="res://scripts/config/move_impact_tuning.gd" id="7_4g28w"]
+[ext_resource type="Script" uid="uid://cea1sq3knghe6" path="res://scripts/config/combat_tuning_settings.gd" id="8_3oxd6"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="pause_menu_scene"]
+
+[sub_resource type="Resource" id="Reaction_1"]
+resource_name = "Level 1"
+script = ExtResource("6_ynxs5")
+duration = 1.001
+
+[sub_resource type="Resource" id="Reaction_2"]
+resource_name = "Level 2"
+script = ExtResource("6_ynxs5")
+duration = 0.6
+distance = 10.0
+
+[sub_resource type="Resource" id="Reaction_3"]
+resource_name = "Level 3"
+script = ExtResource("6_ynxs5")
+duration = 0.9
+distance = 15.0
+
+[sub_resource type="Resource" id="Reaction_4"]
+resource_name = "Level 4"
+script = ExtResource("6_ynxs5")
+duration = 1.2
+distance = 20.0
+
+[sub_resource type="Resource" id="Reaction_5"]
+resource_name = "Level 5"
+script = ExtResource("6_ynxs5")
+duration = 1.5
+distance = 25.0
+
+[sub_resource type="Resource" id="Move_air_x1"]
+resource_name = "air_x1"
+script = ExtResource("7_4g28w")
+move_id = &"air_x1"
+
+[sub_resource type="Resource" id="Move_air_x2"]
+resource_name = "air_x2"
+script = ExtResource("7_4g28w")
+move_id = &"air_x2"
+
+[sub_resource type="Resource" id="Move_air_x3"]
+resource_name = "air_x3"
+script = ExtResource("7_4g28w")
+move_id = &"air_x3"
+
+[sub_resource type="Resource" id="Move_air_x4"]
+resource_name = "air_x4"
+script = ExtResource("7_4g28w")
+move_id = &"air_x4"
+
+[sub_resource type="Resource" id="Move_air_x5"]
+resource_name = "air_x5"
+script = ExtResource("7_4g28w")
+move_id = &"air_x5"
+
+[sub_resource type="Resource" id="Move_cast"]
+resource_name = "cast"
+script = ExtResource("7_4g28w")
+move_id = &"cast"
+
+[sub_resource type="Resource" id="Move_earth_x1"]
+resource_name = "earth_x1"
+script = ExtResource("7_4g28w")
+move_id = &"earth_x1"
+
+[sub_resource type="Resource" id="Move_earth_x2"]
+resource_name = "earth_x2"
+script = ExtResource("7_4g28w")
+move_id = &"earth_x2"
+
+[sub_resource type="Resource" id="Move_earth_x3"]
+resource_name = "earth_x3"
+script = ExtResource("7_4g28w")
+move_id = &"earth_x3"
+
+[sub_resource type="Resource" id="Move_earth_x4"]
+resource_name = "earth_x4"
+script = ExtResource("7_4g28w")
+move_id = &"earth_x4"
+
+[sub_resource type="Resource" id="Move_earth_x5"]
+resource_name = "earth_x5"
+script = ExtResource("7_4g28w")
+move_id = &"earth_x5"
+
+[sub_resource type="Resource" id="Move_final_enemy_attack"]
+resource_name = "final_enemy_attack"
+script = ExtResource("7_4g28w")
+move_id = &"final_enemy_attack"
+
+[sub_resource type="Resource" id="Move_fire_x1"]
+resource_name = "fire_x1"
+script = ExtResource("7_4g28w")
+move_id = &"fire_x1"
+
+[sub_resource type="Resource" id="Move_fire_x2"]
+resource_name = "fire_x2"
+script = ExtResource("7_4g28w")
+move_id = &"fire_x2"
+
+[sub_resource type="Resource" id="Move_fire_x3"]
+resource_name = "fire_x3"
+script = ExtResource("7_4g28w")
+move_id = &"fire_x3"
+
+[sub_resource type="Resource" id="Move_fire_x4"]
+resource_name = "fire_x4"
+script = ExtResource("7_4g28w")
+move_id = &"fire_x4"
+
+[sub_resource type="Resource" id="Move_fire_x5"]
+resource_name = "fire_x5"
+script = ExtResource("7_4g28w")
+move_id = &"fire_x5"
+
+[sub_resource type="Resource" id="Move_water_x1"]
+resource_name = "water_x1"
+script = ExtResource("7_4g28w")
+move_id = &"water_x1"
+
+[sub_resource type="Resource" id="Move_water_x2"]
+resource_name = "water_x2"
+script = ExtResource("7_4g28w")
+move_id = &"water_x2"
+
+[sub_resource type="Resource" id="Move_water_x3"]
+resource_name = "water_x3"
+script = ExtResource("7_4g28w")
+move_id = &"water_x3"
+
+[sub_resource type="Resource" id="Move_water_x4"]
+resource_name = "water_x4"
+script = ExtResource("7_4g28w")
+move_id = &"water_x4"
+
+[sub_resource type="Resource" id="Move_water_x5"]
+resource_name = "water_x5"
+script = ExtResource("7_4g28w")
+move_id = &"water_x5"
+
+[sub_resource type="Resource" id="Resource_la85q"]
+resource_name = "Shared Combat Tuning"
+script = ExtResource("8_3oxd6")
+moves = Array[ExtResource("7_4g28w")]([SubResource("Move_air_x1"), SubResource("Move_air_x2"), SubResource("Move_air_x3"), SubResource("Move_air_x4"), SubResource("Move_air_x5"), SubResource("Move_cast"), SubResource("Move_earth_x1"), SubResource("Move_earth_x2"), SubResource("Move_earth_x3"), SubResource("Move_earth_x4"), SubResource("Move_earth_x5"), SubResource("Move_final_enemy_attack"), SubResource("Move_fire_x1"), SubResource("Move_fire_x2"), SubResource("Move_fire_x3"), SubResource("Move_fire_x4"), SubResource("Move_fire_x5"), SubResource("Move_water_x1"), SubResource("Move_water_x2"), SubResource("Move_water_x3"), SubResource("Move_water_x4"), SubResource("Move_water_x5")])
+combat_levels = Array[ExtResource("6_ynxs5")]([SubResource("Reaction_1"), SubResource("Reaction_2"), SubResource("Reaction_3"), SubResource("Reaction_4"), SubResource("Reaction_5")])
 
 [node name="PrototypeArena" type="Node2D" unique_id=430143871]
 script = ExtResource("1_arena")
@@ -27,3 +177,9 @@ bus = &"BGM"
 bus = &"SFX"
 
 [node name="HUD" parent="." unique_id=1747972485 instance=ExtResource("3_hud")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("pause_menu_scene")]
+
+[node name="CombatTuning" type="Node" parent="." unique_id=2133090174]
+script = ExtResource("5_tuning_bridge")
+settings = SubResource("Resource_la85q")
