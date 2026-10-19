@@ -192,7 +192,12 @@ func update_orb_queue(snapshot: Array, marked_count: int, marking_progress: floa
 	for orb in snapshot:
 		if bool(orb.get("marked", false)):
 			visible_charged_count += 1
-	mark_progress.value = clampf(float(visible_charged_count) / maxf(float(_max_marked_capacity), 1.0), 0.0, 1.0)
+	var chargeable_orb_count := mini(visible_orb_count, _max_marked_capacity)
+	var visible_charge_progress := minf(
+		float(visible_charged_count) + clampf(marking_progress, 0.0, 1.0),
+		float(chargeable_orb_count)
+	)
+	mark_progress.value = clampf(visible_charge_progress / maxf(float(_max_marked_capacity), 1.0), 0.0, 1.0)
 	mark_label.text = "SPELL LEVEL  %d / %d" % [visible_charged_count, _max_marked_capacity]
 	var progress_step := int(round(mark_progress.value * 20.0))
 	if marked_count != _last_marked_count or progress_step != _last_mark_progress_step:

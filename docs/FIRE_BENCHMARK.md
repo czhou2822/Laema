@@ -56,9 +56,10 @@ are base values; runtime Portal previews show effective values. Retry reloads
 the saved baseline and applies the multiplier once.
 
 Charging retains its current rate, including Heat acceleration. The shared HUD
-bar now matches gold-outlined charged orbs and Spell Level: three charged orbs
-fill 3/8, and banked capacity without actual charged orbs leaves the bar empty.
-Partial charging does not advance the bar until another orb is charged.
+bar fills and drains smoothly: three charged orbs plus half of the next available
+orb show 3.5/8 while Spell Level stays at 3. Fill is capped by available orbs, up
+to eight; an empty queue shows zero, and three fully charged available orbs cap
+the bar at 3/8. Banked capacity beyond available orbs is not displayed.
 
 The existing approach, committed melee, collision, reaction and death behavior
 is reused. Local Poise prevents Impact-1 Fire openers from automatically

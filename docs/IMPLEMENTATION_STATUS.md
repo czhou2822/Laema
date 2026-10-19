@@ -8,10 +8,12 @@ by 1.5 at load. Fire X1 becomes 0.21 + 0.51 s before Heat; opponent base timing
 0.6/0.9 s becomes 0.9/1.35 s. Charging and its Heat multiplier retain their current
 rate. Shared saved tuning is unchanged, and retry derives a fresh scaled profile.
 
-The shared HUD derives both its charge bar and Spell Level from charged flags
-in the orb snapshot. Three charged orbs fill 3/8; empty or uncharged queues fill
-zero regardless of banked capacity. The bar advances in completed-orb steps;
-underlying banked charging and partial progression are preserved.
+User correction: the shared HUD restores smooth partial charge/depletion between
+completed-orb boundaries. It adds normalized partial progress to the charged
+snapshot count, caps the result at available orbs (maximum eight), then divides
+by eight. Three charged plus half of an available fourth orb show 3.5/8; Spell
+Level stays at 3. Empty queues show zero, and banked capacity beyond available
+orbs does not inflate the bar. Underlying charging mechanics are preserved.
 
 Validation is limited to source/configuration/diff inspection. No new engine,
 automated-test, controller or visual run is claimed. User comparison of the slower

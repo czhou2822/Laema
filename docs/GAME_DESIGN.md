@@ -426,16 +426,18 @@ The current first-pass values remain tunable placeholders: `600 px` awareness ra
 The always-visible game UI includes:
 
 - a school-colored FIFO orb queue with all 10 storage slots always visible, including empty slots; and
-- an L2 charging-progress bar beneath the orb queue, filled by the actual charged-orb count divided by eight; and
+- a smooth L2 charging-progress bar beneath the orb queue, showing completed charges plus progress toward the next available orb, divided by eight; and
 - a Spell Level readout equal to the current number of charged orbs, from level 0 through level 8.
 
 Consumed, expired, and hit-lost charged orbs disappear. Each charged orb uses a 2 px gold outline while retaining its school-colored fill. The actively expiring oldest orb displays its remaining lifetime through a left-filled reverse progress indicator whose empty portion grows right to left.
 
-The charging-progress bar and Spell Level use the same visibly charged-orb count.
-Three charged orbs fill 3/8 of the bar; no charged orbs leave it empty. The bar
-advances in completed-orb steps rather than displaying partial charge or capacity
-banked ahead of available orbs. Charging and its banked capacity retain their
-existing gameplay behavior.
+The charging-progress bar fills and drains smoothly between completed charges.
+Three charged orbs with the next available orb half charged show 3.5/8 on the bar;
+Spell Level remains 3 until the fourth orb becomes charged. The bar is capped by
+the number of available orbs, up to eight: an empty queue shows zero, and three
+available, fully charged orbs cap the bar at 3/8. Banked capacity beyond available
+orbs does not fill the bar. Charging and its banked capacity retain their existing
+gameplay behavior.
 
 When a generated orb is discarded because all 10 slots are occupied, the entire orb widget performs a UI-only horizontal flinch: 4 px left, 4 px right, then back to rest over approximately 0.12 seconds. Each discarded orb restarts the flinch from the widget's resting position. This feedback never interrupts Laema, movement, actions, or chain state.
 
