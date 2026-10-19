@@ -1,5 +1,30 @@
 # Implementation Status
 
+## Cast completion / melee follow-up correction — 2026-10-19
+
+The native-animation migration changed Cast playback from `attack_clock` to
+school-specific `cast_<primary_school>` clips, but Might's completion guard still
+compared against the legacy JSON animation name. A completed Cast could leave
+its current action and queued melee occupied. A later L2 release was rejected
+as `pending_action_occupied` before consuming charged orbs, matching the user's
+reported retained-orb/no-Cast symptom.
+
+The completion guard now compares the signal with AnimationPlayer's assigned
+animation, which retains the played clip name after completion. Existing pending
+handoff, control release, empowered continuation and sixth-slot completion paths
+then run normally. Cast eligibility, charge thresholds, damage, timing and
+consumption rules are unchanged. The Fire/Earth artwork swap is preserved.
+
+Validation: isolated Godot 4.6.3 stable official Linux x64 passed 582 attack-style
+checks without engine errors or resource leaks. New cases drive real animation
+completion, L2 action-strength transitions, normal/windowed/buffered Casts in all
+four schools with a different primary-orb school, queued melee, sixth-slot Cast
+completion, and repeated actual melee-contact/orb-generation/charging/release
+cycles. The exact stale-queued-melee case retained charged orbs and logged
+`pending_action_occupied` on the pre-fix source; the corrected source consumes
+and launches the next Cast and releases control. Interactive controller/Gym
+acceptance remains `AWAITING_USER_VALIDATION`.
+
 ## Fire / Earth benchmark flipbook swap — 2026-10-19
 
 Fire X1–X5 now reference the former Earth sword sheets; Earth X1–X5 reference

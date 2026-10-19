@@ -50,6 +50,152 @@ func free_player(actor) -> void:
 	actor.free()
 
 
+func advance_action(actor) -> void:
+	var action_id := int(actor.might.get("_current_action").get("source_action_id", -1))
+	for step in range(600):
+		if not actor.might.is_attack_playing() or int(actor.might.get("_current_action").get("source_action_id", -1)) != action_id:
+			return
+		actor.might._physics_process(0.01)
+	check(false, "Action must finish or hand off within the bounded animation drive")
+
+
+func advance_to_phase(actor, phase: float) -> void:
+	for step in range(600):
+		if not actor.might.is_attack_playing() or actor.might.get_normalized_attack_progress() >= phase:
+			return
+		actor.might._physics_process(0.005)
+	check(false, "Action must reach its input phase within the bounded animation drive")
+
+
+func prepare_cast_input(actor, school: StringName) -> void:
+	actor.combat.set_process(false)
+	actor.magic.set_process(false)
+	Input.action_release(&"casting")
+	actor.combat._process(0.0)
+	Input.action_press(&"casting", 1.0)
+	actor.combat._process(0.0)
+	actor.magic.add_orb(school)
+	actor.magic._process(float(config["casting"]["charge_step_duration"]))
+	check(actor.magic.has_marked_orbs(), "L2 hold charges the available orb before the Cast comparison")
+
+
+func check_cast_followups() -> void:
+	var schools := [&"fire", &"water", &"air", &"earth"]
+	for index in schools.size():
+		for mode in ["after_melee", "windowed", "buffered"]:
+			var actor = player_fixture()
+			var school: StringName = schools[index]
+			# The committed orb, rather than the selected melee school, chooses the clip.
+			var cast_school: StringName = schools[(index + 1) % schools.size()]
+			actor.might.try_select_school(school)
+			var launches: Array[Dictionary] = []
+			actor.combat.cast_launch_requested.connect(func(payload): launches.append(payload))
+			prepare_cast_input(actor, cast_school)
+			actor.might.try_light_attack(Vector2.RIGHT)
+			if mode == "after_melee":
+				advance_action(actor)
+			else:
+				advance_to_phase(actor, 0.30 if mode == "buffered" else 0.60)
+			Input.action_release(&"casting")
+			actor.combat._process(0.0)
+			if mode == "buffered":
+				check(actor.might.get("_buffered_request").get("kind") == &"cast", "L2 release enters the melee Cast buffer")
+				advance_to_phase(actor, 0.60)
+			if mode != "after_melee":
+				check(actor.might.get("_pending_action").get("move_id") == &"cast", "Melee window queues the committed Cast")
+				advance_action(actor)
+			check(actor.animation_player.assigned_animation == StringName("cast_" + str(cast_school)) and actor.might.is_attack_playing(), "Melee hands off to the committed school Cast: %s/%s" % [school, mode])
+			advance_to_phase(actor, 0.60)
+			check(launches.size() == 1, "Melee follow-up Cast launches exactly once: " + mode)
+			actor.might.try_light_attack(Vector2.RIGHT)
+			check(not actor.might.get("_pending_action").is_empty(), "Cast window accepts the next melee action")
+			advance_action(actor)
+			check(actor.animation_player.assigned_animation == StringName("%s_x3" % school) and actor.might.is_attack_playing(), "Cast completion starts queued melee: %s/%s" % [school, mode])
+			advance_action(actor)
+			check(actor.might.get("_current_action").is_empty() and actor.might.get("_pending_action").is_empty() and actor.might.can_begin_defence(), "Melee/Cast follow-ups return control after completion")
+			check(launches.size() == 1, "Later melee does not repeat the committed projectile")
+			free_player(actor)
+	# Reproduce the reported retained-orb symptom after a Cast has queued melee.
+	var retry_actor = player_fixture()
+	var launches: Array[Dictionary] = []
+	retry_actor.combat.cast_launch_requested.connect(func(payload): launches.append(payload))
+	prepare_cast_input(retry_actor, &"fire")
+	retry_actor.might.try_light_attack(Vector2.RIGHT)
+	advance_to_phase(retry_actor, 0.60)
+	Input.action_release(&"casting")
+	retry_actor.combat._process(0.0)
+	advance_action(retry_actor)
+	advance_to_phase(retry_actor, 0.60)
+	retry_actor.might.try_light_attack(Vector2.RIGHT)
+	advance_action(retry_actor)
+	prepare_cast_input(retry_actor, &"fire")
+	advance_to_phase(retry_actor, 0.60)
+	Input.action_release(&"casting")
+	retry_actor.combat._process(0.0)
+	check(not retry_actor.magic.has_marked_orbs(), "Repeat L2 release consumes charged orbs after the Cast/melee handoff")
+	check(retry_actor.might.get("_pending_action").get("move_id") == &"cast", "Stale queued melee cannot block the next release-Cast")
+	advance_action(retry_actor)
+	advance_action(retry_actor)
+	check(launches.size() == 2 and retry_actor.might.get("_current_action").is_empty() and not retry_actor.movement.get("_locked"), "Repeated melee-to-Cast launches again and releases movement")
+	free_player(retry_actor)
+	# The sixth-slot Cast completes the chain, rather than leaving a stale action.
+	var actor = player_fixture()
+	var completed: Array = []
+	actor.input_combo.combo_completed.connect(func(tokens): completed.append(tokens))
+	prepare_cast_input(actor, &"fire")
+	for position in range(1, 6):
+		actor.might.try_light_attack(Vector2.RIGHT)
+		if position < 5:
+			advance_action(actor)
+	advance_to_phase(actor, 0.60)
+	Input.action_release(&"casting")
+	actor.combat._process(0.0)
+	advance_action(actor)
+	check(actor.might.get("_current_action").get("kind") == &"cast_endpoint", "X5 hands off to its sixth-slot Cast")
+	advance_action(actor)
+	check(completed.size() == 1 and not actor.input_combo.is_active() and actor.might.can_begin_defence(), "Endpoint Cast finishes the chain and releases control")
+	free_player(actor)
+	Input.action_release(&"casting")
+
+
+func check_cast_after_contact() -> void:
+	for charge_before_melee in [false, true]:
+		var actor = player_fixture()
+		actor.combat.set_process(false)
+		actor.magic.set_process(false)
+		actor.get("_config")["combat"]["collect_orb_without_contact"] = false
+		var target = load("res://scenes/enemy/enemy.tscn").instantiate()
+		target.position = actor.to_global(Vector2(30, 11))
+		root.add_child(target)
+		target.configure(actor.get("_config"))
+		await physics_frame
+		var launches: Array[Dictionary] = []
+		actor.combat.cast_launch_requested.connect(func(payload): launches.append(payload))
+		Input.action_release(&"casting")
+		actor.combat._process(0.0)
+		for cycle in range(2):
+			if charge_before_melee:
+				Input.action_press(&"casting", 1.0)
+				actor.combat._process(0.0)
+			actor.might.try_light_attack(Vector2.RIGHT)
+			advance_action(actor)
+			check(not actor.magic.get_snapshot().is_empty(), "Real melee contact generates the orb for the release-Cast")
+			if not charge_before_melee:
+				Input.action_press(&"casting", 1.0)
+				actor.combat._process(0.0)
+			actor.magic._process(float(config["casting"]["charge_step_duration"]))
+			check(actor.magic.has_marked_orbs(), "L2 charges the melee-generated orb")
+			Input.action_release(&"casting")
+			actor.combat._process(0.0)
+			check(actor.animation_player.assigned_animation == &"cast_fire" and actor.might.is_attack_playing(), "L2 release starts Cast after a real melee hit")
+			advance_action(actor)
+			check(launches.size() == cycle + 1 and actor.might.get("_current_action").is_empty(), "Repeated melee/charge/release cycles launch once and clear the completed action")
+			check(not actor.movement.get("_locked"), "Completed Cast releases its movement lock")
+		free_player(target)
+		free_player(actor)
+	Input.action_release(&"casting")
+
+
 func _run() -> void:
 	var loaded := Loader.load_and_validate("res://config/prototype_combat.json")
 	check(loaded["ok"], "Style fixture validates")
@@ -60,6 +206,8 @@ func _run() -> void:
 	config = loaded["data"]
 	var original_hash := FileAccess.get_sha256("res://config/prototype_combat.json")
 	var cast_before: Dictionary = config["moves"]["cast"].duplicate(true)
+	check_cast_followups()
+	await check_cast_after_contact()
 	var style_fields := Catalog.fields(config, "attack_styles")
 	check(style_fields.size() == 160, "All 20 X moves expose eight style settings")
 	check(Catalog.fields(config, "moves").size() == 22, "Impact page remains separate")

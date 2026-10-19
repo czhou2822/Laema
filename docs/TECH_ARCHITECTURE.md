@@ -8,6 +8,16 @@ The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
+## Native Cast completion guard correction — 2026-10-19
+
+Might validates animation_finished against AnimationPlayer.assigned_animation,
+which retains the actual clip name after playback ends. The legacy
+moves.cast.animation value remains `attack_clock` for compatibility but does not
+identify a played `cast_<primary_school>` clip. Matching that legacy name left
+completed Casts and queued melee stuck; later releases hit the pending-action
+rejection without consuming charged orbs. This guard correction restores the
+existing action-completion/handoff paths without changing Cast/chain rules.
+
 ## Fire / Earth flipbook exchange — 2026-10-19
 
 User approved an artwork-only exchange between Fire and Earth X1–X5 to use the

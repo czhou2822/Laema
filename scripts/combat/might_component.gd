@@ -567,7 +567,8 @@ func _emit_projectile_launch() -> void:
 
 
 func _on_animation_finished(animation_name: StringName) -> void:
-	if _current_action.is_empty() or animation_name != StringName(_config["moves"][String(_current_action["move_id"])]["animation"]) or _state != State.COMBO_ACTIVE:
+	# Casts use school-specific native clips; assigned_animation survives completion.
+	if _current_action.is_empty() or animation_name != _animation_player.assigned_animation or _state != State.COMBO_ACTIVE:
 		return
 	_trace(&"action_finished", {"kind": _current_action.get("kind", &""), "school": _current_action.get("school", &""), "pending_action": not _pending_action.is_empty(), "marking_state_active": _magic.has_active_marking_state()})
 	_publish_outcome(&"action_finished", {"kind": _current_action.get("kind", &""), "school": _current_action.get("school", &"")})
