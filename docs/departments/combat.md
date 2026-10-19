@@ -5,6 +5,7 @@ Persistent development context shared by independent tasks. User decisions and t
 ## Direction and constraints
 
 - Target a semi-polished combat/tutorial playtest version by December 31, 2026. Analyze causes before guiding the user's own editor tuning. Presentation preparation remains closed.
+- October 19 coaching preference: when a game-feel change can be made through existing data settings, default to a step-by-step editor guide so the user makes the adjustment. Explain the setting's effect, units and runtime multipliers, retain the previous value, and compare one reversible change at a time in the relevant scene. The Enemy recovery change from base 0.9 s to 0.4 s (effective 1.35 s to 0.6 s in Gym) remains a suggested comparison, not a confirmed saved value or accepted tuning result.
 - Preserve four schools, five global X/Cast progression positions and the optional sixth Cast endpoint. The proposed variable-length chain was withdrawn.
 - October 19 decision: Charging/release Casting uses L2 across the prototype and unified Gym. Defence remains L1; the earlier R1 defence expression is not implemented by this change. Canonical controls, tutorial prompts, pressure HUD and Portal tooltips now use L2. Controller validation remains pending. Historical Heat-timer wording remains an Open documentation seam.
 
