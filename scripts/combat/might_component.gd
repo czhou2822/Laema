@@ -4,6 +4,7 @@ extends Node
 const CombatOutcomeResource = preload("res://scripts/combat/combat_outcome.gd")
 const ImpactProbe = preload("res://scripts/debug/impact_probe.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
+const Geometry = preload("res://scripts/combat/attack_geometry.gd")
 
 signal movement_lock_changed(locked: bool)
 signal active_school_changed(school: StringName)
@@ -59,6 +60,7 @@ func configure(
 	_config = config
 	_owner_entity = owner_entity
 	_animation_player = animation_player
+	Geometry.make_private(_animation_player)
 	_attack_cast = attack_cast
 	_input_combo = input_combo
 	_magic = magic
@@ -74,8 +76,7 @@ func configure(
 func apply_runtime_tuning() -> void:
 	if _config.is_empty() or _animation_player == null or _attack_cast == null:
 		return
-	var cast_shape := _attack_cast.shape as CircleShape2D
-	cast_shape.radius = float(_config["combat"]["shape_radius"])
+	Geometry.apply_player_preview(_animation_player, _config)
 	_refresh_action_speed()
 
 
@@ -472,8 +473,11 @@ func _start_action(action: Dictionary) -> void:
 	if action["kind"] == &"light":
 		_current_action["style"] = Style.capture(move, _config["combat"])
 		_current_action["lunge_fraction"] = 0.0
+		_current_action["geometry"] = Geometry.facing_pose(Geometry.contact(_animation_player.get_animation(StringName(move["animation"]))), action["direction"])
 	ImpactProbe.record("action_started", {"actor": str(_owner_entity.get_path()), "move_id": action["move_id"], "action_id": action.get("source_action_id", 0), "impact": move["impact"]})
-	_animation_player.play(StringName(move["animation"]))
+	# Casts retain the prior school-specific frame pacing in native tracks too.
+	var animation_name := StringName(move["animation"]) if action["kind"] == &"light" else StringName("cast_" + str(action["school"]))
+	_animation_player.play(animation_name)
 	_refresh_action_speed()
 	_animation_player.advance(0.0)
 	var action_facts := {"kind": action["kind"], "school": action["school"], "position": _input_combo.get_current_position()}
@@ -492,8 +496,13 @@ func _start_action(action: Dictionary) -> void:
 func _perform_light_hit_query() -> void:
 	var direction: Vector2 = _current_action["direction"]
 	var profile: Dictionary = _current_action["style"]
-	(_attack_cast.shape as CircleShape2D).radius = float(profile["shape_radius"])
-	_attack_cast.target_position = direction.normalized() * float(profile["shape_reach"])
+	var pose: Dictionary = _current_action["geometry"]
+	var live_position := _attack_cast.position
+	var live_target := _attack_cast.target_position
+	var live_radius := (_attack_cast.shape as CircleShape2D).radius
+	_attack_cast.position = pose["position"]
+	_attack_cast.target_position = pose["target"]
+	(_attack_cast.shape as CircleShape2D).radius = float(pose["radius"])
 	_attack_cast.force_shapecast_update()
 	ImpactProbe.record("contact_query", {"actor": str(_owner_entity.get_path()), "move_id": _current_action["move_id"], "action_id": _current_action["source_action_id"], "collisions": _attack_cast.get_collision_count()})
 	var hits: Array[Dictionary] = []
@@ -507,6 +516,10 @@ func _perform_light_hit_query() -> void:
 			continue
 		seen[target_id] = true
 		hits.append({"target": target, "contact_point": _attack_cast.get_collision_point(index)})
+	# Return the node to canonical animation space; facing applies only to the query.
+	_attack_cast.position = live_position
+	_attack_cast.target_position = live_target
+	(_attack_cast.shape as CircleShape2D).radius = live_radius
 	if hits.is_empty():
 		if bool(_config["combat"]["collect_orb_without_contact"]):
 			_magic.add_orb(StringName(_current_action["school"]))
@@ -732,8 +745,8 @@ func consume_attack_body_motion(delta: float) -> Vector2:
 
 func get_attack_geometry() -> Dictionary:
 	if _current_action.get("kind") == &"light":
-		return _current_action["style"]
-	return _config["combat"]
+		return _current_action["geometry"]
+	return {"position": _attack_cast.position, "target": _attack_cast.target_position, "radius": (_attack_cast.shape as CircleShape2D).radius}
 
 
 func _on_heat_changed(_value: float, _level: int, _speed_multiplier: float) -> void:
@@ -804,5 +817,5 @@ func is_hit_reacting() -> bool:
 func get_contact_phase() -> float:
 	if _current_action.is_empty():
 		return 0.0
-	var clock: Animation = _animation_player.get_animation(StringName(_config["moves"][String(_current_action["move_id"])]["animation"]))
+	var clock: Animation = _animation_player.get_animation(_animation_player.current_animation)
 	return clock.get_marker_time(&"contact") / clock.length

@@ -1,0 +1,83 @@
+[gd_resource type="Animation" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/prototype/player/animation/fire_x4_opposite_limb_trial.png" id="1_sheet"]
+
+[resource]
+resource_name = "fire_x4"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.36
+}, {
+"name": &"contact",
+"time": 0.36
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_sheet")]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:region_enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0909090909, 0.181818182, 0.272727273, 0.363636364, 0.454545455, 0.545454545, 0.636363636, 0.727272727, 0.818181818, 0.909090909),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 128, 128), Rect2(128, 0, 128, 128), Rect2(256, 0, 128, 128), Rect2(384, 0, 128, 128), Rect2(512, 0, 128, 128), Rect2(640, 0, 128, 128), Rect2(768, 0, 128, 128), Rect2(896, 0, 128, 128), Rect2(1024, 0, 128, 128), Rect2(1152, 0, 128, 128), Rect2(1280, 0, 128, 128)]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackCast:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.36),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 11), Vector2(0, 11)]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AttackCast:target_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.36),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(46, 0), Vector2(46, 0)]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AttackCast:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.36),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18, 18]
+}

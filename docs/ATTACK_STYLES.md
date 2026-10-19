@@ -2,37 +2,47 @@
 
 Status: implemented candidate; numeric presets await user playtesting.
 
-## Tune a move
+## Scrub and visually edit an attack
 
-- In the in-game Dev Portal, open **Combat → Attack styles** and expand one school/X position. Gym edits remain run-only. The editor Portal's Attack styles page is currently absent from its navigation; use the Inspector path below for persistent style editing.
-- Open `scenes/prototype_arena.tscn` and select **CombatTuning → Settings → School Attack Styles - X1 to X5** in the Local Inspector. Expand a MoveStyleTuning entry. JSON remains the persisted authority through the existing bridge.
-- Changes affect subsequent X actions. The current action retains its captured style. Heat still changes playback speed during an action.
+1. In the Local Inspector, open a move resource such as `config/attack_styles/fire_x1.tres` and click **Edit fire_x1 animation & hitbox**. The existing Laema editor plugin opens `scenes/player/player.tscn`, selects AnimationPlayer and assigns that clip. The move's **Animation** property also links directly to its native Animation resource.
+2. In the bottom **Animation** panel, select `fire_x1` if needed and scrub the timeline. The sprite changes frames without running the game. Pin the Animation panel so it stays available when selecting other nodes.
+3. Scrub to the **contact** marker. Select **AttackCast** in the scene tree. Move its origin and drag the ShapeCast/shape handles in the 2D viewport, or edit **Transform → Position**, **Target Position**, and **Shape → Radius** in the Inspector.
+4. Insert/update keys for the properties you changed, using the Inspector key icons. The existing tracks are `AttackCast:position`, `AttackCast:target_position`, and `AttackCast:shape:radius`. Moving a handle alone does not save a per-move key. Author the attack facing right; gameplay mirrors its horizontal coordinates for left-facing attacks.
+5. Save the external Animation resource (`config/attack_animations/fire_x1.tres`) and save the scene if marked modified. Save native animation edits before making a Portal draft. Rerun the Gym to compare. Geometry at the contact marker is what the single melee query uses; other keyed poses help author the motion but do not introduce extra hits.
 
-## Locate a move in FileSystem
+For Enemy melee, open `scenes/enemy/combat_enemy.tscn`, select **AnimationPlayer → melee_swing**, and follow the same scrub/select/key/save workflow. Its hitbox reach/radius are separate from **Enemy AI → Attack range**, which only controls when the enemy approaches/starts windup.
 
-Each of the 20 move-style entries references its own file at
-`res://config/attack_styles/<move_id>.tres`. Right-click the resource name, such
-as **fire_x1**, and select **Show in FileSystem**. Godot reveals
-`config/attack_styles/fire_x1.tres`. The resource dropdown exposes the same action.
+The timelines use the existing normalized one-second clocks. Actual windup/recovery duration still comes from move tuning, Heat and the Gym's duration scale; timeline seconds are not wall-clock combat seconds. Sprite-frame key spacing preserves the previous school frame pacing. Cast artwork uses the corresponding `cast_fire`, `cast_water`, `cast_air` or `cast_earth` clip; projectile damage keeps its existing path.
 
-These are move-settings assets, not animation clips or a flipbook editor.
-Persistent Inspector edits still require the active CombatTuning bridge described
-above; saving a `.tres` alone does not change the authoritative JSON. Inspector
-and Portal configuration saves synchronize the external move files and their
-parent mirror. Portal saves do not apply changes to a running game automatically.
-The Gym's Remote Inspector contains private, run-only copies without file paths;
-use the Local Inspector to locate the original assets.
+The button is navigation into Godot's built-in animation editor, not a custom flipbook tool. If that editor is pinned to another AnimationPlayer, unpin it before switching scenes.
+
+## Tune numerical settings
+
+- Both editor and in-game Dev Portals expose **Combat → Attack styles**. Reach/radius show the native contact pose. Save updates only the changed contact-size keys, preserving authored offsets, angle, other frames and sprite tracks. **General → Final Enemy** exposes its separate hitbox reach/radius.
+- With `scenes/prototype_arena.tscn` open, **CombatTuning → Settings → School Attack Styles - X1 to X5** provides the same bridge-backed numerical editing. Saving a standalone move-settings `.tres` without that bridge does not update gameplay.
+- Saved native animations own geometry and sprite frames. JSON owns timing, lunge, Impact and other combat settings; stored geometry scalars are compatibility/readback mirrors. A native save overrides stale JSON geometry at the next read, without writing files on startup.
+- The Portal and active Inspector bridge watch both JSON and animation-file changes. Reload the Portal after saving native edits if it has an unsaved draft; stale changes to the same contact size are rejected.
+- Gym/Remote edits remain run-only and affect private Animation copies. Rerun/retry restores saved authoring. Active attacks retain their committed geometry; edits affect subsequent attacks.
+
+## Locate the underlying files
+
+Each `config/attack_styles/<move_id>.tres` settings resource links to
+`config/attack_animations/<move_id>.tres`. The latter contains the real native
+Animation tracks, including the sprite-sheet texture reference. The Player and
+move-settings Inspector share that Animation asset. Right-click either external
+resource and use **Show in FileSystem** to reveal it. Remote Gym copies have no
+persistent file paths; use Local assets for navigation.
 
 | Setting | Meaning |
 |---|---|
 | Windup duration | Seconds until the native contact marker, before Heat scaling. |
 | Recovery duration | Post-contact playback until action completion and the queued next action. The active interval still follows native Animation markers. |
-| Shape reach / radius | Forward ShapeCast reach and capsule radius in pixels; debug geometry uses the same values. |
+| Shape reach / radius | Contact-time ShapeCast target-vector length and circle radius, in local pixels. Native tracks own the pose; debug geometry shows the committed query. |
 | Lunge distance | Total attacker-body displacement in pixels over the selected phase interval. |
 | Lunge start/end phase | Normalized animation-clock interval; start must precede end. |
 | Push scale | Multiplier on the existing qualifying combat reaction distance. It changes neither eligibility nor duration/invincibility; stationary practice targets retain legacy recoil. |
 
-A zero timing value inherits that phase of the shared duration. Zero geometry inherits the shared query value. Zero lunge distance disables forward motion. Walls consume blocked motion rather than storing it for later.
+A zero timing value inherits that phase of the shared duration. Native zero reach is a point query; radius must be positive. Legacy custom JSON profiles with omitted geometry retain their shared fallback. Zero lunge distance disables forward motion. Walls consume blocked motion rather than storing it for later.
 
 ## Initial presets
 

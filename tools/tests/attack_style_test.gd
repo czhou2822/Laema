@@ -7,6 +7,7 @@ const Fields = preload("res://scripts/ui/developer_settings_fields.gd")
 const Settings = preload("res://scripts/config/combat_tuning_settings.gd")
 const Store = preload("res://scripts/config/developer_config_store.gd")
 const Bridge = preload("res://scripts/config/combat_tuning_bridge.gd")
+const Geometry = preload("res://scripts/combat/attack_geometry.gd")
 
 var checks := 0
 var failures: Array[String] = []
@@ -75,6 +76,37 @@ func _run() -> void:
 		var expected := "res://config/attack_styles/%s.tres" % str(entry.move_id)
 		check(entry.resource_path == expected and ResourceLoader.exists(expected), "Move has a FileSystem asset: " + str(entry.move_id))
 		check(not entry.is_built_in(), "Move is external rather than embedded: " + str(entry.move_id))
+		check(entry.animation != null and entry.animation.resource_path == Geometry.DIRECTORY + str(entry.move_id) + ".tres", "Move settings lead to the same native animation asset: " + str(entry.move_id))
+	# Seek the actual scene AnimationPlayer without configuring gameplay scripts,
+	# just as the editor preview does. No script-driven frame selection is needed.
+	var preview_actor = load("res://scenes/player/player.tscn").instantiate()
+	root.add_child(preview_actor)
+	var other_actor = load("res://scenes/player/player.tscn").instantiate()
+	root.add_child(other_actor)
+	var counts := {"fire": [5, 3, 11, 11, 9], "water": [5, 5, 4, 5, 5], "air": [9, 7, 7, 6, 8], "earth": [4, 3, 4, 5, 4]}
+	for entry in library.attack_styles:
+		var id := str(entry.move_id)
+		var school := id.get_slice("_", 0)
+		var count: int = counts[school][int(id.right(1)) - 1]
+		var native: Animation = preview_actor.animation_player.get_animation(id)
+		check(native == entry.animation, "Scene and settings reference one shared animation: " + id)
+		preview_actor.animation_player.play(id)
+		for phase in [0.0, 0.19, 0.36, 0.67, 0.999]:
+			preview_actor.animation_player.seek(phase, true)
+			var frame := mini(int(floor(pow(phase, float(config[school]["visual_motion_exponent"])) * count)), count - 1)
+			check(preview_actor.sprite.region_rect.position.x == frame * 128.0, "Native scrubbing preserves existing frame pacing: %s at %s" % [id, phase])
+		preview_actor.animation_player.seek(native.get_marker_time(&"contact"), true)
+		check(preview_actor.attack_cast.target_position.length() == entry.shape_reach and (preview_actor.attack_cast.shape as CircleShape2D).radius == entry.shape_radius, "Scrubbed contact pose matches the Portal geometry: " + id)
+	check(preview_actor.attack_cast.shape != other_actor.attack_cast.shape, "Native shape tracks cannot resize another actor's hitbox")
+	for school in counts:
+		preview_actor.animation_player.play("cast_" + school)
+		for phase in [0.0, 0.19, 0.36, 0.67, 0.999]:
+			preview_actor.animation_player.seek(phase, true)
+			var frame := mini(int(floor(pow(phase, float(config[school]["visual_motion_exponent"])) * 10)), 9)
+			check(preview_actor.sprite.region_rect.position.x == frame * 128.0, "Native Cast scrubbing retains school frame pacing: " + school)
+	preview_actor.animation_player.stop()
+	free_player(preview_actor)
+	free_player(other_actor)
 	var settings = library.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	check(settings.attack_styles[0] != library.attack_styles[0], "Run-only tuning duplicates do not share external move Resources")
 	check(settings.attack_styles.size() == 20, "Serialized Inspector mirror includes all school moves")
@@ -117,6 +149,33 @@ func _run() -> void:
 		check(totals["air"] < totals["fire"] and totals["air"] < totals["water"] and totals["earth"] > totals["fire"] and totals["earth"] > totals["water"], "Fast/medium/slow distinction at X%d" % position)
 
 	var actor = player_fixture()
+	# Author non-default offsets, angle and radius in the native tracks, then use
+	# real contact queries in both directions. Config scalars cannot express this pose.
+	var native: Animation = actor.animation_player.get_animation(&"fire_x1")
+	var contact_time := native.get_marker_time(&"contact")
+	for direction in [Vector2.RIGHT, Vector2.LEFT]:
+		actor.reset_for_stage()
+		native.track_insert_key(native.find_track(Geometry.POSITION, Animation.TYPE_VALUE), contact_time, Vector2(13, -100))
+		native.track_insert_key(native.find_track(Geometry.TARGET, Animation.TYPE_VALUE), contact_time, Vector2(25, -10))
+		native.track_insert_key(native.find_track(Geometry.RADIUS, Animation.TYPE_VALUE), contact_time, 6.0)
+		var target = load("res://scenes/enemy/enemy.tscn").instantiate()
+		target.position = actor.to_global(Vector2(30 * direction.x, -100))
+		root.add_child(target)
+		target.configure(actor.get("_config"))
+		await physics_frame
+		actor.might.try_light_attack(direction)
+		var pose: Dictionary = actor.might.get_attack_geometry()
+		check(pose["position"] == Vector2(13 * direction.x, -100) and pose["target"] == Vector2(25 * direction.x, -10) and pose["radius"] == 6.0, "Committed geometry follows native keys and mirrors horizontal coordinates only")
+		# A tuning refresh mid-swing must not change the committed hit pose.
+		actor.get("_config")["moves"]["fire_x1"]["shape_reach"] = 110.0
+		actor.apply_runtime_tuning()
+		check(actor.might.get_attack_geometry() == pose, "In-flight geometry survives later Portal changes")
+		actor.might._physics_process(1.0)
+		check(target.health.get_current() < target.health.get_maximum(), "Real contact hits the target at the authored offset in either facing")
+		check(actor.attack_cast.position.x >= 0.0, "Contact query restores canonical editor-facing node coordinates")
+		free_player(target)
+	free_player(actor)
+	actor = player_fixture()
 	var x1: Dictionary = actor.get("_config")["moves"]["fire_x1"]
 	x1["windup_duration"] = 0.24
 	x1["recovery_duration"] = 0.36

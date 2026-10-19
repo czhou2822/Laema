@@ -7,6 +7,7 @@ const Fields = preload("res://scripts/ui/developer_settings_fields.gd")
 const Dock = preload("res://addons/laema_dev_portal/focus_dock.gd")
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Series = preload("res://scripts/config/developer_settings_series.gd")
+const Geometry = preload("res://scripts/combat/attack_geometry.gd")
 
 var failures: Array[String] = []
 var checks := 0
@@ -161,7 +162,7 @@ func _run() -> void:
 	check(retained["speed"] == 321.0, "Apply preserves retained nested dictionaries")
 	check(Catalog.fields(base, "moves").size() == 22, "All move Impact controls are shared")
 	check(Catalog.fields(base, "hit_reaction").size() == 15 and Catalog.fields(base, "legacy_reactions").size() == 4, "Five range/duration/distance entries are separate from four legacy controls")
-	check(Catalog.fields(base, "earth").size() == 13, "Earth nested levels are exposed")
+	check(Catalog.fields(base, "earth").size() == 12, "Earth nested levels remain exposed; sprite pacing is authored in animation tracks")
 	for entry in Catalog.CATEGORIES:
 		var controls := Fields.new()
 		root.add_child(controls)
@@ -307,6 +308,7 @@ func _run() -> void:
 	check(saved_style.resource_path == style_path and cached_style.shape_reach == cached_reach, "Portal saving retains asset paths without applying changes to cached Inspector Resources")
 	var saved_mirror = ResourceLoader.load(Store.TUNING_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
 	check(saved_mirror.attack_styles[0].resource_path == style_path, "Portal saves preserve the parent's move-file references")
+	check(is_equal_approx(Vector2(Geometry.contact(Geometry.load_clock("fire_x1"))["target"]).length(), 73.25), "Portal reach saves into the native animation contact key")
 	check(Store.save_changes(Store.load_config()["data"], original)["ok"], "Portal save fixture restores JSON and external assets together")
 	cached_style = null
 	saved_style = null
@@ -407,10 +409,9 @@ func _run() -> void:
 		for field in Catalog.fields(original, school):
 			if str(field["id"]).ends_with(".visual_motion_exponent"):
 				presentation_fields += 1
-				check(str(field["casting_usage_note"]).is_empty(), "Active attack presentation has no unused-Casting mark for " + school)
 			elif not str(field["casting_usage_note"]).is_empty():
 				unused_effects += 1
-	check(presentation_fields == 4 and unused_effects > 0, "School settings distinguish live presentation from unused Cast effects")
+	check(presentation_fields == 0 and unused_effects > 0, "Native sprite tracks replace legacy exponent controls; unused Cast effects stay identified")
 	var labels: Array[Node] = dock.get("_fields").find_children("*", "Label", true, false)
 	var shows_usage_note := false
 	for label in labels:

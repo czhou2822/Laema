@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3]
+[gd_scene load_steps=47 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" path="res://scripts/player/movement_controller.gd" id="2_movement"]
@@ -17,329 +17,67 @@
 [ext_resource type="Script" path="res://scripts/entities/feedback_component.gd" id="15_feedback"]
 [ext_resource type="AudioStream" path="res://assets/prototype/audio/hit_reaction/impactPunch_medium_002.ogg" id="16_hit_reaction"]
 
+[ext_resource type="Animation" path="res://config/attack_animations/attack_clock.tres" id="Anim_attack_clock"]
+[ext_resource type="Animation" path="res://config/attack_animations/fire_x1.tres" id="Anim_fire_x1"]
+[ext_resource type="Animation" path="res://config/attack_animations/fire_x2.tres" id="Anim_fire_x2"]
+[ext_resource type="Animation" path="res://config/attack_animations/fire_x3.tres" id="Anim_fire_x3"]
+[ext_resource type="Animation" path="res://config/attack_animations/fire_x4.tres" id="Anim_fire_x4"]
+[ext_resource type="Animation" path="res://config/attack_animations/fire_x5.tres" id="Anim_fire_x5"]
+[ext_resource type="Animation" path="res://config/attack_animations/water_x1.tres" id="Anim_water_x1"]
+[ext_resource type="Animation" path="res://config/attack_animations/water_x2.tres" id="Anim_water_x2"]
+[ext_resource type="Animation" path="res://config/attack_animations/water_x3.tres" id="Anim_water_x3"]
+[ext_resource type="Animation" path="res://config/attack_animations/water_x4.tres" id="Anim_water_x4"]
+[ext_resource type="Animation" path="res://config/attack_animations/water_x5.tres" id="Anim_water_x5"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x1.tres" id="Anim_air_x1"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x2.tres" id="Anim_air_x2"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x3.tres" id="Anim_air_x3"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x4.tres" id="Anim_air_x4"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x5.tres" id="Anim_air_x5"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x1.tres" id="Anim_earth_x1"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x2.tres" id="Anim_earth_x2"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x3.tres" id="Anim_earth_x3"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x4.tres" id="Anim_earth_x4"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x5.tres" id="Anim_earth_x5"]
+
+[ext_resource type="Animation" path="res://config/attack_animations/cast_fire.tres" id="Anim_cast_fire"]
+[ext_resource type="Animation" path="res://config/attack_animations/cast_water.tres" id="Anim_cast_water"]
+[ext_resource type="Animation" path="res://config/attack_animations/cast_air.tres" id="Anim_cast_air"]
+[ext_resource type="Animation" path="res://config/attack_animations/cast_earth.tres" id="Anim_cast_earth"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(26, 30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+resource_local_to_scene = true
 radius = 18.0
-
-[sub_resource type="Animation" id="Animation_attack_clock"]
-resource_name = "attack_clock"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_fire_x1"]
-resource_name = "fire_x1"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_fire_x2"]
-resource_name = "fire_x2"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_fire_x3"]
-resource_name = "fire_x3"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_fire_x4"]
-resource_name = "fire_x4"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_fire_x5"]
-resource_name = "fire_x5"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_water_x1"]
-resource_name = "water_x1"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_water_x2"]
-resource_name = "water_x2"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_water_x3"]
-resource_name = "water_x3"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_water_x4"]
-resource_name = "water_x4"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_water_x5"]
-resource_name = "water_x5"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_air_x1"]
-resource_name = "air_x1"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_air_x2"]
-resource_name = "air_x2"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_air_x3"]
-resource_name = "air_x3"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_air_x4"]
-resource_name = "air_x4"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_air_x5"]
-resource_name = "air_x5"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_earth_x1"]
-resource_name = "earth_x1"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_earth_x2"]
-resource_name = "earth_x2"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_earth_x3"]
-resource_name = "earth_x3"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_earth_x4"]
-resource_name = "earth_x4"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
-
-[sub_resource type="Animation" id="Animation_earth_x5"]
-resource_name = "earth_x5"
-length = 1.0
-markers = [{
-"name": &"active_start",
-"time": 0.36
-}, {
-"name": &"contact",
-"time": 0.36
-}, {
-"name": &"active_end",
-"time": 1.0
-}]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_player"]
 _data = {
-&"attack_clock": SubResource("Animation_attack_clock"),
-&"fire_x1": SubResource("Animation_fire_x1"),
-&"fire_x2": SubResource("Animation_fire_x2"),
-&"fire_x3": SubResource("Animation_fire_x3"),
-&"fire_x4": SubResource("Animation_fire_x4"),
-&"fire_x5": SubResource("Animation_fire_x5"),
-&"water_x1": SubResource("Animation_water_x1"),
-&"water_x2": SubResource("Animation_water_x2"),
-&"water_x3": SubResource("Animation_water_x3"),
-&"water_x4": SubResource("Animation_water_x4"),
-&"water_x5": SubResource("Animation_water_x5"),
-&"air_x1": SubResource("Animation_air_x1"),
-&"air_x2": SubResource("Animation_air_x2"),
-&"air_x3": SubResource("Animation_air_x3"),
-&"air_x4": SubResource("Animation_air_x4"),
-&"air_x5": SubResource("Animation_air_x5"),
-&"earth_x1": SubResource("Animation_earth_x1"),
-&"earth_x2": SubResource("Animation_earth_x2"),
-&"earth_x3": SubResource("Animation_earth_x3"),
-&"earth_x4": SubResource("Animation_earth_x4"),
-&"earth_x5": SubResource("Animation_earth_x5")
+&"attack_clock": ExtResource("Anim_attack_clock"),
+&"cast_fire": ExtResource("Anim_cast_fire"),
+&"cast_water": ExtResource("Anim_cast_water"),
+&"cast_air": ExtResource("Anim_cast_air"),
+&"cast_earth": ExtResource("Anim_cast_earth"),
+&"fire_x1": ExtResource("Anim_fire_x1"),
+&"fire_x2": ExtResource("Anim_fire_x2"),
+&"fire_x3": ExtResource("Anim_fire_x3"),
+&"fire_x4": ExtResource("Anim_fire_x4"),
+&"fire_x5": ExtResource("Anim_fire_x5"),
+&"water_x1": ExtResource("Anim_water_x1"),
+&"water_x2": ExtResource("Anim_water_x2"),
+&"water_x3": ExtResource("Anim_water_x3"),
+&"water_x4": ExtResource("Anim_water_x4"),
+&"water_x5": ExtResource("Anim_water_x5"),
+&"air_x1": ExtResource("Anim_air_x1"),
+&"air_x2": ExtResource("Anim_air_x2"),
+&"air_x3": ExtResource("Anim_air_x3"),
+&"air_x4": ExtResource("Anim_air_x4"),
+&"air_x5": ExtResource("Anim_air_x5"),
+&"earth_x1": ExtResource("Anim_earth_x1"),
+&"earth_x2": ExtResource("Anim_earth_x2"),
+&"earth_x3": ExtResource("Anim_earth_x3"),
+&"earth_x4": ExtResource("Anim_earth_x4"),
+&"earth_x5": ExtResource("Anim_earth_x5")
 }
 
 [sub_resource type="Shader" id="Shader_outline"]

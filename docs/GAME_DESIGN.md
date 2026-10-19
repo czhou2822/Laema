@@ -103,7 +103,7 @@ Keep the four schools, existing prototype animations, five global X/Cast progres
 | Water / medium War Spear | Reaching opener | Quick follow-up | Close-range check | Extended follow-up | Committed thrust |
 | Air / fast Twin Daggers | Opening cut | Reverse cut | Advancing opener variation | Returning follow-up variation | Finishing slash |
 
-The current implementation provides provisional per-move windup, post-contact duration, reach/radius, forward-body distance/phase interval and qualifying-reaction push-distance multiplier. Timing values are seconds before Heat scaling. A zero timing value inherits the corresponding shared-duration phase; zero geometry inherits the shared query geometry. JSON is the persisted authority and is mirrored into Inspector resources and the editor/runtime Dev Portal's **Combat → Attack styles** page.
+The current implementation provides provisional per-move windup, post-contact duration, reach/radius, forward-body distance/phase interval and qualifying-reaction push-distance multiplier. Timing values are seconds before Heat scaling. A zero timing value inherits the corresponding shared-duration phase. The approved October 19 authoring workflow uses native AnimationPlayer sprite/hitbox tracks: scrub a move, edit its visible hitbox, and key the pose. Saved animation geometry is authoritative; Inspector/Portal reach and radius read and edit the contact-time keys. JSON remains authoritative for timing, lunge, Impact and other combat settings. Native zero reach is a point query and radius is positive; legacy custom profiles retain their existing fallback normalization.
 
 Forward motion follows the action's committed facing through the existing collision body; walls block displacement and interruption/reset discards the remaining motion. Early Fire attacks use limited push; its X5 increases separation only when the existing hit-reaction rules qualify. Push scaling changes distance, not reaction eligibility, duration, invincibility, damage or Impact/Poise. Active actions retain the style captured at their start; tuning edits apply to subsequent actions. Native Animation markers still author the active interval and contact boundary.
 
@@ -780,9 +780,23 @@ Still open or deferred: jumping, non-flat level geometry, Air and Earth defence,
 
 Select PrototypeArena's CombatTuning node and expand Settings in Godot's Inspector. Its shared resource exposes Player and Final Enemy poise, every move's Impact, and the duration/distance of combat reaction Levels 1–5. A separate legacy group exposes the existing practice-target, defence and failed-Cast visual-reaction settings.
 
-The Developer Portal edits the same effective values through General/Player and Enemy AI, Combat/Moves, and Combat/Hit Reaction. The Focus editor integration below makes JSON authoritative; the combat Resource remains an Inspector view. Local Inspector edits merge into validated JSON. During play, Remote Inspector and Portal changes apply live; Save Tuning persists JSON and the Inspector mirror. Direct JSON edits refresh the local Inspector while the Arena scene is open.
+The Developer Portal edits the same effective values through General/Player and Enemy AI, Combat/Moves, and Combat/Hit Reaction. JSON owns numerical combat tuning, while the October 19 native-animation authoring workflow owns melee geometry and sprite frames; the combat Resource remains an Inspector view. Local Inspector edits merge into validated JSON. During play, Remote Inspector and Portal changes apply live; Save Tuning persists JSON and the Inspector mirror. Direct JSON edits refresh the local Inspector while the Arena scene is open.
 
 Reaction duration, displacement and invincibility are captured when the reaction starts. Changing reaction tuning affects subsequent reactions and does not shorten one already running. AI decision timing/enable changes retain their existing reset behavior.
+
+### Native attack authoring — approved 2026-10-19
+
+A move-settings resource must lead to its underlying flipbook animation. Use
+Godot's existing AnimationPlayer timeline to scrub sprite frames and visually
+edit/key the Player and Enemy hitbox. Gameplay and Portal geometry use that saved
+authoring source. Geometry at the existing contact marker performs one melee
+query per action; extra keyed poses do not introduce extra hits. Author right-
+facing poses; left-facing attacks mirror horizontal coordinates. Active attacks
+retain their committed pose when tuning changes. Enemy approach distance is
+separate from hitbox geometry. Existing animation frames, starting frame pacing,
+combat timing, damage, Impact/Poise, reactions and Casting rules are preserved.
+See `docs/ATTACK_STYLES.md` for the native editor workflow. Implementation is a
+candidate awaiting the user's interactive editor/gameplay validation.
 
 ## Focus editor development dock — 2026-10-15
 

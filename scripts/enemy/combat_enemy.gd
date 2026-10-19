@@ -2,14 +2,13 @@ extends "res://scripts/enemy/enemy.gd"
 
 const IDLE_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Idle.png")
 const WALK_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Walk.png")
-const ATTACK_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Attack_1.png")
 const DEAD_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Dead.png")
 const HURT_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Hurt.png")
 const ImpactProbe = preload("res://scripts/debug/impact_probe.gd")
+const Geometry = preload("res://scripts/combat/attack_geometry.gd")
 const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
 const WALK_FRAMES := 12
-const ATTACK_FRAMES := 4
 const DEAD_FRAMES := 5
 const HURT_FRAMES := 4
 
@@ -46,6 +45,7 @@ var _hit_visual_time := 0.0
 var _hit_visual_duration := 0.0
 var _committed_attack_origin := Vector2.ZERO
 var _committed_attack_target_position := Vector2.RIGHT
+var _committed_attack_radius := 24.0
 var _next_attack_id := 1
 var _attack_id := 0
 var _strike_emitted := false
@@ -58,6 +58,8 @@ var _reaction_probe_started_ms := 0
 
 func configure(config: Dictionary) -> void:
 	super.configure(config)
+	Geometry.make_private(attack_animation)
+	Geometry.set_contact_size(attack_animation.get_animation(&"melee_swing"), float(config["enemy_ai"]["hitbox_reach"]), float(config["enemy_ai"]["hitbox_radius"]))
 	hit_reaction.reaction_ended.connect(_finish_hit_visual)
 	_ai_config = Dictionary(config["enemy_ai"])
 	warning_marker.visible = false
@@ -79,6 +81,7 @@ func apply_runtime_tuning() -> void:
 		if _ai_config.get(key) != next_ai.get(key):
 			decision_tuning_changed = true
 	_ai_config = next_ai.duplicate(true)
+	Geometry.set_contact_size(attack_animation.get_animation(&"melee_swing"), float(_ai_config["hitbox_reach"]), float(_ai_config["hitbox_radius"]))
 	_sync_ai_blackboard()
 	if not decision_tuning_changed:
 		return
@@ -174,7 +177,7 @@ func ai_stop_moving() -> void:
 	velocity.x = 0.0
 
 
-func ai_begin_windup(target: Entity, attack_range: float, duration: float) -> void:
+func ai_begin_windup(target: Entity, _attack_range: float, duration: float) -> void:
 	velocity.x = 0.0
 	var horizontal_distance := target.global_position.x - global_position.x
 	_facing = Vector2.RIGHT if horizontal_distance >= 0.0 else Vector2.LEFT
@@ -187,8 +190,10 @@ func ai_begin_windup(target: Entity, attack_range: float, duration: float) -> vo
 	attack_animation.speed_scale = clock.get_marker_time(&"active_start") / maxf(duration, 0.001)
 	attack_animation.play(&"melee_swing")
 	attack_animation.advance(0.0)
-	_committed_attack_origin = attack_cast.global_position
-	_committed_attack_target_position = _facing * attack_range
+	var pose := Geometry.facing_pose(Geometry.contact(clock), _facing)
+	_committed_attack_origin = to_global(pose["position"])
+	_committed_attack_target_position = pose["target"]
+	_committed_attack_radius = float(pose["radius"])
 	_set_state(State.WINDUP)
 	_windup_duration = duration
 	_state_remaining = duration
@@ -266,8 +271,10 @@ func _exit_tree() -> void:
 func _resolve_melee_hit(player: Entity, damage: float, impact: int) -> void:
 	var live_origin := attack_cast.global_position
 	var live_target_position := attack_cast.target_position
+	var live_radius := (attack_cast.shape as CircleShape2D).radius
 	attack_cast.global_position = _committed_attack_origin
 	attack_cast.target_position = _committed_attack_target_position
+	(attack_cast.shape as CircleShape2D).radius = _committed_attack_radius
 	attack_cast.force_shapecast_update()
 	var did_hit := false
 	for index in range(attack_cast.get_collision_count()):
@@ -298,6 +305,7 @@ func _resolve_melee_hit(player: Entity, damage: float, impact: int) -> void:
 		break
 	attack_cast.global_position = live_origin
 	attack_cast.target_position = live_target_position
+	(attack_cast.shape as CircleShape2D).radius = live_radius
 	if not did_hit:
 		_trace_ai(&"melee_miss", {"target": player.name})
 
@@ -319,6 +327,10 @@ func _apply_gravity_and_move(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	if _state in [State.WINDUP, State.ACTIVE] and not _hit_visual_active:
+		# AnimationPlayer owns attack artwork and geometry, including editor preview.
+		body_visual.flip_h = _facing.x < 0.0
+		return
 	var texture: Texture2D = IDLE_TEXTURE
 	var frame := 0
 	if _state == State.DEAD:
@@ -336,10 +348,6 @@ func _process(delta: float) -> void:
 	if _state == State.APPROACH and not _hit_visual_active:
 		texture = WALK_TEXTURE
 		frame = int(floor(_animation_time * 9.0)) % WALK_FRAMES
-	elif _state in [State.WINDUP, State.ACTIVE] and not _hit_visual_active:
-		texture = ATTACK_TEXTURE
-		var clock: Animation = attack_animation.get_animation(&"melee_swing")
-		frame = clampi(int(floor(attack_animation.current_animation_position / clock.length * float(ATTACK_FRAMES))), 0, ATTACK_FRAMES - 1)
 	body_visual.texture = texture
 	body_visual.region_enabled = true
 	body_visual.region_rect = Rect2(Vector2(frame, 0.0) * CELL_SIZE, CELL_SIZE)

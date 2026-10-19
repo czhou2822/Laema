@@ -4,6 +4,7 @@ extends RefCounted
 
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
+const Geometry = preload("res://scripts/combat/attack_geometry.gd")
 
 const REQUIRED_SECTIONS := [
 	"movement",
@@ -46,6 +47,10 @@ static func load_and_validate(path: String) -> Dictionary:
 	_normalize_legacy_audio_volumes(data)
 	ReactionRanges.normalize_legacy(data)
 	_normalize_attack_styles(data)
+	if data.get("enemy_ai") is Dictionary:
+		for pair in [["hitbox_reach", 72.0], ["hitbox_radius", 24.0]]:
+			if not data["enemy_ai"].has(pair[0]):
+				data["enemy_ai"][pair[0]] = pair[1]
 	if data.get("ui") is Dictionary and not data["ui"].has("attack_hitbox_visible"):
 		# Preserve the previous Player debug default in older configurations.
 		data["ui"]["attack_hitbox_visible"] = true
@@ -57,6 +62,13 @@ static func load_and_validate(path: String) -> Dictionary:
 	var validation_error := _validate(data)
 	if not validation_error.is_empty():
 		return _failure(validation_error)
+	if path == "res://config/prototype_combat.json":
+		var geometry := Geometry.read_config(data)
+		if not geometry["ok"]:
+			return geometry
+		validation_error = _validate(data)
+		if not validation_error.is_empty():
+			return _failure(validation_error)
 
 	return {
 		"ok": true,
@@ -110,6 +122,10 @@ static func _validate(data: Dictionary) -> String:
 	for section_name in REQUIRED_SECTIONS:
 		if not data.has(section_name) or typeof(data[section_name]) != TYPE_DICTIONARY:
 			return "Missing or invalid configuration section: %s" % section_name
+	for key in ["hitbox_reach", "hitbox_radius"]:
+		var value = data["enemy_ai"].get(key, 72.0 if key == "hitbox_reach" else 24.0)
+		if not _is_number(value) or not is_finite(float(value)) or float(value) < (0.0 if key == "hitbox_reach" else 0.001):
+			return "enemy_ai.%s must be finite and non-negative (radius must be positive)." % key
 
 	var checks := [
 		["movement", "speed", 0.001, INF],

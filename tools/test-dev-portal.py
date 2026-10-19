@@ -18,6 +18,7 @@ def main() -> int:
     parser.add_argument("--work-root", type=Path, help="Optional writable parent for isolated copies")
     parser.add_argument("--keep-work", action="store_true", help="Keep successful isolated copies for inspection")
     parser.add_argument("--script", type=Path, help="Alternative project test script to run in isolation")
+    parser.add_argument("--editor-test", type=Path, help="Optional EditorPlugin test run after the runtime checks")
     parser.add_argument("--frame-limit", type=int, default=600, help="Maximum process frames before forced exit")
     args = parser.parse_args()
     source = Path(__file__).resolve().parents[1]
@@ -50,8 +51,28 @@ def main() -> int:
         ["--headless", "--path", str(project), "--editor", "--quit"],
         ["--headless", "--path", str(project), "--script", "res://dev_portal_test.gd", "--quit-after", str(args.frame_limit)],
     ]
+    if args.editor_test:
+        addon = project / "addons/isolated_editor_check"
+        addon.mkdir()
+        shutil.copy2(args.editor_test, addon / "plugin.gd")
+        (addon / "plugin.cfg").write_text(
+            '[plugin]\nname="Isolated editor check"\ndescription="Test only"\n'
+            'author="Laema"\nversion="1"\nscript="plugin.gd"\n', encoding="utf-8")
+        runs.append(["--headless", "--path", str(project), "--editor",
+                     "--quit-after", str(args.frame_limit)])
     failed = False
     for index, arguments in enumerate(runs):
+        if index == 2:
+            # Enable after import/runtime checks, once the editor test can run
+            # against a fully imported project and restored editor layout.
+            settings = project / "project.godot"
+            content = settings.read_text(encoding="utf-8")
+            original_plugins = 'enabled=PackedStringArray("res://addons/laema_dev_portal/plugin.cfg")'
+            if original_plugins not in content:
+                raise RuntimeError("Cannot register isolated editor check in this project's plugin list")
+            settings.write_text(content.replace(original_plugins,
+                'enabled=PackedStringArray("res://addons/laema_dev_portal/plugin.cfg", '
+                '"res://addons/isolated_editor_check/plugin.cfg")'), encoding="utf-8")
         log_path = work / f"check-{index}.log"
         arguments += ["--log-file", str(work / f"engine-{index}.log")]
         with log_path.open("w", encoding="utf-8") as log:
@@ -62,7 +83,7 @@ def main() -> int:
                     if any(tag in line for tag in ("ERROR", "Error", "PASSED", "FAILED", " at:", "GDScript backtrace", "[0]", "[1]"))]
         print("\n".join(relevant), flush=True)
         failed |= result.returncode != 0 or "SCRIPT ERROR" in output or "ERROR:" in output
-        if index == 1:
+        if index > 0:
             failed |= "PASSED:" not in output
     if not failed and not args.keep_work:
         parent = (args.work_root or Path(tempfile.gettempdir())).resolve()

@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="MoveStyleTuning" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MoveStyleTuning" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/config/move_style_tuning.gd" id="1_style"]
+
+[ext_resource type="Animation" path="res://config/attack_animations/air_x4.tres" id="2_animation"]
 
 [resource]
 resource_name = "air_x4"
@@ -14,3 +16,5 @@ lunge_distance = 2
 lunge_start_phase = 0.15
 lunge_end_phase = 0.55
 push_scale = 0.5
+
+animation = ExtResource("2_animation")

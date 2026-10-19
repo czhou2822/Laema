@@ -34,7 +34,7 @@ func _ready() -> void:
 	_reconnect_resources()
 	if settings != null:
 		_last_valid = settings.get_data().duplicate(true)
-	_json_hash = FileAccess.get_sha256(CONFIG_PATH)
+	_json_hash = Store.source_hash()
 	if Engine.is_editor_hint():
 		var loaded := ConfigLoader.load_and_validate(CONFIG_PATH)
 		if loaded["ok"]:
@@ -139,7 +139,7 @@ func _apply_editor_change() -> void:
 		push_warning(str(result["error"]))
 		return
 	_editor_config = result["data"].duplicate(true)
-	_json_hash = FileAccess.get_sha256(CONFIG_PATH)
+	_json_hash = Store.source_hash()
 	sync_from_config(_editor_config)
 	result = save_resource()
 	if not result["ok"]:
@@ -161,7 +161,7 @@ func _process(delta: float) -> void:
 	if _watch_elapsed < 1.0 or _editor_pending or _syncing:
 		return
 	_watch_elapsed = 0.0
-	var hash := FileAccess.get_sha256(CONFIG_PATH)
+	var hash := Store.source_hash()
 	if hash == _json_hash:
 		return
 	var result := ConfigLoader.load_and_validate(CONFIG_PATH)

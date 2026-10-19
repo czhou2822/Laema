@@ -1,5 +1,43 @@
 # Implementation Status
 
+## Native attack scrubbing and visual hitbox authoring — 2026-10-19
+
+Implemented the approved native AnimationPlayer workflow. Each of the 20 move
+settings assets links to its actual Animation resource, with an Inspector button
+to open Player's matching timeline. Player X/Cast and Enemy melee sprite frames
+are native tracks alongside keyed AttackCast position, target vector and radius.
+The previous artwork and default frame pacing are preserved, including each
+school's Cast pacing. The editor Portal's Attack styles category is reachable.
+
+Saved animations own geometry; startup, the Inspector bridge and Portal read the
+contact pose over legacy JSON mirrors. Portal saves update only changed contact-
+size keys and preserve origin, angle, sprite tracks and other frames. Enemy AI
+approach distance is now separate from contact reach/radius. Runtime actors own
+private Animation copies, capture their attack pose before later tuning and
+mirror horizontal coordinates with facing. The existing one-query contact rule,
+damage, timing, reactions, Heat and Gym run-only persistence remain intact.
+Native shape tracks are isolated per actor. JSON/animation hash watching refreshes
+saved geometry; positive-radius validation and stale contact-draft checks precede
+writes. Multi-file saves still report partial failures rather than being atomic.
+
+Validation: isolated Godot 4.6.3 stable official Linux x64 passed 438 attack-style,
+39 native-authoring persistence, 198 receiver-side clash/reaction, 180 Portal/
+config/layout and 121 Gym checks (976 total), plus 6 headless native-editor checks
+(982 total). These exercise native scene seeking and shared asset identity,
+original sprite pacing, actual offset contacts facing both ways, committed poses,
+Portal key preservation/conflicts, zero reach, saved-data reload despite caches,
+Enemy range separation and unchanged saved assets after Gym previews/retries.
+The editor checks edit the actual move resource, press its Inspector button,
+verify the opened scene/selected clip/node and seek the flipbook using native
+editor controls. No engine errors or resource leaks occurred in the final runs;
+the expected Gym run-only warning remains intentional.
+
+The reproducible isolated runner accepts `--script tools/tests/attack_authoring_test.gd`
+and `--editor-test tools/tests/attack_authoring_editor_test.gd`. No source project
+editor, interactive viewport handle/key/save session, controller playtest or Web
+export was run. User validation of visual editing and gameplay remains pending:
+`AWAITING_USER_VALIDATION`. Workflow: `docs/ATTACK_STYLES.md`.
+
 ## Move-resource FileSystem navigation — 2026-10-19
 
 All 20 MoveStyleTuning entries now reference individual
@@ -25,8 +63,9 @@ completed without engine errors or resource leaks; the intentional run-only
 Inspector warning remains covered. Interactive right-click navigation still
 needs the user's editor check: `AWAITING_USER_VALIDATION`.
 
-This slice provides move-settings navigation. Flipbook preview, timeline hitbox
-editing and scene/animation authority for runtime/Portal geometry remain pending.
+This earlier slice provided move-settings navigation only. Follow-up `ee49bcd`
+connected Arena Settings to the external mirror; the user then confirmed locating
+the asset. Native scrubbing/geometry authoring is the newer candidate above.
 
 ## Fire X and leveled Cast reactions — 2026-10-19
 

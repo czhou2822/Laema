@@ -21,6 +21,7 @@ Persistent development context shared by independent tasks. User decisions and t
 
 ## Implemented candidates
 
+- October 19 native authoring checks: 438 style, 39 persistence, 198 reaction/clash, 180 Portal and 121 Gym checks plus 6 native editor navigation/seek checks passed in isolated Godot 4.6.3 (982 total). Interactive visual editing and gameplay acceptance remain pending.
 - October 19 move navigation: all 20 MoveStyleTuning entries reference `config/attack_styles/<move_id>.tres`, enabling native Local Inspector right-click → Show in FileSystem. Inspector/Portal saves synchronize the external files and parent mirror while JSON stays authoritative. Gym deeply duplicates external resources and retains run-only guards. Isolated checks passed: 249 style, 183 Portal/config/layout and 118 Gym (550 total); interactive context-menu validation is pending.
 
 - LimboAI 1.8.1 supplies the Final Enemy tree and a preempting reaction branch; Entity/HealthResolver own snapshots, contact judgment, cancellation and mixed-hit transactions. Existing movement owners consume collision-aware reaction displacement. The independent DUM.E task retains task_key dummy and its earlier parser/refill history.
@@ -32,7 +33,7 @@ Persistent development context shared by independent tasks. User decisions and t
 
 ## Evidence and Open items
 
-- The user expects flipbook/timeline preview with hitboxes edited alongside each attack, and runtime/Portal geometry read from that authoring source. The current move-file navigation slice does not implement that conversion; existing runtime geometry remains JSON-driven. Preserve this pending authoring objective separately from the completed asset-navigation work.
+- October 19 native authoring is implemented as a candidate: move resources link to native Animation assets and an Inspector button opens the standard AnimationPlayer editor. Sprite frames and hitbox tracks scrub together; gameplay/Portal use contact-time geometry. Enemy uses the same workflow, with AI approach distance separate. Active poses and Gym isolation remain preserved. Interactive editor navigation, viewport handle/key/save workflow and gameplay acceptance await the user; see ATTACK_STYLES.md. Earlier move-navigation-only work did not provide this authoring workflow.
 
 - October 16 source/status records and task reports include isolated Godot 4.7.2 checks. The style slice reports 199 style/physics, 179 Portal/config/layout/Gym and 59 clash checks (437 total). Other iteration-tool checks have their own scopes; do not sum overlapping runs or claim this checkpoint reran them.
 - Agent engine checks do not establish interactive feel, physical-controller/visual acceptance, ordinary-play coverage, a Web export or submission clearance. Earlier tuning waivers do not validate later candidates.

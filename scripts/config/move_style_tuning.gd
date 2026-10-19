@@ -4,6 +4,9 @@ extends Resource
 
 const Style = preload("res://scripts/combat/attack_style.gd")
 
+@export_group("Animation - scrub and edit in Player AnimationPlayer")
+@export var animation: Animation
+
 @export var move_id: StringName = &"":
 	set(value):
 		move_id = value
@@ -17,12 +20,12 @@ const Style = preload("res://scripts/combat/attack_style.gd")
 	set(value):
 		recovery_duration = value
 		emit_changed()
-@export_group("Contact geometry - pixels; zero uses shared setting")
+@export_group("Contact geometry - animation contact key, pixels")
 @export_range(0.0, 400.0, 1.0, "or_greater") var shape_reach := 0.0:
 	set(value):
 		shape_reach = value
 		emit_changed()
-@export_range(0.0, 200.0, 1.0, "or_greater") var shape_radius := 0.0:
+@export_range(0.001, 200.0, 1.0, "or_greater") var shape_radius := 0.001:
 	set(value):
 		shape_radius = value
 		emit_changed()

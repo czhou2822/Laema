@@ -250,7 +250,7 @@ func _on_category_rearranged(_index: int) -> void:
 func _reload_file() -> void:
 	var loaded := Store.load_config()
 	_file_valid = bool(loaded["ok"])
-	_hash = FileAccess.get_sha256(Store.CONFIG_PATH)
+	_hash = Store.source_hash()
 	if not _file_valid:
 		_feedback.text = str(loaded["error"])
 		_update_status()
@@ -621,7 +621,7 @@ func _process(delta: float) -> void:
 	if _elapsed < 1.0 or not is_instance_valid(_feedback):
 		return
 	_elapsed = 0.0
-	var hash := FileAccess.get_sha256(Store.CONFIG_PATH)
+	var hash := Store.source_hash()
 	if hash == _hash:
 		return
 	if Store.changes(_base, _draft).is_empty():

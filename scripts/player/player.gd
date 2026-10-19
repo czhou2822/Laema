@@ -16,28 +16,7 @@ const AirResolver = preload("res://scripts/combat/air_resolver.gd")
 const EarthResolver = preload("res://scripts/combat/earth_resolver.gd")
 const SHARED_IDLE: Texture2D = preload("res://assets/prototype/player/animation/shared_idle.png")
 const SHARED_WALK: Texture2D = preload("res://assets/prototype/player/animation/shared_walk.png")
-const SHARED_CAST: Texture2D = preload("res://assets/prototype/player/animation/shared_cast.png")
 const HURT_TEXTURE: Texture2D = preload("res://assets/prototype/player/animation/hurt.png")
-const FIRE_X1: Texture2D = preload("res://assets/prototype/player/animation/fire_x1.png")
-const FIRE_X2: Texture2D = preload("res://assets/prototype/player/animation/fire_x2.png")
-const FIRE_X3: Texture2D = preload("res://assets/prototype/player/animation/fire_x3.png")
-const FIRE_X4: Texture2D = preload("res://assets/prototype/player/animation/fire_x4_opposite_limb_trial.png")
-const FIRE_X5: Texture2D = preload("res://assets/prototype/player/animation/fire_x4.png")
-const WATER_X1: Texture2D = preload("res://assets/prototype/player/animation/water_x1.png")
-const WATER_X2: Texture2D = preload("res://assets/prototype/player/animation/water_x2.png")
-const WATER_X3: Texture2D = preload("res://assets/prototype/player/animation/water_x3.png")
-const WATER_X4: Texture2D = preload("res://assets/prototype/player/animation/water_x4.png")
-const WATER_X5: Texture2D = preload("res://assets/prototype/player/animation/water_x5.png")
-const AIR_X1: Texture2D = preload("res://assets/prototype/player/animation/air_x1.png")
-const AIR_X2: Texture2D = preload("res://assets/prototype/player/animation/air_x2.png")
-const AIR_X3: Texture2D = preload("res://assets/prototype/player/animation/air_x3.png")
-const AIR_X4: Texture2D = preload("res://assets/prototype/player/animation/air_x4.png")
-const AIR_X5: Texture2D = preload("res://assets/prototype/player/animation/air_x5.png")
-const EARTH_X1: Texture2D = preload("res://assets/prototype/player/animation/earth_x1.png")
-const EARTH_X2: Texture2D = preload("res://assets/prototype/player/animation/earth_x2.png")
-const EARTH_X3: Texture2D = preload("res://assets/prototype/player/animation/earth_x3.png")
-const EARTH_X4: Texture2D = preload("res://assets/prototype/player/animation/earth_x4.png")
-const EARTH_X5: Texture2D = preload("res://assets/prototype/player/animation/earth_x5.png")
 const ATTACK_SWING_STREAM_PATHS := [
 	"res://assets/prototype/audio/combat/swing_01.wav",
 	"res://assets/prototype/audio/combat/swing_02.wav",
@@ -88,7 +67,6 @@ const MARK_AUDIO_PITCH_SCALES: Array[float] = [1.0, 9.0 / 8.0, 5.0 / 4.0, 4.0 / 
 const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
 const WALK_FRAMES := 12
-const CAST_FRAMES := 10
 const HURT_FRAMES := 4
 const IDLE_FPS := 8.0
 const WALK_FPS := 10.0
@@ -132,7 +110,6 @@ var _config: Dictionary = {}
 var _visual_time := 0.0
 var _last_visual_mode := &""
 var _visual_attack_direction := Vector2.RIGHT
-var _visual_attack_kind := &""
 var _visual_light_position := 0
 var _attack_hitbox_debug_enabled := true
 var _facing_left := false
@@ -286,11 +263,11 @@ func _draw() -> void:
 	var cast_shape := attack_cast.shape as CircleShape2D
 	if cast_shape == null:
 		return
-	var start := attack_cast.position
-	var direction := _visual_attack_direction.normalized()
 	var geometry: Dictionary = might.get_attack_geometry()
-	var end := start + direction * float(geometry["shape_reach"])
-	var radius := float(geometry["shape_radius"])
+	var start: Vector2 = geometry["position"]
+	var end: Vector2 = start + Vector2(geometry["target"])
+	var direction := (end - start).normalized()
+	var radius := float(geometry["radius"])
 	var edge_offset := direction.orthogonal() * radius
 	draw_line(start, end, ATTACK_HITBOX_DEBUG_FILL, radius * 2.0, true)
 	draw_circle(start, radius, ATTACK_HITBOX_DEBUG_FILL)
@@ -310,21 +287,10 @@ func _is_attack_hitbox_debug_visible() -> bool:
 
 
 func _update_attack_visual() -> void:
-	var school: StringName = combat.get_current_attack_school()
-	var texture: Texture2D = SHARED_CAST
-	var frame_count := CAST_FRAMES
-	var mode := &"cast"
-	if _visual_attack_kind == &"light":
-		texture = _get_attack_texture(school, _visual_light_position)
-		frame_count = _get_attack_frames(school, _visual_light_position)
-		mode = StringName("attack_x%d" % _visual_light_position)
-	_set_visual_mode(mode, texture)
+	# Texture and sprite frames are authored alongside geometry in AnimationPlayer.
+	_last_visual_mode = &"attack"
 	_update_side_facing(_visual_attack_direction)
 	_reset_sprite_motion()
-	var exponent := float(_config[String(school)]["visual_motion_exponent"])
-	var visual_progress := pow(combat.get_normalized_attack_progress(), exponent)
-	var frame := mini(int(floor(visual_progress * frame_count)), frame_count - 1)
-	_set_region(frame)
 
 
 func _update_locomotion_visual(
@@ -350,26 +316,6 @@ func _get_walk_texture(_school: StringName) -> Texture2D:
 
 func _get_walk_frames(_school: StringName) -> int:
 	return WALK_FRAMES
-
-
-func _get_attack_texture(school: StringName, combo_position: int) -> Texture2D:
-	var position := clampi(combo_position, 1, 5)
-	match school:
-		&"fire": return [FIRE_X1, FIRE_X2, FIRE_X3, FIRE_X4, FIRE_X5][position - 1]
-		&"water": return [WATER_X1, WATER_X2, WATER_X3, WATER_X4, WATER_X5][position - 1]
-		&"air": return [AIR_X1, AIR_X2, AIR_X3, AIR_X4, AIR_X5][position - 1]
-		&"earth": return [EARTH_X1, EARTH_X2, EARTH_X3, EARTH_X4, EARTH_X5][position - 1]
-	return FIRE_X1
-
-
-func _get_attack_frames(school: StringName, combo_position: int) -> int:
-	var position := clampi(combo_position, 1, 5)
-	match school:
-		&"fire": return [5, 3, 11, 11, 9][position - 1]
-		&"water": return [5, 5, 4, 5, 5][position - 1]
-		&"air": return [9, 7, 7, 6, 8][position - 1]
-		&"earth": return [4, 3, 4, 5, 4][position - 1]
-	return 5
 
 
 func _reset_sprite_motion() -> void:
@@ -409,7 +355,6 @@ func _on_facing_changed(direction: Vector2) -> void:
 	_visual_time = 0.0
 	_update_side_facing(direction)
 	_visual_attack_direction = _get_attack_direction()
-	_sync_attack_cast_direction()
 
 
 func _get_attack_direction() -> Vector2:
@@ -420,15 +365,8 @@ func get_facing_direction() -> Vector2:
 	return _get_attack_direction()
 
 
-func _sync_attack_cast_direction() -> void:
-	if _config.is_empty():
-		return
-	attack_cast.target_position = _get_attack_direction() * float(_config["combat"]["shape_reach"])
-
-
 func _on_attack_started(kind: StringName, school: StringName, direction: Vector2) -> void:
 	_visual_attack_direction = direction
-	_visual_attack_kind = kind
 	_visual_light_position = clampi(combat.get_current_chain_position(), 1, 5) if kind == &"light" else 0
 	_visual_time = 0.0
 	if kind == &"light":

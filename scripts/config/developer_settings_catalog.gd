@@ -25,7 +25,7 @@ const COMBAT_SECTION_ORDER := [
 ]
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
-const STYLE_HELP := "Tune each school's X1–X5 independently. Windup is time until contact; recovery is time after contact until the next action starts. Heat scales both. A zero timing value inherits that phase of shared timing; zero geometry uses shared geometry. Forward motion uses the existing collision body and the authored phase interval. Push scale changes qualifying reaction distance only, never eligibility, duration or invincibility. Changes apply to the next attack."
+const STYLE_HELP := "Scrub sprite frames and edit hitboxes in Player / AnimationPlayer. Geometry shown here is sampled at the animation's contact marker. Saving reach or radius changes that contact key while preserving other keys and the hitbox angle/offset. Windup and recovery are seconds before Heat scaling; zero timing inherits shared timing. Forward motion uses the existing collision body. Push scale changes qualifying reaction distance only. Runtime edits apply to the next attack; Gym edits remain run-only."
 
 const AUDIO_GROUP_ORDER := ["ambient", "sfx", "bgm"]
 # October 15 accepted formula: Combat Systems / Design Decision Log in Laema Space.
@@ -37,6 +37,12 @@ const IMPACT_TOOLTIP := "Attack Impact and character Poise each range from 0 to 
 const LEGACY_REACTION_NOTICE := "These legacy settings do not affect the new combat hit reactions."
 const LEGACY_REACTION_HELP := LEGACY_REACTION_NOTICE + "\nUsed by stationary practice-target recoil and failed-Cast self-flinch. Retained blocked, non-parried defence hits use this path only when their calculated reaction level is positive. Positive levels are capped at 5. Duration controls the flinch/recovery time; distance moves the sprite out and back without moving its collision body. These reactions grant no invincibility. Failed Cast always uses Level 1, so only the two Base values affect it. The new combat reactions use their own Levels 1–5 table."
 const HIDDEN_PORTAL_FIELDS := {
+	"combat.shape_reach": true, # Legacy fallback; authored per-move tracks own geometry.
+	"combat.shape_radius": true,
+	"fire.visual_motion_exponent": true, # Frame pacing is baked into native sprite tracks.
+	"water.visual_motion_exponent": true,
+	"air.visual_motion_exponent": true,
+	"earth.visual_motion_exponent": true,
 	"ui.gym_formula_visible": true, # Deprecated: unified with developer_overlay_visible.
 	"movement.gravity_scale": true,
 	"combat.direct_impact": true,
@@ -62,6 +68,8 @@ const FIELD_RANGES := {
 	"enemy.defensive_level": Vector3(0.0, 100.0, 1.0),
 	"enemy_ai.aggro_range": Vector3(1.0, 2000.0, 1.0),
 	"enemy_ai.attack_range": Vector3(1.0, 400.0, 1.0),
+	"enemy_ai.hitbox_reach": Vector3(0.0, 400.0, 1.0),
+	"enemy_ai.hitbox_radius": Vector3(0.001, 200.0, 1.0),
 	"enemy_ai.movement_speed": Vector3(0.0, 600.0, 1.0),
 	"enemy_ai.windup_duration": Vector3(0.05, 5.0, 0.05),
 	"enemy_ai.recovery_duration": Vector3(0.0, 5.0, 0.05),
@@ -134,6 +142,8 @@ const TUNABLE_TOOLTIPS := {
 	"enemy_ai.enabled": "Enable the reversible prototype Final Enemy AI.",
 	"enemy_ai.aggro_range": "Distance at which the Final Enemy begins tracking the Player.",
 	"enemy_ai.attack_range": "Distance at which the Final Enemy begins its committed melee windup.",
+	"enemy_ai.hitbox_reach": "Melee hitbox length at the animation contact marker, in pixels. Save updates that animation key; approach distance is separate.",
+	"enemy_ai.hitbox_radius": "Melee hitbox radius at the animation contact marker, in pixels. Save updates that animation key.",
 	"enemy_ai.movement_speed": "Final Enemy horizontal approach speed.",
 	"enemy_ai.windup_duration": "Seconds of committed melee warning before one hit query.",
 	"enemy_ai.recovery_duration": "Seconds after the committed melee query before reevaluation.",
@@ -225,7 +235,7 @@ const CATEGORIES := [
 
 const NAVIGATION := [
 	["general", "General", ["movement", "player", "enemy", "enemy_ai", "ui"]],
-	["combat", "Combat", ["combat", "moves", "casting", "heat", "defence", "elemental_endurance", "hit_reaction", "legacy_reactions"]],
+	["combat", "Combat", ["combat", "moves", "attack_styles", "casting", "heat", "defence", "elemental_endurance", "hit_reaction", "legacy_reactions"]],
 	["schools", "Schools", ["fire", "water", "air", "earth"]],
 	["audio", "Audio", ["audio"]],
 	["tutorial", "Tutorial", ["tutorial"]],
@@ -371,7 +381,7 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 	if field["kind"] == "number":
 		if id.contains("duration") or id.ends_with("timer") or id.ends_with("lifetime") or id.ends_with("window"):
 			field["unit"] = "s"
-		elif keys.back() in ["distance", "base_distance", "distance_per_level", "shape_radius", "shape_reach", "base_radius", "radius_per_level", "chain_radius", "aggro_range", "attack_range"]:
+		elif keys.back() in ["distance", "base_distance", "distance_per_level", "shape_radius", "shape_reach", "hitbox_radius", "hitbox_reach", "base_radius", "radius_per_level", "chain_radius", "aggro_range", "attack_range"]:
 			field["unit"] = "px"
 		elif keys.back() in ["speed", "movement_speed"]:
 			field["unit"] = "px/s"
@@ -397,6 +407,8 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 			field["unit"] = "s"
 		if keys.back() == "push_scale":
 			field["unit"] = "×"
+		if keys.back() == "shape_radius":
+			field["minimum"] = 0.001
 	result.append(field)
 
 

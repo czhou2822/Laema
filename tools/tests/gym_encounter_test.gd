@@ -2,6 +2,7 @@ extends SceneTree
 
 const Loader = preload("res://scripts/config/prototype_config_loader.gd")
 const GYM := "res://scenes/gym.tscn"
+const Geometry = preload("res://scripts/combat/attack_geometry.gd")
 var checks := 0
 var failures: Array[String] = []
 var gym
@@ -78,6 +79,9 @@ func _run() -> void:
 	var style_hashes: Dictionary = {}
 	for style in shared_settings.attack_styles:
 		style_hashes[style.resource_path] = FileAccess.get_sha256(style.resource_path)
+	for id in Geometry.move_ids():
+		var path := Geometry.DIRECTORY + id + ".tres"
+		style_hashes[path] = FileAccess.get_sha256(path)
 	gym = load(GYM).instantiate()
 	root.add_child(gym)
 	current_scene = gym
@@ -86,6 +90,14 @@ func _run() -> void:
 	var config: Dictionary = gym.get("_config")
 	check(gym.combat_tuning.settings.attack_styles[0] != shared_settings.attack_styles[0] and is_equal_approx(shared_settings.attack_styles[0].windup_duration, float(ordinary["moves"]["fire_x1"]["windup_duration"])), "Gym owns private external move copies and preserves the shared Inspector values")
 	check(Loader.validate(config)["ok"], "Encounter profile passes the real validator")
+	var shared_animation := Geometry.load_clock("fire_x1")
+	var shared_pose := Geometry.contact(shared_animation)
+	config["moves"]["fire_x1"]["shape_reach"] = 93.0
+	check(gym._apply_runtime_tuning()["ok"], "Gym can preview a private animation contact edit")
+	check(is_equal_approx(Vector2(Geometry.contact(gym.player.animation_player.get_animation(&"fire_x1"))["target"]).length(), 93.0), "Gym Portal changes its actor's private animation")
+	check(Geometry.contact(shared_animation) == shared_pose and Geometry.contact(shared_settings.attack_styles[0].animation) == shared_pose, "Gym preview leaves shared native animation graphs unchanged")
+	config["moves"]["fire_x1"]["shape_reach"] = ordinary["moves"]["fire_x1"]["shape_reach"]
+	gym._apply_runtime_tuning()
 	check(gym.get("_current_area").get_targets().size() == 1, "One opponent and no practice targets")
 	var authored_room = load("res://scenes/stages/gym_area.tscn").instantiate()
 	check(absf(authored_room.get_node("FinalEnemy").position.x - authored_room.get_node("PlayerSpawn").position.x) == 160.0, "Existing room authors the fighters 160 pixels apart")

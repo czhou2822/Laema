@@ -8,6 +8,59 @@ The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
+## Native attack animation and hitbox authoring — 2026-10-19
+
+Status: implemented candidate; interactive editor acceptance remains pending.
+This supersedes the earlier JSON-geometry authority and marker-only animation
+representation below. User decision: existing Godot animation tooling must
+provide scrubbing and visual hitbox editing from the move-settings resource.
+
+Player's embedded AnimationLibrary references native external Animation assets
+under `config/attack_animations/`: 20 X clips, four school-paced Cast clips and
+the retained `attack_clock` compatibility clock. Enemy references `melee_swing`.
+Each clip has discrete texture/region tracks and value tracks for AttackCast
+position, target_position and shape:radius. MoveStyleTuning's Animation property
+references the very same X asset. The existing editor plugin adds a navigation
+button that opens Player, assigns the requested clip and selects AnimationPlayer;
+it implements no timeline or preview renderer. Native editor seeking drives the
+sprite and query geometry without running actor scripts.
+
+AttackGeometry samples the three geometry tracks at the contact marker, using
+native value-track interpolation. Canonical configuration loading overlays those
+saved reach/radius values onto the JSON readback. JSON retains timing, lunge,
+Impact and other tuning; native tracks own full geometry and sprite frame pacing.
+The previous school visual-motion exponents remain hidden compatibility data;
+their original defaults are baked into sprite-frame key times, including Casts.
+Enemy AI attack_range remains only the approach/windup initiation distance;
+separate hitbox_reach/hitbox_radius read and edit its contact keys.
+
+At configuration, actors reload saved Animation data without reloading Script
+dependencies and create private AnimationLibrary/Animation copies. Portal preview
+resizes only contact keys in those copies. Might captures the complete contact
+pose at action start, mirrors local horizontal origin/target coordinates with
+committed facing and applies it for the existing single contact query. It restores
+the live node to canonical animation space afterward. Debug drawing uses that
+captured pose. Enemy preserves its prior windup-time world-origin commitment,
+now computed from the authored contact offset, with captured target and radius.
+Later tuning does not alter either committed pose. Shape resources are local to
+each scene instance. Damage, reactions, contact markers, active intervals,
+Heat, motion and cancellation keep their existing ownership and event counts.
+
+Store loads current native geometry before merging drafts. Conflicting stale
+contact-size changes are rejected. Shared saves validate positive radii before
+writing, save JSON, update only changed native contact-size keys, then save the
+Inspector mirror. Target resizing preserves its direction, origin and all other
+keys. These multi-file writes are not atomic: failure messages identify JSON or
+animation/mirror partial completion. Native edits should be saved before Portal
+drafting; unsaved editor changes cannot be inferred from disk. Portal/bridge
+watch a combined JSON/geometry-animation hash. Startup and reload remain read-only.
+Custom JSON fixture/profile paths keep their legacy geometry normalization.
+
+Gym retains its run-only save guards and private settings graph. Runtime edits
+change only actor-owned Animation copies; retry reloads saved data. The existing
+editor Portal's Attack styles category is now registered in navigation. See
+`docs/ATTACK_STYLES.md` for keying, saving and contact-frame instructions.
+
 ## External move-style assets — 2026-10-19
 
 The 20 MoveStyleTuning entries in `config/combat_tuning.tres` now reference

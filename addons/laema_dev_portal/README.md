@@ -32,7 +32,8 @@ gameplay invariants stay fixed. Gravity and compatibility fields retain their
 intentional Portal exclusions. Stage definitions and animation markers retain
 their existing JSON/scene authoring workflows. School names are Fire, Water, Air
 and Earth. Only individual effect settings not consumed by current Casting carry
-**Not used by current Casting**; active attack-presentation settings are unmarked.
+**Not used by current Casting**. Sprite-frame pacing is authored in native Animation
+tracks; the old school exponent controls are hidden compatibility data.
 
 ### Developer overlay visibility
 
@@ -104,10 +105,19 @@ is resizable and bounded to the editor window; smaller windows scroll the form
 instead of wrapping numeric values vertically. Fill/Cancel remain outside the
 scrolling content.
 
-The existing combat Inspector Resource is a view of JSON. Startup and file reload
-read JSON; file timestamps never select a competing source. Inspector edits merge
-their changed fields back into fresh JSON. No scene or Resource file is saved
-merely by opening the dock or starting the game.
+The combat Inspector Resource mirrors JSON tuning and native Animation contact
+geometry. Native tracks own hitbox poses and sprite frames; startup/file reload
+read those contact sizes over the legacy JSON geometry scalars. Inspector/Portal
+geometry saves update the same native contact keys, while other tuning merges
+into fresh JSON. Combined file hashes refresh saved geometry. Opening the dock
+or starting a game does not save files.
+
+From a move-settings resource, **Edit fire_x1 animation & hitbox** opens the native
+Player AnimationPlayer editor on that move. Scrub, select AttackCast, edit/key its
+position, target and radius at contact, then save the external Animation resource.
+Enemy uses CombatEnemy / AnimationPlayer / melee_swing. Both editor and runtime
+Portals expose Attack styles; Enemy hitbox size is separate from AI attack range.
+Full instructions: `docs/ATTACK_STYLES.md`.
 
 ## During play
 
