@@ -36,7 +36,7 @@ func _run() -> void:
 			check(EditorInterface.get_selection().get_selected_nodes().has(player), "Actual button selects AnimationPlayer")
 			check(player.get_animation(&"fire_x1") == style.animation, "Native editor and resource Inspector use the same Animation object")
 			player.seek(0.67, true)
-			check(scene.get_node("Sprite").texture.resource_path.ends_with("fire_x1.png") and scene.get_node("Sprite").region_rect.position.x > 0, "Native editor seek previews the actual flipbook")
+			check(scene.get_node("Sprite").texture.resource_path.ends_with("earth_x1.png") and scene.get_node("Sprite").region_rect.position.x > 0, "Native Fire editor seek previews its assigned sword flipbook")
 	if failures == 0:
 		print("PASSED: %d native editor navigation checks" % checks)
 	get_tree().quit(0 if failures == 0 else 1)

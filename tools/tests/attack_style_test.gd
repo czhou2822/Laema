@@ -83,18 +83,27 @@ func _run() -> void:
 	root.add_child(preview_actor)
 	var other_actor = load("res://scenes/player/player.tscn").instantiate()
 	root.add_child(other_actor)
-	var counts := {"fire": [5, 3, 11, 11, 9], "water": [5, 5, 4, 5, 5], "air": [9, 7, 7, 6, 8], "earth": [4, 3, 4, 5, 4]}
+	var counts := {"fire": [4, 3, 4, 5, 4], "water": [5, 5, 4, 5, 5], "air": [9, 7, 7, 6, 8], "earth": [5, 3, 11, 11, 9]}
+	var visual_source := {"fire": "earth", "earth": "fire", "water": "water", "air": "air"}
 	for entry in library.attack_styles:
 		var id := str(entry.move_id)
 		var school := id.get_slice("_", 0)
+		var source_school: String = visual_source[school]
 		var count: int = counts[school][int(id.right(1)) - 1]
 		var native: Animation = preview_actor.animation_player.get_animation(id)
 		check(native == entry.animation, "Scene and settings reference one shared animation: " + id)
 		preview_actor.animation_player.play(id)
+		preview_actor.animation_player.seek(0.0, true)
+		var sheet_id := "%s_x%s" % [source_school, id.right(1)]
+		if sheet_id == "fire_x4":
+			sheet_id = "fire_x4_opposite_limb_trial"
+		elif sheet_id == "fire_x5":
+			sheet_id = "fire_x4"
+		check(preview_actor.sprite.texture.resource_path == "res://assets/prototype/player/animation/%s.png" % sheet_id, "Native clip uses the assigned school's flipbook source: " + id)
 		for phase in [0.0, 0.19, 0.36, 0.67, 0.999]:
 			preview_actor.animation_player.seek(phase, true)
-			var frame := mini(int(floor(pow(phase, float(config[school]["visual_motion_exponent"])) * count)), count - 1)
-			check(preview_actor.sprite.region_rect.position.x == frame * 128.0, "Native scrubbing preserves existing frame pacing: %s at %s" % [id, phase])
+			var frame := mini(int(floor(pow(phase, float(config[source_school]["visual_motion_exponent"])) * count)), count - 1)
+			check(preview_actor.sprite.region_rect.position.x == frame * 128.0, "Native scrubbing preserves the assigned flipbook's frame pacing: %s at %s" % [id, phase])
 		preview_actor.animation_player.seek(native.get_marker_time(&"contact"), true)
 		check(preview_actor.attack_cast.target_position.length() == entry.shape_reach and (preview_actor.attack_cast.shape as CircleShape2D).radius == entry.shape_radius, "Scrubbed contact pose matches the Portal geometry: " + id)
 	check(preview_actor.attack_cast.shape != other_actor.attack_cast.shape, "Native shape tracks cannot resize another actor's hitbox")

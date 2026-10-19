@@ -51,12 +51,12 @@ The five X positions use the following accepted Craftpix prototype flipbooks:
 
 | School | Source family | X1 | X2 | X3 | X4 | X5 |
 |---|---|---|---|---|---|---|
-| Fire | Free Prototype Character Pack 2 | Punch 1 | Punch 2 | Fire Kick | Explosive Strike | Power Strike |
+| Fire | Medieval Character Pack 5 | Attack 1 | Attack 2 | Attack 3 | Power Punch 1 | Power Punch 2 |
 | Water | Medieval Character Pack 6 | Attack 1 | Attack 2 | Attack 3 | Enchanted Attack 1 | Enchanted Attack 2 |
 | Air | Prototype Hero Pack 3 | Aerial Strike | Double Strike | Energy Wave | Wind Power | Weapon 1 |
-| Earth | Medieval Character Pack 5 | Attack 1 | Attack 2 | Attack 3 | Power Punch 1 | Power Punch 2 |
+| Earth | Free Prototype Character Pack 2 | Punch 1 | Punch 2 | Fire Kick | Explosive Strike | Power Strike |
 
-All 20 sheets use compatible 128×128 cells and the shared prototype-character baseline. Water and Earth use matching Idle and Walk sheets from their respective source families. Fire and Air use the shared Medieval Character Pack 6 locomotion shell. Their visible weapon may therefore change when transitioning between locomotion and attack animations; this discontinuity is accepted for the prototype.
+All 20 sheets use compatible 128×128 cells and the shared prototype-character baseline. On October 19 the user swapped Fire and Earth X1–X5 flipbooks so the Fire-only Gym uses the sword set as Laema’s benchmark weapon. Each visual swap includes the sprite sheet and matching frame keys/pacing. Move identities, attack durations, contact/active markers, hitboxes, lunge, Impact and damage remain assigned to their original schools. Locomotion and Casting keep their current assignments. PNG filenames retain their original school names: `fire_x1` now references `earth_x1.png`, and conversely for Earth, preserving each corresponding X position.
 
 All four schools share `Casting Spell.png` from Free Prototype Character Pack 2 as the prototype casting animation. It contains 10 frames using compatible 128×128 cells and the shared feet baseline. Final projectile art remains open.
 
@@ -102,6 +102,8 @@ Keep the four schools, existing prototype animations, five global X/Cast progres
 | Fire / medium Spartan Sandals | Lead hit | Advancing hit | Checking kick | Driving strike | Push-away finish |
 | Water / medium War Spear | Reaching opener | Quick follow-up | Close-range check | Extended follow-up | Committed thrust |
 | Air / fast Twin Daggers | Opening cut | Reverse cut | Advancing opener variation | Returning follow-up variation | Finishing slash |
+
+October 19 presentation update: the table above records the original feel references. Fire and Earth have exchanged their X flipbook sets for the sword benchmark; the timing/spacing presets and combat tuning remain attached to their original schools.
 
 The current implementation provides provisional per-move windup, post-contact duration, reach/radius, forward-body distance/phase interval and qualifying-reaction push-distance multiplier. Timing values are seconds before Heat scaling. A zero timing value inherits the corresponding shared-duration phase. The approved October 19 authoring workflow uses native AnimationPlayer sprite/hitbox tracks: scrub a move, edit its visible hitbox, and key the pose. Saved animation geometry is authoritative; Inspector/Portal reach and radius read and edit the contact-time keys. JSON remains authoritative for timing, lunge, Impact and other combat settings. Native zero reach is a point query and radius is positive; legacy custom profiles retain their existing fallback normalization.
 

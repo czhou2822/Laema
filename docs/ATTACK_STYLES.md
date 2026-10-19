@@ -2,6 +2,17 @@
 
 Status: implemented candidate; numeric presets await user playtesting.
 
+## Fire / Earth benchmark artwork — 2026-10-19
+
+Fire X1–X5 now use the former Earth sword flipbooks, matching Laema's benchmark
+weapon. Earth X1–X5 use the former Fire flipbooks. Sprite-sheet references and
+frame tracks/pacing move together at each corresponding X position. Animation
+IDs, contact/active markers, hitbox tracks, actual windup/recovery durations,
+lunge, Impact and damage stay with their original schools. Water, Air, Cast and
+locomotion assignments are unchanged. The underlying PNGs retain their original
+filenames; edit `fire_x1` to tune Fire even though its texture is `earth_x1.png`.
+The initial numeric presets below therefore still apply to the same move IDs.
+
 ## Scrub and visually edit an attack
 
 1. In the Local Inspector, open a move resource such as `config/attack_styles/fire_x1.tres` and click **Edit fire_x1 animation & hitbox**. The existing Laema editor plugin opens `scenes/player/player.tscn`, selects AnimationPlayer and assigns that clip. The move's **Animation** property also links directly to its native Animation resource.
@@ -12,7 +23,7 @@ Status: implemented candidate; numeric presets await user playtesting.
 
 For Enemy melee, open `scenes/enemy/combat_enemy.tscn`, select **AnimationPlayer → melee_swing**, and follow the same scrub/select/key/save workflow. Its hitbox reach/radius are separate from **Enemy AI → Attack range**, which only controls when the enemy approaches/starts windup.
 
-The timelines use the existing normalized one-second clocks. Actual windup/recovery duration still comes from move tuning, Heat and the Gym's duration scale; timeline seconds are not wall-clock combat seconds. Sprite-frame key spacing preserves the previous school frame pacing. Cast artwork uses the corresponding `cast_fire`, `cast_water`, `cast_air` or `cast_earth` clip; projectile damage keeps its existing path.
+The timelines use the existing normalized one-second clocks. Actual windup/recovery duration still comes from move tuning, Heat and the Gym's duration scale; timeline seconds are not wall-clock combat seconds. Sprite-frame key spacing belongs to the assigned flipbook; Fire/Earth exchanged those frame tracks for the sword benchmark. Cast artwork uses the corresponding `cast_fire`, `cast_water`, `cast_air` or `cast_earth` clip; projectile damage keeps its existing path.
 
 The button is navigation into Godot's built-in animation editor, not a custom flipbook tool. If that editor is pinned to another AnimationPlayer, unpin it before switching scenes.
 

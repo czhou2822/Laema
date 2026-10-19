@@ -8,6 +8,17 @@ The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
+## Fire / Earth flipbook exchange — 2026-10-19
+
+User approved an artwork-only exchange between Fire and Earth X1–X5 to use the
+sword set in the Fire-only benchmark. Each pair of native Animation assets swaps
+its texture reference and Sprite:region_rect frame track, including key times.
+Animation identities and all AttackCast tracks, contact/active markers and clock
+lengths remain intact. JSON/settings assets and runtime code do not change, so
+school-specific damage, Impact, timing, lunge and hitbox geometry remain attached
+to their move IDs. PNG filenames are preserved; resource references express the
+new assignment. Casts, other schools, locomotion and Enemy remain unchanged.
+
 ## Native attack animation and hitbox authoring — 2026-10-19
 
 Status: implemented candidate; interactive editor acceptance remains pending.

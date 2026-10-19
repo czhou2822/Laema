@@ -1,5 +1,27 @@
 # Implementation Status
 
+## Fire / Earth benchmark flipbook swap — 2026-10-19
+
+Fire X1–X5 now reference the former Earth sword sheets; Earth X1–X5 reference
+the former Fire sheets. Matching sprite-region keys and their visual timing
+swap with each sheet. All ten Animation identities, clock lengths, contact/
+active markers and AttackCast tracks remain byte-for-byte unchanged. No runtime
+code, JSON combat tuning or move-settings assets change. The Fire-only Gym now
+shows the sword set while retaining its existing combat pace and geometry.
+Water, Air, Cast, locomotion and Enemy assignments are preserved. The original
+PNG filenames remain unchanged; native Animation references select the new art.
+GDD, technical architecture and authoring instructions reflect the decision.
+
+Validation: isolated Godot 4.6.3 stable official Linux x64 passed 458 attack-style
+checks plus 6 native-editor checks (464 total), without engine errors or resource
+leaks. The same checks passed after preserving the incoming `29e52ea` Godot
+scene/resource save, including the user's collider edits. These verify the sprite source/frame counts/pacing for all school moves,
+unchanged contact geometry, Cast pacing and existing style physics, then press
+the actual Inspector button and seek Fire's assigned sword artwork. Static
+comparison confirms unchanged marker/geometry blocks for all ten exchanged
+clips and intact matching source frame tracks. Interactive weapon alignment,
+contact-pose tuning and gameplay acceptance remain `AWAITING_USER_VALIDATION`.
+
 ## Native attack scrubbing and visual hitbox authoring — 2026-10-19
 
 Implemented the approved native AnimationPlayer workflow. Each of the 20 move
