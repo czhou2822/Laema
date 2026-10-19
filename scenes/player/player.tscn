@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://df80t7x1qypps" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://coydkivtwer7t" path="res://scripts/player/movement_controller.gd" id="2_movement"]
-[ext_resource type="Texture2D" uid="uid://dcbwiwpa0u4hw" path="res://assets/prototype/player/animation/fire_x1.png" id="2_vo27k"]
+[ext_resource type="Texture2D" uid="uid://mfc84mw5jf6x" path="res://assets/prototype/player/animation/earth_x1.png" id="2_vo27k"]
 [ext_resource type="Script" uid="uid://dh4oxcsw448ym" path="res://scripts/combat/combat_controller.gd" id="3_combat"]
 [ext_resource type="Script" uid="uid://cgf6v0yon5pv7" path="res://scripts/combat/input_combo.gd" id="4_combo"]
 [ext_resource type="Script" uid="uid://3bwbjxeid4ti" path="res://scripts/combat/heat_controller.gd" id="5_heat"]
@@ -31,7 +31,7 @@
 [ext_resource type="Animation" path="res://config/attack_animations/earth_x3.tres" id="Anim_earth_x3"]
 [ext_resource type="Animation" path="res://config/attack_animations/earth_x4.tres" id="Anim_earth_x4"]
 [ext_resource type="Animation" path="res://config/attack_animations/earth_x5.tres" id="Anim_earth_x5"]
-[ext_resource type="Animation" path="res://config/attack_animations/fire_x1.tres" id="Anim_fire_x1"]
+[ext_resource type="Animation" uid="uid://ciifelblcvs06" path="res://config/attack_animations/fire_x1.tres" id="Anim_fire_x1"]
 [ext_resource type="Animation" path="res://config/attack_animations/fire_x2.tres" id="Anim_fire_x2"]
 [ext_resource type="Animation" path="res://config/attack_animations/fire_x3.tres" id="Anim_fire_x3"]
 [ext_resource type="Animation" path="res://config/attack_animations/fire_x4.tres" id="Anim_fire_x4"]
@@ -70,8 +70,24 @@ shader_parameter/outline_width = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(26, 30)
 
+[sub_resource type="Animation" id="Animation_vo27k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackCast:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 11)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_player"]
 _data = {
+&"RESET": SubResource("Animation_vo27k"),
 &"air_x1": ExtResource("Anim_air_x1"),
 &"air_x2": ExtResource("Anim_air_x2"),
 &"air_x3": ExtResource("Anim_air_x3"),
@@ -101,7 +117,7 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
 resource_local_to_scene = true
-radius = 10.5
+radius = 16.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1810426571]
 scale = Vector2(2, 2)
@@ -113,7 +129,7 @@ material = SubResource("ShaderMaterial_outline")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_vo27k")
 region_enabled = true
-region_rect = Rect2(256, 0, 128, 128)
+region_rect = Rect2(0, 0, 128, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=95008048]
 position = Vector2(0, 11)
@@ -189,7 +205,7 @@ callback_mode_process = 2
 libraries/ = SubResource("AnimationLibrary_player")
 
 [node name="AttackCast" type="ShapeCast2D" parent="." unique_id=854828504]
-position = Vector2(17.17, 6.315)
+position = Vector2(0, 11)
 enabled = false
 shape = SubResource("CircleShape2D_attack")
 target_position = Vector2(0, 0)
