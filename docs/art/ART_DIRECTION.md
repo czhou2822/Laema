@@ -54,6 +54,18 @@ delivered October 18 at 11:42 UTC, was rejected. No pass-4 or pass-5 images are
 included. These working concepts establish no runtime assets or new gameplay
 rules. The five locked character references above remain unchanged.
 
+## Accepted Laema-with-hammer concept set — 2026-10-19
+
+Decision: preserve the [five combined character/weapon concepts](references/2026-10-19-laema-hammer-accepted/README.md)
+following the user's “okay looks good, save it for now” at 08:09 UTC. Iteration
+is paused; this acceptance is not a final production weapon lock. The set records
+hero, gameplay-scale, paired sword/scabbard, downward-strike and shoulder-carry
+views. The gameplay-scale view is a concept, not runtime evidence. Immediate
+hammer ancestry is pass 6; character ancestry is Laema Open. All five earlier
+character alternatives and the historical pass-3 weapon baselines remain valid
+in their documented roles. These images establish no new gameplay rules or
+production assets.
+
 ## Prototype Combat HUD Layout
 
 Status: Approved visual direction for the prototype HUD layout.
