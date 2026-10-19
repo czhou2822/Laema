@@ -44,6 +44,16 @@ advisory relationship. These are concept references, not runtime sprites or
 rig-ready assets. No weapon is locked by this approval. The earlier original
 Heroes III visual-style authority remains in force.
 
+## Working weapon concept baselines — pass 3
+
+Decision: preserve the last positively reviewed
+[Hammer Crown and solid tapered Lance references](references/2026-10-18-pass-3-weapon-baselines/README.md)
+for continued refinement. The user's feedback was that the hammer looked fine
+and the lance was closer; neither is a final locked weapon. Weapon pass 5,
+delivered October 18 at 11:42 UTC, was rejected. No pass-4 or pass-5 images are
+included. These working concepts establish no runtime assets or new gameplay
+rules. The five locked character references above remain unchanged.
+
 ## Prototype Combat HUD Layout
 
 Status: Approved visual direction for the prototype HUD layout.
