@@ -40,7 +40,7 @@ var _transitioning := false
 
 
 func _ready() -> void:
-	var result := ConfigLoader.load_and_validate(CONFIG_PATH)
+	var result := _load_configuration()
 	if not bool(result["ok"]):
 		var message := str(result["error"])
 		push_error(message)
@@ -89,6 +89,10 @@ func _ready() -> void:
 	add_child(dev_session)
 	dev_session.initialize(self)
 	call_deferred("_start_initial_stage")
+
+
+func _load_configuration() -> Dictionary:
+	return ConfigLoader.load_and_validate(CONFIG_PATH)
 
 
 func _get_tutorial_configuration() -> Dictionary:
