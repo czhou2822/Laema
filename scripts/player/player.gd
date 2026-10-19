@@ -268,18 +268,22 @@ func _draw() -> void:
 	var end: Vector2 = start + Vector2(geometry["target"])
 	var direction := (end - start).normalized()
 	var radius := float(geometry["radius"])
-	var edge_offset := direction.orthogonal() * radius
-	draw_line(start, end, ATTACK_HITBOX_DEBUG_FILL, radius * 2.0, true)
-	draw_circle(start, radius, ATTACK_HITBOX_DEBUG_FILL)
-	draw_circle(end, radius, ATTACK_HITBOX_DEBUG_FILL)
-	draw_line(start + edge_offset, end + edge_offset, ATTACK_HITBOX_DEBUG_OUTLINE, 2.0, true)
-	draw_line(start - edge_offset, end - edge_offset, ATTACK_HITBOX_DEBUG_OUTLINE, 2.0, true)
-	draw_arc(start, radius, 0.0, TAU, 32, ATTACK_HITBOX_DEBUG_OUTLINE, 2.0, true)
-	draw_arc(end, radius, 0.0, TAU, 32, ATTACK_HITBOX_DEBUG_OUTLINE, 2.0, true)
+	# Match the editor's ShapeCast circle spacing using the committed query pose.
+	var steps := maxi(2, int(start.distance_to(end) / (Vector2.ONE * radius * 2.0).length() * 4.0))
+	for index in range(steps + 1):
+		var center := start.lerp(end, float(index) / steps)
+		draw_circle(center, radius, ATTACK_HITBOX_DEBUG_FILL)
+		draw_arc(center, radius, 0.0, TAU, 32, ATTACK_HITBOX_DEBUG_OUTLINE, 1.0, true)
+	if not direction.is_zero_approx():
+		var arrow_size := minf(start.distance_to(end), clampf(start.distance_to(end) * 2.0 / 3.0, 1.4, 6.0))
+		var arrow_base := end - direction * arrow_size
+		var arrow_edge := direction.orthogonal() * arrow_size * 0.5
+		draw_line(start, arrow_base, ATTACK_HITBOX_DEBUG_OUTLINE, 1.4, true)
+		draw_colored_polygon(PackedVector2Array([end, arrow_base + arrow_edge, arrow_base - arrow_edge]), ATTACK_HITBOX_DEBUG_OUTLINE)
 
 
 func _is_attack_hitbox_debug_visible() -> bool:
-	if not _attack_hitbox_debug_enabled or not combat.is_attack_playing():
+	if not _attack_hitbox_debug_enabled or not combat.is_attack_playing() or might.get_melee_snapshot().is_empty():
 		return false
 	var progress: float = combat.get_normalized_attack_progress()
 	var hit_phase: float = combat.get_contact_phase()
