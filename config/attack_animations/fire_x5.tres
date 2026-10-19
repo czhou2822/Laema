@@ -1,25 +1,28 @@
-[gd_resource type="Animation" load_steps=2 format=3]
+[gd_resource type="Animation" format=3 uid="uid://x5a50qtysx5e"]
 
-[ext_resource type="Texture2D" path="res://assets/prototype/player/animation/earth_x5.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://c26m6cks3hnwh" path="res://assets/prototype/player/animation/earth_x5.png" id="1_sheet"]
 
 [resource]
 resource_name = "fire_x5"
-length = 1.0
 markers = [{
+"color": Color(1, 1, 1, 1),
 "name": &"active_start",
 "time": 0.36
 }, {
+"color": Color(1, 1, 1, 1),
 "name": &"contact",
-"time": 0.36
+"time": 0.6
 }, {
+"color": Color(1, 1, 1, 1),
 "name": &"active_end",
-"time": 1.0
+"time": 0.8
 }]
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
-tracks/0/enabled = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
@@ -27,10 +30,11 @@ tracks/0/keys = {
 "values": [ExtResource("1_sheet")]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Sprite:region_enabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
-tracks/1/enabled = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
@@ -38,45 +42,49 @@ tracks/1/keys = {
 "values": [true]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Sprite:region_rect")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.371498572, 0.609506827, 0.814250521),
+"times": PackedFloat32Array(0, 0.37149858, 0.60950685, 0.8142505),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(0, 0, 128, 128), Rect2(128, 0, 128, 128), Rect2(256, 0, 128, 128), Rect2(384, 0, 128, 128)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("AttackCast:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.36),
+"times": PackedFloat32Array(0.6, 0.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(50, 11), Vector2(50, 11)]
+"values": [Vector2(35, 11), Vector2(35, 11)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("AttackCast:target_position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.36),
+"times": PackedFloat32Array(0.6, 0.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0)]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("AttackCast:shape:radius")
 tracks/5/interp = 1
 tracks/5/loop_wrap = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.36),
+"times": PackedFloat32Array(0.6, 0.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [16, 16]
