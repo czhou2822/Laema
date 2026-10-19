@@ -184,9 +184,10 @@ func _run() -> void:
 	check(gym.player.health.get_current() == 90.0, "Committed enemy geometry can damage the gym Player")
 	await retry()
 
-	# No level scaling or hidden Fire DoT is introduced; high charge buys Heat.
+	# Reaction levels do not scale damage or introduce hidden Fire DoT; high charge buys Heat.
 	for count in [1, 5]:
 		gym.player.reset_for_stage()
+		opponent()._reset_ai_execution()
 		for index in range(count):
 			gym.player.magic.add_orb(&"fire")
 		gym.player.magic.start_charging()
@@ -198,6 +199,7 @@ func _run() -> void:
 		check(is_equal_approx(before - opponent().health.get_current(), 10.0), "Generic Cast keeps 10 damage at level " + str(count))
 		check(is_equal_approx(gym.player.heat.get_value(), 2.0 * count), "Cast commitment grants existing consumed-count Heat")
 		check(opponent().status_controller.get("_dot_instances").is_empty(), "Fire Cast adds no deferred DoT")
+	opponent()._reset_ai_execution()
 	# More than ten same-school hits remain effective without changing completion events.
 	for index in range(11):
 		var event := HealthEvent.damage(gym.player, opponent(), 1.0, 0, HealthEvent.Delivery.DIRECT, &"fire", {}, Vector2.RIGHT, Vector2.ZERO, 100 + index, [&"fire"])

@@ -1,5 +1,35 @@
 # Implementation Status
 
+## Fire X and leveled Cast reactions — 2026-10-19
+
+Implemented the approved progression: Fire X1–X5 have Impacts 10/20/30/40/50;
+Cast Levels 1–4 have Impacts 10/20/30/40. Against the Gym opponent's 1 Poise
+outside its active swing, these select reaction Levels 1–5 and 1–4 respectively.
+Existing Poise and active-move resistance still apply. The visual-only damage
+hook is removed: hurt animation, stagger and body knockback use the same
+qualifying reaction and its captured lifetime. Damage, Charging, Heat, reaction
+bands/duration/distance and other schools' X tuning are unchanged.
+
+The optional `moves.cast.level_impacts` JSON table is validated and consumed
+per resolved layer through the existing Magic/HealthEvent path. Older profiles
+without it remain valid; levels without an override retain the base Cast Impact.
+The table is authored in JSON, while the existing Inspector/Portal Cast Impact
+control remains the fallback. Cast Levels 5–8 have no new progression assigned.
+Mixed Cast layers still resolve before the strongest qualifying reaction begins.
+
+Validation: isolated Godot 4.6.3 stable official Linux x64 checks passed: 198
+receiver-side clash/reaction, 116 Gym encounter and 179 Portal/config/layout/Gym
+checks (493 total). The reaction cases exercise real Fire X1–X5 native contacts
+and ShapeCasts, committed normal/empowered Cast payloads at Levels 1–4, hurt
+sprite/lifetime, cancellation, body displacement, invincibility, mixed layers,
+non-qualifying damage, fallback levels and invalid configuration. Gym fixtures
+reset reaction state between independent Cast damage cases. Final runners
+completed without engine errors or resource leaks; the expected run-only
+Inspector warning remains covered. Saved source configuration hashes were
+preserved by the isolated runs. The incoming `3d7b0d2` art-only merge changes
+no runtime files. Gameplay/visual acceptance and GDD verification remain pending:
+`AWAITING_USER_VALIDATION` / `AWAITING_GDD_VERIFICATION`.
+
 ## Unified Combat Gym — 2026-10-19
 
 The two development encounters are consolidated into `scenes/gym.tscn`, already

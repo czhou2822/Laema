@@ -8,6 +8,31 @@ The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
+## Fire and Cast reaction progression — 2026-10-19
+
+Repository basis: `3d7b0d2` plus this approved reaction-progression candidate.
+The shared JSON and its existing Inspector mirror now give Fire X1–X5 Impacts
+10/20/30/40/50. `moves.cast.level_impacts` optionally maps Spell Level strings
+to whole-number Impacts in 0–100; the loader validates levels 1–8 and accepts
+older profiles without this optional table. The authored overrides are Levels
+1–4 with Impacts 10/20/30/40. Levels without an override use `moves.cast.impact`.
+The per-level table is authored in JSON; existing Inspector/Portal Cast Impact
+continues to edit that fallback. Existing mirror and Store updates preserve
+the override table when applying unrelated tuning.
+
+MagicComponent reads each resolved layer's Spell Level at projectile impact and
+puts the selected Impact into the existing HealthEvent. HealthResolver retains
+the receiver-side formula, attack cancellation, level selection and mixed-layer
+transaction. No reaction level is forced by action position. Against Gym Poise
+1 outside active frames, the authored Fire/Cast values select the requested
+levels; active-move resistance remains unchanged.
+
+CombatEnemy's hurt animation again starts only through HitReaction's reaction
+signal and ends through its existing completion signal. The visual-only direct
+damage hook is removed. Body movement, invincibility, AI preemption, reaction
+timing/distance and existing diagnostic probes keep their current owners.
+Interactive visual acceptance and GDD verification remain with the user.
+
 ## School attack styles — 2026-10-16
 
 Authorized implementation uses the current 20 prototype animations and the existing global five-position X/Cast chain. AttackStyle captures per-X timing/spacing data. MightComponent advances the native animation clock in two segments around its contact marker: windup seconds before contact, post-contact seconds afterward, each scaled once by Heat. Casting keeps uniform shared-duration playback. Input windows remain normalized, pending actions start on animation completion, and action IDs prevent leftover frame time from advancing a newly queued action.
@@ -377,7 +402,8 @@ SpellProjectile contacts a valid Entity
   -> Combat routes the frozen payload to Magic
   -> resolve the primary, then the optional secondary:
        create one direct-damage HealthEvent
-       use combat.casting_damage and combat.direct_impact
+       use combat.casting_damage
+       use moves.cast.level_impacts[level], falling back to moves.cast.impact
        apply the empowered multiplier only to the primary layer
        resolve through the target's shared HealthResolver
        if HealthResult is APPLIED and health_delta is negative:

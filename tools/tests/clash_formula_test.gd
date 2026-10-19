@@ -68,6 +68,104 @@ func hit(attacker: Fighter, receiver: Fighter, melee: bool = true) -> HealthResu
 	return receiver.receive_health_event(event)
 
 
+func check_coupled_reaction(enemy, level: int, description: String) -> void:
+	var tuning: Dictionary = config["hit_reaction"]["combat_levels"][level - 1]
+	check(enemy.hit_reaction.is_invincible() and enemy.get("_hit_visual_active"), description + " starts hurt animation and combat reaction together")
+	check(not enemy.attack_animation.is_playing(), description + " cancels the enemy attack")
+	check(is_equal_approx(enemy.get("_hit_visual_duration"), float(tuning["duration"])) and is_equal_approx(enemy.hit_reaction.get("_remaining"), float(tuning["duration"])), description + " shares the configured reaction duration")
+	enemy._process(0.0)
+	check(enemy.body_visual.texture == enemy.HURT_TEXTURE, description + " renders the hurt sprite")
+	var before: float = enemy.global_position.x
+	for step in range(int(ceil(float(tuning["duration"]) * 60.0)) + 1):
+		enemy._apply_gravity_and_move(1.0 / 60.0)
+	check(enemy.global_position.x > before, description + " moves the collision body backward")
+	check(not enemy.hit_reaction.is_active() and not enemy.get("_hit_visual_active"), description + " ends hurt animation with the combat reaction")
+
+
+func check_gym_progression(gym, enemy) -> void:
+	var mighty: MightComponent = gym.player.might
+	var enemy_origin: Vector2 = enemy.global_position
+	var player_origin: Vector2 = gym.player.global_position
+	var movement_enabled: bool = gym.player.movement.is_physics_processing()
+	mighty.set_physics_process(false)
+	gym.player.movement.set_physics_process(false)
+	var evaluations: Array[Dictionary] = []
+	var collect := func(snapshot: Dictionary): evaluations.append(snapshot)
+	enemy.health_resolver.reaction_evaluated.connect(collect)
+	# Exercise each actual Fire action, native contact marker and ShapeCast consumer.
+	for position in range(1, 6):
+		gym.player.reset_for_stage()
+		enemy._reset_ai_execution()
+		enemy.health.reset_to_maximum()
+		gym.player.global_position = player_origin
+		enemy.global_position = player_origin + Vector2(48.0, 16.0)
+		await physics_frame
+		await process_frame
+		for previous in range(position - 1):
+			mighty.get("_input_combo").accept_light(&"fire")
+		enemy.ai_begin_windup(gym.player, 72.0, 0.9)
+		evaluations.clear()
+		mighty.try_light_attack(Vector2.RIGHT)
+		mighty._physics_process(float(gym.get("_config")["moves"]["fire_x%d" % position]["windup_duration"]) + 0.001)
+		check(not evaluations.is_empty() and evaluations.back()["level"] == position, "Real Fire X%d selects reaction Level %d" % [position, position])
+		check(enemy.health.get_current() == 190.0, "Fire X%d retains its damage" % position)
+		check_coupled_reaction(enemy, position, "Fire X%d" % position)
+	# Resolve committed Magic payloads for normal and empowered Casts at every requested level.
+	for empowered in [false, true]:
+		for level in range(1, 5):
+			gym.player.reset_for_stage()
+			enemy._reset_ai_execution()
+			enemy.health.reset_to_maximum()
+			enemy.global_position = enemy_origin
+			enemy.ai_begin_windup(gym.player, 72.0, 0.9)
+			var school: StringName = [&"fire", &"water", &"air", &"earth"][level - 1]
+			for orb in range(level):
+				gym.player.magic.add_orb(school)
+			gym.player.magic.start_charging()
+			gym.player.magic._process(0.5 * level)
+			var multiplier: float = gym.get("_config")["casting"]["empowered_primary_multiplier"] if empowered else 1.0
+			var committed: Dictionary = gym.player.magic.commit_cast(school, empowered, multiplier, Vector2.RIGHT, gym.player)
+			var payload: Dictionary = gym.player.magic.get_committed_cast(committed["commit_id"])
+			evaluations.clear()
+			gym.player.magic.resolve_projectile_impact(enemy, enemy.global_position, payload)
+			check(payload["primary_level"] == level and evaluations.size() == 1 and evaluations[0]["level"] == level, "Cast %d empowered=%s selects reaction Level %d" % [level, empowered, level])
+			check(is_equal_approx(200.0 - enemy.health.get_current(), 10.0 * multiplier), "Cast %d empowered=%s preserves damage" % [level, empowered])
+			var rejected: HealthResult = enemy.receive_health_event(HealthEvent.damage(gym.player, enemy, 10.0, 50, HealthEvent.Delivery.DIRECT, &"fire"))
+			check(rejected.outcome == HealthResult.Outcome.INVINCIBLE, "Cast reaction still rejects follow-up damage")
+			check_coupled_reaction(enemy, level, "Cast %d empowered=%s" % [level, empowered])
+	# Mixed layers retain their own level, damage and one strongest deferred reaction.
+	gym.player.reset_for_stage()
+	enemy._reset_ai_execution()
+	enemy.health.reset_to_maximum()
+	for school in [&"water", &"water", &"air", &"fire"]:
+		gym.player.magic.add_orb(school)
+	gym.player.magic.start_charging()
+	gym.player.magic._process(2.0)
+	var committed: Dictionary = gym.player.magic.commit_cast(&"fire", false, 1.0, Vector2.RIGHT, gym.player)
+	var mixed: Dictionary = gym.player.magic.get_committed_cast(committed["commit_id"])
+	evaluations.clear()
+	gym.player.magic.resolve_projectile_impact(enemy, enemy.global_position, mixed)
+	check(evaluations.size() == 2 and evaluations[0]["level"] == 4 and evaluations[1]["level"] == 2 and enemy.health.get_current() == 180.0, "Mixed Cast applies Level 4/2 layers before reaction invincibility")
+	check_coupled_reaction(enemy, 4, "Mixed Cast strongest layer")
+	# Missing overrides keep the base Cast Impact; non-qualifying damage has no detached hurt animation.
+	for level in range(5, 9):
+		enemy._reset_ai_execution()
+		enemy.health.reset_to_maximum()
+		enemy.ai_begin_windup(gym.player, 72.0, 0.9)
+		var payload := {"direction": Vector2.RIGHT, "primary_spell": &"", "primary_school": &"fire", "primary_level": level, "primary_damage_multiplier": 1.0}
+		evaluations.clear()
+		gym.player.magic.resolve_projectile_impact(enemy, enemy.global_position, payload)
+		check(evaluations.size() == 1 and evaluations[0]["incoming_impact"] == 1 and evaluations[0]["level"] == 0, "Cast %d retains its unmodified fallback Impact" % level)
+		check(enemy.health.get_current() == 190.0 and not enemy.hit_reaction.is_active() and not enemy.get("_hit_visual_active") and enemy.attack_animation.is_playing(), "Non-qualifying Cast %d keeps damage and attack without a detached hurt animation" % level)
+	enemy.health_resolver.reaction_evaluated.disconnect(collect)
+	enemy._reset_ai_execution()
+	enemy.health.reset_to_maximum()
+	enemy.global_position = enemy_origin
+	gym.player.reset_for_stage()
+	gym.player.global_position = player_origin
+	gym.player.movement.set_physics_process(movement_enabled)
+
+
 func _run() -> void:
 	config = Loader.load_and_validate("res://config/prototype_combat.json")["data"]
 	var saved_hash := FileAccess.get_sha256("res://config/prototype_combat.json")
@@ -192,6 +290,20 @@ func _run() -> void:
 				current = current[key]
 			current[path[-1]] = value
 			check(Loader.validate(candidate)["ok"], "Agreed range boundary %s = %s remains editable" % [str(path), value])
+	var legacy := config.duplicate(true)
+	legacy["moves"]["cast"].erase("level_impacts")
+	check(Loader.validate(legacy)["ok"], "Older profiles without Cast level overrides remain valid")
+	for value in [-1, 101, 1.5, "10", INF]:
+		var candidate := config.duplicate(true)
+		candidate["moves"]["cast"]["level_impacts"]["2"] = value
+		check(not Loader.validate(candidate)["ok"], "Cast level Impact rejects invalid value %s" % str(value))
+	for invalid_level in ["0", "9", "01", "fire", 2]:
+		var candidate := config.duplicate(true)
+		candidate["moves"]["cast"]["level_impacts"][invalid_level] = 10
+		check(not Loader.validate(candidate)["ok"], "Cast level Impact rejects invalid key %s" % str(invalid_level))
+	var wrong_table := config.duplicate(true)
+	wrong_table["moves"]["cast"]["level_impacts"] = [10, 20, 30, 40]
+	check(not Loader.validate(wrong_table)["ok"], "Cast level Impact rejects a non-object table")
 	# Inspect the real Final Enemy animation clock, not just synthetic phase flags.
 	root.size = Vector2i(1280, 720)
 	var gym = load("res://scenes/gym.tscn").instantiate()
@@ -201,6 +313,7 @@ func _run() -> void:
 	await process_frame
 	var real_enemy = gym.get("_current_area").get_targets()[0]
 	real_enemy.set_physics_process(false)
+	await check_gym_progression(gym, real_enemy)
 	gym.get("_config")["enemy_ai"]["poise"] = 20
 	gym.get("_config")["moves"]["final_enemy_attack"]["impact"] = 15
 	check(gym._apply_runtime_tuning()["ok"], "Real scene accepts in-memory example tuning")

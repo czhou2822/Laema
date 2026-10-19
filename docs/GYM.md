@@ -64,9 +64,18 @@ to eight; an empty queue shows zero, and three fully charged available orbs cap
 the bar at 3/8. Banked capacity beyond available orbs is not displayed.
 
 The existing approach, committed melee, collision, reaction and death behavior
-is reused. Local Poise prevents Impact-1 Fire openers from automatically
-interrupting windup; the existing Fire finisher can still produce a qualifying
-interruption. This is a starting hypothesis, not a verified balance result.
+is reused. Fire X1–X5 have Impacts 10/20/30/40/50, producing reaction Levels
+1/2/3/4/5 against this opponent during idle, windup and recovery. Cast Levels
+1–4 have Impacts 10/20/30/40 and produce reaction Levels 1–4 in those phases.
+Poise and active-move Impact still apply; the opponent's active swing can weaken
+or prevent the reaction. Hurt animation, stagger and whole-body knockback share
+the selected reaction's lifetime. Non-qualifying damage has no separate hurt
+animation. This replaces the earlier Impact-1 opener tuning.
+
+Cast level overrides are stored in `moves.cast.level_impacts` in the shared
+JSON configuration. The existing Cast Impact Inspector/Portal control remains
+the fallback for levels without overrides, currently Levels 5–8. Mixed Cast
+layers use their own levels and retain one strongest deferred reaction.
 
 Only this scene disables contact-free orb generation, the Player 1-HP floor,
 opponent Health refill and Elemental Endurance. It retains `is_final_enemy`

@@ -115,9 +115,6 @@ func receive_health_result(result: HealthResult) -> void:
 		velocity = Vector2.ZERO
 		set_collision_layer_value(4, false)
 		set_physics_process(false)
-	elif result.outcome == HealthResult.Outcome.APPLIED and result.health_delta < 0.0 and result.final_reaction_level == 0 and result.event.is_direct_damage():
-		# Hurt feedback does not interrupt attacks or grant a combat reaction.
-		_on_reaction_started(0, Vector2.ZERO, 0.0, float(_config["hit_reaction"]["base_duration"]))
 
 
 func _physics_process(delta: float) -> void:

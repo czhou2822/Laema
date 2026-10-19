@@ -387,7 +387,10 @@ func _apply_equipped_spell(
 	composition: Array
 ) -> void:
 	_trace(&"spell_effect_resolved", {"target": target.name, "spell": spell, "school": school, "level": level, "damage_multiplier": damage_multiplier, "contact_point": contact_point})
-	var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"]["casting_damage"]) * damage_multiplier, int(_config["moves"]["cast"]["impact"]), HealthEvent.Delivery.DIRECT, school, {}, direction, contact_point, source_action_id, composition)
+	var move: Dictionary = _config["moves"]["cast"]
+	var level_impacts: Dictionary = move.get("level_impacts", {})
+	var impact := int(level_impacts.get(str(level), move["impact"]))
+	var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"]["casting_damage"]) * damage_multiplier, impact, HealthEvent.Delivery.DIRECT, school, {}, direction, contact_point, source_action_id, composition)
 	var result: HealthResult = target.receive_health_event(event)
 	if result.outcome == HealthResult.Outcome.APPLIED and result.health_delta < 0.0:
 		target.feedback.show_cast_level(school, level)

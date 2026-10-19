@@ -535,6 +535,15 @@ static func _validate_moves(moves: Dictionary) -> String:
 		var duration_key := "windup_duration" if id == "final_enemy_attack" else "attack_duration"
 		if move.get("damage_key", "") != damage_key or move.get("duration_key", "") != duration_key:
 			return "moves.%s must reference its existing damage and duration tuning." % id
+	var level_impacts = moves["cast"].get("level_impacts", {})
+	if not level_impacts is Dictionary:
+		return "moves.cast.level_impacts must be an object."
+	for level in level_impacts:
+		if level not in ["1", "2", "3", "4", "5", "6", "7", "8"]:
+			return "moves.cast.level_impacts keys must be Spell Levels 1 to 8."
+		var impact = level_impacts[level]
+		if not _is_number(impact) or not is_finite(float(impact)) or float(impact) < 0.0 or float(impact) > 100.0 or float(impact) != round(float(impact)):
+			return "moves.cast.level_impacts.%s must be a whole number from 0 to 100." % level
 	return ""
 
 

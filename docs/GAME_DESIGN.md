@@ -262,7 +262,7 @@ The prototype uses generic direct Cast damage plus school-and-level display inst
 Every resolved school layer—the primary and optional secondary—in a successful projectile hit:
 
 - deals the existing generic direct Cast damage;
-- uses the existing generic Cast Impact contract; and
+- uses the Impact configured for its Spell Level, falling back to the base Cast Impact when no level override exists; and
 - displays `<School> Lv.<N>` on the struck Enemy.
 
 A mixed Cast displays its resolved primary and optional secondary results, such as `Water Lv.4` and `Air Lv.2`. The exact display duration and presentation remain prototype feedback tuning. Fire DoT, Water Wet/Slow/Frozen, Air Heat/chain lightning, Earth area/Slow, and every other school-level spell behavior are deferred to a separate design session.
@@ -315,7 +315,7 @@ L1 does nothing while Air or Earth is selected. Air and Earth defence remain def
 
 HealthEvent remains the shared damage and healing contract. Damage carries Impact, original-instigator attribution, delivery type, school, contact information, and any effect instruction.
 
-The current prototype starts Player and Enemy maximum Health at 100. X attacks retain their current direct-damage and Impact values across all four schools. Casting projectile hits use the existing generic Cast damage and Impact contracts for the resolved primary and optional secondary layers.
+The current prototype starts Player and Enemy maximum Health at 100. X attacks retain their current direct damage; Fire Impact follows the progression below. Casting projectile hits use generic direct damage for the resolved primary and optional secondary layers.
 
 ### Poise and qualifying combat reactions — formula updated 2026-10-16
 
@@ -341,7 +341,25 @@ The qualifying combat-reaction duration is invincible against further damage and
 
 One mixed Cast resolves its primary and secondary layers in order before starting invincibility. Already active effects are retained and continue advancing; damage ticks received while invincible are rejected. Melee/spell damage rejected by invincibility or clash cancellation is not an applied hit and does not grant hit-dependent resources or change Elemental Endurance. Spell-vs-melee clash rules and further school/status interactions remain deferred.
 
-Each move has an independent JSON data record for its animation and existing damage/duration sources. The October 16 school-style implementation adds Player X timing, geometry, forward-lunge distance/phases and qualifying-reaction push scaling. Individual Impact and character-poise tuning remain separate, exposed through the shared Inspector Resource and mirrored to JSON. Existing saved Impact/Poise and reaction-band values are preserved; final tuning remains open. Cast and Final Enemy do not use the Player X style overrides.
+Each move has an independent JSON data record for its animation and existing damage/duration sources. The October 16 school-style implementation adds Player X timing, geometry, forward-lunge distance/phases and qualifying-reaction push scaling. Individual Impact and character-poise tuning remain separate, exposed through the shared Inspector Resource and mirrored to JSON. Style overrides do not change Impact, Poise or reaction bands; final tuning remains open. Cast and Final Enemy do not use the Player X style overrides.
+
+### Fire X and leveled Cast reaction progression
+
+Fire X1–X5 produce progressively stronger combat reactions. Cast Spell Levels 1–4 use the corresponding reaction progression:
+
+| Fire attack | Cast Spell Level | Attack Impact | Reaction against the Gym opponent outside its active swing |
+|---|---|---:|---:|
+| X1 | 1 | 10 | Level 1 |
+| X2 | 2 | 20 | Level 2 |
+| X3 | 3 | 30 | Level 3 |
+| X4 | 4 | 40 | Level 4 |
+| X5 | — | 50 | Level 5 |
+
+The existing receiver-side formula still applies. The Gym opponent has 1 Poise, so these Impacts produce values 9, 19, 29, 39 and 49 when it is idle, winding up or recovering. Its active move contributes additional resistance and can reduce or prevent the reaction. These are not forced reaction levels that bypass Poise or active attacks.
+
+The hurt animation belongs to the qualifying combat reaction: it starts with stagger and whole-body knockback, uses the selected reaction's duration, and ends with that reaction. A damaging hit that does not qualify causes no separate hurt animation. Existing reaction invincibility and collision behavior are retained.
+
+Each Cast layer uses its own Spell Level to select Impact. Mixed Casts resolve both layers before the strongest qualifying reaction begins. Cast damage, empowerment, Charging and Heat behavior are unchanged. Cast Levels 5–8 retain the existing base Cast Impact; their reaction progression is not assigned by this change. Other schools' X Impacts are unchanged.
 
 Active frames are authored with `active_start` and `active_end` Animation markers. A separate `contact` marker retains the once-per-action hit/launch event. Each Player X has its own animation clock; the provisional active end is the end of its swing. Final Enemy has a marked melee animation clock. The user tunes these markers in Godot.
 

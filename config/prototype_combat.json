@@ -237,7 +237,13 @@
 			"damage_key": "casting_damage",
 			"duration_key": "attack_duration",
 			"forward_lunge": null,
-			"impact": 1
+			"impact": 1,
+			"level_impacts": {
+				"1": 10,
+				"2": 20,
+				"3": 30,
+				"4": 40
+			}
 		},
 		"earth_x1": {
 			"animation": "earth_x1",
@@ -335,7 +341,7 @@
 				"start_phase": 0.15,
 				"end_phase": 0.55
 			},
-			"impact": 1,
+			"impact": 10,
 			"windup_duration": 0.14,
 			"recovery_duration": 0.34,
 			"shape_reach": 40,
@@ -351,7 +357,7 @@
 				"start_phase": 0.15,
 				"end_phase": 0.55
 			},
-			"impact": 1,
+			"impact": 20,
 			"windup_duration": 0.16,
 			"recovery_duration": 0.34,
 			"shape_reach": 43,
@@ -367,7 +373,7 @@
 				"start_phase": 0.15,
 				"end_phase": 0.55
 			},
-			"impact": 1,
+			"impact": 30,
 			"windup_duration": 0.13,
 			"recovery_duration": 0.3,
 			"shape_reach": 42,
@@ -383,7 +389,7 @@
 				"start_phase": 0.15,
 				"end_phase": 0.55
 			},
-			"impact": 1,
+			"impact": 40,
 			"windup_duration": 0.22,
 			"recovery_duration": 0.34,
 			"shape_reach": 46,
