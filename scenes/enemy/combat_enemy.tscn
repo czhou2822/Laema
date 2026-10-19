@@ -1,11 +1,16 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3 uid="uid://ch5qwe8equpbo"]
 
 [ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="1_base"]
-[ext_resource type="Script" path="res://scripts/enemy/combat_enemy.gd" id="2_script"]
-[ext_resource type="BehaviorTree" path="res://ai/trees/final_enemy.tres" id="3_tree"]
-
+[ext_resource type="Script" uid="uid://cw7ssygia5ccn" path="res://scripts/enemy/combat_enemy.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://c0ysa7sqsornx" path="res://assets/prototype/enemy/medieval_fighter/Attack_1.png" id="3_3cx6u"]
+[ext_resource type="BehaviorTree" uid="uid://cvt502b6f13r0" path="res://ai/trees/final_enemy.tres" id="3_tree"]
 [ext_resource type="Animation" path="res://config/attack_animations/melee_swing.tres" id="4_animation"]
-[ext_resource type="Texture2D" path="res://assets/prototype/enemy/medieval_fighter/Idle.png" id="5_idle"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vo27k"]
+radius = 12.4
+height = 68.7
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_3cx6u"]
 
 [sub_resource type="CircleShape2D" id="attack_shape"]
 resource_local_to_scene = true
@@ -16,45 +21,46 @@ _data = {
 &"melee_swing": ExtResource("4_animation")
 }
 
-[node name="CombatEnemy" instance=ExtResource("1_base")]
+[node name="CombatEnemy" unique_id=1397537664 instance=ExtResource("1_base")]
 collision_layer = 10
 collision_mask = 5
 script = ExtResource("2_script")
 
-[node name="BodyVisual" parent="."]
-position = Vector2(0, -21)
+[node name="BodyVisual" parent="." index="0"]
 modulate = Color(0.654902, 0.47451, 0.568627, 1)
-texture = ExtResource("5_idle")
+position = Vector2(0, -21)
+texture = ExtResource("3_3cx6u")
 region_rect = Rect2(0, 0, 128, 128)
 
-[node name="BTPlayer" type="BTPlayer" parent="."]
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-11, -1)
+shape = SubResource("CapsuleShape2D_vo27k")
+
+[node name="BTPlayer" type="BTPlayer" parent="." index="11" unique_id=1856016948]
 behavior_tree = ExtResource("3_tree")
 update_mode = 2
 active = false
+blackboard_plan = SubResource("BlackboardPlan_3cx6u")
 
-[node name="AttackCast" type="ShapeCast2D" parent="."]
+[node name="AttackCast" type="ShapeCast2D" parent="." index="12" unique_id=1944267804]
 position = Vector2(0, 8)
-enabled = true
-target_position = Vector2(72, 0)
 shape = SubResource("attack_shape")
-collision_mask = 1
+target_position = Vector2(72, 0)
 
-[node name="WarningMarker" type="Polygon2D" parent="."]
-position = Vector2(0, -108)
-polygon = PackedVector2Array(-10, 10, 0, -10, 10, 10)
-color = Color(1, 0.18, 0.12, 1)
+[node name="WarningMarker" type="Polygon2D" parent="." index="13" unique_id=141884518]
 visible = false
 z_index = 4
+position = Vector2(0, -108)
+color = Color(1, 0.18, 0.12, 1)
+polygon = PackedVector2Array(-10, 10, 0, -10, 10, 10)
 
-[node name="AttackFlash" type="Polygon2D" parent="."]
-position = Vector2(52, 4)
-polygon = PackedVector2Array(-8, -22, 58, -8, 58, 8, -8, 22)
-color = Color(1, 0.22, 0.12, 0.78)
+[node name="AttackFlash" type="Polygon2D" parent="." index="14" unique_id=1868232673]
 visible = false
 z_index = 5
+position = Vector2(52, 4)
+color = Color(1, 0.22, 0.12, 0.78)
+polygon = PackedVector2Array(-8, -22, 58, -8, 58, 8, -8, 22)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="15" unique_id=527696533]
 callback_mode_process = 2
-libraries = {
-&"": SubResource("AnimationLibrary_enemy")
-}
+libraries/ = SubResource("AnimationLibrary_enemy")

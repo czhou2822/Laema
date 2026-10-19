@@ -1,23 +1,36 @@
-[gd_scene load_steps=47 format=3]
+[gd_scene format=3 uid="uid://3tbgo0v5nwmn"]
 
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
-[ext_resource type="Script" path="res://scripts/player/movement_controller.gd" id="2_movement"]
-[ext_resource type="Script" path="res://scripts/combat/combat_controller.gd" id="3_combat"]
-[ext_resource type="Script" path="res://scripts/combat/input_combo.gd" id="4_combo"]
-[ext_resource type="Script" path="res://scripts/combat/heat_controller.gd" id="5_heat"]
-[ext_resource type="Texture2D" path="res://assets/prototype/player/animation/shared_idle.png" id="6_idle"]
-[ext_resource type="Script" path="res://scripts/entities/health_component.gd" id="7_health"]
-[ext_resource type="Script" path="res://scripts/entities/health_resolver.gd" id="8_resolver"]
-[ext_resource type="Script" path="res://scripts/status/status_controller.gd" id="9_status"]
-[ext_resource type="Script" path="res://scripts/entities/hit_reaction.gd" id="10_reaction"]
-[ext_resource type="Script" path="res://scripts/combat/defence_controller.gd" id="11_defence"]
-[ext_resource type="AudioStream" path="res://assets/prototype/audio/guard_warning.ogg" id="12_guard_warning"]
-[ext_resource type="Script" path="res://scripts/combat/might_component.gd" id="13_might"]
-[ext_resource type="Script" path="res://scripts/combat/magic_component.gd" id="14_magic"]
-[ext_resource type="Script" path="res://scripts/entities/feedback_component.gd" id="15_feedback"]
-[ext_resource type="AudioStream" path="res://assets/prototype/audio/hit_reaction/impactPunch_medium_002.ogg" id="16_hit_reaction"]
-
+[ext_resource type="Script" uid="uid://df80t7x1qypps" path="res://scripts/player/player.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://coydkivtwer7t" path="res://scripts/player/movement_controller.gd" id="2_movement"]
+[ext_resource type="Texture2D" uid="uid://dcbwiwpa0u4hw" path="res://assets/prototype/player/animation/fire_x1.png" id="2_vo27k"]
+[ext_resource type="Script" uid="uid://dh4oxcsw448ym" path="res://scripts/combat/combat_controller.gd" id="3_combat"]
+[ext_resource type="Script" uid="uid://cgf6v0yon5pv7" path="res://scripts/combat/input_combo.gd" id="4_combo"]
+[ext_resource type="Script" uid="uid://3bwbjxeid4ti" path="res://scripts/combat/heat_controller.gd" id="5_heat"]
+[ext_resource type="Script" uid="uid://brehtvaohdo8q" path="res://scripts/entities/health_component.gd" id="7_health"]
+[ext_resource type="Script" uid="uid://bn45ivnywyw2s" path="res://scripts/entities/health_resolver.gd" id="8_resolver"]
+[ext_resource type="Script" uid="uid://cqarcdpymrh10" path="res://scripts/status/status_controller.gd" id="9_status"]
+[ext_resource type="Script" uid="uid://43xham0smt4v" path="res://scripts/entities/hit_reaction.gd" id="10_reaction"]
+[ext_resource type="Script" uid="uid://28mrt2a1rih1" path="res://scripts/combat/defence_controller.gd" id="11_defence"]
+[ext_resource type="AudioStream" uid="uid://dlyeu02rbvqqb" path="res://assets/prototype/audio/guard_warning.ogg" id="12_guard_warning"]
+[ext_resource type="Script" uid="uid://c4wgsy7f1jn2q" path="res://scripts/combat/might_component.gd" id="13_might"]
+[ext_resource type="Script" uid="uid://c6y7xjmaw3ga1" path="res://scripts/combat/magic_component.gd" id="14_magic"]
+[ext_resource type="Script" uid="uid://ceapx6wghtl1" path="res://scripts/entities/feedback_component.gd" id="15_feedback"]
+[ext_resource type="AudioStream" uid="uid://c7cgmy6nghman" path="res://assets/prototype/audio/hit_reaction/impactPunch_medium_002.ogg" id="16_hit_reaction"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x1.tres" id="Anim_air_x1"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x2.tres" id="Anim_air_x2"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x3.tres" id="Anim_air_x3"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x4.tres" id="Anim_air_x4"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x5.tres" id="Anim_air_x5"]
 [ext_resource type="Animation" path="res://config/attack_animations/attack_clock.tres" id="Anim_attack_clock"]
+[ext_resource type="Animation" path="res://config/attack_animations/cast_air.tres" id="Anim_cast_air"]
+[ext_resource type="Animation" path="res://config/attack_animations/cast_earth.tres" id="Anim_cast_earth"]
+[ext_resource type="Animation" path="res://config/attack_animations/cast_fire.tres" id="Anim_cast_fire"]
+[ext_resource type="Animation" path="res://config/attack_animations/cast_water.tres" id="Anim_cast_water"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x1.tres" id="Anim_earth_x1"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x2.tres" id="Anim_earth_x2"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x3.tres" id="Anim_earth_x3"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x4.tres" id="Anim_earth_x4"]
+[ext_resource type="Animation" path="res://config/attack_animations/earth_x5.tres" id="Anim_earth_x5"]
 [ext_resource type="Animation" path="res://config/attack_animations/fire_x1.tres" id="Anim_fire_x1"]
 [ext_resource type="Animation" path="res://config/attack_animations/fire_x2.tres" id="Anim_fire_x2"]
 [ext_resource type="Animation" path="res://config/attack_animations/fire_x3.tres" id="Anim_fire_x3"]
@@ -28,36 +41,52 @@
 [ext_resource type="Animation" path="res://config/attack_animations/water_x3.tres" id="Anim_water_x3"]
 [ext_resource type="Animation" path="res://config/attack_animations/water_x4.tres" id="Anim_water_x4"]
 [ext_resource type="Animation" path="res://config/attack_animations/water_x5.tres" id="Anim_water_x5"]
-[ext_resource type="Animation" path="res://config/attack_animations/air_x1.tres" id="Anim_air_x1"]
-[ext_resource type="Animation" path="res://config/attack_animations/air_x2.tres" id="Anim_air_x2"]
-[ext_resource type="Animation" path="res://config/attack_animations/air_x3.tres" id="Anim_air_x3"]
-[ext_resource type="Animation" path="res://config/attack_animations/air_x4.tres" id="Anim_air_x4"]
-[ext_resource type="Animation" path="res://config/attack_animations/air_x5.tres" id="Anim_air_x5"]
-[ext_resource type="Animation" path="res://config/attack_animations/earth_x1.tres" id="Anim_earth_x1"]
-[ext_resource type="Animation" path="res://config/attack_animations/earth_x2.tres" id="Anim_earth_x2"]
-[ext_resource type="Animation" path="res://config/attack_animations/earth_x3.tres" id="Anim_earth_x3"]
-[ext_resource type="Animation" path="res://config/attack_animations/earth_x4.tres" id="Anim_earth_x4"]
-[ext_resource type="Animation" path="res://config/attack_animations/earth_x5.tres" id="Anim_earth_x5"]
 
-[ext_resource type="Animation" path="res://config/attack_animations/cast_fire.tres" id="Anim_cast_fire"]
-[ext_resource type="Animation" path="res://config/attack_animations/cast_water.tres" id="Anim_cast_water"]
-[ext_resource type="Animation" path="res://config/attack_animations/cast_air.tres" id="Anim_cast_air"]
-[ext_resource type="Animation" path="res://config/attack_animations/cast_earth.tres" id="Anim_cast_earth"]
+[sub_resource type="Shader" id="Shader_outline"]
+code = "shader_type canvas_item;
+uniform vec4 outline_color : source_color = vec4(1.0, 0.2, 0.15, 1.0);
+uniform float outline_width = 1.0;
+
+void fragment() {
+    vec4 base = texture(TEXTURE, UV);
+    float nearby = 0.0;
+    vec2 px = TEXTURE_PIXEL_SIZE * outline_width;
+    nearby = max(nearby, texture(TEXTURE, UV + vec2(px.x, 0.0)).a);
+    nearby = max(nearby, texture(TEXTURE, UV - vec2(px.x, 0.0)).a);
+    nearby = max(nearby, texture(TEXTURE, UV + vec2(0.0, px.y)).a);
+    nearby = max(nearby, texture(TEXTURE, UV - vec2(0.0, px.y)).a);
+    COLOR = base;
+    if (base.a < 0.01 && nearby > 0.01) {
+        COLOR = outline_color;
+    }
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_outline"]
+shader = SubResource("Shader_outline")
+shader_parameter/outline_color = Color(1, 0.231373, 0.188235, 1)
+shader_parameter/outline_width = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(26, 30)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-resource_local_to_scene = true
-radius = 18.0
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_player"]
 _data = {
+&"air_x1": ExtResource("Anim_air_x1"),
+&"air_x2": ExtResource("Anim_air_x2"),
+&"air_x3": ExtResource("Anim_air_x3"),
+&"air_x4": ExtResource("Anim_air_x4"),
+&"air_x5": ExtResource("Anim_air_x5"),
 &"attack_clock": ExtResource("Anim_attack_clock"),
-&"cast_fire": ExtResource("Anim_cast_fire"),
-&"cast_water": ExtResource("Anim_cast_water"),
 &"cast_air": ExtResource("Anim_cast_air"),
 &"cast_earth": ExtResource("Anim_cast_earth"),
+&"cast_fire": ExtResource("Anim_cast_fire"),
+&"cast_water": ExtResource("Anim_cast_water"),
+&"earth_x1": ExtResource("Anim_earth_x1"),
+&"earth_x2": ExtResource("Anim_earth_x2"),
+&"earth_x3": ExtResource("Anim_earth_x3"),
+&"earth_x4": ExtResource("Anim_earth_x4"),
+&"earth_x5": ExtResource("Anim_earth_x5"),
 &"fire_x1": ExtResource("Anim_fire_x1"),
 &"fire_x2": ExtResource("Anim_fire_x2"),
 &"fire_x3": ExtResource("Anim_fire_x3"),
@@ -67,119 +96,101 @@ _data = {
 &"water_x2": ExtResource("Anim_water_x2"),
 &"water_x3": ExtResource("Anim_water_x3"),
 &"water_x4": ExtResource("Anim_water_x4"),
-&"water_x5": ExtResource("Anim_water_x5"),
-&"air_x1": ExtResource("Anim_air_x1"),
-&"air_x2": ExtResource("Anim_air_x2"),
-&"air_x3": ExtResource("Anim_air_x3"),
-&"air_x4": ExtResource("Anim_air_x4"),
-&"air_x5": ExtResource("Anim_air_x5"),
-&"earth_x1": ExtResource("Anim_earth_x1"),
-&"earth_x2": ExtResource("Anim_earth_x2"),
-&"earth_x3": ExtResource("Anim_earth_x3"),
-&"earth_x4": ExtResource("Anim_earth_x4"),
-&"earth_x5": ExtResource("Anim_earth_x5")
+&"water_x5": ExtResource("Anim_water_x5")
 }
 
-[sub_resource type="Shader" id="Shader_outline"]
-code = "shader_type canvas_item;\nuniform vec4 outline_color : source_color = vec4(1.0, 0.2, 0.15, 1.0);\nuniform float outline_width = 1.0;\n\nvoid fragment() {\n    vec4 base = texture(TEXTURE, UV);\n    float nearby = 0.0;\n    vec2 px = TEXTURE_PIXEL_SIZE * outline_width;\n    nearby = max(nearby, texture(TEXTURE, UV + vec2(px.x, 0.0)).a);\n    nearby = max(nearby, texture(TEXTURE, UV - vec2(px.x, 0.0)).a);\n    nearby = max(nearby, texture(TEXTURE, UV + vec2(0.0, px.y)).a);\n    nearby = max(nearby, texture(TEXTURE, UV - vec2(0.0, px.y)).a);\n    COLOR = base;\n    if (base.a < 0.01 && nearby > 0.01) {\n        COLOR = outline_color;\n    }\n}\n"
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+resource_local_to_scene = true
+radius = 10.5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_outline"]
-shader = SubResource("Shader_outline")
-shader_parameter/outline_color = Color(1, 0.231373, 0.188235, 1)
-shader_parameter/outline_width = 1.0
-
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 1
-collision_mask = 12
+[node name="Player" type="CharacterBody2D" unique_id=1810426571]
 scale = Vector2(2, 2)
+collision_mask = 12
 script = ExtResource("1_player")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=768103037]
 material = SubResource("ShaderMaterial_outline")
-texture = ExtResource("6_idle")
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vo27k")
 region_enabled = true
-region_rect = Rect2(0, 0, 128, 128)
+region_rect = Rect2(256, 0, 128, 128)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=95008048]
 position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_player")
 
-[node name="Movement" type="Node" parent="."]
+[node name="Movement" type="Node" parent="." unique_id=1570285336]
 script = ExtResource("2_movement")
 
-[node name="Combat" type="Node" parent="."]
+[node name="Combat" type="Node" parent="." unique_id=1474060275]
 script = ExtResource("3_combat")
 
-[node name="Might" type="Node" parent="Combat"]
+[node name="Might" type="Node" parent="Combat" unique_id=422684010]
 script = ExtResource("13_might")
 
-[node name="InputCombo" type="Node" parent="Combat/Might"]
+[node name="InputCombo" type="Node" parent="Combat/Might" unique_id=544625361]
 script = ExtResource("4_combo")
 
-[node name="Magic" type="Node" parent="Combat"]
+[node name="Magic" type="Node" parent="Combat" unique_id=750335091]
 script = ExtResource("14_magic")
 
-[node name="Heat" type="Node" parent="Combat"]
+[node name="Heat" type="Node" parent="Combat" unique_id=1694569052]
 script = ExtResource("5_heat")
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("7_health")
-
-[node name="HealthResolver" type="Node" parent="."]
-script = ExtResource("8_resolver")
-
-[node name="Status" type="Node" parent="."]
-script = ExtResource("9_status")
-
-[node name="HitReaction" type="Node" parent="."]
-script = ExtResource("10_reaction")
-
-[node name="Feedback" type="Node" parent="."]
-script = ExtResource("15_feedback")
-
-[node name="Defence" type="Node" parent="Combat"]
+[node name="Defence" type="Node" parent="Combat" unique_id=405573487]
 script = ExtResource("11_defence")
 
-[node name="GuardWarningAudio" type="AudioStreamPlayer" parent="."]
+[node name="Health" type="Node" parent="." unique_id=429386612]
+script = ExtResource("7_health")
+
+[node name="HealthResolver" type="Node" parent="." unique_id=949958056]
+script = ExtResource("8_resolver")
+
+[node name="Status" type="Node" parent="." unique_id=1071576761]
+script = ExtResource("9_status")
+
+[node name="HitReaction" type="Node" parent="." unique_id=967000015]
+script = ExtResource("10_reaction")
+
+[node name="Feedback" type="Node" parent="." unique_id=993979561]
+script = ExtResource("15_feedback")
+
+[node name="GuardWarningAudio" type="AudioStreamPlayer" parent="." unique_id=351016814]
 stream = ExtResource("12_guard_warning")
 bus = &"SFX"
 
-[node name="AttackSwingAudio" type="AudioStreamPlayer" parent="."]
+[node name="AttackSwingAudio" type="AudioStreamPlayer" parent="." unique_id=265947787]
 bus = &"SFX"
 
-[node name="ElementAudio" type="AudioStreamPlayer" parent="."]
+[node name="ElementAudio" type="AudioStreamPlayer" parent="." unique_id=514450039]
 bus = &"SFX"
 
-[node name="CastAudio" type="AudioStreamPlayer" parent="."]
+[node name="CastAudio" type="AudioStreamPlayer" parent="." unique_id=104895926]
 bus = &"SFX"
 
-[node name="EmpoweredCastAudio" type="AudioStreamPlayer" parent="."]
+[node name="EmpoweredCastAudio" type="AudioStreamPlayer" parent="." unique_id=1407701190]
 bus = &"SFX"
 
-[node name="CastFailAudio" type="AudioStreamPlayer" parent="."]
+[node name="CastFailAudio" type="AudioStreamPlayer" parent="." unique_id=598608846]
 bus = &"SFX"
 
-[node name="OrbAudio" type="AudioStreamPlayer" parent="."]
+[node name="OrbAudio" type="AudioStreamPlayer" parent="." unique_id=1701678110]
 bus = &"SFX"
 
-[node name="MarkAudio" type="AudioStreamPlayer" parent="."]
+[node name="MarkAudio" type="AudioStreamPlayer" parent="." unique_id=1810556072]
 bus = &"SFX"
 
-[node name="HitReactionAudio" type="AudioStreamPlayer" parent="."]
+[node name="HitReactionAudio" type="AudioStreamPlayer" parent="." unique_id=397081968]
 stream = ExtResource("16_hit_reaction")
 bus = &"SFX"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1902928798]
 callback_mode_process = 2
-libraries = {
-&"": SubResource("AnimationLibrary_player")
-}
+libraries/ = SubResource("AnimationLibrary_player")
 
-[node name="AttackCast" type="ShapeCast2D" parent="."]
-position = Vector2(0, 11)
+[node name="AttackCast" type="ShapeCast2D" parent="." unique_id=854828504]
+position = Vector2(17.17, 6.315)
 enabled = false
-debug_shape_custom_color = Color(1, 0.78, 0.12, 0.12)
-target_position = Vector2(48, 0)
 shape = SubResource("CircleShape2D_attack")
+target_position = Vector2(0, 0)
 collision_mask = 2

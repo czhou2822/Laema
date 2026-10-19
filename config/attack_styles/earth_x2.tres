@@ -1,20 +1,17 @@
-[gd_resource type="Resource" script_class="MoveStyleTuning" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="MoveStyleTuning" format=3 uid="uid://dhcfb0hmtx15w"]
 
-[ext_resource type="Script" path="res://scripts/config/move_style_tuning.gd" id="1_style"]
-
+[ext_resource type="Script" uid="uid://cc0mtdcaa323o" path="res://scripts/config/move_style_tuning.gd" id="1_style"]
 [ext_resource type="Animation" path="res://config/attack_animations/earth_x2.tres" id="2_animation"]
 
 [resource]
 resource_name = "earth_x2"
 script = ExtResource("1_style")
+animation = ExtResource("2_animation")
 move_id = &"earth_x2"
 windup_duration = 0.54
 recovery_duration = 0.42
-shape_reach = 54
-shape_radius = 24
-lunge_distance = 4
+shape_reach = 54.0
+shape_radius = 24.0
+lunge_distance = 4.0
 lunge_start_phase = 0.15
 lunge_end_phase = 0.55
-push_scale = 1
-
-animation = ExtResource("2_animation")

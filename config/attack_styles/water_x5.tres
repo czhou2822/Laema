@@ -1,20 +1,18 @@
-[gd_resource type="Resource" script_class="MoveStyleTuning" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="MoveStyleTuning" format=3 uid="uid://dfmwewnehb87f"]
 
-[ext_resource type="Script" path="res://scripts/config/move_style_tuning.gd" id="1_style"]
-
+[ext_resource type="Script" uid="uid://cc0mtdcaa323o" path="res://scripts/config/move_style_tuning.gd" id="1_style"]
 [ext_resource type="Animation" path="res://config/attack_animations/water_x5.tres" id="2_animation"]
 
 [resource]
 resource_name = "water_x5"
 script = ExtResource("1_style")
+animation = ExtResource("2_animation")
 move_id = &"water_x5"
 windup_duration = 0.34
 recovery_duration = 0.38
-shape_reach = 80
-shape_radius = 11
-lunge_distance = 12
+shape_reach = 80.0
+shape_radius = 11.0
+lunge_distance = 12.0
 lunge_start_phase = 0.15
 lunge_end_phase = 0.55
 push_scale = 1.2
-
-animation = ExtResource("2_animation")
