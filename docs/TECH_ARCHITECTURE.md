@@ -10,21 +10,27 @@ The user reported the complete Stage 1–6 flow run and confirmed in Godot on 20
 
 ## Enemy scene transform and grounding — 2026-10-19
 
-User decision: preserve the scene-authored sprite transform and align the body
-capsule bottom with the standing idle feet. CombatEnemy.configure no longer sets
-BodyVisual.position or scale; it captures the authored position in the existing
-_body_rest_position used by hurt recovery and stage reset. Native attack tracks
-continue to own only sprite texture/region and attack geometry, so no new rest-
-pose owner or automatic collider positioning is introduced.
+User direction: preserve the scene-authored sprite transform and set up Enemy
+grounding consistently with Player. The initial idle-foot adjustment missed two
+existing details: StageArea._ready prepares children before Arena configures them,
+and the floor collision sits 12 pixels above the ground artwork. Runtime sampling
+of the actual Gym reproduced grounded Enemy artwork about 9 pixels below the
+visible surface: preparation restored an uninitialized zero rest position instead
+of the authored Y -21. _body_rest_position now captures BodyVisual.position with
+@onready, before parent preparation, and configure retains that position for hurt
+recovery and stage resets. It never replaces the sprite transform with constants.
 
 CombatEnemy's default scene previews Idle.png instead of a saved attack frame.
 The six 128-pixel idle cells have visible lower edges at row boundary 128; with
 the centered sprite at Y -21, the feet are at local Y 43. The existing capsule
-keeps radius 12.4, height 68.7 and X -11; center Y 8.65 places its bottom at 43.
-Geometry remains scene-authored. Changes to sprite transforms or capsule height
-require scene alignment, not a code adjustment. This moves the standing body
-relative to the floor as intended; attack tracks, damage and reaction rules keep
-their current values.
+keeps radius 12.4, height 68.7 and X -11; center Y -3.35 places its bottom at 31,
+12 pixels above its feet. Player's scaled rectangle and sprite already have the
+same world-space difference: body bottom 52, idle feet 64. Both actors therefore
+stand on the existing physical floor at Y 52 with their feet at the ground-art
+surface Y 64. This supersedes the initial center Y 8.65/direct-foot alignment.
+Geometry remains scene-authored; transform/height edits must preserve the existing
+world-space offset. Native attack tracks still own only texture/region and attack
+geometry. No automatic collider positioning or floor/Player changes are added.
 
 ## Native Cast completion guard correction — 2026-10-19
 

@@ -30,13 +30,25 @@ func check_enemy_rest_pose(config: Dictionary) -> void:
 	check(capsule != null and is_equal_approx(capsule.height, 68.7) and is_equal_approx(capsule.radius, 12.4) and is_equal_approx(collision.position.x, -11.0), "Enemy keeps the user's capsule dimensions and horizontal offset")
 	var capsule_bottom := collision.position.y + capsule.height * 0.5
 	var feet := sprite.transform * Vector2(0, feet_y)
-	check(is_equal_approx(capsule_bottom, feet.y), "Authored capsule bottom aligns with the opaque standing feet")
+	var player = load("res://scenes/player/player.tscn").instantiate()
+	var player_sprite := player.get_node("Sprite") as Sprite2D
+	player_sprite.texture = load("res://assets/prototype/player/animation/shared_idle.png")
+	player_sprite.region_rect = Rect2(0, 0, 128, 128)
+	var player_collision := player.get_node("CollisionShape2D") as CollisionShape2D
+	var player_feet: Vector2 = player.transform * (player_sprite.transform * Vector2(0, 64))
+	var player_bottom: Vector2 = player.transform * (player_collision.transform * Vector2(0, player_collision.shape.get_rect().end.y))
+	var ground_art_offset := player_feet.y - player_bottom.y
+	check(is_equal_approx(ground_art_offset, 12.0) and is_equal_approx(feet.y - capsule_bottom, ground_art_offset), "Enemy matches Player's existing world-space offset between the body bottom and idle feet")
+	player.free()
 	# Non-default position, scale and rotation expose configure-time overrides.
 	sprite.position = Vector2(7, -33)
 	sprite.scale = Vector2(0.8, 1.15)
 	sprite.rotation = 0.12
 	var rest_transform := sprite.transform
 	root.add_child(authored)
+	# StageArea._ready() prepares the Enemy before Arena calls configure().
+	authored.set_stage_active(false)
+	check(sprite.transform.is_equal_approx(rest_transform), "Stage preparation before configuration preserves the authored sprite transform")
 	authored.configure(config)
 	authored.set_process(false)
 	authored.set_physics_process(false)
@@ -55,36 +67,85 @@ func check_enemy_rest_pose(config: Dictionary) -> void:
 	for audio in authored.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()
 	authored.free()
-	# Settle the saved scene against an actual floor through the existing mover.
-	var floor_body := StaticBody2D.new()
-	floor_body.collision_layer = 4
-	floor_body.collision_mask = 0
-	var floor_collision := CollisionShape2D.new()
-	var floor_shape := RectangleShape2D.new()
-	floor_shape.size = Vector2(400, 32)
-	floor_collision.shape = floor_shape
-	floor_body.position = Vector2(0, 16)
-	floor_body.add_child(floor_collision)
-	root.add_child(floor_body)
-	var grounded = packed.instantiate()
-	grounded.position = Vector2(0, -100)
-	root.add_child(grounded)
-	grounded.configure(config)
-	grounded.set_process(false)
-	grounded.set_physics_process(false)
+
+
+func visible_feet_y(sprite: Sprite2D) -> float:
+	var frame := sprite.texture.get_image().get_region(Rect2i(sprite.region_rect))
+	var feet_y := sprite.get_rect().position.y + float(frame.get_used_rect().end.y)
+	return sprite.to_global(Vector2(0, feet_y)).y
+
+
+func check_gym_fighter(actor: CharacterBody2D, sprite: Sprite2D, room: StageArea, phase: String) -> void:
+	var floor_collision := room.get_node("Floor/CollisionShape2D") as CollisionShape2D
+	var floor_top := floor_collision.to_global(Vector2(0, floor_collision.shape.get_rect().position.y)).y
+	var ground := room.get_node("GroundD") as Sprite2D
+	var visible_top := ground.to_global(ground.get_rect().position).y
+	var collision := actor.get_node("CollisionShape2D") as CollisionShape2D
+	var body_bottom := collision.to_global(Vector2(0, collision.shape.get_rect().end.y)).y
+	check(actor.is_on_floor() and absf(body_bottom - floor_top) < 0.2, phase + ": collision body remains on the actual Gym floor")
+	check(absf(visible_feet_y(sprite) - visible_top) < 0.2, phase + ": visible feet meet the actual ground artwork")
+
+
+func check_gym_grounding() -> void:
+	var gym = load("res://scenes/gym.tscn").instantiate()
+	root.add_child(gym)
+	current_scene = gym
+	for frame in range(5):
+		await process_frame
+	var room: StageArea = gym.get("_current_area")
+	var enemy = room.get_node("FinalEnemy")
+	check(enemy.body_visual.position == Vector2(0, -21) and enemy.get("_body_rest_position") == Vector2(0, -21), "Real Gym preparation and configuration retain the saved Enemy rest position")
+	for step in range(30):
+		await physics_frame
+	check(enemy.get("_state") == enemy.State.APPROACH, "Grounding check exercises real Enemy walking")
+	check_gym_fighter(gym.player, gym.player.sprite, room, "Player idle")
+	check_gym_fighter(enemy, enemy.body_visual, room, "Enemy walking")
+	var saw_windup := false
+	var saw_attack := false
+	var saw_recovery := false
 	for step in range(180):
 		await physics_frame
-		grounded._apply_gravity_and_move(1.0 / 60.0)
-		if grounded.is_on_floor():
+		if not saw_windup and enemy.get("_state") == enemy.State.WINDUP:
+			saw_windup = true
+			check_gym_fighter(enemy, enemy.body_visual, room, "Enemy windup")
+		if not saw_attack and enemy.get("_state") == enemy.State.ACTIVE:
+			saw_attack = true
+			check_gym_fighter(enemy, enemy.body_visual, room, "Enemy attack")
+		if saw_attack and enemy.get("_state") == enemy.State.RECOVERY:
+			saw_recovery = true
+			check_gym_fighter(enemy, enemy.body_visual, room, "Enemy recovery")
+			check_gym_fighter(gym.player, gym.player.sprite, room, "Player after Enemy strike")
 			break
-	check(grounded.is_on_floor(), "Enemy's authored capsule settles onto the physics floor")
-	var world_feet: Vector2 = grounded.body_visual.to_global(Vector2(0, feet_y))
-	check(absf(world_feet.y) < 0.2, "Visible idle feet meet the floor within the body's collision margin")
-	grounded.free()
-	floor_body.free()
+	check(saw_windup and saw_attack and saw_recovery, "Actual Gym completes walking, windup, attack and recovery")
+	var result: HealthResult = enemy.receive_health_event(HealthEvent.damage(gym.player, enemy, 1.0, 11, HealthEvent.Delivery.DIRECT, &"fire", {}, Vector2.RIGHT))
+	check(result.outcome == HealthResult.Outcome.APPLIED and enemy.hit_reaction.is_invincible(), "Actual Gym starts a qualifying Enemy hurt reaction")
+	await physics_frame
+	check_gym_fighter(enemy, enemy.body_visual, room, "Enemy hurt")
+	for step in range(120):
+		await physics_frame
+		if not enemy.hit_reaction.is_active():
+			break
+	check(not enemy.hit_reaction.is_active() and enemy.body_visual.position == Vector2(0, -21), "Enemy hurt recovery restores the saved sprite position")
+	check_gym_fighter(enemy, enemy.body_visual, room, "Enemy after hurt")
+	gym._restart_current_encounter()
+	for frame in range(5):
+		await process_frame
+	gym = current_scene
+	room = gym.get("_current_area")
+	enemy = room.get_node("FinalEnemy")
+	for step in range(30):
+		await physics_frame
+	check(enemy.body_visual.position == Vector2(0, -21), "Retry repeats stage initialization without shifting Enemy artwork")
+	check_gym_fighter(gym.player, gym.player.sprite, room, "Player after Retry")
+	check_gym_fighter(enemy, enemy.body_visual, room, "Enemy after Retry")
+	for audio in gym.find_children("*", "AudioStreamPlayer", true, false):
+		audio.stop()
+	current_scene = null
+	gym.free()
 
 
 func _run() -> void:
+	Engine.max_fps = 60
 	var base: Dictionary = Store.load_config()["data"]
 	var before_hash := Store.source_hash()
 	var invalid := base.duplicate(true)
@@ -170,7 +231,8 @@ func _run() -> void:
 	check(Vector2(Geometry.contact(enemy.attack_animation.get_animation(&"melee_swing"))["target"]).length() == 120.0, "Enemy preview updates its private animation for subsequent attacks")
 	target.free()
 	enemy.free()
-	await check_enemy_rest_pose(base)
+	check_enemy_rest_pose(base)
+	await check_gym_grounding()
 	for id in hashes:
 		check(FileAccess.get_sha256(Geometry.DIRECTORY + id + ".tres") == hashes[id], "Seeking never saves an animation: " + id)
 	clock = null

@@ -2,23 +2,29 @@
 
 ## Enemy sprite transform / idle-foot grounding — 2026-10-19
 
-Implemented the requested scene-authoring setup: Enemy configuration preserves
-BodyVisual position/scale and captures the scene rest position for hurt recovery
-and stage reset. Rotation remains authored. CombatEnemy previews standing Idle
-instead of a saved attack frame. Its capsule radius 12.4, height 68.7 and X -11
-are preserved; center Y is now 8.65 so its bottom and visible idle feet both lie
-at local Y 43. No runtime auto-alignment is added. Attack animations/hitboxes,
-combat tuning and retained diagnostic probes are unchanged.
+The user reported sinking after the initial adjustment and requested comparison
+with Player. Actual Gym runtime sampling reproduced the visual mismatch: Enemy
+remained on_floor with its capsule bottom at Y 51.94, but feet at Y 72.94 below
+the artwork surface Y 64. StageArea prepared Enemy before configure captured its
+rest position, replacing authored Sprite Y -21 with zero. The previous synthetic-
+floor test bypassed that initialization sequence and the actual floor artwork.
 
-Validation: isolated Godot 4.6.3 stable official Linux x64 passed 49 native-
-authoring/transform checks and 198 receiver-side clash/reaction checks (247 total).
-The new checks use non-default sprite position, scale and rotation; configure,
-idle, legacy/combat hurt recovery and stage reset preserve that transform. The
-saved scene also settles onto an actual physics floor with its visible feet
-within 0.2 px of the surface, allowing the existing collision margin. Native
-scrubbing, Portal persistence and existing reaction behavior remain covered.
-Final runs completed without engine errors or resource leaks. Interactive
-alignment/gameplay acceptance remains `AWAITING_USER_VALIDATION`.
+Enemy now captures its authored rest position with @onready, before StageArea
+preparation. The capsule keeps radius 12.4, height 68.7 and X -11, with center Y
+-3.35. Its bottom is local Y 31 and idle feet Y 43: the same 12-world-pixel
+difference as Player. This accounts for the existing floor collision at Y 52 and
+ground artwork at Y 64, superseding the initial Y 8.65/direct-foot alignment.
+Player, floor scenes, sprite transforms, attack tracks and combat rules retain
+their existing values. No runtime auto-alignment is added.
+
+Validation: isolated Godot 4.6.3 stable official Linux x64 passed 74 native-
+authoring/grounding and 198 receiver-side clash/reaction checks (272 total), with
+no engine errors or resource leaks. The new checks use the actual Gym lifecycle,
+floor collision and ground artwork, comparing both actors during walking,
+windup, attack, hurt recovery and Retry within a 0.2 px collision margin. They
+also preserve non-default sprite transforms. The same suite reports 17 failures
+against the pre-fix source, including the reproduced sinking and pre-configure
+reset. Interactive visual/gameplay acceptance remains `AWAITING_USER_VALIDATION`.
 
 ## Cast completion / melee follow-up correction — 2026-10-19
 

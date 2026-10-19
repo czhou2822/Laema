@@ -31,19 +31,23 @@ The button is navigation into Godot's built-in animation editor, not a custom fl
 
 Open `scenes/enemy/combat_enemy.tscn` in the Local editor. Its default **BodyVisual**
 shows the standing Idle sprite. Position, scale and rotation are authored in the
-scene; configuration no longer replaces the sprite's position or scale. Hurt
-recovery and stage reset return to the captured scene rest position.
+scene. The rest position is captured when the Enemy becomes ready, before stage
+preparation can reset it, and retained by configuration and hurt/stage recovery.
 
-Select **CollisionShape2D** to edit the static body capsule. Align its bottom with
-the visible idle feet using the shape's height and the node's Position, then save
-the scene. This body collider needs no animation keys. Keep attack geometry in
-**AttackCast** and its native Animation tracks.
+Select **CollisionShape2D** to edit the body capsule. Match the Player's existing
+ground alignment: the capsule bottom sits **12 world pixels above the visible
+idle feet**. The shared floor collision is at Y `52`, while its artwork starts at
+Y `64`; the Player already accounts for this offset. Then save the scene. This
+body collider needs no animation keys. Keep attack geometry in **AttackCast**
+and its native Animation tracks.
 
 The current preset preserves radius `12.4`, height `68.7` and X offset `-11`.
-Its Y offset is `8.65`: half-height `34.35` puts the bottom at local Y `43`, matching
-the idle feet with BodyVisual at Y `-21` in a centered 128-pixel cell. If you change
-the sprite transform or capsule height, realign their feet/bottom in the scene;
-there is no runtime auto-alignment or transform override.
+Its Y offset is `-3.35`: half-height `34.35` puts the bottom at local Y `31`, with
+idle feet at Y `43` for BodyVisual at Y `-21` in a centered 128-pixel cell. Both
+actors' feet therefore meet the visible floor while their bodies meet its
+collision surface. The earlier advice to align the bottom directly with the feet
+missed this floor-art offset. If you change sprite transforms or capsule height,
+retain the 12-world-pixel difference; there is no runtime auto-alignment.
 
 ## Tune numerical settings
 

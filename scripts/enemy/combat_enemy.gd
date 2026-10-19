@@ -28,6 +28,8 @@ enum State {
 @onready var attack_flash: Polygon2D = $AttackFlash
 @onready var bt_player: BTPlayer = $BTPlayer
 @onready var attack_animation: AnimationPlayer = $AnimationPlayer
+# StageArea prepares children before configure(); its reset needs the saved pose.
+@onready var _body_rest_position: Vector2 = $BodyVisual.position
 
 var _ai_config: Dictionary = {}
 var _stage_enabled := false
@@ -38,7 +40,6 @@ var _windup_duration := 0.0
 var _facing := Vector2.RIGHT
 var _animation_time := 0.0
 var _attack_flash_remaining := 0.0
-var _body_rest_position := Vector2.ZERO
 var _hit_visual_tween: Tween
 var _hit_visual_active := false
 var _hit_visual_time := 0.0
