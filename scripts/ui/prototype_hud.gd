@@ -67,6 +67,7 @@ var _defence_label := "READY"
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	mark_progress.step = 0.0
 	_orb_panel_rest_position = orb_panel.position
 
 
@@ -187,14 +188,11 @@ func update_orb_queue(snapshot: Array, marked_count: int, marking_progress: floa
 			var orb: Dictionary = snapshot[index]
 			slot.add_child(_create_orb_indicator(orb, index))
 		orb_queue.add_child(slot)
-	var total_marking_progress := (
-		float(marked_count) + clampf(marking_progress, 0.0, 1.0)
-	) / maxf(float(_max_marked_capacity), 1.0)
-	mark_progress.value = clampf(total_marking_progress, 0.0, 1.0)
 	var visible_charged_count := 0
 	for orb in snapshot:
 		if bool(orb.get("marked", false)):
 			visible_charged_count += 1
+	mark_progress.value = clampf(float(visible_charged_count) / maxf(float(_max_marked_capacity), 1.0), 0.0, 1.0)
 	mark_label.text = "SPELL LEVEL  %d / %d" % [visible_charged_count, _max_marked_capacity]
 	var progress_step := int(round(mark_progress.value * 20.0))
 	if marked_count != _last_marked_count or progress_step != _last_mark_progress_step:

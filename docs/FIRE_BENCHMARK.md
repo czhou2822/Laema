@@ -44,8 +44,21 @@ scene to retain those encounter values. Starting positions remain authored in
 | Opponent Health | 200 |
 | Opponent Poise | 1 |
 | Opponent move Impact | 20 |
-| Opponent windup / recovery | 0.6 s / 0.9 s |
+| Opponent base windup / recovery (Inspector) | 0.6 s / 0.9 s |
+| Opponent effective windup / recovery | 0.9 s / 1.35 s |
 | Starting horizontal gap | 160 px |
+
+The benchmark multiplies Player Fire X windup/recovery, shared Cast animation
+duration and opponent windup/recovery by 1.5 when loading its private profile.
+For example, Fire X1's 0.14 + 0.34 s becomes 0.21 + 0.51 s before Heat, and the
+shared Cast duration becomes approximately 1.2 s. The Inspector's opponent times
+are base values; runtime Portal previews show effective values. Retry reloads
+the saved baseline and applies the multiplier once.
+
+Charging retains its current rate, including Heat acceleration. The shared HUD
+bar now matches gold-outlined charged orbs and Spell Level: three charged orbs
+fill 3/8, and banked capacity without actual charged orbs leaves the bar empty.
+Partial charging does not advance the bar until another orb is charged.
 
 The existing approach, committed melee, collision, reaction and death behavior
 is reused. Local Poise prevents Impact-1 Fire openers from automatically

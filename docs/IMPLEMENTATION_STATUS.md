@@ -1,5 +1,22 @@
 # Implementation Status
 
+## Benchmark pacing and charged-orb progress — 2026-10-19
+
+User-approved candidate: Fire benchmark private configuration multiplies Player
+Fire X windup/recovery, shared Cast animation duration and opponent windup/recovery
+by 1.5 at load. Fire X1 becomes 0.21 + 0.51 s before Heat; opponent base timing
+0.6/0.9 s becomes 0.9/1.35 s. Charging and its Heat multiplier retain their current
+rate. Shared saved tuning is unchanged, and retry derives a fresh scaled profile.
+
+The shared HUD derives both its charge bar and Spell Level from charged flags
+in the orb snapshot. Three charged orbs fill 3/8; empty or uncharged queues fill
+zero regardless of banked capacity. The bar advances in completed-orb steps;
+underlying banked charging and partial progression are preserved.
+
+Validation is limited to source/configuration/diff inspection. No new engine,
+automated-test, controller or visual run is claimed. User comparison of the slower
+encounter and bar after charge, depletion, Cast, expiration and hits remains pending.
+
 ## L2 Charging and Casting — 2026-10-19
 
 User-approved control change: the shared Casting action binds the left controller

@@ -3,6 +3,7 @@ extends "res://scripts/prototype/prototype_arena.gd"
 
 const AREA_PATH := "res://scenes/stages/fire_benchmark_area.tscn"
 const SCHOOL_ACTIONS := [&"select_fire", &"select_water", &"select_air", &"select_earth"]
+const COMBAT_DURATION_SCALE := 1.5
 
 @export_category("Fire benchmark - provisional encounter tuning")
 @export_range(1.0, 1000.0, 1.0, "or_greater") var player_health := 100.0
@@ -39,8 +40,13 @@ func _load_configuration() -> Dictionary:
 	config["enemy_ai"]["poise"] = opponent_poise
 	config["enemy_ai"]["impact"] = opponent_impact
 	config["enemy_ai"]["enabled"] = true
-	config["enemy_ai"]["windup_duration"] = opponent_windup
-	config["enemy_ai"]["recovery_duration"] = opponent_recovery
+	config["enemy_ai"]["windup_duration"] = opponent_windup * COMBAT_DURATION_SCALE
+	config["enemy_ai"]["recovery_duration"] = opponent_recovery * COMBAT_DURATION_SCALE
+	config["combat"]["attack_duration"] = float(config["combat"]["attack_duration"]) * COMBAT_DURATION_SCALE
+	for position in range(1, 6):
+		var move: Dictionary = config["moves"]["fire_x%d" % position]
+		for key in ["windup_duration", "recovery_duration"]:
+			move[key] = float(move[key]) * COMBAT_DURATION_SCALE
 	config["moves"]["final_enemy_attack"]["impact"] = opponent_impact
 	config["ui"]["attack_hitbox_visible"] = false
 	config["ui"]["developer_overlay_visible"] = true

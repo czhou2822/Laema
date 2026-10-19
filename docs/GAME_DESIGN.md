@@ -426,10 +426,16 @@ The current first-pass values remain tunable placeholders: `600 px` awareness ra
 The always-visible game UI includes:
 
 - a school-colored FIFO orb queue with all 10 storage slots always visible, including empty slots; and
-- an L2 charging-progress bar beneath the orb queue; and
+- an L2 charging-progress bar beneath the orb queue, filled by the actual charged-orb count divided by eight; and
 - a Spell Level readout equal to the current number of charged orbs, from level 0 through level 8.
 
 Consumed, expired, and hit-lost charged orbs disappear. Each charged orb uses a 2 px gold outline while retaining its school-colored fill. The actively expiring oldest orb displays its remaining lifetime through a left-filled reverse progress indicator whose empty portion grows right to left.
+
+The charging-progress bar and Spell Level use the same visibly charged-orb count.
+Three charged orbs fill 3/8 of the bar; no charged orbs leave it empty. The bar
+advances in completed-orb steps rather than displaying partial charge or capacity
+banked ahead of available orbs. Charging and its banked capacity retain their
+existing gameplay behavior.
 
 When a generated orb is discarded because all 10 slots are occupied, the entire orb widget performs a UI-only horizontal flinch: 4 px left, 4 px right, then back to rest over approximately 0.12 seconds. Each discarded orb restarts the flinch from the widget's resting position. This feedback never interrupts Laema, movement, actions, or chain state.
 
@@ -820,6 +826,15 @@ shutdown. Shared damage, Endurance and hit-reaction rules remain intact. Reloadi
 or Reset gym starts a fresh round. The tutorial's Final Enemy remains killable.
 The tutorial flow and saved startup stage stay unchanged. See GYM.md
 for launch and scene-placement controls. Visual feel remains for user validation.
+
+## Fire combat benchmark
+
+The Fire benchmark gives the player more time to attend to Casting: Player Fire
+X windup/recovery and Cast animation durations take 1.5 times their normal time,
+as do the opponent's windup and recovery. Charging retains its existing rate and
+Heat acceleration. This timing adjustment is local to the benchmark; ordinary
+Gym and tutorial attack timings retain their shared tuning. The charged-orb
+progress display above applies throughout the prototype.
 
 ## Pause menu — 2026-10-15
 
