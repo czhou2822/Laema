@@ -9,6 +9,9 @@ const TUNING_PATH := "res://config/combat_tuning.tres"
 const ConfigLoader = preload("res://scripts/config/prototype_config_loader.gd")
 const Store = preload("res://scripts/config/developer_config_store.gd")
 
+## Standalone encounters can opt out of the shared JSON/Resource save path.
+@export var persistence_enabled := true
+
 @export var settings: CombatTuningSettings:
 	set(value):
 		settings = value
@@ -61,6 +64,8 @@ func sync_from_config(config: Dictionary) -> void:
 
 
 func save_resource() -> Dictionary:
+	if not persistence_enabled:
+		return {"ok": false, "error": "This encounter uses run-only tuning."}
 	if settings == null:
 		return {"ok": false, "error": "Combat tuning resource is missing."}
 	var path := settings.resource_path
@@ -116,6 +121,12 @@ func _apply_runtime_inspector_change() -> void:
 func _apply_editor_change() -> void:
 	_editor_pending = false
 	if settings == null or settings.get_data() == _last_valid:
+		return
+	if not persistence_enabled:
+		_syncing = true
+		_restore_last_valid()
+		_syncing = false
+		push_warning("This encounter uses run-only combat tuning. Edit its root Inspector settings instead.")
 		return
 	if _editor_config.is_empty():
 		push_warning("Reload a valid JSON configuration before editing Inspector tuning.")

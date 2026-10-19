@@ -2,13 +2,13 @@
 
 ## Overview
 
-This prototype tests the existing four-school combat system in a 2D side-scrolling space. Laema generates temporary elemental orbs through successful X attacks, uses full R2 pressure to charge generated orbs for the upcoming Cast, depletes that charging progress below full pressure, and triggers normal or empowered school spells by releasing R2 below the Cast threshold.
+This prototype tests the existing four-school combat system in a 2D side-scrolling space. Laema generates temporary elemental orbs through successful X attacks, uses full L2 pressure to charge generated orbs for the upcoming Cast, depletes that charging progress below full pressure, and triggers normal or empowered school spells by releasing L2 below the Cast threshold.
 
 The primary experience remains deliberate combat mastery. The player should learn to maintain an attack chain, generate the desired elemental sequence, charge generated orbs while continuing to attack, and trigger Casting at an intentional pressure moment.
 
 ## Prototype Scope
 
-**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, R2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 7 objectives, stage-owned target sets, and one attacking final Enemy with one committed melee pattern.
+**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, L2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 7 objectives, stage-owned target sets, and one attacking final Enemy with one committed melee pattern.
 
 **Excluded:** jumping, vertical traversal controls, Air and Earth defence, additional Enemy behaviors and attack patterns, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
@@ -18,9 +18,9 @@ The primary experience remains deliberate combat mastery. The player should lear
 |---|---|
 | Left stick | Move left or right and face that direction |
 | X | Perform the active school’s attack |
-| R2 held in the 95–100% Charging band | Charge generated orbs for the upcoming Cast |
-| R2 held between 5–95% for more than 0.3 seconds | Deplete charging progress at the fixed baseline rate |
-| R2 released below 5% | Trigger Casting once on release |
+| L2 held in the 95–100% Charging band | Charge generated orbs for the upcoming Cast |
+| L2 held between 5–95% for more than 0.3 seconds | Deplete charging progress at the fixed baseline rate |
+| L2 released below 5% | Trigger Casting once on release |
 | D-pad Up | Select Fire |
 | D-pad Down | Select Water |
 | D-pad Left | Select Air |
@@ -124,7 +124,7 @@ Every X attack that hits an Enemy performs **Generating** and creates one genera
 | Air | A |
 | Earth | E |
 
-Generated orbs form a first-in, first-out queue. A generated orb is an orb produced when a melee X hit lands on an Enemy. A charged orb is a generated orb selected by holding R2 through Charging and made ready to participate in the upcoming Cast.
+Generated orbs form a first-in, first-out queue. A generated orb is an orb produced when a melee X hit lands on an Enemy. A charged orb is a generated orb selected by holding L2 through Charging and made ready to participate in the upcoming Cast.
 
 - The queue stores at most 10 orbs.
 - If all 10 slots are occupied, the landed hit still counts as Generating, but the additional generated orb is discarded without changing the stored queue.
@@ -144,9 +144,9 @@ Air X hit → Air X hit → switch Water → Water X hit → Water X hit
 Orb queue: A A W W
 ```
 
-## R2 Pressure and Charging
+## L2 Pressure and Charging
 
-R2 pressure has three semantic states, and state changes are transition-based:
+L2 pressure has three semantic states, and state changes are transition-based:
 
 - Below `5%`: **RELEASE**; one Cast attempt occurs on entry.
 - `5–95%`: an intermediate hold. It begins **DEPLETING** only after remaining in that band continuously for more than 0.3 seconds; before then it preserves charged orbs for a release.
@@ -426,7 +426,7 @@ The current first-pass values remain tunable placeholders: `600 px` awareness ra
 The always-visible game UI includes:
 
 - a school-colored FIFO orb queue with all 10 storage slots always visible, including empty slots; and
-- an R2 charging-progress bar beneath the orb queue; and
+- an L2 charging-progress bar beneath the orb queue; and
 - a Spell Level readout equal to the current number of charged orbs, from level 0 through level 8.
 
 Consumed, expired, and hit-lost charged orbs disappear. Each charged orb uses a 2 px gold outline while retaining its school-colored fill. The actively expiring oldest orb displays its remaining lifetime through a left-filled reverse progress indicator whose empty portion grows right to left.
@@ -437,7 +437,7 @@ The prototype developer overlay contains:
 
 - the upper-left Heat, Player Health, Enemy Health, and defence readouts;
 - the upper-center active-school, five-position-chain, and completed-chain readouts; and
-- an upper-right gauge showing R2’s live raw pressure percentage.
+- an upper-right gauge showing L2’s live raw pressure percentage.
 
 The backtick Developer Portal has a shared header with Save to JSON, status, and Close controls, followed by three top-level tabs:
 
@@ -445,7 +445,7 @@ The backtick Developer Portal has a shared header with Save to JSON, status, and
 - **Audio:** Ambient, SFX, and BGM groups. Each group has an Enabled control and a `0–100%` Volume control.
 - **Combat:** nested sub-tabs for Combat, Casting, Heat, Fire, Water, Air, Earth, Defence, and Hit Reaction. The Combat sub-tab contains attack-hitbox visibility, the `collect_orb_without_contact` testing toggle, and the Combat controls. When enabled, a missed X can collect an orb without applying damage; the persisted prototype config currently has this test toggle enabled.
 
-Audio controls apply immediately and persist through the same fail-fast JSON save/load flow. Ambient controls the wind loop; SFX controls attack, cast, orb, projectile, cast-failure, guard-warning, and hit-reaction feedback; BGM controls the Fairy Battles music loop. Each newly charged orb uses the fixed-volume charged-orb cue at eight ascending pitches: Do, Re, Mi, Fa, Sol, La, Ti, Do. Charging all eight orbs completes the scale. The Portal expresses normal mix volume as `100%` and silence as `0%`; its internal mixer representation is not player-facing. These controls do not affect the orb queue, R2 charging-progress bar, target status display, target overhead Health display, or gameplay rules.
+Audio controls apply immediately and persist through the same fail-fast JSON save/load flow. Ambient controls the wind loop; SFX controls attack, cast, orb, projectile, cast-failure, guard-warning, and hit-reaction feedback; BGM controls the Fairy Battles music loop. Each newly charged orb uses the fixed-volume charged-orb cue at eight ascending pitches: Do, Re, Mi, Fa, Sol, La, Ti, Do. Charging all eight orbs completes the scale. The Portal expresses normal mix volume as `100%` and silence as `0%`; its internal mixer representation is not player-facing. These controls do not affect the orb queue, L2 charging-progress bar, target status display, target overhead Health display, or gameplay rules.
 
 ## Tutorial Stage Director
 
@@ -527,25 +527,25 @@ Completion is permanent, turns the whole objective widget green, displays `movin
 
 ### Stage 3 — Charge While Attacking, then Cast
 
-Stage 3 teaches the player to begin Charging while starting a five-position attack chain, continue Charging while attacking, and release R2 for an endpoint Cast. It contains one stationary, non-attacking, permanent refill target matching the targets in Stages 1 and 2.
+Stage 3 teaches the player to begin Charging while starting a five-position attack chain, continue Charging while attacking, and release L2 for an endpoint Cast. It contains one stationary, non-attacking, permanent refill target matching the targets in Stages 1 and 2.
 
 The objective widget displays:
 
 ```text
 Charge while attacking, then Cast
-Hold R2 + X → X → X → X → X → Release R2
+Hold L2 + X → X → X → X → X → Release L2
 ```
 
 Stage 3 succeeds when the player lands five X attacks in one uninterrupted chain, then enters a level-5 Cast in the endpoint chaining window after X5.
 
-- The R2 timing is instructional guidance only. The evaluator does not require R2 and the first X to begin simultaneously, and it does not fail when Charging begins later.
+- The L2 timing is instructional guidance only. The evaluator does not require L2 and the first X to begin simultaneously, and it does not fail when Charging begins later.
 - All five X attacks must physically hit the target.
 - The five X attacks may use any school composition permitted by the existing chain rules.
 - The Cast's school composition does not affect success.
 - The Cast must launch at level 5; projectile impact is unnecessary.
-- Each valid X hit turns the corresponding attack step green; the first step advances on the first valid X regardless of when R2 Charging began.
-- After X5 lands, `Release R2` receives a bright white highlight to show that it is the required next input.
-- A valid level-5 endpoint Cast turns `Release R2` green and permanently completes the stage.
+- Each valid X hit turns the corresponding attack step green; the first step advances on the first valid X regardless of when L2 Charging began.
+- After X5 lands, `Release L2` receives a bright white highlight to show that it is the required next input.
+- A valid level-5 endpoint Cast turns `Release L2` green and permanently completes the stage.
 - An X miss, a broken chain, a failed Cast, or a launched Cast below level 5 lightly flinches the whole widget and resets the attempt.
 
 Completion turns the whole objective widget green, displays `moving on ->`, and unlocks the right boundary through the reusable stage-progression shell.
@@ -558,7 +558,7 @@ The objective widget displays:
 
 ```text
 perform X, X, Cast, X
-Hold R2 + X → X → Release R2 → X
+Hold L2 + X → X → Release L2 → X
 ```
 
 Stage 4 succeeds through one uninterrupted `X -> X -> Cast -> X` chain.
@@ -581,7 +581,7 @@ The objective widget displays:
 
 ```text
 perform X, Cast, X, Cast
-Hold R2 + X → Release R2 → Hold R2 + X → Release R2
+Hold L2 + X → Release L2 → Hold L2 + X → Release L2
 ```
 
 Stage 5 succeeds through the exact uninterrupted `X -> Cast -> X -> Cast` sequence.
@@ -661,7 +661,7 @@ now you are free
 
 ## Tunables and Validation
 
-Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, R2 Charging interval and capacity, R2 pressure thresholds, empowered multiplier, Heat gain, Heat Reset Timer duration, Heat depletion rate, Elemental Endurance percentages, the Player 1-HP Floor option, defence, Impact, hit reactions, statuses, Health, and feedback duration.
+Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, L2 Charging interval and capacity, L2 pressure thresholds, empowered multiplier, Heat gain, Heat Reset Timer duration, Heat depletion rate, Elemental Endurance percentages, the Player 1-HP Floor option, defence, Impact, hit reactions, statuses, Health, and feedback duration.
 
 The prototype must make the following observable:
 
@@ -671,22 +671,22 @@ The prototype must make the following observable:
 - 10-orb FIFO storage with all slots permanently visible, an eight-orb Charging/Cast limit, Spell Level presentation from 0 through 8, and preserved queue order after every successful Cast;
 - failed Casts preserving stored orbs while returning charged orbs to the generated state and resetting partial charging progress;
 - gold charged-orb outlines plus full-queue discard and whole-widget flinch feedback;
-- normalized X/R2 pre-window buffering at baseline and high Heat, including first-request arbitration, promotion, and clear/invalidation behavior;
+- normalized X/L2 pre-window buffering at baseline and high Heat, including first-request arbitration, promotion, and clear/invalidation behavior;
 - school switching remaining available regardless of chaining-window timing, CHARGING or DEPLETING state, and prior switches, without consuming a chain position, buffered input, or other chain/input capacity;
 - the default contact requirement and the Developer Portal's optional no-contact orb-collection test toggle;
 - the Stage 1 area contains one stationary, non-attacking, permanent target that accepts X and projectile contact, displays its own Health and Cast-level feedback, and refills at zero Health;
 - FIFO orb expiration, right-to-left reverse orb progress, charge transfer, and consumption;
-- simultaneous R2 Charging and attacking;
-- R2 CHARGING, DEPLETING, and RELEASE bands, transition behavior, fixed-rate newest-charged-first depletion, and release-Cast behavior;
-- default-visible developer readouts, upper-right live raw R2 pressure, shared visibility toggling, and saved visibility restoration;
+- simultaneous L2 Charging and attacking;
+- L2 CHARGING, DEPLETING, and RELEASE bands, transition behavior, fixed-rate newest-charged-first depletion, and release-Cast behavior;
+- default-visible developer readouts, upper-right live raw L2 pressure, shared visibility toggling, and saved visibility restoration;
 - Developer Portal tab organization plus live, saved Ambient/SFX/BGM enabled and volume controls;
-- an always-visible orb queue and R2 charging-progress bar independent of the developer-overlay flag;
+- an always-visible orb queue and L2 charging-progress bar independent of the developer-overlay flag;
 - charged-orb and five-point Heat loss only on incoming `APPLIED` direct damage, including zero-reaction results, while `BLOCKED`, `PARRIED`, and DoT results cause neither resource loss;
 - every stage beginning at `0` Heat;
 - linear Heat-to-attack-speed mapping from `0` Heat at `100%` attack speed to `100` Heat at `150%` attack speed, including intermediate values;
 - two Heat gained per consumed charged orb, with orb consumption as the only current Heat-gain source;
 - direct landed X and spell-projectile hits refreshing the five-second Heat Reset Timer while DoT ticks do not, followed by smooth linear depletion at `3` Heat per second;
-- proportional Heat acceleration of attacks, casting animations, and R2 Charging;
+- proportional Heat acceleration of attacks, casting animations, and L2 Charging;
 - movement locked during active X/Cast animations and restored between actions while CHARGING or DEPLETING preserves the chain;
 - normal, empowered, endpoint, consecutive, and failed Casts;
 - failure cancellation and punishment flinch;

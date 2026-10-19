@@ -6,7 +6,7 @@ Persistent development context shared by independent tasks. User decisions and t
 
 - Target a semi-polished combat/tutorial playtest version by December 31, 2026. Analyze causes before guiding the user's own editor tuning. Presentation preparation remains closed.
 - Preserve four schools, five global X/Cast progression positions and the optional sixth Cast endpoint. The proposed variable-length chain was withdrawn.
-- L2 Casting/R1 defence is the user's recorded control expression; current canonical R2/L1 wording and implementation need explicit reconciliation before claiming remapping. Historical Heat-timer wording remains an Open documentation seam.
+- October 19 decision: Charging/release Casting uses L2 across the prototype, Gym and Fire benchmark. Defence remains L1; the earlier R1 defence expression is not implemented by this change. Canonical controls, tutorial prompts, pressure HUD and Portal tooltips now use L2. Controller validation remains pending. Historical Heat-timer wording remains an Open documentation seam.
 
 ## Current combat decisions
 
