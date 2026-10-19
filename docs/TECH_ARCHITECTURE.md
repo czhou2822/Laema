@@ -311,8 +311,7 @@ The Final Arena evaluator retains the existing `final_enemy_defeated` success fa
 ### Queue and L2 pressure
 
 PrototypeArena registers the shared `casting` InputMap action on the left
-controller trigger (`JOY_AXIS_TRIGGER_LEFT`, positive axis direction). Gym and
-Fire benchmark inherit this registration. CombatComponent and the pressure HUD
+controller trigger (`JOY_AXIS_TRIGGER_LEFT`, positive axis direction). The unified Gym inherits this registration. CombatComponent and the pressure HUD
 read that action's raw strength, so both follow L2. The right-mouse binding,
 L1 defence binding and pressure-state thresholds are preserved.
 
@@ -581,48 +580,35 @@ and Enemy attack remain separate. The series adapter represents each school as
 five ordered move-record paths, reusing the same numeric rules/preview and
 writing only moves.<school>_xN.impact. It never adds a parallel Impact schema.
 
-## Development gym — 2026-10-15
+## Unified Combat Gym — 2026-10-19
 
-`scenes/gym.tscn` inherits the existing persistent Arena root. `gym.gd` overrides
-the root's tutorial-configuration hook with one in-memory final encounter derived
-from the saved final-stage descriptor, using `gym_area.tscn` for physical content.
-The canonical `_config` remains unchanged, so saving tuning cannot publish a gym
-stage override into the tutorial configuration. StageDirector's options now carry
-their own descriptor IDs; debug/session selectors no longer reconstruct IDs by
-indexing the canonical tutorial list. The gym's single-stage selector can reload
-the encounter through the existing reset path. Actor behavior, HUD, audio,
-projectile routing and config ownership remain with their existing components.
+`scenes/gym.tscn` is the only development encounter entry point. Both the project
+main-scene setting and editor Run gym already point there. Its `gym.gd` script
+extends PrototypeArena and combines the bounded Fire encounter with the Gym
+formula readout. The separate benchmark scene/script/area are deleted. The
+canonical `gym_area.tscn` owns the 160-pixel placement and non-refilling opponent.
 
-The StageArea has one CombatEnemy, PlayerSpawn and the existing floor/anchor/gate
-contract. Horizontal spawn gap is 160 pixels; both camera bounds are zero and
-walls enclose the room. The editor plugin's persistent bottom action area emits a Run gym request
-that starts the custom scene through Godot's EditorInterface. The main scene is
-not replaced. See GYM.md for usage and validation limits.
+The existing private configuration-load hook derives fresh run-only data from
+validated JSON, applies local Health/Poise/Impact and genuine-defeat settings,
+and scales Fire X windup/recovery, shared Cast duration and opponent windup/
+recovery by 1.5. Casting and Heat configuration are retained, keeping Charging
+at its existing rate. A duplicated Inspector mirror has persistence disabled.
+The tutorial dictionary remains canonical; only the one in-memory Gym descriptor
+selects the Gym area and final-enemy evaluator. Ordinary tutorial data is untouched.
 
-The gym instance sets refills_at_zero=true. HealthResolver already refills before
-delivering a zero-Health result; CombatEnemy's death branch now respects that
-refill contract instead of shutting down every zero-Health recipient. Base Enemy
-still publishes refill rather than final_enemy_defeated for refilling actors, so
-the gym's final-encounter evaluator remains active indefinitely. Damage feedback,
-Endurance and qualifying hit reactions retain their normal paths. The tutorial's
-non-refilling Final Enemy still enters its existing death path.
+Arena/StageDirector retain actor, area and objective ownership. The Gym retains
+Fire input filtering, Endurance opt-out, victory/defeat resolution and a focused
+Retry button. Retry reloads the complete current scene from a fresh profile.
+A one-shot SceneTree metadata value carries only overlay visibility across reload;
+it is consumed by the new load and cleared if reload fails. It never persists
+tuning. Remote Inspector and runtime Portal edits operate on effective values
+for that attempt; shared saves and editor apply are rejected.
 
-## Fire benchmark pacing — 2026-10-19
-
-`fire_benchmark.gd` applies a 1.5 duration multiplier inside its existing private
-configuration-load hook. It scales Fire X1–X5 windup/recovery overrides and the
-shared attack duration used by Cast and inherited X phases. Zero overrides retain
-their inherited meaning. Opponent Inspector windup/recovery values are multiplied
-before the ordinary Enemy configuration/blackboard path consumes them. Might's
-animation clocks, normalized input windows and phase-based lunges therefore use
-the slower timing through their existing owners; Heat still scales playback once.
-
-The hook leaves the Casting configuration and Heat configuration intact, so
-Charging keeps its existing real-time rate and Heat acceleration. Each retry
-loads a fresh configuration copy before scaling, avoiding cumulative slowdown.
-Runtime Portal edits operate on effective values. Shared JSON and the ordinary
-Gym/tutorial profile are not rewritten. Controller/feel and visual HUD checks
-remain awaiting user validation.
+`gym.gd` creates GymCombatReadout after Arena initialization, subscribes once to
+Player and the active Enemy, and follows HUD telemetry visibility. A full retry
+recreates its subscriptions and clears captured contact history. F4 remains the
+single developer-overlay toggle, including while paused. The result panel is
+above the formula overlay. The tutorial does not gain this readout.
 
 ## Runtime pause menu — 2026-10-15
 

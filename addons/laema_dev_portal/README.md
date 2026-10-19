@@ -39,11 +39,11 @@ and Earth. Only individual effect settings not consumed by current Casting carry
 **General → UI & debug → Developer Overlay Visible** is the single switch for
 developer telemetry and the gym formula panel. **F4** toggles both together during
 a gym run, including while paused. Captured hit values keep updating while hidden;
-Reset gym clears history and retains the shared visibility choice. Gameplay HUD
+Retry gym clears history and retains the shared visibility choice. Gameplay HUD
 stays visible. The Dev Portal window uses its separate backtick shortcut.
 
-Use normal review/save/apply in the editor, or Save Tuning in-game, to persist the
-choice. The shortcut does not save unrelated draft tuning automatically. Older
+Use editor Review & save to persist the choice for future Gym launches.
+The tutorial also supports Save Tuning in-game; the Gym uses run-only previews. The shortcut does not save unrelated draft tuning automatically. Older
 formula-only settings migrate in memory: the existing developer-overlay preference
 wins when both are present, and the duplicate field is no longer shown or saved.
 
@@ -113,18 +113,19 @@ merely by opening the dock or starting the game.
 
 ### Gym
 
-Use **Run gym** in the dock’s bottom action area to launch the standalone Player-vs-Enemy scene, even
-while the game is stopped. Alternatively open `scenes/gym.tscn` in Godot and run
-the current scene (F6). The gym contains one Player and the existing Final Enemy,
-160 pixels apart, with no practice targets. It uses shared saved combat tuning
-and the normal in-game Portal. The regular project startup scene and saved
-tutorial stage remain unchanged.
+Use **Run gym**, F5, or open `scenes/gym.tscn` and press F6. These launch the
+same canonical Fire-only Gym: one Player and one killable opponent, 160 pixels
+apart, with slower attack timings, unchanged Charging, victory/defeat and retry.
+The separate benchmark entry point is retired. The contact-time formula panel
+and ordinary telemetry share Developer Overlay Visible/F4.
 
-While the gym runs, **Load stage in current session** reloads its single Gym
-encounter for another round. The gym enemy refills Health at zero and keeps
-fighting indefinitely, without defeat or respawn. The normal tutorial enemy
-remains killable. To tune
-the starting gap, move FinalEnemy or PlayerSpawn in `scenes/stages/gym_area.tscn`.
+**Retry gym** and **Load stage in current session** reload the complete encounter,
+restore its local profile and clear captured hit history while retaining run
+visibility. Runtime Portal and Remote Inspector edits are previews for the
+current attempt. Gym refuses Save Tuning, Inspector mirror saves and shared
+editor apply. Use the Gym root Inspector for its encounter values and the normal
+editor Review & save for shared future-run defaults. Edit starting positions in
+`scenes/stages/gym_area.tscn`. See `docs/GYM.md` for controls and observation goals.
 
 ### Connected session
 
@@ -140,9 +141,9 @@ gameplay is paused. The pause menu and in-game Portal replace one another rather
 than stacking conflicting pause states.
 
 Saving the editor draft does not automatically apply it. Changing settings in the
-in-game Portal retains its existing immediate-preview behavior; **Save Tuning**
-persists them through the same configuration store. Save unsaved in-game tuning
-before applying editor configuration. Multiple game sessions disable editor
+in-game Portal retains its immediate-preview behavior. The tutorial can persist
+changes through **Save Tuning** and apply saved editor configuration; the Gym
+rejects both shared persistence and saved-editor apply. Multiple game sessions disable editor
 commands rather than selecting one implicitly.
 
 Startup stage and initial school affect the next run. Reaction changes affect

@@ -116,6 +116,8 @@ func _run() -> void:
 	gym._load_stage_from_developer(0)
 	for frame in range(3):
 		await process_frame
+	gym = current_scene
+	readout = gym.combat_readout
 	enemy = gym.get("_current_area").get_targets()[0]
 	check(enemy.get_instance_id() != old_enemy_id and readout.get("_last_evaluations").is_empty() and readout.get("_enemy") == enemy and gym.player.health_resolver.reaction_evaluated.get_connections().size() == 1, "Reset gym clears history and reconnects the new enemy without duplicate Player subscriptions")
 	var normal_arena = load("res://scenes/prototype_arena.tscn").instantiate()

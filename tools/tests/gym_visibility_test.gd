@@ -97,9 +97,14 @@ func _run() -> void:
 	gym._load_stage_from_developer(0)
 	for frame in range(3):
 		await process_frame
+	gym = current_scene
+	readout = gym.combat_readout
 	check(not readout.get("_panel").visible and readout.get("_last_evaluations").is_empty(), "Reset gym keeps the hidden state while clearing capture history")
 	check(FileAccess.get_sha256("res://config/prototype_combat.json") == original_hash, "Shortcut, checkbox and Reset do not automatically save tuning")
-	check(gym._save_runtime_tuning()["ok"] and not Loader.load_and_validate("res://config/prototype_combat.json")["data"]["ui"]["developer_overlay_visible"], "Explicit Save Tuning persists the visibility choice")
+	check(not gym._save_runtime_tuning()["ok"] and FileAccess.get_sha256("res://config/prototype_combat.json") == original_hash, "Gym run-only Save refuses shared persistence")
+	var editor_config: Dictionary = Loader.load_and_validate("res://config/prototype_combat.json")["data"]
+	editor_config["ui"]["developer_overlay_visible"] = false
+	check(Loader.validate_and_save("res://config/prototype_combat.json", editor_config)["ok"], "Editor fixture can save the default visibility independently of Gym")
 	stop_audio(gym)
 	await create_timer(0.3).timeout
 	gym.free()

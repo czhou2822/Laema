@@ -498,6 +498,7 @@ func _run() -> void:
 	gym._load_stage_from_developer(0)
 	await process_frame
 	await process_frame
+	gym = current_scene
 	check(gym.get("_current_descriptor")["id"] == "gym" and gym.get("_current_area").get_targets().size() == 1, "Reloading the gym resets the same one-enemy encounter")
 	var pause_ui = gym.pause_menu
 	check(not pause_ui.is_open() and not paused, "Pause HUD starts hidden without pausing gameplay")
@@ -574,9 +575,16 @@ func _run() -> void:
 	pause_ui.restart_button.pressed.emit()
 	await process_frame
 	await process_frame
+	gym = current_scene
+	pause_ui = gym.pause_menu
 	check(not paused and not pause_ui.is_open() and gym.get("_current_area").get_instance_id() != old_gym_area_id and gym.get("_current_descriptor")["id"] == "gym", "Pause Restart resumes and reloads the current gym encounter")
 	check(FileAccess.get_sha256(Store.CONFIG_PATH) == gym_hash, "Pause/resume/restart do not save or change tuning")
-	var refill_enemy: Entity = gym.get("_current_area").get_targets()[0]
+	var refill_enemy: Entity = load("res://scenes/enemy/combat_enemy.tscn").instantiate()
+	refill_enemy.refills_at_zero = true
+	gym.add_child(refill_enemy)
+	refill_enemy.configure(gym.get("_config"))
+	refill_enemy.set_stage_active(true)
+	refill_enemy.set_physics_process(false)
 	var refill_outcomes: Array = []
 	refill_enemy.outcome_published.connect(func(outcome): refill_outcomes.append(outcome.get_kind()))
 	var refill_keeps_fighting := true
@@ -584,12 +592,12 @@ func _run() -> void:
 		var hit := HealthEvent.damage(gym.player, refill_enemy, refill_enemy.health.get_maximum() * 2.0, 0, HealthEvent.Delivery.DIRECT if depletion % 2 == 0 else HealthEvent.Delivery.DOT_TICK, &"")
 		var result: HealthResult = refill_enemy.receive_health_event(hit)
 		refill_keeps_fighting = refill_keeps_fighting and result.zero_reached and result.health_delta < 0.0 and refill_enemy.health.get_current() == refill_enemy.health.get_maximum() and not refill_enemy.get("_defeated") and refill_enemy.get("_state") != refill_enemy.State.DEAD
-	check(refill_keeps_fighting, "Gym enemy repeatedly refills on direct/tick depletion without dying")
-	check(refill_outcomes.count(&"practice_target_refilled") == 3 and not refill_outcomes.has(&"final_enemy_defeated"), "Gym refill never publishes final-enemy defeat")
-	check(gym.stage_director.get("_lifecycle") == StageDirector.Lifecycle.FINAL_ACTIVE, "Unlimited gym training never completes the defeat objective")
+	check(refill_keeps_fighting, "Independent practice enemy repeatedly refills on direct/tick depletion without dying")
+	check(refill_outcomes.count(&"practice_target_refilled") == 3 and not refill_outcomes.has(&"final_enemy_defeated"), "Practice refill never publishes final-enemy defeat")
+	check(gym.stage_director.get("_lifecycle") == StageDirector.Lifecycle.FINAL_ACTIVE, "Independent practice refills never complete the Gym objective")
 	var reacting_hit := HealthEvent.damage(gym.player, refill_enemy, refill_enemy.health.get_maximum() * 2.0, refill_enemy.get_poise() + 1, HealthEvent.Delivery.DIRECT, &"", {}, Vector2.RIGHT)
 	var reacting_result: HealthResult = refill_enemy.receive_health_event(reacting_hit)
-	check(reacting_result.zero_reached and reacting_result.final_reaction_level > 0 and refill_enemy.hit_reaction.is_invincible() and refill_enemy.health.get_current() == refill_enemy.health.get_maximum() and refill_enemy.get("_state") != refill_enemy.State.DEAD, "Refilling gym enemy retains qualifying hit reactions")
+	check(reacting_result.zero_reached and reacting_result.final_reaction_level > 0 and refill_enemy.hit_reaction.is_invincible() and refill_enemy.health.get_current() == refill_enemy.health.get_maximum() and refill_enemy.get("_state") != refill_enemy.State.DEAD, "Refilling practice enemy retains qualifying hit reactions")
 	refill_enemy.hit_reaction.reset_for_stage()
 	for index in range(5):
 		gym.get("_config")["hit_reaction"]["combat_levels"][index]["minimum_value"] = [0, 2, 3, 4, 5][index]
@@ -612,6 +620,7 @@ func _run() -> void:
 	check(normal_enemy.health.is_zero() and normal_enemy.get("_defeated") and normal_enemy.get("_state") == normal_enemy.State.DEAD, "Ordinary non-refilling Final Enemy still dies at zero health")
 	normal_enemy.free()
 	refill_enemy.get_node("HitReactionAudio").stop()
+	refill_enemy.free()
 	gym.ambient_audio.stop()
 	gym.music_audio.stop()
 	await create_timer(0.15).timeout

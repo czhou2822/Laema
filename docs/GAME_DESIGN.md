@@ -817,35 +817,40 @@ Impact groups X1–X5 by school, plus separate Cast and Enemy attack controls.
 Each school can edit or fill its existing per-move Impact values independently.
 These UI changes select no new tuning and do not alter Poise/clash/reaction rules.
 
-## Development gym — 2026-10-15
+## Combat Gym
 
-User request: a separate scene with only the Player and the existing Enemy,
-positioned close together to reduce the approach wait. `scenes/gym.tscn` reuses
-the current Final Enemy with a 160-pixel starting horizontal gap and no practice
-targets. The user's later decision gives this gym enemy unlimited training
-health: reaching zero immediately refills Health, without defeat, respawn or AI
-shutdown. Shared damage, Endurance and hit-reaction rules remain intact. Reloading
-or Reset gym starts a fresh round. The tutorial's Final Enemy remains killable.
-The tutorial flow and saved startup stage stay unchanged. See GYM.md
-for launch and scene-placement controls. Visual feel remains for user validation.
+`scenes/gym.tscn` is the single development encounter, launched by F5, F6 or
+Laema Dev Portal → Run gym. The previous separate Fire benchmark is retired.
+It contains Fire-only Player and one killable opponent, starting 160 pixels
+apart in the bounded Gym room. Player starts at 100 Health and the opponent at
+200, with provisional opponent Poise 1 and move Impact 20. The Gym disables
+contact-free orbs, the Player 1-HP floor, opponent refill and Elemental Endurance.
+Defeat the opponent while surviving; there are no required parry/Cast quotas.
+Victory or defeat stops the encounter and offers Retry. Start/Esc offers the
+same Retry gym action. Retry restores both actors, starting positions, Fire,
+empty orbs, zero Heat, buffered actions and the saved encounter profile.
 
-## Fire combat benchmark
+Player Fire X windup/recovery and Cast animation durations take 1.5 times their
+normal time, as do the opponent's windup and recovery. Charging retains its
+existing rate and Heat acceleration. The tutorial retains its shared timing,
+Endurance and killable final Enemy; the Gym's private tuning does not rewrite
+shared configuration. Runtime Portal/Remote Inspector edits are run-only.
 
-The Fire benchmark gives the player more time to attend to Casting: Player Fire
-X windup/recovery and Cast animation durations take 1.5 times their normal time,
-as do the opponent's windup and recovery. Charging retains its existing rate and
-Heat acceleration. This timing adjustment is local to the benchmark; ordinary
-Gym and tutorial attack timings retain their shared tuning. The charged-orb
-progress display above applies throughout the prototype.
+The Gym retains its contact-time Impact/Poise formula readout. Developer Overlay
+Visible and F4 show/hide the formula panel and telemetry together. Retry clears
+contact history, rebinds both fighters and retains the current overlay visibility.
+Editor Review & save sets the default visibility for future launches; in-game
+Gym saving and shared editor apply remain disabled. The smooth charged-orb bar
+above applies throughout the prototype.
 
 ## Pause menu — 2026-10-15
 
 User request: controller Start pauses the game and displays a pause-menu HUD.
 Start and keyboard Esc toggle the same menu. Resume also accepts controller
 confirm, and controller directional input navigates the buttons. The menu offers
-Resume and Restart encounter; restart reloads the current stage/Gym through the
-existing stage-reset path and is disabled during stage transitions.
-In the Gym, this action is labelled Reset gym and restores the Player and Enemy
+Resume and Restart encounter; the tutorial uses its existing stage-reset path,
+and the Gym reloads the complete encounter. Restart is disabled during transitions.
+In the Gym, this action is labelled Retry gym and restores the Player and Enemy
 at their starting positions before resuming.
 
 The menu pauses the gameplay tree and stays responsive while paused. It remains

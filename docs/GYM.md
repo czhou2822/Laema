@@ -1,26 +1,104 @@
-# Development gym
+# Combat Gym
 
-Open `scenes/gym.tscn` in Godot and run the current scene (F6), or use **Laema Dev
-Portal → Run gym** in the bottom action area. The regular main scene and saved startup-stage
-setting remain unchanged.
+Status: implemented candidate for a user playtest. Fire is the user-selected
+school; the encounter numbers below are provisional. No gameplay-feel or
+physical-controller acceptance is claimed.
 
-The gym contains the current Player and one instance of the existing Final
-Enemy, with no practice targets. PlayerSpawn is at `(-80, 0)` and FinalEnemy at
-`(80, 16)`: the horizontal starting gap is 160 pixels. With the current 90 px/s
-approach and 72 px attack range, the nominal walk to attack range is about one
-second. Timing is an estimate from configuration, not a gameplay-feel result.
+## Run and retry
 
-Press controller **Start** or keyboard **Esc** for the pause menu. Use **Resume**
-or press Start/Esc again to continue. **Reset gym** starts another round
-of the same gym. Menu buttons support controller directional input and confirm.
+Use **F5**, open `scenes/gym.tscn` and press **F6**, or select **Laema Dev
+Portal → Run gym**. All three launch this one canonical Gym. A local command-line
+run is `godot --path . scenes/gym.tscn`. The separate Fire benchmark scene,
+script and inherited area have been retired and deleted. Tutorial play remains
+available through `scenes/prototype_arena.tscn`; its saved stage is unchanged.
 
-The room reuses the prototype backdrop and floor, with a stationary camera and
-side boundaries. Shared saved combat, movement, audio and debug settings still
-apply, including the AI enable flag and the current Final Enemy's Endurance.
-The gym enemy has unlimited training health: damage still reduces the displayed
-Health, but reaching zero immediately refills it. It keeps fighting and never
-completes a defeat objective. Normal hit/reaction/resistance rules still apply.
-The ordinary tutorial Final Enemy remains killable; shared tuning is unchanged.
+This is one bounded room and one attacking, killable opponent. Defeat the
+opponent while surviving. There is no required Cast level, parry count, attack
+sequence or time limit. Victory and defeat stop the encounter and show a focused
+**Retry** button (keyboard Enter / controller confirm). Start/Esc also offers
+**Retry gym** during play. Retry reloads the complete scene, restoring
+both fighters, positions, Fire, empty orbs, zero Heat, reactions and buffered
+actions. A same-frame trade reaching zero Player Health counts as defeat.
+
+Controls retain the current implementation:
+
+| Action | Controller | Keyboard / mouse |
+| --- | --- | --- |
+| Move | Left stick | A / D |
+| Fire melee | X | Left mouse |
+| Charge, then release to Cast | L2 | Hold, then release right mouse |
+| Fire parry | L1 | Shift |
+| Pause / retry menu | Start | Esc |
+
+School-selection input is consumed by this scene; the player remains Fire.
+Casting uses the shared L2 binding; Fire parry remains on L1.
+
+## Local profile and tuning
+
+Select the **Gym root** in the Inspector to edit its provisional
+Player/Opponent Health, opponent Poise/Impact, windup and recovery. Save this
+scene to retain those encounter values. Starting positions remain authored in
+`scenes/stages/gym_area.tscn`, which owns the shared room geometry.
+
+| Setting | Starting value |
+| --- | ---: |
+| Player Health | 100 |
+| Opponent Health | 200 |
+| Opponent Poise | 1 |
+| Opponent move Impact | 20 |
+| Opponent base windup / recovery (Inspector) | 0.6 s / 0.9 s |
+| Opponent effective windup / recovery | 0.9 s / 1.35 s |
+| Starting horizontal gap | 160 px |
+
+The Gym multiplies Player Fire X windup/recovery, shared Cast animation
+duration and opponent windup/recovery by 1.5 when loading its private profile.
+For example, Fire X1's 0.14 + 0.34 s becomes 0.21 + 0.51 s before Heat, and the
+shared Cast duration becomes approximately 1.2 s. The Inspector's opponent times
+are base values; runtime Portal previews show effective values. Retry reloads
+the saved baseline and applies the multiplier once.
+
+Charging retains its current rate, including Heat acceleration. The shared HUD
+bar fills and drains smoothly: three charged orbs plus half of the next available
+orb show 3.5/8 while Spell Level stays at 3. Fill is capped by available orbs, up
+to eight; an empty queue shows zero, and three fully charged available orbs cap
+the bar at 3/8. Banked capacity beyond available orbs is not displayed.
+
+The existing approach, committed melee, collision, reaction and death behavior
+is reused. Local Poise prevents Impact-1 Fire openers from automatically
+interrupting windup; the existing Fire finisher can still produce a qualifying
+interruption. This is a starting hypothesis, not a verified balance result.
+
+Only this scene disables contact-free orb generation, the Player 1-HP floor,
+opponent Health refill and Elemental Endurance. It retains `is_final_enemy`
+and the existing completion event; only the school-switching resistance is
+disabled after configuring the opponent.
+
+The baseline otherwise reads the shared validated prototype configuration into
+a private in-memory copy. In-game Portal and Remote Inspector edits preview
+changes for the current attempt. **Save Tuning**, Inspector mirror saving, and
+**Apply saved to game** refuse shared-file writes/apply for this encounter.
+Contact-free orbs, the HP floor and non-Fire startup cannot be enabled through
+the runtime Portal. Retry discards run-only edits. The ordinary editor Dev Portal
+still edits the shared prototype file; use the Gym root's Inspector for
+the encounter values listed above.
+
+## Existing combat rules retained
+
+- No parry cancel is added. Parry can begin only in Might's `READY` state. It
+  cannot start during an attack, Cast or a chain preserved between actions by
+  Charging/Depleting. Finishing an unpreserved action returns to READY; finishing
+  an action does not always end a preserved chain.
+- Fire parry lasts the existing 0.2 s, negates one incoming event, and adds no
+  counterattack, stun or resource reward. Release/repress rearms it. Holding
+  after the window closes remains movement-locked and vulnerable.
+- Existing attack-while-defence-held input behavior is not redesigned here.
+- Cast remains the generic projectile: normal base damage is 10 at every level,
+  empowered primary damage is 13 with the current shared multiplier. No Fire
+  DoT or level-based damage increase is added.
+- Consuming more charged orbs grants more of the existing commitment-time Heat;
+  it does not make the single-school projectile's base damage larger. Existing
+  Heat timer, buffering, resource loss, interruption and invincibility rules
+  remain unchanged.
 
 ## Combat formula readout
 
@@ -43,24 +121,50 @@ including while paused. The same single switch is in **General → UI & debug**
 in both the editor and in-game Portal. Gameplay Health/Heat/orb/objective UI remains
 visible. The Dev Portal window still uses its separate backtick open/close shortcut.
 
-Captured values keep updating while the overlay is hidden. Reset gym clears the
+Captured values keep updating while the overlay is hidden. Retry gym clears the
 cards and reconnects the Enemy while retaining your shared visibility choice.
-The shortcut changes the current run; use **Save Tuning** in-game or **Review & save**
-in the editor to remember it. The obsolete formula-only preference is ignored when
-an existing Developer Overlay Visible preference is present. No combat values or
+The shortcut changes the current run, and retry retains that visibility choice.
+Use **Review & save** in the editor to set the default for future launches;
+the Gym refuses shared-file saves from its runtime Portal. The obsolete
+formula-only preference is ignored when an existing Developer Overlay Visible preference is present. No combat values or
 rules are changed by toggling the overlay.
 
-Use the running gym's **Load stage in current session** action to reload its
-single encounter for a fresh round. Health refill keeps the same enemy alive
-without respawning it or resetting combat state. To
-change the gap, open `scenes/stages/gym_area.tscn` and move PlayerSpawn or
-FinalEnemy.
+## Playtest observations
 
-The root inherits `prototype_arena.tscn`; its small `gym.gd` script supplies a
-single in-memory encounter descriptor derived from the canonical final stage.
-It retains the shared Player, HUD, audio, projectile routing, Portal and tuning
-bridge. StageDirector remains the lifecycle owner. Gym descriptor selection is
-never written into `prototype_combat.json` by starting or saving gym tuning.
+Keep three consistent uncertainties for this encounter:
 
-Validation boundaries are recorded in IMPLEMENTATION_STATUS.md. Headless scene
-and approach checks do not establish visual composition or game feel.
+1. Does the enemy create understandable choices between continuing, defending
+   and disengaging?
+2. Does Casting earn its attention cost through damage, spacing or Heat?
+3. Can the player deliberately manage melee, defence and Charging together?
+
+Observe first, then ask neutral follow-ups. Let the user interpret before
+critique. Melee-first, close parry-and-punish, and spacing/Casting approaches
+are permitted; they are not separate encounters or required checklists.
+If a simpler approach consistently dominates, record that rather than requiring
+extra buttons to pass. Readability, timing, balance and subjective success
+remain for the user's playtest.
+
+## Automated verification
+
+Run the existing isolated runner with
+`python3 tools/test-dev-portal.py --godot <executable> --script tools/tests/gym_encounter_test.gd`.
+Use temporary `XDG_DATA_HOME`, `XDG_CONFIG_HOME` and `XDG_CACHE_HOME` on Linux to
+keep Godot user data outside the developer profile. The runner validates a copy,
+not the working project. Existing Portal, attack-style and clash suites remain
+separate regression checks. Engine checks do not establish interactive playtest
+or export success.
+
+Historical pre-consolidation verification: 106 focused benchmark checks, 179 Portal/config/layout/
+Gym checks, 199 attack-style checks and 59 receiver-side clash checks passed in
+isolated copies (543 checks total). This executor used Godot 4.6.3 official Linux
+x64; this is distinct from the historical Godot 4.7.2 Windows evidence. The
+focused suite checks genuine enemy hit geometry, Fire restriction, the retained
+parry eligibility, completion/defeat/retry, resource reset and unchanged shared
+configuration/mirror bytes. It intentionally exercises the disabled Inspector
+save warning. No visual, physical-controller, gameplay-feel or export acceptance
+is inferred.
+
+The historical totals above do not validate the consolidation. Current isolated
+Gym encounter, formula, visibility and Portal results are recorded in
+IMPLEMENTATION_STATUS.md. Human controller and gameplay acceptance remain separate.

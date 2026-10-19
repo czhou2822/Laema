@@ -1,8 +1,32 @@
 # Implementation Status
 
+## Unified Combat Gym — 2026-10-19
+
+The two development encounters are consolidated into `scenes/gym.tscn`, already
+the project main scene and Run gym target. The separate benchmark scene, script,
+area and guide are deleted; their behavior is folded into Gym and its guide.
+Gym now has the slower Fire-only, killable-opponent encounter with genuine
+victory/defeat and full-scene retry, plus the contact-time formula readout and F4
+visibility controls. Charging and the smooth partial-progress bar are preserved.
+This supersedes the earlier infinite-refill Gym behavior below. Tutorial behavior
+and saved shared tuning remain separate. Retry preserves run visibility through
+a one-shot transient value, while restoring combat state and the local profile.
+
+Validation: isolated Godot 4.6.3 stable official Linux x64 checks passed: 116 Gym
+encounter, 23 formula readout, 21 visibility and 179 Portal/config/layout/Gym
+checks (339 total). Coverage includes native slower Player contact timing, Enemy
+blackboard timing, unchanged Charging/Heat, smooth partial bar fill/depletion,
+L2 binding, deleted entry point, victory/defeat/retry, readout rebind, F4 visibility
+and unchanged shared configuration bytes. The run-only Inspector warning is
+intentionally exercised. All final runners completed without engine errors or
+resource-leak reports. Historical results below do not validate this consolidation.
+Controller, visual and gameplay acceptance remain pending. The user confirmed
+the earlier smooth charge-bar correction without an exact runtime revision or
+engine-version record.
+
 ## Benchmark pacing and charged-orb progress — 2026-10-19
 
-User-approved candidate: Fire benchmark private configuration multiplies Player
+User-approved candidate, now used by the unified Gym: private configuration multiplies Player
 Fire X windup/recovery, shared Cast animation duration and opponent windup/recovery
 by 1.5 at load. Fire X1 becomes 0.21 + 0.51 s before Heat; opponent base timing
 0.6/0.9 s becomes 0.9/1.35 s. Charging and its Heat multiplier retain their current
