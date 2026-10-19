@@ -451,6 +451,7 @@ func _make_cast_action(commit_id: int, endpoint: bool, empowered: bool, attempt_
 	return {
 		"move_id": &"cast",
 		"kind": classification,
+		"source_action_id": source_action_id,
 		"school": StringName(payload["primary_school"]),
 		"direction": payload["direction"],
 		"commit_id": commit_id,
