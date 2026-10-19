@@ -370,7 +370,7 @@ func _configure_default_input_map() -> void:
 	_bind_mouse_button(&"light_attack", MOUSE_BUTTON_LEFT)
 	_bind_mouse_button(&"casting", MOUSE_BUTTON_RIGHT)
 	_bind_button(&"light_attack", JOY_BUTTON_X)
-	_bind_axis(&"casting", JOY_AXIS_TRIGGER_RIGHT, 1.0)
+	_bind_axis(&"casting", JOY_AXIS_TRIGGER_LEFT, 1.0)
 	_bind_button(&"select_fire", JOY_BUTTON_DPAD_UP)
 	_bind_button(&"select_water", JOY_BUTTON_DPAD_DOWN)
 	_bind_button(&"select_air", JOY_BUTTON_DPAD_LEFT)

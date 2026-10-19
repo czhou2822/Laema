@@ -1,5 +1,17 @@
 # Implementation Status
 
+## L2 Charging and Casting — 2026-10-19
+
+User-approved control change: the shared Casting action binds the left controller
+trigger (L2) in the tutorial, Gym and Fire benchmark. Holding L2 charges generated
+orbs; release below the existing threshold attempts a Cast. Defence remains L1,
+and the right-mouse Casting input and pressure thresholds are preserved. Tutorial
+prompts, pressure telemetry, Portal tooltips and current control records use L2.
+
+Source/diff inspection only; no engine or controller checks were run for this
+remap. Earlier engine results do not validate the new physical binding. Restart
+the scene and verify L2 charge/release Casting and the matching HUD in Godot.
+
 ## Four school melee styles — 2026-10-16
 
 User-authorized candidate implements slow Earth/Broadsword, medium Fire/Spartan
@@ -213,12 +225,12 @@ The current prototype source includes:
 - twenty active school/position X sheets covering X1–X5 for Fire, Water, Air, and Earth, with shared locomotion and Cast presentation;
 - functional Fire, Water, Air, and Earth X/casting specialties and their current status/effect pipelines;
 - a ten-slot FIFO elemental-orb queue with front lifetime, right-to-left circular lifetime presentation, eight-level Charging capacity, continuous charging progress, consumption, transfer, and fixed-rate depletion;
-- R2 95–100% CHARGING, 5–95% fixed-rate DEPLETING, and below-5% RELEASE semantics with transition-based Cast-on-release behavior;
+- L2 95–100% CHARGING, 5–95% fixed-rate DEPLETING, and below-5% RELEASE semantics with transition-based Cast-on-release behavior;
 - one normalized pre-window buffer shared by X and release-Cast requests, with earliest-request arbitration and event-level debug traces;
 - Stage 1–7 refill targets plus the extracted Final Arena's three permanent pass-through practice targets and distinct solid, killable Final Enemy;
 - Fire parry and Water block state scaffolding with guard-warning feedback, a shared CC0 hit-reaction cue, and a fixed-volume eight-step charged-orb pitch cue delivered through Player's local presentation FIFO;
 - an always-visible gameplay HUD with all ten orb slots, Spell Level `0..8` derived from visible charged entries, separate banked charging progress, reusable ObjectiveWidget, and a paused Developer Portal with General, Audio, and nested Combat tabs, visible toggles, tooltips, pause/unpause, and Save to JSON;
-- Stage 3 presentation instructing `Hold R2 + X -> X -> X -> X -> X -> Release R2`, plus matching Hold/Release guidance for the Stage 4 and Stage 5 Cast steps, through compact objective tokens while retaining the existing evaluator rules;
+- Stage 3 presentation instructing `Hold L2 + X -> X -> X -> X -> X -> Release L2`, plus matching Hold/Release guidance for the Stage 4 and Stage 5 Cast steps, through compact objective tokens while retaining the existing evaluator rules;
 - reusable Stage Area scenes, descriptor-owned display names and generic presentation rows, StageDirector lifecycle, Stage 1–7 evaluators plus final-enemy evaluator, transition camera flow, stage reset, and final free-practice presentation;
 - Ambient, SFX, and BGM bus routing with persisted enabled and volume controls; and
 - the approved prototype asset and audio subsets.

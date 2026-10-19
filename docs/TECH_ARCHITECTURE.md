@@ -51,7 +51,7 @@ The Material Decision Ledger is closed:
 3. **Stages 1–7 preserve the committed combat schema.** The current continuous Heat and generic-Cast schema remains authoritative. Legacy Fire/Water/Air/Earth effect fields and their Developer Portal controls remain dormant but intact; their previously accepted strict removal is deferred to a separate future cleanup slice.
 4. **Dedicated commitment-to-Heat interface.** After successful orb consumption and immutable payload storage, Magic emits one internal commitment fact carrying `commit_id` and `consumed_count`. Combat receives it synchronously and grants Heat exactly once. Promotion, launch, interruption, discard, and impact do not emit this fact.
 5. **Last-in primary and single-secondary ordering.** The final consumed orb selects the primary school, whose level equals total consumed orbs. The highest-count remaining school becomes the optional secondary; a secondary tie selects the school appearing latest in the consumed sequence. Impact and feedback resolve primary first, then secondary.
-6. **Pressure state owns chain preservation.** Magic reports CHARGING and the 5–95% intermediate band as chain-preserving states independently of queue contents, charged count, and partial progress. CHARGING banks capacity while the queue is empty; the intermediate band waits 0.3 seconds before DEPLETING begins, resets that timer on return to CHARGING, and remains preserving at zero progress until R2 leaves the band. Might consumes this state for timeout and between-action movement decisions.
+6. **Pressure state owns chain preservation.** Magic reports CHARGING and the 5–95% intermediate band as chain-preserving states independently of queue contents, charged count, and partial progress. CHARGING banks capacity while the queue is empty; the intermediate band waits 0.3 seconds before DEPLETING begins, resets that timer on return to CHARGING, and remains preserving at zero progress until L2 leaves the band. Might consumes this state for timeout and between-action movement decisions.
 7. **Shared configured feedback lifetime.** Both Entity scenes configure their `FeedbackComponent` from `ui.cast_feedback_duration`, default `2.0` seconds and validated from `0.1` through `20.0`. Developer Portal live tuning affects future entries only; each visible entry retains the duration captured when it was created.
 8. **Initial RELEASE is side-effect-free.** The first raw-pressure sample always establishes Magic's initial pressure state. If that state is RELEASE, initialization emits no Cast request or failure. Only a later transition from CHARGING or the 5–95% intermediate band into RELEASE dispatches one Cast attempt; initial CHARGING begins charging generated orbs and an initial intermediate-band sample begins its no-drain timer.
 9. **Persistent tutorial root and reusable Stage Areas.** Player, HUD, audio, StageDirector, and an Arena-owned camera persist. Physical stage content is supplied by independently instantiated Stage Area scenes.
@@ -227,7 +227,7 @@ The reset occurs while input is locked and before the next stage becomes ACTIVE.
 
 `ObjectiveWidget` is a reusable HUD-owned Control scene. StageDirector supplies immutable presentation snapshots containing generic rows with stable id, label, optional tokens, evaluator-owned progress/highlight/completed state, attempt invalidation, whole-widget completion state, and prompt text. The widget owns only rendering and its light UI-only flinch. It never consumes CombatOutcome or stage nodes.
 
-The widget occupies the upper-right gameplay-UI region. When the developer overlay is visible, its R2 pressure panel is laid out below the objective widget. This preserves both GDD placements without overlap.
+The widget occupies the upper-right gameplay-UI region. When the developer overlay is visible, its L2 pressure panel is laid out below the objective widget. This preserves both GDD placements without overlap.
 
 ## Core flows and contracts
 
@@ -274,7 +274,7 @@ Stages 1–6 share one data-driven `SequenceObjectiveEvaluator`. Each descriptor
 
 - **Stage 1:** five landed Fire X steps; a Fire miss invalidates even before progress.
 - **Stage 2:** one Cast step requiring level 5. The evaluator waits for the matching Cast-attempt terminal fact; only `launched` at level 5 succeeds. Any non-launched terminal or launched lower-level Cast invalidates. Projectile impact is irrelevant.
-- **Stage 3:** five landed X steps followed by a level-5 endpoint Cast launch. Its presentation instructs `Hold R2 + X -> X -> X -> X -> X -> Release R2`; compact token rendering accommodates the longer first and final labels. R2 timing remains guidance and is not evaluated.
+- **Stage 3:** five landed X steps followed by a level-5 endpoint Cast launch. Its presentation instructs `Hold L2 + X -> X -> X -> X -> X -> Release L2`; compact token rendering accommodates the longer first and final labels. L2 timing remains guidance and is not evaluated.
 - **Stage 4:** `X -> X -> Cast -> X`, with the Cast occupying chain position 3 and the final X occupying position 4.
 - **Stage 5:** `X -> Cast -> X -> Cast`, with Casts occupying positions 2 and 4; the second launch completes the objective.
 - **Stage 6:** `X -> X -> school switch -> X -> X -> X`; the accepted switch must occur at chain position 2, and rejected or mistimed switches invalidate the active attempt.
@@ -308,7 +308,13 @@ Stage 1 completion
 
 The Final Arena evaluator retains the existing `final_enemy_defeated` success fact. On success, StageDirector enters `FREE_PRACTICE`, keeps the Final Arena loaded, leaves its permanent practice targets available, and immediately publishes `now you are free` with no progress row. No gate unlock, scene transition, delay, or intermediate completion presentation occurs.
 
-### Queue and R2 pressure
+### Queue and L2 pressure
+
+PrototypeArena registers the shared `casting` InputMap action on the left
+controller trigger (`JOY_AXIS_TRIGGER_LEFT`, positive axis direction). Gym and
+Fire benchmark inherit this registration. CombatComponent and the pressure HUD
+read that action's raw strength, so both follow L2. The right-mouse binding,
+L1 defence binding and pressure-state thresholds are preserved.
 
 ```text
 X contacts an Enemy
@@ -316,13 +322,13 @@ X contacts an Enemy
   -> queue below 10: append and publish the new snapshot
   -> queue at 10: discard only the new orb and publish overflow feedback
 
-R2 >= 95%
+L2 >= 95%
   -> CHARGING advances at the current Heat multiplier
   -> banks charging capacity up to eight even when no generated orb is available
   -> marks the oldest available orbs covered by that capacity
   -> preserves the chain and releases movement between actions
 
-5% <= R2 < 95%
+5% <= L2 < 95%
   -> enters a 0.3-second no-drain intermediate hold
   -> returning to CHARGING before the timer expires resets that timer
   -> only a continuous hold beyond 0.3 seconds starts DEPLETING
@@ -332,7 +338,7 @@ R2 >= 95%
   -> remains chain-preserving even after progress reaches zero
   -> releases movement between actions
 
-R2 < 5% on state entry
+L2 < 5% on state entry
   -> stops pressure-state preservation
   -> one Cast attempt only when this is a later transition
 ```
@@ -453,7 +459,7 @@ Casting configuration retains the committed timing, pressure, projectile, and te
 
 The Developer Portal keeps its General, Audio, and Combat organization. General → UI exposes `cast_feedback_duration` and `tutorial.transition_duration` beside the existing presentation duration. Transition-duration changes persist through the existing JSON path; each pan captures the value at start, so live changes affect future transitions only. Audio presents `0–100%` linear volume controls, converts them to the existing persisted `audio.<group>.volume_db` values, and leaves Arena's AudioServer bus application unchanged; `0%` stores the validated silence floor of `-80 dB`, while `100%` stores `0 dB`. On load, any legacy saved audio value above `0 dB` is normalized to `0 dB` in memory; it is durably rewritten only when the user next saves the configuration. Player owns the fixed-volume MarkAudio playback and selects the discrete Do–Re–Mi–Fa–Sol–La–Ti–Do pitch table from visible charged-orb count; Player and base Enemy own the shared SFX-bus hit-reaction cue. Existing Combat-tab school controls remain untouched and dormant where their effects are deferred.
 
-The always-visible HUD renders ten generated-orb slots even when empty, a gold outline on charged orbs, the charging-progress bar, the front-orb lifetime, and a Spell Level readout derived by counting charged snapshot entries. Spell Level ranges from `0` through `8`; the charging-progress bar separately uses banked capacity plus partial progress over the same eight-level denominator, including when Charging was banked before enough generated orbs existed. Slots nine and ten may remain generated and uncharged. Private snapshot fields and the private `marked_count` capacity argument may remain for compatibility. The overflow signal drives the whole-widget horizontal flinch. The developer telemetry rail shows live Health, Enemy Health, Heat, speed, defence, school/chain, event confirmations, and raw R2 pressure; its visibility remains Portal-controlled.
+The always-visible HUD renders ten generated-orb slots even when empty, a gold outline on charged orbs, the charging-progress bar, the front-orb lifetime, and a Spell Level readout derived by counting charged snapshot entries. Spell Level ranges from `0` through `8`; the charging-progress bar separately uses banked capacity plus partial progress over the same eight-level denominator, including when Charging was banked before enough generated orbs existed. Slots nine and ten may remain generated and uncharged. Private snapshot fields and the private `marked_count` capacity argument may remain for compatibility. The overflow signal drives the whole-widget horizontal flinch. The developer telemetry rail shows live Health, Enemy Health, Heat, speed, defence, school/chain, event confirmations, and raw L2 pressure; its visibility remains Portal-controlled.
 
 ## Implementation slices and validation seams
 

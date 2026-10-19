@@ -19,9 +19,9 @@ The repository contains the expanded 2D side-scrolling orb-casting prototype plu
 |---|---|---|
 | Move and face | Left stick | WASD |
 | Light attack (X) | X | Left mouse button |
-| Charge generated orbs | R2 in the 95–100% band | — |
-| Deplete charging meter after the hold delay | R2 in the 5–95% band | — |
-| Cast | Release R2 below 5% | — |
+| Charge generated orbs | L2 in the 95–100% band | — |
+| Deplete charging meter after the hold delay | L2 in the 5–95% band | — |
+| Cast | Release L2 below 5% | — |
 | Select Fire | D-pad Up | 1 |
 | Select Water | D-pad Down | 2 |
 | Select Air | D-pad Left | 3 |
@@ -30,7 +30,7 @@ The repository contains the expanded 2D side-scrolling orb-casting prototype plu
 
 Backtick opens the paused Developer Portal. Its header provides Pause/Unpause, Save to JSON, status, and Close controls; it also exposes the organized General, Audio, and Combat tuning tabs.
 
-Melee hits perform Generating and add generated orbs to the queue. Holding R2 performs Charging and makes selected generated orbs charged for the next Cast. The current tutorial runs through Stages 1–6, transitions into the Final Arena, and enters indefinite free practice when the final Enemy is defeated.
+Melee hits perform Generating and add generated orbs to the queue. Holding L2 performs Charging and makes selected generated orbs charged for the next Cast. The current tutorial runs through Stages 1–6, transitions into the Final Arena, and enters indefinite free practice when the final Enemy is defeated.
 
 ## Repository layout
 

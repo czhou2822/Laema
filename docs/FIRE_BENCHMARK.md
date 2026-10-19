@@ -24,12 +24,12 @@ Controls retain the current implementation:
 | --- | --- | --- |
 | Move | Left stick | A / D |
 | Fire melee | X | Left mouse |
-| Charge, then release to Cast | R2 | Hold, then release right mouse |
+| Charge, then release to Cast | L2 | Hold, then release right mouse |
 | Fire parry | L1 | Shift |
 | Pause / retry menu | Start | Esc |
 
 School-selection input is consumed by this scene; the player remains Fire.
-No controller remapping is part of this candidate.
+Casting uses the shared L2 binding; Fire parry remains on L1.
 
 ## Local profile and tuning
 
