@@ -441,7 +441,19 @@ qualifying hit / losing clash → abandon attack → hit reaction → reassess
 - No separate miss indicator is required; unchanged Player Health communicates the miss.
 - The Developer Portal includes a Player 1-HP Floor option, enabled by default for this prototype. While enabled, no damage source can reduce Laema below `1` Health. Disabling it removes the floor. No Player death or restart state is introduced.
 
-The current first-pass values remain tunable placeholders: `600 px` awareness range, `72 px` attack range, `90 px/s` approach speed, `0.6 s` windup, `10` damage at Impact `1`, and `0.9 s` recovery.
+Enemy attack timing is authored directly in `melee_swing`. It plays at speed 1:
+windup lasts to `active_start`, the committed hit query occurs once at `contact`,
+active frames end at `active_end`, and recovery uses any remaining animation
+length. The Enemy resumes decisions when that animation finishes. Separate Enemy
+windup/recovery controls and the Gym's Enemy duration multiplier are removed.
+This supersedes the earlier scalar timing and the user's intermediate 1/1
+override baseline. The current clip has active_start/contact at 0.8 s and
+active_end/clip end at 1.0 s, with no added recovery wait. The user can author a
+recovery tail by extending the clip beyond active_end.
+
+Other first-pass values remain tunable placeholders: `600 px` awareness range,
+`72 px` attack range, `90 px/s` approach speed and `10` melee damage. The Gym uses
+its existing local Poise/Impact profile below; final balance remains open.
 
 The always-visible game UI includes:
 
@@ -855,6 +867,9 @@ These UI changes select no new tuning and do not alter Poise/clash/reaction rule
 
 `scenes/gym.tscn` is the single development encounter, launched by F5, F6 or
 Laema Dev Portal → Run gym. The previous separate Fire benchmark is retired.
+The user now treats its opponent as the first reusable Enemy being developed for
+the game. This development direction does not establish final behavior or
+gameplay acceptance.
 It contains Fire-only Player and one killable opponent, starting 160 pixels
 apart in the bounded Gym room. Player starts at 100 Health and the opponent at
 200, with provisional opponent Poise 1 and move Impact 20. The Gym disables
@@ -865,10 +880,11 @@ same Retry gym action. Retry restores both actors, starting positions, Fire,
 empty orbs, zero Heat, buffered actions and the saved encounter profile.
 
 Player Fire X windup/recovery and Cast animation durations take 1.5 times their
-normal time, as do the opponent's windup and recovery. Charging retains its
-existing rate and Heat acceleration. The tutorial retains its shared timing,
-Endurance and killable final Enemy; the Gym's private tuning does not rewrite
-shared configuration. Runtime Portal/Remote Inspector edits are run-only.
+normal time. The opponent uses its authored animation timing at speed 1, as does
+the tutorial Enemy; no additional Gym scale applies to it. Charging retains its
+existing rate and Heat acceleration. The tutorial retains its Endurance and
+killable final Enemy; the Gym's private tuning does not rewrite shared
+configuration. Runtime Portal/Remote Inspector edits are run-only.
 
 The Gym retains its contact-time Impact/Poise formula readout. Developer Overlay
 Visible and F4 show/hide the formula panel and telemetry together. Retry clears

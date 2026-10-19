@@ -38,7 +38,7 @@ func active_pair(player_impact: int, player_poise: int, enemy_impact: int, enemy
 	var animation_player: AnimationPlayer = gym.player.get_node("AnimationPlayer")
 	var clock := animation_player.get_animation(animation_player.current_animation)
 	animation_player.seek((clock.get_marker_time(&"active_start") + clock.get_marker_time(&"active_end")) / 2.0, true)
-	enemy.ai_begin_windup(gym.player, 72.0, 0.6)
+	enemy.ai_begin_windup(gym.player)
 	clock = enemy.attack_animation.get_animation(&"melee_swing")
 	enemy.attack_animation.seek((clock.get_marker_time(&"active_start") + clock.get_marker_time(&"active_end")) / 2.0, true)
 

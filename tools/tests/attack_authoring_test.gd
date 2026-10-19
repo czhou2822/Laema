@@ -94,6 +94,9 @@ func check_gym_grounding() -> void:
 		await process_frame
 	var room: StageArea = gym.get("_current_area")
 	var enemy = room.get_node("FinalEnemy")
+	# Exercise a real recovery phase authored after active_end in this private clip.
+	var clock: Animation = enemy.attack_animation.get_animation(&"melee_swing")
+	clock.length = clock.get_marker_time(&"active_end") + 0.3
 	check(enemy.body_visual.position == Vector2(0, -21) and enemy.get("_body_rest_position") == Vector2(0, -21), "Real Gym preparation and configuration retain the saved Enemy rest position")
 	for step in range(30):
 		await physics_frame
@@ -222,7 +225,7 @@ func _run() -> void:
 	var target = load("res://scenes/player/player.tscn").instantiate()
 	root.add_child(target)
 	target.position = Vector2(-100, 0)
-	enemy.ai_begin_windup(target, 999.0, 0.6)
+	enemy.ai_begin_windup(target)
 	check(enemy.get("_committed_attack_target_position") == Vector2(-51, 0) and enemy.get("_committed_attack_radius") == 8.0, "Enemy mirrors authored reach, independently of AI approach range")
 	loaded["enemy_ai"]["hitbox_reach"] = 120.0
 	loaded["enemy_ai"]["hitbox_radius"] = 12.0

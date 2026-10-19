@@ -35,8 +35,6 @@ var _ai_config: Dictionary = {}
 var _stage_enabled := false
 var _area_active := false
 var _state := State.DORMANT
-var _state_remaining := 0.0
-var _windup_duration := 0.0
 var _facing := Vector2.RIGHT
 var _animation_time := 0.0
 var _attack_flash_remaining := 0.0
@@ -77,7 +75,7 @@ func apply_runtime_tuning() -> void:
 	super.apply_runtime_tuning()
 	var next_ai: Dictionary = _config["enemy_ai"]
 	var decision_tuning_changed := false
-	for key in ["enabled", "aggro_range", "attack_range", "movement_speed", "windup_duration", "recovery_duration", "damage"]:
+	for key in ["enabled", "aggro_range", "attack_range", "movement_speed", "damage"]:
 		if _ai_config.get(key) != next_ai.get(key):
 			decision_tuning_changed = true
 	_ai_config = next_ai.duplicate(true)
@@ -148,7 +146,7 @@ func _physics_process(delta: float) -> void:
 		return
 	bt_player.blackboard.set_var(&"target", player)
 	if attack_animation.is_playing():
-		attack_animation.advance(delta)
+		_advance_attack(delta, player)
 	_ticking_tree = true
 	bt_player.update(delta)
 	_ticking_tree = false
@@ -177,7 +175,24 @@ func ai_stop_moving() -> void:
 	velocity.x = 0.0
 
 
-func ai_begin_windup(target: Entity, _attack_range: float, duration: float) -> void:
+func _advance_attack(delta: float, player: Entity) -> void:
+	var clock: Animation = attack_animation.get_animation(&"melee_swing")
+	var contact_time := clock.get_marker_time(&"contact")
+	var time := attack_animation.current_animation_position
+	var action_id := _attack_id
+	var advanced := 0.0
+	# Visit contact before advancing past the active interval or animation end.
+	if action_id != 0 and not _strike_emitted and (time >= contact_time or time + delta >= contact_time):
+		advanced = clampf(contact_time - time, 0.0, delta)
+		attack_animation.advance(advanced)
+		if not ai_strike(player, float(_ai_config["damage"]), int(_config["moves"]["final_enemy_attack"]["impact"])):
+			return
+	if _attack_id != action_id:
+		return
+	attack_animation.advance(maxf(delta - advanced, 0.0))
+
+
+func ai_begin_windup(target: Entity) -> void:
 	velocity.x = 0.0
 	var horizontal_distance := target.global_position.x - global_position.x
 	_facing = Vector2.RIGHT if horizontal_distance >= 0.0 else Vector2.LEFT
@@ -187,7 +202,7 @@ func ai_begin_windup(target: Entity, _attack_range: float, duration: float) -> v
 	_hit_targets.clear()
 	_strike_emitted = false
 	var clock: Animation = attack_animation.get_animation(&"melee_swing")
-	attack_animation.speed_scale = clock.get_marker_time(&"active_start") / maxf(duration, 0.001)
+	attack_animation.speed_scale = 1.0
 	attack_animation.play(&"melee_swing")
 	attack_animation.advance(0.0)
 	var pose := Geometry.facing_pose(Geometry.contact(clock), _facing)
@@ -195,12 +210,10 @@ func ai_begin_windup(target: Entity, _attack_range: float, duration: float) -> v
 	_committed_attack_target_position = pose["target"]
 	_committed_attack_radius = float(pose["radius"])
 	_set_state(State.WINDUP)
-	_windup_duration = duration
-	_state_remaining = duration
 
 
-func ai_show_windup_remaining(remaining: float) -> void:
-	_state_remaining = remaining
+func ai_windup_finished() -> bool:
+	return not attack_animation.is_playing() or attack_animation.current_animation_position >= attack_animation.get_animation(&"melee_swing").get_marker_time(&"active_start")
 
 
 func ai_strike(target: Entity, damage: float, _impact: int) -> bool:
@@ -220,10 +233,13 @@ func ai_strike_finished() -> bool:
 
 
 func ai_begin_recovery() -> void:
-	attack_animation.stop()
 	_attack_id = 0
 	velocity.x = 0.0
 	_set_state(State.RECOVERY)
+
+
+func ai_recovery_finished() -> bool:
+	return not attack_animation.is_playing() or attack_animation.current_animation_position >= attack_animation.get_animation(&"melee_swing").length
 
 
 func ai_idle() -> void:
@@ -234,7 +250,7 @@ func ai_idle() -> void:
 
 func _sync_ai_blackboard() -> void:
 	for key in _ai_config:
-		if key != "enabled":
+		if key not in ["enabled", "windup_duration", "recovery_duration"]:
 			bt_player.blackboard.set_var(StringName(key), _ai_config[key])
 
 
@@ -245,7 +261,6 @@ func _abort_ai_tree() -> void:
 	bt_player.active = false
 	bt_player.blackboard.set_var(&"target", null)
 	velocity.x = 0.0
-	_state_remaining = 0.0
 
 
 func _reset_ai_execution() -> void:
@@ -327,7 +342,7 @@ func _apply_gravity_and_move(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	if _state in [State.WINDUP, State.ACTIVE] and not _hit_visual_active:
+	if _state in [State.WINDUP, State.ACTIVE, State.RECOVERY] and not _hit_visual_active:
 		# AnimationPlayer owns attack artwork and geometry, including editor preview.
 		body_visual.flip_h = _facing.x < 0.0
 		return

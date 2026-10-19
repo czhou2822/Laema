@@ -8,6 +8,35 @@ The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
+## Authored Enemy animation timing — 2026-10-19
+
+User decision: remove the Enemy windup/recovery overrides and use its authored
+animation timing. The existing CombatEnemy remains shared by Gym and final
+arena; the Gym is now the development space for the first reusable game Enemy.
+
+CombatEnemy plays its private `melee_swing` at speed_scale 1. Windup and recovery
+tasks wait on actor queries of animation progress instead of blackboard timers.
+Windup ends at active_start; strike remains active through active_end; recovery
+continues native playback to Animation.length. Only after completion does the
+tree reassess. BodyVisual remains owned by AnimationPlayer during recovery too.
+The current source asset ends at active_end, so its recovery phase has no added
+wait. No animation frame keys, markers or geometry are retimed by this change.
+
+On physics updates, the existing actor mover visits the contact marker before
+advancing the rest of a frame. Its existing strike path resolves one committed
+ShapeCast while the active snapshot is valid, even if the frame crosses clip
+end. A cancelled/replaced action does not advance further. The existing action
+ID, hit-target set, clash resolution, interruption and reaction paths retain
+ownership; no new AI representation or timer owner is introduced.
+
+Gym removes its two exported timing properties and Enemy duration scaling;
+Player X/Cast scaling remains. The tree removes duration variables, and shared
+Portal field generation hides the obsolete Enemy controls in editor and game.
+Legacy JSON duration fields remain readable under the existing profile schema,
+but are not copied into the blackboard, consulted by tasks, or included among
+AI decision-reset triggers. Editing them cannot alter or restart native playback.
+The earlier scalar-driven Enemy timing descriptions below are superseded.
+
 ## Enemy scene transform and grounding — 2026-10-19
 
 User direction: preserve the scene-authored sprite transform and set up Enemy

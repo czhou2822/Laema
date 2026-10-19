@@ -4,6 +4,9 @@ Status: implemented candidate for a user playtest. Fire is the user-selected
 school; the encounter numbers below are provisional. No gameplay-feel or
 physical-controller acceptance is claimed.
 
+The user now uses this Gym to develop the first reusable Enemy intended for the
+game. That is the development target, not a claim that the Enemy is finished.
+
 ## Run and retry
 
 Use **F5**, open `scenes/gym.tscn` and press **F6**, or select **Laema Dev
@@ -36,9 +39,17 @@ Casting uses the shared L2 binding; Fire parry remains on L1.
 ## Local profile and tuning
 
 Select the **Gym root** in the Inspector to edit its provisional
-Player/Opponent Health, opponent Poise/Impact, windup and recovery. Save this
+Player/Opponent Health and opponent Poise/Impact. Save this
 scene to retain those encounter values. Starting positions remain authored in
 `scenes/stages/gym_area.tscn`, which owns the shared room geometry.
+
+Enemy attack timing comes from **combat_enemy → AnimationPlayer → melee_swing**.
+The Gym Inspector and both Dev Portals no longer expose Enemy windup/recovery
+overrides. Playback uses authored timeline seconds at speed 1, shared by the Gym
+and tutorial Enemy. `active_start` ends windup, `contact` queries the committed
+hitbox once, `active_end` ends the active interval, and the animation's remaining
+length supplies recovery. Extend the clip after `active_end` to author recovery;
+there is no additional timer after the clip finishes.
 
 | Setting | Starting value |
 | --- | ---: |
@@ -46,16 +57,18 @@ scene to retain those encounter values. Starting positions remain authored in
 | Opponent Health | 200 |
 | Opponent Poise | 1 |
 | Opponent move Impact | 20 |
-| Opponent base windup / recovery (Inspector) | 0.6 s / 0.9 s |
-| Opponent effective windup / recovery | 0.9 s / 1.35 s |
+| Current authored opponent active_start / contact | 0.8 s / 0.8 s |
+| Current authored opponent active_end / clip end | 1.0 s / 1.0 s |
 | Starting horizontal gap | 160 px |
 
-The Gym multiplies Player Fire X windup/recovery, shared Cast animation
-duration and opponent windup/recovery by 1.5 when loading its private profile.
+The Gym multiplies Player Fire X windup/recovery and shared Cast animation
+duration by 1.5 when loading its private profile.
 For example, Fire X1's 0.14 + 0.34 s becomes 0.21 + 0.51 s before Heat, and the
-shared Cast duration becomes approximately 1.2 s. The Inspector's opponent times
-are base values; runtime Portal previews show effective values. Retry reloads
-the saved baseline and applies the multiplier once.
+shared Cast duration becomes approximately 1.2 s. Enemy animation timing has no
+Gym multiplier. The current Enemy clip has no recovery tail because active_end
+coincides with its end. Retry reloads the saved baseline and authored animations.
+Legacy Enemy duration keys remain readable in old JSON profiles for compatibility
+but have no runtime effect.
 
 Charging retains its current rate, including Heat acceleration. The shared HUD
 bar fills and drains smoothly: three charged orbs plus half of the next available

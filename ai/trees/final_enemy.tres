@@ -29,16 +29,6 @@ var/movement_speed/type = 3
 var/movement_speed/value = 90.0
 var/movement_speed/hint = 0
 var/movement_speed/hint_string = ""
-var/windup_duration/name = &"windup_duration"
-var/windup_duration/type = 3
-var/windup_duration/value = 0.6
-var/windup_duration/hint = 0
-var/windup_duration/hint_string = ""
-var/recovery_duration/name = &"recovery_duration"
-var/recovery_duration/type = 3
-var/recovery_duration/value = 0.9
-var/recovery_duration/hint = 0
-var/recovery_duration/hint_string = ""
 var/damage/name = &"damage"
 var/damage/type = 3
 var/damage/value = 10.0
@@ -84,7 +74,7 @@ custom_name = "Strike committed area once"
 script = ExtResource("4_strike")
 
 [sub_resource type="BTAction" id="BTAction_recover"]
-custom_name = "Recover after hit or miss"
+custom_name = "Play authored recovery to animation end"
 script = ExtResource("5_recover")
 
 [sub_resource type="BTSequence" id="BTSequence_attack"]

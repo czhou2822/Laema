@@ -23,7 +23,20 @@ The initial numeric presets below therefore still apply to the same move IDs.
 
 For Enemy melee, open `scenes/enemy/combat_enemy.tscn`, select **AnimationPlayer → melee_swing**, and follow the same scrub/select/key/save workflow. Its hitbox reach/radius are separate from **Enemy AI → Attack range**, which only controls when the enemy approaches/starts windup.
 
-The timelines use the existing normalized one-second clocks. Actual windup/recovery duration still comes from move tuning, Heat and the Gym's duration scale; timeline seconds are not wall-clock combat seconds. Sprite-frame key spacing belongs to the assigned flipbook; Fire/Earth exchanged those frame tracks for the sword benchmark. Cast artwork uses the corresponding `cast_fire`, `cast_water`, `cast_air` or `cast_earth` clip; projectile damage keeps its existing path.
+Player timelines use the existing normalized one-second clocks. Actual Player windup/recovery duration still comes from move tuning, Heat and the Gym's duration scale; their timeline seconds are not wall-clock combat seconds. Sprite-frame key spacing belongs to the assigned flipbook; Fire/Earth exchanged those frame tracks for the sword benchmark. Cast artwork uses the corresponding `cast_fire`, `cast_water`, `cast_air` or `cast_earth` clip; projectile damage keeps its existing path.
+
+Enemy's `melee_swing` instead plays at authored speed: timeline seconds are combat
+seconds in both Gym and tutorial. To adjust its timing:
+
+1. Open `scenes/enemy/combat_enemy.tscn`, select **AnimationPlayer**, and choose **melee_swing**.
+2. Scrub the **BodyVisual:region_rect** track and edit frame-key times to pace preparation, strike and follow-through.
+3. Set **active_start** at the beginning of hit-capable frames, **contact** at the one damage query, and **active_end** at the end of hit-capable frames. These markers also govern interruption/clash phases.
+4. Author any recovery poses between **active_end** and the animation's **Length**. The current asset ends at active_end (1.0 s), so it has no extra recovery tail. Extending Length and adding frame keys creates that tail.
+5. Save the external `config/attack_animations/melee_swing.tres`, open the Gym scene, and press **F6** to compare one change.
+
+The separate Enemy windup/recovery controls and the Gym's Enemy timing multiplier
+are removed. Old JSON duration fields are compatibility data and cannot rescale
+the Enemy animation.
 
 The button is navigation into Godot's built-in animation editor, not a custom flipbook tool. If that editor is pinned to another AnimationPlayer, unpin it before switching scenes.
 

@@ -14,8 +14,6 @@ var combat_readout
 @export_range(1.0, 1000.0, 1.0, "or_greater") var opponent_health := 200.0
 @export_range(0, 100) var opponent_poise := 1
 @export_range(0, 100) var opponent_impact := 20
-@export_range(0.01, 5.0, 0.01, "or_greater") var opponent_windup := 0.6
-@export_range(0.0, 5.0, 0.01, "or_greater") var opponent_recovery := 0.9
 
 var attempt_result: StringName = &""
 var _result_pending := false
@@ -51,8 +49,6 @@ func _load_configuration() -> Dictionary:
 	config["enemy_ai"]["poise"] = opponent_poise
 	config["enemy_ai"]["impact"] = opponent_impact
 	config["enemy_ai"]["enabled"] = true
-	config["enemy_ai"]["windup_duration"] = opponent_windup * COMBAT_DURATION_SCALE
-	config["enemy_ai"]["recovery_duration"] = opponent_recovery * COMBAT_DURATION_SCALE
 	config["combat"]["attack_duration"] = float(config["combat"]["attack_duration"]) * COMBAT_DURATION_SCALE
 	for position in range(1, 6):
 		var move: Dictionary = config["moves"]["fire_x%d" % position]

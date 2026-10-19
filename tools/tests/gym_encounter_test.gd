@@ -114,7 +114,7 @@ func _run() -> void:
 	check(gym.combat_readout != null and gym.has_node("GymCombatReadout"), "Canonical Gym includes the formula readout")
 	check(config["casting"] == ordinary["casting"] and config["heat"] == ordinary["heat"], "Slower attacks preserve Charging and Heat rates")
 	check(is_equal_approx(config["combat"]["attack_duration"], ordinary["combat"]["attack_duration"] * 1.5), "Cast animation uses the slower Gym duration")
-	check(is_equal_approx(opponent().bt_player.blackboard.get_var(&"windup_duration"), 0.9) and is_equal_approx(opponent().bt_player.blackboard.get_var(&"recovery_duration"), 1.35), "Enemy consumes the slower windup and recovery through its blackboard")
+	check(not opponent().bt_player.blackboard.has_var(&"windup_duration") and not opponent().bt_player.blackboard.has_var(&"recovery_duration"), "Enemy has no timing overrides in its blackboard")
 	check(InputMap.action_get_events(&"casting").any(func(event): return event is InputEventJoypadMotion and event.axis == JOY_AXIS_TRIGGER_LEFT), "Canonical Gym retains L2 Casting")
 	# Real Magic snapshots drive a continuous HUD bar, including empty banking.
 	gym.player.magic.start_charging()
@@ -195,8 +195,8 @@ func _run() -> void:
 	# Resolve the real authored ShapeCast, not just a synthetic damage event.
 	opponent().global_position = gym.player.global_position + Vector2(60.0, 16.0)
 	await physics_frame
-	opponent().ai_begin_windup(gym.player, 72.0, 0.6)
-	opponent().attack_animation.advance(0.6)
+	opponent().ai_begin_windup(gym.player)
+	opponent().attack_animation.advance(opponent().attack_animation.get_animation(&"melee_swing").get_marker_time(&"contact"))
 	opponent().ai_strike(gym.player, 10.0, 20)
 	check(gym.player.health.get_current() == 90.0, "Committed enemy geometry can damage the gym Player")
 	await retry()

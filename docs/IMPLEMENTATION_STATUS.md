@@ -1,5 +1,34 @@
 # Implementation Status
 
+## Authored Enemy attack timing — 2026-10-19
+
+User chose native animation timing after requesting removal of windup/recovery
+settings. Gym Inspector exports and both Portal controls are removed. Enemy
+plays melee_swing at authored speed 1, without Gym duration scaling or separate
+windup/recovery timers. Windup ends at active_start, contact queries once, active
+ends at active_end, and recovery plays any remaining clip length. The current
+asset ends at active_end, so no extra recovery delay is introduced. Frame keys,
+markers and hitboxes are unchanged; Player X/Cast pacing remains as before.
+
+Behavior-tree phase tasks follow animation progress; the actor visits contact
+before advancing beyond it so a large physics frame cannot skip or repeat the
+connected hit. Existing qualifying hurt/cancellation stops playback and clears
+the pending strike. Legacy JSON timing keys remain compatible but ignored and
+cannot reset an attack. The user's earlier 1/1 override baseline is superseded
+by their explicit choice of authored timing. The reusable Enemy is a candidate
+for game use, with the Gym as its development space, not a completed ship target.
+
+Validation: isolated Godot 4.6.3 stable official Linux x64 passed 22 authored
+Enemy-timing, 74 native-authoring/grounding, 198 clash/reaction, 180 Portal/config
+and 23 Gym-readout checks (497 total), with no engine errors or resource leaks.
+Timing checks cover the actual Gym and its tree, stock and custom markers,
+authored recovery playback, ignored legacy fields, once-only contact across a
+large frame, interruption and stage deactivation. The same 22 timing checks also
+pass with old 1/1 Gym overrides present in the isolated saved scene; they load
+without restoring the removed controls or affecting playback. Native resources
+remain unchanged by the checks. Interactive animation/gameplay acceptance
+remains `AWAITING_USER_VALIDATION`.
+
 ## Enemy sprite transform / idle-foot grounding — 2026-10-19
 
 The user reported sinking after the initial adjustment and requested comparison
@@ -197,9 +226,9 @@ engine-version record.
 ## Benchmark pacing and charged-orb progress — 2026-10-19
 
 User-approved candidate, now used by the unified Gym: private configuration multiplies Player
-Fire X windup/recovery, shared Cast animation duration and opponent windup/recovery
-by 1.5 at load. Fire X1 becomes 0.21 + 0.51 s before Heat; opponent base timing
-0.6/0.9 s becomes 0.9/1.35 s. Charging and its Heat multiplier retain their current
+Fire X windup/recovery and shared Cast animation duration by 1.5 at load. Fire X1
+becomes 0.21 + 0.51 s before Heat. The earlier opponent scaling is superseded by
+the authored-animation decision above. Charging and its Heat multiplier retain their current
 rate. Shared saved tuning is unchanged, and retry derives a fresh scaled profile.
 
 User correction: the shared HUD restores smooth partial charge/depletion between

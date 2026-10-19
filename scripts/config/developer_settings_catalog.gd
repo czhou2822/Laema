@@ -37,6 +37,8 @@ const IMPACT_TOOLTIP := "Attack Impact and character Poise each range from 0 to 
 const LEGACY_REACTION_NOTICE := "These legacy settings do not affect the new combat hit reactions."
 const LEGACY_REACTION_HELP := LEGACY_REACTION_NOTICE + "\nUsed by stationary practice-target recoil and failed-Cast self-flinch. Retained blocked, non-parried defence hits use this path only when their calculated reaction level is positive. Positive levels are capped at 5. Duration controls the flinch/recovery time; distance moves the sprite out and back without moving its collision body. These reactions grant no invincibility. Failed Cast always uses Level 1, so only the two Base values affect it. The new combat reactions use their own Levels 1–5 table."
 const HIDDEN_PORTAL_FIELDS := {
+	"enemy_ai.windup_duration": true, # Legacy profile fields; Enemy timing is authored in its animation.
+	"enemy_ai.recovery_duration": true,
 	"combat.shape_reach": true, # Legacy fallback; authored per-move tracks own geometry.
 	"combat.shape_radius": true,
 	"fire.visual_motion_exponent": true, # Frame pacing is baked into native sprite tracks.
@@ -71,8 +73,6 @@ const FIELD_RANGES := {
 	"enemy_ai.hitbox_reach": Vector3(0.0, 400.0, 1.0),
 	"enemy_ai.hitbox_radius": Vector3(0.001, 200.0, 1.0),
 	"enemy_ai.movement_speed": Vector3(0.0, 600.0, 1.0),
-	"enemy_ai.windup_duration": Vector3(0.05, 5.0, 0.05),
-	"enemy_ai.recovery_duration": Vector3(0.0, 5.0, 0.05),
 	"enemy_ai.damage": Vector3(0.0, 1000.0, 1.0),
 	"enemy_ai.impact": Vector3(0.0, 5.0, 1.0),
 	"combat.attack_duration": Vector3(0.05, 5.0, 0.01),
@@ -145,8 +145,6 @@ const TUNABLE_TOOLTIPS := {
 	"enemy_ai.hitbox_reach": "Melee hitbox length at the animation contact marker, in pixels. Save updates that animation key; approach distance is separate.",
 	"enemy_ai.hitbox_radius": "Melee hitbox radius at the animation contact marker, in pixels. Save updates that animation key.",
 	"enemy_ai.movement_speed": "Final Enemy horizontal approach speed.",
-	"enemy_ai.windup_duration": "Seconds of committed melee warning before one hit query.",
-	"enemy_ai.recovery_duration": "Seconds after the committed melee query before reevaluation.",
 	"enemy_ai.damage": "Final Enemy direct melee damage.",
 	"enemy_ai.impact": "Impact level applied by Final Enemy melee damage.",
 	"combat.attack_duration": "Base Casting duration and fallback for X timing phases set to zero. Heat scales playback.",

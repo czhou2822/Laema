@@ -103,7 +103,7 @@ func check_gym_progression(gym, enemy) -> void:
 		await process_frame
 		for previous in range(position - 1):
 			mighty.get("_input_combo").accept_light(&"fire")
-		enemy.ai_begin_windup(gym.player, 72.0, 0.9)
+		enemy.ai_begin_windup(gym.player)
 		evaluations.clear()
 		mighty.try_light_attack(Vector2.RIGHT)
 		mighty._physics_process(float(gym.get("_config")["moves"]["fire_x%d" % position]["windup_duration"]) + 0.001)
@@ -117,7 +117,7 @@ func check_gym_progression(gym, enemy) -> void:
 			enemy._reset_ai_execution()
 			enemy.health.reset_to_maximum()
 			enemy.global_position = enemy_origin
-			enemy.ai_begin_windup(gym.player, 72.0, 0.9)
+			enemy.ai_begin_windup(gym.player)
 			var school: StringName = [&"fire", &"water", &"air", &"earth"][level - 1]
 			for orb in range(level):
 				gym.player.magic.add_orb(school)
@@ -151,7 +151,7 @@ func check_gym_progression(gym, enemy) -> void:
 	for level in range(5, 9):
 		enemy._reset_ai_execution()
 		enemy.health.reset_to_maximum()
-		enemy.ai_begin_windup(gym.player, 72.0, 0.9)
+		enemy.ai_begin_windup(gym.player)
 		var payload := {"direction": Vector2.RIGHT, "primary_spell": &"", "primary_school": &"fire", "primary_level": level, "primary_damage_multiplier": 1.0}
 		evaluations.clear()
 		gym.player.magic.resolve_projectile_impact(enemy, enemy.global_position, payload)
@@ -317,7 +317,7 @@ func _run() -> void:
 	gym.get("_config")["enemy_ai"]["poise"] = 20
 	gym.get("_config")["moves"]["final_enemy_attack"]["impact"] = 15
 	check(gym._apply_runtime_tuning()["ok"], "Real scene accepts in-memory example tuning")
-	real_enemy.ai_begin_windup(gym.player, 72.0, 0.6)
+	real_enemy.ai_begin_windup(gym.player)
 	var clock: Animation = real_enemy.attack_animation.get_animation(&"melee_swing")
 	real_enemy.attack_animation.seek(clock.get_marker_time(&"active_start") - 0.001, true)
 	check(HealthResolver.calculate_reaction_value(60, real_enemy.get_poise(), real_enemy.get_melee_snapshot()) == 40, "Real Enemy windup contributes no move Impact")
