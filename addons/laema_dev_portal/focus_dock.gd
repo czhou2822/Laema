@@ -64,11 +64,17 @@ func _ready() -> void:
 	custom_minimum_size.x = 300
 	size_flags_vertical = Control.SIZE_EXPAND_FILL
 	add_theme_constant_override("separation", 9)
+	# Bound the whole dock so its minimum height cannot hide Godot's bottom panels.
+	var dock_scroll := ScrollContainer.new()
+	dock_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	dock_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	add_child(dock_scroll)
 	var margin := MarginContainer.new()
 	for side in ["left", "right", "top", "bottom"]:
 		margin.add_theme_constant_override("margin_" + side, 10)
 	margin.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	add_child(margin)
+	margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dock_scroll.add_child(margin)
 	_body = VBoxContainer.new()
 	_body.add_theme_constant_override("separation", 9)
 	margin.add_child(_body)
