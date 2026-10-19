@@ -6,6 +6,7 @@ const Catalog = preload("res://scripts/config/developer_settings_catalog.gd")
 const Fields = preload("res://scripts/ui/developer_settings_fields.gd")
 const Settings = preload("res://scripts/config/combat_tuning_settings.gd")
 const Store = preload("res://scripts/config/developer_config_store.gd")
+const Bridge = preload("res://scripts/config/combat_tuning_bridge.gd")
 
 var checks := 0
 var failures: Array[String] = []
@@ -69,7 +70,13 @@ func _run() -> void:
 		check(not field["integer"], "Style field keeps fractional tuning: " + field["id"])
 	panel.free()
 
-	var settings = load("res://config/combat_tuning.tres").duplicate(true)
+	var library = load("res://config/combat_tuning.tres")
+	for entry in library.attack_styles:
+		var expected := "res://config/attack_styles/%s.tres" % str(entry.move_id)
+		check(entry.resource_path == expected and ResourceLoader.exists(expected), "Move has a FileSystem asset: " + str(entry.move_id))
+		check(not entry.is_built_in(), "Move is external rather than embedded: " + str(entry.move_id))
+	var settings = library.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	check(settings.attack_styles[0] != library.attack_styles[0], "Run-only tuning duplicates do not share external move Resources")
 	check(settings.attack_styles.size() == 20, "Serialized Inspector mirror includes all school moves")
 	check(Store.changes(Settings.data_from_config(config), settings.get_data()).is_empty(), "Serialized Inspector and JSON style/Impact/reaction data match")
 	if not Store.changes(Settings.data_from_config(config), settings.get_data()).is_empty():
@@ -190,6 +197,35 @@ func _run() -> void:
 	reaction.finish_body_motion()
 	check(not reaction.is_invincible(), "Scaled push ends invincibility through existing completion")
 	reaction.free()
+	# Save through the actual Inspector bridge, then reload the files independently.
+	var bridge := Bridge.new()
+	bridge.settings = library
+	root.add_child(bridge)
+	var preview := config.duplicate(true)
+	check(bridge.initialize(preview, func(): return Loader.validate(preview))["ok"], "External move graph initializes through the Inspector bridge")
+	var edited: MoveStyleTuning = bridge.settings.attack_styles[0]
+	var asset_path := edited.resource_path
+	edited.shape_reach = 73.25
+	check(preview["moves"][str(edited.move_id)]["shape_reach"] == 73.25, "Inspector edits retain their existing runtime preview path")
+	check(bridge.save_resource()["ok"], "Inspector saves parent and external move Resources")
+	var reloaded = ResourceLoader.load(asset_path, "", ResourceLoader.CACHE_MODE_IGNORE)
+	check(reloaded.resource_path == asset_path and reloaded.shape_reach == 73.25, "Saved external move reloads with its stable path and edited value")
+	var parent = ResourceLoader.load(Store.TUNING_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
+	check(parent.attack_styles[0].resource_path == asset_path and parent.attack_styles[0].shape_reach == 73.25, "Parent reload retains the external reference rather than rebundling the move")
+	bridge.persistence_enabled = false
+	var asset_hash := FileAccess.get_sha256(asset_path)
+	edited.shape_radius += 1.0
+	check(not bridge.save_resource()["ok"] and FileAccess.get_sha256(asset_path) == asset_hash, "Run-only bridge cannot persist external move edits")
+	check(Settings.save_config_mirror(config, Store.TUNING_PATH)["ok"], "Configuration mirror saves external assets without a live bridge")
+	var restored = ResourceLoader.load(asset_path, "", ResourceLoader.CACHE_MODE_IGNORE)
+	check(restored.shape_reach == config["moves"][str(edited.move_id)]["shape_reach"], "Configuration mirror restores the external file's matching data")
+	check(edited.shape_reach == 73.25, "Mirror saving does not mutate the running Inspector graph")
+	bridge.free()
+	library = null
+	parent = null
+	reloaded = null
+	restored = null
+	edited = null
 	check(FileAccess.get_sha256("res://config/prototype_combat.json") == original_hash, "Tests do not write saved tuning")
 	settings = null
 	clock = null

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MoveStyleTuning" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/config/move_style_tuning.gd" id="1_style"]
+
+[resource]
+resource_name = "earth_x3"
+script = ExtResource("1_style")
+move_id = &"earth_x3"
+windup_duration = 0.28
+recovery_duration = 0.38
+shape_reach = 42
+shape_radius = 20
+lunge_distance = 2
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.7

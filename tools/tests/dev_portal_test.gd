@@ -297,7 +297,20 @@ func _run() -> void:
 	check(current_field_panel(dock).get("_foldout_bodies")[fire_group].visible, "Impact foldout stays open after filling the draft")
 	dock._save_changes()
 	check(Store.load_config()["data"]["moves"]["fire_x5"]["impact"] == 10, "X1–X5 Impact saves to the shared combat configuration")
-	Loader.validate_and_save(Store.CONFIG_PATH, original)
+	var style_path := "res://config/attack_styles/fire_x1.tres"
+	var cached_style = load(style_path)
+	var cached_reach: float = cached_style.shape_reach
+	dock._on_value_changed(["moves", "fire_x1", "shape_reach"], 73.25)
+	dock._save_changes()
+	var saved_style = ResourceLoader.load(style_path, "", ResourceLoader.CACHE_MODE_IGNORE)
+	check(Store.load_config()["data"]["moves"]["fire_x1"]["shape_reach"] == 73.25 and saved_style.shape_reach == 73.25, "Portal saves synchronize JSON and the external move asset")
+	check(saved_style.resource_path == style_path and cached_style.shape_reach == cached_reach, "Portal saving retains asset paths without applying changes to cached Inspector Resources")
+	var saved_mirror = ResourceLoader.load(Store.TUNING_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
+	check(saved_mirror.attack_styles[0].resource_path == style_path, "Portal saves preserve the parent's move-file references")
+	check(Store.save_changes(Store.load_config()["data"], original)["ok"], "Portal save fixture restores JSON and external assets together")
+	cached_style = null
+	saved_style = null
+	saved_mirror = null
 	dock._reload_file()
 	choose_category(dock, "combat", "hit_reaction")
 	var source_before_series := FileAccess.get_sha256(Store.CONFIG_PATH)

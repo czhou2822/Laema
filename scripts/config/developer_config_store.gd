@@ -3,7 +3,9 @@ extends RefCounted
 ## One persisted authority. Merge edited leaves against a fresh validated file.
 
 const CONFIG_PATH := "res://config/prototype_combat.json"
+const TUNING_PATH := "res://config/combat_tuning.tres"
 const Loader = preload("res://scripts/config/prototype_config_loader.gd")
+const Settings = preload("res://scripts/config/combat_tuning_settings.gd")
 
 
 static func load_config(path: String = CONFIG_PATH) -> Dictionary:
@@ -67,7 +69,13 @@ static func save_changes(base: Dictionary, draft: Dictionary, path: String = CON
 	var result := merge(base, draft, loaded["data"])
 	if not bool(result["ok"]):
 		return result
-	return Loader.validate_and_save(path, result["data"], expected_hash)
+	result = Loader.validate_and_save(path, result["data"], expected_hash)
+	if not bool(result["ok"]) or path != CONFIG_PATH:
+		return result
+	var mirror := Settings.save_config_mirror(result["data"], TUNING_PATH)
+	if not bool(mirror["ok"]):
+		return {"ok": false, "data": result["data"], "error": "JSON saved; Inspector mirror save failed: %s" % mirror["error"]}
+	return result
 
 
 static func path_label(keys: Array) -> String:

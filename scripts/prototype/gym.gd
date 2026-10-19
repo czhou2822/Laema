@@ -66,7 +66,7 @@ func _load_configuration() -> Dictionary:
 	_enforce_encounter_settings(config)
 	# Never synchronize this encounter's mirror into a cached ordinary scene Resource.
 	combat_tuning.persistence_enabled = false
-	combat_tuning.settings = combat_tuning.settings.duplicate(true)
+	combat_tuning.settings = combat_tuning.settings.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	return ConfigLoader.validate(config)
 
 

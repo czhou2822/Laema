@@ -21,6 +21,8 @@ Persistent development context shared by independent tasks. User decisions and t
 
 ## Implemented candidates
 
+- October 19 move navigation: all 20 MoveStyleTuning entries reference `config/attack_styles/<move_id>.tres`, enabling native Local Inspector right-click → Show in FileSystem. Inspector/Portal saves synchronize the external files and parent mirror while JSON stays authoritative. Gym deeply duplicates external resources and retains run-only guards. Isolated checks passed: 249 style, 183 Portal/config/layout and 118 Gym (550 total); interactive context-menu validation is pending.
+
 - LimboAI 1.8.1 supplies the Final Enemy tree and a preempting reaction branch; Entity/HealthResolver own snapshots, contact judgment, cancellation and mixed-hit transactions. Existing movement owners consume collision-aware reaction displacement. The independent DUM.E task retains task_key dummy and its earlier parser/refill history.
 - Typed combat_tuning.tres and Inspector views share validated JSON with both Dev Portal surfaces. JSON supplies startup values; opening the editor/game does not write settings. Reaction-only tuning preserves an active reaction's captured lifetime; AI decision changes keep their reset behavior.
 - Laema Dev Portal provides an offline editor dock, shared field catalog/renderer, guarded draft/save/reload and explicit debugger apply/session commands. Conflicting edits and ambiguous sessions are rejected. Series fill previews changes before updating drafts; level/range/legacy controls remain distinct. Legacy reaction tooltips must say they do not control new combat reactions.
@@ -29,6 +31,8 @@ Persistent development context shared by independent tasks. User decisions and t
 - RAE dead cell is independently identified by task_key dead_cells_attack_styles and directly assigned to Combat; it does not replace Combat or DUM.E.
 
 ## Evidence and Open items
+
+- The user expects flipbook/timeline preview with hitboxes edited alongside each attack, and runtime/Portal geometry read from that authoring source. The current move-file navigation slice does not implement that conversion; existing runtime geometry remains JSON-driven. Preserve this pending authoring objective separately from the completed asset-navigation work.
 
 - October 16 source/status records and task reports include isolated Godot 4.7.2 checks. The style slice reports 199 style/physics, 179 Portal/config/layout/Gym and 59 clash checks (437 total). Other iteration-tool checks have their own scopes; do not sum overlapping runs or claim this checkpoint reran them.
 - Agent engine checks do not establish interactive feel, physical-controller/visual acceptance, ordinary-play coverage, a Web export or submission clearance. Earlier tuning waivers do not validate later candidates.

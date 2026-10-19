@@ -51,6 +51,53 @@ const Style = preload("res://scripts/combat/attack_style.gd")
 		emit_changed()
 
 
+func save_resources(path: String) -> Dictionary:
+	# Saving the parent stores external references, not changes inside those files.
+	for style in attack_styles:
+		if style == null:
+			return {"ok": false, "error": "Cannot save a missing attack-style Resource."}
+		var style_path := style.resource_path
+		if style_path.is_empty() or style_path.contains("::"):
+			continue
+		var style_error := ResourceSaver.save(style, style_path)
+		if style_error != OK:
+			return {"ok": false, "error": "Cannot save %s: %s" % [style_path, error_string(style_error)]}
+	var error := ResourceSaver.save(self, path)
+	if error != OK:
+		return {"ok": false, "error": "Cannot save combat tuning Resource: %s" % error_string(error)}
+	return {"ok": true, "error": ""}
+
+
+static func save_config_mirror(config: Dictionary, path: String) -> Dictionary:
+	# A separate graph avoids applying Portal saves to a running Inspector view.
+	# Ignore only the parent cache: reloading live Script dependencies is unsafe.
+	var mirror := ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE) as CombatTuningSettings
+	if mirror == null:
+		return {"ok": false, "error": "Cannot load combat tuning Resource: %s" % path}
+	var source_styles: Dictionary = {}
+	for index in range(mirror.attack_styles.size()):
+		var source: MoveStyleTuning = mirror.attack_styles[index]
+		if source == null:
+			return {"ok": false, "error": "Cannot save a missing attack-style Resource."}
+		source_styles[source.move_id] = source
+		mirror.attack_styles[index] = source.duplicate()
+	mirror.read_from_config(config)
+	for index in range(mirror.attack_styles.size()):
+		var style: MoveStyleTuning = mirror.attack_styles[index]
+		var source: MoveStyleTuning = source_styles.get(style.move_id)
+		if source == null or source.resource_path.is_empty() or source.is_built_in():
+			continue
+		var error := ResourceSaver.save(style, source.resource_path)
+		if error != OK:
+			return {"ok": false, "error": "Cannot save %s: %s" % [source.resource_path, error_string(error)]}
+		# Serialize the original file reference without changing its cached values.
+		mirror.attack_styles[index] = source
+	var error := ResourceSaver.save(mirror, path)
+	if error != OK:
+		return {"ok": false, "error": "Cannot save combat tuning Resource: %s" % error_string(error)}
+	return {"ok": true, "error": ""}
+
+
 func get_data() -> Dictionary:
 	var impacts: Dictionary = {}
 	for move in moves:

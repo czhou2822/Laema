@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MoveStyleTuning" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/config/move_style_tuning.gd" id="1_style"]
+
+[resource]
+resource_name = "fire_x4"
+script = ExtResource("1_style")
+move_id = &"fire_x4"
+windup_duration = 0.22
+recovery_duration = 0.34
+shape_reach = 46
+shape_radius = 18
+lunge_distance = 10
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55
+push_scale = 0.75

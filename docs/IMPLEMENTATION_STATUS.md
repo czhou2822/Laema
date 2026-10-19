@@ -1,5 +1,33 @@
 # Implementation Status
 
+## Move-resource FileSystem navigation — 2026-10-19
+
+All 20 MoveStyleTuning entries now reference individual
+`config/attack_styles/<move_id>.tres` files instead of embedded resources.
+Their names, IDs, order and tuning values are preserved. In the Local Inspector,
+right-click a move's resource name and choose **Show in FileSystem** to reveal
+its settings file. Godot's native resource-picker source confirms this action
+is available for external file paths; no custom context-menu UI was introduced.
+
+Inspector saves persist external children and the parent mirror. Portal saves
+continue committing validated JSON and now synchronize those external assets
+without mutating the cached Inspector graph or implicitly applying to a game.
+A mirror-save failure reports that JSON was already saved. Gym uses fully deep
+private copies of external resources and keeps its run-only persistence guard.
+Remote Gym copies do not have file paths; asset navigation uses Local resources.
+
+Validation: isolated Godot 4.6.3 stable official Linux x64 passed 249 attack-style,
+183 Portal/config/layout and 118 Gym encounter checks (550 total). These cover
+all 20 paths and existing values, Inspector child-file persistence, independent
+reloads, Portal JSON/file synchronization, unchanged cached views, private-copy
+isolation and unchanged external-asset bytes after Gym use/retry. Final runners
+completed without engine errors or resource leaks; the intentional run-only
+Inspector warning remains covered. Interactive right-click navigation still
+needs the user's editor check: `AWAITING_USER_VALIDATION`.
+
+This slice provides move-settings navigation. Flipbook preview, timeline hitbox
+editing and scene/animation authority for runtime/Portal geometry remain pending.
+
 ## Fire X and leveled Cast reactions — 2026-10-19
 
 Implemented the approved progression: Fire X1–X5 have Impacts 10/20/30/40/50;

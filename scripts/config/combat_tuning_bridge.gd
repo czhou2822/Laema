@@ -71,10 +71,7 @@ func save_resource() -> Dictionary:
 	var path := settings.resource_path
 	if path.is_empty() or path.contains("::"):
 		path = TUNING_PATH
-	var error := ResourceSaver.save(settings, path)
-	if error != OK:
-		return {"ok": false, "error": "Cannot save combat tuning Resource: %s" % error_string(error)}
-	return {"ok": true, "error": ""}
+	return settings.save_resources(path)
 
 
 func _reconnect_resources() -> void:

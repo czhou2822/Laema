@@ -74,12 +74,17 @@ func _run() -> void:
 	json_hash = FileAccess.get_sha256("res://config/prototype_combat.json")
 	mirror_hash = FileAccess.get_sha256("res://config/combat_tuning.tres")
 	var ordinary: Dictionary = Loader.load_and_validate("res://config/prototype_combat.json")["data"]
+	var shared_settings = load("res://config/combat_tuning.tres")
+	var style_hashes: Dictionary = {}
+	for style in shared_settings.attack_styles:
+		style_hashes[style.resource_path] = FileAccess.get_sha256(style.resource_path)
 	gym = load(GYM).instantiate()
 	root.add_child(gym)
 	current_scene = gym
 	await settle()
 	freeze_fighters()
 	var config: Dictionary = gym.get("_config")
+	check(gym.combat_tuning.settings.attack_styles[0] != shared_settings.attack_styles[0] and is_equal_approx(shared_settings.attack_styles[0].windup_duration, float(ordinary["moves"]["fire_x1"]["windup_duration"])), "Gym owns private external move copies and preserves the shared Inspector values")
 	check(Loader.validate(config)["ok"], "Encounter profile passes the real validator")
 	check(gym.get("_current_area").get_targets().size() == 1, "One opponent and no practice targets")
 	var authored_room = load("res://scenes/stages/gym_area.tscn").instantiate()
@@ -279,6 +284,11 @@ func _run() -> void:
 		arena.free()
 	check(FileAccess.get_sha256("res://config/prototype_combat.json") == json_hash, "Shared JSON bytes are unchanged")
 	check(FileAccess.get_sha256("res://config/combat_tuning.tres") == mirror_hash, "Shared Inspector mirror bytes are unchanged")
+	var assets_unchanged := true
+	for path in style_hashes:
+		assets_unchanged = assets_unchanged and FileAccess.get_sha256(path) == style_hashes[path]
+	check(assets_unchanged, "Gym preview and retry preserve every external move asset's bytes")
+	shared_settings = null
 	await process_frame
 	if failures.is_empty():
 		print("PASSED: %d Gym encounter checks" % checks)

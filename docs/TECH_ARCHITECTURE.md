@@ -8,6 +8,32 @@ The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
+## External move-style assets — 2026-10-19
+
+The 20 MoveStyleTuning entries in `config/combat_tuning.tres` now reference
+individual `config/attack_styles/<move_id>.tres` resources. Move IDs, array order
+and authored values are preserved. Their external resource paths enable Godot's
+native resource-picker right-click **Show in FileSystem** action. This changes
+asset navigation, not animation or hitbox authoring; JSON remains authoritative.
+
+CombatTuningSettings owns saving the parent and its external style resources.
+CombatTuningBridge delegates Inspector mirror saves to that operation. Portal
+Store saves commit validated JSON first, then synchronize the external files
+and parent mirror. Mirror failures explicitly report that JSON was saved;
+the multi-file mirror write is not an atomic transaction.
+
+Portal mirror synchronization loads an uncached parent, copies the referenced
+style data before editing it, saves each external file, and preserves the
+original external references when saving the parent. It neither reloads live
+Script dependencies nor mutates the cached Inspector graph, so saving remains
+separate from applying to a running game. Existing bridge refresh keeps the
+editor view synchronized with saved JSON.
+
+Gym uses `duplicate_deep(DEEP_DUPLICATE_ALL)` because ordinary duplication shares
+external resources. The private copies retain the encounter's no-persistence
+contract; Local Inspector assets provide FileSystem navigation, while Remote
+Gym copies remain run-only. No gameplay tuning or diagnostic probes change.
+
 ## Fire and Cast reaction progression — 2026-10-19
 
 Repository basis: `3d7b0d2` plus this approved reaction-progression candidate.

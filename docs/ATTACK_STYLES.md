@@ -4,9 +4,24 @@ Status: implemented candidate; numeric presets await user playtesting.
 
 ## Tune a move
 
-- In the editor or in-game Dev Portal, open **Combat → Attack styles** and expand one school/X position. Editor drafts use the existing review/save flow; apply saved settings to a running game separately.
-- In the scene Inspector, select **CombatTuning → Settings → School Attack Styles - X1 to X5** and expand a MoveStyleTuning entry. JSON remains the persisted authority through the existing bridge.
+- In the in-game Dev Portal, open **Combat → Attack styles** and expand one school/X position. Gym edits remain run-only. The editor Portal's Attack styles page is currently absent from its navigation; use the Inspector path below for persistent style editing.
+- Open `scenes/prototype_arena.tscn` and select **CombatTuning → Settings → School Attack Styles - X1 to X5** in the Local Inspector. Expand a MoveStyleTuning entry. JSON remains the persisted authority through the existing bridge.
 - Changes affect subsequent X actions. The current action retains its captured style. Heat still changes playback speed during an action.
+
+## Locate a move in FileSystem
+
+Each of the 20 move-style entries references its own file at
+`res://config/attack_styles/<move_id>.tres`. Right-click the resource name, such
+as **fire_x1**, and select **Show in FileSystem**. Godot reveals
+`config/attack_styles/fire_x1.tres`. The resource dropdown exposes the same action.
+
+These are move-settings assets, not animation clips or a flipbook editor.
+Persistent Inspector edits still require the active CombatTuning bridge described
+above; saving a `.tres` alone does not change the authoritative JSON. Inspector
+and Portal configuration saves synchronize the external move files and their
+parent mirror. Portal saves do not apply changes to a running game automatically.
+The Gym's Remote Inspector contains private, run-only copies without file paths;
+use the Local Inspector to locate the original assets.
 
 | Setting | Meaning |
 |---|---|
