@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cr8r7idv3dq5g" path="res://scripts/config/move_impact_tuning.gd" id="7_4g28w"]
 [ext_resource type="Script" uid="uid://cea1sq3knghe6" path="res://scripts/config/combat_tuning_settings.gd" id="8_3oxd6"]
 [ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="pause_menu_scene"]
+[ext_resource type="Resource" path="res://config/combat_tuning.tres" id="shared_combat_tuning"]
 
 [sub_resource type="Resource" id="Reaction_1"]
 resource_name = "Level 1"
@@ -182,4 +183,4 @@ bus = &"SFX"
 
 [node name="CombatTuning" type="Node" parent="." unique_id=2133090174]
 script = ExtResource("5_tuning_bridge")
-settings = SubResource("Resource_la85q")
+settings = ExtResource("shared_combat_tuning")
