@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="1_base"]
 [ext_resource type="Script" uid="uid://cw7ssygia5ccn" path="res://scripts/enemy/combat_enemy.gd" id="2_script"]
-[ext_resource type="Texture2D" uid="uid://c0ysa7sqsornx" path="res://assets/prototype/enemy/medieval_fighter/Attack_1.png" id="3_3cx6u"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/medieval_fighter/Idle.png" id="3_3cx6u"]
 [ext_resource type="BehaviorTree" uid="uid://cvt502b6f13r0" path="res://ai/trees/final_enemy.tres" id="3_tree"]
 [ext_resource type="Animation" path="res://config/attack_animations/melee_swing.tres" id="4_animation"]
 
@@ -33,7 +33,7 @@ texture = ExtResource("3_3cx6u")
 region_rect = Rect2(0, 0, 128, 128)
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(-11, -1)
+position = Vector2(-11, 8.65)
 shape = SubResource("CapsuleShape2D_vo27k")
 
 [node name="BTPlayer" type="BTPlayer" parent="." index="11" unique_id=1856016948]

@@ -27,6 +27,24 @@ The timelines use the existing normalized one-second clocks. Actual windup/recov
 
 The button is navigation into Godot's built-in animation editor, not a custom flipbook tool. If that editor is pinned to another AnimationPlayer, unpin it before switching scenes.
 
+## Align the Enemy body with the floor
+
+Open `scenes/enemy/combat_enemy.tscn` in the Local editor. Its default **BodyVisual**
+shows the standing Idle sprite. Position, scale and rotation are authored in the
+scene; configuration no longer replaces the sprite's position or scale. Hurt
+recovery and stage reset return to the captured scene rest position.
+
+Select **CollisionShape2D** to edit the static body capsule. Align its bottom with
+the visible idle feet using the shape's height and the node's Position, then save
+the scene. This body collider needs no animation keys. Keep attack geometry in
+**AttackCast** and its native Animation tracks.
+
+The current preset preserves radius `12.4`, height `68.7` and X offset `-11`.
+Its Y offset is `8.65`: half-height `34.35` puts the bottom at local Y `43`, matching
+the idle feet with BodyVisual at Y `-21` in a centered 128-pixel cell. If you change
+the sprite transform or capsule height, realign their feet/bottom in the scene;
+there is no runtime auto-alignment or transform override.
+
 ## Tune numerical settings
 
 - Both editor and in-game Dev Portals expose **Combat → Attack styles**. Reach/radius show the native contact pose. Save updates only the changed contact-size keys, preserving authored offsets, angle, other frames and sprite tracks. **General → Final Enemy** exposes its separate hitbox reach/radius.

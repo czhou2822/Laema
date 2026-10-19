@@ -64,9 +64,8 @@ func configure(config: Dictionary) -> void:
 	_ai_config = Dictionary(config["enemy_ai"])
 	warning_marker.visible = false
 	attack_flash.visible = false
-	body_visual.scale = Vector2.ONE
-	body_visual.position = Vector2(0.0, -21.0)
 	body_visual.modulate = Color("a77991")
+	# Capture the scene-authored rest pose for reaction and stage reset recovery.
 	_body_rest_position = body_visual.position
 	_sync_ai_blackboard()
 	_abort_ai_tree()

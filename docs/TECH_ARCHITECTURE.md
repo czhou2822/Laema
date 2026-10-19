@@ -8,6 +8,24 @@ The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23
 
 The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
 
+## Enemy scene transform and grounding — 2026-10-19
+
+User decision: preserve the scene-authored sprite transform and align the body
+capsule bottom with the standing idle feet. CombatEnemy.configure no longer sets
+BodyVisual.position or scale; it captures the authored position in the existing
+_body_rest_position used by hurt recovery and stage reset. Native attack tracks
+continue to own only sprite texture/region and attack geometry, so no new rest-
+pose owner or automatic collider positioning is introduced.
+
+CombatEnemy's default scene previews Idle.png instead of a saved attack frame.
+The six 128-pixel idle cells have visible lower edges at row boundary 128; with
+the centered sprite at Y -21, the feet are at local Y 43. The existing capsule
+keeps radius 12.4, height 68.7 and X -11; center Y 8.65 places its bottom at 43.
+Geometry remains scene-authored. Changes to sprite transforms or capsule height
+require scene alignment, not a code adjustment. This moves the standing body
+relative to the floor as intended; attack tracks, damage and reaction rules keep
+their current values.
+
 ## Native Cast completion guard correction — 2026-10-19
 
 Might validates animation_finished against AnimationPlayer.assigned_animation,
