@@ -29,6 +29,21 @@ Decision: the user designated the **HMM3** task (`01a142bd-e72a-7f03-b3fb-1b28d2
 - Show five candidates per comparison round. A selected direction can be developed without reopening the five-way choice.
 - Next: reconcile the selected weapon and character studies against the native originals, then validate an actual sprite sample at Laema's camera scale. Exact pixel dimensions, transformation animation, effect intensity and final assets remain open.
 
+## Approved character concept direction — 2026-10-18
+
+Decision: the user locked the current character direction. The complete
+[five-image reference set](references/2026-10-18-character-concepts/README.md)
+is retained with provenance: Laema options 1–3 (Open, Wrap, Cutaway) and the female
+local lord she advises as options 4–5 (Facet, Mantle). No numbered outfit was
+selected; the assistant's recommended 1 and 5 are not user choices.
+
+Laema is curious and alert. The female local lord's direction is a natural face,
+short asymmetric silver-white bob, knowing half-smile, and confident, lightly
+skeptical expression. Preserve existing lore alongside the explicit local-lord
+advisory relationship. These are concept references, not runtime sprites or
+rig-ready assets. No weapon is locked by this approval. The earlier original
+Heroes III visual-style authority remains in force.
+
 ## Prototype Combat HUD Layout
 
 Status: Approved visual direction for the prototype HUD layout.
