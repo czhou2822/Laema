@@ -107,6 +107,18 @@ October 19 presentation update: the table above records the original feel refere
 
 The current implementation provides provisional per-move windup, post-contact duration, reach/radius, forward-body distance/phase interval and qualifying-reaction push-distance multiplier. Timing values are seconds before Heat scaling. A zero timing value inherits the corresponding shared-duration phase. The approved October 19 authoring workflow uses native AnimationPlayer sprite/hitbox tracks: scrub a move, edit its visible hitbox, and key the pose. Saved animation geometry is authoritative; Inspector/Portal reach and radius read and edit the contact-time keys. JSON remains authoritative for timing, lunge, Impact and other combat settings. Native zero reach is a point query and radius is positive; legacy custom profiles retain their existing fallback normalization.
 
+**Retained overnight candidate — October20:** Fire X2/X3 contact-circle centers
+move from localX43/42 to40, matching X1, with Y11/radius16/zero target vector
+unchanged. Under current Player scale2, this gains6/4 world pixels of close
+coverage and loses the same6/4 at the outer edge. Timings, poses, lunge, damage,
+Impact, once-only queries, invincibility/clash rules and generation eligibility
+are unchanged. Supervisor rendered review retained this small coverage trade
+provisionally; human morning controller/feel acceptance and final tuning remain
+pending. Sampled close/body-blocked chains now connect all three moves; no
+universal reach or strategy improvement is claimed. That Fire pass left Enemy
+tuning unchanged; the later retained E package below supersedes its baseline.
+All earlier comparison copies remain preserved.
+
 Forward motion follows the action's committed facing through the existing collision body; walls block displacement and interruption/reset discards the remaining motion. Early Fire attacks use limited push; its X5 increases separation only when the existing hit-reaction rules qualify. Push scaling changes distance, not reaction eligibility, duration, invincibility, damage or Impact/Poise. Active actions retain the style captured at their start; tuning edits apply to subsequent actions. Native Animation markers still author the active interval and contact boundary.
 
 These are initial feel presets awaiting user playtesting, not accepted final numbers. Existing reaction invincibility still rejects otherwise valid follow-up hits during that interval. Practice-target tempo comparisons and attacking-enemy reaction checks are separate.
@@ -271,7 +283,18 @@ A mixed Cast displays its resolved primary and optional secondary results, such 
 
 ## Casting Projectile
 
-Every successful Cast begins a casting animation. The projectile launches later at the same normalized phase used by X attacks for contact.
+Every successful Cast begins its primary school's native casting animation. The projectile launches once at that clip's authored contact marker.
+
+**Retained overnight candidate — October 19:** Fire's active_start/contact are
+0.24 of its one-second native clock, with active_end/length still 1.0. Existing
+poses are retimed around that earlier contact; total action duration, Heat
+scaling, resource commitment, queue/buffer rules and melee handoff are unchanged.
+Other school clips and Fire X timing are unchanged. Supervisor rendered review
+retained this responsiveness candidate provisionally; human morning feel and
+controller acceptance remain pending. Matched engine cases launch eight ticks
+earlier at 60 Hz with the same completion/handoff. One deterministic spacing/Cast
+policy wins faster but finishes at 60 Health versus the earlier 80; this is not
+final balance or a universal improvement. See the overnight iteration ledger.
 
 - One combined projectile carries the primary and at most one secondary school layer.
 - It travels in Laema’s facing direction.
@@ -351,13 +374,18 @@ Fire X1–X5 produce progressively stronger combat reactions. Cast Spell Levels 
 
 | Fire attack | Cast Spell Level | Attack Impact | Reaction against the Gym opponent outside its active swing |
 |---|---|---:|---:|
-| X1 | 1 | 10 | Level 1 |
-| X2 | 2 | 20 | Level 2 |
-| X3 | 3 | 30 | Level 3 |
-| X4 | 4 | 40 | Level 4 |
-| X5 | — | 50 | Level 5 |
+| X1 | 1 | 10 | No reaction |
+| X2 | 2 | 20 | Level 1 |
+| X3 | 3 | 30 | Level 2 |
+| X4 | 4 | 40 | Level 3 |
+| X5 | — | 50 | Level 4 |
 
-The existing receiver-side formula still applies. The Gym opponent has 1 Poise, so these Impacts produce values 9, 19, 29, 39 and 49 when it is idle, winding up or recovering. Its active move contributes additional resistance and can reduce or prevent the reaction. These are not forced reaction levels that bypass Poise or active attacks.
+The existing receiver-side formula still applies. The retained overnight Gym
+candidate has10 Poise, giving values0/10/20/30/40 outside active frames. The
+historical/private Poise1 matrix gives9/19/29/39/49 and Levels1–5; it is not the
+current default. Active-move resistance still applies. Nonqualifying damage and
+melee Generating remain valid; no level is forced past eligibility. Final human
+controller/feel acceptance remains pending.
 
 The hurt animation belongs to the qualifying combat reaction: it starts with stagger and whole-body knockback, uses the selected reaction's duration, and ends with that reaction. A damaging hit that does not qualify causes no separate hurt animation. Existing reaction invincibility and collision behavior are retained.
 
@@ -424,6 +452,14 @@ When active, the protective buff displays an icon above the Enemy's head. The ic
 
 Floating damage numbers always display the final Health actually lost after Elemental Endurance, blocking, and every other damage modifier. A final Health loss of zero still displays `0`. Every DoT tick displays its final damage number using a much smaller font than direct-hit damage.
 
+Retained OVERNIGHT CANDIDATE H moves the existing direct/DoT anchors52 pixels
+closer to their target (Y−186/−154), leaving Cast-level Y−118 and all meaning,
+style, lifetime and gameplay unchanged. Supervisor actual1280×720 render review
+finds fresh glyphs clear of the debug EventPanel and initial Player DoT/Cast
+glyphs separate. Baseline direct/DoT crowding, repeated numbers and older fading
+numbers drifting into the header remain unresolved; no general layout/scale
+solution is claimed. Human controller/feel/readability acceptance is pending.
+
 ### First Enemy Attack Pattern
 
 The final Enemy attacks while the player works through the school-switching test. Its first-pass behavior uses one repeating pattern:
@@ -447,8 +483,12 @@ active frames end at `active_end`, and recovery uses any remaining animation
 length. The Enemy resumes decisions when that animation finishes. Separate Enemy
 windup/recovery controls and the Gym's Enemy duration multiplier are removed.
 This supersedes the earlier scalar timing and the user's intermediate 1/1
-override baseline. The current clip has active_start/contact at 0.8 s and
-active_end/clip end at 1.0 s, with no added recovery wait. The user can author a
+override baseline. The migration baseline was0.8 contact/1.0 end. The retained
+overnight candidate uses active_start/contact1.1 and active_end/length1.3 at
+speed1, active interval0.2 and no recovery tail/timer. Its existing sprite and
+geometry timestamps are retimed without new poses, attacks or tracking rules.
+The shared tutorial keeps actual Poise0/config, but native cadence grows61→79
+ticks. Human controller/feel acceptance remains pending. The user can author a
 recovery tail by extending the clip beyond active_end.
 
 Other first-pass values remain tunable placeholders: `600 px` awareness range,
@@ -865,14 +905,16 @@ These UI changes select no new tuning and do not alter Poise/clash/reaction rule
 
 ## Combat Gym
 
-`scenes/gym.tscn` is the single development encounter, launched by F5, F6 or
-Laema Dev Portal → Run gym. The previous separate Fire benchmark is retired.
+`scenes/gym.tscn` is the single development encounter: open it for F6 or use
+Laema Dev Portal → Run gym. Saved F5 still points to the tutorial; intended
+F5-to-Gym startup is a known mismatch, not fixed by this candidate. The separate
+Fire benchmark is retired.
 The user now treats its opponent as the first reusable Enemy being developed for
 the game. This development direction does not establish final behavior or
 gameplay acceptance.
 It contains Fire-only Player and one killable opponent, starting 160 pixels
 apart in the bounded Gym room. Player starts at 100 Health and the opponent at
-200, with provisional opponent Poise 1 and move Impact 20. The Gym disables
+200, with retained overnight opponent Poise10 and move Impact20. The Gym disables
 contact-free orbs, the Player 1-HP floor, opponent refill and Elemental Endurance.
 Defeat the opponent while surviving; there are no required parry/Cast quotas.
 Victory or defeat stops the encounter and offers Retry. Start/Esc offers the

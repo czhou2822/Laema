@@ -1,5 +1,218 @@
 # Implementation Status
 
+## Frozen overnight candidate / morning handoff — October20
+
+Working source remains the eight-file retained package at HEAD644587b plus
+uncommitted candidates,637 runtime-file digest
+`063923eddfda510fb5ffd3cf30426f99ddf07c7b8b170be837db75f04d60b4c2`.
+No publication or final human acceptance. See
+`iterations/2026-10-20-morning-handoff.md` for the FINAL HANDOFF, exact paths,
+source/evidence provenance and focused morning sequence; earlier scoped reports
+below retain their own source identities and dates.
+
+Supervisor bounded source/report review is IMPLEMENTATION_REVIEW_COMPLETE, no
+new conformance finding; report content is final and candidate frozen before
+05:30. Current phase is documentation/verification only, with no new source/
+experiment/test/engine work. At05:33 supervisor independently verified HEAD,
+all637 H hashes,47 paths/appendix, no staged files and all11 absolute links.
+Process inventory showed only user Godot editor PID37568; no owned game/headless
+runs. Editor remains open. Human/controller/submission acceptance is pending.
+
+FINAL HANDOFF: worker finish/stop stamp 2026-10-20 05:54:10 HKT. Supervisor confirmed
+heartbeat PAUSED05:53, preserving its prompt/cadence/thread. Parent native play
+runs stopped02:56; worker-owned jobs already ended. No owned game/headless runs
+remain; preserve user Godot editor PID37568 open, per the recent supervisor
+inventory. No new check/run/source edit for shutdown. Overnight execution ended;
+remain stopped until direct human request. At/after06:00 cleanup/stop only,
+no project work or edits. Human/controller/submission acceptance remains pending.
+Limited native baseline
+keyboard/mouse evidence is explicit F6 launch, idle defeat/Retry and left-mouse
+X1 ten damage/one generated orb; it predates H and does not validate native
+Charging/release Cast/parry/full fight or current-H physical-controller feel.
+Later full-route results remain scripted InputMap/GPU evidence.
+
+Separate current-H native evidence: supervisor reloaded reviewed disk, inspected
+Poise10, explicitly launched F6, observed ordinary Enemy hits/natural defeat and
+native Return Retry100/200 HP,0 Heat/orbs and cleared readout/labels. F8 then
+stopped that run; only editor window5245890 remained, no LaemaDEBUG. Escape did
+not show Pause before further damage/defeat; focus/input delivery was unsettled,
+so neither native pause validation nor a production fault is claimed. No native
+held Charging/Cast/parry/active full-duel or physical-controller acceptance.
+
+Native reload/scan generated12 preserved test .gd.uid metadata sidecars. Current
+inventory is20 M+27 U=47 paths; the earlier35-path inventory remains historical.
+No saved code/property edit, runtime-value or637-file runtime identity change.
+
+Later unchanged-H evidence includes fixed process30/60/120 with physics60
+(73 headless checks each; supervisor GPU30/120 each92), and11 complete timing-
+variation parry fights, all HP100 victories. Ten headless variation runs pass87
+checks each; the first87-check report retains one invalid capacity assertion
+(20 APPLIED=12 created+8 overflow), corrected without replay. Supervisor wider-
+seed GPU95/4PNGs is separate evidence. These finite machine policies do not
+establish physical-controller, human timing/feel or general balance acceptance.
+
+Isolated Gym1.2s feedback duration is rejected for this night's promotion;
+working H retains2.0s. A/B each153 focused+110 existing headless checks, A D3D12
+GPU174/24PNGs and separate B GL174/24PNGs do not erase B's failed initial D3D12
+startup0xC0000374 (no gameplay/report/captures). Cause remains unknown, alongside
+earlier native0xC0000005 and cold UID errors. No renderer-default/main-runner
+change or blanket all-checks-passed claim. Full dispositions are in the ledger.
+
+## Retained OVERNIGHT CANDIDATE feedback anchors H — October20
+
+Exact reviewed component SHA
+`834925ff5544c13a31ad5891bfce559e257584e7032ff02d228dd41049cffe17`
+is promoted: only damageY−238→−186 and DoTY−206→−154. Cast−118, style,
+parenting/clamp/scale, motion/lifetime and event/damage semantics stay unchanged.
+Supervisor actual OpenGL A/H each passes68 capture-mode checks and produces10
+full viewport PNGs, exit0/zero errors. Palette is intentionally skipped in
+capture mode; separate headless110 checks include it. Inspected fresh glyphs
+clear EventPanel and initial Player DoT/Cast glyphs stay separate. Human
+readability/feel acceptance and resolution-independent clearance are not claimed.
+
+Fresh final source: feedback110, Cast45 and shared entity/readout23 pass with
+zero engine/resource errors. All637 runtime files equal reviewed H; only this
+component differs from round12, with exactly two literal changes. Real combat
+event/resource/phase dictionaries match H after removing only machine IDs.
+Repeated NPC numbers and old Player-number upward drift remain baseline limits;
+F is rejected as-is, G retained only as comparison. Pause asymmetry/clamp/scale
+are not repaired. Earlier F5/cold-import/cleanup caveats stay in the ledger.
+
+## Retained OVERNIGHT CANDIDATE Enemy package — October20
+
+Exact reviewed E scene/animation data is promoted: GymPoise10, native Enemy
+active_start/contact1.1, active_end/length1.3, same poses/geometry values at
+retimed keys, speed1 and no tail/timer. Base script default/shared JSON remain
+unchanged, including actual tutorial Poise0. Shared tutorial native cadence
+changes61→79 ticks. FireCast0.24, X2/X3X40, both code fixes and core combat rules
+remain. Final human controller/feel/balance acceptance is pending.
+
+Supervisor actual-renderer complete E routes: no-parry default wins1482 ticks,
+HP90,9 Casts/11 melee; parry wins1599,HP100,20 parries/20 melee; wall spacing
+defeat1008,Enemy120. Terminal viewport images/Retry states were inspected. This
+supports mechanical encounter viability, not universal balance. Local±3-tick
+parry and130/135/145 spacing probes remain first-exchange evidence only; failed
+wall route/charge-loss fumbles and earlier naive-policy losses are preserved.
+
+Fresh source regressions explicitly assert stock1.1/1.3/no-tail and default
+Poise10 Levels0–4 while retaining the original Poise1 formula matrix privately.
+Current input parry is marker-relative; old fixed0.68 loss reports are archived.
+Rear-Cast interruption scheduling alone moves with Enemy contact to retain
+before/between/after launch semantics. Exact counts/source comparisons and cold
+editor import/shutdown caveats are in the ledger. Gym's sole F5 assertion stays
+a known mismatch: use explicit Gym F6/Portal; project.godot was not retargeted.
+No whole-project, live/export or human validation claim.
+
+## Retained overnight FireX2/X3 close-contact candidate — October20
+
+Exact reviewed D resources are promoted: existing position keys X43/42→40,
+Y11/radius16/target0 unchanged. Key times, markers, sprites, lunge, damage,
+Impact, actor/collider scale, once-only queries and invincibility/clash/generation
+rules are unchanged. At Player scale2 the shift gains6/4 world pixels inward
+and loses6/4 outward. Supervisor actual GPU A14/D16 checks and four PNGs each
+support close swing/contact alignment at the same pose/clock. This is a retained
+OVERNIGHT CANDIDATE; final human controller/feel acceptance remains pending.
+
+Fresh source passes clash270 (all original198 assertions retained), contact164,
+close508, original input11, Cast45, styles595, Enemy152 and shared lifecycle67.
+Gap48/right now tests positive contact; inner16 and far180 both-facing negatives
+remain. Overreach mutation is separately checked. All eight ordinary-input and
+ten detailed contact-chain reports match reviewed D after removing only machine
+instance IDs. Initial import/shutdown caveats and final run results remain
+separate in the ledger. Shared JSON/mirror and every non-X2/X3 runtime file
+matched that round's prior source. At round10 Gym Enemy remained1/0.8/1.0;
+the later retained package above supersedes that baseline. Current native
+X4(30,11) and X5(35,11) are untouched; see ATTACK_STYLES.md.
+
+## U-003 contact diagnostic / test-only correction — 2026-10-19
+
+Round8 reproduced the retained-source clash suite's 14 FireX2/X3 failures.
+Their positive fixture placed the Enemy48 world pixels ahead, outside those
+then-authored compact contact circles after Player scale2 and Enemy collider X−11
+are applied. Correct move IDs/contact clocks and once-only query ran; native
+ShapeCast and independent overlap queries both returned no target. No health/
+reaction event was emitted, so no resolver/cancellation fault is demonstrated.
+Additional physics waits did not change the result. Test-only positive placement
+is now64; all198 prior behavioral assertions remain, with mirrored/negative
+coverage bringing the suite to244 passing checks. Private overreach fault
+injection makes24 negative assertions fail, preserving meaningful miss coverage.
+
+The round8 native geometry/real-input probe passes159 checks. At those pre-retention
+offsets a real close X1→X2→X3 chain misses X2/X3; inside chains
+hit all three in both directions, and outside chains miss. This is spatial
+contact evidence, not human approval of that coverage or an authorized tuning
+change. U-003 evidence is ready for supervisor review; C remains held/isolated.
+Original input11 and Cast45 pass, with all eight ordinary reports exactly equal
+to round5 after removing machine instance IDs. All637 runtime/project files
+at that diagnostic hash-match round5; no production gameplay/asset changes in
+round8. The later retained candidate above changes that coverage. Final clean runs and
+intermediate shutdown caveats are recorded in the overnight ledger.
+
+## Retained overnight Fire Cast anticipation candidate — 2026-10-19
+
+Exact reviewed round-4 B data is promoted: cast_fire active_start/contact 0.24,
+active_end/length 1.0, piecewise sprite retiming and unchanged geometry values.
+No JSON, other-school, Fire X, Enemy, input/queue, damage or total-duration change.
+Supervisor's actual OpenGL A/B capture passed 46 checks and produced 19 PNGs per
+variant, exit 0/zero errors. Inspected frames support coherent earlier projectile
+progression; eight ticks earlier launch comes from event/node metadata, not an
+exhaustive first-visible-pixel claim. Human morning feel/controller acceptance
+and final tuning remain pending.
+
+Fresh isolated Godot 4.7.1 Windows source passes 45 focused Cast, 11 original
+input, 595 attack-style, 152 Enemy timing and 67 Gym/tutorial lifecycle checks.
+All eight ordinary-input reports exactly match reviewed B after removing only
+machine instance IDs, preserving its spacing/Cast tradeoff: 19.40 s/HP60 versus
+old A20.48 s/HP80. Current-source clean runs and the earlier known import/audio
+shutdown caveats are recorded separately in the overnight ledger. Shared JSON/
+mirror bytes/non-Fire assets were unchanged by that Fire pass. The rejected
+0.8-contact/1.3-length recovery-tail comparison remains isolated; the later
+retained1.1-contact/1.3-end package has no tail.
+
+## Overnight U-002 initial AI snapshot candidate — 2026-10-19
+
+The first runtime Enemy decision-setting edit could fail to cancel the pending
+attack: configure cached the live enemy_ai dictionary by reference, erasing the
+old values used for change detection. Configure now deep-copies that initial
+snapshot, matching the existing later-apply path. The existing reset/cancel and
+lifecycle guards are unchanged; no Enemy tuning or timing change is included.
+
+Isolated Godot 4.7.1 Windows: pre-fix recovery fixture reproduced its sole
+AI-disable failure (66/67); candidate passes 67/67. Expanded native timing suite
+passes 152 checks, including first changes to all existing decision keys,
+nonreset edits, and Gym/tutorial lifecycle cases. Original real-input suite
+passes 11/11, with all eight full reports matching the retained ordinary-play
+baseline after removing only machine instance IDs. All three candidate runs
+exit 0 with no engine/resource errors. Snapshots, source digests and exact
+commands are in the overnight iteration ledger. Supervisor's bounded U-002
+implementation review is complete; human gameplay acceptance remains pending.
+
+The isolated 1.3-second recovery-tail experiment was rejected for working-source
+promotion after supervisor-rendered comparison. At that point stock was1.0;
+the later retained1.1/1.3 telegraph package above is a distinct candidate.
+That disposition applies to this candidate only. It is not a general decision
+against recovery tails or human controller/game-feel acceptance.
+
+## Overnight U-001 progress-query candidate — 2026-10-19
+
+Supervisor accepted the demonstrated U-001 diagnostic fault for a narrow fix:
+rejected X during hit reaction queried AnimationPlayer after cancellation had
+stopped its native playback. Might now returns zero when no action owns progress
+before reading native timing properties. Active and paused owned actions retain
+their ratio; completion/cancellation retain their existing action-clearing and
+queued-action paths. No combat eligibility, buffering, timing or damage changes.
+
+On isolated Godot 4.7.1.stable.official.a13da4feb Windows x64, the unchanged
+real-input harness passes 11 checks with zero engine errors; baseline emitted 66
+invalid-animation errors. All eight scenario reports match baseline, including
+action/contact frames and Enemy phases, excluding only machine instance IDs.
+The focused attack-style suite passes 588 checks (six additional lifecycle checks)
+with no engine/resource errors. The original baseline copy is preserved. Exact
+source identity, snapshots and evidence paths are in
+`iterations/2026-10-19-overnight.md`, round 1. Supervisor's bounded U-001
+implementation review is complete;
+human game-feel/controller acceptance and the baseline F5 UID issue remain open.
+
 ## Authored Enemy attack timing — 2026-10-19
 
 User chose native animation timing after requesting removal of windup/recovery

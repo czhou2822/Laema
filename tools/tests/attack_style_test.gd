@@ -196,6 +196,57 @@ func check_cast_after_contact() -> void:
 	Input.action_release(&"casting")
 
 
+func check_progress_lifecycle() -> void:
+	var unconfigured := MightComponent.new()
+	check(unconfigured.get_normalized_attack_progress() == 0.0, "Unconfigured Might has no attack progress")
+	unconfigured.free()
+	var actor = player_fixture()
+	check(actor.might.get_normalized_attack_progress() == 0.0, "Idle Player has zero progress without querying absent native playback")
+	actor.might.try_light_attack(Vector2.RIGHT)
+	advance_to_phase(actor, 0.35)
+	var progress: float = actor.might.get_normalized_attack_progress()
+	check(progress >= 0.35 and progress < 0.5, "Active melee retains its normalized progress")
+	actor.animation_player.pause()
+	check(is_equal_approx(actor.might.get_normalized_attack_progress(), progress), "Paused action retains progress despite empty native current_animation")
+	actor.animation_player.play()
+	advance_action(actor)
+	check(actor.might.get("_current_action").is_empty() and actor.might.get_normalized_attack_progress() == 0.0, "Completed unpreserved action returns zero progress and releases its action")
+	actor.might.try_light_attack(Vector2.RIGHT)
+	advance_to_phase(actor, 0.35)
+	actor.might.cancel_for_player_hit()
+	actor.might.enter_hit_reaction()
+	actor.might.try_light_attack(Vector2.RIGHT)
+	check(actor.might.get_normalized_attack_progress() == 0.0 and actor.might.is_hit_reacting(), "Rejected X during stopped hit reaction safely reports zero progress")
+	free_player(actor)
+
+
+func check_fire_cast_cadence() -> void:
+	# Focused manual-clock regression; real-input frame evidence stays in the
+	# overnight Cast fixture. No new eligibility or duration policy is introduced.
+	var actor = player_fixture()
+	prepare_cast_input(actor, &"fire")
+	var elapsed: Array[float] = [0.0]
+	var launch_times: Array[float] = []
+	actor.combat.cast_launch_requested.connect(func(_payload): launch_times.append(elapsed[0]))
+	Input.action_release(&"casting")
+	actor.combat._process(0.0)
+	var action_id: int = actor.might.get("_current_action")["source_action_id"]
+	var duration: float = float(config["combat"]["attack_duration"]) / actor.heat.get_speed_multiplier()
+	var queued := false
+	for step in range(2000):
+		elapsed[0] += 0.001
+		actor.might._physics_process(0.001)
+		if int(actor.might.get("_current_action").get("source_action_id", -1)) != action_id:
+			break
+		if not queued and actor.might.get_normalized_attack_progress() >= 0.6:
+			actor.might.try_light_attack(Vector2.RIGHT)
+			queued = true
+	check(launch_times.size() == 1 and absf(launch_times[0] - duration * 0.24) <= 0.0011, "Fire launch occurs once at the retained 0.24 clock marker")
+	check(absf(elapsed[0] - duration) <= 0.0011, "Earlier Fire launch preserves full configured Cast duration")
+	check(queued and actor.might.get("_current_action").get("kind") == &"light" and actor.might.get("_pending_action").is_empty(), "Unchanged Cast cadence hands off queued melee at completion")
+	free_player(actor)
+
+
 func _run() -> void:
 	var loaded := Loader.load_and_validate("res://config/prototype_combat.json")
 	check(loaded["ok"], "Style fixture validates")
@@ -204,6 +255,8 @@ func _run() -> void:
 		quit(1)
 		return
 	config = loaded["data"]
+	check_progress_lifecycle()
+	check_fire_cast_cadence()
 	var original_hash := FileAccess.get_sha256("res://config/prototype_combat.json")
 	var cast_before: Dictionary = config["moves"]["cast"].duplicate(true)
 	check_cast_followups()
@@ -259,8 +312,18 @@ func _run() -> void:
 		preview_actor.animation_player.play("cast_" + school)
 		for phase in [0.0, 0.19, 0.36, 0.67, 0.999]:
 			preview_actor.animation_player.seek(phase, true)
-			var frame := mini(int(floor(pow(phase, float(config[school]["visual_motion_exponent"])) * 10)), 9)
+			var authored_phase: float = phase
+			if school == "fire":
+				# Inverse of the reviewed piecewise retiming; preserve the same poses.
+				authored_phase = phase * (0.36 / 0.24) if phase <= 0.24 else 0.36 + (phase - 0.24) * (0.64 / 0.76)
+			var frame := mini(int(floor(pow(authored_phase, float(config[school]["visual_motion_exponent"])) * 10)), 9)
 			check(preview_actor.sprite.region_rect.position.x == frame * 128.0, "Native Cast scrubbing retains school frame pacing: " + school)
+	var fire_clock: Animation = preview_actor.animation_player.get_animation(&"cast_fire")
+	check(is_equal_approx(fire_clock.get_marker_time(&"contact"), 0.24) and is_equal_approx(fire_clock.get_marker_time(&"active_start"), 0.24), "Retained Fire anticipation markers are 0.24")
+	check(is_equal_approx(fire_clock.length, 1.0) and is_equal_approx(fire_clock.get_marker_time(&"active_end"), 1.0), "Fire Cast retains its normalized action end")
+	preview_actor.animation_player.play(&"cast_fire")
+	preview_actor.animation_player.seek(0.24, true)
+	check(preview_actor.sprite.region_rect.position.x == 384.0, "Retimed Fire launch preserves its original contact pose")
 	preview_actor.animation_player.stop()
 	free_player(preview_actor)
 	free_player(other_actor)

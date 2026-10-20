@@ -217,7 +217,7 @@ func _run() -> void:
 	var enemy = load("res://scenes/enemy/combat_enemy.tscn").instantiate()
 	root.add_child(enemy)
 	enemy.attack_animation.play(&"melee_swing")
-	enemy.attack_animation.seek(0.8, true)
+	enemy.attack_animation.seek(enemy.attack_animation.get_animation(&"melee_swing").get_marker_time(&"contact"), true)
 	check(enemy.body_visual.texture.resource_path.ends_with("Attack_1.png") and enemy.body_visual.region_rect.position.x == 384.0, "Enemy native scrubbing previews the attack frame without gameplay setup")
 	check(enemy.attack_cast.target_position.length() == 51.0 and (enemy.attack_cast.shape as CircleShape2D).radius == 8.0, "Enemy scrubbed hitbox matches saved native geometry")
 	enemy.attack_animation.stop()

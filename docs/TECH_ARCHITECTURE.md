@@ -6,9 +6,42 @@ Repository basis: committed recovery baseline `6b06dc2` (`checkpoint: save cross
 
 The approved 2026-10-12 LimboAI conversion is a candidate introduced against `23ccc29b6436776a729d071cf4a73038af5b52e6` and captured by `docs/checkpoints/2026-10-12-game-feel-limboai/manifest.json`. It replaces only the Final Enemy decision/timer loop with a visible behavior tree. Source and dependency checks do not establish Godot execution or Web export success; prior tuning validation and waivers do not cover this conversion.
 
-The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01. No exact scenario matrix, tested-tree identity, or engine-version record was supplied. No agent-run Godot, build, compiler, or automated-test evidence exists.
+The user reported complete Stage1–6 flow in Godot on2026-09-01 without a precise
+scenario/tree/engine matrix. That historical checkpoint had no agent-run engine
+evidence. Later scoped overnight engine/render evidence below does not validate
+every historical feature, waive submission gates or establish human acceptance.
+
+## Retained overnight Enemy parameter package — October20
+
+Exact reviewed E data is retained provisionally: Gym scene Poise10, shared native
+melee_swing active_start/contact1.1 and active_end/length1.3, speed1. The same
+four sprite poses move to0/.34375/.6875/1.03125; geometry key times move.8→1.1
+without value changes. Active span stays0.2 and tail stays0. No new timer,
+attack, tracking, AI framework, cancellation or resolver rule. Gym script export
+default1 and shared tutorial Poise0/JSON remain unchanged; the tutorial's native
+cycle changes61→79 physics ticks. Existing private configuration/action/native
+clock owners consume the data; Fire Cast0.24 and X2/X3X40 remain intact.
+
+Full ordinary routes and local±3-tick/130–145 first-exchange tolerance are engine
+evidence, not human timing/feel clearance. No-parry wall failure and charge-loss
+fumbles remain part of the candidate. Regression matrices explicitly separate
+default Poise10 from private historical Poise1, and private recovery tails from
+stock no-tail1.3. The ledger holds exact identities/reviewed full-render evidence;
+this is scoped synchronization, not whole-document or submission validation.
 
 ## Authored Enemy animation timing — 2026-10-19
+
+Overnight U-002 candidate corrects initial snapshot ownership only:
+CombatEnemy.configure deep-copies enemy_ai into `_ai_config`, as the existing
+apply path already does. `_config` remains the shared live configuration; its
+owner mutates it and Arena applies validated tuning to active targets. Comparing
+the independent prior snapshot now detects first changes to enabled, aggro_range,
+attack_range, movement_speed and damage, invoking the existing reset/cancel path.
+Blackboard consumers and actor strike/movement owners are unchanged. Unchanged,
+geometry/reaction-only and ignored legacy timing edits retain nonreset behavior;
+dead/retired lifecycle guards still govern re-enable. The scoped 152-check timing
+suite and unchanged ordinary-input reports are recorded in the overnight ledger.
+No new reset policy, decision owner, timer or architecture is introduced.
 
 User decision: remove the Enemy windup/recovery overrides and use its authored
 animation timing. The existing CombatEnemy remains shared by Gym and final
@@ -19,8 +52,9 @@ tasks wait on actor queries of animation progress instead of blackboard timers.
 Windup ends at active_start; strike remains active through active_end; recovery
 continues native playback to Animation.length. Only after completion does the
 tree reassess. BodyVisual remains owned by AnimationPlayer during recovery too.
-The current source asset ends at active_end, so its recovery phase has no added
-wait. No animation frame keys, markers or geometry are retimed by this change.
+The current source ends at active_end1.3, so no recovery wait is added. The
+original timing migration did not retime keys; the later retained candidate
+retimes only the existing sprite/geometry timestamps as recorded above.
 
 On physics updates, the existing actor mover visits the contact marker before
 advancing the rest of a frame. Its existing strike path resolves one committed
@@ -63,6 +97,31 @@ geometry. No automatic collider positioning or floor/Player changes are added.
 
 ## Native Cast completion guard correction — 2026-10-19
 
+Retained overnight Fire anticipation candidate: the exact reviewed
+`cast_fire.tres` uses active_start/contact 0.24 and active_end/length 1.0.
+Sprite times are mapped piecewise around old/new contact: t≤0.36 becomes
+t×0.24/0.36; later t becomes 0.24+(t−0.36)×0.76/0.64. Contact geometry key times
+move to 0.24 with values unchanged. Native contact still drives the same
+once-only Magic payload/audio/projectile path; total duration, Heat scaling,
+normalized input windows, queue ownership and completion handoff are unchanged.
+Other native clips and JSON/mirror data are unchanged. Supervisor-rendered A/B
+review retained the data provisionally; morning human acceptance remains open.
+Round-5 source validation and the spacing-policy damage tradeoff are recorded
+in the overnight ledger. This scoped candidate note does not validate the whole
+technical document or settle final tuning.
+
+Overnight U-001 diagnostic candidate: `Might.get_normalized_attack_progress`
+checks its existing `_current_action` ownership before querying AnimationPlayer's
+native timing. With no current action, progress is zero. An owned paused action
+still exposes its saved ratio, so this does not gate the query solely on
+`is_playing` or `current_animation`: native 4.7.1 empties `current_animation` for
+paused and completed playback as well as stopped playback. Existing action
+completion/clearing and queued handoff remain unchanged. A/B input reports match
+all eight baseline scenarios and frame timings; six focused lifecycle checks
+cover unconfigured, idle, active, paused, completed and interrupted/rejected-X
+queries. This is a scoped candidate update, not whole-document synchronization
+or human gameplay acceptance; see the overnight iteration ledger.
+
 Might validates animation_finished against AnimationPlayer.assigned_animation,
 which retains the actual clip name after playback ends. The legacy
 moves.cast.animation value remains `attack_clock` for compatibility but does not
@@ -83,6 +142,19 @@ to their move IDs. PNG filenames are preserved; resource references express the
 new assignment. Casts, other schools, locomotion and Enemy remain unchanged.
 
 ## Native attack animation and hitbox authoring — 2026-10-19
+
+October20 retained overnight X2/X3 coverage candidate changes only the two
+native AttackCast:position key X values per clip (43/42→40). Geometry.contact
+and Might's existing action capture/query path consume them; no code, geometry
+owner or query count changes. Y/timestamps, zero target, radius16, markers,
+sprites, profile timing/lunge and resolver/queue rules remain unchanged. Current
+scale2 makes the inward shifts6/4 world pixels, with equal outer-reach losses.
+Gap48/right is now an intended positive fixture; genuine inner16 and far180
+negatives plus invincibility/resource separation remain tested. This is a
+supervisor-retained data candidate, not final human tuning or whole-document
+validation. Current X4/X5 native data is untouched; source contact poses are
+documented in ATTACK_STYLES.md. At that Fire pass C/E remained isolated; the
+later retained Enemy package above supersedes that state.
 
 Status: implemented candidate; interactive editor acceptance remains pending.
 This supersedes the earlier JSON-geometry authority and marker-only animation
@@ -301,6 +373,17 @@ The accepted U-001–U-007 postflight corrections are committed in the recovery 
 `CombatComponent` remains a thin facade. It forwards Player/HUD/Arena-facing signals and orders cross-component transactions without duplicating Might, Magic, Heat, queue, or feedback state. Generic public `CombatOutcome` events remain observational and never drive the authoritative Heat mutation.
 
 ### Entity feedback
+
+Retained overnight H changes exactly two existing FeedbackComponent offsets:
+directY−238→−186 and DoTY−206→−154 (X−10/−8); Cast-level Y−118 stays fixed.
+Existing owner parenting and world-intended clamp path, font/color/outline,
+bound tweens/displacement/easing/duration and timer APIs remain unchanged.
+Supervisor actual after-draw/image review supports sampled fresh-header and
+initial glyph spacing at1280×720; inherited Player scale2, repeated-label
+crowding, late drift, unsampled layouts and pause asymmetry remain limits.
+Direct/DoT tweens pause with owner; the existing Cast-level timer continues
+during tree pause. No stacking/filter/layout framework or gameplay rule changes.
+Palette/zero/DoT API probes are labeled layout-only, not fabricated HealthResults.
 
 The base `Entity` script owns a required `FeedbackComponent` reference alongside Health, Status, and HitReaction. The project uses a shared base script rather than a shared inherited Entity scene, so both Player and Enemy scenes compose their own `Feedback` child satisfying that contract.
 
@@ -761,16 +844,17 @@ writing only moves.<school>_xN.impact. It never adds a parallel Impact schema.
 
 ## Unified Combat Gym — 2026-10-19
 
-`scenes/gym.tscn` is the only development encounter entry point. Both the project
-main-scene setting and editor Run gym already point there. Its `gym.gd` script
+`scenes/gym.tscn` is the development encounter: explicit F6 or editor Run gym.
+Saved project F5 main-scene UID still points to tutorial, an intended-launch
+mismatch left unchanged. Its `gym.gd` script
 extends PrototypeArena and combines the bounded Fire encounter with the Gym
 formula readout. The separate benchmark scene/script/area are deleted. The
 canonical `gym_area.tscn` owns the 160-pixel placement and non-refilling opponent.
 
 The existing private configuration-load hook derives fresh run-only data from
 validated JSON, applies local Health/Poise/Impact and genuine-defeat settings,
-and scales Fire X windup/recovery, shared Cast duration and opponent windup/
-recovery by 1.5. Casting and Heat configuration are retained, keeping Charging
+and scales only Fire X windup/recovery and shared Cast duration by1.5. Enemy
+plays authored1.1/1.3 at speed1 with no Gym scale. Casting/Heat retain Charging
 at its existing rate. A duplicated Inspector mirror has persistence disabled.
 The tutorial dictionary remains canonical; only the one in-memory Gym descriptor
 selects the Gym area and final-enemy evaluator. Ordinary tutorial data is untouched.

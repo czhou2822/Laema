@@ -68,7 +68,7 @@ func hit(attacker: Fighter, receiver: Fighter, melee: bool = true) -> HealthResu
 	return receiver.receive_health_event(event)
 
 
-func check_coupled_reaction(enemy, level: int, description: String) -> void:
+func check_coupled_reaction(enemy, level: int, description: String, direction: float = 1.0) -> void:
 	var tuning: Dictionary = config["hit_reaction"]["combat_levels"][level - 1]
 	check(enemy.hit_reaction.is_invincible() and enemy.get("_hit_visual_active"), description + " starts hurt animation and combat reaction together")
 	check(not enemy.attack_animation.is_playing(), description + " cancels the enemy attack")
@@ -78,8 +78,67 @@ func check_coupled_reaction(enemy, level: int, description: String) -> void:
 	var before: float = enemy.global_position.x
 	for step in range(int(ceil(float(tuning["duration"]) * 60.0)) + 1):
 		enemy._apply_gravity_and_move(1.0 / 60.0)
-	check(enemy.global_position.x > before, description + " moves the collision body backward")
+	check((enemy.global_position.x - before) * direction > 0.0, description + " moves the collision body backward")
 	check(not enemy.hit_reaction.is_active() and not enemy.get("_hit_visual_active"), description + " ends hurt animation with the combat reaction")
+
+
+func check_default_gym_poise(gym, enemy) -> void:
+	# Actual retained default, separately from the private legacy Poise1 matrix.
+	check(enemy.get_poise() == 10, "Default retained Gym uses Poise10")
+	gym.player.might.set_physics_process(false)
+	gym.player.movement.set_physics_process(false)
+	var evaluations: Array = []
+	var collect := func(data): evaluations.append(data)
+	enemy.health_resolver.reaction_evaluated.connect(collect)
+	for position in range(1, 6):
+		gym.player.reset_for_stage()
+		enemy._reset_ai_execution()
+		enemy.health.reset_to_maximum()
+		enemy.global_position = gym.player.global_position + Vector2(64, 16)
+		await physics_frame
+		await process_frame
+		for prefix in range(position - 1): gym.player.might.get("_input_combo").accept_light(&"fire")
+		enemy.ai_begin_windup(gym.player)
+		evaluations.clear()
+		gym.player.might.try_light_attack(Vector2.RIGHT)
+		gym.player.might._physics_process(float(gym.get("_config")["moves"]["fire_x%d" % position]["windup_duration"]) + 0.001)
+		check(evaluations.size() == 1 and int(evaluations[0].value) == position * 10 - 10 and int(evaluations[0].level) == position - 1, "Default Poise10 produces values0/10/20/30/40 and Levels0–4: X%d" % position)
+		check(enemy.health.get_current() == 190.0 and gym.player.magic.get_snapshot().size() == 1, "Default contact retains ten damage and generation")
+		check(enemy.hit_reaction.is_invincible() == (position > 1) and enemy.attack_animation.is_playing() == (position == 1), "Only qualifying default hits cancel windup")
+	enemy.health_resolver.reaction_evaluated.disconnect(collect)
+
+
+func check_contact_boundaries(gym, enemy, evaluations: Array) -> void:
+	# Fixture-only chain selection/manual clock. Retained centers40 include48;
+	# inner16 and far180 remain outside without enlarging authored geometry.
+	var mighty: MightComponent = gym.player.might
+	var origin: Vector2 = gym.player.global_position
+	for position in [2, 3]:
+		for placement in [{"gap": 48.0, "direction": 1.0, "inside": true}, {"gap": 16.0, "direction": 1.0, "inside": false}, {"gap": 16.0, "direction": -1.0, "inside": false}, {"gap": 180.0, "direction": 1.0, "inside": false}, {"gap": 180.0, "direction": -1.0, "inside": false}, {"gap": 64.0, "direction": -1.0, "inside": true}]:
+			gym.player.reset_for_stage()
+			enemy._reset_ai_execution()
+			enemy.health.reset_to_maximum()
+			gym.player.global_position = origin
+			enemy.global_position = origin + Vector2(float(placement.gap) * float(placement.direction), 16.0)
+			await physics_frame
+			await process_frame
+			for previous in range(position - 1):
+				mighty.get("_input_combo").accept_light(&"fire")
+			enemy.ai_begin_windup(gym.player)
+			evaluations.clear()
+			mighty.try_light_attack(Vector2(float(placement.direction), 0.0))
+			mighty._physics_process(float(gym.get("_config")["moves"]["fire_x%d" % position]["windup_duration"]) + 0.001)
+			var label := "X%d at gap%s facing%s" % [position, placement.gap, placement.direction]
+			check(bool(mighty.get("_hit_emitted")), "Native once-only contact was queried: " + label)
+			if bool(placement.inside):
+				check(evaluations.size() == 1 and evaluations[0]["level"] == position and enemy.health.get_current() == 190.0, "Inside contact retains damage/reaction: " + label)
+				check_coupled_reaction(enemy, position, label, float(placement.direction))
+			else:
+				check(evaluations.is_empty() and enemy.health.get_current() == 200.0, "Outside authored contact has no damage/reaction event: " + label)
+				check(not enemy.hit_reaction.is_active() and enemy.attack_animation.is_playing(), "Spatial miss cannot cancel the Enemy: " + label)
+				check(gym.player.magic.get_snapshot().is_empty(), "Spatial miss cannot generate an orb: " + label)
+				mighty._physics_process(0.1)
+				check(enemy.health.get_current() == 200.0 and gym.player.magic.get_snapshot().is_empty(), "No delayed/repeated contact repairs the miss: " + label)
 
 
 func check_gym_progression(gym, enemy) -> void:
@@ -98,7 +157,9 @@ func check_gym_progression(gym, enemy) -> void:
 		enemy._reset_ai_execution()
 		enemy.health.reset_to_maximum()
 		gym.player.global_position = player_origin
-		enemy.global_position = player_origin + Vector2(48.0, 16.0)
+		# All five authored contact circles overlap at this world-space fixture gap.
+		# The pre-retention centers excluded48; that is now separately tested inside.
+		enemy.global_position = player_origin + Vector2(64.0, 16.0)
 		await physics_frame
 		await process_frame
 		for previous in range(position - 1):
@@ -110,6 +171,7 @@ func check_gym_progression(gym, enemy) -> void:
 		check(not evaluations.is_empty() and evaluations.back()["level"] == position, "Real Fire X%d selects reaction Level %d" % [position, position])
 		check(enemy.health.get_current() == 190.0, "Fire X%d retains its damage" % position)
 		check_coupled_reaction(enemy, position, "Fire X%d" % position)
+	await check_contact_boundaries(gym, enemy, evaluations)
 	# Resolve committed Magic payloads for normal and empowered Casts at every requested level.
 	for empowered in [false, true]:
 		for level in range(1, 5):
@@ -312,6 +374,12 @@ func _run() -> void:
 	await process_frame
 	await process_frame
 	var real_enemy = gym.get("_current_area").get_targets()[0]
+	real_enemy.set_physics_process(false)
+	await check_default_gym_poise(gym, real_enemy)
+	# Preserve all198 original behavior assertions under their declared Poise1
+	# PRIVATE fixture; this does not change retained Gym/tuning files.
+	gym.get("_config")["enemy_ai"]["poise"] = 1
+	check(gym._apply_runtime_tuning()["ok"], "Private legacy Poise1 reaction matrix validates")
 	real_enemy.set_physics_process(false)
 	await check_gym_progression(gym, real_enemy)
 	gym.get("_config")["enemy_ai"]["poise"] = 20

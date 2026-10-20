@@ -37,7 +37,7 @@ func show_damage(school: StringName, amount: float) -> void:
 		return
 	var label := Label.new()
 	label.text = "%.0f" % amount
-	var local_offset := Vector2(-10.0, -238.0)
+	var local_offset := Vector2(-10.0, -186.0)
 	label.position = local_offset
 	label.add_theme_font_size_override("font_size", 18)
 	label.add_theme_color_override("font_color", _school_color(school))
@@ -57,7 +57,7 @@ func show_dot_damage(school: StringName, amount: float) -> void:
 		return
 	var label := Label.new()
 	label.text = "%.0f" % amount
-	var local_offset := Vector2(-8.0, -206.0)
+	var local_offset := Vector2(-8.0, -154.0)
 	label.position = local_offset
 	label.add_theme_font_size_override("font_size", 12)
 	label.add_theme_color_override("font_color", _school_color(school))

@@ -9,8 +9,10 @@ game. That is the development target, not a claim that the Enemy is finished.
 
 ## Run and retry
 
-Use **F5**, open `scenes/gym.tscn` and press **F6**, or select **Laema Dev
-Portal → Run gym**. All three launch this one canonical Gym. A local command-line
+Open `scenes/gym.tscn` and press **F6**, or select **Laema Dev Portal → Run gym**.
+The saved F5 main-scene UID currently points to the tutorial; the intended
+F5-to-Gym launch remains a known mismatch. Startup configuration is not changed
+by the overnight work. A local command-line
 run is `godot --path . scenes/gym.tscn`. The separate Fire benchmark scene,
 script and inherited area have been retired and deleted. Tutorial play remains
 available through `scenes/prototype_arena.tscn`; its saved stage is unchanged.
@@ -55,10 +57,10 @@ there is no additional timer after the clip finishes.
 | --- | ---: |
 | Player Health | 100 |
 | Opponent Health | 200 |
-| Opponent Poise | 1 |
+| Opponent Poise | 10 |
 | Opponent move Impact | 20 |
-| Current authored opponent active_start / contact | 0.8 s / 0.8 s |
-| Current authored opponent active_end / clip end | 1.0 s / 1.0 s |
+| Current authored opponent active_start / contact | 1.1 s / 1.1 s |
+| Current authored opponent active_end / clip end | 1.3 s / 1.3 s |
 | Starting horizontal gap | 160 px |
 
 The Gym multiplies Player Fire X windup/recovery and shared Cast animation
@@ -70,16 +72,57 @@ coincides with its end. Retry reloads the saved baseline and authored animations
 Legacy Enemy duration keys remain readable in old JSON profiles for compatibility
 but have no runtime effect.
 
+Retained overnight Fire Cast candidate: active_start/contact move from 0.36 to
+0.24 of the native one-second clock; active_end/length stay 1.0. Existing poses
+are retimed around contact (ATTACK_STYLES.md), with unchanged total Gym duration,
+Heat, Charging, queue/buffer policy and melee handoff. This is a supervisor-retained
+candidate pending the user's morning controller/feel playtest. Matched engine
+cases launch eight ticks earlier at 60 Hz without earlier action completion.
+One deterministic spacing/Cast policy changes from 20.48 s/HP80 to 19.40 s/HP60;
+carry both responsiveness and the damage tradeoff into the playtest. Other-school
+assets were unchanged by that Fire pass. The earlier0.8-contact/1.3-length
+recovery-tail comparison remains rejected; it differs from the retained
+1.1-contact/1.3-end Enemy telegraph candidate below.
+
+Retained October20 overnight close-contact candidate: Fire X2/X3 native centers
+are local(40,11), radius16 and zero target, matching X1's center. This gains6/4
+world pixels inward at current scale2 and loses6/4 outward. Sampled close and
+body-blocked chains improve from one to three applied hits; the three original
+policy outcomes are unchanged. Timing, lunge, damage/Impact, invincibility,
+single queries and generation remain intact. The later retained Enemy package
+uses GymPoise10/contact1.1/end1.3. Compare close and outer
+spacing on controller before accepting final feel/tuning. See the iteration
+ledger for supervised visual evidence, exact tradeoffs and checks.
+
 Charging retains its current rate, including Heat acceleration. The shared HUD
 bar fills and drains smoothly: three charged orbs plus half of the next available
 orb show 3.5/8 while Spell Level stays at 3. Fill is capped by available orbs, up
 to eight; an empty queue shows zero, and three fully charged available orbs cap
 the bar at 3/8. Banked capacity beyond available orbs is not displayed.
 
-The existing approach, committed melee, collision, reaction and death behavior
-is reused. Fire X1–X5 have Impacts 10/20/30/40/50, producing reaction Levels
-1/2/3/4/5 against this opponent during idle, windup and recovery. Cast Levels
-1–4 have Impacts 10/20/30/40 and produce reaction Levels 1–4 in those phases.
+Retained OVERNIGHT CANDIDATE: Gym scene Poise10; the shared Enemy telegraph
+plays at speed1. Existing sprite keys map0/.25/.5/.75→0/.34375/.6875/1.03125 and
+geometry contact keys.8→1.1; values/poses stay unchanged. Active duration stays
+0.2; length equals active_end1.3, so no recovery tail/timer is added. Gym script
+export default remains1; shared tutorial Poise0/JSON is unchanged, while its
+native cycle grows61→79 ticks at60Hz. Human controller/feel acceptance is pending.
+
+The existing approach, commitment, collision, reaction and death behavior is
+reused. Fire X1–X5 Impacts10/20/30/40/50 produce no reaction/Levels1/2/3/4
+against GymPoise10 outside active frames. Cast Levels1–4 use10/20/30/40 and
+produce no reaction/Levels1/2/3. Nonqualifying hits still deal their damage;
+landed melee still generates an orb. The former Poise1 Level1–5 matrix remains
+historical/private test coverage, not the current default.
+
+Complete deterministic E fights support both tested styles from default and
+mirrored starts: parry finishes HP100 in about26.7s; no-parry spacing/Cast HP90
+in about24.7s. The wall-pressure spacing route loses naturally at16.8s with
+Enemy120; parry still wins there. First-exchange offsets±3 ticks and gap targets
+130/135/145 are locally viable, not whole-fight/controller robustness proof.
+Charge loss and failed-Cast release costs remain. Earlier pure-melee/fixed0.68
+policy losses are preserved, not hidden or turned into mandatory strategy rules.
+These are exact-clock/position robot policies; judge human readability and
+enjoyment separately in the morning. Full source/render evidence is in the ledger.
 Poise and active-move Impact still apply; the opponent's active swing can weaken
 or prevent the reaction. Hurt animation, stagger and whole-body knockback share
 the selected reaction's lifetime. Non-qualifying damage has no separate hurt
@@ -152,6 +195,15 @@ formula-only preference is ignored when an existing Developer Overlay Visible pr
 rules are changed by toggling the overlay.
 
 ## Playtest observations
+
+Retained feedback candidate H lowers direct/DoT anchors by52 pixels (−186/−154),
+Cast-level stays−118. Supervisor actual viewport review supports fresh numbers
+closer to the affected fighter and clear of EventPanel, with initial Player
+DoT/Cast glyphs separated. Old fading numbers can drift back into the header,
+and repeated NPC numbers still overlap. No scale/clamp/stacking solution or
+uniform-resolution readability is claimed. Headless110 includes layout-only
+DoT/zero/palette probes; current Gym has no Fire DoT gameplay. Capture-mode68
+and inspected real combat images are separate evidence; human acceptance pending.
 
 Keep three consistent uncertainties for this encounter:
 

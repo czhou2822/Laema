@@ -297,9 +297,13 @@ func is_attack_playing() -> bool:
 
 
 func get_normalized_attack_progress() -> float:
-	if _animation_player == null or _animation_player.current_animation_length <= 0.0:
+	# Cancelled/completed actions no longer own progress; stop() clears native playback.
+	if _animation_player == null or _current_action.is_empty():
 		return 0.0
-	return clampf(_animation_player.current_animation_position / _animation_player.current_animation_length, 0.0, 1.0)
+	var length := _animation_player.current_animation_length
+	if length <= 0.0:
+		return 0.0
+	return clampf(_animation_player.current_animation_position / length, 0.0, 1.0)
 
 
 func get_current_attack_school() -> StringName:

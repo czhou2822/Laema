@@ -7,10 +7,10 @@ resource_name = "cast_fire"
 length = 1.0
 markers = [{
 "name": &"active_start",
-"time": 0.36
+"time": 0.24
 }, {
 "name": &"contact",
-"time": 0.36
+"time": 0.24
 }, {
 "name": &"active_end",
 "time": 1.0
@@ -43,7 +43,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"times": PackedFloat32Array(0, 0.06666666667, 0.1333333333, 0.2, 0.2875, 0.40625, 0.525, 0.64375, 0.7625, 0.88125),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(0, 0, 128, 128), Rect2(128, 0, 128, 128), Rect2(256, 0, 128, 128), Rect2(384, 0, 128, 128), Rect2(512, 0, 128, 128), Rect2(640, 0, 128, 128), Rect2(768, 0, 128, 128), Rect2(896, 0, 128, 128), Rect2(1024, 0, 128, 128), Rect2(1152, 0, 128, 128)]
@@ -54,7 +54,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.36),
+"times": PackedFloat32Array(0, 0.24),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 11), Vector2(0, 11)]
@@ -65,7 +65,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.36),
+"times": PackedFloat32Array(0, 0.24),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(48, 0), Vector2(48, 0)]
@@ -76,7 +76,7 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.36),
+"times": PackedFloat32Array(0, 0.24),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [18, 18]

@@ -102,7 +102,7 @@ func _run() -> void:
 	var authored_room = load("res://scenes/stages/gym_area.tscn").instantiate()
 	check(absf(authored_room.get_node("FinalEnemy").position.x - authored_room.get_node("PlayerSpawn").position.x) == 160.0, "Existing room authors the fighters 160 pixels apart")
 	authored_room.free()
-	check(config["enemy_ai"]["poise"] == 1 and config["moves"]["final_enemy_attack"]["impact"] == 20, "Local provisional enemy tuning is applied")
+	check(config["enemy_ai"]["poise"] == 10 and config["moves"]["final_enemy_attack"]["impact"] == 20, "Retained local candidate Poise10/Impact20 is applied")
 	check(not config["combat"]["collect_orb_without_contact"] and not config["player"]["one_hp_floor_enabled"], "Real contact and defeat are enabled locally")
 	check(not opponent().refills_at_zero and opponent().is_final_enemy, "Killable opponent retains final-enemy completion identity")
 	check(not opponent().status_controller.get("_endurance_enabled"), "Single-school opponent has no Endurance")

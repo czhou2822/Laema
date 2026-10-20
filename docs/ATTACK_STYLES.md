@@ -2,6 +2,45 @@
 
 Status: implemented candidate; numeric presets await user playtesting.
 
+## Retained overnight Fire Cast anticipation — 2026-10-19
+
+Supervisor provisionally retained the reviewed Fire Cast B resource; morning
+human feel/controller acceptance remains pending. `cast_fire` active_start and
+contact are 0.24, active_end and length stay 1.0. Every existing sprite pose
+remains in order. Old t≤0.36 maps to t×0.24/0.36; later t maps to
+0.24+(t−0.36)×0.76/0.64. Geometry key timestamps at 0.36 move to 0.24, without
+changing geometry values. The original contact pose remains at launch.
+
+This changes anticipation/launch timing while preserving total configured Cast
+duration, Gym 1.5× scale, Heat, normalized queue windows and completion/melee
+handoff. Water/Air/Earth Casts and all X clips are unchanged. At matched levels,
+launch is eight physics ticks earlier; the tested spacing policy is faster but
+takes more damage. Final tuning is open; see the overnight ledger and GYM.md.
+
+## Current Fire contact geometry — retained overnight candidate, October20
+
+Exact supervisor-reviewed D resources put X2/X3 at localX40, matching X1.
+The3/2-local-pixel inward shifts become6/4 world pixels at current Player scale2,
+gaining close coverage while losing the same outer reach. Human morning
+controller/feel acceptance remains pending. Radius, poses, contact clocks,
+lunge/Impact/damage and once-only resolution remain unchanged; overlap during
+invincibility still applies neither damage nor generation.
+
+| Move | Native contact-time local position | Radius | Target vector |
+| --- | --- | ---: | --- |
+| fire_x1 | (40,11) |16|(0,0)|
+| fire_x2 | (40,11) |16|(0,0)|
+| fire_x3 | (40,11) |16|(0,0)|
+| fire_x4 | (30,11) |16|(0,0)|
+| fire_x5 | (35,11) |16|(0,0)|
+
+These are current native contact samples, not the historical scalar reach
+presets below. X4's later position key remains(−11,11); X4/X5 data was not
+copied from old prose or edited by the coverage change. Scrub/key/save the
+native resources for authoring. Old A/D/C/E copies remain comparison evidence;
+current retained Enemy package is GymPoise10/contact1.1/end1.3, speed1/no tail;
+the separate earlier Poise10-only/recovery-tail comparisons remain rejected.
+
 ## Fire / Earth benchmark artwork — 2026-10-19
 
 Fire X1–X5 now use the former Earth sword flipbooks, matching Laema's benchmark
@@ -31,7 +70,11 @@ seconds in both Gym and tutorial. To adjust its timing:
 1. Open `scenes/enemy/combat_enemy.tscn`, select **AnimationPlayer**, and choose **melee_swing**.
 2. Scrub the **BodyVisual:region_rect** track and edit frame-key times to pace preparation, strike and follow-through.
 3. Set **active_start** at the beginning of hit-capable frames, **contact** at the one damage query, and **active_end** at the end of hit-capable frames. These markers also govern interruption/clash phases.
-4. Author any recovery poses between **active_end** and the animation's **Length**. The current asset ends at active_end (1.0 s), so it has no extra recovery tail. Extending Length and adding frame keys creates that tail.
+4. Author any recovery poses between **active_end** and **Length**. Current retained
+   Enemy active_start/contact are1.1 and active_end/Length1.3, so there is no tail.
+   Length1.3 alone does not imply recovery. Existing sprite keys were retimed to
+   0/.34375/.6875/1.03125, geometry contact keys to1.1; values/poses stay unchanged.
+   Extending a clip beyond active_end would create a separate future tail.
 5. Save the external `config/attack_animations/melee_swing.tres`, open the Gym scene, and press **F6** to compare one change.
 
 The separate Enemy windup/recovery controls and the Gym's Enemy timing multiplier
@@ -93,6 +136,10 @@ A zero timing value inherits that phase of the shared duration. Native zero reac
 ## Initial presets
 
 These values are a starting point for the approved feel references, not copies of Dead Cells mechanics or final balance. All lunges initially span animation phases 0.15–0.55.
+
+This table preserves the historical starting presets. Current native contact
+positions/radius/zero targets are authoritative in the table above; do not read
+these old reach/radius columns as current point-circle positions.
 
 | Move | Windup s | Post-contact s | Lunge px | Reach px | Radius px | Push × |
 |---|---:|---:|---:|---:|---:|---:|

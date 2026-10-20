@@ -60,7 +60,7 @@ func configure(config: Dictionary) -> void:
 	Geometry.make_private(attack_animation)
 	Geometry.set_contact_size(attack_animation.get_animation(&"melee_swing"), float(config["enemy_ai"]["hitbox_reach"]), float(config["enemy_ai"]["hitbox_radius"]))
 	hit_reaction.reaction_ended.connect(_finish_hit_visual)
-	_ai_config = Dictionary(config["enemy_ai"])
+	_ai_config = Dictionary(config["enemy_ai"]).duplicate(true)
 	warning_marker.visible = false
 	attack_flash.visible = false
 	body_visual.modulate = Color("a77991")
