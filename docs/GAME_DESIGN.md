@@ -1,6 +1,89 @@
 # Laema Side-Scrolling Orb Casting Prototype
 
+Current design, consolidated October 20, 2026. Implementation candidates and scoped evidence are recorded in [Implementation Status](IMPLEMENTATION_STATUS.md); acceptance of earlier versions does not validate the full current tree.
+
+**Resolved decisions — October 20:** keep the current shorter reaction durations of 0.25/0.55/0.85/1.15/1.45 seconds for Levels 1–5. Cast commitment and qualifying landed direct hits each restart the five-second Heat Reset Timer. Both former documentation conflicts are resolved; these selections do not add runtime-validation evidence.
+
+[Pre-housekeeping document](history/2026-10-20-document-housekeeping/sources/docs/GAME_DESIGN.md) preserves earlier wording, superseded rules, experiment reports and the detailed validation checklist. Historical snapshots are not current requirements.
+
+## SFX source decision — October 20
+
+The user requires original Heroes III sources for runtime SFX. The former CC0
+SFX are removed. Accepted replacements now use SWRDATTK for one common Player
+X-start cue (including misses), SWRDWNCE for accepted nonzero Player hurt,
+SWRDDFND for stationary-target response, SPONTCOMB/ICERAY/LIGHTBLT/METEOR for
+Fire/Water/Air/Earth Cast launch, BLESS for the existing empowered event,
+DISPELL for failure, PICKUP04 for generated orbs, and PROTECT for the existing
+near-guard-break warning. No extra school spell layer plays on melee, and whole
+spell cues are not replayed at impact. Projectile flight/impact remain unassigned.
+
+Each newly visible charged orb plays one count-indexed note from the accepted
+0.18-second PICKUP03 excerpt, using ratios 1, 9/8, 5/4, 4/3, 3/2, 5/3, 15/8, 2
+at fixed gain. Batched gains retain FIFO order; reset/cancel boundaries discard
+stale queued notes. The reference eight-note preview is not a runtime cue and
+sets no gameplay cadence. Earlier spell/pickup tails are temporarily quieter
+while the notes drain; source checks do not establish their audible balance.
+
+Original Pikeman attack/hurt/death/movement assignments, the SFX controls and
+Ambient/BGM are preserved. Compound-Cast harmony timing remains Open. These
+original/derived game recordings are copyrighted, not CC0, with no established
+redistribution permission. Listening and Godot runtime validation remain pending.
+
+See `docs/audio/2026-10-20-original-heroes-sfx-audit.md` for the inventory and
+removal history. `assets/prototype/audio/ORIGINAL_HEROES_SFX.md` records the
+accepted runtime mapping and Charging path. Older source-specific descriptions are
+superseded by this decision where they name removed cues.
+
+## Melee contact and simultaneous clashes — October 20
+
+Player and Enemy melee attacks check their animated hitboxes throughout the
+interval defined by `active_start` and `active_end`. An attack may connect later
+in that interval after initially missing. Each attack may hit the same target
+only once. Melee animations no longer require a `contact` marker; active-window
+checking replaces the single contact-marker query described in older records.
+
+Casting emits its projectile once at the authored `launch` marker. Projectile collision remains separate from melee active-window checks. The implementation candidate is recorded in IMPLEMENTATION_STATUS.md; user validation remains pending.
+
+The first valid contact sends a hit to the target and spends the attack's one-hit
+allowance for that target. Invincibility is handled by the target during resolution:
+it ignores the hit's damage and reaction, but the allowance remains spent. The
+same attack cannot hit that target again even if invincibility expires before
+its active interval ends. Contact detection and a successfully applied result
+remain separate facts; invincibility rejection does not become an applied hit.
+
+When both melee attacks are active, weapon-to-weapon overlap is not required.
+Each attack must reach the opposing character with its own hitbox to cause damage
+or interruption. An opposing move's active state only contributes resistance to
+the hit being resolved; a favorable calculated counter value alone creates no
+reverse hit, damage or interruption. A connected hit with a negative reaction
+value still deals its normal damage, subject to target-side defence and
+invincibility, while the receiving attack continues without interruption.
+
+If both active melee hitboxes reach the opposing characters simultaneously,
+resolve one clash winner before applying damage. Only the winner's connected hit
+deals damage and interrupts; the loser's simultaneous hit is cancelled. Compare
+each attack's signed result against its receiver: the larger result wins, and
+equal results favor Player. The loser's reaction uses the winning attack's
+result: zero or negative selects the configured Level 1 reaction; positive uses
+the normal reaction-level table. Both-negative results do not automatically favor
+Player; for example, Player -10 versus Enemy -5 means Enemy wins with Level 1.
+Player -10 versus Enemy 0 also means Enemy wins with Level 1. Equal negatives
+favor Player. This exception requires both actual contacts; it creates no counter
+against an untouched character and does not undo a hit that landed earlier.
+
+Existing block/parry behavior and target-side invincibility remain the interception rules. Further hit-chain and defence design remains separate.
+
 ## Current decision — character-owned combat, October 20
+
+CombatEnemy's prototype visuals use the original Heroes III Castle Pikeman
+(unupgraded): idle, movement, front thrust, hurt, and death, with original colors
+and approximately the previous Enemy's body height and ground position. This
+applies to the reusable combat Enemy in Gym and Final Arena. Practice-target
+artwork, collision, and combat tuning are preserved. The user's subsequent
+speed adjustment uses the original Pikeman's one-second base attack duration:
+ten evenly spaced frames, fully extended thrust/active-start at 0.5 seconds, and
+return to idle at 1.0 second. This supersedes the prior 1.1-second windup and
+1.3-second total attack; damage, Impact, Poise, and hitbox sizes remain unchanged.
 
 The user selected the current Gym tuning as the baseline for the reusable Player
 and CombatEnemy in every scene. Combat settings belong to the characters, with
@@ -14,8 +97,10 @@ The Enemy behavior tree triggers the qualifying hit reaction. The Dev Portal
 adjusts its exact duration, distance and ranges through the characters' shared
 reaction Resource. Hurt animation, body knockback and invulnerability retain one
 lifetime owned by HitReaction; the tree waits for that execution to finish.
-There is no separate post-hurt wait or duplicate tree duration. Enemy attack
-windup/recovery remain authored in AnimationPlayer at native speed 1.
+**October 20 editor-setting decision:** after the hit-reaction task finishes,
+the Enemy tree uses its configured BTRandomWait of 0.3–0.8 seconds. This separate
+AI wait does not extend HitReaction-owned hurt, knockback or invulnerability.
+Enemy attack windup/recovery remain authored in AnimationPlayer at native speed 1.
 
 The previous Gym's 1.5× Fire/Cast duration is baked into Player settings once;
 there is no scene multiplier. Charging speed, authored hitboxes and X4/X5 motion
@@ -69,16 +154,16 @@ This character mapping is prototype presentation only. It does not define Laema�
 
 ### Prototype X-Attack Animation Allocation
 
-The five X positions use the following accepted Craftpix prototype flipbooks:
+The five X positions use the following Craftpix prototype flipbooks after the accepted Fire/Earth swap. The approved Air X5 replacement now uses Weapon Summon: eleven full-body 128×128 frames. The former effect-only Weapon 1 sheet is retired; its source files and earlier records remain in [Air X5 history](history/2026-10-20-air-x5-weapon-summon/README.md). This asset correction changes no combat timing, hit windows, hitbox geometry or tuning; user validation remains pending.
 
 | School | Source family | X1 | X2 | X3 | X4 | X5 |
 |---|---|---|---|---|---|---|
-| Fire | Medieval Character Pack 5 | Attack 1 | Attack 2 | Attack 3 | Power Punch 1 | Power Punch 2 |
+| Fire | Free Prototype Character Pack 2 | Punch 1 | Punch 2 | Fire Kick | Explosive Strike | Power Strike |
 | Water | Medieval Character Pack 6 | Attack 1 | Attack 2 | Attack 3 | Enchanted Attack 1 | Enchanted Attack 2 |
-| Air | Prototype Hero Pack 3 | Aerial Strike | Double Strike | Energy Wave | Wind Power | Weapon 1 |
-| Earth | Free Prototype Character Pack 2 | Punch 1 | Punch 2 | Fire Kick | Explosive Strike | Power Strike |
+| Air | Prototype Hero Pack 3 | Aerial Strike | Double Strike | Energy Wave | Wind Power | Weapon Summon |
+| Earth | Medieval Character Pack 5 | Attack 1 | Attack 2 | Attack 3 | Power Punch 1 | Power Punch 2 |
 
-All 20 sheets use compatible 128×128 cells and the shared prototype-character baseline. On October 19 the user swapped Fire and Earth X1–X5 flipbooks so the Fire-only Gym uses the sword set as Laema’s benchmark weapon. Each visual swap includes the sprite sheet and matching frame keys/pacing. Move identities, attack durations, contact/active markers, hitboxes, lunge, Impact and damage remain assigned to their original schools. Locomotion and Casting keep their current assignments. PNG filenames retain their original school names: `fire_x1` now references `earth_x1.png`, and conversely for Earth, preserving each corresponding X position.
+All 20 sheets use compatible 128×128 cells and the shared prototype-character baseline. On October 19 the user swapped Fire and Earth X1–X5 flipbooks for the sword benchmark. The later shared-character baseline removed the Gym-only school restriction. Each visual swap includes the sprite sheet and matching frame keys/pacing. Move identities, attack durations, contact/active markers, hitboxes, lunge, Impact and damage remain assigned to their original schools. Locomotion and Casting keep their current assignments. PNG filenames retain their original school names: `fire_x1` now references `earth_x1.png`, and conversely for Earth, preserving each corresponding X position.
 
 All four schools share `Casting Spell.png` from Free Prototype Character Pack 2 as the prototype casting animation. It contains 10 frames using compatible 128×128 cells and the shared feet baseline. Final projectile art remains open.
 
@@ -112,7 +197,7 @@ In `X1 → X2 → Cast → X → X`, the Cast occupies position 3; the following
 
 Every attack and casting animation has a chaining window. Once that window opens, it remains valid through the end of the animation. Inputs before the applicable buffer zone are rushed inputs.
 
-X attacks use independently tunable windup and post-contact recovery durations for each school's X1–X5. Casting retains the shared base animation duration. The normalized chaining-window and pre-window buffer rules remain shared; an accepted follow-up still starts when the current action finishes. Heat accelerates each timing phase once through the same current speed multiplier.
+X attacks use independently tunable durations before and after the pacing split for each school's X1–X5. Casting retains the shared base animation duration. The normalized chaining-window and pre-window buffer rules remain shared; an accepted follow-up still starts when the current action finishes. Heat accelerates each timing phase once through the same current speed multiplier.
 
 ### School melee styles — approved 2026-10-16
 
@@ -127,21 +212,11 @@ Keep the four schools, existing prototype animations, five global X/Cast progres
 
 October 19 presentation update: the table above records the original feel references. Fire and Earth have exchanged their X flipbook sets for the sword benchmark; the timing/spacing presets and combat tuning remain attached to their original schools.
 
-The current implementation provides provisional per-move windup, post-contact duration, reach/radius, forward-body distance/phase interval and qualifying-reaction push-distance multiplier. Timing values are seconds before Heat scaling. A zero timing value inherits the corresponding shared-duration phase. The approved October 19 authoring workflow uses native AnimationPlayer sprite/hitbox tracks: scrub a move, edit its visible hitbox, and key the pose. Saved animation geometry is authoritative; Inspector/Portal reach and radius read and edit the contact-time keys. JSON remains authoritative for timing, lunge, Impact and other combat settings. Native zero reach is a point query and radius is positive; legacy custom profiles retain their existing fallback normalization.
+Player X moves have tunable phase durations, forward-body motion and qualifying-reaction push scaling. Player/CombatEnemy Settings own numerical combat tuning; native Animations own sprite frames and hitbox curves. Melee checks sample those curves throughout the active interval. The [attack-authoring guide](ATTACK_STYLES.md) owns editor instructions and current geometry readbacks.
 
-**Retained overnight candidate — October20:** Fire X2/X3 contact-circle centers
-move from localX43/42 to40, matching X1, with Y11/radius16/zero target vector
-unchanged. Under current Player scale2, this gains6/4 world pixels of close
-coverage and loses the same6/4 at the outer edge. Timings, poses, lunge, damage,
-Impact, once-only queries, invincibility/clash rules and generation eligibility
-are unchanged. Supervisor rendered review retained this small coverage trade
-provisionally; human morning controller/feel acceptance and final tuning remain
-pending. Sampled close/body-blocked chains now connect all three moves; no
-universal reach or strategy improvement is claimed. That Fire pass left Enemy
-tuning unchanged; the later retained E package below supersedes its baseline.
-All earlier comparison copies remain preserved.
+Fire X2/X3 retain the provisional inward geometry adjustment to local X40, matching X1. Its earlier comparison results and limits remain in the [overnight ledger](iterations/2026-10-19-overnight.md); human feel acceptance and final tuning remain pending.
 
-Forward motion follows the action's committed facing through the existing collision body; walls block displacement and interruption/reset discards the remaining motion. Early Fire attacks use limited push; its X5 increases separation only when the existing hit-reaction rules qualify. Push scaling changes distance, not reaction eligibility, duration, invincibility, damage or Impact/Poise. Active actions retain the style captured at their start; tuning edits apply to subsequent actions. Native Animation markers still author the active interval and contact boundary.
+Forward motion follows the action's committed facing through the existing collision body; walls block displacement and interruption/reset discards the remaining motion. Early Fire attacks use limited push; its X5 increases separation only when the existing hit-reaction rules qualify. Push scaling changes distance, not reaction eligibility, duration, invincibility, damage or Impact/Poise. Active actions retain the style captured at their start; tuning edits apply to subsequent actions. Native Animation markers author the melee active interval; Casting uses its separate launch marker.
 
 These are initial feel presets awaiting user playtesting, not accepted final numbers. Existing reaction invincibility still rejects otherwise valid follow-up hits during that interval. Practice-target tempo comparisons and attacking-enemy reaction checks are separate.
 
@@ -305,18 +380,9 @@ A mixed Cast displays its resolved primary and optional secondary results, such 
 
 ## Casting Projectile
 
-Every successful Cast begins its primary school's native casting animation. The projectile launches once at that clip's authored contact marker.
+Every successful Cast begins its primary school's native casting animation. The projectile launches once at that clip's authored `launch` marker, renamed from `contact` under the October 20 update without changing its time.
 
-**Retained overnight candidate — October 19:** Fire's active_start/contact are
-0.24 of its one-second native clock, with active_end/length still 1.0. Existing
-poses are retimed around that earlier contact; total action duration, Heat
-scaling, resource commitment, queue/buffer rules and melee handoff are unchanged.
-Other school clips and Fire X timing are unchanged. Supervisor rendered review
-retained this responsiveness candidate provisionally; human morning feel and
-controller acceptance remain pending. Matched engine cases launch eight ticks
-earlier at 60 Hz with the same completion/handoff. One deterministic spacing/Cast
-policy wins faster but finishes at 60 Health versus the earlier 80; this is not
-final balance or a universal improvement. See the overnight iteration ledger.
+Fire's retained launch anticipation is 0.24 on its normalized one-second native clock; completion remains at 1.0. Configured duration and Heat map that clock into gameplay time. The comparison history remains in the [overnight ledger](iterations/2026-10-19-overnight.md); it is provisional tuning awaiting human acceptance.
 
 - One combined projectile carries the primary and at most one secondary school layer.
 - It travels in Laema’s facing direction.
@@ -362,33 +428,31 @@ L1 does nothing while Air or Earth is selected. Air and Earth defence remain def
 
 HealthEvent remains the shared damage and healing contract. Damage carries Impact, original-instigator attribution, delivery type, school, contact information, and any effect instruction.
 
-The current prototype starts Player and Enemy maximum Health at 100. X attacks retain their current direct damage; Fire Impact follows the progression below. Casting projectile hits use generic direct damage for the resolved primary and optional secondary layers.
+The current shared baseline starts Player at 100 maximum Health and CombatEnemy at 200. X attacks retain their current direct damage; Fire Impact follows the progression below. Casting projectile hits use generic direct damage for the resolved primary and optional secondary layers.
 
-### Poise and qualifying combat reactions — formula updated 2026-10-16
+### Poise and qualifying combat reactions
 
 Each attack has Attack Impact in 0–100, and Player/Final Enemy Poise is defensive in 0–100. Hit-reaction value = incoming Attack Impact − receiving character's Poise − receiving character's active-move Impact. The receiving move contributes only during authored active frames capable of triggering its hit event; startup/windup, recovery and idle contribute 0. Attacker Poise is never an offensive bonus.
 
-A melee clash requires physical contact and overlapping active intervals. Both receiving-side values are captured at that contact; a positive value interrupts its receiver, cancelling that move before its damage can apply. The Final Enemy discards the cancelled attack and reassesses afterward. A counter that wins at this established contact does not need a separate reverse query.
-
-October 16 user decision: when neither side has a positive value, connected hits deal normal damage without flinching and both attacks continue. A later reverse hit still needs physical contact; an inconclusive clash does not manufacture one. The explicit exception is an exact 0/0 active clash: Player wins, applies its connected damage once, and the enemy receives the configured Level 1 reaction. A single zero against a negative opposite value is not this exception.
+Ordinary positive results qualify for combat reaction. A direct Player melee or Cast hit at exactly zero qualifies against a combat Enemy and selects Level 1; ordinary Enemy zero and ordinary negative results deal damage without combat interruption. These rules still respect valid contact, defence and invincibility. The Melee contact and simultaneous clashes section defines the separate reciprocal-contact winner rule; there is no spell-versus-melee clash rule.
 
 | Difference after eligibility | Level | Duration | World-space displacement |
 |---|---:|---:|---:|
-| 0–10 | 1 | 0.6 s | 5 px |
-| 11–20 | 2 | 0.9 s | 10 px |
-| 21–30 | 3 | 1.2 s | 15 px |
-| 31–40 | 4 | 1.5 s | 20 px |
-| 41+ | 5 | 1.8 s | 25 px |
+| 0–10 | 1 | 0.25 s | 5 px |
+| 11–20 | 2 | 0.55 s | 10 px |
+| 21–30 | 3 | 0.85 s | 15 px |
+| 31–40 | 4 | 1.15 s | 20 px |
+| 41+ | 5 | 1.45 s | 25 px |
 
-The table gives the current starting tuning values, revised by the user on 2026-10-14 to start at 0.6 seconds and increase by 0.3 seconds per level. This tuning awaits gameplay validation. Reaction durations and distances are now editable per level in the Godot Inspector and Developer Portal; the five value bands are now configurable through each level's starting value (October 15 refinement). Eligibility rules are not changed by this range configuration.
+**Reaction-duration decision — October 20:** retain the current shared character settings: Levels 1–5 use 0.25/0.55/0.85/1.15/1.45 seconds. This supersedes the October 14 duration sequence and resolves the former discrepancy with the character Resource and GYM.md. Player and combat Enemy use these durations for stagger, knockback movement and reaction invincibility. Distances, value bands and reaction eligibility are unchanged. Reaction durations and distances remain editable per level in the Godot Inspector and Developer Portal; the five value bands remain configurable through each level's starting value. This tuning selection supplies no new gameplay-validation report.
 
-Zero qualifies only for that exact 0/0 Player-winning active-clash exception; zero outside a clash and other non-positive values cause no combat reaction. The whole character and collision body are pushed backward over the full duration and remain at the new position. Walls can stop the push. The current candidate uses uniform displacement without an additional easing treatment.
+The whole character and collision body are pushed backward over the selected reaction duration and remain displaced. Walls can stop the push. The current candidate uses uniform displacement without an additional easing treatment. Stationary practice targets retain their legacy recoil.
 
 The qualifying combat-reaction duration is invincible against further damage and reactions. Failed-Cast self-reactions grant no invincibility. Existing defence interception and its reaction behavior remain unchanged pending a separate defence decision. Stationary, non-attacking, pass-through practice targets retain their existing recoil and finite-health refill behavior.
 
 One mixed Cast resolves its primary and secondary layers in order before starting invincibility. Already active effects are retained and continue advancing; damage ticks received while invincible are rejected. Melee/spell damage rejected by invincibility or clash cancellation is not an applied hit and does not grant hit-dependent resources or change Elemental Endurance. Spell-vs-melee clash rules and further school/status interactions remain deferred.
 
-Each move has an independent JSON data record for its animation and existing damage/duration sources. The October 16 school-style implementation adds Player X timing, geometry, forward-lunge distance/phases and qualifying-reaction push scaling. Individual Impact and character-poise tuning remain separate, exposed through the shared Inspector Resource and mirrored to JSON. Style overrides do not change Impact, Poise or reaction bands; final tuning remains open. Cast and Final Enemy do not use the Player X style overrides.
+Each move has an independent character/style Resource record for its animation and damage/duration sources. Player X styles provide timing, forward-lunge distance/phases and qualifying-reaction push scaling; native Animations own geometry. Impact and character Poise remain character-owned tunables exposed through the Inspector and both Portals. Style overrides do not change Impact, Poise or reaction bands; final tuning remains open. Cast and Final Enemy do not use the Player X style overrides.
 
 ### Fire X and leveled Cast reaction progression
 
@@ -396,31 +460,27 @@ Fire X1–X5 produce progressively stronger combat reactions. Cast Spell Levels 
 
 | Fire attack | Cast Spell Level | Attack Impact | Reaction against the Gym opponent outside its active swing |
 |---|---|---:|---:|
-| X1 | 1 | 10 | No reaction |
+| X1 | 1 | 10 | Level 1 (Player zero advantage) |
 | X2 | 2 | 20 | Level 1 |
 | X3 | 3 | 30 | Level 2 |
 | X4 | 4 | 40 | Level 3 |
 | X5 | — | 50 | Level 4 |
 
-The existing receiver-side formula still applies. The retained overnight Gym
-candidate has10 Poise, giving values0/10/20/30/40 outside active frames. The
-historical/private Poise1 matrix gives9/19/29/39/49 and Levels1–5; it is not the
-current default. Active-move resistance still applies. Nonqualifying damage and
-melee Generating remain valid; no level is forced past eligibility. Final human
-controller/feel acceptance remains pending.
+With the shared Enemy Poise 10, Fire values outside active frames are 0/10/20/30/40, producing Levels 1/1/2/3/4 under Player's zero advantage. Receiver active-move resistance still applies. Earlier private Poise-1 comparisons remain historical; final feel acceptance is pending.
 
 The hurt animation belongs to the qualifying combat reaction: it starts with stagger and whole-body knockback, uses the selected reaction's duration, and ends with that reaction. A damaging hit that does not qualify causes no separate hurt animation. Existing reaction invincibility and collision behavior are retained.
 
 Each Cast layer uses its own Spell Level to select Impact. Mixed Casts resolve both layers before the strongest qualifying reaction begins. Cast damage, empowerment, Charging and Heat behavior are unchanged. Cast Levels 5–8 retain the existing base Cast Impact; their reaction progression is not assigned by this change. Other schools' X Impacts are unchanged.
 
-Active frames are authored with `active_start` and `active_end` Animation markers. A separate `contact` marker retains the once-per-action hit/launch event. Each Player X has its own animation clock; the provisional active end is the end of its swing. Final Enemy has a marked melee animation clock. The user tunes these markers in Godot.
-
+Active markers and once-per-target contact are defined in Melee contact and simultaneous clashes; authoring steps are in [ATTACK_STYLES.md](ATTACK_STYLES.md).
 
 Heat ranges from `0` to `100`. Attack speed scales linearly with Heat: `0` Heat produces the `100%` baseline attack speed, and `100` Heat produces `150%` attack speed. Intermediate Heat values produce proportionate attack speed.
 
 Each charged orb consumed by Casting adds `2` Heat. Orb consumption is the only current source of Heat gain. Heat is granted immediately when a Cast commits and consumes charged orbs, including a buffered Cast committed before its animation begins. Interruption before launch and projectile miss do not revoke that Heat. Direct X hits, projectile impacts, and any deferred spell behavior add no Heat.
 
-The Heat Reset Timer is refreshed by either a landed direct X hit or a landed direct spell projectile hit. DoT ticks do not refresh it. After five seconds without either qualifying landed hit, Heat begins depleting smoothly and linearly at `3` Heat per second until it reaches `0`.
+The Heat Reset Timer restarts for a full five seconds whenever a Cast commits and consumes at least one charged orb, a direct X hit lands, or a direct spell projectile hit lands. Cast commitment refreshes the timer immediately, including a buffered commitment before its animation begins; no projectile launch or Enemy hit is required, and a later interruption or miss does not undo that refresh. DoT ticks and failed Cast attempts that consume no orbs do not refresh it. After five seconds without any qualifying commitment or landed direct hit, Heat begins depleting smoothly and linearly at `3` Heat per second until it reaches `0`.
+
+**Heat timer decision — October 20:** Casting alone restarts the timer at commitment and need not hit an Enemy. This resolves the former landed-hit-only wording in favor of the existing implementation. Heat gain remains `2` per consumed orb, separate from the timer refresh.
 
 When Laema receives an incoming direct-damage `HealthResult` from an opponent whose outcome is `APPLIED`, Heat decreases by `5` and cannot fall below `0`. For example, a qualifying hit at `20` Heat reduces it to `15` Heat, changing attack speed from `110%` to `107.5%` under the linear mapping. `BLOCKED`, `PARRIED`, and DoT results cause no Heat loss. Final hit-reaction strength does not affect this resource rule.
 
@@ -428,15 +488,17 @@ When Laema receives an incoming direct-damage `HealthResult` from an opponent wh
 
 ## Enemy and Feedback
 
+The current reusable CombatEnemy has Elemental Endurance disabled in both Gym and Final Arena. The retained specification below documents the earlier tutorial design; it is not an active default or a requirement to re-enable the buff.
+
 Each tutorial stage owns its area contents and entity instances independently; later stages may deliberately duplicate earlier targets or enemies. Stage 1 and Stage 2 each contain exactly one stationary, non-attacking, permanent target with identical behavior. Damage is capped at its remaining Health; reaching zero resolves normally and then immediately refills it to full Health without clearing active effects. The existing prototype arena is the final tutorial area and retains its three permanent practice targets plus its killable final Enemy.
 
 Training targets are pass-through and never physically block Laema's movement. The final Enemy is solid: Laema cannot move through or pass it. All current targets remain valid X and projectile targets.
 
 Each target displays the school and level of every successful Cast layer that deals Health damage. A fully resisted Cast layer displays `0` damage without its school-and-level label. School-specific status displays other than the tutorial-only Elemental Endurance buff below are deferred with the spell behaviors they would represent.
 
-### Elemental Endurance — Tutorial-Only Buff
+### Elemental Endurance — retained disabled tutorial specification
 
-Elemental Endurance is currently a tutorial-only protective buff for the tutorial's final Enemy. It showcases Laema's school-changing and Casting systems without becoming the later boss-like skill test. This buff is not yet a general rule for other enemies or the final game.
+In the retained design, Elemental Endurance is a tutorial-only protective buff for the tutorial's final Enemy. It showcases Laema's school-changing and Casting systems without becoming the later boss-like skill test. This buff is not yet a general rule for other enemies or the final game.
 
 The Enemy tests whether the player recognizes Elemental Endurance and changes schools. If it survives through hit 9 of one school's streak, hit 10 and later become fully resisted and a school change is required to resume direct damage. Single-school melee is therefore not guaranteed to defeat this Enemy.
 
@@ -474,17 +536,11 @@ When active, the protective buff displays an icon above the Enemy's head. The ic
 
 Floating damage numbers always display the final Health actually lost after Elemental Endurance, blocking, and every other damage modifier. A final Health loss of zero still displays `0`. Every DoT tick displays its final damage number using a much smaller font than direct-hit damage.
 
-Retained OVERNIGHT CANDIDATE H moves the existing direct/DoT anchors52 pixels
-closer to their target (Y−186/−154), leaving Cast-level Y−118 and all meaning,
-style, lifetime and gameplay unchanged. Supervisor actual1280×720 render review
-finds fresh glyphs clear of the debug EventPanel and initial Player DoT/Cast
-glyphs separate. Baseline direct/DoT crowding, repeated numbers and older fading
-numbers drifting into the header remain unresolved; no general layout/scale
-solution is claimed. Human controller/feel/readability acceptance is pending.
+The provisional direct/DoT feedback-anchor adjustment and its remaining overlap/readability limits are recorded in [GYM.md](GYM.md) and the overnight ledger. It establishes no final visual acceptance.
 
 ### First Enemy Attack Pattern
 
-The final Enemy attacks while the player works through the school-switching test. Its first-pass behavior uses one repeating pattern:
+The final Enemy uses one repeating committed melee pattern. Endurance is disabled under the current shared baseline:
 
 ```text
 approach → commit to Laema's current position → wind up → active swing → recover → repeat
@@ -492,30 +548,19 @@ qualifying hit / losing clash → abandon attack → hit reaction → reassess
 ```
 
 - The attack commits to its position and direction when windup begins.
-- A hit with incoming Impact above character poise interrupts windup. A losing active-frame clash also cancels the attack. After reaction, the Enemy reassesses instead of resuming the cancelled attack.
+- A Player hit with incoming Impact equal to or above the Enemy's poise interrupts windup; equality causes Level 1 reaction. During active frames, the Enemy's active-move Impact also contributes to the receiver-side calculation, with a zero Player result still qualifying. A losing active-frame clash cancels the attack. After reaction, the Enemy reassesses instead of resuming the cancelled attack.
 - The attack does not track Laema after committing.
-- If Laema leaves the committed attack area before contact, the attack misses completely.
+- The committed melee attack checks throughout its active interval; it misses Laema only if no eligible hit lands before that interval ends. Moving into or out of its hitbox during active frames can therefore affect whether it connects.
 - Hits and misses use the same recovery period.
 - No separate miss indicator is required; unchanged Player Health communicates the miss.
-- The Developer Portal includes a Player 1-HP Floor option, enabled by default for this prototype. While enabled, no damage source can reduce Laema below `1` Health. Disabling it removes the floor. No Player death or restart state is introduced.
+- The Player 1-HP Floor option is disabled in the current baseline. Genuine Player death locks movement/combat; Gym defeat offers Retry. The optional floor still prevents Health dropping below 1 when enabled, without healing on toggle.
 
 Enemy attack timing is authored directly in `melee_swing`. It plays at speed 1:
-windup lasts to `active_start`, the committed hit query occurs once at `contact`,
-active frames end at `active_end`, and recovery uses any remaining animation
+windup lasts to `active_start`, hit detection checks throughout the active interval
+with at most one hit per target, active frames end at `active_end`, and recovery uses any remaining animation
 length. The Enemy resumes decisions when that animation finishes. Separate Enemy
 windup/recovery controls and the Gym's Enemy duration multiplier are removed.
-This supersedes the earlier scalar timing and the user's intermediate 1/1
-override baseline. The migration baseline was0.8 contact/1.0 end. The retained
-overnight candidate uses active_start/contact1.1 and active_end/length1.3 at
-speed1, active interval0.2 and no recovery tail/timer. Its existing sprite and
-geometry timestamps are retimed without new poses, attacks or tracking rules.
-The shared tutorial keeps actual Poise0/config, but native cadence grows61→79
-ticks. Human controller/feel acceptance remains pending. The user can author a
-recovery tail by extending the clip beyond active_end.
-
-Other first-pass values remain tunable placeholders: `600 px` awareness range,
-`72 px` attack range, `90 px/s` approach speed and `10` melee damage. The Gym uses
-its existing local Poise/Impact profile below; final balance remains open.
+The current Pikeman clip has ten evenly spaced frames, active_start at 0.5 seconds and active_end/length at 1.0 second, at native speed 1. There is no recovery tail unless one is authored after active_end. Older 1.1/1.3-second and scalar-timer comparisons remain historical. Attack range, awareness, movement, damage, Impact and Poise are character-owned tunables; rooms provide placement and objectives.
 
 The always-visible game UI includes:
 
@@ -541,11 +586,11 @@ The prototype developer overlay contains:
 - the upper-center active-school, five-position-chain, and completed-chain readouts; and
 - an upper-right gauge showing L2’s live raw pressure percentage.
 
-The backtick Developer Portal has a shared header with Save to JSON, status, and Close controls, followed by three top-level tabs:
+The backtick Developer Portal has a shared header with Save Tuning, status, and Close controls, followed by three top-level tabs:
 
 - **General:** Movement, Player, Enemy, UI, and the saved developer-overlay visibility flag. Gravity Scale is intentionally omitted from the Portal control surface.
 - **Audio:** Ambient, SFX, and BGM groups. Each group has an Enabled control and a `0–100%` Volume control.
-- **Combat:** nested sub-tabs for Combat, Casting, Heat, Fire, Water, Air, Earth, Defence, and Hit Reaction. The Combat sub-tab contains attack-hitbox visibility, the `collect_orb_without_contact` testing toggle, and the Combat controls. When enabled, a missed X can collect an orb without applying damage; the persisted prototype config currently has this test toggle enabled.
+- **Combat:** nested sub-tabs for Combat, Casting, Heat, Fire, Water, Air, Earth, Defence, and Hit Reaction. The Combat sub-tab contains attack-hitbox visibility, the `collect_orb_without_contact` testing toggle, and the Combat controls. When enabled, a missed X can collect an orb without applying damage; the current character baseline has this test toggle disabled.
 
 Audio controls apply immediately and persist through the same fail-fast JSON save/load flow. Ambient controls the wind loop; SFX controls attack, cast, orb, projectile, cast-failure, guard-warning, and hit-reaction feedback; BGM controls the Fairy Battles music loop. Each newly charged orb uses the fixed-volume charged-orb cue at eight ascending pitches: Do, Re, Mi, Fa, Sol, La, Ti, Do. Charging all eight orbs completes the scale. The Portal expresses normal mix volume as `100%` and silence as `0%`; its internal mixer representation is not player-facing. These controls do not affect the orb queue, L2 charging-progress bar, target status display, target overhead Health display, or gameplay rules.
 
@@ -763,57 +808,11 @@ now you are free
 
 ## Tunables and Validation
 
-Prototype tunables include movement speed, gravity, attack and casting duration, contact/trigger phase, chaining-window start, projectile speed and distance, direct damage, orb lifetime, L2 Charging interval and capacity, L2 pressure thresholds, empowered multiplier, Heat gain, Heat Reset Timer duration, Heat depletion rate, Elemental Endurance percentages, the Player 1-HP Floor option, defence, Impact, hit reactions, statuses, Health, and feedback duration.
+Movement, action pacing, authored hitbox curves, lunge, push, damage/Impact/Poise, reaction levels, Health, Charging, orb expiry, Heat, defence and feedback remain prototype tunables within their stated constraints. Final numerical and experiential acceptance remains open. The Heat timer trigger and current shorter reaction-duration baseline are settled by the October 20 decisions; neither remains an unresolved documentation conflict.
 
-The prototype must make the following observable:
+Validation must distinguish input acceptance, physical contact, APPLIED results, resource changes and presentation. Cover the six-slot chain and shared buffer; ten-orb FIFO/eight-charge behavior; Cast composition, commitment and launch; active-window contact, once-per-target spending, ordinary reactions and simultaneous clashes; defence and interruption; and the exact Stage 1–7 objective/transition rules above. Disabled Endurance is retained specification, not a current default acceptance requirement.
 
-- grounded left/right movement and horizontal camera following;
-- five-position chaining with X and mid-chain Casts;
-- all four school X attacks and hit-generated orbs;
-- 10-orb FIFO storage with all slots permanently visible, an eight-orb Charging/Cast limit, Spell Level presentation from 0 through 8, and preserved queue order after every successful Cast;
-- failed Casts preserving stored orbs while returning charged orbs to the generated state and resetting partial charging progress;
-- gold charged-orb outlines plus full-queue discard and whole-widget flinch feedback;
-- normalized X/L2 pre-window buffering at baseline and high Heat, including first-request arbitration, promotion, and clear/invalidation behavior;
-- school switching remaining available regardless of chaining-window timing, CHARGING or DEPLETING state, and prior switches, without consuming a chain position, buffered input, or other chain/input capacity;
-- the default contact requirement and the Developer Portal's optional no-contact orb-collection test toggle;
-- the Stage 1 area contains one stationary, non-attacking, permanent target that accepts X and projectile contact, displays its own Health and Cast-level feedback, and refills at zero Health;
-- FIFO orb expiration, right-to-left reverse orb progress, charge transfer, and consumption;
-- simultaneous L2 Charging and attacking;
-- L2 CHARGING, DEPLETING, and RELEASE bands, transition behavior, fixed-rate newest-charged-first depletion, and release-Cast behavior;
-- default-visible developer readouts, upper-right live raw L2 pressure, shared visibility toggling, and saved visibility restoration;
-- Developer Portal tab organization plus live, saved Ambient/SFX/BGM enabled and volume controls;
-- an always-visible orb queue and L2 charging-progress bar independent of the developer-overlay flag;
-- charged-orb and five-point Heat loss only on incoming `APPLIED` direct damage, including zero-reaction results, while `BLOCKED`, `PARRIED`, and DoT results cause neither resource loss;
-- every stage beginning at `0` Heat;
-- linear Heat-to-attack-speed mapping from `0` Heat at `100%` attack speed to `100` Heat at `150%` attack speed, including intermediate values;
-- two Heat gained per consumed charged orb, with orb consumption as the only current Heat-gain source;
-- direct landed X and spell-projectile hits refreshing the five-second Heat Reset Timer while DoT ticks do not, followed by smooth linear depletion at `3` Heat per second;
-- proportional Heat acceleration of attacks, casting animations, and L2 Charging;
-- movement locked during active X/Cast animations and restored between actions while CHARGING or DEPLETING preserves the chain;
-- normal, empowered, endpoint, consecutive, and failed Casts;
-- failure cancellation and punishment flinch;
-- last-consumed-orb primary selection, single-secondary majority selection, and LIFO secondary tie-break;
-- combined projectile travel, collision, color blending, generic direct damage, and school-and-level Enemy display;
-- empowered player VFX and primary-only `1.3×` damage;
-- commitment-time Heat and Cast-level feedback;
-- Fire parry and Water defence-state entry;
-- the reusable one-way lifecycle for non-final tutorial stages, including independent area contents, completion latch, right-exit gate, input-locked camera pan, waiting-state arrival, and no-backtracking rule;
-- stage-start combat reset with active-school carryover;
-- the reusable upper-right objective widget with green progress, invalid-attempt flinch/reset, whole-widget completion, and `moving on ->` prompt;
-- the complete Stage 1 five-hit Fire-chain success, invalidation, target, UI, and transition behavior;
-- the complete Stage 2 level-5 Cast success, lower-level and empty-Cast failure feedback, target, text-only UI, and transition behavior;
-- the complete Stage 3 five-hit chain into a level-5 endpoint Cast, including launch-based success, invalidation, target, six-step UI, and transition behavior;
-- the complete Stage 4 mid-chain Cast continuation sequence, including X4-hit completion, invalidation, target, four-step UI, and transition behavior;
-- the complete Stage 5 multiple-Cast sequence, including second-Cast launch completion, invalidation, target, four-step UI, and transition behavior;
-- the complete Stage 6 school-switch sequence, including switch timing, five-hit completion, invalidation, target, six-step UI, and transition behavior;
-- Stage 7 beginning at `0` Heat with both objectives visible, showing its first objective green only while Heat is at least `80`, ignoring threshold crossings during X2–X5, beginning its second objective only when X1 of a fresh chain lands at `80` Heat or higher, advancing five green `X` markers through landed attacks, allowing school switching, invalidating on an X miss, premature chain termination, or Heat falling below `80`, completing only after five uninterrupted landed X attacks while Heat remains at least `80`, and transitioning directly into the Final Arena;
-- tutorial-only Elemental Endurance counting each landed applied action at most once, excluding blocked/parried actions and DoT ticks from streak changes, applying current resistance to DoT damage, allowing non-damage effects at partial resistance while suppressing new same-school effects at 0%, withholding orb generation while preserving Heat Reset Timer refresh and normal Impact/hit reaction on a 0%-damage same-school X hit, clearing on a different-school hit or mixed-school Cast as defined, displaying its school and remaining damage percentage, showing smaller final-damage numbers for DoT ticks including `0`, and showing `0` without a school-and-level label for a fully resisted Cast layer; and
-- the final Enemy physically blocking Laema, approaching, committing one non-interruptible attack to Laema's position at windup start, missing when she leaves that area, using the same recovery after hits and misses, and all incoming damage respecting the default-enabled Player 1-HP Floor option; and
-- the existing prototype arena as the final tutorial area, followed in place by its indefinite `now you are free` free-practice state.
-
-Incoming Enemy attacks, body blocking, committed-position misses, both states of the Player 1-HP Floor option, and ordinary-play blocking, parrying, guard depletion, guard warning, and guard break require user validation in Godot.
-
-Still open or deferred: jumping, non-flat level geometry, Air and Earth defence, additional Enemy behavior and attack patterns, Player defeat behavior when the Player 1-HP Floor option is disabled, all school-level spell behaviors, final balance, final casting and projectile assets, final Laema presentation, and complete enemy content.
+[IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) owns scoped reports, pending cases and waivers. The [pre-housekeeping GDD](history/2026-10-20-document-housekeeping/sources/docs/GAME_DESIGN.md#tunables-and-validation) preserves the detailed earlier checklist and its historical defaults. Broad earlier reports do not establish scenario-level acceptance of later changes. Air/Earth defence, additional Enemy behavior, school-level spell behavior, final assets/content, final balance and broader Player defeat design remain open or deferred; current Player death locking and Gym retry do not settle every future defeat/restart rule.
 
 ## Future Game Direction — Mirham
 
@@ -852,110 +851,17 @@ Still open or deferred: jumping, non-flat level geometry, Air and Earth defence,
 **Validation:** No Town Design implementation or runtime evidence exists.
 
 
-## Inspector and Developer Portal Combat Tuning
+## Combat authoring and development tools
 
-Select PrototypeArena's CombatTuning node and expand Settings in Godot's Inspector. Its shared resource exposes Player and Final Enemy poise, every move's Impact, and the duration/distance of combat reaction Levels 1–5. A separate legacy group exposes the existing practice-target, defence and failed-Cast visual-reaction settings.
+Player and CombatEnemy root Settings own numerical combat tuning and share the reaction Resource. Native AnimationPlayer tracks own sprites, geometry, melee active bounds and Cast launch. Both Dev Portals read/save the same assigned assets; rooms have no private combat profile. Active actions and reactions retain captured data; edits affect later actions. See [GYM.md](GYM.md) for character tuning and [ATTACK_STYLES.md](ATTACK_STYLES.md) for native animation/hitbox authoring.
 
-The Developer Portal edits the same effective values through General/Player and Enemy AI, Combat/Moves, and Combat/Hit Reaction. JSON owns numerical combat tuning, while the October 19 native-animation authoring workflow owns melee geometry and sprite frames; the combat Resource remains an Inspector view. Local Inspector edits merge into validated JSON. During play, Remote Inspector and Portal changes apply live; Save Tuning persists JSON and the Inspector mirror. Direct JSON edits refresh the local Inspector while the Arena scene is open.
-
-Reaction duration, displacement and invincibility are captured when the reaction starts. Changing reaction tuning affects subsequent reactions and does not shorten one already running. AI decision timing/enable changes retain their existing reset behavior.
-
-### Native attack authoring — approved 2026-10-19
-
-A move-settings resource must lead to its underlying flipbook animation. Use
-Godot's existing AnimationPlayer timeline to scrub sprite frames and visually
-edit/key the Player and Enemy hitbox. Gameplay and Portal geometry use that saved
-authoring source. Geometry at the existing contact marker performs one melee
-query per action; extra keyed poses do not introduce extra hits. Author right-
-facing poses; left-facing attacks mirror horizontal coordinates. Active attacks
-retain their committed pose when tuning changes. Enemy approach distance is
-separate from hitbox geometry. Existing animation frames, starting frame pacing,
-combat timing, damage, Impact/Poise, reactions and Casting rules are preserved.
-See `docs/ATTACK_STYLES.md` for the native editor workflow. Implementation is a
-candidate awaiting the user's interactive editor/gameplay validation.
-
-## Focus editor development dock — 2026-10-15
-
-User decision: implement the approved Focus editor as a Godot editor plugin. It
-edits the same saved configuration as the in-game Developer Portal without
-requiring the game to run or the Arena scene to be open. This is development
-tooling; no combat rules or tuning values are selected by this change.
-
-The dock provides categories, draft editing, saved/active value readbacks,
-review/save, revert and reload. Saving and applying to the running game are
-separate actions. Current-session stage loading and pause/resume require a
-connected debug game. Startup stage/school apply on the next run. Attack-hitbox
-visibility is now a saved UI/debug setting, retaining its prior enabled default.
-
-All existing Portal settings share field definitions and validation with the
-dock. Nested Earth levels are also exposed. Fixed invariants and intentional
-hidden compatibility fields stay constrained; animation markers and stage
-definition authoring retain their existing workflows. Legacy school controls
-remain present and dormant where documented.
-
-Implementation validation is recorded separately in IMPLEMENTATION_STATUS.md.
-The user's mockup acceptance does not establish actual editor or gameplay
-validation.
-
-Navigation refinement: the user requested separate sections rather than one
-flat root category list. The dock separates General, Combat, Schools, Audio,
-Tutorial and Session, retaining the draft across navigation. Fire/Water/Air/Earth
-categories have no blanket legacy label. Individual effect settings not consumed
-by current Casting are marked as such; active attack-presentation settings are
-unmarked. This distinction does not activate or remove any school behavior.
-
-The dock is named Laema Dev Portal. Its Hit reactions page includes a user-driven
-series-fill operation: infer a starting value and per-level increment from the
-first two levels, edit those rules, preview the five results, then fill Duration,
-Distance or both in the draft. Save/apply remain separate. This does not change
-gameplay tuning automatically. The subsequent range-configuration refinement
-also allows starting-value series fill, while preserving Level 1 at 0.
-
-Series fill also supports the exposed Water and Earth level tables. It fills
-only selected editable numeric fields, using each field's existing bounds and
-level spacing. Water's fixed Wet/Frozen slow amounts and status names stay fixed.
-Unused-by-current-Casting labels still apply to the school-effect values; this
-editing tool does not activate their effects.
-
-Reaction settings use one collapsible Levels 1–5 section; opening it shows all
-five Starting value/Duration/Distance entries under plain level headings. The
-Hit-reaction levels page derives each upper bound from the next level's start,
-rejecting duplicate or reversed starts. Legacy reactions have a separate page. Combat →
-Impact groups X1–X5 by school, plus separate Cast and Enemy attack controls.
-Each school can edit or fill its existing per-move Impact values independently.
-These UI changes select no new tuning and do not alter Poise/clash/reaction rules.
+Laema Dev Portal's editor dock edits a draft without running the game. Review/save and applying to a running game are separate operations. It groups General, Combat, Schools, Audio, Tutorial and Session; supports validated series fill for exposed level tables; and leaves dormant school effects labeled. Stage loading/pause requires a connected debug game. Mockup acceptance does not establish interactive editor acceptance. Technical ownership and persistence are recorded in [TECH_ARCHITECTURE.md](TECH_ARCHITECTURE.md).
 
 ## Combat Gym
 
-`scenes/gym.tscn` is the single development encounter: open it for F6 or use
-Laema Dev Portal → Run gym. Saved F5 still points to the tutorial; intended
-F5-to-Gym startup is a known mismatch, not fixed by this candidate. The separate
-Fire benchmark is retired.
-The user now treats its opponent as the first reusable Enemy being developed for
-the game. This development direction does not establish final behavior or
-gameplay acceptance.
-It contains Fire-only Player and one killable opponent, starting 160 pixels
-apart in the bounded Gym room. Player starts at 100 Health and the opponent at
-200, with retained overnight opponent Poise10 and move Impact20. The Gym disables
-contact-free orbs, the Player 1-HP floor, opponent refill and Elemental Endurance.
-Defeat the opponent while surviving; there are no required parry/Cast quotas.
-Victory or defeat stops the encounter and offers Retry. Start/Esc offers the
-same Retry gym action. Retry restores both actors, starting positions, Fire,
-empty orbs, zero Heat, buffered actions and the saved encounter profile.
+`scenes/gym.tscn` is the bounded development encounter for the first reusable Enemy. Open it with F6 or Laema Dev Portal → Run gym; saved F5 still launches the tutorial. The separate Fire benchmark is retired. Fire is the initial school, with school switching available. Both fighters use the shared character baseline; Player and Enemy start 160 pixels apart. Defeat the opponent while surviving, with no parry/Cast quotas. Victory or defeat stops the encounter and offers Retry; Start/Esc also offers Retry gym. Retry restores both actors, authored starting school/positions, empty orbs, zero Heat and saved settings.
 
-Player Fire X windup/recovery and Cast animation durations take 1.5 times their
-normal time. The opponent uses its authored animation timing at speed 1, as does
-the tutorial Enemy; no additional Gym scale applies to it. Charging retains its
-existing rate and Heat acceleration. The tutorial retains its Endurance and
-killable final Enemy; the Gym's private tuning does not rewrite shared
-configuration. Runtime Portal/Remote Inspector edits are run-only.
-
-The Gym retains its contact-time Impact/Poise formula readout. Developer Overlay
-Visible and F4 show/hide the formula panel and telemetry together. Retry clears
-contact history, rebinds both fighters and retains the current overlay visibility.
-Editor Review & save sets the default visibility for future launches; in-game
-Gym saving and shared editor apply remain disabled. The smooth charged-orb bar
-above applies throughout the prototype.
+The Gym adds result/retry and formula presentation. It has no private pacing multiplier, Fire lock, Endurance override or save refusal. F4 and Developer Overlay Visible toggle telemetry and formula readouts together. See [GYM.md](GYM.md) for controls, tuning, observations and evidence boundaries.
 
 ## Pause menu — 2026-10-15
 

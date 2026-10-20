@@ -13,7 +13,9 @@ Charging speed and Enemy native timing are preserved.
 The user clarified that LimboAI should trigger hit react and Dev Portal should
 adjust exact behavior. The tree action now consumes a captured reaction request
 and invokes the existing component; that component still owns hurt/knockback/
-invulnerability lifetime. There is no extra post-hurt wait. Immediate attack
+invulnerability lifetime. Later October 20 clarification: the user confirmed the
+editor's separate BTRandomWait of 0.3–0.8 seconds after the reaction task. It does
+not extend the component's hurt/knockback/invulnerability lifetime. Immediate attack
 cancellation, pending-request protection, mixed-hit deferral and reset/death
 cleanup are retained. Current level times are .25/.55/.85/1.15/1.45 seconds with
 5/10/15/20/25 px distances, before move push scale.

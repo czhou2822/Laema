@@ -1,5 +1,9 @@
 # Decisions
 
+This is a dated decision history, not a current-rules summary. Earlier R2 pressure semantics, capacities, offensive-power comparisons, single-contact assumptions and implementation statements retain their original context. Later explicit decisions and the current [GDD](GAME_DESIGN.md) supersede them where stated. Historical pending labels do not reopen completed work.
+
+**Later decisions — October 20:** the user retained the current shorter shared reaction durations and Cast-commitment Heat timer refresh, recorded in the GDD/TDD. October 14 durations below remain historical. The user also confirmed the editor's separate 0.3–0.8-second post-reaction AI wait; it does not extend the component reaction lifetime.
+
 ## 2026-10-14 — Longer combat hit-reaction tuning
 
 - **Decision:** Levels 1–5 use durations of 0.6, 0.9, 1.2, 1.5 and 1.8 seconds respectively. This supersedes the earlier starting-duration table below; distances remain 5, 10, 15, 20 and 25 pixels.

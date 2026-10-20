@@ -1,5 +1,7 @@
 # Combat Gym
 
+Current guide, consolidated October 20. [Pre-housekeeping version](history/2026-10-20-document-housekeeping/sources/docs/GYM.md) preserves earlier instructions and reports. Heat timer and shared reaction durations are settled by the October 20 decisions in [GAME_DESIGN.md](GAME_DESIGN.md).
+
 Status: implemented candidate for a user playtest. Fire is the default
 school; character tuning remains provisional. No gameplay-feel or
 physical-controller acceptance is claimed.
@@ -59,14 +61,18 @@ To tune a character in the editor:
 For the Enemy's AI, edit the tree in LimboAI. Its qualifying-hit branch executes
 **Execute hit reaction using character settings**, then waits for the component
 reaction to finish before reassessing. Duration is adjusted through the reaction
-Resource or **Combat → Hit reaction** in the Dev Portal. No extra post-hurt
-BTWait or duplicate timing setting is present.
+Resource or **Combat → Hit reaction** in the Dev Portal. The user confirmed the
+editor setting: after the reaction task, a separate BTRandomWait is configured
+for 0.3–0.8 seconds. It does not extend the component's hurt/knockback/invulnerability
+lifetime. This alignment changes no tree or tuning value.
 
 Enemy attack timing belongs to `AnimationPlayer / melee_swing`: `active_start`
-and `contact` are 1.1 s; `active_end` and length are 1.3 s; native speed is 1.
-Extend length after `active_end` to author recovery, or retime the sprite and
-marker keys together. There are no windup/recovery overrides in character or
-Gym settings. See `ATTACK_STYLES.md` for scrubbing and body alignment.
+is 0.5 s and `active_end`/length are 1.0 s, at native speed 1, using the original
+Pikeman's ten evenly spaced frames. Melee checks the animated hitbox throughout
+that interval, once per target. There is no melee contact marker. The optional
+`timing_split` is a pacing boundary, not a hit event. Extend length after
+`active_end` to author recovery. There are no character/Gym timing overrides.
+See [ATTACK_STYLES.md](ATTACK_STYLES.md) for scrubbing and keying.
 
 Player Fire X windup/recovery pairs at zero Heat are .21/.51, .24/.51,
 .195/.45, .33/.51 and .45/.63 seconds. Cast total is 1.2 seconds. These contain
@@ -74,12 +80,13 @@ the old Gym 1.5× pace once; neither room multiplies them again. Charging retain
 its previous speed. Native Fire X4/X5 geometry and motion are unchanged.
 
 With Enemy Poise 10 outside its active attack, Fire Impacts 10/20/30/40/50
-produce no reaction / Levels 1/2/3/4. Cast Levels 1–4 use Impacts 10/20/30/40
-and produce no reaction / Levels 1/2/3. The receiver's active-move Impact can
+produce Levels 1/1/2/3/4. Cast Levels 1–4 use Impacts 10/20/30/40
+and produce Levels 1/1/2/3. Player's ordinary zero result qualifies for Level 1. The receiver's active-move Impact can
 weaken or prevent a reaction. Hurt, body knockback and invulnerability share
 the selected duration; nonqualifying damage has no separate hurt animation.
-Current level duration/distance pairs are .25 s/5 px, .55/10, .85/15, 1.15/20
-and 1.45/25. Cast level Impact overrides live in Player Settings / Moves / Cast.
+Current stored duration/distance pairs are .25 s/5 px, .55/10, .85/15, 1.15/20
+and 1.45/25. The user retained this shorter sequence on October 20; the earlier
+October 14 durations remain historical rather than an open conflict. Cast level Impact overrides live in Player Settings / Moves / Cast.
 
 Overnight comparisons, historical policies and their human-acceptance limits are
 preserved in `iterations/2026-10-19-overnight.md` and the morning handoff.
@@ -113,9 +120,12 @@ Incoming Impact − receiver Poise − receiver active-move Impact = hit-reactio
 For example, **60 − 20 − 15 = 25 → Level 3** with the initial configured ranges.
 The active-move contribution is 0 during windup/recovery. Captured math remains
 visible after the attack is cancelled or its reaction ends. Live stats can change
-without rewriting that last-hit snapshot. Non-positive contacts show **No reaction**;
-the exact Player-winning 0/0 exception is explicitly labeled. Invincible/blocked/
-parried/cancelled attempts show their status and preserve the last evaluated math.
+without rewriting that last-hit snapshot. Ordinary Player zero is labeled as
+its Level-1 advantage; ordinary Enemy zero and negative hits do not interrupt.
+Reciprocal simultaneous melee contacts compare signed values, with equality
+favoring Player and Level 1 for a non-positive winner. Only the winning contact
+deals damage. Invincible/blocked/parried/cancelled attempts show their status
+and preserve the last evaluated math. See the GDD for the complete contact rules.
 
 The formula panel is part of **Developer Overlay Visible**, alongside the normal
 telemetry panels. **F4** hides/shows them together while the gym is focused,

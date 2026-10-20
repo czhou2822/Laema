@@ -4,6 +4,7 @@
 
 - Pack 6 shared Idle and Walk sheets, plus Pack 2's shared Casting Spell sheet, are the active player locomotion and cast presentation.
 - Twenty 128×128 X sheets are active by school: Pack 2 Fire, Pack 6 Water, Pack 3 Air, and Pack 5 Earth. They supply X1–X5 for the current five-position chain.
+- Air X5 now uses Pack 3 `Weapon_Summon.png`: eleven full-body 128×128 frames (1408×128), copied byte-for-byte to `prototype/player/animation/air_x5.png`. Its stable import UID/path is retained. The retired eight-frame `Weapon_1.png` effect, pre-change native Animation and source hashes are preserved in [Air X5 history](../docs/history/2026-10-20-air-x5-weapon-summon/README.md).
 - Shinobi, Swordsman, Fighter, Saber, and Samurai sheets remain legacy prototype imports.
 - `ground_grasss.png` from the membership Grassland archive.
 - Fire, Water, and Ice frame sequences from the membership Fantasy Platformer bundle.

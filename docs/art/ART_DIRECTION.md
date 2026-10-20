@@ -22,12 +22,12 @@ Decision: the user designated the **HMM3** task (`01a142bd-e72a-7f03-b3fb-1b28d2
 
 ### Carried weapon decisions and open work
 
-- Laema has no staff; a sword is the current provisional weapon direction.
+- Historical direction: Laema has no staff; the sword study was provisional. Later hammer/lance baselines and the accepted-for-preservation hammer set below remain valid; no final production weapon is locked.
 - The user prefers edge-to-edge joining (candidate 1) and compact-to-extended transformation (candidate 4). The physical/visual split, joining and extension sequence is not yet solved or validated.
 - The lit-seam treatment is selected for first development. Magic is visible across Fire, Water, Air and Earth. The existing Laema palette is red-orange, blue, white and brown-ochre respectively; application to final sprites remains to be tested.
 - Light dual blades, medium one-handed use and heavy two-handed use describe the desired weapon presentation. They do not add new attack rules through this art record.
 - Show five candidates per comparison round. A selected direction can be developed without reopening the five-way choice.
-- Next: reconcile the selected weapon and character studies against the native originals, then validate an actual sprite sample at Laema's camera scale. Exact pixel dimensions, transformation animation, effect intensity and final assets remain open.
+- Open production work: native-scale sprite validation, exact pixel dimensions, transformation animation, effect intensity and final assets. Concept iteration is paused under the later accepted-for-preservation hammer entry; this list does not restart it.
 
 ## Approved character concept direction — 2026-10-18
 
@@ -82,7 +82,7 @@ Status: Approved visual direction for the prototype HUD layout.
 
 - Upper-left: Player and Enemy Health, Heat, speed, and Defence diagnostics.
 - Top-middle: active school and chain state.
-- Upper-right: raw R2 pressure and semantic pressure state.
+- Upper-right: raw L2 pressure and semantic pressure state.
 - Diagnostics form one orderly top rail or aligned diagnostic group.
 - Enabling the overlay must not obscure the objective or core combat HUD.
 - Disabling the overlay leaves no empty diagnostic frames behind.
@@ -93,7 +93,7 @@ Status: Approved visual direction for the prototype HUD layout.
 - It uses a fixed top rail with stable geometry and compact label-value pairs.
 - Left: Player and Enemy Health, Heat, speed, and Defence state.
 - Center: active school, five attack positions, and Cast endpoint; the current position receives the strongest emphasis.
-- Right: raw R2 pressure and its semantic state.
+- Right: raw L2 pressure and its semantic state.
 - The objective moves below the rail while the overlay is enabled.
 - Developer and player-facing HUD panels must not overlap or clip at supported display widths.
 

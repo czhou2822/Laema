@@ -4,33 +4,36 @@ This repository is the shared source of truth for the project across the home an
 
 ## Current status
 
-The repository contains the expanded 2D side-scrolling orb-casting prototype plus the implemented Stage 1–6 tutorial flow and Final Arena/free-practice path. The user reported the complete Stage 1–6 flow run and confirmed in Godot on 2026-09-01; an exact scenario matrix, tested-tree identity, and engine-version record were not supplied.
+The repository contains the 2D side-scrolling orb-casting prototype, Stage 1–7
+tutorial progression and Final Arena/free-practice path, plus the development Gym.
+Current Player/CombatEnemy Settings are shared across rooms. Native Animations
+own sprites, hitbox curves, melee active bounds and Cast launch timing.
 
 - Project name: Laema
-- Engine version: Godot 4.7
-- Design status: Current prototype GDD verified
-- Technical design status: Stage 1–6 architecture synchronized; game-facing generated/charged terminology implementation is pending before tech-postflight
-- Implementation status: Complete Stage 1–6 flow user-confirmed on 2026-09-01; agent-run runtime evidence unavailable
-- Last committed recovery baseline: `6b06dc2` (`checkpoint: save cross-thread recovery state`)
+- Engine target: Godot 4.7; scoped checks recorded elsewhere used their stated engine versions.
+- Design and implementation: see [GAME_DESIGN.md](docs/GAME_DESIGN.md), [TECH_ARCHITECTURE.md](docs/TECH_ARCHITECTURE.md) and [IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md).
+- Validation: the September 1 Stage 1–6 user report was broad, without a scenario matrix, tested-tree identity or engine-version record. Later reports/checks retain their own scope; current candidates do not have blanket human acceptance or Web-export clearance.
+- Historical Stage 1–6 recovery checkpoint: `6b06dc2`; [checkpoint history](docs/checkpoints/) preserves later saves and bindings.
+- Open documentation conflicts: Heat timer refresh triggers and reaction-duration values remain reserved for discussion in the GDD/TDR.
 
 ## Prototype controls
 
 | Action | Controller | Keyboard / mouse |
 |---|---|---|
-| Move and face | Left stick | WASD |
+| Move and face | Left stick | A / D |
 | Light attack (X) | X | Left mouse button |
-| Charge generated orbs | L2 in the 95–100% band | — |
+| Charge generated orbs | L2 in the 95–100% band | Hold right mouse button |
 | Deplete charging meter after the hold delay | L2 in the 5–95% band | — |
-| Cast | Release L2 below 5% | — |
+| Cast | Release L2 below 5% | Release right mouse button |
 | Select Fire | D-pad Up | 1 |
 | Select Water | D-pad Down | 2 |
 | Select Air | D-pad Left | 3 |
 | Select Earth | D-pad Right | 4 |
 | Defend | L1 | Shift |
 
-Backtick opens the paused Developer Portal. Its header provides Pause/Unpause, Save to JSON, status, and Close controls; it also exposes the organized General, Audio, and Combat tuning tabs.
+Backtick opens the paused Developer Portal. Its header provides Pause/Unpause, Save Tuning, status, and Close controls; it also exposes the organized General, Audio, and Combat tuning tabs.
 
-Melee hits perform Generating and add generated orbs to the queue. Holding L2 performs Charging and makes selected generated orbs charged for the next Cast. The current tutorial runs through Stages 1–6, transitions into the Final Arena, and enters indefinite free practice when the final Enemy is defeated.
+Melee hits perform Generating and add generated orbs to the queue. Holding L2 performs Charging and makes selected generated orbs charged for the next Cast. The current tutorial runs through Stages 1–7, transitions into the Final Arena, and enters indefinite free practice when the final Enemy is defeated.
 
 ## Repository layout
 

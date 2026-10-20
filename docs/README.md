@@ -2,17 +2,26 @@
 
 This directory holds durable project state that travels with the repository.
 
-- GAME_DESIGN.md — accepted gameplay and player-experience decisions
-- TECH_ARCHITECTURE.md — accepted technical representation and ownership decisions
+- GAME_DESIGN.md — current gameplay decisions, explicitly open conflicts, retained disabled specifications and future proposals
+- TECH_ARCHITECTURE.md — consolidated current ownership, execution flows, saved-data sources and validation boundaries
+- [TDD housekeeping history](history/2026-10-20-tdd-housekeeping/README.md) — exact technical/companion records before consolidation, including uncommitted content
 - DECISIONS.md — decision history and rationale
-- IMPLEMENTATION_STATUS.md — current implementation state and verification notes
+- IMPLEMENTATION_STATUS.md — current candidate state, scoped verification notes and historical evidence links
 - GYM.md — combat Gym, shared character settings, retry, formula readout and launch controls
-- ATTACK_STYLES.md — four school melee presets and per-move timing/movement tuning
+- ATTACK_STYLES.md — current native-animation/hitbox authoring and per-move tuning; earlier presets linked as history
 - [feedback/2026-10-19-judge-panel.md](feedback/2026-10-19-judge-panel.md) — formal panel feedback received October 19, with the user's separate caveat
+- [history/2026-10-20-document-housekeeping/](history/2026-10-20-document-housekeeping/README.md) — exact documents before housekeeping, including uncommitted wording; superseded history, not current authority
+- DECISIONS.md and elemental-endurance-merge-review.md retain dated historical decisions/review questions; their old pending labels do not override later decisions.
 - checkpoints/ — dated project snapshots and per-task recovery notes
 - departments/ — eight persistent development-context records and confirmed task assignments
 - changelists/ — reviewable file-scope records for coordinated changes
 - presentation/ — tournament-guideline references and internal pitch decks
+
+## Reading current and historical state
+
+Read the GDD for current rules and proposal status, the TDR for technical ownership, and Implementation Status for evidence tied to each slice. GYM.md and ATTACK_STYLES.md own practical editing instructions. Department records carry independent task continuity; older summaries and dated decisions do not override the current explicit decisions.
+
+The October 20 decisions settle the Heat timer and shared reaction durations. The Enemy tree's separate 0.3–0.8-second post-reaction wait is also user-confirmed; see the current TDD. The retained Endurance specification is currently disabled. Historical snapshots, proposals, waivers, task identities and checkpoint records were preserved; document housekeeping grants no new gameplay, runtime or submission approval.
 
 ## Checkpoint and thread recovery
 

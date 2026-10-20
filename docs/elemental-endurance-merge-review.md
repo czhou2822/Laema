@@ -1,6 +1,8 @@
-# Elemental Endurance — merged recovery draft
+# Elemental Endurance — historical merged recovery draft
 
-Status: MERGED_FOR_USER_REVIEW. This document combines the local GDD discussion and the Combat recovery package in 2026-09-05-substantive-cross-machine-recovery.thread-sync.json. The user explained that these represent parallel discussions of the same idea following unreliable recovery.
+**Superseded review, preserved for history.** The pending labels and requests below describe the original merge, not current blockers. Later GAME_DESIGN.md wording addresses C1 (school change may be required), C2 (explicit Impact/reaction/Heat-refresh exceptions) and C3 (APPLIED fully resisted contact, capped streak). The current shared-character baseline disables Endurance. See [the retained GDD specification](GAME_DESIGN.md#elemental-endurance--retained-disabled-tutorial-specification). No review history is rewritten and no buff is re-enabled here.
+
+Historical status at creation: MERGED_FOR_USER_REVIEW. This document combines the local GDD discussion and the Combat recovery package in 2026-09-05-substantive-cross-machine-recovery.thread-sync.json. The user explained that these represent parallel discussions of the same idea following unreliable recovery.
 
 This merge preserves compatible local detail where the checkpoint merely leaves a question open. An unanswered question is not an opposing rule. Shared content and retained additions below are not promoted to final approval by this merge. Existing GDD and checkpoint history are preserved.
 
@@ -23,7 +25,7 @@ Both versions describe tutorial protection intended to encourage school switchin
 
 The checkpoint offers no contrary values for these additions. They remain in the combined draft rather than being erased or presented as cross-machine contradictions.
 
-## Decisions needed
+## Decisions requested by the historical review
 
 ### C1 — Single-school defeat versus permanent immunity
 
@@ -96,6 +98,6 @@ When active, the protective buff displays an icon above the Enemy's head. The ic
 Floating damage numbers always display the final Health actually lost after Elemental Endurance, blocking, and every other damage modifier. A final Health loss of zero still displays `0`.
 
 
-## Evidence and next step
+## Historical evidence and next step
 
 No Endurance runtime validation is established by this merge. No gameplay code was changed. Resolve C1 first, then the narrower C2/C3 wording, then confirm the merged design before canonical synchronization or technical handoff.
