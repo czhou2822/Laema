@@ -17,7 +17,7 @@ const DevSession = preload("res://scripts/config/developer_portal_session.gd")
 
 const AUDIO_BUS_NAMES := {"ambient": &"Ambient", "sfx": &"SFX", "bgm": &"BGM"}
 
-@onready var combat_tuning: CombatTuningBridge = $CombatTuning
+@onready var combat_tuning: CombatTuningBridge = $Player/CombatTuning
 @onready var player = $Player
 @onready var hud = $HUD
 @onready var pause_menu = $PauseMenu
@@ -292,7 +292,7 @@ func _save_runtime_tuning() -> Dictionary:
 	_persisted_config = _config.duplicate(true)
 	result = combat_tuning.save_resource()
 	if not bool(result["ok"]):
-		result["error"] = "JSON saved; Resource save failed: %s" % result["error"]
+		result["error"] = "Character Settings saved; Inspector view save failed: %s" % result["error"]
 	return result
 
 

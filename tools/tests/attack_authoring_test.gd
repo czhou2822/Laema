@@ -144,6 +144,9 @@ func check_gym_grounding() -> void:
 	for audio in gym.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()
 	current_scene = null
+	for audio in gym.find_children("*", "AudioStreamPlayer", true, false):
+		audio.stop()
+	await create_timer(0.15).timeout
 	gym.free()
 
 

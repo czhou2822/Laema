@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://3tbgo0v5nwmn"]
 
+[ext_resource type="Resource" path="res://config/characters/player.tres" id="character_settings"]
+[ext_resource type="Script" path="res://scripts/config/combat_tuning_bridge.gd" id="tuning_bridge"]
+[ext_resource type="Resource" path="res://config/combat_tuning.tres" id="tuning_view"]
+
 [ext_resource type="Script" uid="uid://df80t7x1qypps" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://coydkivtwer7t" path="res://scripts/player/movement_controller.gd" id="2_movement"]
 [ext_resource type="Texture2D" uid="uid://f44ye7i6cgjo" path="res://assets/prototype/player/animation/earth_x4.png" id="2_vo27k"]
@@ -123,6 +127,7 @@ radius = 16.0
 scale = Vector2(2, 2)
 collision_mask = 12
 script = ExtResource("1_player")
+settings = ExtResource("character_settings")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=768103037]
 material = SubResource("ShaderMaterial_outline")
@@ -209,3 +214,7 @@ position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_attack")
 target_position = Vector2(0, 0)
 collision_mask = 2
+
+[node name="CombatTuning" type="Node" parent="."]
+script = ExtResource("tuning_bridge")
+settings = ExtResource("tuning_view")

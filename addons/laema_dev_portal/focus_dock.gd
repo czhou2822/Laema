@@ -121,8 +121,8 @@ func _ready() -> void:
 	_fields = VBoxContainer.new()
 	_fields.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(_fields)
-	var source := _label("res://config/prototype_combat.json")
-	source.tooltip_text = "One saved configuration shared with the in-game Portal."
+	var source := _label("Player / CombatEnemy Settings")
+	source.tooltip_text = "Combat values are saved on the reusable characters. Both Portals edit the same Settings resources."
 	_body.add_child(source)
 	var reload_button := Button.new()
 	reload_button.text = "Reload file"

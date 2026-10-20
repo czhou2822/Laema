@@ -54,7 +54,7 @@ func configure(config: Dictionary) -> void:
 		config["hit_reaction"],
 		config
 	)
-	status_controller.set_elemental_endurance_enabled(is_final_enemy)
+	status_controller.set_elemental_endurance_enabled(is_final_enemy and bool(config["elemental_endurance"].get("enabled", true)))
 	_on_status_changed(status_controller.get_snapshot())
 	_publish_outcome(&"encounter_activated", {"encounter_id": encounter_id, "final_enemy": is_final_enemy})
 
@@ -62,6 +62,7 @@ func configure(config: Dictionary) -> void:
 func apply_runtime_tuning() -> void:
 	health.set_maximum(float(_config["enemy"]["max_health"]))
 	hit_reaction.configure(_config["hit_reaction"])
+	status_controller.set_elemental_endurance_enabled(is_final_enemy and bool(_config["elemental_endurance"].get("enabled", true)))
 	apply_feedback_runtime_tuning(float(_config["ui"]["cast_feedback_duration"]))
 
 

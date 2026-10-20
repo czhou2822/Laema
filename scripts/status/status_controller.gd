@@ -24,6 +24,8 @@ func configure(owner_entity: Entity, config: Dictionary) -> void:
 
 
 func set_elemental_endurance_enabled(enabled: bool) -> void:
+	if _endurance_enabled == enabled:
+		return
 	_endurance_enabled = enabled
 	_endurance_school = &""
 	_endurance_hits = 0

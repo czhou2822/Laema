@@ -36,7 +36,7 @@ var/damage/hint = 0
 var/damage/hint_string = ""
 var/impact/name = &"impact"
 var/impact/type = 2
-var/impact/value = 1
+var/impact/value = 20
 var/impact/hint = 0
 var/impact/hint_string = ""
 var/phase/name = &"phase"
@@ -46,11 +46,11 @@ var/phase/hint = 0
 var/phase/hint_string = ""
 
 [sub_resource type="BTCondition" id="BTCondition_reacting"]
-custom_name = "Qualifying combat hit reaction"
+custom_name = "Qualifying hit requested or reaction running"
 script = ExtResource("7_reacting")
 
 [sub_resource type="BTAction" id="BTAction_reaction"]
-custom_name = "Hold reaction, then abandon attack and reassess"
+custom_name = "Execute hit reaction using character settings"
 script = ExtResource("8_reaction")
 
 [sub_resource type="BTSequence" id="BTSequence_reaction"]

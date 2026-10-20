@@ -23,6 +23,8 @@ enum State {
 	DEAD,
 }
 
+@export var settings: EnemyCombatSettings
+
 @onready var attack_cast: ShapeCast2D = $AttackCast
 @onready var warning_marker: Polygon2D = $WarningMarker
 @onready var attack_flash: Polygon2D = $AttackFlash
@@ -51,11 +53,15 @@ var _strike_emitted := false
 var _hit_targets: Array[int] = []
 var _ticking_tree := false
 var _preempt_requested := false
+var _pending_hit_reaction: Dictionary = {}
 var _reaction_probe_origin := Vector2.ZERO
 var _reaction_probe_started_ms := 0
 
 
 func configure(config: Dictionary) -> void:
+	if settings != null:
+		settings.read_from_config(config)
+		settings.hit_reaction.read_from_config(config)
 	super.configure(config)
 	Geometry.make_private(attack_animation)
 	Geometry.set_contact_size(attack_animation.get_animation(&"melee_swing"), float(config["enemy_ai"]["hitbox_reach"]), float(config["enemy_ai"]["hitbox_radius"]))
@@ -72,6 +78,9 @@ func configure(config: Dictionary) -> void:
 
 
 func apply_runtime_tuning() -> void:
+	if settings != null:
+		settings.read_from_config(_config)
+		settings.hit_reaction.read_from_config(_config)
 	super.apply_runtime_tuning()
 	var next_ai: Dictionary = _config["enemy_ai"]
 	var decision_tuning_changed := false
@@ -104,6 +113,7 @@ func receive_health_result(result: HealthResult) -> void:
 		return
 	if result.zero_reached and not should_refill_health_at_zero():
 		_stage_enabled = false
+		_pending_hit_reaction.clear()
 		hit_reaction.reset_for_stage()
 		health_resolver.reset_for_stage()
 		attack_animation.stop()
@@ -133,6 +143,7 @@ func _physics_process(delta: float) -> void:
 		return
 	var player := _get_player()
 	if player == null or player.health.is_zero():
+		_pending_hit_reaction.clear()
 		hit_reaction.reset_for_stage()
 		health_resolver.reset_for_stage()
 		attack_animation.stop()
@@ -147,6 +158,13 @@ func _physics_process(delta: float) -> void:
 	bt_player.blackboard.set_var(&"target", player)
 	if attack_animation.is_playing():
 		_advance_attack(delta, player)
+	_update_ai_tree(delta)
+	if _state == State.DEAD:
+		return
+	_apply_gravity_and_move(delta)
+
+
+func _update_ai_tree(delta: float) -> void:
 	_ticking_tree = true
 	bt_player.update(delta)
 	_ticking_tree = false
@@ -154,11 +172,11 @@ func _physics_process(delta: float) -> void:
 		_preempt_requested = false
 		_abort_ai_tree()
 		bt_player.active = _stage_enabled
-		if hit_reaction.is_invincible():
+		if has_pending_combat_hit_reaction() and not _defeated:
+			# Finish the abandoned task before dispatching a reaction requested inside it.
+			_update_ai_tree(0.0)
+		elif hit_reaction.is_invincible():
 			_set_state(State.HIT_REACTING)
-	if _state == State.DEAD:
-		return
-	_apply_gravity_and_move(delta)
 
 
 func ai_begin_approach() -> void:
@@ -264,6 +282,7 @@ func _abort_ai_tree() -> void:
 
 
 func _reset_ai_execution() -> void:
+	_pending_hit_reaction.clear()
 	hit_reaction.reset_for_stage()
 	health_resolver.reset_for_stage()
 	_finish_hit_visual()
@@ -277,6 +296,7 @@ func _reset_ai_execution() -> void:
 
 
 func _exit_tree() -> void:
+	_pending_hit_reaction.clear()
 	if is_instance_valid(bt_player):
 		hit_reaction.reset_for_stage()
 		health_resolver.reset_for_stage()
@@ -392,7 +412,10 @@ func _on_reaction_started(level: int, direction: Vector2, distance: float, durat
 	_hit_visual_duration = duration
 	body_visual.position = _body_rest_position
 	if hit_reaction.is_invincible():
-		cancel_combat_attack()
+		# Resolver cancellation precedes the tree's reaction action. Direct component
+		# calls still cancel an outstanding attack, without aborting the reaction task.
+		if _attack_id != 0 or attack_animation.is_playing():
+			cancel_combat_attack()
 	else:
 		var offset := direction.normalized() * distance
 		_hit_visual_tween = create_tween()
@@ -490,7 +513,31 @@ func cancel_combat_attack() -> void:
 
 
 func ai_is_reacting() -> bool:
-	return hit_reaction.is_invincible()
+	return has_pending_combat_hit_reaction() or hit_reaction.is_invincible()
+
+
+func has_pending_combat_hit_reaction() -> bool:
+	return not _pending_hit_reaction.is_empty()
+
+
+func request_combat_hit_reaction(difference: int, direction: Vector2, push_scale: float = 1.0) -> void:
+	if _defeated or hit_reaction.is_invincible() or has_pending_combat_hit_reaction():
+		return
+	_pending_hit_reaction = hit_reaction.capture_combat(difference, direction, push_scale)
+	if not _ticking_tree:
+		# Dispatch at contact, including while offensive AI is disabled. No extra
+		# frame or separate timer is added to the captured combat reaction.
+		bt_player.active = true
+		_update_ai_tree(0.0)
+		bt_player.active = _stage_enabled
+
+
+func ai_execute_hit_reaction() -> void:
+	if not has_pending_combat_hit_reaction():
+		return
+	var reaction := _pending_hit_reaction
+	_pending_hit_reaction = {}
+	hit_reaction.execute_captured_combat(reaction)
 
 
 func ai_hold_hit_reaction() -> void:

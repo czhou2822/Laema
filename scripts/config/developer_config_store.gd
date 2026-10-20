@@ -1,16 +1,17 @@
 @tool
 extends RefCounted
-## One persisted authority. Merge edited leaves against a fresh validated file.
+## Merge Portal edits against fresh character assets and scene/UI configuration.
 
 const CONFIG_PATH := "res://config/prototype_combat.json"
 const TUNING_PATH := "res://config/combat_tuning.tres"
 const Loader = preload("res://scripts/config/prototype_config_loader.gd")
 const Settings = preload("res://scripts/config/combat_tuning_settings.gd")
 const Geometry = preload("res://scripts/combat/attack_geometry.gd")
+const Characters = preload("res://scripts/config/character_settings_store.gd")
 
 
 static func source_hash() -> String:
-	var hashes := FileAccess.get_sha256(CONFIG_PATH)
+	var hashes := FileAccess.get_sha256(CONFIG_PATH) + Characters.source_hash()
 	for id in Geometry.move_ids():
 		hashes += FileAccess.get_sha256(Geometry.DIRECTORY + id + ".tres")
 	return hashes.sha256_text()
@@ -71,6 +72,7 @@ static func merge(base: Dictionary, draft: Dictionary, latest: Dictionary) -> Di
 
 static func save_changes(base: Dictionary, draft: Dictionary, path: String = CONFIG_PATH) -> Dictionary:
 	var expected_hash := FileAccess.get_sha256(path)
+	var expected_source_hash := source_hash() if path == CONFIG_PATH else expected_hash
 	var loaded := load_config(path)
 	if not bool(loaded["ok"]):
 		return loaded
@@ -81,15 +83,20 @@ static func save_changes(base: Dictionary, draft: Dictionary, path: String = CON
 		var sizes := Geometry.validate_sizes(result["data"])
 		if not sizes["ok"]:
 			return sizes
+	if path == CONFIG_PATH and source_hash() != expected_source_hash:
+		return {"ok": false, "error": "Character Settings changed while saving. Reload before saving."}
 	result = Loader.validate_and_save(path, result["data"], expected_hash)
 	if not bool(result["ok"]) or path != CONFIG_PATH:
 		return result
+	var actors := Characters.save_config(result["data"])
+	if not actors["ok"]:
+		return {"ok": false, "data": result["data"], "error": "Scene preferences saved; character Settings save failed: %s" % actors["error"]}
 	var geometry := Geometry.save_changes(loaded["data"], result["data"])
 	if not bool(geometry["ok"]):
-		return {"ok": false, "data": result["data"], "error": "JSON saved; animation geometry save failed: %s" % geometry["error"]}
+		return {"ok": false, "data": result["data"], "error": "Preferences and character Settings saved; animation geometry save failed: %s" % geometry["error"]}
 	var mirror := Settings.save_config_mirror(result["data"], TUNING_PATH)
 	if not bool(mirror["ok"]):
-		return {"ok": false, "data": result["data"], "error": "JSON saved; Inspector mirror save failed: %s" % mirror["error"]}
+		return {"ok": false, "data": result["data"], "error": "Preferences, character Settings and geometry saved; Inspector mirror save failed: %s" % mirror["error"]}
 	return result
 
 

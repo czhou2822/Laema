@@ -73,6 +73,14 @@ func cancel_combat_attack() -> void:
 	pass
 
 
+func request_combat_hit_reaction(difference: int, direction: Vector2, push_scale: float = 1.0) -> void:
+	hit_reaction.execute_combat(difference, direction, push_scale)
+
+
+func has_pending_combat_hit_reaction() -> bool:
+	return false
+
+
 func begin_hit_transaction() -> void:
 	health_resolver.begin_hit_transaction()
 

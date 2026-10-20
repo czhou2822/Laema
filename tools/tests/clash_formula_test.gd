@@ -1,5 +1,8 @@
 extends SceneTree
 
+# Load the canonical actor scripts before compiling the lightweight Fighter subclass.
+const PlayerScene = preload("res://scenes/player/player.tscn")
+const EnemyScene = preload("res://scenes/enemy/combat_enemy.tscn")
 const Loader = preload("res://scripts/config/prototype_config_loader.gd")
 const Catalog = preload("res://scripts/config/developer_settings_catalog.gd")
 var config: Dictionary

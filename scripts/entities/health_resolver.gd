@@ -62,7 +62,7 @@ func resolve(event: HealthEvent) -> HealthResult:
 
 	if event.is_direct_damage() and _owner_entity.uses_combat_hit_reaction() and event.reaction_debug.is_empty():
 		event.reaction_debug = _capture_reaction_debug(event, _owner_entity.get_melee_snapshot())
-	if _hit_reaction.is_invincible():
+	if _hit_reaction.is_invincible() or _owner_entity.has_pending_combat_hit_reaction():
 		return _reject(event, HealthResult.Outcome.INVINCIBLE, &"invincible")
 
 	var defensive_level := _owner_entity.get_defensive_level()
@@ -96,7 +96,7 @@ func resolve(event: HealthEvent) -> HealthResult:
 				_pending_direction = event.contact_direction
 				_pending_push_scale = event.push_scale
 		else:
-			_hit_reaction.execute_combat(combat_difference, event.contact_direction, event.push_scale)
+			_owner_entity.request_combat_hit_reaction(combat_difference, event.contact_direction, event.push_scale)
 	elif outcome != HealthResult.Outcome.PARRIED and (outcome == HealthResult.Outcome.BLOCKED or not _owner_entity.uses_combat_hit_reaction()):
 		reaction_level = maxi(event.impact - defensive_level, 0)
 
@@ -202,7 +202,7 @@ func end_hit_transaction() -> void:
 	_pending_direction = Vector2.ZERO
 	_pending_push_scale = 1.0
 	if not _health.is_zero():
-		_hit_reaction.execute_combat(difference, direction, push_scale)
+		_owner_entity.request_combat_hit_reaction(difference, direction, push_scale)
 
 
 func reset_for_stage() -> void:
@@ -269,7 +269,7 @@ func _resolve_clash(event: HealthEvent) -> HealthResult:
 		# Report the actual reaction without inventing a second damage result.
 		counter.reaction_debug.merge({"value": counter_value, "calculated": true, "eligible": true}, true)
 		attacker.cancel_combat_attack()
-		attacker.hit_reaction.execute_combat(counter_value, -event.contact_direction, counter.push_scale)
+		attacker.request_combat_hit_reaction(counter_value, -event.contact_direction, counter.push_scale)
 		attacker.health_resolver._emit_reaction_debug(counter, attacker.hit_reaction.level_for_value(counter_value), "REACTION ONLY")
 		return _reject(event, HealthResult.Outcome.CLASH_LOST, &"clash_lost")
 	var counter_result: HealthResult = attacker.receive_health_event(counter)

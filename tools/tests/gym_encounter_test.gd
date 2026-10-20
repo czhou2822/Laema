@@ -88,7 +88,7 @@ func _run() -> void:
 	await settle()
 	freeze_fighters()
 	var config: Dictionary = gym.get("_config")
-	check(gym.combat_tuning.settings.attack_styles[0] != shared_settings.attack_styles[0] and is_equal_approx(shared_settings.attack_styles[0].windup_duration, float(ordinary["moves"]["fire_x1"]["windup_duration"])), "Gym owns private external move copies and preserves the shared Inspector values")
+	check(config == ordinary and is_equal_approx(shared_settings.attack_styles[0].windup_duration, float(ordinary["moves"]["fire_x1"]["windup_duration"])), "Gym uses the shared profile and Inspector values")
 	check(Loader.validate(config)["ok"], "Encounter profile passes the real validator")
 	var shared_animation := Geometry.load_clock("fire_x1")
 	var shared_pose := Geometry.contact(shared_animation)
@@ -109,11 +109,11 @@ func _run() -> void:
 	check(opponent().bt_player.behavior_tree.resource_path == "res://ai/trees/final_enemy.tres", "Opponent reuses the existing committed melee tree")
 	check(gym.hud.objective_widget.get("_panel").get_minimum_size().x <= gym.hud.objective_widget.size.x, "Gym instruction fits the existing objective panel")
 	expect_fresh()
-	check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/gym.tscn", "F5 launches the canonical Gym")
+	check(load(ProjectSettings.get_setting("application/run/main_scene")) == load("res://scenes/prototype_arena.tscn"), "Existing F5 tutorial launch is preserved")
 	check(not ResourceLoader.exists("res://scenes/fire_benchmark.tscn") and not FileAccess.file_exists("res://scripts/prototype/fire_benchmark.gd"), "Separate benchmark entry point is retired")
 	check(gym.combat_readout != null and gym.has_node("GymCombatReadout"), "Canonical Gym includes the formula readout")
 	check(config["casting"] == ordinary["casting"] and config["heat"] == ordinary["heat"], "Slower attacks preserve Charging and Heat rates")
-	check(is_equal_approx(config["combat"]["attack_duration"], ordinary["combat"]["attack_duration"] * 1.5), "Cast animation uses the slower Gym duration")
+	check(is_equal_approx(config["combat"]["attack_duration"], ordinary["combat"]["attack_duration"]), "Cast animation uses the same duration in every scene")
 	check(not opponent().bt_player.blackboard.has_var(&"windup_duration") and not opponent().bt_player.blackboard.has_var(&"recovery_duration"), "Enemy has no timing overrides in its blackboard")
 	check(InputMap.action_get_events(&"casting").any(func(event): return event is InputEventJoypadMotion and event.axis == JOY_AXIS_TRIGGER_LEFT), "Canonical Gym retains L2 Casting")
 	# Real Magic snapshots drive a continuous HUD bar, including empty banking.
@@ -143,14 +143,15 @@ func _run() -> void:
 		event.pressed = true
 		Input.parse_input_event(event)
 		await process_frame
-		check(gym.player.combat.get_active_school() == &"fire", "School action stays Fire: " + str(school))
+		check(gym.player.combat.get_active_school() == StringName(String(school).trim_prefix("select_")), "Shared school action works: " + str(school))
 		Input.action_release(school)
 	var keyboard := InputEventKey.new()
 	keyboard.keycode = KEY_2
+	keyboard.physical_keycode = KEY_2
 	keyboard.pressed = true
 	Input.parse_input_event(keyboard)
 	await process_frame
-	check(gym.player.combat.get_active_school() == &"fire", "Keyboard school switch is blocked")
+	check(gym.player.combat.get_active_school() == &"water", "Keyboard school switch works in Gym")
 	keyboard.pressed = false
 	Input.parse_input_event(keyboard)
 	var controller := InputEventJoypadButton.new()
@@ -158,9 +159,10 @@ func _run() -> void:
 	controller.pressed = true
 	Input.parse_input_event(controller)
 	await process_frame
-	check(gym.player.combat.get_active_school() == &"fire", "Controller school switch is blocked")
+	check(gym.player.combat.get_active_school() == &"water", "Controller school selection follows the shared input map")
 	controller.pressed = false
 	Input.parse_input_event(controller)
+	gym.player.select_stage_school(&"fire")
 	# A real missed X must not generate the debug orb.
 	gym.player.might.try_light_attack(Vector2.LEFT)
 	gym.player.might._physics_process(0.14)
@@ -222,24 +224,25 @@ func _run() -> void:
 		var event := HealthEvent.damage(gym.player, opponent(), 1.0, 0, HealthEvent.Delivery.DIRECT, &"fire", {}, Vector2.RIGHT, Vector2.ZERO, 100 + index, [&"fire"])
 		check(opponent().receive_health_event(event).health_delta == -1.0, "Same-school hit remains effective: " + str(index + 1))
 
-	# Every in-game persistence route refuses writes, including the shared mirror.
+	# Gym uses the same persistence and explicit-apply paths as PrototypeArena.
 	config = gym.get("_config")
-	check(not gym._save_runtime_tuning()["ok"], "In-game Save refuses shared JSON writes")
-	check(not gym.combat_tuning.save_resource()["ok"], "Mirror save is disabled")
+	check(gym._save_runtime_tuning()["ok"], "In-game Save writes shared settings")
+	check(gym.combat_tuning.save_resource()["ok"], "Shared Inspector mirror can be saved")
 	gym.get("_developer_overlay")._on_save_pressed()
-	check(gym.get("_developer_overlay").get("_status_label").text.contains("run-only"), "Portal Save reports that gym tuning is run-only")
-	check(not gym.apply_saved_developer_config(config.duplicate(true))["ok"], "Shared editor apply cannot replace the encounter profile")
+	check(not gym.get("_developer_overlay").get("_status_label").text.contains("run-only"), "Portal Save has no Gym-only restriction")
+	check(gym.apply_saved_developer_config(config.duplicate(true))["ok"], "Shared editor settings apply in Gym")
 	var prior_poise: int = gym.combat_tuning.settings.player_poise
 	gym.combat_tuning.settings.player_poise = 3
 	await process_frame
 	check(gym.get("_config")["player"]["poise"] == 3, "Remote Inspector tuning remains usable in memory")
 	gym.combat_tuning.settings.player_poise = prior_poise
 	config["combat"]["collect_orb_without_contact"] = true
-	check(not gym._apply_runtime_tuning()["ok"], "Portal cannot enable contact-free orbs")
+	check(gym._apply_runtime_tuning()["ok"], "Shared Portal can enable its testing toggle in Gym")
 	config["combat"]["collect_orb_without_contact"] = false
 	config["player"]["one_hp_floor_enabled"] = true
-	check(not gym._apply_runtime_tuning()["ok"], "Portal cannot disable genuine defeat")
+	check(gym._apply_runtime_tuning()["ok"], "Shared Portal can adjust death protection in Gym")
 	config["player"]["one_hp_floor_enabled"] = false
+	gym._apply_runtime_tuning()
 	var bridge := CombatTuningBridge.new()
 	bridge.persistence_enabled = false
 	bridge.settings = gym.combat_tuning.settings.duplicate(true)
@@ -283,23 +286,24 @@ func _run() -> void:
 	gym.free()
 	current_scene = null
 
-	# Original Gym/tutorial configuration and mirror remain unchanged after gym use.
+	# Shared saves reload with identical values in the tutorial scene.
 	for path in ["res://scenes/prototype_arena.tscn"]:
 		var arena = load(path).instantiate()
 		root.add_child(arena)
 		await settle()
 		check(arena.get("_config") == ordinary, "Ordinary scene retains shared configuration: " + path)
 		check(arena.combat_tuning.persistence_enabled, "Ordinary Inspector persistence remains enabled")
-		check(arena.get("_current_area").get_targets()[0].status_controller.get("_endurance_enabled") == bool(arena.get("_current_area").get_targets()[0].is_final_enemy), "Ordinary Endurance policy is unchanged")
+		check(not arena.get("_current_area").get_node("FinalEnemy").status_controller.get("_endurance_enabled"), "Tutorial and Gym use the shared resistance switch")
 		stop_audio(arena)
 		await create_timer(0.3).timeout
 		arena.free()
-	check(FileAccess.get_sha256("res://config/prototype_combat.json") == json_hash, "Shared JSON bytes are unchanged")
-	check(FileAccess.get_sha256("res://config/combat_tuning.tres") == mirror_hash, "Shared Inspector mirror bytes are unchanged")
+	check(Loader.load_and_validate("res://config/prototype_combat.json")["data"] == ordinary, "Shared save preserves effective configuration")
+	check(not is_instance_valid(gym), "Finished Gym instance is released")
 	var assets_unchanged := true
 	for path in style_hashes:
-		assets_unchanged = assets_unchanged and FileAccess.get_sha256(path) == style_hashes[path]
-	check(assets_unchanged, "Gym preview and retry preserve every external move asset's bytes")
+		if path.begins_with("res://config/attack_animations/"):
+			assets_unchanged = assets_unchanged and FileAccess.get_sha256(path) == style_hashes[path]
+	check(assets_unchanged, "Gym preview, shared saves and Retry preserve native animation bytes")
 	shared_settings = null
 	await process_frame
 	if failures.is_empty():

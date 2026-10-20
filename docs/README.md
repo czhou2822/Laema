@@ -6,7 +6,7 @@ This directory holds durable project state that travels with the repository.
 - TECH_ARCHITECTURE.md — accepted technical representation and ownership decisions
 - DECISIONS.md — decision history and rationale
 - IMPLEMENTATION_STATUS.md — current implementation state and verification notes
-- GYM.md — single Fire combat Gym, pacing, retry, formula readout and launch controls
+- GYM.md — combat Gym, shared character settings, retry, formula readout and launch controls
 - ATTACK_STYLES.md — four school melee presets and per-move timing/movement tuning
 - [feedback/2026-10-19-judge-panel.md](feedback/2026-10-19-judge-panel.md) — formal panel feedback received October 19, with the user's separate caveat
 - checkpoints/ — dated project snapshots and per-task recovery notes

@@ -1,5 +1,31 @@
 # Implementation Status
 
+## Current implementation — character settings and tree-triggered hurt, October 20
+
+New user-directed work follows published `8f89498` and supersedes the overnight
+freeze for this task. The frozen report below is historical, not the current
+working-tree state. Character root Settings replace level/Gym combat profiles;
+Portal/Inspector read and save the same assets. The Enemy tree executes captured
+reaction requests through the shared HitReaction component. Both scenes now use
+the former Gym baseline, including Fire/Cast pacing, health, Poise/Impact, orb
+contact and Player death. Native animation/collider edits remain intact.
+
+Validation: 1,497 assertions across seven suites passed in isolated copies using
+Godot 4.6.3 stable official Linux x64: 87 character ownership/parity/tree-reaction,
+180 Portal/config/layout, 287 clash, 153 Enemy timing/lifecycle, 121 Gym encounter,
+595 attack-style and 74 native authoring checks. Fixture cleanup drains audio
+playback before destruction; clash fixtures preload canonical actor scripts
+before their lightweight subclass to avoid Godot 4.6 script cleanup retention.
+Final successful logs contain no script/resource errors. Source editor/profile
+was not run or modified. Native attack Animation files and actor body/sprite
+transforms are unchanged. No human/controller acceptance or Web export is claimed.
+
+The new ownership checks cover Inspector-to-runtime reads, Portal-to-actor saves,
+conflicting edits, alternate root-assigned assets, shared reaction edits, pending
+protection, disabled AI, mixed-hit capture and Player death/reset in both scenes.
+Scene instances provide Enemy placement only; its killable combat role lives on
+the reusable CombatEnemy root.
+
 ## Frozen overnight candidate / morning handoff — October20
 
 Working source remains the eight-file retained package at HEAD644587b plus

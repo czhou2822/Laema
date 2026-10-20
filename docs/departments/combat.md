@@ -1,5 +1,32 @@
 # Combat
 
+## Latest decision and implementation — October 20
+
+The user chose the Gym baseline everywhere and explicitly rejected Gym/level
+combat settings: own settings directly on Player and CombatEnemy. Root Settings
+now reference native character Resources; both Portals read/save those same
+assigned assets. Native Animations retain frame/geometry ownership. Gym keeps
+room/objective/retry/formula presentation only; Fire lock, private multiplier,
+Endurance override and persistence refusal are removed. X4/X5 authored motion,
+Charging speed and Enemy native timing are preserved.
+
+The user clarified that LimboAI should trigger hit react and Dev Portal should
+adjust exact behavior. The tree action now consumes a captured reaction request
+and invokes the existing component; that component still owns hurt/knockback/
+invulnerability lifetime. There is no extra post-hurt wait. Immediate attack
+cancellation, pending-request protection, mixed-hit deferral and reset/death
+cleanup are retained. Current level times are .25/.55/.85/1.15/1.45 seconds with
+5/10/15/20/25 px distances, before move push scale.
+
+Isolated Godot 4.6.3 Linux checks: 1,497 assertions across character ownership,
+Portal, clash, Enemy lifecycle/timing, Gym, styles and native authoring passed.
+Native animation/body transforms are unchanged; character roles no longer need
+level overrides. See IMPLEMENTATION_STATUS for scope and cleanup notes.
+
+Source basis: published `8f89498`. Implementation/automated verification is not
+human feel acceptance. Prior overnight restrictions and frozen-source records
+below are historical; this subsequent user request authorizes the new work.
+
 Persistent development context shared by independent tasks. User decisions and the current GDD outrank summaries.
 
 ## Direction and constraints

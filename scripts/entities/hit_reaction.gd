@@ -28,13 +28,25 @@ func level_for_value(value: int) -> int:
 
 
 func execute_combat(difference: int, direction: Vector2, push_scale: float = 1.0) -> void:
+	execute_captured_combat(capture_combat(difference, direction, push_scale))
+
+
+func capture_combat(difference: int, direction: Vector2, push_scale: float = 1.0) -> Dictionary:
+	var level := level_for_value(difference)
+	var tuning: Dictionary = _config["combat_levels"][level - 1]
+	return {"difference": difference, "level": level, "direction": direction.normalized(),
+		"duration": float(tuning["duration"]), "distance": float(tuning["distance"]) * maxf(push_scale, 0.0)}
+
+
+func execute_captured_combat(reaction: Dictionary) -> void:
+	var difference := int(reaction["difference"])
 	if is_invincible():
 		ImpactProbe.record("reaction_skipped", {"target": str(get_parent().get_path()), "difference": difference, "reason": "already_invincible"})
 		return
-	var level := level_for_value(difference)
-	var tuning: Dictionary = _config["combat_levels"][level - 1]
-	var duration := float(tuning["duration"])
-	var distance := float(tuning["distance"]) * maxf(push_scale, 0.0)
+	var level := int(reaction["level"])
+	var duration := float(reaction["duration"])
+	var distance := float(reaction["distance"])
+	var direction: Vector2 = reaction["direction"]
 	ImpactProbe.record("reaction_started", {"target": str(get_parent().get_path()), "difference": difference, "reaction_level": level, "duration": duration, "distance": distance})
 	_active = true
 	_combat_reaction = true

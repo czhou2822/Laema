@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ch5qwe8equpbo"]
 
 [ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="1_base"]
+[ext_resource type="Resource" path="res://config/characters/combat_enemy.tres" id="character_settings"]
+
 [ext_resource type="Script" uid="uid://cw7ssygia5ccn" path="res://scripts/enemy/combat_enemy.gd" id="2_script"]
 [ext_resource type="Texture2D" path="res://assets/prototype/enemy/medieval_fighter/Idle.png" id="3_3cx6u"]
 [ext_resource type="BehaviorTree" uid="uid://cvt502b6f13r0" path="res://ai/trees/final_enemy.tres" id="3_tree"]
@@ -25,6 +27,10 @@ _data = {
 collision_layer = 10
 collision_mask = 5
 script = ExtResource("2_script")
+settings = ExtResource("character_settings")
+encounter_id = &"final_enemy"
+refills_at_zero = false
+is_final_enemy = true
 
 [node name="BodyVisual" parent="." index="0"]
 modulate = Color(0.654902, 0.47451, 0.568627, 1)

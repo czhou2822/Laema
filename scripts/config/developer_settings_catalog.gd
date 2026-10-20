@@ -25,7 +25,7 @@ const COMBAT_SECTION_ORDER := [
 ]
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
-const STYLE_HELP := "Scrub sprite frames and edit hitboxes in Player / AnimationPlayer. Geometry shown here is sampled at the animation's contact marker. Saving reach or radius changes that contact key while preserving other keys and the hitbox angle/offset. Windup and recovery are seconds before Heat scaling; zero timing inherits shared timing. Forward motion uses the existing collision body. Push scale changes qualifying reaction distance only. Runtime edits apply to the next attack; Gym edits remain run-only."
+const STYLE_HELP := "Scrub sprite frames and edit hitboxes in Player / AnimationPlayer. Geometry shown here is sampled at the animation's contact marker. Saving reach or radius changes that contact key while preserving other keys and the hitbox angle/offset. Windup and recovery are seconds before Heat scaling; zero timing inherits shared timing. Forward motion uses the existing collision body. Push scale changes qualifying reaction distance only. Runtime edits apply to the next attack; Save persists the character Settings used in every scene."
 
 const AUDIO_GROUP_ORDER := ["ambient", "sfx", "bgm"]
 # October 15 accepted formula: Combat Systems / Design Decision Log in Laema Space.
@@ -133,6 +133,7 @@ const WATER_LEVEL_RANGES := {
 	"slow_percent": Vector3(0.0, 1.0, 0.01),
 }
 const TUNABLE_TOOLTIPS := {
+	"elemental_endurance.enabled": "Enable same-school resistance for the combat Enemy in every scene. Changing this resets its resistance streak; unrelated tuning preserves it.",
 	"movement.speed": "Horizontal movement speed.",
 	"movement.gravity_scale": "Gravity multiplier for airborne movement.",
 	"player.max_health": "Player maximum Health.",

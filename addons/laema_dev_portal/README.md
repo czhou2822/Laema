@@ -23,7 +23,9 @@ arranged order opens. Each section has its own category order. Rearranging
 tabs preserves the selected page and unsaved edits; it does not change gameplay
 configuration. New categories append after your saved tabs; removed tabs are ignored.
 
-`config/prototype_combat.json` is the persisted authority. Both the editor and
+Player and CombatEnemy root **Settings** own combat values in
+`config/characters/`; their shared Hit Reaction resource owns reaction behavior.
+The JSON file holds audio, tutorial flow and UI preferences. Both the editor and
 in-game Portal use `developer_settings_catalog.gd` and
 `developer_settings_fields.gd`, including all existing Portal controls, move
 Impacts, five reaction duration/distance pairs, nested school levels, audio mix,
@@ -44,7 +46,7 @@ Retry gym clears history and retains the shared visibility choice. Gameplay HUD
 stays visible. The Dev Portal window uses its separate backtick shortcut.
 
 Use editor Review & save to persist the choice for future Gym launches.
-The tutorial also supports Save Tuning in-game; the Gym uses run-only previews. The shortcut does not save unrelated draft tuning automatically. Older
+Both tutorial and Gym support Save Tuning in-game. The shortcut does not save unrelated draft tuning automatically. Older
 formula-only settings migrate in memory: the existing developer-overlay preference
 wins when both are present, and the duplicate field is no longer shown or saved.
 
@@ -105,12 +107,12 @@ is resizable and bounded to the editor window; smaller windows scroll the form
 instead of wrapping numeric values vertically. Fill/Cancel remain outside the
 scrolling content.
 
-The combat Inspector Resource mirrors JSON tuning and native Animation contact
-geometry. Native tracks own hitbox poses and sprite frames; startup/file reload
-read those contact sizes over the legacy JSON geometry scalars. Inspector/Portal
-geometry saves update the same native contact keys, while other tuning merges
-into fresh JSON. Combined file hashes refresh saved geometry. Opening the dock
-or starting a game does not save files.
+The legacy combat Inspector view mirrors character Settings and native Animation
+contact geometry. Native tracks own hitbox poses and sprite frames. Inspector/Portal
+geometry saves update the same contact keys; other combat values save to the
+Resources assigned on the reusable character roots. Combined file hashes include
+character Settings and native geometry. Opening the dock or starting a game does
+not save files. Gym and PrototypeArena have no combat profile of their own.
 
 From a move-settings resource, **Edit fire_x1 animation & hitbox** opens the native
 Player AnimationPlayer editor on that move. Scrub, select AttackCast, edit/key its

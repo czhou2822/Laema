@@ -263,7 +263,7 @@ func _run() -> void:
 	check(dock.get("_draft")["hit_reaction"]["combat_levels"][1]["minimum_value"] == 5 and FileAccess.get_sha256(Store.CONFIG_PATH) == layout_source_hash, "Range edits use the shared draft without auto-saving")
 	dock._save_changes()
 	check(Store.load_config()["data"]["hit_reaction"]["combat_levels"][1]["minimum_value"] == 5, "Review/save path persists custom range starts in shared JSON")
-	Loader.validate_and_save(Store.CONFIG_PATH, original)
+	Store.save_changes(Store.load_config()["data"], original)
 	dock._reload_file()
 	dock._select_section("general")
 	dock._select_section("combat")
@@ -304,12 +304,13 @@ func _run() -> void:
 	dock._on_value_changed(["moves", "fire_x1", "shape_reach"], 73.25)
 	dock._save_changes()
 	var saved_style = ResourceLoader.load(style_path, "", ResourceLoader.CACHE_MODE_IGNORE)
-	check(Store.load_config()["data"]["moves"]["fire_x1"]["shape_reach"] == 73.25 and saved_style.shape_reach == 73.25, "Portal saves synchronize JSON and the external move asset")
+	var saved_reach: float = Store.load_config()["data"]["moves"]["fire_x1"]["shape_reach"]
+	check(is_equal_approx(saved_reach, 73.25) and is_equal_approx(saved_style.shape_reach, 73.25), "Portal saves synchronize native animation and the external move asset (native=%s, mirror=%s)" % [saved_reach, saved_style.shape_reach])
 	check(saved_style.resource_path == style_path and cached_style.shape_reach == cached_reach, "Portal saving retains asset paths without applying changes to cached Inspector Resources")
 	var saved_mirror = ResourceLoader.load(Store.TUNING_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
 	check(saved_mirror.attack_styles[0].resource_path == style_path, "Portal saves preserve the parent's move-file references")
 	check(is_equal_approx(Vector2(Geometry.contact(Geometry.load_clock("fire_x1"))["target"]).length(), 73.25), "Portal reach saves into the native animation contact key")
-	check(Store.save_changes(Store.load_config()["data"], original)["ok"], "Portal save fixture restores JSON and external assets together")
+	check(Store.save_changes(Store.load_config()["data"], original)["ok"], "Portal save fixture restores character Settings and external assets together")
 	cached_style = null
 	saved_style = null
 	saved_mirror = null
@@ -393,7 +394,7 @@ func _run() -> void:
 	check(FileAccess.get_sha256(Store.CONFIG_PATH) == source_before_series, "Generic fill remains draft-only")
 	dock._save_changes()
 	check(is_equal_approx(Store.load_config()["data"]["earth"]["levels"][4]["slow_percent"], 0.6), "Generated Earth values persist through the shared save path")
-	Loader.validate_and_save(Store.CONFIG_PATH, original)
+	Store.save_changes(Store.load_config()["data"], original)
 	dock._reload_file()
 	dock.get("_section_buttons")["schools"].pressed.emit()
 	check(dock.get("_category_tabs").tab_count == 4 and dock.get("_category_tabs").get_tab_title(0) == "Fire", "Schools section has four category tabs with clean names")
@@ -427,7 +428,7 @@ func _run() -> void:
 	dock._on_value_changed(["player", "poise"], 9)
 	var latest: Dictionary = Store.load_config()["data"]
 	latest["movement"]["speed"] = 350.0
-	Loader.validate_and_save(Store.CONFIG_PATH, latest)
+	Store.save_changes(Store.load_config()["data"], latest)
 	dock._process(1.1)
 	check(dock.get("_draft")["player"]["poise"] == 9, "External file change preserves editor draft")
 	check(dock.get("_saved_file")["movement"]["speed"] == 350.0, "Saved readback follows the actual file while preserving draft baseline")
@@ -445,10 +446,10 @@ func _run() -> void:
 	dock._on_state_received({"config": original, "stages": [{"id": "stage_1", "label": "Stage 1", "index": 0}], "paused": false, "unsaved": false})
 	check(dock.get("_fields").get_node("StageSelector").item_count == 1, "Session selector populates after first game packet")
 	dock.free()
-	Loader.validate_and_save(Store.CONFIG_PATH, original)
+	Store.save_changes(Store.load_config()["data"], original)
 	var arena_scene: PackedScene = load("res://scenes/prototype_arena.tscn")
 	var arena := arena_scene.instantiate()
-	arena.get_node("CombatTuning").settings.player_poise = 987
+	arena.get_node("Player/CombatTuning").settings.player_poise = 987
 	var startup_hash := FileAccess.get_sha256(Store.CONFIG_PATH)
 	root.add_child(arena)
 	current_scene = arena
@@ -456,14 +457,14 @@ func _run() -> void:
 	await process_frame
 	await process_frame
 	var packet: Dictionary = arena.get_developer_config_state()
-	check(packet["config"]["player"]["poise"] == original["player"]["poise"], "JSON overrides stale Inspector Resource on startup")
+	check(packet["config"]["player"]["poise"] == original["player"]["poise"], "Character Settings override the stale legacy Inspector view on startup")
 	check(FileAccess.get_sha256(Store.CONFIG_PATH) == startup_hash, "Startup never rewrites authoritative config")
-	check(not packet["unsaved"], "Arena starts from saved JSON without unsaved changes")
+	check(not packet["unsaved"], "Arena starts from saved character Settings without unsaved changes")
 	check(arena.player.is_attack_hitbox_debug_enabled() == original["ui"]["attack_hitbox_visible"], "Saved hitbox preference applied at startup")
 	check(not arena.apply_saved_developer_config({})["ok"], "Stale live snapshot rejected")
 	var changed_config := original.duplicate(true)
 	changed_config["movement"]["speed"] = 360.0
-	Loader.validate_and_save(Store.CONFIG_PATH, changed_config)
+	Store.save_changes(Store.load_config()["data"], changed_config)
 	check(arena.apply_saved_developer_config(packet["config"])["ok"], "Saved editor config applies to an idle runtime")
 	check(arena.get("_config")["movement"]["speed"] == 360.0, "Runtime reads applied saved value")
 	arena.get("_developer_overlay")._on_setting_changed(["player", "poise"], 4)
@@ -471,7 +472,7 @@ func _run() -> void:
 	check(packet["unsaved"], "In-game portal edit remains unsaved")
 	check(not arena.apply_saved_developer_config(packet["config"])["ok"], "Apply protects unsaved in-game tuning")
 	check(arena._save_runtime_tuning()["ok"], "In-game save uses shared config")
-	check(Store.load_config()["data"]["player"]["poise"] == 4, "In-game edit persists through same JSON")
+	check(Store.load_config()["data"]["player"]["poise"] == 4, "In-game edit persists in the same character Settings asset")
 	arena.get("_developer_overlay")._set_open(true)
 	check(paused, "In-game portal retains pause behavior")
 	arena.get("_developer_overlay")._set_open(false)
@@ -482,7 +483,7 @@ func _run() -> void:
 	await create_timer(0.15).timeout
 	arena.free()
 	await process_frame
-	Loader.validate_and_save(Store.CONFIG_PATH, original)
+	Store.save_changes(Store.load_config()["data"], original)
 	var gym_hash := FileAccess.get_sha256(Store.CONFIG_PATH)
 	var gym_area_scene: PackedScene = load("res://scenes/stages/gym_area.tscn")
 	var authored_gym := gym_area_scene.instantiate()

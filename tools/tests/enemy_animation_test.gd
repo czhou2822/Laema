@@ -45,7 +45,7 @@ func tuning_fixture(tutorial: bool):
 func release_fixture(scene: Node) -> void:
 	for audio in scene.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()
-	OS.delay_msec(20)
+	await create_timer(0.15).timeout
 	current_scene = null
 	scene.free()
 	await process_frame
@@ -264,6 +264,8 @@ func _run() -> void:
 	check(Store.source_hash() == source_hash, "Timing checks and private animation edits never save shared data")
 	for audio in gym.find_children("*", "AudioStreamPlayer", true, false):
 		audio.stop()
+	# Drain the Dummy audio driver before destroying its referenced streams.
+	await create_timer(0.15).timeout
 	current_scene = null
 	gym.free()
 	await process_frame

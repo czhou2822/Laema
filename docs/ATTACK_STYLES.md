@@ -1,5 +1,13 @@
 # School attack styles
 
+## Current ownership — October 20
+
+Numerical combat settings belong to Player and CombatEnemy root **Settings**,
+with the former Gym baseline used in all rooms. Portal saves update those same
+native Resources. The old Gym-only multiplier and run-only save restriction are
+retired. Historical overnight comparisons below retain their original context.
+
+
 Status: implemented candidate; numeric presets await user playtesting.
 
 ## Retained overnight Fire Cast anticipation — 2026-10-19
@@ -62,7 +70,7 @@ The initial numeric presets below therefore still apply to the same move IDs.
 
 For Enemy melee, open `scenes/enemy/combat_enemy.tscn`, select **AnimationPlayer → melee_swing**, and follow the same scrub/select/key/save workflow. Its hitbox reach/radius are separate from **Enemy AI → Attack range**, which only controls when the enemy approaches/starts windup.
 
-Player timelines use the existing normalized one-second clocks. Actual Player windup/recovery duration still comes from move tuning, Heat and the Gym's duration scale; their timeline seconds are not wall-clock combat seconds. Sprite-frame key spacing belongs to the assigned flipbook; Fire/Earth exchanged those frame tracks for the sword benchmark. Cast artwork uses the corresponding `cast_fire`, `cast_water`, `cast_air` or `cast_earth` clip; projectile damage keeps its existing path.
+Player timelines use the existing normalized one-second clocks. Actual Player windup/recovery duration still comes from move tuning, Heat; their timeline seconds are not wall-clock combat seconds. Sprite-frame key spacing belongs to the assigned flipbook; Fire/Earth exchanged those frame tracks for the sword benchmark. Cast artwork uses the corresponding `cast_fire`, `cast_water`, `cast_air` or `cast_earth` clip; projectile damage keeps its existing path.
 
 Enemy's `melee_swing` instead plays at authored speed: timeline seconds are combat
 seconds in both Gym and tutorial. To adjust its timing:
@@ -78,7 +86,7 @@ seconds in both Gym and tutorial. To adjust its timing:
 5. Save the external `config/attack_animations/melee_swing.tres`, open the Gym scene, and press **F6** to compare one change.
 
 The separate Enemy windup/recovery controls and the Gym's Enemy timing multiplier
-are removed. Old JSON duration fields are compatibility data and cannot rescale
+are removed. Old JSON snapshots retain compatibility data; they cannot rescale
 the Enemy animation.
 
 The button is navigation into Godot's built-in animation editor, not a custom flipbook tool. If that editor is pinned to another AnimationPlayer, unpin it before switching scenes.
@@ -108,10 +116,10 @@ retain the 12-world-pixel difference; there is no runtime auto-alignment.
 ## Tune numerical settings
 
 - Both editor and in-game Dev Portals expose **Combat → Attack styles**. Reach/radius show the native contact pose. Save updates only the changed contact-size keys, preserving authored offsets, angle, other frames and sprite tracks. **General → Final Enemy** exposes its separate hitbox reach/radius.
-- With `scenes/prototype_arena.tscn` open, **CombatTuning → Settings → School Attack Styles - X1 to X5** provides the same bridge-backed numerical editing. Saving a standalone move-settings `.tres` without that bridge does not update gameplay.
-- Saved native animations own geometry and sprite frames. JSON owns timing, lunge, Impact and other combat settings; stored geometry scalars are compatibility/readback mirrors. A native save overrides stale JSON geometry at the next read, without writing files on startup.
-- The Portal and active Inspector bridge watch both JSON and animation-file changes. Reload the Portal after saving native edits if it has an unsaved draft; stale changes to the same contact size are rejected.
-- Gym/Remote edits remain run-only and affect private Animation copies. Rerun/retry restores saved authoring. Active attacks retain their committed geometry; edits affect subsequent attacks.
+- Open `scenes/player/player.tscn`, select **Player → Settings → Moves → Attack Styles**, then expand the move. Saving its external `.tres` updates the settings read by both scenes.
+- Saved native animations own geometry and sprite frames. Player/CombatEnemy Settings own timing, lunge, Impact and other combat settings; stored geometry scalars are compatibility/readback mirrors. A native animation save overrides stale geometry mirrors at the next read, without writing files on startup.
+- The Portal and active Inspector bridge watch character Settings and animation-file changes. Reload the Portal after saving native edits if it has an unsaved draft; stale changes to the same contact size are rejected.
+- Unsaved runtime edits affect the current run and private Animation copies. Portal Save persists the shared character assets; retry loads saved authoring. Active attacks retain their committed geometry; edits affect subsequent attacks.
 
 ## Locate the underlying files
 
@@ -119,8 +127,7 @@ Each `config/attack_styles/<move_id>.tres` settings resource links to
 `config/attack_animations/<move_id>.tres`. The latter contains the real native
 Animation tracks, including the sprite-sheet texture reference. The Player and
 move-settings Inspector share that Animation asset. Right-click either external
-resource and use **Show in FileSystem** to reveal it. Remote Gym copies have no
-persistent file paths; use Local assets for navigation.
+resource and use **Show in FileSystem** to reveal it. Use Local assets for persistent authoring/navigation.
 
 | Setting | Meaning |
 |---|---|

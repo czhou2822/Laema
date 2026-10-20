@@ -63,9 +63,6 @@ shape = SubResource("floor_shape")
 
 [node name="FinalEnemy" parent="." instance=ExtResource("3_enemy")]
 position = Vector2(80, 16)
-encounter_id = &"final_enemy"
-refills_at_zero = false
-is_final_enemy = true
 
 [node name="EntryAnchor" type="Marker2D" parent="."]
 

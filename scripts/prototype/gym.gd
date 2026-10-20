@@ -1,19 +1,11 @@
 extends "res://scripts/prototype/prototype_arena.gd"
-## Canonical combat Gym: bounded Fire encounter plus the contact-time formula readout.
+## Combat Gym: shared actors/settings, a bounded encounter and formula readout.
 
 const AREA_PATH := "res://scenes/stages/gym_area.tscn"
-const SCHOOL_ACTIONS := [&"select_fire", &"select_water", &"select_air", &"select_earth"]
-const COMBAT_DURATION_SCALE := 1.5
 const CombatReadout = preload("res://scripts/ui/gym_combat_readout.gd")
 
 const RETRY_VISIBILITY_META := &"laema_gym_retry_overlay_visible"
 var combat_readout
-
-@export_category("Gym - provisional encounter tuning")
-@export_range(1.0, 1000.0, 1.0, "or_greater") var player_health := 100.0
-@export_range(1.0, 1000.0, 1.0, "or_greater") var opponent_health := 200.0
-@export_range(0, 100) var opponent_poise := 1
-@export_range(0, 100) var opponent_impact := 20
 
 var attempt_result: StringName = &""
 var _result_pending := false
@@ -40,36 +32,13 @@ func _ready() -> void:
 
 
 func _load_configuration() -> Dictionary:
-	var loaded := ConfigLoader.load_and_validate(CONFIG_PATH)
+	var loaded := super._load_configuration()
 	if not loaded["ok"]:
 		return loaded
-	var config: Dictionary = loaded["data"].duplicate(true)
-	config["player"]["max_health"] = player_health
-	config["enemy"]["max_health"] = opponent_health
-	config["enemy_ai"]["poise"] = opponent_poise
-	config["enemy_ai"]["impact"] = opponent_impact
-	config["enemy_ai"]["enabled"] = true
-	config["combat"]["attack_duration"] = float(config["combat"]["attack_duration"]) * COMBAT_DURATION_SCALE
-	for position in range(1, 6):
-		var move: Dictionary = config["moves"]["fire_x%d" % position]
-		for key in ["windup_duration", "recovery_duration"]:
-			move[key] = float(move[key]) * COMBAT_DURATION_SCALE
-	config["moves"]["final_enemy_attack"]["impact"] = opponent_impact
-	config["ui"]["attack_hitbox_visible"] = false
 	if get_tree().has_meta(RETRY_VISIBILITY_META):
-		config["ui"]["developer_overlay_visible"] = bool(get_tree().get_meta(RETRY_VISIBILITY_META))
+		loaded["data"]["ui"]["developer_overlay_visible"] = bool(get_tree().get_meta(RETRY_VISIBILITY_META))
 		get_tree().remove_meta(RETRY_VISIBILITY_META)
-	_enforce_encounter_settings(config)
-	# Never synchronize this encounter's mirror into a cached ordinary scene Resource.
-	combat_tuning.persistence_enabled = false
-	combat_tuning.settings = combat_tuning.settings.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
-	return ConfigLoader.validate(config)
-
-
-func _enforce_encounter_settings(config: Dictionary) -> void:
-	config["combat"]["collect_orb_without_contact"] = false
-	config["player"]["one_hp_floor_enabled"] = false
-	config["tutorial"]["initial_school"] = "fire"
+	return loaded
 
 
 func _get_tutorial_configuration() -> Dictionary:
@@ -80,40 +49,12 @@ func _get_tutorial_configuration() -> Dictionary:
 			descriptor["id"] = "gym"
 			descriptor["display_name"] = "Gym"
 			descriptor["area_scene"] = AREA_PATH
-			descriptor["objective"]["presentation"]["rows"] = [{"id": "objective", "label": "FIRE ONLY\nDefeat the opponent"}]
+			descriptor["objective"]["presentation"]["rows"] = [{"id": "objective", "label": "Defeat the opponent"}]
 			descriptor["free_practice_presentation"]["rows"] = [{"id": "complete", "label": "Gym complete"}]
 			tutorial["default_stage_id"] = "gym"
 			tutorial["stages"] = [descriptor]
 			return tutorial
 	return tutorial
-
-
-func _prepare_area(area: StageArea) -> void:
-	super._prepare_area(area)
-	for target in area.get_targets():
-		# Keep is_final_enemy and its completion event; remove only school-switch resistance.
-		target.status_controller.set_elemental_endurance_enabled(false)
-
-
-func _input(event: InputEvent) -> void:
-	for action in SCHOOL_ACTIONS:
-		if event.is_action(action):
-			get_viewport().set_input_as_handled()
-			return
-
-
-func _apply_runtime_tuning() -> Dictionary:
-	if bool(_config["combat"]["collect_orb_without_contact"]) or bool(_config["player"]["one_hp_floor_enabled"]) or _config["tutorial"]["initial_school"] != "fire":
-		return {"ok": false, "error": "Gym keeps Fire-only startup, contact-required orbs and genuine defeat."}
-	return super._apply_runtime_tuning()
-
-
-func _save_runtime_tuning() -> Dictionary:
-	return {"ok": false, "error": "Gym tuning is run-only; retry restores the scene settings."}
-
-
-func apply_saved_developer_config(_expected_active: Dictionary) -> Dictionary:
-	return {"ok": false, "error": "Gym uses its own scene settings. Shared settings cannot be applied here."}
 
 
 func _get_pause_restart_label() -> String:
@@ -204,7 +145,7 @@ func _build_result_panel() -> void:
 	_result_title.add_theme_font_size_override("font_size", 28)
 	content.add_child(_result_title)
 	var explanation := Label.new()
-	explanation.text = "GYM / FIRE COMBAT\nRetry with full health, no orbs and no Heat."
+	explanation.text = "GYM / COMBAT\nRetry with full health, no orbs and no Heat."
 	explanation.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	content.add_child(explanation)
 	_retry_button = Button.new()

@@ -9,7 +9,7 @@ const TUNING_PATH := "res://config/combat_tuning.tres"
 const ConfigLoader = preload("res://scripts/config/prototype_config_loader.gd")
 const Store = preload("res://scripts/config/developer_config_store.gd")
 
-## Standalone encounters can opt out of the shared JSON/Resource save path.
+## Standalone encounters can opt out of the shared character-Settings save path.
 @export var persistence_enabled := true
 
 @export var settings: CombatTuningSettings:
@@ -48,7 +48,7 @@ func initialize(config: Dictionary, apply_tuning: Callable) -> Dictionary:
 	_apply_tuning = apply_tuning
 	if settings == null:
 		return {"ok": false, "error": "CombatTuning requires its shared Settings resource."}
-	# JSON is authoritative; the Resource is an Inspector view, never a competing source.
+	# Character Settings are authoritative; this legacy Resource is an Inspector view.
 	sync_from_config(_config)
 	return ConfigLoader.validate(_config)
 
@@ -126,7 +126,7 @@ func _apply_editor_change() -> void:
 		push_warning("This encounter uses run-only combat tuning. Edit its root Inspector settings instead.")
 		return
 	if _editor_config.is_empty():
-		push_warning("Reload a valid JSON configuration before editing Inspector tuning.")
+		push_warning("Reload valid character Settings before editing Inspector tuning.")
 		return
 	var candidate := _editor_config.duplicate(true)
 	var result := settings.apply_to_config(candidate)
@@ -143,7 +143,7 @@ func _apply_editor_change() -> void:
 	sync_from_config(_editor_config)
 	result = save_resource()
 	if not result["ok"]:
-		push_warning("JSON saved; Inspector mirror save failed: %s" % result["error"])
+		push_warning("Settings saved; Inspector mirror save failed: %s" % result["error"])
 
 
 func _restore_last_valid() -> void:

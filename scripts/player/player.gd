@@ -86,6 +86,8 @@ const SCHOOL_TINTS := {
 	&"earth": Color("d6b38a"),
 }
 
+@export var settings: PlayerCombatSettings
+
 @onready var sprite: Sprite2D = $Sprite
 @onready var movement = $Movement
 @onready var combat = $Combat
@@ -128,6 +130,9 @@ var _hit_visual_duration := 0.0
 
 
 func configure(config: Dictionary) -> void:
+	if settings != null:
+		settings.read_from_config(config)
+		settings.hit_reaction.read_from_config(config)
 	_config = config
 	_sprite_rest_position = sprite.position
 	_sprite_rest_scale = sprite.scale
@@ -185,6 +190,9 @@ func configure(config: Dictionary) -> void:
 
 
 func apply_runtime_tuning() -> void:
+	if settings != null:
+		settings.read_from_config(_config)
+		settings.hit_reaction.read_from_config(_config)
 	movement.apply_runtime_tuning()
 	combat.apply_runtime_tuning()
 	health.set_maximum(float(_config["player"]["max_health"]))
@@ -230,6 +238,7 @@ func reset_for_stage() -> void:
 	health_resolver.reset_for_stage()
 	health.reset_to_maximum()
 	velocity = Vector2.ZERO
+	set_stage_input_locked(false)
 
 
 func select_stage_school(school: StringName) -> void:
@@ -419,6 +428,11 @@ func _on_heat_changed(value: float, level: int, speed_multiplier: float) -> void
 
 
 func _on_health_changed(current_value: float, maximum_value: float) -> void:
+	if current_value <= 0.0:
+		combat.cancel_combat_attack()
+		hit_reaction.reset_for_stage()
+		set_stage_input_locked(true)
+		velocity = Vector2.ZERO
 	health_changed.emit(current_value, maximum_value)
 
 

@@ -1,5 +1,54 @@
 # Technical Design Report — Orb Casting and Tutorial Stage Architecture
 
+## Current representation — character-owned settings, October 20
+
+This change builds on published source `8f89498`; the overnight frozen package
+and recovery references below describe historical baselines. Current source is
+an implementation candidate awaiting the user's gameplay validation.
+
+- Player root `settings` references `config/characters/player.tres`
+  (`PlayerCombatSettings`). It owns health/Poise, initial school, movement,
+  melee/Cast/Charging/Heat/defence/school data, impacts and the twenty external
+  attack-style references. Existing move-style Resources own phase durations,
+  lunge and push scale. Native Animations own sprite frames and contact geometry.
+- CombatEnemy root `settings` references `config/characters/combat_enemy.tres`
+  (`EnemyCombatSettings`). It owns health, decision parameters, attack Impact
+  and Endurance. The reusable root also owns its non-refilling combat role and encounter ID;
+  room instances specify only placement. It exposes no windup/recovery override. Native `melee_swing`
+  markers/length retain attack timing at speed 1.
+- Both reference `config/characters/hit_reaction.tres`
+  (`CharacterReactionSettings`). One shared table owns reaction bands, duration
+  and distance. There is no new timer owner.
+- `CharacterSettingsStore` reads the resources actually assigned on those two
+  reusable scene roots, refreshes external data leaves, and adapts them to the
+  retained runtime Dictionary shape. Canonical JSON now contains only audio,
+  tutorial flow and UI preferences. Character keys are removed on save; legacy
+  full JSON snapshots at other paths remain readable for compatibility/tests.
+- `DeveloperConfigStore` merges changed leaves against fresh character/native
+  assets, rejects conflicting Inspector edits and saves to the same assigned
+  resources. Source hashes include character scenes, Settings, reaction, styles
+  and native geometry. Startup is read-only. The legacy CombatTuning Inspector
+  mirror lives under Player and is a synchronized view, never a source/profile.
+  Both Portals use the same save/apply path in Gym and PrototypeArena.
+
+HealthResolver still decides eligibility/damage and cancels interrupted actions
+immediately. An Enemy request captures level/direction/duration/distance, then
+its behavior-tree reaction task consumes the request and invokes HitReaction.
+Requests during a tree tick wait until the abandoned task unwinds; pending
+requests already protect against duplicate contacts. There is no recursive tick
+of an active task. An off/offensive-disabled Enemy still executes an incoming
+reaction. Mixed layers defer one strongest request until transaction completion;
+death/reset/area retirement clear pending state. Portal edits affect the next
+request and cannot change an already captured reaction.
+
+Player death locks combat/movement in the reusable actor and reset unlocks it.
+Gym retains its result/retry/formula UI only; its private tuning, Fire lock,
+pacing multiplier, Endurance override and save refusal are removed. Practice
+actors retain their non-attacking/refilling semantics.
+
+Settings saves span several native resources and preferences; failure reports
+identify partial writes. This does not claim a multi-file atomic transaction.
+
 Status: `IMPLEMENTED_AWAITING_USER_VALIDATION`
 
 Repository basis: committed recovery baseline `6b06dc2` (`checkpoint: save cross-thread recovery state`), the current approved working-copy `docs/GAME_DESIGN.md`, and the current working-tree implementation. Commit `23fa85b` preserves the accepted U-001–U-007 corrections; `6b06dc2` remains the historical Stage 1–6 sequence-objective checkpoint.

@@ -117,6 +117,7 @@ move_id = &"earth_x5"
 resource_name = "final_enemy_attack"
 script = ExtResource("2_jl1ym")
 move_id = &"final_enemy_attack"
+impact = 20
 
 [sub_resource type="Resource" id="Move_fire_x1"]
 resource_name = "fire_x1"
@@ -176,6 +177,7 @@ move_id = &"water_x5"
 [resource]
 resource_name = "Shared Combat Tuning"
 script = ExtResource("3_hucao")
+final_enemy_poise = 10
 moves = Array[ExtResource("2_jl1ym")]([SubResource("Move_air_x1"), SubResource("Move_air_x2"), SubResource("Move_air_x3"), SubResource("Move_air_x4"), SubResource("Move_air_x5"), SubResource("Move_cast"), SubResource("Move_earth_x1"), SubResource("Move_earth_x2"), SubResource("Move_earth_x3"), SubResource("Move_earth_x4"), SubResource("Move_earth_x5"), SubResource("Move_final_enemy_attack"), SubResource("Move_fire_x1"), SubResource("Move_fire_x2"), SubResource("Move_fire_x3"), SubResource("Move_fire_x4"), SubResource("Move_fire_x5"), SubResource("Move_water_x1"), SubResource("Move_water_x2"), SubResource("Move_water_x3"), SubResource("Move_water_x4"), SubResource("Move_water_x5")])
 combat_levels = Array[ExtResource("1_6hcl4")]([SubResource("Reaction_1"), SubResource("Reaction_2"), SubResource("Reaction_3"), SubResource("Reaction_4"), SubResource("Reaction_5")])
 attack_styles = Array[ExtResource("4_styles")]([ExtResource("Style_fire_x1"), ExtResource("Style_fire_x2"), ExtResource("Style_fire_x3"), ExtResource("Style_fire_x4"), ExtResource("Style_fire_x5"), ExtResource("Style_water_x1"), ExtResource("Style_water_x2"), ExtResource("Style_water_x3"), ExtResource("Style_water_x4"), ExtResource("Style_water_x5"), ExtResource("Style_air_x1"), ExtResource("Style_air_x2"), ExtResource("Style_air_x3"), ExtResource("Style_air_x4"), ExtResource("Style_air_x5"), ExtResource("Style_earth_x1"), ExtResource("Style_earth_x2"), ExtResource("Style_earth_x3"), ExtResource("Style_earth_x4"), ExtResource("Style_earth_x5")])

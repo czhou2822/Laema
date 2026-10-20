@@ -5,6 +5,7 @@ extends RefCounted
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
 const Geometry = preload("res://scripts/combat/attack_geometry.gd")
+const Characters = preload("res://scripts/config/character_settings_store.gd")
 
 const REQUIRED_SECTIONS := [
 	"movement",
@@ -44,6 +45,10 @@ static func load_and_validate(path: String) -> Dictionary:
 		return _failure("Configuration root must be a JSON object.")
 
 	var data: Dictionary = json.data
+	if path == "res://config/prototype_combat.json":
+		var characters := Characters.apply_to_config(data)
+		if not characters["ok"]:
+			return characters
 	_normalize_legacy_audio_volumes(data)
 	ReactionRanges.normalize_legacy(data)
 	_normalize_attack_styles(data)
@@ -97,7 +102,7 @@ static func validate_and_save(path: String, data: Dictionary, expected_hash: Str
 	var file := FileAccess.open(temporary, FileAccess.WRITE)
 	if file == null:
 		return _failure("Cannot save configuration: %s" % path)
-	file.store_string(JSON.stringify(data, "\t") + "\n")
+	file.store_string(JSON.stringify(Characters.scene_config(data) if path == "res://config/prototype_combat.json" else data, "\t") + "\n")
 	var write_error := file.get_error()
 	file.close()
 	if write_error != OK:
@@ -122,6 +127,8 @@ static func _validate(data: Dictionary) -> String:
 	for section_name in REQUIRED_SECTIONS:
 		if not data.has(section_name) or typeof(data[section_name]) != TYPE_DICTIONARY:
 			return "Missing or invalid configuration section: %s" % section_name
+	if typeof(data["elemental_endurance"].get("enabled", true)) != TYPE_BOOL:
+		return "elemental_endurance.enabled must be Boolean."
 	for key in ["hitbox_reach", "hitbox_radius"]:
 		var value = data["enemy_ai"].get(key, 72.0 if key == "hitbox_reach" else 24.0)
 		if not _is_number(value) or not is_finite(float(value)) or float(value) < (0.0 if key == "hitbox_reach" else 0.001):
@@ -135,8 +142,6 @@ static func _validate(data: Dictionary) -> String:
 		["enemy_ai", "aggro_range", 1.0, INF],
 		["enemy_ai", "attack_range", 1.0, INF],
 		["enemy_ai", "movement_speed", 0.0, INF],
-		["enemy_ai", "windup_duration", 0.001, INF],
-		["enemy_ai", "recovery_duration", 0.0, INF],
 		["enemy_ai", "damage", 0.0, INF],
 		["combat", "attack_duration", 0.001, INF],
 		["combat", "hit_phase", 0.0, 1.0],

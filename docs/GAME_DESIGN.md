@@ -1,5 +1,27 @@
 # Laema Side-Scrolling Orb Casting Prototype
 
+## Current decision — character-owned combat, October 20
+
+The user selected the current Gym tuning as the baseline for the reusable Player
+and CombatEnemy in every scene. Combat settings belong to the characters, with
+no Gym or level combat profile. Rooms retain layout, spawns, objectives and result
+UI. School switching, contact-required orb generation, genuine Player death,
+Enemy Poise 10 / Impact 20 / Health 200 and disabled Elemental Endurance now use
+the same character settings everywhere. Practice targets retain their distinct
+non-attacking/refilling role.
+
+The Enemy behavior tree triggers the qualifying hit reaction. The Dev Portal
+adjusts its exact duration, distance and ranges through the characters' shared
+reaction Resource. Hurt animation, body knockback and invulnerability retain one
+lifetime owned by HitReaction; the tree waits for that execution to finish.
+There is no separate post-hurt wait or duplicate tree duration. Enemy attack
+windup/recovery remain authored in AnimationPlayer at native speed 1.
+
+The previous Gym's 1.5× Fire/Cast duration is baked into Player settings once;
+there is no scene multiplier. Charging speed, authored hitboxes and X4/X5 motion
+are preserved. This supersedes older Gym-only/run-only tuning descriptions below.
+Implementation and automated checks do not establish human gameplay-feel acceptance.
+
 ## Overview
 
 This prototype tests the existing four-school combat system in a 2D side-scrolling space. Laema generates temporary elemental orbs through successful X attacks, uses full L2 pressure to charge generated orbs for the upcoming Cast, depletes that charging progress below full pressure, and triggers normal or empowered school spells by releasing L2 below the Cast threshold.
