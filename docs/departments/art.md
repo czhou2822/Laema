@@ -1,39 +1,61 @@
 # Art
 
-Persistent department context shared by independently identified tasks. Current user decisions and canonical records retain authority.
+Persistent department context, reconciled 2026-10-20. Tasks belong to this department without becoming its identity. **Art remains active; this reconciliation does not retire, move or recreate its chat.**
 
-## Decisions and constraints
+## Current authority and accepted concepts
 
-- User designated the HMM3 task and extracted original Heroes III assets as visual-style authority over generated interpretations. This does not approve importing original game artwork, adopting its mechanics or changing Laema's side-scrolling camera.
-- Preserve textured direction A while matching original fine modeled-volume shading, material treatment, readable silhouettes, restrained base colors and purposeful highlights. Earlier blocky AI pixel clusters are not the fidelity target.
-- No staff; a sword remains provisional. User selected edge-to-edge joining and compact-to-extended transformation directions, with a lit seam for first development and visible Fire/Water/Air/Earth identity. Joining/extension sequence is not solved.
-- Keep the existing red-orange, blue, white and brown-ochre school palette. Light dual-blade, medium one-handed and heavy two-handed presentation does not introduce new attack rules.
-- Show five candidates per comparison round; develop a selected direction without reopening the five-way selection.
+- **Decision:** Actual original Heroes III artwork is the user's visual-style authority, above generated interpretations. Preserve textured direction A with fine modeled-volume shading, readable silhouettes, restrained cloth/leather colors, concentrated steel highlights and purposeful accents—not enlarged blocky AI pixel clusters.
+- Adapt references to Laema's approved side-scrolling camera and native visible scale. Original-source authority does not authorize copying the full game's assets into Laema, adopting Heroes mechanics or changing the camera.
+- **October 18 character-direction lock:** preserve all five references: Laema Open / Wrap / Cutaway and the female local lord Facet / Mantle. No numbered outfit was chosen; the assistant's recommendation of options 1 and 5 is not a user selection.
+- Laema is curious and alert. The local lord has a natural face, short asymmetric silver-white bob, knowing half-smile and confident, lightly skeptical expression. Laema advises her; this establishes no royal-court connection, name, additional story or town ownership.
+- **October 19 accepted-for-preservation concept set:** five Laema-with-hammer views, including hero, gameplay-scale, paired sword/scabbard, downward strike and shoulder carry. Iteration is paused. This is not a final production weapon lock; the gameplay-scale image is a concept, not a game screenshot.
+- Preserve the earlier pass-3 Hammer Crown and tapered Lance as qualified working baselines. Pass 5 was rejected; its images were not imported into those baseline folders. The accepted combined hammer set descends from pass 6, not directly from pass 3. Laema Open ancestry does not eliminate the other approved character alternatives.
 
-## Carried and current artifacts
+## Carried weapon direction and unresolved work
 
-- The Fire X1–X5 GIFs and Castle-town concepts remain presentation/illustrative references, not final gameplay assets.
-- October 16 lit-seam reference and scale-study images are exploratory. Art noted Air needed separation from steel and Earth appeared too golden; these are observations, not final acceptance.
-- A first original-style Laema Fire-ready static sample and its displayed native-size comparison are saved under docs/art/explorations/2026-10-16-h3-sprite-study. The comparison was copied byte-for-byte into the depot during the complete audit. It is one pose beside reference crops, not production game art; animation and final approval remain pending.
-- The HMM3 source task reports 39,923 frames/3,121 PNG sheets from two installed sprite archives with original/indexed/provenance records. Historical retail-byte identity is not established; export shadow/transparency handling is interpretive. Full originals/ZIP are outside Laema's depot and are not carried as files by this checkpoint.
+- No staff was the earlier user direction; the sword was provisional, not a permanent weapon decision. Later hammer/lance references and the accepted combined concepts prevent treating the older sword study as the only current option.
+- Historical sword choices: edge-to-edge joining (candidate 1), compact-to-extended transformation (candidate 4), and lit seam selected for first development. These do not establish a solved split/join/extension sequence or a hammer transformation mechanic.
+- Retain red-orange Fire, blue Water, white Air and brown-ochre Earth. Light dual-blade / medium one-handed / heavy two-handed presentations describe desired visual handling, not new attack rules.
+- Show five candidates per comparison round; develop a chosen direction without automatically reopening selection.
+- The October 16 lit-seam and native-comparison studies remain exploratory. Air's separation from steel, Earth's overly golden appearance, exact scale, effect intensity, transformation continuity and animation remain Open.
+- The 128×128 Fire-ready sample was size-normalized from generated artwork, with a sword-inclusive visible silhouette of 54×96 pixels. It is one static review pose, not hand-authored native animation, a final character identity or an established production pipeline.
 
-## Open items and validation
+## Prototype presentation and historical trials
 
-- Native visible size, animation, sword transformation, effect intensity, final assets and in-game readability remain Open.
-- Source inspection, extraction integrity or a generated sample does not establish experiential art acceptance or runtime validation.
-- Use original indexed pixels/source files when judging fidelity; the extracted collection excludes HD/HotA replacements and standalone bitmap-archive PCX content.
+- The accepted HUD direction separates player information from optional diagnostics: objective upper-right; target Health/Cast feedback above the target; Heat/speed bottom-left; ten orb slots and Charging progress bottom-center. Use generated / Charging / charged terminology, not MARK.
+- The optional developer overlay is a stable compact top rail with a fixed event lane. Reposition the objective below it when enabled; retain objective/resource readability and avoid clipping, overlapping panels or empty diagnostic frames. Layout approval is not final typography, icon, material or runtime acceptance.
+- Treat compatible Craftpix folders as a shared flipbook library; inspect baselines, facing and prop continuity. The accepted shared-locomotion compromise is prototype-only.
+- Historical direction: X1–X4 build toward X5's momentum release; Casting grows into a larger controlled payoff. The accepted Fire-first layered trial's one/three/five-orb examples are not today's eight-orb limit.
+- Historical Fire X4 used an opposite limb, not a backward-facing flip; drift/pale-edge corrections were handed off. That is not final animation or current-runtime acceptance.
+- **Current-source reconciliation:** the GDD records the October 19 Fire/Earth flipbook swap for the Fire-only sword benchmark while preserving each school's gameplay assignments. Old Fire GIFs and original pack mappings are historical presentation references, not today's move-authority table.
+- **Discrepancy:** historical approval requested Air X5 Weapon Summon instead of effect-only Weapon 1; the current GDD still names Weapon 1. Imported-sheet identity was not independently matched here. Preserve this without repeating a replacement or silently editing the GDD.
+- Castle/construction concepts, windmill pairings and Fire GIFs remain pitch references, not Mirham mechanics/geography, final art or current footage. Presentation preparation stays closed.
 
-## Resume point
+## Original-source collections and portability
 
-Obtain user feedback on the first static sample beside the originals; develop the accepted character/weapon direction at Laema's native camera scale before claiming final animation or assets.
+- **Earlier HMM3 collection:** the saved source task reports Heroes3-original-sprites from two installed sprite archives: 2,912 DEFs, 39,923 frames and 3,121 PNG sheets, plus a reported 414 MB ZIP. Full originals/indexed exports/provenance remain external. Only the static native-sprite comparison travels in the depot.
+- **New October 20 collection:** Find original Heroes III flipbooks reports a fresh Ubisoft-installation extraction, Heroes3-Ubisoft-original-flipbooks: 2,912 DEFs, 39,939 frames, 6,050 groups (4,233 animated), and 6,054 sheet pages per format. The external ZIP is 436,720,813 bytes. Its README, package record and verification report were read; no extraction or verifier was rerun here.
+- Keep the two installations/collections distinct. Their different counts do not establish corruption or a known cause; neither collection is silently substituted for the other. The latest Art report that the full external source was not located predates this successful separate search.
+- Original DEFs, indexed pixels, palettes and metadata are preservation masters. Transparent shadow/selection handling is a viewing interpretation; the new viewer's adjustable 10 fps is preview timing, not original game timing. Historical retail-byte identity is not established. Standalone PCX, cutscenes, audio and engine-generated states are not DEF flipbooks.
+- **Separate portability publication verified:** the user's independent source-search task committed and pushed the unpacked new collection at `b217acb5`; GitHub's main ref was verified at that commit. [Repository collection](https://github.com/czhou2822/Laema/tree/b217acb5da4566034af5986f4fb48071eb65f0a8/docs/art/references/heroes3-original-flipbooks) contains the viewer, original/indexed masters and provenance. The earlier collection remains a separate external reference. This reconciliation changes only the department summary; preserve rights/provenance distinctions between original-game references, licensed prototype imports and generated concepts.
+
+## Open items, evidence and resume point
+
+Final weapon/outfit choice, production sprite scale, motion sets, weapon transformations, final projectile/UI/environment assets and in-game readability remain Open. Static reference preservation, concept acceptance, asset extraction and old GIF previews do not establish current human gameplay/visual acceptance. Dated engine checks elsewhere retain their own scope; no engine, build, test, playback, new art generation or fresh artistic approval occurred here.
+
+**Resume point:** Art stays active. The latest Art-chat request is to find the original Heroes flipbooks; the new collection is now available locally and in the verified GitHub reference folder. Use that source rather than repeating extraction/import; the older collection remains separately identified. Use the indexed/original source when inspection resumes. Keep concept iteration paused until requested; then develop an explicitly chosen character/weapon direction at native camera scale. Any change to action timing, input windows, reach/hitboxes, movement locks, Impact or recovery requires Combat authority, not an art-only handoff.
 
 ## Sources and coverage
 
-- docs/art/ART_DIRECTION.md and the exploration README/export-spec records.
-- Art task 01a01d0a-ced6-77c0-a98a-e94ec3c5c10e, latest round 01a142d5-87a9-78a0-9157-61979966c377; three recent turns read October 16. Older dialogue remains partial.
-- HMM3 source task 01a142bd-e72a-7f03-b3fb-1b28d222492b, latest round 01a142c0-c694-72d3-9275-daad502664c0; three recent turns read. Source authority comes from explicit Art user direction recorded in ART_DIRECTION.md, not from its title or assumed department.
-- Prior 2026-10-12 checkpoint retains earlier GIF/Castle provenance and task binding history.
+- [Canonical Art Direction](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/art/ART_DIRECTION.md), [character set](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/art/references/2026-10-18-character-concepts/README.md), [pass-3 baselines](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/art/references/2026-10-18-pass-3-weapon-baselines/README.md) and [accepted hammer set](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/art/references/2026-10-19-laema-hammer-accepted/README.md). Approval/provenance metadata is carried from those records; their originating concept-generation chat was not independently re-read.
+- [Lit-seam study](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/art/explorations/2026-10-16-lit-seam/README.md), [native sprite comparison](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/art/explorations/2026-10-16-h3-sprite-study/README.md), [Fire GIF folder](https://github.com/czhou2822/Laema/tree/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/presentation/assets/working-combo), [current GDD](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/GAME_DESIGN.md) and [asset record](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/assets/README.md). Current source authority was inspected at `cdf6c50`; unrelated working changes were preserved.
+- Source task: `art`; local title **Art**, thread `01a07f41-7159-70f1-ac7d-e6217941c130`. All 100 host-returned turns read to the end of available history on 2026-10-20; latest completed round `01a15781-d706-78a1-a188-0e15a2b34b46`. It is verified unarchived in its existing managed checkout; its identity/location/history are unchanged.
+- [Saved Art task note](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/checkpoints/2026-10-16-complete-thread-audit/art.md) and [binding history](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/checkpoints/2026-10-16-complete-thread-audit/manifest.json). Other-machine binding `01a01d0a-ced6-77c0-a98a-e94ec3c5c10e` is unavailable here; its October 16 round and later accepted concepts are carried from saved records, not claimed restored dialogue.
+- Earlier independent `hmm3_reference_assets` task `01a142bd-e72a-7f03-b3fb-1b28d222492b` remains archived reference, explicitly assigned to Art on October 16. [Its saved note](https://github.com/czhou2822/Laema/blob/cdf6c5013a8ed7c6c3b3c91536cb4076ee81cdd5/docs/checkpoints/2026-10-16-game-feel/hmm3-reference-assets.md) retains external-collection limits.
+- New independent source-search chat **Find original Heroes III flipbooks**, `01a15788-69c7-7332-ab13-bc1143e06495`, completed extraction round `01a15788-6e5f-7903-a951-e5eb31e1d68a` and completed upload round `01a15791-839f-7463-8f99-5b62d1d08893`: available history and final publication response read, plus README.txt/verification.json/package records and the repository collection README. The user explicitly requested that separate upload; GitHub's main ref was independently verified at `b217acb5` before this Art publication. This is a source reference only; no task identity or department assignment is changed.
+- Public mirrors contain development summaries only, not raw dialogue, private tool output or the external source archives.
 
-## Task assignment — confirmed October 16
+## Mirrors
 
-The user explicitly assigned HMM3 (task_key hmm3_reference_assets, chat 01a142bd-e72a-7f03-b3fb-1b28d222492b) to Art. It is now archived; retain its preceding checkpoint note/binding as reference without restoring the chat. Preserve the full external-collection portability gap; the assignment does not copy or publish that collection.
+- [GitHub Markdown](https://github.com/czhou2822/Laema/blob/main/docs/departments/art.md)
+- [Space counterpart](https://chatgpt.com/space/page_b974c5358ba88191b86b0cab6bf9b009)
