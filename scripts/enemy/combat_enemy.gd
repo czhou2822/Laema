@@ -1,16 +1,18 @@
 extends "res://scripts/enemy/enemy.gd"
 
-const IDLE_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Idle.png")
-const WALK_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Walk.png")
-const DEAD_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Dead.png")
-const HURT_TEXTURE = preload("res://assets/prototype/enemy/medieval_fighter/Hurt.png")
+const IDLE_TEXTURE = preload("res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png")
+const WALK_TEXTURE = preload("res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png")
+const DEAD_TEXTURE = preload("res://assets/prototype/enemy/pikeman/repaint_v02/death_right_sheet.png")
+const HURT_TEXTURE = preload("res://assets/prototype/enemy/pikeman/repaint_v02/hurt_right_sheet.png")
 const ImpactProbe = preload("res://scripts/debug/impact_probe.gd")
 const Geometry = preload("res://scripts/combat/attack_geometry.gd")
-const CELL_SIZE := Vector2(128.0, 128.0)
-const IDLE_FRAMES := 6
-const WALK_FRAMES := 12
+const Contacts = preload("res://scripts/combat/contact_evaluation.gd")
+const CELL_SIZE := Vector2(768.0, 512.0)
+const SHEET_COLUMNS := 4
+const IDLE_FRAMES := 7
+const WALK_FRAMES := 6
 const DEAD_FRAMES := 5
-const HURT_FRAMES := 4
+const HURT_FRAMES := 6
 
 enum State {
 	DORMANT,
@@ -30,6 +32,9 @@ enum State {
 @onready var attack_flash: Polygon2D = $AttackFlash
 @onready var bt_player: BTPlayer = $BTPlayer
 @onready var attack_animation: AnimationPlayer = $AnimationPlayer
+@onready var pikeman_attack_audio: AudioStreamPlayer = $PikemanAttackAudio
+@onready var pikeman_death_audio: AudioStreamPlayer = $PikemanDeathAudio
+@onready var pikeman_movement_audio: AudioStreamPlayer = $PikemanMovementAudio
 # StageArea prepares children before configure(); its reset needs the saved pose.
 @onready var _body_rest_position: Vector2 = $BodyVisual.position
 
@@ -44,18 +49,23 @@ var _hit_visual_tween: Tween
 var _hit_visual_active := false
 var _hit_visual_time := 0.0
 var _hit_visual_duration := 0.0
-var _committed_attack_origin := Vector2.ZERO
-var _committed_attack_target_position := Vector2.RIGHT
-var _committed_attack_radius := 24.0
 var _next_attack_id := 1
 var _attack_id := 0
-var _strike_emitted := false
 var _hit_targets: Array[int] = []
 var _ticking_tree := false
 var _preempt_requested := false
 var _pending_hit_reaction: Dictionary = {}
 var _reaction_probe_origin := Vector2.ZERO
 var _reaction_probe_started_ms := 0
+var _walking_audio_active := false
+var _death_audio_played := false
+var _geometry_clock: Animation
+var _sample_action_id := 0
+var _sample_time := 0.0
+var _window_finished := false
+var _frame_action_id := 0
+var _physics_action_id := 0
+var _defer_tree_tick := false
 
 
 func configure(config: Dictionary) -> void:
@@ -63,13 +73,18 @@ func configure(config: Dictionary) -> void:
 		settings.read_from_config(config)
 		settings.hit_reaction.read_from_config(config)
 	super.configure(config)
+	_stop_pikeman_audio()
+	_death_audio_played = false
+	if not pikeman_movement_audio.finished.is_connected(_on_movement_audio_finished):
+		pikeman_movement_audio.finished.connect(_on_movement_audio_finished)
+	Contacts.register(self)
 	Geometry.make_private(attack_animation)
-	Geometry.set_contact_size(attack_animation.get_animation(&"melee_swing"), float(config["enemy_ai"]["hitbox_reach"]), float(config["enemy_ai"]["hitbox_radius"]))
+	Geometry.set_active_size(attack_animation.get_animation(&"melee_swing"), float(config["enemy_ai"]["hitbox_reach"]), float(config["enemy_ai"]["hitbox_radius"]))
 	hit_reaction.reaction_ended.connect(_finish_hit_visual)
 	_ai_config = Dictionary(config["enemy_ai"]).duplicate(true)
 	warning_marker.visible = false
 	attack_flash.visible = false
-	body_visual.modulate = Color("a77991")
+	body_visual.modulate = Color.WHITE
 	# Capture the scene-authored rest pose for reaction and stage reset recovery.
 	_body_rest_position = body_visual.position
 	_sync_ai_blackboard()
@@ -88,7 +103,7 @@ func apply_runtime_tuning() -> void:
 		if _ai_config.get(key) != next_ai.get(key):
 			decision_tuning_changed = true
 	_ai_config = next_ai.duplicate(true)
-	Geometry.set_contact_size(attack_animation.get_animation(&"melee_swing"), float(_ai_config["hitbox_reach"]), float(_ai_config["hitbox_radius"]))
+	Geometry.set_active_size(attack_animation.get_animation(&"melee_swing"), float(_ai_config["hitbox_reach"]), float(_ai_config["hitbox_radius"]))
 	_sync_ai_blackboard()
 	if not decision_tuning_changed:
 		return
@@ -156,9 +171,10 @@ func _physics_process(delta: float) -> void:
 		set_physics_process(_area_active and not _defeated)
 		return
 	bt_player.blackboard.set_var(&"target", player)
-	if attack_animation.is_playing():
-		_advance_attack(delta, player)
-	_update_ai_tree(delta)
+	_physics_action_id = _attack_id
+	_defer_tree_tick = attack_animation.is_playing()
+	if not _defer_tree_tick:
+		_update_ai_tree(delta)
 	if _state == State.DEAD:
 		return
 	_apply_gravity_and_move(delta)
@@ -185,65 +201,89 @@ func ai_begin_approach() -> void:
 
 func ai_move_toward(target: Entity, speed: float) -> void:
 	_facing = Vector2.RIGHT if target.global_position.x >= global_position.x else Vector2.LEFT
-	body_visual.flip_h = _facing.x < 0.0
+	_update_visual_facing()
 	velocity.x = _facing.x * speed
 
 
 func ai_stop_moving() -> void:
 	velocity.x = 0.0
+	_stop_movement_audio()
 
 
-func _advance_attack(delta: float, player: Entity) -> void:
-	var clock: Animation = attack_animation.get_animation(&"melee_swing")
-	var contact_time := clock.get_marker_time(&"contact")
-	var time := attack_animation.current_animation_position
-	var action_id := _attack_id
-	var advanced := 0.0
-	# Visit contact before advancing past the active interval or animation end.
-	if action_id != 0 and not _strike_emitted and (time >= contact_time or time + delta >= contact_time):
-		advanced = clampf(contact_time - time, 0.0, delta)
-		attack_animation.advance(advanced)
-		if not ai_strike(player, float(_ai_config["damage"]), int(_config["moves"]["final_enemy_attack"]["impact"])):
-			return
-	if _attack_id != action_id:
+func contact_evaluation_enabled() -> bool:
+	return is_physics_processing() and _area_active and not _defeated
+
+
+func begin_contact_frame() -> void:
+	# A windup created by this frame's BT tick starts advancing next frame,
+	# as it did when the actor advanced its clock before ticking the tree.
+	_frame_action_id = _physics_action_id
+
+
+func finish_contact_frame(delta: float) -> void:
+	if _defer_tree_tick and _stage_enabled and not _defeated:
+		_defer_tree_tick = false
+		_update_ai_tree(delta)
+
+
+func contact_step_limit(limit: float) -> float:
+	if _attack_id != _frame_action_id or not attack_animation.is_playing():
+		return limit
+	return Geometry.step_limit(attack_animation.get_animation(&"melee_swing"), attack_animation.current_animation_position, 1.0, limit)
+
+
+func advance_contact_clock(delta: float) -> void:
+	_sample_action_id = 0
+	if _attack_id != _frame_action_id or not attack_animation.is_playing():
 		return
-	attack_animation.advance(maxf(delta - advanced, 0.0))
+	var clock: Animation = attack_animation.get_animation(&"melee_swing")
+	_sample_action_id = _attack_id
+	_sample_time = minf(attack_animation.current_animation_position + delta, clock.length)
+	attack_animation.advance(delta)
+	if _attack_id != 0 and _sample_time >= clock.get_marker_time(&"active_start") and _sample_time <= clock.get_marker_time(&"active_end"):
+		_set_state(State.ACTIVE)
+
+
+func finish_contact_sample() -> void:
+	if _attack_id == 0 or _attack_id != _sample_action_id or _window_finished:
+		return
+	if _sample_time >= _geometry_clock.get_marker_time(&"active_end"):
+		_window_finished = true
+		if _hit_targets.is_empty():
+			var target := _get_player()
+			_trace_ai(&"melee_miss", {"target": target.name if target != null else &""})
 
 
 func ai_begin_windup(target: Entity) -> void:
 	velocity.x = 0.0
 	var horizontal_distance := target.global_position.x - global_position.x
 	_facing = Vector2.RIGHT if horizontal_distance >= 0.0 else Vector2.LEFT
-	body_visual.flip_h = _facing.x < 0.0
+	_update_visual_facing()
 	_attack_id = _next_attack_id
 	_next_attack_id += 1
 	_hit_targets.clear()
-	_strike_emitted = false
+	_window_finished = false
 	var clock: Animation = attack_animation.get_animation(&"melee_swing")
 	attack_animation.speed_scale = 1.0
 	attack_animation.play(&"melee_swing")
 	attack_animation.advance(0.0)
-	var pose := Geometry.facing_pose(Geometry.contact(clock), _facing)
-	_committed_attack_origin = to_global(pose["position"])
-	_committed_attack_target_position = pose["target"]
-	_committed_attack_radius = float(pose["radius"])
+	_geometry_clock = clock.duplicate()
+	_sample_action_id = _attack_id
+	_sample_time = 0.0
 	_set_state(State.WINDUP)
+	pikeman_attack_audio.play()
 
 
 func ai_windup_finished() -> bool:
 	return not attack_animation.is_playing() or attack_animation.current_animation_position >= attack_animation.get_animation(&"melee_swing").get_marker_time(&"active_start")
 
 
-func ai_strike(target: Entity, damage: float, _impact: int) -> bool:
+func ai_strike(_target: Entity, _damage: float, _impact: int) -> bool:
 	if _state == State.HIT_REACTING or hit_reaction.is_invincible():
 		return false
 	_set_state(State.ACTIVE)
-	var clock: Animation = attack_animation.get_animation(&"melee_swing")
-	var time := attack_animation.current_animation_position
-	if not _strike_emitted and time >= clock.get_marker_time(&"contact"):
-		_strike_emitted = true
-		_resolve_melee_hit(target, damage, int(_config["moves"]["final_enemy_attack"]["impact"]))
-	return _state != State.HIT_REACTING
+	# The shared sample barrier performs geometry detection and resolution.
+	return true
 
 
 func ai_strike_finished() -> bool:
@@ -273,6 +313,8 @@ func _sync_ai_blackboard() -> void:
 
 
 func _abort_ai_tree() -> void:
+	pikeman_attack_audio.stop()
+	_stop_movement_audio()
 	var instance := bt_player.get_bt_instance()
 	if instance != null:
 		instance.get_root_task().abort()
@@ -282,13 +324,15 @@ func _abort_ai_tree() -> void:
 
 
 func _reset_ai_execution() -> void:
+	_stop_pikeman_audio()
+	if not _defeated:
+		_death_audio_played = false
 	_pending_hit_reaction.clear()
 	hit_reaction.reset_for_stage()
 	health_resolver.reset_for_stage()
 	_finish_hit_visual()
 	attack_animation.stop()
 	_attack_id = 0
-	_strike_emitted = false
 	_preempt_requested = false
 	_abort_ai_tree()
 	_set_state(State.DEAD if _defeated else (State.IDLE if _stage_enabled else State.DORMANT))
@@ -296,6 +340,7 @@ func _reset_ai_execution() -> void:
 
 
 func _exit_tree() -> void:
+	_stop_pikeman_audio()
 	_pending_hit_reaction.clear()
 	if is_instance_valid(bt_player):
 		hit_reaction.reset_for_stage()
@@ -303,46 +348,44 @@ func _exit_tree() -> void:
 		_abort_ai_tree()
 
 
-func _resolve_melee_hit(player: Entity, damage: float, impact: int) -> void:
-	var live_origin := attack_cast.global_position
+func get_attack_geometry() -> Dictionary:
+	var time := _sample_time if _sample_action_id == _attack_id else attack_animation.current_animation_position
+	var pose := Geometry.sample(_geometry_clock, time)
+	# The atlas mirrors around BodyVisual's foot anchor, not the actor root.
+	var pivot := Vector2(body_visual.position.x, 0.0)
+	pose["position"] = Vector2(pose["position"]) - pivot
+	pose = Geometry.facing_pose(pose, _facing)
+	pose["position"] = Vector2(pose["position"]) + pivot
+	return pose
+
+
+func collect_melee_contacts() -> Array[HealthEvent]:
+	var events: Array[HealthEvent] = []
+	if _attack_id != _frame_action_id or not bool(get_melee_snapshot().get("active", false)):
+		return events
+	var player := _get_player()
+	if player == null or _hit_targets.has(player.get_instance_id()):
+		return events
+	var pose := get_attack_geometry()
+	var live_origin := attack_cast.position
 	var live_target_position := attack_cast.target_position
 	var live_radius := (attack_cast.shape as CircleShape2D).radius
-	attack_cast.global_position = _committed_attack_origin
-	attack_cast.target_position = _committed_attack_target_position
-	(attack_cast.shape as CircleShape2D).radius = _committed_attack_radius
+	attack_cast.position = pose["position"]
+	attack_cast.target_position = pose["target"]
+	(attack_cast.shape as CircleShape2D).radius = float(pose["radius"])
 	attack_cast.force_shapecast_update()
-	var did_hit := false
 	for index in range(attack_cast.get_collision_count()):
 		if attack_cast.get_collider(index) != player:
 			continue
-		var event := HealthEvent.damage(
-			self,
-			player,
-			damage,
-			impact,
-			HealthEvent.Delivery.DIRECT,
-			&"",
-			{},
-			_facing,
-			attack_cast.get_collision_point(index)
-		)
-		event.source_action_id = _attack_id
-		event.melee_contact = true
-		var result: HealthResult = player.receive_health_event(event)
-		if result.outcome != HealthResult.Outcome.APPLIED:
-			break
 		_hit_targets.append(player.get_instance_id())
-		attack_flash.visible = true
-		attack_flash.scale.x = _facing.x
-		_attack_flash_remaining = 0.14
-		_trace_ai(&"melee_hit", {"target": player.name, "damage": event.amount})
-		did_hit = true
+		var event := HealthEvent.damage(self, player, float(_ai_config["damage"]), int(_config["moves"]["final_enemy_attack"]["impact"]), HealthEvent.Delivery.DIRECT, &"", {}, _facing, attack_cast.get_collision_point(index), _attack_id)
+		event.melee_contact = true
+		events.append(event)
 		break
-	attack_cast.global_position = live_origin
+	attack_cast.position = live_origin
 	attack_cast.target_position = live_target_position
 	(attack_cast.shape as CircleShape2D).radius = live_radius
-	if not did_hit:
-		_trace_ai(&"melee_miss", {"target": player.name})
+	return events
 
 
 func _apply_gravity_and_move(delta: float) -> void:
@@ -356,15 +399,18 @@ func _apply_gravity_and_move(delta: float) -> void:
 		velocity.y += float(ProjectSettings.get_setting("physics/2d/default_gravity", 980.0)) * float(_config["movement"]["gravity_scale"]) * delta
 	elif velocity.y > 0.0:
 		velocity.y = 0.0
+	var movement_start_x := global_position.x
 	move_and_slide()
+	_sync_movement_audio(absf(global_position.x - movement_start_x) > 0.001)
 	if reacting:
 		hit_reaction.finish_body_motion()
 
 
 func _process(delta: float) -> void:
+	queue_redraw()
 	if _state in [State.WINDUP, State.ACTIVE, State.RECOVERY] and not _hit_visual_active:
 		# AnimationPlayer owns attack artwork and geometry, including editor preview.
-		body_visual.flip_h = _facing.x < 0.0
+		_update_visual_facing()
 		return
 	var texture: Texture2D = IDLE_TEXTURE
 	var frame := 0
@@ -385,8 +431,35 @@ func _process(delta: float) -> void:
 		frame = int(floor(_animation_time * 9.0)) % WALK_FRAMES
 	body_visual.texture = texture
 	body_visual.region_enabled = true
-	body_visual.region_rect = Rect2(Vector2(frame, 0.0) * CELL_SIZE, CELL_SIZE)
+	var cell := Vector2(frame % SHEET_COLUMNS, floori(float(frame) / float(SHEET_COLUMNS)))
+	body_visual.region_rect = Rect2(cell * CELL_SIZE, CELL_SIZE)
+	_update_visual_facing()
+
+
+func _update_visual_facing() -> void:
 	body_visual.flip_h = _facing.x < 0.0
+	# Right atlases mirror once around the cell-centered X feet anchor (384).
+	# The scene's zero horizontal offset therefore needs no facing correction.
+
+
+func _draw() -> void:
+	if _config.is_empty() or not bool(_config["ui"]["attack_hitbox_visible"]):
+		return
+	var snapshot := get_melee_snapshot()
+	if snapshot.is_empty() or not bool(snapshot["active"]):
+		return
+	var pose := get_attack_geometry()
+	var start: Vector2 = pose["position"]
+	var end := start + Vector2(pose["target"])
+	var radius := float(pose["radius"])
+	if radius <= 0.0:
+		return
+	# Match the current animated query pose, including facing.
+	var steps := maxi(2, int(start.distance_to(end) / (Vector2.ONE * radius * 2.0).length() * 4.0))
+	for index in range(steps + 1):
+		var center := start.lerp(end, float(index) / steps)
+		draw_circle(center, radius, Color(1.0, 0.78, 0.12, 0.24))
+		draw_arc(center, radius, 0.0, TAU, 32, Color(1.0, 0.9, 0.35, 0.95), 1.0, true)
 
 
 func _update_attack_flash(delta: float) -> void:
@@ -404,6 +477,8 @@ func _on_reaction_started(level: int, direction: Vector2, distance: float, durat
 	_reaction_probe_started_ms = Time.get_ticks_msec()
 	ImpactProbe.record("enemy_reaction_visual", {"target": str(get_path()), "reaction_level": level, "duration": duration, "distance": distance, "combat_reaction": hit_reaction.is_invincible()})
 	if level > 0:
+		pikeman_attack_audio.stop()
+		_stop_movement_audio()
 		hit_reaction_audio.play()
 	if _hit_visual_tween != null and _hit_visual_tween.is_valid():
 		_hit_visual_tween.kill()
@@ -446,6 +521,13 @@ func _set_state(next_state: State) -> void:
 	if _state == next_state:
 		return
 	_state = next_state
+	if _state != State.APPROACH:
+		_stop_movement_audio()
+	if _state == State.DEAD:
+		_stop_pikeman_audio()
+		if not _death_audio_played:
+			_death_audio_played = true
+			pikeman_death_audio.play()
 	bt_player.blackboard.set_var(&"phase", _state_name())
 	_animation_time = 0.0
 	warning_marker.visible = _state == State.WINDUP
@@ -481,9 +563,9 @@ func get_melee_snapshot() -> Dictionary:
 	if _attack_id == 0 or _state not in [State.WINDUP, State.ACTIVE]:
 		return {}
 	var clock: Animation = attack_animation.get_animation(&"melee_swing")
-	var time := attack_animation.current_animation_position
+	var time := _sample_time if _sample_action_id == _attack_id else attack_animation.current_animation_position
 	return {
-		"active": attack_animation.is_playing() and time >= clock.get_marker_time(&"active_start") and time <= clock.get_marker_time(&"active_end"),
+		"active": not _window_finished and _attack_id != 0 and time >= clock.get_marker_time(&"active_start") and time <= clock.get_marker_time(&"active_end"),
 		"move_id": &"final_enemy_attack",
 		"impact": int(_config["moves"]["final_enemy_attack"]["impact"]),
 		"damage": float(_ai_config["damage"]),
@@ -497,11 +579,9 @@ func get_melee_snapshot() -> Dictionary:
 func cancel_combat_attack() -> void:
 	if _state == State.DEAD:
 		return
+	pikeman_attack_audio.stop()
 	attack_animation.stop()
 	_attack_id = 0
-	_strike_emitted = true
-	_committed_attack_origin = Vector2.ZERO
-	_committed_attack_target_position = Vector2.ZERO
 	attack_flash.visible = false
 	_attack_flash_remaining = 0.0
 	_set_state(State.HIT_REACTING)
@@ -546,6 +626,34 @@ func ai_hold_hit_reaction() -> void:
 
 
 func on_clash_contact_resolved(result: HealthResult) -> void:
-	if result.outcome == HealthResult.Outcome.APPLIED:
-		_hit_targets.append(result.event.target.get_instance_id())
-		_strike_emitted = true
+	if result.outcome != HealthResult.Outcome.APPLIED or result.event.source_action_id != _attack_id:
+		return
+	attack_flash.visible = true
+	attack_flash.scale.x = _facing.x
+	_attack_flash_remaining = 0.14
+	_trace_ai(&"melee_hit", {"target": result.event.target.name, "damage": result.event.amount})
+
+
+func _sync_movement_audio(moved_horizontally: bool) -> void:
+	_walking_audio_active = moved_horizontally and _area_active and _stage_enabled and _state == State.APPROACH and not hit_reaction.is_active()
+	if not _walking_audio_active:
+		pikeman_movement_audio.stop()
+	elif not pikeman_movement_audio.playing:
+		pikeman_movement_audio.play()
+
+
+func _on_movement_audio_finished() -> void:
+	_sync_movement_audio(_walking_audio_active)
+
+
+func _stop_movement_audio() -> void:
+	_walking_audio_active = false
+	if is_instance_valid(pikeman_movement_audio):
+		pikeman_movement_audio.stop()
+
+
+func _stop_pikeman_audio() -> void:
+	_stop_movement_audio()
+	for audio in [pikeman_attack_audio, pikeman_death_audio, hit_reaction_audio]:
+		if is_instance_valid(audio):
+			audio.stop()

@@ -1,6 +1,197 @@
 # Implementation Status
 
-Current candidate records, consolidated October 20. Reported engine checks below belong to their named earlier slices; they do not validate later active-window, Pikeman timing or audio changes, imply human/controller acceptance, or establish Web export or submission clearance. Heat timing and shared reaction durations are resolved in GAME_DESIGN.md; the editor's separate post-reaction AI wait is also user-confirmed.
+## Fire X1–X5 v03 diagnostic image swap — October 20
+
+Status: `AWAITING_USER_VALIDATION`. The user selected Art's all-five v03 sword-
+angle studies for prototype integration. The five native Fire Animations now
+reference 32 positions (8/6/5/6/7) in fixed448px cells, using the exact source
+metadata phases. The selected sheets live in the existing recognized Fire asset
+prefix, preserving the (224,400) feet anchor and current presentation/body owner.
+The plain sword/crossguard is intentional diagnostic art, not a final weapon lock.
+
+Only attack textures and Sprite image-region keys change. Animation UIDs,
+active/timing markers, all existing geometry curves, collision, move timing,
+lunge, Heat/input/damage/Impact, Idle/Walk/Hurt/Cast, other schools, Pikeman,
+Gym/HUD/camera, AI and audio are preserved. The prior v01 attack sheets remain.
+Current markers agree with Art's reference metadata; no older geometry is restored.
+
+Known review limits: X3's reversed pose is excluded but its chamber-to-cut gap
+remains. The v03 drawings can diverge from retained v01 hitbox curves: notably
+X2 extends forward while the earlier backward-sweep query remains. The earlier
+337 alignment assertions/captures below do not establish v03 visual alignment.
+
+Evidence is static/source and image inspection only: source/copy/frame identity,
+dimensions/regions, phase mapping, preserved markers/geometry and whitespace.
+No editor/runtime/build/tests were run for v03; source contact sheets are not
+engine captures. User review remains for both facings, all five moves, high Heat,
+transitions/interruptions/retry, feet stability and F4 pose/query comparison.
+The MINI/FULL Fireball VFX integration remains a separate pending plan.
+
+Current candidate records, consolidated October 20. Engine checks belong only to
+their named slices, including the focused collision correction below; they do not
+validate unrelated active-window/clash/audio cases, imply human/controller acceptance,
+or establish Web export or submission clearance. Heat timing and shared reaction
+durations are resolved in GAME_DESIGN.md; the separate post-reaction AI wait is
+also user-confirmed.
+
+## Art-aligned Fire / pikeman collision correction — October 20
+
+Status: `AWAITING_USER_VALIDATION`. The user approved both attack and body
+corrections, Fire X2's backward coverage, unchanged damage windows/pacing and
+focused Godot tests/captures. This supersedes the preserved physical mismatches
+in the earlier art-only integration records below; their art limits remain.
+
+Fire X1–X5 now use held, frame-aligned guard-to-tip capsule segments (radius3.5
+local/7world). Pikeman uses hand-to-tip thrust segments (radius6), including close
+coverage; full extension reaches localX211 right / X-233 left about visualX-11.
+The native animations retain identities, sprite keys, markers and lengths. Only
+their three geometry tracks change. Damage, Impact, Poise, lunge, approach range,
+AI, SFX, layers, one-contact spending and other-school attack curves are preserved.
+
+Fire Player's stable private rectangle is30×90 at(0,-19), root scale2:60×180world
+with bottomY26. Legacy art restores26×30 at(0,11). The actual committed texture
+retains its body across selected-school switches, including Cast. Player owns
+profile synchronization; Movement calls before movement, Might before/after
+clock advancement and after the contact frame. Reset/death clear stale Hurt
+presentation and its tween. Pikeman's capsule is radius30/height180 at(-11,-59),
+bottomY31. Both existing sprite/foot registrations and root positions remain.
+
+Changed runtime scope: five Fire native melee resources and melee_swing;
+scripts/player/player.gd; scripts/player/movement_controller.gd;
+scripts/combat/might_component.gd; scripts/enemy/combat_enemy.gd;
+scenes/enemy/combat_enemy.tscn. Player scene/assets, other-school native resources,
+shared settings, evaluator/resolver and AI source are unchanged by this task.
+The new tools/tests/art_hitbox_alignment_test.gd and its UID own focused evidence.
+GDD, TDD and ATTACK_STYLES record the approved behavior/current authoring values.
+
+Evidence: the existing runner imported and checked a fresh isolated project with
+Godot4.7.1.stable.official.a13da4feb; all324 focused assertions passed. Cases cover
+both facings, all Fire moves/pikeman active sprite poses, measured tip/near-hand
+contact, outside-tip misses, actor collectors, per-target spending, artwork/query
+frame agreement, head/torso/leg body reception, school switches during melee/Cast,
+Hurt, failed Cast/reset, death, actual Retry, Final Arena capsule reuse, ordinary
+solid movement/floor anchors and input-driven X1 damage/one generated orb.
+Fixtures that place actors/seek clocks are distinct from ordinary input/physics.
+The final Compatibility-renderer run passed337 assertions, including13 capture
+saves. All13 rendered Gym images were inspected: five Fire attack poses in both
+facings, both pikeman thrust facings and ordinary body contact. The yellow overlay
+follows the sampled weapon; cyan engine debug shows the stable body. Native
+ShapeCast authoring debug was hidden in captures to avoid confusing its restored
+pose with the committed query overlay. Fixture seeks restart the clip first,
+preventing a retained discrete sprite value after backward seeking.
+
+Static comparison confirms geometry-only edits to the six native resources,
+byte-identical scoped runtime files in the final isolated copy, and319 unchanged
+paths out of330 protected pre-edit source/resource/asset hashes. The scoped runtime
+plus test fingerprint is SHA-256
+`a0814087ecacfea8d92567da273b1bf97b7ca0fac4f24dce65c40b21e1f21c88`.
+Local task evidence retains both isolated runs, reports, all13 captures, their
+overview, pre-edit copies and the before/after shutdown control. This fingerprint
+covers the listed correction/test scope, not unrelated work or the entire tree.
+
+Validation limitation: the runner reports overall FAILED because Godot logs
+shutdown resource errors, despite zero assertion failures. A before/after boot/free
+control reproduced the same23 ObjectDB /14 resource shutdown counts in both trees;
+the fresh final focused run also reports those counts. Earlier warm runs showed
+13/9. These existing lifecycle diagnostics are retained, not silently fixed or
+reported as a clean engine run. No human/controller feel, full clash matrix,
+submission review, export/build or publication was performed. Nothing was committed
+or pushed by this task. Human acceptance of reach/spacing and remaining art limits
+remains separate.
+
+## Fire player sword-and-shield presentation — October 20
+
+Status: `AWAITING_USER_VALIDATION`. The user's latest Art handoff authorizes
+prototype integration of nine selected sheets/52 frames; the package's earlier
+review-candidate labels and fine continuity/handling limits remain, not production
+or runtime acceptance. Only Fire art changes. Pikeman v02, Gym framing05, other
+schools, gameplay, hitboxes/colliders, lunge/movement, input, AI and SFX are preserved.
+
+Fire X1–X5 and cast_fire native Animations use448px regions/new textures at their
+exact existing frame times and markers. Old swapped earth_x1..earth_x5 textures
+remain intact. Player selects Fire Idle/Walk/Hurt without overwriting the shared
+128px sheets used by Water/Air/Earth. Actual displayed texture chooses the visual
+profile, including a committed Fire action after a selected-school switch. Legacy
+textures restore their saved material/filter/offset and original school styling.
+Fire displays the accepted colors without the old outline/tint shader. Root2,
+Sprite0.5, physical rectangle and all timing remain unchanged; a Fire-only offset
+(0,-124) maps foot(224,400) to collider floor26local/52world/y610in Gym. Runtime
+profile registration is not a new native-editor preview controller.
+
+Exact changed files: scripts/player/player.gd; config/attack_animations/fire_x1.tres,
+fire_x2.tres, fire_x3.tres, fire_x4.tres, fire_x5.tres and cast_fire.tres;
+assets/prototype/player/fire_sword_shield_v01/PROVENANCE.md and its nine PNGs
+(fire_x1.png..fire_x5.png, shared_idle.png, shared_walk.png, hurt.png, cast_fire.png);
+docs/TECH_ARCHITECTURE.md; this file. Player's scene, the other20 native Animations,
+shared originals, protected Pikeman/Gym/settings/resolver/AI source are not edited.
+
+Static evidence: all nine runtime hashes/dimensions match selected metadata; six
+native-resource comparisons differ only in texture references and region payloads,
+preserving every current key time/marker and gameplay track. Source tracing covers
+Fire/legacy restoration, Hurt and committed-action/mixed-Cast texture selection.
+Protected-file hashes and whitespace checks are retained. No Godot/editor/import,
+continuous playback, compiler/build, automated game tests or test creation was
+performed. Nothing was committed, pushed or published by this task.
+
+Art limits: fine sword/guard/shield/strap/face/hair continuity, separate X3 low
+sweep, X5 shield grip and loop rhythm remain provisional. Cast's raised sword is
+not an attack-rule change. X2's rearward blade remains rearward; its physical
+coverage stays forward. X1's drawn forward edge likewise exceeds its query, and
+the180px drawing is taller than the unchanged physical body. These mismatches
+are reported, not retuned. Walk5376px/Cast4480px atlas import/Web/GPU compatibility
+is unverified. Old art-source GDD descriptions need the owning result-only sync.
+
+User validation: normal project import, then Fire Idle/Walk/X1–X5/Hurt/Cast in both
+facings; compare feet and debug geometry, school changes during/after Fire moves,
+failed Cast, interruption/reset/death/Retry and mixed-primary Cast presentation.
+Return to Water/Air/Earth and confirm their original Idle/Walk/Hurt/attacks/Cast,
+colors, filters and registration. Check Gym HUD/Pikeman remain unchanged. Inspect
+X3/X5 handling, source-backed X2 sweep, actual walk motion and loop/transition feel.
+
+## Corrected Pikeman v02 presentation — October 20
+
+Status: `AWAITING_USER_VALIDATION`. Art's superseding v02 right atlases now supply
+Idle/Walk/Attack/Hurt/Death, using four-column 768×512 cells and unchanged frame
+counts 7/6/10/6/5. Runtime flips once for left facing. The approximately180px body
+uses unit sprite scale; its (384,448) foot anchor maps through centered offset
+(0,-192) and BodyVisual position(-11,31) to the unchanged capsule bottom. No actor
+root/collider/spawn is scaled or moved. Gym framing05 camera/background/HUD and
+current Player art are preserved. The user separately approved moving only the
+HP label and windup warning above the taller body and floating-damage lane.
+
+Native melee_swing changes only texture and region rectangles. Its key times,
+0.5s active-start/full-thrust index5, 1.0s end, all AttackCast tracks and events
+are unchanged. Scripted idle/walk/death pace, captured Hurt timing, existing death
+hold/result freeze, AI, reactions, damage, progression and SFX remain unchanged.
+
+Known mismatch, intentionally not retuned: the painted right thrust edge is about
+115px beyond the unchanged query's x96 outer edge; the pike's visual height also
+differs from its legacy hitbox lane. Left-facing geometry must be compared too.
+Minor generated material variation and coarse five-frame death remain Art limits.
+
+Exact changed files: scripts/enemy/combat_enemy.gd; scenes/enemy/combat_enemy.tscn;
+config/attack_animations/melee_swing.tres; assets/prototype/enemy/pikeman/PROVENANCE.md;
+assets/prototype/enemy/pikeman/repaint_v02/PROVENANCE.md and its five new PNGs
+(idle_right_sheet.png, walk_right_sheet.png, attack_right_sheet.png,
+hurt_right_sheet.png, death_right_sheet.png); docs/TECH_ARCHITECTURE.md; this file.
+Existing native PNGs/provenance and unrelated dirty work are retained.
+
+Checks: Art-source/runtime copy hashes and PNG dimensions; frame-region bounds;
+source-based anchor/facing arithmetic; old/new native Animation comparison with
+only texture/region payloads excluded; collider/query/AI/audio source-block
+preservation; protected Gym/Player/settings/AI/resolver hashes; whitespace checks.
+Art's 34-frame/68-cell/mirror/boundary review is reported source evidence, not an
+agent-run game test. No Godot/editor/import/build, continuous playback or automated
+tests ran or were created. This task did not commit or push.
+
+User validation: open Gym after normal import; walk/fight in both directions,
+compare feet to the floor, and inspect full thrust against the debug hitbox.
+Check ready/loop/recovery, interruption/reset, Hurt, Death's existing terminal
+behavior and Gym result freeze/Retry. Confirm HP/warning/damage readability,
+unchanged Player and framing05 HUD. Also compare the reusable Enemy in Final Arena.
+The GDD's earlier native-Pikeman source wording predates this accepted Art change;
+its owning result-only documentation synchronization remains outstanding. No new
+gameplay decision is implied by this presentation integration.
 
 ## TDD consolidation and editor wait alignment — October 20
 
@@ -266,7 +457,9 @@ Historical intermediate state, superseded by the current replacement/contact rec
 
 ## Pikeman presentation and attack-speed candidate — October 20
 
-CombatEnemy now references the local Heroes III Pikeman idle, walk, front attack,
+Historical native-sheet presentation, superseded by corrected v02 above. Its
+accepted attack pacing remains unchanged by that visual replacement.
+CombatEnemy previously referenced the local Heroes III Pikeman idle, walk, front attack,
 hurt, and death sheets in both Gym and Final Arena. Multi-row sampling and one
 shared feet anchor preserve the intended size/alignment. The user reported the
 visual swap looks good, then requested original attack pacing. The attack now

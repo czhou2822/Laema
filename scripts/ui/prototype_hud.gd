@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var compact_bottom_panels := false # Gym framing05 only; tutorials keep their layout.
+
 const SCHOOL_COLORS := {
 	&"fire": Color("ff493d"),
 	&"water": Color("3a96ff"),
@@ -68,7 +70,54 @@ var _defence_label := "READY"
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	mark_progress.step = 0.0
+	if compact_bottom_panels:
+		_apply_compact_bottom_layout()
 	_orb_panel_rest_position = orb_panel.position
+
+
+func _apply_compact_bottom_layout() -> void:
+	# Existing cached controls keep their data owners; only their arrangement changes.
+	var heat_panel: PanelContainer = $GameUI/HeatPanel
+	heat_panel.position = Vector2(12, 648)
+	orb_panel.position = Vector2(390, 648)
+	var panel_style := StyleBoxFlat.new()
+	panel_style.bg_color = Color(0.025, 0.035, 0.05, 0.88)
+	panel_style.set_corner_radius_all(4)
+	panel_style.content_margin_left = 12.0
+	panel_style.content_margin_right = 12.0
+	panel_style.content_margin_top = 3.0
+	panel_style.content_margin_bottom = 3.0
+	for panel in [heat_panel, orb_panel]:
+		panel.add_theme_stylebox_override("panel", panel_style)
+	var heat_layout: VBoxContainer = $GameUI/HeatPanel/HeatLayout
+	heat_layout.add_theme_constant_override("separation", 2)
+	$GameUI/HeatPanel/HeatLayout/HeatTitle.add_theme_font_size_override("font_size", 13)
+	game_heat_label.add_theme_font_size_override("font_size", 14)
+	var orb_layout: VBoxContainer = $GameUI/OrbPanel/OrbLayout
+	orb_layout.add_theme_constant_override("separation", 0)
+	var orb_title: Label = $GameUI/OrbPanel/OrbLayout/OrbTitle
+	var header := HBoxContainer.new()
+	header.name = "CompactHeader"
+	orb_layout.add_child(header)
+	orb_layout.move_child(header, 0)
+	orb_title.reparent(header)
+	mark_label.reparent(header)
+	orb_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	mark_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	mark_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	for label in [orb_title, mark_label]:
+		label.add_theme_font_size_override("font_size", 13)
+	for bar in [game_heat_bar, mark_progress]:
+		bar.custom_minimum_size.y = 4.0
+		var background := StyleBoxFlat.new()
+		background.bg_color = Color(0.0, 0.0, 0.0, 0.5)
+		var fill := StyleBoxFlat.new()
+		fill.bg_color = Color(0.72, 0.75, 0.8, 0.95)
+		bar.add_theme_stylebox_override("background", background)
+		bar.add_theme_stylebox_override("fill", fill)
+	# Let the queued container sorts drop the inherited tall minimum sizes first.
+	heat_panel.set_deferred("size", Vector2(320, 64))
+	orb_panel.set_deferred("size", Vector2(500, 64))
 
 
 func _process(_delta: float) -> void:

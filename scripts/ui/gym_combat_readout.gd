@@ -123,7 +123,9 @@ func consume_reaction(snapshot: Dictionary) -> void:
 	_formulas[role].modulate = Color("ffd581") if level > 0 else Color(0.8, 0.83, 0.88)
 	var attacker := "Player" if is_instance_valid(_player) and snapshot["attacker_id"] == _player.get_instance_id() else "Enemy"
 	_statuses[role].text = "%s %s · %s" % [attacker, _move_name(snapshot["attacker_move"]), _outcome_text(outcome)]
-	if snapshot.get("player_tie", false):
+	if snapshot.get("player_zero_advantage", false):
+		_statuses[role].text += " · Player zero advantage"
+	elif snapshot.get("player_tie", false):
 		_statuses[role].text += " · Player wins 0/0 tie"
 	elif not snapshot.get("receiver_active", false):
 		_statuses[role].text += " · active contribution 0"

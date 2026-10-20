@@ -25,6 +25,8 @@ func apply_runtime_tuning() -> void:
 func _physics_process(_delta: float) -> void:
 	if _body == null or _config.is_empty():
 		return
+	if _body.has_method("sync_combat_body_profile"):
+		_body.call("sync_combat_body_profile")
 	var input_direction := _sample_input_direction()
 	if not input_direction.is_zero_approx():
 		if not _locked:

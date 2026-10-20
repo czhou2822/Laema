@@ -75,15 +75,17 @@ Existing block/parry behavior and target-side invincibility remain the intercept
 
 ## Current decision — character-owned combat, October 20
 
-CombatEnemy's prototype visuals use the original Heroes III Castle Pikeman
-(unupgraded): idle, movement, front thrust, hurt, and death, with original colors
-and approximately the previous Enemy's body height and ground position. This
-applies to the reusable combat Enemy in Gym and Final Arena. Practice-target
-artwork, collision, and combat tuning are preserved. The user's subsequent
+CombatEnemy uses the accepted generated Pikeman repaint v02 for idle, movement,
+front thrust, hurt and death, referencing the original unupgraded Heroes III
+Castle Pikeman. Fire Laema uses the accepted generated sword-and-shield sheets;
+other schools retain their legacy artwork. These bindings apply to the reusable
+actors in Gym and Final Arena. Practice targets retain their separate artwork,
+collision and tuning. The user's subsequent
 speed adjustment uses the original Pikeman's one-second base attack duration:
 ten evenly spaced frames, fully extended thrust/active-start at 0.5 seconds, and
 return to idle at 1.0 second. This supersedes the prior 1.1-second windup and
-1.3-second total attack; damage, Impact, Poise, and hitbox sizes remain unchanged.
+1.3-second total attack; damage, Impact and Poise remain unchanged. The later
+approved spatial correction below supersedes the earlier preserved hitbox sizes.
 
 The user selected the current Gym tuning as the baseline for the reusable Player
 and CombatEnemy in every scene. Combat settings belong to the characters, with
@@ -106,6 +108,24 @@ The previous Gym's 1.5× Fire/Cast duration is baked into Player settings once;
 there is no scene multiplier. Charging speed, authored hitboxes and X4/X5 motion
 are preserved. This supersedes older Gym-only/run-only tuning descriptions below.
 Implementation and automated checks do not establish human gameplay-feel acceptance.
+
+### Accepted art-aligned collision correction — October 20
+
+The user approved correcting both attack areas and body collision to fit the new
+art. Fire X1–X5 follow the visible sword from guard to tip, including Fire X2's
+backward sweep. Pikeman's thrust covers the forward hand-to-tip segment so both
+close contact and the extended tip can connect. Geometry follows held sprite
+poses within the existing active windows. Attack duration, markers, combo pacing,
+damage, Impact, Poise, lunge and one-contact-per-target rules are preserved.
+
+Fire Laema has a stable 60×180-world-pixel body; legacy school artwork restores
+its existing 52×60 body. An ongoing action retains the body associated with its
+committed artwork when the selected school changes. Pikeman has a stable capsule
+60 pixels wide and 180 high. Bodies exclude weapon extensions and do not change
+shape with individual poses. Existing feet/floor anchors and root scales remain.
+Pikeman's left attack mirrors about its visual foot anchor, not the actor root.
+These are accepted behavior choices; implementation evidence and remaining human
+validation are recorded in IMPLEMENTATION_STATUS.md.
 
 ## Overview
 
@@ -145,7 +165,7 @@ All four schools have functional X attacks and generic school-and-level Cast out
 
 | School | Character | Prototype Cast output |
 |---|---|---|
-| Fire | Fighter | Generic direct damage plus `Fire Lv.N` display |
+| Fire | Generated Laema sword and shield | Generic direct damage plus `Fire Lv.N` display |
 | Water | Prototype Saber Fighter | Generic direct damage plus `Water Lv.N` display |
 | Air | Shinobi | Generic direct damage plus `Air Lv.N` display |
 | Earth | Samurai | Generic direct damage plus `Earth Lv.N` display |
@@ -154,7 +174,18 @@ This character mapping is prototype presentation only. It does not define Laema�
 
 ### Prototype X-Attack Animation Allocation
 
-The five X positions use the following Craftpix prototype flipbooks after the accepted Fire/Earth swap. The approved Air X5 replacement now uses Weapon Summon: eleven full-body 128×128 frames. The former effect-only Weapon 1 sheet is retired; its source files and earlier records remain in [Air X5 history](history/2026-10-20-air-x5-weapon-summon/README.md). This asset correction changes no combat timing, hit windows, hitbox geometry or tuning; user validation remains pending.
+Fire X1–X5 now use the user-selected v03 plain-sword angle-study cells in
+`assets/prototype/player/fire_sword_shield_v01/angle_proofs_v03/`: 8/6/5/6/7
+frames with the existing 448×448 cells and (224,400) foot anchor. This is a
+prototype image selection, not a final weapon-design lock. Existing hitboxes
+and gameplay clocks remain authoritative; the v03 X2 forward extension can
+visibly differ from its retained earlier backward-sweep query. X3's reversed
+candidate is excluded, with a remaining chamber-to-cut visual gap. The parent
+v01 Idle/Walk/Hurt/Cast artwork remains active. The table below retains the
+earlier Craftpix allocation as pose/source history; it is not Fire's current
+texture binding. The approved Air X5 replacement uses Weapon Summon: eleven
+full-body 128×128 frames. Its retired effect and original records remain in
+[Air X5 history](history/2026-10-20-air-x5-weapon-summon/README.md).
 
 | School | Source family | X1 | X2 | X3 | X4 | X5 |
 |---|---|---|---|---|---|---|
@@ -163,9 +194,16 @@ The five X positions use the following Craftpix prototype flipbooks after the ac
 | Air | Prototype Hero Pack 3 | Aerial Strike | Double Strike | Energy Wave | Wind Power | Weapon Summon |
 | Earth | Medieval Character Pack 5 | Attack 1 | Attack 2 | Attack 3 | Power Punch 1 | Power Punch 2 |
 
-All 20 sheets use compatible 128×128 cells and the shared prototype-character baseline. On October 19 the user swapped Fire and Earth X1–X5 flipbooks for the sword benchmark. The later shared-character baseline removed the Gym-only school restriction. Each visual swap includes the sprite sheet and matching frame keys/pacing. Move identities, attack durations, contact/active markers, hitboxes, lunge, Impact and damage remain assigned to their original schools. Locomotion and Casting keep their current assignments. PNG filenames retain their original school names: `fire_x1` now references `earth_x1.png`, and conversely for Earth, preserving each corresponding X position.
+The original 20 sheets used 128×128 cells. The October 19 Fire/Earth visual swap
+and later Fire repaint retained move identities, frame times and combat pacing.
+Fire's later approved spatial correction is described above. Water/Air/Earth keep
+their 128×128 bindings; Earth still references the original `fire_xN.png` sheets.
+The replaced source textures remain available as history.
 
-All four schools share `Casting Spell.png` from Free Prototype Character Pack 2 as the prototype casting animation. It contains 10 frames using compatible 128×128 cells and the shared feet baseline. Final projectile art remains open.
+Fire Cast uses the generated ten-frame 448×448 sheet. Water/Air/Earth retain the
+original ten-frame 128×128 casting presentation. Fire also has dedicated Idle,
+Walk and Hurt sheets; legacy schools keep the shared originals. Cast's sword
+gesture adds no melee strike. Final projectile art remains open.
 
 School switching is always available and changes the school used by future X attacks. It does not depend on the current chaining window, CHARGING or DEPLETING state, or any prior switch in the active chain. Switching consumes no progression position, buffered input, or other chain/input capacity, and it never clears or ends the chain. The currently selected school never directly determines Cast output.
 
@@ -214,7 +252,10 @@ October 19 presentation update: the table above records the original feel refere
 
 Player X moves have tunable phase durations, forward-body motion and qualifying-reaction push scaling. Player/CombatEnemy Settings own numerical combat tuning; native Animations own sprite frames and hitbox curves. Melee checks sample those curves throughout the active interval. The [attack-authoring guide](ATTACK_STYLES.md) owns editor instructions and current geometry readbacks.
 
-Fire X2/X3 retain the provisional inward geometry adjustment to local X40, matching X1. Its earlier comparison results and limits remain in the [overnight ledger](iterations/2026-10-19-overnight.md); human feel acceptance and final tuning remain pending.
+The art-aligned Fire curves supersede the earlier provisional X40 point queries.
+Their earlier comparison results and limits remain in the
+[overnight ledger](iterations/2026-10-19-overnight.md); human feel acceptance and
+final tuning remain pending.
 
 Forward motion follows the action's committed facing through the existing collision body; walls block displacement and interruption/reset discards the remaining motion. Early Fire attacks use limited push; its X5 increases separation only when the existing hit-reaction rules qualify. Push scaling changes distance, not reaction eligibility, duration, invincibility, damage or Impact/Poise. Active actions retain the style captured at their start; tuning edits apply to subsequent actions. Native Animation markers author the melee active interval; Casting uses its separate launch marker.
 

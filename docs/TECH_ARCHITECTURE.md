@@ -5,6 +5,16 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
+Current Fire visual amendment: X1–X5 now reference the selected 8/6/5/6/7-frame
+v03 sheets inside `fire_sword_shield_v01/angle_proofs_v03/`. The existing
+FIRE_ART_ROOT prefix recognizes them, so Player's shared body/registration/facing
+profile needs no script edit. Only texture paths and discrete Sprite region keys
+change in the five native Animations; IDs/UIDs, clocks/markers and all AttackCast
+tracks remain intact. The original v01 attack sheets and active Idle/Walk/Hurt/
+Cast remain. Older art-alignment checks below do not validate v03 pose/query
+agreement; known mismatches, especially the X2 forward drawing versus retained
+backward query, are preserved for separately authorized review.
+
 <a id="scope-and-selected-decisions"></a>
 
 ## Scope and source basis
@@ -22,15 +32,49 @@ Settled October 20 decisions:
 - Air X5 uses the approved eleven-frame Weapon Summon sheet.
 - The user confirmed the editor's BTRandomWait of 0.3–0.8 seconds after the Enemy hit-reaction task. This separate AI wait does not extend HitReaction-owned hurt, knockback or invulnerability. The tree and reaction tuning were not edited by this synchronization.
 
-Source basis: HEAD `fcddaadb460cd84b85727fe11dc02ac41919aff6` plus the inspected uncommitted working tree.
+Consolidation source basis: HEAD `fcddaadb460cd84b85727fe11dc02ac41919aff6` plus
+the then-inspected uncommitted tree. The later collision amendment describes its
+scoped working-tree changes and evidence in Implementation Status; the older
+consolidation hash is not a tested identity for that amendment.
 The [complete pre-consolidation TDD](history/2026-10-20-tdd-housekeeping/sources/docs/TECH_ARCHITECTURE.md)
-preserves amendments, alternatives, exact older evidence and waivers. This update
-asserts neither a clean tree nor remote publication or newly verified runtime.
+preserves amendments, alternatives, exact older evidence and waivers. Consolidation
+alone asserted neither a clean tree, remote publication nor new runtime evidence.
+The later collision amendment's focused evidence is recorded separately below.
 
 <a id="implemented-codebase-map-and-postflight-basis"></a>
 <a id="implemented-ownership"></a>
 
 ## Runtime ownership
+
+### Art-aligned collision amendment — October 20
+
+The approved hitbox correction changes the six native melee geometry curves,
+Player's body-profile handling and the reusable CombatEnemy capsule/facing path.
+The position/target/radius interface, layers, common-sample evaluator and spent
+target records remain. Fire X1–X5 use a 3.5-local-pixel radius (7 world pixels)
+along their measured guard-to-tip segments. Pikeman uses radius6 along its forward
+hand-to-tip segment. Capsule centers are inset at both ends so their outer ends
+reach the measured weapon endpoints. Held geometry keys share exact sprite-key
+timestamps, plus unchanged active boundaries; no interpolated ghost sweep is added.
+
+Player owns `sync_combat_body_profile()`. It follows the actual committed texture
+during an action, refreshing selected-school locomotion/Hurt outside actions.
+Movement invokes it before moving the body; Might invokes it before/after clock
+advancement and at the end of the contact frame. Thus all actors query the updated
+body after the common advance barrier. Fire uses a private 30×90 RectangleShape2D
+at(0,-19), with root scale2: 60×180 world and bottom localY26. The original26×30
+shape at(0,11) is restored for legacy art. Configuration captures the original
+shape and floor reference once; sprite offset(0,-124) is preserved. Reset/death
+also clear the visual Hurt lifetime/tween so it cannot select stale body art.
+
+CombatEnemy's scene capsule is radius30/height180 at(-11,-59), retaining bottomY31.
+Its query mirrors around BodyVisual's X position(-11), using the same transformed
+pose for contact collection and the yellow overlay. Root/sprite scales, spawns,
+ground anchors and AI approach range remain. No separate hurtbox or new layer is
+introduced. See Implementation Status for the focused test/capture results and
+retained shutdown diagnostics. Earlier art-only integration paragraphs below
+describe the preserved pre-correction geometry, not the current collision sizes.
+
 
 | Owner | Responsibility and lifetime | Source |
 | --- | --- | --- |
@@ -487,12 +531,67 @@ body, all eleven poses and preserved handoff in Godot after normal reimport.
 [Air X5 history](history/2026-10-20-air-x5-weapon-summon/README.md) preserves the
 retired effect, original native Animation/import descriptor and matching records.
 
-Player Fire/Earth X1–X5 sprite/frame sets remain exchanged for the sword benchmark;
-move identities and gameplay tuning stay with their original schools. Locomotion
-and Casting retain their separate shared assignments. CombatEnemy uses original
-Pikeman idle/walk/front-thrust/hurt/death sheets with a common feet anchor. Old
-fighter grounding arithmetic is historical rather than a prescription for the
-450×400-cell Pikeman. Final generated character/weapon assets remain separate.
+The preceding art-only integration, before the approved collision amendment,
+uses the selected generated sword-and-shield sheets under
+assets/prototype/player/fire_sword_shield_v01. Only fire_x1..fire_x5 and cast_fire
+texture references/region rectangles change; all current native frame-key times,
+Animation UIDs, markers, attack geometry and gameplay timing remain. The previous
+earth_x1..earth_x5 Fire source textures and the other schools' original bindings
+are retained. Earth/Water/Air and attack_clock native resources are unchanged.
+
+Player's existing presentation helpers select Fire-specific Idle6/Walk12/Hurt4
+sheets with the existing8fps/10fps/captured-Hurt timing. Legacy shared sheets are
+not overwritten. The currently displayed texture selects448px versus128px cells,
+offset, filter and material, so switching selected schools during a committed
+Fire animation does not reformat its atlas. Legacy textures restore the saved
+original offset/material/filter and their school tint. Fire uses its accepted
+image colors without the old outline/tint shader. The shader reference remains
+cached independently for later school changes. Existing facing/input, movement,
+reaction and audio paths retain their owners.
+
+The existing root2/Sprite0.5 scales are retained. Reading the unchanged collision
+rectangle's floor at local y26 yields the Fire-only centered offset(0,-124) for
+448px cells and foot(224,400), giving world foot y52 and the Gym's screen y610.
+No physical dimensions or root motion are changed. Registration belongs to the
+runtime presentation profile; standalone editor scrubbing must account for that
+offset and must not move hitboxes to fit an unconfigured preview.
+
+All nine selected sheets/52 frames are byte-identical to Art's metadata pointers.
+Art's earlier review-candidate flags and X3/X5 continuity/handling limits remain;
+the later user handoff authorizes prototype integration, not final art acceptance.
+Cast's held-sword gesture adds no mechanic. X2's backward sweep and X1's drawn
+extent beyond the unchanged forward query are explicitly retained/reported.
+The larger body is not a larger collision body. Wide Walk/Cast atlases, live
+grounding, switching, playback and regression behavior require user validation;
+no Godot/editor/import/build/tests were run. Exact hashes, limits and manual
+checks are in the new asset PROVENANCE.md and Implementation Status.
+
+CombatEnemy separately uses Art's
+corrected generated Pikeman v02 atlases under assets/prototype/enemy/pikeman/repaint_v02,
+with the native originals preserved in the parent folder. Five right atlases use
+four-column 768×512 cells and existing counts Idle7/Walk6/Attack10/Hurt6/Death5.
+Sprite2D.flip_h provides one cell-local left mirror; no double-flip texture path
+is added. The approximately180px standing body uses unit sprite scale, not root
+or physics scaling. Centered offset(0,-192) and BodyVisual position(-11,31) map
+the source foot(384,448) to the unchanged capsule bottom(-11,31). Grounding comes
+from the actual collider, not the old native-art offset. Only the HP label and
+windup-warning visual positions also move, with explicit user approval, above the
+helmet/floating-damage lane; their triggers and other feedback data are unchanged.
+
+The melee_swing texture and region rectangles alone change: all authored times,
+active markers, ShapeCast geometry and events are retained, with full thrust at
+index5 / 0.5s and end1.0s. Existing scripted Idle8fps, Walk9fps, captured-duration
+Hurt and Death8fps/terminal hold remain. Existing result-screen freezing is not
+changed to force death playback. Player art, AI, movement, SFX, reactions, shared
+settings, progression and Gym framing05 are preserved.
+
+The new illustration does not define collision reach. Its right full-thrust
+alpha edge projects to local x211 versus the unchanged query edge x96; the
+vertical pike lane also differs. No gameplay geometry is retuned. Source/asset
+checks are static only, not continuous playback or Godot validation. User checks
+remain for both facings, grounding, movement pace, thrust/recovery, interruption,
+Hurt/Death/reset, overlays and Retry. Source hashes and limits are in the new
+asset provenance. Laema/player and additional art/VFX work remain separate.
 
 ### Feedback and audio
 
@@ -625,10 +724,12 @@ iteration ledger and dated decisions remain intact. Earlier technical heading ID
 are retained as aliases by current topic, preserving links without duplicate
 chronological chapters.
 
-Heat timing, shorter shared reactions, Air X5 and the editor's post-reaction wait
-are settled as above. No other gameplay choice/architecture was selected here.
+Heat timing, shorter shared reactions, Air X5, the editor's post-reaction wait
+and the later art-aligned collision choices are settled as above.
 Current source remains a candidate awaiting relevant user validation. A documentation-only
 commit does not publish the other uncommitted gameplay/audio/environment changes
 or their local candidate provenance; source-only references above retain that scope. Document
 alignment grants no runtime acceptance, new engine result, clean-tree or submission
-claim. Nothing was committed or pushed.
+claim. The collision amendment includes focused isolated engine/test/capture
+evidence documented in Implementation Status; it does not clear other candidates.
+Nothing was committed or pushed by the collision task.

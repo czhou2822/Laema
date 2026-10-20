@@ -7,10 +7,10 @@ const SpellProjectileScene = preload("res://scenes/combat/spell_projectile.tscn"
 const AMBIENT_STREAM_PATH := "res://assets/prototype/audio/ambience/wind.ogg"
 const MUSIC_STREAM_PATH := "res://assets/prototype/audio/music/fairy_battles.ogg"
 const PROJECTILE_IMPACT_STREAM_PATHS := {
-	&"fire": "res://assets/prototype/audio/projectile/fire_impact.ogg",
-	&"water": "res://assets/prototype/audio/projectile/water_impact.wav",
-	&"air": "res://assets/prototype/audio/projectile/air_impact.ogg",
-	&"earth": "res://assets/prototype/audio/projectile/earth_impact.ogg",
+	&"fire": "",
+	&"water": "",
+	&"air": "",
+	&"earth": "",
 }
 const DevStore = preload("res://scripts/config/developer_config_store.gd")
 const DevSession = preload("res://scripts/config/developer_portal_session.gd")
@@ -426,6 +426,8 @@ func _start_loop(audio_player: AudioStreamPlayer, stream: AudioStream) -> void:
 
 
 func _load_audio_stream(path: String) -> AudioStream:
+	if path.is_empty():
+		return null
 	return ResourceLoader.load(path, "AudioStream") as AudioStream
 
 

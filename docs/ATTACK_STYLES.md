@@ -19,11 +19,19 @@ Human feel acceptance and final numeric tuning remain pending.
 
 | Move | Local active-start position | Radius | Target vector |
 | --- | --- | ---: | --- |
-| fire_x1 | (40, 11) | 16 | (0, 0) |
-| fire_x2 | (40, 11) | 16 | (0, 0) |
-| fire_x3 | (40, 11) | 16 | (0, 0) |
-| fire_x4 | (30, 11) | 16 | (0, 0) |
-| fire_x5 | (35, 11) | 16 | (0, 0) |
+| fire_x1 | (-27.44, -47.63) | 3.5 | (-42.12, -7.74) |
+| fire_x2 | (-28.87, -13.49) | 3.5 | (-32.77, 22.98) |
+| fire_x3 | (-38.99, -39.30) | 3.5 | (-39.03, -3.39) |
+| fire_x4 | (-11.50, -63.42) | 3.5 | (38.50, 0.85) |
+| fire_x5 | (-15.82, -72.62) | 3.5 | (-36.37, -12.26) |
+| melee_swing | (58, -67) | 6 | (147, 0) |
+
+These are rounded right-facing active-start readbacks after the approved art
+alignment. Fire's world scale is2, so radius3.5 means7 world pixels. The complete
+curves follow measured weapon segments at held sprite poses; active-start alone
+does not describe maximum reach. X2 follows its backward blade. Pikeman mirrors
+around localX-11; its full-thrust outer tip isX211 right orX-233 left, symmetric
+about that visual anchor. Timings/markers and the one-contact allowance are unchanged.
 
 Fire Cast uses `launch` at 0.24 on its normalized one-second clip; other schools'
 clips retain their authored timing. Enemy uses the Pikeman 0.5/1.0-second active
@@ -83,17 +91,17 @@ shows the standing Idle sprite. Position, scale and rotation are authored in the
 scene. The rest position is captured when the Enemy becomes ready, before stage
 preparation can reset it, and retained by configuration and hurt/stage recovery.
 
-Select **CollisionShape2D** to edit the body capsule. Match the Player's existing
-ground alignment: the capsule bottom sits **12 world pixels above the visible
-idle feet**. The shared floor collision is at Y `52`, while its artwork starts at
-Y `64`; the Player already accounts for this offset. Then save the scene. This
-body collider needs no animation keys. Keep attack geometry in **AttackCast**
-and its native Animation tracks.
+Select **CollisionShape2D** to edit the stable capsule: radius30, height180 and
+position(-11,-59), bottomY31. Repaint v02 uses768×512 cells, BodyVisual position
+(-11,31), offset(0,-192) and foot anchor(384,448). Both visible feet and the body
+bottom map to the Gym floorY52 (screenY610). The older12-pixel visible-floor-art
+offset belongs to the previous artwork and must not be reapplied to this repaint.
+Keep attack geometry in **AttackCast** and its native Animation tracks.
 
-The current body capsule retains radius 12.4, height 68.7 and position
-(-11, -3.35). Pikeman artwork uses 450×400 source cells and its own common feet
-anchor/scene scale; do not reuse the earlier fighter's 128-pixel-cell calculation.
-Preserve the authored floor/body relationship when editing. Exact older
+Fire Player uses a30×90-local rectangle at(0,-19), root scale2, bottomY26. Its
+existing Fire sprite offset(0,-124) stays unchanged. Other-school artwork restores
+the26×30 rectangle at(0,11). These stable body profiles exclude weapons and are
+not keyed to individual poses. Preserve the authored floor relationship. Older
 calculations remain in the [historical guide](history/2026-10-20-document-housekeeping/sources/docs/ATTACK_STYLES.md#align-the-enemy-body-with-the-floor).
 
 ## Tune numerical settings

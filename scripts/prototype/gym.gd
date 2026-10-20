@@ -157,7 +157,9 @@ func _build_result_panel() -> void:
 
 
 func _toggle_developer_readouts() -> void:
-	_developer_overlay._on_setting_changed(["ui", "developer_overlay_visible"], not bool(_config["ui"]["developer_overlay_visible"]))
+	var shown := not bool(_config["ui"]["developer_overlay_visible"])
+	_developer_overlay._on_setting_changed(["ui", "developer_overlay_visible"], shown)
+	_developer_overlay._on_setting_changed(["ui", "attack_hitbox_visible"], shown)
 	_refresh_portal_tuning()
 
 

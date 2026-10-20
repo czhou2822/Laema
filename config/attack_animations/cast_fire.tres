@@ -1,6 +1,6 @@
 [gd_resource type="Animation" load_steps=2 format=3]
 
-[ext_resource type="Texture2D" path="res://assets/prototype/player/animation/shared_cast.png" id="1_sheet"]
+[ext_resource type="Texture2D" path="res://assets/prototype/player/fire_sword_shield_v01/cast_fire.png" id="1_sheet"]
 
 [resource]
 resource_name = "cast_fire"
@@ -9,7 +9,7 @@ markers = [{
 "name": &"active_start",
 "time": 0.24
 }, {
-"name": &"contact",
+"name": &"launch",
 "time": 0.24
 }, {
 "name": &"active_end",
@@ -46,7 +46,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.06666666667, 0.1333333333, 0.2, 0.2875, 0.40625, 0.525, 0.64375, 0.7625, 0.88125),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Rect2(0, 0, 128, 128), Rect2(128, 0, 128, 128), Rect2(256, 0, 128, 128), Rect2(384, 0, 128, 128), Rect2(512, 0, 128, 128), Rect2(640, 0, 128, 128), Rect2(768, 0, 128, 128), Rect2(896, 0, 128, 128), Rect2(1024, 0, 128, 128), Rect2(1152, 0, 128, 128)]
+"values": [Rect2(0, 0, 448, 448), Rect2(448, 0, 448, 448), Rect2(896, 0, 448, 448), Rect2(1344, 0, 448, 448), Rect2(1792, 0, 448, 448), Rect2(2240, 0, 448, 448), Rect2(2688, 0, 448, 448), Rect2(3136, 0, 448, 448), Rect2(3584, 0, 448, 448), Rect2(4032, 0, 448, 448)]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AttackCast:position")

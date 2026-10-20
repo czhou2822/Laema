@@ -30,25 +30,25 @@ static func capture(move: Dictionary, combat: Dictionary) -> Dictionary:
 static func phase_speed(clock: Animation, profile: Dictionary, time: float, heat_speed: float) -> float:
 	if profile.is_empty():
 		return heat_speed * clock.length / float(profile.get("shared_duration", 0.8))
-	var contact := clock.get_marker_time(&"contact")
-	var before_contact := time < contact
-	var span := contact if before_contact else clock.length - contact
-	var duration := float(profile["windup_duration"] if before_contact else profile["recovery_duration"])
+	var split := clock.get_marker_time(&"timing_split") if clock.has_marker(&"timing_split") else clock.get_marker_time(&"active_start")
+	var before_split := time < split
+	var span := split if before_split else clock.length - split
+	var duration := float(profile["windup_duration"] if before_split else profile["recovery_duration"])
 	if duration <= 0.0:
 		duration = float(profile["shared_duration"]) * span / clock.length
 	return heat_speed * span / maxf(duration, 0.000001)
 
 
 static func predict_time(clock: Animation, profile: Dictionary, time: float, delta: float, heat_speed: float) -> float:
-	var contact := clock.get_marker_time(&"contact")
+	var split := clock.get_marker_time(&"timing_split") if clock.has_marker(&"timing_split") else clock.get_marker_time(&"active_start")
 	var remaining := maxf(delta, 0.0)
 	var position := time
-	if position < contact:
+	if position < split:
 		var speed := phase_speed(clock, profile, position, heat_speed)
 		if speed <= 0.0:
 			return position
-		var step := minf(remaining, (contact - position) / speed)
-		position = minf(position + step * speed, contact)
+		var step := minf(remaining, (split - position) / speed)
+		position = minf(position + step * speed, split)
 		remaining -= step
 	return minf(position + remaining * phase_speed(clock, profile, position, heat_speed), clock.length)
 

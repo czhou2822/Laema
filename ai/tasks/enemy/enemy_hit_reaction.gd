@@ -1,6 +1,9 @@
 @tool
 extends BTAction
 
+## Shared with the character settings; edits here change the same reaction resource.
+@export var hit_reaction_settings: CharacterReactionSettings
+
 
 func _enter() -> void:
 	agent.call("ai_execute_hit_reaction")

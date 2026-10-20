@@ -1,0 +1,690 @@
+{
+  "spell": "landMine",
+  "original_name": "Land Mine",
+  "original_level": 3,
+  "laema_binding": null,
+  "generation": "built-in image_gen; source-referenced adaptation",
+  "generated_file": "exec-b9a8cf90-e186-4b7e-8510-6e08ee508121.png",
+  "sources": [
+    "c09spf0",
+    "C09SPF1",
+    "C09SPF3"
+  ],
+  "source_identity": "cross-reference plus original metadata and sheet inspection",
+  "cell": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    232
+  ],
+  "source_grid": [
+    4,
+    4
+  ],
+  "master_dimensions": [
+    1254,
+    1254
+  ],
+  "normalization": "Fractional grid crops; contain resize preserves cell aspect; fixed padding",
+  "frame_count_generated": 16,
+  "preview_timing": "illustrative10fps; not original engine timing",
+  "roles": [
+    {
+      "label": "Land Mine · appear",
+      "role": "appear",
+      "local_path": "adaptations/fire/landMine",
+      "strip": "appear-strip.png",
+      "cell": [
+        256,
+        256
+      ],
+      "pivot": [
+        128,
+        232
+      ],
+      "frame_count": 4,
+      "columns": 4,
+      "loop": false,
+      "static": false,
+      "placement": "ground",
+      "source_id": "c09spf0",
+      "preview_fps": 10,
+      "review_status": "candidate; user review pending"
+    },
+    {
+      "label": "Land Mine · hold",
+      "role": "hold",
+      "local_path": "adaptations/fire/landMine",
+      "strip": "hold-strip.png",
+      "cell": [
+        256,
+        256
+      ],
+      "pivot": [
+        128,
+        232
+      ],
+      "frame_count": 1,
+      "columns": 1,
+      "loop": false,
+      "static": true,
+      "placement": "ground",
+      "source_id": "C09SPF1",
+      "preview_fps": 10,
+      "review_status": "candidate; user review pending"
+    },
+    {
+      "label": "Land Mine · detonation",
+      "role": "detonation",
+      "local_path": "adaptations/fire/landMine",
+      "strip": "detonation-strip.png",
+      "cell": [
+        256,
+        256
+      ],
+      "pivot": [
+        128,
+        232
+      ],
+      "frame_count": 9,
+      "columns": 9,
+      "loop": false,
+      "static": false,
+      "placement": "ground",
+      "source_id": "C09SPF3",
+      "preview_fps": 10,
+      "review_status": "candidate; user review pending"
+    }
+  ],
+  "qa": [
+    {
+      "source_cell": 0,
+      "source": {
+        "bbox": [
+          102,
+          125,
+          212,
+          213
+        ],
+        "visible_size": [
+          110,
+          88
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 2523
+      },
+      "export": {
+        "bbox": [
+          100,
+          187,
+          156,
+          232
+        ],
+        "visible_size": [
+          56,
+          45
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 662
+      }
+    },
+    {
+      "source_cell": 1,
+      "source": {
+        "bbox": [
+          90,
+          123,
+          230,
+          213
+        ],
+        "visible_size": [
+          140,
+          90
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 7542
+      },
+      "export": {
+        "bbox": [
+          94,
+          185,
+          165,
+          232
+        ],
+        "visible_size": [
+          71,
+          47
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 1973
+      }
+    },
+    {
+      "source_cell": 2,
+      "source": {
+        "bbox": [
+          85,
+          123,
+          227,
+          211
+        ],
+        "visible_size": [
+          142,
+          88
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 8191
+      },
+      "export": {
+        "bbox": [
+          92,
+          186,
+          164,
+          231
+        ],
+        "visible_size": [
+          72,
+          45
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 2151
+      }
+    },
+    {
+      "source_cell": 3,
+      "source": {
+        "bbox": [
+          80,
+          142,
+          233,
+          210
+        ],
+        "visible_size": [
+          153,
+          68
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 8512
+      },
+      "export": {
+        "bbox": [
+          89,
+          195,
+          167,
+          230
+        ],
+        "visible_size": [
+          78,
+          35
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 2235
+      }
+    },
+    {
+      "source_cell": 4,
+      "source": {
+        "bbox": [
+          80,
+          140,
+          233,
+          213
+        ],
+        "visible_size": [
+          153,
+          73
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 8650
+      },
+      "export": {
+        "bbox": [
+          89,
+          195,
+          167,
+          232
+        ],
+        "visible_size": [
+          78,
+          37
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 2264
+      }
+    },
+    {
+      "source_cell": 5,
+      "source": {
+        "bbox": [
+          81,
+          139,
+          233,
+          213
+        ],
+        "visible_size": [
+          152,
+          74
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 8664
+      },
+      "export": {
+        "bbox": [
+          89,
+          195,
+          167,
+          232
+        ],
+        "visible_size": [
+          78,
+          37
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 2260
+      }
+    },
+    {
+      "source_cell": 6,
+      "source": {
+        "bbox": [
+          80,
+          139,
+          233,
+          213
+        ],
+        "visible_size": [
+          153,
+          74
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 8666
+      },
+      "export": {
+        "bbox": [
+          88,
+          195,
+          166,
+          232
+        ],
+        "visible_size": [
+          78,
+          37
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 2251
+      }
+    },
+    {
+      "source_cell": 7,
+      "source": {
+        "bbox": [
+          81,
+          139,
+          233,
+          213
+        ],
+        "visible_size": [
+          152,
+          74
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 8705
+      },
+      "export": {
+        "bbox": [
+          89,
+          195,
+          167,
+          232
+        ],
+        "visible_size": [
+          78,
+          37
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 2260
+      }
+    },
+    {
+      "source_cell": 8,
+      "source": {
+        "bbox": [
+          118,
+          84,
+          192,
+          215
+        ],
+        "visible_size": [
+          74,
+          131
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 5290
+      },
+      "export": {
+        "bbox": [
+          109,
+          152,
+          146,
+          219
+        ],
+        "visible_size": [
+          37,
+          67
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 1387
+      }
+    },
+    {
+      "source_cell": 9,
+      "source": {
+        "bbox": [
+          105,
+          65,
+          215,
+          224
+        ],
+        "visible_size": [
+          110,
+          159
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 10277
+      },
+      "export": {
+        "bbox": [
+          101,
+          141,
+          158,
+          223
+        ],
+        "visible_size": [
+          57,
+          82
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 2687
+      }
+    },
+    {
+      "source_cell": 10,
+      "source": {
+        "bbox": [
+          72,
+          48,
+          222,
+          238
+        ],
+        "visible_size": [
+          150,
+          190
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 16454
+      },
+      "export": {
+        "bbox": [
+          86,
+          133,
+          161,
+          230
+        ],
+        "visible_size": [
+          75,
+          97
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 4308
+      }
+    },
+    {
+      "source_cell": 11,
+      "source": {
+        "bbox": [
+          68,
+          39,
+          246,
+          242
+        ],
+        "visible_size": [
+          178,
+          203
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 19498
+      },
+      "export": {
+        "bbox": [
+          82,
+          128,
+          174,
+          232
+        ],
+        "visible_size": [
+          92,
+          104
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 5075
+      }
+    },
+    {
+      "source_cell": 12,
+      "source": {
+        "bbox": [
+          82,
+          37,
+          229,
+          241
+        ],
+        "visible_size": [
+          147,
+          204
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 15937
+      },
+      "export": {
+        "bbox": [
+          89,
+          128,
+          164,
+          232
+        ],
+        "visible_size": [
+          75,
+          104
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 4151
+      }
+    },
+    {
+      "source_cell": 13,
+      "source": {
+        "bbox": [
+          86,
+          50,
+          226,
+          233
+        ],
+        "visible_size": [
+          140,
+          183
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 10737
+      },
+      "export": {
+        "bbox": [
+          92,
+          134,
+          163,
+          228
+        ],
+        "visible_size": [
+          71,
+          94
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 2812
+      }
+    },
+    {
+      "source_cell": 14,
+      "source": {
+        "bbox": [
+          101,
+          70,
+          210,
+          226
+        ],
+        "visible_size": [
+          109,
+          156
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 1261
+      },
+      "export": {
+        "bbox": [
+          100,
+          145,
+          155,
+          224
+        ],
+        "visible_size": [
+          55,
+          79
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 354
+      }
+    },
+    {
+      "source_cell": 15,
+      "source": {
+        "bbox": [
+          139,
+          106,
+          171,
+          183
+        ],
+        "visible_size": [
+          32,
+          77
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 391
+      },
+      "export": {
+        "bbox": [
+          119,
+          163,
+          135,
+          203
+        ],
+        "visible_size": [
+          16,
+          40
+        ],
+        "edge_pixels": 0,
+        "visible_pixels": 103
+      }
+    }
+  ],
+  "files": [
+    {
+      "file": "appear-dark-light.gif",
+      "sha256": "1af640e11a935ac010098ecd1f8a7854f88f59774a087297edcb0651d98ef9fc",
+      "width": 512,
+      "height": 256,
+      "pages": 4,
+      "has_alpha": true
+    },
+    {
+      "file": "appear-strip.png",
+      "sha256": "6cca63ee04ca937c37b9d396bde08b9f506e0dbec7bafae9ff049f94b1d8e429",
+      "width": 1024,
+      "height": 256,
+      "pages": 1,
+      "has_alpha": true
+    },
+    {
+      "file": "contact-dark-light.png",
+      "sha256": "b37c7b90bf965b83fe384f8cf7537f959c772510f11b0afcb286319283c43dbf",
+      "width": 2048,
+      "height": 1024,
+      "pages": 1,
+      "has_alpha": true
+    },
+    {
+      "file": "detonation-dark-light.gif",
+      "sha256": "e2f92e9b48488562253413832c16dbc24ccfa0aaa2db7959d35d0ec157564e6c",
+      "width": 512,
+      "height": 256,
+      "pages": 9,
+      "has_alpha": true
+    },
+    {
+      "file": "detonation-strip.png",
+      "sha256": "26b1825324e8a00675c599b8a8750136b131e654bcc834c47eba097a00da45b8",
+      "width": 2304,
+      "height": 256,
+      "pages": 1,
+      "has_alpha": true
+    },
+    {
+      "file": "generated-master.png",
+      "sha256": "7dafadc6160adf0c0a986f0b02efcf2237d5a669bf9cfebff9fa98683e764f7d",
+      "width": 1254,
+      "height": 1254,
+      "pages": 1,
+      "has_alpha": true
+    },
+    {
+      "file": "hold-dark-light.gif",
+      "sha256": "4073a5eaf93ce6f5d1ee85ff529b9f3cf1b4c27f6df0aaa8b49740054c69e40a",
+      "width": 512,
+      "height": 256,
+      "pages": 1,
+      "has_alpha": false
+    },
+    {
+      "file": "hold-strip.png",
+      "sha256": "bec2bfccf1b4ba247b835f8409c129d7f1d155fdfdb1c117dfcc638382fba7dd",
+      "width": 256,
+      "height": 256,
+      "pages": 1,
+      "has_alpha": true
+    },
+    {
+      "file": "scene-peak.png",
+      "sha256": "8db6fe02cfbee673c0e0cdc9884888a9851c5529c076ab4cff6d3a77651a4853",
+      "width": 1280,
+      "height": 720,
+      "pages": 1,
+      "has_alpha": true
+    },
+    {
+      "file": "scene-preview.gif",
+      "sha256": "03014e8f5bca657758d3967a26a476cb3ad0a7ecb856137dab587c8421600361",
+      "width": 1280,
+      "height": 720,
+      "pages": 17,
+      "has_alpha": true
+    }
+  ],
+  "validation": {
+    "frame_order_contact_review": "completed",
+    "animated_browser_inspection": false,
+    "engine": false,
+    "user_acceptance": false,
+    "matte_review": "completed",
+    "static_scene_peak": "completed",
+    "browser_limitation": "Local file URL blocked by browser policy; loopback access denied in environment. No workaround attempted."
+  }
+}

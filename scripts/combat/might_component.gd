@@ -5,6 +5,7 @@ const CombatOutcomeResource = preload("res://scripts/combat/combat_outcome.gd")
 const ImpactProbe = preload("res://scripts/debug/impact_probe.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
 const Geometry = preload("res://scripts/combat/attack_geometry.gd")
+const Contacts = preload("res://scripts/combat/contact_evaluation.gd")
 
 signal movement_lock_changed(locked: bool)
 signal active_school_changed(school: StringName)
@@ -37,7 +38,6 @@ var _active_school := SCHOOL_FIRE
 var _current_action: Dictionary = {}
 var _pending_action: Dictionary = {}
 var _window_open := false
-var _hit_emitted := false
 var _launch_emitted := false
 var _actions_suppressed := false
 var _buffered_request: Dictionary = {}
@@ -46,6 +46,11 @@ var _next_attempt_id := 1
 var _resolved_attempt_ids: Dictionary = {}
 var _attempt_contexts: Dictionary = {}
 var _next_source_action_id := 1
+var _sample_action_id := 0
+var _sample_time := 0.0
+var _finished_animation: StringName = &""
+var _sampling := false
+var _frame_action_id := 0
 
 
 func configure(
@@ -66,7 +71,8 @@ func configure(
 	_magic = magic
 	_heat = heat
 	# Player input and the existing Movement node run first; queries see moved bodies.
-	process_physics_priority = 1
+	set_physics_process(false)
+	Contacts.register(self)
 	_animation_player.animation_finished.connect(_on_animation_finished)
 	_heat.heat_changed.connect(_on_heat_changed)
 	apply_runtime_tuning()
@@ -80,32 +86,64 @@ func apply_runtime_tuning() -> void:
 	_refresh_action_speed()
 
 
-func _physics_process(delta: float) -> void:
-	if _state != State.COMBO_ACTIVE or _current_action.is_empty() or not _animation_player.is_playing():
-		return
+func contact_evaluation_enabled() -> bool:
+	return _owner_entity.can_process()
+
+
+func begin_contact_frame() -> void:
+	_frame_action_id = int(_current_action.get("source_action_id", 0))
+
+
+func finish_contact_frame(_delta: float) -> void:
+	_sync_owner_body_profile()
+
+
+func contact_step_limit(limit: float) -> float:
+	if not is_attack_playing() or int(_current_action.get("source_action_id", 0)) != _frame_action_id:
+		return limit
+	_refresh_action_speed()
 	var clock: Animation = _animation_player.get_animation(_animation_player.current_animation)
-	var contact_time := clock.get_marker_time(&"contact")
-	var time := _animation_player.current_animation_position
-	_refresh_action_speed()
-	var speed := _animation_player.speed_scale
-	var action_id := int(_current_action["source_action_id"])
-	var needs_contact := not _hit_emitted if _current_action["kind"] == &"light" else not _launch_emitted
-	var advanced := 0.0
-	# Visit the contact marker even if a fast frame would cross animation end.
-	if speed > 0.0 and ((needs_contact and time >= contact_time) or (time < contact_time and time + delta * speed >= contact_time)):
-		advanced = clampf((contact_time - time) / speed, 0.0, delta)
-		_animation_player.advance(advanced)
-		if needs_contact and _current_action["kind"] == &"light":
-			_hit_emitted = true
-			_perform_light_hit_query()
-		elif needs_contact:
-			_launch_emitted = true
-			_emit_projectile_launch()
-	if _state != State.COMBO_ACTIVE or _current_action.is_empty() or int(_current_action["source_action_id"]) != action_id:
+	return Geometry.step_limit(clock, _animation_player.current_animation_position, _animation_player.speed_scale, limit)
+
+
+func advance_contact_clock(delta: float) -> void:
+	_sync_owner_body_profile()
+	_sample_action_id = 0
+	if _state != State.COMBO_ACTIVE or _current_action.is_empty() or not _animation_player.is_playing() or int(_current_action.get("source_action_id", 0)) != _frame_action_id:
 		return
+	_sample_action_id = int(_current_action["source_action_id"])
+	var clock: Animation = _animation_player.get_animation(_animation_player.current_animation)
 	_refresh_action_speed()
-	_animation_player.advance(maxf(delta - advanced, 0.0))
-	if _state != State.COMBO_ACTIVE or _current_action.is_empty() or int(_current_action["source_action_id"]) != action_id:
+	_sample_time = minf(_animation_player.current_animation_position + delta * _animation_player.speed_scale, clock.length)
+	_sampling = true
+	_animation_player.advance(delta)
+	_sampling = false
+	_sync_owner_body_profile()
+	if _current_action.is_empty() or int(_current_action["source_action_id"]) != _sample_action_id:
+		return
+	if _current_action["kind"] != &"light" and not _launch_emitted and _sample_time >= clock.get_marker_time(&"launch"):
+		_launch_emitted = true
+		_emit_projectile_launch()
+
+
+func _sync_owner_body_profile() -> void:
+	if _owner_entity.has_method("sync_combat_body_profile"):
+		_owner_entity.call("sync_combat_body_profile")
+
+
+func finish_contact_sample() -> void:
+	if _current_action.is_empty() or int(_current_action["source_action_id"]) != _sample_action_id:
+		_finished_animation = &""
+		return
+	var clock: Animation = _animation_player.get_animation(_animation_player.assigned_animation)
+	if _current_action["kind"] == &"light" and _sample_time >= clock.get_marker_time(&"active_end"):
+		_finish_light_window()
+	if _current_action.is_empty() or int(_current_action["source_action_id"]) != _sample_action_id:
+		return
+	if _finished_animation != &"":
+		var finished := _finished_animation
+		_finished_animation = &""
+		_on_animation_finished(finished)
 		return
 	_window_open = get_normalized_attack_progress() >= float(_config["combat"]["input_window_start"])
 	_promote_buffered_request_if_ready()
@@ -266,7 +304,6 @@ func cancel_for_player_hit() -> void:
 	_current_action = {}
 	_pending_action = {}
 	_window_open = false
-	_hit_emitted = false
 	_launch_emitted = false
 	_publish_outcome(&"action_interrupted", {"reason": &"player_hit"})
 
@@ -430,6 +467,10 @@ func _make_light_action(direction: Vector2, school: StringName = &"") -> Diction
 	return {
 		"move_id": move_id,
 		"hit_targets": [],
+		"applied_contact": false,
+		"orb_granted": false,
+		"window_resolved": false,
+		"chain_position": position,
 		"kind": &"light",
 		"school": _active_school if school == &"" else school,
 		"direction": direction,
@@ -469,15 +510,16 @@ func _make_cast_action(commit_id: int, endpoint: bool, empowered: bool, attempt_
 
 func _start_action(action: Dictionary) -> void:
 	_current_action = action
+	_finished_animation = &""
 	_pending_action = {}
 	_window_open = false
-	_hit_emitted = false
 	_launch_emitted = false
 	var move: Dictionary = _config["moves"][String(action["move_id"])]
 	if action["kind"] == &"light":
 		_current_action["style"] = Style.capture(move, _config["combat"])
 		_current_action["lunge_fraction"] = 0.0
-		_current_action["geometry"] = Geometry.facing_pose(Geometry.contact(_animation_player.get_animation(StringName(move["animation"]))), action["direction"])
+		# Freeze the private authored curve for this action, not a single pose.
+		_current_action["geometry_clock"] = _animation_player.get_animation(StringName(move["animation"])).duplicate()
 	ImpactProbe.record("action_started", {"actor": str(_owner_entity.get_path()), "move_id": action["move_id"], "action_id": action.get("source_action_id", 0), "impact": move["impact"]})
 	# Casts retain the prior school-specific frame pacing in native tracks too.
 	var animation_name := StringName(move["animation"]) if action["kind"] == &"light" else StringName("cast_" + str(action["school"]))
@@ -497,10 +539,13 @@ func _start_action(action: Dictionary) -> void:
 	_publish_outcome(&"action_accepted", action_facts)
 
 
-func _perform_light_hit_query() -> void:
-	var direction: Vector2 = _current_action["direction"]
-	var profile: Dictionary = _current_action["style"]
-	var pose: Dictionary = _current_action["geometry"]
+func collect_melee_contacts() -> Array[HealthEvent]:
+	var events: Array[HealthEvent] = []
+	var snapshot := get_melee_snapshot()
+	if not bool(snapshot.get("active", false)) or int(snapshot.get("action_id", 0)) != _frame_action_id:
+		return events
+	var action_id := int(_current_action["source_action_id"])
+	var pose := get_attack_geometry()
 	var live_position := _attack_cast.position
 	var live_target := _attack_cast.target_position
 	var live_radius := (_attack_cast.shape as CircleShape2D).radius
@@ -508,61 +553,49 @@ func _perform_light_hit_query() -> void:
 	_attack_cast.target_position = pose["target"]
 	(_attack_cast.shape as CircleShape2D).radius = float(pose["radius"])
 	_attack_cast.force_shapecast_update()
-	ImpactProbe.record("contact_query", {"actor": str(_owner_entity.get_path()), "move_id": _current_action["move_id"], "action_id": _current_action["source_action_id"], "collisions": _attack_cast.get_collision_count()})
-	var hits: Array[Dictionary] = []
-	var seen: Dictionary = {}
+	ImpactProbe.record("contact_query", {"actor": str(_owner_entity.get_path()), "move_id": _current_action["move_id"], "action_id": action_id, "collisions": _attack_cast.get_collision_count()})
+	var move: Dictionary = _config["moves"][String(_current_action["move_id"])]
 	for index in range(_attack_cast.get_collision_count()):
 		var target := _attack_cast.get_collider(index) as Entity
-		if target == null:
+		if target == null or _current_action["hit_targets"].has(target.get_instance_id()):
 			continue
-		var target_id := target.get_instance_id()
-		if seen.has(target_id):
-			continue
-		seen[target_id] = true
-		hits.append({"target": target, "contact_point": _attack_cast.get_collision_point(index)})
-	# Return the node to canonical animation space; facing applies only to the query.
+		# Contact is spent BEFORE target-side invincibility/defence resolution.
+		_current_action["hit_targets"].append(target.get_instance_id())
+		var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"][move["damage_key"]]), int(move["impact"]), HealthEvent.Delivery.DIRECT, StringName(_current_action["school"]), {}, _current_action["direction"], _attack_cast.get_collision_point(index), action_id, [StringName(_current_action["school"])])
+		event.melee_contact = true
+		event.push_scale = float(_current_action["style"]["push_scale"])
+		ImpactProbe.record("contact_event", {"actor": str(_owner_entity.get_path()), "move_id": _current_action["move_id"], "action_id": action_id, "target": str(target.get_path()), "impact": event.impact, "target_poise": target.get_poise()})
+		events.append(event)
 	_attack_cast.position = live_position
 	_attack_cast.target_position = live_target
 	(_attack_cast.shape as CircleShape2D).radius = live_radius
-	if hits.is_empty():
-		if bool(_config["combat"]["collect_orb_without_contact"]):
-			_magic.add_orb(StringName(_current_action["school"]))
-			_publish_outcome(&"light_contact_resolved", {"result": &"orb_without_contact", "school": _current_action["school"], "position": _input_combo.get_current_position()})
-			_trace(&"light_contact_resolved", {"result": "orb_without_contact", "school": _current_action["school"], "position": _input_combo.get_current_position()})
-			return
-		_publish_outcome(&"light_contact_resolved", {"result": &"miss", "school": _current_action["school"], "position": _input_combo.get_current_position()})
-		_trace(&"light_contact_resolved", {"result": "miss", "school": _current_action["school"], "position": _input_combo.get_current_position()})
+	return events
+
+
+func _finish_light_window() -> void:
+	if bool(_current_action["window_resolved"]):
 		return
-	var action: Dictionary = _current_action.duplicate(true)
-	var move: Dictionary = _config["moves"][String(action["move_id"])]
-	var applied_contact := false
-	var generates_orb := false
-	for hit in hits:
-		if _current_action.is_empty() or int(_current_action.get("source_action_id", -1)) != int(action["source_action_id"]):
-			return
-		var event := HealthEvent.damage(_owner_entity, hit["target"], float(_config["combat"][move["damage_key"]]), int(move["impact"]), HealthEvent.Delivery.DIRECT, StringName(action["school"]), {}, direction, hit["contact_point"], int(action["source_action_id"]), [StringName(action["school"])])
-		event.melee_contact = true
-		event.push_scale = float(profile["push_scale"])
-		ImpactProbe.record("contact_event", {"actor": str(_owner_entity.get_path()), "move_id": action["move_id"], "action_id": event.source_action_id, "target": str(event.target.get_path()), "impact": event.impact, "target_poise": event.target.get_poise()})
-		var result: HealthResult = hit["target"].receive_health_event(event)
-		if result.outcome == HealthResult.Outcome.APPLIED:
-			if not _current_action.is_empty():
-				_current_action["hit_targets"].append(hit["target"].get_instance_id())
-			applied_contact = true
-			if result.resolution_tag != &"elemental_endurance_full_resist":
-				generates_orb = true
-	if _current_action.is_empty():
+	_current_action["window_resolved"] = true
+	# Rejected contacts are not misses, and grant no APPLIED-hit outcomes.
+	if not _current_action["hit_targets"].is_empty():
 		return
-	if generates_orb:
-		_magic.add_orb(StringName(action["school"]))
-	if not applied_contact:
+	var without_contact := bool(_config["combat"]["collect_orb_without_contact"])
+	var action_id := int(_current_action["source_action_id"])
+	var facts := {"result": &"orb_without_contact" if without_contact else &"miss", "school": _current_action["school"], "position": _current_action["chain_position"]}
+	if without_contact:
+		_current_action["orb_granted"] = true
+		_magic.add_orb(StringName(_current_action["school"]))
+	if int(_current_action.get("source_action_id", 0)) != action_id:
 		return
-	_publish_outcome(&"light_contact_resolved", {"result": &"hit", "school": _current_action["school"], "position": _input_combo.get_current_position(), "target_count": hits.size()})
-	_trace(&"light_contact_resolved", {"result": "hit", "school": _current_action["school"], "position": _input_combo.get_current_position(), "target_count": hits.size()})
+	_publish_outcome(&"light_contact_resolved", facts)
+	_trace(&"light_contact_resolved", facts)
 
 
 func _emit_projectile_launch() -> void:
+	var action_id := int(_current_action["source_action_id"])
 	var payload := _magic.launch_committed_cast(int(_current_action["commit_id"]))
+	if int(_current_action.get("source_action_id", 0)) != action_id:
+		return
 	if payload.is_empty():
 		_resolve_cast_attempt(int(_current_action.get("attempt_id", -1)), &"interrupted", {"reason": &"commitment_missing_at_launch", "commit_id": int(_current_action["commit_id"])})
 		return
@@ -571,11 +604,17 @@ func _emit_projectile_launch() -> void:
 
 
 func _on_animation_finished(animation_name: StringName) -> void:
+	if _sampling:
+		_finished_animation = animation_name
+		return
 	# Casts use school-specific native clips; assigned_animation survives completion.
 	if _current_action.is_empty() or animation_name != _animation_player.assigned_animation or _state != State.COMBO_ACTIVE:
 		return
+	var action_id := int(_current_action["source_action_id"])
 	_trace(&"action_finished", {"kind": _current_action.get("kind", &""), "school": _current_action.get("school", &""), "pending_action": not _pending_action.is_empty(), "marking_state_active": _magic.has_active_marking_state()})
 	_publish_outcome(&"action_finished", {"kind": _current_action.get("kind", &""), "school": _current_action.get("school", &"")})
+	if int(_current_action.get("source_action_id", 0)) != action_id:
+		return
 	if not _pending_action.is_empty():
 		_start_action(_pending_action)
 		return
@@ -588,14 +627,12 @@ func _on_animation_finished(animation_name: StringName) -> void:
 	if StringName(_current_action.get("kind", &"")) == &"cast_empowered":
 		_current_action = {}
 		_window_open = false
-		_hit_emitted = false
 		_launch_emitted = false
 		movement_lock_changed.emit(false)
 		return
 	if _magic.has_active_marking_state():
 		_current_action = {}
 		_window_open = false
-		_hit_emitted = false
 		_launch_emitted = false
 		movement_lock_changed.emit(false)
 		return
@@ -616,7 +653,6 @@ func _fail_cast(attempt_id: int, reason: StringName) -> void:
 	_current_action = {}
 	_pending_action = {}
 	_window_open = false
-	_hit_emitted = false
 	_launch_emitted = false
 	_state = State.HIT_REACTING
 	movement_lock_changed.emit(true)
@@ -646,7 +682,6 @@ func _enter_ready() -> void:
 	_current_action = {}
 	_pending_action = {}
 	_window_open = false
-	_hit_emitted = false
 	_launch_emitted = false
 	movement_lock_changed.emit(false)
 
@@ -663,7 +698,6 @@ func reset_for_stage() -> void:
 	_current_action = {}
 	_pending_action = {}
 	_window_open = false
-	_hit_emitted = false
 	_launch_emitted = false
 	_failed_cast_reaction_pending = false
 	_state = State.READY
@@ -750,7 +784,9 @@ func consume_attack_body_motion(delta: float) -> Vector2:
 
 func get_attack_geometry() -> Dictionary:
 	if _current_action.get("kind") == &"light":
-		return _current_action["geometry"]
+		var clock: Animation = _current_action["geometry_clock"]
+		var time := _sample_time if _sample_action_id == int(_current_action["source_action_id"]) else _animation_player.current_animation_position
+		return Geometry.facing_pose(Geometry.sample(clock, time), _current_action["direction"])
 	return {"position": _attack_cast.position, "target": _attack_cast.target_position, "radius": (_attack_cast.shape as CircleShape2D).radius}
 
 
@@ -789,9 +825,11 @@ func get_melee_snapshot() -> Dictionary:
 		return {}
 	var move: Dictionary = _config["moves"][String(_current_action["move_id"])]
 	var clock: Animation = _animation_player.get_animation(StringName(move["animation"]))
-	var time := _animation_player.current_animation_position
+	var time := _sample_time if _sample_action_id == int(_current_action["source_action_id"]) else _animation_player.current_animation_position
 	return {
-		"active": _animation_player.is_playing() and time >= clock.get_marker_time(&"active_start") and time <= clock.get_marker_time(&"active_end"),
+		# The endpoint is queryable once; finish_contact_sample retires the window
+		# before a later frame can re-query the same endpoint with moved bodies.
+		"active": not bool(_current_action["window_resolved"]) and (_animation_player.is_playing() or _finished_animation != &"") and time >= clock.get_marker_time(&"active_start") and time <= clock.get_marker_time(&"active_end"),
 		"move_id": _current_action["move_id"],
 		"impact": int(move["impact"]),
 		"damage": float(_config["combat"]["light_damage"]),
@@ -806,21 +844,27 @@ func get_melee_snapshot() -> Dictionary:
 func on_clash_contact_resolved(result: HealthResult) -> void:
 	if result.outcome != HealthResult.Outcome.APPLIED or _current_action.is_empty():
 		return
-	if int(_current_action.get("source_action_id", -1)) != result.event.source_action_id or _hit_emitted:
+	if int(_current_action.get("source_action_id", -1)) != result.event.source_action_id:
 		return
-	_hit_emitted = true
-	_current_action["hit_targets"].append(result.event.target.get_instance_id())
-	if result.resolution_tag != &"elemental_endurance_full_resist":
+	var action_id := result.event.source_action_id
+	if result.resolution_tag != &"elemental_endurance_full_resist" and not bool(_current_action["orb_granted"]):
+		_current_action["orb_granted"] = true
 		_magic.add_orb(StringName(_current_action["school"]))
-	_publish_outcome(&"light_contact_resolved", {"result": &"hit", "school": _current_action["school"], "position": _input_combo.get_current_position(), "target_count": 1})
+	if int(_current_action.get("source_action_id", 0)) != action_id:
+		return
+	if not bool(_current_action["applied_contact"]):
+		_current_action["applied_contact"] = true
+		var facts := {"result": &"hit", "school": _current_action["school"], "position": _current_action["chain_position"], "target_count": 1}
+		_publish_outcome(&"light_contact_resolved", facts)
+		_trace(&"light_contact_resolved", facts)
 
 
 func is_hit_reacting() -> bool:
 	return _state == State.HIT_REACTING
 
 
-func get_contact_phase() -> float:
+func get_active_start_phase() -> float:
 	if _current_action.is_empty():
 		return 0.0
 	var clock: Animation = _animation_player.get_animation(_animation_player.current_animation)
-	return clock.get_marker_time(&"contact") / clock.length
+	return clock.get_marker_time(&"active_start") / clock.length

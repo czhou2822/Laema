@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyCombatSettings" format=3]
+[gd_resource type="Resource" script_class="EnemyCombatSettings" format=3 uid="uid://bmvh51k074e35"]
 
-[ext_resource type="Script" path="res://scripts/config/enemy_combat_settings.gd" id="1"]
-[ext_resource type="Resource" path="res://config/characters/hit_reaction.tres" id="reaction"]
+[ext_resource type="Script" uid="uid://ha8mqe7w5iv6" path="res://scripts/config/enemy_combat_settings.gd" id="1"]
+[ext_resource type="Resource" uid="uid://dovkisga8ehln" path="res://config/characters/hit_reaction.tres" id="reaction"]
 
 [resource]
 resource_name = "CombatEnemy Settings"
@@ -18,19 +18,19 @@ enemy_ai = {
 "movement_speed": 90,
 "poise": 10
 }
-elemental_endurance = {
-"hit_10_damage_percent": 0,
-"hit_6_damage_percent": 0.5,
-"hit_7_damage_percent": 0.4,
-"hit_8_damage_percent": 0.3,
-"hit_9_damage_percent": 0.2,
-"enabled": false
-}
 attack = {
 "animation": "melee_swing",
 "damage_key": "damage",
 "duration_key": "windup_duration",
 "forward_lunge": null,
 "impact": 20
+}
+elemental_endurance = {
+"enabled": false,
+"hit_10_damage_percent": 0,
+"hit_6_damage_percent": 0.5,
+"hit_7_damage_percent": 0.4,
+"hit_8_damage_percent": 0.3,
+"hit_9_damage_percent": 0.2
 }
 hit_reaction = ExtResource("reaction")

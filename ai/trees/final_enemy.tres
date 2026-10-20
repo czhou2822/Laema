@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bplprkgfw5hk2" path="res://ai/tasks/enemy/enemy_idle.gd" id="6_idle"]
 [ext_resource type="Script" uid="uid://cfs50m56n4fk7" path="res://ai/tasks/enemy/enemy_is_reacting.gd" id="7_reacting"]
 [ext_resource type="Script" uid="uid://oa8xj5vpajr2" path="res://ai/tasks/enemy/enemy_hit_reaction.gd" id="8_reaction"]
+[ext_resource type="Resource" uid="uid://dovkisga8ehln" path="res://config/characters/hit_reaction.tres" id="9_reaction_settings"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ai"]
 var/target/name = &"target"
@@ -52,10 +53,15 @@ script = ExtResource("7_reacting")
 [sub_resource type="BTAction" id="BTAction_reaction"]
 custom_name = "Execute hit reaction using character settings"
 script = ExtResource("8_reaction")
+hit_reaction_settings = ExtResource("9_reaction_settings")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_t33y5"]
+min_duration = 0.3
+max_duration = 0.8
 
 [sub_resource type="BTSequence" id="BTSequence_reaction"]
 custom_name = "Interrupted by qualifying hit"
-children = [SubResource("BTCondition_reacting"), SubResource("BTAction_reaction")]
+children = [SubResource("BTCondition_reacting"), SubResource("BTAction_reaction"), SubResource("BTRandomWait_t33y5")]
 
 [sub_resource type="BTCondition" id="BTCondition_engage"]
 custom_name = "Player within awareness range"

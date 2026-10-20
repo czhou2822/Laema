@@ -21,6 +21,20 @@ static func calculate_reaction_value(incoming_impact: int, receiver_poise: int, 
 	return incoming_impact - receiver_poise - active_impact
 
 
+static func _is_reaction_eligible(value: int, instigator: Entity, receiver: Entity, direct_damage: bool) -> bool:
+	if value > 0:
+		return true
+	return (
+		value == 0
+		and direct_damage
+		and is_instance_valid(instigator)
+		and instigator.is_player_combatant()
+		and is_instance_valid(receiver)
+		and receiver.uses_combat_hit_reaction()
+		and not receiver.is_player_combatant()
+	)
+
+
 func configure(
 	owner_entity: Entity,
 	health_component: HealthComponent,
@@ -60,6 +74,8 @@ func resolve(event: HealthEvent) -> HealthResult:
 		_deliver_result(heal_result)
 		return heal_result
 
+	if event.melee_contact and not _live_melee(event):
+		return _reject(event, HealthResult.Outcome.CANCELLED, &"attack_cancelled")
 	if event.is_direct_damage() and _owner_entity.uses_combat_hit_reaction() and event.reaction_debug.is_empty():
 		event.reaction_debug = _capture_reaction_debug(event, _owner_entity.get_melee_snapshot())
 	if _hit_reaction.is_invincible() or _owner_entity.has_pending_combat_hit_reaction():
@@ -67,22 +83,20 @@ func resolve(event: HealthEvent) -> HealthResult:
 
 	var defensive_level := _owner_entity.get_defensive_level()
 	var outcome := HealthResult.Outcome.APPLIED
-	if _defence_component != null:
+	if event.interception_checked:
+		outcome = event.interception_outcome
+	elif _defence_component != null:
 		outcome = int(_defence_component.intercept(event))
 
 
 	var combat_difference := -1
 	var combat_reaction_eligible := false
 	if outcome == HealthResult.Outcome.APPLIED and _owner_entity.uses_combat_hit_reaction():
-		if event.melee_contact and not event.clash_resolved:
-			var clash_result: HealthResult = _resolve_clash(event)
-			if clash_result != null:
-				return clash_result
 		combat_difference = event.reaction_difference if event.clash_resolved else calculate_reaction_value(event.impact, _owner_entity.get_poise(), _owner_entity.get_melee_snapshot())
 		event.reaction_difference = combat_difference
-		combat_reaction_eligible = combat_difference > 0 or (combat_difference == 0 and event.clash_resolved and event.player_winning_clash_tie)
+		combat_reaction_eligible = event.force_clash_level_one or _is_reaction_eligible(combat_difference, event.instigator as Entity, _owner_entity, event.is_direct_damage())
 		if not event.reaction_debug.is_empty():
-			event.reaction_debug.merge({"value": combat_difference, "calculated": true, "eligible": combat_reaction_eligible}, true)
+			event.reaction_debug.merge({"value": combat_difference, "calculated": true, "eligible": combat_reaction_eligible, "player_zero_advantage": combat_difference == 0 and _is_reaction_eligible(0, event.instigator as Entity, _owner_entity, event.is_direct_damage())}, true)
 
 	var reaction_level := 0
 	if event.is_direct_damage():
@@ -91,12 +105,13 @@ func resolve(event: HealthEvent) -> HealthResult:
 		reaction_level = _hit_reaction.level_for_value(combat_difference)
 		_owner_entity.cancel_combat_attack()
 		if _hit_transaction_depth > 0:
-			if combat_difference > _pending_difference:
-				_pending_difference = combat_difference
+			if maxi(combat_difference, 0) > _pending_difference:
+				_pending_difference = maxi(combat_difference, 0)
 				_pending_direction = event.contact_direction
 				_pending_push_scale = event.push_scale
 		else:
-			_owner_entity.request_combat_hit_reaction(combat_difference, event.contact_direction, event.push_scale)
+			# Keep signed diagnostics; zero explicitly selects configured Level 1.
+			_owner_entity.request_combat_hit_reaction(maxi(combat_difference, 0), event.contact_direction, event.push_scale)
 	elif outcome != HealthResult.Outcome.PARRIED and (outcome == HealthResult.Outcome.BLOCKED or not _owner_entity.uses_combat_hit_reaction()):
 		reaction_level = maxi(event.impact - defensive_level, 0)
 
@@ -218,60 +233,91 @@ func _reject(event: HealthEvent, outcome: int, tag: StringName) -> HealthResult:
 	return result
 
 
-func _resolve_clash(event: HealthEvent) -> HealthResult:
+static func _live_melee(event: HealthEvent) -> bool:
 	var attacker := event.instigator as Entity
-	if not is_instance_valid(attacker):
-		return null
-	var incoming: Dictionary = attacker.get_melee_snapshot()
-	if incoming.is_empty() or int(incoming["action_id"]) != event.source_action_id:
-		return _reject(event, HealthResult.Outcome.CANCELLED, &"attack_cancelled")
-	var defending: Dictionary = _owner_entity.get_melee_snapshot()
-	# One physical contact is enough; overlapping authored active intervals decide
-	# eligibility without waiting for a reverse contact on the same update.
-	if not bool(incoming["active"]) or defending.is_empty() or not bool(defending["active"]):
-		return null
-	# Calculate each receiving side independently. Poise never boosts an outgoing hit.
-	var incoming_value := calculate_reaction_value(event.impact, _owner_entity.get_poise(), defending)
-	var counter_value := calculate_reaction_value(int(defending["impact"]), attacker.get_poise(), incoming)
-	var zero_tie := incoming_value == 0 and counter_value == 0
-	var attacker_wins := incoming_value > 0 or (zero_tie and attacker.is_player_combatant())
-	var defender_wins := counter_value > 0 or (zero_tie and _owner_entity.is_player_combatant())
-	if not event.reaction_debug.is_empty():
-		event.reaction_debug.merge({"value": incoming_value, "calculated": true, "eligible": false, "clash_contact": true}, true)
-	ImpactProbe.record("clash_decision", {"action_id": event.source_action_id, "target": str(_owner_entity.get_path()), "attacker_poise_defensive_only": attacker.get_poise(), "incoming_impact": event.impact, "target_poise": _owner_entity.get_poise(), "defending_impact": defending["impact"], "incoming_hit_reaction_value": incoming_value, "counter_hit_reaction_value": counter_value, "zero_tie": zero_tie, "attacker_wins": attacker_wins, "defender_wins": defender_wins})
-	if attacker_wins:
-		event.reaction_difference = incoming_value
-		event.clash_resolved = true
-		event.player_winning_clash_tie = zero_tie
-		return null
-	if not defender_wins:
-		# No interruption: apply this connected hit normally and let both attacks continue.
-		# A later reverse hit still needs its own physical contact; do not synthesize one.
-		event.reaction_difference = incoming_value
-		event.clash_resolved = true
-		return null
+	if not is_instance_valid(attacker) or not is_instance_valid(event.target):
+		return false
+	var move := attacker.get_melee_snapshot()
+	return bool(move.get("active", false)) and int(move.get("action_id", 0)) == event.source_action_id
 
-	# Resolve the winning move against the loser at the established contact.
-	# It is a clash result, not a second range-free collision query.
-	var counter := HealthEvent.damage(
-		_owner_entity, attacker, float(defending["damage"]), int(defending["impact"]),
-		HealthEvent.Delivery.DIRECT, StringName(defending["school"]), {},
-		-event.contact_direction, event.contact_point, int(defending["action_id"]),
-		Array(defending.get("composition", []))
-	)
-	counter.melee_contact = true
-	counter.push_scale = float(defending.get("push_scale", 1.0))
-	counter.clash_resolved = true
-	counter.reaction_difference = counter_value
-	counter.player_winning_clash_tie = zero_tie
-	counter.reaction_debug = _capture_reaction_debug(counter, incoming, defending)
-	if Array(defending.get("hit_targets", [])).has(attacker.get_instance_id()):
-		# Report the actual reaction without inventing a second damage result.
-		counter.reaction_debug.merge({"value": counter_value, "calculated": true, "eligible": true}, true)
-		attacker.cancel_combat_attack()
-		attacker.request_combat_hit_reaction(counter_value, -event.contact_direction, counter.push_scale)
-		attacker.health_resolver._emit_reaction_debug(counter, attacker.hit_reaction.level_for_value(counter_value), "REACTION ONLY")
-		return _reject(event, HealthResult.Outcome.CLASH_LOST, &"clash_lost")
-	var counter_result: HealthResult = attacker.receive_health_event(counter)
-	_owner_entity.on_clash_contact_resolved(counter_result)
-	return _reject(event, HealthResult.Outcome.CLASH_LOST, &"clash_lost")
+
+func _prepare_melee_interception(event: HealthEvent) -> void:
+	if event.interception_checked:
+		return
+	event.reaction_debug = _capture_reaction_debug(event, _owner_entity.get_melee_snapshot())
+	event.interception_checked = true
+	if _hit_reaction.is_invincible() or _owner_entity.has_pending_combat_hit_reaction():
+		event.interception_outcome = HealthResult.Outcome.INVINCIBLE
+	else:
+		event.interception_outcome = int(_defence_component.intercept(event)) if _defence_component != null else HealthResult.Outcome.APPLIED
+
+
+static func _deliver_melee(event: HealthEvent) -> HealthResult:
+	var target := event.target as Entity
+	var attacker := event.instigator as Entity
+	if not is_instance_valid(target):
+		return null
+	var result: HealthResult
+	if _live_melee(event):
+		result = target.receive_health_event(event)
+	else:
+		result = target.health_resolver._reject(event, HealthResult.Outcome.CANCELLED, &"attack_cancelled")
+	if is_instance_valid(attacker):
+		attacker.on_clash_contact_resolved(result)
+	return result
+
+
+static func resolve_melee_contacts(events: Array[HealthEvent]) -> void:
+	var handled: Dictionary = {}
+	for index in range(events.size()):
+		if handled.has(index):
+			continue
+		var event := events[index]
+		if not _live_melee(event):
+			_deliver_melee(event)
+			continue
+		var reverse_index := -1
+		for other_index in range(index + 1, events.size()):
+			var other := events[other_index]
+			if not handled.has(other_index) and other.instigator == event.target and other.target == event.instigator and _live_melee(other):
+				reverse_index = other_index
+				break
+		if reverse_index < 0:
+			_deliver_melee(event)
+			continue
+		var reverse := events[reverse_index]
+		var attacker := event.instigator as Entity
+		var receiver := event.target as Entity
+		# Both events came from actual geometry at this same common sample.
+		# Defence/invincibility intercept once, before considering a clash.
+		receiver.health_resolver._prepare_melee_interception(event)
+		attacker.health_resolver._prepare_melee_interception(reverse)
+		if event.interception_outcome != HealthResult.Outcome.APPLIED or reverse.interception_outcome != HealthResult.Outcome.APPLIED or not _live_melee(event) or not _live_melee(reverse):
+			_deliver_melee(event)
+			continue
+		handled[reverse_index] = true
+		var incoming_value := calculate_reaction_value(event.impact, receiver.get_poise(), receiver.get_melee_snapshot())
+		var reverse_value := calculate_reaction_value(reverse.impact, attacker.get_poise(), attacker.get_melee_snapshot())
+		var tied := incoming_value == reverse_value
+		var incoming_wins := incoming_value > reverse_value or (tied and attacker.is_player_combatant())
+		var winner: HealthEvent = event if incoming_wins else reverse
+		var loser: HealthEvent = reverse if incoming_wins else event
+		winner.clash_resolved = true
+		winner.reaction_difference = incoming_value if incoming_wins else reverse_value
+		winner.force_clash_level_one = winner.reaction_difference <= 0
+		winner.player_winning_clash_tie = tied
+		for contact in [event, reverse]:
+			contact.reaction_debug.merge({"clash_contact": true, "incoming_hit_reaction_value": incoming_value, "counter_hit_reaction_value": reverse_value}, true)
+		loser.reaction_debug.merge({"value": reverse_value if incoming_wins else incoming_value, "calculated": true, "eligible": false}, true)
+		ImpactProbe.record("clash_decision", {"action_id": event.source_action_id, "target": str(event.target.get_path()), "incoming_hit_reaction_value": incoming_value, "counter_hit_reaction_value": reverse_value, "zero_tie": tied and incoming_value == 0, "attacker_wins": incoming_wins, "defender_wins": not incoming_wins})
+		var winning_result := _deliver_melee(winner)
+		if winning_result == null or winning_result.outcome != HealthResult.Outcome.APPLIED:
+			_deliver_melee(loser)
+			continue
+		# Winner's accepted reaction cancels the loser. Never re-deliver its damage.
+		var losing_receiver := loser.target as Entity
+		var losing_attacker := loser.instigator as Entity
+		if is_instance_valid(losing_receiver):
+			var result := losing_receiver.health_resolver._reject(loser, HealthResult.Outcome.CLASH_LOST, &"clash_lost")
+			if is_instance_valid(losing_attacker):
+				losing_attacker.on_clash_contact_resolved(result)

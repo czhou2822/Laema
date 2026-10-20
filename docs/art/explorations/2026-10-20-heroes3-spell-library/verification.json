@@ -1,0 +1,65 @@
+{
+  "spells": 70,
+  "adventure": 10,
+  "combat": 60,
+  "shared": [
+    "Visions",
+    "Magic Arrow"
+  ],
+  "fire_entries": 16,
+  "fire_adapted": 14,
+  "fire_gaps": [
+    "Bloodlust",
+    "Fire Elemental"
+  ],
+  "fire_layers": 21,
+  "original_fire_resources": 19,
+  "carried_assets_preserved": [
+    {
+      "variant": "full",
+      "file": "generated-master.png",
+      "sha256": "4e11b9a37c1a018b9bf82421e99be17e753a46ba313bc2333b6e0db62a85c966"
+    },
+    {
+      "variant": "full",
+      "file": "burst-strip.png",
+      "sha256": "6549eb1d03046f04c05f86c26b1c60fa3a75321c8ab848611f6e3425dd8c6991"
+    },
+    {
+      "variant": "mini",
+      "file": "generated-master.png",
+      "sha256": "176053594b313bfb2e7245e066de9c692fc2b124bea5946738bbc253cfd4431a"
+    },
+    {
+      "variant": "mini",
+      "file": "travel-strip.png",
+      "sha256": "6ba85cde75053d31f303e824188dae72f284efa8f3f4595ca678de597a7b147e"
+    },
+    {
+      "variant": "mini",
+      "file": "impact-strip.png",
+      "sha256": "47126fd078ada19e625130190c88af9245ed6d7afc6e11c681418d513f0d616d"
+    }
+  ],
+  "browser_playback": "unverified: blocked local file protocol and environment loopback restrictions",
+  "engine_validation": false,
+  "tests_run": false,
+  "asset_checks": {
+    "roster_unique": true,
+    "source_resources": 79,
+    "source_raster_files": 79,
+    "source_raster_hashes_match": true,
+    "adaptation_layers": 21,
+    "individual_rgba_frames": 255,
+    "geometry_checked": true,
+    "one_shot_transparent_endpoints": 16,
+    "fire_source_and_export_cell_edges_clear": true,
+    "superseded_empty_frames_moved": [
+      "adaptations/fire/landMine/superseded/appear-legacy-transparent-04.png",
+      "adaptations/fire/fireWall/superseded/appear-legacy-transparent-04.png"
+    ],
+    "all_catalogue_asset_links_exist": true
+  },
+  "javascript_syntax": "viewer.js and catalogue.js checked with node --check; no browser execution verified",
+  "visual_review": "All Fire original sheets/contact sheets inspected; static scene peaks and native dark/light mattes reviewed; no browser playback or engine run."
+}

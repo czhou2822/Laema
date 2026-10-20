@@ -20,7 +20,7 @@ const Style = preload("res://scripts/combat/attack_style.gd")
 	set(value):
 		recovery_duration = value
 		emit_changed()
-@export_group("Contact geometry - animation contact key, pixels")
+@export_group("Active geometry - animation active_start key, pixels")
 @export_range(0.0, 400.0, 1.0, "or_greater") var shape_reach := 0.0:
 	set(value):
 		shape_reach = value

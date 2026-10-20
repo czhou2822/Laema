@@ -1,5 +1,38 @@
 # Assets
 
+Fire Player X1–X5 now use the v03 plain-sword angle studies under
+`prototype/player/fire_sword_shield_v01/angle_proofs_v03/`: 8/6/5/6/7 fixed-cell
+frames. Their provenance/manifest retains source hashes and phase mapping.
+The previous v01 attack sheets remain available; Idle/Walk/Hurt/Cast are unchanged.
+This image-only preview preserves current hitboxes, including known v03 pose
+mismatches, and has no new engine/runtime acceptance.
+
+CombatEnemy now uses the original Heroes III Castle Pikeman's idle, walk, front
+attack, hurt, and death sheets from the local extraction. See
+[Pikeman provenance](prototype/enemy/pikeman/PROVENANCE.md) for source hashes,
+group mapping, shared alignment, and prototype-use limits. Practice dummies
+retain their artwork; the former medieval fighter sheets remain available.
+
+CombatEnemy's original-game audio is in `prototype/audio/enemy/pikeman/`:
+PIKEATTK (committed thrust start), PIKEWNCE (accepted hurt), PIKEKILL (death),
+and PIKEMOVE (actual approach movement). These are mono 22,050 Hz PCM16 runtime
+decodes of the untouched IMA ADPCM originals in
+`docs/art/references/heroes3-original-audio/pikeman/`. The source manifest records
+archive offsets/hashes; the runtime `manifest.json` records decoded sample counts,
+durations and hashes. RIFF `fact` counts define duration; codec block padding is
+excluded. PIKEDFND remains reserved, with no runtime defence mapping.
+
+These Heroes III recordings are copyrighted original-game audio, **not CC0**.
+No redistribution license has been established. This local implementation does
+not authorize committing/pushing these assets or publishing them in a live build.
+Non-Heroes SFX were removed at the user's request on October 20. The accepted
+original-game Player and practice-target replacements are now wired through
+their existing triggers. See [runtime SFX provenance](prototype/audio/ORIGINAL_HEROES_SFX.md)
+and `prototype/audio/heroes3-replacements.json` for mappings, hashes, conversion,
+and the single-note Charging FIFO. Source originals/fallbacks remain under
+`docs/art/references/heroes3-original-audio/replacements/`. Projectile travel and
+impact remain silent. Wind ambience and Fairy Battles BGM remain outside this pass.
+
 `prototype/` contains the user-approved Craftpix prototype subset:
 
 - Pack 6 shared Idle and Walk sheets, plus Pack 2's shared Casting Spell sheet, are the active player locomotion and cast presentation.
@@ -8,18 +41,13 @@
 - Shinobi, Swordsman, Fighter, Saber, and Samurai sheets remain legacy prototype imports.
 - `ground_grasss.png` from the membership Grassland archive.
 - Fire, Water, and Ice frame sequences from the membership Fantasy Platformer bundle.
-- `guard_warning.ogg`, selected from Kenney Interface Sounds (`error_008.ogg`), for the near-guard-break warning.
-- `audio/casting/mark_orb_scale.ogg`, selected from Kenney Interface Sounds (`pluck_001.ogg`), for the charged-orb Do–Re–Mi–Fa–Sol cue.
-- `audio/hit_reaction/impactPunch_medium_002.ogg`, selected from Kenney Impact Sounds, for nonzero Player and Enemy hit reactions.
 
 The user confirmed membership entitlement for the premium archives. Craftpix source redistribution remains prohibited; do not publish or redistribute the source asset files outside the licensed project context.
 
-`guard_warning.ogg` is CC0. Its source is [Kenney Interface Sounds](https://opengameart.org/content/interface-sounds); attribution is optional. The original archive and bundled license remain in the user’s external SFX library.
-
-`audio/casting/mark_orb_scale.ogg` is CC0. Its source is [Kenney Interface Sounds](https://opengameart.org/content/interface-sounds); attribution is optional. The original archive and bundled license remain in the user’s external SFX library.
-
-`audio/hit_reaction/impactPunch_medium_002.ogg` is CC0. Its source is Kenney Impact Sounds; attribution is optional. The original archive and bundled license remain in the user’s external SFX library.
-
-`audio/combat/`, `audio/casting/`, and `audio/projectile/` contain a curated CC0 prototype-audio subset: school X attacks, orb creation and marking, normal/empowered/failed Casting, projectile travel, and impacts. `audio/ambience/wind.ogg` and `audio/music/fairy_battles.ogg` are temporary arena ambience and battle-bed candidates. Their original archives, exact source links, and CC0 licenses remain in `C:\Users\zhouc\OneDrive\Desktop\Library\SFX\SOURCES.md`.
+The former CC0 combat, casting, projectile, guard-warning and generic hurt SFX
+have been removed from the runtime asset tree. Their licensing/source history
+remains historical; none should be relabeled as original Heroes III audio.
+`audio/ambience/wind.ogg` and `audio/music/fairy_battles.ogg` remain temporary
+non-Heroes ambience and BGM, respectively, outside the requested SFX-only removal.
 
 The active presentation is a generic side-view prototype shell, not final Laema art. It shares Pack 6 locomotion, mirrors left-facing presentation, uses the approved school/position X table, and uses the shared cast sheet for the current Cast action. Final art remains deferred.

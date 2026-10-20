@@ -319,5 +319,5 @@ func on_clash_contact_resolved(result: HealthResult) -> void:
 	_might.on_clash_contact_resolved(result)
 
 
-func get_contact_phase() -> float:
-	return _might.get_contact_phase()
+func get_active_start_phase() -> float:
+	return _might.get_active_start_phase()

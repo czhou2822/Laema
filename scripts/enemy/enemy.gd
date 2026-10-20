@@ -111,7 +111,7 @@ func _on_health_changed(current_value: float, maximum_value: float) -> void:
 
 
 func _on_reaction_started(level: int, direction: Vector2, distance: float, duration: float) -> void:
-	if level > 0:
+	if level > 0 and hit_reaction_audio.stream != null:
 		hit_reaction_audio.play()
 	if _flinch_tween != null and _flinch_tween.is_valid():
 		_flinch_tween.kill()

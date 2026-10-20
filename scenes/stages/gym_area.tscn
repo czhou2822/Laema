@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/prototype/stage_area.gd" id="1_area"]
-[ext_resource type="Texture2D" path="res://assets/prototype/arena/platformer/ground_h1x9.png" id="2_ground"]
+[ext_resource type="Texture2D" path="res://assets/prototype/arena/town_edge_yard/town_edge_yard_v02_ground.png" id="2_ground"]
 [ext_resource type="PackedScene" path="res://scenes/enemy/combat_enemy.tscn" id="3_enemy"]
+[ext_resource type="Texture2D" path="res://assets/prototype/arena/town_edge_yard/town_edge_yard_v02_background.png" id="4_background"]
 
 [sub_resource type="RectangleShape2D" id="floor_shape"]
 size = Vector2(1280, 32)
@@ -18,40 +19,19 @@ script = ExtResource("1_area")
 camera_left = 0.0
 camera_right = 0.0
 
-[node name="Backdrop" type="Polygon2D" parent="."]
+[node name="Backdrop" type="Sprite2D" parent="."]
 z_index = -4
-color = Color(0.027, 0.063, 0.145, 1)
-polygon = PackedVector2Array(-960, -520, 960, -520, 960, 340, -960, 340)
+texture_filter = 2
+position = Vector2(-640, -558)
+texture = ExtResource("4_background")
+centered = false
 
-[node name="GroundA" type="Sprite2D" parent="."]
+[node name="Ground" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(-720, 80)
+texture_filter = 2
+position = Vector2(-640, 52)
 texture = ExtResource("2_ground")
-
-[node name="GroundB" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(-432, 80)
-texture = ExtResource("2_ground")
-
-[node name="GroundC" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(-144, 80)
-texture = ExtResource("2_ground")
-
-[node name="GroundD" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(144, 80)
-texture = ExtResource("2_ground")
-
-[node name="GroundE" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(432, 80)
-texture = ExtResource("2_ground")
-
-[node name="GroundF" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(720, 80)
-texture = ExtResource("2_ground")
+centered = false
 
 [node name="Floor" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -73,6 +53,7 @@ position = Vector2(600, 0)
 position = Vector2(-80, 0)
 
 [node name="CameraAnchor" type="Marker2D" parent="."]
+position = Vector2(0, -198)
 
 [node name="RightGate" type="StaticBody2D" parent="."]
 position = Vector2(600, 0)

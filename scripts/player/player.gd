@@ -17,52 +17,59 @@ const EarthResolver = preload("res://scripts/combat/earth_resolver.gd")
 const SHARED_IDLE: Texture2D = preload("res://assets/prototype/player/animation/shared_idle.png")
 const SHARED_WALK: Texture2D = preload("res://assets/prototype/player/animation/shared_walk.png")
 const HURT_TEXTURE: Texture2D = preload("res://assets/prototype/player/animation/hurt.png")
+const FIRE_ART_ROOT := "res://assets/prototype/player/fire_sword_shield_v01/"
+const FIRE_IDLE: Texture2D = preload("res://assets/prototype/player/fire_sword_shield_v01/shared_idle.png")
+const FIRE_WALK: Texture2D = preload("res://assets/prototype/player/fire_sword_shield_v01/shared_walk.png")
+const FIRE_HURT: Texture2D = preload("res://assets/prototype/player/fire_sword_shield_v01/hurt.png")
+const FIRE_CELL_SIZE := Vector2(448.0, 448.0)
+const FIRE_FOOT_ANCHOR := Vector2(224.0, 400.0)
+const FIRE_BODY_SIZE := Vector2(30.0, 90.0)
+const FIRE_BODY_POSITION := Vector2(0.0, -19.0)
 const ATTACK_SWING_STREAM_PATHS := [
-	"res://assets/prototype/audio/combat/swing_01.wav",
-	"res://assets/prototype/audio/combat/swing_02.wav",
-	"res://assets/prototype/audio/combat/swing_03.wav",
+	"res://assets/prototype/audio/combat/SWRDATTK.wav",
 ]
 const SCHOOL_ATTACK_STREAM_PATHS := {
 	&"fire": [
-		"res://assets/prototype/audio/combat/fire_attack_01.ogg",
-		"res://assets/prototype/audio/combat/fire_attack_02.ogg",
-		"res://assets/prototype/audio/combat/fire_attack_03.ogg",
-		"res://assets/prototype/audio/combat/fire_attack_04.ogg",
-		"res://assets/prototype/audio/combat/fire_attack_05.ogg",
+		"",
+		"",
+		"",
+		"",
+		"",
 	],
 	&"water": [
-		"res://assets/prototype/audio/combat/water_attack_01.ogg",
-		"res://assets/prototype/audio/combat/water_attack_02.ogg",
-		"res://assets/prototype/audio/combat/water_attack_03.ogg",
-		"res://assets/prototype/audio/combat/water_attack_04.ogg",
-		"res://assets/prototype/audio/combat/water_attack_05.ogg",
+		"",
+		"",
+		"",
+		"",
+		"",
 	],
 	&"air": [
-		"res://assets/prototype/audio/combat/air_attack_01.ogg",
-		"res://assets/prototype/audio/combat/air_attack_02.ogg",
-		"res://assets/prototype/audio/combat/air_attack_03.ogg",
-		"res://assets/prototype/audio/combat/air_attack_04.ogg",
-		"res://assets/prototype/audio/combat/air_attack_05.ogg",
+		"",
+		"",
+		"",
+		"",
+		"",
 	],
 	&"earth": [
-		"res://assets/prototype/audio/combat/earth_attack_01.ogg",
-		"res://assets/prototype/audio/combat/earth_attack_02.ogg",
-		"res://assets/prototype/audio/combat/earth_attack_03.ogg",
-		"res://assets/prototype/audio/combat/earth_attack_04.ogg",
-		"res://assets/prototype/audio/combat/earth_attack_05.ogg",
+		"",
+		"",
+		"",
+		"",
+		"",
 	],
 }
 const CAST_STREAM_PATHS := {
-	&"fire": "res://assets/prototype/audio/casting/fire_cast.ogg",
-	&"water": "res://assets/prototype/audio/casting/water_cast.ogg",
-	&"air": "res://assets/prototype/audio/casting/air_cast.ogg",
-	&"earth": "res://assets/prototype/audio/casting/earth_cast.ogg",
+	&"fire": "res://assets/prototype/audio/casting/SPONTCOMB.wav",
+	&"water": "res://assets/prototype/audio/casting/ICERAY.wav",
+	&"air": "res://assets/prototype/audio/casting/LIGHTBLT.wav",
+	&"earth": "res://assets/prototype/audio/casting/METEOR.wav",
 }
-const EMPOWERED_CAST_STREAM_PATH := "res://assets/prototype/audio/casting/empowered_cast.ogg"
-const CAST_FAIL_STREAM_PATH := "res://assets/prototype/audio/casting/cast_fail.ogg"
-const ORB_CREATED_STREAM_PATH := "res://assets/prototype/audio/casting/orb_created.ogg"
-const MARK_ORB_STREAM_PATH := "res://assets/prototype/audio/casting/mark_orb_scale.ogg"
+const EMPOWERED_CAST_STREAM_PATH := "res://assets/prototype/audio/casting/BLESS.wav"
+const CAST_FAIL_STREAM_PATH := "res://assets/prototype/audio/casting/DISPELL.wav"
+const ORB_CREATED_STREAM_PATH := "res://assets/prototype/audio/casting/PICKUP04.wav"
+const MARK_ORB_STREAM_PATH := "res://assets/prototype/audio/casting/charging_note_pickup03.wav"
 const MARK_AUDIO_VOLUME_DB := 0.0
+const MARK_AUDIO_BACKGROUND_REDUCTION_DB := 12.0
 const MARK_AUDIO_PITCH_SCALES: Array[float] = [1.0, 9.0 / 8.0, 5.0 / 4.0, 4.0 / 3.0, 3.0 / 2.0, 5.0 / 3.0, 15.0 / 8.0, 2.0]
 const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
@@ -107,6 +114,7 @@ const SCHOOL_TINTS := {
 @onready var hit_reaction_audio: AudioStreamPlayer = $HitReactionAudio
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_cast: ShapeCast2D = $AttackCast
+@onready var body_collision: CollisionShape2D = $CollisionShape2D
 
 var _config: Dictionary = {}
 var _visual_time := 0.0
@@ -118,10 +126,19 @@ var _facing_left := false
 var _sprite_rest_position := Vector2.ZERO
 var _sprite_rest_scale := Vector2.ONE
 var _sprite_rest_rotation := 0.0
+var _sprite_rest_offset := Vector2.ZERO
+var _sprite_rest_filter := CanvasItem.TEXTURE_FILTER_PARENT_NODE
+var _sprite_rest_material: Material
+var _sprite_art_captured := false
+var _fire_sprite_offset := Vector2.ZERO
+var _legacy_body_shape: Shape2D
+var _legacy_body_position := Vector2.ZERO
+var _fire_body_shape: RectangleShape2D
 var _last_orb_count := 0
 var _last_marked_count := 0
 var _pending_mark_audio_levels: Array[int] = []
 var _mark_audio_draining := false
+var _mark_audio_background_volumes: Dictionary = {}
 var _stage_input_locked := false
 var _hit_reaction_tween: Tween
 var _hit_visual_active := false
@@ -130,6 +147,9 @@ var _hit_visual_duration := 0.0
 
 
 func configure(config: Dictionary) -> void:
+	_clear_pending_mark_audio()
+	_last_orb_count = 0
+	_last_marked_count = 0
 	if settings != null:
 		settings.read_from_config(config)
 		settings.hit_reaction.read_from_config(config)
@@ -137,6 +157,19 @@ func configure(config: Dictionary) -> void:
 	_sprite_rest_position = sprite.position
 	_sprite_rest_scale = sprite.scale
 	_sprite_rest_rotation = sprite.rotation
+	if not _sprite_art_captured:
+		_sprite_rest_offset = sprite.offset
+		_sprite_rest_filter = sprite.texture_filter
+		_sprite_rest_material = sprite.material
+		_sprite_art_captured = true
+	# Both body profiles keep the authored floor reference and sprite registration.
+	if _legacy_body_shape == null:
+		_legacy_body_shape = body_collision.shape
+		_legacy_body_position = body_collision.position
+		_fire_body_shape = RectangleShape2D.new()
+		_fire_body_shape.size = FIRE_BODY_SIZE
+	var floor_anchor := body_collision.position + Vector2(0.0, body_collision.shape.get_rect().end.y)
+	_fire_sprite_offset = FIRE_CELL_SIZE * 0.5 - FIRE_FOOT_ANCHOR + (floor_anchor - _sprite_rest_position) / _sprite_rest_scale
 	movement.facing_changed.connect(_on_facing_changed)
 	combat.movement_lock_changed.connect(movement.set_movement_locked)
 	movement.set_attack_motion_provider(might.consume_attack_body_motion)
@@ -226,6 +259,8 @@ func is_attack_hitbox_debug_enabled() -> bool:
 
 func set_stage_input_locked(locked: bool) -> void:
 	_stage_input_locked = locked
+	if locked:
+		_clear_pending_mark_audio()
 	combat.set_stage_input_locked(locked)
 	movement.set_movement_locked(locked)
 
@@ -235,10 +270,12 @@ func reset_for_stage() -> void:
 	_clear_pending_mark_audio()
 	status_controller.clear_for_stage()
 	hit_reaction.reset_for_stage()
+	_finish_hit_visual()
 	health_resolver.reset_for_stage()
 	health.reset_to_maximum()
 	velocity = Vector2.ZERO
 	set_stage_input_locked(false)
+	sync_combat_body_profile()
 
 
 func select_stage_school(school: StringName) -> void:
@@ -294,9 +331,7 @@ func _draw() -> void:
 func _is_attack_hitbox_debug_visible() -> bool:
 	if not _attack_hitbox_debug_enabled or not combat.is_attack_playing() or might.get_melee_snapshot().is_empty():
 		return false
-	var progress: float = combat.get_normalized_attack_progress()
-	var hit_phase: float = combat.get_contact_phase()
-	return progress >= hit_phase and progress <= minf(hit_phase + ATTACK_HITBOX_DEBUG_WINDOW, 1.0)
+	return bool(might.get_melee_snapshot().get("active", false))
 
 
 func _update_attack_visual() -> void:
@@ -319,12 +354,12 @@ func _update_locomotion_visual(
 	_set_region(frame)
 
 
-func _get_idle_texture(_school: StringName) -> Texture2D:
-	return SHARED_IDLE
+func _get_idle_texture(school: StringName) -> Texture2D:
+	return FIRE_IDLE if school == &"fire" else SHARED_IDLE
 
 
-func _get_walk_texture(_school: StringName) -> Texture2D:
-	return SHARED_WALK
+func _get_walk_texture(school: StringName) -> Texture2D:
+	return FIRE_WALK if school == &"fire" else SHARED_WALK
 
 
 func _get_walk_frames(_school: StringName) -> int:
@@ -336,11 +371,13 @@ func _reset_sprite_motion() -> void:
 		sprite.position = _sprite_rest_position
 	sprite.scale = _sprite_rest_scale
 	sprite.rotation = _sprite_rest_rotation
+	_apply_sprite_art_profile()
 
 
 func _update_hit_reaction_visual(delta: float) -> void:
 	_hit_visual_time += delta
-	_set_visual_mode(&"hurt", HURT_TEXTURE)
+	_set_visual_mode(&"hurt", FIRE_HURT if combat.get_active_school() == &"fire" else HURT_TEXTURE)
+	_apply_sprite_art_profile()
 	var duration := maxf(_hit_visual_duration, 0.001)
 	var frame := clampi(int(floor(_hit_visual_time / duration * float(HURT_FRAMES))), 0, HURT_FRAMES - 1)
 	_set_region(frame)
@@ -355,7 +392,43 @@ func _set_visual_mode(mode: StringName, texture: Texture2D) -> void:
 
 
 func _set_region(frame: int) -> void:
-	sprite.region_rect = Rect2(Vector2(frame, 0) * CELL_SIZE, CELL_SIZE)
+	var cell_size := FIRE_CELL_SIZE if _uses_fire_art() else CELL_SIZE
+	sprite.region_rect = Rect2(Vector2(frame, 0) * cell_size, cell_size)
+
+
+func _uses_fire_art() -> bool:
+	# Follow the committed clip's texture even if the selected school changes.
+	return sprite.texture != null and sprite.texture.resource_path.begins_with(FIRE_ART_ROOT)
+
+
+func _apply_sprite_art_profile() -> void:
+	var fire_art := _uses_fire_art()
+	sprite.offset = _fire_sprite_offset if fire_art else _sprite_rest_offset
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if fire_art else _sprite_rest_filter
+	# Preserve approved Fire image colors; restore the legacy shader/tints elsewhere.
+	sprite.material = null if fire_art else _sprite_rest_material
+	sprite.self_modulate = Color.WHITE if fire_art else SCHOOL_TINTS[combat.get_active_school()]
+	if _legacy_body_shape != null:
+		var desired_shape: Shape2D = _fire_body_shape if fire_art else _legacy_body_shape
+		if body_collision.shape != desired_shape:
+			body_collision.shape = desired_shape
+			body_collision.position = FIRE_BODY_POSITION if fire_art else _legacy_body_position
+
+
+func sync_combat_body_profile() -> void:
+	if _config.is_empty():
+		return
+	# Animation texture follows the committed action, including a school switch.
+	# Outside an action, refresh the selected school's art before physics queries.
+	if _hit_visual_active:
+		_update_hit_reaction_visual(0.0)
+	elif not combat.is_attack_playing():
+		var walking: bool = not movement.get_motion().is_zero_approx()
+		var texture: Texture2D = _get_walk_texture(combat.get_active_school()) if walking else _get_idle_texture(combat.get_active_school())
+		if sprite.texture != texture:
+			_set_visual_mode(&"walk" if walking else &"idle", texture)
+			_set_region(0)
+	_apply_sprite_art_profile()
 
 
 func _update_side_facing(direction: Vector2) -> void:
@@ -382,6 +455,7 @@ func _on_attack_started(kind: StringName, school: StringName, direction: Vector2
 	_visual_attack_direction = direction
 	_visual_light_position = clampi(combat.get_current_chain_position(), 1, 5) if kind == &"light" else 0
 	_visual_time = 0.0
+	_apply_sprite_art_profile()
 	if kind == &"light":
 		_play_audio(attack_swing_audio, _load_audio_stream(ATTACK_SWING_STREAM_PATHS[(_visual_light_position - 1) % ATTACK_SWING_STREAM_PATHS.size()]))
 		_play_audio(element_audio, _school_attack_stream(school, _visual_light_position))
@@ -414,13 +488,15 @@ func _on_cast_launch_requested(payload: Dictionary) -> void:
 
 func _on_active_school_changed(school: StringName) -> void:
 	_update_school_outline(school)
+	sync_combat_body_profile()
 	active_school_changed.emit(school)
 
 
 func _update_school_outline(school: StringName) -> void:
-	var shader_material := sprite.material as ShaderMaterial
-	shader_material.set_shader_parameter(&"outline_color", SCHOOL_COLORS[school])
-	sprite.self_modulate = SCHOOL_TINTS[school]
+	var shader_material := _sprite_rest_material as ShaderMaterial
+	if shader_material != null:
+		shader_material.set_shader_parameter(&"outline_color", SCHOOL_COLORS[school])
+	_apply_sprite_art_profile()
 
 
 func _on_heat_changed(value: float, level: int, speed_multiplier: float) -> void:
@@ -431,6 +507,7 @@ func _on_health_changed(current_value: float, maximum_value: float) -> void:
 	if current_value <= 0.0:
 		combat.cancel_combat_attack()
 		hit_reaction.reset_for_stage()
+		_finish_hit_visual()
 		set_stage_input_locked(true)
 		velocity = Vector2.ZERO
 	health_changed.emit(current_value, maximum_value)
@@ -453,9 +530,11 @@ func _on_orb_queue_changed(snapshot: Array, marked_count: int, marking_progress:
 	for orb in snapshot:
 		if bool(orb.get("marked", false)):
 			visible_marked_count += 1
+	if visible_marked_count < _last_marked_count:
+		_clear_pending_mark_audio()
 	if snapshot.size() > _last_orb_count:
 		_play_audio(orb_audio, _load_audio_stream(ORB_CREATED_STREAM_PATH))
-	if visible_marked_count > _last_marked_count:
+	if not _stage_input_locked and not health.is_zero() and visible_marked_count > _last_marked_count and not MARK_ORB_STREAM_PATH.is_empty():
 		for level in range(_last_marked_count + 1, visible_marked_count + 1):
 			_pending_mark_audio_levels.append(level)
 		_drain_mark_audio_queue()
@@ -470,8 +549,9 @@ func _on_effect_state_changed(snapshot: Dictionary) -> void:
 
 
 func _on_hit_reaction_started(level: int, direction: Vector2, distance: float, duration: float) -> void:
+	_clear_pending_mark_audio()
 	combat.on_hit_reaction_started()
-	if level > 0:
+	if level > 0 and hit_reaction_audio.stream != null:
 		hit_reaction_audio.play()
 	if _hit_reaction_tween != null and _hit_reaction_tween.is_valid():
 		_hit_reaction_tween.kill()
@@ -494,6 +574,9 @@ func _on_hit_reaction_ended() -> void:
 
 
 func _finish_hit_visual() -> void:
+	if _hit_reaction_tween != null and _hit_reaction_tween.is_valid():
+		_hit_reaction_tween.kill()
+	_hit_reaction_tween = null
 	_hit_visual_active = false
 	_hit_visual_time = 0.0
 	_hit_visual_duration = 0.0
@@ -505,26 +588,37 @@ func _on_defence_status_changed(label: String, current_guard: float, maximum_gua
 
 
 func _on_guard_warning() -> void:
-	guard_warning_audio.play()
+	if guard_warning_audio.stream != null:
+		guard_warning_audio.play()
 
 
 func _on_cast_failed() -> void:
+	_clear_pending_mark_audio()
 	_play_audio(cast_fail_audio, _load_audio_stream(CAST_FAIL_STREAM_PATH))
 
 
-func _play_mark_audio(charged_orb_count: int) -> void:
+func _play_mark_audio(charged_orb_count: int) -> bool:
+	var stream: AudioStream = _load_audio_stream(MARK_ORB_STREAM_PATH)
+	if stream == null:
+		return false
 	var pitch_index: int = clampi(charged_orb_count - 1, 0, MARK_AUDIO_PITCH_SCALES.size() - 1)
 	mark_audio.pitch_scale = MARK_AUDIO_PITCH_SCALES[pitch_index]
 	mark_audio.volume_db = MARK_AUDIO_VOLUME_DB
-	_play_audio(mark_audio, _load_audio_stream(MARK_ORB_STREAM_PATH))
+	_set_mark_audio_foreground(true)
+	_play_audio(mark_audio, stream)
+	return true
 
 
 func _drain_mark_audio_queue() -> void:
-	if _mark_audio_draining or _pending_mark_audio_levels.is_empty():
+	if _mark_audio_draining:
+		return
+	if _pending_mark_audio_levels.is_empty():
+		_set_mark_audio_foreground(false)
 		return
 	_mark_audio_draining = true
 	var level: int = _pending_mark_audio_levels.pop_front()
-	_play_mark_audio(level)
+	if not _play_mark_audio(level):
+		_clear_pending_mark_audio()
 
 
 func _on_mark_audio_finished() -> void:
@@ -537,6 +631,22 @@ func _clear_pending_mark_audio() -> void:
 	_mark_audio_draining = false
 	if mark_audio != null:
 		mark_audio.stop()
+	_set_mark_audio_foreground(false)
+
+
+func _set_mark_audio_foreground(enabled: bool) -> void:
+	if enabled:
+		if not _mark_audio_background_volumes.is_empty():
+			return
+		# Keep earlier spell/pickup tails behind the count-indexed charging notes.
+		for player in [cast_audio, empowered_cast_audio, orb_audio]:
+			_mark_audio_background_volumes[player] = player.volume_db
+			player.volume_db -= MARK_AUDIO_BACKGROUND_REDUCTION_DB
+	else:
+		for player in _mark_audio_background_volumes:
+			if is_instance_valid(player):
+				player.volume_db = float(_mark_audio_background_volumes[player])
+		_mark_audio_background_volumes.clear()
 
 
 func _exit_tree() -> void:
@@ -556,6 +666,8 @@ func _play_audio(player: AudioStreamPlayer, stream: AudioStream) -> void:
 
 
 func _load_audio_stream(path: String) -> AudioStream:
+	if path.is_empty():
+		return null
 	return ResourceLoader.load(path, "AudioStream") as AudioStream
 
 

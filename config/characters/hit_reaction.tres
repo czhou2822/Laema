@@ -1,48 +1,42 @@
-[gd_resource type="Resource" script_class="CharacterReactionSettings" format=3]
+[gd_resource type="Resource" script_class="CharacterReactionSettings" format=3 uid="uid://dovkisga8ehln"]
 
-[ext_resource type="Script" path="res://scripts/config/character_reaction_settings.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/config/combat_reaction_level_tuning.gd" id="level_script"]
+[ext_resource type="Script" uid="uid://dhtpf2cpqmdai" path="res://scripts/config/character_reaction_settings.gd" id="1"]
+[ext_resource type="Script" uid="uid://cvbk41an50p0f" path="res://scripts/config/combat_reaction_level_tuning.gd" id="level_script"]
 
 [sub_resource type="Resource" id="Level_1"]
 resource_name = "Level 1"
 script = ExtResource("level_script")
-distance = 5
 duration = 0.25
-minimum_value = 0
 
 [sub_resource type="Resource" id="Level_2"]
 resource_name = "Level 2"
 script = ExtResource("level_script")
-distance = 10
-duration = 0.55
 minimum_value = 11
+duration = 0.55
+distance = 10.0
 
 [sub_resource type="Resource" id="Level_3"]
 resource_name = "Level 3"
 script = ExtResource("level_script")
-distance = 15
-duration = 0.85
 minimum_value = 21
+duration = 0.85
+distance = 15.0
 
 [sub_resource type="Resource" id="Level_4"]
 resource_name = "Level 4"
 script = ExtResource("level_script")
-distance = 20
-duration = 1.15
 minimum_value = 31
+duration = 1.15
+distance = 20.0
 
 [sub_resource type="Resource" id="Level_5"]
 resource_name = "Level 5"
 script = ExtResource("level_script")
-distance = 25
-duration = 1.45
 minimum_value = 41
+duration = 1.45
+distance = 25.0
 
 [resource]
 resource_name = "Shared Hit Reaction"
 script = ExtResource("1")
 combat_levels = Array[ExtResource("level_script")]([SubResource("Level_1"), SubResource("Level_2"), SubResource("Level_3"), SubResource("Level_4"), SubResource("Level_5")])
-base_distance = 7
-base_duration = 0.14
-distance_per_level = 3.5
-duration_per_level = 0.07

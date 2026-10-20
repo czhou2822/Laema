@@ -10,10 +10,10 @@ const SCHOOL_COLORS := {
 	&"earth": Color("8b5a2b"),
 }
 const TRAVEL_STREAM_PATHS := {
-	&"fire": "res://assets/prototype/audio/projectile/fire_travel.ogg",
-	&"water": "res://assets/prototype/audio/projectile/water_travel.ogg",
-	&"air": "res://assets/prototype/audio/projectile/air_travel.ogg",
-	&"earth": "res://assets/prototype/audio/projectile/earth_travel.ogg",
+	&"fire": "",
+	&"water": "",
+	&"air": "",
+	&"earth": "",
 }
 
 @onready var visual: Polygon2D = $Visual
@@ -83,6 +83,8 @@ func _update_visual_color() -> void:
 
 
 func _load_audio_stream(path: String) -> AudioStream:
+	if path.is_empty():
+		return null
 	return ResourceLoader.load(path, "AudioStream") as AudioStream
 
 

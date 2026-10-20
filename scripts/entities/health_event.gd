@@ -29,6 +29,9 @@ var push_scale := 1.0 # Scales distance only after existing reaction eligibility
 var reaction_difference := -1
 var clash_resolved := false
 var player_winning_clash_tie := false
+var force_clash_level_one := false
+var interception_checked := false
+var interception_outcome := -1
 var reaction_debug: Dictionary = {} # Contact-time facts for development UI only.
 
 

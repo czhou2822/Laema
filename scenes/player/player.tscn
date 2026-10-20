@@ -15,11 +15,11 @@
 [ext_resource type="Script" uid="uid://cqarcdpymrh10" path="res://scripts/status/status_controller.gd" id="9_status"]
 [ext_resource type="Script" uid="uid://43xham0smt4v" path="res://scripts/entities/hit_reaction.gd" id="10_reaction"]
 [ext_resource type="Script" uid="uid://28mrt2a1rih1" path="res://scripts/combat/defence_controller.gd" id="11_defence"]
-[ext_resource type="AudioStream" uid="uid://dlyeu02rbvqqb" path="res://assets/prototype/audio/guard_warning.ogg" id="12_guard_warning"]
 [ext_resource type="Script" uid="uid://c4wgsy7f1jn2q" path="res://scripts/combat/might_component.gd" id="13_might"]
 [ext_resource type="Script" uid="uid://c6y7xjmaw3ga1" path="res://scripts/combat/magic_component.gd" id="14_magic"]
 [ext_resource type="Script" uid="uid://ceapx6wghtl1" path="res://scripts/entities/feedback_component.gd" id="15_feedback"]
-[ext_resource type="AudioStream" uid="uid://c7cgmy6nghman" path="res://assets/prototype/audio/hit_reaction/impactPunch_medium_002.ogg" id="16_hit_reaction"]
+[ext_resource type="AudioStream" path="res://assets/prototype/audio/guard/PROTECT.wav" id="heroes_guard"]
+[ext_resource type="AudioStream" path="res://assets/prototype/audio/hit_reaction/SWRDWNCE.wav" id="heroes_hurt"]
 [ext_resource type="Animation" path="res://config/attack_animations/air_x1.tres" id="Anim_air_x1"]
 [ext_resource type="Animation" path="res://config/attack_animations/air_x2.tres" id="Anim_air_x2"]
 [ext_resource type="Animation" path="res://config/attack_animations/air_x3.tres" id="Anim_air_x3"]
@@ -177,7 +177,7 @@ script = ExtResource("10_reaction")
 script = ExtResource("15_feedback")
 
 [node name="GuardWarningAudio" type="AudioStreamPlayer" parent="." unique_id=351016814]
-stream = ExtResource("12_guard_warning")
+stream = ExtResource("heroes_guard")
 bus = &"SFX"
 
 [node name="AttackSwingAudio" type="AudioStreamPlayer" parent="." unique_id=265947787]
@@ -199,10 +199,13 @@ bus = &"SFX"
 bus = &"SFX"
 
 [node name="MarkAudio" type="AudioStreamPlayer" parent="." unique_id=1810556072]
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 1
 bus = &"SFX"
 
 [node name="HitReactionAudio" type="AudioStreamPlayer" parent="." unique_id=397081968]
-stream = ExtResource("16_hit_reaction")
+stream = ExtResource("heroes_hurt")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1902928798]
