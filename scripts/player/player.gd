@@ -21,6 +21,10 @@ const FIRE_ART_ROOT := "res://assets/prototype/player/fire_sword_shield_v01/"
 const FIRE_IDLE: Texture2D = preload("res://assets/prototype/player/fire_sword_shield_v01/shared_idle.png")
 const FIRE_WALK: Texture2D = preload("res://assets/prototype/player/fire_sword_shield_v01/shared_walk.png")
 const FIRE_HURT: Texture2D = preload("res://assets/prototype/player/fire_sword_shield_v01/hurt.png")
+const FIRE_DEFENCE: Texture2D = preload("res://assets/prototype/player/fire_sword_shield_v01/shield_catch/shield-catch-8x448.png")
+const FIRE_DEFENCE_GUARD_FRAME := 3
+const FIRE_DEFENCE_SPARK_FRAME := 4
+const FIRE_DEFENCE_LAST_FRAME := 7
 const FIRE_CELL_SIZE := Vector2(448.0, 448.0)
 const FIRE_FOOT_ANCHOR := Vector2(224.0, 400.0)
 const FIRE_BODY_SIZE := Vector2(30.0, 90.0)
@@ -144,6 +148,9 @@ var _hit_reaction_tween: Tween
 var _hit_visual_active := false
 var _hit_visual_time := 0.0
 var _hit_visual_duration := 0.0
+var _fire_defence_contact_remaining := 0.0
+var _fire_defence_release_remaining := 0.0
+var _fire_defence_was_guarding := false
 
 
 func configure(config: Dictionary) -> void:
@@ -187,6 +194,7 @@ func configure(config: Dictionary) -> void:
 	if not mark_audio.finished.is_connected(_on_mark_audio_finished):
 		mark_audio.finished.connect(_on_mark_audio_finished)
 	defence.guard_warning.connect(_on_guard_warning)
+	defence.parry_window_changed.connect(_on_parry_window_changed)
 	health.health_changed.connect(_on_health_changed)
 	status_controller.effect_state_changed.connect(_on_effect_state_changed)
 	hit_reaction.reaction_started.connect(_on_hit_reaction_started)
@@ -236,7 +244,14 @@ func apply_runtime_tuning() -> void:
 
 func receive_health_result(result: HealthResult) -> void:
 	combat.handle_health_result(result)
-	if result == null or result.event == null or result.event.target != self or result.outcome != HealthResult.Outcome.APPLIED:
+	if result == null or result.event == null or result.event.target != self:
+		return
+	var fire_defended := result.event.fire_defence and result.outcome in [HealthResult.Outcome.PARRIED, HealthResult.Outcome.BLOCKED]
+	if fire_defended and result.outcome == HealthResult.Outcome.PARRIED:
+		_start_fire_defence_contact_visual()
+	if fire_defended and guard_warning_audio.stream != null:
+		guard_warning_audio.play()
+	if result.outcome != HealthResult.Outcome.APPLIED and not (fire_defended and result.health_delta < 0.0):
 		return
 	if result.event.is_direct_damage():
 		feedback.show_damage(result.event.school, -result.health_delta)
@@ -261,12 +276,14 @@ func set_stage_input_locked(locked: bool) -> void:
 	_stage_input_locked = locked
 	if locked:
 		_clear_pending_mark_audio()
+		_clear_fire_defence_visual()
 	combat.set_stage_input_locked(locked)
 	movement.set_movement_locked(locked)
 
 
 func reset_for_stage() -> void:
 	combat.reset_for_stage()
+	_clear_fire_defence_visual()
 	_clear_pending_mark_audio()
 	status_controller.clear_for_stage()
 	hit_reaction.reset_for_stage()
@@ -292,10 +309,14 @@ func _process(delta: float) -> void:
 	if _config.is_empty():
 		return
 	_visual_time += delta
+	_fire_defence_contact_remaining = maxf(_fire_defence_contact_remaining - delta, 0.0)
+	_fire_defence_release_remaining = maxf(_fire_defence_release_remaining - delta, 0.0)
 	if _hit_visual_active:
 		_update_hit_reaction_visual(delta)
 	elif combat.is_attack_playing():
 		_update_attack_visual()
+	elif _update_fire_defence_visual():
+		pass
 	elif not movement.get_motion().is_zero_approx():
 		_update_locomotion_visual(&"walk", _get_walk_texture(combat.get_active_school()), _get_walk_frames(combat.get_active_school()), WALK_FPS)
 	else:
@@ -356,6 +377,61 @@ func _update_locomotion_visual(
 
 func _get_idle_texture(school: StringName) -> Texture2D:
 	return FIRE_IDLE if school == &"fire" else SHARED_IDLE
+
+
+func _update_fire_defence_visual() -> bool:
+	if _stage_input_locked or _hit_visual_active or health.is_zero() or combat.is_attack_playing() or combat.get_active_school() != &"fire":
+		_clear_fire_defence_visual()
+		return false
+	var state := defence.get_fire_visual_snapshot()
+	if not bool(state.get("control_locked", false)) and not movement.get_motion().is_zero_approx():
+		_clear_fire_defence_visual()
+		return false
+	var frame := -1
+	if _fire_defence_contact_remaining > 0.0:
+		var contact_elapsed := float(FIRE_DEFENCE_LAST_FRAME - FIRE_DEFENCE_SPARK_FRAME + 1) / WALK_FPS - _fire_defence_contact_remaining
+		frame = clampi(FIRE_DEFENCE_SPARK_FRAME + int(contact_elapsed * WALK_FPS), FIRE_DEFENCE_SPARK_FRAME, FIRE_DEFENCE_LAST_FRAME)
+	elif not state.is_empty() and not bool(state["succeeded"]):
+		if bool(state["holding"]) or bool(state["parrying"]):
+			_fire_defence_was_guarding = true
+			_fire_defence_release_remaining = 0.0
+			frame = mini(int(float(state["elapsed"]) * WALK_FPS), FIRE_DEFENCE_GUARD_FRAME)
+	if frame < 0:
+		if _fire_defence_was_guarding:
+			_fire_defence_was_guarding = false
+			_fire_defence_release_remaining = float(FIRE_DEFENCE_LAST_FRAME - FIRE_DEFENCE_SPARK_FRAME) / WALK_FPS
+		if _fire_defence_release_remaining <= 0.0:
+			return false
+		var release_elapsed := float(FIRE_DEFENCE_LAST_FRAME - FIRE_DEFENCE_SPARK_FRAME) / WALK_FPS - _fire_defence_release_remaining
+		# Misses and ordinary blocks never enter the baked-spark cell.
+		frame = clampi(FIRE_DEFENCE_SPARK_FRAME + 1 + int(release_elapsed * WALK_FPS), FIRE_DEFENCE_SPARK_FRAME + 1, FIRE_DEFENCE_LAST_FRAME)
+	_set_visual_mode(&"fire_defence", FIRE_DEFENCE)
+	_reset_sprite_motion()
+	_update_side_facing(movement.get_facing_direction())
+	_set_region(frame)
+	return true
+
+
+func _start_fire_defence_contact_visual() -> void:
+	if _stage_input_locked or health.is_zero() or combat.get_active_school() != &"fire":
+		return
+	_fire_defence_contact_remaining = float(FIRE_DEFENCE_LAST_FRAME - FIRE_DEFENCE_SPARK_FRAME + 1) / WALK_FPS
+	_fire_defence_release_remaining = 0.0
+	_fire_defence_was_guarding = false
+	_update_fire_defence_visual()
+
+
+func _clear_fire_defence_visual() -> void:
+	_fire_defence_contact_remaining = 0.0
+	_fire_defence_release_remaining = 0.0
+	_fire_defence_was_guarding = false
+
+
+func _on_parry_window_changed(active: bool) -> void:
+	if active and defence.is_fire_mode():
+		var state := defence.get_fire_visual_snapshot()
+		if is_zero_approx(float(state["elapsed"])):
+			_clear_fire_defence_visual()
 
 
 func _get_walk_texture(school: StringName) -> Texture2D:
@@ -422,6 +498,8 @@ func sync_combat_body_profile() -> void:
 	# Outside an action, refresh the selected school's art before physics queries.
 	if _hit_visual_active:
 		_update_hit_reaction_visual(0.0)
+	elif not combat.is_attack_playing() and _update_fire_defence_visual():
+		pass
 	elif not combat.is_attack_playing():
 		var walking: bool = not movement.get_motion().is_zero_approx()
 		var texture: Texture2D = _get_walk_texture(combat.get_active_school()) if walking else _get_idle_texture(combat.get_active_school())
@@ -452,6 +530,7 @@ func get_facing_direction() -> Vector2:
 
 
 func _on_attack_started(kind: StringName, school: StringName, direction: Vector2) -> void:
+	_clear_fire_defence_visual()
 	_visual_attack_direction = direction
 	_visual_light_position = clampi(combat.get_current_chain_position(), 1, 5) if kind == &"light" else 0
 	_visual_time = 0.0
@@ -487,6 +566,7 @@ func _on_cast_launch_requested(payload: Dictionary) -> void:
 
 
 func _on_active_school_changed(school: StringName) -> void:
+	_clear_fire_defence_visual()
 	_update_school_outline(school)
 	sync_combat_body_profile()
 	active_school_changed.emit(school)
@@ -549,6 +629,7 @@ func _on_effect_state_changed(snapshot: Dictionary) -> void:
 
 
 func _on_hit_reaction_started(level: int, direction: Vector2, distance: float, duration: float) -> void:
+	_clear_fire_defence_visual()
 	_clear_pending_mark_audio()
 	combat.on_hit_reaction_started()
 	if level > 0 and hit_reaction_audio.stream != null:

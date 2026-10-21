@@ -124,7 +124,19 @@ func set_stage_active(active: bool) -> void:
 
 func receive_health_result(result: HealthResult) -> void:
 	super.receive_health_result(result)
-	if result == null or result.event == null or result.event.target != self:
+	if result == null or result.event == null:
+		return
+	if (
+		result.event.instigator == self
+		and result.event.fire_defence
+		and result.outcome == HealthResult.Outcome.PARRIED
+	):
+		if not _defeated and not hit_reaction.is_invincible() and not has_pending_combat_hit_reaction():
+			cancel_combat_attack()
+			# Zero selects the existing Level 1 profile; this is not counterdamage.
+			request_combat_hit_reaction(0, -result.event.contact_direction)
+		return
+	if result.event.target != self:
 		return
 	if result.zero_reached and not should_refill_health_at_zero():
 		_stage_enabled = false

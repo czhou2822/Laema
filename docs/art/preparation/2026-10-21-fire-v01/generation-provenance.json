@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-21",
+  "source_review_commit": "3894773c003265878be3b9c99c2e6137a0540574",
+  "tool_mode": "built-in, not CLI/API",
+  "calls": [
+    {
+      "clip": "fire_x1",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true,
+      "input_review_member": "candidates/X1-R05-opaque-master.png",
+      "input_sha256": "c4a60ecf61e2e55bcb5f5470fb727d0b2645c31866018986145e87657bdcb0ce",
+      "prompt": "Use case: background-extraction. Edit target: the supplied X1 R05 1774x887 eight-pose character sheet, arranged four columns by two rows. Remove ONLY the gray background, including gaps between hair strands, arms, sword and shield. Deliver a genuinely transparent RGBA PNG. Preserve the exact eight poses, pose order, cell layout, original framing and proportions, boot sole positions, face identity, neutral ivory hair, blue vest, cream rolled sleeves, red sash, matte brown leather, right-hand plain straight full-length sword with crossguard and left-arm small round blue shield. Preserve each blade tip, hilt, glove, shield rim, hair and boots as faithfully as possible. Do not add frames, redesign or beautify anything; do not independently reposition or resize characters; do not change sword directions; no contact shadows, floor, text, borders, motion streaks or background. This is production background removal from an existing approved-for-integration art study, not a new illustration.",
+      "selected_output": "sources/fire_x1_alpha_master.png",
+      "output_sha256": "3f7d9f1fec9e9f09808bbe21706f8430b2ea180252c105f8ed1209c8bd8c64fd",
+      "output_dimensions": [
+        1774,
+        887
+      ],
+      "generated_basename": "exec-9f831683-c34c-4db3-a893-2d0418fd7c8f.png"
+    },
+    {
+      "clip": "fire_x4",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true,
+      "input_review_member": "candidates/X4-R02-opaque-master.png",
+      "input_sha256": "85c1a9e205318f3b70c25e79e6b1c88015e16b8eab0802dcf95d35fe04571fde",
+      "prompt": "Use case: background-extraction. Edit target: supplied three-pose X4 R02 high-thrust character sheet, three columns in a single row. Remove only the gray background and replace it with actual transparency. Preserve all three characters with their exact poses and positions, face, warm ivory ponytail, costume colors and material finish, brown boots, right-hand sword and crossguard, left-arm blue round shield with bronze rim/boss. First pose is chamber, middle a fully extended raised forward thrust, last recoil. Keep every sword full length and direction exactly as drawn. No character redesign, pose changes, swapping hands, new poses, text, frame borders, floor, shadow or motion effects. Keep the original sheet layout and crop framing. Production RGBA cutout, preserve fine hair/blade/rim details.",
+      "selected_output": "sources/fire_x4_alpha_master.png",
+      "output_sha256": "5290a7a263b69e72e445e31b666364bd18fa2940e65af2109874c476214dbeb5",
+      "output_dimensions": [
+        2172,
+        724
+      ],
+      "generated_basename": "exec-96810205-6881-4a54-adae-c643dbbfe76e.png"
+    },
+    {
+      "clip": "fire_x5",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true,
+      "input_review_member": "candidates/X5-R04-opaque-master.png",
+      "input_sha256": "b104664d1bbd65de6974f3b2671889a01031da03bf4a58f098beac83bac131a5",
+      "prompt": "Use case: background-extraction. Edit target: supplied X5 R04 nine-pose sheet arranged three by three. Remove ONLY the gray background and deliver true transparent RGBA artwork. Preserve all nine characters/poses in their exact original order and framing, especially all right-hand sword directions, blade lengths, guards and grips, left-arm blue round shield attachment, face, warm ivory ponytail, blue vest/cream sleeves/red sash/brown trousers and boots. Preserve the weighted low-cut crouch in bottom-left and the original recovery pose bottom-middle. No substitution with a different recovery or other study. No new artwork or character redesign, no new poses, no independent character scaling, no text, grid lines, floor, contact shadows or VFX. Preserve full hair, blade tip, shield rim and boot silhouettes. This is background removal for the existing complete R04 study.",
+      "selected_output": "sources/fire_x5_alpha_master.png",
+      "output_sha256": "2e2480f8aa6a6ffa50b7d55ac1dab41e9a645fc7129d5b0a4d404d813419b1c8",
+      "output_dimensions": [
+        1254,
+        1254
+      ],
+      "generated_basename": "exec-42793d09-2898-49b7-b6b5-9f8b5595517e.png",
+      "spacing_pass": {
+        "prompt": "Precise layout repair only of the supplied transparent nine-pose sprite sheet. Keep the same nine character drawings, poses, body proportions, faces, sword angles and full blade lengths, round blue shields, costume and colors unchanged. Repack the nine poses into an evenly spaced 3 by 3 grid on a 1536 by 1536 transparent canvas, each grid cell exactly 512 by 512. Uniformly reduce all nine characters by the SAME amount so each COMPLETE character including every sword tip and boots has at least 36 transparent pixels of margin to every edge of its cell. No pose may cross a cell boundary. In particular the middle-left overhead sword must not enter the top-left cell, and bottom-left low sword must stay inside its own cell. Preserve identical pose order. Do not redraw, change motion, add poses, add grid lines, labels, backgrounds, shadows or effects. This is technical sprite-sheet spacing for safe fixed-cell cropping, not a new art variant.",
+        "input_generated_basename": "exec-397eac68-b882-468e-b53c-af91e5fbc487.png",
+        "input_sha256": "4952d1afc9bc7345083187a23cd0506ab311769da3b9b72944adba5a239f7334",
+        "requested_dimensions": [
+          1536,
+          1536
+        ],
+        "actual_dimensions": [
+          1254,
+          1254
+        ],
+        "note": "Requested layout dimensions were not honored; actual component bounds are measured in registration.json. No assumption of requested cell size is used."
+      }
+    }
+  ],
+  "limits": "Generated derivatives may drift in face/equipment/proportions; visual checks are not user acceptance or runtime evidence. Technical crop/registration preserves generated source alpha; saturated RGB at very low alpha is assessed on light/dark composites."
+}

@@ -1,0 +1,888 @@
+{
+  "method": "Built-in imagegen transparent edit, then technical crop, one uniform scale per sequence with integer raster rounding, and translation only. Alpha>=64 components locate complete pose bounds plus 8px margin; alpha pixels are not thresholded or painted. Foot anchor measured from alpha>=128 boot soles; lowest sole and full boot-span midpoint. No root motion changes.",
+  "clips": {
+    "fire_x1": {
+      "generated_master_filename": "exec-9f831683-c34c-4db3-a893-2d0418fd7c8f.png",
+      "generated_master_sha256": "3f7d9f1fec9e9f09808bbe21706f8430b2ea180252c105f8ed1209c8bd8c64fd",
+      "generated_master_dimensions": [
+        1774,
+        887
+      ],
+      "cell": [
+        448,
+        448
+      ],
+      "foot_anchor": [
+        224,
+        400
+      ],
+      "sequence_scale": 0.56,
+      "selected_study_poses_one_based": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "region_key_cell_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "frames": [
+        {
+          "study_pose": 1,
+          "source_crop_xyxy": [
+            92,
+            110,
+            357,
+            445
+          ],
+          "scale": 0.56,
+          "scaled_size": [
+            148,
+            188
+          ],
+          "measured_boot_anchor_xy": [
+            132,
+            325
+          ],
+          "translation_xy": [
+            150,
+            218
+          ],
+          "result_anchor_xy": [
+            223.72075471698113,
+            400.3880597014926
+          ],
+          "solid_bounds": [
+            8,
+            8,
+            257,
+            326
+          ],
+          "output_alpha_bbox": [
+            150,
+            218,
+            298,
+            406
+          ]
+        },
+        {
+          "study_pose": 2,
+          "source_crop_xyxy": [
+            534,
+            32,
+            800,
+            445
+          ],
+          "scale": 0.56,
+          "scaled_size": [
+            149,
+            231
+          ],
+          "measured_boot_anchor_xy": [
+            132.5,
+            403
+          ],
+          "translation_xy": [
+            150,
+            175
+          ],
+          "result_anchor_xy": [
+            224.21992481203006,
+            400.4067796610169
+          ],
+          "solid_bounds": [
+            8,
+            9,
+            258,
+            404
+          ],
+          "output_alpha_bbox": [
+            150,
+            175,
+            299,
+            406
+          ]
+        },
+        {
+          "study_pose": 3,
+          "source_crop_xyxy": [
+            986,
+            63,
+            1253,
+            445
+          ],
+          "scale": 0.56,
+          "scaled_size": [
+            150,
+            214
+          ],
+          "measured_boot_anchor_xy": [
+            133.5,
+            372
+          ],
+          "translation_xy": [
+            149,
+            192
+          ],
+          "result_anchor_xy": [
+            224,
+            400.3979057591623
+          ],
+          "solid_bounds": [
+            9,
+            8,
+            259,
+            373
+          ],
+          "output_alpha_bbox": [
+            149,
+            192,
+            299,
+            406
+          ]
+        },
+        {
+          "study_pose": 4,
+          "source_crop_xyxy": [
+            1429,
+            15,
+            1698,
+            445
+          ],
+          "scale": 0.56,
+          "scaled_size": [
+            151,
+            241
+          ],
+          "measured_boot_anchor_xy": [
+            133.5,
+            420
+          ],
+          "translation_xy": [
+            149,
+            165
+          ],
+          "result_anchor_xy": [
+            223.9386617100372,
+            400.3953488372093
+          ],
+          "solid_bounds": [
+            8,
+            9,
+            260,
+            421
+          ],
+          "output_alpha_bbox": [
+            149,
+            165,
+            298,
+            406
+          ]
+        },
+        {
+          "study_pose": 5,
+          "source_crop_xyxy": [
+            90,
+            490,
+            398,
+            844
+          ],
+          "scale": 0.56,
+          "scaled_size": [
+            172,
+            198
+          ],
+          "measured_boot_anchor_xy": [
+            135.5,
+            345
+          ],
+          "translation_xy": [
+            148,
+            207
+          ],
+          "result_anchor_xy": [
+            223.66883116883116,
+            399.9661016949152
+          ],
+          "solid_bounds": [
+            9,
+            8,
+            299,
+            346
+          ],
+          "output_alpha_bbox": [
+            148,
+            207,
+            320,
+            403
+          ]
+        },
+        {
+          "study_pose": 6,
+          "source_crop_xyxy": [
+            534,
+            502,
+            916,
+            843
+          ],
+          "scale": 0.56,
+          "scaled_size": [
+            214,
+            191
+          ],
+          "measured_boot_anchor_xy": [
+            134,
+            332
+          ],
+          "translation_xy": [
+            149,
+            214
+          ],
+          "result_anchor_xy": [
+            224.06806282722513,
+            399.9589442815249
+          ],
+          "solid_bounds": [
+            8,
+            8,
+            372,
+            333
+          ],
+          "output_alpha_bbox": [
+            149,
+            214,
+            363,
+            405
+          ]
+        },
+        {
+          "study_pose": 7,
+          "source_crop_xyxy": [
+            981,
+            510,
+            1264,
+            843
+          ],
+          "scale": 0.56,
+          "scaled_size": [
+            158,
+            186
+          ],
+          "measured_boot_anchor_xy": [
+            134,
+            324
+          ],
+          "translation_xy": [
+            149,
+            219
+          ],
+          "result_anchor_xy": [
+            223.81272084805653,
+            399.97297297297297
+          ],
+          "solid_bounds": [
+            8,
+            8,
+            274,
+            325
+          ],
+          "output_alpha_bbox": [
+            149,
+            219,
+            307,
+            404
+          ]
+        },
+        {
+          "study_pose": 8,
+          "source_crop_xyxy": [
+            1427,
+            500,
+            1697,
+            843
+          ],
+          "scale": 0.56,
+          "scaled_size": [
+            151,
+            192
+          ],
+          "measured_boot_anchor_xy": [
+            135,
+            334
+          ],
+          "translation_xy": [
+            148,
+            213
+          ],
+          "result_anchor_xy": [
+            223.5,
+            399.96209912536443
+          ],
+          "solid_bounds": [
+            9,
+            8,
+            262,
+            335
+          ],
+          "output_alpha_bbox": [
+            148,
+            213,
+            299,
+            405
+          ]
+        }
+      ],
+      "atlas_dimensions": [
+        3584,
+        448
+      ],
+      "atlas_sha256": "7bf37e3393201daeae2ad6fc58a0f87f16a79ea37b971983c765a40a4d2fef9d"
+    },
+    "fire_x4": {
+      "generated_master_filename": "exec-96810205-6881-4a54-adae-c643dbbfe76e.png",
+      "generated_master_sha256": "5290a7a263b69e72e445e31b666364bd18fa2940e65af2109874c476214dbeb5",
+      "generated_master_dimensions": [
+        2172,
+        724
+      ],
+      "cell": [
+        448,
+        448
+      ],
+      "foot_anchor": [
+        224,
+        400
+      ],
+      "sequence_scale": 0.275,
+      "selected_study_poses_one_based": [
+        1,
+        2,
+        3
+      ],
+      "region_key_cell_indices_zero_based": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        2
+      ],
+      "frames": [
+        {
+          "study_pose": 1,
+          "source_crop_xyxy": [
+            50,
+            28,
+            636,
+            704
+          ],
+          "scale": 0.275,
+          "scaled_size": [
+            161,
+            186
+          ],
+          "measured_boot_anchor_xy": [
+            286,
+            666
+          ],
+          "translation_xy": [
+            145,
+            217
+          ],
+          "result_anchor_xy": [
+            223.5767918088737,
+            400.2485207100592
+          ],
+          "solid_bounds": [
+            9,
+            10,
+            578,
+            667
+          ],
+          "output_alpha_bbox": [
+            145,
+            217,
+            306,
+            403
+          ]
+        },
+        {
+          "study_pose": 2,
+          "source_crop_xyxy": [
+            734,
+            7,
+            1510,
+            703
+          ],
+          "scale": 0.275,
+          "scaled_size": [
+            213,
+            191
+          ],
+          "measured_boot_anchor_xy": [
+            295,
+            687
+          ],
+          "translation_xy": [
+            143,
+            211
+          ],
+          "result_anchor_xy": [
+            223.9729381443299,
+            399.5301724137931
+          ],
+          "solid_bounds": [
+            9,
+            8,
+            768,
+            688
+          ],
+          "output_alpha_bbox": [
+            143,
+            211,
+            356,
+            402
+          ]
+        },
+        {
+          "study_pose": 3,
+          "source_crop_xyxy": [
+            1531,
+            29,
+            2113,
+            704
+          ],
+          "scale": 0.275,
+          "scaled_size": [
+            160,
+            186
+          ],
+          "measured_boot_anchor_xy": [
+            283,
+            666
+          ],
+          "translation_xy": [
+            146,
+            216
+          ],
+          "result_anchor_xy": [
+            223.80068728522338,
+            399.52
+          ],
+          "solid_bounds": [
+            9,
+            9,
+            574,
+            667
+          ],
+          "output_alpha_bbox": [
+            146,
+            216,
+            306,
+            402
+          ]
+        }
+      ],
+      "atlas_dimensions": [
+        1344,
+        448
+      ],
+      "atlas_sha256": "b04247fd0c27e030c8aa5485e2aa7f91579cfcf0d384e1daf7b15144dbc07e09"
+    },
+    "fire_x5": {
+      "generated_master_filename": "exec-42793d09-2898-49b7-b6b5-9f8b5595517e.png",
+      "generated_master_sha256": "2e2480f8aa6a6ffa50b7d55ac1dab41e9a645fc7129d5b0a4d404d813419b1c8",
+      "generated_master_dimensions": [
+        1254,
+        1254
+      ],
+      "cell": [
+        448,
+        448
+      ],
+      "foot_anchor": [
+        224,
+        400
+      ],
+      "sequence_scale": 0.6,
+      "selected_study_poses_one_based": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        9
+      ],
+      "region_key_cell_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "frames": [
+        {
+          "study_pose": 1,
+          "source_crop_xyxy": [
+            81,
+            89,
+            350,
+            410
+          ],
+          "scale": 0.6,
+          "scaled_size": [
+            161,
+            193
+          ],
+          "measured_boot_anchor_xy": [
+            134,
+            312
+          ],
+          "translation_xy": [
+            144,
+            212
+          ],
+          "result_anchor_xy": [
+            224.2007434944238,
+            399.58878504672896
+          ],
+          "solid_bounds": [
+            8,
+            9,
+            261,
+            313
+          ],
+          "output_alpha_bbox": [
+            144,
+            212,
+            305,
+            405
+          ]
+        },
+        {
+          "study_pose": 2,
+          "source_crop_xyxy": [
+            503,
+            48,
+            770,
+            410
+          ],
+          "scale": 0.6,
+          "scaled_size": [
+            160,
+            217
+          ],
+          "measured_boot_anchor_xy": [
+            132.5,
+            353
+          ],
+          "translation_xy": [
+            145,
+            188
+          ],
+          "result_anchor_xy": [
+            224.40074906367042,
+            399.60497237569064
+          ],
+          "solid_bounds": [
+            8,
+            9,
+            258,
+            354
+          ],
+          "output_alpha_bbox": [
+            145,
+            188,
+            305,
+            405
+          ]
+        },
+        {
+          "study_pose": 3,
+          "source_crop_xyxy": [
+            931,
+            50,
+            1200,
+            410
+          ],
+          "scale": 0.6,
+          "scaled_size": [
+            161,
+            216
+          ],
+          "measured_boot_anchor_xy": [
+            133.5,
+            351
+          ],
+          "translation_xy": [
+            144,
+            189
+          ],
+          "result_anchor_xy": [
+            223.90148698884758,
+            399.6
+          ],
+          "solid_bounds": [
+            8,
+            9,
+            260,
+            352
+          ],
+          "output_alpha_bbox": [
+            144,
+            189,
+            305,
+            403
+          ]
+        },
+        {
+          "study_pose": 4,
+          "source_crop_xyxy": [
+            73,
+            444,
+            350,
+            835
+          ],
+          "scale": 0.6,
+          "scaled_size": [
+            166,
+            235
+          ],
+          "measured_boot_anchor_xy": [
+            138,
+            382
+          ],
+          "translation_xy": [
+            141,
+            170
+          ],
+          "result_anchor_xy": [
+            223.7003610108303,
+            399.5907928388747
+          ],
+          "solid_bounds": [
+            8,
+            8,
+            269,
+            383
+          ],
+          "output_alpha_bbox": [
+            141,
+            170,
+            306,
+            405
+          ]
+        },
+        {
+          "study_pose": 5,
+          "source_crop_xyxy": [
+            470,
+            514,
+            797,
+            836
+          ],
+          "scale": 0.6,
+          "scaled_size": [
+            196,
+            193
+          ],
+          "measured_boot_anchor_xy": [
+            144,
+            312
+          ],
+          "translation_xy": [
+            138,
+            213
+          ],
+          "result_anchor_xy": [
+            224.3119266055046,
+            400.0062111801242
+          ],
+          "solid_bounds": [
+            8,
+            9,
+            319,
+            313
+          ],
+          "output_alpha_bbox": [
+            138,
+            213,
+            333,
+            406
+          ]
+        },
+        {
+          "study_pose": 6,
+          "source_crop_xyxy": [
+            882,
+            528,
+            1243,
+            835
+          ],
+          "scale": 0.6,
+          "scaled_size": [
+            217,
+            184
+          ],
+          "measured_boot_anchor_xy": [
+            141.5,
+            298
+          ],
+          "translation_xy": [
+            139,
+            221
+          ],
+          "result_anchor_xy": [
+            224.05678670360112,
+            399.6058631921824
+          ],
+          "solid_bounds": [
+            8,
+            9,
+            353,
+            299
+          ],
+          "output_alpha_bbox": [
+            139,
+            221,
+            356,
+            405
+          ]
+        },
+        {
+          "study_pose": 7,
+          "source_crop_xyxy": [
+            60,
+            899,
+            429,
+            1201
+          ],
+          "scale": 0.6,
+          "scaled_size": [
+            221,
+            181
+          ],
+          "measured_boot_anchor_xy": [
+            144.5,
+            292
+          ],
+          "translation_xy": [
+            137,
+            225
+          ],
+          "result_anchor_xy": [
+            223.54336043360433,
+            400.00662251655626
+          ],
+          "solid_bounds": [
+            8,
+            9,
+            360,
+            293
+          ],
+          "output_alpha_bbox": [
+            137,
+            225,
+            358,
+            406
+          ]
+        },
+        {
+          "study_pose": 8,
+          "source_crop_xyxy": [
+            485,
+            886,
+            785,
+            1201
+          ],
+          "scale": 0.6,
+          "scaled_size": [
+            180,
+            189
+          ],
+          "measured_boot_anchor_xy": [
+            143.5,
+            305
+          ],
+          "translation_xy": [
+            138,
+            217
+          ],
+          "result_anchor_xy": [
+            224.1,
+            400
+          ],
+          "solid_bounds": [
+            8,
+            9,
+            292,
+            306
+          ],
+          "output_alpha_bbox": [
+            138,
+            217,
+            318,
+            405
+          ]
+        },
+        {
+          "study_pose": 9,
+          "source_crop_xyxy": [
+            914,
+            888,
+            1202,
+            1201
+          ],
+          "scale": 0.6,
+          "scaled_size": [
+            173,
+            188
+          ],
+          "measured_boot_anchor_xy": [
+            144,
+            303
+          ],
+          "translation_xy": [
+            138,
+            218
+          ],
+          "result_anchor_xy": [
+            224.5,
+            399.9936102236422
+          ],
+          "solid_bounds": [
+            9,
+            8,
+            280,
+            304
+          ],
+          "output_alpha_bbox": [
+            138,
+            218,
+            311,
+            406
+          ]
+        }
+      ],
+      "atlas_dimensions": [
+        3136,
+        448
+      ],
+      "atlas_sha256": "ef9d5a5c78ba2eaaa3b7d6227f4498d5ae3b0f3bf80218a3de495c4d676a1d94"
+    }
+  }
+}

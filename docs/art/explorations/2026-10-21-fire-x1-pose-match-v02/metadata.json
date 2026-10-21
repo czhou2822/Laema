@@ -1,0 +1,119 @@
+{
+  "move": "Fire X1",
+  "version": "pose-match-v02",
+  "status": "review candidate after user follow-through correction; not integrated or approved",
+  "parent": "../2026-10-21-fire-x1-pose-match-v01/",
+  "user_correction": "last frame should finish a right-to-left swing with blade behind the left thigh",
+  "source": "exec-c5482ce5-8229-4e8e-bbf7-bbf1673f2a2d.png",
+  "source_dimensions": [
+    1254,
+    1254
+  ],
+  "reference_square": [
+    768,
+    768
+  ],
+  "retained_v01_scale": 0.45454545454545453,
+  "frame04_reference_foot": [
+    373.0,
+    621
+  ],
+  "frame04_native_translation": [
+    54,
+    118
+  ],
+  "anchor": [
+    224,
+    400
+  ],
+  "frame_dimensions": [
+    448,
+    448
+  ],
+  "atlas_dimensions": [
+    1792,
+    448
+  ],
+  "preserved_frames": [
+    {
+      "frame": 1,
+      "sha256": "488568255d43a98cccba552b34bdfb32709a6284cbc0c5c0298a66bbd9159315",
+      "byte_identical_to_v01": true
+    },
+    {
+      "frame": 2,
+      "sha256": "c9a6ec8a4d90ad2660917392d0f36d7cbd0deda29c64562a0e7d6e35f394d0df",
+      "byte_identical_to_v01": true
+    },
+    {
+      "frame": 3,
+      "sha256": "5de0eb0ff52d1c79684e725a3e20db5f4e036c879884e338b30fff9f4e3bf9dd",
+      "byte_identical_to_v01": true
+    }
+  ],
+  "bounds": [
+    [
+      75,
+      197,
+      304,
+      400
+    ],
+    [
+      147,
+      128,
+      300,
+      400
+    ],
+    [
+      145,
+      226,
+      396,
+      400
+    ],
+    [
+      144,
+      226,
+      303,
+      400
+    ]
+  ],
+  "review_cadence_ms": [
+    560,
+    360,
+    310,
+    580
+  ],
+  "gif_decode_checks": [
+    {
+      "file": "fire-x1-preview.gif",
+      "dimensions": [
+        448,
+        448
+      ],
+      "frames": 4,
+      "loop": 0
+    },
+    {
+      "file": "fire-x1-detail.gif",
+      "dimensions": [
+        576,
+        528
+      ],
+      "frames": 4,
+      "loop": 0
+    },
+    {
+      "file": "original-vs-laema-x1.gif",
+      "dimensions": [
+        896,
+        500
+      ],
+      "frames": 4,
+      "loop": 0
+    }
+  ],
+  "runtime_integrated": false,
+  "runtime_validated": false,
+  "live_playback_reviewed": false,
+  "scope": "One complete generated pose replaces frame4; frames1-3 copied byte-identically. Cropping/scaling/translation/GIF assembly only; no painted/warped repair."
+}

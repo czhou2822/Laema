@@ -1,0 +1,154 @@
+{
+  "move": "Fire X5",
+  "version": "pose-match-v02",
+  "status": "last-two-pose review candidate; not user-accepted or runtime integrated",
+  "parent": "../2026-10-21-fire-x5-pose-match-v01/",
+  "user_request": "reduce forward lean in poses3/4 to original, keep first two unchanged, show both hands in ending",
+  "preserved_frames": [
+    {
+      "frame": 1,
+      "sha256": "3820f8e5bf21e1f2ffc48ed08ff5f61a48bf3dbbd12f2e4167f0479e9676a3d3",
+      "byte_identical_to_v01": true
+    },
+    {
+      "frame": 2,
+      "sha256": "a61358d674208162563b223c6dfaa41f94ed01aff421aeecdf795333f20e64f6",
+      "byte_identical_to_v01": true
+    }
+  ],
+  "new_sources": [
+    {
+      "pose": 3,
+      "source": "exec-e7631580-6397-4633-b7a3-c1063077a3e2.png",
+      "source_crop": "whole single-pose output",
+      "raw_dimensions": [
+        1254,
+        1254
+      ],
+      "reference_canvas": [
+        768,
+        768
+      ],
+      "shared_native_scale": 0.43891547049441787,
+      "reference_foot": [
+        421.5,
+        644
+      ],
+      "native_translation": [
+        39,
+        117
+      ]
+    },
+    {
+      "pose": 4,
+      "source": "exec-846195da-0b3f-4390-b426-6703d7be5e9d.png",
+      "source_crop": "right square cell",
+      "raw_dimensions": [
+        887,
+        887
+      ],
+      "reference_canvas": [
+        768,
+        768
+      ],
+      "shared_native_scale": 0.43891547049441787,
+      "reference_foot": [
+        435.0,
+        644
+      ],
+      "native_translation": [
+        33,
+        117
+      ]
+    }
+  ],
+  "frame_dimensions": [
+    448,
+    448
+  ],
+  "atlas_dimensions": [
+    1792,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "review_durations_ms": [
+    560,
+    360,
+    300,
+    280
+  ],
+  "bounds": [
+    [
+      132,
+      159,
+      316,
+      400
+    ],
+    [
+      143,
+      195,
+      325,
+      400
+    ],
+    [
+      104,
+      194,
+      354,
+      400
+    ],
+    [
+      102,
+      189,
+      326,
+      400
+    ]
+  ],
+  "gif_decode_checks": [
+    {
+      "file": "preview.gif",
+      "dimensions": [
+        448,
+        448
+      ],
+      "frames": 4,
+      "loop": 0
+    },
+    {
+      "file": "detail-review.gif",
+      "dimensions": [
+        504,
+        524
+      ],
+      "frames": 4,
+      "loop": 0
+    },
+    {
+      "file": "original-vs-laema.gif",
+      "dimensions": [
+        896,
+        500
+      ],
+      "frames": 4,
+      "loop": 0
+    }
+  ],
+  "visual_checks": [
+    "Reduced torso lean in poses3/4 compared with v01.",
+    "Final pose has right hand gripping sword and left glove gripping inner shield handle.",
+    "Pose3 shield moved back behind shoulder in isolated follow-up."
+  ],
+  "remaining_limits": [
+    "Not a pixel-exact original joint/torso/weapon trace.",
+    "Ending shield is angled outward to expose its inner grip; that presentation remains reviewable.",
+    "Hand/guard/sword-length/hair/cloth continuity remains provisional.",
+    "Original boots were cropped and completed by inference.",
+    "Existing white motion accents remain approximate."
+  ],
+  "runtime_integrated": false,
+  "runtime_validated": false,
+  "continuous_playback_reviewed": false,
+  "processing": "Image-generation artwork edits; uniform full-canvas source resampling, one native scale for new pair, translation and mechanical PNG/GIF assembly only. No painted/warped repair."
+}

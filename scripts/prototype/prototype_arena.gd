@@ -375,7 +375,11 @@ func _configure_default_input_map() -> void:
 	_bind_button(&"select_water", JOY_BUTTON_DPAD_DOWN)
 	_bind_button(&"select_air", JOY_BUTTON_DPAD_LEFT)
 	_bind_button(&"select_earth", JOY_BUTTON_DPAD_RIGHT)
-	_bind_button(&"defend", JOY_BUTTON_LEFT_SHOULDER)
+	# Remove the former default when re-entering an arena in the same session.
+	for defend_event in InputMap.action_get_events(&"defend"):
+		if defend_event is InputEventJoypadButton and defend_event.button_index == JOY_BUTTON_LEFT_SHOULDER:
+			InputMap.action_erase_event(&"defend", defend_event)
+	_bind_button(&"defend", JOY_BUTTON_RIGHT_SHOULDER)
 
 
 func _bind_axis(action: StringName, axis: JoyAxis, value: float) -> void:

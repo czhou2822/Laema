@@ -1,10 +1,14 @@
 # Fire Laema sword-and-shield presentation v01
 
-Current attack binding: the user subsequently selected the v03 diagnostic
-sword-angle studies. Fire X1–X5 now use the 32-frame set in
-`angle_proofs_v03/`, whose own provenance/manifest records that image-only swap
-and retained-hitbox mismatches. The nine original v01 sheets and this original
-integration record remain preserved; v01 Idle/Walk/Hurt/Cast are still active.
+Current attack binding — October 21: X1/X4/X5 use transparent derivatives of
+the overnight R05/R02/R04 studies in `overnight_v04/`; X2/X3 retain v03 in
+`angle_proofs_v03/`. The new manifest/provenance records selected poses and
+unchanged clocks/geometry. All original v01/v03 PNGs and the original integration
+record below remain preserved; v01 Idle/Walk/Hurt/Cast are still active.
+
+Fire defence also uses the accepted eight-frame Shield Catch refinement in
+`defence_v03/`, copied byte-for-byte from the October21 Art export. Its own
+manifest/provenance records state-driven playback and pending user validation.
 
 User-authorized prototype integration, October 20, 2026, from Art task
 `01a15800-6824-7d03-aee8-9e7ad7ef3885`, package

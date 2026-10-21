@@ -276,8 +276,34 @@ func try_cast_trigger(external_block_reason: StringName = &"") -> void:
 	_start_action(normal_action)
 
 
-func can_begin_defence() -> bool:
-	return not _actions_suppressed and _state == State.READY
+func can_begin_defence(allow_melee_cancel := false) -> bool:
+	if _actions_suppressed or _state == State.HIT_REACTING:
+		return false
+	if _state == State.READY:
+		return true
+	if not allow_melee_cancel or _current_action.get("kind", &"") != &"light":
+		return false
+	# A Cast has already consumed its orbs when buffered/queued. Defence cannot undo it.
+	if _buffered_request.get("kind", &"") == &"cast" or (not _pending_action.is_empty() and _pending_action.get("kind", &"") != &"light"):
+		return false
+	if not _animation_player.is_playing():
+		return false
+	var clock: Animation = _animation_player.get_animation(_animation_player.current_animation)
+	return _animation_player.current_animation_position < clock.get_marker_time(&"active_start")
+
+
+func cancel_melee_for_defence() -> void:
+	if _state == State.READY:
+		return
+	if not can_begin_defence(true):
+		return
+	_clear_buffered_request(&"defence")
+	_animation_player.stop()
+	if _input_combo.is_active():
+		_publish_outcome(&"chain_terminated", {"reason": &"defence"})
+		_input_combo.timeout_reset()
+	_publish_outcome(&"action_interrupted", {"reason": &"defence"})
+	_enter_ready()
 
 
 func can_handle_pressure() -> bool:

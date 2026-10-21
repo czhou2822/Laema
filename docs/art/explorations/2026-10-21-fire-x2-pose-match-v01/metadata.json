@@ -1,0 +1,89 @@
+{
+  "status": "review candidate only; no runtime integration",
+  "historical_revision": "9f9d9bba",
+  "historical_animation": "config/attack_animations/fire_x2.tres",
+  "historical_texture": "assets/prototype/player/animation/earth_x2.png",
+  "native_key_times": [
+    0,
+    0.456246036,
+    0.748549508
+  ],
+  "original_frame_count": 3,
+  "frame_count": 3,
+  "frame_size": [
+    448,
+    448
+  ],
+  "atlas_size": [
+    1344,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "shared_scale": 0.35785288270377735,
+  "target_body_height": 180,
+  "review_durations_ms": [
+    680,
+    440,
+    380
+  ],
+  "source_dimensions": [
+    2172,
+    724
+  ],
+  "selected_source": "exec-8b1002ea-ae4f-4f51-88cc-f2364d6d5d5b.png",
+  "generated_sources": [
+    "exec-09fd5817-6bda-49e3-a2c3-af02c9c3324f.png",
+    "exec-fa7837a3-0a90-4a14-8a35-156011e6b660.png",
+    "exec-8b1002ea-ae4f-4f51-88cc-f2364d6d5d5b.png"
+  ],
+  "bounds": [
+    [
+      161,
+      230,
+      287,
+      401
+    ],
+    [
+      95,
+      220,
+      339,
+      401
+    ],
+    [
+      94,
+      219,
+      290,
+      400
+    ]
+  ],
+  "qa": {
+    "fire-x2-preview.gif": {
+      "size": [
+        448,
+        448
+      ],
+      "frames": 3,
+      "loop": 0
+    },
+    "original-vs-laema-x2.gif": {
+      "size": [
+        896,
+        500
+      ],
+      "frames": 3,
+      "loop": 0
+    }
+  },
+  "known_limits": [
+    "Original lower legs and feet are cropped; completed boots inferred.",
+    "Visible pose/sword directions are matched approximately, not traced pixel-exactly.",
+    "First pose still crouches slightly more than original; fine shoulder, shield and wrist angles require review.",
+    "White crescent is still thicker than original thin pixel strokes.",
+    "One global scale and foot translation do not guarantee identical generated anatomy."
+  ],
+  "runtime_validated": false,
+  "live_playback_reviewed": false
+}

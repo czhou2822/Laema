@@ -32,6 +32,8 @@ var player_winning_clash_tie := false
 var force_clash_level_one := false
 var interception_checked := false
 var interception_outcome := -1
+var fire_defence := false
+var block_damage_multiplier := 0.0 # Captured at interception; Water remains a full block.
 var reaction_debug: Dictionary = {} # Contact-time facts for development UI only.
 
 

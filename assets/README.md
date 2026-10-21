@@ -1,11 +1,19 @@
 # Assets
 
-Fire Player X1–X5 now use the v03 plain-sword angle studies under
-`prototype/player/fire_sword_shield_v01/angle_proofs_v03/`: 8/6/5/6/7 fixed-cell
-frames. Their provenance/manifest retains source hashes and phase mapping.
-The previous v01 attack sheets remain available; Idle/Walk/Hurt/Cast are unchanged.
-This image-only preview preserves current hitboxes, including known v03 pose
-mismatches, and has no new engine/runtime acceptance.
+Fire Player X1/X4/X5 use transparent overnight R05/R02/R04 derivatives under
+`prototype/player/fire_sword_shield_v01/overnight_v04/`: eight, three and seven
+448px atlas cells. X4 holds three poses across six existing keys; X5 selects
+study poses 1/2/3/4/6/7/9. X2/X3 retain v03. The new manifest/provenance records
+hashes, registration and phase mapping. All prior PNGs and active Idle/Walk/Hurt/
+Cast remain. Timing/hitboxes are preserved; engine/runtime validation is pending.
+
+Fire defence uses the accepted Shield Catch v03 transparent atlas in
+`prototype/player/fire_sword_shield_v01/shield_catch/`. Player's existing sprite
+cadence raises into a held guard; only a successful Fire parry shows the spark.
+Ordinary block and miss/release skip it. Cosmetic recovery yields to movement,
+attacks and Hurt without adding a gameplay lock. The adjacent provenance records
+source identity, frame mapping and pending user validation. The earlier concurrent
+`defence_v03/` candidate remains preserved; this is the current active binding.
 
 CombatEnemy now uses the original Heroes III Castle Pikeman's idle, walk, front
 attack, hurt, and death sheets from the local extraction. See

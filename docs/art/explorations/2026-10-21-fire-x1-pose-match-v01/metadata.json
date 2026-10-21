@@ -1,0 +1,128 @@
+{
+  "move": "Fire X1",
+  "status": "review candidate, not exact trace or runtime approved",
+  "original_revision": "9f9d9bba",
+  "original_texture": "assets/prototype/player/animation/earth_x1.png",
+  "original_texture_sha256": "438806fadc79655fecb894f71d72c0f1c123ba8787aa0c08329319a855a851e2",
+  "source_selected": "exec-e27d1774-76f4-44f6-ab9e-e48635983d21.png",
+  "source_dimensions": [
+    1254,
+    1254
+  ],
+  "complete_pose_rectangles": [
+    [
+      0,
+      0,
+      690,
+      627
+    ],
+    [
+      752,
+      0,
+      1254,
+      627
+    ],
+    [
+      0,
+      627,
+      752,
+      1254
+    ],
+    [
+      752,
+      627,
+      1254,
+      1254
+    ]
+  ],
+  "frame_dimensions": [
+    448,
+    448
+  ],
+  "atlas_dimensions": [
+    1792,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "shared_scale": 0.45454545454545453,
+  "native_bounds": [
+    [
+      75,
+      197,
+      304,
+      400
+    ],
+    [
+      147,
+      128,
+      300,
+      400
+    ],
+    [
+      145,
+      226,
+      396,
+      400
+    ],
+    [
+      145,
+      227,
+      302,
+      400
+    ]
+  ],
+  "pose_count": 4,
+  "review_cadence_ms": [
+    560,
+    360,
+    310,
+    580
+  ],
+  "original_reference_alignment": {
+    "scale": 2,
+    "offset": [
+      124,
+      90
+    ],
+    "basis": "approximate upper-body registration; original cropped boots not reconstructed in reference"
+  },
+  "gif_decode_checks": [
+    {
+      "file": "fire-x1-preview.gif",
+      "size": [
+        448,
+        448
+      ],
+      "frames": 4
+    },
+    {
+      "file": "original-vs-laema-x1.gif",
+      "size": [
+        896,
+        500
+      ],
+      "frames": 4
+    },
+    {
+      "file": "fire-x1-detail.gif",
+      "size": [
+        576,
+        560
+      ],
+      "frames": 4
+    }
+  ],
+  "runtime_integrated": false,
+  "runtime_validated": false,
+  "live_playback_reviewed": false,
+  "remaining_limits": [
+    "Visible pose phases and sword directions restored, not pixel-exact joint tracing.",
+    "Hidden boots and clipped sword extent completed by inference.",
+    "Anatomical arm reach, torso twist, shield orientation and blade foreshortening remain approximate.",
+    "Source white motion accents omitted after oversized trail generations; only physical sword path is compared."
+  ],
+  "processing": "complete-pose crops, one global scale, root translation, mechanical PNG/GIF assembly; no painted/warped body or blade corrections"
+}

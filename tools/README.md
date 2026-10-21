@@ -16,16 +16,17 @@ A new checkpoint uses this shape:
 
 Each task note follows [checkpoint-task-template.md](checkpoint-task-template.md). Keep it short: the last material delta, the context worth carrying, a resume point, and sources. The note should read like the restoration benchmark, not a raw transcript.
 
-The schema 4 manifest contains task identity and routing data:
+The schema 4 manifest contains task identity, routing data and confirmed department assignments. This abbreviated example shows one task; actual saves include every current unarchived task and preserve current and historical bindings. The adapter freezes all eight department records and writes their content UIDs. Replace the illustrative identifiers and progress UID with actual discovered values.
 
     {
-      "schema_version": 3,
+      "schema_version": 4,
       "checkpoint_id": "2026-09-05-example",
       "previous_manifest": "docs/checkpoints/2026-09-04-example/manifest.json",
       "project_id": "portable-checkpoint-project-id",
       "tasks": [
         {
           "task_key": "design_overseer",
+          "department_key": "design_overseer",
           "canonical_title": "Design Overseer",
           "aliases": ["Design Overseer", "Design overseer"],
           "changed": true,

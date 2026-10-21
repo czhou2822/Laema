@@ -14,7 +14,7 @@ own sprites, hitbox curves, melee active bounds and Cast launch timing.
 - Design and implementation: see [GAME_DESIGN.md](docs/GAME_DESIGN.md), [TECH_ARCHITECTURE.md](docs/TECH_ARCHITECTURE.md) and [IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md).
 - Validation: the September 1 Stage 1–6 user report was broad, without a scenario matrix, tested-tree identity or engine-version record. Later reports/checks retain their own scope; current candidates do not have blanket human acceptance or Web-export clearance.
 - Historical Stage 1–6 recovery checkpoint: `6b06dc2`; [checkpoint history](docs/checkpoints/) preserves later saves and bindings.
-- Open documentation conflicts: Heat timer refresh triggers and reaction-duration values remain reserved for discussion in the GDD/TDR.
+- The October 20 decisions settle Heat timer refresh rules and shared reaction durations in the GDD/TDR. Final tuning and scenario-specific validation remain open.
 
 ## Prototype controls
 

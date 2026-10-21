@@ -5,15 +5,18 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
-Current Fire visual amendment: X1–X5 now reference the selected 8/6/5/6/7-frame
-v03 sheets inside `fire_sword_shield_v01/angle_proofs_v03/`. The existing
-FIRE_ART_ROOT prefix recognizes them, so Player's shared body/registration/facing
-profile needs no script edit. Only texture paths and discrete Sprite region keys
-change in the five native Animations; IDs/UIDs, clocks/markers and all AttackCast
-tracks remain intact. The original v01 attack sheets and active Idle/Walk/Hurt/
-Cast remain. Older art-alignment checks below do not validate v03 pose/query
-agreement; known mismatches, especially the X2 forward drawing versus retained
-backward query, are preserved for separately authorized review.
+Current Fire visual amendment — October 21: X1/X4/X5 reference transparent
+R05/R02/R04 derivatives in `fire_sword_shield_v01/overnight_v04/`, containing
+8/3/7 fixed 448px cells. X4 maps its six existing keys to cells0/0/0/1/2/2; X5
+selects R04 poses1/2/3/4/6/7/9. X2/X3 retain v03. Existing FIRE_ART_ROOT selects
+the same body/registration/facing profile without a script edit. Only three
+texture paths and X4 region values change; Animation IDs/UIDs, every key time,
+clocks/markers, all AttackCast tracks and move settings remain. Anchor(224,400),
+offset(0,-124), root2/Sprite0.5, all prior PNGs and Idle/Walk/Hurt/Cast remain.
+Generated cutouts are derived artwork, not pixel-identical extraction. Exact
+transforms/phase maps are in `art/preparation/2026-10-21-fire-v01/`. No Godot
+import/editor/runtime/build/tests were run. Pose/query agreement and transitions
+await user validation; the existing X2 forward-art/backward-query gap remains.
 
 <a id="scope-and-selected-decisions"></a>
 
@@ -283,7 +286,7 @@ not duplicated state or the private banked-capacity argument.
 | Intermediate 5–95% | Preserves the chain immediately; after 0.3 seconds held continuously, DEPLETING drains newest charged coverage first at baseline speed without Heat scaling |
 | Below 5% | RELEASE dispatches one attempt on a later transition; the first pressure sample creates no startup Cast/failure |
 
-Arena registers left-trigger/right-mouse Casting; L1 remains defence. Active
+Arena registers left-trigger/right-mouse Casting; R1 is defence (Shift on keyboard). Active
 actions lock movement/facing separately from between-action pressure preservation.
 Charging/Depleting never pause expiry. Failure ends the chain, resets charging
 coverage/progress and preserves stored orbs. APPLIED incoming direct damage
@@ -337,6 +340,80 @@ to re-enable the buff or a current default acceptance criterion.
 <a id="inspector--portal-tuning-synchronization--2026-10-14"></a>
 <a id="focus-editor-integration--2026-10-15"></a>
 <a id="configurable-hit-reaction-ranges--2026-10-15"></a>
+
+## Fire defence prototype — October 21
+
+Status: implemented candidate; no engine/runtime/controller validation is claimed.
+The user approved R1 press-parry/hold-block, reference defaults and tunability,
+with implementation first and this exact record synchronization afterward.
+
+PrototypeArena registers R1/Shift and removes the former default L1 joypad event
+when re-entering an arena. CombatComponent receives the existing defend action;
+DefenceController owns held input, early/tap windows, success/rearm, control
+commitment and shield-reuse time. Its Fire state notification drives the existing
+readout and movement-lock composition. Released tap/recovery timers update even
+when the physical button is up; stage input lock/reset cancels them. Water keeps
+its guard/Heat/reaction implementation, using the shared R1 binding.
+
+Player Settings / Defence owns parry_window=0.20, fire_tap_parry_window=0.37,
+fire_control_commitment=0.50, fire_miss_recovery=0.60 and
+fire_block_absorption=0.75. Native Inspector and both Portals use the same
+character Resource. The loader validates finite values and timing ordering;
+older full JSON profiles receive missing fields in memory only. Fire captures
+its profile at press, so runtime edits do not shorten an active attempt.
+
+Might permits Fire to cancel a light action strictly before native active_start,
+provided no buffered/queued Cast commitment exists. Cancellation clears melee
+follow-ups, ends the chain using the existing reset and preserves orbs. It does
+not undo accepted Cast commitments or change five-position progression, launch,
+Charging, Heat or projectile rules. Action and defence locks are composed at
+CombatComponent, preserving the existing movement owner.
+
+Defence interception remains before melee clash arbitration. Fire checks front
+facing/direct delivery, returns PARRIED for success, or BLOCKED with captured
+fire_defence/block_damage_multiplier on HealthEvent for partial block.
+HealthResolver applies chip damage once for that BLOCKED event, skips the legacy
+Fire blocked-hit flinch and does not route it through APPLIED resource/status or
+Endurance logic. Cached melee interception retains those event fields for final
+delivery. Water's full-block behavior is unaffected. Player retains the existing
+guard audio/damage display and now selects the accepted Shield Catch v03 atlas
+under `fire_sword_shield_v01/shield_catch/`; no scene change is needed.
+
+The read-only `DefenceController.get_fire_visual_snapshot()` exposes captured
+elapsed/early/parry/control state. Player presentation maps zero-based frames0..3
+to raise/held guard using its existing WALK_FPS=10 sprite cadence. Frame3 is held
+while holding or tap-parrying; ordinary BLOCKED results do not restart it.
+Only a delivered Fire PARRIED HealthResult starts spark frame4 and success
+recovery4..7. Miss/release recovery uses5..7 and never enters frame4. Cosmetic
+contact/release clocks use the same sprite cadence, independently of the captured
+defence windows. Neither visual timer writes gameplay state or locks movement/
+actions; the reuse penalty does not prolong the animation. Movement after control
+returns and attack/hurt take priority, while new attempts, school changes, stage lock,
+death and retry clear old presentation. Both normal drawing and the existing
+pre-physics profile sync preserve the Fire atlas. Source pixels are unchanged;
+448px cells, anchor(224,400), offset(0,-124), scale and facing remain. No Godot
+import/editor/runtime/build/tests were run for this binding.
+
+The later approved parry response reuses HealthResolver's existing delivery to
+both target and instigator. CombatEnemy.receive_health_result recognizes an
+outgoing attack whose confirmed outcome is Fire PARRIED. Unless defeated,
+already combat-reacting or holding a pending reaction, it cancels its attack and
+requests combat reaction value0 with the negated incoming contact direction.
+Value0 selects the existing shared Level1 settings without an Impact/Poise
+comparison. The ordinary captured request, LimboAI reaction branch and safe
+in-tick preemption own execution, body displacement, invincibility and recovery.
+The separate post-reaction wait remains unchanged. No new HealthEvent, damage,
+resource grant or dedicated stun timer is created. Blocks and misses do not
+request this reaction; Player defence timing/control and art remain unchanged.
+
+Representative value flow: saved absorption 0.75 -> character config -> captured
+Fire profile -> event multiplier 0.25 -> HealthResolver chip damage -> existing
+Health/damage feedback. Parry success clears its action lock immediately but
+requires physical release/repress; a missed committed tap starts the separate
+0.60s reuse gate. Retry clears timers, held state and rearm. These source paths
+are inspected, not runtime proof. The bounded scope excludes dodge, an additional
+custom stun beyond the configured Level1 reaction, counterdamage and projectile
+reflection.
 
 ## Character assets and persistence
 

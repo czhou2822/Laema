@@ -1,9 +1,5 @@
 [gd_scene format=3 uid="uid://3tbgo0v5nwmn"]
 
-[ext_resource type="Resource" path="res://config/characters/player.tres" id="character_settings"]
-[ext_resource type="Script" path="res://scripts/config/combat_tuning_bridge.gd" id="tuning_bridge"]
-[ext_resource type="Resource" path="res://config/combat_tuning.tres" id="tuning_view"]
-
 [ext_resource type="Script" uid="uid://df80t7x1qypps" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://coydkivtwer7t" path="res://scripts/player/movement_controller.gd" id="2_movement"]
 [ext_resource type="Texture2D" uid="uid://f44ye7i6cgjo" path="res://assets/prototype/player/animation/earth_x4.png" id="2_vo27k"]
@@ -18,8 +14,6 @@
 [ext_resource type="Script" uid="uid://c4wgsy7f1jn2q" path="res://scripts/combat/might_component.gd" id="13_might"]
 [ext_resource type="Script" uid="uid://c6y7xjmaw3ga1" path="res://scripts/combat/magic_component.gd" id="14_magic"]
 [ext_resource type="Script" uid="uid://ceapx6wghtl1" path="res://scripts/entities/feedback_component.gd" id="15_feedback"]
-[ext_resource type="AudioStream" path="res://assets/prototype/audio/guard/PROTECT.wav" id="heroes_guard"]
-[ext_resource type="AudioStream" path="res://assets/prototype/audio/hit_reaction/SWRDWNCE.wav" id="heroes_hurt"]
 [ext_resource type="Animation" path="res://config/attack_animations/air_x1.tres" id="Anim_air_x1"]
 [ext_resource type="Animation" path="res://config/attack_animations/air_x2.tres" id="Anim_air_x2"]
 [ext_resource type="Animation" path="res://config/attack_animations/air_x3.tres" id="Anim_air_x3"]
@@ -45,6 +39,11 @@
 [ext_resource type="Animation" path="res://config/attack_animations/water_x3.tres" id="Anim_water_x3"]
 [ext_resource type="Animation" path="res://config/attack_animations/water_x4.tres" id="Anim_water_x4"]
 [ext_resource type="Animation" path="res://config/attack_animations/water_x5.tres" id="Anim_water_x5"]
+[ext_resource type="Resource" uid="uid://dijmu0dakb6mv" path="res://config/characters/player.tres" id="character_settings"]
+[ext_resource type="AudioStream" uid="uid://ciy3xcmi70xmy" path="res://assets/prototype/audio/guard/PROTECT.wav" id="heroes_guard"]
+[ext_resource type="AudioStream" uid="uid://bvcrns550rgd5" path="res://assets/prototype/audio/hit_reaction/SWRDWNCE.wav" id="heroes_hurt"]
+[ext_resource type="Script" uid="uid://d3awtwglwmrfh" path="res://scripts/config/combat_tuning_bridge.gd" id="tuning_bridge"]
+[ext_resource type="Resource" uid="uid://cnmparaicavk5" path="res://config/combat_tuning.tres" id="tuning_view"]
 
 [sub_resource type="Shader" id="Shader_outline"]
 code = "shader_type canvas_item;
@@ -199,9 +198,6 @@ bus = &"SFX"
 bus = &"SFX"
 
 [node name="MarkAudio" type="AudioStreamPlayer" parent="." unique_id=1810556072]
-volume_db = 0.0
-pitch_scale = 1.0
-max_polyphony = 1
 bus = &"SFX"
 
 [node name="HitReactionAudio" type="AudioStreamPlayer" parent="." unique_id=397081968]
@@ -218,6 +214,6 @@ shape = SubResource("CircleShape2D_attack")
 target_position = Vector2(0, 0)
 collision_mask = 2
 
-[node name="CombatTuning" type="Node" parent="."]
+[node name="CombatTuning" type="Node" parent="." unique_id=1639297425]
 script = ExtResource("tuning_bridge")
 settings = ExtResource("tuning_view")

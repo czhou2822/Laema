@@ -32,11 +32,11 @@ Controls retain the current implementation:
 | Move | Left stick | A / D |
 | Active-school melee | X | Left mouse |
 | Charge, then release to Cast | L2 | Hold, then release right mouse |
-| Fire parry | L1 | Shift |
+| Fire parry / hold to block | R1 | Shift |
 | Pause / retry menu | Start | Esc |
 
 School-selection input reaches Player in this scene just as it does in the Arena.
-Casting uses the shared L2 binding; Fire parry remains on L1.
+Casting uses the shared L2 binding. R1 is defence; Fire uses the October 21 press-parry/hold-block prototype.
 
 ## Character settings and tuning
 
@@ -93,14 +93,25 @@ preserved in `iterations/2026-10-19-overnight.md` and the morning handoff.
 
 ## Existing combat rules retained
 
-- No parry cancel is added. Parry can begin only in Might's `READY` state. It
-  cannot start during an attack, Cast or a chain preserved between actions by
-  Charging/Depleting. Finishing an unpreserved action returns to READY; finishing
-  an action does not always end a preserved chain.
-- Fire parry lasts the existing 0.2 s, negates one incoming event, and adds no
-  counterattack, stun or resource reward. Release/repress rearms it. Holding
-  after the window closes remains movement-locked and vulnerable.
-- Existing attack-while-defence-held input behavior is not redesigned here.
+- R1/Shift starts Fire's 0.20s early front parry. Releasing before 0.37s
+  continues a tap parry to that endpoint from press. Holding gives 75% front
+  direct-damage absorption after the early window. Fire uses no Water guard/Heat
+  drain; rear hits and DoT bypass it.
+- Successful parry unlocks movement/actions immediately; release/repress rearms.
+  It also interrupts the attacking Enemy into its configured Level1 combat
+  reaction, away from the Player. Existing reaction invincibility and AI recovery
+  apply; no extra damage or resource reward is granted. Blocks and misses do not
+  trigger it.
+  An unsuccessful quick release commits controls to 0.50s from press and starts
+  a separate 0.60s reuse penalty at parry expiry. Holding beyond 0.37s and releasing
+  ends block directly. These are captured reference defaults, not feel acceptance.
+- Fire can cancel melee windup before native active_start, ending that chain and
+  preserving orbs. Active/recovery melee, buffered/queued Cast commitments and
+  casting rules are retained. Fire's commitment gates attack/Cast input.
+- Existing readout/guard audio communicate defence; chip damage uses the existing
+  damage display. The parried Enemy uses the existing Level1 reaction rather than
+  a new stun timer. No counterdamage, projectile reflection or dodge is part of
+  this candidate. Water retains its existing guard behavior on R1.
 - Cast remains the generic projectile: normal base damage is 10 at every level,
   empowered primary damage is 13 with the current shared multiplier. No Fire
   DoT or level-based damage increase is added.
@@ -108,6 +119,36 @@ preserved in `iterations/2026-10-19-overnight.md` and the morning handoff.
   it does not make the single-school projectile's base damage larger. Existing
   Heat timer, buffering, resource loss, interruption and invincibility rules
   remain unchanged.
+
+## Fire defence prototype comparison — October 21
+
+Tune **Player root → Settings → Defence**, or **Dev Portal → Combat / Defence**:
+parry_window (0.20), fire_tap_parry_window (0.37), fire_control_commitment (0.50),
+fire_miss_recovery (0.60), fire_block_absorption (0.75). The tap endpoint must
+cover the early window; commitment must cover the endpoint. Each R1 press
+captures the values. Save persists to config/characters/player.tres; edits apply
+to the next press. The old full JSON format gains missing values on load in
+memory; it is not written automatically.
+
+For the user's comparison, keep one enemy attack case and change one setting:
+
+1. Face the enemy and tap R1 just before contact: expect zero damage, PARRIED and
+   immediate control return. Release/repress for another attempt.
+2. Hold R1 beyond the early window into contact: expect BLOCK 75% and 25% chip
+   damage, with no Water guard/Heat drain. Turn away to compare a normal hit.
+3. Tap too early: expect parry expiry, remaining control commitment, then free
+   movement while PARRY RECOVERY still prevents another defence attempt.
+4. Press R1 during Fire melee windup, then during active/recovery and a committed
+   Cast: only eligible windup cancels. Check an ordinary five-position chain and
+   normal/empowered/endpoint Cast afterwards.
+5. Change one defence value, save, retry/reload and compare. Retry, death/stage
+   lock and interruption must not leave a stuck input/movement lock. Taking a
+   hit does not erase an already-running missed-parry reuse penalty.
+
+Status: AWAITING_USER_VALIDATION. Source inspection and scoped whitespace checks
+are not Godot parsing, runtime/controller checks or playtest acceptance. No build,
+automated tests, editor launch, runtime run or test changes were performed for
+this slice.
 
 ## Combat formula readout
 

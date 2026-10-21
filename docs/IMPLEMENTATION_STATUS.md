@@ -1,5 +1,174 @@
 # Implementation Status
 
+## Parried Enemy Level 1 reaction — October 21
+
+Status: `AWAITING_USER_VALIDATION`. The user approved adding the existing Level1
+reaction to the attacking Enemy after a successful Fire parry, with no
+counterdamage or resource reward. This supersedes the initial defence slice's
+absence of an attacker reaction.
+
+CombatEnemy now consumes the existing outgoing Fire PARRIED HealthResult,
+cancels its attack and requests combat reaction value0, directed away from
+Laema. The shared Level1 profile supplies its captured duration/distance
+(currently0.25s/5px); no tuning values are changed or duplicated in the handler.
+The ordinary LimboAI reaction task, body movement, reaction invincibility and
+post-reaction wait are retained. Defeated, already invincible or pending-reaction
+Enemies are left to those existing guards. BLOCKED, misses and unrelated results
+do not request a parry reaction. No new HealthEvent or health/resource mutation
+is introduced; Player defence rules and the current art bindings are unchanged.
+
+The approved five-file scope is CombatEnemy plus GDD, technical record, Gym
+guide and this status. Evidence is source/caller/settings inspection and scoped
+whitespace checks, not Godot/parser/runtime or automated-test validation. No
+tests were added or run. User checks: successful front parry in both facings
+interrupts and pushes the Enemy away with unchanged Enemy HP; block/miss gives
+no parry reaction; ordinary follow-up attacks, AI recovery and Retry still work.
+No commit, push or live publication occurred.
+
+## Fire Shield Catch parry-only spark mapping — October 21
+
+Status: `AWAITING_USER_VALIDATION`. The user approved this seven-file slice and
+its record synchronization after specifying held guard, no spark on misses and
+spark only on successful parry. It supersedes the initial binding below for
+spark routing, visual cadence and active texture path.
+
+Player now preloads the byte-identical accepted atlas from
+`assets/prototype/player/fire_sword_shield_v01/shield_catch/shield-catch-8x448.png`.
+Its SHA-256 is `59a118996c31e83633291876951e5b6601d793f0dee33ed829e2842feda60333`.
+At the existing10fps sprite cadence, frames1–4 raise/hold, successful Fire PARRIED
+results alone start5–8, and miss/release uses6–8 without the baked spark. Ordinary
+blocks keep guard. Frame numbers here are one-based. Movement after control return,
+attacks/Casts and Hurt can interrupt cosmetic recovery; the existing reset,
+school-change and stage-lock paths clear it. No new gameplay lock or timer is added.
+
+Runtime code changes are confined to Player presentation, reusing the existing
+read-only controller snapshot. The selected PNG/provenance, assets README, GDD,
+technical record and this status are the approved seven-file scope. The concurrent
+initial defence_v03 integration remains preserved as earlier candidate history.
+Current defence rules/settings and latest native attack bindings, including
+overnight_v04, are preserved; the existing Fire body/facing/registration is reused.
+
+Evidence is source/caller inspection and image checks: exact source-copy hash,
+RGBA3584×448/eight448px cells, alpha bounds and matching opening/closing pixels.
+Scoped whitespace checks pass. Hash comparison preserves all30,650 pre-existing
+files outside this slice after the concurrent writer finished, including all46
+attack Animation/style resources and the current defence controller/settings.
+No Godot parser/compiler/import/editor/runtime, build or automated tests ran;
+none were created. Source alpha extends3–4px below the nominal foot anchor;
+accepted pixels/registration are unchanged. User checks remain for both facings,
+held block, tap miss, successful parry, immediate movement/attack, Hurt, school
+switches, Retry and existing attack/Cast transitions. No commit/push/publication.
+
+## Fire Shield Catch artwork binding — October 21
+
+Historical initial binding: its block-contact spark, captured-window playback
+and active texture path are superseded by the user-approved mapping above.
+
+Status: `AWAITING_USER_VALIDATION`. The user's request to put the accepted art
+into the new defend feature is implemented. The refined eight-frame transparent
+atlas is copied byte-for-byte to
+`assets/prototype/player/fire_sword_shield_v01/defence_v03/shield_catch.png`.
+SHA-256: `59a118996c31e83633291876951e5b6601d793f0dee33ed829e2842feda60333`.
+
+Player presentation uses frames0..3 for raise/held guard, frame4's spark only
+on actual Fire PARRIED/BLOCKED results, and frames5..7 for release/recovery.
+Success feedback yields immediately to actions; held block returns to guard.
+The read-only controller snapshot exposes captured timing/state; it adds no
+mechanical change. Visual contact/release uses one captured early-window
+interval; tap-miss recovery maps the existing remaining control commitment.
+The Art GIF's review pauses are not used and shield reuse adds no visual lock.
+Hurt/attack takes priority. New attempts, school changes, stage lock/death and
+retry clear stale presentation. Existing Fire registration/facing is reused.
+
+Changed runtime scope: scripts/player/player.gd presentation, one read-only
+getter in scripts/combat/defence_controller.gd, and the copied PNG/provenance.
+No defence absorption/timing/reward/rearm/input/hitbox rule, native attack clip,
+move setting, scene, AI, Water or other-school presentation changes are included.
+Source metadata/readme, GDD, technical record and asset records are synchronized.
+
+Evidence: source/caller inspection, PNG RGBA/dimensions/bounds, exact source-copy
+hash, exact first/last-frame pixels, controller comparison with only the getter
+removed, and scoped whitespace checks. No Godot parser/compiler/import/editor,
+runtime, build or automated tests were run and no tests were added. User checks:
+tap miss, hold/release, front parry, partial block, rear hit, immediate attack
+after success, school switch, hit interruption, death/retry and both facings.
+Fine generated sword/shield/hair/garment continuity remains provisional. No
+commit, push or live publication occurred.
+
+## Fire overnight X1/X4/X5 artwork integration — October 21
+
+Status: `AWAITING_USER_VALIDATION`. The user requested implementation after the
+readiness review. X1 R05, X4 R02 and X5 R04 now have transparent registered
+derivatives in `assets/prototype/player/fire_sword_shield_v01/overnight_v04/`.
+Built-in imagegen produced cutouts; technical crops, fixed sequence scales and
+translations assembled 448px cells at anchor(224,400). Generated details can
+differ from the opaque masters; this is not pixel-identical alpha extraction.
+
+Only three native texture paths and X4 image-region values change. All frame-key
+times, Animation UIDs, markers, geometry tracks and move settings remain. X1 uses
+eight poses. X4 maps six keys to chamber/chamber/chamber/thrust/recoil/recoil.
+X5 uses R04 poses1/2/3/4/6/7/9; poses5/8 remain reference only. R05's isolated
+recovery study and rejected R06 are not adopted. X2/X3 are untouched and retain
+their unapproved-alternative/unresolved status. Prior PNGs and Idle/Walk/Hurt/Cast
+remain. No attack direction, hitbox, timing, gameplay code or AI edit is included.
+
+Review commit: `3894773c003265878be3b9c99c2e6137a0540574`; source artwork commit:
+`f277903b0f7f9995f9dc715a273427999af01111`. Prompts/lineage, alpha masters,
+registration, phase mapping and light/dark composites are in
+`art/preparation/2026-10-21-fire-v01/`; the runtime manifest records sheet hashes.
+
+Evidence is source/image inspection: transparency, atlas bounds, measured anchors,
+retained native clocks/markers/geometry and protected-file comparisons. No Godot
+import/editor/runtime, builds or tests were run. Check both facings, baseline/high
+Heat, chains, feet, returns to Idle/Walk/Hurt/Cast, interruptions and retry.
+Material/weapon transitions, held X4 anticipation, X5 recovery and existing pose/
+query mismatches remain provisional. Concurrent defence work is preserved, not
+validated here. No commit, push or publication occurred.
+
+## Fire R1 defence prototype — October 21
+
+Status: AWAITING_USER_VALIDATION. The user approved implementation first, then
+synchronization of the named records and Ultron tech-postflight review.
+
+Fire now uses R1/Shift press-parry/hold-block: early parry 0.20s; quick-release
+parry endpoint 0.37s from press; control commitment 0.50s from press; missed-tap
+reuse penalty 0.60s from expiry; held front absorption 75%. Values are captured
+on press, tunable in Player Settings/Dev Portal, validated and saved through the
+existing character Resource path. Older full JSON profiles receive missing
+values in memory; supplied longer early windows are respected when deriving
+missing endpoint/commitment defaults.
+
+Successful parry prevents the hit and unlocks immediately, with release/repress
+required. Fire partial block applies chip damage as a defended event without
+normal-hit resource/status/Endurance delivery or legacy blocked-hit flinch.
+Rear direct hits and DoT bypass Fire. Eligible melee windup can be cancelled
+before active_start; buffered/queued Cast commitments are protected. Five-position
+X/Cast rules, optional sixth Cast endpoint, Charging, projectile logic, native
+animations and attack-style settings are unchanged by this implementation.
+
+The initial mechanics slice used existing defence text, guard audio and damage
+feedback. The later Shield Catch presentation binding is recorded above. No scene
+change, dodge, counterdamage, attacker stun, reflection or Enemy/AI edits were
+included in that initial slice. The later approved Level1 attacker reaction is
+recorded above. Water retains its guard/Heat behavior with R1 as shared defence.
+Retry/stage lock clears Fire state; an incoming hit preserves an already-running
+reuse penalty. Movement-lock composition prevents defence timers unlocking a
+new attack or stage lock.
+
+Changed implementation scope: prototype_arena.gd input registration;
+combat/defence_controller.gd, combat_controller.gd and might_component.gd;
+entities/health_event.gd and health_resolver.gd; player/player.gd;
+config/characters/player.tres; config/prototype_config_loader.gd and
+config/developer_settings_catalog.gd. GDD, technical record and Gym instructions
+are synchronized to this candidate. Existing unrelated working-tree changes are
+preserved, including Fire style tuning, Player scene and Art exploration.
+
+Validation: current source/value-flow inspection and scoped git diff --check.
+No Godot parser/compiler, build, automated tests, editor/runtime, controller or
+playtest validation was run; no tests were created/changed. User comparison and
+verification of this updated specification remain pending. These limits are
+carried into Ultron's bounded implementation review, not submission clearance.
+
 ## Fire X1–X5 v03 diagnostic image swap — October 20
 
 Status: `AWAITING_USER_VALIDATION`. The user selected Art's all-five v03 sword-

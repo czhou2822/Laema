@@ -1,0 +1,130 @@
+{
+  "move": "Fire X2",
+  "version": "pose-match-v05",
+  "status": "review candidate after blade-straightness adjustment; not integrated or approved",
+  "parent": "../2026-10-21-fire-x2-pose-match-v04/",
+  "user_correction": "blade appears to bend behind the thigh; align the visible segment with the grip through the occlusion",
+  "source": "exec-d855dc0a-1961-4e64-a4cb-2342c82b7ffd.png",
+  "source_dimensions": [
+    1254,
+    1254
+  ],
+  "reference_canvas": [
+    724,
+    724
+  ],
+  "retained_v01_scale": 0.35785288270377735,
+  "source_foot": [
+    362.0,
+    650
+  ],
+  "native_translation": [
+    94,
+    167
+  ],
+  "anchor": [
+    224,
+    400
+  ],
+  "frame_dimensions": [
+    448,
+    448
+  ],
+  "atlas_dimensions": [
+    1344,
+    448
+  ],
+  "preserved_frames": [
+    {
+      "frame": 2,
+      "sha256": "6e284e25fb67d8affc2f9093c23ff64e06f8d662dc7885b6627a7d57195dd2fa",
+      "byte_identical_to_v04": true,
+      "byte_identical_to_v01": true
+    },
+    {
+      "frame": 3,
+      "sha256": "89eb6364fb74400803ebb41fad5158071a994644b329a9841de6bc26f8f4ae39",
+      "byte_identical_to_v04": true,
+      "byte_identical_to_v01": true
+    }
+  ],
+  "bounds": [
+    [
+      152,
+      219,
+      295,
+      400
+    ],
+    [
+      95,
+      220,
+      339,
+      401
+    ],
+    [
+      94,
+      219,
+      290,
+      400
+    ]
+  ],
+  "review_cadence_ms": [
+    680,
+    440,
+    380
+  ],
+  "gif_checks": [
+    {
+      "file": "fire-x2-preview.gif",
+      "size": [
+        448,
+        448
+      ],
+      "frames": 3,
+      "loop": 0
+    },
+    {
+      "file": "fire-x2-detail.gif",
+      "size": [
+        608,
+        540
+      ],
+      "frames": 3,
+      "loop": 0
+    },
+    {
+      "file": "original-vs-laema-x2.gif",
+      "size": [
+        896,
+        500
+      ],
+      "frames": 3,
+      "loop": 0
+    }
+  ],
+  "runtime_integrated": false,
+  "runtime_validated": false,
+  "live_playback_reviewed": false,
+  "scope": "Only pose1 is a new image edit; frames2/3 byte-identical. Blade segment made steeper down-left, with thigh and far-side shield depth retained.",
+  "remaining_limits": [
+    "Starting crouch retained; not a pixel-exact original pose trace.",
+    "Original cropped boots completed by inference.",
+    "Fine grip, guard, shield and face continuity remains provisional.",
+    "Thicker white motion crescent in unchanged pose2 remains a review limit."
+  ],
+  "registration": {
+    "reason": "image generation enlarged the source framing",
+    "method": "one uniform full-figure scale plus translation, no per-joint or blade-only warp",
+    "uniform_scale": 0.4864603481624758,
+    "source_translation": [
+      59,
+      68
+    ],
+    "registered_canvas": [
+      724,
+      724
+    ],
+    "target_native_body_height": 180
+  },
+  "geometry_note": "Straight continuation assessed visually; no pixel-exact landmark/3D projection proof. Fine hilt/guard and anatomy continuity remain review limits."
+}

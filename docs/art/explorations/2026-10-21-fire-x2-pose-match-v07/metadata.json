@@ -1,0 +1,130 @@
+{
+  "move": "Fire X2",
+  "version": "pose-match-v07",
+  "status": "review candidate after user clarified blade tip behind left side of body; not approved or integrated",
+  "parent": "../2026-10-21-fire-x2-pose-match-v06/",
+  "user_correction": "shield is correct; blade tip should be behind the left side of the body",
+  "source": "exec-156dc9b2-c354-41db-96e1-95a8fbc11f8c.png",
+  "source_dimensions": [
+    1254,
+    1254
+  ],
+  "reference_canvas": [
+    724,
+    724
+  ],
+  "retained_v01_scale": 0.35785288270377735,
+  "source_foot": [
+    361.0,
+    650
+  ],
+  "native_translation": [
+    95,
+    167
+  ],
+  "anchor": [
+    224,
+    400
+  ],
+  "frame_dimensions": [
+    448,
+    448
+  ],
+  "atlas_dimensions": [
+    1344,
+    448
+  ],
+  "preserved_frames": [
+    {
+      "frame": 2,
+      "sha256": "6e284e25fb67d8affc2f9093c23ff64e06f8d662dc7885b6627a7d57195dd2fa",
+      "byte_identical_to_v06": true,
+      "byte_identical_to_v01": true
+    },
+    {
+      "frame": 3,
+      "sha256": "89eb6364fb74400803ebb41fad5158071a994644b329a9841de6bc26f8f4ae39",
+      "byte_identical_to_v06": true,
+      "byte_identical_to_v01": true
+    }
+  ],
+  "bounds": [
+    [
+      166,
+      219,
+      283,
+      400
+    ],
+    [
+      95,
+      220,
+      339,
+      401
+    ],
+    [
+      94,
+      219,
+      290,
+      400
+    ]
+  ],
+  "review_cadence_ms": [
+    680,
+    440,
+    380
+  ],
+  "gif_checks": [
+    {
+      "file": "fire-x2-preview.gif",
+      "size": [
+        448,
+        448
+      ],
+      "frames": 3,
+      "loop": 0
+    },
+    {
+      "file": "fire-x2-detail.gif",
+      "size": [
+        608,
+        540
+      ],
+      "frames": 3,
+      "loop": 0
+    },
+    {
+      "file": "original-vs-laema-x2.gif",
+      "size": [
+        896,
+        500
+      ],
+      "frames": 3,
+      "loop": 0
+    }
+  ],
+  "runtime_integrated": false,
+  "runtime_validated": false,
+  "live_playback_reviewed": false,
+  "scope": "Pose1 sword-depth edit using v06 as base; shield placement visually retained, not certified byte-identical within the generated pose. Poses2/3 unchanged.",
+  "remaining_limits": [
+    "Complete generated pose1 is not pixel-locked outside sword; shield placement retained visually, not guaranteed pixel identity.",
+    "Original joint geometry/occlusion and projected blade path still require user review.",
+    "Fine material continuity against poses2/3 remains open.",
+    "Original cropped boots inferred.",
+    "Unchanged pose2 trail thicker than source."
+  ],
+  "registration": {
+    "uniform_scale": 0.5632698768197089,
+    "source_translation": [
+      3,
+      -1
+    ],
+    "registered_canvas": [
+      724,
+      724
+    ],
+    "target_native_body_height": 180,
+    "method": "uniform full-source scaling and translation only"
+  },
+  "depth_note": "Middle blade occluded behind torso/belt/sash; tip visible past left/rear hip contour instead of across the front."
+}

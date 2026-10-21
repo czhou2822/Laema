@@ -112,7 +112,7 @@ func resolve(event: HealthEvent) -> HealthResult:
 		else:
 			# Keep signed diagnostics; zero explicitly selects configured Level 1.
 			_owner_entity.request_combat_hit_reaction(maxi(combat_difference, 0), event.contact_direction, event.push_scale)
-	elif outcome != HealthResult.Outcome.PARRIED and (outcome == HealthResult.Outcome.BLOCKED or not _owner_entity.uses_combat_hit_reaction()):
+	elif not event.fire_defence and outcome != HealthResult.Outcome.PARRIED and (outcome == HealthResult.Outcome.BLOCKED or not _owner_entity.uses_combat_hit_reaction()):
 		reaction_level = maxi(event.impact - defensive_level, 0)
 
 	var health_delta := 0.0
@@ -131,6 +131,11 @@ func resolve(event: HealthEvent) -> HealthResult:
 					event.instigator
 				)
 			)
+
+	if outcome == HealthResult.Outcome.BLOCKED and event.fire_defence:
+		# Chip damage stays a defended result: no normal-hit resources or status payload.
+		health_delta = _health.apply_damage(event.amount * event.block_damage_multiplier)
+		resolution_tag = &"fire_block"
 
 	var zero_reached := _health.is_zero()
 	var result := HealthResult.create(

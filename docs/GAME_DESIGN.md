@@ -71,7 +71,7 @@ Player -10 versus Enemy 0 also means Enemy wins with Level 1. Equal negatives
 favor Player. This exception requires both actual contacts; it creates no counter
 against an untouched character and does not undo a hit that landed earlier.
 
-Existing block/parry behavior and target-side invincibility remain the interception rules. Further hit-chain and defence design remains separate.
+The Defence section owns Fire parry/partial-block and retained Water guard interception; target-side invincibility remains an earlier rejection. Further hit-chain and defence design remains separate.
 
 ## Current decision — character-owned combat, October 20
 
@@ -135,7 +135,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 ## Prototype Scope
 
-**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, L2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 7 objectives, stage-owned target sets, and one attacking final Enemy with one committed melee pattern.
+**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, L2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying/partial blocking, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 7 objectives, stage-owned target sets, and one attacking final Enemy with one committed melee pattern.
 
 **Excluded:** jumping, vertical traversal controls, Air and Earth defence, additional Enemy behaviors and attack patterns, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
@@ -152,7 +152,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 | D-pad Down | Select Water |
 | D-pad Left | Select Air |
 | D-pad Right | Select Earth |
-| L1 | Use the active school’s available defence |
+| R1 | Use the active school’s available defence |
 | Start / Esc | Pause or resume through the pause menu |
 
 Laema is affected by gravity and remains grounded on solid collision. Every current stage area uses the same continuous flat ground height, and adjacent ground sections overlap at stage boundaries so transitions do not introduce a gap. The camera follows Laema horizontally while preserving fixed vertical framing.
@@ -174,14 +174,15 @@ This character mapping is prototype presentation only. It does not define Laema�
 
 ### Prototype X-Attack Animation Allocation
 
-Fire X1–X5 now use the user-selected v03 plain-sword angle-study cells in
-`assets/prototype/player/fire_sword_shield_v01/angle_proofs_v03/`: 8/6/5/6/7
-frames with the existing 448×448 cells and (224,400) foot anchor. This is a
-prototype image selection, not a final weapon-design lock. Existing hitboxes
-and gameplay clocks remain authoritative; the v03 X2 forward extension can
-visibly differ from its retained earlier backward-sweep query. X3's reversed
-candidate is excluded, with a remaining chamber-to-cut visual gap. The parent
-v01 Idle/Walk/Hurt/Cast artwork remains active. The table below retains the
+Following the October 21 implementation request, Fire X1/X4/X5 use transparent
+derivatives of the overnight R05/R02/R04 studies in
+`assets/prototype/player/fire_sword_shield_v01/overnight_v04/`. X1 uses eight
+poses; X4 holds three poses across six existing keys; X5 uses seven R04 poses.
+X2/X3 retain v03. Existing 448×448 cells and foot anchor(224,400) remain. This
+is prototype presentation, not final artwork or weapon acceptance. Hitboxes,
+directions and gameplay clocks are unchanged; X2's forward v03 drawing still
+differs from the retained backward query. X3 remains unresolved and its reversed
+candidate stays excluded. The parent v01 Idle/Walk/Hurt/Cast remains active. The table below retains the
 earlier Craftpix allocation as pose/source history; it is not Fire's current
 texture binding. The approved Air X5 replacement uses Weapon Summon: eleven
 full-body 128×128 frames. Its retired effect and original records remain in
@@ -443,27 +444,70 @@ Air level 5 + Fire level 2
 
 ## Defence
 
-Only Fire and Water defence are functional in this prototype.
+Only Fire and Water defence are functional in this prototype. The October 21
+Fire candidate uses **R1** for press-to-parry / hold-to-block. Shift is its
+keyboard equivalent. Shield Catch is its accepted prototype presentation.
+This is an implemented prototype
+awaiting user validation; the timings are reference defaults, not accepted feel.
+
+### Fire Parry and Block — October 21 prototype
+
+- Press R1 for immediate front parry protection, default **0.20 seconds**.
+- A quick release before **0.37 seconds** continues a tap parry until that
+  endpoint measured from the original press. It does not start a fresh full
+  window at release. Holding through the early parry window gives partial block.
+- Held front block prevents **75%** of direct incoming damage by default; the
+  remaining 25% is chip damage. Fire uses no Water guard depletion or block Heat
+  drain. Hits from behind and damage-over-time ticks are not intercepted by Fire.
+- A successful parry prevents the incoming hit completely and returns control
+  immediately. Holding the button after success requires release/repress before
+  another defence attempt. It interrupts the attacking combat Enemy with the
+  existing configured **Level 1 combat hit reaction**, pushing it away from
+  Laema. This explicit parry response does not use an Impact/Poise comparison;
+  the standard reaction invincibility and Enemy AI recovery still apply. There
+  is no counterdamage, reflection, orb grant, Heat or other resource reward.
+- A quick-release attempt commits movement/actions until **0.50 seconds from
+  press**, unless it succeeds. An unsuccessful tap parry starts a separate
+  **0.60-second** defence-reuse penalty at parry expiry. Movement may become
+  available before another parry. Releasing after the hold threshold simply
+  ends the held block; it does not perform another tap parry.
+- Fire defence can cancel an ordinary melee windup strictly before its native
+  active_start marker. This ends that chain using the existing reset and
+  preserves current orbs. Active/recovery melee and committed/buffered Casts
+  cannot be cancelled through this path. The five-position X/Cast progression,
+  optional sixth Cast endpoint and existing casting/resource rules are retained.
+- Fire blocks attack/Cast input during its defence commitment. Success releases
+  that commitment; the shield reuse timer does not itself lock movement/attacks.
+- Parry/block/recovery retain the existing defence readout and guard sound; chip
+  damage retains its damage display. The accepted Shield Catch v03 artwork now
+  raises into a guard pose held while blocking. Only a successful Fire parry
+  shows the spark; ordinary blocks and misses skip that frame. Cosmetic recovery
+  yields to movement and new actions as soon as existing rules permit them.
+  This presentation does not change defence timing, rewards, input or control
+  locks. No dodge or enemy-pattern change is included.
+- All five reference controls are tunable in Player Settings / Defence and the
+  existing Dev Portal. Each press captures its values; edits affect the next
+  attempt. Tap endpoint must cover the early parry window, and control commitment
+  must cover the tap endpoint. Retry/stage reset clears the defence state.
+
+The defaults come from the local Dead Cells StartShield/BaseShield crashlink
+trace: early state f@36205, release f@36207/startParry f@4885, missed-parry reuse
+f@4887, successful control return f@4896, and absorption f@536. This prototype
+adapts those timers to Laema's existing owners; static evidence does not establish
+frame-perfect equivalence or controller responsiveness.
 
 ### Water Blocking
 
-- Blocking remains active while L1 is held and guard remains intact.
+- Blocking remains active while R1 is held and guard remains intact.
 - Blocking nullifies incoming damage.
 - Blocked damage depletes guard.
 - Holding block drains Heat.
 - VFX and SFX warn near guard break.
 - The guard-breaking hit remains fully blocked.
 - Guard break applies its configured recovery and blocks player input.
-- Guard requires L1 release and a new press to restore.
+- Guard requires R1 release and a new press to restore.
 
-### Fire Parrying
-
-- Pressing L1 activates one parry window.
-- A successful parry nullifies the incoming attack and grants no additional reward.
-- Holding L1 after the window closes provides no defence while movement remains locked.
-- Another parry requires releasing and pressing L1 again.
-
-L1 does nothing while Air or Earth is selected. Air and Earth defence remain deferred.
+R1 does nothing while Air or Earth is selected. Air and Earth defence remain deferred.
 
 ## Health, Impact, and Heat
 
@@ -489,7 +533,7 @@ Ordinary positive results qualify for combat reaction. A direct Player melee or 
 
 The whole character and collision body are pushed backward over the selected reaction duration and remain displaced. Walls can stop the push. The current candidate uses uniform displacement without an additional easing treatment. Stationary practice targets retain their legacy recoil.
 
-The qualifying combat-reaction duration is invincible against further damage and reactions. Failed-Cast self-reactions grant no invincibility. Existing defence interception and its reaction behavior remain unchanged pending a separate defence decision. Stationary, non-attacking, pass-through practice targets retain their existing recoil and finite-health refill behavior.
+The qualifying combat-reaction duration is invincible against further damage and reactions. Failed-Cast self-reactions grant no invincibility. Water retains its defence reaction path; the October 21 Fire prototype uses its own parry/partial-block interception without the legacy blocked-hit flinch. Stationary, non-attacking, pass-through practice targets retain their existing recoil and finite-health refill behavior.
 
 One mixed Cast resolves its primary and secondary layers in order before starting invincibility. Already active effects are retained and continue advancing; damage ticks received while invincible are rejected. Melee/spell damage rejected by invincibility or clash cancellation is not an applied hit and does not grant hit-dependent resources or change Elemental Endurance. Spell-vs-melee clash rules and further school/status interactions remain deferred.
 

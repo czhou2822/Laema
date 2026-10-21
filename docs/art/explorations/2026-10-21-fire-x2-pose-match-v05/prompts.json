@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image generation",
+  "created": "2026-10-21",
+  "operation": "targeted blade-straightness edit of Fire X2 opening pose",
+  "user_correction": "looks better. lets adjust the blade a little bit, now it seems like the blade bends behind the thigh",
+  "edit_target": "x2-first-pose-edit-target.png",
+  "selected_source": "exec-d855dc0a-1961-4e64-a4cb-2342c82b7ffd.png",
+  "transparent_background": true,
+  "prompts": [
+    {
+      "source": "exec-6a3a21a1-9ff4-4ebe-9ab3-e457a34e7602.png",
+      "prompt": "Use case: precise-object-edit.\nEDIT THIS ONE IMAGE with a very small sword-geometry correction ONLY. The user says the blade looks BENT behind the thigh.\nKeep the sword hilt, crossguard, right hand and grip exactly where they are. Imagine the ENTIRE sword as one rigid ruler-straight object, including its hidden middle. The centre ridge of the exposed lower blade must be COLLINEAR with the longitudinal axis from the hilt/guard through the hidden blade. Its two straight tapered edges must also continue cleanly behind the trouser occlusion. The thigh hides a section; it does not bend, kink, offset or twist the sword.\nThe exposed lower blade currently veers too far outward-left from the hilt line. Make that exposed segment slightly STEEPER DOWN-LEFT, moving its lower point a little toward screen-right/inward as needed, so extending a line from its tip through its ridge leads directly back to the existing grip/guard. Small correction, not a new pose, not a bigger sword, not a horizontal blade. Retain a clearly visible steel section and tip BETWEEN THE LEGS; do not hide it completely.\nKeep depth exactly as now: left thigh covers the upper/middle blade crossing; the visible lower steel emerges from behind the thigh. Do NOT paint the blade over the front of the pants or sash.\nEVERYTHING ELSE UNCHANGED: navy shield tucked behind torso/arm with only partial face/rim showing, body/leg stance, both boots' coordinates, knees, hip, torso, head, ponytail, face, cream sleeves, blue vest, red sash, brown pants/boots/gloves, current grip/guard, shading, colors, scale and position on square canvas. No other anatomy or equipment changes.\nOutput only ONE full-body sprite with genuine transparent alpha; no labels, grid, scenery, floor, shadows, sparks, motion trails or extra weapon. Critical: ONE straight, unbent sword axis from guard through occluded middle to visible lower tip."
+    },
+    {
+      "source": "exec-d855dc0a-1961-4e64-a4cb-2342c82b7ffd.png",
+      "prompt": "Precise edit of the exposed sword tip only. Keep the complete character, shield, grip, hand, pose and canvas unchanged.\nThe sword behind her thigh still appears kinked because its lower tip drifts too far left. Keep the blade's emergence/base at the thigh edge fixed. Move ONLY the lower pointed end a small amount to SCREEN-RIGHT (about one blade-width), making the exposed segment STEEPER downward-left. Both cutting edges and its centre ridge must be straight. Extend the centre ridge upward mentally: it must meet the existing hilt/guard on one uninterrupted straight line, including the invisible section behind the thigh. A rigid straight sword, no bend at the thigh.\nRetain the blade BEHIND the trousers, retain a clearly visible lower segment, and keep the shield partly hidden on the far side. Do not lengthen the sword or create another blade.\nNo other change. In particular do not zoom, enlarge the figure, crop boots, alter anatomy, move feet or change framing. Same transparent square canvas with the SAME empty margins. Output ONE corrected sprite, no labels or scenery."
+    }
+  ]
+}

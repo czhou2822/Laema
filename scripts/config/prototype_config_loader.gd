@@ -52,6 +52,7 @@ static func load_and_validate(path: String) -> Dictionary:
 	_normalize_legacy_audio_volumes(data)
 	ReactionRanges.normalize_legacy(data)
 	_normalize_attack_styles(data)
+	_normalize_fire_defence(data)
 	if data.get("enemy_ai") is Dictionary:
 		for pair in [["hitbox_reach", 72.0], ["hitbox_radius", 24.0]]:
 			if not data["enemy_ai"].has(pair[0]):
@@ -80,6 +81,27 @@ static func load_and_validate(path: String) -> Dictionary:
 		"data": data.duplicate(true),
 		"error": "",
 	}
+
+
+static func _normalize_fire_defence(data: Dictionary) -> void:
+	if not data.get("defence") is Dictionary:
+		return
+	# Older full JSON profiles gain the new Fire fields in memory only.
+	var defaults := {
+		"fire_tap_parry_window": 0.37,
+		"fire_control_commitment": 0.5,
+		"fire_miss_recovery": 0.6,
+		"fire_block_absorption": 0.75,
+	}
+	var early = data["defence"].get("parry_window", 0.2)
+	if _is_number(early) and is_finite(float(early)):
+		defaults["fire_tap_parry_window"] = maxf(0.37, float(early))
+	var tap = data["defence"].get("fire_tap_parry_window", defaults["fire_tap_parry_window"])
+	if _is_number(tap) and is_finite(float(tap)):
+		defaults["fire_control_commitment"] = maxf(0.5, float(tap))
+	for key in defaults:
+		if not data["defence"].has(key):
+			data["defence"][key] = defaults[key]
 
 
 static func validate(data: Dictionary) -> Dictionary:
@@ -182,6 +204,10 @@ static func _validate(data: Dictionary) -> String:
 		["defence", "blocked_damage_to_guard", 0.0, INF],
 		["defence", "guard_warning_ratio", 0.0, 1.0],
 		["defence", "parry_window", 0.001, INF],
+		["defence", "fire_tap_parry_window", 0.001, INF],
+		["defence", "fire_control_commitment", 0.001, INF],
+		["defence", "fire_miss_recovery", 0.0, INF],
+		["defence", "fire_block_absorption", 0.0, 1.0],
 		["defence", "guard_break_recovery", 0.0, INF],
 		["defence", "heat_drain_per_second", 0.0, INF],
 		["elemental_endurance", "hit_6_damage_percent", 0.0, 1.0],
@@ -206,6 +232,12 @@ static func _validate(data: Dictionary) -> String:
 		)
 		if not error.is_empty():
 			return error
+
+	var defence: Dictionary = data["defence"]
+	if float(defence["fire_tap_parry_window"]) < float(defence["parry_window"]):
+		return "Fire tap-parry endpoint must be at least the early parry window."
+	if float(defence["fire_control_commitment"]) < float(defence["fire_tap_parry_window"]):
+		return "Fire control commitment must be at least the tap-parry endpoint."
 
 	var reaction: Dictionary = data["hit_reaction"]
 	if typeof(reaction.get("combat_levels", null)) != TYPE_ARRAY or reaction["combat_levels"].size() != 5:

@@ -1,0 +1,224 @@
+{
+  "move": "Fire X4",
+  "historical_revision": "9f9d9bba",
+  "historical_texture": "assets/prototype/player/animation/earth_x4.png",
+  "native_source_frame_count": 5,
+  "original_native_times": [
+    0,
+    0.316763922,
+    0.519705289,
+    0.694283122,
+    0.852665247
+  ],
+  "export_frames": 5,
+  "frame_dimensions": [
+    448,
+    448
+  ],
+  "strip_dimensions": [
+    2240,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "shared_scale": 0.5325443786982249,
+  "registration": [
+    {
+      "source_cell": [
+        0,
+        0
+      ],
+      "source_rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "neighbour_gutter_excluded_left_px": 0,
+      "source_foot_anchor": [
+        232.0,
+        491
+      ],
+      "translation": [
+        100,
+        139
+      ],
+      "alpha96_bounds": [
+        166,
+        172,
+        343,
+        401
+      ]
+    },
+    {
+      "source_cell": [
+        1,
+        0
+      ],
+      "source_rect": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "neighbour_gutter_excluded_left_px": 0,
+      "source_foot_anchor": [
+        239.5,
+        485
+      ],
+      "translation": [
+        96,
+        142
+      ],
+      "alpha96_bounds": [
+        162,
+        211,
+        346,
+        401
+      ]
+    },
+    {
+      "source_cell": [
+        2,
+        0
+      ],
+      "source_rect": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "neighbour_gutter_excluded_left_px": 0,
+      "source_foot_anchor": [
+        252.0,
+        485
+      ],
+      "translation": [
+        90,
+        142
+      ],
+      "alpha96_bounds": [
+        136,
+        199,
+        313,
+        401
+      ]
+    },
+    {
+      "source_cell": [
+        0,
+        1
+      ],
+      "source_rect": [
+        0,
+        512,
+        560,
+        1024
+      ],
+      "neighbour_gutter_excluded_left_px": 0,
+      "source_foot_anchor": [
+        209.0,
+        438
+      ],
+      "translation": [
+        113,
+        167
+      ],
+      "alpha96_bounds": [
+        152,
+        230,
+        395,
+        401
+      ]
+    },
+    {
+      "source_cell": [
+        1,
+        1
+      ],
+      "source_rect": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "neighbour_gutter_excluded_left_px": 48,
+      "source_foot_anchor": [
+        241.5,
+        438
+      ],
+      "translation": [
+        95,
+        167
+      ],
+      "alpha96_bounds": [
+        155,
+        196,
+        368,
+        401
+      ]
+    }
+  ],
+  "source_dimensions": [
+    1536,
+    1024
+  ],
+  "source_grid": [
+    3,
+    2
+  ],
+  "source_cell_order_zero_based": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "review_durations_ms": [
+    480,
+    300,
+    270,
+    240,
+    450
+  ],
+  "checks": {
+    "fire-x4-preview.gif": {
+      "size": [
+        448,
+        448
+      ],
+      "frames": 5,
+      "loop": 0
+    },
+    "fire-x4-review.gif": {
+      "size": [
+        512,
+        512
+      ],
+      "frames": 5,
+      "loop": 0
+    },
+    "original-vs-laema-x4.gif": {
+      "size": [
+        1024,
+        512
+      ],
+      "frames": 5,
+      "loop": 0
+    }
+  },
+  "source_sha256": "e243b452e5f87cf54877ada5b3319efed2971b4e47c921dd5edf877175ffb9ed",
+  "runtime_integrated": false,
+  "runtime_validated": false,
+  "live_playback_reviewed": false,
+  "fidelity_status": "review candidate; five original phase directions and turn-away restored, exact silhouette/landmark fidelity not established",
+  "known_limits": [
+    "Source crops lower legs/tips; completed portions inferred.",
+    "Pose3 shield repair reduced full front-circle visibility but behind-side placement still differs from source.",
+    "Original arm reach, torso silhouette and knee bends differ at fine level.",
+    "Clothing/hair/weapon consistency is generated, not rig-locked.",
+    "Shared scaling and per-frame foot-root translation; no body warping or painting."
+  ]
+}

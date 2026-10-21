@@ -31,6 +31,7 @@ var _defending := false
 var _guard_broken := false
 var _guard_break_remaining := 0.0
 var _stage_input_locked := false
+var _might_movement_locked := false
 
 
 func configure(
@@ -69,15 +70,16 @@ func apply_runtime_tuning() -> void:
 
 
 func _process(delta: float) -> void:
-	if not _stage_input_locked:
-		_update_casting_pressure()
-	if _defending:
-		_defence.update(delta, _heat)
-	elif _guard_broken:
+	if _stage_input_locked:
+		return
+	# Released tap parries and reuse recovery continue after the button comes up.
+	_defence.update(delta, _heat)
+	if _guard_broken:
 		_guard_break_remaining = maxf(_guard_break_remaining - delta, 0.0)
 		if _guard_break_remaining <= 0.0 and not _defence.is_holding():
 			_guard_broken = false
 			defence_status_changed.emit("READY", _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
+	_update_casting_pressure()
 
 
 func handle_input_event(event: InputEvent, attack_direction: Vector2) -> void:
@@ -101,6 +103,8 @@ func handle_input_event(event: InputEvent, attack_direction: Vector2) -> void:
 		_release_defend()
 		return
 	if event.is_action_pressed(&"light_attack"):
+		if _defence.is_fire_mode() and _defence.blocks_actions():
+			return
 		_might.try_light_attack(attack_direction)
 
 
@@ -165,12 +169,12 @@ func on_hit_reaction_started() -> void:
 		return
 	_might.cancel_for_player_hit()
 	_magic.discard_committed_casts(&"player_hit")
-	_defence.force_cancel()
+	_defence.force_cancel(false)
 	_defending = false
 	_guard_broken = false
 	_guard_break_remaining = 0.0
 	_might.enter_hit_reaction()
-	defence_status_changed.emit("READY", _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
+	defence_status_changed.emit(_defence.fire_status(), _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
 
 
 func on_hit_reaction_ended() -> void:
@@ -191,6 +195,7 @@ func reset_for_stage() -> void:
 	_might.reset_for_stage()
 	_magic.reset_for_stage()
 	_heat.reset_for_stage()
+	_defence.force_cancel()
 	_defence.configure(_config["defence"])
 	_defending = false
 	_guard_broken = false
@@ -225,16 +230,25 @@ func _update_casting_pressure() -> void:
 
 
 func _try_defend() -> void:
-	if not _might.can_begin_defence() or _defending or _guard_broken:
-		return
 	var active_school := _might.get_active_school()
+	if _defending or _guard_broken or not _defence.can_begin(active_school):
+		return
+	if not _might.can_begin_defence(active_school == SCHOOL_FIRE):
+		return
 	if _defence.begin(active_school):
-		_defending = true
-		movement_lock_changed.emit(true)
-		defence_status_changed.emit("BLOCK" if active_school == SCHOOL_WATER else "PARRY", _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
+		if active_school == SCHOOL_FIRE:
+			_might.cancel_melee_for_defence()
+			_sync_fire_defence()
+		else:
+			_defending = true
+			movement_lock_changed.emit(true)
+			defence_status_changed.emit("BLOCK", _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
 
 
 func _release_defend() -> void:
+	if _defence.is_fire_mode():
+		_defence.end_hold()
+		return
 	if not _defending and not _guard_broken:
 		return
 	_defence.end_hold()
@@ -246,8 +260,21 @@ func _release_defend() -> void:
 		defence_status_changed.emit("READY", _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
 
 
+func _sync_fire_defence() -> void:
+	var blocking_actions := _defence.blocks_actions()
+	if _defending != blocking_actions:
+		_defending = blocking_actions
+		movement_lock_changed.emit(_defending or _might_movement_locked or _stage_input_locked)
+	defence_status_changed.emit(_defence.fire_status(), _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
+
+
+func _on_might_movement_lock_changed(locked: bool) -> void:
+	_might_movement_locked = locked
+	movement_lock_changed.emit(locked or (_defence.is_fire_mode() and _defence.blocks_actions()) or _stage_input_locked)
+
+
 func _connect_public_interfaces(input_combo) -> void:
-	_might.movement_lock_changed.connect(movement_lock_changed.emit)
+	_might.movement_lock_changed.connect(_on_might_movement_lock_changed)
 	_might.active_school_changed.connect(active_school_changed.emit)
 	_might.attack_started.connect(attack_started.emit)
 	_might.empowered_cast_started.connect(empowered_cast_started.emit)
@@ -265,7 +292,7 @@ func _connect_public_interfaces(input_combo) -> void:
 	_defence.guard_changed.connect(_on_guard_changed)
 	_defence.guard_warning.connect(_on_guard_warning)
 	_defence.guard_broken.connect(_on_guard_broken)
-	_defence.parry_window_changed.connect(_on_parry_window_changed)
+	_defence.fire_state_changed.connect(_sync_fire_defence)
 
 
 func _forward_outcome(outcome) -> void:
@@ -281,6 +308,8 @@ func _on_cast_committed(_commit_id: int, consumed_count: int) -> void:
 
 
 func _on_guard_changed(current_value: float, maximum_value: float) -> void:
+	if _defence.is_fire_mode():
+		return
 	if not _defending:
 		defence_status_changed.emit("READY", current_value, maximum_value)
 		return
@@ -299,10 +328,6 @@ func _on_guard_broken() -> void:
 	_guard_break_remaining = _defence.get_guard_break_recovery()
 	movement_lock_changed.emit(true)
 	defence_status_changed.emit("GUARD BROKEN", 0.0, float(_config["defence"]["guard_capacity"]))
-
-
-func _on_parry_window_changed(active: bool) -> void:
-	defence_status_changed.emit("PARRY" if active else "PARRY CLOSED", _defence.get_guard(), float(_config["defence"]["guard_capacity"]))
 
 
 func get_melee_snapshot() -> Dictionary:
