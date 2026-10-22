@@ -14,8 +14,9 @@ earlier isolated practice-target rest-pose correction ee686162.
   settings are retained. Sprite/CastOrigin is a visible Marker2D.
 - All26 existing Player native clips (20X, four Cast, attack_clock and Fire
   Dodge) receive time0 registration properties only. Existing geometry, frame
-  keys, markers, lengths and timings are preserved. The five current manual
-  Fire files must also be preserved during guarded local integration.
+  keys, markers, lengths and timings are preserved. The five current manual Fire
+  files were saved without changing working-file bytes in local authoring
+  checkpoint479d1a3c7c8ba786d464736c449b5d4f100ffc9e, then three-way merged.
 - config/player_presentation/ contains the fixed Fire/legacy rectangles, the
   preserved outline shader and four saved legacy school materials. Fire remains
   offset(0,-124)/body30x90 at(0,-19); legacy remains offset0/body26x30 at(0,11).
@@ -33,9 +34,12 @@ earlier isolated practice-target rest-pose correction ee686162.
   body motion, native query sampling, level-dependent effects and logs remain.
 
 Static evidence: standalone GDScript grammar parsing passes for player.gd using
-the existing gdtoolkit4.5 dependency, not Godot's type/import checker. All26
-original animation texts are identical after removing only the appended setup
-tracks/resources and load_steps bookkeeping (before manual-tuning integration).
+the existing gdtoolkit4.5 dependency, not Godot's type/import checker; enemy.gd
+also parses. After the guarded authoring merge, all26 original animation texts
+are identical after removing only the appended setup tracks/resources and
+load_steps bookkeeping: five match the user's actual working-file snapshots,
+and21 match the preserved base. All52 original dirty-file SHA256 values remained
+unchanged before final fast-forward; only the five Fire files were committed.
 Resource-ID/reference review passes:34 native data documents,76 unique paths.
 Protected Scene AttackCast, its circle shape and main AnimationPlayer blocks are
 unchanged. Source arithmetic preserves floor/emission offsets; whitespace checks
