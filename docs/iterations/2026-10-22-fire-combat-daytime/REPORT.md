@@ -259,6 +259,15 @@ Next hypothesis: distinguish the actual X4->X5 onset/pose presentation from a
 late-X5 tail issue before another timing change. Fresh visual-direction work
 still awaits its entry decision; no new art or AI/dodge policy is invented.
 
+## Further retained-source play — no new implementation iteration
+
+The [post-C5 encounter review](POST_C5_PLAY_REVIEW.md) records actual Fire block,
+parry, post-attack refacing, real invincible dodge contacts, charged-orb retention,
+pre/post-launch cancellation and a return to offence. The same Player survived
+the whole encounter at37.5HP, with no mid-encounter Retry/healing/state repair.
+Source remained C4; these bounded agent observations do not settle the open
+presentation/design choices or replace the user's controller playtest.
+
 ## Lunch verification and publication boundary
 
 After C2 rendered closure, all five existing geometry/input suites completed with explicit process exits0 and zero assertion failures: **1741 + 1236 + 1337 + 1185 + 1617 = 7116 checks**. X2 used its dedicated suite. Their forced setup/Heat/seeks make them supplementary controlled checks, never substitutes for the primary encounters above. Reports and stderr are in [regressions-c2](regressions-c2/). Fixture shutdown warnings were14/10,14/10,24/15,22/14,22/14 ObjectDB/resources, respectively; no warning-free exit or new cause is claimed.

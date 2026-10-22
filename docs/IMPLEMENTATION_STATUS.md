@@ -116,6 +116,33 @@ update ran no runtime/tests and changes no gameplay. Human acceptance remains
 pending; status AWAITING_USER_VALIDATION. Earlier lunch publication/hashes remain
 their historical snapshot, not evidence that C4 is already published.
 
+### Retained-C4 encounter review — October 22, through14:01 HKT
+
+Main's [post-C5 play review](iterations/2026-10-22-fire-combat-daytime/POST_C5_PLAY_REVIEW.md)
+records one isolated Godot4.7.1 Gym encounter, PID77216/session77216_597317,
+on unchanged retained-C4 source (b57d1b3f;26fa5890 adds evidence only). Normal bound
+inputs reached victory37.5/0 without Retry, healing or actor/resource/AI/clock writes:
+
+- Front block dealt actual2.5 chip. One parry dealt zero and gave Enemy Level1
+  reaction0.25s/about5 push, with Enemy Health200/Heat0/orbs0. Enemy refaced after
+  its committed attack/recovery when Laema dodged across. Real wall contact
+  resolved INVINCIBLE0; the same still-active attack caused no later damage in
+  that observed once-per-target case, not an all-contact-time clearance.
+- Late X4 Circle was correctly ignored. Early X5 Circle reset the chain and
+  cleared charged4/partial progress while retaining queue4; held full pressure
+  did not auto-restart Charging. Prelaunch Cast cancellation consumed queue4->3
+  only, with no double spend/projectile and commitment Heat2 retained. Postlaunch
+  Circle did not execute; a later real hit interrupted the Cast, so uninterrupted
+  completion was not established by that case.
+- Ordinary refacing returned to a left-facing all-five-hit X chain and empowered
+  Lv7/APPLIED13, followed by victory in the same encounter. This is bounded agent
+  evidence, not a causal difficulty comparison or a new implementation round.
+
+Product source hashes are unchanged; no new automated-test result, audition or
+human pass is claimed. No controller was connected. Status remains AWAITING_USER_VALIDATION;
+all-case/controller clearance, AI retreat, physical dodge safe-end, fresh art
+direction and the unrelated tutorial-transition errors remain unsettled/unfixed.
+
 ## Retained overnight candidate — October 22, rendered evidence through 07:19 HKT
 
 Historical source/evidence snapshot: the daytime entry above supersedes its

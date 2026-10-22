@@ -74,3 +74,19 @@ were106/97ms late before resuming; the eighteen other opening edges were within
 establish controller comfort or statistical difficulty. U's scalar edit/rollback,
 Main's image/source judgment and archival/publication are separate work, not
 extra gameplay minutes. C5 was not retained despite a successful following Cast.
+
+### Retained-source defence encounter — through14:01 HKT
+
+POST_C5_PLAY_ACTIVITY.json separately records one continuous encounter divided
+into11 commanded observation/action episodes,156 bound edges and conservative
+alive/unpaused sample coverage **43.858s wall /43.917s physics**. The same Player
+went100->37.5HP and won, without mid-encounter Retry/healing/state repair. The
+11 episodes are not11 complete fights or an additional implementation iteration.
+Actual wall waiting for an incoming attack belongs to this encounter, not a
+forced-state probe; after-victory time and paused review are excluded.
+
+Source/image analysis, report/archival, canonical status synchronization and
+waiting are separate work. No new implementation or automated suite occurred.
+The cold Gym F4 release95ms delay is retained; no claim that every event was
+within9ms. No audio capture/audition or physical-controller comfort evidence was
+added. The session exited0 with its existing13/9 shutdown warnings.
