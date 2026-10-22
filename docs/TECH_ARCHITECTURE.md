@@ -45,6 +45,44 @@ No marker, projectile owner, collider size, direction, speed/range, damage,
 level drawing or audio changes. The user accepted the raised horizontal shot's
 short-legacy-dummy miss without a target/trajectory repair.
 
+## Castle levels 4–7 amendment — October 22
+
+The approved prototype extension adds four actor scenes originating on branch
+`codex/castle-creatures-4-7`, based on `5fe2886f`. The user authorized its scoped
+creature/shortcut commit and merge into local `main`. Each creature was handled by
+its own subagent; the parent owns the shared catalog, shooter binding and
+canonical records. Existing unrelated combat tuning remains separate.
+
+| Catalog ID | Scene | Existing execution owner |
+| --- | --- | --- |
+| swordsman | scenes/enemy/swordsman.tscn | CombatEnemy grounded melee |
+| monk | scenes/enemy/monk.tscn | Archer ranged and close melee |
+| cavalier | scenes/enemy/cavalier.tscn | CombatEnemy grounded melee |
+| angel | scenes/enemy/angel.tscn | CombatEnemy grounded melee |
+
+All inherit the existing shared Settings, hit reaction, behavior tree and
+collision contract. Their selected generated character sheets use 768x640
+cells/four columns and anchor(384,448), registered with scale1/offset(0,-128).
+The current 1.0s attack clocks and temporary melee geometry are retained;
+sprite keys follow each source sequence's own frame count. Each creature's
+provenance and compact source manifest record exact selected paths and hashes.
+
+Archer exposes `ranged_projectile_scene`, defaulting to its existing ArrowScene.
+Monk overrides that PackedScene with `scenes/combat/monk_bolt.tscn`; it retains
+the `melee_swing` and `archer_shoot` execution aliases while binding its own
+Animation resources. The bolt uses the existing enemy_arrow.gd lifecycle,
+direct unschooled HealthEvent, swept collision and enemy_projectiles cleanup.
+Its original CPRZEAX horizontal frame is preserved reference art because the
+selected high-resolution collection supplies no detached projectile. Damage,
+Impact, range, attack choice, commitment, interruption and reset remain with
+the existing owners. No per-creature combat profile is introduced.
+
+Both Portals continue reading the same catalog and ui.enemy_creature preference.
+The loader's unavailable-choice message is generic so it matches this expanded
+roster. All four new actors leave their inherited Pikeman audio streams null;
+new SFX assignments remain open. Source/static checks establish no Godot import,
+runtime, final art, mounted/airborne presentation or contact-alignment approval.
+
 ## Creature roster amendment — October 22
 
 This scoped candidate adds Pikeman, Archer and Griffin to one selector without
@@ -54,9 +92,17 @@ basis is `dda30976` plus this scoped creature revision, originating on
 into local `main`; unrelated Fire/player tuning is excluded. This is not a
 tested revision, submission clearance or remote-publication receipt.
 
+The later high-resolution presentation correction originates on
+`codex/castle-creature-hires`, based on roster merge `fd72f4e2`. The user
+authorized its scoped commit and merge into local `main`. It changes
+character sheet bindings, atlas rectangles and sprite registration only;
+other ongoing tuning is outside that slice. Its available evidence and source
+digests are recorded in IMPLEMENTATION_STATUS.md and creature provenance.
+
 `scripts/config/creature_catalog.gd` owns the stable IDs and PackedScene paths:
 `pikeman` -> `scenes/enemy/combat_enemy.tscn`, `archer` -> `scenes/enemy/archer.tscn`,
-and `griffin` -> `scenes/enemy/griffin.tscn`. Both Portals use the same catalog.
+and `griffin` -> `scenes/enemy/griffin.tscn`, plus the four IDs listed above.
+Both Portals use the same catalog.
 The preference `ui.enemy_creature` belongs to `config/prototype_combat.json`;
 older configurations default to Pikeman. Validation rejects unavailable IDs.
 Save Tuning and the editor's review/save retain the existing merge/conflict flow.
@@ -70,6 +116,17 @@ The runtime Portal emits the spawn request; the editor sends the equivalent
 `spawn_creature` debugger command. Both call the arena's existing restart path.
 Training stages without a final-enemy slot reject that action with a message.
 
+PrototypeArena also owns physical top-row 1–7 creature shortcuts in
+`_unhandled_key_input`: Pikeman/Archer/Griffin/Swordsman/Monk/Cavalier/Angel
+route through the same
+`spawn_developer_creature` request and existing restart owner, with no new
+selection setting or live-actor mutation. Only fresh, unmodified key presses
+are accepted; echoes, releases and numpad keys are ignored. Shortcuts do not run
+while the Portal or pause menu is open, before an area exists, during transitions,
+or in training areas without `FinalEnemy`. Input-map setup removes the former 1–4
+school-key bindings, including stale bindings from an earlier arena in the same
+session. Controller D-pad bindings and school-selection logic remain unchanged.
+
 Gym retry carries the selected ID through SceneTree metadata, independently of
 the saved file. Its persisted-config comparison retains the true disk value so
 Save Tuning can still save a run-only choice after retry. A new launch uses the
@@ -77,10 +134,12 @@ saved preference. Spawn/retry resets the encounter rather than mutating an
 in-flight actor; root cleanup also removes `enemy_projectiles` such as arrows.
 
 CombatEnemy exposes per-scene textures, cell layout, frame counts and optional
-mirrored sprite offset while retaining Pikeman's exact defaults. Griffin's
-native 450x400/four-column sheets use Idle8/Walk4/Hurt7/Death9 and a nine-pose
-attack. Scale2, offset(7,-67) and native foot(218,267) register to the inherited
-BodyVisual(-11,31) and 60x180 capsule. The copied native melee resource retains
+mirrored sprite offset while retaining Pikeman's exact defaults. Archer and
+Griffin now bind existing generated review sheets under each creature's
+`highres_v01/` folder: four columns of 768x640 cells, scale1 and offset(0,-128).
+The source cell anchor(384,448) maps to the inherited BodyVisual(-11,31);
+the 60x180 capsule is unchanged. Griffin retains Idle8/Walk4/Hurt7/Death9
+and a nine-pose attack. Its native Animation resource retains
 the existing 1.0s clock, active0.5..1.0 and all Pikeman AttackCast key values.
 Its original-source cues use the existing playback/mix owners. Archer may leave
 unassigned streams null; shared playback skips those streams.
@@ -95,14 +154,15 @@ awareness-distance limit and an exported1.0s travel-duration placeholder.
 It is parented under the arena, joins `enemy_projectiles`, and sweeps each
 travelled segment against Player/level collision. One contact consumes it through
 the existing direct HealthEvent path; a shot does not enter simultaneous melee
-clash arbitration. Original actor/arrow sheets and source hashes are documented
+clash arbitration. Current generated character sheets, preserved original
+character/arrow sheets and source hashes are documented
 in `assets/prototype/enemy/archer/PROVENANCE.md`. These are implementation
 candidate details, not recovered Heroes battle timing or runtime evidence.
 
 Animation cloning reloads the external resource's own path before duplication;
 a creature's `melee_swing` alias therefore retains its own native clip. The
 `use_shared_melee_geometry` flag defaults true for Pikeman and is false in the
-native Griffin/Archer scenes. Their authored geometry is not overwritten by
+non-Pikeman creature scenes. Their authored geometry is not overwritten by
 Pikeman's mirrored reach/radius settings. Those two Portal controls are hidden
 for native-creature selection, and saving that selection skips Pikeman geometry
 writes. Native Animation tracks remain their geometry-editing source.

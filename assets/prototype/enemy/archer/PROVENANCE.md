@@ -1,5 +1,33 @@
 # Castle Archer prototype
 
+## Current high-resolution presentation — October 22
+
+After the user identified the original low-resolution artwork in Gym, the actor
+was rebound to the existing generated Castle animation review collection.
+The six character sheets now live in `highres_v01/`; `source-manifest.json`
+records their selected source paths, source-index digest and exact file hashes.
+Source package: `castle-creature-assets-v01/animations/archer`, selected through
+the collection's `collection-index.json`, not raw generation/rejected folders.
+
+These are the existing redrawn animations descended from the approved Castle
+masters, with prototype animation review still pending. They are not enlarged
+original pixels or newly generated drawings from this integration. All 42
+selected character frames were compared with the source collection's individual
+PNGs. Sheets retain four columns and 768 x 640 cells, in the same group/frame
+order as the preserved originals below. The cell anchor (384, 448) maps to the
+inherited BodyVisual (-11, 31) using sprite scale 1 and centered offset (0, -128).
+
+Only character texture references, cell rectangles and sprite registration
+changed. Attack marker/key times, melee query tracks, collider, AI, stats,
+muzzle/projectile and sound assignments retain the current implementation.
+The arrow still uses the original `Arrow.png`; the Art collection supplies no
+detached high-resolution projectile. Fresh in-game visual, foot/muzzle and
+hitbox-alignment review is required. Source/resource checks are not Godot import,
+runtime, user-animation or final-art approval. The earlier native registration
+below is historical and no longer configures the character sprite.
+
+## Preserved original integration
+
 The user approved adding the unupgraded Heroes III Castle Archer alongside
 Pikeman, with ranged attacks and a separate melee attack at close range, on
 October 22, 2026. This task belongs to Combat and remains independent of the

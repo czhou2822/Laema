@@ -120,6 +120,118 @@ removed charged orbs without cancelling X5. These observations support those
 two reaction cases, not every configurable band, the new dodge candidate,
 reconciled-main runtime, human controller/feel or a fresh headless result.
 
+## Castle levels 4–7 prototype — October 22
+
+Status: `AWAITING_USER_VALIDATION`. The user approved existing high-resolution
+assets, current grounded melee for Swordsman/Cavalier/Angel, Archer-style ranged
+and close melee for Monk, one shared Dev Portal selector and one subagent per
+creature. The user authorized the scoped creature and top-row1–7 shortcut
+commit and merge into local `main`. This slice originates on
+`codex/castle-creatures-4-7` over `5fe2886f`; ongoing combat tuning remains
+outside the commit. Remote publication was not requested.
+
+| Creature | Character atlases | Selected frame positions | Prototype |
+| --- | ---: | ---: | --- |
+| Swordsman | 5 | 35 | Current grounded melee |
+| Monk | 6 | 49 | Current ranged/close melee |
+| Cavalier | 5 | 38 | Current grounded melee |
+| Angel | 5 | 35 | Current grounded melee |
+
+The four scenes reuse shared Settings/tree/collider/reactions. Their own native
+Animation resources retain 1.0s clocks and existing marker/temporary-geometry
+contracts while mapping each selected source sequence's frame count. The one
+catalog now supplies all seven choices to both Portals and the existing
+Spawn / Restart path. The saved default/preference format is unchanged.
+
+The shared ranged actor has an exported projectile PackedScene with the same
+Archer default. Monk binds a separate bolt scene using the existing projectile
+script and original CPRZEAX horizontal source frame. Its character animations
+are high-resolution; the source collection has no detached high-resolution
+projectile. All four new creatures have unassigned SFX and null inherited
+Pikeman streams.
+
+Validation covers selected source bytes, 21 character atlases/157 frame cells,
+resource paths, frame bounds, animation data, shared-script grammar and source
+data flow. These are static checks; no Godot/editor/runtime, build or automated
+gameplay tests were run. Animation/art/balance and human/controller acceptance
+remain pending. Temporary sword/lance/melee geometry, mounted walk/collision
+and Angel's airborne drawings under grounded physics require a user review.
+
+Your validation: stop/rerun Gym, select each new creature in General / Creature
+to spawn, use Spawn / Restart, and check both facings, feet, attack presentation,
+damage/reactions, death, retry/save and Final Arena completion. For Monk also
+check range-to-melee choice, muzzle/bolt, wall collision, defence, interruption
+before/after launch and projectile cleanup.
+
+## Creature number-row shortcuts — October 22
+
+Status: `AWAITING_USER_VALIDATION`. The user approved top-row **1 = Pikeman**,
+**2 = Archer**, **3 = Griffin**, followed by **4 = Swordsman**, **5 = Monk**,
+**6 = Cavalier**, **7 = Angel**, through the existing Spawn / Restart flow, and
+removal of the former 1–4 keyboard school-selection defaults. Controller D-pad
+school selection is unchanged. No new creatures, assets, AI or tuning are added.
+
+- `scripts/prototype/prototype_arena.gd` owns the physical-key mapping and
+  `_unhandled_key_input` handler. Fresh, unmodified presses use the same creature
+  request/restart path as the Portal. Key releases, echoes/holding, numpad keys,
+  open pause/Portal UI, missing areas/transitions and training areas without
+  `FinalEnemy` do not trigger the shortcut.
+- Input setup removes the retired school-key bindings even when retained in
+  InputMap from an earlier arena. It preserves controller bindings and the
+  existing school-selection implementation. Key4 now selects Swordsman.
+- Existing Gym reload/Final Arena restart restores fighters, authored initial
+  school, Health, positions, empty orbs, zero Heat, reactions and buffered
+  actions. Selection remains run-only until Save Tuning; no mid-attack actor
+  replacement or automatic save is introduced. Existing unsaved-tuning reload
+  behavior is unchanged.
+- GDD, TDR and Gym control records are synchronized for this exact change.
+  Concurrent high-resolution creature presentation and user tuning are preserved.
+
+Checks: focused source/data-flow and seven-choice catalog/scene-reference
+inspection, standalone GDScript grammar parsing and `git diff --check` pass.
+Standalone parsing establishes no Godot type/import or runtime validation. No
+Godot/editor/runtime, build or automated tests were run for this slice. The user
+authorized committing these shortcuts with levels4–7 and merging into local
+main; remote publication was not requested.
+
+User validation: stop/rerun Gym, press each top-row key1–7 and verify the chosen
+opponent and full encounter reset. Hold a key and verify no repeat restart.
+Check key4 now spawns Swordsman, D-pad still selects schools, and numeric
+entry in the open Portal (including unpaused Portal) does not restart play.
+Repeat the shortcuts in Final Arena; practice targets/completion identity must
+remain intact. Engine input dispatch and restart behavior remain unverified.
+
+## High-resolution creature presentation correction — October 22
+
+Status: `AWAITING_USER_VALIDATION`. After the user identified the original
+low-resolution flipbooks in Gym, the existing selected high-resolution animation
+collection was located in Art's saved outputs. The user authorized its scoped
+commit and merge into local `main` on October 22. The correction originates on
+`codex/castle-creature-hires`, based on roster merge `fd72f4e2`; other ongoing
+tuning and keyboard-shortcut edits remain outside this commit. No push or new
+runtime-validation evidence is authorized by the local merge request.
+
+- Archer binds six existing generated character sheets: Idle/Walk/Hurt/Death,
+  close melee and shooting. Griffin binds five: Idle/Walk/Hurt/Death/Attack.
+  All 11 copied atlases retain their selected source bytes; 79 source frame
+  positions were compared with the collection's individual PNGs.
+- Both use four-column 768 x 640 cells, sprite scale 1, offset (0, -128) and
+  anchor (384, 448) at the inherited BodyVisual position. Sprite-frame rectangles
+  in the three attack resources use that layout.
+- Timing, marker/key times, AttackCast geometry, collision bodies, AI, shared
+  settings, selector/restart behavior and sound assignments are preserved.
+  Archer's detached arrow remains its original source sprite. Native character
+  PNGs are preserved at their earlier paths; the new sheets and compact source
+  hashes live under each creature's `highres_v01/` folder.
+- The static masters were accepted in Art; their generated animation collection
+  is explicitly a prototype review candidate. This binding change grants no
+  final animation, art, engine-import, gameplay or balance approval.
+
+Checks are source/resource/frame-bound comparisons only; no Godot, editor,
+runtime, build or automated gameplay tests were run. User validation remains:
+stop/rerun Gym, select each creature and inspect motion, both facings, feet,
+close melee/shot presentation, weapon/hitbox and muzzle alignment.
+
 ## Selectable Castle creatures — October 22
 
 Status: `AWAITING_USER_VALIDATION`. The user authorized a scoped creature commit

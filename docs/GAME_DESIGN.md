@@ -12,11 +12,18 @@ Current design, consolidated October 20, 2026. Implementation candidates and sco
 using the existing grounded approach, committed melee attack, shared combat
 settings and hit-reaction behavior for now. Add the Castle Archer as another
 choice; the user confirmed in its independent Combat chat that it shoots at
-range and uses a separate melee attack up close. All three remain available
+range and uses a separate melee attack up close. All seven remain available
 through one Dev Portal selector. These additions belong to Combat.
 
+**Decision — Castle levels 4–7:** add Swordsman, Monk, Cavalier and Angel using
+their existing high-resolution character flipbooks, with one subagent per
+creature. Swordsman, Cavalier and Angel reuse the current grounded melee
+prototype. Monk reuses Archer's ranged and close-melee pattern. All four retain
+the current shared character settings and hit-reaction behavior.
+
 The Gym still contains one attacking opponent at a time. **Creature to spawn**
-chooses Pikeman, Archer or Griffin; **Spawn / Restart** starts a fresh encounter
+chooses Pikeman, Archer, Griffin, Swordsman, Monk, Cavalier or Angel;
+**Spawn / Restart** starts a fresh encounter
 with that choice, resetting fighters, Health, orbs, Heat and actions through the
 existing restart flow. Choosing a different creature does not change an attack
 already in progress. Retry retains the chosen creature; Save Tuning remembers
@@ -24,11 +31,16 @@ the choice for subsequent launches. Final Arena uses the same selected opponent
 in its existing final-enemy slot, preserving its completion objective and
 separate practice targets. Pikeman remains the saved default.
 
-Griffin uses the original native creature artwork and sound cues for this
-prototype. Its wing movement is presentation of the current grounded actor.
+The current presentation candidate uses the existing high-resolution Castle
+animation review sheets for Archer, Griffin, Swordsman, Monk, Cavalier and Angel,
+following the user's correction
+that the original low-resolution sheets were shown in Gym. The accepted static
+masters and the generated animation candidates retain separate approval status.
+Original character sheets are preserved; Griffin's original sound cues remain.
+Its wing movement is presentation of the current grounded actor.
 The existing melee timing and hit geometry remain a temporary contract, not
-final Griffin-specific tuning. Archer's melee and shooting use separate original
-animation sheets. Source/static checks do not establish Godot playback,
+final creature-specific tuning. Archer and Monk use separate high-resolution
+melee and shooting sheets with the current timing. Source/static checks do not establish Godot playback,
 controller acceptance, final artwork approval or balance validation; see
 IMPLEMENTATION_STATUS.md for the implementation candidate and limits.
 
@@ -233,6 +245,22 @@ The primary experience remains deliberate combat mastery. The player should lear
 | R1 | Use the active school’s available defence |
 | Circle | Dodge while using Fire |
 | Start / Esc | Pause or resume through the pause menu |
+| Top-row 1 | Spawn / Restart with Pikeman in Gym or Final Arena |
+| Top-row 2 | Spawn / Restart with Castle Archer in Gym or Final Arena |
+| Top-row 3 | Spawn / Restart with Castle Griffin in Gym or Final Arena |
+| Top-row 4 | Spawn / Restart with Castle Swordsman in Gym or Final Arena |
+| Top-row 5 | Spawn / Restart with Castle Monk in Gym or Final Arena |
+| Top-row 6 | Spawn / Restart with Castle Cavalier in Gym or Final Arena |
+| Top-row 7 | Spawn / Restart with Castle Angel in Gym or Final Arena |
+
+**Keyboard decision — October 22:** physical top-row keys 1–7 select the seven
+opponents through the existing fresh-encounter restart, not
+an in-place replacement. The former 1–4 keyboard school-selection defaults are
+removed; controller D-pad school selection is unchanged. Each fresh press starts
+one restart; holding a key does not repeat it. These shortcuts are inactive while
+the pause menu or Dev Portal is open, including when the Portal leaves play
+unpaused. Numpad keys are not bound. Selection remains run-only until Save Tuning;
+the existing restart resets fighters, Health, orbs, Heat and actions.
 
 Laema is affected by gravity and remains grounded on solid collision. Every current stage area uses the same continuous flat ground height, and adjacent ground sections overlap at stage boundaries so transitions do not introduce a gap. The camera follows Laema horizontally while preserving fixed vertical framing.
 

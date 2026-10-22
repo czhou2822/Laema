@@ -7,6 +7,10 @@ const ENTRIES := {
 	"pikeman": {"label": "Pikeman", "scene": "res://scenes/enemy/combat_enemy.tscn"},
 	"archer": {"label": "Archer", "scene": "res://scenes/enemy/archer.tscn"},
 	"griffin": {"label": "Griffin", "scene": "res://scenes/enemy/griffin.tscn"},
+	"swordsman": {"label": "Swordsman", "scene": "res://scenes/enemy/swordsman.tscn"},
+	"monk": {"label": "Monk", "scene": "res://scenes/enemy/monk.tscn"},
+	"cavalier": {"label": "Cavalier", "scene": "res://scenes/enemy/cavalier.tscn"},
+	"angel": {"label": "Angel", "scene": "res://scenes/enemy/angel.tscn"},
 }
 
 

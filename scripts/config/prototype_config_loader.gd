@@ -154,7 +154,7 @@ static func _validate(data: Dictionary) -> String:
 			return "Missing or invalid configuration section: %s" % section_name
 	var creature_id = data["ui"].get("enemy_creature", Creatures.DEFAULT_ID)
 	if not creature_id is String or not Creatures.available(creature_id):
-		return "Choose an available creature: Pikeman, Archer or Griffin."
+		return "Choose an available creature from the Dev Portal."
 	if typeof(data["elemental_endurance"].get("enabled", true)) != TYPE_BOOL:
 		return "elemental_endurance.enabled must be Boolean."
 	for key in ["hitbox_reach", "hitbox_radius"]:

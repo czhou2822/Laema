@@ -17,6 +17,15 @@ const DevSession = preload("res://scripts/config/developer_portal_session.gd")
 const Creatures = preload("res://scripts/config/creature_catalog.gd")
 
 const AUDIO_BUS_NAMES := {"ambient": &"Ambient", "sfx": &"SFX", "bgm": &"BGM"}
+const CREATURE_SHORTCUTS := {
+	KEY_1: "pikeman",
+	KEY_2: "archer",
+	KEY_3: "griffin",
+	KEY_4: "swordsman",
+	KEY_5: "monk",
+	KEY_6: "cavalier",
+	KEY_7: "angel",
+}
 
 @onready var combat_tuning: CombatTuningBridge = $Player/CombatTuning
 @onready var player = $Player
@@ -102,6 +111,24 @@ func _get_tutorial_configuration() -> Dictionary:
 
 func _get_pause_restart_label() -> String:
 	return "Restart encounter"
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not event is InputEventKey:
+		return
+	if not event.pressed or event.echo:
+		return
+	if event.alt_pressed or event.ctrl_pressed or event.meta_pressed or event.shift_pressed:
+		return
+	var creature_id := str(CREATURE_SHORTCUTS.get(event.physical_keycode, ""))
+	if creature_id.is_empty() or _config.is_empty() or _transitioning or _current_area == null:
+		return
+	if _current_area.get_node_or_null("FinalEnemy") == null:
+		return
+	if _developer_overlay._overlay_root.visible or pause_menu.is_open():
+		return
+	get_viewport().set_input_as_handled()
+	_on_creature_spawn_requested(creature_id)
 
 
 func _process(_delta: float) -> void:
@@ -405,10 +432,16 @@ func _configure_default_input_map() -> void:
 	_bind_axis(&"move_right", JOY_AXIS_LEFT_X, 1.0)
 	_bind_key(&"move_left", KEY_A)
 	_bind_key(&"move_right", KEY_D)
-	_bind_key(&"select_fire", KEY_1)
-	_bind_key(&"select_water", KEY_2)
-	_bind_key(&"select_air", KEY_3)
-	_bind_key(&"select_earth", KEY_4)
+	# Retire number-row school keys, including bindings from an earlier arena.
+	for binding in [
+		[&"select_fire", KEY_1], [&"select_water", KEY_2],
+		[&"select_air", KEY_3], [&"select_earth", KEY_4],
+	]:
+		for key_event in InputMap.action_get_events(binding[0]):
+			if not key_event is InputEventKey:
+				continue
+			if key_event.physical_keycode == binding[1] or key_event.keycode == binding[1]:
+				InputMap.action_erase_event(binding[0], key_event)
 	_bind_key(&"defend", KEY_SHIFT)
 	_bind_mouse_button(&"light_attack", MOUSE_BUTTON_LEFT)
 	_bind_mouse_button(&"casting", MOUSE_BUTTON_RIGHT)

@@ -1,5 +1,29 @@
 # Castle Griffin prototype assets
 
+## Current high-resolution presentation — October 22
+
+After the user identified the original low-resolution artwork in Gym, the actor
+was rebound to the existing generated Castle animation review collection.
+Five character sheets now live in `highres_v01/`; `source-manifest.json` records
+their selected source paths, source-index digest and exact file hashes. Source
+package: `castle-creature-assets-v01/animations/griffin`, selected through the
+collection's `collection-index.json`, not raw generation/rejected folders.
+
+The existing drawings descend from approved Castle masters; prototype animation
+review remains pending. All 37 selected character frames were compared with the
+source collection's individual PNGs. Four-column sheets retain native group/frame
+order using 768 x 640 cells. The cell anchor (384, 448) maps to the inherited
+BodyVisual (-11, 31) using sprite scale 1 and centered offset (0, -128).
+
+Only character texture references, cell rectangles and sprite registration
+changed. Existing attack timing, marker/key times, AttackCast tracks, collider,
+shared settings, AI, sounds and grounded behavior are preserved. No new art was
+generated for this rebind. Fresh in-game visual, foot and hitbox-alignment review
+is required; source/resource checks establish no Godot/import/runtime or final
+art approval. Earlier native registration below is retained as history.
+
+## Preserved original integration
+
 User-authorized integration, October 22, 2026. These are original Heroes III
 Castle Griffin reference assets used for this prototype, not generated Laema art.
 Original artwork and audio belong to their respective rights holders.
