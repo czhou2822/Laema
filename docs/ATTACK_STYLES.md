@@ -161,6 +161,23 @@ presets and the older `earth_x1.png` Fire example are not current defaults.
 4. Insert/update keys for the properties you changed, using the Inspector key icons. The existing tracks are `AttackCast:position`, `AttackCast:target_position`, and `AttackCast:shape:radius`. Moving a handle alone does not save a per-move key. Author the attack facing right; gameplay mirrors its horizontal coordinates for left-facing attacks.
 5. Save the external Animation resource (`config/attack_animations/fire_x1.tres`) and save the scene if marked modified. Save native animation edits before making a Portal draft. Rerun the Gym to compare. Gameplay samples the saved geometry across the active interval. Extra keyed poses do not permit repeated hits on the same target within one attack.
 
+Player clips now also contain constant time0 setup tracks for Sprite offset,
+filter/material/colour, CollisionShape2D shape/position and Sprite/CastOrigin
+position. Fire and legacy scrubbing therefore use the same authored registration
+as playback, including a pre-window pose such as fire_x2 at0.2798. These setup
+tracks are separate from your three AttackCast curves: do not move hitboxes to
+compensate for the old misleading preview. Existing hitbox key values, times,
+markers and sprite-frame keys are not changed by this migration.
+
+Scene/RESET default to the saved Fire pose. PresentationPlayer's fire/legacy
+setup animations supply those same native properties for Idle/Walk/Hurt/guard;
+its palette clips hold the legacy material/colour values. These stopped setup
+clips are not Might's combat clock. If registration is intentionally changed
+later, keep the affected combat setup keys and base setup/RESET consistent.
+Select Sprite/CastOrigin to author the emission point, and key that marker in
+the Cast animation if needed. Stop/rerun after saving and compare before calling
+the result validated; no new Godot/editor/runtime evidence is supplied here.
+
 For Enemy melee, open `scenes/enemy/combat_enemy.tscn`, select **AnimationPlayer → melee_swing**, and follow the same scrub/select/key/save workflow. Its hitbox reach/radius are separate from **Enemy AI → Attack range**, which only controls when the enemy approaches/starts windup.
 
 Player timelines use the existing normalized one-second clocks. Actual Player windup/recovery duration still comes from move tuning, Heat; their timeline seconds are not wall-clock combat seconds. Sprite-frame key spacing belongs to the assigned flipbook; Fire/Earth exchanged those frame tracks for the sword benchmark. Cast artwork uses the corresponding `cast_fire`, `cast_water`, `cast_air` or `cast_earth` clip; projectile damage keeps its existing path.
@@ -195,10 +212,12 @@ bottom map to the Gym floorY52 (screenY610). The older12-pixel visible-floor-art
 offset belongs to the previous artwork and must not be reapplied to this repaint.
 Keep attack geometry in **AttackCast** and its native Animation tracks.
 
-Fire Player uses a30×90-local rectangle at(0,-19), root scale2, bottomY26. Its
-existing Fire sprite offset(0,-124) stays unchanged. Other-school artwork restores
-the26×30 rectangle at(0,11). These stable body profiles exclude weapons and are
-not keyed to individual poses. Preserve the authored floor relationship. Older
+Fire Player uses saved fire_body.tres (30x90) at(0,-19), root scale2, bottomY26.
+Its authored Fire sprite offset(0,-124) is unchanged. Legacy clips select saved
+legacy_body.tres (26x30) at(0,11). These resources are under
+config/player_presentation/. The native setup keys select a fixed body per
+profile, not a body that changes size through attack poses. The script no longer
+constructs or repositions these shapes. Preserve the authored floor relationship. Older
 calculations remain in the [historical guide](history/2026-10-20-document-housekeeping/sources/docs/ATTACK_STYLES.md#align-the-enemy-body-with-the-floor).
 
 ## Tune numerical settings

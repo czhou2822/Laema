@@ -25,11 +25,6 @@ const FIRE_DEFENCE: Texture2D = preload("res://assets/prototype/player/fire_swor
 const FIRE_DEFENCE_GUARD_FRAME := 3
 const FIRE_DEFENCE_SPARK_FRAME := 4
 const FIRE_DEFENCE_LAST_FRAME := 7
-const FIRE_CELL_SIZE := Vector2(448.0, 448.0)
-const FIRE_CAST_HAND_PIXEL := Vector2(205.0, 235.0) # cast_fire cell 3 at native launch 0.24.
-const FIRE_FOOT_ANCHOR := Vector2(224.0, 400.0)
-const FIRE_BODY_SIZE := Vector2(30.0, 90.0)
-const FIRE_BODY_POSITION := Vector2(0.0, -19.0)
 const ATTACK_SWING_STREAM_PATHS := [
 	"res://assets/prototype/audio/combat/SWRDATTK.wav",
 ]
@@ -76,7 +71,6 @@ const MARK_ORB_STREAM_PATH := "res://assets/prototype/audio/casting/charging_not
 const MARK_AUDIO_VOLUME_DB := 0.0
 const MARK_AUDIO_BACKGROUND_REDUCTION_DB := 12.0
 const MARK_AUDIO_PITCH_SCALES: Array[float] = [1.0, 9.0 / 8.0, 5.0 / 4.0, 4.0 / 3.0, 3.0 / 2.0, 5.0 / 3.0, 15.0 / 8.0, 2.0]
-const CELL_SIZE := Vector2(128.0, 128.0)
 const IDLE_FRAMES := 6
 const WALK_FRAMES := 12
 const HURT_FRAMES := 4
@@ -90,12 +84,6 @@ const SCHOOL_COLORS := {
 	&"water": Color("248cff"),
 	&"air": Color("ffffff"),
 	&"earth": Color("8b5a2b"),
-}
-const SCHOOL_TINTS := {
-	&"fire": Color("ffd0cc"),
-	&"water": Color("c9ddff"),
-	&"air": Color("f4f6ff"),
-	&"earth": Color("d6b38a"),
 }
 
 @export var settings: PlayerCombatSettings
@@ -118,6 +106,8 @@ const SCHOOL_TINTS := {
 @onready var mark_audio: AudioStreamPlayer = $MarkAudio
 @onready var hit_reaction_audio: AudioStreamPlayer = $HitReactionAudio
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var presentation_player: AnimationPlayer = $PresentationPlayer
+@onready var cast_origin: Marker2D = $Sprite/CastOrigin
 @onready var attack_cast: ShapeCast2D = $AttackCast
 @onready var body_collision: CollisionShape2D = $CollisionShape2D
 
@@ -132,14 +122,8 @@ var _facing_left := false
 var _sprite_rest_position := Vector2.ZERO
 var _sprite_rest_scale := Vector2.ONE
 var _sprite_rest_rotation := 0.0
-var _sprite_rest_offset := Vector2.ZERO
-var _sprite_rest_filter := CanvasItem.TEXTURE_FILTER_PARENT_NODE
-var _sprite_rest_material: Material
-var _sprite_art_captured := false
-var _fire_sprite_offset := Vector2.ZERO
-var _legacy_body_shape: Shape2D
-var _legacy_body_position := Vector2.ZERO
-var _fire_body_shape: RectangleShape2D
+var _applied_registration: StringName = &""
+var _applied_palette: StringName = &""
 var _last_orb_count := 0
 var _last_marked_count := 0
 var _pending_mark_audio_levels: Array[int] = []
@@ -166,19 +150,8 @@ func configure(config: Dictionary) -> void:
 	_sprite_rest_position = sprite.position
 	_sprite_rest_scale = sprite.scale
 	_sprite_rest_rotation = sprite.rotation
-	if not _sprite_art_captured:
-		_sprite_rest_offset = sprite.offset
-		_sprite_rest_filter = sprite.texture_filter
-		_sprite_rest_material = sprite.material
-		_sprite_art_captured = true
-	# Both body profiles keep the authored floor reference and sprite registration.
-	if _legacy_body_shape == null:
-		_legacy_body_shape = body_collision.shape
-		_legacy_body_position = body_collision.position
-		_fire_body_shape = RectangleShape2D.new()
-		_fire_body_shape.size = FIRE_BODY_SIZE
-	var floor_anchor := body_collision.position + Vector2(0.0, body_collision.shape.get_rect().end.y)
-	_fire_sprite_offset = FIRE_CELL_SIZE * 0.5 - FIRE_FOOT_ANCHOR + (floor_anchor - _sprite_rest_position) / _sprite_rest_scale
+	_applied_registration = &""
+	_applied_palette = &""
 	movement.facing_changed.connect(_on_facing_changed)
 	combat.movement_lock_changed.connect(movement.set_movement_locked)
 	movement.set_attack_motion_provider(might.consume_attack_body_motion)
@@ -300,6 +273,8 @@ func reset_for_stage() -> void:
 	health.reset_to_maximum()
 	velocity = Vector2.ZERO
 	set_stage_input_locked(false)
+	_applied_registration = &""
+	_applied_palette = &""
 	sync_combat_body_profile()
 
 
@@ -372,10 +347,11 @@ func _is_attack_hitbox_debug_visible() -> bool:
 
 
 func _update_attack_visual() -> void:
-	# Texture and sprite frames are authored alongside geometry in AnimationPlayer.
+	# Native combat tracks own registration as well as artwork and geometry.
 	_last_visual_mode = &"attack"
+	_applied_registration = &""
 	_update_side_facing(_visual_attack_direction)
-	_reset_sprite_motion()
+	_apply_native_palette()
 
 
 func _update_locomotion_visual(
@@ -473,28 +449,27 @@ func _reset_sprite_motion() -> void:
 		sprite.position = _sprite_rest_position
 	sprite.scale = _sprite_rest_scale
 	sprite.rotation = _sprite_rest_rotation
-	_apply_sprite_art_profile()
 
 
 func _update_hit_reaction_visual(delta: float) -> void:
 	_hit_visual_time += delta
 	_set_visual_mode(&"hurt", FIRE_HURT if combat.get_active_school() == &"fire" else HURT_TEXTURE)
-	_apply_sprite_art_profile()
 	var duration := maxf(_hit_visual_duration, 0.001)
 	var frame := clampi(int(floor(_hit_visual_time / duration * float(HURT_FRAMES))), 0, HURT_FRAMES - 1)
 	_set_region(frame)
 
 
 func _set_visual_mode(mode: StringName, texture: Texture2D) -> void:
-	if mode == _last_visual_mode and sprite.texture == texture:
-		return
-	_last_visual_mode = mode
-	_visual_time = 0.0
-	sprite.texture = texture
+	_apply_native_registration(texture)
+	if mode != _last_visual_mode or sprite.texture != texture:
+		_last_visual_mode = mode
+		_visual_time = 0.0
+		sprite.texture = texture
+	_apply_native_palette()
 
 
 func _set_region(frame: int) -> void:
-	var cell_size := FIRE_CELL_SIZE if _uses_fire_art() else CELL_SIZE
+	var cell_size := sprite.region_rect.size
 	sprite.region_rect = Rect2(Vector2(frame, 0) * cell_size, cell_size)
 
 
@@ -503,18 +478,33 @@ func _uses_fire_art() -> bool:
 	return sprite.texture != null and sprite.texture.resource_path.begins_with(FIRE_ART_ROOT)
 
 
-func _apply_sprite_art_profile() -> void:
-	var fire_art := _uses_fire_art()
-	sprite.offset = _fire_sprite_offset if fire_art else _sprite_rest_offset
-	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if fire_art else _sprite_rest_filter
-	# Preserve approved Fire image colors; restore the legacy shader/tints elsewhere.
-	sprite.material = null if fire_art else _sprite_rest_material
-	sprite.self_modulate = Color.WHITE if fire_art else SCHOOL_TINTS[combat.get_active_school()]
-	if _legacy_body_shape != null:
-		var desired_shape: Shape2D = _fire_body_shape if fire_art else _legacy_body_shape
-		if body_collision.shape != desired_shape:
-			body_collision.shape = desired_shape
-			body_collision.position = FIRE_BODY_POSITION if fire_art else _legacy_body_position
+func _apply_native_registration(texture: Texture2D) -> void:
+	# Code chooses a saved setup; native Animation tracks contain every value.
+	if combat.is_attack_playing() or might.is_dodging():
+		return
+	var fire_art := texture != null and texture.resource_path.begins_with(FIRE_ART_ROOT)
+	var registration: StringName = &"fire" if fire_art else &"legacy"
+	if registration == _applied_registration:
+		return
+	presentation_player.play(registration)
+	presentation_player.advance(0.0)
+	presentation_player.stop(true)
+	_applied_registration = registration
+	_applied_palette = &""
+
+
+func _apply_native_palette() -> void:
+	# Preserve selected-school tint changes during a committed legacy action.
+	if _uses_fire_art():
+		_applied_palette = &""
+		return
+	var palette := StringName("palette_" + str(combat.get_active_school()))
+	if palette == _applied_palette:
+		return
+	presentation_player.play(palette)
+	presentation_player.advance(0.0)
+	presentation_player.stop(true)
+	_applied_palette = palette
 
 
 func sync_combat_body_profile() -> void:
@@ -534,10 +524,11 @@ func sync_combat_body_profile() -> void:
 	elif not combat.is_attack_playing():
 		var walking: bool = not movement.get_motion().is_zero_approx()
 		var texture: Texture2D = _get_walk_texture(combat.get_active_school()) if walking else _get_idle_texture(combat.get_active_school())
-		if sprite.texture != texture:
-			_set_visual_mode(&"walk" if walking else &"idle", texture)
+		var texture_changed := sprite.texture != texture
+		_set_visual_mode(&"walk" if walking else &"idle", texture)
+		if texture_changed:
 			_set_region(0)
-	_apply_sprite_art_profile()
+	_apply_native_palette()
 
 
 func _update_side_facing(direction: Vector2) -> void:
@@ -566,7 +557,9 @@ func _on_attack_started(kind: StringName, school: StringName, direction: Vector2
 	_visual_attack_direction = direction
 	_visual_light_position = clampi(combat.get_current_chain_position(), 1, 5) if kind == &"light" else 0
 	_visual_time = 0.0
-	_apply_sprite_art_profile()
+	_applied_registration = &""
+	_applied_palette = &""
+	_apply_native_palette()
 	if kind == &"light":
 		movement.commit_attack_direction(direction)
 		_play_audio(attack_swing_audio, _load_audio_stream(ATTACK_SWING_STREAM_PATHS[(_visual_light_position - 1) % ATTACK_SWING_STREAM_PATHS.size()]))
@@ -581,7 +574,8 @@ func _on_dodge_started(direction: Vector2) -> void:
 	_visual_light_position = 0
 	_visual_time = 0.0
 	movement.begin_dodge(direction)
-	_reset_sprite_motion()
+	_applied_registration = &""
+	_applied_palette = &""
 
 
 func _on_dodge_finished() -> void:
@@ -610,11 +604,9 @@ func _on_cast_launch_requested(payload: Dictionary) -> void:
 	var request: Dictionary = payload.duplicate(true)
 	var direction: Vector2 = request["direction"]
 	var primary_school := StringName(request["primary_school"])
-	request["origin"] = global_position + direction.normalized() * 42.0
-	if primary_school == &"fire":
-		var hand_local := FIRE_CAST_HAND_PIXEL - FIRE_CELL_SIZE * 0.5 + sprite.offset
-		hand_local.x *= -1.0 if direction.x < 0.0 else 1.0
-		request["origin"] = sprite.to_global(hand_local)
+	var origin_local := cast_origin.position
+	origin_local.x *= -1.0 if direction.x < 0.0 else 1.0
+	request["origin"] = sprite.to_global(origin_local)
 	_play_audio(cast_audio, _load_audio_stream(str(CAST_STREAM_PATHS.get(primary_school, CAST_STREAM_PATHS[&"fire"]))))
 	spell_projectile_requested.emit(request)
 
@@ -627,11 +619,8 @@ func _on_active_school_changed(school: StringName) -> void:
 	active_school_changed.emit(school)
 
 
-func _update_school_outline(school: StringName) -> void:
-	var shader_material := _sprite_rest_material as ShaderMaterial
-	if shader_material != null:
-		shader_material.set_shader_parameter(&"outline_color", SCHOOL_COLORS[school])
-	_apply_sprite_art_profile()
+func _update_school_outline(_school: StringName) -> void:
+	_apply_native_palette()
 
 
 func _on_heat_changed(value: float, level: int, speed_multiplier: float) -> void:

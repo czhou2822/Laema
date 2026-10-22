@@ -230,6 +230,16 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 ## Controls and Movement
 
+**Authoring decision — October 22:** Player registration is saved in native
+Godot scene, shape/material resources and animation property tracks, rather than
+computed alignment overrides in the Player script. Scrubbing a Fire or legacy
+clip must apply its actual sprite offset and body placement before the active
+window as well as during it. This preserves Fire offset(0,-124), body30x90 at
+(0,-19), legacy offset(0,0), body26x30 at(0,11), the shared floor and the existing
+raised-hand Fire Cast origin. It changes authoring ownership, not attack curves,
+timing, school switching, movement, damage or reaction rules. Implementation and
+remaining editor/runtime evidence are recorded in IMPLEMENTATION_STATUS.md.
+
 | Input | Action |
 |---|---|
 | Left stick | Move left or right and face that direction |

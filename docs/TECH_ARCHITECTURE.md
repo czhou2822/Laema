@@ -329,11 +329,22 @@ Player owns `sync_combat_body_profile()`. It follows the actual committed textur
 during an action, refreshing selected-school locomotion/Hurt outside actions.
 Movement invokes it before moving the body; Might invokes it before/after clock
 advancement and at the end of the contact frame. Thus all actors query the updated
-body after the common advance barrier. Fire uses a private 30×90 RectangleShape2D
-at(0,-19), with root scale2: 60×180 world and bottom localY26. The original26×30
-shape at(0,11) is restored for legacy art. Configuration captures the original
-shape and floor reference once; sprite offset(0,-124) is preserved. Reset/death
-also clear the visual Hurt lifetime/tween so it cannot select stale body art.
+body after the common advance barrier. Native Player clips now key their saved
+registration at time0: Fire uses fire_body.tres (30x90) at(0,-19), with root
+scale2: 60x180 world and bottom localY26; legacy uses legacy_body.tres (26x30)
+at(0,11). Both resources live in config/player_presentation/. Sprite offset,
+filter, material, colour and Sprite/CastOrigin position are native properties,
+not a runtime-computed profile. Scene/RESET default to Fire. The original
+AttackCast tracks, markers and sprite-frame tracks are preserved.
+
+The separate scene-native PresentationPlayer applies stopped setup animations
+for code-driven Idle/Walk/Hurt/guard and palette changes; it never advances or
+replaces Might's combat AnimationPlayer clock. Player chooses the saved fire or
+legacy setup from the actual displayed texture only outside a playing combat
+action/Dodge. Saved palette clips preserve the existing selected-school tint
+changes during legacy actions without rewriting registration. Existing frame
+cadences and transient Hurt/rest-pose restoration remain. Reset/death also clear
+the visual Hurt lifetime/tween so it cannot select stale body art.
 
 CombatEnemy's scene capsule is radius30/height180 at(-11,-59), retaining bottomY31.
 Its query mirrors around BodyVisual's X position(-11), using the same transformed
@@ -1124,19 +1135,23 @@ are retained. Earth/Water/Air and attack_clock native resources are unchanged.
 Player's existing presentation helpers select Fire-specific Idle6/Walk12/Hurt4
 sheets with the existing8fps/10fps/captured-Hurt timing. Legacy shared sheets are
 not overwritten. The currently displayed texture selects448px versus128px cells,
-offset, filter and material, so switching selected schools during a committed
-Fire animation does not reformat its atlas. Legacy textures restore the saved
-original offset/material/filter and their school tint. Fire uses its accepted
-image colors without the old outline/tint shader. The shader reference remains
-cached independently for later school changes. Existing facing/input, movement,
+registration through native setup tracks, so switching selected schools during a
+committed Fire animation does not reformat its atlas. Legacy registration and
+school palettes are saved native data; Fire retains its accepted image colours
+without the legacy outline/tint shader. Existing facing/input, movement,
 reaction and audio paths retain their owners.
 
-The existing root2/Sprite0.5 scales are retained. Reading the unchanged collision
-rectangle's floor at local y26 yields the Fire-only centered offset(0,-124) for
-448px cells and foot(224,400), giving world foot y52 and the Gym's screen y610.
-No physical dimensions or root motion are changed. Registration belongs to the
-runtime presentation profile; standalone editor scrubbing must account for that
-offset and must not move hitboxes to fit an unconfigured preview.
+The existing root2/Sprite0.5 scales are retained. Saved Fire offset(0,-124) for
+448px cells and foot(224,400) gives world foot y52 and the Gym's screen y610.
+Fire and legacy body bottoms remain localY26. The former runtime offset formula
+and body construction are retired: normal native clips contain constant setup
+keys, and scene/RESET store the matching default. Standalone scrubbing no longer
+requires a hidden registration adjustment. Sprite/CastOrigin is an authored
+Marker2D: Fire keys(-19,-113), legacy keys(42,0), in Sprite-local coordinates.
+Those preserve the existing right-facing world offsets(-19,-113) and(42,0) at
+the unchanged scales. Launch code reads the marker and applies existing facing;
+it no longer supplies a hand-pixel or distance constant. No attack geometry,
+physical dimensions, emission timing or root motion is retuned.
 
 All nine selected sheets/52 frames are byte-identical to Art's metadata pointers.
 Art's earlier review-candidate flags and X3/X5 continuity/handling limits remain;
