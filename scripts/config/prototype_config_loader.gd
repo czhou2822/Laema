@@ -54,6 +54,7 @@ static func load_and_validate(path: String) -> Dictionary:
 			return characters
 	_normalize_legacy_audio_volumes(data)
 	ReactionRanges.normalize_legacy(data)
+	_normalize_reaction_motion(data)
 	_normalize_attack_styles(data)
 	_normalize_fire_defence(data)
 	if data.get("enemy_ai") is Dictionary:
@@ -108,20 +109,25 @@ static func _normalize_fire_defence(data: Dictionary) -> void:
 
 
 static func validate(data: Dictionary) -> Dictionary:
-	var validation_error := _validate(data)
+	# Retire obsolete overrides even in cached drafts, without changing caller data.
+	var candidate := data.duplicate(true)
+	Style.strip_retired_fields(candidate)
+	_normalize_reaction_motion(candidate)
+	var validation_error := _validate(candidate)
 	if not validation_error.is_empty():
 		return _failure(validation_error)
 	return {
 		"ok": true,
-		"data": data.duplicate(true),
+		"data": candidate,
 		"error": "",
 	}
 
 
 static func validate_and_save(path: String, data: Dictionary, expected_hash: String = "") -> Dictionary:
-	var validation_error := _validate(data)
-	if not validation_error.is_empty():
-		return _failure(validation_error)
+	var validation := validate(data)
+	if not validation["ok"]:
+		return validation
+	data = validation["data"]
 
 	var temporary := "%s.pending-%d" % [path, OS.get_process_id()]
 	var file := FileAccess.open(temporary, FileAccess.WRITE)
@@ -175,8 +181,6 @@ static func _validate(data: Dictionary) -> String:
 		["combat", "hit_phase", 0.0, 1.0],
 		["combat", "input_window_start", 0.0, 1.0],
 		["combat", "x_buffer_width", 0.0, 1.0],
-		["combat", "shape_radius", 0.001, INF],
-		["combat", "shape_reach", 0.001, INF],
 		["combat", "light_damage", 0.0, INF],
 		["combat", "casting_damage", 0.0, INF],
 		["casting", "orb_lifetime", 0.001, INF],
@@ -255,11 +259,11 @@ static func _validate(data: Dictionary) -> String:
 		var level = reaction["combat_levels"][index]
 		if typeof(level) != TYPE_DICTIONARY:
 			return "hit_reaction.combat_levels[%d] must be an object." % index
-		for key in ["duration", "distance"]:
+		for key in ["duration", "motion_duration", "distance"]:
 			if not _is_number(level.get(key, null)) or is_nan(float(level[key])) or is_inf(float(level[key])):
 				return "hit_reaction.combat_levels[%d].%s must be finite numeric data." % [index, key]
-		if float(level["duration"]) <= 0.0 or float(level["distance"]) < 0.0:
-			return "Combat reaction duration must be positive and distance non-negative."
+		if float(level["duration"]) <= 0.0 or float(level["motion_duration"]) <= 0.0 or float(level["distance"]) < 0.0:
+			return "Combat reaction stun and motion durations must be positive and distance non-negative."
 	var move_error := _validate_moves(data["moves"])
 	if not move_error.is_empty():
 		return move_error
@@ -607,12 +611,10 @@ static func _validate_moves(moves: Dictionary) -> String:
 
 
 static func _validate_attack_style(move: Dictionary, id: String) -> String:
-	for key in ["windup_duration", "recovery_duration", "shape_reach", "shape_radius", "push_scale", "push_motion_duration"]:
-		var value = move.get(key, 1.0 if key == "push_scale" else 0.0)
+	for key in Style.DEFAULTS:
+		var value = move.get(key, Style.DEFAULTS[key])
 		if not _is_number(value) or not is_finite(float(value)) or float(value) < 0.0:
 			return "moves.%s.%s must be finite and non-negative." % [id, key]
-	if id != "fire_x5" and float(move.get("push_motion_duration", 0.0)) != 0.0:
-		return "moves.%s.push_motion_duration must remain zero; the override is Fire X5 only." % id
 	if move["forward_lunge"] == null:
 		return ""
 	if not move["forward_lunge"] is Dictionary:
@@ -626,7 +628,20 @@ static func _validate_attack_style(move: Dictionary, id: String) -> String:
 	return ""
 
 
+static func _normalize_reaction_motion(data: Dictionary) -> void:
+	if not data.get("hit_reaction") is Dictionary:
+		return
+	var levels = data["hit_reaction"].get("combat_levels")
+	if not levels is Array:
+		return
+	for level in levels:
+		if level is Dictionary and not level.has("motion_duration") and level.has("duration"):
+			# Legacy profiles preserve their own ordinary shared timing, not X5's override.
+			level["motion_duration"] = level["duration"]
+
+
 static func _normalize_attack_styles(data: Dictionary) -> void:
+	Style.strip_retired_fields(data)
 	if not data.get("moves") is Dictionary:
 		return
 	for school in ["fire", "water", "air", "earth"]:

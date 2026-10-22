@@ -1,5 +1,130 @@
 # Implementation Status
 
+## Player-X geometry / shared reaction reconciliation — October 22
+
+Status: `AWAITING_USER_VALIDATION`; exact GDD wording remains
+`AWAITING_GDD_VERIFICATION`. The user approved the exact 46-file plan.
+Source basis: committed `1141f574eca95a147b7d3e30ddd3848276b865bf`, which
+already contains the X-direction fix and tooltip companion, in the isolated
+`codex/movestyle-shared-reactions` branch. Combat owns review and safe local-main
+integration. Shared-main dirty tuning/import/art is not copied or edited here.
+Local commit/handoff is authorized; push/export is not.
+
+Current result:
+- Player-X geometry comes only from its saved native Animation position,
+  target and radius curves, including every later active pose. Scalar
+  reach/radius, global fallback, native-key writeback and runtime size replacement
+  are retired. Enemy/Pikeman size controls and their guarded save path remain.
+- MoveStyle retains Animation/identity links, windup/recovery and attacker lunge
+  distance/start/end, with existing tooltip meanings and Heat semantics.
+  Its per-attack push scale and motion-time controls/fields/transport are removed,
+  including the earlier Fire-X5 0.15s exception.
+- Shared reaction Levels 1–5 own victim distance, positive motion duration and
+  separate existing stun duration. Initial motion seconds are
+  0.25/0.55/0.85/1.15/1.45. Existing distances 5/10/15/20/25, stun values,
+  range starts, eligibility and clash rules are not retuned. Motion is uniform
+  and capped at stun lifetime; shorter motion does not shorten hurt, control
+  lock, invulnerability or the separate Enemy post-reaction wait.
+- Legacy full JSON initializes missing motion time from its own level duration,
+  not a Fire-X5 override. Config validation, retained-dictionary copies,
+  three-way save merges and Portal enumeration remove only retired Player-X
+  fields. Startup/reload stays read-only; no schema-wide rewrite or hidden
+  per-move equivalent is added.
+
+Exact changed-file inventory (18 scripts, 23 Resources, 5 documents):
+- `scripts/combat/attack_style.gd`: timing/lunge capture and narrow retired-key cleanup.
+- `scripts/combat/attack_geometry.gd`: native Player-X sampling/validation only;
+  retain Enemy size/save behavior.
+- `scripts/combat/might_component.gd`: remove scalar geometry preview and
+  per-attack reaction payload; other action/contact/dodge logic unchanged.
+- `scripts/config/move_style_tuning.gd`: retain seven exported identity,
+  Animation, timing/lunge fields; remove four retired controls.
+- `scripts/config/player_combat_settings.gd`: prevent retired move/global
+  fields from being reapplied or saved.
+- `scripts/config/developer_config_store.gd`: retire cached fields during
+  existing merge/copy paths without removing unrelated leaves.
+- `addons/laema_dev_portal/move_style_inspector.gd`: native-editor help, no size
+  writeback claim.
+- `scripts/config/combat_reaction_level_tuning.gd`: shared motion-time export
+  and distinct stun/motion/distance tooltips.
+- `scripts/config/character_reaction_settings.gd`: shared motion mapping.
+- `scripts/config/combat_tuning_settings.gd`: mirror/Inspector/save mapping,
+  retaining the established nonauthoritative mirror.
+- `scripts/config/prototype_config_loader.gd`: retired-field and missing-motion
+  migration, positive finite motion validation, unchanged save guards.
+- `scripts/entities/health_event.gd`: remove attack-owned shove payload.
+- `scripts/entities/health_resolver.gd`: retain strongest value/direction,
+  remove per-attack shove transport.
+- `scripts/entities/entity.gd`: value/direction reaction request only.
+- `scripts/enemy/combat_enemy.gd`: shared-value capture through existing
+  pending/tree dispatch; no alignment/AI/physics-consumer edit.
+- `scripts/entities/hit_reaction.gd`: capture shared distance/motion/lifetime,
+  retain collision-motion consumption and stun completion.
+- `scripts/config/developer_settings_catalog.gd`: five style controls per move
+  (100 total), four shared fields per level and distinct tooltips.
+- `scripts/ui/developer_settings_fields.gd`: preserve the specific reaction
+  field descriptions when dynamic ranges refresh.
+- All twenty existing `config/attack_styles/{fire,water,air,earth}_x{1..5}.tres`:
+  remove 58 serialized retired-property lines only; preserve every other value,
+  UID and Animation link.
+- `config/characters/player.tres`: remove only the two retired global shape keys.
+- `config/characters/hit_reaction.tres` and `config/combat_tuning.tres`: add
+  the five explicit shared motion times, preserving all existing properties.
+- `docs/GAME_DESIGN.md`, `docs/TECH_ARCHITECTURE.md`,
+  `docs/ATTACK_STYLES.md`, `docs/GYM.md` and this status: exact current
+  ownership, editing instructions and evidence boundaries. Earlier X5 shove
+  records below are historical and superseded, not a current control/API.
+
+Checks actually run: read-only source/diff inspection, producer-to-consumer and
+complete changed-function/caller inspection, Resource text comparison and
+`git diff --check`. All 23 Resources match exactly the scoped line removals or
+motion additions; all 35 tracked files under `config/attack_animations/` match
+their base Git blob byte hashes. No native key/marker/frame, scene, art, body
+profile, player.gd, movement owner, audio, input or test file is edited.
+Retired production identifiers remain only as narrow migration keys, not
+controls or reaction consumers. Existing IMPACT/TRACE instrumentation is retained.
+
+Static distinguishing trace, not an executed gameplay scenario: a hypothetical
+Level 2 with distance10, motion0.10 and stun0.55 captures 10px/0.10s movement
+while keeping the full0.55s stun lifetime. Motion above0.55 is capped. A legacy
+level with duration1.23 and no motion key obtains1.23; stale scalar geometry or
+push fields cannot change native curves or reaction distance.
+
+No Godot/editor/game, build, compiler or automated test was run, created or
+modified. No standalone gdparse/gdlint/gdtoolkit checker is available, so grammar,
+types, Resource import and runtime behavior remain unverified. Existing
+attack_authoring, attack_style, clash_formula, dev_portal and gym_encounter
+fixtures still contain retired-field/control-count assumptions; they require
+separately authorized maintenance/execution. Old check totals and rendered
+observations below do not validate this reconciliation. Inherited X5 UID-path
+fallback warnings remain outside this cleanup.
+
+Manual validation after Combat integration:
+1. Restart Godot/Gym. Inspect Player styles and both Portals: only timing/lunge
+   numerical style controls remain; shared levels expose starting value, stun,
+   motion time and distance. Hover each to check units/meaning.
+2. Scrub a Player-X clip with distinct early/later geometry; save native edits
+   separately, restart and compare the active-window overlay in both facings.
+   Portal timing/reaction saves must leave every Player-X native key unchanged.
+3. In an unsaved live draft, shorten one shared level's motion time while
+   retaining its distance/stun. Trigger that level on Player and Enemy: movement
+   ends earlier but hurt/control lock/invulnerability finish at stun end. Check
+   motion longer than stun is capped, walls consume blocked motion, subsequent
+   tuning does not change an active capture, and lower-band X5 uses the same level.
+   Retry/reload to restore saved tuning.
+4. Save/reload deliberately chosen shared values and style timing/lunge, compare
+   both Portals and Inspector, and verify no retired fields return. Review a
+   retained legacy full profile separately if migration coverage is required.
+   Recheck X direction/buffering, raised-hand Cast, dodge, ordinary/clash contact,
+   practice recoil, pause and retry as unchanged regression boundaries.
+
+Residual risk: Godot/import/runtime and user feel remain unverified; legacy
+fixtures are stale. Main has overlapping user-owned Resource/Animation tuning
+and separate authored-alignment work: Combat must preserve unrelated fields,
+UIDs and all native keys, never force/stash/reset or replace whole dirty files.
+This isolated patch supplies no main-merge, remote-publication or Ultron clearance
+receipt.
+
 ## X input direction capture — October 22
 
 Status: `AWAITING_USER_VALIDATION`; exact GDD wording remains

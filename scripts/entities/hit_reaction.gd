@@ -28,18 +28,18 @@ func level_for_value(value: int) -> int:
 	return level_from_difference(value, _config["combat_levels"])
 
 
-func execute_combat(difference: int, direction: Vector2, push_scale: float = 1.0, push_motion_duration: float = 0.0) -> void:
-	execute_captured_combat(capture_combat(difference, direction, push_scale, push_motion_duration))
+func execute_combat(difference: int, direction: Vector2) -> void:
+	execute_captured_combat(capture_combat(difference, direction))
 
 
-func capture_combat(difference: int, direction: Vector2, push_scale: float = 1.0, push_motion_duration: float = 0.0) -> Dictionary:
+func capture_combat(difference: int, direction: Vector2) -> Dictionary:
 	var level := level_for_value(difference)
 	var tuning: Dictionary = _config["combat_levels"][level - 1]
 	var duration := float(tuning["duration"])
-	var motion_duration := minf(push_motion_duration, duration) if push_motion_duration > 0.0 else duration
+	var motion_duration := minf(float(tuning["motion_duration"]), duration)
 	return {"difference": difference, "level": level, "direction": direction.normalized(),
-		"duration": duration, "distance": float(tuning["distance"]) * maxf(push_scale, 0.0),
-		"push_motion_duration": motion_duration}
+		"duration": duration, "distance": float(tuning["distance"]),
+		"motion_duration": motion_duration}
 
 
 func execute_captured_combat(reaction: Dictionary) -> void:
@@ -55,8 +55,7 @@ func execute_captured_combat(reaction: Dictionary) -> void:
 	_active = true
 	_combat_reaction = true
 	_remaining = duration
-	var motion_duration := float(reaction.get("push_motion_duration", duration))
-	_push_remaining = minf(motion_duration, duration) if motion_duration > 0.0 else duration
+	_push_remaining = minf(float(reaction["motion_duration"]), duration)
 	_push_velocity = direction.normalized() * distance / _push_remaining
 	set_process(false)
 	reaction_started.emit(level, direction.normalized(), distance, duration)

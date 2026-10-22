@@ -28,19 +28,6 @@ const Style = preload("res://scripts/combat/attack_style.gd")
 	set(value):
 		recovery_duration = value
 		emit_changed()
-@export_group("Active geometry - animation active_start key, pixels")
-## Hitbox target-vector length at active_start, in local pixels.
-## Native Animation tracks own the full curve; edit other poses in AnimationPlayer.
-@export_range(0.0, 400.0, 1.0, "or_greater") var shape_reach := 0.0:
-	set(value):
-		shape_reach = value
-		emit_changed()
-## Circle-query radius at active_start, in local pixels; larger means a wider hitbox.
-## Native Animation tracks own the radius curve throughout the active window.
-@export_range(0.001, 200.0, 1.0, "or_greater") var shape_radius := 0.001:
-	set(value):
-		shape_radius = value
-		emit_changed()
 @export_group("Forward body motion")
 ## Total attacker-body travel in pixels along the captured attack direction,
 ## between the lunge phases. Zero disables it; walls consume blocked motion.
@@ -60,28 +47,11 @@ const Style = preload("res://scripts/combat/attack_style.gd")
 	set(value):
 		lunge_end_phase = value
 		emit_changed()
-@export_group("Qualifying hit reaction")
-## Multiplies the defender's qualifying knockback distance: 2 means twice as far.
-## Does not change damage, Impact/Poise, reaction lifetime or invulnerability.
-## Stationary practice targets retain their separate legacy recoil.
-@export_range(0.0, 5.0, 0.05, "or_greater") var push_scale := 1.0:
-	set(value):
-		push_scale = value
-		emit_changed()
-## Fire X5 only: seconds used to deliver the unchanged scaled knockback distance.
-## Zero uses the full reaction lifetime; positive time is capped at that lifetime.
-## Does not shorten hurt, control lock or invulnerability. Applies to the next X5.
-@export_range(0.0, 5.0, 0.01, "or_greater") var push_motion_duration := 0.0:
-	set(value):
-		push_motion_duration = value
-		emit_changed()
 
 
 func get_data() -> Dictionary:
 	return {
 		"windup_duration": windup_duration, "recovery_duration": recovery_duration,
-		"shape_reach": shape_reach, "shape_radius": shape_radius, "push_scale": push_scale,
-		"push_motion_duration": push_motion_duration,
 		"forward_lunge": {"distance": lunge_distance, "start_phase": lunge_start_phase, "end_phase": lunge_end_phase},
 	}
 

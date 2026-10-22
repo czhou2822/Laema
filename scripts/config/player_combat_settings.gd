@@ -3,6 +3,8 @@ class_name PlayerCombatSettings
 extends Resource
 ## Authored on the reusable Player, shared by every scene that instances it.
 
+const Style = preload("res://scripts/combat/attack_style.gd")
+
 @export var initial_school := "fire"
 
 @export_group("Player")
@@ -84,6 +86,7 @@ func apply_to_config(config: Dictionary) -> void:
 		if style != null and config["moves"].has(String(style.move_id)):
 			config["moves"][String(style.move_id)].merge(style.get_data(), true)
 	config["hit_reaction"] = hit_reaction.get_data()
+	Style.strip_retired_fields(config)
 
 
 func read_from_config(config: Dictionary) -> void:
@@ -91,6 +94,8 @@ func read_from_config(config: Dictionary) -> void:
 	player = config["player"].duplicate(true)
 	movement = config["movement"].duplicate(true)
 	combat = config["combat"].duplicate(true)
+	combat.erase("shape_reach")
+	combat.erase("shape_radius")
 	casting = config["casting"].duplicate(true)
 	heat = config["heat"].duplicate(true)
 	defence = config["defence"].duplicate(true)
@@ -102,7 +107,7 @@ func read_from_config(config: Dictionary) -> void:
 	moves.erase("final_enemy_attack")
 	for style in attack_styles:
 		if style != null:
-			for key in ["windup_duration", "recovery_duration", "shape_reach", "shape_radius", "push_scale", "push_motion_duration", "forward_lunge"]:
+			for key in Style.DEFAULTS.keys() + Style.RETIRED_FIELDS + ["forward_lunge"]:
 				moves[String(style.move_id)].erase(key)
 	# Styles own their timing/motion; geometry is owned by native Animations.
 	for style in attack_styles:

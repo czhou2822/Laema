@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-## Native Animation tracks own melee geometry. JSON carries active-start value mirrors.
+## Native Animation tracks alone own Player X geometry. Enemy size shortcuts remain.
 
 const DIRECTORY := "res://config/attack_animations/"
 const POSITION := NodePath("AttackCast:position")
@@ -50,13 +50,10 @@ static func read_config(config: Dictionary) -> Dictionary:
 		var error := validate_clock(clock, id.begins_with("cast_") or id == "attack_clock")
 		if not error.is_empty():
 			return {"ok": false, "error": "%s: %s" % [id, error]}
-	for id in move_ids():
-		var pose := active_start(load_clock(id))
-		if not valid(pose):
-			return {"ok": false, "error": "Invalid active-window geometry in %s%s.tres. Keep enabled position, target_position and shape:radius value tracks and active_start/active_end markers." % [DIRECTORY, id]}
-		var values: Dictionary = config["enemy_ai"] if id == "melee_swing" else config["moves"][id]
-		values["hitbox_reach" if id == "melee_swing" else "shape_reach"] = Vector2(pose["target"]).length()
-		values["hitbox_radius" if id == "melee_swing" else "shape_radius"] = float(pose["radius"])
+	# Player X values are never mirrored into configuration or patched from it.
+	var pose := active_start(load_clock("melee_swing"))
+	config["enemy_ai"]["hitbox_reach"] = Vector2(pose["target"]).length()
+	config["enemy_ai"]["hitbox_radius"] = float(pose["radius"])
 	return {"ok": true, "error": ""}
 
 
@@ -74,36 +71,32 @@ static func set_active_size(clock: Animation, reach: float, radius: float) -> vo
 
 
 static func validate_sizes(config: Dictionary) -> Dictionary:
-	for id in move_ids():
-		var values: Dictionary = config["enemy_ai"] if id == "melee_swing" else config["moves"][id]
-		var radius := float(values["hitbox_radius" if id == "melee_swing" else "shape_radius"])
-		if not is_finite(radius) or radius <= 0.0:
-			return {"ok": false, "error": "%s active-start radius must be greater than zero." % id}
+	var radius := float(config["enemy_ai"]["hitbox_radius"])
+	if not is_finite(radius) or radius <= 0.0:
+		return {"ok": false, "error": "melee_swing active-start radius must be greater than zero."}
 	return {"ok": true, "error": ""}
 
 
 static func save_changes(before: Dictionary, after: Dictionary) -> Dictionary:
-	for id in move_ids():
-		if id == "melee_swing" and after.get("ui", {}).get("enemy_creature", "pikeman") != "pikeman":
-			continue # Native creature clips retain their own authored geometry.
-		var old_values: Dictionary = before["enemy_ai"] if id == "melee_swing" else before["moves"][id]
-		var values: Dictionary = after["enemy_ai"] if id == "melee_swing" else after["moves"][id]
-		var reach_key := "hitbox_reach" if id == "melee_swing" else "shape_reach"
-		var radius_key := "hitbox_radius" if id == "melee_swing" else "shape_radius"
-		if old_values[reach_key] == values[reach_key] and old_values[radius_key] == values[radius_key]:
-			continue
-		var path := DIRECTORY + id + ".tres"
-		var clock := load_clock(id)
-		if not valid(active_start(clock)):
-			return {"ok": false, "error": "Cannot save invalid animation geometry: " + path}
-		# A Portal draft must not overwrite a newer native animation edit.
-		var pose := active_start(clock)
-		if not is_equal_approx(Vector2(pose["target"]).length(), float(old_values[reach_key])) or not is_equal_approx(float(pose["radius"]), float(old_values[radius_key])):
-			return {"ok": false, "error": "Animation changed while saving. Reload before saving: " + path}
-		set_active_size(clock, float(values[reach_key]), float(values[radius_key]))
-		var error := ResourceSaver.save(clock, path)
-		if error != OK:
-			return {"ok": false, "error": "Cannot save %s: %s" % [path, error_string(error)]}
+	# Only the existing Pikeman shortcut writes native size keys. Never Player X.
+	if after.get("ui", {}).get("enemy_creature", "pikeman") != "pikeman":
+		return {"ok": true, "error": ""}
+	var old_values: Dictionary = before["enemy_ai"]
+	var values: Dictionary = after["enemy_ai"]
+	if old_values["hitbox_reach"] == values["hitbox_reach"] and old_values["hitbox_radius"] == values["hitbox_radius"]:
+		return {"ok": true, "error": ""}
+	var path := DIRECTORY + "melee_swing.tres"
+	var clock := load_clock("melee_swing")
+	if not valid(active_start(clock)):
+		return {"ok": false, "error": "Cannot save invalid animation geometry: " + path}
+	# A Portal draft must not overwrite a newer native animation edit.
+	var pose := active_start(clock)
+	if not is_equal_approx(Vector2(pose["target"]).length(), float(old_values["hitbox_reach"])) or not is_equal_approx(float(pose["radius"]), float(old_values["hitbox_radius"])):
+		return {"ok": false, "error": "Animation changed while saving. Reload before saving: " + path}
+	set_active_size(clock, float(values["hitbox_reach"]), float(values["hitbox_radius"]))
+	var error := ResourceSaver.save(clock, path)
+	if error != OK:
+		return {"ok": false, "error": "Cannot save %s: %s" % [path, error_string(error)]}
 	return {"ok": true, "error": ""}
 
 
@@ -119,22 +112,6 @@ static func make_private(player: AnimationPlayer) -> void:
 		library.add_animation(id, animation.duplicate())
 	player.remove_animation_library(&"")
 	player.add_animation_library(&"", library)
-
-
-static func apply_player_preview(player: AnimationPlayer, config: Dictionary) -> void:
-	for id in move_ids():
-		if id == "melee_swing":
-			continue
-		var values: Dictionary = config["moves"][id]
-		var reach := float(values["shape_reach"])
-		var radius := float(values["shape_radius"])
-		# Legacy custom JSON profiles may omit both fields. Native zero-length casts
-		# are valid point queries and must remain zero when a radius is authored.
-		if radius <= 0.0:
-			radius = float(config["combat"]["shape_radius"])
-			if reach <= 0.0:
-				reach = float(config["combat"]["shape_reach"])
-		set_active_size(player.get_animation(id), reach, radius)
 
 
 static func facing_pose(pose: Dictionary, direction: Vector2) -> Dictionary:

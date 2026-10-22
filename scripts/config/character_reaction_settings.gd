@@ -16,7 +16,8 @@ func get_data() -> Dictionary:
 	for level in combat_levels:
 		if level == null:
 			return {}
-		levels.append({"minimum_value": level.minimum_value, "duration": level.duration, "distance": level.distance})
+		levels.append({"minimum_value": level.minimum_value, "duration": level.duration,
+			"motion_duration": level.motion_duration, "distance": level.distance})
 	return {"combat_levels": levels, "base_duration": base_duration,
 		"duration_per_level": duration_per_level, "base_distance": base_distance,
 		"distance_per_level": distance_per_level}
@@ -30,4 +31,5 @@ func read_from_config(config: Dictionary) -> void:
 		var level: CombatReactionLevelTuning = combat_levels[index]
 		level.minimum_value = int(data["combat_levels"][index]["minimum_value"])
 		level.duration = float(data["combat_levels"][index]["duration"])
+		level.motion_duration = float(data["combat_levels"][index].get("motion_duration", level.duration))
 		level.distance = float(data["combat_levels"][index]["distance"])
