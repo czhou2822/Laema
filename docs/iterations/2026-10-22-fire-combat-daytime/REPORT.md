@@ -1,6 +1,6 @@
 # Fire combat — October 22 daytime review
 
-Status: first source/report/evidence publication **05fb22b8**, independently remote-verified at **12:03 HKT October22**; retained-source C4 publication **b57d1b3f**, then report-only follow-ups through **53dd6e24** verified14:15HKT. See [publication receipt](PUBLICATION.md) and [afternoon receipt](AFTERNOON_PUBLICATION.md). Seven change–play–review rounds are recorded, including rejected candidates. The new Iteration6/7 and Casting records remain local until their next verified push. All retained changes remain candidates for the user's controller review, not final game-feel acceptance. Work continues toward17:30 HKT.
+Status: current C7 source/report/evidence **1404d0ab**, independently remote-verified **15:56:33 HKT October22**; see [C7 receipt](C7_PUBLICATION.md). First lunch publication **05fb22b8** was verified **12:03 HKT**; retained C4 source **b57d1b3f** and prior report snapshots remain in history. Seven change–play–review rounds are recorded, including rejected candidates. All retained changes remain candidates for the user's controller review, not final game-feel acceptance. Work continues toward17:30 HKT.
 
 ## Where the five concerns stand
 
