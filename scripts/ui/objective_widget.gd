@@ -64,6 +64,8 @@ func _add_row(row: Dictionary, whole_completed: bool) -> void:
 	_rows.add_child(row_layout)
 	var row_completed := whole_completed or bool(row.get("completed", false))
 	var label := Label.new()
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.custom_maximum_size = Vector2(maxf(1.0, size.x - _panel_style.get_minimum_size().x), -1.0)
 	label.text = str(row["label"])
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.add_theme_font_size_override("font_size", 20)

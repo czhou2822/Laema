@@ -115,7 +115,91 @@ What worked: the comparison made the shorter hold and its real consequence visib
 
 Evidence: [D late hold](timing-d-01/cmd_2_frame_000080_full.png), [C3 earlier recovery](timing-c3-01/cmd_2_frame_000080_full.png), [D engine facts](timing-d-01/timing-d-01-engine.log), [C3 engine facts](timing-c3-01/timing-c3-01-engine.log). The encounter records retain exact inputs, observations and outcome timing.
 
-## Verification and publication boundary
+## Iteration 4 — make the objective readable, then check real progression
+
+### Target change
+
+Afternoon normal-input high-Heat practice exposed a concrete presentation defect:
+the Stage7 sentence extended beyond the right edge, hiding "Heat or higher".
+Correct this existing widget's text fit without changing the objective, input
+rules, typography, strings or gameplay. This is an ancillary presentation repair;
+the five morning concerns remain equal priority and their open choices remain open.
+
+### What changed
+
+U added exactly two Label properties in `scripts/ui/objective_widget.gd`:
+word-smart wrapping and a maximum width equal to the existing widget width minus
+its panel's horizontal style margins. Current allocation330 minus4 gives326px;
+the vertical maximum is unbounded. The panel can grow downward. Tokens, fonts,
+colors, evaluator state, prompt and UI flinch code are unchanged. Source hash
+**e91201b5**; original **4c808a50** is preserved in candidate-04-source-before.
+This is not a new general responsive-layout architecture: width is sampled when
+rows are rebuilt, and long token HBoxes are outside the two-property change.
+
+### Actual play and review
+
+Main first played the published C2 source to genuine100 Heat, closed that process,
+then copied only the widget into a fresh rendered4.7.1 process. No hot swap or
+forced Health/Heat/orbs/positions/AI/clocks was used.
+
+- **Current C2 practice:** three120-second normal-input batches launched48
+  normal Lv1 spells without failed Casts, naturally building Heat4->36->68->100.
+  An uncharged five-X attempt at100 accepted all positions and applied35 units
+  of authored lunge. OnlyX3 hit the short legacy dummy at this spacing; this is
+  not Stage7 completion or an incoming-Pikeman trial.
+- **C4 replay:** the same three-batch approach again produced48 normal Lv1
+  launches/no failures and genuine100. Maximum scheduled-edge lateness was
+ 17/37/16ms across the batches; the37ms outliers are retained, not discarded as
+  inconvenient. All five high-Heat X positions were accepted again.
+- **Text before/after:** actual100-Heat frames show the previously clipped row
+  now wrapping into two complete lines inside the viewport, with five tokens
+  below. The panel grows down rather than preserving the old height.
+- **Hidden debug and natural reversion:** normal Portal switches disabled
+  developer overlay and hitboxes for this run only; no Save Tuning. Ordinary
+  idle let Heat100 fall below80. The Heat goal changed green->white while the
+  complete sentence and game-facing orb/Heat UI remained visible. Player100,
+  Enemy190 and position stayed unchanged; the remaining orb expired normally.
+- **Completion:** normal Portal Stage2 entry, ten uncharged five-X attempts and
+  ordinary retreat/refacing earned five FIFO orbs. Full Charging then released
+  an actual standalone **FireLv5** Cast. Its launch completed Stage2, turning the
+  whole widget green and showing **moving on ->**; its later hit applied10.
+  No assumption that generation alone meant completion was used.
+- **Rebuild:** normal right movement and the authored transition activated
+  Stage3. The new sentence and compact instruction-token row fit in the actual
+  captured frame. Normal stage reset cleared Heat/orbs and kept Player100.
+  However, the transition emitted14 physics-mutation errors while instantiating
+  the next area. This is preserved as an independently investigated pre-existing
+  lifecycle issue, not an error-free transition or a widget regression claim.
+- **Scope limits:** these are keyboard/scheduled normal-input practice and
+  rendered UI checks, not human-controller feel acceptance. The earlier flinch
+  keyframe did not isolate every motion phase; unchanged flinch code is not a
+  substitute for such coverage. C4 exited0 with the existing13/9 shutdown warnings
+  in addition to the recorded transition errors.
+
+Evidence: [clipped C2 row at100](c2-heat-practice-01/cmd_6_frame_001267_full.png),
+[wrapped C4 row at100](c4-objective-fit-01/cmd_6_frame_001267_full.png),
+[hidden-debug goal green](c4-objective-fit-01/cmd_8_frame_001357_full.png),
+[natural below80 reversion](c4-objective-fit-01/cmd_8_frame_001437_full.png),
+[Stage2 completed](c4-objective-fit-01/cmd_10_frame_001695_full.png), and
+[Stage3 rebuilt](c4-objective-fit-01/cmd_11_frame_001850_full.png).
+Exact inputs, observations and warnings remain in the two session archives;
+[C4 source identity](AFTERNOON_C4_SOURCE_IDENTITY.json) rechecked692 root/runtime
+paths with zero mismatches, including unchanged protected combat sources.
+
+### Judgment and disposition
+
+Provisionally retain the two-property text-fit candidate for the demonstrated
+clipping correction. U synchronized the exact TDD/status representation; Main
+read the actual diff and completed a bounded Ultron implementation review with
+zero new in-scope findings, not submission clearance. Human acceptance remains open.
+It does not settle dodge overlap, Pikeman spacing, Cast origin/art or listening
+comfort. Transition stderr requires its own source-backed diagnosis and exact
+scope; it is not hidden behind a successful screenshot. No new AI/gameplay policy
+or replacement artwork has been accepted. At this13:17 review's closure the
+afternoon source/evidence was not yet pushed; publication must be independently
+verified and recorded separately, not inferred from the lunch push.
+
+## Lunch verification and publication boundary
 
 After C2 rendered closure, all five existing geometry/input suites completed with explicit process exits0 and zero assertion failures: **1741 + 1236 + 1337 + 1185 + 1617 = 7116 checks**. X2 used its dedicated suite. Their forced setup/Heat/seeks make them supplementary controlled checks, never substitutes for the primary encounters above. Reports and stderr are in [regressions-c2](regressions-c2/). Fixture shutdown warnings were14/10,14/10,24/15,22/14,22/14 ObjectDB/resources, respectively; no warning-free exit or new cause is claimed.
 

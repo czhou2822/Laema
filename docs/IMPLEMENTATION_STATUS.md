@@ -85,6 +85,37 @@ applies to restored C2 only, not whole-tree/submission or human feel acceptance.
 This addendum records existing evidence; it ran no new tests/runtime and makes
 no commit/push or publication-success claim. Status remains AWAITING_USER_VALIDATION.
 
+### Afternoon C4 objective-fit candidate — October 22
+
+`scripts/ui/objective_widget.gd` E91201B5 adds only WORD_SMART wrapping and row
+Label custom_maximum_size (max(1, widget width minus actual StyleBox horizontal margins),
+-1). Current width330 gives326px content; height is unbounded and the panel grows
+down. Width is sampled at row rebuild, not generic dynamic resizing. Strings,
+fonts/colors, token HBoxes/order, evaluator/progress, prompt and flinch are untouched.
+This is an addition to the retained lunch C2 source, not new acceptance; publication state is recorded in the Main-owned receipt.
+
+Main's isolated Godot4.7.1 PID49476/session49476_718694 rendered observations:
+
+- Stage7's whole long sentence fits at1280x720 below80 and at naturally earned100
+  Heat. Forty-eight normal Lv1 Casts had zero failures; this is not Stage7's
+  all-five-hit completion. With developer overlay/hitboxes actually off, ordinary
+  idle changed the first Heat row green->white below80; P100/E190 stayed unchanged.
+- Normal Portal Stage2 entry and ten uncharged five-X attempts earned five FIFO
+  orbs. Full Charging then standalone exact FireLv5 committed/launched, turned
+  the widget green and displayed `moving on ->`. Ordinary right movement entered
+  Stage3; its label and compact token row fit in the inspected frame.
+- Stage2->3 also emitted stderr about set_lifecycle changing monitoring/monitorable
+  through a physics body_entered path. Visible Stage3 activation is not an error-free
+  transition pass. Separate read-only diagnosis owns that issue; no repair is
+  claimed here. Full-motion flinch, generic resizing and all token rows remain
+  outside the observed fit coverage.
+
+See [daytime progress](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md).
+Main owns report/evidence and subsequent disposition/publication. This document
+update ran no runtime/tests and changes no gameplay. Human acceptance remains
+pending; status AWAITING_USER_VALIDATION. Earlier lunch publication/hashes remain
+their historical snapshot, not evidence that C4 is already published.
+
 ## Retained overnight candidate — October 22, rendered evidence through 07:19 HKT
 
 Historical source/evidence snapshot: the daytime entry above supersedes its

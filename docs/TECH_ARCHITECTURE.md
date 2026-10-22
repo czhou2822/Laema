@@ -663,6 +663,17 @@ The reset occurs while input is locked and before the next stage becomes ACTIVE.
 
 `ObjectiveWidget` is a reusable HUD-owned Control scene. StageDirector supplies immutable presentation snapshots containing generic rows with stable id, label, optional tokens, evaluator-owned progress/highlight/completed state, attempt invalidation, whole-widget completion state, and prompt text. The widget owns only rendering and its light UI-only flinch. It never consumes CombatOutcome or stage nodes.
 
+Afternoon C4 (objective_widget.gd E91201B5, after the lunch snapshot) adds only two
+natural-language row Label properties: AUTOWRAP_WORD_SMART and custom_maximum_size
+(max(1, widget width minus actual StyleBox horizontal margins), -1). The current
+330px allocation yields326px text width; maximum Y=-1 leaves height unbounded, allowing
+the panel to grow down. Width is sampled when rows rebuild, not a generic dynamic
+resize guarantee. Strings, fonts, colors, token HBoxes/order, evaluator/progress,
+prompt, hierarchy and flinch are unchanged. Scoped rendered fit evidence and the
+separate transition-error limit are in Implementation Status and the
+[daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md); human
+acceptance and other-stage/token-fit clearance remain open.
+
 The HUD scene owns diagnostic/objective layout; source placement is not proof of
 rendered readability. StageDirector never interprets layout and HUD never infers
 objective success from accepted input or orb creation.
