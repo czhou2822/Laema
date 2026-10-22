@@ -5,6 +5,23 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
+## Local main integration receipt — October 22
+
+Local `main` now contains the reconciled combat candidate `d51235af`: the Fire
+X5 shove/hand-origin changes and the bounded dodge overlap/endpoint-pose fix.
+The completed creature, high-resolution art and shortcut changes remain included.
+The separate `5bcd0c7b` commit preserves the existing Fire X5 editor tuning;
+integration adds only its approved shove-duration field. SHA-256 comparison
+confirmed that all 30 other uncommitted tuning files remained unchanged.
+No push or live export was performed.
+
+This is an integration receipt, not additional runtime evidence. The final
+candidate has 513 focused dodge checks and 87 shared-combat checks; recorded
+rendered X5/both-facing Fireball observations belong to `cfa537d`. The final
+dodge build has not received a rendered replay or human feel acceptance.
+Existing legacy-suite failures and resource-reference warnings remain recorded
+below and in Implementation Status. Restart Gym to review the merged source.
+
 ## Fire X5 shove and Fireball anchor amendment — October 22
 
 Source basis: `fd72f4e2a83960abb862da09ae98fb210c5c8410` plus the scoped

@@ -1,5 +1,21 @@
 # Implementation Status
 
+## Local main review handoff — October 22
+
+The user requested immediate integration for review. Local `main` was
+fast-forwarded to the reconciled combat candidate `d51235af`, retaining the
+completed creature/art/shortcut changes. The X5-only preservation commit is
+`5bcd0c7b`; all 30 other uncommitted tuning files passed a before/after SHA-256
+comparison and remain uncommitted. No push or live export was performed.
+
+Rules and implementation scope were approved; human play/feel validation remains
+pending. The final candidate passed 513 focused dodge checks and 87 shared-combat
+checks. Combat's rendered X5 and both-facing Fireball evidence is from
+`cfa537d`, not the later dodge revision. No rendered replay of the final dodge
+build is claimed. The existing legacy test failures and UID fallback warnings
+are not cleared by this merge. The sections below retain the detailed source
+and evidence boundaries.
+
 ## One-time Fire dodge end-overlap extension — October 22
 
 Status: implemented approved rule/technical/file/test scope,
