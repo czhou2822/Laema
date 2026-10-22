@@ -1,6 +1,6 @@
 # Fire combat — October 22 daytime review
 
-Status: source/report/evidence published to origin/main as **05fb22b8**, independently remote-verified at **12:03 HKT October22**. See [publication receipt](PUBLICATION.md). Three change–play–review rounds are recorded below, including a rejected timing candidate. All retained changes remain candidates for the user's controller review, not final game-feel acceptance. Work continues toward17:30 HKT.
+Status: first source/report/evidence publication **05fb22b8**, independently remote-verified at **12:03 HKT October22**; retained-source C4 publication **b57d1b3f**, then report-only follow-ups through **53dd6e24** verified14:15HKT. See [publication receipt](PUBLICATION.md) and [afternoon receipt](AFTERNOON_PUBLICATION.md). Seven change–play–review rounds are recorded, including rejected candidates. The new Iteration6/7 and Casting records remain local until their next verified push. All retained changes remain candidates for the user's controller review, not final game-feel acceptance. Work continues toward17:30 HKT.
 
 ## Where the five concerns stand
 
@@ -267,6 +267,37 @@ pre/post-launch cancellation and a return to offence. The same Player survived
 the whole encounter at37.5HP, with no mid-encounter Retry/healing/state repair.
 Source remained C4; these bounded agent observations do not settle the open
 presentation/design choices or replace the user's controller playtest.
+
+The later [Casting presentation review](CAST_PRESENTATION_REVIEW.md) separates
+two full failed Casts from two ignored/rejected-request cases using actual
+generated/charged orbs. It also records in-flight Lv1/Lv3 drawings, target-owned
+impact labels and a continuous Player90/Enemy0 encounter. The different full
+failure causes are not explained in visible reason text; no new UI treatment
+has been accepted or implemented.
+
+## Iteration6 — test more spear standoff, reject the roll regression
+
+The [complete Iteration6 report](ITERATION6_REVIEW.md) records target, one-leaf
+72->96 range trial, actual normal-input replay and rollback. At96, Pikeman
+stopped farther away and still reached Laema. But the same crossing Dodge
+finished with about24.57 extra collision-correction units instead of0.57.
+Both full fights ended Player70/Enemy0; this does not establish difficulty
+equivalence. **Reject96 and restore exact72.** No new backoff policy or Dodge
+safe-end behavior was invented to compensate. Actual before/after images and
+both full event logs are linked in that report.
+
+## Iteration7 — shorter X5 preparation, provisional review candidate
+
+The [complete Iteration7 report](ITERATION7_REVIEW.md) records a different timing
+hypothesis: X5 preparation.45->.30 seconds, with recovery1.10 unchanged. The
+matched Right opening hit with X5 about123ms earlier and launched its following
+empowered Lv5 about149ms earlier; all5 melee hits and the13-damage spell applied
+in both. Both whole fights won at70HP. An additional C7 Left-facing five-X/spell
+and continuous encounter also completed, with genuine incoming hits preserved.
+**Provisionally retain C7 for the user's controller review**, not a claim that
+its artwork is stronger or the physical overlap snap is fixed. The existing
+full X5 controlled suite also exited0/1545 checks/zero failures; forced setup
+is separate from actual play. Natural maximum-Heat coverage remains separate.
 
 ## Lunch verification and publication boundary
 

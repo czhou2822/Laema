@@ -127,9 +127,24 @@ Pikeman's left attack mirrors about its visual foot anchor, not the actor root.
 These are accepted behavior choices; implementation evidence and remaining human
 validation are recorded in IMPLEMENTATION_STATUS.md.
 
-### Provisional overnight implementation and tuning — October 22
+### Current provisional Fire timing — October 22 afternoon
 
-The current working candidate retains the following overnight changes. These are
+Fire X5 currently uses windup0.30/recovery1.10 seconds before Heat scaling
+(C7; total1.40 seconds). Fire X4 remains0.33/0.36, total0.69 seconds. These are
+provisional tuning candidates for human review, not final numerical or feel acceptance.
+X5's shorter pre-split preparation advances its poses, lunge and active boundaries;
+real-time input/contact windows and the following Cast can occur earlier. The
+normalized rules, authored geometry/lunge values, reaction/invulnerability and
+shared Cast timing are unchanged. No safe Cast outcome or improved artistic
+continuity is guaranteed. Scoped agent-play evidence is in
+[Implementation Status](IMPLEMENTATION_STATUS.md); live high-Heat protection and
+human/controller aesthetics remain unverified. No new AI retreat, dodge safe-end,
+impact-feedback treatment or art direction is selected by this numerical candidate.
+
+### Historical overnight implementation and tuning — October 22
+
+The following records the overnight baseline. Its X5 D timing is superseded by
+C7 above; the other retained repairs remain inherited. These are
 agent-tested implementation/presentation/tuning candidates, not user-verified
 gameplay-feel, final art or final numerical acceptance:
 

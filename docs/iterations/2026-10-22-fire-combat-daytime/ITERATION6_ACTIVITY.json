@@ -1,0 +1,107 @@
+{
+  "captured_utc": "2026-10-22T07:33:00Z",
+  "category": "Iteration6 existing attack-range72-vs96 normal-input comparison; REJECTED and exact72 restored",
+  "episodes": 8,
+  "bound_edges": 164,
+  "sample_wall_ms": 54183,
+  "sample_physics_ms": 54183.334,
+  "commands": [
+    {
+      "session": "c6-range72-baseline-01",
+      "command": 2,
+      "bound_edges": 4,
+      "max_late_ms": 4,
+      "non_overlay_max_late_ms": 4,
+      "sample_wall_ms": 3953,
+      "sample_physics_ms": 3950,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c6-range72-baseline-01",
+      "command": 4,
+      "bound_edges": 6,
+      "max_late_ms": 8,
+      "non_overlay_max_late_ms": 8,
+      "sample_wall_ms": 1961,
+      "sample_physics_ms": 1966.667,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c6-range72-baseline-01",
+      "command": 6,
+      "bound_edges": 20,
+      "max_late_ms": 105,
+      "non_overlay_max_late_ms": 6,
+      "sample_wall_ms": 6277,
+      "sample_physics_ms": 6266.667,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c6-range72-baseline-01",
+      "command": 7,
+      "bound_edges": 52,
+      "max_late_ms": 5,
+      "non_overlay_max_late_ms": 5,
+      "sample_wall_ms": 14902,
+      "sample_physics_ms": 14916.667,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c6-range96-candidate-01",
+      "command": 2,
+      "bound_edges": 4,
+      "max_late_ms": 3,
+      "non_overlay_max_late_ms": 3,
+      "sample_wall_ms": 3953,
+      "sample_physics_ms": 3966.667,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c6-range96-candidate-01",
+      "command": 4,
+      "bound_edges": 6,
+      "max_late_ms": 4,
+      "non_overlay_max_late_ms": 4,
+      "sample_wall_ms": 1941,
+      "sample_physics_ms": 1933.333,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c6-range96-candidate-01",
+      "command": 6,
+      "bound_edges": 20,
+      "max_late_ms": 98,
+      "non_overlay_max_late_ms": 6,
+      "sample_wall_ms": 6291,
+      "sample_physics_ms": 6283.333,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c6-range96-candidate-01",
+      "command": 7,
+      "bound_edges": 52,
+      "max_late_ms": 5,
+      "non_overlay_max_late_ms": 5,
+      "sample_wall_ms": 14905,
+      "sample_physics_ms": 14900,
+      "unexpected_counters": [
+        0
+      ]
+    }
+  ],
+  "method": "Conservative adjacent observation/capture coverage: gap >0 and <=400ms; both endpoints unpaused, both actors alive, Player and Enemy instances stable. Excludes ordinary Retry, startup, paused review, sparse gaps and after-victory intervals. Scheduled bound inputs are not physical-controller usability."
+}

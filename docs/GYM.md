@@ -76,12 +76,15 @@ that interval, once per target. There is no melee contact marker. The optional
 See [ATTACK_STYLES.md](ATTACK_STYLES.md) for scrubbing and keying.
 
 Player Fire X windup/recovery pairs at zero Heat are .21/.51, .24/.51,
-.195/.45, .33/.36 and .45/1.10 seconds. X4's daytime candidate totals0.69s,
+.195/.45, .33/.36 and .30/1.10 seconds. X4's daytime candidate totals0.69s,
 replacing only its0.51s recovery; native normalized windows/geometry stay fixed,
-but their real-time duration shortens. X5's retained D is a provisional October22
-agent-tested candidate, base1.55s, not accepted final latency/feel. Cast total is
+but their real-time duration shortens. X5's current C7 (651d9978) is a provisional
+human-review candidate, base1.40s, not accepted final latency/feel. Cast total is
 1.2 seconds. The unchanged shared baselines already contain the old Gym1.5× pace
-once; D replaces X5 recovery rather than adding a room multiplier. Charging retains
+once; C7 changes only X5's pre-split windup from D0.45 to0.30, retaining1.10
+recovery and no room multiplier. Earlier lunge/contact and real input-window
+timing accompany that faster preparation; normalized rules/values do not change,
+and following Cast safety is not guaranteed. Charging retains
 its previous speed. Native Fire X4/X5 geometry and authored lunge values are
 unchanged; actual timed displacement can differ through pacing and collision.
 
@@ -163,12 +166,14 @@ For the user's comparison, keep one enemy attack case and change one setting:
    lock and interruption must not leave a stuck input/movement lock. Taking a
    hit does not erase an already-running missed-parry reuse penalty.
 
-Status: AWAITING_USER_VALIDATION. The initial defence slice used source/whitespace
+Historical overnight defence evidence: the initial slice used source/whitespace
 checks only. Later current-D rendered normal-input observations through October22
 07:19 support held block/control return and the scoped dodge cancellation,
 accounting, wall protection and return-to-fight cases in Implementation Status.
-Current-source R1 tap attempts produced no parry pass; earlier-source parry evidence
-does not clear this version. Physical analog/controller priority, audio, human
+At that cutoff R1 tap attempts produced no parry pass; earlier-source parry evidence
+did not clear that version. Later retained-C4 defence/dodge evidence is recorded
+in Implementation Status, not a fresh C7 parry pass. Status remains AWAITING_USER_VALIDATION.
+Physical analog/controller priority, audio, human
 latency/feel remain unverified. The five later existing full headless geometry
 suites completed as supplementary controlled regressions, not primary play or
 controller/parry/AI acceptance. No blanket clearance follows.
@@ -211,6 +216,17 @@ rules are changed by toggling the overlay.
 ## Playtest observations
 
 ### Daytime candidates — October 22
+
+X5 is provisionally retained as C7 .30/1.10 for human review. Main's Right D/C7
+openings both landed five X and empowered Lv5/APPLIED13; C7 contact/launch were
+earlier, with both continuous fights ending70HP. A separate Left opening and
+continuation also succeeded. This supports reduced setup delay into existing
+poses, not a new artistic treatment, all-cadence/high-Heat protection or human feel
+acceptance. The [range96 comparison](iterations/2026-10-22-fire-combat-daytime/ITERATION6_REVIEW.md)
+was rejected; Enemy attack_range is restored72/A9682BE0. No retreat policy or
+physical dodge safe-end correction was added. The
+[Cast presentation review](iterations/2026-10-22-fire-combat-daytime/CAST_PRESENTATION_REVIEW.md)
+retains the unsolved origin/brief-impact and failed/ignored reason-display limits.
 
 Current Player C2 (9b705e0d) replaces the rejected input-based dodge handoff with
 a completion-frame final-pose hold, then actual-motion Walk/Idle. Main observed

@@ -1,0 +1,131 @@
+{
+  "captured_utc": "2026-10-22T07:33:00Z",
+  "category": "Unchanged-C4 normal-input Cast failure/arbitration/visibility review; one continuous fight, no new implementation round",
+  "episodes": 10,
+  "bound_edges": 116,
+  "sample_wall_ms": 28564,
+  "sample_physics_ms": 28616.667,
+  "commands": [
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 2,
+      "bound_edges": 8,
+      "max_late_ms": 100,
+      "non_overlay_max_late_ms": 4,
+      "sample_wall_ms": 773,
+      "sample_physics_ms": 783.333,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 3,
+      "bound_edges": 14,
+      "max_late_ms": 8,
+      "non_overlay_max_late_ms": 8,
+      "sample_wall_ms": 5248,
+      "sample_physics_ms": 5250,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 4,
+      "bound_edges": 8,
+      "max_late_ms": 4,
+      "non_overlay_max_late_ms": 4,
+      "sample_wall_ms": 853,
+      "sample_physics_ms": 866.667,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 5,
+      "bound_edges": 12,
+      "max_late_ms": 15,
+      "non_overlay_max_late_ms": 15,
+      "sample_wall_ms": 1751,
+      "sample_physics_ms": 1766.667,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 6,
+      "bound_edges": 8,
+      "max_late_ms": 4,
+      "non_overlay_max_late_ms": 4,
+      "sample_wall_ms": 1051,
+      "sample_physics_ms": 1050,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 7,
+      "bound_edges": 10,
+      "max_late_ms": 4,
+      "non_overlay_max_late_ms": 4,
+      "sample_wall_ms": 3027,
+      "sample_physics_ms": 3033.333,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 8,
+      "bound_edges": 10,
+      "max_late_ms": 3,
+      "non_overlay_max_late_ms": 3,
+      "sample_wall_ms": 2652,
+      "sample_physics_ms": 2650,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 9,
+      "bound_edges": 12,
+      "max_late_ms": 7,
+      "non_overlay_max_late_ms": 7,
+      "sample_wall_ms": 4153,
+      "sample_physics_ms": 4150,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 10,
+      "bound_edges": 18,
+      "max_late_ms": 5,
+      "non_overlay_max_late_ms": 5,
+      "sample_wall_ms": 6955,
+      "sample_physics_ms": 6950,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "c4-cast-feedback-01",
+      "command": 11,
+      "bound_edges": 16,
+      "max_late_ms": 11,
+      "non_overlay_max_late_ms": 11,
+      "sample_wall_ms": 2101,
+      "sample_physics_ms": 2116.667,
+      "unexpected_counters": [
+        0
+      ]
+    }
+  ],
+  "method": "Conservative adjacent observation/capture coverage: gap >0 and <=400ms; both endpoints unpaused, both actors alive, Player and Enemy instances stable. Excludes ordinary Retry, startup, paused review, sparse gaps and after-victory intervals. Scheduled bound inputs are not physical-controller usability."
+}

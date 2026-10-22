@@ -54,11 +54,15 @@ evidence were first published as **05fb22b819e95919da74bcd7c0b57587b5e6f95b**.
 Main verified the push and independent remote-main/local-HEAD equality at
 **12:03:26 HKT October22**; see the [publication receipt](iterations/2026-10-22-fire-combat-daytime/PUBLICATION.md)
 and [daytime report](iterations/2026-10-22-fire-combat-daytime/REPORT.md).
-A later receipt/status metadata commit may advance HEAD without changing that
-published gameplay source; its publication is not asserted in advance here.
-The current bounded candidate uses Player
+That first lunch receipt remains a historical snapshot; later candidate publication
+state belongs to Main's receipts/source identities, not this numerical sync.
+The current provisional human-review candidate uses Player
 9b705e0d (C2), Fire projectilecc1101fc, X4 style90f963de, SFX JSONddab1126 and
-opt-in recorder63409fd5. X5 D57aef5ab and the other retained overnight work remain.
+opt-in recorder63409fd5, plus ObjectiveWidgete91201b5 (C4). X5 is now C7
+651d9978: windup0.30/recovery1.10, base1.40s. Enemy attack_range72/A9682BE0 is
+restored after the rejected range96 trial; no retreat policy was introduced.
+The overnight X5 D57aef5ab is historical comparison evidence, not the current
+style identity. All other retained overnight work remains inherited.
 See [daytime progress](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md) and
 Implementation Status for isolated run identities and limitations. All daytime
 tuning/presentation remains candidate state pending user controller acceptance.
@@ -170,7 +174,19 @@ late active frames and the real-time input window. Native keys/geometry, normali
 windows, lunge and push are unchanged. X5 can start0.15/Heat-multiplier seconds
 earlier; this does not guarantee unchanged timing relative to the Enemy.
 
-Fire X5's current provisional D Resource is windup0.45/recovery1.10 (base1.55s),
+Fire X5's current provisional C7 Resource is windup0.30/recovery1.10 (base1.40s,
+651d9978), captured through the same Player Settings/style path. Native length1,
+timing_split0.60, active0.36..0.80, geometry/Sprite keys,12-unit lunge at0.15..0.55
+and push2 remain. Pre-split native playback is1.5x its D rate; later native rate
+is unchanged. Poses, lunge and active-boundary wall times advance, while real-time
+input/buffer spans also change under the unchanged normalized rules. X4 completion
+and actual X5 action start are not moved by this leaf; X5 finishes and a queued
+Cast can start0.15/Heat-multiplier seconds earlier at constant Heat. Actual contact,
+collision and live Heat remain authoritative; this guarantees no Enemy-invulnerability
+margin or aesthetic improvement. Main's scoped Right/Left rendered comparisons
+and one supplementary X5 suite support provisional human review only.
+
+Historical overnight D Resource was windup0.45/recovery1.10 (base1.55s,57aef5ab),
 captured through Player Settings/attack_styles into moves.fire_x5. Its native
 length1, timing_split0.60 and active0.36..0.80 remain unchanged. Positive recovery
 duration controls native0.60..1.00, including late active frames; phase speed is
@@ -1025,7 +1041,18 @@ Physical overlap recovery, deliberate AI spacing, Cast emission/point-blank
 visibility, human/controller feel and audio comfort remain unresolved. No product,
 helper, asset, runtime/test or Git action was performed by this document update.
 
-Current handoff: first C2 source/report/evidence publication is verified at
+Historical first C2 source/report/evidence publication is verified at
 05fb22b8/12:03 HKT as recorded above. The receipt/status follow-up is metadata
 only, not another gameplay change or Web export. User validation remains pending;
 publication establishes no whole-tree/submission, art, numerical or feel clearance.
+
+Current handoff is the C7 X5 timing candidate over retained C4, with Enemy72
+restored. Publication status remains Main-owned receipts/source identities; this
+sync changes no published-receipt ID or product source. The
+[Iteration7 review](iterations/2026-10-22-fire-combat-daytime/ITERATION7_REVIEW.md),
+[daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md),
+[rejected range trial](iterations/2026-10-22-fire-combat-daytime/ITERATION6_REVIEW.md)
+and [Cast presentation review](iterations/2026-10-22-fire-combat-daytime/CAST_PRESENTATION_REVIEW.md)
+retain unresolved spacing/safe-end, low-origin/brief-impact/feedback and art issues.
+C7 is not new gameplay/architecture, a reason widget, a high-Heat safety pass or
+human acceptance; no further rule or visual treatment is selected here.

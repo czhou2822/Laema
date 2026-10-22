@@ -18,7 +18,13 @@ only recovery0.51. Native timing_split0.70, active0.36..0.8666667, Sprite/geomet
 keys, lunge10/0.15..0.55 and push0.75 remain. Recovery includes late active frames;
 its shorter duration also shortens real-time input/contact windows. X5 can begin
 0.15/Heat-multiplier seconds earlier, not with guaranteed Enemy-relative safety.
-X5 remains D0.45/1.10, base1.55s, as described below.
+X5 is now C7: windup0.30/recovery1.10, base1.40s (651d9978), replacing only
+D's0.45 windup. Its native split0.60, active0.36..0.80, all Sprite/geometry keys,
+lunge12/0.15..0.55 and push2 remain. Pre-split playback runs1.5x the D rate;
+later playback rate is unchanged. Lunge/contact and real-time input/buffer timing
+advance despite fixed normalized rules. X5 action start after X4 is unchanged;
+completion/queued Cast can advance0.15/Heat-multiplier seconds at constant Heat.
+This is not a guarantee of Enemy-relative Cast safety or solved pose continuity.
 
 Main's pure uncharged0.65s-cadence baseline/C1 comparisons both accepted and
 landed all five X, P100/E150/queue5; X5 began3.543s versus3.697s. This supports
@@ -27,9 +33,18 @@ cadences. No pose/weapon/art key or normalized rule was changed. See the
 [daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md).
 These timing candidates remain pending user controller acceptance.
 
+Main's matched Right D/C7 openings both landed five X and empowered Lv5/APPLIED13;
+actual X5 contacts4.000/3.877s and Cast launches5.350/5.201s. A separate Left
+opening also landed five and applied13. Both Right fights and the Left continuation
+won70HP without forced state; no causal survival/feel claim follows. The current
+X5-only controlled rerun passed1545 checks/exit0 with14/10 shutdown warnings,
+not a full current-source suite or live high-Heat protection pass.
+Exact scope and disposition are in the
+[Iteration7 review](iterations/2026-10-22-fire-combat-daytime/ITERATION7_REVIEW.md).
+
 ## Retained overnight timing candidate — October 22
 
-Fire X5 currently reads windup0.45/recovery1.10 from
+Historical overnight Fire X5 read windup0.45/recovery1.10 from
 `config/attack_styles/fire_x5.tres` (candidate D,57aef5ab; base1.55s before Heat).
 Native length1, timing_split0.60, active_start0.36, active_end0.80, Sprite/geometry
 keys and lunge12/0.15..0.55 remain unchanged. Recovery stretches native0.60..1.00,
@@ -37,7 +52,7 @@ including late active frames; it is not an added post-hit pause. Cast retains
 shared1.2s base and native launch0.24. Captured phase durations scale once with
 live Heat; increasing X5 recovery also delays a queued endpoint Cast.
 
-Main's current-source small low-Heat D cohort had7/7 valid high-level Cast contacts
+Main's historical overnight low-Heat D cohort had7/7 valid high-level Cast contacts
 APPLIED13 versus same-Might A0.95's6/7, with first release-to-launch about0.960s
 versus0.831s. This supports a provisional mechanical-margin comparison, not
 statistical survival superiority, human feel acceptance or high-Heat Enemy

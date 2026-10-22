@@ -1,14 +1,14 @@
 # Implementation Status
 
-## Daytime candidate — October 22, C2 source and bounded rendered evidence
+## Daytime candidate — October 22, C7 timing over retained C4 source
 
 Status: `AWAITING_USER_VALIDATION`. The captured prepublication baseline was
 HEAD921fd1ae plus dirty work, not a tested commit identity. First retained C2
 source/report/evidence publication is **05fb22b819e95919da74bcd7c0b57587b5e6f95b**,
 verified by Main at **12:03:26 HKT October22**: push exit0 and independent remote
 main/local HEAD equality. See the [publication receipt](iterations/2026-10-22-fire-combat-daytime/PUBLICATION.md).
-Subsequent receipt/status metadata may advance HEAD without changing gameplay
-source; that follow-up publication is not claimed here. This is source publication,
+That first lunch receipt is historical; later candidate publication state belongs
+to Main's receipts/source identities. Repository publication is source publication,
 not Web export, whole-tree/submission, art, numerical or human-feel clearance.
 Main's isolated Godot4.7.1 rendered bound-input
 runs, source snapshots and captures are recorded in the
@@ -21,11 +21,15 @@ Source review/agent play is not user controller, numerical, art or comfort accep
 | `scripts/player/player.gd` | C2: retain native dodge ownership and final pose for the completion physics frame, then actual-motion locomotion; new action/school/hurt/stage/reset precedence retained | `9b705e0d` |
 | `scripts/combat/spell_projectile.gd` | Fire child drawing1.5x baseline, retaining level ratio; Lv1 36x27/Lv3 72x54, collider/origin/flight/lifetime unchanged | `cc1101fc` |
 | `config/attack_styles/fire_x4.tres` | Windup0.33/recovery0.36, base0.69s; only recovery changed from0.51 | `90f963de` |
+| `config/attack_styles/fire_x5.tres` | C7: windup0.30/recovery1.10, base1.40s; only windup changed from D0.45 | `651d9978` |
+| `scripts/ui/objective_widget.gd` | Retained C4 row-label wrapping/bounded width; tokens/evaluator/font/strings/flinch unchanged | `e91201b5` |
 | `config/prototype_combat.json` | Saved SFX volume_db0->-6 only; original clips/pitches/ducking and Ambient/BGM preserved | `ddab1126` |
 | `tools/tests/overnight_fire_playtest.gd` | Optional Master WAV capture0..30s, default off; bounded2s ring/2048-frame drain, actual-rate stereo PCM16, loss/timing/cleanup metrics | `63409fd5` |
 
-X5 remains D0.45/1.10 (base1.55s,57aef5ab). The other retained overnight repairs
-and evidence below are preserved. Daytime source changes add no new art, AI
+Current X5 is C7 as above; D0.45/1.10 (base1.55s,57aef5ab) remains historical
+comparison evidence. Enemy attack_range72/A9682BE0 was restored after the
+[rejected range96 trial](iterations/2026-10-22-fire-combat-daytime/ITERATION6_REVIEW.md).
+The other retained overnight repairs/evidence below are preserved. Daytime source changes add no new art, AI
 spacing policy, physical dodge safe-end rule, Cast-origin relocation or visual afterlife.
 
 - **X4 comparison:** baseline and C1 pure uncharged0.65s-cadence chains accepted
@@ -54,6 +58,31 @@ fix it. Human safe-end and AI-spacing decisions remain pending. Charging/hurt
 failures and other prior waivers remain; small unseeded fight results establish
 no survival superiority. The prepublication synchronization used static checks only, no new
 Godot/tests/audition/export, and no commit/push or blanket source/authority clearance.
+
+### C7 timing evidence — October 22 afternoon, provisional human review
+
+Main's fresh normal-input Right openings both landed all five X, P100/E137:
+D/C7 X5 starts3.523/3.531s, contacts4.000/3.877s, empowered Lv5 launches5.350/5.201s,
+both APPLIED13. Both continuous encounters finished70HP; these small unseeded
+results are not causal survival improvement. A separate C7 Retry/Circle-cross/
+left-reface opening landed all five, launched empowered Lv5 at4.916/APPLIED13,
+then took a real10-damage hit; that same continued encounter also won70HP.
+Overlay-hidden Right and visible Left captures were inspected without forced state.
+
+C7 advances preparation into the existing thrust; it does not add art/strength or
+prove that X4->X5 detachment is aesthetically solved. Faster pre-split playback
+advances lunge/contact and real input-window timing without changing normalized
+rules, geometry or numerical lunge/push. Recovery stays1.10, but earlier completion
+does not guarantee Cast safety. Retention is provisional for human review only.
+
+Main's explicitly waited controlled X5 rerun exited0:1545 checks, zero assertion
+failures, retained14 ObjectDB/10 resource shutdown warnings. Forced Heat/seeks are
+supplementary, not primary play, a full C7 suite or live high-Heat protection.
+Rendered processes closed normally with the usual13/9 warnings. See the
+[daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md); Main owns
+the [Iteration7 review](iterations/2026-10-22-fire-combat-daytime/ITERATION7_REVIEW.md)
+and source identity. No controller, human aesthetics, audition,
+whole-tree/submission or new gameplay-policy acceptance is established.
 
 ### Final daytime evidence addendum — October 22, prepublication
 

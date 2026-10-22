@@ -90,3 +90,36 @@ waiting are separate work. No new implementation or automated suite occurred.
 The cold Gym F4 release95ms delay is retained; no claim that every event was
 within9ms. No audio capture/audition or physical-controller comfort evidence was
 added. The session exited0 with its existing13/9 shutdown warnings.
+
+### Further Casting readout encounter — through15:05 HKT
+
+CAST_PRESENTATION_ACTIVITY.json records10 commanded episodes/116 bound edges,
+lower-bound28.564s wall /28.617s physics alive/unpaused sample coverage. This is
+one continuous Player100->90 victory, not10 encounters or another implementation
+round. Native review pauses, source investigation and waiting are separate.
+The cold F4 release was100ms late; other edges at most15ms. No external inputs,
+audio audition, human-controller acceptance or new product change is claimed.
+
+### Iteration6 — through15:33 HKT
+
+ITERATION6_ACTIVITY.json records8 commanded play episodes/164 bound edges,
+lower-bound54.183s wall /54.183s physics sample coverage across the72/96 passive,
+crossing-roll and full-encounter comparisons. Normal Retry setup is excluded,
+as are paused image/source review, after-victory time, sparse gaps and waiting.
+This is two full attacking encounters plus distinct bounded probes, not8 fights.
+Cold F4 release delays105/98ms remain in the evidence; other edges at most8ms.
+Dum-E's exact scalar edit/rollback and Main's review/archival are separate work.
+The96 candidate was rejected; exact72 is restored. No new suite/audition/human
+feel pass occurred. C7 is a separate next trial, not retroactive C6 activity.
+
+### Iteration7 — through15:48 HKT
+
+ITERATION7_ACTIVITY.json records7 play episodes/222 normal bound edges,
+lower-bound65.138s wall/65.133s physics alive/unpaused coverage. Three complete
+attacking encounters (D Right, C7 Right, C7 Left) plus a bounded ordinary roll
+are not7 fights. Normal Retry, source/image review, after-victory time, tests,
+canonical synchronization and waiting are excluded. Cold F4 delays102/97/121ms
+are retained; other edges at most13ms. The separate existing full controlled X5
+suite ended0/1545 checks/zero failures; its forced Heat/seeks do not establish
+natural high-Heat or human-controller feel. Existing shutdown warnings remain.
+C7's one-leaf implementation and review are separate from measured play time.
