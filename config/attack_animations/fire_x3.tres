@@ -1,6 +1,6 @@
 [gd_resource type="Animation" format=3 uid="uid://dvestj2w4etiu"]
 
-[ext_resource type="Texture2D" path="res://assets/prototype/player/fire_sword_shield_v01/angle_proofs_v03/fire_x3.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://bmn5jtyagm5t3" path="res://assets/prototype/player/fire_sword_shield_v01/angle_proofs_v03/fire_x3.png" id="1_sheet"]
 
 [ext_resource type="Shape2D" path="res://config/player_presentation/fire_body.tres" id="registration_body"]
 
@@ -50,7 +50,7 @@ tracks/2/path = NodePath("Sprite:region_rect")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.37149858, 0.60950685, 0.711878675, 0.8142505),
+"times": PackedFloat32Array(0, 0.37149858, 0.60950685, 0.71187866, 0.8142505),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(0, 0, 448, 448), Rect2(448, 0, 448, 448), Rect2(896, 0, 448, 448), Rect2(1344, 0, 448, 448), Rect2(1792, 0, 448, 448)]
@@ -62,10 +62,10 @@ tracks/3/path = NodePath("AttackCast:position")
 tracks/3/interp = 0
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0.0, 0.36, 0.37149858, 0.60950685, 0.711878675, 0.8142505, 0.8333333),
+"times": PackedFloat32Array(0, 0.36, 0.37149858, 0.60950685, 0.71187866, 0.8142505, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-0.3043334, -31.2323489), Vector2(-0.3043334, -31.2323489), Vector2(-21.9638121, -24.4979982), Vector2(32.4236751, -23.7730553), Vector2(29.8108108, -17.8648649), Vector2(-0.3840674, -31.3252734), Vector2(-0.3840674, -31.3252734)]
+"values": [Vector2(-0.3043334, -31.23235), Vector2(-0.3043334, -31.23235), Vector2(-21.963812, -24.497997), Vector2(32.423676, -23.773056), Vector2(29.81081, -17.864864), Vector2(-0.3840674, -31.325274), Vector2(-0.3840674, -31.325274)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -74,10 +74,10 @@ tracks/4/path = NodePath("AttackCast:target_position")
 tracks/4/interp = 0
 tracks/4/loop_wrap = false
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0, 0.36, 0.37149858, 0.60950685, 0.711878675, 0.8142505, 0.8333333),
+"times": PackedFloat32Array(0, 0.36, 0.37149858, 0.60950685, 0.71187866, 0.8142505, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(26.6086668, -22.0353022), Vector2(26.6086668, -22.0353022), Vector2(-27.5723758, 3.9959965), Vector2(29.6526497, 6.2961106), Vector2(28.3783784, 9.7297297), Vector2(26.2681348, -23.3494531), Vector2(26.2681348, -23.3494531)]
+"values": [Vector2(26.608667, -22.035303), Vector2(26.608667, -22.035303), Vector2(-27.572376, 3.9959965), Vector2(29.652649, 6.2961106), Vector2(28.378378, 9.72973), Vector2(26.268135, -23.349453), Vector2(26.268135, -23.349453)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -86,7 +86,7 @@ tracks/5/path = NodePath("AttackCast:shape:radius")
 tracks/5/interp = 0
 tracks/5/loop_wrap = false
 tracks/5/keys = {
-"times": PackedFloat32Array(0.0, 0.36, 0.37149858, 0.60950685, 0.8142505, 0.8333333),
+"times": PackedFloat32Array(0, 0.36, 0.37149858, 0.60950685, 0.8142505, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [3.5, 3.5, 3.5, 3.5, 3.5, 3.5]
