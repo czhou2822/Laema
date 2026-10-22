@@ -1,0 +1,71 @@
+Godot Engine v4.7.1.stable.official.a13da4feb - https://godotengine.org
+
+[TRACE][HUD] mark_progress_displayed { "marked_count": 0, "partial_progress": 0.0, "bar_value": 0.0 }
+[TRACE][MOVEMENT] grounded_changed { "grounded": true, "position": (0.0, 0.0) }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 80.0 }
+[TRACE][ARENA] stage_activated { "stage_id": "gym", "initial": true }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 160.0 }
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":34,"stage":"action_started","ticks_ms":1292}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 3 }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[PROBE][IMPACT] {"action_id":2,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":174,"stage":"action_started","ticks_ms":3625}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 3 }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[PROBE][IMPACT] {"action_id":2,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x3","physics_frame":175,"stage":"contact_query","ticks_ms":3637}
+[PROBE][IMPACT] {"action_id":2,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":176,"stage":"contact_query","ticks_ms":3658}
+[PROBE][IMPACT] {"action_id":2,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":176,"stage":"contact_event","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","target_poise":10,"ticks_ms":3659}
+[PROBE][IMPACT] {"action_id":2,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":176,"stage":"contact_query","ticks_ms":3660}
+[PROBE][IMPACT] {"difference":0,"distance":5.0,"duration":0.25,"physics_frame":176,"reaction_level":1,"stage":"reaction_started","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":3661}
+[PROBE][IMPACT] {"combat_reaction":true,"distance":5.0,"duration":0.25,"physics_frame":176,"reaction_level":1,"stage":"enemy_reaction_visual","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":3662}
+[PROBE][IMPACT] {"action_id":2,"health_delta":0.0,"impact":30,"outcome":"INVINCIBLE","physics_frame":176,"reaction_level":0,"stage":"health_result","tag":"invincible","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":3663}
+[PROBE][IMPACT] {"action_id":2,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":176,"stage":"contact_query","ticks_ms":3664}
+[PROBE][IMPACT] {"body_displacement_x":0.0,"elapsed_ms":3,"physics_frame":176,"remaining":0.0,"stage":"enemy_reaction_finished","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":3665}
+[PROBE][IMPACT] {"action_id":3,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":176,"stage":"action_started","ticks_ms":3667}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 3 }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[PROBE][IMPACT] {"action_id":4,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":316,"stage":"action_started","ticks_ms":5991}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 3 }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[PROBE][IMPACT] {"action_id":4,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x3","physics_frame":317,"stage":"contact_query","ticks_ms":6004}
+[PROBE][IMPACT] {"action_id":4,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":318,"stage":"contact_query","ticks_ms":6025}
+[PROBE][IMPACT] {"action_id":4,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":318,"stage":"contact_event","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","target_poise":10,"ticks_ms":6026}
+[PROBE][IMPACT] {"action_id":4,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":318,"stage":"contact_query","ticks_ms":6027}
+[PROBE][IMPACT] {"difference":0,"distance":5.0,"duration":0.25,"physics_frame":318,"reaction_level":1,"stage":"reaction_started","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":6028}
+[PROBE][IMPACT] {"combat_reaction":true,"distance":5.0,"duration":0.25,"physics_frame":318,"reaction_level":1,"stage":"enemy_reaction_visual","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":6029}
+[PROBE][IMPACT] {"action_id":4,"health_delta":0.0,"impact":30,"outcome":"INVINCIBLE","physics_frame":318,"reaction_level":0,"stage":"health_result","tag":"invincible","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":6030}
+[PROBE][IMPACT] {"action_id":4,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":318,"stage":"contact_query","ticks_ms":6031}
+[PROBE][IMPACT] {"body_displacement_x":0.0,"elapsed_ms":3,"physics_frame":318,"remaining":0.0,"stage":"enemy_reaction_finished","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":6032}
+[PROBE][IMPACT] {"action_id":5,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":318,"stage":"action_started","ticks_ms":6034}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 3 }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[PROBE][IMPACT] {"action_id":6,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":458,"stage":"action_started","ticks_ms":8358}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 3 }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[PROBE][IMPACT] {"action_id":6,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x3","physics_frame":459,"stage":"contact_query","ticks_ms":8371}
+[PROBE][IMPACT] {"action_id":6,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":460,"stage":"contact_query","ticks_ms":8392}
+[PROBE][IMPACT] {"action_id":6,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":460,"stage":"contact_event","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","target_poise":10,"ticks_ms":8393}
+[PROBE][IMPACT] {"action_id":6,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":460,"stage":"contact_query","ticks_ms":8394}
+[PROBE][IMPACT] {"difference":0,"distance":5.0,"duration":0.25,"physics_frame":460,"reaction_level":1,"stage":"reaction_started","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":8395}
+[PROBE][IMPACT] {"combat_reaction":true,"distance":5.0,"duration":0.25,"physics_frame":460,"reaction_level":1,"stage":"enemy_reaction_visual","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":8396}
+[PROBE][IMPACT] {"action_id":6,"health_delta":0.0,"impact":30,"outcome":"INVINCIBLE","physics_frame":460,"reaction_level":0,"stage":"health_result","tag":"invincible","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":8397}
+[PROBE][IMPACT] {"action_id":6,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":460,"stage":"contact_query","ticks_ms":8398}
+[PROBE][IMPACT] {"body_displacement_x":0.0,"elapsed_ms":3,"physics_frame":460,"remaining":0.0,"stage":"enemy_reaction_finished","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":8399}
+[PROBE][IMPACT] {"action_id":7,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":460,"stage":"action_started","ticks_ms":8401}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 3 }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[PROBE][IMPACT] {"action_id":8,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":600,"stage":"action_started","ticks_ms":10725}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 3 }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[PROBE][IMPACT] {"action_id":8,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x3","physics_frame":601,"stage":"contact_query","ticks_ms":10744}
+[PROBE][IMPACT] {"action_id":8,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":602,"stage":"contact_query","ticks_ms":10758}
+[PROBE][IMPACT] {"action_id":8,"actor":"/root/Gym/Player","impact":30,"move_id":"fire_x3","physics_frame":602,"stage":"contact_event","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","target_poise":10,"ticks_ms":10759}
+[PROBE][IMPACT] {"action_id":8,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":602,"stage":"contact_query","ticks_ms":10760}
+[PROBE][IMPACT] {"difference":0,"distance":5.0,"duration":0.25,"physics_frame":602,"reaction_level":1,"stage":"reaction_started","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":10761}
+[PROBE][IMPACT] {"combat_reaction":true,"distance":5.0,"duration":0.25,"physics_frame":602,"reaction_level":1,"stage":"enemy_reaction_visual","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":10762}
+[PROBE][IMPACT] {"action_id":8,"health_delta":0.0,"impact":30,"outcome":"INVINCIBLE","physics_frame":602,"reaction_level":0,"stage":"health_result","tag":"invincible","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":10763}
+[PROBE][IMPACT] {"action_id":8,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x3","physics_frame":602,"stage":"contact_query","ticks_ms":10764}
+[PROBE][IMPACT] {"body_displacement_x":0.0,"elapsed_ms":3,"physics_frame":602,"remaining":0.0,"stage":"enemy_reaction_finished","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":10765}
+[TRACE][COMBAT_ENEMY] state { "state": &"DORMANT", "target_distance": 310.398183822632 }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+PASSED: 913 fire_x3 geometry checks

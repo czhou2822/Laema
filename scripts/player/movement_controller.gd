@@ -10,6 +10,7 @@ var _effect_multiplier := 1.0
 var _grounded_known := false
 var _was_grounded := false
 var _attack_motion: Callable
+var _dodge_body_exceptions: Array[Dictionary] = []
 
 
 func configure(body: CharacterBody2D, config: Dictionary) -> void:
@@ -81,6 +82,54 @@ func get_facing_direction() -> Vector2:
 
 func get_motion() -> Vector2:
 	return Vector2.ZERO if _body == null else _body.velocity
+
+
+func get_normal_movement_speed() -> float:
+	return 0.0 if _config.is_empty() else float(_config["speed"]) * _effect_multiplier
+
+
+func sample_dodge_direction(device: int) -> Vector2:
+	if Input.get_connected_joypads().has(device):
+		var axis := Input.get_joy_axis(device, JOY_AXIS_LEFT_X)
+		if absf(axis) >= InputMap.action_get_deadzone(&"move_left"):
+			return Vector2.LEFT if axis < 0.0 else Vector2.RIGHT
+	return _facing
+
+
+func begin_dodge(direction: Vector2) -> void:
+	_set_facing(direction)
+	# Body exceptions do not remove the target from damage/contact queries.
+	for target in get_tree().get_nodes_in_group(&"status_targets"):
+		var other := target as PhysicsBody2D
+		if other == null or other == _body:
+			continue
+		if (_body.collision_mask & other.collision_layer) == 0 and (other.collision_mask & _body.collision_layer) == 0:
+			continue
+		var add_forward := not _body.get_collision_exceptions().has(other)
+		var add_reverse := not other.get_collision_exceptions().has(_body)
+		if add_forward:
+			_body.add_collision_exception_with(other)
+		if add_reverse:
+			other.add_collision_exception_with(_body)
+		_dodge_body_exceptions.append({"body": weakref(other), "forward": add_forward, "reverse": add_reverse})
+
+
+func end_dodge() -> void:
+	for entry in _dodge_body_exceptions:
+		var other: PhysicsBody2D = entry["body"].get_ref()
+		if not is_instance_valid(other) or not is_instance_valid(_body):
+			continue
+		if bool(entry["forward"]):
+			_body.remove_collision_exception_with(other)
+		if bool(entry["reverse"]):
+			other.remove_collision_exception_with(_body)
+	_dodge_body_exceptions.clear()
+	if is_instance_valid(_body):
+		_body.velocity.x = 0.0
+
+
+func _exit_tree() -> void:
+	end_dodge()
 
 
 func _sample_input_direction() -> Vector2:

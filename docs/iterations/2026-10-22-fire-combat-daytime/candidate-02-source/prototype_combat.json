@@ -1,0 +1,382 @@
+{
+	"audio": {
+		"ambient": {
+			"enabled": true,
+			"volume_db": 0.0
+		},
+		"bgm": {
+			"enabled": false,
+			"volume_db": 0.0
+		},
+		"sfx": {
+			"enabled": true,
+			"volume_db": -6.0
+		}
+	},
+	"tutorial": {
+		"default_stage_id": "final_arena",
+		"stages": [
+			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"display_name": "Stage 1 — perform a 5 hit combo",
+				"final": false,
+				"id": "stage_1",
+				"objective": {
+					"active": {},
+					"completion_progress": 5.0,
+					"highlight_next": false,
+					"presentation": {
+						"rows": [
+							{
+								"id": "objective",
+								"label": "perform a 5 hit combo",
+								"tokens": [
+									"X",
+									"X",
+									"X",
+									"X",
+									"X"
+								]
+							}
+						]
+					},
+					"prestart": {
+						"fire_miss_invalid": true,
+						"ignore_unexpected": true
+					},
+					"success_steps": [
+						{
+							"school": "fire",
+							"type": "light"
+						},
+						{
+							"school": "fire",
+							"type": "light"
+						},
+						{
+							"school": "fire",
+							"type": "light"
+						},
+						{
+							"school": "fire",
+							"type": "light"
+						},
+						{
+							"school": "fire",
+							"type": "light"
+						}
+					],
+					"type": "sequence"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"display_name": "Stage 2 — perform a level 5 spell",
+				"final": false,
+				"id": "stage_2",
+				"objective": {
+					"active": {},
+					"completion_progress": 0.0,
+					"highlight_next": false,
+					"presentation": {
+						"rows": [
+							{
+								"id": "objective",
+								"label": "perform a level 5 spell"
+							}
+						]
+					},
+					"prestart": {
+						"ignore_unexpected": true
+					},
+					"success_steps": [
+						{
+							"required_level": 5.0,
+							"type": "cast"
+						}
+					],
+					"type": "sequence"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"display_name": "Stage 3 — Charge while attacking, then Cast",
+				"final": false,
+				"id": "stage_3",
+				"objective": {
+					"active": {},
+					"completion_progress": 6.0,
+					"highlight_next": true,
+					"presentation": {
+						"rows": [
+							{
+								"id": "objective",
+								"label": "Charge while attacking, then Cast",
+								"tokens": [
+									"Hold L2 + X",
+									"X",
+									"X",
+									"X",
+									"X",
+									"Release L2"
+								]
+							}
+						]
+					},
+					"prestart": {},
+					"success_steps": [
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"endpoint": true,
+							"required_level": 5.0,
+							"type": "cast"
+						}
+					],
+					"type": "sequence"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"display_name": "Stage 4 — perform X, X, Cast, X",
+				"final": false,
+				"id": "stage_4",
+				"objective": {
+					"active": {},
+					"completion_progress": 4.0,
+					"highlight_next": true,
+					"presentation": {
+						"rows": [
+							{
+								"id": "objective",
+								"label": "perform X, X, Cast, X",
+								"tokens": [
+									"Hold L2 + X",
+									"X",
+									"Release L2",
+									"X"
+								]
+							}
+						]
+					},
+					"prestart": {},
+					"success_steps": [
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"chain_position": 3.0,
+							"endpoint": false,
+							"type": "cast"
+						},
+						{
+							"type": "light"
+						}
+					],
+					"type": "sequence"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"display_name": "Stage 5 — perform X, Cast, X, Cast",
+				"final": false,
+				"id": "stage_5",
+				"objective": {
+					"active": {},
+					"completion_progress": 4.0,
+					"highlight_next": true,
+					"presentation": {
+						"rows": [
+							{
+								"id": "objective",
+								"label": "perform X, Cast, X, Cast",
+								"tokens": [
+									"Hold L2 + X",
+									"Release L2",
+									"Hold L2 + X",
+									"Release L2"
+								]
+							}
+						]
+					},
+					"prestart": {},
+					"success_steps": [
+						{
+							"type": "light"
+						},
+						{
+							"chain_position": 2.0,
+							"endpoint": false,
+							"type": "cast"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"chain_position": 4.0,
+							"endpoint": false,
+							"type": "cast"
+						}
+					],
+					"type": "sequence"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"display_name": "Stage 6 — change school during a 5-hit combo",
+				"final": false,
+				"id": "stage_6",
+				"objective": {
+					"active": {
+						"rejected_switch_invalid": true
+					},
+					"completion_progress": 6.0,
+					"highlight_next": true,
+					"presentation": {
+						"rows": [
+							{
+								"id": "objective",
+								"label": "change school during a 5-hit combo",
+								"tokens": [
+									"X",
+									"X",
+									"SWITCH",
+									"X",
+									"X",
+									"X"
+								]
+							}
+						]
+					},
+					"prestart": {},
+					"success_steps": [
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"chain_position": 2.0,
+							"type": "switch"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						}
+					],
+					"type": "sequence"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/training_area.tscn",
+				"display_name": "Build Heat and Complete a High-Heat Chain",
+				"final": false,
+				"id": "stage_7",
+				"objective": {
+					"active": {
+						"allow_school_switch": true
+					},
+					"completion_progress": 5.0,
+					"highlight_next": false,
+					"presentation": {
+						"rows": [
+							{
+								"id": "heat",
+								"label": "Build Heat to 80"
+							},
+							{
+								"id": "chain",
+								"label": "Perform an XXXXX combo at 80 Heat or higher",
+								"tokens": [
+									"X",
+									"X",
+									"X",
+									"X",
+									"X"
+								]
+							}
+						]
+					},
+					"prestart": {
+						"ignore_unexpected": true
+					},
+					"sequence_row_id": "chain",
+					"success_steps": [
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						},
+						{
+							"type": "light"
+						}
+					],
+					"threshold": 80.0,
+					"type": "heat_guard_sequence"
+				}
+			},
+			{
+				"area_scene": "res://scenes/stages/final_arena.tscn",
+				"display_name": "Stage 9 — Defeat the final Enemy.",
+				"final": true,
+				"free_practice_presentation": {
+					"rows": [
+						{
+							"id": "free_practice",
+							"label": "now you are free"
+						}
+					]
+				},
+				"id": "final_arena",
+				"objective": {
+					"encounter_id": "final_enemy",
+					"presentation": {
+						"rows": [
+							{
+								"id": "objective",
+								"label": "Defeat the final Enemy."
+							}
+						]
+					},
+					"type": "final_enemy"
+				}
+			}
+		],
+		"transition_duration": 1.0
+	},
+	"ui": {
+		"attack_hitbox_visible": true,
+		"cast_feedback_duration": 2.0,
+		"completed_combo_display_duration": 2.0,
+		"developer_overlay_visible": true
+	}
+}

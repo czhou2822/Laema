@@ -1,0 +1,101 @@
+{
+  "head": "921fd1ae207c990070cd279587f5a05ee0fb239c",
+  "engine": {
+    "build": "official",
+    "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+    "hex": 263937,
+    "major": 4,
+    "minor": 7,
+    "patch": 1,
+    "status": "stable",
+    "string": "4.7.1-stable (official)",
+    "timestamp": 0
+  },
+  "geometry": [
+    {
+      "move": "fire_x1",
+      "checks": 1741,
+      "failures": 0,
+      "animation_sha256": "07e3c2b616b98b6dee7a8476a58f6a6e9dbefd446e0480a436db5f05d3a50ced",
+      "source_atlas_sha256": "7bf37e3393201daeae2ad6fc58a0f87f16a79ea37b971983c765a40a4d2fef9d",
+      "fixture_sha256": "6ff9a62c87df14b466caace8135c99af81d73513b16b4afaac2bc34e25ca2c9d",
+      "exit_code": 0
+    },
+    {
+      "move": "fire_x2",
+      "checks": 1236,
+      "failures": 0,
+      "animation_sha256": "95fe76edb92ce6113bfa1e58860d5363145560426e2b6a3d9e1f4d3ac66580ad",
+      "source_atlas_sha256": "39b90fad4e91440d5c5567b3fa56b2b689f94306d4d2a80e36557f0569d83628",
+      "fixture_sha256": "ebb196b9ad63c67b64539e383f633d1e452d8759aa5e044ad1ca634513c622ed",
+      "exit_code": 0
+    },
+    {
+      "move": "fire_x3",
+      "checks": 1337,
+      "failures": 0,
+      "animation_sha256": "4d2ecedc98d4a881078d09a2d7179cc07f5b64620ecfd4bf477385a4bccfe1ad",
+      "source_atlas_sha256": "ba3a1f48162a199530e5ef3d7b3b4f4b16f48d8a8125947b4f4bf233b15ae8c1",
+      "fixture_sha256": "6ff9a62c87df14b466caace8135c99af81d73513b16b4afaac2bc34e25ca2c9d",
+      "exit_code": 0
+    },
+    {
+      "move": "fire_x4",
+      "checks": 1281,
+      "failures": 0,
+      "animation_sha256": "bfc1ee308ac202b4717b472c1306c3d961a9a557359e31c11d08159fd3cecbad",
+      "source_atlas_sha256": "b04247fd0c27e030c8aa5485e2aa7f91579cfcf0d384e1daf7b15144dbc07e09",
+      "fixture_sha256": "6ff9a62c87df14b466caace8135c99af81d73513b16b4afaac2bc34e25ca2c9d",
+      "exit_code": 0
+    },
+    {
+      "move": "fire_x5",
+      "checks": 1341,
+      "failures": 0,
+      "animation_sha256": "83594bbbfeee85cd4f15c573050efd8a157f409dca8943501c40b6d39a73341e",
+      "source_atlas_sha256": "ef9d5a5c78ba2eaaa3b7d6227f4498d5ae3b0f3bf80218a3de495c4d676a1d94",
+      "fixture_sha256": "6ff9a62c87df14b466caace8135c99af81d73513b16b4afaac2bc34e25ca2c9d",
+      "exit_code": 0
+    }
+  ],
+  "ai_baseline": {
+    "checks": 14,
+    "failures": 0,
+    "exit_code": 0
+  },
+  "ai_pressure": {
+    "checks": 44,
+    "failures": 0,
+    "exit_code": 0
+  },
+  "generic_fixture_sha256": "6ff9a62c87df14b466caace8135c99af81d73513b16b4afaac2bc34e25ca2c9d",
+  "x2_fixture_sha256": "ebb196b9ad63c67b64539e383f633d1e452d8759aa5e044ad1ca634513c622ed",
+  "ai_fixture_sha256": "6eb4bc5574fcf7936e75eb15c4096a3f7cde7935c16f185c518b40b9c2882460",
+  "status": "IMPLEMENTATION_REVIEW_COMPLETE_AWAITING_USER_VALIDATION",
+  "source_basis": "Base HEAD plus the five geometry-resource hashes below; no other product changes.",
+  "shared_combat": {
+    "checks": 87,
+    "exit_code": 0,
+    "log": "shared-combat.log"
+  },
+  "native_gym_smoke": {
+    "rendered_process_frames": 300,
+    "test_script": false,
+    "exit_code": 0,
+    "observed_enemy_applied_contacts": 3,
+    "damage_each": 10,
+    "log": "gym-smoke.log"
+  },
+  "visuals": {
+    "native_fixture_capture_count": 96,
+    "mode": "Sought-frame fixtures; not natural play or human feel acceptance.",
+    "reviewed": "Across per-move and final captures, all24 active holds were inspected in both facings. Ordinary AI pressure screenshots inspected separately."
+  },
+  "limits": [
+    "Finite source-pixel measurements and bounded solver probes on Godot4.7.1/this hardware.",
+    "Seeded max Heat is a test precondition, not player-earned progression.",
+    "Existing reaction invincibility can reject fast follow-ups; rules preserved.",
+    "No AI, damage, Impact/Poise, timing, radius, body, source-art or other-school product changes.",
+    "No commit, push, export or live publication; human feel acceptance outstanding."
+  ]
+}

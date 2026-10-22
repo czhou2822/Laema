@@ -12,7 +12,7 @@ game. That is the development target, not a claim that the Enemy is finished.
 ## Run and retry
 
 Open `scenes/gym.tscn` and press **F6**, or select **Laema Dev Portal → Run gym**.
-F5 runs the saved PrototypeArena main scene. Use F6 or Run gym for the Gym. A local command-line
+The current saved F5 main scene is also Gym. Use F6 on PrototypeArena for tutorial play. A local command-line
 run is `godot --path . scenes/gym.tscn`. The separate Fire benchmark scene,
 script and inherited area have been retired and deleted. Tutorial play remains
 available through `scenes/prototype_arena.tscn`; its saved stage is unchanged.
@@ -33,6 +33,7 @@ Controls retain the current implementation:
 | Active-school melee | X | Left mouse |
 | Charge, then release to Cast | L2 | Hold, then release right mouse |
 | Fire parry / hold to block | R1 | Shift |
+| Fire dodge | Circle | No keyboard default |
 | Pause / retry menu | Start | Esc |
 
 School-selection input reaches Player in this scene just as it does in the Arena.
@@ -75,9 +76,14 @@ that interval, once per target. There is no melee contact marker. The optional
 See [ATTACK_STYLES.md](ATTACK_STYLES.md) for scrubbing and keying.
 
 Player Fire X windup/recovery pairs at zero Heat are .21/.51, .24/.51,
-.195/.45, .33/.51 and .45/.63 seconds. Cast total is 1.2 seconds. These contain
-the old Gym 1.5× pace once; neither room multiplies them again. Charging retains
-its previous speed. Native Fire X4/X5 geometry and motion are unchanged.
+.195/.45, .33/.36 and .45/1.10 seconds. X4's daytime candidate totals0.69s,
+replacing only its0.51s recovery; native normalized windows/geometry stay fixed,
+but their real-time duration shortens. X5's retained D is a provisional October22
+agent-tested candidate, base1.55s, not accepted final latency/feel. Cast total is
+1.2 seconds. The unchanged shared baselines already contain the old Gym1.5× pace
+once; D replaces X5 recovery rather than adding a room multiplier. Charging retains
+its previous speed. Native Fire X4/X5 geometry and authored lunge values are
+unchanged; actual timed displacement can differ through pacing and collision.
 
 With Enemy Poise 10 outside its active attack, Fire Impacts 10/20/30/40/50
 produce Levels 1/1/2/3/4. Cast Levels 1–4 use Impacts 10/20/30/40
@@ -87,6 +93,18 @@ the selected duration; nonqualifying damage has no separate hurt animation.
 Current stored duration/distance pairs are .25 s/5 px, .55/10, .85/15, 1.15/20
 and 1.45/25. The user retained this shorter sequence on October 20; the earlier
 October 14 durations remain historical rather than an open conflict. Cast level Impact overrides live in Player Settings / Moves / Cast.
+
+Cast levels5–8 currently use base Impact1 because their overrides are absent.
+Against non-active Enemy Poise10 that gives-9/no qualifying reaction, while Fire
+X5 Impact50 gives40/Level4. Empowerment changes damage, not Impact. These locked
+limitations and fixed reaction protection were not retuned by the overnight work.
+
+The current Might repair reacquires movement/facing lock at actual X/Cast start
+after a Charging-preserved gap; the gaps themselves remain movable. Normal RELEASE
+also stops Charging/depleting progression even when first-wins ignores that Cast,
+without consuming/resetting retained resources. A new full press during hurt can
+still be classified without starting Charging and is not retried by the unchanged
+hold; this remains an implementation/decision seam, not a new hit-rearm rule.
 
 Overnight comparisons, historical policies and their human-acceptance limits are
 preserved in `iterations/2026-10-19-overnight.md` and the morning handoff.
@@ -145,10 +163,15 @@ For the user's comparison, keep one enemy attack case and change one setting:
    lock and interruption must not leave a stuck input/movement lock. Taking a
    hit does not erase an already-running missed-parry reuse penalty.
 
-Status: AWAITING_USER_VALIDATION. Source inspection and scoped whitespace checks
-are not Godot parsing, runtime/controller checks or playtest acceptance. No build,
-automated tests, editor launch, runtime run or test changes were performed for
-this slice.
+Status: AWAITING_USER_VALIDATION. The initial defence slice used source/whitespace
+checks only. Later current-D rendered normal-input observations through October22
+07:19 support held block/control return and the scoped dodge cancellation,
+accounting, wall protection and return-to-fight cases in Implementation Status.
+Current-source R1 tap attempts produced no parry pass; earlier-source parry evidence
+does not clear this version. Physical analog/controller priority, audio, human
+latency/feel remain unverified. The five later existing full headless geometry
+suites completed as supplementary controlled regressions, not primary play or
+controller/parry/AI acceptance. No blanket clearance follows.
 
 ## Combat formula readout
 
@@ -171,8 +194,11 @@ and preserve the last evaluated math. See the GDD for the complete contact rules
 The formula panel is part of **Developer Overlay Visible**, alongside the normal
 telemetry panels. **F4** hides/shows them together while the gym is focused,
 including while paused. The same single switch is in **General → UI & debug**
-in both the editor and in-game Portal. Gameplay Health/Heat/orb/objective UI remains
-visible. The Dev Portal window still uses its separate backtick open/close shortcut.
+in both the editor and in-game Portal. Gameplay Heat/orb/objective UI and the
+target-owned overhead Health label remain visible. Player Health currently exists
+in the hidden developer telemetry, not a separate always-on gameplay control; no
+new Player-health UI was authorized. The Dev Portal window still uses its separate
+backtick open/close shortcut.
 
 Captured values keep updating while the overlay is hidden. Retry gym clears the
 cards and reconnects the Enemy while retaining your shared visibility choice.
@@ -184,6 +210,28 @@ rules are changed by toggling the overlay.
 
 ## Playtest observations
 
+### Daytime candidates — October 22
+
+Current Player C2 (9b705e0d) replaces the rejected input-based dodge handoff with
+a completion-frame final-pose hold, then actual-motion Walk/Idle. Main observed
+no false Walk at a blocked wall, three24-tick/0.4s repeats and immediate permitted
+X afterward. New action/hurt/reset priority and physical dodge rules are unchanged.
+The separately reproduced Enemy-overlap collision-recovery snap is not fixed;
+safe-end and deliberate AI-spacing policies remain open with the user.
+
+Fire projectile child size is now36x27 at Lv1 and72x54 at Lv3. Selected in-flight
+images support larger drawings, not a matched-distance readability or hip-origin/
+point-blank visibility cure. The saved SFX candidate is -6dB internally, with
+original clips/pitches retained. Actual12s Master WAVs show lower recorded RMS and
+fewer encoder-overrange samples; no comfortable-loudness/audition pass is claimed.
+The recorder's optional capture_audio_seconds defaults off and changes no game
+mix. Main also verified an early-quit WAV prefix, not a full requested duration.
+See [daytime progress](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md) and
+[Implementation Status](IMPLEMENTATION_STATUS.md) for exact source/evidence limits.
+All daytime tuning remains candidate state pending user controller acceptance.
+
+### Retained earlier feedback and HUD observations
+
 Retained feedback candidate H lowers direct/DoT anchors by52 pixels (−186/−154),
 Cast-level stays−118. Supervisor actual viewport review supports fresh numbers
 closer to the affected fighter and clear of EventPanel, with initial Player
@@ -192,6 +240,22 @@ and repeated NPC numbers still overlap. No scale/clamp/stacking solution or
 uniform-resolution readability is claimed. Headless110 includes layout-only
 DoT/zero/palette probes; current Gym has no Fire DoT gameplay. Capture-mode68
 and inspected real combat images are separate evidence; human acceptance pending.
+
+The October22 retained cue2 is the existing empowered school-colored square at
+half-size6 local, facingX8/Y-66, lifetime0.45s with the same event/audio/z4. Main's
+both-facing1280x720 images support above-Player ownership, not final art acceptance.
+The Cast-label-over-face/shared-anchor issue remains a morning proposal: the
+suggested-254 offset collided with the current HP row and was cancelled before
+editing FeedbackComponent. No alternative shared anchor or class coupling exists.
+
+The retained HUD candidate adds faint neutral empty-slot rings without altering
+occupied fill/charged outlines. Orb rebuilding detaches old slots before queued
+deletion so the existing overflow flinch no longer measures old/new slot sets
+together. Fresh normal-generation replays support500px native Gym width through
+overflow, full10/eightcharged and consumption/empty states; the4px flinch itself
+is unchanged. Scope/version limits and outstanding checks are in
+[Implementation Status](IMPLEMENTATION_STATUS.md). Supplementary regression
+execution is complete; human acceptance and the listed coverage limits remain.
 
 Keep three consistent uncertainties for this encounter:
 

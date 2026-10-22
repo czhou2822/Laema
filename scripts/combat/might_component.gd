@@ -10,6 +10,8 @@ const Contacts = preload("res://scripts/combat/contact_evaluation.gd")
 signal movement_lock_changed(locked: bool)
 signal active_school_changed(school: StringName)
 signal attack_started(kind: StringName, school: StringName, direction: Vector2)
+signal dodge_started(direction: Vector2)
+signal dodge_finished
 signal empowered_cast_started(school: StringName, direction: Vector2)
 signal cast_failed
 signal cast_attempt_resolved(result: Dictionary)
@@ -19,8 +21,12 @@ enum State {
 	READY,
 	COMBO_ACTIVE,
 	HIT_REACTING,
+	DODGING,
 }
 
+const DODGE_ANIMATION := &"fire_dodge"
+const DODGE_DURATION := 0.4
+const DODGE_COOLDOWN := 0.37
 const SCHOOL_FIRE := &"fire"
 const SCHOOL_WATER := &"water"
 const SCHOOL_AIR := &"air"
@@ -51,6 +57,7 @@ var _sample_time := 0.0
 var _finished_animation: StringName = &""
 var _sampling := false
 var _frame_action_id := 0
+var _dodge_cooldown_remaining := 0.0
 
 
 func configure(
@@ -107,9 +114,10 @@ func contact_step_limit(limit: float) -> float:
 
 
 func advance_contact_clock(delta: float) -> void:
+	_dodge_cooldown_remaining = maxf(_dodge_cooldown_remaining - delta, 0.0)
 	_sync_owner_body_profile()
 	_sample_action_id = 0
-	if _state != State.COMBO_ACTIVE or _current_action.is_empty() or not _animation_player.is_playing() or int(_current_action.get("source_action_id", 0)) != _frame_action_id:
+	if _state not in [State.COMBO_ACTIVE, State.DODGING] or _current_action.is_empty() or not _animation_player.is_playing() or int(_current_action.get("source_action_id", 0)) != _frame_action_id:
 		return
 	_sample_action_id = int(_current_action["source_action_id"])
 	var clock: Animation = _animation_player.get_animation(_animation_player.current_animation)
@@ -120,6 +128,8 @@ func advance_contact_clock(delta: float) -> void:
 	_sampling = false
 	_sync_owner_body_profile()
 	if _current_action.is_empty() or int(_current_action["source_action_id"]) != _sample_action_id:
+		return
+	if _state == State.DODGING:
 		return
 	if _current_action["kind"] != &"light" and not _launch_emitted and _sample_time >= clock.get_marker_time(&"launch"):
 		_launch_emitted = true
@@ -134,6 +144,11 @@ func _sync_owner_body_profile() -> void:
 func finish_contact_sample() -> void:
 	if _current_action.is_empty() or int(_current_action["source_action_id"]) != _sample_action_id:
 		_finished_animation = &""
+		return
+	if _state == State.DODGING:
+		if _finished_animation == DODGE_ANIMATION or _sample_time >= DODGE_DURATION:
+			_finished_animation = &""
+			_end_dodge()
 		return
 	var clock: Animation = _animation_player.get_animation(_animation_player.assigned_animation)
 	if _current_action["kind"] == &"light" and _sample_time >= clock.get_marker_time(&"active_end"):
@@ -150,7 +165,7 @@ func finish_contact_sample() -> void:
 
 
 func try_select_school(school: StringName) -> void:
-	if school == _active_school:
+	if _state == State.DODGING or school == _active_school:
 		return
 	var previous_school := _active_school
 	_active_school = school
@@ -199,6 +214,8 @@ func try_light_attack(direction: Vector2) -> void:
 
 
 func try_cast_trigger(external_block_reason: StringName = &"") -> void:
+	if _state == State.DODGING:
+		return
 	if _is_chainable_action() and not _window_open:
 		var buffer_progress := get_normalized_attack_progress()
 		if _is_buffer_zone(buffer_progress):
@@ -276,6 +293,70 @@ func try_cast_trigger(external_block_reason: StringName = &"") -> void:
 	_start_action(normal_action)
 
 
+func try_dodge(direction: Vector2, normal_movement_speed: float) -> bool:
+	if _active_school != SCHOOL_FIRE or _actions_suppressed or _dodge_cooldown_remaining > 0.0:
+		return false
+	if _state not in [State.READY, State.COMBO_ACTIVE]:
+		return false
+	if not _current_action.is_empty():
+		var kind: StringName = _current_action["kind"]
+		var clock: Animation = _animation_player.get_animation(_animation_player.assigned_animation)
+		if kind == &"light":
+			if _current_action["school"] != SCHOOL_FIRE or _animation_player.current_animation_position >= clock.get_marker_time(&"active_start"):
+				return false
+		elif not String(kind).begins_with("cast_") or _launch_emitted:
+			return false
+	_clear_buffered_request(&"dodge")
+	_resolve_active_cast_attempt(&"dodge")
+	for action in [_current_action, _pending_action]:
+		if action.has("commit_id"):
+			_magic.discard_committed_cast(int(action["commit_id"]), &"dodge")
+			_resolve_cast_attempt(int(action.get("attempt_id", -1)), &"interrupted", {"reason": &"dodge", "commit_id": int(action["commit_id"])})
+	if _input_combo.is_active():
+		_publish_outcome(&"chain_terminated", {"reason": &"dodge"})
+		_input_combo.timeout_reset()
+	_magic.interrupt_charging_for_dodge()
+	_animation_player.stop()
+	_state = State.DODGING
+	_current_action = {
+		"kind": &"dodge",
+		"school": SCHOOL_FIRE,
+		"direction": Vector2.LEFT if direction.x < 0.0 else Vector2.RIGHT,
+		"source_action_id": _allocate_source_action_id(),
+		"motion_elapsed": 0.0,
+		"movement_speed": maxf(normal_movement_speed, 0.0),
+	}
+	_pending_action = {}
+	_window_open = false
+	_launch_emitted = false
+	_finished_animation = &""
+	movement_lock_changed.emit(true)
+	_animation_player.play(DODGE_ANIMATION)
+	_animation_player.speed_scale = 1.0
+	_animation_player.advance(0.0)
+	dodge_started.emit(_current_action["direction"])
+	_publish_outcome(&"dodge_started", {"direction": _current_action["direction"], "duration": DODGE_DURATION})
+	return true
+
+
+func is_dodging() -> bool:
+	return _state == State.DODGING
+
+
+func cancel_dodge() -> void:
+	_dodge_cooldown_remaining = 0.0
+	if is_dodging():
+		_end_dodge(true)
+
+
+func _end_dodge(interrupted := false) -> void:
+	_animation_player.stop()
+	_dodge_cooldown_remaining = 0.0 if interrupted else DODGE_COOLDOWN
+	_enter_ready()
+	dodge_finished.emit()
+	_publish_outcome(&"dodge_ended", {"interrupted": interrupted, "cooldown": _dodge_cooldown_remaining})
+
+
 func can_begin_defence(allow_melee_cancel := false) -> bool:
 	if _actions_suppressed or _state == State.HIT_REACTING:
 		return false
@@ -307,7 +388,7 @@ func cancel_melee_for_defence() -> void:
 
 
 func can_handle_pressure() -> bool:
-	return not _actions_suppressed and _state != State.HIT_REACTING
+	return not _actions_suppressed and _state not in [State.HIT_REACTING, State.DODGING]
 
 
 func release_movement_for_orb_state() -> void:
@@ -320,6 +401,8 @@ func set_effect_actions_suppressed(suppressed: bool) -> void:
 
 
 func cancel_for_player_hit() -> void:
+	if is_dodging():
+		cancel_dodge()
 	_clear_buffered_request(&"player_hit", false)
 	_resolve_active_cast_attempt(&"player_hit")
 	if _animation_player != null:
@@ -540,6 +623,7 @@ func _start_action(action: Dictionary) -> void:
 	_pending_action = {}
 	_window_open = false
 	_launch_emitted = false
+	movement_lock_changed.emit(true)
 	var move: Dictionary = _config["moves"][String(action["move_id"])]
 	if action["kind"] == &"light":
 		_current_action["style"] = Style.capture(move, _config["combat"])
@@ -633,6 +717,9 @@ func _on_animation_finished(animation_name: StringName) -> void:
 	if _sampling:
 		_finished_animation = animation_name
 		return
+	if is_dodging() and animation_name == DODGE_ANIMATION:
+		_end_dodge()
+		return
 	# Casts use school-specific native clips; assigned_animation survives completion.
 	if _current_action.is_empty() or animation_name != _animation_player.assigned_animation or _state != State.COMBO_ACTIVE:
 		return
@@ -713,6 +800,7 @@ func _enter_ready() -> void:
 
 
 func reset_for_stage() -> void:
+	cancel_dodge()
 	var had_chain: bool = _input_combo != null and _input_combo.is_active()
 	_clear_buffered_request(&"stage_transition", true, false)
 	_resolve_active_cast_attempt(&"stage_transition", false)
@@ -786,6 +874,9 @@ func _is_functional_school(school: StringName) -> bool:
 
 func _refresh_action_speed() -> void:
 	if _animation_player != null:
+		if is_dodging():
+			_animation_player.speed_scale = 1.0
+			return
 		var duration := float(_config["combat"]["attack_duration"])
 		var clock: Animation = _animation_player.get_animation(_animation_player.current_animation if _animation_player.current_animation != &"" else &"attack_clock")
 		if _current_action.get("kind") == &"light" and _current_action.has("style"):
@@ -795,6 +886,11 @@ func _refresh_action_speed() -> void:
 
 
 func consume_attack_body_motion(delta: float) -> Vector2:
+	if is_dodging():
+		var dodge_elapsed := float(_current_action["motion_elapsed"])
+		var dodge_step := minf(maxf(delta, 0.0), maxf(DODGE_DURATION - dodge_elapsed, 0.0))
+		_current_action["motion_elapsed"] = dodge_elapsed + dodge_step
+		return Vector2(_current_action["direction"]) * float(_current_action["movement_speed"]) * dodge_step
 	if _state != State.COMBO_ACTIVE or _current_action.get("kind") != &"light" or not _animation_player.is_playing():
 		return Vector2.ZERO
 	var profile: Dictionary = _current_action["style"]
@@ -890,7 +986,7 @@ func is_hit_reacting() -> bool:
 
 
 func get_active_start_phase() -> float:
-	if _current_action.is_empty():
+	if _current_action.is_empty() or is_dodging():
 		return 0.0
 	var clock: Animation = _animation_player.get_animation(_animation_player.current_animation)
 	return clock.get_marker_time(&"active_start") / clock.length

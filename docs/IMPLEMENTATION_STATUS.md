@@ -1,5 +1,385 @@
 # Implementation Status
 
+## Daytime candidate — October 22, C2 source and bounded rendered evidence
+
+Status: `AWAITING_USER_VALIDATION`. HEAD921fd1ae plus dirty work is not a tested
+commit or publication identity. Main's isolated Godot4.7.1 rendered bound-input
+runs, source snapshots and captures are recorded in the
+[daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md); the
+[iteration report](iterations/2026-10-22-fire-combat-daytime/REPORT.md) is Main-owned.
+Source review/agent play is not user controller, numerical, art or comfort acceptance.
+
+| Current daytime unit | Bounded source change | SHA-256 prefix |
+| --- | --- | --- |
+| `scripts/player/player.gd` | C2: retain native dodge ownership and final pose for the completion physics frame, then actual-motion locomotion; new action/school/hurt/stage/reset precedence retained | `9b705e0d` |
+| `scripts/combat/spell_projectile.gd` | Fire child drawing1.5x baseline, retaining level ratio; Lv1 36x27/Lv3 72x54, collider/origin/flight/lifetime unchanged | `cc1101fc` |
+| `config/attack_styles/fire_x4.tres` | Windup0.33/recovery0.36, base0.69s; only recovery changed from0.51 | `90f963de` |
+| `config/prototype_combat.json` | Saved SFX volume_db0->-6 only; original clips/pitches/ducking and Ambient/BGM preserved | `ddab1126` |
+| `tools/tests/overnight_fire_playtest.gd` | Optional Master WAV capture0..30s, default off; bounded2s ring/2048-frame drain, actual-rate stereo PCM16, loss/timing/cleanup metrics | `63409fd5` |
+
+X5 remains D0.45/1.10 (base1.55s,57aef5ab). The other retained overnight repairs
+and evidence below are preserved. Daytime source changes add no new art, AI
+spacing policy, physical dodge safe-end rule, Cast-origin relocation or visual afterlife.
+
+- **X4 comparison:** baseline and C1 pure uncharged0.65s-cadence chains accepted
+  and landed all five X, ending P100/E150/queue5. X5 started3.543s versus3.697s
+  (about0.154s earlier). Native normalized windows are unchanged, but shorter
+  phase duration also shortens their wall time; Enemy-relative timing is not fixed.
+- **C2 dodge:** C1's stationary-wall Dodge->Walk->Idle flash was rejected. Fresh
+  C2 shows final Dodge pose->Idle with no false Walk in inspected wall frames.
+  Three repeated wall dodges each lasted24 physics ticks/0.4s; the following X
+  was accepted at2.521s during cooldown. The continued encounter won P60. Main
+  additionally reports13 requested pressure-trial dodges,10 executions and three
+  player_hit interruptions, ending P70/E200; this is not all-case invulnerability
+  or controller/feel clearance. The later C2 connection list was empty, unlike C1.
+- **Cast/audio:** selected in-flight Lv1/Lv3 drawings are larger, but ranges were
+  not matched; hip-level origin and zero-flight point-blank disappearance remain.
+  Main recorded exact12s/48000Hz/stereo PCM16 WAVs,576000 frames, with no discarded,
+  invalid or unwritten frames. Encoder-observed over-full-scale samples fell
+  3500->2 and recorded RMS -12.7066->-18.3606dBFS at SFX-6. This is mix/headroom
+  evidence, not hardware clipping, SFX isolation or audition/comfort acceptance.
+  The true early-quit probe saved48128 frames/1.00267s with a valid uninterrupted
+  header/prefix and duration_complete=false; it is not a completed30s capture.
+
+Open: full120-unit baseline dodge travel can be followed by about28.14 units of
+collision-restoration recovery when ending inside Enemy; C2 presentation does not
+fix it. Human safe-end and AI-spacing decisions remain pending. Charging/hurt
+failures and other prior waivers remain; small unseeded fight results establish
+no survival superiority. This synchronization used static checks only, no new
+Godot/tests/audition/export, and no commit/push or blanket source/authority clearance.
+
+### Final daytime evidence addendum — October 22
+
+Main completed all five C2 controlled headless suites, explicitly waiting for
+each process: **7,116 checks, zero assertion failures, all five exits0**. These
+forced-preparation regressions are supplementary, not primary rendered play or
+human acceptance. Retained shutdown warnings are ObjectDB/resource counts:
+
+| Suite | Checks | Shutdown warnings |
+| --- | --- | --- |
+| Fire X1 | 1741 | 14 / 10 |
+| Fire X2 | 1236 | 14 / 10 |
+| Fire X3 | 1337 | 24 / 15 |
+| Fire X4 | 1185 | 22 / 14 |
+| Fire X5 | 1617 | 22 / 14 |
+
+C3 tested only X5 recovery0.85 instead of D1.10. Fresh matched first-five/full
+Charging/release-at4.5s rendered trials both landed all five X, P100, charged5
+and empowered Lv5. C3 launched5.116s and contacted INVINCIBLE0; D launched5.350s
+and contacted APPLIED13. Main observed the earlier projectile arriving during
+X5 reaction invulnerability, rejected C3 and restored exact D57aef5ab. No rule
+workaround was added; the four-document candidate representation remains C2.
+
+The [daytime report](iterations/2026-10-22-fire-combat-daytime/REPORT.md) records
+the comparison; [lunch source identity](iterations/2026-10-22-fire-combat-daytime/LUNCH_SOURCE_IDENTITY.json)
+records Main's11:44 check of692 root/runtime paths with zero mismatches after
+rollback. The prior [bounded implementation review](iterations/2026-10-22-fire-combat-daytime/IMPLEMENTATION_REVIEW.md)
+applies to restored C2 only, not whole-tree/submission or human feel acceptance.
+This addendum records existing evidence; it ran no new tests/runtime and makes
+no commit/push or publication-success claim. Status remains AWAITING_USER_VALIDATION.
+
+## Retained overnight candidate — October 22, rendered evidence through 07:19 HKT
+
+Historical source/evidence snapshot: the daytime entry above supersedes its
+Player identity and adds the bounded daytime candidates without erasing this record.
+
+Status: `AWAITING_USER_VALIDATION`; final supplementary regression execution is
+complete, with the scope/limits below. These
+are provisional agent-tested implementation/tuning/presentation candidates, not
+user-verified design acceptance, final numerical/art direction or submission
+clearance. Root HEAD921fd1ae plus dirty work is not a tested-tree identity; use
+the isolated run records and per-file identities in the
+[overnight ledger](iterations/2026-10-21-fire-combat-overnight/PROGRESS.md).
+Only the five deltas below and directly stale current-state text are synchronized
+here; unrelated dirty work and all accepted waivers remain unchanged.
+
+[Final source identity](iterations/2026-10-21-fire-combat-overnight/FINAL_SOURCE_IDENTITY.json)
+reports root/tested-runtime agreement across690 baseline non-document paths and
+only the five retained product deltas versus the frozen post-dodge baseline.
+This is not a clean-Git, all-scenes-tested or human-accepted identity claim.
+
+| Retained delta / source | Overnight readback | SHA-256 prefix |
+| --- | --- | --- |
+| `config/attack_styles/fire_x5.tres` | D: windup0.45/recovery1.10, base1.55s; native timing/geometry, lunge and locked values unchanged | `57aef5ab` |
+| `scripts/combat/might_component.gd` | Common _start_action reasserts movement_lock_changed(true); actual X/Cast reacquires lock after a preserved gap; gap unlocks unchanged | `f43a49a3` |
+| `scripts/combat/magic_component.gd` | Normal initialized RELEASE stops Charging/depleting updater flags before arbitration; retained resources/startup/dodge rearm unchanged | `8d18216e` |
+| `scripts/ui/prototype_hud.gd` | Faint ten empty-slot rings plus immediate orb-slot detachment before queue_free; occupied drawing, authored layout and overflow flinch unchanged | `1914f762` |
+| `scripts/player/player.gd` | Existing empowered square: half-size6 local, facingX8/Y-66,0.45s; original event/school color/z4/audio unchanged | `bd68f162` |
+
+**Timing comparison:** with the same repaired Might, current-source A0.95 cohort
+won80/70/90HP, with6 APPLIED13 and1 INVINCIBLE0 among7 valid high-level Cast
+contacts. D won80/90/80HP, with7/7 APPLIED13. First release-to-launch was about
+0.960s versus0.831s: D adds about0.13s waiting. The small unseeded cohorts do not
+establish causal survival/difficulty superiority or human latency preference.
+Natural press-during-hurt/no_marked_orbs failures occurred in both cohorts; D does
+not repair that seam or guarantee high-Heat Enemy protection clearance. A remains
+a restorable comparison; B/C were reverted. Earlier-source results are not
+relabeled as current-source D evidence.
+
+**Motion/Heat evidence:** earlier same-Might A practice, entered through normal
+Stage7 UI, earned Heat4->36->68->100 over48 normal Fire Lv1 Casts, with Player100
+and stable position around275. No resources/positions/AI/clocks were injected.
+The authored short target refilled itself. Only X3 connected at the selected
+spacing; this is not all-five-hit Stage7 completion or high-Heat Pikeman protection.
+At genuinely earned100, normal0.43s X input accepted all five positions/full35
+lunge. A preserved gap allowed about30 movement; a normal Lv2 Cast from that gap
+reacquired lock, opposite movement during Cast moved0, and fresh post-Cast movement
+returned about30. Held/fresh dodge produced two24-tick0.4s executions without repeat.
+These observations support the technical lock repair; they do not transfer all
+high-Heat coverage to the later D timing or establish physical analog priority.
+
+**Fresh-D practice addendum (PROGRESS07:38):** exact retained D/Mightf43 in
+`final-d-practice-01/session58100_1058658` completed48 normal Fire Lv1 Casts over
+three120s ordinary-input batches, Heat4->36->68->100, no failed Cast, Player100,
+stable X around275 and unchanged known UI counter5; maximum edge lateness18/17/19ms.
+At naturally earned100, no-Charging0.43s cadence accepted X1–X5/full35 lunge
+(max13ms); a preserved gap moved30, normal Lv2 Cast from the gap locked movement
+against held opposite input, and normal post-Cast movement returned30 (max16ms).
+Two fresh24-tick/0.4s dodges showed no held-repeat and ignored X. Only X3 hits the
+legacy short target: this is neither Stage7 completion nor high-Heat Enemy
+protection, physical analog or incoming-Pikeman validation. Exit0 retained13
+ObjectDB/9 resource warnings. Archived `final-d-practice-01/` evidence supports
+fresh D rather than borrowed A coverage; earlier07:19 cohort labels stay historical
+and no human/submission clearance follows.
+
+**Current-D encounter checks:** held front block produced two2.5-chip hits and
+control returned to movement/X and a completed same encounter. Dodge cancelled
+windup before active_start, ignored an active-frame request, cleared charged
+coverage/progress while retaining the generated orb, and required normal release
+before a new hold. A prelaunch normal Lv1 commitment consumed1 once, was discarded
+by dodge with no refund/projectile, and retained its existing Heat accounting.
+Postlaunch recovery ignored Circle while the actual Cast remained playing. A real
+wall contact during active dodge resolved INVINCIBLE0 while Player position/Health
+stayed unchanged; the same encounter later finished through normal pressure.
+The earlier late wall attempt was hit before dodge and is not an iframe pass.
+Current-source R1 tap attempts produced no PARRIED result; parry remains uncleared.
+
+**Final rendered addendum:** current-D cmd24 won80HP with two empowered Lv7 Casts
+and one no_marked_orbs failure after opening hurt; known native Portal setup
+counter2 stayed stable. Cmd26 after normal Retry won80HP left-facing with two
+empowered Lv5/one normal Lv4 and no failed Cast. The run-only hitbox-Off choice
+from cmd24 did not survive Retry, so cmd26 is not a second debug-hidden pass.
+The rendered process closed normally07:19 HKT, exit0 with existing13 ObjectDB/
+9 resources-in-use warnings. No blanket input/audio/human-feel clearance is inferred.
+
+**Later current-source parry addendum:** unchanged retained D/helper1547 in
+`final-d-parry-01/session30520_767456`, after ordinary Retry, demonstrated one
+pause-assisted normal R1 tap from an observed windup triangle/spear preparation:
+engine PARRIED/health_delta0 with Player100 unchanged; actual full frames
+cmd_5_frame_000026/000027/000029 show PARRY->PARRIED->READY. This supports one
+current-source input path, not human reaction/controller usability or blanket
+clearance; the earlier five missed taps and prior-cutoff uncleared statements
+remain historical evidence. The same encounter continued through normal X/
+Charging/Casts to Player70/Enemy0 in cmd6, max22ms/zero external inputs, retaining
+one no_marked_orbs failure. Startup idle defeat before command1 is excluded from
+active-play/difficulty claims; ordinary Retry2 restored the authored100/200 start.
+Evidence archive: `final-d-parry-01/`; closure/archive was pending at this handoff,
+so no new warning-free exit or acceptance claim is made.
+
+**Presentation checks:** actual1280x720 both-facing cue2 images support on-Player
+placement clear of the intervening weapon/Enemy; the first96bd placement is
+superseded, not a final art choice. Fresh HUD1914 ordinary-generation runs retained
+500px native width through overflow instead of old740, and showed ten stored/eight
+charged, eight-orb consumption, leftovers and empty rings. The transient20-child
+minimum-size explanation is source-derived, not a live child-count probe. Normal
+inputs and visible frames are agent evidence, not human-controller/feel acceptance.
+
+**Final supplementary regressions:** after rendered closure, Main ran the five
+existing full suites sequentially on retained D/Mightf43. These include forced
+initial positions, Heat, animation seeks and input-path branches with controlled
+preparation. They are not earlier fixtures-only counts, primary rendered play,
+human controller evidence or AI/feel/parry/high-Heat protection acceptance.
+
+| Existing full suite / report | Checks | Assertion failures | Exit |
+| --- | ---: | ---: | ---: |
+| [Fire X1](iterations/2026-10-21-fire-combat-overnight/final-regressions/fire_x1/report.json) | 1741 | 0 | 0 |
+| [Fire X2](iterations/2026-10-21-fire-combat-overnight/final-regressions/fire_x2/report.json) | 1236 | 0 | 0 |
+| [Fire X3](iterations/2026-10-21-fire-combat-overnight/final-regressions/fire_x3/report.json) | 1337 | 0 | 0 |
+| [Fire X4](iterations/2026-10-21-fire-combat-overnight/final-regressions/fire_x4/report.json) | 1281 | 0 | 0 |
+| [Fire X5](iterations/2026-10-21-fire-combat-overnight/final-regressions/fire_x5/report.json) | 1617 | 0 | 0 |
+| Total | 7212 | 0 | all0 |
+
+Reports/stdout/stderr are retained under final-regressions/. Shutdown warnings
+persist there with varying counts; exit0/zero assertions is not warning-free
+teardown or blanket runtime clearance. Execution is complete, not human acceptance.
+
+**Open boundaries / morning findings:**
+
+- Physical analog-stick/controller priority, audio audition and
+  human latency/feel/presentation acceptance remain pending. Some normal-input
+  checks were pause-assisted; no human reaction-performance claim follows.
+- A new full Charging press during hurt is semantically classified before the
+  eligibility gate, may not start the updater, and is not retried by an unchanged
+  hold; later release can fail no_marked_orbs. Incoming-hit removal does not itself
+  stop already-running Charging or establish a new rearm policy. No rule was changed.
+- Cast levels5–8 intentionally retain missing-override fallback Impact1. Against
+  non-active Enemy Poise10, applied damage can produce no reaction; fixed Level4
+  protection remains1.15s. Neither Impact nor protection was retuned.
+- Legacy target/body versus tall Fire blade compatibility remains spacing-specific;
+  X3 can hit at closer spacing. No target resize/query widening was implemented.
+- Player Health remains developer telemetry when F4 is hidden. The accepted recent
+  event-confirmation lane remains an implementation gap: its existing widget only
+  receives completed chains. No new Health UI/event formatter/history was added.
+- Cast-level text can overlap Pikeman's face/weapon. The shared-offset-254 proposal
+  overlapped the HP row and was cancelled before editing; FeedbackComponent remains
+  `834925ff`. Shared anchor/other actor-size handling remains a morning proposal.
+- Some exits report21 ObjectDB/13 resources versus the pre-existing13/9, including
+  a completed-job Arena quit217s after its last capture. No encoder was in flight
+  there; identities/cause remain unknown. Do not call shutdown clean or claim that
+  completed-job quit universally prevents the warning. No teardown cleanup occurred.
+
+Evidence source: PROGRESS.md through the07:20 rendered addendum and07:24 final
+controlled-regression entry, plus the named isolated sessions/reports. The elapsed
+overnight window is not claimed as continuous active gameplay time.
+The normal-input recorder remains support-only (`1547b225`), with timestamps,
+state observations and bounded private-image encoding; telemetry never schedules
+actions. Heavy-capture late/coalesced trials are not precision-input/iframe passes.
+This documentation update ran read-only source/hash/diff/link checks only, not
+Godot, builds, tests or new playtests. No commit/push/publication or blanket
+canonical/source/submission clearance is claimed.
+
+## Fire dodge first-slice integration — October 21
+
+Status: `AWAITING_USER_VALIDATION`. The human approved the complete Fire-only
+contract in Combat, then verified the exact GDD synchronization and approved U's
+bounded implementation plan. The previous missing-Combat-approval blocker is
+superseded. The recurring wait was deleted when the implementation gate was
+presented; the chat remains open. No duplicate design or artwork approval was
+requested.
+
+Might now owns Circle fresh-press dodge, locked direction, its fixed0.4-second
+native clock and0.37-second post-completion cooldown. Movement alone applies
+0.4 seconds of captured normal movement speed, including from idle; wall-blocked
+motion is consumed. Temporary two-way enemy-body exceptions preserve contact
+query layers and restore only this dodge's owned exceptions. Player's existing
+Fire body/feet profile and Sprite.flip_h are retained. Entity/HealthResolver
+include active dodge in both ordinary-hit and pre-clash invincibility rejection;
+the existing spent-contact rule remains.
+
+Pre-active Fire X and pre-launch Cast can be cancelled; active/recovery X and
+post-launch Cast reject Circle without queuing. Starting dodge resets the combo,
+clears pending/buffered actions through interruption outcomes, and clears charged
+coverage/partial progress without removing queue entries or resetting front
+lifetime. Already committed Cast orbs are neither refunded nor spent again.
+Source trace, not runtime evidence: with8 stored/5 charged, commitment leaves3;
+dodging before launch discards that commitment and leaves those3 stored orbs.
+All gameplay action input/pressure dispatch is suppressed during dodge; a held
+Charging input must release before a later press can charge. That rearm release
+does not trigger a stale/empty Cast. A previously held successful-parry latch is
+reconciled on exit without replaying ignored defence presses. Pause uses the
+existing scene lifetime; stage lock/death/reset restore collision/input state.
+
+Exact integration files and outcomes:
+
+- `scripts/combat/might_component.gd`: action/cancellation/cooldown, native clock
+  and existing body-motion provider; observational dodge start/end outcomes.
+- `scripts/combat/combat_controller.gd`: input/pressure gates, lifecycle forwarding
+  and release rearm; remains a thin facade.
+- `scripts/combat/magic_component.gd`: non-consuming Charging interruption/rearm.
+- `scripts/player/movement_controller.gd`: stick-first/facing fallback, normal
+  speed capture and owned enemy-body exception cleanup.
+- `scripts/player/player.gd`: input context, art/facing/lifecycle forwarding and
+  Player-specific invincibility extension.
+- `scripts/entities/entity.gd` and `scripts/entities/health_resolver.gd`: shared
+  invincibility query and its ordinary/pre-clash consumers.
+- `scripts/prototype/prototype_arena.gd`: Circle binding only; no keyboard mapping
+  or change to existing L2/right-mouse Charging, R1 defence or menu controls.
+- `scenes/player/player.tscn` and new `config/attack_animations/fire_dodge.tres`:
+  private-library registration and12 discrete grid cells over0.4 seconds, with no
+  attack geometry, launch, damage or Heat scaling. Only the original idle-exit
+  atlas is used; normal locomotion resumes through the existing path.
+- `assets/prototype/player/fire_sword_shield_v01/dodge_v01/asset-manifest.json`
+  and `PROVENANCE.md`: current binding/authority/evidence, with all4 PNGs unchanged.
+- `docs/GAME_DESIGN.md`, `docs/TECH_ARCHITECTURE.md` and this status: approved
+  rules, selected ownership and candidate/validation boundaries respectively.
+
+Initial integration checks: source/diff/caller inspection; whitespace checks; manifest
+JSON parsing and4 PNG SHA-256 comparisons;12 native grid-cell bounds,0.4-second
+length and Player-library binding inspection; all referenced scene/clip resource
+paths exist. Fourteen protected-file hashes match the pre-integration tree,
+including current Fire X1–X5/Cast clips, Player settings, Enemy/projectile/defence/
+HitReaction/contact-evaluator source, ATTACK_STYLES and project.godot. `gdlint`
+was not found on PATH; no parser/linter was run by that initial integration. It
+ran no Godot/editor/import/compiler/build/tests/runtime and created no tests or
+publication. Main's later scoped rendered dodge observations are recorded in the
+October22 entry above; other geometry tests below do not validate this dodge.
+
+User validation: open `scenes/gym.tscn` and run F6. Select Fire, press Circle from
+idle and while moving in both directions; neutral stick uses facing, opposite
+stick during dodge cannot turn it, and travel lasts0.4 seconds. Hold/repress Circle
+during dodge/cooldown: no repeat or queue; a fresh press after the0.37-second
+cooldown works. Dodge through the Enemy and against walls: pass bodies, remain on
+the floor, stop at walls while the animation/protection continues, and restore
+ordinary collision afterward. Confirm no damage/reaction during dodge and normal
+damage afterward. Check X before/after active_start, Cast before/after launch,
+stored-orb/Charging preservation/rearm, ignored school/X/defence inputs, pause,
+Retry/stage reset and another-school rejection. Inspect normal idle/run return.
+Risks: physical-controller timing, body exceptions near/inside an Enemy at exit,
+grid/ground-contact continuity and interruption/reset behavior remain unverified.
+Artwork detail/center-of-mass limits from the approved source package remain.
+
+## Fire X1–X5 blade alignment — October 21
+
+Status: bounded implementation/combined review passed; `AWAITING_USER_VALIDATION`.
+Only the five native Animation position/target key blocks changed. Current art,
+Sprite keys, UIDs, length/markers, radius3.5, body/floor, AI and all combat
+settings are preserved. Source origin(224,348) is distinct from feet(224,400).
+
+| Move / detailed evidence | Active holds | Implementer headless / rendered | Supervisor final-tree |
+| --- | ---: | ---: | ---: |
+| [X1](iterations/2026-10-21-fire-hitbox-polish/x1-candidate/README.md) | 7 | 1741 / 1592 | 1741 |
+| [X2](iterations/2026-10-21-fire-hitbox-polish/x2-candidate/README.md) | 4 | 1236 / 1093 | 1236 |
+| [X3](iterations/2026-10-21-fire-hitbox-polish/x3-candidate/README.md) | 5 | 1337 / 1369 | 1337 |
+| [X4](iterations/2026-10-21-fire-hitbox-polish/x4-candidate/README.md) | 4 (3 cells) | 1281 / 1136 | 1281 |
+| [X5](iterations/2026-10-21-fire-hitbox-polish/x5-candidate/README.md) | 4 | 1341 / 1192 | 1341 |
+
+Listed positive runs exit0 with no failed assertions/reported engine errors.
+Independent source-pixel truth, negative pristine fixtures,2688 real point probes,
+both facings/Heat0/100, held/boundary samples, late/rejected/spent/cancelled
+contacts and40 ordinary input scenarios are retained. The detailed evidence
+distinguishes manual fixtures from ordinary input and implementer from supervisor.
+An early isolated fixture shutdown failure is recorded, not counted as clean.
+
+Supervisor-run final-tree checks additionally pass shared combat87, AI baseline14,
+rendered input pressure44, and a300-frame native Gym smoke run without a testscript
+(three Enemy contacts at10damage). Pressure suppresses attacks under existing
+reaction/wait rules; after stopping, all tested cases resume three attack cycles.
+High-Heat reaction invincibility may consume a contact for0damage; no gameplay
+workaround was introduced. No persistent AI deadlock was demonstrated.
+
+[Final files, hashes, evidence and human validation](iterations/2026-10-21-fire-hitbox-polish/IMPLEMENTATION-REPORT.md).
+The narrow TDD Fire paragraph was synchronized by Combat. Product/helper are
+frozen; no commit, push, export or publication. Human feel/transition acceptance
+and submission clearance remain open.
+
+## Pikeman approach/attack diagnosis — October 21
+
+Status: `PRESSURE_SUPPRESSION_REPRODUCED`; `NO_PERSISTENT_DEADLOCK` in the
+tested cases on saved source `921fd1ae`, using an isolated Godot
+4.7.1 project/profile. No AI, range, timing, collision, geometry or tuning change
+was justified or made. The actual Gym completes at least three autonomous
+approach/windup/active/recovery/wait cycles with a passive Player on either side;
+each case applies three saved 10-damage contacts (100 to 70 HP). Real scene Retry,
+ordinary input-driven Player approach, and autonomous recovery after an injected
+HealthEvent interrupts a natural windup are also covered. The interruption is a
+controlled fixture, not evidence of an input-driven Player attack.
+
+Repeated ordinary Fire X/XXXXX inputs on both sides reproduce interruption-driven
+suppression, not a demonstrated AI scheduling fault. X1's value0 gives the
+existing player-zero-advantage Level1 reaction; natural committed windups can be
+cancelled before they hit. All pressure cases resume at least three full attacks
+and waits after inputs stop. No armour, AI, timing or range workaround was added.
+
+Rendered Compatibility/OpenGL captures show native thrust/return poses and
+pressure/interruption in both directions. Focused checks pass 14 baseline
+headless, 31 baseline rendered, 50 repeated-X/five-X, 22 standalone-X1 and 20
+natural-windup X1 assertions, each with exit0 and no reported errors.
+This is bounded agent-run evidence, not user acceptance,
+active-editor reproduction or overall gameplay clearance. Retained report,
+logs and captures: [Pikeman AI phase](iterations/2026-10-21-fire-hitbox-polish/pikeman-ai/README.md).
+Combat reviewed the first phase and authorized a separate X2-only geometry
+iteration; other Fire geometry remains outside that iteration.
+
 ## Parried Enemy Level 1 reaction — October 21
 
 Status: `AWAITING_USER_VALIDATION`. The user approved adding the existing Level1

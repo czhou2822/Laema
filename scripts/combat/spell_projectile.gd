@@ -3,6 +3,9 @@ extends Area2D
 
 signal impact(target: Entity, contact_point: Vector2, payload: Dictionary)
 
+const FIRE_VISUAL_BASE_SCALE := 1.5
+const FIRE_VISUAL_SCALE_STEP := 0.5 # Level 3 stays twice Level 1 in each dimension.
+
 const SCHOOL_COLORS := {
 	&"fire": Color("ff493d"),
 	&"water": Color("3a96ff"),
@@ -80,6 +83,11 @@ func _update_visual_color() -> void:
 		var secondary_color: Color = SCHOOL_COLORS[secondary_school]
 		display_color = primary_color.lerp(secondary_color, secondary_weight)
 	visual.color = display_color
+	var visual_size := 1.0
+	if primary_school == &"fire":
+		visual_size = FIRE_VISUAL_BASE_SCALE * (1.0 + FIRE_VISUAL_SCALE_STEP * float(clampi(int(_payload["primary_level"]), 1, 8) - 1))
+	# Scale the drawing only; the Area2D and its collision shape stay unchanged.
+	visual.scale = Vector2.ONE * visual_size
 
 
 func _load_audio_stream(path: String) -> AudioStream:

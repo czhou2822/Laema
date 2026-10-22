@@ -1,0 +1,6343 @@
+{
+	"checks": 22,
+	"engine": {
+		"build": "official",
+		"hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+		"hex": 263937,
+		"major": 4,
+		"minor": 7,
+		"patch": 1,
+		"status": "stable",
+		"string": "4.7.1-stable (official)",
+		"timestamp": 0
+	},
+	"events": [
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 139.000183105469,
+			"enemy": "(59.00018, 20.92416)",
+			"enemy_hp": 200.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (1536.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-80.0, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 0,
+			"velocity": "(-90.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 137.500183105469,
+			"enemy": "(57.50018, 20.92416)",
+			"enemy_hp": 200.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (1536.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-80.0, 0.0)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 0,
+			"velocity": "(-90.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "capture_single_x_left_approach",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 137.500183105469,
+			"enemy": "(57.50018, 20.92416)",
+			"enemy_hp": 200.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (1536.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-80.0, 0.0)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 22,
+			"velocity": "(-90.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 115.000205993652,
+			"enemy": "(38.00018, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-77.00002, 0.0)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 35,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 115.000205993652,
+			"enemy": "(38.00018, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-77.00002, 0.0)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 6,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "capture_single_x_left_hit_reacting",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 115.000205993652,
+			"enemy": "(38.00018, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-77.00002, 0.0)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/hurt_right_sheet.png",
+			"tick": 35,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 117.500225067139,
+			"enemy": "(40.5002, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-77.00002, 0.0)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.004744, -0.999989)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 16,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 117.500225067139,
+			"enemy": "(40.5002, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-77.00002, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.004744, -0.999989)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 29,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 117.500225067139,
+			"enemy": "(40.5002, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-77.00002, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.004744, -0.999989)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 30,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 117.500225067139,
+			"enemy": "(40.5002, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-77.00002, 0.0)",
+			"player_action_id": 2,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.004744, -0.999989)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 30,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 114.500247955322,
+			"enemy": "(40.5002, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-74.00005, 0.0)",
+			"player_action_id": 2,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.605228762182535,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.004744, -0.999989)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 42,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 113.000247955322,
+			"enemy": "(39.0002, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-74.00005, 0.0)",
+			"player_action_id": 2,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.004744, -0.999989)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 79,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 113.000247955322,
+			"enemy": "(39.0002, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-74.00005, 0.0)",
+			"player_action_id": 2,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.004744, -0.999989)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 43,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 115.500267028809,
+			"enemy": "(41.50022, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-74.00005, 0.0)",
+			"player_action_id": 2,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 60,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 115.500267028809,
+			"enemy": "(41.50022, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-74.00005, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 73,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 115.500267028809,
+			"enemy": "(41.50022, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-74.00005, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 74,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 115.500267028809,
+			"enemy": "(41.50022, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-74.00005, 0.0)",
+			"player_action_id": 3,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 74,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 112.696716308594,
+			"enemy": "(41.50022, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-71.1965, 0.0)",
+			"player_action_id": 3,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.523809536298116,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 84,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 108.000289916992,
+			"enemy": "(37.00022, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-71.00007, 0.0)",
+			"player_action_id": 3,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 123,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 108.000289916992,
+			"enemy": "(37.00022, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-71.00007, 0.0)",
+			"player_action_id": 3,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 87,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 110.500308990479,
+			"enemy": "(39.50024, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-71.00007, 0.0)",
+			"player_action_id": 3,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.000949, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 104,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 110.500308990479,
+			"enemy": "(39.50024, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-71.00007, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.000949, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 117,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 110.500308990479,
+			"enemy": "(39.50024, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-71.00007, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.000949, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 118,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 110.500308990479,
+			"enemy": "(39.50024, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-71.00007, 0.0)",
+			"player_action_id": 4,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.000949, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 118,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 107.500331878662,
+			"enemy": "(39.50024, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-68.00009, 0.0)",
+			"player_action_id": 4,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.000949, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 167,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 107.500331878662,
+			"enemy": "(39.50024, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-68.00009, 0.0)",
+			"player_action_id": 4,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.000949, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 131,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 110.000350952148,
+			"enemy": "(42.00026, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-68.00009, 0.0)",
+			"player_action_id": 4,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 148,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 110.000350952148,
+			"enemy": "(42.00026, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-68.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 161,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 110.000350952148,
+			"enemy": "(42.00026, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-68.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 162,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 110.000350952148,
+			"enemy": "(42.00026, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-68.00009, 0.0)",
+			"player_action_id": 5,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 162,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 107.000373840332,
+			"enemy": "(42.00026, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-65.00011, 0.0)",
+			"player_action_id": 5,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.57142858505249,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 173,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 104.000373840332,
+			"enemy": "(39.00026, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-65.00011, 0.0)",
+			"player_action_id": 5,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 211,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 104.000373840332,
+			"enemy": "(39.00026, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-65.00011, 0.0)",
+			"player_action_id": 5,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 175,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 106.500392913818,
+			"enemy": "(41.50028, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-65.00011, 0.0)",
+			"player_action_id": 5,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 192,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 106.500392913818,
+			"enemy": "(41.50028, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-65.00011, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 205,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 106.500392913818,
+			"enemy": "(41.50028, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-65.00011, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 206,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 106.500392913818,
+			"enemy": "(41.50028, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-65.00011, 0.0)",
+			"player_action_id": 6,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 206,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 103.500389099121,
+			"enemy": "(41.50028, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-62.00011, 0.0)",
+			"player_action_id": 6,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 255,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 103.500389099121,
+			"enemy": "(41.50028, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-62.00011, 0.0)",
+			"player_action_id": 6,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 219,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 106.000408172607,
+			"enemy": "(44.0003, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-62.00011, 0.0)",
+			"player_action_id": 6,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 236,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 106.000408172607,
+			"enemy": "(44.0003, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-62.00011, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 249,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 106.000408172607,
+			"enemy": "(44.0003, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-62.00011, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 250,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 106.000408172607,
+			"enemy": "(44.0003, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-62.00011, 0.0)",
+			"player_action_id": 7,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 250,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 103.00040435791,
+			"enemy": "(44.0003, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-59.00011, 0.0)",
+			"player_action_id": 7,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 299,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 103.00040435791,
+			"enemy": "(44.0003, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-59.00011, 0.0)",
+			"player_action_id": 7,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 263,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 105.500423431396,
+			"enemy": "(46.50032, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-59.00011, 0.0)",
+			"player_action_id": 7,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 280,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 105.500423431396,
+			"enemy": "(46.50032, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-59.00011, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 293,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 105.500423431396,
+			"enemy": "(46.50032, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-59.00011, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 294,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 105.500423431396,
+			"enemy": "(46.50032, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-59.00011, 0.0)",
+			"player_action_id": 8,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 294,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 102.500419616699,
+			"enemy": "(46.50032, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-56.0001, 0.0)",
+			"player_action_id": 8,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 343,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 102.500419616699,
+			"enemy": "(46.50032, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-56.0001, 0.0)",
+			"player_action_id": 8,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 307,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 105.000438690186,
+			"enemy": "(49.00034, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-56.0001, 0.0)",
+			"player_action_id": 8,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 324,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 105.000438690186,
+			"enemy": "(49.00034, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-56.0001, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 337,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 105.000438690186,
+			"enemy": "(49.00034, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-56.0001, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 338,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 105.000438690186,
+			"enemy": "(49.00034, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-56.0001, 0.0)",
+			"player_action_id": 9,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 338,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 102.000434875488,
+			"enemy": "(49.00034, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-53.0001, 0.0)",
+			"player_action_id": 9,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 387,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 102.000434875488,
+			"enemy": "(49.00034, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-53.0001, 0.0)",
+			"player_action_id": 9,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 351,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 104.500453948975,
+			"enemy": "(51.50035, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-53.0001, 0.0)",
+			"player_action_id": 9,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 368,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 104.500453948975,
+			"enemy": "(51.50035, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-53.0001, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 381,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 104.500453948975,
+			"enemy": "(51.50035, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-53.0001, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 382,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 104.500453948975,
+			"enemy": "(51.50035, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-53.0001, 0.0)",
+			"player_action_id": 10,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 382,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 101.500450134277,
+			"enemy": "(51.50035, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-50.0001, 0.0)",
+			"player_action_id": 10,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 431,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 101.500450134277,
+			"enemy": "(51.50035, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-50.0001, 0.0)",
+			"player_action_id": 10,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 395,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 104.000469207764,
+			"enemy": "(54.00037, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-50.0001, 0.0)",
+			"player_action_id": 10,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 412,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 104.000469207764,
+			"enemy": "(54.00037, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-50.0001, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 425,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 104.000469207764,
+			"enemy": "(54.00037, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-50.0001, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 426,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 104.000469207764,
+			"enemy": "(54.00037, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-50.0001, 0.0)",
+			"player_action_id": 11,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 426,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 101.000465393066,
+			"enemy": "(54.00037, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-47.00009, 0.0)",
+			"player_action_id": 11,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 475,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 101.000465393066,
+			"enemy": "(54.00037, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-47.00009, 0.0)",
+			"player_action_id": 11,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 439,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 103.500484466553,
+			"enemy": "(56.50039, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-47.00009, 0.0)",
+			"player_action_id": 11,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 456,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 103.500484466553,
+			"enemy": "(56.50039, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-47.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 469,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 103.500484466553,
+			"enemy": "(56.50039, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-47.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 470,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 103.500484466553,
+			"enemy": "(56.50039, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-47.00009, 0.0)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 470,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"case": "single_x_left_summary",
+			"enemy_hp": 90.0,
+			"player_hp": 100.0,
+			"presses": 12
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 100.696910858154,
+			"enemy": "(56.50039, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-44.19652, 0.0)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.523809536298116,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 0,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 100.500480651855,
+			"enemy": "(56.50039, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-44.00009, 0.0)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 65817019994,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 198189260094,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 519,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 100.500480651855,
+			"enemy": "(56.50039, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(-44.00009, 0.0)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.006641, -0.999978)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 3,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 103.000499725342,
+			"enemy": "(59.00041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-44.00009, 0.0)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 20,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 103.000499725342,
+			"enemy": "(59.00041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-44.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 44,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 71.5004997253418,
+			"enemy": "(27.50041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "WINDUP",
+			"player": "(-44.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 66,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "capture_single_x_left_pressure_stopped_windup",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 71.5004997253418,
+			"enemy": "(27.50041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "WINDUP",
+			"player": "(-44.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 582,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.5004997253418,
+			"enemy": "(27.50041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(-44.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 198189260094,
+				"attacker_move": "final_enemy_attack",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 20,
+				"level": 2,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": false,
+				"receiver_active": false,
+				"receiver_id": 65817019994,
+				"receiver_move_impact": 0,
+				"receiver_poise": 0,
+				"value": 20
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 612,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.5004997253418,
+			"enemy": "(27.50041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(-44.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 88,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "capture_single_x_left_pressure_stopped_active",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.5004997253418,
+			"enemy": "(27.50041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(-44.00009, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 612,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "capture_single_x_left_pressure_stopped_return",
+			"chain_position": 0,
+			"clock": 0.816666654745737,
+			"distance": 77.2581062316895,
+			"enemy": "(27.50041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (0.0, 1024.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(-49.75769, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 631,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 80.5914573669434,
+			"enemy": "(27.50041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-53.09105, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 104,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.5005531311035,
+			"enemy": "(27.50041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (1536.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-54.00014, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 120,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.5005531311035,
+			"enemy": "(27.50041, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (1536.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-54.00014, 0.0)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 153,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 2,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 71.0747337341309,
+			"enemy": "(17.00042, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "WINDUP",
+			"player": "(-54.07432, -0.074726)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 161,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 2,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.0747337341309,
+			"enemy": "(17.00042, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 2,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(-54.07432, -0.074726)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 198189260094,
+				"attacker_move": "final_enemy_attack",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 20,
+				"level": 2,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": false,
+				"receiver_active": false,
+				"receiver_id": 65817019994,
+				"receiver_move_impact": 0,
+				"receiver_poise": 0,
+				"value": 20
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 729,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 2,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.0747337341309,
+			"enemy": "(17.00042, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 2,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(-54.07432, -0.074726)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 191,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 80.1656913757324,
+			"enemy": "(17.00042, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 2,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-63.16528, -0.075981)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 221,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.0747871398926,
+			"enemy": "(17.00042, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (1536.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-64.07437, -0.075981)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 240,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.0747871398926,
+			"enemy": "(17.00042, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (1536.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-64.07437, -0.075981)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002846, -0.999996)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 268,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 3,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 71.0675792694092,
+			"enemy": "(6.500418, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "WINDUP",
+			"player": "(-64.56716, -0.075994)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002372, -0.999997)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 276,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 3,
+			"attack_range": 72,
+			"case": "single_x_left",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.0675792694092,
+			"enemy": "(6.500418, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 3,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(-64.56716, -0.075994)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 198189260094,
+				"attacker_move": "final_enemy_attack",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 20,
+				"level": 2,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": false,
+				"receiver_active": false,
+				"receiver_id": 65817019994,
+				"receiver_move_impact": 0,
+				"receiver_poise": 0,
+				"value": 20
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002372, -0.999997)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 844,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 3,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.0675792694092,
+			"enemy": "(6.500418, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 3,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(-64.56716, -0.075994)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002372, -0.999997)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 306,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 80.1585369110107,
+			"enemy": "(6.500418, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 3,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-73.65812, -0.075994)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002372, -0.999997)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 336,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.0676326751709,
+			"enemy": "(6.500418, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(-74.56721, -0.075994)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002372, -0.999997)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 360,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_left_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.0676326751709,
+			"enemy": "(6.500418, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-74.56721, -0.075994)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002372, -0.999997)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 370,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"active": 3,
+			"case": "single_x_left_pressure_stopped",
+			"completed_waits": 3,
+			"hp_after": 70.0,
+			"hp_before": 100.0,
+			"recoveries": 3,
+			"wait_durations": [
+				0.816666666666667,
+				0.783333333333333,
+				0.566666666666667
+			],
+			"waits": 3,
+			"windups": 3
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "capture_single_x_left_pressure_stopped_end",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.0676326751709,
+			"enemy": "(6.500418, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(-1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(-74.56721, -0.075994)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.002372, -0.999997)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 908,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 196.428245544434,
+			"enemy": "(-78.5, 20.93361)",
+			"enemy_hp": 200.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(117.9282, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 0,
+			"velocity": "(90.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 194.928245544434,
+			"enemy": "(-77.0, 20.93361)",
+			"enemy_hp": 200.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(117.9282, -0.001762)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 0,
+			"velocity": "(90.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "capture_single_x_right_approach",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 194.928245544434,
+			"enemy": "(-77.0, 20.93361)",
+			"enemy_hp": 200.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(117.9282, -0.001762)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 934,
+			"velocity": "(90.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 172.428268432617,
+			"enemy": "(-57.5, 20.93361)",
+			"enemy_hp": 190.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(114.9283, -0.001762)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 947,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 172.428268432617,
+			"enemy": "(-57.5, 20.93361)",
+			"enemy_hp": 190.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(114.9283, -0.001762)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 5,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "capture_single_x_right_hit_reacting",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 172.428268432617,
+			"enemy": "(-57.5, 20.93361)",
+			"enemy_hp": 190.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(114.9283, -0.001762)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/hurt_right_sheet.png",
+			"tick": 947,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 174.928318023682,
+			"enemy": "(-60.00005, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(114.9283, -0.001762)",
+			"player_action_id": 1,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 14,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 174.928318023682,
+			"enemy": "(-60.00005, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(114.9283, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 27,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 174.928318023682,
+			"enemy": "(-60.00005, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(114.9283, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 28,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 174.928318023682,
+			"enemy": "(-60.00005, 20.92416)",
+			"enemy_hp": 190.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(114.9283, -0.001762)",
+			"player_action_id": 2,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 28,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 171.928340911865,
+			"enemy": "(-60.00005, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(111.9283, -0.001762)",
+			"player_action_id": 2,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 991,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 171.928340911865,
+			"enemy": "(-60.00005, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(111.9283, -0.001762)",
+			"player_action_id": 2,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 41,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 174.428359985352,
+			"enemy": "(-62.50007, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(111.9283, -0.001762)",
+			"player_action_id": 2,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 58,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 174.428359985352,
+			"enemy": "(-62.50007, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(111.9283, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 71,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 174.428359985352,
+			"enemy": "(-62.50007, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(111.9283, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 72,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 174.428359985352,
+			"enemy": "(-62.50007, 20.92416)",
+			"enemy_hp": 180.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(111.9283, -0.001762)",
+			"player_action_id": 3,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 72,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 171.428382873535,
+			"enemy": "(-62.50007, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(108.9283, -0.001762)",
+			"player_action_id": 3,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1035,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 171.428382873535,
+			"enemy": "(-62.50007, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(108.9283, -0.001762)",
+			"player_action_id": 3,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 85,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 173.928375244141,
+			"enemy": "(-65.00006, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(108.9283, -0.001762)",
+			"player_action_id": 3,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 102,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 173.928375244141,
+			"enemy": "(-65.00006, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(108.9283, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 115,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 173.928375244141,
+			"enemy": "(-65.00006, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(108.9283, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 116,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 173.928375244141,
+			"enemy": "(-65.00006, 20.92416)",
+			"enemy_hp": 170.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(108.9283, -0.001762)",
+			"player_action_id": 4,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 116,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 170.928398132324,
+			"enemy": "(-65.00006, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(105.9283, -0.001762)",
+			"player_action_id": 4,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1079,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 170.928398132324,
+			"enemy": "(-65.00006, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(105.9283, -0.001762)",
+			"player_action_id": 4,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 129,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 173.428359985352,
+			"enemy": "(-67.50002, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(105.9283, -0.001762)",
+			"player_action_id": 4,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 146,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 173.428359985352,
+			"enemy": "(-67.50002, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(105.9283, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 159,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 173.428359985352,
+			"enemy": "(-67.50002, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(105.9283, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 160,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 173.428359985352,
+			"enemy": "(-67.50002, 20.92416)",
+			"enemy_hp": 160.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(105.9283, -0.001762)",
+			"player_action_id": 5,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 160,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 170.428382873535,
+			"enemy": "(-67.50002, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(102.9284, -0.001762)",
+			"player_action_id": 5,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1123,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 170.428382873535,
+			"enemy": "(-67.50002, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(102.9284, -0.001762)",
+			"player_action_id": 5,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 173,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 172.928344726563,
+			"enemy": "(-69.99998, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(102.9284, -0.001762)",
+			"player_action_id": 5,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 190,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 172.928344726563,
+			"enemy": "(-69.99998, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(102.9284, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 203,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 172.928344726563,
+			"enemy": "(-69.99998, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(102.9284, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 204,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 172.928344726563,
+			"enemy": "(-69.99998, 20.92416)",
+			"enemy_hp": 150.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(102.9284, -0.001762)",
+			"player_action_id": 6,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 204,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 169.928367614746,
+			"enemy": "(-69.99998, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(99.92838, -0.001762)",
+			"player_action_id": 6,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1167,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 169.928367614746,
+			"enemy": "(-69.99998, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(99.92838, -0.001762)",
+			"player_action_id": 6,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 217,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 172.428329467773,
+			"enemy": "(-72.49995, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(99.92838, -0.001762)",
+			"player_action_id": 6,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.013282, -0.999912)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 234,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 172.428329467773,
+			"enemy": "(-72.49995, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(99.92838, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.013282, -0.999912)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 247,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 172.428329467773,
+			"enemy": "(-72.49995, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(99.92838, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.013282, -0.999912)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 248,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 172.428329467773,
+			"enemy": "(-72.49995, 20.92416)",
+			"enemy_hp": 140.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(99.92838, -0.001762)",
+			"player_action_id": 7,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.013282, -0.999912)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 248,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 169.428352355957,
+			"enemy": "(-72.49995, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(96.92841, -0.001762)",
+			"player_action_id": 7,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.013282, -0.999912)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1211,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 169.428352355957,
+			"enemy": "(-72.49995, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(96.92841, -0.001762)",
+			"player_action_id": 7,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.013282, -0.999912)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 261,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 171.928314208984,
+			"enemy": "(-74.99991, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(96.92841, -0.001762)",
+			"player_action_id": 7,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 278,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 171.928314208984,
+			"enemy": "(-74.99991, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(96.92841, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 291,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 171.928314208984,
+			"enemy": "(-74.99991, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(96.92841, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 292,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 171.928314208984,
+			"enemy": "(-74.99991, 20.92416)",
+			"enemy_hp": 130.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(96.92841, -0.001762)",
+			"player_action_id": 8,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 292,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 168.928337097168,
+			"enemy": "(-74.99991, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(93.92843, -0.001762)",
+			"player_action_id": 8,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1255,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 168.928337097168,
+			"enemy": "(-74.99991, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(93.92843, -0.001762)",
+			"player_action_id": 8,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00759, -0.999971)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 305,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 171.428298950195,
+			"enemy": "(-77.49987, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(93.92843, -0.001762)",
+			"player_action_id": 8,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 322,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 171.428298950195,
+			"enemy": "(-77.49987, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(93.92843, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 335,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 171.428298950195,
+			"enemy": "(-77.49987, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(93.92843, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 336,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 171.428298950195,
+			"enemy": "(-77.49987, 20.92416)",
+			"enemy_hp": 120.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(93.92843, -0.001762)",
+			"player_action_id": 9,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 336,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 168.428321838379,
+			"enemy": "(-77.49987, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(90.92845, -0.001762)",
+			"player_action_id": 9,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1299,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 168.428321838379,
+			"enemy": "(-77.49987, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(90.92845, -0.001762)",
+			"player_action_id": 9,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.001898, -0.999998)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 349,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 170.928283691406,
+			"enemy": "(-79.99983, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(90.92845, -0.001762)",
+			"player_action_id": 9,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 366,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 170.928283691406,
+			"enemy": "(-79.99983, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(90.92845, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 379,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 170.928283691406,
+			"enemy": "(-79.99983, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(90.92845, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 380,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 170.928283691406,
+			"enemy": "(-79.99983, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(90.92845, -0.001762)",
+			"player_action_id": 10,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 380,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 168.481872558594,
+			"enemy": "(-79.99983, 20.92416)",
+			"enemy_hp": 110.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(88.48204, -0.001762)",
+			"player_action_id": 10,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.003795, -0.999993)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 389,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 161.92830657959,
+			"enemy": "(-73.99983, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(87.92847, -0.001762)",
+			"player_action_id": 10,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.018972, -0.99982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 1343,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 161.92830657959,
+			"enemy": "(-73.99983, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(87.92847, -0.001762)",
+			"player_action_id": 10,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.018972, -0.99982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 393,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 164.428268432617,
+			"enemy": "(-76.49979, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(87.92847, -0.001762)",
+			"player_action_id": 10,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.009487, -0.999955)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 410,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 164.428268432617,
+			"enemy": "(-76.49979, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(87.92847, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.009487, -0.999955)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 423,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 164.428268432617,
+			"enemy": "(-76.49979, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(87.92847, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.009487, -0.999955)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 424,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 164.428268432617,
+			"enemy": "(-76.49979, 20.92416)",
+			"enemy_hp": 100.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(87.92847, -0.001762)",
+			"player_action_id": 11,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.009487, -0.999955)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 424,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 161.428291320801,
+			"enemy": "(-76.49979, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(84.9285, -0.001762)",
+			"player_action_id": 11,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.009487, -0.999955)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1387,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 161.428291320801,
+			"enemy": "(-76.49979, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(84.9285, -0.001762)",
+			"player_action_id": 11,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.009487, -0.999955)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 437,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 163.928253173828,
+			"enemy": "(-78.99976, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(84.9285, -0.001762)",
+			"player_action_id": 11,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 454,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 163.928253173828,
+			"enemy": "(-78.99976, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(84.9285, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 467,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_input",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 163.928253173828,
+			"enemy": "(-78.99976, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(84.9285, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 468,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 163.928253173828,
+			"enemy": "(-78.99976, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(84.9285, -0.001762)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.0476190487543742,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 468,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"case": "single_x_right_summary",
+			"enemy_hp": 90.0,
+			"player_hp": 100.0,
+			"presses": 12
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 160.928276062012,
+			"enemy": "(-78.99976, 20.92416)",
+			"enemy_hp": 90.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.605228762182535,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 0,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 160.928276062012,
+			"enemy": "(-78.99976, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.609506845474243,
+			"playing": false,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1737700154900,
+				"attacker_move": "fire_x1",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 10,
+				"level": 1,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": true,
+				"receiver_active": false,
+				"receiver_id": 1862556196017,
+				"receiver_move_impact": 0,
+				"receiver_poise": 10,
+				"value": 0
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1431,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 160.928276062012,
+			"enemy": "(-78.99976, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "HIT_REACTING",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.618300657821637,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.0, -1.0)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 1,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 1,
+			"clock": 0.0,
+			"distance": 163.428237915039,
+			"enemy": "(-81.49972, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 12,
+			"player_hp": 100.0,
+			"player_move": "fire_x1",
+			"player_progress": 0.840522883686364,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 18,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 163.428237915039,
+			"enemy": "(-81.49972, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (1536.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.005693, -0.999984)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 67,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 83.9282394647598,
+			"enemy": "(-1.999719, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.009013, -0.999959)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 120,
+			"velocity": "(90.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 71.9282388687134,
+			"enemy": "(10.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "WINDUP",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00593, -0.999982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 129,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "capture_single_x_right_pressure_stopped_windup",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 71.9282388687134,
+			"enemy": "(10.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "WINDUP",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 100.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00593, -0.999982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 1559,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.9282388687134,
+			"enemy": "(10.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1862556196017,
+				"attacker_move": "final_enemy_attack",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 20,
+				"level": 2,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": false,
+				"receiver_active": false,
+				"receiver_id": 1737700154900,
+				"receiver_move_impact": 0,
+				"receiver_poise": 0,
+				"value": 20
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00593, -0.999982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 1589,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.9282388687134,
+			"enemy": "(10.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00593, -0.999982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 152,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "capture_single_x_right_pressure_stopped_active",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.9282388687134,
+			"enemy": "(10.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(81.92852, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00593, -0.999982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 1589,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 1,
+			"attack_range": 72,
+			"case": "capture_single_x_right_pressure_stopped_return",
+			"chain_position": 0,
+			"clock": 0.816666654745737,
+			"distance": 77.685845375061,
+			"enemy": "(10.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (0.0, 1024.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(87.68613, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00593, -0.999982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 1608,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.0191965103149,
+			"enemy": "(10.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 1,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(91.01948, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00593, -0.999982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 168,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.9282922744751,
+			"enemy": "(10.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(91.92857, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.00593, -0.999982)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 195,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 2,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 71.4282932281494,
+			"enemy": "(20.50028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "WINDUP",
+			"player": "(91.92857, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 90.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.009013, -0.999959)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 203,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 2,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.4282932281494,
+			"enemy": "(20.50028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 2,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(91.92857, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1862556196017,
+				"attacker_move": "final_enemy_attack",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 20,
+				"level": 2,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": false,
+				"receiver_active": false,
+				"receiver_id": 1737700154900,
+				"receiver_move_impact": 0,
+				"receiver_poise": 0,
+				"value": 20
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.009013, -0.999959)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 1684,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 2,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 71.4282932281494,
+			"enemy": "(20.50028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 2,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(91.92857, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.009013, -0.999959)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 233,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 2,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.616666666666666,
+			"distance": 73.5495166778564,
+			"enemy": "(20.50028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 2,
+			"frame_rect": "[P: (1536.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(94.0498, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.009013, -0.999959)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 240,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 80.519250869751,
+			"enemy": "(20.50028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 2,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(101.0195, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.009013, -0.999959)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 263,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 81.4283466339111,
+			"enemy": "(20.50028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(101.9286, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(-0.009013, -0.999959)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 306,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 3,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 70.9283466339111,
+			"enemy": "(31.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "WINDUP",
+			"player": "(101.9286, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 80.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006167, -0.999981)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 314,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 3,
+			"attack_range": 72,
+			"case": "single_x_right",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 70.9283466339111,
+			"enemy": "(31.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 3,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(101.9286, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"reaction": {
+				"active_contribution": 0,
+				"attacker_id": 1862556196017,
+				"attacker_move": "final_enemy_attack",
+				"calculated": true,
+				"clash": false,
+				"eligible": true,
+				"incoming_impact": 20,
+				"level": 2,
+				"outcome": "APPLIED",
+				"player_tie": false,
+				"player_zero_advantage": false,
+				"receiver_active": false,
+				"receiver_id": 1737700154900,
+				"receiver_move_impact": 0,
+				"receiver_poise": 0,
+				"value": 20
+			},
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006167, -0.999981)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 1795,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 3,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.5,
+			"distance": 70.9283466339111,
+			"enemy": "(31.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 3,
+			"frame_rect": "[P: (768.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(101.9286, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006167, -0.999981)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 344,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 3,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.766666654745737,
+			"distance": 75.7768573760986,
+			"enemy": "(31.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 3,
+			"frame_rect": "[P: (2304.0, 512.0), S: (768.0, 512.0)]",
+			"phase": "ACTIVE",
+			"player": "(106.7771, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": true,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006167, -0.999981)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 360,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 80.0193042755127,
+			"enemy": "(31.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 3,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "IDLE",
+			"player": "(111.0196, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006167, -0.999981)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+			"tick": 374,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "single_x_right_pressure_stopped",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 80.9284000396729,
+			"enemy": "(31.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (2304.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(111.9287, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006167, -0.999981)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+			"tick": 399,
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"active": 3,
+			"case": "single_x_right_pressure_stopped",
+			"completed_waits": 3,
+			"hp_after": 70.0,
+			"hp_before": 100.0,
+			"recoveries": 3,
+			"wait_durations": [
+				0.45,
+				0.716666666666667,
+				0.416666666666667
+			],
+			"waits": 3,
+			"windups": 3
+		},
+		{
+			"attack_id": 0,
+			"attack_range": 72,
+			"case": "capture_single_x_right_pressure_stopped_end",
+			"chain_position": 0,
+			"clock": 0.0,
+			"distance": 80.9284000396729,
+			"enemy": "(31.00028, 20.92416)",
+			"enemy_hp": 80.0,
+			"facing": "(1.0, 0.0)",
+			"frame_action_id": 0,
+			"frame_rect": "[P: (0.0, 0.0), S: (768.0, 512.0)]",
+			"phase": "APPROACH",
+			"player": "(111.9287, -0.001762)",
+			"player_action_id": 0,
+			"player_hp": 70.0,
+			"player_move": "",
+			"player_progress": 0.0,
+			"playing": false,
+			"slides": [
+				{
+					"collider": "/root/Gym/StageAreas/GymArea/Floor",
+					"normal": "(0.006167, -0.999981)"
+				}
+			],
+			"texture": "res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+			"tick": 1850,
+			"velocity": "(0.0, 0.0)"
+		}
+	],
+	"failures": [],
+	"limits": "Actual Gym physics and BT; no AI, collision, timing, damage or geometry overrides. Side reversal is fixture positioning only. Pressure uses ordinary rising-edge X input; baseline includes one labeled injected HealthEvent interruption.",
+	"mode": "repeated_fire_input"
+}

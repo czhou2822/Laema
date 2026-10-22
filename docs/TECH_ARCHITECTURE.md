@@ -9,14 +9,18 @@ Current Fire visual amendment — October 21: X1/X4/X5 reference transparent
 R05/R02/R04 derivatives in `fire_sword_shield_v01/overnight_v04/`, containing
 8/3/7 fixed 448px cells. X4 maps its six existing keys to cells0/0/0/1/2/2; X5
 selects R04 poses1/2/3/4/6/7/9. X2/X3 retain v03. Existing FIRE_ART_ROOT selects
-the same body/registration/facing profile without a script edit. Only three
-texture paths and X4 region values change; Animation IDs/UIDs, every key time,
-clocks/markers, all AttackCast tracks and move settings remain. Anchor(224,400),
+the same body/registration/facing profile without a script edit. That art-only
+amendment changed three texture paths and X4 region values; it preserved Animation
+IDs/UIDs, key times, clocks/markers, AttackCast tracks and move settings. Anchor(224,400),
 offset(0,-124), root2/Sprite0.5, all prior PNGs and Idle/Walk/Hurt/Cast remain.
 Generated cutouts are derived artwork, not pixel-identical extraction. Exact
-transforms/phase maps are in `art/preparation/2026-10-21-fire-v01/`. No Godot
-import/editor/runtime/build/tests were run. Pose/query agreement and transitions
-await user validation; the existing X2 forward-art/backward-query gap remains.
+transforms/phase maps are in `art/preparation/2026-10-21-fire-v01/`. That art-only
+step had no Godot validation. The subsequent October 21 Fire X1–X5 alignment pass
+corrects only AttackCast position/target key data against the current visible
+blades, including X2's forward poses. Artwork, Sprite keys, active timing and
+radius 3.5 remain unchanged. Independent Godot 4.7.1 checks and viewport inspection
+support this candidate's alignment; see the [bounded implementation review](iterations/2026-10-21-fire-hitbox-polish/supervisor-review.md).
+Human feel/transition acceptance and game-wide clearance remain open.
 
 <a id="scope-and-selected-decisions"></a>
 
@@ -43,6 +47,14 @@ The [complete pre-consolidation TDD](history/2026-10-20-tdd-housekeeping/sources
 preserves amendments, alternatives, exact older evidence and waivers. Consolidation
 alone asserted neither a clean tree, remote publication nor new runtime evidence.
 The later collision amendment's focused evidence is recorded separately below.
+
+October22 daytime source basis is HEAD921fd1ae plus the intentionally dirty tree,
+not a clean or tested commit identity. The current bounded candidate uses Player
+9b705e0d (C2), Fire projectilecc1101fc, X4 style90f963de, SFX JSONddab1126 and
+opt-in recorder63409fd5. X5 D57aef5ab and the other retained overnight work remain.
+See [daytime progress](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md) and
+Implementation Status for isolated run identities and limitations. All daytime
+tuning/presentation remains candidate state pending user controller acceptance.
 
 <a id="implemented-codebase-map-and-postflight-basis"></a>
 <a id="implemented-ownership"></a>
@@ -127,6 +139,14 @@ completion. Leftover substeps cannot advance a replacement action. School change
 affect future actions without consuming chain/buffer capacity. Magic's pressure
 preservation, not queue occupancy, determines between-action timeout/movement.
 
+The October22 retained Might candidate reasserts movement_lock_changed(true) in
+the common _start_action path before move lookup/playback. Thus every actual
+X/Cast start reacquires the existing Movement lock even when COMBO_ACTIVE survived
+an unlocked gap. Existing finish/READY paths still unlock; queued starts merely
+reassert true. Movement remains the only mover and its motion consumer is unchanged.
+This repairs consumed-but-unapplied lunge after preserved gaps without changing
+the FSM, input windows, captured facing/style, lunge values or dodge path.
+
 Native Animations own sprite frames, geometry and active bounds. Player X phase
 durations map around optional pacing-only timing_split (fallback active_start)
 and scale once with Heat. That split emits no hit. Cast uses its primary-school
@@ -135,6 +155,94 @@ than the legacy attack_clock label; an owned paused action still exposes progres
 MovementController remains the sole Player body mover. It consumes predicted
 lunge through collision, consumes blocked motion and discards cancelled remainder.
 Push scale changes qualifying reaction distance only, not eligibility or duration.
+
+The daytime Fire X4 candidate is windup0.33/recovery0.36 (base0.69s), replacing
+recovery0.51 only. Player Settings/attack_styles supplies moves.fire_x4; the
+existing phase-speed consumer shortens playback after timing_split0.70, including
+late active frames and the real-time input window. Native keys/geometry, normalized
+windows, lunge and push are unchanged. X5 can start0.15/Heat-multiplier seconds
+earlier; this does not guarantee unchanged timing relative to the Enemy.
+
+Fire X5's current provisional D Resource is windup0.45/recovery1.10 (base1.55s),
+captured through Player Settings/attack_styles into moves.fire_x5. Its native
+length1, timing_split0.60 and active0.36..0.80 remain unchanged. Positive recovery
+duration controls native0.60..1.00, including late active frames; phase speed is
+Heat multiplier times native span divided by captured duration. Cast retains its
+shared1.2s base and native launch0.24. D's low-Heat comparison and added latency
+are scoped agent evidence, not accepted feel or high-Heat protection clearance.
+
+### Fire dodge — October 21
+
+The user verified the exact GDD synchronization and approved this bounded
+implementation plan. Might owns the Fire-only dodge action, its fixed 0.4-second
+native Animation clock, locked direction and post-completion 0.37-second cooldown.
+Combat remains the input/resource facade; Movement remains the only Player body
+mover. There is no additional component, global owner or second movement timer.
+
+Arena binds Circle through a fresh-press `dodge` action. Player supplies the
+controller's horizontal stick direction, with neutral stick falling back to
+Movement's facing, and captures current normal movement speed. Might's existing
+body-motion provider delivers 0.4 seconds of that speed over the dodge. Movement
+consumes blocked displacement, retains wall/floor collision and temporarily adds
+body-pair exceptions against existing enemy entities. It restores only exceptions
+owned by this dodge; query/damage layers and authored body profiles do not change.
+
+Might accepts cancellation of a committed Fire X strictly before native
+active_start, or a Cast before its once-only launch. Active/recovery X and
+post-launch Cast ignore Circle without buffering. Existing stage/death, reaction,
+suppression and defence commitments are not new dodge-cancellation paths. Starting
+dodge ends the current input-combo and clears pending/buffered actions through
+their existing interruption outcomes. Cast commitments already consumed their
+orbs: discard cancelled commitments, never consume or refund them again, and
+preserve unconsumed FIFO entries and existing Heat accounting.
+
+Magic clears charged coverage and partial progress without changing queue order
+or the front orb's lifetime. Combat suppresses gameplay input and pressure
+dispatch during dodge. Magic's pressure rearm boundary observes the input without
+dispatching a Cast at dodge completion: a still-held input requires release before
+a later press can charge again. No stale release, buffered input or held Circle
+may restart an action. The cooldown itself rejects only new dodge attempts.
+
+Entity exposes a shared combat-invulnerability query; Player adds active dodge to
+the existing reaction/pending-reaction protection. HealthResolver uses that query
+both for ordinary damage and before simultaneous-clash interception. Contacts
+retain the existing spent-target rule even when rejected as INVINCIBLE; dodge
+creates no melee contact, resource reward or hit reaction of its own.
+
+The new `fire_dodge.tres` plays the approved original 12-cell idle-exit atlas at
+native speed1 over 0.4 seconds, without Heat scaling. Sprite.flip_h is the sole
+mirror. Other clips and the existing Fire body/feet profile remain untouched.
+The optional running-exit atlas stays unused; normal locomotion resumes through
+its existing path after completion. Wall contact changes neither the clock nor
+invulnerability. Pause freezes the existing scene-local physics clock. Stage
+lock, death and reset stop dodge, restore owned collision exceptions and clear
+its transient state/cooldown; reset retains its established school policy.
+
+Daytime C2 Player presentation retains native dodge Sprite ownership until Might
+releases the action. It holds the last native pose only for the completion
+physics frame, then resumes the existing actual-motion Walk/Idle path. The
+rejected C1 raw-input walking inference is removed. New action/school, hurt,
+stage-lock and reset clear the private handoff frame; hurt/action/defence keep
+priority. No input/state lock, timer, animation length, movement or collision
+restoration changed. Main's C2 held-wall replay supports removal of the false Walk
+frame, not all dodge cases or human feel acceptance. The baseline overlap case
+still has120 units of travel followed by about28.14 units of collision recovery.
+Safe-end behavior remains open; no extra travel/pass-through fix is implemented.
+
+No JSON schema, saved tuning, Portal controls, audio, enemy AI or other school is
+changed. Existing instrumentation is retained; the normal observational outcome
+stream carries dodge start/end and interruption facts, not a new diagnostic probe.
+Initial integration used static source/resource inspection. Later Main-owned
+rendered normal-input observations through October22 07:19 support current-D
+windup/prelaunch cancellation and accounting, active/postlaunch ignore, held
+Charging rearm, real invincible wall contact and return to the same encounter.
+Earlier same-Might high-Heat practice supports fixed24-tick duration/hold behavior,
+not high-Heat Pikeman contact protection. Physical analog-stick priority, human
+acceptance remain open. The later five full headless suites completed as
+supplementary controlled regression execution, not controller/parry/AI acceptance.
+No independent audit or blanket
+runtime clearance is implied; exact scope/version evidence is in
+IMPLEMENTATION_STATUS.md and the overnight ledger.
 
 ### Active-window contact and reaction ordering
 
@@ -293,6 +401,21 @@ coverage/progress and preserves stored orbs. APPLIED incoming direct damage
 removes charged orbs and five Heat; blocked/parried/DoT outcomes cause neither
 loss. Reaction strength is not the resource-loss predicate.
 
+The October22 retained Magic repair clears only the Charging/depleting updater
+flags at the normal initialized transition into RELEASE, before publishing the
+transition/dispatching Cast arbitration. First-request-wins can still ignore a
+later Cast with no consumption or self-flinch; queue, banked/charged coverage,
+partial progress and front lifetime remain untouched by this flag change. Startup
+initialization and the separate dodge-rearm path retain their existing behavior.
+
+Known current seam: Magic records a new CHARGING transition before Combat checks
+Might.can_handle_pressure(). A press during HIT_REACTING may therefore publish
+CHARGING without starting the updater; the unchanged hold is not retried after
+reaction. Incoming-hit resource removal itself leaves an already-running Charging
+updater unchanged and establishes no hit-rearm flag. GDD/TDR do not explicitly
+settle the press-during-hurt/retry consequence; this paragraph records existing
+behavior, not a new selected rule. The overnight repair did not change it.
+
 ```text
 accepted normal/windowed/buffered Cast
   -> Magic consumes charged prefix and freezes composition/commitment
@@ -321,6 +444,13 @@ attribution, direction, schools/levels and empowerment. Mixed layers resolve in
 primary-first order before one strongest reaction begins. Ordinary positive
 reactions and Player direct-zero advantage remain separate from reciprocal melee
 signed-clash arbitration. Failed-Cast self-reactions remain vulnerable.
+
+The daytime Fire projectile changes only its child drawing: scale is
+1.5*(1+0.5*(clamped level1..8 minus1)), giving36x27 at Lv1 and72x54 at Lv3.
+Other schools retain1x. The radius12 collider, root origin (Player root plus42
+horizontal units), travel, impact and destruction are unchanged. Larger selected
+in-flight images do not settle hip-level emission or immediate zero-flight impact;
+no weapon anchor, collision relocation or persistent impact visual was added.
 
 ### Retained disabled Endurance
 
@@ -589,6 +719,16 @@ The Final Arena evaluator retains the existing `final_enemy_defeated` success fa
 
 ### Current asset bindings
 
+Approved Fire dodge art lives under
+assets/prototype/player/fire_sword_shield_v01/dodge_v01. The Fire dodge slice above
+binds the original12-frame idle-exit sheet through a new native Animation, using
+four-column448px cells and nominal foot(224,400). The10-frame running exit and
+pre-mirrors remain unused alternatives; padding cells are not frames. Native
+region keys, not the legacy horizontal frame helper, select the grid cells. GIF
+review delays supply no runtime timing. The manifest/provenance preserve the
+initial asset-preparation evidence; later scoped Main-owned rendered observations
+and remaining human/controller limits are recorded in Implementation Status.
+
 The existing `air_x5` move/style and Player AnimationLibrary still resolve
 `config/attack_animations/air_x5.tres` and the stable `air_x5.png` texture path.
 The texture now copies the approved Pack 3 Weapon_Summon sheet byte-for-byte:
@@ -682,6 +822,14 @@ existing viewport clamp. Current direct/DoT offsets, crowding/drift and pause
 asymmetry remain provisional: owner tweens pause, while the Cast-label timer's
 pause behavior differs. Layout probes are not gameplay HealthResults.
 
+The retained October22 empowered-cue candidate remains Player-owned on the same
+empowered_cast_started event: square half-size6 local, facing-normalized X8 plus
+Y-66, lifetime0.45s, original school color/z4/audio call. It is not a new launch,
+damage or gameplay cue and does not alter projectile origin. Main's actual
+1280x720 both-facing images support on-Player placement; human presentation
+acceptance and audio remain unverified. FeedbackComponent's Cast-label offset
+stays(-48,-118); the proposed shared-offset move was cancelled before editing.
+
 Player owns the visible charged-count note FIFO, not a gameplay clock. Each
 crossed upward visible-count boundary enqueues one ordered note; unchanged or
 falling counts enqueue none. Cancel/death/reset/teardown clear stale notes. The
@@ -692,14 +840,30 @@ unassigned projectile flight/impact are in assets/prototype/audio/ORIGINAL_HEROE
 and the docs/audio/2026-10-20-original-heroes-sfx-audit.md (local candidate audit). Pikeman attack,
 movement, hurt and death retain their actor lifecycle. Ambient/SFX/BGM controls
 use existing buses. Game recordings are not CC0; preservation establishes no
-redistribution permission. Audition/current Godot playback remain unverified.
+redistribution permission. The daytime saved SFX candidate is audio.sfx.volume_db
+-6.0 in config/prototype_combat.json; Arena's existing runtime consumer applies
+that value to SFX, overriding the bus-layout default. Clips, pitches, event
+ownership, ducking and Ambient/BGM settings are unchanged. Main has captured
+current full-Master playback; audition/comfort and exact hardware output remain
+unverified, not silently accepted from recorded RMS or encoder clipping counts.
+
+The support-only overnight_fire_playtest.gd recorder63409fd5 accepts optional
+capture_audio_seconds in0..30, default0. Requested capture appends its own
+pass-through AudioEffectCapture to Master with a2s ring, writes at most2048 stereo
+PCM16 frames per tick at actual mix rate, then removes only its own effect by
+identity. Deadline/sample caps are independent of gameplay; old commands/input
+and PNG-worker separation are retained. WAV/header, timestamps, discard/clipping
+and continuity/duration flags are observational evidence, not SFX isolation or
+human acceptance. Rate changes/failures/lost samples are reported, not resampled
+or hidden. Main's12s recordings and separate early-quit prefix are scoped support
+evidence in Implementation Status; no new game-audio architecture was introduced.
 
 ### Gym and framing05 candidate
 
 Gym inherits reusable characters, native Animations and persistence. It adds room,
 result/retry and formula presentation, with no private pacing multiplier, school
 lock, Endurance override or save refusal. F6/editor Run gym opens it; saved F5
-still targets tutorial. Retry reloads saved actors/data/positions; one-shot
+currently targets Gym, while PrototypeArena remains available via F6. Retry reloads saved actors/data/positions; one-shot
 metadata preserves overlay visibility only. Victory or Player death stops the
 encounter. Formula cards retain actual receiver values and signed reciprocal
 clash diagnostics, observing rather than driving the resolver.
@@ -716,16 +880,22 @@ Only gym.tscn opts into PrototypeHUD.compact_bottom_panels (default false).
 PrototypeHUD retains its data bindings and onready control references, groups
 the orb title and Spell Level label into one header, and places compact Heat/orb
 panels below the fighting line at y648 with target height 64. The normal tutorial
-HUD is unchanged. Panel sizing follows queued container layout, and the orb
-overflow-flinch rest position is captured after the compact placement. All ten
-slots, school/lifetime/charged presentation, both progress bars and objective/
-developer information remain. No combat values or update semantics change.
+HUD is unchanged. The orb overflow-flinch rest position is captured after compact
+placement. The October22 HUD candidate draws a faint neutral1px radius13 circle
+on each existing empty CenterContainer without changing its minimum size. Occupied
+LifetimeOrb drawing, gold2px outline, capacities and bars are unchanged.
 
-Asset hashes and placement math are static evidence only; actual minimum sizing,
-live visual alignment, overflow, retry and expanded-aspect coverage are unverified.
-The current live fighters are retained. Art's eventual 180-pixel actor/flipbook
-work is separate and is not implemented by this environment slice. No Godot,
-editor, runtime, builds or tests were run; no commit/push occurred in this task.
+update_orb_queue now removes each old slot from orb_queue immediately, then queues
+its deletion before adding replacements. The shared _clear_children helper stays
+unchanged. This prevents position-tween minimum-size enforcement from measuring
+old and new parented slots together; it changes no authored dimensions/anchors or
+the4px/4px/rest0.12s flinch. Main's fresh1280x720 normal-generation replays support
+500px Gym width through overflow, full10/eight-charged, consumption and empty states.
+The transient20-child count was source-derived, not a live layout probe.
+
+The original environment integration was static-only. Later actor art/body work
+and the bounded rendered HUD evidence have their own records; these do not grant
+expanded-aspect, complete regression or human acceptance. No commit/push is implied.
 
 ### Editor, overlay and pause
 
@@ -756,11 +926,16 @@ pause. Editor pause uses that visible menu. Pause/resume/retry do not save tunin
 
 ## Evidence and retained instrumentation
 
-This pass checked document/source ownership, Settings, native markers/frame
+The consolidation pass checked document/source ownership, Settings, native markers/frame
 bindings, save paths, stage grammar, result/commitment routes and the Enemy tree.
 It performed source/data/diff/link checks only. No Godot/editor, parser, build,
 automated tests, playtest, audition or export was run or created. It is technical
 document housekeeping, not independent Ultron clearance.
+
+The October22 daytime synchronization itself likewise uses static source/data,
+diff and link checks only. Main's actual rendered bound-input comparisons and WAV
+captures are separate agent evidence in the daytime ledger, not new runs by this
+document task or user-controller acceptance.
 
 [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) retains candidate scopes and
 pending cases. Earlier 1,497-assertion character-settings results and overnight
@@ -782,8 +957,10 @@ do not establish a successful export.
 | [impact_probe.gd](../scripts/debug/impact_probe.gd) and existing actor/resolver/reaction callers | Debug-build IMPACT facts in the ordinary engine log; unchanged |
 | Existing TRACE paths in Might/Magic/Enemy | Input, action, chain and resource facts under existing gates; no new logging |
 | reaction_debug / reaction_evaluated and GymCombatReadout | Captured scalar evaluation by receiver/action, no manufactured formula for rejected attempts and no gameplay authority |
+| [overnight_fire_playtest.gd](../tools/tests/overnight_fire_playtest.gd), helper63409fd5 | Existing rendered recorder plus opt-in bounded Master-mix WAV capture; default off, identity-owned cleanup, explicit loss/duration metrics; support only |
 
-No retained diagnostic was removed/expanded. Submission readiness or independent
+No production diagnostic was removed/expanded; the approved support-recorder
+extension is listed separately above. Submission readiness or independent
 implementation review remains a separately requested Ultron task; this record
 selects no new implementation or verification scope.
 
@@ -810,3 +987,19 @@ alignment grants no runtime acceptance, new engine result, clean-tree or submiss
 claim. The collision amendment includes focused isolated engine/test/capture
 evidence documented in Implementation Status; it does not clear other candidates.
 Nothing was committed or pushed by the collision task.
+
+The earlier October22 synchronization covered only the five retained overnight deltas and
+directly stale current-state text. Rendered evidence stops at07:19 HKT; the five
+post-closure existing headless suites completed7212 checks with zero assertion
+failures/all exit0, with shutdown warnings retained. Their forced positions/Heat/
+seeks and input-path branches are supplementary, not primary play. Human
+acceptance remains pending. This update does not clear current-source parry,
+physical analog input, audio, high-Heat Enemy protection or the retained waivers,
+and is not blanket canonical/source synchronization or submission clearance.
+
+The later daytime update synchronizes the bounded C2 source representation above,
+not new gameplay decisions. C1's input-based wall handoff was rejected; C2 has
+scoped rendered support. X4 timing, projectile size and SFX mix remain provisional.
+Physical overlap recovery, deliberate AI spacing, Cast emission/point-blank
+visibility, human/controller feel and audio comfort remain unresolved. No product,
+helper, asset, runtime/test or Git action was performed by this document update.

@@ -1,0 +1,41 @@
+{
+  "captured_utc": "2026-10-22T03:44:18.4381322Z",
+  "status": "C2_RETAINED_AFTER_C3_REJECTED_AWAITING_USER_VALIDATION",
+  "head": "921fd1ae207c990070cd279587f5a05ee0fb239c",
+  "checked_non_document_paths": 692,
+  "baseline_manifest": "BASELINE_MANIFEST.json",
+  "baseline_manifest_sha256": "d850432c43808cea712b619d108849cfc5eba666f0a7fd735fc8cdf88310828e",
+  "current_census_digest": "a43c3dbafb0ce90ed11608ec603ed89f46da3f44eeaffae01fc687fdcbd60d72",
+  "digest_format": "sha256 UTF8 of sorted path TAB lowercase_sha256 LF",
+  "source_deltas": [
+    {
+      "path": "config/attack_styles/fire_x4.tres",
+      "baseline_sha256": "f168681fdaee3149fd4dac5196e24f2dd1094bc319c573b504e252a189dd7e31",
+      "current_sha256": "90f963def9627fa57dd989ed7ad9468b8cb689e098a5d5bdc5ab9673d6f30b8c"
+    },
+    {
+      "path": "config/prototype_combat.json",
+      "baseline_sha256": "1f3134d982565a32de3038cdc0242f598288e620f28838e7909512d3fd1eb8d4",
+      "current_sha256": "ddab1126a4711adc5cc1f102e2c58dabf826bb133086fe4107d13b5cb91a06ee"
+    },
+    {
+      "path": "scripts/combat/spell_projectile.gd",
+      "baseline_sha256": "b17209aaec15c2ca68db4f3740cb955b077a7409a27f154f90b635a91a2e0212",
+      "current_sha256": "cc1101fc18a7850ccfce979ce71613bd330e89107ce553567f5c4e5e62df3cc3"
+    },
+    {
+      "path": "scripts/player/player.gd",
+      "baseline_sha256": "bd68f162edab6c09707c23725b4be3e7cb54503870d0cb24c2a704649ff1e77d",
+      "current_sha256": "9b705e0d950b874956845a66d508278fa3c7d7ccaaf3a5ffd8c00158d424738f"
+    },
+    {
+      "path": "tools/tests/overnight_fire_playtest.gd",
+      "baseline_sha256": "1547b225b1b94024a1285acb983ec484db656a8dfefc369514368569d175d586",
+      "current_sha256": "63409fd583b66aa84676a2c3b4ae549f891a950f68925939663da0842cd48fde"
+    }
+  ],
+  "root_runtime_mismatches": [],
+  "restored_x5_sha256": "57aef5ab8b8ab66f2655d05967afd84f8a1d719d874cbb8c966b8c2b5b6788cf",
+  "engine_sha256": "323f9c4cc5db674e98815cdd8e69da007d5efc779abedc8c0e42883b7fdea12a",
+  "limits": "Bounded source agreement, not clean Git or human acceptance. Temporary test fixture/probe extras are not runtime product changes."
+}

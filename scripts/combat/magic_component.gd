@@ -32,6 +32,7 @@ var _depleting_active := false
 var _depletion_hold_elapsed := 0.0
 var _pressure_initialized := false
 var _pressure_state := PressureState.INTERMEDIATE
+var _dodge_pressure_rearm_required := false
 var _committed_casts: Dictionary = {}
 var _next_commit_id := 1
 
@@ -56,6 +57,7 @@ func configure(
 	_next_commit_id = 1
 	_pressure_initialized = false
 	_pressure_state = PressureState.INTERMEDIATE
+	_dodge_pressure_rearm_required = false
 	_emit_snapshot()
 
 
@@ -84,6 +86,13 @@ func update_pressure(raw_strength: float) -> int:
 	if _casting_config.is_empty():
 		return PressureState.INTERMEDIATE
 	var candidate := _classify_pressure(raw_strength)
+	if _dodge_pressure_rearm_required:
+		if candidate == PressureState.RELEASE:
+			_dodge_pressure_rearm_required = false
+			_pressure_initialized = true
+			_pressure_state = PressureState.RELEASE
+		# Releasing the interrupted hold rearms it; it is not a Cast attempt.
+		return PressureState.INTERMEDIATE
 	if candidate == PressureState.INTERMEDIATE:
 		return PressureState.INTERMEDIATE
 	if not _pressure_initialized:
@@ -97,6 +106,9 @@ func update_pressure(raw_strength: float) -> int:
 		return PressureState.INTERMEDIATE if candidate == PressureState.RELEASE else candidate
 	if candidate == _pressure_state:
 		return PressureState.INTERMEDIATE
+	if candidate == PressureState.RELEASE:
+		_marking_active = false
+		_depleting_active = false
 	_pressure_state = candidate
 	_publish_outcome(&"pressure_state_changed", {
 		"state": _pressure_state_name(candidate),
@@ -106,7 +118,26 @@ func update_pressure(raw_strength: float) -> int:
 	return candidate
 
 
+func interrupt_charging_for_dodge() -> void:
+	_marked_capacity = 0
+	_partial_mark_time = 0.0
+	_marking_active = false
+	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
+	_dodge_pressure_rearm_required = true
+	_emit_snapshot()
+
+
+func rearm_pressure_after_dodge(raw_strength: float) -> void:
+	# Observe the current input without replaying a press/release made in dodge.
+	_pressure_state = _classify_pressure(raw_strength)
+	_pressure_initialized = true
+	_dodge_pressure_rearm_required = _pressure_state != PressureState.RELEASE
+
+
 func start_charging() -> void:
+	if _dodge_pressure_rearm_required:
+		return
 	var was_active := _marking_active
 	_marking_active = true
 	_depleting_active = false
@@ -291,6 +322,7 @@ func reset_for_stage() -> void:
 	_marking_active = false
 	_depleting_active = false
 	_pressure_initialized = false
+	_dodge_pressure_rearm_required = false
 	_pressure_state = PressureState.INTERMEDIATE
 	_emit_snapshot()
 

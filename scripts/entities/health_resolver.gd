@@ -78,7 +78,7 @@ func resolve(event: HealthEvent) -> HealthResult:
 		return _reject(event, HealthResult.Outcome.CANCELLED, &"attack_cancelled")
 	if event.is_direct_damage() and _owner_entity.uses_combat_hit_reaction() and event.reaction_debug.is_empty():
 		event.reaction_debug = _capture_reaction_debug(event, _owner_entity.get_melee_snapshot())
-	if _hit_reaction.is_invincible() or _owner_entity.has_pending_combat_hit_reaction():
+	if _owner_entity.is_combat_invincible():
 		return _reject(event, HealthResult.Outcome.INVINCIBLE, &"invincible")
 
 	var defensive_level := _owner_entity.get_defensive_level()
@@ -251,7 +251,7 @@ func _prepare_melee_interception(event: HealthEvent) -> void:
 		return
 	event.reaction_debug = _capture_reaction_debug(event, _owner_entity.get_melee_snapshot())
 	event.interception_checked = true
-	if _hit_reaction.is_invincible() or _owner_entity.has_pending_combat_hit_reaction():
+	if _owner_entity.is_combat_invincible():
 		event.interception_outcome = HealthResult.Outcome.INVINCIBLE
 	else:
 		event.interception_outcome = int(_defence_component.intercept(event)) if _defence_component != null else HealthResult.Outcome.APPLIED

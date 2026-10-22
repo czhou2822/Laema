@@ -1,0 +1,560 @@
+class_name MagicComponent
+extends Node
+
+const CombatOutcomeResource = preload("res://scripts/combat/combat_outcome.gd")
+const DEPLETION_HOLD_DELAY := 0.3
+
+signal queue_changed(snapshot: Array, marked_count: int, marking_progress: float)
+signal outcome_published(outcome)
+signal projectile_launch_requested(payload: Dictionary)
+signal cast_committed(commit_id: int, consumed_count: int)
+
+enum PressureState {
+	INTERMEDIATE,
+	RELEASE,
+	DEPLETING,
+	CHARGING,
+}
+
+var _config: Dictionary = {}
+var _casting_config: Dictionary = {}
+var _heat: HeatComponent
+var _owner_entity: Entity
+var _attack_cast: ShapeCast2D
+var _loadout: Dictionary = {}
+var _resolvers: Dictionary = {}
+var _queue: Array[StringName] = []
+var _front_remaining := 0.0
+var _partial_mark_time := 0.0
+var _marked_capacity := 0
+var _marking_active := false
+var _depleting_active := false
+var _depletion_hold_elapsed := 0.0
+var _pressure_initialized := false
+var _pressure_state := PressureState.INTERMEDIATE
+var _dodge_pressure_rearm_required := false
+var _committed_casts: Dictionary = {}
+var _next_commit_id := 1
+
+
+func configure(
+	config: Dictionary,
+	heat: HeatComponent,
+	loadout: Dictionary,
+	owner_entity: Entity,
+	attack_cast: ShapeCast2D,
+	resolvers: Dictionary
+) -> void:
+	_config = config
+	_casting_config = _config["casting"]
+	_heat = heat
+	_loadout = loadout.duplicate(true)
+	_owner_entity = owner_entity
+	_attack_cast = attack_cast
+	_resolvers = resolvers.duplicate()
+	_clear_orb_state()
+	_committed_casts.clear()
+	_next_commit_id = 1
+	_pressure_initialized = false
+	_pressure_state = PressureState.INTERMEDIATE
+	_dodge_pressure_rearm_required = false
+	_emit_snapshot()
+
+
+func apply_runtime_tuning(config: Dictionary, loadout: Dictionary) -> void:
+	_config = config
+	_casting_config = _config["casting"]
+	_loadout = loadout.duplicate(true)
+	_front_remaining = minf(_front_remaining, _orb_lifetime())
+	_marked_capacity = mini(_marked_capacity, _maximum_marked_capacity())
+	_emit_snapshot()
+
+
+func _process(delta: float) -> void:
+	if _casting_config.is_empty():
+		return
+	var changed := _advance_front_lifetime(delta)
+	if _marking_active:
+		changed = _advance_marking(delta) or changed
+	elif _depleting_active:
+		changed = _advance_depleting(delta) or changed
+	if changed:
+		_emit_snapshot()
+
+
+func update_pressure(raw_strength: float) -> int:
+	if _casting_config.is_empty():
+		return PressureState.INTERMEDIATE
+	var candidate := _classify_pressure(raw_strength)
+	if _dodge_pressure_rearm_required:
+		if candidate == PressureState.RELEASE:
+			_dodge_pressure_rearm_required = false
+			_pressure_initialized = true
+			_pressure_state = PressureState.RELEASE
+		# Releasing the interrupted hold rearms it; it is not a Cast attempt.
+		return PressureState.INTERMEDIATE
+	if candidate == PressureState.INTERMEDIATE:
+		return PressureState.INTERMEDIATE
+	if not _pressure_initialized:
+		_pressure_initialized = true
+		_pressure_state = candidate
+		_publish_outcome(&"pressure_state_changed", {
+			"state": _pressure_state_name(candidate),
+			"initial": true,
+		})
+		_trace(&"pressure_state_changed", {"raw_strength": raw_strength, "state": _pressure_state_name(candidate), "initial": true})
+		return PressureState.INTERMEDIATE if candidate == PressureState.RELEASE else candidate
+	if candidate == _pressure_state:
+		return PressureState.INTERMEDIATE
+	_pressure_state = candidate
+	_publish_outcome(&"pressure_state_changed", {
+		"state": _pressure_state_name(candidate),
+		"initial": false,
+	})
+	_trace(&"pressure_state_changed", {"raw_strength": raw_strength, "state": _pressure_state_name(candidate), "initial": false})
+	return candidate
+
+
+func interrupt_charging_for_dodge() -> void:
+	_marked_capacity = 0
+	_partial_mark_time = 0.0
+	_marking_active = false
+	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
+	_dodge_pressure_rearm_required = true
+	_emit_snapshot()
+
+
+func rearm_pressure_after_dodge(raw_strength: float) -> void:
+	# Observe the current input without replaying a press/release made in dodge.
+	_pressure_state = _classify_pressure(raw_strength)
+	_pressure_initialized = true
+	_dodge_pressure_rearm_required = _pressure_state != PressureState.RELEASE
+
+
+func start_charging() -> void:
+	if _dodge_pressure_rearm_required:
+		return
+	var was_active := _marking_active
+	_marking_active = true
+	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
+	if not was_active:
+		_trace(&"charging_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress()})
+		_publish_outcome(&"charging_started", {"marked_count": get_marked_count()})
+		_emit_snapshot()
+
+
+func start_depleting() -> void:
+	var was_active := _depleting_active
+	_marking_active = false
+	if was_active:
+		return
+	_depleting_active = true
+	_depletion_hold_elapsed = 0.0
+	_trace(&"depleting_started", {"marked_capacity": _marked_capacity, "partial_progress": get_marking_progress(), "hold_delay": DEPLETION_HOLD_DELAY})
+	_publish_outcome(&"depleting_started", {"marked_count": get_marked_count()})
+	_emit_snapshot()
+
+
+func has_active_marking_state() -> bool:
+	return _marking_active or _depleting_active
+
+
+func has_marked_orbs() -> bool:
+	return get_marked_count() > 0
+
+
+func get_marked_count() -> int:
+	return mini(_marked_capacity, _queue.size())
+
+
+func add_orb(school: StringName) -> void:
+	if school == &"":
+		return
+	if _queue.size() >= _maximum_storage_capacity():
+		_publish_outcome(&"orb_overflow", {"queue_size": _queue.size()})
+		return
+	if _queue.is_empty():
+		_front_remaining = _orb_lifetime()
+	_queue.append(school)
+	_trace(&"created", {"school": school, "queue_size": _queue.size(), "marked_count": get_marked_count()})
+	_publish_outcome(&"orb_created", {"school": school, "queue_size": _queue.size()})
+	_emit_snapshot()
+
+
+func commit_cast(
+	casting_school: StringName,
+	empowered: bool,
+	primary_damage_multiplier: float,
+	direction: Vector2,
+	instigator: Entity
+) -> Dictionary:
+	var resolution := _consume_marked_orbs()
+	if not bool(resolution.get("valid", false)):
+		return resolution
+	var consumed_count := int(resolution["composition"].size())
+	var primary_school := StringName(resolution["primary_school"])
+	var primary_level := int(resolution["primary_level"])
+	var secondary_school := StringName(resolution["secondary_school"])
+	var secondary_level := int(resolution["secondary_level"])
+	var commit_id := _next_commit_id
+	_next_commit_id += 1
+	var payload := {
+		"commit_id": commit_id,
+		"casting_school": casting_school,
+		"composition": resolution["composition"].duplicate(),
+		"primary_school": primary_school,
+		"primary_level": primary_level,
+		"primary_spell": _equipped_spell(primary_school, primary_level),
+		"secondary_school": secondary_school,
+		"secondary_level": secondary_level,
+		"secondary_spell": _equipped_spell(secondary_school, secondary_level) if secondary_level >= 1 else &"",
+		"empowered": empowered,
+		"primary_damage_multiplier": primary_damage_multiplier,
+		"direction": direction,
+		"instigator": instigator,
+	}
+	_committed_casts[commit_id] = payload.duplicate(true)
+	cast_committed.emit(commit_id, consumed_count)
+	_publish_outcome(&"cast_committed", {
+		"commit_id": commit_id,
+		"primary_school": primary_school,
+		"primary_level": primary_level,
+		"secondary_school": secondary_school,
+		"secondary_level": secondary_level,
+		"empowered": empowered,
+	})
+	_trace(&"cast_committed", {"commit_id": commit_id, "primary_school": primary_school, "primary_level": primary_level, "empowered": empowered})
+	return {"valid": true, "commit_id": commit_id}
+
+
+func get_committed_cast(commit_id: int) -> Dictionary:
+	if not _committed_casts.has(commit_id):
+		return {}
+	return Dictionary(_committed_casts[commit_id]).duplicate(true)
+
+
+func set_committed_source_action_id(commit_id: int, source_action_id: int) -> void:
+	if _committed_casts.has(commit_id):
+		_committed_casts[commit_id]["source_action_id"] = source_action_id
+
+
+func launch_committed_cast(commit_id: int) -> Dictionary:
+	if not _committed_casts.has(commit_id):
+		return {}
+	var payload: Dictionary = Dictionary(_committed_casts[commit_id]).duplicate(true)
+	_committed_casts.erase(commit_id)
+	_publish_outcome(&"cast_launched", {
+		"commit_id": commit_id,
+		"primary_school": payload["primary_school"],
+		"primary_level": payload["primary_level"],
+		"secondary_school": payload["secondary_school"],
+		"secondary_level": payload["secondary_level"],
+		"empowered": payload["empowered"],
+	})
+	_trace(&"projectile_launch_requested", {"commit_id": commit_id, "primary_school": payload["primary_school"], "primary_level": payload["primary_level"]})
+	projectile_launch_requested.emit(payload)
+	return payload
+
+
+func discard_committed_cast(commit_id: int, reason: StringName) -> void:
+	if not _committed_casts.has(commit_id):
+		return
+	_committed_casts.erase(commit_id)
+	_publish_outcome(&"cast_commitment_discarded", {"reason": reason, "commit_id": commit_id})
+	_trace(&"cast_commitment_discarded", {"reason": reason, "commit_id": commit_id})
+
+
+func discard_committed_casts(reason: StringName) -> void:
+	if _committed_casts.is_empty():
+		return
+	var discarded_count := _committed_casts.size()
+	_committed_casts.clear()
+	_publish_outcome(&"cast_commitments_discarded", {"reason": reason, "count": discarded_count})
+	_trace(&"cast_commitments_discarded", {"reason": reason, "count": discarded_count})
+
+
+func remove_marked_orbs_on_player_hit() -> void:
+	var removed_count := get_marked_count()
+	if removed_count <= 0:
+		return
+	for _index in range(removed_count):
+		_queue.remove_at(0)
+	_marked_capacity = 0
+	_partial_mark_time = 0.0
+	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
+	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
+	_publish_outcome(&"marked_orbs_removed_on_player_hit", {"removed_count": removed_count, "remaining_queue": _queue.size()})
+	_trace(&"marked_orbs_removed_on_owner_hit", {"removed": removed_count, "remaining_queue": _queue.size()})
+	_emit_snapshot()
+
+
+func clear_after_failed_cast() -> void:
+	discard_committed_casts(&"failed_cast")
+	_marked_capacity = 0
+	_partial_mark_time = 0.0
+	_marking_active = false
+	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
+	_publish_outcome(&"orb_marks_cleared", {"reason": &"failed_cast", "queue_size": _queue.size()})
+	_emit_snapshot()
+
+
+func clear_orbs(reason: StringName) -> void:
+	var previous_size := _queue.size()
+	var previous_marked := get_marked_count()
+	_clear_orb_state()
+	if previous_size <= 0 and previous_marked <= 0:
+		return
+	_publish_outcome(&"orb_queue_cleared", {"reason": reason, "queue_size": previous_size, "marked_count": previous_marked})
+	_trace(&"cleared", {"reason": reason, "queue_size": previous_size, "marked_count": previous_marked})
+	_emit_snapshot()
+
+
+func reset_for_stage() -> void:
+	discard_committed_casts(&"stage_transition")
+	_clear_orb_state()
+	_marking_active = false
+	_depleting_active = false
+	_pressure_initialized = false
+	_dodge_pressure_rearm_required = false
+	_pressure_state = PressureState.INTERMEDIATE
+	_emit_snapshot()
+
+
+func resolve_projectile_impact(target: Entity, contact_point: Vector2, payload: Dictionary) -> void:
+	if target == null or payload.is_empty():
+		return
+	var direction: Vector2 = payload["direction"]
+	target.begin_hit_transaction()
+	_apply_equipped_spell(
+		StringName(payload["primary_spell"]),
+		StringName(payload["primary_school"]),
+		int(payload["primary_level"]),
+		float(payload["primary_damage_multiplier"]),
+		target,
+		contact_point,
+		direction,
+		int(payload.get("source_action_id", 0)),
+		payload.get("composition", [])
+	)
+	var secondary_level := int(payload.get("secondary_level", 0))
+	if secondary_level >= 1:
+		_apply_equipped_spell(
+			StringName(payload["secondary_spell"]),
+			StringName(payload["secondary_school"]),
+			secondary_level,
+			1.0,
+			target,
+			contact_point,
+			direction,
+			int(payload.get("source_action_id", 0)),
+			payload.get("composition", [])
+		)
+	target.end_hit_transaction()
+	_publish_outcome(&"spell_projectile_impacted", {
+		"primary_school": payload["primary_school"],
+		"primary_level": payload["primary_level"],
+		"target": target.name,
+	})
+
+
+func _consume_marked_orbs() -> Dictionary:
+	var consumed_count := get_marked_count()
+	if consumed_count <= 0:
+		return {"valid": false}
+	var consumed: Array[StringName] = []
+	for index in range(consumed_count):
+		consumed.append(_queue[index])
+	var counts: Dictionary = {}
+	for school in consumed:
+		counts[school] = int(counts.get(school, 0)) + 1
+	var primary_school: StringName = consumed[consumed.size() - 1]
+	var secondary_school: StringName = &""
+	var secondary_level := 0
+	var secondary_last_index := -1
+	for school_variant in counts:
+		var school := StringName(school_variant)
+		if school == primary_school:
+			continue
+		var level := int(counts[school])
+		var last_index := consumed.rfind(school)
+		if level > secondary_level or (level == secondary_level and last_index > secondary_last_index):
+			secondary_school = school
+			secondary_level = level
+			secondary_last_index = last_index
+	for _index in range(consumed_count):
+		_queue.remove_at(0)
+	_marked_capacity = 0
+	_partial_mark_time = 0.0
+	_marking_active = false
+	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
+	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
+	_emit_snapshot()
+	return {
+		"valid": true,
+		"composition": consumed,
+		"primary_school": primary_school,
+		"primary_level": consumed_count,
+		"secondary_school": secondary_school,
+		"secondary_level": secondary_level,
+	}
+
+
+func _apply_equipped_spell(
+	spell: StringName,
+	school: StringName,
+	level: int,
+	damage_multiplier: float,
+	target: Entity,
+	contact_point: Vector2,
+	direction: Vector2,
+	source_action_id: int,
+	composition: Array
+) -> void:
+	_trace(&"spell_effect_resolved", {"target": target.name, "spell": spell, "school": school, "level": level, "damage_multiplier": damage_multiplier, "contact_point": contact_point})
+	var move: Dictionary = _config["moves"]["cast"]
+	var level_impacts: Dictionary = move.get("level_impacts", {})
+	var impact := int(level_impacts.get(str(level), move["impact"]))
+	var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"]["casting_damage"]) * damage_multiplier, impact, HealthEvent.Delivery.DIRECT, school, {}, direction, contact_point, source_action_id, composition)
+	var result: HealthResult = target.receive_health_event(event)
+	if result.outcome == HealthResult.Outcome.APPLIED and result.health_delta < 0.0:
+		target.feedback.show_cast_level(school, level)
+
+
+func _equipped_spell(school: StringName, level: int) -> StringName:
+	if school == &"" or level < 1:
+		return &""
+	var school_loadout: Dictionary = _loadout.get(String(school), {})
+	return StringName(school_loadout.get(str(level), &""))
+
+
+func _classify_pressure(raw_strength: float) -> int:
+	if raw_strength < float(_casting_config["trigger_release_max"]):
+		return PressureState.RELEASE
+	if raw_strength >= float(_casting_config["trigger_charge_min"]):
+		return PressureState.CHARGING
+	return PressureState.DEPLETING
+
+
+func _pressure_state_name(state: int) -> StringName:
+	match state:
+		PressureState.RELEASE:
+			return &"RELEASE"
+		PressureState.DEPLETING:
+			return &"DEPLETING"
+		PressureState.CHARGING:
+			return &"CHARGING"
+	return &"INTERMEDIATE"
+
+
+func _advance_front_lifetime(delta: float) -> bool:
+	if _queue.is_empty():
+		return false
+	_front_remaining -= delta
+	if _front_remaining > 0.0:
+		return true
+	var expired_school := _queue[0]
+	var previous_marked := get_marked_count()
+	_queue.remove_at(0)
+	_front_remaining = _orb_lifetime() if not _queue.is_empty() else 0.0
+	_trace(&"front_expired", {"school": expired_school, "marked_before": previous_marked, "marked_after": get_marked_count(), "remaining_queue": _queue.size()})
+	_publish_outcome(&"orb_expired", {"school": expired_school, "remaining_queue": _queue.size()})
+	return true
+
+
+func _advance_marking(delta: float) -> bool:
+	if _marked_capacity >= _maximum_marked_capacity():
+		_partial_mark_time = 0.0
+		return false
+	var speed_multiplier := 1.0
+	if _heat != null and _heat.has_method("get_speed_multiplier"):
+		speed_multiplier = float(_heat.call("get_speed_multiplier"))
+	_partial_mark_time += delta * speed_multiplier
+	var changed := true
+	while _partial_mark_time >= _charge_step_duration() and _marked_capacity < _maximum_marked_capacity():
+		_partial_mark_time -= _charge_step_duration()
+		_marked_capacity += 1
+		_trace(&"mark_incremented", {"marked_capacity": _marked_capacity, "queue_size": _queue.size()})
+		_publish_outcome(&"orb_marked", {"marked_count": get_marked_count()})
+	if _marked_capacity >= _maximum_marked_capacity():
+		_partial_mark_time = 0.0
+	return changed
+
+
+func _advance_depleting(delta: float) -> bool:
+	if _depletion_hold_elapsed < DEPLETION_HOLD_DELAY:
+		var grace_remaining := DEPLETION_HOLD_DELAY - _depletion_hold_elapsed
+		var grace_delta := minf(delta, grace_remaining)
+		_depletion_hold_elapsed += grace_delta
+		delta -= grace_delta
+		if delta <= 0.0:
+			return false
+	if _marked_capacity <= 0 and _partial_mark_time <= 0.0:
+		return false
+	_partial_mark_time -= delta
+	while _partial_mark_time < 0.0 and _marked_capacity > 0:
+		_marked_capacity -= 1
+		_partial_mark_time += _charge_step_duration()
+	if _marked_capacity <= 0 and _partial_mark_time < 0.0:
+		_partial_mark_time = 0.0
+	return true
+
+
+func _clear_orb_state() -> void:
+	_queue.clear()
+	_front_remaining = 0.0
+	_partial_mark_time = 0.0
+	_marked_capacity = 0
+	_marking_active = false
+	_depleting_active = false
+	_depletion_hold_elapsed = 0.0
+
+
+func _emit_snapshot() -> void:
+	queue_changed.emit(get_snapshot(), _marked_capacity, get_marking_progress())
+
+
+func get_snapshot() -> Array:
+	var snapshot: Array = []
+	var marked_count := get_marked_count()
+	var front_ratio := _front_remaining / _orb_lifetime() if not _queue.is_empty() else 0.0
+	for index in range(_queue.size()):
+		snapshot.append({
+			"school": _queue[index],
+			"marked": index < marked_count,
+			"remaining_ratio": front_ratio if index == 0 else 1.0,
+		})
+	return snapshot
+
+
+func get_marking_progress() -> float:
+	return clampf(_partial_mark_time / _charge_step_duration(), 0.0, 1.0)
+
+
+func _orb_lifetime() -> float:
+	return float(_casting_config["orb_lifetime"])
+
+
+func _charge_step_duration() -> float:
+	return float(_casting_config["charge_step_duration"])
+
+
+func _maximum_marked_capacity() -> int:
+	return int(_casting_config["max_marked_capacity"])
+
+
+func _maximum_storage_capacity() -> int:
+	return int(_casting_config["max_storage_capacity"])
+
+
+func _publish_outcome(kind: StringName, facts: Dictionary = {}) -> void:
+	outcome_published.emit(CombatOutcomeResource.create(kind, facts))
+
+
+func _trace(event_name: StringName, data: Dictionary) -> void:
+	if OS.is_debug_build():
+		print("[TRACE][ORBS] %s %s" % [event_name, data])

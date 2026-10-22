@@ -10,6 +10,51 @@ retired. Historical overnight comparisons below retain their original context.
 
 Status: implemented candidate; numeric presets await user playtesting.
 
+## Daytime timing candidate — October 22
+
+Fire X4 now reads windup0.33/recovery0.36 from
+`config/attack_styles/fire_x4.tres` (90f963de; base0.69s before Heat), replacing
+only recovery0.51. Native timing_split0.70, active0.36..0.8666667, Sprite/geometry
+keys, lunge10/0.15..0.55 and push0.75 remain. Recovery includes late active frames;
+its shorter duration also shortens real-time input/contact windows. X5 can begin
+0.15/Heat-multiplier seconds earlier, not with guaranteed Enemy-relative safety.
+X5 remains D0.45/1.10, base1.55s, as described below.
+
+Main's pure uncharged0.65s-cadence baseline/C1 comparisons both accepted and
+landed all five X, P100/E150/queue5; X5 began3.543s versus3.697s. This supports
+that scoped continuation, not final late-chain feel, pose continuity or all input
+cadences. No pose/weapon/art key or normalized rule was changed. See the
+[daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md).
+These timing candidates remain pending user controller acceptance.
+
+## Retained overnight timing candidate — October 22
+
+Fire X5 currently reads windup0.45/recovery1.10 from
+`config/attack_styles/fire_x5.tres` (candidate D,57aef5ab; base1.55s before Heat).
+Native length1, timing_split0.60, active_start0.36, active_end0.80, Sprite/geometry
+keys and lunge12/0.15..0.55 remain unchanged. Recovery stretches native0.60..1.00,
+including late active frames; it is not an added post-hit pause. Cast retains
+shared1.2s base and native launch0.24. Captured phase durations scale once with
+live Heat; increasing X5 recovery also delays a queued endpoint Cast.
+
+Main's current-source small low-Heat D cohort had7/7 valid high-level Cast contacts
+APPLIED13 versus same-Might A0.95's6/7, with first release-to-launch about0.960s
+versus0.831s. This supports a provisional mechanical-margin comparison, not
+statistical survival superiority, human feel acceptance or high-Heat Enemy
+protection clearance. A remains a comparison; B/C were reverted. Evidence cutoff
+is07:19 HKT for rendered play. The later five existing full headless suites
+completed7212 checks/zero assertion failures/all exit0 as supplementary controlled
+regressions; forced preparation/seeks and retained shutdown warnings prevent any
+human-controller/AI/blanket runtime clearance claim. See
+[Implementation Status](IMPLEMENTATION_STATUS.md) and the
+[overnight ledger](iterations/2026-10-21-fire-combat-overnight/PROGRESS.md).
+
+The retained common-start repair reasserts Movement's lock for every actual X/Cast
+start, including a COMBO_ACTIVE preserved-gap continuation. Gaps stay unlocked;
+queued starts reassert true. Movement's provider and authored distances3/8/2/10/12
+are unchanged; collision can still consume blocked motion. No new FSM/window,
+Heat, dodge or other-school tuning policy is introduced.
+
 ## Current animation geometry
 
 Melee uses animated hitboxes throughout `active_start` to `active_end`, with
@@ -19,19 +64,50 @@ Human feel acceptance and final numeric tuning remain pending.
 
 | Move | Local active-start position | Radius | Target vector |
 | --- | --- | ---: | --- |
-| fire_x1 | (-27.44, -47.63) | 3.5 | (-42.12, -7.74) |
-| fire_x2 | (-28.87, -13.49) | 3.5 | (-32.77, 22.98) |
-| fire_x3 | (-38.99, -39.30) | 3.5 | (-39.03, -3.39) |
-| fire_x4 | (-11.50, -63.42) | 3.5 | (38.50, 0.85) |
-| fire_x5 | (-15.82, -72.62) | 3.5 | (-36.37, -12.26) |
+| fire_x1 | (-17.60, -66.97) | 3.5 | (22.21, -15.07) |
+| fire_x2 | (-23.80, -31.17) | 3.5 | (-22.91, -8.15) |
+| fire_x3 | (-0.30, -31.23) | 3.5 | (26.61, -22.04) |
+| fire_x4 | (5.25, -45.81) | 3.5 | (29.51, -11.88) |
+| fire_x5 | (-14.55, -63.89) | 3.5 | (19.10, -12.23) |
 | melee_swing | (58, -67) | 6 | (147, 0) |
 
-These are rounded right-facing active-start readbacks after the approved art
-alignment. Fire's world scale is2, so radius3.5 means7 world pixels. The complete
-curves follow measured weapon segments at held sprite poses; active-start alone
-does not describe maximum reach. X2 follows its backward blade. Pikeman mirrors
+These are rounded right-facing active-start readbacks. Fire's world scale is2,
+so radius3.5 means7 world pixels. X2's October21 candidate follows the current
+backward preparation blade, then the forward blade in its later active poses;
+active-start alone does not describe maximum reach. Its four independently
+measured poses and engine evidence are in the
+[X2 iteration record](iterations/2026-10-21-fire-hitbox-polish/x2-candidate/README.md).
+X1's October21 candidate follows all seven current overnight_v04 active cells;
+its added geometry poses at0.45,0.53 and0.711878675 retain the original Sprite
+holds and active/pacing markers. See the
+[X1 iteration record](iterations/2026-10-21-fire-hitbox-polish/x1-candidate/README.md).
+X4's October21 candidate maps its native0/0/0/1/2/2 Sprite keys to three measured
+source cells over four active holds, with the repeated final cell retaining one
+physical pose. Its key times and radius are unchanged. See the
+[X4 iteration record](iterations/2026-10-21-fire-hitbox-polish/x4-candidate/README.md).
+X5's October21 candidate matches its four active cells, including the vertical
+pose at0.5 and final forward thrust. Its0.8 active end and later return frames
+stay unchanged. See the
+[X5 iteration record](iterations/2026-10-21-fire-hitbox-polish/x5-candidate/README.md).
+X3's October21 candidate follows all five active source cells, including the
+lower follow-through at0.711878675 and the short opening/return holds. See the
+[X3 iteration record](iterations/2026-10-21-fire-hitbox-polish/x3-candidate/README.md).
+All five Fire resources have bounded source/engine review; human feel acceptance
+remains open. Pikeman mirrors
 around localX-11; its full-thrust outer tip isX211 right orX-233 left, symmetric
-about that visual anchor. Timings/markers and the one-contact allowance are unchanged.
+about that visual anchor. Native key times/markers and the one-contact allowance are unchanged.
+
+For this Fire artwork, the feet source anchor is(224,400), but the existing
+Sprite offset(0,-124) maps the actor root to source(224,348). Actor scale2 and
+Sprite scale0.5 combine to one world pixel per source pixel. Convert source
+points to actor-local coordinates with `(source - Vector2(224,348)) / 2`, then
+mirror localX for left-facing attacks. Do not use the feet anchor as the geometry
+origin or move the body/floor registration to fit a weapon. X2 retains radius3.5;
+its capsule centers are inset7 source pixels at each measured blade end. Its
+position/target keys hold with each displayed pose, including the key at0.6;
+Sprite timing, active bounds and the radius track are unchanged. Near-key
+float tolerance is checked against the actual native Sprite region, separately
+from unambiguous held-pose interiors.
 
 Fire Cast uses `launch` at 0.24 on its normalized one-second clip; other schools'
 clips retain their authored timing. Enemy uses the Pikeman 0.5/1.0-second active
@@ -45,16 +121,15 @@ package and initial scalar presets are preserved in the
 and [overnight ledger](iterations/2026-10-19-overnight.md). Their historical
 Gym-only multiplier and contact-query workflow are superseded.
 
-## Fire / Earth benchmark artwork — 2026-10-19
+## Fire / Earth benchmark artwork — historical October 19
 
-Fire X1–X5 now use the former Earth sword flipbooks, matching Laema's benchmark
-weapon. Earth X1–X5 use the former Fire flipbooks. Sprite-sheet references and
-frame tracks/pacing move together at each corresponding X position. Animation
-IDs, contact/active markers, hitbox tracks, actual windup/recovery durations,
-lunge, Impact and damage stay with their original schools. Water, Air, Cast and
-locomotion assignments are unchanged. The underlying PNGs retain their original
-filenames; edit `fire_x1` to tune Fire even though its texture is `earth_x1.png`.
-Historical numeric presets refer to those same move IDs; they are not current defaults.
+The October19 benchmark exchanged Fire/Earth flipbook assignments while retaining
+their school-owned move rules. That is history, not the current Fire file list.
+Current Fire X1/X4/X5 use `fire_sword_shield_v01/overnight_v04/`; X2/X3 use
+`fire_sword_shield_v01/angle_proofs_v03/`. This alignment pass changed none of
+those PNGs or Sprite tracks, nor Earth/Water/Air, Cast or locomotion bindings.
+Edit the native `fire_xN` Animation to author that Fire move. Earlier numeric
+presets and the older `earth_x1.png` Fire example are not current defaults.
 
 ## Scrub and visually edit an attack
 

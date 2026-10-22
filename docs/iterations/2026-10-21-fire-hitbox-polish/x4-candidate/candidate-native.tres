@@ -1,0 +1,91 @@
+[gd_resource type="Animation" format=3 uid="uid://b6ru3hw80errq"]
+
+[ext_resource type="Texture2D" path="res://assets/prototype/player/fire_sword_shield_v01/overnight_v04/fire_x4.png" id="1_sheet"]
+
+[resource]
+resource_name = "fire_x4"
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"active_start",
+"time": 0.36
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"timing_split",
+"time": 0.7
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active_end",
+"time": 0.8666667
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_sheet")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:region_enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.3167639, 0.5197053, 0.6942831, 0.85266525),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 448, 448), Rect2(0, 0, 448, 448), Rect2(0, 0, 448, 448), Rect2(448, 0, 448, 448), Rect2(896, 0, 448, 448), Rect2(896, 0, 448, 448)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackCast:position")
+tracks/3/interp = 0
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0, 0.3167639, 0.36, 0.5197053, 0.6942831, 0.85266525, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-8.5001899, -68.9635436), Vector2(5.2465494, -45.8076380), Vector2(5.2465494, -45.8076380), Vector2(34.2529571, -55.2916153), Vector2(5.1697103, -43.9842294), Vector2(5.1697103, -43.9842294), Vector2(5.1697103, -43.9842294)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackCast:target_position")
+tracks/4/interp = 0
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0, 0.3167639, 0.36, 0.5197053, 0.6942831, 0.85266525, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(41.0003797, 0.4270873), Vector2(29.5069012, -11.8847241), Vector2(29.5069012, -11.8847241), Vector2(27.4940858, -10.9167694), Vector2(25.1605795, -11.7815412), Vector2(25.1605795, -11.7815412), Vector2(25.1605795, -11.7815412)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackCast:shape:radius")
+tracks/5/interp = 0
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0, 0.3167639, 0.36, 0.5197053, 0.6942831, 0.85266525, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3.5, 3.5, 3.5, 3.5, 3.5, 3.5, 3.5]
+}

@@ -123,6 +123,7 @@ const SCHOOL_TINTS := {
 var _config: Dictionary = {}
 var _visual_time := 0.0
 var _last_visual_mode := &""
+var _dodge_visual_handoff_frame := -1
 var _visual_attack_direction := Vector2.RIGHT
 var _visual_light_position := 0
 var _attack_hitbox_debug_enabled := true
@@ -182,6 +183,8 @@ func configure(config: Dictionary) -> void:
 	movement.set_attack_motion_provider(might.consume_attack_body_motion)
 	combat.active_school_changed.connect(_on_active_school_changed)
 	combat.attack_started.connect(_on_attack_started)
+	combat.dodge_started.connect(_on_dodge_started)
+	combat.dodge_finished.connect(_on_dodge_finished)
 	combat.empowered_cast_started.connect(_on_empowered_cast_started)
 	combat.cast_launch_requested.connect(_on_cast_launch_requested)
 	combat.cast_failed.connect(_on_cast_failed)
@@ -279,10 +282,13 @@ func set_stage_input_locked(locked: bool) -> void:
 		_clear_fire_defence_visual()
 	combat.set_stage_input_locked(locked)
 	movement.set_movement_locked(locked)
+	if locked:
+		_dodge_visual_handoff_frame = -1
 
 
 func reset_for_stage() -> void:
 	combat.reset_for_stage()
+	_dodge_visual_handoff_frame = -1
 	_clear_fire_defence_visual()
 	_clear_pending_mark_audio()
 	status_controller.clear_for_stage()
@@ -302,6 +308,9 @@ func select_stage_school(school: StringName) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if _config.is_empty():
 		return
+	if not event.is_echo() and event.is_action_pressed(&"dodge"):
+		combat.try_dodge(movement.sample_dodge_direction(event.device), movement.get_normal_movement_speed())
+		return
 	combat.handle_input_event(event, _get_attack_direction())
 
 
@@ -313,9 +322,11 @@ func _process(delta: float) -> void:
 	_fire_defence_release_remaining = maxf(_fire_defence_release_remaining - delta, 0.0)
 	if _hit_visual_active:
 		_update_hit_reaction_visual(delta)
-	elif combat.is_attack_playing():
+	elif combat.is_attack_playing() or might.is_dodging():
 		_update_attack_visual()
 	elif _update_fire_defence_visual():
+		pass
+	elif _should_hold_dodge_end_pose():
 		pass
 	elif not movement.get_motion().is_zero_approx():
 		_update_locomotion_visual(&"walk", _get_walk_texture(combat.get_active_school()), _get_walk_frames(combat.get_active_school()), WALK_FPS)
@@ -373,6 +384,16 @@ func _update_locomotion_visual(
 	_update_side_facing(movement.get_facing_direction())
 	var frame := int(floor(_visual_time * fps)) % frame_count
 	_set_region(frame)
+
+
+func _should_hold_dodge_end_pose() -> bool:
+	# Keep the final native pose only for the completion frame. The next physics
+	# frame resumes normal actual-motion presentation, including blocked movement.
+	return (
+		Engine.get_physics_frames() == _dodge_visual_handoff_frame
+		and not _stage_input_locked and not health.is_zero() and not _hit_visual_active
+		and not combat.is_attack_playing() and not might.is_dodging()
+	)
 
 
 func _get_idle_texture(school: StringName) -> Texture2D:
@@ -498,7 +519,12 @@ func sync_combat_body_profile() -> void:
 	# Outside an action, refresh the selected school's art before physics queries.
 	if _hit_visual_active:
 		_update_hit_reaction_visual(0.0)
+	elif might.is_dodging():
+		# Native playback may finish before Might releases the dodge action this sample.
+		pass
 	elif not combat.is_attack_playing() and _update_fire_defence_visual():
+		pass
+	elif _should_hold_dodge_end_pose():
 		pass
 	elif not combat.is_attack_playing():
 		var walking: bool = not movement.get_motion().is_zero_approx()
@@ -530,6 +556,7 @@ func get_facing_direction() -> Vector2:
 
 
 func _on_attack_started(kind: StringName, school: StringName, direction: Vector2) -> void:
+	_dodge_visual_handoff_frame = -1
 	_clear_fire_defence_visual()
 	_visual_attack_direction = direction
 	_visual_light_position = clampi(combat.get_current_chain_position(), 1, 5) if kind == &"light" else 0
@@ -540,19 +567,36 @@ func _on_attack_started(kind: StringName, school: StringName, direction: Vector2
 		_play_audio(element_audio, _school_attack_stream(school, _visual_light_position))
 
 
+func _on_dodge_started(direction: Vector2) -> void:
+	_dodge_visual_handoff_frame = -1
+	_clear_fire_defence_visual()
+	_clear_pending_mark_audio()
+	_visual_attack_direction = direction
+	_visual_light_position = 0
+	_visual_time = 0.0
+	movement.begin_dodge(direction)
+	_reset_sprite_motion()
+
+
+func _on_dodge_finished() -> void:
+	movement.end_dodge()
+	_dodge_visual_handoff_frame = Engine.get_physics_frames()
+	sync_combat_body_profile()
+
+
 func _on_empowered_cast_started(school: StringName, direction: Vector2) -> void:
 	var dot := Polygon2D.new()
 	dot.polygon = PackedVector2Array([
-		Vector2(-4.0, -4.0),
-		Vector2(4.0, -4.0),
-		Vector2(4.0, 4.0),
-		Vector2(-4.0, 4.0),
+		Vector2(-6.0, -6.0),
+		Vector2(6.0, -6.0),
+		Vector2(6.0, 6.0),
+		Vector2(-6.0, 6.0),
 	])
 	dot.color = SCHOOL_COLORS[school]
-	dot.position = direction.normalized() * 28.0
+	dot.position = direction.normalized() * 8.0 + Vector2(0.0, -66.0)
 	dot.z_index = 4
 	add_child(dot)
-	get_tree().create_timer(0.22).timeout.connect(dot.queue_free)
+	get_tree().create_timer(0.45).timeout.connect(dot.queue_free)
 	_play_audio(empowered_cast_audio, _load_audio_stream(EMPOWERED_CAST_STREAM_PATH))
 
 
@@ -566,6 +610,7 @@ func _on_cast_launch_requested(payload: Dictionary) -> void:
 
 
 func _on_active_school_changed(school: StringName) -> void:
+	_dodge_visual_handoff_frame = -1
 	_clear_fire_defence_visual()
 	_update_school_outline(school)
 	sync_combat_body_profile()
@@ -632,6 +677,7 @@ func _on_hit_reaction_started(level: int, direction: Vector2, distance: float, d
 	_clear_fire_defence_visual()
 	_clear_pending_mark_audio()
 	combat.on_hit_reaction_started()
+	_dodge_visual_handoff_frame = -1
 	if level > 0 and hit_reaction_audio.stream != null:
 		hit_reaction_audio.play()
 	if _hit_reaction_tween != null and _hit_reaction_tween.is_valid():
@@ -754,6 +800,10 @@ func _load_audio_stream(path: String) -> AudioStream:
 
 func uses_combat_hit_reaction() -> bool:
 	return true
+
+
+func is_combat_invincible() -> bool:
+	return super.is_combat_invincible() or (might != null and might.is_dodging())
 
 
 func is_player_combatant() -> bool:

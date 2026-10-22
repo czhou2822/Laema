@@ -50,6 +50,10 @@ func get_defensive_level() -> int:
 	return _base_defensive_level
 
 
+func is_combat_invincible() -> bool:
+	return hit_reaction.is_invincible() or has_pending_combat_hit_reaction()
+
+
 func should_refill_health_at_zero() -> bool:
 	return _refill_at_zero
 

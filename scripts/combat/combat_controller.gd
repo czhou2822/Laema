@@ -4,6 +4,8 @@ extends Node
 signal movement_lock_changed(locked: bool)
 signal active_school_changed(school: StringName)
 signal attack_started(kind: StringName, school: StringName, direction: Vector2)
+signal dodge_started(direction: Vector2)
+signal dodge_finished
 signal empowered_cast_started(school: StringName, direction: Vector2)
 signal cast_launch_requested(payload: Dictionary)
 signal cast_failed
@@ -83,7 +85,7 @@ func _process(delta: float) -> void:
 
 
 func handle_input_event(event: InputEvent, attack_direction: Vector2) -> void:
-	if _stage_input_locked:
+	if _stage_input_locked or _might.is_dodging():
 		return
 	if event.is_echo():
 		return
@@ -106,6 +108,16 @@ func handle_input_event(event: InputEvent, attack_direction: Vector2) -> void:
 		if _defence.is_fire_mode() and _defence.blocks_actions():
 			return
 		_might.try_light_attack(attack_direction)
+
+
+func try_dodge(direction: Vector2, normal_movement_speed: float) -> void:
+	if _stage_input_locked or _defending or _guard_broken:
+		return
+	_might.try_dodge(direction, normal_movement_speed)
+
+
+func is_dodging() -> bool:
+	return _might.is_dodging()
 
 
 func is_combo_active() -> bool:
@@ -184,6 +196,7 @@ func on_hit_reaction_ended() -> void:
 func set_stage_input_locked(locked: bool) -> void:
 	_stage_input_locked = locked
 	if locked:
+		_might.cancel_dodge()
 		_defence.force_cancel()
 		_defending = false
 		_guard_broken = false
@@ -206,6 +219,8 @@ func reset_for_stage() -> void:
 
 
 func _update_casting_pressure() -> void:
+	if _might.is_dodging():
+		return
 	var transition := _magic.update_pressure(Input.get_action_raw_strength(&"casting"))
 	if transition == MagicComponent.PressureState.INTERMEDIATE:
 		return
@@ -277,6 +292,8 @@ func _connect_public_interfaces(input_combo) -> void:
 	_might.movement_lock_changed.connect(_on_might_movement_lock_changed)
 	_might.active_school_changed.connect(active_school_changed.emit)
 	_might.attack_started.connect(attack_started.emit)
+	_might.dodge_started.connect(dodge_started.emit)
+	_might.dodge_finished.connect(_on_dodge_finished)
 	_might.empowered_cast_started.connect(empowered_cast_started.emit)
 	_might.cast_failed.connect(cast_failed.emit)
 	_might.cast_attempt_resolved.connect(_on_cast_attempt_resolved)
@@ -293,6 +310,15 @@ func _connect_public_interfaces(input_combo) -> void:
 	_defence.guard_warning.connect(_on_guard_warning)
 	_defence.guard_broken.connect(_on_guard_broken)
 	_defence.fire_state_changed.connect(_sync_fire_defence)
+
+
+func _on_dodge_finished() -> void:
+	_magic.rearm_pressure_after_dodge(Input.get_action_raw_strength(&"casting"))
+	# A prior successful parry may still own a held-button latch. Reconcile a
+	# release ignored during dodge without replaying an ignored defence press.
+	if _defence.is_holding() and not Input.is_action_pressed(&"defend"):
+		_release_defend()
+	dodge_finished.emit()
 
 
 func _forward_outcome(outcome) -> void:

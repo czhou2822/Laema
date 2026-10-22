@@ -182,6 +182,10 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		set_physics_process(_area_active and not _defeated)
 		return
+	# Reassess facing between actions, never during a committed attack/recovery.
+	if _state in [State.IDLE, State.APPROACH] and absf(player.global_position.x - global_position.x) <= float(_ai_config["aggro_range"]):
+		_facing = Vector2.RIGHT if player.global_position.x >= global_position.x else Vector2.LEFT
+		_update_visual_facing()
 	bt_player.blackboard.set_var(&"target", player)
 	_physics_action_id = _attack_id
 	_defer_tree_tick = attack_animation.is_playing()

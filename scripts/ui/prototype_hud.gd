@@ -227,7 +227,9 @@ func complete_combo(tokens: Array) -> void:
 
 
 func update_orb_queue(snapshot: Array, marked_count: int, marking_progress: float) -> void:
-	_clear_children(orb_queue)
+	for slot in orb_queue.get_children():
+		orb_queue.remove_child(slot)
+		slot.queue_free()
 	var visible_orb_count := mini(snapshot.size(), _max_storage_capacity)
 	for index in range(_max_storage_capacity):
 		var slot := CenterContainer.new()
@@ -236,6 +238,12 @@ func update_orb_queue(snapshot: Array, marked_count: int, marking_progress: floa
 		if index < visible_orb_count:
 			var orb: Dictionary = snapshot[index]
 			slot.add_child(_create_orb_indicator(orb, index))
+		else:
+			# Draw on the existing slot without changing its minimum size/layout.
+			slot.draw.connect(func():
+				slot.draw_arc(slot.size * 0.5, LifetimeOrb.RADIUS, 0.0, TAU, 32, Color(0.65, 0.68, 0.72, 0.28), 1.0, true)
+			)
+			slot.resized.connect(slot.queue_redraw)
 		orb_queue.add_child(slot)
 	var visible_charged_count := 0
 	for orb in snapshot:

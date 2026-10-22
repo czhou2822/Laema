@@ -127,6 +127,39 @@ Pikeman's left attack mirrors about its visual foot anchor, not the actor root.
 These are accepted behavior choices; implementation evidence and remaining human
 validation are recorded in IMPLEMENTATION_STATUS.md.
 
+### Provisional overnight implementation and tuning — October 22
+
+The current working candidate retains the following overnight changes. These are
+agent-tested implementation/presentation/tuning candidates, not user-verified
+gameplay-feel, final art or final numerical acceptance:
+
+- Fire X5 uses windup0.45/recovery1.10 seconds before Heat scaling (candidate D;
+  total1.55 seconds). Recovery still includes playback after native timing_split,
+  not a new wait or protection rule. Shared Cast timing and native geometry stay
+  unchanged. D is not a guarantee that high-Heat Casts clear Enemy invincibility.
+- The implementation reacquires the existing movement/facing lock at every actual
+  X/Cast start, including starts after a pressure-preserved gap. The gaps remain
+  unlocked; authored lunge values, windows and Heat scaling are unchanged.
+- A normal RELEASE transition stops further Charging/depletion progression even
+  when first-request-wins ignores the Cast request. That ignored request does not
+  consume or reset the retained queue, charged/banked coverage or partial progress.
+- All ten orb slots now have a faint neutral empty-circle indicator. Occupied
+  lifetime fill and the2px charged outline are unchanged. The overflow widget keeps
+  its stable dimensions through the existing4px-left/4px-right/rest flinch.
+- The existing school-colored empowered square has half-size6 local units,
+  horizontal facing offset8, vertical offset-66 and0.45-second lifetime. Its
+  triggering event and audio are unchanged; it adds no new feedback meaning.
+
+Evidence covers rendered observations through October22 07:19 HKT and the later
+five existing supplementary controlled regression suites; see
+[Implementation Status](IMPLEMENTATION_STATUS.md). Physical-controller priority,
+audio and human latency/feel acceptance remain unverified; current-source parry
+attempts did not establish a pass. The completed headless suites do not replace
+primary play or human acceptance. A new full Charging press during hurt can
+currently be classified without starting Charging,
+and an unchanged hold does not retry after recovery. This is an implementation
+seam, not an approved new incoming-hit rearm rule.
+
 ## Overview
 
 This prototype tests the existing four-school combat system in a 2D side-scrolling space. Laema generates temporary elemental orbs through successful X attacks, uses full L2 pressure to charge generated orbs for the upcoming Cast, depletes that charging progress below full pressure, and triggers normal or empowered school spells by releasing L2 below the Cast threshold.
@@ -135,7 +168,7 @@ The primary experience remains deliberate combat mastery. The player should lear
 
 ## Prototype Scope
 
-**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, L2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying/partial blocking, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 7 objectives, stage-owned target sets, and one attacking final Enemy with one committed melee pattern.
+**Included:** grounded left/right movement, gravity, continuous flat ground through all current stage areas, horizontal camera movement, functional Fire/Water/Air/Earth X attacks, generic school-and-level Cast resolution, school switching, a five-position attack-and-casting chain, temporary elemental orbs, L2 Charging, normal and empowered casting, casting projectiles, Heat, Fire parrying/partial blocking, Fire dodge, Water blocking, hit reactions, combat UI, reusable tutorial-stage progression, Stage 1 through Stage 7 objectives, stage-owned target sets, and one attacking final Enemy with one committed melee pattern.
 
 **Excluded:** jumping, vertical traversal controls, Air and Earth defence, additional Enemy behaviors and attack patterns, final level design, final art and UI assets, complete enemy content, and final numerical tuning.
 
@@ -153,11 +186,42 @@ The primary experience remains deliberate combat mastery. The player should lear
 | D-pad Left | Select Air |
 | D-pad Right | Select Earth |
 | R1 | Use the active school’s available defence |
+| Circle | Dodge while using Fire |
 | Start / Esc | Pause or resume through the pause menu |
 
 Laema is affected by gravity and remains grounded on solid collision. Every current stage area uses the same continuous flat ground height, and adjacent ground sections overlap at stage boundaries so transitions do not introduce a gap. The camera follows Laema horizontally while preserving fixed vertical framing.
 
-Active X and Cast animations lock player-controlled movement and facing. Once an action begins, left/right input cannot flip Laema until that action finishes. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
+Active X and Cast animations lock player-controlled movement and facing unless interrupted by the Fire dodge rules below. Once an action begins, left/right input cannot flip Laema until that action finishes. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
+
+### Fire Dodge
+
+Only Fire has dodge in this slice. A fresh Circle press starts an available
+dodge; holding Circle does not repeat it.
+
+- The entire dodge animation lasts **0.4 seconds**, with invincibility throughout.
+- Travel distance equals **0.4 seconds of normal movement**, including when
+  starting from idle. At activation, stick direction takes priority; neutral
+  stick uses Laema’s facing. Direction remains locked throughout the dodge.
+- Laema passes through enemy bodies. Walls stop movement, but animation and
+  invincibility continue until the original 0.4-second duration ends.
+- Starting dodge resets the input-combo. During dodge, all other gameplay action
+  inputs are ignored, not buffered.
+- A **0.37-second cooldown** begins after dodge finishes. Circle presses during
+  dodge or cooldown are ignored; another dodge requires a fresh press once ready.
+
+Dodge interacts with current actions as follows:
+
+- **Fire X:** Circle can cancel the attack strictly before its active frames
+  begin. From active-frame start until the attack animation finishes, Circle is
+  ignored; no dodge is queued.
+- **Charging:** starting dodge interrupts charging, clears charged statuses and
+  resets partial charging progress to zero. The orbs remain in the queue.
+  Keeping the Charging input held does not restart charging.
+- **Cast before projectile launch:** Circle interrupts the Cast, spends that
+  Cast’s charged orbs and starts dodge. Orbs already spent at Cast commitment
+  are not spent a second time; unconsumed queue entries remain.
+- **Cast after projectile launch:** Circle is ignored until Cast recovery
+  finishes; no dodge is queued.
 
 ## Schools and Character Presentation
 
@@ -206,7 +270,7 @@ original ten-frame 128×128 casting presentation. Fire also has dedicated Idle,
 Walk and Hurt sheets; legacy schools keep the shared originals. Cast's sword
 gesture adds no melee strike. Final projectile art remains open.
 
-School switching is always available and changes the school used by future X attacks. It does not depend on the current chaining window, CHARGING or DEPLETING state, or any prior switch in the active chain. Switching consumes no progression position, buffered input, or other chain/input capacity, and it never clears or ends the chain. The currently selected school never directly determines Cast output.
+Outside dodge, school switching is always available and changes the school used by future X attacks. During dodge it is ignored with the other gameplay action inputs. It does not otherwise depend on the current chaining window, CHARGING or DEPLETING state, or any prior switch in the active chain. Switching consumes no progression position, buffered input, or other chain/input capacity, and it never clears or ends the chain. The currently selected school never directly determines Cast output.
 
 ## Six-Slot Chain
 
@@ -305,7 +369,7 @@ L2 pressure has three semantic states, and state changes are transition-based:
 - `5–95%`: an intermediate hold. It begins **DEPLETING** only after remaining in that band continuously for more than 0.3 seconds; before then it preserves charged orbs for a release.
 - `95–100%`: **CHARGING**; available charging capacity selects generated orbs in FIFO order and charges them for the upcoming Cast.
 
-CHARGING may begin at any time, with or without available generated orbs, and continues while Laema attacks or performs casting animations. Charging capacity selects the oldest available generated orbs in first-in, first-out order.
+Except for the Fire dodge interruption above, CHARGING may begin at any time, with or without available generated orbs, and continues while Laema attacks or performs casting animations. Charging capacity selects the oldest available generated orbs in first-in, first-out order.
 
 - Entering CHARGING starts or resumes charging progress.
 - Entering the 5–95% intermediate band starts a 0.3-second no-drain hold timer. Returning to CHARGING resets that timer.
@@ -944,7 +1008,7 @@ Laema Dev Portal's editor dock edits a draft without running the game. Review/sa
 
 ## Combat Gym
 
-`scenes/gym.tscn` is the bounded development encounter for the first reusable Enemy. Open it with F6 or Laema Dev Portal → Run gym; saved F5 still launches the tutorial. The separate Fire benchmark is retired. Fire is the initial school, with school switching available. Both fighters use the shared character baseline; Player and Enemy start 160 pixels apart. Defeat the opponent while surviving, with no parry/Cast quotas. Victory or defeat stops the encounter and offers Retry; Start/Esc also offers Retry gym. Retry restores both actors, authored starting school/positions, empty orbs, zero Heat and saved settings.
+`scenes/gym.tscn` is the bounded development encounter for the first reusable Enemy. Open it with F6 or Laema Dev Portal → Run gym; the current saved F5 main scene is also Gym. Open `scenes/prototype_arena.tscn` with F6 for the tutorial. The separate Fire benchmark is retired. Fire is the initial school, with school switching available. Both fighters use the shared character baseline; Player and Enemy start 160 pixels apart. Defeat the opponent while surviving, with no parry/Cast quotas. Victory or defeat stops the encounter and offers Retry; Start/Esc also offers Retry gym. Retry restores both actors, authored starting school/positions, empty orbs, zero Heat and saved settings.
 
 The Gym adds result/retry and formula presentation. It has no private pacing multiplier, Fire lock, Endurance override or save refusal. F4 and Developer Overlay Visible toggle telemetry and formula readouts together. See [GYM.md](GYM.md) for controls, tuning, observations and evidence boundaries.
 
