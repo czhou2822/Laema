@@ -66,6 +66,13 @@ native Animation resources; the Pikeman reach/radius shortcuts are hidden while
 either native creature is selected. New creature playback, both facings,
 grounding, hit alignment, restart and saved-selection behavior await a user run.
 
+The current presentation candidate binds the existing high-resolution Archer
+and Griffin character sheets (768 x 640 per frame). Stop and rerun Gym to load
+the new scene/texture bindings, then use the same creature selector. The source
+animation collection remains a review candidate; this rebind preserves current
+attack timing, combat settings and hitboxes. Review both facings, grounding and
+weapon/muzzle alignment in-game. Original character sheets remain preserved.
+
 ## Character settings and tuning
 
 There are no Gym root or level combat settings. Both Gym and PrototypeArena use

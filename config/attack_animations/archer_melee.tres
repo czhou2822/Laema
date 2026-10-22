@@ -1,6 +1,6 @@
 [gd_resource type="Animation" load_steps=2 format=3]
 
-[ext_resource type="Texture2D" path="res://assets/prototype/enemy/archer/Melee.png" id="sheet"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/archer/highres_v01/Melee.png" id="sheet"]
 
 [resource]
 resource_name = "archer_melee"
@@ -46,7 +46,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.166666667, 0.333333333, 0.5, 0.666666667, 0.833333333, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Rect2(0, 0, 450, 400), Rect2(450, 0, 450, 400), Rect2(900, 0, 450, 400), Rect2(1350, 0, 450, 400), Rect2(0, 400, 450, 400), Rect2(450, 400, 450, 400), Rect2(0, 0, 450, 400)]
+"values": [Rect2(0, 0, 768, 640), Rect2(768, 0, 768, 640), Rect2(1536, 0, 768, 640), Rect2(2304, 0, 768, 640), Rect2(0, 640, 768, 640), Rect2(768, 640, 768, 640), Rect2(0, 0, 768, 640)]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AttackCast:position")

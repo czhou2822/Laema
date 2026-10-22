@@ -1,5 +1,22 @@
 # Combat
 
+## High-resolution presentation correction — October 22
+
+- **User observation:** Gym displayed the original low-resolution character
+  sheets; the user expected the existing high-resolution assets.
+- **Implementation candidate:** The saved Art collection supplies the selected
+  Archer and Griffin generated flipbooks. Six Archer and five Griffin sheets
+  now bind through the existing scenes and attack Resources, using 768x640 cells
+  and their shared (384,448) reference anchor. Current combat timing, markers,
+  geometry, settings, AI, sound and shared-selector behavior are preserved.
+- **Evidence:** 11 atlases/79 frame positions were compared with selected Art
+  outputs; compact source hashes are saved with each creature. These animations
+  remain prototype review candidates, distinct from accepted static masters.
+  Godot import/playback, alignment and human acceptance remain unverified.
+- **Repository:** The user authorized the scoped commit and local-main merge of
+  `codex/castle-creature-hires` over `fd72f4e2`; preserve ongoing tuning,
+  keyboard-shortcut work and both existing task identities. No push was requested.
+
 ## Selectable creatures — October 22
 
 - **Decision:** The user assigned the independent Castle Griffin and Castle

@@ -24,11 +24,15 @@ the choice for subsequent launches. Final Arena uses the same selected opponent
 in its existing final-enemy slot, preserving its completion objective and
 separate practice targets. Pikeman remains the saved default.
 
-Griffin uses the original native creature artwork and sound cues for this
-prototype. Its wing movement is presentation of the current grounded actor.
+The current presentation candidate uses the existing high-resolution Castle
+animation review sheets for Griffin and Archer, following the user's correction
+that the original low-resolution sheets were shown in Gym. The accepted static
+masters and the generated animation candidates retain separate approval status.
+Original character sheets are preserved; Griffin's original sound cues remain.
+Its wing movement is presentation of the current grounded actor.
 The existing melee timing and hit geometry remain a temporary contract, not
-final Griffin-specific tuning. Archer's melee and shooting use separate original
-animation sheets. Source/static checks do not establish Godot playback,
+final Griffin-specific tuning. Archer's melee and shooting use separate
+high-resolution sheets with their current timing. Source/static checks do not establish Godot playback,
 controller acceptance, final artwork approval or balance validation; see
 IMPLEMENTATION_STATUS.md for the implementation candidate and limits.
 

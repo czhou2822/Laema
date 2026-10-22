@@ -14,6 +14,13 @@ basis is `dda30976` plus this scoped creature revision, originating on
 into local `main`; unrelated Fire/player tuning is excluded. This is not a
 tested revision, submission clearance or remote-publication receipt.
 
+The later high-resolution presentation correction originates on
+`codex/castle-creature-hires`, based on roster merge `fd72f4e2`. The user
+authorized its scoped commit and merge into local `main`. It changes
+character sheet bindings, atlas rectangles and sprite registration only;
+other ongoing tuning is outside that slice. Its available evidence and source
+digests are recorded in IMPLEMENTATION_STATUS.md and creature provenance.
+
 `scripts/config/creature_catalog.gd` owns the stable IDs and PackedScene paths:
 `pikeman` -> `scenes/enemy/combat_enemy.tscn`, `archer` -> `scenes/enemy/archer.tscn`,
 and `griffin` -> `scenes/enemy/griffin.tscn`. Both Portals use the same catalog.
@@ -37,10 +44,12 @@ saved preference. Spawn/retry resets the encounter rather than mutating an
 in-flight actor; root cleanup also removes `enemy_projectiles` such as arrows.
 
 CombatEnemy exposes per-scene textures, cell layout, frame counts and optional
-mirrored sprite offset while retaining Pikeman's exact defaults. Griffin's
-native 450x400/four-column sheets use Idle8/Walk4/Hurt7/Death9 and a nine-pose
-attack. Scale2, offset(7,-67) and native foot(218,267) register to the inherited
-BodyVisual(-11,31) and 60x180 capsule. The copied native melee resource retains
+mirrored sprite offset while retaining Pikeman's exact defaults. Archer and
+Griffin now bind existing generated review sheets under each creature's
+`highres_v01/` folder: four columns of 768x640 cells, scale1 and offset(0,-128).
+The source cell anchor(384,448) maps to the inherited BodyVisual(-11,31);
+the 60x180 capsule is unchanged. Griffin retains Idle8/Walk4/Hurt7/Death9
+and a nine-pose attack. Its native Animation resource retains
 the existing 1.0s clock, active0.5..1.0 and all Pikeman AttackCast key values.
 Its original-source cues use the existing playback/mix owners. Archer may leave
 unassigned streams null; shared playback skips those streams.
@@ -55,7 +64,8 @@ awareness-distance limit and an exported1.0s travel-duration placeholder.
 It is parented under the arena, joins `enemy_projectiles`, and sweeps each
 travelled segment against Player/level collision. One contact consumes it through
 the existing direct HealthEvent path; a shot does not enter simultaneous melee
-clash arbitration. Original actor/arrow sheets and source hashes are documented
+clash arbitration. Current generated character sheets, preserved original
+character/arrow sheets and source hashes are documented
 in `assets/prototype/enemy/archer/PROVENANCE.md`. These are implementation
 candidate details, not recovered Heroes battle timing or runtime evidence.
 

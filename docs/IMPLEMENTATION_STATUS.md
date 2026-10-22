@@ -1,5 +1,36 @@
 # Implementation Status
 
+## High-resolution creature presentation correction — October 22
+
+Status: `AWAITING_USER_VALIDATION`. After the user identified the original
+low-resolution flipbooks in Gym, the existing selected high-resolution animation
+collection was located in Art's saved outputs. The user authorized its scoped
+commit and merge into local `main` on October 22. The correction originates on
+`codex/castle-creature-hires`, based on roster merge `fd72f4e2`; other ongoing
+tuning and keyboard-shortcut edits remain outside this commit. No push or new
+runtime-validation evidence is authorized by the local merge request.
+
+- Archer binds six existing generated character sheets: Idle/Walk/Hurt/Death,
+  close melee and shooting. Griffin binds five: Idle/Walk/Hurt/Death/Attack.
+  All 11 copied atlases retain their selected source bytes; 79 source frame
+  positions were compared with the collection's individual PNGs.
+- Both use four-column 768 x 640 cells, sprite scale 1, offset (0, -128) and
+  anchor (384, 448) at the inherited BodyVisual position. Sprite-frame rectangles
+  in the three attack resources use that layout.
+- Timing, marker/key times, AttackCast geometry, collision bodies, AI, shared
+  settings, selector/restart behavior and sound assignments are preserved.
+  Archer's detached arrow remains its original source sprite. Native character
+  PNGs are preserved at their earlier paths; the new sheets and compact source
+  hashes live under each creature's `highres_v01/` folder.
+- The static masters were accepted in Art; their generated animation collection
+  is explicitly a prototype review candidate. This binding change grants no
+  final animation, art, engine-import, gameplay or balance approval.
+
+Checks are source/resource/frame-bound comparisons only; no Godot, editor,
+runtime, build or automated gameplay tests were run. User validation remains:
+stop/rerun Gym, select each creature and inspect motion, both facings, feet,
+close melee/shot presentation, weapon/hitbox and muzzle alignment.
+
 ## Selectable Castle creatures — October 22
 
 Status: `AWAITING_USER_VALIDATION`. The user authorized a scoped creature commit
