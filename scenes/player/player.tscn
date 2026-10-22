@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://df80t7x1qypps" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://coydkivtwer7t" path="res://scripts/player/movement_controller.gd" id="2_movement"]
-[ext_resource type="Texture2D" path="res://assets/prototype/player/fire_sword_shield_v01/shared_idle.png" id="2_vo27k"]
+[ext_resource type="Texture2D" uid="uid://j2rcq3tmaaj7" path="res://assets/prototype/player/fire_sword_shield_v01/shared_idle.png" id="2_vo27k"]
 [ext_resource type="Script" uid="uid://dh4oxcsw448ym" path="res://scripts/combat/combat_controller.gd" id="3_combat"]
 [ext_resource type="Script" uid="uid://cgf6v0yon5pv7" path="res://scripts/combat/input_combo.gd" id="4_combo"]
 [ext_resource type="Script" uid="uid://3bwbjxeid4ti" path="res://scripts/combat/heat_controller.gd" id="5_heat"]
@@ -40,19 +40,18 @@
 [ext_resource type="Animation" path="res://config/attack_animations/water_x3.tres" id="Anim_water_x3"]
 [ext_resource type="Animation" path="res://config/attack_animations/water_x4.tres" id="Anim_water_x4"]
 [ext_resource type="Animation" path="res://config/attack_animations/water_x5.tres" id="Anim_water_x5"]
-[ext_resource type="Resource" uid="uid://dijmu0dakb6mv" path="res://config/characters/player.tres" id="character_settings"]
+[ext_resource type="Resource" uid="uid://dgnwvwmxw2n26" path="res://config/characters/player.tres" id="character_settings"]
+[ext_resource type="Shape2D" path="res://config/player_presentation/fire_body.tres" id="fire_registration_body"]
 [ext_resource type="AudioStream" uid="uid://ciy3xcmi70xmy" path="res://assets/prototype/audio/guard/PROTECT.wav" id="heroes_guard"]
 [ext_resource type="AudioStream" uid="uid://bvcrns550rgd5" path="res://assets/prototype/audio/hit_reaction/SWRDWNCE.wav" id="heroes_hurt"]
-[ext_resource type="Script" uid="uid://d3awtwglwmrfh" path="res://scripts/config/combat_tuning_bridge.gd" id="tuning_bridge"]
-[ext_resource type="Resource" uid="uid://cnmparaicavk5" path="res://config/combat_tuning.tres" id="tuning_view"]
-
-[ext_resource type="Texture2D" path="res://assets/prototype/player/animation/shared_idle.png" id="legacy_idle"]
-[ext_resource type="Shape2D" path="res://config/player_presentation/fire_body.tres" id="fire_registration_body"]
+[ext_resource type="Texture2D" uid="uid://ce08yn4vkc0ct" path="res://assets/prototype/player/animation/shared_idle.png" id="legacy_idle"]
 [ext_resource type="Shape2D" path="res://config/player_presentation/legacy_body.tres" id="legacy_registration_body"]
-[ext_resource type="Material" path="res://config/player_presentation/outline_fire.tres" id="palette_fire"]
-[ext_resource type="Material" path="res://config/player_presentation/outline_water.tres" id="palette_water"]
 [ext_resource type="Material" path="res://config/player_presentation/outline_air.tres" id="palette_air"]
 [ext_resource type="Material" path="res://config/player_presentation/outline_earth.tres" id="palette_earth"]
+[ext_resource type="Material" path="res://config/player_presentation/outline_fire.tres" id="palette_fire"]
+[ext_resource type="Material" path="res://config/player_presentation/outline_water.tres" id="palette_water"]
+[ext_resource type="Script" uid="uid://d3awtwglwmrfh" path="res://scripts/config/combat_tuning_bridge.gd" id="tuning_bridge"]
+[ext_resource type="Resource" uid="uid://dhtsbm4lftoav" path="res://config/combat_tuning.tres" id="tuning_view"]
 
 [sub_resource type="Animation" id="Animation_vo27k"]
 length = 0.001
@@ -255,10 +254,6 @@ _data = {
 &"water_x4": ExtResource("Anim_water_x4"),
 &"water_x5": ExtResource("Anim_water_x5")
 }
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-resource_local_to_scene = true
-radius = 16.0
 
 [sub_resource type="Animation" id="Animation_registration_fire"]
 resource_name = "registration_fire"
@@ -469,7 +464,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Color(1, 0.8156862745098039, 0.8, 1)]
+"values": [Color(1, 0.8156863, 0.8, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -508,62 +503,6 @@ tracks/9/keys = {
 "values": [Vector2(42, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_palette_fire"]
-resource_name = "palette_fire"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:material")
-tracks/0/interp = 0
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("palette_fire")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:self_modulate")
-tracks/1/interp = 0
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 0.8156862745098039, 0.8, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_palette_water"]
-resource_name = "palette_water"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:material")
-tracks/0/interp = 0
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("palette_water")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:self_modulate")
-tracks/1/interp = 0
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(0.788235294117647, 0.8666666666666667, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_palette_air"]
 resource_name = "palette_air"
 length = 0.001
@@ -589,7 +528,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Color(0.9568627450980393, 0.9647058823529412, 1, 1)]
+"values": [Color(0.95686275, 0.9647059, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_palette_earth"]
@@ -617,18 +556,78 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Color(0.8392156862745098, 0.7019607843137254, 0.5411764705882353, 1)]
+"values": [Color(0.8392157, 0.7019608, 0.5411765, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_palette_fire"]
+resource_name = "palette_fire"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("palette_fire")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 0.8156863, 0.8, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_palette_water"]
+resource_name = "palette_water"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("palette_water")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(0.7882353, 0.8666667, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_presentation"]
 _data = {
 &"fire": SubResource("Animation_registration_fire"),
 &"legacy": SubResource("Animation_registration_legacy"),
-&"palette_fire": SubResource("Animation_palette_fire"),
-&"palette_water": SubResource("Animation_palette_water"),
 &"palette_air": SubResource("Animation_palette_air"),
-&"palette_earth": SubResource("Animation_palette_earth")
+&"palette_earth": SubResource("Animation_palette_earth"),
+&"palette_fire": SubResource("Animation_palette_fire"),
+&"palette_water": SubResource("Animation_palette_water")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+resource_local_to_scene = true
+radius = 3.5
 
 [node name="Player" type="CharacterBody2D" unique_id=1810426571]
 scale = Vector2(2, 2)
@@ -644,12 +643,12 @@ offset = Vector2(0, -124)
 region_enabled = true
 region_rect = Rect2(0, 0, 448, 448)
 
+[node name="CastOrigin" type="Marker2D" parent="Sprite" unique_id=285089635]
+position = Vector2(-19, -113)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=95008048]
 position = Vector2(0, -19)
 shape = ExtResource("fire_registration_body")
-
-[node name="CastOrigin" type="Marker2D" parent="Sprite"]
-position = Vector2(-19, -113)
 
 [node name="Movement" type="Node" parent="." unique_id=1570285336]
 script = ExtResource("2_movement")
@@ -720,15 +719,15 @@ bus = &"SFX"
 callback_mode_process = 2
 libraries/ = SubResource("AnimationLibrary_player")
 
-[node name="PresentationPlayer" type="AnimationPlayer" parent="."]
+[node name="PresentationPlayer" type="AnimationPlayer" parent="." unique_id=1843551119]
 callback_mode_process = 2
-playback_auto_capture = false
 libraries/ = SubResource("AnimationLibrary_presentation")
+playback_auto_capture = false
 
 [node name="AttackCast" type="ShapeCast2D" parent="." unique_id=854828504]
 position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_attack")
-target_position = Vector2(0, 0)
+target_position = Vector2(26.608667, -22.035303)
 collision_mask = 2
 
 [node name="CombatTuning" type="Node" parent="." unique_id=1639297425]
