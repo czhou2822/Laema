@@ -1,0 +1,91 @@
+{
+  "source_package": "castle-creature-assets-v01/animations",
+  "creature": "monk",
+  "source_index_sha256": "56a4bc391a035c785d833a62b906a57b5301461dd6235c4682f1a7374d731321",
+  "status": "generated prototype review artwork; no Godot or final art approval",
+  "cell_size": [
+    768,
+    640
+  ],
+  "columns": 4,
+  "anchor": [
+    384,
+    448
+  ],
+  "source_anchor": [
+    196,
+    268
+  ],
+  "orientation": "source-orientation; Sprite2D supplies the facing mirror",
+  "sheets": [
+    {
+      "file": "Walk.png",
+      "source_sheet": "monk/group_00_block_00/atlas_source.png",
+      "group": 0,
+      "block": 0,
+      "frames": 6,
+      "sha256": "41ffb5ffc2decfa06f1bf5fd66ef9ab074e58eb427a048f04fec73913e5ce43c"
+    },
+    {
+      "file": "Idle.png",
+      "source_sheet": "monk/group_02_block_02/atlas_source.png",
+      "group": 2,
+      "block": 2,
+      "frames": 6,
+      "sha256": "f87a1fdfc736f04e1739d2cc2dd82072c8a9165718a4cfed9aaac8dd08416ff5"
+    },
+    {
+      "file": "Hurt.png",
+      "source_sheet": "monk/group_03_block_03/atlas_source.png",
+      "group": 3,
+      "block": 3,
+      "frames": 8,
+      "sha256": "8f42120a278d0d5b27dd00d3d174161502211d90d1264c6c08aa5284e38e4984"
+    },
+    {
+      "file": "Dead.png",
+      "source_sheet": "monk/group_05_block_05/atlas_source.png",
+      "group": 5,
+      "block": 5,
+      "frames": 11,
+      "sha256": "a28e5c2382ad091cb3432f8d97f6748cdd50f306133b52061004a209a5bef446"
+    },
+    {
+      "file": "Melee.png",
+      "source_sheet": "monk/group_12_block_11/atlas_source.png",
+      "group": 12,
+      "block": 11,
+      "frames": 8,
+      "sha256": "79b25c3132cd6e64c61e050d63d15d664f8fcc4f06e63e258d442b909fb00615"
+    },
+    {
+      "file": "Shoot.png",
+      "source_sheet": "monk/group_15_block_14/atlas_source.png",
+      "group": 15,
+      "block": 14,
+      "frames": 10,
+      "sha256": "26d85b51163e0ca09d34d6545b10f3612bdf4bfba5fb7b6e0489494c66ce8556"
+    }
+  ],
+  "projectile": {
+    "file": "../Bolt.png",
+    "source_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CPRZEAX/group_00_block_00_page_00.png",
+    "source_def": "CPRZEAX.def",
+    "source_def_sha256": "361a503c9016647a4e062044dbbbffe9580a0e409525faf27fae5ef4726c4c9f",
+    "sha256": "e1385a91a790b0f5c4dbe8ddc5083b05c386822f26f924590093c1a6c05b76f7",
+    "group": 0,
+    "frame": 4,
+    "cell_size": [
+      60,
+      60
+    ],
+    "region": [
+      240,
+      0,
+      60,
+      60
+    ],
+    "high_resolution_detached_projectile_supplied": false,
+    "mapping_evidence": "https://raw.githubusercontent.com/vcmi/vcmi/develop/config/creatures/castle.json"
+  }
+}

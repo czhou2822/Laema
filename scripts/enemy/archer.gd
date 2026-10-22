@@ -3,6 +3,7 @@ extends "res://scripts/enemy/combat_enemy.gd"
 
 const ArrowScene = preload("res://scenes/combat/enemy_arrow.tscn")
 
+@export var ranged_projectile_scene: PackedScene = ArrowScene
 @export_range(0.05, 5.0, 0.05) var arrow_travel_duration := 1.0
 @export var arrow_origin := Vector2(64.0, -108.0)
 
@@ -131,7 +132,7 @@ func _release_arrow() -> void:
 	# Mirror the muzzle about the visual foot anchor, as the melee geometry does.
 	var pivot_x := body_visual.position.x
 	var muzzle := Vector2(pivot_x + (arrow_origin.x - pivot_x) * _facing.x, arrow_origin.y)
-	var arrow = ArrowScene.instantiate()
+	var arrow = ranged_projectile_scene.instantiate()
 	scene.add_child(arrow)
 	arrow.initialize(
 		self, to_global(muzzle), _facing, _shot_damage, _shot_impact,

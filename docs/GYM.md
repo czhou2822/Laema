@@ -35,16 +35,38 @@ Controls retain the current implementation:
 | Fire parry / hold to block | R1 | Shift |
 | Fire dodge | Circle | No keyboard default |
 | Pause / retry menu | Start | Esc |
+| Spawn / Restart with Pikeman | No controller shortcut | Top-row 1 |
+| Spawn / Restart with Castle Archer | No controller shortcut | Top-row 2 |
+| Spawn / Restart with Castle Griffin | No controller shortcut | Top-row 3 |
+| Spawn / Restart with Castle Swordsman | No controller shortcut | Top-row 4 |
+| Spawn / Restart with Castle Monk | No controller shortcut | Top-row 5 |
+| Spawn / Restart with Castle Cavalier | No controller shortcut | Top-row 6 |
+| Spawn / Restart with Castle Angel | No controller shortcut | Top-row 7 |
 
-School-selection input reaches Player in this scene just as it does in the Arena.
+School selection uses the controller D-pad just as it does in the Arena. The
+former 1–4 keyboard school-selection defaults have been removed.
 Casting uses the shared L2 binding. R1 is defence; Fire uses the October 21 press-parry/hold-block prototype.
 
 ## Choose an opponent
 
-Pikeman, Castle Archer and Castle Griffin share the Dev Portal's
-**Creature to spawn** choice. The saved default remains Pikeman; the room still
+During play, use the physical top-row keys: **1 = Pikeman**, **2 = Archer**,
+**3 = Griffin**, **4 = Swordsman**, **5 = Monk**, **6 = Cavalier**, **7 = Angel**.
+Each fresh, unmodified press uses the same
+**Spawn / Restart** action below, including full Health, empty orbs, zero Heat
+and reset actions/positions. Holding the key does not repeat. Close the pause
+menu and Dev Portal first; shortcuts stay inactive while either is open, even
+if the Portal has unpaused play. Numpad keys are not shortcuts. The choice is
+run-only until Save Tuning, and no new creature behavior or tuning is added.
+
+All seven base Castle creatures share the Dev Portal's **Creature to spawn**
+choice: Pikeman, Archer, Griffin, Swordsman, Monk, Cavalier and Angel.
+The saved default remains Pikeman; the room still
 contains one opponent at a time. Griffin currently uses the existing grounded
 melee behavior. Archer shoots at range and has a separate close-range melee.
+The added level4 Swordsman, level6 Cavalier and level7 Angel use the current
+grounded melee prototype; level5 Monk uses the existing ranged/close-melee
+pattern with its own bolt visual. Their character sheets are the existing
+high-resolution candidates. Stop and rerun Gym before selecting a new creature.
 
 1. Open the in-game Dev Portal with backtick and select **General**.
 2. Under the UI fields, set **Creature to spawn**.
@@ -61,9 +83,9 @@ fighters, Health, positions, empty orbs, zero Heat, reactions and buffered actio
 Final Arena retains its practice targets and final-enemy completion identity.
 
 The current shared Health/Poise/Impact and AI values still come from
-CombatEnemy Settings. Griffin/Archer melee hitboxes are edited in their own
+CombatEnemy Settings. Non-Pikeman melee hitboxes are edited in their own
 native Animation resources; the Pikeman reach/radius shortcuts are hidden while
-either native creature is selected. New creature playback, both facings,
+one of those creatures is selected. New creature playback, both facings,
 grounding, hit alignment, restart and saved-selection behavior await a user run.
 
 The current presentation candidate binds the existing high-resolution Archer

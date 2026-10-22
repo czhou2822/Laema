@@ -1,5 +1,30 @@
 # Combat
 
+## Castle levels 4–7 — October 22
+
+- **Decision:** The user approved adding base Swordsman, Monk, Cavalier and
+  Angel with existing selected high-resolution assets and one subagent each.
+  Swordsman/Cavalier/Angel retain current grounded melee; Monk reuses Archer's
+  ranged/close-melee pattern. The same Dev Portal selector covers all seven.
+- **Keyboard decision:** The user's later request extends the existing
+  Spawn / Restart shortcuts: top-row4 = Swordsman,5 = Monk,6 = Cavalier,7 = Angel.
+  The existing1–3 mappings and fresh-key/UI/restart protections remain.
+- **Implementation candidate:** Four scenes/native animation sets, 21 character
+  atlases/157 frame positions and portable source manifests/provenance. Shared
+  settings, tree, collider, reactions and the existing encounter restart remain.
+  Monk overrides the ranged actor's new PackedScene binding with an original
+  Monk bolt visual and the existing generic projectile lifecycle. New SFX are
+  unassigned; inherited Pikeman audio streams are null.
+- **Evidence limit:** Source/resource/grammar checks only. No Godot import,
+  runtime, build, automated gameplay test or new animation/art/balance acceptance.
+  Copied melee geometry, mounted walk/collision and airborne Angel presentation
+  require human Gym review. Preserve each actor's stated art limitations.
+- **Repository:** The user authorized the scoped levels4–7 and top-row1–7
+  shortcut commit/local-main merge from `codex/castle-creatures-4-7` over
+  `5fe2886f`, with other ongoing combat tuning preserved. No push was requested.
+  These are subtasks of this
+  Combat operation; they do not replace independent chat/task identities.
+
 ## High-resolution presentation correction — October 22
 
 - **User observation:** Gym displayed the original low-resolution character
