@@ -424,6 +424,13 @@ collision restores anyway and ordinary correction may occur. There is no
 loop-until-clear, new AI response, generic extra clear-roll travel or promise of
 exact Dead Cells animation/cooldown parity.
 
+Reconciled source: dodge patch `89610a01`, normal committed-main merge
+`7028a5f` with parent main `5bcd0c7b`. Existing creature/art/shortcut owners and
+X5 serialization are preserved; no unsaved shared-main files are absorbed.
+Implementation Status records the scoped headless evidence and the inherited
+X5-reference UID fallback warning. This is not rendered/human or submission
+clearance of the combined candidate.
+
 Might accepts cancellation of a committed Fire X strictly before native
 active_start, or a Cast before its once-only launch. Active/recovery X and
 post-launch Cast ignore Circle without buffering. Existing stage/death, reaction,

@@ -21,8 +21,8 @@ Exact product scope: `scripts/combat/might_component.gd`,
 Exact test scope: only the two fixed160->161 count assertions in
 `tools/tests/attack_style_test.gd`, plus new
 `tools/tests/fire_dodge_overlap_test.gd` and its `.gd.uid`.
-Exact documentation scope: GDD, TDR, this status and Gym. No assets, attack
-timing, damage/Health/Heat, AI, non-Fire or main-tree changes. Existing X5 shove
+Exact documentation scope: GDD, TDR, this status and Gym. No authored assets, attack
+timing, damage/Health/Heat, AI, non-Fire or shared-main edits. Existing X5 shove
 and raised-hand Fireball implementation remain unchanged.
 
 The brief acceptance of immediate overlap correction in the cfa537d record
@@ -47,6 +47,29 @@ Its 205 failure/error entries match clean fd72 exactly; unrelated removed-clock/
 contact/art assumptions are not repaired or presented as a green suite. The new
 test UID comes from the isolated Godot import, not an editor run in the branch.
 No human/controller/feel validation of this extension is claimed.
+
+Committed-main reconciliation: authored patch `89610a01` was normally merged
+with committed main `5bcd0c7b` as `7028a5f`. This preserves the accepted HD
+Archer/Griffin art, levels4–7, seven-creature shortcuts and X5 UID/precision
+serialization. The two canonical-document insertion conflicts retain both
+accepted scopes; other incoming creature/art/shortcut records are unchanged.
+Main's unsaved work was not copied, stashed, reset or staged. Relative to its
+preserved X5 Resource, the only additional line is `push_motion_duration=0.15`.
+
+Fresh isolated checks against reconciled `7028a5f`: focused513 and shared87,
+both runner/process exit0 with zero assertion failures or script errors.
+The legacy style suite still exits1 with exactly the same205 diagnostic entries
+as clean fd72; its two approved count assertions now pass. These results remain
+separate from Combat's earlier cfa537d rendered observations.
+
+Reconciliation warning, left outside approved authored scope: committed
+`config/characters/player.tres:18` and `config/combat_tuning.tres:21` still refer
+to X5 UID `7aaccg6wkqwp`, while the preserved Resource UID is `poa2y4kef1av`.
+Godot reports invalid-UID warnings and successfully falls back to the existing
+text path. Focused/shared runs contain13/20 such runtime warnings respectively;
+this is not warning-free validation. No reference-file fix or UID rollback is
+hidden in this slice. Rendered/human/controller/feel checks remain with Combat
+and the user; source review and a safe local-main fast-forward remain pending.
 
 ## Fire X5 shove and raised-hand Fireball candidate — October 22
 

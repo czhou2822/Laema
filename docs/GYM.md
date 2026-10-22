@@ -180,6 +180,13 @@ extension even if a wall/wide Enemy still overlaps; further correction remains
 possible. This supersedes the brief acceptance of immediate end-overlap snapping.
 Practice targets grant no extension. Human feel validation remains pending.
 
+For the new candidate, compare a clear Circle roll with one whose normal end
+still overlaps the opponent. Expect0.4s versus one0.5s action, a held final pose
+in the extra phase and0.37s cooldown only after actual completion. Check both
+facings and a wall; a still-blocked/wide overlap must restore collision after
+the single grace rather than remain pass-through. Combat owns rendered review;
+the focused headless fixture is not a controller/feel pass.
+
 The current Might repair reacquires movement/facing lock at actual X/Cast start
 after a Charging-preserved gap; the gaps themselves remain movable. Normal RELEASE
 also stops Charging/depleting progression even when first-wins ignores that Cast,
