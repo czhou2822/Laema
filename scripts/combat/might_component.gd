@@ -26,6 +26,7 @@ enum State {
 
 const DODGE_ANIMATION := &"fire_dodge"
 const DODGE_DURATION := 0.4
+const DODGE_OVERLAP_EXTENSION := 0.1
 const DODGE_COOLDOWN := 0.37
 const SCHOOL_FIRE := &"fire"
 const SCHOOL_WATER := &"water"
@@ -58,6 +59,7 @@ var _finished_animation: StringName = &""
 var _sampling := false
 var _frame_action_id := 0
 var _dodge_cooldown_remaining := 0.0
+var _dodge_overlap_query: Callable
 
 
 func configure(
@@ -97,12 +99,20 @@ func contact_evaluation_enabled() -> bool:
 	return _owner_entity.can_process()
 
 
+func set_dodge_overlap_query(query: Callable) -> void:
+	_dodge_overlap_query = query
+
+
 func begin_contact_frame() -> void:
 	_frame_action_id = int(_current_action.get("source_action_id", 0))
 
 
 func finish_contact_frame(_delta: float) -> void:
 	_sync_owner_body_profile()
+	# Movement already consumed this frame's body step. Do not spend extension
+	# time in animation substeps before the next extra body step can occur.
+	if is_dodging() and bool(_current_action["native_finished"]):
+		_finish_dodge_body_step()
 
 
 func contact_step_limit(limit: float) -> float:
@@ -148,7 +158,7 @@ func finish_contact_sample() -> void:
 	if _state == State.DODGING:
 		if _finished_animation == DODGE_ANIMATION or _sample_time >= DODGE_DURATION:
 			_finished_animation = &""
-			_end_dodge()
+			_current_action["native_finished"] = true
 		return
 	var clock: Animation = _animation_player.get_animation(_animation_player.assigned_animation)
 	if _current_action["kind"] == &"light" and _sample_time >= clock.get_marker_time(&"active_end"):
@@ -324,6 +334,9 @@ func try_dodge(direction: Vector2, normal_movement_speed: float) -> bool:
 		"direction": Vector2.LEFT if direction.x < 0.0 else Vector2.RIGHT,
 		"source_action_id": _allocate_source_action_id(),
 		"motion_elapsed": 0.0,
+		"motion_duration": DODGE_DURATION,
+		"native_finished": false,
+		"overlap_extended": false,
 		"movement_speed": maxf(normal_movement_speed, 0.0),
 	}
 	_pending_action = {}
@@ -349,8 +362,19 @@ func cancel_dodge() -> void:
 		_end_dodge(true)
 
 
+func _finish_dodge_body_step() -> void:
+	if float(_current_action["motion_elapsed"]) + 0.000001 < float(_current_action["motion_duration"]):
+		return
+	if not bool(_current_action["overlap_extended"]) and _dodge_overlap_query.is_valid() and bool(_dodge_overlap_query.call()):
+		_current_action["overlap_extended"] = true
+		_current_action["motion_duration"] = DODGE_DURATION + DODGE_OVERLAP_EXTENSION
+		return
+	_end_dodge()
+
+
 func _end_dodge(interrupted := false) -> void:
-	_animation_player.stop()
+	# Normal completion must not reset the held endpoint to the clip's first cell.
+	_animation_player.stop(not interrupted)
 	_dodge_cooldown_remaining = 0.0 if interrupted else DODGE_COOLDOWN
 	_enter_ready()
 	dodge_finished.emit()
@@ -720,7 +744,7 @@ func _on_animation_finished(animation_name: StringName) -> void:
 		_finished_animation = animation_name
 		return
 	if is_dodging() and animation_name == DODGE_ANIMATION:
-		_end_dodge()
+		_current_action["native_finished"] = true
 		return
 	# Casts use school-specific native clips; assigned_animation survives completion.
 	if _current_action.is_empty() or animation_name != _animation_player.assigned_animation or _state != State.COMBO_ACTIVE:
@@ -890,7 +914,7 @@ func _refresh_action_speed() -> void:
 func consume_attack_body_motion(delta: float) -> Vector2:
 	if is_dodging():
 		var dodge_elapsed := float(_current_action["motion_elapsed"])
-		var dodge_step := minf(maxf(delta, 0.0), maxf(DODGE_DURATION - dodge_elapsed, 0.0))
+		var dodge_step := minf(maxf(delta, 0.0), maxf(float(_current_action["motion_duration"]) - dodge_elapsed, 0.0))
 		_current_action["motion_elapsed"] = dodge_elapsed + dodge_step
 		return Vector2(_current_action["direction"]) * float(_current_action["movement_speed"]) * dodge_step
 	if _state != State.COMBO_ACTIVE or _current_action.get("kind") != &"light" or not _animation_player.is_playing():

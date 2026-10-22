@@ -1,5 +1,53 @@
 # Implementation Status
 
+## One-time Fire dodge end-overlap extension — October 22
+
+Status: implemented approved rule/technical/file/test scope,
+`AWAITING_USER_VALIDATION` for the resulting candidate.
+Exact GDD wording remains `AWAITING_GDD_VERIFICATION`; design approval does not
+mean the user has played this version. Source basis: `cfa537d` on
+`codex/combat-feedback-fixes`; main's dirty files remain outside this slice.
+
+Clear rolls retain0.4s. At the real final body-step boundary, overlap with an
+already exception-owned combat Enemy grants one0.1s of captured movement,
+invulnerability and action suppression. The native final pose is held; the
+clip is not stretched/replayed. Actual completion alone restores collision,
+rearms input and begins the existing0.37s cooldown. Remaining overlap at0.5s
+restores normally, even if that permits correction. No repeat/indefinite
+extension or new0.5s gameplay cooldown is approved.
+
+Exact product scope: `scripts/combat/might_component.gd`,
+`scripts/player/movement_controller.gd`, `scripts/player/player.gd`.
+Exact test scope: only the two fixed160->161 count assertions in
+`tools/tests/attack_style_test.gd`, plus new
+`tools/tests/fire_dodge_overlap_test.gd` and its `.gd.uid`.
+Exact documentation scope: GDD, TDR, this status and Gym. No assets, attack
+timing, damage/Health/Heat, AI, non-Fire or main-tree changes. Existing X5 shove
+and raised-hand Fireball implementation remain unchanged.
+
+The brief acceptance of immediate overlap correction in the cfa537d record
+below is historical and superseded by this selected exception. Only isolated
+headless checks run here; Combat owns rendered observation and local merge.
+Before main reconciliation: isolated Godot4.7.1 import and focused suite passed
+513 assertions, process/runner exit0; shared-combat suite passed87, exit0.
+These are controlled real-physics fixtures with a post-contact observer and a
+zero-delta presentation-selector call, not rendered/controller/feel proof.
+They cover both facings, clear24-tick/120-unit and overlap30-tick/150-unit rolls,
+high-Heat clear rolls, final-body-step selection, actual resolver protection,
+ignored actions, final native pose/completion handoff, full post-end cooldown,
+wall/remaining-wide-overlap bound, pause/resume, reset/stage cancellation and
+preservation of preexisting exceptions. The initial8 endpoint assertions exposed
+normal stop resetting to cell0; normal completion now preserves visual state.
+The two earlier failed focused runs remain distinct from the passing rerun.
+The test then gained a frame-rate-derived boundary selector; final source is
+rechecked after committed-main reconciliation below.
+
+Only the approved two legacy attack-style assertions were updated160->161.
+Its 205 failure/error entries match clean fd72 exactly; unrelated removed-clock/
+contact/art assumptions are not repaired or presented as a green suite. The new
+test UID comes from the isolated Godot import, not an editor run in the branch.
+No human/controller/feel validation of this extension is claimed.
+
 ## Fire X5 shove and raised-hand Fireball candidate — October 22
 
 Status: `AWAITING_USER_VALIDATION`; exact GDD synchronization awaits user
@@ -26,9 +74,9 @@ overwrite the closed daytime run, main's dirty tuning/art, or Art's worktree.
   originate there. Non-Fire origin, launch marker, travel/range, damage, drawing
   scale and audio are unchanged. The user accepted short-dummy misses without
   modifying targets. No dodge source, collision policy or timing changes.
-  Combat later relayed the user's scoped acceptance of the existing physical
-  correction when dodge ends overlapping the Enemy; its fd72 footage is not
-  validation of this two-fix branch or a blanket controller/art pass.
+  The brief acceptance of immediate physical correction after dodge was later
+  superseded by the one-time-extension rule above. The earlier fd72 footage is
+  not validation of either follow-up or a blanket controller/art pass.
 - `docs/GAME_DESIGN.md`, `docs/TECH_ARCHITECTURE.md`, `docs/ATTACK_STYLES.md`,
   `docs/GYM.md` and this `docs/IMPLEMENTATION_STATUS.md` record the exact scope.
 
@@ -56,8 +104,21 @@ Combat owns rendered Windows observation and review before local merge. No
 main merge, push, export or human-feel acceptance is claimed. Preserve main's
 overlapping `fire_x5.tres` changes when integrating only the new field. Faster
 displacement can change follow-up contact/spacing; it does not guarantee a
-subsequent Cast hit. Raised-hand/both-facing alignment, lower-band reactions
-and continued hurt/AI recovery await Combat/user review.
+subsequent Cast hit. Human/controller/feel acceptance remains pending.
+
+Later Combat-reported agent-rendered evidence applies **only to cfa537d**:
+clean isolated Godot4.7.1 Windows Gym, ordinary bound inputs, no forced actor/AI/
+resource/clock writes, unexpected inputs0. Both left and right FireLv1 shots
+were observed at raised-hand height. One earlier right-facing attempt was
+legitimately rejected during hurt, not an origin failure. A normal five-X chain
+landed all five hits (Player100, Enemy200->150); X5's ordinary Level4 reaction
+retained distance40/duration1.15 while motion finished early and HIT_REACTING
+continued. A separate natural active-opponent attempt produced difference20,
+Level2, distance20/duration0.55, likewise separating fast motion from retained
+reaction. Its simultaneous incoming hit correctly reduced Player100->90 and
+removed charged orbs without cancelling X5. These observations support those
+two reaction cases, not every configurable band, the new dodge candidate,
+reconciled-main runtime, human controller/feel or a fresh headless result.
 
 ## Selectable Castle creatures — October 22
 

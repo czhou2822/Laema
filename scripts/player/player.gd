@@ -182,6 +182,7 @@ func configure(config: Dictionary) -> void:
 	movement.facing_changed.connect(_on_facing_changed)
 	combat.movement_lock_changed.connect(movement.set_movement_locked)
 	movement.set_attack_motion_provider(might.consume_attack_body_motion)
+	might.set_dodge_overlap_query(movement.has_dodge_end_overlap)
 	combat.active_school_changed.connect(_on_active_school_changed)
 	combat.attack_started.connect(_on_attack_started)
 	combat.dodge_started.connect(_on_dodge_started)
@@ -521,7 +522,7 @@ func sync_combat_body_profile() -> void:
 	if _hit_visual_active:
 		_update_hit_reaction_visual(0.0)
 	elif might.is_dodging():
-		# Native playback may finish before Might releases the dodge action this sample.
+		# Retain the native final pose through any one-shot overlap extension.
 		pass
 	elif not combat.is_attack_playing() and _update_fire_defence_visual():
 		pass

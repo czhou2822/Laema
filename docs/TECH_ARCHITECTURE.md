@@ -12,10 +12,10 @@ candidate on `codex/combat-feedback-fixes`. This is not a main-tree merge,
 rendered validation or submission-clearance receipt. The user approved the
 0.15-second shove for all qualifying Fire X5 bands, unchanged stun, and actual
 Fire projectile emission at the raised hand. No dodge source or tuning is part
-of this amendment. Combat subsequently relayed the user's acceptance of the
-existing overlap-restoration correction after its scoped footage review; this
-does not authorize an endpoint/non-solid policy or establish all-case/controller
-or visual-art acceptance.
+of that two-fix amendment. The brief later acceptance of immediate overlap
+correction is superseded by the approved one-time extension in the Fire dodge
+section below. Neither decision supplies blanket controller or visual-art
+acceptance.
 
 `MoveStyleTuning.push_motion_duration` follows the existing style capture,
 Inspector and Portal/save path. Fire X5 stores 0.15; omitted/zero values retain
@@ -323,16 +323,46 @@ are scoped agent evidence, not accepted feel or high-Heat protection clearance.
 The user verified the exact GDD synchronization and approved this bounded
 implementation plan. Might owns the Fire-only dodge action, its fixed 0.4-second
 native Animation clock, locked direction and post-completion 0.37-second cooldown.
+The October22 approved exception adds one conditional 0.1-second end-overlap
+phase without retiming that clip; the scoped source basis is `cfa537d` plus this
+follow-up on `codex/combat-feedback-fixes`.
 Combat remains the input/resource facade; Movement remains the only Player body
 mover. There is no additional component, global owner or second movement timer.
 
 Arena binds Circle through a fresh-press `dodge` action. Player supplies the
 controller's horizontal stick direction, with neutral stick falling back to
 Movement's facing, and captures current normal movement speed. Might's existing
-body-motion provider delivers 0.4 seconds of that speed over the dodge. Movement
+body-motion provider normally delivers 0.4 seconds of that speed over the dodge. Movement
 consumes blocked displacement, retains wall/floor collision and temporarily adds
 body-pair exceptions against existing enemy entities. It restores only exceptions
 owned by this dodge; query/damage layers and authored body profiles do not change.
+
+Player wires a local overlap query from Movement to Might during existing
+configuration. Movement checks current enabled collision shapes/transforms
+against combat Enemies already held in this roll's body-exception list, not
+sprite bounds, an approximate radius, practice targets or a new target scan.
+Might defers the native-finish decision to its existing end-of-physics-frame
+hook, after the final body step and common contact samples. Both native finish
+routes mark the same boundary instead of independently restoring collision.
+Clear rolls finish normally. Actual end-overlap extends the same captured action
+and body-motion budget once, from0.4 to0.5 seconds. The existing body-motion
+elapsed value advances only as Movement consumes physics time, including blocked
+motion, so an animation substep cannot spend grace before any extra body step.
+There is no new Timer, movement owner or global0.5-second gameplay cooldown.
+
+During that extension Might remains DODGING: Player's existing invulnerability
+query, Combat's action/pressure suppression and Movement's owned exceptions
+remain in force. Player holds the final native pose without replay or stretch.
+Normal completion stops playback with visual state retained, rather than
+resetting the held endpoint to the clip's first cell; interruption keeps its
+existing reset/higher-priority presentation path.
+Only actual completion publishes the existing single finish event, restores
+owned exceptions, rearms pressure and starts the same0.37-second cooldown.
+The one-shot action state clears through existing completion/cancel/reset paths;
+stage lock/death still cancel immediately. If overlap remains after0.1 seconds,
+collision restores anyway and ordinary correction may occur. There is no
+loop-until-clear, new AI response, generic extra clear-roll travel or promise of
+exact Dead Cells animation/cooldown parity.
 
 Might accepts cancellation of a committed Fire X strictly before native
 active_start, or a Cast before its once-only launch. Active/recovery X and
@@ -372,9 +402,11 @@ rejected C1 raw-input walking inference is removed. New action/school, hurt,
 stage-lock and reset clear the private handoff frame; hurt/action/defence keep
 priority. No input/state lock, timer, animation length, movement or collision
 restoration changed. Main's C2 held-wall replay supports removal of the false Walk
-frame, not all dodge cases or human feel acceptance. The baseline overlap case
-still has120 units of travel followed by about28.14 units of collision recovery.
-Safe-end behavior remains open; no extra travel/pass-through fix is implemented.
+frame, not all dodge cases or human feel acceptance. The historical baseline
+overlap case had120 units of travel followed by collision recovery. The later
+approved one-time extension above supersedes immediate restoration in that case;
+it does not clear the new candidate's rendered/human validation or settle a
+deliberate AI-spacing policy.
 
 No JSON schema, saved tuning, Portal controls, audio, enemy AI or other school is
 changed. Existing instrumentation is retained; the normal observational outcome

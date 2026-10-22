@@ -128,6 +128,27 @@ func end_dodge() -> void:
 		_body.velocity.x = 0.0
 
 
+func has_dodge_end_overlap() -> bool:
+	if _body == null or _dodge_body_exceptions.is_empty():
+		return false
+	var body_shape := _body.get_node("CollisionShape2D") as CollisionShape2D
+	if body_shape.disabled or body_shape.shape == null:
+		return false
+	for entry in _dodge_body_exceptions:
+		var other := entry["body"].get_ref() as Entity
+		if not is_instance_valid(other) or other.is_player_combatant() or not other.uses_combat_hit_reaction() or other.health.is_zero():
+			continue
+		if not _body.get_collision_exceptions().has(other) and not other.get_collision_exceptions().has(_body):
+			continue
+		var other_shape := other.get_node("CollisionShape2D") as CollisionShape2D
+		if other_shape.disabled or other_shape.shape == null:
+			continue
+		# Actual current body transforms, independent of pass-through exceptions.
+		if body_shape.shape.collide(body_shape.global_transform, other_shape.shape, other_shape.global_transform):
+			return true
+	return false
+
+
 func _exit_tree() -> void:
 	end_dodge()
 

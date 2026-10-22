@@ -142,9 +142,14 @@ launch time, travel/damage, level-dependent size and audio are retained.
 Non-Fire emission is unchanged. The user accepted that the raised horizontal
 shot can miss the short legacy dummy; no dummy or trajectory repair is included.
 Combat owns rendered checks of the new origin and shove against tall opponents.
-Dodge collision policy remains unchanged. Combat subsequently reported the
-user's acceptance of the existing correction when a roll ends overlapping the
-Enemy, not a new endpoint/non-solid policy or blanket art/controller acceptance.
+The approved dodge follow-up keeps clear rolls at0.4s, but actual end-overlap
+with an already excepted combat Enemy grants one0.1s extension at captured
+speed/direction. Protection, ignored actions and pass-through last until actual
+completion; the final native pose is held, not replayed/stretched. The existing
+0.37s cooldown starts at that actual end. Collision restores after the one
+extension even if a wall/wide Enemy still overlaps; further correction remains
+possible. This supersedes the brief acceptance of immediate end-overlap snapping.
+Practice targets grant no extension. Human feel validation remains pending.
 
 The current Might repair reacquires movement/facing lock at actual X/Cast start
 after a Charging-preserved gap; the gaps themselves remain movable. Normal RELEASE
@@ -276,8 +281,10 @@ Current Player C2 (9b705e0d) replaces the rejected input-based dodge handoff wit
 a completion-frame final-pose hold, then actual-motion Walk/Idle. Main observed
 no false Walk at a blocked wall, three24-tick/0.4s repeats and immediate permitted
 X afterward. New action/hurt/reset priority and physical dodge rules are unchanged.
-The separately reproduced Enemy-overlap collision-recovery snap is not fixed;
-safe-end and deliberate AI-spacing policies remain open with the user.
+That historical C2 did not fix the separately reproduced Enemy-overlap correction.
+The later one-time extension above is now approved as its bounded follow-up;
+deliberate AI-spacing policy remains open. C2 footage is not evidence for the new
+extension.
 
 Fire projectile child size is now36x27 at Lv1 and72x54 at Lv3. Selected in-flight
 images support larger drawings, not a matched-distance readability or hip-origin/

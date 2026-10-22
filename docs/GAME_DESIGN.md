@@ -243,15 +243,27 @@ Active X and Cast animations lock player-controlled movement and facing unless i
 Only Fire has dodge in this slice. A fresh Circle press starts an available
 dodge; holding Circle does not repeat it.
 
-- The entire dodge animation lasts **0.4 seconds**, with invincibility throughout.
+- The native dodge animation lasts **0.4 seconds**, with invincibility throughout.
 - Travel distance equals **0.4 seconds of normal movement**, including when
   starting from idle. At activation, stick direction takes priority; neutral
   stick uses Laema’s facing. Direction remains locked throughout the dodge.
 - Laema passes through enemy bodies. Walls stop movement, but animation and
   invincibility continue until the original 0.4-second duration ends.
+- At that normal endpoint, after the final movement step, actual overlap with
+  a combat Enemy whose body collision was excepted by this roll grants **one
+  0.1-second extension**. Clear rolls still finish at 0.4 seconds. During the
+  extension Laema continues at the same captured speed and locked direction,
+  remains invincible and ignores gameplay actions. The final native dodge pose
+  is held without stretching or replaying the animation. At speed 300 this adds
+  up to 30 units of travel; walls still block it and consume blocked movement.
+- The extension cannot repeat or wait indefinitely for clearance. Collision
+  restores at its end even if a wide Enemy or wall leaves Laema overlapping;
+  normal collision correction can then occur. Practice targets, artwork bounds
+  and a clear roll do not independently grant extra time or travel.
 - Starting dodge resets the input-combo. During dodge, all other gameplay action
   inputs are ignored, not buffered.
-- A **0.37-second cooldown** begins after dodge finishes. Circle presses during
+- A **0.37-second cooldown** begins after actual dodge completion: after 0.4
+  seconds for a clear roll, or 0.5 seconds for an extended roll. Circle presses during
   dodge or cooldown are ignored; another dodge requires a fresh press once ready.
 
 Dodge interacts with current actions as follows:
