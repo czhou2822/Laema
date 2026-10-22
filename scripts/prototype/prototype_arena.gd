@@ -14,6 +14,7 @@ const PROJECTILE_IMPACT_STREAM_PATHS := {
 }
 const DevStore = preload("res://scripts/config/developer_config_store.gd")
 const DevSession = preload("res://scripts/config/developer_portal_session.gd")
+const Creatures = preload("res://scripts/config/creature_catalog.gd")
 
 const AUDIO_BUS_NAMES := {"ambient": &"Ambient", "sfx": &"SFX", "bgm": &"BGM"}
 
@@ -133,12 +134,33 @@ func _instantiate_stage(descriptor: Dictionary, previous_area: StageArea) -> Sta
 	else:
 		scene = load(str(descriptor["area_scene"])) as PackedScene
 	var area := scene.instantiate() as StageArea
+	_replace_encounter_creature(area)
 	var entry_anchor := area.get_node("EntryAnchor") as Marker2D
 	if previous_area == null:
 		area.global_position = -entry_anchor.position
 	else:
 		area.global_position = previous_area.get_exit_world_position() - entry_anchor.position
 	return area
+
+
+func _replace_encounter_creature(area: StageArea) -> void:
+	var creature_id := str(_config["ui"].get("enemy_creature", Creatures.DEFAULT_ID))
+	if creature_id == Creatures.DEFAULT_ID:
+		return
+	var previous := area.get_node_or_null("FinalEnemy") as Node2D
+	if previous == null:
+		return
+	var scene := load(Creatures.scene_path(creature_id)) as PackedScene
+	var creature := scene.instantiate() as Node2D
+	creature.name = previous.name
+	creature.transform = previous.transform
+	for property in [&"encounter_id", &"refills_at_zero", &"is_final_enemy"]:
+		creature.set(property, previous.get(property))
+	var index := previous.get_index()
+	area.remove_child(previous)
+	previous.free()
+	area.add_child(creature)
+	area.move_child(creature, index)
 
 
 func _prepare_area(area: StageArea) -> void:
@@ -204,7 +226,7 @@ func _consume_public_outcome(outcome) -> void:
 
 func _clear_root_owned_projectiles() -> void:
 	for child in get_children():
-		if child is SpellProjectile:
+		if child is SpellProjectile or child.is_in_group("enemy_projectiles"):
 			child.queue_free()
 
 
@@ -233,6 +255,7 @@ func _create_developer_overlay() -> void:
 	_developer_overlay.name = "DeveloperOverlay"
 	add_child(_developer_overlay)
 	_developer_overlay.configure(_config, _apply_runtime_tuning, _save_runtime_tuning, player.is_attack_hitbox_debug_enabled, player.set_attack_hitbox_debug_enabled, stage_director.get_stage_options, _load_stage_from_developer)
+	_developer_overlay.creature_spawn_requested.connect(_on_creature_spawn_requested)
 
 
 func _load_stage_from_developer(stage_index: int) -> void:
@@ -303,6 +326,26 @@ func _refresh_portal_tuning() -> void:
 
 func get_developer_stage_options() -> Array:
 	return stage_director.get_stage_options()
+
+
+func spawn_developer_creature(creature_id: String) -> Dictionary:
+	if not Creatures.available(creature_id):
+		return {"ok": false, "error": "The selected creature is unavailable."}
+	if _transitioning or _current_area == null:
+		return {"ok": false, "error": "Wait for the current encounter to finish loading."}
+	if _current_area.get_node_or_null("FinalEnemy") == null:
+		return {"ok": false, "error": "Load Gym or Final Arena to spawn a combat creature."}
+	_config["ui"]["enemy_creature"] = creature_id
+	_developer_overlay._set_open(false)
+	pause_menu.close()
+	_restart_current_encounter()
+	return {"ok": true, "error": ""}
+
+
+func _on_creature_spawn_requested(creature_id: String) -> void:
+	var result := spawn_developer_creature(creature_id)
+	if not result["ok"]:
+		_developer_overlay.show_spawn_error(str(result["error"]))
 
 
 func set_game_paused(paused: bool) -> void:

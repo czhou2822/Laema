@@ -23,7 +23,7 @@ func _exit_tree() -> void:
 
 
 func _capture(command: String, data: Array) -> bool:
-	if command not in ["snapshot", "apply", "load_stage", "pause"]:
+	if command not in ["snapshot", "apply", "load_stage", "spawn_creature", "pause"]:
 		return false
 	if data.size() == 1 and data[0] is Dictionary:
 		call_deferred("_execute", command, data[0])
@@ -50,6 +50,10 @@ func _execute(command: String, payload: Dictionary) -> void:
 				error = "Stage is not available in the current session."
 		"pause":
 			_arena.set_game_paused(not get_tree().paused)
+		"spawn_creature":
+			var result: Dictionary = _arena.spawn_developer_creature(str(payload.get("creature_id", "")))
+			if not result["ok"]:
+				error = str(result["error"])
 	_publish(error, true)
 
 

@@ -84,6 +84,8 @@ static func validate_sizes(config: Dictionary) -> Dictionary:
 
 static func save_changes(before: Dictionary, after: Dictionary) -> Dictionary:
 	for id in move_ids():
+		if id == "melee_swing" and after.get("ui", {}).get("enemy_creature", "pikeman") != "pikeman":
+			continue # Native creature clips retain their own authored geometry.
 		var old_values: Dictionary = before["enemy_ai"] if id == "melee_swing" else before["moves"][id]
 		var values: Dictionary = after["enemy_ai"] if id == "melee_swing" else after["moves"][id]
 		var reach_key := "hitbox_reach" if id == "melee_swing" else "shape_reach"
@@ -110,7 +112,10 @@ static func make_private(player: AnimationPlayer) -> void:
 	var library := AnimationLibrary.new()
 	for id in source.get_animation_list():
 		# A saved Portal/native edit may be newer than the scene's cached reference.
-		var animation := load_clock(str(id)) if FileAccess.file_exists(DIRECTORY + str(id) + ".tres") else source.get_animation(id)
+		var animation: Animation = source.get_animation(id)
+		var path := animation.resource_path
+		if not path.is_empty() and not path.contains("::"):
+			animation = ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE) as Animation
 		library.add_animation(id, animation.duplicate())
 	player.remove_animation_library(&"")
 	player.add_animation_library(&"", library)

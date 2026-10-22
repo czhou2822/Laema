@@ -1,5 +1,52 @@
 # Implementation Status
 
+## Selectable Castle creatures — October 22
+
+Status: `AWAITING_USER_VALIDATION`. The user authorized a scoped creature commit
+and merge into local `main` on October 22. This slice originates on
+`codex/castle-creature-roster`, based on `dda30976`; unrelated existing Fire/player
+tuning remains outside its commit. Push and live publication were not requested.
+The merge grants no new gameplay-validation or submission-clearance evidence.
+
+- One shared catalog/Portal preference selects Pikeman, Archer or Griffin.
+  Runtime General and editor General / UI & debug expose **Creature to spawn**
+  plus **Spawn / Restart**. Legacy configuration defaults to Pikeman; Save Tuning
+  remembers the preference through the existing config save flow.
+- PrototypeArena replaces the preplaced FinalEnemy before entering the tree,
+  preserving its name, transform, encounter ID and final/refill roles. Gym retry
+  carries the unsaved selection while retaining the disk value as Save's merge
+  base. Final Arena's practice targets and objective identity are preserved.
+- Griffin inherits CombatEnemy/shared Settings and existing grounded melee,
+  timing, collider, reactions, damage and Impact. Five byte-identical original
+  sheets and four decoded original-source SFX cues are copied under
+  `assets/prototype/enemy/griffin/`; its provenance records hashes, frame mapping
+  and foot registration. The new native melee clip retains the existing
+  active0.5..1.0s clock and AttackCast geometry.
+- CombatEnemy presentation exports preserve Pikeman defaults and support native
+  layouts/mirrored offsets. Animation cloning follows the source resource path,
+  preserving creature-specific aliases. Native creature geometry is protected
+  from Pikeman size overrides/saves. Root cleanup also removes enemy arrows.
+- The independent Archer task supplied its ranged/melee subclass, native clips,
+  projectile and provenance through the same catalog. It captures attack type
+  and facing at commitment: shared attack_range selects close melee; the
+  existing awareness range permits shooting. Its six-frame melee and eight-frame
+  shooting clips use the provisional1.0s baseline; one arrow launches at0.5s.
+  The root-owned arrow uses a Player/level ray sweep and existing direct
+  HealthEvent resolution, with first-contact consumption and no melee-clash
+  participation. Seven source PNGs are byte-identical to the original
+  collections. Archer SFX remain unassigned, with inherited null-stream playback
+  skipped. The Archer chat completed grammar/reference/frame-bound/source-byte
+  checks; those establish no engine or gameplay validation.
+
+Checks: grammar parsing of twelve changed/new scripts, JSON inspection, asset hashes and native
+resource/reference review. These are static checks, not Godot type/import/editor
+or runtime validation. No build, automated test or game run was requested or run.
+User validation remains: select each creature, spawn/retry/save/relaunch, verify
+both facings and feet, fight through attacks/reactions/death, and check Final
+Arena completion. Griffin's inherited melee geometry is temporary and may need
+later creature-specific visual tuning; this change grants no final art or balance
+acceptance.
+
 ## Daytime candidate — October 22, C7 timing over retained C4 source
 
 Status: `AWAITING_USER_VALIDATION`. The captured prepublication baseline was

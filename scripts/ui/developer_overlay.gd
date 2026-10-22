@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal opening_requested
+signal creature_spawn_requested(creature_id: String)
 
 const TOGGLE_KEY := KEY_QUOTELEFT
 const Catalog = preload("res://scripts/config/developer_settings_catalog.gd")
@@ -146,6 +147,7 @@ func _rebuild_fields() -> void:
 	_clear_fields(_general_fields)
 	for section in GENERAL_SECTION_ORDER:
 		_add_fields(_general_fields, section)
+	_add_creature_spawn_action(_general_fields)
 	_add_fields(_general_fields, "tutorial")
 	_add_stage_action(_general_fields)
 	_clear_fields(_audio_fields)
@@ -213,6 +215,19 @@ func _add_stage_action(container: VBoxContainer) -> void:
 			_load_stage.call(selector.get_selected_id())
 	)
 
+
+func _add_creature_spawn_action(container: VBoxContainer) -> void:
+	var button := Button.new()
+	button.name = "SpawnCreatureButton"
+	button.text = "Spawn / Restart"
+	button.tooltip_text = "Restart the encounter with the selected creature, full Health, no orbs and no Heat."
+	container.add_child(button)
+	button.pressed.connect(func():
+		var creature_id := str(_config["ui"].get("enemy_creature", Catalog.Creatures.DEFAULT_ID))
+		_set_open(false)
+		creature_spawn_requested.emit(creature_id)
+	)
+
 func _on_setting_changed(keys: Array, value: Variant) -> void:
 	var previous: Variant = Store.read_value(_config, keys)
 	Store.set_value(_config, keys, value)
@@ -223,6 +238,8 @@ func _on_setting_changed(keys: Array, value: Variant) -> void:
 		call_deferred("_rebuild_fields")
 	else:
 		_status_label.text = "UNSAVED"
+		if keys == ["ui", "enemy_creature"]:
+			call_deferred("_rebuild_fields")
 		_hitbox_check.set_pressed_no_signal(bool(_config["ui"]["attack_hitbox_visible"]))
 		for container in _combat_fields.values():
 			for child in container.get_children():
@@ -243,6 +260,11 @@ func _on_save_pressed() -> void:
 
 func refresh_tuning_fields() -> void:
 	_rebuild_fields()
+
+
+func show_spawn_error(message: String) -> void:
+	_status_label.text = message
+	_set_open(true)
 
 func _set_open(open: bool) -> void:
 	if _overlay_root == null or _overlay_root.visible == open:

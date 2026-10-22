@@ -1,6 +1,38 @@
 # Combat
 
-## Latest decision and implementation — October 20
+## Selectable creatures — October 22
+
+- **Decision:** The user assigned the independent Castle Griffin and Castle
+  Archer tasks to Combat. Griffin is added alongside Pikeman using existing
+  melee behavior for now; Archer shoots at range and melees up close using a
+  separate melee asset. One shared Dev Portal selector covers all three.
+- **Decision:** Spawn / Restart resets the existing single-opponent encounter;
+  Save Tuning remembers the creature. The user approved cross-chat coordination
+  and a new branch, `codex/castle-creature-roster`. The later October 22 request
+  authorizes its scoped commit and merge into local main. Push was not requested;
+  unrelated Fire/player tuning remains outside the creature commit.
+- **Implementation candidate:** Shared catalog, runtime/editor selector,
+  before-tree FinalEnemy replacement, Gym retry preference and original Griffin
+  assets/native animation reuse existing character Settings and encounter roles.
+  Independent Archer-specific files plug into this same path. Task identities
+  remain `castle_griffin_enemy_2026_10_22` and `castle_archer_enemy_2026_10_22`;
+  their explicit assignments and distinct bindings are in task-departments.json.
+- **Archer candidate:** Original separate melee/shooting sheets and arrow sprite
+  use the shared stats. Attack type/facing are captured at commitment; one
+  root-owned arrow follows the existing health path. The source task completed
+  static grammar/resource/frame-bound/original-byte checks. Archer SFX remain
+  unassigned. Exact provisional clocks, arrow settings and manual checks are in
+  assets/prototype/enemy/archer/PROVENANCE.md.
+- **Open evidence:** Static syntax/data/reference checks do not validate Godot
+  import, gameplay, facing/feet/contact, saved-selection behavior, final art or
+  balance. The user still needs to run this candidate. Existing unrelated Fire
+  tuning is preserved. See GAME_DESIGN.md, TECH_ARCHITECTURE.md, GYM.md,
+  IMPLEMENTATION_STATUS.md and both creature asset provenance files.
+- **Sources:** This Griffin chat `01a16302-0503-7b82-8a75-0b14bc8201bb` and the
+  separately authorized Archer chat `01a16301-f593-7f43-b125-ff85a5aef34b`, whose
+  current user decisions and integration messages were read during coordination.
+
+## Prior decision and implementation — October 20
 
 The user chose the Gym baseline everywhere and explicitly rejected Gym/level
 combat settings: own settings directly on Player and CombatEnemy. Root Settings

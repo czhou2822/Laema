@@ -6,6 +6,32 @@ Current design, consolidated October 20, 2026. Implementation candidates and sco
 
 [Pre-housekeeping document](history/2026-10-20-document-housekeeping/sources/docs/GAME_DESIGN.md) preserves earlier wording, superseded rules, experiment reports and the detailed validation checklist. Historical snapshots are not current requirements.
 
+## Selectable combat creatures — October 22
+
+**Decision:** Add the Castle Griffin alongside Pikeman as a selectable opponent,
+using the existing grounded approach, committed melee attack, shared combat
+settings and hit-reaction behavior for now. Add the Castle Archer as another
+choice; the user confirmed in its independent Combat chat that it shoots at
+range and uses a separate melee attack up close. All three remain available
+through one Dev Portal selector. These additions belong to Combat.
+
+The Gym still contains one attacking opponent at a time. **Creature to spawn**
+chooses Pikeman, Archer or Griffin; **Spawn / Restart** starts a fresh encounter
+with that choice, resetting fighters, Health, orbs, Heat and actions through the
+existing restart flow. Choosing a different creature does not change an attack
+already in progress. Retry retains the chosen creature; Save Tuning remembers
+the choice for subsequent launches. Final Arena uses the same selected opponent
+in its existing final-enemy slot, preserving its completion objective and
+separate practice targets. Pikeman remains the saved default.
+
+Griffin uses the original native creature artwork and sound cues for this
+prototype. Its wing movement is presentation of the current grounded actor.
+The existing melee timing and hit geometry remain a temporary contract, not
+final Griffin-specific tuning. Archer's melee and shooting use separate original
+animation sheets. Source/static checks do not establish Godot playback,
+controller acceptance, final artwork approval or balance validation; see
+IMPLEMENTATION_STATUS.md for the implementation candidate and limits.
+
 ## SFX source decision — October 20
 
 The user requires original Heroes III sources for runtime SFX. The former CC0
@@ -75,7 +101,7 @@ The Defence section owns Fire parry/partial-block and retained Water guard inter
 
 ## Current decision — character-owned combat, October 20
 
-CombatEnemy uses the accepted generated Pikeman repaint v02 for idle, movement,
+Pikeman's CombatEnemy uses the accepted generated Pikeman repaint v02 for idle, movement,
 front thrust, hurt and death, referencing the original unupgraded Heroes III
 Castle Pikeman. Fire Laema uses the accepted generated sword-and-shield sheets;
 other schools retain their legacy artwork. These bindings apply to the reusable

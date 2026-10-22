@@ -5,7 +5,9 @@ const AREA_PATH := "res://scenes/stages/gym_area.tscn"
 const CombatReadout = preload("res://scripts/ui/gym_combat_readout.gd")
 
 const RETRY_VISIBILITY_META := &"laema_gym_retry_overlay_visible"
+const RETRY_CREATURE_META := &"laema_gym_retry_creature"
 var combat_readout
+var _saved_creature_id := Creatures.DEFAULT_ID
 
 var attempt_result: StringName = &""
 var _result_pending := false
@@ -19,6 +21,8 @@ func _ready() -> void:
 	super._ready()
 	if _config.is_empty() or not is_processing():
 		return
+	# Retry carries a run-only selection; keep the real disk value as Save's base.
+	_persisted_config["ui"]["enemy_creature"] = _saved_creature_id
 	_build_result_panel()
 	combat_readout = CombatReadout.new()
 	combat_readout.name = "GymCombatReadout"
@@ -35,9 +39,13 @@ func _load_configuration() -> Dictionary:
 	var loaded := super._load_configuration()
 	if not loaded["ok"]:
 		return loaded
+	_saved_creature_id = str(loaded["data"]["ui"].get("enemy_creature", Creatures.DEFAULT_ID))
 	if get_tree().has_meta(RETRY_VISIBILITY_META):
 		loaded["data"]["ui"]["developer_overlay_visible"] = bool(get_tree().get_meta(RETRY_VISIBILITY_META))
 		get_tree().remove_meta(RETRY_VISIBILITY_META)
+	if get_tree().has_meta(RETRY_CREATURE_META):
+		loaded["data"]["ui"]["enemy_creature"] = str(get_tree().get_meta(RETRY_CREATURE_META))
+		get_tree().remove_meta(RETRY_CREATURE_META)
 	return loaded
 
 
@@ -99,6 +107,7 @@ func _restart_current_encounter() -> void:
 		return
 	_retry_pending = true
 	get_tree().set_meta(RETRY_VISIBILITY_META, bool(_config["ui"]["developer_overlay_visible"]))
+	get_tree().set_meta(RETRY_CREATURE_META, str(_config["ui"].get("enemy_creature", Creatures.DEFAULT_ID)))
 	_developer_overlay._set_open(false)
 	pause_menu.close()
 	call_deferred("_reload_gym")
@@ -110,6 +119,7 @@ func _reload_gym() -> void:
 	var error := get_tree().reload_current_scene()
 	if error != OK:
 		get_tree().remove_meta(RETRY_VISIBILITY_META)
+		get_tree().remove_meta(RETRY_CREATURE_META)
 		_retry_pending = false
 		push_error("Cannot retry Gym: %s" % error_string(error))
 

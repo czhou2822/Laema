@@ -39,6 +39,33 @@ Controls retain the current implementation:
 School-selection input reaches Player in this scene just as it does in the Arena.
 Casting uses the shared L2 binding. R1 is defence; Fire uses the October 21 press-parry/hold-block prototype.
 
+## Choose an opponent
+
+Pikeman, Castle Archer and Castle Griffin share the Dev Portal's
+**Creature to spawn** choice. The saved default remains Pikeman; the room still
+contains one opponent at a time. Griffin currently uses the existing grounded
+melee behavior. Archer shoots at range and has a separate close-range melee.
+
+1. Open the in-game Dev Portal with backtick and select **General**.
+2. Under the UI fields, set **Creature to spawn**.
+3. Press **Spawn / Restart** to begin a fresh encounter with that creature.
+4. Use **Save Tuning** to remember the choice for later launches. Retry keeps the
+   current choice even before saving. Save other tuning before a Gym restart if
+   it needs to survive the existing full-scene reload.
+
+The editor Portal exposes the same choice and **Spawn / Restart** in
+**General / UI & debug**. Spawning requires a connected Gym or Final Arena;
+**Review & save** remembers the draft selection for future launches. Other draft
+edits retain their normal separate save/apply flow. The action resets the
+fighters, Health, positions, empty orbs, zero Heat, reactions and buffered actions.
+Final Arena retains its practice targets and final-enemy completion identity.
+
+The current shared Health/Poise/Impact and AI values still come from
+CombatEnemy Settings. Griffin/Archer melee hitboxes are edited in their own
+native Animation resources; the Pikeman reach/radius shortcuts are hidden while
+either native creature is selected. New creature playback, both facings,
+grounding, hit alignment, restart and saved-selection behavior await a user run.
+
 ## Character settings and tuning
 
 There are no Gym root or level combat settings. Both Gym and PrototypeArena use

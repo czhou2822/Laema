@@ -6,6 +6,7 @@ const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
 const Geometry = preload("res://scripts/combat/attack_geometry.gd")
 const Characters = preload("res://scripts/config/character_settings_store.gd")
+const Creatures = preload("res://scripts/config/creature_catalog.gd")
 
 const REQUIRED_SECTIONS := [
 	"movement",
@@ -45,6 +46,8 @@ static func load_and_validate(path: String) -> Dictionary:
 		return _failure("Configuration root must be a JSON object.")
 
 	var data: Dictionary = json.data
+	if data.get("ui") is Dictionary and not data["ui"].has("enemy_creature"):
+		data["ui"]["enemy_creature"] = Creatures.DEFAULT_ID
 	if path == "res://config/prototype_combat.json":
 		var characters := Characters.apply_to_config(data)
 		if not characters["ok"]:
@@ -149,6 +152,9 @@ static func _validate(data: Dictionary) -> String:
 	for section_name in REQUIRED_SECTIONS:
 		if not data.has(section_name) or typeof(data[section_name]) != TYPE_DICTIONARY:
 			return "Missing or invalid configuration section: %s" % section_name
+	var creature_id = data["ui"].get("enemy_creature", Creatures.DEFAULT_ID)
+	if not creature_id is String or not Creatures.available(creature_id):
+		return "Choose an available creature: Pikeman, Archer or Griffin."
 	if typeof(data["elemental_endurance"].get("enabled", true)) != TYPE_BOOL:
 		return "elemental_endurance.enabled must be Boolean."
 	for key in ["hitbox_reach", "hitbox_radius"]:

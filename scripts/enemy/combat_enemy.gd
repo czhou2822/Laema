@@ -26,6 +26,19 @@ enum State {
 }
 
 @export var settings: EnemyCombatSettings
+@export_group("Creature Presentation")
+@export var idle_texture: Texture2D = IDLE_TEXTURE
+@export var walk_texture: Texture2D = WALK_TEXTURE
+@export var dead_texture: Texture2D = DEAD_TEXTURE
+@export var hurt_texture: Texture2D = HURT_TEXTURE
+@export var sheet_cell_size := CELL_SIZE
+@export var sheet_columns := SHEET_COLUMNS
+@export var idle_frames := IDLE_FRAMES
+@export var walk_frames := WALK_FRAMES
+@export var dead_frames := DEAD_FRAMES
+@export var hurt_frames := HURT_FRAMES
+@export var mirror_sprite_offset := false
+@export var use_shared_melee_geometry := true
 
 @onready var attack_cast: ShapeCast2D = $AttackCast
 @onready var warning_marker: Polygon2D = $WarningMarker
@@ -37,6 +50,7 @@ enum State {
 @onready var pikeman_movement_audio: AudioStreamPlayer = $PikemanMovementAudio
 # StageArea prepares children before configure(); its reset needs the saved pose.
 @onready var _body_rest_position: Vector2 = $BodyVisual.position
+@onready var _sprite_rest_offset: Vector2 = $BodyVisual.offset
 
 var _ai_config: Dictionary = {}
 var _stage_enabled := false
@@ -79,7 +93,8 @@ func configure(config: Dictionary) -> void:
 		pikeman_movement_audio.finished.connect(_on_movement_audio_finished)
 	Contacts.register(self)
 	Geometry.make_private(attack_animation)
-	Geometry.set_active_size(attack_animation.get_animation(&"melee_swing"), float(config["enemy_ai"]["hitbox_reach"]), float(config["enemy_ai"]["hitbox_radius"]))
+	if use_shared_melee_geometry:
+		Geometry.set_active_size(attack_animation.get_animation(&"melee_swing"), float(config["enemy_ai"]["hitbox_reach"]), float(config["enemy_ai"]["hitbox_radius"]))
 	hit_reaction.reaction_ended.connect(_finish_hit_visual)
 	_ai_config = Dictionary(config["enemy_ai"]).duplicate(true)
 	warning_marker.visible = false
@@ -103,7 +118,8 @@ func apply_runtime_tuning() -> void:
 		if _ai_config.get(key) != next_ai.get(key):
 			decision_tuning_changed = true
 	_ai_config = next_ai.duplicate(true)
-	Geometry.set_active_size(attack_animation.get_animation(&"melee_swing"), float(_ai_config["hitbox_reach"]), float(_ai_config["hitbox_radius"]))
+	if use_shared_melee_geometry:
+		Geometry.set_active_size(attack_animation.get_animation(&"melee_swing"), float(_ai_config["hitbox_reach"]), float(_ai_config["hitbox_radius"]))
 	_sync_ai_blackboard()
 	if not decision_tuning_changed:
 		return
@@ -287,7 +303,8 @@ func ai_begin_windup(target: Entity) -> void:
 	_sample_action_id = _attack_id
 	_sample_time = 0.0
 	_set_state(State.WINDUP)
-	pikeman_attack_audio.play()
+	if pikeman_attack_audio.stream != null:
+		pikeman_attack_audio.play()
 
 
 func ai_windup_finished() -> bool:
@@ -428,34 +445,35 @@ func _process(delta: float) -> void:
 		# AnimationPlayer owns attack artwork and geometry, including editor preview.
 		_update_visual_facing()
 		return
-	var texture: Texture2D = IDLE_TEXTURE
+	var texture: Texture2D = idle_texture
 	var frame := 0
 	if _state == State.DEAD:
 		_animation_time += delta
-		texture = DEAD_TEXTURE
-		frame = clampi(int(floor(_animation_time * 8.0)), 0, DEAD_FRAMES - 1)
+		texture = dead_texture
+		frame = clampi(int(floor(_animation_time * 8.0)), 0, dead_frames - 1)
 	elif _hit_visual_active:
 		_hit_visual_time += delta
-		texture = HURT_TEXTURE
+		texture = hurt_texture
 		var duration := maxf(_hit_visual_duration, 0.001)
-		frame = clampi(int(floor(_hit_visual_time / duration * float(HURT_FRAMES))), 0, HURT_FRAMES - 1)
+		frame = clampi(int(floor(_hit_visual_time / duration * float(hurt_frames))), 0, hurt_frames - 1)
 	else:
 		_animation_time += delta
-		frame = int(floor(_animation_time * 8.0)) % IDLE_FRAMES
+		frame = int(floor(_animation_time * 8.0)) % idle_frames
 	if _state == State.APPROACH and not _hit_visual_active:
-		texture = WALK_TEXTURE
-		frame = int(floor(_animation_time * 9.0)) % WALK_FRAMES
+		texture = walk_texture
+		frame = int(floor(_animation_time * 9.0)) % walk_frames
 	body_visual.texture = texture
 	body_visual.region_enabled = true
-	var cell := Vector2(frame % SHEET_COLUMNS, floori(float(frame) / float(SHEET_COLUMNS)))
-	body_visual.region_rect = Rect2(cell * CELL_SIZE, CELL_SIZE)
+	var cell := Vector2(frame % sheet_columns, floori(float(frame) / float(sheet_columns)))
+	body_visual.region_rect = Rect2(cell * sheet_cell_size, sheet_cell_size)
 	_update_visual_facing()
 
 
 func _update_visual_facing() -> void:
 	body_visual.flip_h = _facing.x < 0.0
-	# Right atlases mirror once around the cell-centered X feet anchor (384).
-	# The scene's zero horizontal offset therefore needs no facing correction.
+	if mirror_sprite_offset:
+		body_visual.offset = Vector2(_sprite_rest_offset.x * _facing.x, _sprite_rest_offset.y)
+	# Pikeman's centered feet need no offset correction; native creature canvases do.
 
 
 func _draw() -> void:
@@ -495,7 +513,8 @@ func _on_reaction_started(level: int, direction: Vector2, distance: float, durat
 	if level > 0:
 		pikeman_attack_audio.stop()
 		_stop_movement_audio()
-		hit_reaction_audio.play()
+		if hit_reaction_audio.stream != null:
+			hit_reaction_audio.play()
 	if _hit_visual_tween != null and _hit_visual_tween.is_valid():
 		_hit_visual_tween.kill()
 	_hit_visual_active = true
@@ -543,7 +562,8 @@ func _set_state(next_state: State) -> void:
 		_stop_pikeman_audio()
 		if not _death_audio_played:
 			_death_audio_played = true
-			pikeman_death_audio.play()
+			if pikeman_death_audio.stream != null:
+				pikeman_death_audio.play()
 	bt_player.blackboard.set_var(&"phase", _state_name())
 	_animation_time = 0.0
 	warning_marker.visible = _state == State.WINDUP
@@ -651,7 +671,7 @@ func on_clash_contact_resolved(result: HealthResult) -> void:
 
 
 func _sync_movement_audio(moved_horizontally: bool) -> void:
-	_walking_audio_active = moved_horizontally and _area_active and _stage_enabled and _state == State.APPROACH and not hit_reaction.is_active()
+	_walking_audio_active = pikeman_movement_audio.stream != null and moved_horizontally and _area_active and _stage_enabled and _state == State.APPROACH and not hit_reaction.is_active()
 	if not _walking_audio_active:
 		pikeman_movement_audio.stop()
 	elif not pikeman_movement_audio.playing:

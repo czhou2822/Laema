@@ -25,6 +25,7 @@ const COMBAT_SECTION_ORDER := [
 ]
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
+const Creatures = preload("res://scripts/config/creature_catalog.gd")
 const STYLE_HELP := "Scrub sprite frames and edit hitboxes in Player / AnimationPlayer. Geometry shown here is sampled at active_start. Saving reach or radius changes that active_start key while preserving other keys and the hitbox angle/offset. Windup and recovery split at the pacing-only timing_split marker (active_start when absent), in seconds before Heat scaling; zero timing inherits shared timing. All active frames query their animated geometry. Forward motion uses the existing collision body. Push scale changes qualifying reaction distance only. Runtime edits apply to the next attack; Save persists the character Settings used in every scene."
 
 const AUDIO_GROUP_ORDER := ["ambient", "sfx", "bgm"]
@@ -302,6 +303,8 @@ static func fields(config: Dictionary, section: String) -> Array:
 
 static func _collect(value: Variant, keys: Array, result: Array, config: Dictionary, styles_only := false) -> void:
 	var id := Store.path_label(keys)
+	if id in ["enemy_ai.hitbox_reach", "enemy_ai.hitbox_radius"] and config.get("ui", {}).get("enemy_creature", "pikeman") != "pikeman":
+		return # Creature-specific Animation tracks own these values.
 	if HIDDEN_PORTAL_FIELDS.has(id) or id == "tutorial.stages":
 		return
 	if typeof(value) == TYPE_DICTIONARY:
@@ -375,6 +378,11 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 		field["description"] = "Loads on the next game startup. Use Session actions to change the current stage."
 		for stage in config["tutorial"]["stages"]:
 			field["options"].append([stage["id"], stage["display_name"]])
+	if id == "ui.enemy_creature":
+		field["kind"] = "choice"
+		field["label"] = "Creature to spawn"
+		field["description"] = "Choose the next opponent. Spawn / Restart starts a new encounter. Save Tuning remembers this choice."
+		field["options"] = Creatures.options()
 	if id == "tutorial.initial_school":
 		field["kind"] = "choice"
 		field["description"] = "Initial school for the next startup."

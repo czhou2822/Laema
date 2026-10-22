@@ -350,6 +350,16 @@ func _render_fields() -> void:
 	fields.configure(_draft, _category_key, _saved_file, _active, _base, {"foldout_state": _foldout_state, "series": true})
 	fields.value_changed.connect(_on_value_changed)
 	fields.series_requested.connect(_show_level_series)
+	if _category_key == "ui":
+		var spawn := Button.new()
+		spawn.name = "SpawnCreatureButton"
+		spawn.text = "Spawn / Restart"
+		spawn.disabled = not _connected
+		spawn.tooltip_text = "Restart the connected encounter with the chosen creature, full Health, no orbs and no Heat."
+		spawn.pressed.connect(func():
+			_debugger.request("spawn_creature", {"creature_id": str(_draft["ui"].get("enemy_creature", Catalog.Creatures.DEFAULT_ID))})
+		)
+		_fields.add_child(spawn)
 
 
 func _show_level_series(table: Dictionary) -> void:
@@ -509,6 +519,8 @@ func _fill_level_series() -> void:
 
 func _on_value_changed(keys: Array, value: Variant) -> void:
 	Store.set_value(_draft, keys, value)
+	if keys == ["ui", "enemy_creature"]:
+		call_deferred("_render_fields")
 	for child in _fields.get_children():
 		if child.has_method("update_snapshots"):
 			child.update_snapshots(_saved_file, _active, _base)

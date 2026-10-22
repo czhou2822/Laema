@@ -5,7 +5,76 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
-Current Fire visual amendment — October 21: X1/X4/X5 reference transparent
+## Creature roster amendment — October 22
+
+This scoped candidate adds Pikeman, Archer and Griffin to one selector without
+changing the shared character-settings ownership described below. The source
+basis is `dda30976` plus this scoped creature revision, originating on
+`codex/castle-creature-roster`. The user authorized committing it and merging
+into local `main`; unrelated Fire/player tuning is excluded. This is not a
+tested revision, submission clearance or remote-publication receipt.
+
+`scripts/config/creature_catalog.gd` owns the stable IDs and PackedScene paths:
+`pikeman` -> `scenes/enemy/combat_enemy.tscn`, `archer` -> `scenes/enemy/archer.tscn`,
+and `griffin` -> `scenes/enemy/griffin.tscn`. Both Portals use the same catalog.
+The preference `ui.enemy_creature` belongs to `config/prototype_combat.json`;
+older configurations default to Pikeman. Validation rejects unavailable IDs.
+Save Tuning and the editor's review/save retain the existing merge/conflict flow.
+
+Before a StageArea enters the tree, PrototypeArena replaces only its existing
+`FinalEnemy` slot with the selected scene. Name, transform, encounter ID and
+final/refill roles are retained. Other area contents and practice targets are
+unchanged. Each new scene inherits CombatEnemy and the same
+`config/characters/combat_enemy.tres`; there is no new room combat profile.
+The runtime Portal emits the spawn request; the editor sends the equivalent
+`spawn_creature` debugger command. Both call the arena's existing restart path.
+Training stages without a final-enemy slot reject that action with a message.
+
+Gym retry carries the selected ID through SceneTree metadata, independently of
+the saved file. Its persisted-config comparison retains the true disk value so
+Save Tuning can still save a run-only choice after retry. A new launch uses the
+saved preference. Spawn/retry resets the encounter rather than mutating an
+in-flight actor; root cleanup also removes `enemy_projectiles` such as arrows.
+
+CombatEnemy exposes per-scene textures, cell layout, frame counts and optional
+mirrored sprite offset while retaining Pikeman's exact defaults. Griffin's
+native 450x400/four-column sheets use Idle8/Walk4/Hurt7/Death9 and a nine-pose
+attack. Scale2, offset(7,-67) and native foot(218,267) register to the inherited
+BodyVisual(-11,31) and 60x180 capsule. The copied native melee resource retains
+the existing 1.0s clock, active0.5..1.0 and all Pikeman AttackCast key values.
+Its original-source cues use the existing playback/mix owners. Archer may leave
+unassigned streams null; shared playback skips those streams.
+
+Archer's subclass adapts the existing tree's approach-stop range to awareness,
+then captures melee versus shooting at windup start using the shared
+`attack_range` threshold. It retains separate native `melee_swing` and
+`archer_shoot` aliases. The provisional clips both last1.0s; melee is active
+0.5..1.0, and shooting releases one arrow at0.5 with active-end0.625 and the
+remaining authored recovery. The arrow captures damage/Impact, direction,
+awareness-distance limit and an exported1.0s travel-duration placeholder.
+It is parented under the arena, joins `enemy_projectiles`, and sweeps each
+travelled segment against Player/level collision. One contact consumes it through
+the existing direct HealthEvent path; a shot does not enter simultaneous melee
+clash arbitration. Original actor/arrow sheets and source hashes are documented
+in `assets/prototype/enemy/archer/PROVENANCE.md`. These are implementation
+candidate details, not recovered Heroes battle timing or runtime evidence.
+
+Animation cloning reloads the external resource's own path before duplication;
+a creature's `melee_swing` alias therefore retains its own native clip. The
+`use_shared_melee_geometry` flag defaults true for Pikeman and is false in the
+native Griffin/Archer scenes. Their authored geometry is not overwritten by
+Pikeman's mirrored reach/radius settings. Those two Portal controls are hidden
+for native-creature selection, and saving that selection skips Pikeman geometry
+writes. Native Animation tracks remain their geometry-editing source.
+
+Static syntax parsing, JSON/resource/reference checks and original-byte checks
+are the available evidence. Godot import, editor/type checking, running gameplay,
+tests, facing/feet/contact validation and human acceptance remain unverified.
+See IMPLEMENTATION_STATUS.md and each creature's asset provenance.
+
+## Fire visual amendment — October 21
+
+X1/X4/X5 reference transparent
 R05/R02/R04 derivatives in `fire_sword_shield_v01/overnight_v04/`, containing
 8/3/7 fixed 448px cells. X4 maps its six existing keys to cells0/0/0/1/2/2; X5
 selects R04 poses1/2/3/4/6/7/9. X2/X3 retain v03. Existing FIRE_ART_ROOT selects
