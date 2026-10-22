@@ -1,6 +1,6 @@
 # Fire combat — October 22 daytime review
 
-Status: C7 product source **1404d0ab**, final evidence **2151ffa0** independently remote-verified **17:21:07 HKT October22**; see [final receipt](FINAL_PUBLICATION.md) and [short review handoff](REVIEW_HANDOFF.md). First lunch publication **05fb22b8** met the deadline at **12:03 HKT**; earlier snapshots remain in history. Seven change–play–review rounds are recorded, including rejected candidates. All retained changes remain candidates for your controller review, not final game-feel acceptance. Candidate introduction stopped17:00; the quiet deadline/feedback watch continues to17:30.
+Status: **daytime run closed17:30:48 HKT; heartbeat deleted, chat kept open.** C7 product source **1404d0ab**, final evidence **2151ffa0** independently remote-verified **17:21:07 HKT October22**; see [final receipt](FINAL_PUBLICATION.md) and [short review handoff](REVIEW_HANDOFF.md). First lunch publication **05fb22b8** met the deadline at **12:03 HKT**; earlier snapshots remain in history. Seven change–play–review rounds are recorded, including rejected candidates. All retained changes remain candidates for your controller review, not final game-feel acceptance. Candidate introduction stopped17:00; no further gameplay changes were made during closeout.
 
 ## Where the five concerns stand
 

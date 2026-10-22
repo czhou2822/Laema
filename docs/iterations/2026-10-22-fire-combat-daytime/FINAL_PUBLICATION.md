@@ -25,5 +25,9 @@ This is repository source/report/evidence publication, not a Web or standalone
 export. This receipt was completed after push verification and belongs to a
 later metadata commit;2151 contains its pre-push pending version, not a claim
 to contain its own final receipt. No product source changed in the follow-up.
-Candidate introduction is closed; the run remains on quiet deadline/feedback
-watch until17:30, then its heartbeat stops without archiving the chat.
+The daytime run closed at17:30:48 HKT. The existing daytime heartbeat was
+deleted successfully; this chat was not archived. Candidate introduction had
+already stopped17:00. No additional product changes, tests or play were made
+during the quiet post-publication watch. Open human decisions and controller
+acceptance remain unresolved. This later closeout metadata does not change
+the reviewed source or already-verified final evidence snapshot.
