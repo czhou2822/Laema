@@ -199,6 +199,66 @@ or replacement artwork has been accepted. At this13:17 review's closure the
 afternoon source/evidence was not yet pushed; publication must be independently
 verified and recorded separately, not inferred from the lunch push.
 
+## Iteration 5 — a smaller X5 trim, not retained without a demonstrated benefit
+
+### Target change
+
+Check whether an intermediate late-X5 reduction can shorten the closing hold
+without repeating C3's swallowed following Cast. Do not equate a faster endpoint
+or a better unseeded fight result with solving the reported X4-to-X5 detachment.
+
+### What changed
+
+U preserved exact D57aef5ab, then changed only X5 recovery1.10->1.00. Windup0.45,
+native keys/geometry, normalized windows and every shared combat rule remained.
+Candidate19e95e92 has base1.45 instead1.55 seconds. This accelerates late active
+and input wall time, not merely a cosmetic tail. The exact candidate is archived
+in candidate-05-source; it was not added to the published gameplay source.
+
+### Actual play and review
+
+Fresh rendered D5 and C5 processes started100/200, empty orbs/Heat and no
+connected controller. D5 used the unchanged runtime before U's single Resource
+was copied; C5 launched only after D5 closed. Both used the identical20-edge
+opening and52-edge continuation with normal input, no state/AI/resource writes.
+
+- Both openings accepted and landed all five X, charged five orbs, launched an
+  empowered FireLv5 and applied13 damage, ending Player100/Enemy137.
+- D5 launched5.352s; C5 launched5.263s. C5 therefore avoided C3's zero-damage
+  invulnerability result in this observed opening. This is bounded evidence,
+  not immunity to every future timing/Heat/spacing interaction.
+- Cold F4 release was106ms late in D5 and97ms in C5, before gameplay resumed.
+  The other18 opening edges were within7ms/5ms respectively. Continuation edges
+  were within7ms/6ms. No unexpected input occurred. Preserve the cold UI delays
+  instead of reporting a uniformly low-latency run.
+- Continued actual encounters won D5 at70HP and C5 at80HP. The older D round
+  won80HP; these unseeded outcomes are not a causal difficulty comparison.
+- Inspected matched late-X5 frames at about4.8s show the same existing pose in
+  both. Only the later tail/endpoint advances. The X4->X5 onset handoff is not
+  changed by this recovery-only adjustment, and no convincing correction of
+  that reported disconnect has been established.
+- Both processes closed normally with exit0 and the existing13 ObjectDB/9
+  resource shutdown warnings. No new regression suite or human feel pass is
+  claimed for this subsequently unretained candidate.
+
+Evidence: [D5 late pose](timing-d5-01/cmd_2_frame_000083_full.png),
+[C5 late pose](timing-c5-01/cmd_2_frame_000083_full.png),
+[D5 following spell applied](timing-d5-01/cmd_2_frame_000089_full.png),
+[C5 following spell applied](timing-c5-01/cmd_2_frame_000089_full.png).
+The two session archives retain actual inputs, captures, states and logs.
+
+### Judgment and disposition
+
+**Inconclusive as an experience improvement; do not retain C5.** Avoiding the
+previous zero-damage case is useful information, but is not enough to accept a
+timing change that has not demonstrated the intended presentation benefit.
+U restored exact D1.10/57aef5ab; Main copied it back to the isolated runtime only
+after C5 exited. The candidate stays recoverable for human review. No shared rule
+is changed to manufacture a favorable result.
+Next hypothesis: distinguish the actual X4->X5 onset/pose presentation from a
+late-X5 tail issue before another timing change. Fresh visual-direction work
+still awaits its entry decision; no new art or AI/dodge policy is invented.
+
 ## Lunch verification and publication boundary
 
 After C2 rendered closure, all five existing geometry/input suites completed with explicit process exits0 and zero assertion failures: **1741 + 1236 + 1337 + 1185 + 1617 = 7116 checks**. X2 used its dedicated suite. Their forced setup/Heat/seeks make them supplementary controlled checks, never substitutes for the primary encounters above. Reports and stderr are in [regressions-c2](regressions-c2/). Fixture shutdown warnings were14/10,14/10,24/15,22/14,22/14 ObjectDB/resources, respectively; no warning-free exit or new cause is claimed.

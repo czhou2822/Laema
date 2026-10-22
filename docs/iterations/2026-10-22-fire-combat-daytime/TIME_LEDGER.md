@@ -62,3 +62,15 @@ and UI-progression checks, not17 full live-opponent encounters or human usabilit
 The first aggregate calculation briefly produced null totals from dictionary
 enumeration; totals were recomputed from the preserved per-command records before
 publication. That analysis-only error did not change gameplay or any raw evidence.
+
+### Iteration5 live-opponent addendum — 13:33 HKT
+
+ITERATION5_ACTIVITY.json separately records two fresh rendered Gym processes,
+four commanded opening/continuation episodes and144 normal bound edges. Adjacent
+alive/unpaused samples cover a lower bound **41.665s wall /41.683s physics**.
+After-victory time, startup and paused review are excluded. The cold F4 releases
+were106/97ms late before resuming; the eighteen other opening edges were within
+7/5ms and continuation edges7/6ms. No unexpected input occurred. This does not
+establish controller comfort or statistical difficulty. U's scalar edit/rollback,
+Main's image/source judgment and archival/publication are separate work, not
+extra gameplay minutes. C5 was not retained despite a successful following Cast.

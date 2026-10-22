@@ -1,0 +1,60 @@
+{
+  "captured_utc": "2026-10-22T05:33:04.2744570Z",
+  "category": "Iteration5 live-Pikeman normal-input baseline/candidate opening and continuation; separate from earlier static practice census",
+  "episodes": 4,
+  "bound_edges": 144,
+  "sample_wall_ms": 41665,
+  "sample_physics_ms": 41683.333,
+  "commands": [
+    {
+      "session": "timing-d5-01",
+      "command": 2,
+      "bound_edges": 20,
+      "max_late_ms": 106,
+      "non_overlay_max_late_ms": 7,
+      "sample_wall_ms": 6278,
+      "sample_physics_ms": 6283.333,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "timing-d5-01",
+      "command": 3,
+      "bound_edges": 52,
+      "max_late_ms": 7,
+      "non_overlay_max_late_ms": 7,
+      "sample_wall_ms": 14899,
+      "sample_physics_ms": 14900,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "timing-c5-01",
+      "command": 2,
+      "bound_edges": 20,
+      "max_late_ms": 97,
+      "non_overlay_max_late_ms": 5,
+      "sample_wall_ms": 6288,
+      "sample_physics_ms": 6283.333,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "session": "timing-c5-01",
+      "command": 3,
+      "bound_edges": 52,
+      "max_late_ms": 6,
+      "non_overlay_max_late_ms": 6,
+      "sample_wall_ms": 14200,
+      "sample_physics_ms": 14216.667,
+      "unexpected_counters": [
+        0
+      ]
+    }
+  ],
+  "method": "Same conservative adjacent-state/capture method: gap>0 and<=400ms, both endpoints unpaused and both actors alive, same Enemy instance. Paused review/startup/after-victory intervals excluded. Synthetic input is not physical-controller usability.",
+  "disposition": "C5 INCONCLUSIVE/NOT_RETAINED, exactD restored after both processes closed. No survival superiority inferred."
+}
