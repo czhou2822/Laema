@@ -2,8 +2,15 @@
 
 ## Daytime candidate — October 22, C2 source and bounded rendered evidence
 
-Status: `AWAITING_USER_VALIDATION`. HEAD921fd1ae plus dirty work is not a tested
-commit or publication identity. Main's isolated Godot4.7.1 rendered bound-input
+Status: `AWAITING_USER_VALIDATION`. The captured prepublication baseline was
+HEAD921fd1ae plus dirty work, not a tested commit identity. First retained C2
+source/report/evidence publication is **05fb22b819e95919da74bcd7c0b57587b5e6f95b**,
+verified by Main at **12:03:26 HKT October22**: push exit0 and independent remote
+main/local HEAD equality. See the [publication receipt](iterations/2026-10-22-fire-combat-daytime/PUBLICATION.md).
+Subsequent receipt/status metadata may advance HEAD without changing gameplay
+source; that follow-up publication is not claimed here. This is source publication,
+not Web export, whole-tree/submission, art, numerical or human-feel clearance.
+Main's isolated Godot4.7.1 rendered bound-input
 runs, source snapshots and captures are recorded in the
 [daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md); the
 [iteration report](iterations/2026-10-22-fire-combat-daytime/REPORT.md) is Main-owned.
@@ -45,10 +52,10 @@ Open: full120-unit baseline dodge travel can be followed by about28.14 units of
 collision-restoration recovery when ending inside Enemy; C2 presentation does not
 fix it. Human safe-end and AI-spacing decisions remain pending. Charging/hurt
 failures and other prior waivers remain; small unseeded fight results establish
-no survival superiority. This synchronization used static checks only, no new
+no survival superiority. The prepublication synchronization used static checks only, no new
 Godot/tests/audition/export, and no commit/push or blanket source/authority clearance.
 
-### Final daytime evidence addendum — October 22
+### Final daytime evidence addendum — October 22, prepublication
 
 Main completed all five C2 controlled headless suites, explicitly waiting for
 each process: **7,116 checks, zero assertion failures, all five exits0**. These

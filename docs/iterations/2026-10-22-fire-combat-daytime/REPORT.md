@@ -1,6 +1,6 @@
 # Fire combat — October 22 daytime review
 
-Status: lunch publication is being prepared; no daytime commit/push has yet been made. Three change–play–review rounds are recorded below, including a rejected timing candidate. All retained changes remain candidates for the user's controller review, not final game-feel acceptance. Work continues toward 17:30 HKT after the lunch publication.
+Status: source/report/evidence published to origin/main as **05fb22b8**, independently remote-verified at **12:03 HKT October22**. See [publication receipt](PUBLICATION.md). Three change–play–review rounds are recorded below, including a rejected timing candidate. All retained changes remain candidates for the user's controller review, not final game-feel acceptance. Work continues toward17:30 HKT.
 
 ## Where the five concerns stand
 
@@ -121,7 +121,7 @@ After C2 rendered closure, all five existing geometry/input suites completed wit
 
 The bounded [implementation review](IMPLEMENTATION_REVIEW.md) found no new contract violations in the four retained product deltas plus recorder extension; it is not whole-tree or submission clearance. [Lunch source identity](LUNCH_SOURCE_IDENTITY.json) rechecked all692 morning paths after C3 rollback: exact root/runtime agreement, four retained product changes plus the support helper, unchanged X5 D. The four affected canonical technical/status records are synchronized; the GDD was not redesigned.
 
-Before calling the lunch package published, Main will commit/push and verify the remote ref. Actual publication outcome belongs in PROGRESS/PUBLICATION, not an anticipatory success claim here.
+The lunch source commit was pushed and independently remote-verified. [PUBLICATION.md](PUBLICATION.md) records the exact identity and boundary; a small metadata follow-up updates this receipt/status without changing the gameplay source.
 
 The [time ledger](TIME_LEDGER.md) separates gameplay from review, implementation,
 tests, support probes and waiting. Recorded live-opponent samples cover at least

@@ -48,8 +48,15 @@ preserves amendments, alternatives, exact older evidence and waivers. Consolidat
 alone asserted neither a clean tree, remote publication nor new runtime evidence.
 The later collision amendment's focused evidence is recorded separately below.
 
-October22 daytime source basis is HEAD921fd1ae plus the intentionally dirty tree,
-not a clean or tested commit identity. The current bounded candidate uses Player
+The captured October22 daytime baseline was HEAD921fd1ae plus the intentionally
+dirty tree, not a tested commit identity. Retained C2 gameplay/source, reports and
+evidence were first published as **05fb22b819e95919da74bcd7c0b57587b5e6f95b**.
+Main verified the push and independent remote-main/local-HEAD equality at
+**12:03:26 HKT October22**; see the [publication receipt](iterations/2026-10-22-fire-combat-daytime/PUBLICATION.md)
+and [daytime report](iterations/2026-10-22-fire-combat-daytime/REPORT.md).
+A later receipt/status metadata commit may advance HEAD without changing that
+published gameplay source; its publication is not asserted in advance here.
+The current bounded candidate uses Player
 9b705e0d (C2), Fire projectilecc1101fc, X4 style90f963de, SFX JSONddab1126 and
 opt-in recorder63409fd5. X5 D57aef5ab and the other retained overnight work remain.
 See [daytime progress](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md) and
@@ -980,7 +987,10 @@ chronological chapters.
 
 Heat timing, shorter shared reactions, Air X5, the editor's post-reaction wait
 and the later art-aligned collision choices are settled as above.
-Current source remains a candidate awaiting relevant user validation. A documentation-only
+Current source remains a candidate awaiting relevant user validation.
+Historical prepublication documentation/collision-task scope:
+
+A documentation-only
 commit does not publish the other uncommitted gameplay/audio/environment changes
 or their local candidate provenance; source-only references above retain that scope. Document
 alignment grants no runtime acceptance, new engine result, clean-tree or submission
@@ -997,9 +1007,14 @@ acceptance remains pending. This update does not clear current-source parry,
 physical analog input, audio, high-Heat Enemy protection or the retained waivers,
 and is not blanket canonical/source synchronization or submission clearance.
 
-The later daytime update synchronizes the bounded C2 source representation above,
+The prepublication daytime update synchronized the bounded C2 source representation above,
 not new gameplay decisions. C1's input-based wall handoff was rejected; C2 has
 scoped rendered support. X4 timing, projectile size and SFX mix remain provisional.
 Physical overlap recovery, deliberate AI spacing, Cast emission/point-blank
 visibility, human/controller feel and audio comfort remain unresolved. No product,
 helper, asset, runtime/test or Git action was performed by this document update.
+
+Current handoff: first C2 source/report/evidence publication is verified at
+05fb22b8/12:03 HKT as recorded above. The receipt/status follow-up is metadata
+only, not another gameplay change or Web export. User validation remains pending;
+publication establishes no whole-tree/submission, art, numerical or feel clearance.
