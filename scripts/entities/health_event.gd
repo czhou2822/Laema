@@ -26,6 +26,7 @@ var source_action_id := 0
 var action_composition: Array = []
 var melee_contact := false
 var push_scale := 1.0 # Scales distance only after existing reaction eligibility.
+var push_motion_duration := 0.0 # Zero retains the selected reaction's full motion time.
 var reaction_difference := -1
 var clash_resolved := false
 var player_winning_clash_tie := false

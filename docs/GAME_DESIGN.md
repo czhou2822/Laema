@@ -123,8 +123,12 @@ non-attacking/refilling role.
 
 The Enemy behavior tree triggers the qualifying hit reaction. The Dev Portal
 adjusts its exact duration, distance and ranges through the characters' shared
-reaction Resource. Hurt animation, body knockback and invulnerability retain one
+reaction Resource. Hurt animation, control lock and invulnerability retain one
 lifetime owned by HitReaction; the tree waits for that execution to finish.
+Qualifying Fire X5 hits, including lower reaction bands, deliver their unchanged
+knockback distance over a separate 0.15-second shove (capped by the reaction
+lifetime). Other attacks keep their existing full-duration knockback. Finishing
+the shove does not end hurt, control lock, invulnerability or the subsequent AI wait.
 **October 20 editor-setting decision:** after the hit-reaction task finishes,
 the Enemy tree uses its configured BTRandomWait of 0.3–0.8 seconds. This separate
 AI wait does not extend HitReaction-owned hurt, knockback or invulnerability.
@@ -531,6 +535,13 @@ Every successful Cast begins its primary school's native casting animation. The 
 
 Fire's retained launch anticipation is 0.24 on its normalized one-second native clock; completion remains at 1.0. Configured duration and Heat map that clock into gameplay time. The comparison history remains in the [overnight ledger](iterations/2026-10-19-overnight.md); it is provisional tuning awaiting human acceptance.
 
+**October 22 decision:** Fire's projectile and its collision originate at the
+raised hand in the launch pose, mirrored with the committed facing. Other
+schools retain their current emission. Launch timing, horizontal direction,
+travel/range, damage, level-dependent drawing and sound remain unchanged. The
+raised horizontal shot can miss the short legacy practice dummy; the user
+accepted that limitation without changing the dummy or projectile trajectory.
+
 - One combined projectile carries the primary and at most one secondary school layer.
 - It travels in Laema’s facing direction.
 - It travels approximately 50% of the visible screen width in one second.
@@ -634,9 +645,17 @@ Ordinary positive results qualify for combat reaction. A direct Player melee or 
 | 31–40 | 4 | 1.15 s | 20 px |
 | 41+ | 5 | 1.45 s | 25 px |
 
-**Reaction-duration decision — October 20:** retain the current shared character settings: Levels 1–5 use 0.25/0.55/0.85/1.15/1.45 seconds. This supersedes the October 14 duration sequence and resolves the former discrepancy with the character Resource and GYM.md. Player and combat Enemy use these durations for stagger, knockback movement and reaction invincibility. Distances, value bands and reaction eligibility are unchanged. Reaction durations and distances remain editable per level in the Godot Inspector and Developer Portal; the five value bands remain configurable through each level's starting value. This tuning selection supplies no new gameplay-validation report.
+**Reaction-duration decision — October 20:** retain the current shared character settings: Levels 1–5 use 0.25/0.55/0.85/1.15/1.45 seconds. This supersedes the October 14 duration sequence and resolves the former discrepancy with the character Resource and GYM.md. Player and combat Enemy use these durations for stagger and reaction invincibility. Knockback normally spans the same duration; the October 22 Fire X5 exception below changes motion time only. Distances, value bands and reaction eligibility are unchanged. Reaction durations and distances remain editable per level in the Godot Inspector and Developer Portal; the five value bands remain configurable through each level's starting value. This tuning selection supplies no new gameplay-validation report.
 
-The whole character and collision body are pushed backward over the selected reaction duration and remain displaced. Walls can stop the push. The current candidate uses uniform displacement without an additional easing treatment. Stationary practice targets retain their legacy recoil.
+The whole character and collision body are pushed backward and remain displaced.
+Normally motion spans the selected reaction duration. **October 22 Fire X5
+exception:** every qualifying Fire X5 hit delivers the same selected/scaled
+distance over 0.15 seconds, capped by that reaction's lifetime. This includes
+lower bands after active-move resistance and a qualifying winning-clash Level 1;
+it does not make a nonqualifying hit interrupt. Hurt, control lock,
+invulnerability and the separate Enemy AI wait are not shortened. Walls can
+stop the push. Motion remains uniform without additional easing. Other moves
+keep their existing timing; stationary practice targets retain legacy recoil.
 
 The qualifying combat-reaction duration is invincible against further damage and reactions. Failed-Cast self-reactions grant no invincibility. Water retains its defence reaction path; the October 21 Fire prototype uses its own parry/partial-block interception without the legacy blocked-hit flinch. Stationary, non-attacking, pass-through practice targets retain their existing recoil and finite-health refill behavior.
 
@@ -658,7 +677,7 @@ Fire X1–X5 produce progressively stronger combat reactions. Cast Spell Levels 
 
 With the shared Enemy Poise 10, Fire values outside active frames are 0/10/20/30/40, producing Levels 1/1/2/3/4 under Player's zero advantage. Receiver active-move resistance still applies. Earlier private Poise-1 comparisons remain historical; final feel acceptance is pending.
 
-The hurt animation belongs to the qualifying combat reaction: it starts with stagger and whole-body knockback, uses the selected reaction's duration, and ends with that reaction. A damaging hit that does not qualify causes no separate hurt animation. Existing reaction invincibility and collision behavior are retained.
+The hurt animation belongs to the qualifying combat reaction: it starts with stagger and whole-body knockback, uses the selected reaction's duration, and ends with that reaction. Fire X5's shorter shove can finish while hurt, control lock and invulnerability continue. A damaging hit that does not qualify causes no separate hurt animation. Existing reaction invincibility and collision behavior are retained.
 
 Each Cast layer uses its own Spell Level to select Impact. Mixed Casts resolve both layers before the strongest qualifying reaction begins. Cast damage, empowerment, Charging and Heat behavior are unchanged. Cast Levels 5–8 retain the existing base Cast Impact; their reaction progression is not assigned by this change. Other schools' X Impacts are unchanged.
 

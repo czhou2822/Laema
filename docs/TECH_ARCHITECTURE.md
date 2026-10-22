@@ -5,6 +5,46 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
+## Fire X5 shove and Fireball anchor amendment — October 22
+
+Source basis: `fd72f4e2a83960abb862da09ae98fb210c5c8410` plus the scoped
+candidate on `codex/combat-feedback-fixes`. This is not a main-tree merge,
+rendered validation or submission-clearance receipt. The user approved the
+0.15-second shove for all qualifying Fire X5 bands, unchanged stun, and actual
+Fire projectile emission at the raised hand. No dodge source or tuning is part
+of this amendment. Combat subsequently relayed the user's acceptance of the
+existing overlap-restoration correction after its scoped footage review; this
+does not authorize an endpoint/non-solid policy or establish all-case/controller
+or visual-art acceptance.
+
+`MoveStyleTuning.push_motion_duration` follows the existing style capture,
+Inspector and Portal/save path. Fire X5 stores 0.15; omitted/zero values retain
+full-reaction motion. Validation permits a finite nonnegative override only on
+`fire_x5`; other moves remain zero and expose no new Portal control. A live edit
+affects the next captured action, not an active X5. No JSON file/schema migration
+or room-specific override is introduced.
+
+Might copies the captured Fire X5 value into its existing `HealthEvent`.
+HealthResolver retains it with direction/push scale through immediate resolution
+and strongest-reaction transactions; Entity/CombatEnemy forward it through the
+existing captured reaction request. HitReaction captures the unchanged selected
+duration/distance and caps positive motion time at that duration. Its body-motion
+clock consumes uniform displacement over the motion time, then returns zero
+while its original lifetime continues. Existing body owners still apply
+collision-aware movement and finish the reaction only when that original
+lifetime ends. Hurt, control lock, invincibility, bands/eligibility, AI recovery
+and other attacks' motion are unchanged. Blocked displacement is consumed, not
+stored for later.
+
+Player maps source-cell hand pixel `(205,235)` from the 448-square Fire launch
+pose (cell 3 at native 0.24) through centered cell coordinates, Sprite offset,
+committed-facing reflection and `Sprite.to_global`. The resulting origin is
+carried by the existing projectile request, moving its actual collider and
+drawing together. Non-Fire primary Casts retain root plus facing times42.
+No marker, projectile owner, collider size, direction, speed/range, damage,
+level drawing or audio changes. The user accepted the raised horizontal shot's
+short-legacy-dummy miss without a target/trajectory repair.
+
 ## Creature roster amendment — October 22
 
 This scoped candidate adds Pikeman, Archer and Griffin to one selector without
@@ -552,12 +592,13 @@ primary-first order before one strongest reaction begins. Ordinary positive
 reactions and Player direct-zero advantage remain separate from reciprocal melee
 signed-clash arbitration. Failed-Cast self-reactions remain vulnerable.
 
-The daytime Fire projectile changes only its child drawing: scale is
+The retained daytime Fire projectile drawing uses scale
 1.5*(1+0.5*(clamped level1..8 minus1)), giving36x27 at Lv1 and72x54 at Lv3.
-Other schools retain1x. The radius12 collider, root origin (Player root plus42
-horizontal units), travel, impact and destruction are unchanged. Larger selected
-in-flight images do not settle hip-level emission or immediate zero-flight impact;
-no weapon anchor, collision relocation or persistent impact visual was added.
+Other schools retain1x. The October22 amendment above moves Fire's actual
+origin/collider to its raised-hand anchor; non-Fire keeps Player root plus42
+horizontal units. The radius12 collider, travel, impact and destruction remain
+unchanged. Historical size-only captures did not validate this new anchor or
+point-blank readability. No persistent impact visual is added.
 
 ### Retained disabled Endurance
 
@@ -693,6 +734,10 @@ next start minus one and an open-ended Level 5. Duration/distance/range tuning
 is separate from eligibility. Current accepted durations are
 0.25/0.55/0.85/1.15/1.45 seconds. A reaction captures these once; later edits cannot
 shorten it. The separate tree wait does not change those component lifetimes.
+Fire X5 alone captures a separate 0.15-second motion time through its style and
+HealthEvent; positive overrides are capped at the selected lifetime. The full
+duration still owns hurt, control lock and invincibility after shove motion ends.
+Zero/omitted motion time retains the original full-duration displacement.
 
 <a id="tutorial-root-stage-areas-and-camera"></a>
 <a id="stagedirector-and-objective-evaluators"></a>

@@ -307,6 +307,8 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 		return # Creature-specific Animation tracks own these values.
 	if HIDDEN_PORTAL_FIELDS.has(id) or id == "tutorial.stages":
 		return
+	if styles_only and keys.size() == 3 and keys.back() == "push_motion_duration" and keys[1] != "fire_x5":
+		return
 	if typeof(value) == TYPE_DICTIONARY:
 		var names: Array = value.keys()
 		names.sort()
@@ -422,6 +424,9 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 			field["unit"] = "s"
 		if keys.back() == "push_scale":
 			field["unit"] = "×"
+		if keys.back() == "push_motion_duration":
+			field["unit"] = "s"
+			field["description"] = "Fire X5 knockback motion time. Zero uses the full selected reaction lifetime; positive seconds are capped by that lifetime. Does not shorten hurt, control lock or invulnerability. Applies to the next captured X5."
 		if keys.back() == "shape_radius":
 			field["minimum"] = 0.001
 	result.append(field)

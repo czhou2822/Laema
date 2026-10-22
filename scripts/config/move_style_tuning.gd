@@ -47,12 +47,18 @@ const Style = preload("res://scripts/combat/attack_style.gd")
 	set(value):
 		push_scale = value
 		emit_changed()
+## Fire X5 only: zero retains full-duration motion; positive seconds never shorten stun.
+@export_range(0.0, 5.0, 0.01, "or_greater") var push_motion_duration := 0.0:
+	set(value):
+		push_motion_duration = value
+		emit_changed()
 
 
 func get_data() -> Dictionary:
 	return {
 		"windup_duration": windup_duration, "recovery_duration": recovery_duration,
 		"shape_reach": shape_reach, "shape_radius": shape_radius, "push_scale": push_scale,
+		"push_motion_duration": push_motion_duration,
 		"forward_lunge": {"distance": lunge_distance, "start_phase": lunge_start_phase, "end_phase": lunge_end_phase},
 	}
 

@@ -636,10 +636,10 @@ func has_pending_combat_hit_reaction() -> bool:
 	return not _pending_hit_reaction.is_empty()
 
 
-func request_combat_hit_reaction(difference: int, direction: Vector2, push_scale: float = 1.0) -> void:
+func request_combat_hit_reaction(difference: int, direction: Vector2, push_scale: float = 1.0, push_motion_duration: float = 0.0) -> void:
 	if _defeated or hit_reaction.is_invincible() or has_pending_combat_hit_reaction():
 		return
-	_pending_hit_reaction = hit_reaction.capture_combat(difference, direction, push_scale)
+	_pending_hit_reaction = hit_reaction.capture_combat(difference, direction, push_scale, push_motion_duration)
 	if not _ticking_tree:
 		# Dispatch at contact, including while offensive AI is disabled. No extra
 		# frame or separate timer is added to the captured combat reaction.

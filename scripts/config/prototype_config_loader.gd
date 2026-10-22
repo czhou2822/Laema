@@ -607,10 +607,12 @@ static func _validate_moves(moves: Dictionary) -> String:
 
 
 static func _validate_attack_style(move: Dictionary, id: String) -> String:
-	for key in ["windup_duration", "recovery_duration", "shape_reach", "shape_radius", "push_scale"]:
+	for key in ["windup_duration", "recovery_duration", "shape_reach", "shape_radius", "push_scale", "push_motion_duration"]:
 		var value = move.get(key, 1.0 if key == "push_scale" else 0.0)
 		if not _is_number(value) or not is_finite(float(value)) or float(value) < 0.0:
 			return "moves.%s.%s must be finite and non-negative." % [id, key]
+	if id != "fire_x5" and float(move.get("push_motion_duration", 0.0)) != 0.0:
+		return "moves.%s.push_motion_duration must remain zero; the override is Fire X5 only." % id
 	if move["forward_lunge"] == null:
 		return ""
 	if not move["forward_lunge"] is Dictionary:

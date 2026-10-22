@@ -13,6 +13,7 @@ var _defence_component
 var _hit_transaction_depth := 0
 var _pending_difference := -1
 var _pending_push_scale := 1.0
+var _pending_push_motion_duration := 0.0
 var _pending_direction := Vector2.ZERO
 
 
@@ -109,9 +110,10 @@ func resolve(event: HealthEvent) -> HealthResult:
 				_pending_difference = maxi(combat_difference, 0)
 				_pending_direction = event.contact_direction
 				_pending_push_scale = event.push_scale
+				_pending_push_motion_duration = event.push_motion_duration
 		else:
 			# Keep signed diagnostics; zero explicitly selects configured Level 1.
-			_owner_entity.request_combat_hit_reaction(maxi(combat_difference, 0), event.contact_direction, event.push_scale)
+			_owner_entity.request_combat_hit_reaction(maxi(combat_difference, 0), event.contact_direction, event.push_scale, event.push_motion_duration)
 	elif not event.fire_defence and outcome != HealthResult.Outcome.PARRIED and (outcome == HealthResult.Outcome.BLOCKED or not _owner_entity.uses_combat_hit_reaction()):
 		reaction_level = maxi(event.impact - defensive_level, 0)
 
@@ -159,6 +161,8 @@ func _is_valid_event(event: HealthEvent) -> bool:
 	if event == null or _owner_entity == null or _health == null:
 		return false
 	if event.target != _owner_entity or event.amount < 0.0:
+		return false
+	if not is_finite(event.push_motion_duration) or event.push_motion_duration < 0.0:
 		return false
 	if event.operation == HealthEvent.Operation.DAMAGE:
 		return event.impact >= 0 and event.impact <= 100
@@ -218,11 +222,13 @@ func end_hit_transaction() -> void:
 	var difference := _pending_difference
 	var direction := _pending_direction
 	var push_scale := _pending_push_scale
+	var push_motion_duration := _pending_push_motion_duration
 	_pending_difference = -1
 	_pending_direction = Vector2.ZERO
 	_pending_push_scale = 1.0
+	_pending_push_motion_duration = 0.0
 	if not _health.is_zero():
-		_owner_entity.request_combat_hit_reaction(difference, direction, push_scale)
+		_owner_entity.request_combat_hit_reaction(difference, direction, push_scale, push_motion_duration)
 
 
 func reset_for_stage() -> void:
@@ -230,6 +236,7 @@ func reset_for_stage() -> void:
 	_pending_difference = -1
 	_pending_direction = Vector2.ZERO
 	_pending_push_scale = 1.0
+	_pending_push_motion_duration = 0.0
 
 
 func _reject(event: HealthEvent, outcome: int, tag: StringName) -> HealthResult:

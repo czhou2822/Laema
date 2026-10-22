@@ -12,6 +12,7 @@ var _remaining := 0.0
 var _active := false
 var _combat_reaction := false
 var _push_velocity := Vector2.ZERO
+var _push_remaining := 0.0
 
 
 func configure(config: Dictionary) -> void:
@@ -27,15 +28,18 @@ func level_for_value(value: int) -> int:
 	return level_from_difference(value, _config["combat_levels"])
 
 
-func execute_combat(difference: int, direction: Vector2, push_scale: float = 1.0) -> void:
-	execute_captured_combat(capture_combat(difference, direction, push_scale))
+func execute_combat(difference: int, direction: Vector2, push_scale: float = 1.0, push_motion_duration: float = 0.0) -> void:
+	execute_captured_combat(capture_combat(difference, direction, push_scale, push_motion_duration))
 
 
-func capture_combat(difference: int, direction: Vector2, push_scale: float = 1.0) -> Dictionary:
+func capture_combat(difference: int, direction: Vector2, push_scale: float = 1.0, push_motion_duration: float = 0.0) -> Dictionary:
 	var level := level_for_value(difference)
 	var tuning: Dictionary = _config["combat_levels"][level - 1]
+	var duration := float(tuning["duration"])
+	var motion_duration := minf(push_motion_duration, duration) if push_motion_duration > 0.0 else duration
 	return {"difference": difference, "level": level, "direction": direction.normalized(),
-		"duration": float(tuning["duration"]), "distance": float(tuning["distance"]) * maxf(push_scale, 0.0)}
+		"duration": duration, "distance": float(tuning["distance"]) * maxf(push_scale, 0.0),
+		"push_motion_duration": motion_duration}
 
 
 func execute_captured_combat(reaction: Dictionary) -> void:
@@ -51,7 +55,9 @@ func execute_captured_combat(reaction: Dictionary) -> void:
 	_active = true
 	_combat_reaction = true
 	_remaining = duration
-	_push_velocity = direction.normalized() * distance / duration
+	var motion_duration := float(reaction.get("push_motion_duration", duration))
+	_push_remaining = minf(motion_duration, duration) if motion_duration > 0.0 else duration
+	_push_velocity = direction.normalized() * distance / _push_remaining
 	set_process(false)
 	reaction_started.emit(level, direction.normalized(), distance, duration)
 
@@ -67,6 +73,7 @@ func execute(level: int, direction: Vector2) -> void:
 	_combat_reaction = false
 	_remaining = duration
 	_push_velocity = Vector2.ZERO
+	_push_remaining = 0.0
 	set_process(true)
 	reaction_started.emit(bounded_level, direction.normalized(), distance, duration)
 
@@ -76,7 +83,9 @@ func consume_body_motion(delta: float) -> Vector2:
 	if not _active or not _combat_reaction:
 		return Vector2.ZERO
 	var step := minf(delta, _remaining)
-	var displacement := _push_velocity * step
+	var push_step := minf(step, _push_remaining)
+	var displacement := _push_velocity * push_step
+	_push_remaining = maxf(_push_remaining - push_step, 0.0)
 	_remaining = maxf(_remaining - step, 0.0)
 	return displacement
 
@@ -100,6 +109,7 @@ func _finish() -> void:
 	_combat_reaction = false
 	_remaining = 0.0
 	_push_velocity = Vector2.ZERO
+	_push_remaining = 0.0
 	set_process(false)
 	reaction_ended.emit()
 
@@ -117,4 +127,5 @@ func reset_for_stage() -> void:
 	_combat_reaction = false
 	_remaining = 0.0
 	_push_velocity = Vector2.ZERO
+	_push_remaining = 0.0
 	set_process(false)

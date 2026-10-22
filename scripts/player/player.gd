@@ -26,6 +26,7 @@ const FIRE_DEFENCE_GUARD_FRAME := 3
 const FIRE_DEFENCE_SPARK_FRAME := 4
 const FIRE_DEFENCE_LAST_FRAME := 7
 const FIRE_CELL_SIZE := Vector2(448.0, 448.0)
+const FIRE_CAST_HAND_PIXEL := Vector2(205.0, 235.0) # cast_fire cell 3 at native launch 0.24.
 const FIRE_FOOT_ANCHOR := Vector2(224.0, 400.0)
 const FIRE_BODY_SIZE := Vector2(30.0, 90.0)
 const FIRE_BODY_POSITION := Vector2(0.0, -19.0)
@@ -603,8 +604,12 @@ func _on_empowered_cast_started(school: StringName, direction: Vector2) -> void:
 func _on_cast_launch_requested(payload: Dictionary) -> void:
 	var request: Dictionary = payload.duplicate(true)
 	var direction: Vector2 = request["direction"]
-	request["origin"] = global_position + direction.normalized() * 42.0
 	var primary_school := StringName(request["primary_school"])
+	request["origin"] = global_position + direction.normalized() * 42.0
+	if primary_school == &"fire":
+		var hand_local := FIRE_CAST_HAND_PIXEL - FIRE_CELL_SIZE * 0.5 + sprite.offset
+		hand_local.x *= -1.0 if direction.x < 0.0 else 1.0
+		request["origin"] = sprite.to_global(hand_local)
 	_play_audio(cast_audio, _load_audio_stream(str(CAST_STREAM_PATHS.get(primary_school, CAST_STREAM_PATHS[&"fire"]))))
 	spell_projectile_requested.emit(request)
 

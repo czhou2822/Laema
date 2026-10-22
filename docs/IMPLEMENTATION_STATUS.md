@@ -1,5 +1,64 @@
 # Implementation Status
 
+## Fire X5 shove and raised-hand Fireball candidate — October 22
+
+Status: `AWAITING_USER_VALIDATION`; exact GDD synchronization awaits user
+verification. Isolated source basis: `fd72f4e2a83960abb862da09ae98fb210c5c8410`
+on `codex/combat-feedback-fixes`. This bounded follow-up does not reopen or
+overwrite the closed daytime run, main's dirty tuning/art, or Art's worktree.
+
+- Existing style/configuration path: `scripts/combat/attack_style.gd`,
+  `scripts/config/move_style_tuning.gd`, `scripts/config/player_combat_settings.gd`,
+  `scripts/config/prototype_config_loader.gd`,
+  `scripts/config/developer_settings_catalog.gd` and `config/attack_styles/fire_x5.tres` carry
+  Fire X5's captured `push_motion_duration=0.15`. Zero/omitted values retain
+  full-reaction motion; other moves validate as zero and expose no new control.
+- Existing reaction path: `scripts/combat/might_component.gd`,
+  `scripts/entities/health_event.gd`, `scripts/entities/health_resolver.gd`,
+  `scripts/entities/entity.gd`, `scripts/enemy/combat_enemy.gd` and
+  `scripts/entities/hit_reaction.gd`
+  forward that value through contact, strongest-reaction batching and captured
+  Enemy execution. All qualifying X5 bands retain their distance/eligibility
+  but deliver motion in 0.15s capped at lifetime. Full hurt, control lock,
+  invincibility and AI recovery remain unchanged. Other attacks keep old motion.
+- `scripts/player/player.gd` maps Fire's source hand pixel (205,235) through the actual Sprite
+  transform and committed-facing reflection. Both drawing and collider now
+  originate there. Non-Fire origin, launch marker, travel/range, damage, drawing
+  scale and audio are unchanged. The user accepted short-dummy misses without
+  modifying targets. No dodge source, collision policy or timing changes.
+  Combat later relayed the user's scoped acceptance of the existing physical
+  correction when dodge ends overlapping the Enemy; its fd72 footage is not
+  validation of this two-fix branch or a blanket controller/art pass.
+- `docs/GAME_DESIGN.md`, `docs/TECH_ARCHITECTURE.md`, `docs/ATTACK_STYLES.md`,
+  `docs/GYM.md` and this `docs/IMPLEMENTATION_STATUS.md` record the exact scope.
+
+Checks: scoped source/diff, whitespace and producer-to-consumer inspection;
+isolated Godot 4.7.1 headless imports; existing shared-combat suite 87 checks;
+existing full Fire geometry/input suites X1=1741, X2=1236, X3=1337, X4=1185,
+X5=1536 (7035 total). Each suite reached zero assertion failures and a process
+exit 0, with X1 requiring a fresh rerun. These controlled fixtures are not
+rendered/controller/feel or explicit lower-band-shove/hand-anchor acceptance.
+
+Validation is not blanket green: the first X1 run printed its 1741 pass then
+exited 0xC0000005 during native shutdown; clean baseline and fresh candidate X1
+reruns exited 0. Cause remains unclassified. The geometry runs retain ObjectDB /
+resource-at-exit diagnostics (X1 rerun 26/16, X2–X5 each 14/10), and import emitted
+Unicode warnings. The legacy clash suite has the same 15 failure/error entries
+as clean fd72; legacy Portal also fails on its removed Geometry.contact API in
+both trees. Legacy attack-style has 205 baseline failure/error entries plus two
+candidate fixed-160-field assertions: the approved single X5 control makes 161.
+Its other failures include removed Might._physics_process and old contact/frame
+assumptions. No test or runner is created/modified, and these failures are not
+repaired incidentally. The first clash wrapper also hit Windows console encoding
+while printing; comparison uses the retained engine logs.
+
+Combat owns rendered Windows observation and review before local merge. No
+main merge, push, export or human-feel acceptance is claimed. Preserve main's
+overlapping `fire_x5.tres` changes when integrating only the new field. Faster
+displacement can change follow-up contact/spacing; it does not guarantee a
+subsequent Cast hit. Raised-hand/both-facing alignment, lower-band reactions
+and continued hurt/AI recovery await Combat/user review.
+
 ## Selectable Castle creatures — October 22
 
 Status: `AWAITING_USER_VALIDATION`. The user authorized a scoped creature commit

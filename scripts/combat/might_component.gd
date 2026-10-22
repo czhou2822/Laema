@@ -674,6 +674,8 @@ func collect_melee_contacts() -> Array[HealthEvent]:
 		var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"][move["damage_key"]]), int(move["impact"]), HealthEvent.Delivery.DIRECT, StringName(_current_action["school"]), {}, _current_action["direction"], _attack_cast.get_collision_point(index), action_id, [StringName(_current_action["school"])])
 		event.melee_contact = true
 		event.push_scale = float(_current_action["style"]["push_scale"])
+		if StringName(_current_action["move_id"]) == &"fire_x5":
+			event.push_motion_duration = float(_current_action["style"]["push_motion_duration"])
 		ImpactProbe.record("contact_event", {"actor": str(_owner_entity.get_path()), "move_id": _current_action["move_id"], "action_id": action_id, "target": str(target.get_path()), "impact": event.impact, "target_poise": target.get_poise()})
 		events.append(event)
 	_attack_cast.position = live_position

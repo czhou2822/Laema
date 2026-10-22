@@ -118,8 +118,15 @@ unchanged; actual timed displacement can differ through pacing and collision.
 With Enemy Poise 10 outside its active attack, Fire Impacts 10/20/30/40/50
 produce Levels 1/1/2/3/4. Cast Levels 1–4 use Impacts 10/20/30/40
 and produce Levels 1/1/2/3. Player's ordinary zero result qualifies for Level 1. The receiver's active-move Impact can
-weaken or prevent a reaction. Hurt, body knockback and invulnerability share
+weaken or prevent a reaction. Hurt, control lock and invulnerability share
 the selected duration; nonqualifying damage has no separate hurt animation.
+The October22 candidate gives every qualifying Fire X5 band its unchanged
+knockback distance over a separate0.15s shove, capped at the reaction lifetime.
+Hurt/control lock/invulnerability continue after movement ends; other moves keep
+full-duration knockback and the separate AI wait is unchanged. Tune **Push motion
+duration** in Fire / X5's existing style controls or `config/attack_styles/fire_x5.tres`;
+zero restores full-duration motion. Do not change shared reaction Duration to
+speed up this shove. Active X5 keeps the value captured when it began.
 Current stored duration/distance pairs are .25 s/5 px, .55/10, .85/15, 1.15/20
 and 1.45/25. The user retained this shorter sequence on October 20; the earlier
 October 14 durations remain historical rather than an open conflict. Cast level Impact overrides live in Player Settings / Moves / Cast.
@@ -128,6 +135,16 @@ Cast levels5–8 currently use base Impact1 because their overrides are absent.
 Against non-active Enemy Poise10 that gives-9/no qualifying reaction, while Fire
 X5 Impact50 gives40/Level4. Empowerment changes damage, not Impact. These locked
 limitations and fixed reaction protection were not retuned by the overnight work.
+
+The separately approved October22 Fireball origin is the raised hand, mirrored
+with committed facing. Actual projectile collision moves with the drawing;
+launch time, travel/damage, level-dependent size and audio are retained.
+Non-Fire emission is unchanged. The user accepted that the raised horizontal
+shot can miss the short legacy dummy; no dummy or trajectory repair is included.
+Combat owns rendered checks of the new origin and shove against tall opponents.
+Dodge collision policy remains unchanged. Combat subsequently reported the
+user's acceptance of the existing correction when a roll ends overlapping the
+Enemy, not a new endpoint/non-solid policy or blanket art/controller acceptance.
 
 The current Might repair reacquires movement/facing lock at actual X/Cast start
 after a Charging-preserved gap; the gaps themselves remain movable. Normal RELEASE

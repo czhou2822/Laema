@@ -6,6 +6,7 @@ extends RefCounted
 const DEFAULTS := {
 	"windup_duration": 0.0, "recovery_duration": 0.0,
 	"shape_reach": 0.0, "shape_radius": 0.0, "push_scale": 1.0,
+	"push_motion_duration": 0.0,
 }
 const LUNGE_DEFAULTS := {"distance": 0.0, "start_phase": 0.0, "end_phase": 0.5}
 

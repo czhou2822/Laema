@@ -218,8 +218,17 @@ resource and use **Show in FileSystem** to reveal it. Use Local assets for persi
 | Lunge distance | Total attacker-body displacement in pixels over the selected phase interval. |
 | Lunge start/end phase | Normalized animation-clock interval; start must precede end. |
 | Push scale | Multiplier on the existing qualifying combat reaction distance. It changes neither eligibility nor duration/invincibility; stationary practice targets retain legacy recoil. |
+| Push motion duration (Fire X5 only) | Seconds used to deliver the unchanged qualifying knockback distance; current value 0.15. Zero inherits the full selected reaction lifetime, and a positive value is capped by that lifetime. Hurt, control lock, invulnerability and AI recovery are not shortened. |
 
 A zero timing value inherits that phase of the shared duration. Native zero reach is a point query; radius must be positive. Legacy custom JSON profiles with omitted geometry retain their shared fallback. Zero lunge distance disables forward motion. Walls consume blocked motion rather than storing it for later.
+
+The October22 Fire X5 motion override applies to every qualifying reaction band,
+including lower bands after active-move resistance and a winning-clash Level1.
+Nonqualifying hits remain nonqualifying. Tune it in the assigned `fire_x5.tres`
+or the existing Portal's Fire / X5 style group; Save Tuning persists it through
+the same style asset. Active X5 retains its captured value. Other moves keep
+zero/full-duration motion, with no new Portal field. Do not shorten shared
+reaction Duration to tune this shove. Rendered spacing/feel remains unvalidated.
 
 ## Initial presets — historical reference
 
