@@ -264,7 +264,16 @@ the existing restart resets fighters, Health, orbs, Heat and actions.
 
 Laema is affected by gravity and remains grounded on solid collision. Every current stage area uses the same continuous flat ground height, and adjacent ground sections overlap at stage boundaries so transitions do not introduce a gap. The camera follows Laema horizontally while preserving fixed vertical framing.
 
-Active X and Cast animations lock player-controlled movement and facing unless interrupted by the Fire dodge rules below. Once an action begins, left/right input cannot flip Laema until that action finishes. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
+Active X and Cast animations lock player-controlled movement and facing unless interrupted by the Fire dodge rules below. Once an action begins, left/right input cannot flip Laema until that action finishes. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal.
+
+For each new X intention, including the next X in a chain, held horizontal
+left-stick direction takes priority over current facing; neutral input falls
+back to facing. Existing horizontal mappings and deadzones are unchanged.
+Buffered/queued X intentions retain the direction captured with their request,
+without turning the currently playing action. Laema adopts that captured facing
+when the new X actually starts, then keeps it locked for that swing. Rejected X
+input does not turn Laema. Cast retains its existing facing/commitment direction
+rules; stick-first X input does not add Cast steering.
 
 ### Fire Dodge
 
@@ -413,7 +422,7 @@ These are initial feel presets awaiting user playtesting, not accepted final num
 
 X presses and release-Cast requests use one shared normalized pre-window buffer. The buffer width is 20% of normalized action duration. With `combat.input_window_start = 0.48` and `combat.x_buffer_width = 0.20`, the initial buffer zone is `0.28 <= progress < 0.48`. One valid X or release-Cast request may occupy the buffer slot; later requests in that same buffer period are ignored. The buffer applies while the current chainable animation is X or Cast, and does not apply to school switching.
 
-An X buffer stores one school-and-direction action intention without advancing the chain or UI, then promotes it through the normal X acceptance path when the chaining window opens. A buffered release requires charged orbs, consumes them immediately, resolves and freezes the Cast composition and existing Cast fields, then promotes the resolved Cast as the appropriate empowered mid-chain or endpoint Cast when the chaining window opens. Early X remains ignored; an early release before the buffer without a valid request remains a rushed Cast failure. Buffer state does not repeat from held input and clears on interruption, hit reaction, failed Cast, chain completion/reset, or return to `READY`.
+An X buffer stores one school-and-direction action intention without advancing the chain or UI, then promotes it through the normal X acceptance path when the chaining window opens. Its captured direction is not resampled on promotion or actual start. A buffered release requires charged orbs, consumes them immediately, resolves and freezes the Cast composition and existing Cast fields, then promotes the resolved Cast as the appropriate empowered mid-chain or endpoint Cast when the chaining window opens. Early X remains ignored; an early release before the buffer without a valid request remains a rushed Cast failure. Buffer state does not repeat from held input and clears on interruption, hit reaction, failed Cast, chain completion/reset, or return to `READY`.
 
 ## Orb Queue
 

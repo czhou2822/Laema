@@ -331,10 +331,24 @@ separate from Gym retry.
 ### Actions and native timing
 
 Might accepts/queues X and Cast through the shared normalized buffer, captures
-school/facing/style and private geometry curves, and starts the next action on
+school/direction/style and private geometry curves, and starts the next action on
 completion. Leftover substeps cannot advance a replacement action. School changes
 affect future actions without consuming chain/buffer capacity. Magic's pressure
 preservation, not queue occupancy, determines between-action timeout/movement.
+
+For X only, Player obtains a read-only direction from Movement's existing
+horizontal InputMap sampling/deadzones: normalize held input, otherwise retain
+facing. Combat/Might acceptance remains unchanged. The existing X buffer stores
+that direction with the first intention; promotion and queued start reuse it
+without resampling. Reading/rejecting/buffering an intention changes no facing.
+Only the actual light-action `attack_started` event asks Movement to commit
+its captured horizontal facing. Player presentation, animated hitbox mirroring,
+contact direction and lunge continue consuming the same committed action vector.
+Movement remains the facing/body-motion owner; no new component or timing rule
+is introduced. Non-X input and Cast direction capture keep their existing path,
+and dodge input/lifetime/collision behavior is untouched. Source basis for this
+bounded follow-up is `7e9dff46` on `codex/combat-feedback-fixes`; current evidence
+and integration state belong to Implementation Status.
 
 The October22 retained Might candidate reasserts movement_lock_changed(true) in
 the common _start_action path before move lookup/playback. Thus every actual

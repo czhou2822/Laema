@@ -1,5 +1,52 @@
 # Implementation Status
 
+## X input direction capture — October 22
+
+Status: `AWAITING_USER_VALIDATION`; exact GDD wording remains
+`AWAITING_GDD_VERIFICATION`. Approved five-file follow-up based on committed
+main `7e9dff463efb61473133a2c313a93a46b744fb71`, prepared in the isolated
+`codex/combat-feedback-fixes` checkout. Shared-main tuning/imports are not copied
+or edited; Combat owns review and eventual local integration. No push/export.
+
+- `scripts/player/movement_controller.gd`: the previously unused attack sampler
+  now reads existing mapped horizontal input/deadzones without changing facing;
+  held input returns its normalized direction, neutral returns facing. A separate
+  explicit commit applies captured horizontal facing only at actual X start.
+- `scripts/player/player.gd`: only X requests use that pure sampler. The existing
+  light-action start event commits facing; Cast and other input retain their
+  previous route. An accepted queued/buffered X cannot turn the current swing.
+- `docs/GAME_DESIGN.md` and `docs/TECH_ARCHITECTURE.md`: synchronize stick-first X,
+  neutral fallback, existing immutable buffer intention and actual-start commit.
+  This status is the fifth approved file. No Might/CombatController, input-map,
+  timing/window, tuning, asset, Cast or dodge implementation edits are included.
+
+Source trace: pure X sample -> existing Combat/Might acceptance -> stored
+buffer/pending direction -> actual attack_started -> facing commit. Presentation,
+hitbox mirroring, contact direction and lunge continue reading that same action
+direction. Rejected input has no sampler-side facing event; first-wins and buffer
+promotion remain unchanged. Neutral after a new X retains its committed facing
+rather than an older Movement direction.
+
+Checks: source/data-flow and complete changed-function inspection plus
+`git diff --check`. No Godot, editor, game, build or automated test is run or
+created for this slice. A standalone GDScript checker was not available in the
+current Python/PATH; this is not a grammar/type or runtime pass. Earlier dodge/
+shared/combat observations below do not validate this new direction change.
+
+Tooltip-only companion: `scripts/config/move_style_tuning.gd` now documents all
+11 exported Inspector fields, including units, timing phases and zero behavior.
+Source comparison with documentation comments removed confirms unchanged
+declarations/logic/defaults; whitespace check passes. Inspector hover display
+has not been run. The user authorized committing this companion together with
+the five-file X fix for Combat's local-main integration, with no push.
+
+Manual validation on the review source: face right and press left+X, then check
+the reverse case; hold opposite direction during a swing without X and verify
+it does not turn. Queue/buffer opposite-direction X: the old action stays locked,
+the new action turns only at its own start, and releasing/changing the stick
+after capture cannot retarget it. Check neutral follow-up, rejected early/full-
+queue X, both-facing visual/hitbox/lunge agreement, and unchanged Cast/dodge.
+
 ## Local main review handoff — October 22
 
 The user requested immediate integration for review. Local `main` was
