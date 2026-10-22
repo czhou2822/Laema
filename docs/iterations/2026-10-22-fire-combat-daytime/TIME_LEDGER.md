@@ -123,3 +123,45 @@ are retained; other edges at most13ms. The separate existing full controlled X5
 suite ended0/1545 checks/zero failures; its forced Heat/seeks do not establish
 natural high-Heat or human-controller feel. Existing shutdown warnings remain.
 C7's one-leaf implementation and review are separate from measured play time.
+
+### Unchanged C7 maximum-Heat practice — closed16:35 HKT
+
+C7_HIGH_HEAT_ACTIVITY.json records7 commanded episodes/856 bound edges, strict
+adjacent-state lower-bound75.269s wall/75.350s physics. Three120-second exercise
+schedules really ran and produced48 actual Cast launches; sparse portions outside
+the first15-second dense captures are not credited by this conservative<=400ms
+method. This is stationary-dummy practice, not7 full live encounters or a human
+controller test. Native Portal setup/counter0->7 and uncommanded idle, paused
+image/source review, waiting and publication are separate and uncredited.
+
+### Unchanged C7 natural Lv8 encounter — closed16:47 HKT
+
+C7_LEVEL8_ACTIVITY.json records3 commanded episodes/102 edges, lower-bound
+29.185s wall/29.167s physics. One continuous P100->60 victory with genuine orbs
+and a normalLv8 Cast; no mid-fight Retry/heal/forced state. It is not3 fights,
+maximum-Heat Enemy protection or audible scale acceptance. Source review and
+wall-boundary planning are separate work, not gameplay time.
+
+### Unchanged C7 shorter-window Dodge check — closed16:57 HKT
+
+C7_X5_DODGE_ACTIVITY.json records3 episodes/94 edges, lower-bound24.492s wall/
+24.517s physics. One continuous P100->50 victory; earlier X5 cancelled pre-active,
+neutral rearm and a later empoweredLv8 were actually observed. Cold F4 delays
+108/104ms and a neutral release84ms late before unpause are retained, not called
+uniform7ms execution or human reaction timing. This process exited0 but printed
+25ObjectDB/15resource shutdown warnings, distinct from earlier13/9. No cause/fix
+is inferred. No new implementation round or audio audition occurred.
+
+### Candidate freeze and final verification — from17:00 HKT
+
+No new product candidate after the agreed cutoff. Source remains C7651/Enemy72;
+all owned rendered games closed. Final source census, bounded canonical/evidence
+review, existing controlled regression suites and publication are separate from
+active play. Do not add their elapsed time to the play figures above. Awaiting
+human-only judgments/open new-scope choices does not turn them into verified work.
+
+The final existing full C7 controlled suites ran sequentially from about17:04
+until their explicit completion before17:09:28; all five exited0,7044 checks and
+zero assertion failures. The aggregate manifest and exact warnings are preserved.
+This elapsed verification is NOT play time or audible/human acceptance. The
+temporary alias/point-file copies are test setup, not new product implementation.

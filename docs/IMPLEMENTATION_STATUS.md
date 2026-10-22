@@ -84,6 +84,73 @@ the [Iteration7 review](iterations/2026-10-22-fire-combat-daytime/ITERATION7_REV
 and source identity. No controller, human aesthetics, audition,
 whole-tree/submission or new gameplay-policy acceptance is established.
 
+Main's final changed-window trial PID41128/session41128_645991: X5 start3.541s/Circle3.661s pre-active; Dodge ended4.056s/24 physics ticks.
+Four hits left P100/E160/queue4; charged4->0/chain reset, with held full pressure not restarting Charging.
+Neutral release/repress rearmed without failed Cast; Left all-five hits plus empowered FireLv8 launched4.915/impacted4.966/APPLIED13.
+A later real hit left P90/E97/Heat11; the SAME fight then won P50/E0/Heat1/queue6/ext0, without Retry/heal/forced states.
+Main inspected before/during/post-Dodge and target FireLv8/13 frames in the [archived evidence](iterations/2026-10-22-fire-combat-daytime/c7-x5-dodge-01/).
+Normal quit5 explicitly exited0; this session retained25 ObjectDB/15 resources-in-use warnings, NOT13/9; no cause or leak fix is inferred.
+Source C7651/Enemy72 stayed unchanged. This finite agent observation grants no whole-Dodge/controller/human acceptance; status AWAITING_USER_VALIDATION.
+
+### Final current-C7 regressions — October 22,17:09 HKT
+
+After all rendered games closed, Main ran the five existing full headless suites
+sequentially on frozen C7, explicitly WaitForExit for each and loop exit0:
+
+| Suite | Checks | Assertion failures | Exit | ObjectDB / resource warnings |
+| --- | --- | --- | --- | --- |
+| Fire X1 | 1741 | 0 | 0 | 14 / 10 |
+| Fire X2 | 1236 | 0 | 0 | 26 / 16 |
+| Fire X3 | 1337 | 0 | 0 | 24 / 15 |
+| Fire X4 | 1185 | 0 | 0 | 14 / 10 |
+| Fire X5 | 1545 | 0 | 0 | 14 / 10 |
+
+**Total7044, zero assertion failures**; not the historical C2 total7116 or
+overnight7212. The initial15:48 X5-only selection result above retains its scope.
+The [final manifest](iterations/2026-10-22-fire-combat-daytime/FINAL_REGRESSION_MANIFEST.json)
+and [suite records](iterations/2026-10-22-fire-combat-daytime/final-regressions-c7/)
+retain exact reports. Main's FAILED/SCRIPTERROR/ParseError/InvalidCall scans found
+no hits; shutdown warnings remain and no cause or cleanup is established.
+Existing fixtures were mechanically copied to an isolated alias without script
+edits. Forced Heat/preparation/seeks/collectors are supplementary, not primary
+play, tutorial reachability, NPC safety, controller or human acceptance. The
+OPEN Fire-dummy finding and unanswered human choices remain; no repair was
+accepted. Status AWAITING_USER_VALIDATION; this document update ran no tests/runtime.
+
+### C7 genuine-Heat and Lv8 observations — October 22 afternoon
+
+Product source remains unchanged C7; Main verified source publication1404d0ab
+and receipt632efc44 (see [C7 publication](iterations/2026-10-22-fire-combat-daytime/C7_PUBLICATION.md)).
+These later Main-run observations add evidence, not new tests or source changes:
+
+- Stage7 dummy practice PID70896/session70896_641622 closed exit0 after48 normal
+  Lv1 Casts across three batches, Heat4->36->68->100/P100/no failed Casts. Known
+  external counter7 stayed stable during commands. At100/150% speed,0.43s cadence
+  accepted all five X positions/full35 lunge; onlyX3 hit. A subsequent charged
+  chain committed empowered Lv2 at2.522s, launched3.118/impacted3.141/APPLIED13,
+  queue2->0/Heat100; ordinary post-Cast Left movement returned30 units. This is
+  not all-five-hit/objective completion or high-Heat NPC invulnerability clearance.
+- Separate Gym PID24872/session24872_1016458 earned queue10 from14 ordinary melee
+  contacts, P80/E60/Heat0, with three actual overflow events. Normal retreat while
+  Charging selected8; Right-reface/release4.5 committed FireLv8, launched4.792/
+  impacted5.054/APPLIED10, P80/E50/Heat16/queue1. Main inspected8/8-ring, projectile
+  and target FireLv8 images. The SAME fight later won P60/E0/Heat16/queue1/ext0,
+  without mid-fight Retry/heal/forces; normal quit5 exited0 with13 ObjectDB/9
+  resource warnings. No survival-superiority, controller, audio-scale audition or
+  human acceptance follows from this bounded maximum-charge case.
+
+**OPEN compatibility:** the [tutorial target finding](iterations/2026-10-22-fire-combat-daytime/TUTORIAL_TARGET_FINDING.md)
+records a source-grounded21.61px vertical gap between grounded Fire X1's full
+active sweep and the legacy dummy. The inferred default Fire-only Stage1/7 route
+is unreachable at ordinary horizontal spacing, not every school/tutorial route
+or the tall NPC, and not a C7 regression. Separate visible-art/matching-collision
+repair authorization is unanswered; no target, sword query or objective rule was changed.
+
+Details remain in the [daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md);
+Main owns the new high-Heat/Lv8 reports and evidence. Status stays
+AWAITING_USER_VALIDATION. No human feel, all-case NPC safety, eight-note listening
+or new design/mechanism is accepted by this static document synchronization.
+
 ### Final daytime evidence addendum — October 22, prepublication
 
 Main completed all five C2 controlled headless suites, explicitly waiting for

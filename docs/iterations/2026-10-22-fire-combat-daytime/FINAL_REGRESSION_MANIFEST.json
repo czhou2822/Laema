@@ -1,0 +1,72 @@
+{
+  "captured_utc": "2026-10-22T09:09:28.4345132Z",
+  "source_commit": "1404d0ab4186124ac7875032cdc3fbaa77727cb8",
+  "source_candidate": "C7 .30/1.10, Enemy72",
+  "engine": "Godot4.7.1-stable official a13da4feb",
+  "explicit_loop_exit": 0,
+  "total_checks": 7044,
+  "total_failures": 0,
+  "suites": [
+    {
+      "move": "fire_x1",
+      "checks": 1741,
+      "failures": [],
+      "explicit_exit": 0,
+      "stdout_tail": "PASSED: 1741 fire_x1 geometry checks",
+      "ObjectDB": 14,
+      "resources": 10,
+      "fixture_sha256": "6ff9a62c87df14b466caace8135c99af81d73513b16b4afaac2bc34e25ca2c9d",
+      "points_sha256": "c337ef08e37701874322631d445168ad1efb2b503f376f6a6bdb75b80b69d565",
+      "animation_sha256": "07e3c2b616b98b6dee7a8476a58f6a6e9dbefd446e0480a436db5f05d3a50ced"
+    },
+    {
+      "move": "fire_x2",
+      "checks": 1236,
+      "failures": [],
+      "explicit_exit": 0,
+      "stdout_tail": "PASSED: 1236 X2 geometry checks",
+      "ObjectDB": 26,
+      "resources": 16,
+      "fixture_sha256": null,
+      "points_sha256": null,
+      "animation_sha256": "95fe76edb92ce6113bfa1e58860d5363145560426e2b6a3d9e1f4d3ac66580ad"
+    },
+    {
+      "move": "fire_x3",
+      "checks": 1337,
+      "failures": [],
+      "explicit_exit": 0,
+      "stdout_tail": "PASSED: 1337 fire_x3 geometry checks",
+      "ObjectDB": 24,
+      "resources": 15,
+      "fixture_sha256": "6ff9a62c87df14b466caace8135c99af81d73513b16b4afaac2bc34e25ca2c9d",
+      "points_sha256": "675ddf9293851d2e5809884bb3a58ad886f60f3d32cc735e4822bca699370d9a",
+      "animation_sha256": "4d2ecedc98d4a881078d09a2d7179cc07f5b64620ecfd4bf477385a4bccfe1ad"
+    },
+    {
+      "move": "fire_x4",
+      "checks": 1185,
+      "failures": [],
+      "explicit_exit": 0,
+      "stdout_tail": "PASSED: 1185 fire_x4 geometry checks",
+      "ObjectDB": 14,
+      "resources": 10,
+      "fixture_sha256": "6ff9a62c87df14b466caace8135c99af81d73513b16b4afaac2bc34e25ca2c9d",
+      "points_sha256": "bb61f60341d1bf9553c5208decec191b62f946eb4c6e866f80ef8a5af62a385b",
+      "animation_sha256": "bfc1ee308ac202b4717b472c1306c3d961a9a557359e31c11d08159fd3cecbad"
+    },
+    {
+      "move": "fire_x5",
+      "checks": 1545,
+      "failures": [],
+      "explicit_exit": 0,
+      "stdout_tail": "PASSED: 1545 fire_x5 geometry checks",
+      "ObjectDB": 14,
+      "resources": 10,
+      "fixture_sha256": "6ff9a62c87df14b466caace8135c99af81d73513b16b4afaac2bc34e25ca2c9d",
+      "points_sha256": "470068683d4cd1dc9d690ce641fba082638f321eef541e972509e48a4a21b537",
+      "animation_sha256": "83594bbbfeee85cd4f15c573050efd8a157f409dca8943501c40b6d39a73341e"
+    }
+  ],
+  "limits": "All five existing full headless suites; forced Heat/preparation/manual seeks/collectors are supplementary, not primary play or human/controller/AI/audio acceptance. They do not validate default tutorial dummy reachability. No scripts edited; existing fixtures mechanically copied to isolated alias. All rendered games closed before this sequential loop."
+}

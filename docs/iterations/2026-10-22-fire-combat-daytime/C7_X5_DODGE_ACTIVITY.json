@@ -1,0 +1,45 @@
+{
+  "captured_utc": "2026-10-22T08:59:30Z",
+  "category": "UnchangedC7 pre-active X5 Dodge/rearm/empoweredLv8 and same-fight return",
+  "episodes": 3,
+  "bound_edges": 94,
+  "sample_wall_ms": 24492,
+  "sample_physics_ms": 24516.666,
+  "commands": [
+    {
+      "command": 2,
+      "bound_edges": 21,
+      "max_late_ms": 108,
+      "non_overlay_max_late_ms": 7,
+      "sample_wall_ms": 4280,
+      "sample_physics_ms": 4283.333,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "command": 3,
+      "bound_edges": 21,
+      "max_late_ms": 104,
+      "non_overlay_max_late_ms": 84,
+      "sample_wall_ms": 5963,
+      "sample_physics_ms": 5983.333,
+      "unexpected_counters": [
+        0
+      ]
+    },
+    {
+      "command": 4,
+      "bound_edges": 52,
+      "max_late_ms": 7,
+      "non_overlay_max_late_ms": 7,
+      "sample_wall_ms": 14249,
+      "sample_physics_ms": 14250,
+      "unexpected_counters": [
+        0
+      ]
+    }
+  ],
+  "method": "Conservative adjacent observation/capture coverage: positive gap<=400ms, both endpoints unpaused/alive and stable actor IDs. Excludes setup, paused review, after-victory, sparse gaps and waiting. One encounter, not3 fights or physical-controller usability.",
+  "timing_limit": "ColdF4release108/104ms late before unpause. Command3 neutral Castingrelease requested100 actually184ms,84ms late; outcome not misreported as exact100ms gameplay reaction."
+}

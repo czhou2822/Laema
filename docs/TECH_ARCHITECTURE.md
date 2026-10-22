@@ -183,8 +183,23 @@ input/buffer spans also change under the unchanged normalized rules. X4 completi
 and actual X5 action start are not moved by this leaf; X5 finishes and a queued
 Cast can start0.15/Heat-multiplier seconds earlier at constant Heat. Actual contact,
 collision and live Heat remain authoritative; this guarantees no Enemy-invulnerability
-margin or aesthetic improvement. Main's scoped Right/Left rendered comparisons
-and one supplementary X5 suite support provisional human review only.
+margin or aesthetic improvement. Main's initial15:48 selection used scoped
+Right/Left rendered comparisons plus one supplementary X5-only1545-check suite.
+The final17:09 current-C7 run completed all five existing suites:7044 checks,
+zero assertion failures and explicitly waited exits0, with shutdown warnings
+retained; see the [final regression manifest](iterations/2026-10-22-fire-combat-daytime/FINAL_REGRESSION_MANIFEST.json).
+Forced Heat/preparation/seeks/collectors remain supplementary, not primary play,
+tutorial reachability, NPC safety or human acceptance. Open compatibility findings
+and unanswered human choices are not cleared by this result.
+
+Later Main-run C7 practice reached genuine100 Heat through48 normal Lv1 Casts,
+then accepted all five X positions/full35 lunge at0.43s cadence; onlyX3 hit the
+short dummy. An empowered Lv2 applied13 there; a separate ordinary Gym Lv8
+applied10 and its same encounter later ended Player60/Enemy0. These are bounded
+resource-earned cases, not all-five-hit tutorial completion, high-Heat NPC
+invulnerability clearance, controller/feel or eight-note audition acceptance.
+See Implementation Status and the
+[daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md).
 
 Historical overnight D Resource was windup0.45/recovery1.10 (base1.55s,57aef5ab),
 captured through Player Settings/attack_styles into moves.fire_x5. Its native
@@ -711,6 +726,17 @@ Stages 1–6 share one data-driven `SequenceObjectiveEvaluator`. Each descriptor
 - **Stage 6:** `X -> X -> school switch -> X -> X -> X`; the accepted switch must occur at chain position 2, and rejected or mistimed switches invalidate the active attempt.
 - **Stage 7:** the Heat-gated sequence evaluator exposes a Heat row and chain row. Heat at or above 80 marks only the Heat row complete. A chain attempt begins only on landed position-1 X at or above threshold; its five landed X steps advance the chain row. Miss, premature termination, or dropping below threshold during an attempt resets/flinches the chain row, while a pre-attempt Heat drop updates only the Heat row. X5 completes the stage.
 
+**OPEN validation limit — default grounded Fire tutorial route:** the legacy
+dummy's50x58 collider at rootY16 occupiesY[-13,45]. Fire X1's complete active
+circle/sweep envelope at root2 isY[-180.200919,-34.613020], leaving at least21.61px
+of vertical separation. The source inference is that horizontal spacing cannot
+make grounded Fire X1 hit this target, conflicting with the default Fire-only
+Stage1/7 five-hit route. This is not an other-school/global-tutorial or tall-NPC
+impossibility, and not a C7 timing regression. The
+[target finding](iterations/2026-10-22-fire-combat-daytime/TUTORIAL_TARGET_FINDING.md)
+retains source/observation limits. Target art/collision repair awaits an explicit
+human scope decision; no invisible hit-area, evaluator, geometry or GDD rule was changed.
+
 Unexpected actions follow each descriptor's phase rules. Prestart `ignore_unexpected` allows the player to prepare freely where approved. Once an attempt is active, a wrong expected step, an applicable rejected switch, or `chain_terminated` invalidates and resets only the objective attempt. Completion remains latched permanently.
 
 ```text
@@ -1047,7 +1073,10 @@ only, not another gameplay change or Web export. User validation remains pending
 publication establishes no whole-tree/submission, art, numerical or feel clearance.
 
 Current handoff is the C7 X5 timing candidate over retained C4, with Enemy72
-restored. Publication status remains Main-owned receipts/source identities; this
+restored. Main verified C7 source publication1404d0ab and metadata receipt632efc44;
+the [C7 receipt](iterations/2026-10-22-fire-combat-daytime/C7_PUBLICATION.md) records
+that publication, not a new product change from these later observations.
+Publication status remains Main-owned receipts/source identities; this
 sync changes no published-receipt ID or product source. The
 [Iteration7 review](iterations/2026-10-22-fire-combat-daytime/ITERATION7_REVIEW.md),
 [daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md),

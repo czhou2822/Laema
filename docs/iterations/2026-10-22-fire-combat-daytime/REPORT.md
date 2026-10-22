@@ -299,6 +299,16 @@ its artwork is stronger or the physical overlap snap is fixed. The existing
 full X5 controlled suite also exited0/1545 checks/zero failures; forced setup
 is separate from actual play. Natural maximum-Heat coverage remains separate.
 
+Later unchanged-C7 checks are recorded separately rather than counted as new
+iterations: [genuinely earned100 Heat](C7_HIGH_HEAT_REVIEW.md),
+[natural eight-orb Cast and same-fight victory](C7_LEVEL8_REVIEW.md), and
+[earlier X5 Dodge/rearm/empowered Lv8](C7_X5_DODGE_REVIEW.md).
+These add bounded agent observations, not all-case protection or human acceptance.
+The [default Fire tutorial-target reachability finding](TUTORIAL_TARGET_FINDING.md)
+is OPEN: the old short dummy lies below X1's active sweep. No target/art/collision
+or objective change has been silently installed. The final extra session exited0
+with25/15 shutdown warnings; earlier13/9 counts must not be reused for it.
+
 ## Lunch verification and publication boundary
 
 After C2 rendered closure, all five existing geometry/input suites completed with explicit process exits0 and zero assertion failures: **1741 + 1236 + 1337 + 1185 + 1617 = 7116 checks**. X2 used its dedicated suite. Their forced setup/Heat/seeks make them supplementary controlled checks, never substitutes for the primary encounters above. Reports and stderr are in [regressions-c2](regressions-c2/). Fixture shutdown warnings were14/10,14/10,24/15,22/14,22/14 ObjectDB/resources, respectively; no warning-free exit or new cause is claimed.
