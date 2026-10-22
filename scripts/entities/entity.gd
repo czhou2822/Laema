@@ -77,8 +77,8 @@ func cancel_combat_attack() -> void:
 	pass
 
 
-func request_combat_hit_reaction(difference: int, direction: Vector2, push_scale: float = 1.0, push_motion_duration: float = 0.0) -> void:
-	hit_reaction.execute_combat(difference, direction, push_scale, push_motion_duration)
+func request_combat_hit_reaction(difference: int, direction: Vector2) -> void:
+	hit_reaction.execute_combat(difference, direction)
 
 
 func has_pending_combat_hit_reaction() -> bool:

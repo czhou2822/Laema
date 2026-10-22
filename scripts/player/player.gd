@@ -313,7 +313,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_echo() and event.is_action_pressed(&"dodge"):
 		combat.try_dodge(movement.sample_dodge_direction(event.device), movement.get_normal_movement_speed())
 		return
-	combat.handle_input_event(event, _get_attack_direction())
+	var attack_direction: Vector2 = _get_attack_direction()
+	if event.is_action_pressed(&"light_attack"):
+		attack_direction = movement.sample_attack_direction()
+	combat.handle_input_event(event, attack_direction)
 
 
 func _process(delta: float) -> void:
@@ -565,6 +568,7 @@ func _on_attack_started(kind: StringName, school: StringName, direction: Vector2
 	_visual_time = 0.0
 	_apply_sprite_art_profile()
 	if kind == &"light":
+		movement.commit_attack_direction(direction)
 		_play_audio(attack_swing_audio, _load_audio_stream(ATTACK_SWING_STREAM_PATHS[(_visual_light_position - 1) % ATTACK_SWING_STREAM_PATHS.size()]))
 		_play_audio(element_audio, _school_attack_stream(school, _visual_light_position))
 

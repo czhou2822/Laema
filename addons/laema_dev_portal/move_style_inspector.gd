@@ -13,6 +13,6 @@ func _parse_begin(object: Object) -> void:
 	var style := object as MoveStyleTuning
 	var button := Button.new()
 	button.text = "Edit %s animation & hitbox" % style.move_id
-	button.tooltip_text = "Open Player's native AnimationPlayer. Scrub the active_start..active_end window, select AttackCast, and key animated geometry. Portal size controls read/write the active_start key. Save the animation."
+	button.tooltip_text = "Open Player's native AnimationPlayer. Scrub the active_start..active_end window, select AttackCast, and key animated geometry. These native curves alone own Player X geometry; no scalar size override is applied. Save the animation and restart the scene to compare."
 	button.pressed.connect(func(): edit_attack_requested.emit(style.move_id))
 	add_custom_control(button)

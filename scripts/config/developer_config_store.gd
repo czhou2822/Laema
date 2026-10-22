@@ -8,6 +8,7 @@ const Loader = preload("res://scripts/config/prototype_config_loader.gd")
 const Settings = preload("res://scripts/config/combat_tuning_settings.gd")
 const Geometry = preload("res://scripts/combat/attack_geometry.gd")
 const Characters = preload("res://scripts/config/character_settings_store.gd")
+const Style = preload("res://scripts/combat/attack_style.gd")
 
 
 static func source_hash() -> String:
@@ -57,6 +58,12 @@ static func set_value(data: Dictionary, keys: Array, value: Variant) -> void:
 
 
 static func merge(base: Dictionary, draft: Dictionary, latest: Dictionary) -> Dictionary:
+	# Old Portal caches cannot restore retired Player-X overrides or conflict on them.
+	base = base.duplicate(true)
+	draft = draft.duplicate(true)
+	latest = latest.duplicate(true)
+	for config in [base, draft, latest]:
+		Style.strip_retired_fields(config)
 	var candidate := latest.duplicate(true)
 	var conflicts: Array[String] = []
 	for change in changes(base, draft):
@@ -120,3 +127,5 @@ static func copy_into(target: Dictionary, source: Dictionary) -> void:
 					target[key][index] = source[key][index]
 		else:
 			target[key] = source[key].duplicate(true) if source[key] is Dictionary or source[key] is Array else source[key]
+	# Remove only retired config leaves; keep other retained component dictionaries.
+	Style.strip_retired_fields(target)

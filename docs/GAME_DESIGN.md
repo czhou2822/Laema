@@ -133,14 +133,13 @@ Enemy Poise 10 / Impact 20 / Health 200 and disabled Elemental Endurance now use
 the same character settings everywhere. Practice targets retain their distinct
 non-attacking/refilling role.
 
-The Enemy behavior tree triggers the qualifying hit reaction. The Dev Portal
-adjusts its exact duration, distance and ranges through the characters' shared
-reaction Resource. Hurt animation, control lock and invulnerability retain one
-lifetime owned by HitReaction; the tree waits for that execution to finish.
-Qualifying Fire X5 hits, including lower reaction bands, deliver their unchanged
-knockback distance over a separate 0.15-second shove (capped by the reaction
-lifetime). Other attacks keep their existing full-duration knockback. Finishing
-the shove does not end hurt, control lock, invulnerability or the subsequent AI wait.
+The Enemy behavior tree triggers the qualifying hit reaction. The characters'
+shared reaction levels set the distance, body-motion duration and separate stun
+duration for every qualifying attack. Hurt animation, control lock and
+invulnerability use the stun lifetime; the tree waits for that execution to
+finish. Motion time is capped at that lifetime. Finishing the shove does not end
+hurt, control lock, invulnerability or the subsequent AI wait. No Player X move
+has its own knockback multiplier or motion-time override.
 **October 20 editor-setting decision:** after the hit-reaction task finishes,
 the Enemy tree uses its configured BTRandomWait of 0.3–0.8 seconds. This separate
 AI wait does not extend HitReaction-owned hurt, knockback or invulnerability.
@@ -264,7 +263,16 @@ the existing restart resets fighters, Health, orbs, Heat and actions.
 
 Laema is affected by gravity and remains grounded on solid collision. Every current stage area uses the same continuous flat ground height, and adjacent ground sections overlap at stage boundaries so transitions do not introduce a gap. The camera follows Laema horizontally while preserving fixed vertical framing.
 
-Active X and Cast animations lock player-controlled movement and facing unless interrupted by the Fire dodge rules below. Once an action begins, left/right input cannot flip Laema until that action finishes. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal; attacks and casting projectiles use Laema’s current facing direction.
+Active X and Cast animations lock player-controlled movement and facing unless interrupted by the Fire dodge rules below. Once an action begins, left/right input cannot flip Laema until that action finishes. When CHARGING or DEPLETING preserves a chain between actions, Laema may move horizontally while retaining the chain and its orbs. Facing is horizontal.
+
+For each new X intention, including the next X in a chain, held horizontal
+left-stick direction takes priority over current facing; neutral input falls
+back to facing. Existing horizontal mappings and deadzones are unchanged.
+Buffered/queued X intentions retain the direction captured with their request,
+without turning the currently playing action. Laema adopts that captured facing
+when the new X actually starts, then keeps it locked for that swing. Rejected X
+input does not turn Laema. Cast retains its existing facing/commitment direction
+rules; stick-first X input does not add Cast steering.
 
 ### Fire Dodge
 
@@ -400,20 +408,20 @@ Keep the four schools, existing prototype animations, five global X/Cast progres
 
 October 19 presentation update: the table above records the original feel references. Fire and Earth have exchanged their X flipbook sets for the sword benchmark; the timing/spacing presets and combat tuning remain attached to their original schools.
 
-Player X moves have tunable phase durations, forward-body motion and qualifying-reaction push scaling. Player/CombatEnemy Settings own numerical combat tuning; native Animations own sprite frames and hitbox curves. Melee checks sample those curves throughout the active interval. The [attack-authoring guide](ATTACK_STYLES.md) owns editor instructions and current geometry readbacks.
+Player X moves have tunable phase durations and forward-body motion. Qualifying victim displacement and its motion time come only from the selected shared reaction level. Player/CombatEnemy Settings own numerical combat tuning; native Animations own sprite frames and hitbox curves. Melee checks sample those curves throughout the active interval. The [attack-authoring guide](ATTACK_STYLES.md) owns editor instructions and current geometry readbacks.
 
 The art-aligned Fire curves supersede the earlier provisional X40 point queries.
 Their earlier comparison results and limits remain in the
 [overnight ledger](iterations/2026-10-19-overnight.md); human feel acceptance and
 final tuning remain pending.
 
-Forward motion follows the action's committed facing through the existing collision body; walls block displacement and interruption/reset discards the remaining motion. Early Fire attacks use limited push; its X5 increases separation only when the existing hit-reaction rules qualify. Push scaling changes distance, not reaction eligibility, duration, invincibility, damage or Impact/Poise. Active actions retain the style captured at their start; tuning edits apply to subsequent actions. Native Animation markers author the melee active interval; Casting uses its separate launch marker.
+Forward motion follows the action's committed facing through the existing collision body; walls block displacement and interruption/reset discards the remaining motion. Attacker lunge is separate from the victim's shared hit reaction. Active actions retain their captured timing, lunge and native geometry curves; tuning edits apply to subsequent actions. Native Animation position, target and radius curves alone author Player X hitboxes, without scalar size overrides. Native markers author the melee active interval; Casting uses its separate launch marker.
 
 These are initial feel presets awaiting user playtesting, not accepted final numbers. Existing reaction invincibility still rejects otherwise valid follow-up hits during that interval. Practice-target tempo comparisons and attacking-enemy reaction checks are separate.
 
 X presses and release-Cast requests use one shared normalized pre-window buffer. The buffer width is 20% of normalized action duration. With `combat.input_window_start = 0.48` and `combat.x_buffer_width = 0.20`, the initial buffer zone is `0.28 <= progress < 0.48`. One valid X or release-Cast request may occupy the buffer slot; later requests in that same buffer period are ignored. The buffer applies while the current chainable animation is X or Cast, and does not apply to school switching.
 
-An X buffer stores one school-and-direction action intention without advancing the chain or UI, then promotes it through the normal X acceptance path when the chaining window opens. A buffered release requires charged orbs, consumes them immediately, resolves and freezes the Cast composition and existing Cast fields, then promotes the resolved Cast as the appropriate empowered mid-chain or endpoint Cast when the chaining window opens. Early X remains ignored; an early release before the buffer without a valid request remains a rushed Cast failure. Buffer state does not repeat from held input and clears on interruption, hit reaction, failed Cast, chain completion/reset, or return to `READY`.
+An X buffer stores one school-and-direction action intention without advancing the chain or UI, then promotes it through the normal X acceptance path when the chaining window opens. Its captured direction is not resampled on promotion or actual start. A buffered release requires charged orbs, consumes them immediately, resolves and freezes the Cast composition and existing Cast fields, then promotes the resolved Cast as the appropriate empowered mid-chain or endpoint Cast when the chaining window opens. Early X remains ignored; an early release before the buffer without a valid request remains a rushed Cast failure. Buffer state does not repeat from held input and clears on interruption, hit reaction, failed Cast, chain completion/reset, or return to `READY`.
 
 ## Orb Queue
 
@@ -677,31 +685,31 @@ Each attack has Attack Impact in 0–100, and Player/Final Enemy Poise is defens
 
 Ordinary positive results qualify for combat reaction. A direct Player melee or Cast hit at exactly zero qualifies against a combat Enemy and selects Level 1; ordinary Enemy zero and ordinary negative results deal damage without combat interruption. These rules still respect valid contact, defence and invincibility. The Melee contact and simultaneous clashes section defines the separate reciprocal-contact winner rule; there is no spell-versus-melee clash rule.
 
-| Difference after eligibility | Level | Duration | World-space displacement |
-|---|---:|---:|---:|
-| 0–10 | 1 | 0.25 s | 5 px |
-| 11–20 | 2 | 0.55 s | 10 px |
-| 21–30 | 3 | 0.85 s | 15 px |
-| 31–40 | 4 | 1.15 s | 20 px |
-| 41+ | 5 | 1.45 s | 25 px |
+| Difference after eligibility | Level | Stun duration | Initial motion duration | World-space displacement |
+|---|---:|---:|---:|---:|
+| 0–10 | 1 | 0.25 s | 0.25 s | 5 px |
+| 11–20 | 2 | 0.55 s | 0.55 s | 10 px |
+| 21–30 | 3 | 0.85 s | 0.85 s | 15 px |
+| 31–40 | 4 | 1.15 s | 1.15 s | 20 px |
+| 41+ | 5 | 1.45 s | 1.45 s | 25 px |
 
-**Reaction-duration decision — October 20:** retain the current shared character settings: Levels 1–5 use 0.25/0.55/0.85/1.15/1.45 seconds. This supersedes the October 14 duration sequence and resolves the former discrepancy with the character Resource and GYM.md. Player and combat Enemy use these durations for stagger and reaction invincibility. Knockback normally spans the same duration; the October 22 Fire X5 exception below changes motion time only. Distances, value bands and reaction eligibility are unchanged. Reaction durations and distances remain editable per level in the Godot Inspector and Developer Portal; the five value bands remain configurable through each level's starting value. This tuning selection supplies no new gameplay-validation report.
+Player and combat Enemy use the selected level's stun duration for hurt, control lock and reaction invincibility. Each shared level independently exposes displacement distance, motion duration and stun duration in the Inspector and Developer Portal. Motion durations initially match the existing ordinary shared durations above; this does not retune the existing distances, stun values, bands or eligibility. Each level's starting value remains configurable.
 
 The whole character and collision body are pushed backward and remain displaced.
-Normally motion spans the selected reaction duration. **October 22 Fire X5
-exception:** every qualifying Fire X5 hit delivers the same selected/scaled
-distance over 0.15 seconds, capped by that reaction's lifetime. This includes
-lower bands after active-move resistance and a qualifying winning-clash Level 1;
-it does not make a nonqualifying hit interrupt. Hurt, control lock,
-invulnerability and the separate Enemy AI wait are not shortened. Walls can
-stop the push. Motion remains uniform without additional easing. Other moves
-keep their existing timing; stationary practice targets retain legacy recoil.
+Every qualifying attack, including Fire X5 and qualifying winning clashes, uses
+the selected shared level's distance and motion time without a per-attack
+multiplier or override. Uniform motion delivers that distance over the configured
+motion duration, capped at the selected stun lifetime. A shorter motion duration
+ends movement while hurt, control lock and invulnerability continue until stun
+ends; it does not alter the separate Enemy AI wait. Walls can stop displacement;
+blocked motion is consumed rather than deferred. No additional easing is applied.
+Stationary practice targets retain their separate legacy recoil.
 
 The qualifying combat-reaction duration is invincible against further damage and reactions. Failed-Cast self-reactions grant no invincibility. Water retains its defence reaction path; the October 21 Fire prototype uses its own parry/partial-block interception without the legacy blocked-hit flinch. Stationary, non-attacking, pass-through practice targets retain their existing recoil and finite-health refill behavior.
 
 One mixed Cast resolves its primary and secondary layers in order before starting invincibility. Already active effects are retained and continue advancing; damage ticks received while invincible are rejected. Melee/spell damage rejected by invincibility or clash cancellation is not an applied hit and does not grant hit-dependent resources or change Elemental Endurance. Spell-vs-melee clash rules and further school/status interactions remain deferred.
 
-Each move has an independent character/style Resource record for its animation and damage/duration sources. Player X styles provide timing, forward-lunge distance/phases and qualifying-reaction push scaling; native Animations own geometry. Impact and character Poise remain character-owned tunables exposed through the Inspector and both Portals. Style overrides do not change Impact, Poise or reaction bands; final tuning remains open. Cast and Final Enemy do not use the Player X style overrides.
+Each move has an independent character/style Resource record for its animation and damage/duration sources. Player X styles provide timing and forward-lunge distance/phases; native Animations alone own geometry, and shared reaction levels alone own victim displacement and its motion time. Impact and character Poise remain character-owned tunables exposed through the Inspector and both Portals. Style overrides do not change Impact, Poise or reaction bands; final tuning remains open. Cast and Final Enemy do not use the Player X style overrides.
 
 ### Fire X and leveled Cast reaction progression
 
@@ -717,7 +725,7 @@ Fire X1–X5 produce progressively stronger combat reactions. Cast Spell Levels 
 
 With the shared Enemy Poise 10, Fire values outside active frames are 0/10/20/30/40, producing Levels 1/1/2/3/4 under Player's zero advantage. Receiver active-move resistance still applies. Earlier private Poise-1 comparisons remain historical; final feel acceptance is pending.
 
-The hurt animation belongs to the qualifying combat reaction: it starts with stagger and whole-body knockback, uses the selected reaction's duration, and ends with that reaction. Fire X5's shorter shove can finish while hurt, control lock and invulnerability continue. A damaging hit that does not qualify causes no separate hurt animation. Existing reaction invincibility and collision behavior are retained.
+The hurt animation belongs to the qualifying combat reaction: it starts with stagger and whole-body knockback, uses the selected reaction's duration, and ends with that reaction. A shared level's shorter motion time can finish while hurt, control lock and invulnerability continue. A damaging hit that does not qualify causes no separate hurt animation. Existing reaction invincibility and collision behavior are retained.
 
 Each Cast layer uses its own Spell Level to select Impact. Mixed Casts resolve both layers before the strongest qualifying reaction begins. Cast damage, empowerment, Charging and Heat behavior are unchanged. Cast Levels 5–8 retain the existing base Cast Impact; their reaction progression is not assigned by this change. Other schools' X Impacts are unchanged.
 
@@ -1057,7 +1065,7 @@ now you are free
 
 ## Tunables and Validation
 
-Movement, action pacing, authored hitbox curves, lunge, push, damage/Impact/Poise, reaction levels, Health, Charging, orb expiry, Heat, defence and feedback remain prototype tunables within their stated constraints. Final numerical and experiential acceptance remains open. The Heat timer trigger and current shorter reaction-duration baseline are settled by the October 20 decisions; neither remains an unresolved documentation conflict.
+Movement, action pacing, authored hitbox curves, attacker lunge, shared reaction distance/motion/stun, damage/Impact/Poise, reaction levels, Health, Charging, orb expiry, Heat, defence and feedback remain prototype tunables within their stated constraints. Final numerical and experiential acceptance remains open. The Heat timer trigger and current shorter reaction-duration baseline are settled by the October 20 decisions; neither remains an unresolved documentation conflict.
 
 Validation must distinguish input acceptance, physical contact, APPLIED results, resource changes and presentation. Cover the six-slot chain and shared buffer; ten-orb FIFO/eight-charge behavior; Cast composition, commitment and launch; active-window contact, once-per-target spending, ordinary reactions and simultaneous clashes; defence and interruption; and the exact Stage 1–7 objective/transition rules above. Disabled Endurance is retained specification, not a current default acceptance requirement.
 
@@ -1102,7 +1110,7 @@ Validation must distinguish input acceptance, physical contact, APPLIED results,
 
 ## Combat authoring and development tools
 
-Player and CombatEnemy root Settings own numerical combat tuning and share the reaction Resource. Native AnimationPlayer tracks own sprites, geometry, melee active bounds and Cast launch. Both Dev Portals read/save the same assigned assets; rooms have no private combat profile. Active actions and reactions retain captured data; edits affect later actions. See [GYM.md](GYM.md) for character tuning and [ATTACK_STYLES.md](ATTACK_STYLES.md) for native animation/hitbox authoring.
+Player and CombatEnemy root Settings own numerical combat tuning and share the reaction Resource. Native AnimationPlayer tracks alone own Player-X sprites, geometry, melee active bounds and Cast launch. Player-X styles retain timing/lunge and Animation links; victim distance/motion/stun belongs to shared reaction levels. The Portals save tuning assets, not Player-X Animation curves; native curves are saved in AnimationPlayer. Both Dev Portals use the same assigned sources; rooms have no private combat profile. Active actions and reactions retain captured data; edits affect later actions. See [GYM.md](GYM.md) for character tuning and [ATTACK_STYLES.md](ATTACK_STYLES.md) for native animation/hitbox authoring.
 
 Laema Dev Portal's editor dock edits a draft without running the game. Review/save and applying to a running game are separate operations. It groups General, Combat, Schools, Audio, Tutorial and Session; supports validated series fill for exposed level tables; and leaves dormant school effects labeled. Stage loading/pause requires a connected debug game. Mockup acceptance does not establish interactive editor acceptance. Technical ownership and persistence are recorded in [TECH_ARCHITECTURE.md](TECH_ARCHITECTURE.md).
 

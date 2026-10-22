@@ -108,7 +108,8 @@ func get_data() -> Dictionary:
 	for level in combat_levels:
 		if level == null:
 			return {}
-		levels.append({"minimum_value": level.minimum_value, "duration": level.duration, "distance": level.distance})
+		levels.append({"minimum_value": level.minimum_value, "duration": level.duration,
+			"motion_duration": level.motion_duration, "distance": level.distance})
 	var styles: Dictionary = {}
 	for style in attack_styles:
 		if style == null or styles.has(String(style.move_id)):
@@ -151,7 +152,8 @@ static func apply_data_to_config(data: Dictionary, config: Dictionary) -> void:
 	for id in data["moves"]:
 		config["moves"][id]["impact"] = data["moves"][id]
 	for id in data.get("attack_styles", {}):
-		config["moves"][id].merge(data["attack_styles"][id].duplicate(true), true)
+		config["moves"][id].merge(Style.read_move(data["attack_styles"][id]), true)
+	Style.strip_retired_fields(config)
 	for key in data["hit_reaction"]:
 		config["hit_reaction"][key] = data["hit_reaction"][key].duplicate(true) if key == "combat_levels" else data["hit_reaction"][key]
 
@@ -219,6 +221,7 @@ func read_data(data: Dictionary) -> void:
 			entry = CombatReactionLevelTuning.new()
 			entry.resource_name = "Level %d" % (index + 1)
 		entry.duration = float(values[index]["duration"])
+		entry.motion_duration = float(values[index].get("motion_duration", entry.duration))
 		entry.minimum_value = int(values[index]["minimum_value"])
 		entry.distance = float(values[index]["distance"])
 		next_levels.append(entry)

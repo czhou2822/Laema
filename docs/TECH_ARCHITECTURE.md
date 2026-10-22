@@ -5,7 +5,59 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
-## Local main integration receipt — October 22
+## Player-X geometry and shared reaction ownership — October 22
+
+This exact user-approved reconciliation is based on committed `1141f574` in
+the isolated `codex/movestyle-shared-reactions` branch. The GDD defines the
+settled rule: native saved Player-X Animation curves alone own hitbox geometry;
+MoveStyle owns only identity/Animation links, phase timing and attacker lunge;
+the shared Levels 1–5 alone own victim distance, motion time and stun lifetime.
+This section supersedes the per-X size mirrors, push multipliers and Fire-X5
+motion exception in earlier receipts below. Raised-hand Fireball, X direction
+capture, attack timing/lunge, Heat, clash eligibility and dodge remain unchanged.
+
+The existing CharacterReactionSettings Resource remains authoritative for both
+actors. Each CombatReactionLevelTuning adds positive finite `motion_duration`
+alongside existing `duration` (stun/hurt/control lock/invulnerability) and
+`distance`. Initial motion seconds are 0.25/0.55/0.85/1.15/1.45, matching the
+existing ordinary level durations, not the retired X5 exception. Existing
+distance, stun, minimum values, style pacing/lunge and native keys are preserved.
+The CombatTuningSettings mirror and both Portals expose the same four level
+fields: starting value, stun duration, motion duration and distance.
+
+HealthEvent no longer carries move-owned shove parameters. HealthResolver
+retains its existing eligibility, strongest transaction choice and direction,
+then requests a reaction by value/direction through Entity or CombatEnemy.
+HitReaction captures distance, motion time and lifetime from that selected shared
+level, caps motion at lifetime, and uses the existing uniform body-motion
+consumer. A completed shove returns zero displacement while stun continues.
+Enemy's pending/tree dispatch and separate post-reaction wait, Player Movement,
+walls and blocked-motion consumption keep their existing ownership.
+
+AttackStyle/MoveStyleTuning retain phase durations and lunge distance/start/end.
+Player-X scalar reach/radius, shared scalar fallback, push scale and per-move
+motion override are removed from controls, authored style Resources and runtime
+paths. AttackGeometry still validates/samples every native clock and provides
+private/per-action copies, but never mirrors or writes Player-X geometry from
+configuration. Existing Pikeman/Enemy reach/radius controls and their guarded
+active-start save path are retained without redesign.
+
+Legacy full JSON loads remove only the retired Player-X/shared fallback fields
+in memory; missing shared motion times initialize from each level's own duration.
+Validation/save and retained-dictionary copy/merge paths enforce that same narrow
+retirement, so cached drafts cannot restore obsolete knobs. No new automatic
+startup write, broad schema migration, hidden multiplier or curve replacement is
+introduced. Saved native keys remain the Player-X geometry authoring path;
+restart/reload the scene to compare authored curve edits.
+
+The exact 46-file inventory and static-only check results belong to
+[Implementation Status](IMPLEMENTATION_STATUS.md). Tests that still use removed
+APIs/control counts are retained but stale, not run or rewritten in this slice.
+Runtime, visual authoring/save/reload, legacy-profile migration and user review
+of the synchronized GDD remain pending. Combat owns safe local-main integration
+while preserving its dirty tuning; no push or export is authorized.
+
+## Historical local main integration receipt — October 22
 
 Local `main` now contains the reconciled combat candidate `d51235af`: the Fire
 X5 shove/hand-origin changes and the bounded dodge overlap/endpoint-pose fix.
@@ -22,7 +74,11 @@ dodge build has not received a rendered replay or human feel acceptance.
 Existing legacy-suite failures and resource-reference warnings remain recorded
 below and in Implementation Status. Restart Gym to review the merged source.
 
-## Fire X5 shove and Fireball anchor amendment — October 22
+## Historical Fire X5 shove and retained Fireball anchor amendment — October 22
+
+The per-X shove API described in this historical amendment is superseded by
+the shared-reaction ownership section above; it is not a current tuning path.
+Its raised-hand Fireball mapping and bounded evidence remain applicable.
 
 Source basis: `fd72f4e2a83960abb862da09ae98fb210c5c8410` plus the scoped
 candidate on `codex/combat-feedback-fixes`. This is not a main-tree merge,
@@ -221,7 +277,7 @@ remain outside this implementation scope.
 Settled October 20 decisions:
 
 - Cast commitment and qualifying APPLIED direct hits restart Heat's five-second timer.
-- Shared reaction durations are 0.25/0.55/0.85/1.15/1.45 seconds; distances remain 5/10/15/20/25 pixels before move push scaling.
+- Shared stun durations are 0.25/0.55/0.85/1.15/1.45 seconds; distances remain 5/10/15/20/25 pixels. The October 22 ownership update initializes independent motion times from those durations and retires move push scaling.
 - Air X5 uses the approved eleven-frame Weapon Summon sheet.
 - The user confirmed the editor's BTRandomWait of 0.3–0.8 seconds after the Enemy hit-reaction task. This separate AI wait does not extend HitReaction-owned hurt, knockback or invulnerability. The tree and reaction tuning were not edited by this synchronization.
 
@@ -331,10 +387,24 @@ separate from Gym retry.
 ### Actions and native timing
 
 Might accepts/queues X and Cast through the shared normalized buffer, captures
-school/facing/style and private geometry curves, and starts the next action on
+school/direction/style and private geometry curves, and starts the next action on
 completion. Leftover substeps cannot advance a replacement action. School changes
 affect future actions without consuming chain/buffer capacity. Magic's pressure
 preservation, not queue occupancy, determines between-action timeout/movement.
+
+For X only, Player obtains a read-only direction from Movement's existing
+horizontal InputMap sampling/deadzones: normalize held input, otherwise retain
+facing. Combat/Might acceptance remains unchanged. The existing X buffer stores
+that direction with the first intention; promotion and queued start reuse it
+without resampling. Reading/rejecting/buffering an intention changes no facing.
+Only the actual light-action `attack_started` event asks Movement to commit
+its captured horizontal facing. Player presentation, animated hitbox mirroring,
+contact direction and lunge continue consuming the same committed action vector.
+Movement remains the facing/body-motion owner; no new component or timing rule
+is introduced. Non-X input and Cast direction capture keep their existing path,
+and dodge input/lifetime/collision behavior is untouched. Source basis for this
+bounded follow-up is `7e9dff46` on `codex/combat-feedback-fixes`; current evidence
+and integration state belong to Implementation Status.
 
 The October22 retained Might candidate reasserts movement_lock_changed(true) in
 the common _start_action path before move lookup/playback. Thus every actual
@@ -351,19 +421,22 @@ clip and once-only launch marker. Completion matches the assigned clip rather
 than the legacy attack_clock label; an owned paused action still exposes progress.
 MovementController remains the sole Player body mover. It consumes predicted
 lunge through collision, consumes blocked motion and discards cancelled remainder.
-Push scale changes qualifying reaction distance only, not eligibility or duration.
+Victim distance and motion time come from the selected shared reaction level,
+not the captured X style; eligibility and stun remain separate.
 
 The daytime Fire X4 candidate is windup0.33/recovery0.36 (base0.69s), replacing
 recovery0.51 only. Player Settings/attack_styles supplies moves.fire_x4; the
 existing phase-speed consumer shortens playback after timing_split0.70, including
 late active frames and the real-time input window. Native keys/geometry, normalized
-windows, lunge and push are unchanged. X5 can start0.15/Heat-multiplier seconds
+windows and lunge are unchanged. The later ownership reconciliation removes
+per-move push scaling without changing this timing. X5 can start0.15/Heat-multiplier seconds
 earlier; this does not guarantee unchanged timing relative to the Enemy.
 
 Fire X5's current provisional C7 Resource is windup0.30/recovery1.10 (base1.40s,
 651d9978), captured through the same Player Settings/style path. Native length1,
 timing_split0.60, active0.36..0.80, geometry/Sprite keys,12-unit lunge at0.15..0.55
-and push2 remain. Pre-split native playback is1.5x its D rate; later native rate
+remain. Its historical push2 multiplier is retired by the ownership
+reconciliation above. Pre-split native playback is1.5x its D rate; later native rate
 is unchanged. Poses, lunge and active-boundary wall times advance, while real-time
 input/buffer spans also change under the unchanged normalized rules. X4 completion
 and actual X5 action start are not moved by this leaf; X5 finishes and a queued
@@ -594,10 +667,11 @@ Authoring migration:
   to `launch` at the same authored timestamp. Might retains its per-action launch
   latch and samples launch before retiring a finished clip, preserving one
   projectile emission even when a large update crosses launch and animation end.
-- AttackGeometry reads Portal size mirrors at active_start. Save changes the
-  active_start reach/radius keys only, retaining other geometry keys, offset and
-  direction; the existing concurrent-edit guard remains. Player and Enemy private
-  animations use the same bridge. Editor scrubbing owns the rest of the curve.
+- Player X uses only native saved position/target/radius curves, private copies
+  and per-action captures; no Portal size mirror, fallback or scalar writeback
+  remains. The existing Enemy/Pikeman shortcut alone reads/writes active_start
+  reach/radius with its concurrent-edit guard. Native scrubbing owns each full
+  curve; this reconciliation changes no Animation key or marker.
 - Native validation rejects retired contact markers, checks ordered active bounds,
   required enabled geometry tracks/valid active poses and Cast launch markers.
   Inspector navigation and Portal help describe these contracts. Player/Enemy
@@ -815,8 +889,8 @@ reflection.
 | --- | --- |
 | Player root Settings, normally config/characters/player.tres | Movement, Health/Poise, combat, Charging, Heat, defence, school data and twenty styles |
 | CombatEnemy root Settings, normally config/characters/combat_enemy.tres | Health/Poise/Impact, decisions and optional Endurance; reusable root retains killable role/encounter ID |
-| Shared config/characters/hit_reaction.tres | Ordered range starts, per-level duration/distance and separate legacy reactions |
-| config/attack_styles/*.tres | X phase durations, lunge/push and native Animation references |
+| Shared config/characters/hit_reaction.tres | Ordered range starts, per-level stun duration/motion duration/distance and separate legacy reactions |
+| config/attack_styles/*.tres | X phase durations, attacker lunge and native Animation references; no geometry/push scalars |
 | config/attack_animations/*.tres | Twenty X, four Cast, compatibility attack_clock and Enemy melee_swing; sprites/geometry/markers |
 | config/prototype_combat.json | Audio, tutorial descriptors/default-stage/transition preferences and UI |
 
@@ -834,26 +908,27 @@ Both Portals and Local/Remote Inspector edit the same effective sources. The
 Store merges changed leaves against fresh files, preserves independent edits and
 rejects same-field conflicts. Hashes cover character scenes, Settings, styles,
 reaction, native Animations and preferences. Startup/reload are read-only.
-Explicit save writes preferences, character/style Resources, changed native
-active-start size keys and Inspector mirror. Partial failures report stages;
+Explicit save writes preferences, character/style Resources, changed Enemy
+active-start size keys and Inspector mirror. Player-X native Animation files
+are never written by Portal tuning. Partial failures report stages;
 these writes are not a multi-file atomic transaction. The old Player-side
 CombatTuning mirror is a view, not a source/profile.
 
-Native scrubbing owns the whole sprite/hitbox curve. Portal reach/radius edit
-only active_start size keys, retaining origin, direction and other keys. Private
-animations and per-action captures keep an active action unchanged while edits
-affect later actions. Unsaved runtime edits last until reload; Save persists
-assigned assets. See [ATTACK_STYLES.md](ATTACK_STYLES.md) and [GYM.md](GYM.md).
+Native scrubbing owns the whole Player-X sprite/hitbox curve, with no Portal
+size controls or scalar-to-native patching. The existing Enemy/Pikeman
+reach/radius shortcut alone edits active_start size keys. Private animations
+and per-action captures retain authored curves during active actions; restart
+after saving native edits to load them. Unsaved numeric runtime edits last until
+reload; Save persists assigned tuning assets. See [ATTACK_STYLES.md](ATTACK_STYLES.md) and [GYM.md](GYM.md).
 
 Reaction starts currently use 0/11/21/31/41, with upper bounds derived from the
-next start minus one and an open-ended Level 5. Duration/distance/range tuning
-is separate from eligibility. Current accepted durations are
-0.25/0.55/0.85/1.15/1.45 seconds. A reaction captures these once; later edits cannot
-shorten it. The separate tree wait does not change those component lifetimes.
-Fire X5 alone captures a separate 0.15-second motion time through its style and
-HealthEvent; positive overrides are capped at the selected lifetime. The full
-duration still owns hurt, control lock and invincibility after shove motion ends.
-Zero/omitted motion time retains the original full-duration displacement.
+next start minus one and an open-ended Level 5. Stun duration, motion duration,
+distance and range tuning are separate from eligibility. Existing stun seconds
+and initial motion seconds are each 0.25/0.55/0.85/1.15/1.45. A reaction captures
+the shared values once; later edits cannot shorten it. Motion is capped at stun
+lifetime, while full stun owns hurt, control lock and invincibility even after
+motion ends. The separate tree wait does not change either component timer.
+No style/HealthEvent shove multiplier or per-attack motion override remains.
 
 <a id="tutorial-root-stage-areas-and-camera"></a>
 <a id="stagedirector-and-objective-evaluators"></a>
@@ -1302,7 +1377,7 @@ Historical first C2 source/report/evidence publication is verified at
 only, not another gameplay change or Web export. User validation remains pending;
 publication establishes no whole-tree/submission, art, numerical or feel clearance.
 
-Current handoff is the C7 X5 timing candidate over retained C4, with Enemy72
+The earlier daytime handoff was the C7 X5 timing candidate over retained C4, with Enemy72
 restored. Main verified C7 source publication1404d0ab and metadata receipt632efc44;
 the [C7 receipt](iterations/2026-10-22-fire-combat-daytime/C7_PUBLICATION.md) records
 that publication, not a new product change from these later observations.
@@ -1314,4 +1389,13 @@ sync changes no published-receipt ID or product source. The
 and [Cast presentation review](iterations/2026-10-22-fire-combat-daytime/CAST_PRESENTATION_REVIEW.md)
 retain unresolved spacing/safe-end, low-origin/brief-impact/feedback and art issues.
 C7 is not new gameplay/architecture, a reason widget, a high-Heat safety pass or
-human acceptance; no further rule or visual treatment is selected here.
+human acceptance; no further rule or visual treatment was selected by that
+daytime record.
+
+Current bounded handoff: the approved Player-X geometry/shared-reaction
+reconciliation at the top of this report, based on `1141f574`, is implemented
+on `codex/movestyle-shared-reactions` for Combat's local-main integration.
+Its 46 files preserve native curves, timing/lunge, distance/stun and unrelated
+tuning. Only permitted static inspection has been performed for this slice;
+legacy fixtures are stale, runtime/user validation and exact GDD verification
+remain pending. No push/export or submission clearance is claimed.
