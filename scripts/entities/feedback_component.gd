@@ -15,6 +15,7 @@ var _duration := 2.0
 const VIEWPORT_MARGIN := 12.0
 const LABEL_SIBLING_GAP := 8.0
 var _label_batches: Dictionary = {}
+var _formed_label_groups: Array[Dictionary] = []
 
 
 func configure(owner_entity: Entity, duration: float, ui: Dictionary = {}) -> void:
@@ -120,6 +121,11 @@ func _group_frame_label(label: Label, family: StringName) -> void:
 	_label_batches[family] = batch
 	if siblings.size() == 1:
 		return # Preserve the exact legacy single-label position.
+	if not batch.has("formed"):
+		batch["formed"] = {"labels": references}
+		_formed_label_groups.append(batch["formed"])
+	else:
+		batch["formed"]["labels"] = references
 	var width := LABEL_SIBLING_GAP * float(siblings.size() - 1)
 	for sibling in siblings:
 		width += _label_screen_bounds(sibling).size.x
@@ -136,6 +142,39 @@ func _group_frame_label(label: Label, family: StringName) -> void:
 		# Only horizontal screen displacement; leave the existing vertical Tween alone.
 		sibling.global_position += inverse_canvas * screen_shift - inverse_canvas.origin
 		cursor += bounds.size.x + LABEL_SIBLING_GAP
+
+
+func _clamp_formed_label_groups() -> void:
+	if not is_instance_valid(_owner_entity) or not _owner_entity.is_inside_tree():
+		return
+	var viewport := _owner_entity.get_viewport()
+	var visible := viewport.get_visible_rect()
+	var inverse := viewport.get_canvas_transform().affine_inverse()
+	for index in range(_formed_label_groups.size() - 1, -1, -1):
+		var siblings: Array[Label] = []
+		var references: Array[WeakRef] = []
+		for reference in _formed_label_groups[index]["labels"]:
+			var label := reference.get_ref() as Label
+			if is_instance_valid(label) and label.is_inside_tree() and not label.is_queued_for_deletion():
+				siblings.append(label)
+				references.append(reference)
+		if siblings.size() < 2:
+			_formed_label_groups.remove_at(index)
+			continue # Never enroll or alter a surviving independent single label.
+		_formed_label_groups[index]["labels"] = references
+		var bounds := _label_screen_bounds(siblings[0])
+		for sibling in siblings.slice(1):
+			bounds = bounds.merge(_label_screen_bounds(sibling))
+		var shift := 0.0
+		if bounds.position.x < visible.position.x + VIEWPORT_MARGIN:
+			shift = visible.position.x + VIEWPORT_MARGIN - bounds.position.x
+		elif bounds.end.x > visible.end.x - VIEWPORT_MARGIN:
+			shift = visible.end.x - VIEWPORT_MARGIN - bounds.end.x
+		if is_zero_approx(shift):
+			continue # In-margin movement and older batches keep their relative positions.
+		var world_shift := inverse * Vector2(shift, 0.0) - inverse.origin
+		for sibling in siblings:
+			sibling.global_position += world_shift
 
 
 func _label_screen_bounds(label: Label) -> Rect2:
@@ -272,6 +311,7 @@ func _process(_delta: float) -> void:
 		_label_batches.clear()
 		clear_impact_feedback()
 		return
+	_clamp_formed_label_groups()
 	for index in range(_impact_entries.size() - 1, -1, -1):
 		var entry: Dictionary = _impact_entries[index]
 		var age := float(Time.get_ticks_msec() - int(entry["started"])) / 1000.0
@@ -299,4 +339,5 @@ func clear_impact_feedback(clear_history: bool = false) -> void:
 
 func _exit_tree() -> void:
 	_label_batches.clear()
+	_formed_label_groups.clear()
 	clear_impact_feedback(true)

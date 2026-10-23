@@ -216,6 +216,23 @@ func _check_frame_labels(actor: Entity) -> void:
 	check(is_equal_approx(first.position.x, first_x) and is_equal_approx(water.position.x, water_x), "independent families and DoT do not regroup each other")
 	var labels: Array[Label] = [first, second, water, fire, dot]
 	var center_positions := [first.position, second.position, water.position, fire.position]
+	actor.position.x += 10.0
+	await process_frame
+	await process_frame
+	for index in range(4):
+		check(is_equal_approx(labels[index].position.x, Vector2(center_positions[index]).x), "in-margin owner translation leaves relative label x unchanged")
+	# A newer batch at the same owner position must not reposition older in-margin groups.
+	actor.feedback.show_damage(&"fire", 13.0)
+	var newer_first := actor.get_children().back() as Label
+	actor.feedback.show_damage(&"water", 10.0)
+	var newer_second := actor.get_children().back() as Label
+	actor.feedback.show_cast_level(&"water", 4)
+	var newer_water := actor.get_children().back() as Label
+	actor.feedback.show_cast_level(&"fire", 2)
+	var newer_fire := actor.get_children().back() as Label
+	labels.append_array([newer_first, newer_second, newer_water, newer_fire])
+	for index in range(4):
+		check(is_equal_approx(labels[index].position.x, Vector2(center_positions[index]).x), "newer batch alone does not reposition older in-margin labels")
 	for edge_x in [0.0, 1280.0]:
 		await process_frame
 		await process_frame
@@ -231,8 +248,35 @@ func _check_frame_labels(actor: Entity) -> void:
 		var edge_fire := actor.get_children().back() as Label
 		_check_family(actor, edge_water, edge_fire, "viewport-edge captions")
 		labels.append_array([edge_first, edge_second, edge_water, edge_fire])
-		for index in range(4):
-			check(is_equal_approx(labels[index].position.x, Vector2(center_positions[index]).x), "new-frame group does not reposition older labels")
+		var pixel_delta := -20.0 if edge_x == 0.0 else 20.0
+		var inverse := actor.get_viewport().get_canvas_transform().affine_inverse()
+		actor.global_position += inverse * Vector2(pixel_delta, 0.0) - inverse.origin
+		await process_frame
+		await process_frame
+		var visible := actor.get_viewport().get_visible_rect()
+		for family in [[edge_first, edge_second, "damage"], [edge_water, edge_fire, "captions"]]:
+			var a := actor.feedback._label_screen_bounds(family[0])
+			var b := actor.feedback._label_screen_bounds(family[1])
+			var inside_margin := a.position.x >= visible.position.x + 11.99 and b.end.x <= visible.end.x - 11.99
+			var inside_viewport := a.position.x >= visible.position.x - 0.01 and b.end.x <= visible.end.x + 0.01
+			print("C6_EDGE_MOTION ", JSON.stringify({"edge": edge_x, "movement_viewport_px": pixel_delta, "family": family[2],
+				"first_left": a.position.x, "first_right": a.end.x, "second_left": b.position.x, "second_right": b.end.x,
+				"viewport_left": visible.position.x, "viewport_right": visible.end.x, "inside_12px_margin": inside_margin, "not_clipped": inside_viewport}))
+			check(inside_margin, "moving owner keeps same-frame family within 12px margin")
+			check(inside_viewport, "moving owner keeps same-frame family at least unclipped")
+	# Paused processing must not correct positions, but live groups survive to resume.
+	var last_first: Label = labels[-4]
+	var last_second: Label = labels[-3]
+	var paused_x := last_first.position.x
+	paused = true
+	actor.position.x += 20.0
+	actor.feedback._process(0.0)
+	check(is_equal_approx(last_first.position.x, paused_x), "pause does not translate labels")
+	check(not actor.feedback._formed_label_groups.is_empty(), "pause retains needed live formed-group tracking")
+	paused = false
+	await process_frame
+	await process_frame
+	_check_family(actor, last_first, last_second, "resume clamps still-alive family")
 	await create_timer(0.10).timeout
 	check(is_instance_valid(first) and first.modulate.a < 1.0 and first.position.y < first_y, "existing damage upward/fade Tween still advances")
 	check(is_instance_valid(dot) and dot.modulate.a < 1.0, "existing DoT Tween still advances")
@@ -243,12 +287,20 @@ func _check_frame_labels(actor: Entity) -> void:
 	await create_timer(2.10).timeout
 	for reference in lifetime_refs:
 		check(reference.get_ref() == null, "each original 2s lifetime cleans its label")
+	await process_frame
+	await process_frame
+	check(actor.feedback._formed_label_groups.is_empty(), "expired families are pruned, not resurrected")
 	actor.feedback.show_cast_level(&"water", 1)
 	var freed := actor.get_children().back() as Label
 	freed.free()
 	actor.feedback.show_cast_level(&"fire", 2)
 	var survivor := actor.get_children().back() as Label
 	check(survivor.global_position.is_equal_approx(_legacy_label_position(actor, survivor, Vector2(-48, -118))), "freed same-frame sibling is pruned without stale-node access")
+	var single_x := survivor.position.x
+	actor.position.x += 20.0
+	actor.feedback._process(0.0)
+	check(is_equal_approx(survivor.position.x, single_x), "independent single label gets no lifetime edge correction")
+	check(actor.feedback._formed_label_groups.is_empty(), "independent singles are never enrolled as formed groups")
 	survivor.free()
 	paused = true
 	actor.feedback._process(0.0)
@@ -256,4 +308,5 @@ func _check_frame_labels(actor: Entity) -> void:
 	paused = false
 	actor.feedback._exit_tree()
 	check(actor.feedback._label_batches.is_empty(), "teardown leaves no stale frame-label bookkeeping")
+	check(actor.feedback._formed_label_groups.is_empty(), "teardown clears formed-family tracking")
 	root.size = saved_size
