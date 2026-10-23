@@ -1,0 +1,194 @@
+{
+  "schema": 1,
+  "name": "Dread Knight",
+  "slug": "dread-knight",
+  "selected_attempt": "v02",
+  "status": "static master proposal; awaiting human approval",
+  "attempts": [
+    {
+      "id": "v01",
+      "tool": "image_gen.imagegen",
+      "execution": "built-in image workflow",
+      "exact_prompt_file": "prompt-master-v01.txt",
+      "exact_prompt_sha256": "c77ffb96173ab5750e8400ae7297479145bd3498089364ff28d1857de250dfdf",
+      "prompt_normalization": "UTF-8; LF; no trailing newline, identical to tool prompt argument",
+      "tool_arguments": {
+        "prompt": "Use case: stylized-concept\nAsset type: one static full-body creature master proposal for a game sprite; Dread Knight, upgraded CBLORD.\nPrimary request: faithfully redraw the actual mounted unit in Image 1 with the fine modeled-volume rendering and material finish of Image 4. Produce exactly ONE horse and its ONE seated rider, isolated together on genuine transparency. This is a rendering translation of the native idle, not a redesign.\nInput images: Image 1 native-idle-6x.png is the definitive identity, proportions, pose, silhouette and original RIGHT-facing reference. Image 2 native-g02-guide.png confirms the idle from start/middle/end samples. Image 3 native-g12-guide.png clarifies the single curved sword and armor only; DO NOT adopt its attack poses. Image 4 pikeman-rendering-master.png supplies fine sculptural shading and surface rendering ONLY, never costume, weapon, pose or colors. Do not reproduce reference labels or multiple figures.\nScene/backdrop: genuinely transparent RGBA background, no environment, no floor, no ground-contact or cast shadow, no backdrop color and no checkerboard painted into the image.\nSubject and pose: preserve the compact, tall mounted silhouette of Image 1, approximately width:height 83:99. Preserve the original slightly three-quarter side view facing screen RIGHT, upright rider, horse head position, compact horse torso, planted staggered legs and hooves, hanging rider leg, black tail and source saddle placement. The horse is dark-coated, fully living equine anatomy beneath armor, with the same proportions as the source; no skeletal mount. Both helmet top and all four hooves, tail, sword tip and armor spikes must fit with generous transparent margins. Do not broaden or lengthen the horse, inflate the rider or turn the unit into a front view. Native idle only, no rearing or attacking.\nIdentity and costume: CBLORD's narrow tall straight-sided enclosed steel helm, slim red horizontal visor slit, restrained metallic rim and BLACK trailing crest/plume exactly as the source. NO large horns on the helmet. Dark blue-black fitted plate armor on the rider with concentrated pale silver highlights, clearly visible pale metal shoulder spikes in the original positions, silver articulated arm and leg details. Keep the characteristic bright silver-gray horse face/neck/chest barding, projecting pale metal spikes on the front face armor, source leg armor and small metal bands. Preserve the red saddle fabric panels and hanging red fringe beneath the barding, restrained red accents and dark leather tack. Horse barding and shoulder spikes distinguish this upgrade from the unarmored-horse CBKNIG; do not omit or replace them. Use the exact reference construction instead of generic death-knight horn armor, skull decorations or an invented costume.\nWeapon: exactly ONE low curved SILVER sword in the visible hand, hilt beside the rider's hip, sweeping downward across the near side of the horse's chest with its thin curved tip pointing RIGHT, precisely the idle placement in Image 1. Natural gauntlet grip, physically connected continuous blade, modest brass-toned hilt as in the source. No shield, lance, second blade or raised weapon.\nStyle/medium: polished hand-painted game character render with small nuanced tonal transitions and fine modeled volume, crisp controlled silhouette and readable steel highlights, like the Pikeman rendering reference. Detailed but restrained leather, metal and red cloth. Preserve the blue-black versus pale steel material separation. No blocky pixel clusters, cartoon outlines, chibi proportions, enlarged pauldrons or photoreal scene treatment.\nLighting/mood: restrained directional light that describes the existing volumes; dark menacing character with readable armor. Red visor is a small color accent only, no emitted light or bloom.\nComposition/framing: one complete single static mounted unit, centered in a square transparent canvas with at least 10 percent clear margin around the entire silhouette. High resolution clean cutout for later uniform mechanical registration into a 1024x768 review cell. Do not force the whole mounted unit to 180 pixels; the downstream shared source scale is 180/73 and native 99-pixel mounted height maps to approximately 244 pixels.\nConstraints: no new effects, particles, aura, smoke, flames, red magical overlays, floor, shadow, base, text, labels, border, watermark or extra props. Preserve the native CBLORD idle, facing, proportions, equipment and upgrade identity. This call creates only the static master, no animation frames or sheet.",
+        "referenced_image_paths": [
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/dread-knight/native-idle-6x.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/dread-knight/native-g02-guide.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/dread-knight/native-g12-guide.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/references/pikeman-rendering-master.png"
+        ],
+        "transparent_background": true
+      },
+      "references": [
+        {
+          "path": "native-idle-6x.png",
+          "sha256": "ae185ecb9e82c5d783a93f1b0cc4cf7b1c70d019c7ea0050738176618892b97c"
+        },
+        {
+          "path": "native-g02-guide.png",
+          "sha256": "f427f701350cd070ccaa6fead1dae64b02f1bd9be167ab916bf4d4a4613d4d13"
+        },
+        {
+          "path": "native-g12-guide.png",
+          "sha256": "63969361281b464bdf4d38c070d2eec532e4cccc095d4f817030f1b9efbba29c"
+        },
+        {
+          "path": "../references/pikeman-rendering-master.png",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "original_tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-579c-7601-b05f-5c0b568e0023/exec-6525df6f-c8b5-48a3-a625-d27c6ecad4de.png",
+      "raw_file": "raw-master-v01.png",
+      "raw_sha256": "a14095231d993198094c84940f49d3d6c1b41f68ba65458c89192012aa468687",
+      "raw_preserved_byte_for_byte": true,
+      "raw_alpha": {
+        "width": 1149,
+        "height": 1369,
+        "channels": 4,
+        "zero_alpha_pixels": 838389,
+        "partial_alpha_pixels": 733878,
+        "full_alpha_pixels": 714,
+        "border_nonzero_pixels": 54,
+        "bounds_alpha0": {
+          "left": 0,
+          "top": 8,
+          "width": 1149,
+          "height": 1361,
+          "right": 1149,
+          "bottom": 1369,
+          "transparent_pixels": 838389,
+          "opaque_pixels": 693434
+        },
+        "bounds_alpha8": {
+          "left": 10,
+          "top": 10,
+          "width": 1130,
+          "height": 1340,
+          "right": 1140,
+          "bottom": 1350,
+          "transparent_pixels": 838389,
+          "opaque_pixels": 693434
+        },
+        "bounds_alpha64": {
+          "left": 11,
+          "top": 11,
+          "width": 1129,
+          "height": 1337,
+          "right": 1140,
+          "bottom": 1348,
+          "transparent_pixels": 838389,
+          "opaque_pixels": 693434
+        },
+        "connected_components_alpha64": [
+          {
+            "pixels": 703637,
+            "bounds": {
+              "left": 11,
+              "top": 11,
+              "width": 1129,
+              "height": 1337
+            }
+          }
+        ]
+      },
+      "disposition": "superseded: warm gold spike/trim treatment, invented horse chest spike and blade barbs"
+    },
+    {
+      "id": "v02",
+      "tool": "image_gen.imagegen",
+      "execution": "built-in image workflow",
+      "exact_prompt_file": "prompt-master-v02-edit.txt",
+      "exact_prompt_sha256": "a662fb9d6fdcbec0c85f1ce4d6f4794aceb3e01945f9f185ec7fca1cce307e4b",
+      "prompt_normalization": "UTF-8; LF; no trailing newline, identical to tool prompt argument",
+      "tool_arguments": {
+        "prompt": "Use case: precise-object-edit\nAsset type: corrected static Dread Knight CBLORD master proposal, one mounted unit on genuine transparency.\nInput images: Image 1 raw-master-v01.png is the edit target. Image 2 native-idle-6x.png is the definitive original costume and weapon authority. Image 3 native-g02-guide.png confirms the native idle. Image 4 pikeman-rendering-master.png is rendering-quality reference only.\nPrimary request: make one constrained source-fidelity correction pass to Image 1. Keep its full rider-and-horse anatomy, original RIGHT facing, compact mounted proportions, upright seated idle pose, planted staggered legs, helmet and black plume identity, low sword placement, fine modeled rendering, dark steel palette and red cloth. Do not create another view or redesign.\nCorrect the existing armor and blade to the original in Image 2: the prominent shoulder spikes and projecting horse face spikes are PALE SILVER METAL with restrained cool highlights, not ivory or gold horns. Slim the bulky shoulder spikes toward the original's modest conical metal points; preserve the original shoulder locations rather than adding fantasy horns. Remove the invented large upward spike on the horse's near-side breast/neck plate, leaving the smooth broad silver barding there. Replace the excessive gold armor edging and decorative bright gold studs with restrained silver-gray metal or small muted brass fasteners, closer to the native. Keep the source's subtle brass-toned sword hilt and restrained helmet rim. The red visor slit and red horse eye accent should be flat restrained red, not orange light sources; no bloom or emitted glow.\nWeapon correction: exactly ONE simple smooth-edged curved silver saber in the same low hand and position, with a continuous clean blade curving downward and tapering smoothly to the RIGHT-pointing tip. Remove the invented hooks, extra angular teeth and barbs along its spine and tip. Preserve its overall reach, hand grip and source-like sweep across the horse's near chest.\nComposition: retain the entire complete rider and horse including the full helmet/plume, tail, spikes, single sword and all four hooves. Add generous transparent margin around the complete cutout if needed; no cropping. Keep the source silhouette and horse/rider ratio. Do not enlarge the unit or lengthen the horse.\nConstraints: preserve genuine RGBA transparency; no floor, cast/contact shadow, environment, text, labels, checkerboard, second weapon, shield, aura, particles, red magical overlay or new props. One static master only, no animation or sheet. Change only the specified source-fidelity defects; preserve everything else.",
+        "referenced_image_paths": [
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/dread-knight/raw-master-v01.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/dread-knight/native-idle-6x.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/dread-knight/native-g02-guide.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/references/pikeman-rendering-master.png"
+        ],
+        "transparent_background": true
+      },
+      "references": [
+        {
+          "path": "raw-master-v01.png",
+          "sha256": "a14095231d993198094c84940f49d3d6c1b41f68ba65458c89192012aa468687"
+        },
+        {
+          "path": "native-idle-6x.png",
+          "sha256": "ae185ecb9e82c5d783a93f1b0cc4cf7b1c70d019c7ea0050738176618892b97c"
+        },
+        {
+          "path": "native-g02-guide.png",
+          "sha256": "f427f701350cd070ccaa6fead1dae64b02f1bd9be167ab916bf4d4a4613d4d13"
+        },
+        {
+          "path": "../references/pikeman-rendering-master.png",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "original_tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-579c-7601-b05f-5c0b568e0023/exec-e4025d40-5849-420c-813f-661b27a31c97.png",
+      "raw_file": "raw-master-v02.png",
+      "raw_sha256": "59ef49e4ff40ea716c56c63092e4cbcb2770121dcef6333622b4ffd24f35b592",
+      "raw_preserved_byte_for_byte": true,
+      "raw_alpha": {
+        "width": 1149,
+        "height": 1369,
+        "channels": 4,
+        "zero_alpha_pixels": 817410,
+        "partial_alpha_pixels": 754676,
+        "full_alpha_pixels": 895,
+        "border_nonzero_pixels": 133,
+        "bounds_alpha0": {
+          "left": 0,
+          "top": 5,
+          "width": 1149,
+          "height": 1364,
+          "right": 1149,
+          "bottom": 1369,
+          "transparent_pixels": 817410,
+          "opaque_pixels": 709215
+        },
+        "bounds_alpha8": {
+          "left": 4,
+          "top": 11,
+          "width": 1142,
+          "height": 1340,
+          "right": 1146,
+          "bottom": 1351,
+          "transparent_pixels": 817410,
+          "opaque_pixels": 709215
+        },
+        "bounds_alpha64": {
+          "left": 6,
+          "top": 12,
+          "width": 1139,
+          "height": 1339,
+          "right": 1145,
+          "bottom": 1351,
+          "transparent_pixels": 817410,
+          "opaque_pixels": 709215
+        },
+        "connected_components_alpha64": [
+          {
+            "pixels": 719734,
+            "bounds": {
+              "left": 6,
+              "top": 12,
+              "width": 1139,
+              "height": 1339
+            }
+          }
+        ]
+      },
+      "disposition": "selected static proposal; human master approval pending"
+    }
+  ],
+  "animation_generated": false,
+  "engine_imported": false,
+  "runtime_verified": false
+}

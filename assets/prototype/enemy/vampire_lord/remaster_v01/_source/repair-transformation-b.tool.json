@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "returned_keys": [
+    "image_url",
+    "output_hint"
+  ],
+  "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019\\exec-a3db5065-d497-43a2-ac7b-65471265788e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "prompt": "Use case: stylized-concept. Production repair redraw using Image 1 as approved APPEARANCE ONLY and Image 2 as exact ORIGINAL pose silhouettes. Genuine transparent background, fine hand-painted high-resolution shading. Same pale bald wrinkled Nosferatu, pointed ears, red eyes, fangs, long bare claws, charcoal/brown ragged robe and orange-gold collar/cuffs/edges with red lining. Unarmed, no hair/armor/accessories. All poses must be newly drawn separately; no pixel upscale or warped master. No labels/grid/floor/cast shadow/background. Keep generous transparent gutters, at least 40 pixels outside all tips, including topmost hands/effects. Preserve original camera, hand directions, head bends and exact pose. Robe mostly falls STRAIGHT DOWN as a NARROW COLUMN, NOT a broad triangular bell skirt. Figures must retain original overall width/height ratios listed below; excessive wide sleeves or hem made prior drawings shrink. Do not shorten the body or widen clothing.\n\nONE complete source pose p057 only, square canvas. This is a highly occluded TRANSFORMATION frame, NOT a visible winged robed humanoid. Thick pale white/gray coiling smoke forms a tall roughly 77:88 width/height silhouette. Through the smoke near its upper sides, ONLY faint reddish/brown partial leathery wing-membrane silhouettes and scraps of dark/orange robe are visible, exactly as guide. NO clear bald humanoid head, NO red eyes, NO bare hands, NO recognizable intact torso outside the smoke, NO fully revealed bat body or invented feet. The original is primarily a vertical cloud whose top spreads slightly left/right around partial emerging wings. Redraw the smoke's shape, gaps, soft semitransparent edges and correct occlusion from the guide; do not fill hidden space with a whole character. This smoke is embedded creature-frame content only. Center the full cloud with at least 100px transparent exterior margins.\n",
+  "transparent_background": true,
+  "repair_reason": "Original p057 obscures face/hands; first attempt wrongly showed intact winged humanoid.",
+  "references": [
+    {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire-lord/master_rgba.png",
+      "sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/guides/repair-transformation-source.png",
+      "sha256": "2eb0a9d481ae85176b0c7f89b72b4f6f0956ba19cf74e45aad3768b5e84406b2"
+    }
+  ],
+  "raw_sha256": "bb726547516cd9d3c1f08789bad75924cb22683034fa6b4495baa8d8ac18273a",
+  "model": null,
+  "seed": null
+}

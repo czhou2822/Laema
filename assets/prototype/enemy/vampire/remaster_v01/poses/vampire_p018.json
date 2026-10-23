@@ -1,0 +1,100 @@
+{
+  "pose_id": "vampire_p018",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "ee13cb3e0c71f7af5d7c54262d0ce3ddeb71c7f962d04ed45b7ed214b28cf8db:177:183:50:84:450:400",
+  "original_representative": {
+    "group_id": 4,
+    "original_block": 4,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_04_block_04_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_04_block_04_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "Cvamp22.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 73257,
+      "stored_size": 3107,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 50,
+      "height": 84,
+      "left": 177,
+      "top": 183,
+      "legacy_header": false,
+      "index_sha256": "ee13cb3e0c71f7af5d7c54262d0ce3ddeb71c7f962d04ed45b7ed214b28cf8db"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/repair-hurtdef-01.png",
+  "raw_sha256": "18dc05c4fa9802a258b96db58bdc6238fc6f72bedb56fbd9c5ea71ad72552b6c",
+  "prompt": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/repair-hurtdef-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/vampire/remaster_v01/_source/isolated/repair-hurtdef-01-vampire_p018.png",
+  "isolated_sha256": "49c5b848c76729f20846f39dffa7b053e22c7ef4fd5a710589ce88019dc6054b",
+  "source_grid_region": [
+    993,
+    478,
+    239,
+    391
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p018.png",
+  "registered_pose_sha256": "48432f120dfb59a049079a041344ba0157417b018bc326ec7c85ddf6858ca0eb",
+  "mirror_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p018_mirror.png",
+  "mirror_sha256": "df1ec54fcbd35fc63524ec44d3f4df7b0425a58fb1d2ae9ac8097450dffe695e",
+  "registration": {
+    "source_body_rect": [
+      177,
+      183,
+      49,
+      84
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      241,
+      393
+    ],
+    "registered_rect": [
+      465,
+      312,
+      121,
+      198
+    ],
+    "uniform_artwork_fit": 0.5062761506276151
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected defence raw and registered comparisons in both facings. Hands rise/cross chest and face, two separate hands and natural elbows; original unarmed identity, no shield or ash.",
+    "source_sha256_at_review": "48432f120dfb59a049079a041344ba0157417b018bc326ec7c85ddf6858ca0eb",
+    "mirror_sha256_at_review": "df1ec54fcbd35fc63524ec44d3f4df7b0425a58fb1d2ae9ac8097450dffe695e"
+  },
+  "human_animation_acceptance": false
+}

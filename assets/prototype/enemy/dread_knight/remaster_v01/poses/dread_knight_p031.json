@@ -1,0 +1,100 @@
+{
+  "pose_id": "dread_knight_p031",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "1776e3b94f1b6fc6343eff7a13db0e11130cfd6da0836fb5de71111d95e06a3b:181:169:76:91:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 6,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBLORD/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBLORD/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 6,
+      "name": "cblord23.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 400,
+      "offset": 130544,
+      "stored_size": 4889,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 76,
+      "height": 91,
+      "left": 181,
+      "top": 169,
+      "legacy_header": false,
+      "index_sha256": "1776e3b94f1b6fc6343eff7a13db0e11130cfd6da0836fb5de71111d95e06a3b"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/dread_knight/remaster_v01/_source/raw/repair-six-v02.png",
+  "raw_sha256": "122b054e1ef95af1da71de879f5e89abd5df4d015496051c7b5a7a66aff28395",
+  "prompt": "assets/prototype/enemy/dread_knight/remaster_v01/_source/raw/repair-six-v02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/dread_knight/remaster_v01/_source/isolated/repair-six-v02-dread_knight_p031.png",
+  "isolated_sha256": "c5b62c294db11121d53dcdf62fee433c686f094724d1710026722db900ebd473",
+  "source_grid_region": [
+    1164,
+    58,
+    335,
+    405
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/dread_knight/remaster_v01/poses/dread_knight_p031.png",
+  "registered_pose_sha256": "0210cfaf199fe1647d8a84505e76915c31b9a7777a699859a050c4c365a244b9",
+  "mirror_file": "assets/prototype/enemy/dread_knight/remaster_v01/poses/dread_knight_p031_mirror.png",
+  "mirror_sha256": "b78bd61d7c358560ac387ecf7fe6bc99de3a038976361b9bdb5c425811f90cd7",
+  "registration": {
+    "source_body_rect": [
+      182,
+      169,
+      72,
+      91
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      337,
+      407
+    ],
+    "registered_rect": [
+      477,
+      277,
+      178,
+      215
+    ],
+    "uniform_artwork_fit": 0.5313432835820896
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Repaired next death roll: flank faces viewer, horse feet remain below body, rider falls backward with arms high; final heap occurs later. Static native/enlarged source and exact-mirror review; no continuous playback, engine or human acceptance.",
+    "source_sha256_at_review": "0210cfaf199fe1647d8a84505e76915c31b9a7777a699859a050c4c365a244b9",
+    "mirror_sha256_at_review": "b78bd61d7c358560ac387ecf7fe6bc99de3a038976361b9bdb5c425811f90cd7"
+  },
+  "human_animation_acceptance": false
+}

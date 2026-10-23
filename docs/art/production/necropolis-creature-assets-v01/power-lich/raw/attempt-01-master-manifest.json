@@ -1,0 +1,192 @@
+{
+  "name": "Power Lich",
+  "slug": "power-lich",
+  "status": "proposal; awaiting user master approval",
+  "artwork_method": "built-in image generation; mechanical crop and aspect-preserving registration",
+  "cell": [
+    1024,
+    768
+  ],
+  "anchor": [
+    512,
+    512
+  ],
+  "original_reference": [
+    196,
+    268
+  ],
+  "source_scale": 2.4657534246575343,
+  "target_native_bounds": {
+    "left": 458,
+    "top": 251,
+    "width": 106,
+    "height": 259
+  },
+  "actual_registered_bounds": {
+    "left": 461,
+    "top": 251,
+    "width": 100,
+    "height": 259,
+    "right": 561,
+    "bottom": 510,
+    "transparent_pixels": 770565,
+    "opaque_pixels": 13467
+  },
+  "registration": {
+    "crop": {
+      "left": 228,
+      "top": 16,
+      "width": 572,
+      "height": 1482
+    },
+    "width": 100,
+    "height": 259,
+    "left": 461,
+    "top": 251,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "original_def_sha256": "9a6074cb1741c358ec7e8b2627a7810d00213b8fe8a826b3e32c6697148abf47",
+  "source_metadata_sha256": "4e9278acbf5ae3498aeba38077aaf4f4e983604c01a0a6336372f36aac24900f",
+  "high_res_master": "master_rgba.png",
+  "high_res_sha256": "5939af2e501a86bbcb869dc2d852c756110386af22c8ab514aad0272c5e69445",
+  "source": "master_source_1024x768.png",
+  "source_sha256": "c3dedb06e5181137483690fa80a852a469e2914c2621e6c88dd0abb5ad726d78",
+  "mirror": "master_mirror_1024x768.png",
+  "mirror_sha256": "80ecd0cf1cf2004b2c2c8aeaa0289da87b2fdba013f6a93f4febf29494b0fdaa",
+  "generated_input_sha256": "17abe011a67a14fe09f0df6c4ae98381f376023fa053bc579949269330b0a2c3",
+  "transparent_background": true,
+  "exact_mirror_verified": true,
+  "mechanical_checks_only": true,
+  "visual_approval": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "provenance": {
+    "tool": "image_gen.imagegen",
+    "tool_mode": "built-in",
+    "exact_arguments": "prompts/attempt-01.json",
+    "exact_arguments_sha256": "898b8a97901af2248c2a96e1f9905ec4dab65cdbaccc0ebb2137e27ca5d6dff1",
+    "raw_file": "raw/attempt-01.png",
+    "raw_sha256": "17abe011a67a14fe09f0df6c4ae98381f376023fa053bc579949269330b0a2c3",
+    "original_tool_output": "C:/Users/zhouc/.codex/generated_images/01a1638b-0acf-7c83-903b-525c65433fcb/exec-5d83f969-b277-48da-8457-7c011f5a82fa.png",
+    "original_tool_output_sha256": "17abe011a67a14fe09f0df6c4ae98381f376023fa053bc579949269330b0a2c3",
+    "tool_output_record": "generation-attempt-01.json",
+    "source_id": "CPLICH",
+    "source_idle": {
+      "group": 2,
+      "frame": 0,
+      "name": "cplich74.pcx",
+      "pixel_hash": "e0d5db5ae767551430201d29d22ba95cac5bb337830e2e5cda127b4d38b34690"
+    },
+    "native_source_metadata": "../../references/heroes3-original-flipbooks/sprites/H3sprite/CPLICH/metadata.json",
+    "native_source_metadata_resolution_base": ".. (collection root)",
+    "native_original_def": "../../references/heroes3-original-flipbooks/originals/H3sprite/CPLICH.def",
+    "native_groups_equal_job": true,
+    "reference_images": [
+      {
+        "file": "native-idle.png",
+        "sha256": "33a130544200ddc0a94948a75c7ec8f11f8a2ca691a251b92dee1f975edf5844"
+      },
+      {
+        "file": "native-idle-6x.png",
+        "sha256": "91a3df5f14861faf2ddc1662096c7dc2930a68d152935bcf232c3dad7a592775"
+      },
+      {
+        "file": "native-scale-guide.png",
+        "sha256": "ae1eb87805f1ec475ab798b43158070d406e1f4c753ded9bc8f525ed4b7483b2"
+      },
+      {
+        "file": "native-all-groups-contact.png",
+        "sha256": "6a719b0357b9dbfe4a8fa4577d857248fa89108e6069dd50b90e5ce36148426d"
+      },
+      {
+        "file": "native-g00-guide.png",
+        "sha256": "5305b251ae201cf8587f9f389f0294210ae8c9a5974b912eeda495f2509d3f59"
+      },
+      {
+        "file": "native-g02-guide.png",
+        "sha256": "f4aeb9a45994869bc30b4df4c85203b59dba178a297e8f7e065514b910fd1f8a"
+      },
+      {
+        "file": "native-g04-guide.png",
+        "sha256": "0ab0cf1c67773724a52b4a3e97b1333c68a9aea7adb4dc273fda78e6780c2f71"
+      },
+      {
+        "file": "native-g07-guide.png",
+        "sha256": "68a64a42e33aed67aca0c898e70b54c0ca0d0b099f879b2a020ef0b83ff69631"
+      },
+      {
+        "file": "native-g12-guide.png",
+        "sha256": "2770dbf399c151b760480170ca59eb60e3a1ccf133d6c9f4991d2b1e38f71c13"
+      },
+      {
+        "file": "native-g15-guide.png",
+        "sha256": "ee0b01fc79c2b444693b078c0bde09cb2593dbb447f177de5aa07c734b3e8d8a"
+      }
+    ],
+    "rendering_benchmark": {
+      "file": "../references/pikeman-rendering-master.png",
+      "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4",
+      "role": "Rendering only; not Necropolis anatomy, costume, palette or pose"
+    },
+    "visually_sampled_guides": [
+      {
+        "group": 0,
+        "frames": [
+          0,
+          4,
+          7
+        ]
+      },
+      {
+        "group": 2,
+        "frames": [
+          0,
+          4,
+          7
+        ]
+      },
+      {
+        "group": 4,
+        "frames": [
+          0,
+          5,
+          10
+        ]
+      },
+      {
+        "group": 7,
+        "frames": [
+          0,
+          1
+        ]
+      },
+      {
+        "group": 12,
+        "frames": [
+          0,
+          4,
+          7
+        ]
+      },
+      {
+        "group": 15,
+        "frames": [
+          0,
+          5,
+          10
+        ]
+      }
+    ],
+    "contact_sheet": "native-all-groups-contact.png; one representative per original group, not complete motion review",
+    "registration_helper": {
+      "file": "../tools/lib.cjs",
+      "sha256": "b8676cb91e388bf30f67f73e6ce0bca17f644a9203719393451ee9186b7ded60",
+      "read_only": true
+    },
+    "registration_script": "build-master.cjs",
+    "registration_script_sha256": "08a27c0f474583fae278128e2e2cfcbe4294c494e864d3e1994b30b560fdccfb",
+    "scope": "static master proposal only; awaiting human approval",
+    "further_generation": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "returned_keys": [
+    "image_url",
+    "output_hint"
+  ],
+  "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019\\exec-0aefc7c6-3182-4b1a-9b42-54761ae6a547.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "prompt": "Use case: stylized-concept. High-resolution production sprite redraw sheet on genuinely transparent background. Image 1 is approved Vampire Lord APPEARANCE ONLY; image 2 is authoritative ORIGINAL POSE GUIDE. Newly paint each occupied cell separately in exactly 4 columns x 2 rows, exact row-major order. Preserve original silhouette, camera/view, bent joints, hand height, gaze and robe outline; never substitute the idle. Fine painted modeled shading and fabric detail like master, not enlarged pixel art.\n\nSame character: pale bald wrinkled Nosferatu with large pointed ears, red eyes, fangs, long clawlike pale fingers; charcoal/brown ragged floor-length robe, orange-gold high collar/cuffs/tattered trim, dark red lining. Unarmed. Keep clothing identity and proportions. No new weapon, armor, hair, accessory or gameplay. All tips/hems/fragments fully inside each cell with generous transparent gutters and outer margins. No labels, text, grid, colored backdrop, halo, ground or cast shadow. Do not carry the master's dark background into the output. Embedded effects only where each source pose shows them. Prefer 2048x1024.\n\nONLY SIX figures, leave final two cells empty and transparent. TOP ROW p056,p057,p058,p059: p056 humanoid engulfed from lower body to torso by thick white/gray transformation cloud, hands/face still visible; p057 most humanoid engulfed in vertical cloud with emergent bat wings; p058 bat emerging through a tall cloud swirl, partial wing/body visible in source; p059 RIGHT-FACING BAT with extended/reared reddish wings and white/gray disintegration/smoke remnants behind it. BOTTOM ROW only p060,p061: p060 right-facing bat with white cloud fragments surrounding and below, in different wing pose; p061 bat engulfed by vertical white/gray coil with upper wing emerging, matching guide. Bat identity: brown/reddish leathery membranes, small pale fanged snout, NOT a robed humanoid with wings. Preserve actual amount of occlusion: do not render a complete standing body in a cloud that hides it. No independent new VFX. Native embedded clouds belong to respective figure and require clear separation/gutters.\n\nExact row-major mapping is the labeled guide order; remove labels in new artwork.\n",
+  "transparent_background": true,
+  "references": [
+    {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire-lord/master_rgba.png",
+      "sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/guides/batch-007.png",
+      "sha256": "358c05d3a6584188624354022fb434bc25086fada43037d81bea85bcb9b3ae3d"
+    }
+  ],
+  "raw_sha256": "be9bcb453a64489cc7921013167875df5ef79364b748ea8a525db6e32ca4dc25",
+  "model": null,
+  "seed": null
+}

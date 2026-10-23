@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_warrior_p005",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "8729bda0c291c09ec5bd02f3f9b4d7f713a186781c830f10f70a385443a0fc91:179:186:57:84:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWSKEL/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWSKEL/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "cwskel44.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 139241,
+      "stored_size": 2921,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 57,
+      "height": 84,
+      "left": 179,
+      "top": 186,
+      "legacy_header": false,
+      "index_sha256": "8729bda0c291c09ec5bd02f3f9b4d7f713a186781c830f10f70a385443a0fc91"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/raw/sw-b000-a01.png",
+  "raw_sha256": "ce5d6a75ec9d0aa42855816bdcfa4bc65187f64d1dae3e7fbb589715c2fd19cd",
+  "prompt": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/raw/sw-b000-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/isolated/sw-b000-a01-skeleton_warrior_p005.png",
+  "isolated_sha256": "767095d6d1a37d57cb8109cc7b4aa9f38cd099901dd0029575df0f069ce5ddb1",
+  "source_grid_region": [
+    444,
+    444,
+    443,
+    443
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/skeleton_warrior/remaster_v01/poses/skeleton_warrior_p005.png",
+  "registered_pose_sha256": "fc03662ae1f36fd49093fc12ebcf1dcb76af3b26818c8b2acb4f8622cbfceed6",
+  "mirror_file": "assets/prototype/enemy/skeleton_warrior/remaster_v01/poses/skeleton_warrior_p005_mirror.png",
+  "mirror_sha256": "4d9cf1c9c7d742001f94186123b691c6533330cdd74c13b3fa9037e46ac52b22",
+  "registration": {
+    "source_body_rect": [
+      179,
+      186,
+      57,
+      84
+    ],
+    "artwork_crop": [
+      89,
+      30,
+      400,
+      427
+    ],
+    "registered_rect": [
+      470,
+      337,
+      141,
+      180
+    ],
+    "uniform_artwork_fit": 0.4533762057877814
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Walk: hip-level blade and lifted rear boot distinguish this from the preceding step. Inspected against OG in fixed registration contacts, enlarged comparison and exact mirror; static worker review only.",
+    "source_sha256_at_review": "fc03662ae1f36fd49093fc12ebcf1dcb76af3b26818c8b2acb4f8622cbfceed6",
+    "mirror_sha256_at_review": "4d9cf1c9c7d742001f94186123b691c6533330cdd74c13b3fa9037e46ac52b22"
+  },
+  "human_animation_acceptance": false
+}

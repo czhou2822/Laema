@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "prompt_file": "../prompts/batch-000-attempt-01.txt",
+  "prompt": "Use case: stylized-concept\nAsset type: transparent game animation sprite source page, eight separately drawn complete poses.\nInput image 1 is the approved high-resolution BASE VAMPIRE appearance reference only. Input image 2 is the ORIGINAL CVAMP pose guide and governs silhouette, camera, action, anatomy, direction and row-major order.\nDraw exactly eight figures in a spacious FOUR-COLUMN TWO-ROW page on genuinely transparent background. One figure in each cell, left to right top row then bottom row. Keep all extremities wholly inside their own cell with generous empty transparent gutters and outer margins. No text, numbers, grid, background, floor or cast shadow.\nMatch the master's fine modeled shading, textured dark ragged brown-charcoal mantle/tunic, torn brown trousers, dark shoes, pale bald pointed-eared red-eyed face and long red-tipped nails. Base Vampire, no hair, noble cape, jewelry or weapon.\nTop row must be FOUR distinct BROWN BAT flight poses, NOT humanoids with wings. Closely trace each original guide's pose: p000 narrow horizontal low-wing silhouette, p001 broad downward-spread wing, p002 raised/folded wing triangle, p003 tall upstroke wing. Each bat faces RIGHT with its small head and pale fangs at right, and has exactly two membranous wings attached to one natural bat torso. Match the precise source silhouette and wing phase. Render bat leather/fur with the master's detailed muted brown material treatment.\nBottom row p004,p005,p006,p007 is the SAME humanoid Vampire in the source's four subtly different standing gesture poses. Match each original separately: hunched three-quarter view facing right, two long-fingered hands at the original chest/waist heights, original elbow bend and staggered feet, with small shifts across the four poses. Never replace all four with identical idle. Full body and both shoes visible. Preserve the master's distinctive face, body proportions, ragged clothes and shoulder mantle. Lighting and material quality consistent across all figures.\nNo added effects. The source guide's enlarged pixels are pose references only: produce new detailed artwork, no pixel upscales. Preserve exactly the eight original poses, with no extra poses or standalone elements.",
+  "references": [
+    {
+      "path": "assets/prototype/enemy/vampire/remaster_v01/_source/appearance-master.png",
+      "sha256": "d069d66f2eb95de77cbaf5e2b518ffa45571cab49384c8f4227a3e3ff82742bd"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire/remaster_v01/_source/guides/batch-000.png",
+      "sha256": "a240a8c6cd30935e22e603d1651c37c4049cf49e4e3b0f6718c33e5452a641b4"
+    }
+  ],
+  "returned_metadata": {
+    "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-431e-7981-acb2-f906a9efd494 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-431e-7981-acb2-f906a9efd494\\exec-285c592e-1f71-46e7-8682-d093fdfdc1ce.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "image_url_omitted": "Base64 image data; exact returned PNG copied verbatim."
+  }
+}

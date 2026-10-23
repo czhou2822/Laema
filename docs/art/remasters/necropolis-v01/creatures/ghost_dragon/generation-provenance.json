@@ -1,0 +1,2083 @@
+[
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p000",
+      "ghost_dragon_p001",
+      "ghost_dragon_p002",
+      "ghost_dragon_p003",
+      "ghost_dragon_p004",
+      "ghost_dragon_p005",
+      "ghost_dragon_p006",
+      "ghost_dragon_p007"
+    ],
+    "columns": 4,
+    "rows": 2,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-000-v01.png",
+    "raw_sha256": "b11348496df09e2114f34cfc34b11f0df16fcf23b9a08b538690d5d811495bb9",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-000-v01.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p008",
+      "ghost_dragon_p009",
+      "ghost_dragon_p010",
+      "ghost_dragon_p011",
+      "ghost_dragon_p012",
+      "ghost_dragon_p013",
+      "ghost_dragon_p014",
+      "ghost_dragon_p015"
+    ],
+    "columns": 4,
+    "rows": 2,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-001-v01.png",
+    "raw_sha256": "bdb795944cf2ecd48032cc725de5cf1828fc22a7454f9fd02e53959b1a3dd2fc",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-001-v01.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p016",
+      "ghost_dragon_p017",
+      "ghost_dragon_p018",
+      "ghost_dragon_p019",
+      "ghost_dragon_p020",
+      "ghost_dragon_p021",
+      "ghost_dragon_p022",
+      "ghost_dragon_p023"
+    ],
+    "columns": 4,
+    "rows": 2,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-002-v01.png",
+    "raw_sha256": "746c090921cf85984c1830cdb78ab3bd5bcb34f47dfaadccdb8f7348f53f3537",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-002-v01.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p028",
+      "ghost_dragon_p029",
+      "ghost_dragon_p030",
+      "ghost_dragon_p031"
+    ],
+    "columns": 4,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-003-v01-bottom.png",
+    "raw_sha256": "2fd490427effe37f2bbe28f8841efc6d3bbc5b85621f6f181ed48713abf604af",
+    "adaptive_grid": true,
+    "components": false,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-003-v01-bottom.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p024",
+      "ghost_dragon_p025",
+      "ghost_dragon_p026",
+      "ghost_dragon_p027"
+    ],
+    "columns": 4,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-003-v01-top.png",
+    "raw_sha256": "15a898d66ac2ce2db54149032f8714f3c90bdada4282b505c42bc47b67bd8d82",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-003-v01-top.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p024",
+      "ghost_dragon_p025",
+      "ghost_dragon_p026",
+      "ghost_dragon_p027",
+      "ghost_dragon_p028",
+      "ghost_dragon_p029",
+      "ghost_dragon_p030",
+      "ghost_dragon_p031"
+    ],
+    "columns": 4,
+    "rows": 2,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-003-v01.png",
+    "raw_sha256": "964ef0d9030e4ca8ac3d964b29f07b6b8e58464b6e959058ed8671c1db2aaba2",
+    "adaptive_grid": true,
+    "components": false,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-003-v01.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p036",
+      "ghost_dragon_p037",
+      "ghost_dragon_p038",
+      "ghost_dragon_p039"
+    ],
+    "columns": 4,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-004-v01-bottom.png",
+    "raw_sha256": "77d3c3f1b6b60a18001bf4259698e249cf76d156b02e98474faffe924f3267c9",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-004-v01-bottom.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p032",
+      "ghost_dragon_p033",
+      "ghost_dragon_p034"
+    ],
+    "columns": 3,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-004-v01-top-three.png",
+    "raw_sha256": "77ac72ecde340d5835d9272696aae2218546613b94e4b09e09998d490cec71e0",
+    "adaptive_grid": true,
+    "components": false,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-004-v01-top-three.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p032",
+      "ghost_dragon_p033",
+      "ghost_dragon_p034",
+      "ghost_dragon_p035",
+      "ghost_dragon_p036",
+      "ghost_dragon_p037",
+      "ghost_dragon_p038",
+      "ghost_dragon_p039"
+    ],
+    "columns": 4,
+    "rows": 2,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-004-v01.png",
+    "raw_sha256": "e12b57c57742bf810987008813de4858248864e1dab63ceaafda2de44383cd88",
+    "adaptive_grid": true,
+    "components": false,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-004-v01.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p040",
+      "ghost_dragon_p041",
+      "ghost_dragon_p042",
+      "ghost_dragon_p043",
+      "ghost_dragon_p044",
+      "ghost_dragon_p045",
+      "ghost_dragon_p046",
+      "ghost_dragon_p047"
+    ],
+    "columns": 4,
+    "rows": 2,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-005-v01.png",
+    "raw_sha256": "314dce98d4125d3e11824bfb5aa76a4114426cba9ed070caa9d28164b62b8597",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-005-v01.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p048",
+      "ghost_dragon_p049",
+      "ghost_dragon_p050",
+      "ghost_dragon_p051",
+      "ghost_dragon_p052",
+      "ghost_dragon_p053",
+      "ghost_dragon_p054",
+      "ghost_dragon_p055"
+    ],
+    "columns": 4,
+    "rows": 2,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-006-v01.png",
+    "raw_sha256": "7989247025c724b519ed09367361c766add036ceeb2581de00d1a02cf8a647ed",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-006-v01.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p056",
+      "ghost_dragon_p057",
+      "ghost_dragon_p058",
+      "ghost_dragon_p059",
+      "ghost_dragon_p060"
+    ],
+    "columns": 4,
+    "rows": 2,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-007-v01.png",
+    "raw_sha256": "4b14edcce3581eeaa0081a3672ade3708f935ef1e741b37e3ee7b54808e6b26b",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-007-v01.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p000",
+      "ghost_dragon_p001",
+      "ghost_dragon_p002",
+      "ghost_dragon_p005"
+    ],
+    "columns": 4,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-flight-digits-phase-v03.png",
+    "raw_sha256": "68a9341c2862314bed757d87cf706f418e5b251298bd57d3f8cfed60de544976",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-flight-digits-phase-v03.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p045",
+      "ghost_dragon_p046",
+      "ghost_dragon_p047"
+    ],
+    "columns": 3,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-melee-tail-reach-v02-bottom.png",
+    "raw_sha256": "f53c70347531ab1ea81501bd6ec9a83c6dcff5259dbc28a6ab0aef2795131166",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-melee-tail-reach-v02-bottom.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p040",
+      "ghost_dragon_p042",
+      "ghost_dragon_p043"
+    ],
+    "columns": 3,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-melee-tail-reach-v02-top.png",
+    "raw_sha256": "bc2f0e490609864e2d44dd03d2e4c6bf768f65845860978c9ca98dfffb7f243c",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-melee-tail-reach-v02-top.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p044"
+    ],
+    "columns": 1,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-p044-v04.png",
+    "raw_sha256": "704c7f3dcd6ee23c034eea20a422b75a41fcfca6657de7c7857915665927992e",
+    "adaptive_grid": true,
+    "components": false,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-p044-v04.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p016",
+      "ghost_dragon_p017",
+      "ghost_dragon_p023",
+      "ghost_dragon_p035"
+    ],
+    "columns": 4,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-recoil-shield-turn-v02.png",
+    "raw_sha256": "9b01e43629837aa7c5e3a41e2ef58a757dc5286818d550c73615f42bf2322391",
+    "adaptive_grid": false,
+    "components": true,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-recoil-shield-turn-v02.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p003",
+      "ghost_dragon_p007",
+      "ghost_dragon_p010",
+      "ghost_dragon_p016",
+      "ghost_dragon_p018",
+      "ghost_dragon_p026",
+      "ghost_dragon_p027",
+      "ghost_dragon_p028"
+    ],
+    "columns": 4,
+    "rows": 2,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-remaining-source-phase-v03.png",
+    "raw_sha256": "1ea1b0d4585d4e8f6109431c1134c87fbf3eedcdd9166e7b635481c4f97e0184",
+    "adaptive_grid": true,
+    "components": false,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-remaining-source-phase-v03.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p006"
+    ],
+    "columns": 1,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-source-phase-alpha-v02-p006.png",
+    "raw_sha256": "fda792f7649028ab4508070ccb316f5897adb185514563ddba026c449c3e022b",
+    "adaptive_grid": true,
+    "components": false,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-source-phase-alpha-v02-p006.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  },
+  {
+    "creature_id": "ghost_dragon",
+    "pose_ids": [
+      "ghost_dragon_p017"
+    ],
+    "columns": 1,
+    "rows": 1,
+    "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-source-phase-alpha-v02-p017.png",
+    "raw_sha256": "93246ecd802e265d712a266155626dac2b5d811f9a114434013c7b0c71abb39e",
+    "adaptive_grid": true,
+    "components": false,
+    "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-source-phase-alpha-v02-p017.prompt.txt",
+    "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/ghost-dragon/master_rgba.png",
+    "appearance_reference_sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+    "source_plan": "docs/art/remasters/necropolis-v01/generation-plan.json",
+    "source_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "note": "Submission retained even when geometric ingestion fails. Built-in image generation is external to this mechanical tool.",
+    "reference_inventory": [
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+        "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+        "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+        "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+        "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+        "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+        "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+        "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+        "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+        "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+        "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+        "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+        "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+        "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-turn-v02.png",
+        "sha256": "90745ebda284377e8af67f276811b927e5f589488ada4c1376623a7b1e23033e"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+        "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+      },
+      {
+        "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+        "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+      }
+    ]
+  }
+]

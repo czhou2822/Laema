@@ -1,0 +1,100 @@
+{
+  "pose_id": "walking_dead_p022",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "e8196dffbd1ea7574975d1efe4033a9b7f8c5bdc7ff2cb9917fa47dcb45e862c:165:187:61:79:450:400",
+  "original_representative": {
+    "group_id": 3,
+    "original_block": 3,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_03_block_03_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_03_block_03_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "Czombi51.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 141826,
+      "stored_size": 3018,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 61,
+      "height": 79,
+      "left": 165,
+      "top": 187,
+      "legacy_header": false,
+      "index_sha256": "e8196dffbd1ea7574975d1efe4033a9b7f8c5bdc7ff2cb9917fa47dcb45e862c"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/production-002-v01-components.png",
+  "raw_sha256": "30f8ab65a41c6ca1bc472dc5179cca779bec49343da8364ec135668a57614e28",
+  "prompt": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/production-002-v01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/isolated/production-002-v01-components-walking_dead_p022.png",
+  "isolated_sha256": "1145512f519d8c0f09b3e2b062ef23e10f1ae285f253ff3da096432b5aa147b2",
+  "source_grid_region": [
+    976,
+    484,
+    316,
+    384
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p022.png",
+  "registered_pose_sha256": "569bf638cd30efd90365b5fb11795d34809f5f4af48e87141ff895d007b80a48",
+  "mirror_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p022_mirror.png",
+  "mirror_sha256": "ed1f54fea3fea1920ebae686b3cba6838ee28795fade59702f543f4404fe8224",
+  "registration": {
+    "source_body_rect": [
+      165,
+      187,
+      60,
+      79
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      318,
+      386
+    ],
+    "registered_rect": [
+      436,
+      327,
+      148,
+      180
+    ],
+    "uniform_artwork_fit": 0.46835443037974683
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Hurt recovery lowers the cleaver and begins to straighten the torso; same damaged arm/shin identity in both facings. Static OG/candidate and both-facing frame inspection only; candidate, not human animation acceptance.",
+    "source_sha256_at_review": "569bf638cd30efd90365b5fb11795d34809f5f4af48e87141ff895d007b80a48",
+    "mirror_sha256_at_review": "ed1f54fea3fea1920ebae686b3cba6838ee28795fade59702f543f4404fe8224"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,572 @@
+{
+  "schema_version": 1,
+  "creature": "Black Knight",
+  "slug": "black-knight",
+  "status": "STATIC_MASTER_PROPOSAL_AWAITING_HUMAN_APPROVAL",
+  "selected_attempt": "06",
+  "selected_raw": "raw-master-06.png",
+  "selected_raw_sha256": "fe3b59cdb48b9bd1216a13751fe3bddc8692a2b06c16bd090e4ba824a313e985",
+  "review_method": "Mali visual inspection of actual source and generated images through view_image, plus mechanical image measurements; not a runtime validation",
+  "artwork_tool": "image_gen.imagegen",
+  "tool_path": "functions.exec -> tools.image_gen__imagegen",
+  "built_in_only": true,
+  "human_master_approved": false,
+  "approved_for_animation": false,
+  "animation_generated": false,
+  "scope": {
+    "writes": "this black-knight directory only",
+    "shared_helpers": "read-only",
+    "git_operations": false,
+    "peer_messages": false,
+    "engine_imports": false,
+    "game_changes": false,
+    "engine_runs": false,
+    "tests": false,
+    "builds": false,
+    "runtime_verified": false
+  },
+  "context_read": {
+    "worker_brief": "../worker-brief.md",
+    "job": "job.json; read completely, including all frame records",
+    "project_sources": [
+      "../../../../../AGENTS.md",
+      "../../../../README.md",
+      "../../../../GAME_DESIGN.md",
+      "../../../../TECH_ARCHITECTURE.md",
+      "../../../../IMPLEMENTATION_STATUS.md",
+      "../../../ART_DIRECTION.md"
+    ],
+    "skills": [
+      "Mali SKILL.md and art-review-and-direction.md",
+      "physical Mali personal profile (consulted only)",
+      "imagegen SKILL.md, prompting.md and sample-prompts.md"
+    ],
+    "shared_helper": "../tools/lib.cjs; read completely and called through build-master.cjs",
+    "benchmark": "../references/pikeman-rendering-master.png; rendering only"
+  },
+  "source": {
+    "id": "CBKNIG",
+    "metadata": "../../../references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/metadata.json",
+    "def": "../../../references/heroes3-original-flipbooks/originals/H3sprite/CBKNIG.def",
+    "metadata_sha256": "99473fbd5b8e4fb98f20fb9abffead8ba876626e1e9815fa08a6e7916cf91468",
+    "def_sha256": "68758791ac3be0ae5426797775cb7c564e6220d0e54154adac6d6094f68742c4",
+    "idle_sha256": "f64825033b464fbef8182aeb25dbcff253d2ae414ca6a022aa119b525e317da0",
+    "complete_group_metadata_matches_job": true,
+    "groups": 15,
+    "timeline_positions": 92,
+    "distinct_indexed_drawings": 58,
+    "idle": {
+      "group": 2,
+      "index": 0,
+      "name": "cbknig58.pcx",
+      "native_alpha64_bounds": {
+        "left": 178,
+        "top": 169,
+        "width": 81,
+        "height": 98,
+        "right": 259,
+        "bottom": 267
+      }
+    },
+    "native_idle_reference": "native-idle-6x.png",
+    "all_group_contact": "native-all-groups-contact.png",
+    "guides_inspected": 15,
+    "guide_sampled_frame_positions": 43,
+    "group_role_limit": "Names are format mappings from job.json. Static guide inspection does not establish engine playback, timing or gameplay roles.",
+    "sampled_groups": [
+      {
+        "group": 0,
+        "format_role": "movement",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig39.pcx"
+          },
+          {
+            "index": 4,
+            "name": "cbknig43.pcx"
+          },
+          {
+            "index": 7,
+            "name": "cbknig46.pcx"
+          }
+        ]
+      },
+      {
+        "group": 1,
+        "format_role": "gesture / mouse-over",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig29.pcx"
+          },
+          {
+            "index": 5,
+            "name": "cbknig32.pcx"
+          },
+          {
+            "index": 10,
+            "name": "cbknig29.pcx"
+          }
+        ]
+      },
+      {
+        "group": 2,
+        "format_role": "idle",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig58.pcx"
+          },
+          {
+            "index": 4,
+            "name": "cbknig36.pcx"
+          },
+          {
+            "index": 7,
+            "name": "cbknig33.pcx"
+          }
+        ]
+      },
+      {
+        "group": 3,
+        "format_role": "hit reaction",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig49.pcx"
+          },
+          {
+            "index": 3,
+            "name": "cbknig52.pcx"
+          },
+          {
+            "index": 5,
+            "name": "cbknig54.pcx"
+          }
+        ]
+      },
+      {
+        "group": 4,
+        "format_role": "defence",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig25.pcx"
+          },
+          {
+            "index": 5,
+            "name": "cbknig28.pcx"
+          },
+          {
+            "index": 10,
+            "name": "cbknig25.pcx"
+          }
+        ]
+      },
+      {
+        "group": 5,
+        "format_role": "death",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig49.pcx"
+          },
+          {
+            "index": 4,
+            "name": "cbknig21.pcx"
+          },
+          {
+            "index": 7,
+            "name": "cbknig24.pcx"
+          }
+        ]
+      },
+      {
+        "group": 7,
+        "format_role": "turn",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig55.pcx"
+          },
+          {
+            "index": 1,
+            "name": "cbknig56.pcx"
+          },
+          {
+            "index": 2,
+            "name": "cbknig57.pcx"
+          }
+        ]
+      },
+      {
+        "group": 8,
+        "format_role": "turn",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig57.pcx"
+          },
+          {
+            "index": 1,
+            "name": "cbknig56.pcx"
+          },
+          {
+            "index": 2,
+            "name": "cbknig55.pcx"
+          }
+        ]
+      },
+      {
+        "group": 9,
+        "format_role": "turn",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig55.pcx"
+          },
+          {
+            "index": 1,
+            "name": "cbknig56.pcx"
+          },
+          {
+            "index": 2,
+            "name": "cbknig57.pcx"
+          }
+        ]
+      },
+      {
+        "group": 10,
+        "format_role": "turn",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig57.pcx"
+          },
+          {
+            "index": 1,
+            "name": "cbknig56.pcx"
+          },
+          {
+            "index": 2,
+            "name": "cbknig55.pcx"
+          }
+        ]
+      },
+      {
+        "group": 11,
+        "format_role": "melee upper",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig01.pcx"
+          },
+          {
+            "index": 4,
+            "name": "cbknig10.pcx"
+          },
+          {
+            "index": 7,
+            "name": "cbknig13.pcx"
+          }
+        ]
+      },
+      {
+        "group": 12,
+        "format_role": "melee front",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig01.pcx"
+          },
+          {
+            "index": 4,
+            "name": "cbknig05.pcx"
+          },
+          {
+            "index": 7,
+            "name": "cbknig08.pcx"
+          }
+        ]
+      },
+      {
+        "group": 13,
+        "format_role": "melee lower",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig01.pcx"
+          },
+          {
+            "index": 4,
+            "name": "cbknig15.pcx"
+          },
+          {
+            "index": 7,
+            "name": "cbknig18.pcx"
+          }
+        ]
+      },
+      {
+        "group": 20,
+        "format_role": "movement start",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig37.pcx"
+          },
+          {
+            "index": 1,
+            "name": "cbknig38.pcx"
+          }
+        ]
+      },
+      {
+        "group": 21,
+        "format_role": "movement end",
+        "role_runtime_confirmed": false,
+        "frame_positions": [
+          {
+            "index": 0,
+            "name": "cbknig47.pcx"
+          },
+          {
+            "index": 1,
+            "name": "cbknig48.pcx"
+          }
+        ]
+      }
+    ]
+  },
+  "rendering_direction": {
+    "authority": "Original CBKNIG identity, costume, pose and palette; Pikeman modeled-volume rendering only.",
+    "source_facing": "image-right, three-quarter mounted idle",
+    "identity_observed": [
+      "One fitted dark navy-black metal rider with two slim upright helmet prongs and red slit accents.",
+      "One flesh-covered charcoal horse with plain exposed head and neck; no Dread Knight spiked barding and no invented bare skeleton.",
+      "Restrained red fringed saddle cloth, dark mane and tail, simple tack, no added shield or lance.",
+      "Exactly one smooth low curved silver sword, plain restrained brass/tan hilt, below the horse muzzle."
+    ],
+    "material_observed": [
+      "Dark plate is distinct from the softer charcoal horse hide; steel highlights remain localized on the armor and blade.",
+      "Hooves now use dark charcoal/brown material rather than the preceding silver-cap treatment.",
+      "Fine modeled surfaces and cloth folds; no enlarged block pixels or chibi proportions."
+    ],
+    "pose_and_proportion_limit": "General native upright idle stance, right-facing view and horse/rider scale relationship retained. Fine reins/hand placement and limb spacing are painted interpretations rather than a pixel trace; rein hand remains somewhat higher than the native source.",
+    "width_limit": {
+      "native_target_width": 200,
+      "registered_alpha64_width": 208,
+      "difference_pixels": 8,
+      "difference_percent": 4,
+      "status": "disclosed for human review; not stretched to conceal"
+    },
+    "effects_floor_shadow": "No visible new effects, ground, floor or cast shadow on generated artwork. Source-only extraction shadow is still visible in the unchanged native comparison."
+  },
+  "repairs": [
+    {
+      "attempt": "01",
+      "finding": "Armor too silver; ornate looping hilt; rein hand high.",
+      "disposition": "Preserved, not selected."
+    },
+    {
+      "attempt": "02",
+      "finding": "Rein hand partly lowered, but material and hilt correction weak.",
+      "disposition": "Preserved, not selected."
+    },
+    {
+      "attempt": "03",
+      "finding": "Native redraw recovered dark armor and simpler hilt, but introduced an angular blade kink.",
+      "disposition": "Preserved, not selected."
+    },
+    {
+      "attempt": "04",
+      "finding": "Smooth blade repaired. Horse hooves still read as polished metal caps.",
+      "disposition": "Preserved, not selected."
+    },
+    {
+      "attempt": "05",
+      "finding": "Hoof material corrected. Alpha check found 27 right-border pixels on muzzle; rejected for edge contact.",
+      "disposition": "Preserved, not selected."
+    },
+    {
+      "attempt": "06",
+      "finding": "Muzzle contour complete with clear raw margins; preceding blade/hoof corrections retained.",
+      "disposition": "Selected proposal."
+    }
+  ],
+  "registration": {
+    "helper": "../tools/lib.cjs: registerMaster",
+    "entrypoint": "build-master.cjs (default attempt 06)",
+    "cell": [
+      1024,
+      768
+    ],
+    "anchor": [
+      512,
+      512
+    ],
+    "original_reference": [
+      196,
+      268
+    ],
+    "source_scale": 2.4657534246575343,
+    "native_visible_height": 98,
+    "target_visible_height": 242,
+    "actual_alpha64_bounds": {
+      "left": 465,
+      "top": 268,
+      "width": 208,
+      "height": 242,
+      "right": 673,
+      "bottom": 510,
+      "transparent_pixels": 762777,
+      "opaque_pixels": 20647
+    },
+    "registration": {
+      "crop": {
+        "left": 88,
+        "top": 106,
+        "width": 1027,
+        "height": 1190
+      },
+      "width": 209,
+      "height": 242,
+      "left": 464,
+      "top": 268,
+      "method": "uniform height scale, original idle silhouette center and bottom registration",
+      "options": {}
+    },
+    "uniform_aspect_preserving": true,
+    "anatomy_scale_override": false,
+    "stretching": false,
+    "exact_mirror_verified": true
+  },
+  "visual_checks": [
+    {
+      "file": "source-vs-master.png",
+      "result": "Inspected native and selected master at shared scale plus enlarged view. Identity, low blade and material separation remain readable; 4 percent width difference disclosed."
+    },
+    {
+      "file": "game-size-alpha.png",
+      "result": "Inspected both facings at 1:1 shared pixel size over dark, pale and gray mattes. Leg gaps, sword, cloth and red accents readable; no visible halo or baked floor/shadow."
+    },
+    {
+      "file": "alpha-inspection-06.png",
+      "result": "Inspected enlarged cutout over dark and pale mattes. Complete horse muzzle, prongs, sword tip, tail and four hooves; no visible background plate."
+    }
+  ],
+  "alpha_checks": {
+    "has_alpha": true,
+    "raw_dimensions": [
+      1162,
+      1353
+    ],
+    "raw_alpha_counts": {
+      "zero": 1033075,
+      "partial": 537525,
+      "opaque": 1586
+    },
+    "raw_bounds_alpha8": {
+      "left": 88,
+      "top": 106,
+      "width": 1027,
+      "height": 1190,
+      "right": 1115,
+      "bottom": 1296,
+      "transparent_pixels": 1033075,
+      "opaque_pixels": 506240
+    },
+    "raw_clear_margins_alpha8": {
+      "left": 88,
+      "top": 106,
+      "right": 47,
+      "bottom": 57
+    },
+    "raw_no_edge_contact_alpha8": true,
+    "registered_padding_at_least_40": true,
+    "scope": "Mechanical measurements and static visual observation only."
+  },
+  "provenance": {
+    "attempt_history": "attempt-history.json; all six exact requests, prompts, references, raw hashes and original tool destinations",
+    "raws_preserved": "raw-master-01.png through raw-master-06.png; all byte-identical to tool files",
+    "exact_selected_prompt": {
+      "path": "prompt-master-06.txt",
+      "sha256": "ebf47dd599875cbd3618b2d699b3c78d5a6b47dc5d4a7013f5c069ca44e57a04"
+    },
+    "exact_selected_request": {
+      "path": "request-master-06.json",
+      "sha256": "57a839e51af6662ae14afd2671c80ea139e472d6a322a754a2ffe66c4f28e489"
+    },
+    "records": [
+      {
+        "file": "master-manifest.json",
+        "sha256": "7a9d7ebcbd692a5b28c4632780e2b193c7f8cd07c92f03f5d90d06900eabc5f4"
+      },
+      {
+        "file": "mechanical-checks.json",
+        "sha256": "cdca813817688cd1b2dc5d1d9bf06ce696a71e6de1f87b3bb4e831b2f0ca1b46"
+      },
+      {
+        "file": "attempt-history.json",
+        "sha256": "8eeaad3ad47e48269bc8c217f3dd71a9f0f97ba9e05a86e1cd1202865faa2e2d"
+      }
+    ],
+    "outputs": [
+      {
+        "path": "master_rgba.png",
+        "sha256": "85201864e57a520489f6b9e893c6b787dc692203ed991e396db5007d01f3b4fd"
+      },
+      {
+        "path": "master_source_1024x768.png",
+        "sha256": "4dc839df7f5a2eac117b34140bebe609988fdac897e52d2d0fce475bbb67a720"
+      },
+      {
+        "path": "master_mirror_1024x768.png",
+        "sha256": "091387c2128c90bc6f5bef90203b788b01e8550241f07a6aa68ed0ff7f70b3b2"
+      },
+      {
+        "path": "source-vs-master.png",
+        "sha256": "f26fd230e0c56958ee2a5b272ecc0f92fe390a88eaa1c1605ad2986e8c973047"
+      },
+      {
+        "path": "comparison-master-06.png",
+        "sha256": "f26fd230e0c56958ee2a5b272ecc0f92fe390a88eaa1c1605ad2986e8c973047"
+      },
+      {
+        "path": "game-size-alpha.png",
+        "sha256": "9a42008b5afacc8339d277d10ff3b340b1b17431a7e6a12dbf044876fcbc95e9"
+      },
+      {
+        "path": "game-size-alpha-06.png",
+        "sha256": "9a42008b5afacc8339d277d10ff3b340b1b17431a7e6a12dbf044876fcbc95e9"
+      },
+      {
+        "path": "alpha-inspection-06.png",
+        "sha256": "7e76c82ab296cd83f83dcb847d5dc5f26893b1de41de6b4839f237af6d384530"
+      }
+    ],
+    "mechanical_only": "Crop, uniform registration, exact mirroring, matte layouts and transparent padding reference. Every invented/redrawn pixel came from built-in imagegen."
+  },
+  "limitations": [
+    "Human master approval is pending; this review grants no animation authority.",
+    "Final silhouette is 4 percent wider than the native scaled guide; small hand, tack and limb details are interpretations of the tiny native image.",
+    "Static source guides were sampled. No generated animation, animated playback, transition compatibility or original timing was validated.",
+    "PNG alpha, hashes, registration and mirror checks are not engine import, gameplay, build, test or runtime evidence."
+  ],
+  "next_gate": "Human review of the static master and disclosed differences. Do not generate animation until explicitly approved."
+}

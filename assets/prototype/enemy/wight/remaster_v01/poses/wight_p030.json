@@ -1,0 +1,100 @@
+{
+  "pose_id": "wight_p030",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "a4d4a895e49f0bc015f01c94251623698918cc96ab5e1254b97a9dc1991f44fb:166:175:52:87:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "cwight25.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 66029,
+      "stored_size": 2762,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 52,
+      "height": 87,
+      "left": 166,
+      "top": 175,
+      "legacy_header": false,
+      "index_sha256": "a4d4a895e49f0bc015f01c94251623698918cc96ab5e1254b97a9dc1991f44fb"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wight/remaster_v01/_source/raw/repair-death-fragment-count-attempt-01.png",
+  "raw_sha256": "322ac7fb43c6e479ad3980d0fe6f08761efd47d0b339efb90082cf2e041f2420",
+  "prompt": "assets/prototype/enemy/wight/remaster_v01/_source/raw/repair-death-fragment-count-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wight/remaster_v01/_source/isolated/repair-death-fragment-count-attempt-01-wight_p030.png",
+  "isolated_sha256": "dc37cabc0ac61f994aaef9b369d3a98464ce399264cefc8b5ab630fffd656331",
+  "source_grid_region": [
+    0,
+    0,
+    887,
+    887
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p030.png",
+  "registered_pose_sha256": "fd4faf860ed789621accdd27f5f7dc7958ca23dcb632697711d48dc8059451f3",
+  "mirror_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p030_mirror.png",
+  "mirror_sha256": "52e414e4b24fccaf2e6f7a99cbff78b22f31ab43290fb97a851fba1e0f453688",
+  "registration": {
+    "source_body_rect": [
+      168,
+      175,
+      50,
+      62
+    ],
+    "artwork_crop": [
+      131,
+      52,
+      824,
+      829
+    ],
+    "registered_rect": [
+      443,
+      298,
+      123,
+      138
+    ],
+    "uniform_artwork_fit": 0.1774891774891775
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Death F5: exactly two detached source sections, left long bone and right hand; extra joint chip removed. Inspected registered-scale OG/candidate and both facings; 2x source comparison. Worker candidate review only.",
+    "source_sha256_at_review": "fd4faf860ed789621accdd27f5f7dc7958ca23dcb632697711d48dc8059451f3",
+    "mirror_sha256_at_review": "52e414e4b24fccaf2e6f7a99cbff78b22f31ab43290fb97a851fba1e0f453688"
+  },
+  "human_animation_acceptance": false
+}

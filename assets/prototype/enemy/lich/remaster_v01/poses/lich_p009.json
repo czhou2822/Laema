@@ -1,0 +1,100 @@
+{
+  "pose_id": "lich_p009",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "9d8a0f32de60b6bbea7820ea43b21e8173c997a45d3d45f9ab85c169ac282b15:171:169:60:99:450:400",
+  "original_representative": {
+    "group_id": 1,
+    "original_block": 1,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_01_block_01_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_01_block_01_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "clich47.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 157581,
+      "stored_size": 4478,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 60,
+      "height": 99,
+      "left": 171,
+      "top": 169,
+      "legacy_header": false,
+      "index_sha256": "9d8a0f32de60b6bbea7820ea43b21e8173c997a45d3d45f9ab85c169ac282b15"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/lich/remaster_v01/_source/raw/page-001-a01.png",
+  "raw_sha256": "794f7f63b3dae8bfd6ce2008acdc6d72fb8677e925645b92af4bdada3b902b6f",
+  "prompt": "assets/prototype/enemy/lich/remaster_v01/_source/raw/page-001-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/lich/remaster_v01/_source/isolated/page-001-a01-lich_p009.png",
+  "isolated_sha256": "d89412e8cf48ab4a5c0b4728dbecd6dd19ed515f8e8e83d830eb5a094e182520",
+  "source_grid_region": [
+    444,
+    0,
+    443,
+    444
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p009.png",
+  "registered_pose_sha256": "92d127c4bb7ba1e1f66ac4ae8e93c3b68177ab6b90b66879821be00e96ed61bc",
+  "mirror_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p009_mirror.png",
+  "mirror_sha256": "37b8ffbf0fbabd124863ebdf33a8644d65df69f656b045b5d278888ffa45325d",
+  "registration": {
+    "source_body_rect": [
+      172,
+      170,
+      56,
+      97
+    ],
+    "artwork_crop": [
+      102,
+      18,
+      385,
+      434
+    ],
+    "registered_rect": [
+      453,
+      307,
+      138,
+      203
+    ],
+    "uniform_artwork_fit": 0.4876325088339223
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Compared all four original gesture drawings and raw enlarged figures with target-pixel pairs: free arm rises and torso leans back while staff tilts outward; source green accents retained. Ordered holds are source-plan repeats, not new idle fillers. Static worker candidate review.",
+    "source_sha256_at_review": "92d127c4bb7ba1e1f66ac4ae8e93c3b68177ab6b90b66879821be00e96ed61bc",
+    "mirror_sha256_at_review": "37b8ffbf0fbabd124863ebdf33a8644d65df69f656b045b5d278888ffa45325d"
+  },
+  "human_animation_acceptance": false
+}

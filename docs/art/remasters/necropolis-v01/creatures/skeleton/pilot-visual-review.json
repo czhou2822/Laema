@@ -1,0 +1,123 @@
+{
+  "creature_id": "skeleton",
+  "status": "pilot supplied for parent review; full creature incomplete",
+  "scope_pose_ids": [
+    "skeleton_p033",
+    "skeleton_p034",
+    "skeleton_p035",
+    "skeleton_p036",
+    "skeleton_p043",
+    "skeleton_p044",
+    "skeleton_p045",
+    "skeleton_p046",
+    "skeleton_p047",
+    "skeleton_p042"
+  ],
+  "supplied_pose_count": 10,
+  "missing_pose_count": 47,
+  "complete_group_ids": [
+    7,
+    8,
+    9,
+    10,
+    12
+  ],
+  "supplied_source_positions": 16,
+  "supplied_mirrored_positions": 16,
+  "active_newly_generated_poses": 10,
+  "reused_idle_poses": 0,
+  "builtin_generation_calls": 9,
+  "prepared_but_uncalled_pose_requests": [
+    "skeleton_p044-a02",
+    "skeleton_p045-a02",
+    "skeleton_p046-a02"
+  ],
+  "active_selection": {
+    "component_page00": [
+      "skeleton_p034",
+      "skeleton_p035",
+      "skeleton_p036",
+      "skeleton_p043",
+      "skeleton_p044",
+      "skeleton_p045",
+      "skeleton_p046"
+    ],
+    "single_pose_a02": [
+      "skeleton_p033",
+      "skeleton_p047",
+      "skeleton_p042"
+    ]
+  },
+  "sampling": {
+    "all_ten_source_and_candidate_comparisons": true,
+    "registered_scale_and_enlarged": true,
+    "both_facings": true,
+    "all_five_group_contacts": true,
+    "all_ten_gifs_decoded_frame_by_frame": true,
+    "live_animation_playback": false,
+    "light_and_dark_alpha_contacts": true
+  },
+  "pose_observations": [
+    {
+      "pose_id": "skeleton_p033",
+      "note": "Reviewed original turn and corrected candidate at fixed registered scale and enlarged, plus mirror and both turn orders. Sword now points down beside hip; one lifted rear foot and partial frontal chest retained. Blade is more exposed than the tiny edge-on source. Candidate review only; no human acceptance."
+    },
+    {
+      "pose_id": "skeleton_p034",
+      "note": "Reviewed source versus candidate at fixed registered scale and enlarged in both facings. Genuine frontal skull/ribs/pelvis and central vertical sword distinguish this turn from p033. Narrow source pixels do not resolve every finger overlap; rendered hilt is broader. Candidate review only."
+    },
+    {
+      "pose_id": "skeleton_p035",
+      "note": "Reviewed source and candidate at fixed scale and enlarged, both facings and attack entry. Sword arm drawn back at shoulder height, empty arm forward, front knee lifted; same anatomical sword hand. Aspect-fitted rendered silhouette is shorter/broader than source. Candidate review only."
+    },
+    {
+      "pose_id": "skeleton_p036",
+      "note": "Reviewed source and candidate at fixed scale and enlarged, both facings and ordered attack. One-handed overhead wind-up points upper right; free arm separate and forward, front knee raised. Forearm and rib foreshortening differ slightly from original. Candidate review only."
+    },
+    {
+      "pose_id": "skeleton_p043",
+      "note": "Reviewed source and candidate at fixed scale and enlarged, both facings and ordered attack. Sword held above skull points upper left, unlike p036; original sword arm and lifted knee retained. Rendered joint proportions vary from source. Candidate review only."
+    },
+    {
+      "pose_id": "skeleton_p044",
+      "note": "Reviewed source and candidate at fixed scale and enlarged, both facings and ordered attack. Near sword arm grips one violet hilt, blade nearly horizontal forward; empty hand remains separate above it. Stride and forward torso lean retained; exact silhouette proportions differ. Candidate review only."
+    },
+    {
+      "pose_id": "skeleton_p045",
+      "note": "Reviewed source and candidate at fixed scale and enlarged, both facings and ordered attack. Sword hand low forward with blade upper right; empty arm raised backward, bowed skull and planted stride retained. No hand swap or second sword observed. Candidate review only."
+    },
+    {
+      "pose_id": "skeleton_p046",
+      "note": "Reviewed source and candidate at fixed scale and enlarged, both facings and ordered attack. Low sword grip and steeper upper-right blade distinguish early recovery; empty arm backward/up and torso bowed. Joint placement is an interpretation of low-resolution source. Candidate review only."
+    },
+    {
+      "pose_id": "skeleton_p047",
+      "note": "Reviewed original and individually generated candidate at fixed scale and enlarged, both facings and ordered recovery. Deeply bowed torso, low one-handed grip and shallow upward blade retained; empty arm behind body. Clean alpha on light/dark backgrounds. No original timing or human acceptance."
+    },
+    {
+      "pose_id": "skeleton_p042",
+      "note": "Reviewed original and individually generated candidate at fixed scale and enlarged, both facings and attack exit. Later recovery rises relative to p047 with sword angled down-right, same anatomical grip, empty arm forward. Blade slope is somewhat steeper than source. Candidate review only."
+    }
+  ],
+  "repairs": [
+    "p033 replaced upward-slant sword with down-held sword alongside hip",
+    "Page01 haze rejected; p047/p042 redrawn individually with true alpha",
+    "Page00 strict component extraction recovered separated figures after rectangular-gutter failure"
+  ],
+  "source_limits": [
+    "Original timing is not established; all GIFs are 100 ms per position for review only",
+    "Source turn groups 7/9 and 8/10 are exact two-pose aliases in opposite order; no additional intermediate views supplied by source",
+    "Source pilot silhouettes are only 38-105 native pixels wide and 69-108 tall, with some grips and edge-on blades too small for exact finger occlusion reconstruction"
+  ],
+  "candidate_limits": [
+    "Redraw silhouette ratios and some rib/forearm angles differ from source; the fixed registration does not make joint landmarks identical",
+    "p033 blade is more exposed than the tiny edge-on source",
+    "p042 downward blade slope is somewhat steeper than source"
+  ],
+  "mechanical_errors": [],
+  "full_creature_complete": false,
+  "human_animation_acceptance": false,
+  "engine_or_browser_run": false,
+  "original_timing_verified": false,
+  "resume_point": "Remain dedicated Skeleton worker; preserve this pilot and await parent review/later full-pass instruction before supplying other poses."
+}

@@ -1,0 +1,366 @@
+{
+  "schema": 1,
+  "creature": "Walking Dead",
+  "slug": "walking-dead",
+  "status": "static master awaiting human approval",
+  "proposal_only": true,
+  "human_approved": false,
+  "animation_status": "not begun",
+  "runtime_status": "unverified",
+  "scope": "One static native-facing master plus mechanical registration, exact mirror, review plates and provenance. No animation frames.",
+  "original_inventory": {
+    "source_id": "CZOMBI",
+    "original_def": "docs/art/references/heroes3-original-flipbooks/originals/H3sprite/CZOMBI.def",
+    "original_def_sha256": "fee70e4ce759b793b42def1dae19e77b3ca65baca71016d88184772c35800266",
+    "metadata": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/metadata.json",
+    "metadata_sha256": "8b5c7c9eaa21cbefd910b2bb91c3369f38457ddbe126b089a900e1a7576caca9",
+    "native_idle_png_sha256": "272bacac09a6e1a0e8776f7c5c655675ba0fe810fb59f9ab74141a3ae1882df8",
+    "hashes_read_and_matched_job": true,
+    "flipbook_groups": 15,
+    "timeline_frames": 86,
+    "distinct_indexed_drawings_across_all_groups": 60,
+    "native_cell": [
+      450,
+      400
+    ],
+    "native_idle": "G2 F0 / Czombi01.pcx",
+    "native_idle_alpha_bounds_threshold_64": {
+      "left": 180,
+      "top": 184,
+      "width": 37,
+      "height": 82,
+      "right": 217,
+      "bottom": 266
+    },
+    "groups": [
+      {
+        "id": 0,
+        "format_mapping": "movement",
+        "frames": 10,
+        "distinct_in_group": 10
+      },
+      {
+        "id": 1,
+        "format_mapping": "gesture / mouse-over",
+        "frames": 9,
+        "distinct_in_group": 5
+      },
+      {
+        "id": 2,
+        "format_mapping": "idle",
+        "frames": 8,
+        "distinct_in_group": 4
+      },
+      {
+        "id": 3,
+        "format_mapping": "hit reaction",
+        "frames": 7,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 4,
+        "format_mapping": "defence",
+        "frames": 8,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 5,
+        "format_mapping": "death",
+        "frames": 9,
+        "distinct_in_group": 9
+      },
+      {
+        "id": 7,
+        "format_mapping": "turn",
+        "frames": 3,
+        "distinct_in_group": 3
+      },
+      {
+        "id": 8,
+        "format_mapping": "turn",
+        "frames": 3,
+        "distinct_in_group": 3
+      },
+      {
+        "id": 9,
+        "format_mapping": "turn",
+        "frames": 3,
+        "distinct_in_group": 3
+      },
+      {
+        "id": 10,
+        "format_mapping": "turn",
+        "frames": 3,
+        "distinct_in_group": 3
+      },
+      {
+        "id": 11,
+        "format_mapping": "melee upper",
+        "frames": 7,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 12,
+        "format_mapping": "melee front",
+        "frames": 7,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 13,
+        "format_mapping": "melee lower",
+        "frames": 7,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 20,
+        "format_mapping": "movement start",
+        "frames": 1,
+        "distinct_in_group": 1
+      },
+      {
+        "id": 21,
+        "format_mapping": "movement end",
+        "frames": 1,
+        "distinct_in_group": 1
+      }
+    ],
+    "role_limit": "Role labels are source-format mappings, not a runtime or animation-timing confirmation."
+  },
+  "inspected_source_images": [
+    {
+      "file": "native-idle-6x.png",
+      "purpose": "native silhouette, facial direction, exposed flesh, trousers, cleaver, calf bone"
+    },
+    {
+      "file": "native-all-groups-contact.png",
+      "groups": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        20,
+        21
+      ],
+      "coverage": "one representative still per group; contact samples are not the full timelines"
+    },
+    {
+      "file": "native-g00-guide.png",
+      "frames": [
+        0,
+        5,
+        9
+      ]
+    },
+    {
+      "file": "native-g02-guide.png",
+      "frames": [
+        0,
+        4,
+        7
+      ]
+    },
+    {
+      "file": "native-g04-guide.png",
+      "frames": [
+        0,
+        4,
+        7
+      ]
+    },
+    {
+      "file": "native-g07-guide.png",
+      "frames": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "file": "native-g12-guide.png",
+      "frames": [
+        0,
+        3,
+        6
+      ]
+    },
+    {
+      "file": "native-g13-guide.png",
+      "frames": [
+        0,
+        3,
+        6
+      ]
+    },
+    {
+      "file": "../references/pikeman-rendering-master.png",
+      "purpose": "rendering style only"
+    }
+  ],
+  "observed_native_identity": [
+    "Bald gray-green gaunt head, dark sunken eye area and right-facing facial profile.",
+    "Exposed pale green-gray chest and shoulders, cooler lavender-gray rib/limb shading; no visible armor or shirt.",
+    "Small red/ochre damage at viewer-left side of torso and upper arm; yellowed skeletal empty hand at viewer-left hip.",
+    "Dark olive-brown torn trousers around the knees, bare bony legs and elongated bare feet.",
+    "Red wound and yellowed bone protrusion at viewer-left rear calf.",
+    "One short brown-handled broad gray cleaver carried upward in the viewer-right front hand.",
+    "Three-quarter torso, mildly forward-slouched idle, bent knees and staggered feet with rear foot lower."
+  ],
+  "artistic_judgment": {
+    "method": "Mali review of native identity first; Imagegen artwork; parent helper mechanical export only",
+    "attempt_1_issue": "Head undersized and pectoral/abdominal definition too athletic relative to native still.",
+    "targeted_edit": "Attempt 2 requested a roughly 18 percent larger head, narrower/less athletic chest, original idle and all native materials retained.",
+    "selected_result": "Attempt 2 improves the head-to-body relationship; cleaver, damaged rear calf, empty skeletal hand, bare feet and trouser silhouette remain identifiable at 202px.",
+    "materials": "Fine modeled flesh volumes and mottling, matte dark cloth, worn brown wood, small localized steel glints; no Castle costume/colors/helmet transferred.",
+    "observed_remaining_difference": "Width and anatomy are not a pixel-traced copy. Chest still has more anatomical definition and wounds are more explicit than the tiny native sprite."
+  },
+  "generation": {
+    "tool": "built-in image_gen",
+    "cli_or_api_fallback_used": false,
+    "call_count": 2,
+    "new_asset_calls": 1,
+    "targeted_edit_calls": 1,
+    "selected_raw": "generated-attempt-02.png",
+    "selected_tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-559b-7091-8a4e-08a93aea92b7/exec-a3135e26-2324-42a5-ae0d-d8fda8b67a87.png",
+    "generated_sha256": "e45a5ff33085d292e88a309176ae63739843a00614fc5d13cb8697c1f15708af",
+    "selected_raw_size": [
+      1024,
+      1536
+    ],
+    "rejected_raw_preserved": "generated-attempt-01.png",
+    "rejected_raw_sha256": "c8fb52727210e7a2a98b898728a48493a305423a7150100d0b358860be9d67c9",
+    "records": [
+      "generation-attempt-01.json",
+      "generation-attempt-02.json"
+    ],
+    "tool_output_metadata": [
+      "generation-tool-output-01.json",
+      "generation-tool-output-02.json"
+    ],
+    "exact_prompts": [
+      {
+        "attempt": 1,
+        "file": "prompt-attempt-01.txt",
+        "text": "Use case: stylized-concept.\nAsset type: a single proposed static game-creature master, full-body transparent PNG, no animation.\nPrimary request: faithfully redraw the original Heroes of Might and Magic III Necropolis WALKING DEAD (unupgraded CZOMBI) shown in the native reference images as a finely modeled, textured, restrained fantasy game sprite. Produce new artwork, not enlarged original pixels.\nInput images in order: 1 native-idle-6x.png is the PRIMARY character, costume, proportions, weapon, pose and facing authority; 2 native-g02-guide.png repeats the native idle pose; 3 native-g12-guide.png clarifies the same character and its ONE meat cleaver, but DO NOT use the attacking pose; 4 pikeman-rendering-master.png is RENDERING STYLE ONLY. Borrow its fine material shading and concentrated highlights; never its soldier, helmet, colors, clothes or spear. Ignore all guide labels and backgrounds.\nSubject and identity: a slim adult male reanimated corpse with an entirely bald pale gray-green head, dark sunken eye socket, gaunt partly skeletal face and slack jaw. Exposed pale green-gray chest/shoulders with subtle cool lavender-gray ribs and limbs, small dark red/ochre decay wounds at the viewer-left side of the ribcage and upper arm. No shirt and absolutely no armor. Worn dark olive-brown ragged trousers ending unevenly around the knees, bony exposed lower legs and elongated bare feet. Preserve the recognizable small red wound with yellowed exposed bone at the viewer-left rear calf, and the hanging yellowed skeletal fingers of the empty rear hand at the viewer-left hip. These are restrained original details, not extra gore.\nPose/camera: preserve the native idle exactly: three-quarter body with both pectoral masses visible, head looking RIGHT, slightly forward-slouched torso, bent knees, narrow staggered stance. Viewer-left rear leg bends backward and its bare foot sits slightly lower than the viewer-right front foot. Empty rear arm hangs loosely beside the hip. Viewer-right front arm is down and slightly forward, holding a short brown wooden-handled broad dull-gray meat CLEAVER angled upward in front of the body. Keep the native cleaver's compact broad single blade and modest handle, not an axe, sword, scythe, or second weapon. Calm idle, no walking or attack action.\nStyle/medium: match the Pikeman's fine modeled three-dimensional volume, smoothly controlled small tonal transitions, softly mottled material texture and tidy silhouette, suitable for a 202-pixel-tall character at game size. Small concentrated light on the cleaver edge; cool subtle flesh highlights, matte ragged cloth, worn wood. Dark eye socket stays non-glowing. Restrained low saturation. Do not make large block pixels, cartoon outlines, chibi anatomy, bulky muscles, inflated armor, glossy plastic or an excessively sharp etching.\nComposition/framing: ONE full-body isolated creature facing right, with the same narrow native silhouette aspect ratio, all hands, cleaver and feet completely visible. Generous transparent margin on every edge. Large high-resolution master on a transparent canvas for later uniform downscale and registration; do not try to include a comparison sheet or game UI. No floor, no platform, no cast shadow or ground shadow, no background, no mist or VFX, no props beyond the single native cleaver. Actual alpha transparency, not a checkerboard painted into the pixels.\nText: none. No labels, letters, watermarks or border."
+      },
+      {
+        "attempt": 2,
+        "file": "prompt-attempt-02.txt",
+        "text": "Use case: identity-preserve.\nEdit target: Image 1, the generated Walking Dead proposed master. Image 2 (native-idle-6x.png) is the original CZOMBI identity and proportion authority. Image 3 (pikeman-rendering-master.png) is rendering treatment only, never costume, face, weapon, pose or colors.\nMake one focused correction to the Walking Dead's anatomical proportions: the first pass has an undersized head and too much heroic pectoral/abdominal definition. Enlarge the bald head about 18 percent relative to the body, keeping its right-facing sunken-eyed gaunt face, so the head-to-body relationship agrees more closely with Image 2. Slightly narrow the shoulders and soften the athletic muscle definition into the original corpse's rounded pale mint-gray chest and thin ribcage. Keep the limbs lean and cool gray-lavender. Do not make a chibi, a muscular ghoul, a skeleton or an armored zombie.\nPreserve the current native idle composition and right-facing three-quarter view: gently slouched torso, bent knees, viewer-left rear calf bent back, that rear foot slightly lower, front arm down holding exactly one compact brown-handled gray meat cleaver angled upward. Preserve the skeletal empty rear hand, ragged dark olive-brown knee trousers, bare feet, small red/ochre decay patches at the viewer-left ribs and upper arm, and the red/yellow exposed-bone rear-calf detail. Preserve the blade silhouette and wood/steel materials. Keep both hands, both feet and whole cleaver fully visible.\nContinue the Pikeman reference's fine modeled-volume rendering with restrained mottled textures and concentrated small steel highlights. Keep non-glowing eyes, matte cloth, subdued colors and no heavy black cartoon outlines or block pixels. Do not increase gore.\nReturn ONE complete full-body static creature with generous transparent margins. GENUINE ALPHA TRANSPARENCY. No background, no floor, no pedestal, no cast or ground shadow, no halo or mist, no VFX, no text, no labels, no second view or frame. Everything except the targeted head/torso proportion correction and associated volume shading stays consistent."
+      }
+    ]
+  },
+  "registration": {
+    "helper": "../tools/lib.cjs registerMaster",
+    "script": "register-master.cjs",
+    "cell": [
+      1024,
+      768
+    ],
+    "anchor": [
+      512,
+      512
+    ],
+    "native_reference": [
+      196,
+      268
+    ],
+    "common_source_scale_fraction": "180/73",
+    "common_source_scale": 2.4657534246575343,
+    "target_master_alpha_bounds": {
+      "left": 473,
+      "top": 305,
+      "width": 91,
+      "height": 202
+    },
+    "selected_crop": {
+      "left": 185,
+      "top": 24,
+      "width": 721,
+      "height": 1467
+    },
+    "actual_registered_alpha_bounds_threshold_64": {
+      "left": 469,
+      "top": 305,
+      "width": 99,
+      "height": 202,
+      "right": 568,
+      "bottom": 507
+    },
+    "visible_height": 202,
+    "silhouette_center_x": 518.5,
+    "bottom": 507,
+    "native_target_center_x": 518.5,
+    "width_difference_pixels": 8,
+    "width_difference_percent": 8.791208791208792,
+    "method": "Default uniform height scale plus integer pixel rounding; native silhouette horizontal center and bottom kept.",
+    "override_used": false,
+    "nonuniform_artwork_stretch": false,
+    "reason_for_width_difference": "Generated silhouette is a little broader; retaining its aspect ratio avoids distorting anatomy and cleaver."
+  },
+  "actual_visual_review": {
+    "checked_outputs": [
+      "source-vs-master.png",
+      "master_rgba.png",
+      "master_source_1024x768.png (attempt 1 provisional view)",
+      "alpha-and-scale-review.png (selected attempt 2)"
+    ],
+    "source_comparison_viewed_after_selected_registration": true,
+    "game_size_reviewed_at_202px": true,
+    "enlarged_selected_master_reviewed": true,
+    "dark_background_reviewed": true,
+    "light_background_reviewed": true,
+    "face_direction": "right",
+    "native_idle_pose_preserved_as_proposal": true,
+    "entire_body_and_single_cleaver_visible": true,
+    "visible_floor_shadow_or_vfx": false,
+    "matte_or_checkerboard_visible_on_review_plates": false,
+    "raw_alpha": {
+      "has_alpha": true,
+      "fully_transparent_pixels": 1066828,
+      "partially_transparent_pixels": 506036,
+      "fully_opaque_pixels": 0,
+      "note": "Core is near opaque rather than exactly 255; low-alpha fringe is retained. No painted matte is visible on the inspected composites."
+    },
+    "final_source_transparent_pixels": 775984,
+    "exact_mirror_verified_by_helper": true,
+    "file_checks_limit": "Alpha, hashes, bounds and mirror checks establish export properties only, not human art acceptance or runtime readiness."
+  },
+  "outputs": {
+    "high_resolution_master": "master_rgba.png",
+    "high_resolution_master_size": [
+      721,
+      1467
+    ],
+    "high_resolution_master_sha256": "c7c876d8b59106f422408e72c6570fc7260e3b8bd5d95fb21e2407c0531f3cd5",
+    "registered_source": "master_source_1024x768.png",
+    "registered_source_sha256": "4f4bfad4fa945330e3f0974fbf0b5ca600f428cc6b56d5cc81ea05947625461c",
+    "exact_mirror": "master_mirror_1024x768.png",
+    "mirror_sha256": "ed134a627d19c4bec1e3f06041bd78716ef1dc48b6e7d25e6fd94fb4beec9ddb",
+    "review_plates": [
+      "source-vs-master.png",
+      "alpha-and-scale-review.png"
+    ],
+    "manifest": "master-manifest.json",
+    "report": "report.md"
+  },
+  "remaining_risks": [
+    "Human approval is required; this is proposed artwork and the human may reject the style, anatomy or detail.",
+    "The generated silhouette is 99px wide versus the 91px native target at the same 202px height; no width distortion was applied.",
+    "Larger head correction is improved but still an interpretation; torso musculature, mouth, skeletal finger detail and trouser tearing need human judgment.",
+    "Wounds and mottled decay are more explicit and high contrast than the 82px native original.",
+    "Low-alpha fringe/core near-opacity was inspected on flat light/dark plates only; arbitrary scene backgrounds remain unverified.",
+    "No Zombie upgrade comparison was inspected; only native CZOMBI identity is claimed and no upgrade adornments were added.",
+    "Not every original frame was inspected at detail, and no motion timing or animation continuity was reviewed.",
+    "No animation, import, Godot, build, automated test or runtime work was performed."
+  ],
+  "next_gate": "Human static-master approval before any animation generation."
+}

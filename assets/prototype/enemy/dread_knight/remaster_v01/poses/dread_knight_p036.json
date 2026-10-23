@@ -1,0 +1,100 @@
+{
+  "pose_id": "dread_knight_p036",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "3eb253f31f59112fc21959f23bdf671a0a57273237335c38f0fac8d289fb6765:174:173:92:94:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBLORD/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBLORD/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cblord01.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 3197,
+      "stored_size": 5583,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 92,
+      "height": 94,
+      "left": 174,
+      "top": 173,
+      "legacy_header": false,
+      "index_sha256": "3eb253f31f59112fc21959f23bdf671a0a57273237335c38f0fac8d289fb6765"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/dread_knight/remaster_v01/_source/raw/batch-004-v01.png",
+  "raw_sha256": "d6e0b16d256ce5144cc636be342b3d9ae415fa18875238279e1d9a7da2c7bf95",
+  "prompt": "assets/prototype/enemy/dread_knight/remaster_v01/_source/raw/batch-004-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/dread_knight/remaster_v01/_source/isolated/batch-004-v01-dread_knight_p036.png",
+  "isolated_sha256": "759bdb66349836c9806a17d6277143f195578311dc5e8c6209964aae674ad4cb",
+  "source_grid_region": [
+    21,
+    538,
+    401,
+    441
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/dread_knight/remaster_v01/poses/dread_knight_p036.png",
+  "registered_pose_sha256": "b5111f8142bb1387637a0f6d763d5eeba5c5151db0d6b5793de3132fbc533c1f",
+  "mirror_file": "assets/prototype/enemy/dread_knight/remaster_v01/poses/dread_knight_p036_mirror.png",
+  "mirror_sha256": "dec837b0064fadc65e1203c6edad88a49e907946c53bc9a6a9c0a0f825fde37b",
+  "registration": {
+    "source_body_rect": [
+      174,
+      173,
+      90,
+      94
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      403,
+      443
+    ],
+    "registered_rect": [
+      463,
+      278,
+      211,
+      232
+    ],
+    "uniform_artwork_fit": 0.5260770975056689
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Melee start shared by three attacks: bowed horse neck and saber low diagonally forward; shared pose file preserved. Static native/enlarged source and exact-mirror review; no continuous playback, engine or human acceptance.",
+    "source_sha256_at_review": "b5111f8142bb1387637a0f6d763d5eeba5c5151db0d6b5793de3132fbc533c1f",
+    "mirror_sha256_at_review": "dec837b0064fadc65e1203c6edad88a49e907946c53bc9a6a9c0a0f825fde37b"
+  },
+  "human_animation_acceptance": false
+}

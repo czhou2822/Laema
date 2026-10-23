@@ -1,0 +1,234 @@
+{
+  "selected_attempt": "06",
+  "built_in_only": true,
+  "attempts": [
+    {
+      "attempt": "01",
+      "selected": false,
+      "tool": "image_gen.imagegen",
+      "tool_path": "functions.exec -> tools.image_gen__imagegen",
+      "mode": "built-in; generation with native identity and Pikeman rendering references",
+      "raw": {
+        "path": "raw-master-01.png",
+        "sha256": "708d718ea5ad6d11e31a1fb779f2d7fdaef29e77c8c303e37f84368413d412b4"
+      },
+      "original_generated_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-55cc-7f11-9800-dffd6504c132/exec-a7c0ec18-4f62-436c-8dd4-93a09cfddc46.png",
+      "byte_identical_to_original": true,
+      "request": {
+        "path": "request-master-01.json",
+        "sha256": "410818fe9f4796e6006430f3492a5f32ba29b779d3c733a6e538739e35788d0d"
+      },
+      "prompt": {
+        "path": "prompt-master-01.txt",
+        "sha256": "16c30ad0d6c3d40329ae592b7497b94772a01726c002d5a073d69fc9da2e56a8"
+      },
+      "provenance": {
+        "path": "provenance-master-01.json",
+        "sha256": "42c774bcef9f9be6290e9ce0ccebac5916a572476c608c6a9d1313b0e6328092"
+      },
+      "input_references": [
+        {
+          "path": "native-idle-6x.png",
+          "sha256": "5d3f3b27098076c06442f90b6f6df9958084af6bbb8128ea23fc54c759ed0585"
+        },
+        {
+          "path": "../references/pikeman-rendering-master.png",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "status": "not selected; armor too silver, ornate hilt and high rein hand compared with native source"
+    },
+    {
+      "attempt": "02",
+      "selected": false,
+      "tool": "image_gen.imagegen",
+      "tool_path": "functions.exec -> tools.image_gen__imagegen",
+      "mode": "built-in; targeted edit of attempt 01 using native identity and Pikeman references",
+      "raw": {
+        "path": "raw-master-02.png",
+        "sha256": "2aeb328e3dbd9caf2448de0f160c1b6cf42767324b5030266da442f304d94278"
+      },
+      "original_generated_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-55cc-7f11-9800-dffd6504c132/exec-6b033680-eeff-463a-bcc3-dcd31536f4c5.png",
+      "byte_identical_to_original": true,
+      "request": {
+        "path": "request-master-02.json",
+        "sha256": "bb06c9e8da035311f5e815897597cd0de4913142a3d2459be86bd0228b098470"
+      },
+      "prompt": {
+        "path": "prompt-master-02.txt",
+        "sha256": "72d5e1fc0d84ce0dc851326c972aff09ef4e2209607862bfbe4c37be2a1fed88"
+      },
+      "provenance": {
+        "path": "provenance-master-02.json",
+        "sha256": "5aae91eb50e0e91e2c688641129f477ad2373b3a47f84e5ceebcc8bab273cb60"
+      },
+      "input_references": [
+        {
+          "path": "raw-master-01.png",
+          "sha256": "708d718ea5ad6d11e31a1fb779f2d7fdaef29e77c8c303e37f84368413d412b4"
+        },
+        {
+          "path": "native-idle-6x.png",
+          "sha256": "5d3f3b27098076c06442f90b6f6df9958084af6bbb8128ea23fc54c759ed0585"
+        },
+        {
+          "path": "../references/pikeman-rendering-master.png",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "status": "not selected; rein hand partly lowered, material, mane and hilt corrections largely unfulfilled"
+    },
+    {
+      "attempt": "03",
+      "selected": false,
+      "tool": "image_gen.imagegen",
+      "tool_path": "functions.exec -> tools.image_gen__imagegen",
+      "mode": "built-in; source-fidelity redraw with clear native matte and Pikeman rendering reference",
+      "raw": {
+        "path": "raw-master-03.png",
+        "sha256": "ab7b5a1cffe8603820b49bedb45a6849eb17ab1b2777975e401ac446d2bed381"
+      },
+      "original_generated_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-55cc-7f11-9800-dffd6504c132/exec-db4688d5-314c-45f0-8e73-fee59644d83b.png",
+      "byte_identical_to_original": true,
+      "request": {
+        "path": "request-master-03.json",
+        "sha256": "d23abf2a3eea2507cb642aa09b3c27ac98b2f8bfb13861e4bd4856a24ce0444b"
+      },
+      "prompt": {
+        "path": "prompt-master-03.txt",
+        "sha256": "9a47a2da94fef48427dd71ab9779d613f0a582d9087e502109a8831b55e9b1af"
+      },
+      "provenance": {
+        "path": "provenance-master-03.json",
+        "sha256": "f9d95381d7332a604d578962f39e59316f014c22ff6ec7f87f081df78337d3b1"
+      },
+      "input_references": [
+        {
+          "path": "native-idle-6x.png",
+          "sha256": "5d3f3b27098076c06442f90b6f6df9958084af6bbb8128ea23fc54c759ed0585"
+        },
+        {
+          "path": "native-idle-matte-review.png",
+          "sha256": "e06328b998054815e34d8415c59aeb2847befac733a3220ab172be8ac68e5203"
+        },
+        {
+          "path": "../references/pikeman-rendering-master.png",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "status": "not selected; source-fidelity recovery improved material and hilt, but invented blade kink required correction"
+    },
+    {
+      "attempt": "04",
+      "selected": false,
+      "tool": "image_gen.imagegen",
+      "tool_path": "functions.exec -> tools.image_gen__imagegen",
+      "mode": "built-in; targeted correction of the discontinuous sword blade in attempt 03",
+      "raw": {
+        "path": "raw-master-04.png",
+        "sha256": "7fbd264ac2b27a56d58c76790b5102608f8ce403600ae5e7328326e3bac5703a"
+      },
+      "original_generated_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-55cc-7f11-9800-dffd6504c132/exec-f3e7095b-6940-4a0d-bce5-d29442eba201.png",
+      "byte_identical_to_original": true,
+      "request": {
+        "path": "request-master-04.json",
+        "sha256": "2abfcc99a9cfc1a78a594423eb037e41ccaddccb82fa4d37a40d00d225a8b492"
+      },
+      "prompt": {
+        "path": "prompt-master-04.txt",
+        "sha256": "4c97dacdc5ed0191a894e485bed606f6a008862975c37a78dad22424d7213a24"
+      },
+      "provenance": {
+        "path": "provenance-master-04.json",
+        "sha256": "40b8be89b594a039c41875a7bfaefcdbe0d9b281bb351676347c1f253969a1b8"
+      },
+      "input_references": [
+        {
+          "path": "raw-master-03.png",
+          "sha256": "ab7b5a1cffe8603820b49bedb45a6849eb17ab1b2777975e401ac446d2bed381"
+        },
+        {
+          "path": "native-idle-6x.png",
+          "sha256": "5d3f3b27098076c06442f90b6f6df9958084af6bbb8128ea23fc54c759ed0585"
+        }
+      ],
+      "status": "not selected; blade kink fixed, but silver hoof-cap material required correction"
+    },
+    {
+      "attempt": "05",
+      "selected": false,
+      "tool": "image_gen.imagegen",
+      "tool_path": "functions.exec -> tools.image_gen__imagegen",
+      "mode": "built-in; targeted natural-hoof material correction of attempt 04",
+      "raw": {
+        "path": "raw-master-05.png",
+        "sha256": "50f3dc3c67e2958f886608f99b3c813e8fde6b682b1d603ba49819be4f3ae0a8"
+      },
+      "original_generated_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-55cc-7f11-9800-dffd6504c132/exec-8dd75b0f-58c6-4691-8142-081f0dfa59f3.png",
+      "byte_identical_to_original": true,
+      "request": {
+        "path": "request-master-05.json",
+        "sha256": "9479f45d8d930da8ef6be8c78c060e84be98079c0a011889edf283d8a81dc3fa"
+      },
+      "prompt": {
+        "path": "prompt-master-05.txt",
+        "sha256": "d26ddd376cb9db85b7ca83f8b981f8088fe93f58a1111c35a8c9dcf7b7eda39f"
+      },
+      "provenance": {
+        "path": "provenance-master-05.json",
+        "sha256": "1d70b0985ab7bd6f68a1681f35c88ac6cae07cc02139b840b727da210e05181c"
+      },
+      "input_references": [
+        {
+          "path": "raw-master-04.png",
+          "sha256": "7fbd264ac2b27a56d58c76790b5102608f8ce403600ae5e7328326e3bac5703a"
+        },
+        {
+          "path": "native-idle-6x.png",
+          "sha256": "5d3f3b27098076c06442f90b6f6df9958084af6bbb8128ea23fc54c759ed0585"
+        }
+      ],
+      "status": "not selected; hoof material improved, but raw muzzle touched right image boundary and needed repair"
+    },
+    {
+      "attempt": "06",
+      "selected": true,
+      "tool": "image_gen.imagegen",
+      "tool_path": "functions.exec -> tools.image_gen__imagegen",
+      "mode": "built-in; targeted muzzle-edge repair and transparent reframing of attempt 05",
+      "raw": {
+        "path": "raw-master-06.png",
+        "sha256": "fe3b59cdb48b9bd1216a13751fe3bddc8692a2b06c16bd090e4ba824a313e985"
+      },
+      "original_generated_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-55cc-7f11-9800-dffd6504c132/exec-daaf6c71-4c4f-4d3b-bbf7-04d4e0237b81.png",
+      "byte_identical_to_original": true,
+      "request": {
+        "path": "request-master-06.json",
+        "sha256": "57a839e51af6662ae14afd2671c80ea139e472d6a322a754a2ffe66c4f28e489"
+      },
+      "prompt": {
+        "path": "prompt-master-06.txt",
+        "sha256": "ebf47dd599875cbd3618b2d699b3c78d5a6b47dc5d4a7013f5c069ca44e57a04"
+      },
+      "provenance": {
+        "path": "provenance-master-06.json",
+        "sha256": "30625340a5dc2135daf7a97110ff80b019cfbee44cf557c58cd96f8ad07e3b45"
+      },
+      "input_references": [
+        {
+          "path": "edit-margin-reference-05.png",
+          "sha256": "dc4fe34eac37d9bc6c00948f7b816f16faed5831301be3678ee4e5ad4a28a282"
+        },
+        {
+          "path": "raw-master-04.png",
+          "sha256": "7fbd264ac2b27a56d58c76790b5102608f8ce403600ae5e7328326e3bac5703a"
+        },
+        {
+          "path": "native-idle-6x.png",
+          "sha256": "5d3f3b27098076c06442f90b6f6df9958084af6bbb8128ea23fc54c759ed0585"
+        }
+      ],
+      "status": "selected static proposal; awaiting human approval before animation"
+    }
+  ]
+}

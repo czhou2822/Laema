@@ -1,0 +1,100 @@
+{
+  "pose_id": "lich_p001",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "7f12f2f4d8561927cdfdd2fde90e0812f1b02a34086ce0cd6c1ce322c6dccf06:176:167:42:100:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "clich57.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 198557,
+      "stored_size": 3374,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 42,
+      "height": 100,
+      "left": 176,
+      "top": 167,
+      "legacy_header": false,
+      "index_sha256": "7f12f2f4d8561927cdfdd2fde90e0812f1b02a34086ce0cd6c1ce322c6dccf06"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/lich/remaster_v01/_source/raw/page-000-a01-components.png",
+  "raw_sha256": "9cffc18d5b88758db55c4383c68805b9ce164089135f3c64c314a10c4124612d",
+  "prompt": "assets/prototype/enemy/lich/remaster_v01/_source/raw/page-000-a01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/lich/remaster_v01/_source/isolated/page-000-a01-components-lich_p001.png",
+  "isolated_sha256": "6a070fd88ed47630d709a87bd2446cce0963534c591fac899e494069457c818d",
+  "source_grid_region": [
+    563,
+    9,
+    206,
+    436
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p001.png",
+  "registered_pose_sha256": "e0552e3f87472476d32d0d34aa4d34c0648035d65de3d6002f6ba180fca9daf4",
+  "mirror_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p001_mirror.png",
+  "mirror_sha256": "67a8258aa88d7f8c0ae5ae9530d3a3402d7582b6c11d49e5d973d9b2032d8a2c",
+  "registration": {
+    "source_body_rect": [
+      176,
+      167,
+      42,
+      100
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      208,
+      438
+    ],
+    "registered_rect": [
+      462,
+      290,
+      104,
+      220
+    ],
+    "uniform_artwork_fit": 0.5048543689320388
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Compared every pose to the OG guide enlarged and target-pixel source/candidate pairs. Eight distinct stepping phases retain alternating bent knees and boot lift, free-hand swing, upright forward staff and plain base-Lich equipment. No clipped staff/feet or extra limbs seen. Raw page isolation uses strict components after a clear-gutter boundary rejection; no artwork pixels were warped or painted. Worker static candidate review only.",
+    "source_sha256_at_review": "e0552e3f87472476d32d0d34aa4d34c0648035d65de3d6002f6ba180fca9daf4",
+    "mirror_sha256_at_review": "67a8258aa88d7f8c0ae5ae9530d3a3402d7582b6c11d49e5d973d9b2032d8a2c"
+  },
+  "human_animation_acceptance": false
+}

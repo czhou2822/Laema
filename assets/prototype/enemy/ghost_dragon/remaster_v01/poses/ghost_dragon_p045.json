@@ -1,0 +1,100 @@
+{
+  "pose_id": "ghost_dragon_p045",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "4c6068a2a5fe8a926f13e50adb61f2e8cbd7b94882a5d598b068ec553ce74be5:121:110:162:158:450:400",
+  "original_representative": {
+    "group_id": 12,
+    "original_block": 11,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_12_block_11_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_12_block_11_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "chdrgn03.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 22295,
+      "stored_size": 11161,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 162,
+      "height": 158,
+      "left": 121,
+      "top": 110,
+      "legacy_header": false,
+      "index_sha256": "4c6068a2a5fe8a926f13e50adb61f2e8cbd7b94882a5d598b068ec553ce74be5"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-melee-tail-reach-v02-bottom.png",
+  "raw_sha256": "f53c70347531ab1ea81501bd6ec9a83c6dcff5259dbc28a6ab0aef2795131166",
+  "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-melee-tail-reach-v02-bottom.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/isolated/repair-melee-tail-reach-v02-bottom-ghost_dragon_p045.png",
+  "isolated_sha256": "c34287453342f0e09dfbc24e9f7ed0b47442e8a0825dc8ce2c1862493ca5b916",
+  "source_grid_region": [
+    22,
+    16,
+    402,
+    408
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p045.png",
+  "registered_pose_sha256": "840aadaea5a86134ca0d6a26ebc170e32527becf9fec6e22924c810cfc3d4713",
+  "mirror_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p045_mirror.png",
+  "mirror_sha256": "0ad7e79fc08b3124b3aeb5887b36b450c65f234752e8ee4a9fbef8b9cd725b34",
+  "registration": {
+    "source_body_rect": [
+      140,
+      110,
+      143,
+      157
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      404,
+      410
+    ],
+    "registered_rect": [
+      374,
+      152,
+      353,
+      358
+    ],
+    "uniform_artwork_fit": 0.8781094527363185
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Front windup peak with up-right open jaws, high wing and wide feet; low diagonal tail repaired. Inspected OG guide, native-scale and registered comparisons, raw selected art and both-facing sequence frames. Candidate review only.",
+    "source_sha256_at_review": "840aadaea5a86134ca0d6a26ebc170e32527becf9fec6e22924c810cfc3d4713",
+    "mirror_sha256_at_review": "0ad7e79fc08b3124b3aeb5887b36b450c65f234752e8ee4a9fbef8b9cd725b34"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "wight_p048",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "02e08318a6a994041ff064ab1cae7f8889e5230bb60c25c4572bbfa2ac1266e5:174:180:50:82:450:400",
+  "original_representative": {
+    "group_id": 12,
+    "original_block": 11,
+    "frame_index": 6,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_12_block_11_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_12_block_11_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 6,
+      "name": "cwight07.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 400,
+      "offset": 18313,
+      "stored_size": 2290,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 50,
+      "height": 82,
+      "left": 174,
+      "top": 180,
+      "legacy_header": false,
+      "index_sha256": "02e08318a6a994041ff064ab1cae7f8889e5230bb60c25c4572bbfa2ac1266e5"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wight/remaster_v01/_source/raw/repair-clipping-hands-attempt-01-components.png",
+  "raw_sha256": "59b9d9ad2d5e67571415434edc20e31a51acbf601478e7f2db277c8c0d29d224",
+  "prompt": "assets/prototype/enemy/wight/remaster_v01/_source/raw/repair-clipping-hands-attempt-01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wight/remaster_v01/_source/isolated/repair-clipping-hands-attempt-01-components-wight_p048.png",
+  "isolated_sha256": "680a6008befd10db59b2112d2e96030ffa99ed8f46ea9d34d0e949a713fa1385",
+  "source_grid_region": [
+    784,
+    88,
+    294,
+    393
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p048.png",
+  "registered_pose_sha256": "0abc47681c2e701ab780a09b6247aae2fba5dad2b78c082978b485d424faefec",
+  "mirror_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p048_mirror.png",
+  "mirror_sha256": "d1917495a50f32ade42080c96341df0f27a7483f69fe3da6bd1cca23db0a5c77",
+  "registration": {
+    "source_body_rect": [
+      174,
+      180,
+      50,
+      65
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      296,
+      395
+    ],
+    "registered_rect": [
+      459,
+      295,
+      120,
+      160
+    ],
+    "uniform_artwork_fit": 0.4071246819338422
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Front attack F6: repaired two hands, hanging near forearm across lower abdomen and far hand right. Inspected registered-scale OG/candidate and both facings; 2x source comparison. Worker candidate review only.",
+    "source_sha256_at_review": "0abc47681c2e701ab780a09b6247aae2fba5dad2b78c082978b485d424faefec",
+    "mirror_sha256_at_review": "d1917495a50f32ade42080c96341df0f27a7483f69fe3da6bd1cca23db0a5c77"
+  },
+  "human_animation_acceptance": false
+}

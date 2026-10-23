@@ -1,0 +1,61 @@
+{
+  "creature_id": "vampire",
+  "phase": "initial_source_preparation_only",
+  "status": "awaiting_explicit_parent_pilot_clearance",
+  "appearance_reference": {
+    "path": "docs/art/production/necropolis-creature-assets-v01/vampire/master_rgba.png",
+    "sha256": "d069d66f2eb95de77cbaf5e2b518ffa45571cab49384c8f4227a3e3ff82742bd",
+    "size": [660, 1481],
+    "inspected_high_resolution": true,
+    "compared_to_og_idle_pose": "vampire_p004",
+    "reuse_ingested": false,
+    "observation": "Bald pale pointed-eared red-eyed hunched humanoid, long reddish nails, ragged brown-charcoal mantle and tunic, torn brown trousers, dark shoes; no weapon."
+  },
+  "prepared_guides": {
+    "root": "assets/prototype/enemy/vampire/remaster_v01/_source/guides/",
+    "inspected_files": ["batch-000.png", "batch-001.png", "batch-002.png", "batch-003.png", "batch-004.png", "batch-005.png", "batch-006.png"],
+    "distinct_source_poses_visually_inspected": 56,
+    "sampling": "Every distinct pose, row-major in enlarged opaque-reference guides; no motion playback."
+  },
+  "native_guides": {
+    "root": "docs/art/production/necropolis-creature-assets-v01/vampire/",
+    "inspected_group_ids": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 20, 21],
+    "filename_pattern": "native-gNN-guide.png",
+    "sampling": "Three labeled samples per group: first, middle, last; 45 panels including repeated source poses.",
+    "additional_inspected_files": ["native-all-groups-contact.png", "native-idle.png", "native-scale-guide.png"]
+  },
+  "observations": [
+    {"groups": [0], "pose_ids": ["vampire_p000", "vampire_p001", "vampire_p002", "vampire_p003"], "observation": "Brown bat with changing wing spread, rightward flight, no humanoid torso; original shadows are separate from opaque body bounds."},
+    {"groups": [1, 2], "observation": "Subtle torso/hand shifts with intentionally repeated drawings; only p004 is the exact idle reference."},
+    {"groups": [3, 4], "observation": "Recoil reaches high and then folds down; defence raises hands at chest/face with asymmetric fingers. No equipment grip to invent."},
+    {"groups": [5], "pose_ids": ["vampire_p022", "vampire_p023", "vampire_p024", "vampire_p025", "vampire_p026", "vampire_p027", "vampire_p028"], "observation": "Raised arms progressively fragment and dissolve, ending with a low dark remnant. Detached pale particles belong to source poses."},
+    {"groups": [7, 8, 9, 10], "observation": "Three-quarter/frontal turn and reverse; G7/G9 and G8/G10 are exact source-sequence aliases."},
+    {"groups": [11, 12, 13], "observation": "Unarmed upper, forward and low reaches/slashes; lower sequence bends deeply, changing head and hand height. Preserve finger count, elbow relationships, mantle continuity and feet."},
+    {"groups": [20, 21], "pose_ids": ["vampire_p049", "vampire_p050", "vampire_p051", "vampire_p052", "vampire_p053", "vampire_p054", "vampire_p055"], "observation": "Humanoid/bat transformation through embedded white-grey smoke, with substantial intentional body occlusion."}
+  ],
+  "source_check_summary": {
+    "groups": 15,
+    "timeline_positions": 90,
+    "registered_poses": 56,
+    "pending_poses": 56,
+    "new_artwork_calls": 0,
+    "artwork_reused": 0,
+    "artwork_ingested": 0,
+    "final_exports": 0,
+    "exact_alias_pairs": [[7, 9], [8, 10]],
+    "absent_source_slots": [6, 14, 15, 16, 17, 18, 19],
+    "hash_and_mapping_evidence": "source-preparation-audit.json"
+  },
+  "risks": [
+    "Standing master supplies appearance but cannot supply bat, frontal turn, dissolution or crouch poses.",
+    "Generated smoke and disconnected death fragments may confuse mechanical component isolation; inspect and repair ambiguity without dropping intended source islands.",
+    "Near-idles and repeated holds must retain exact source occurrence mapping.",
+    "Guide crops are enlarged per pose; final source-coordinate registration must use the existing fixed shared scale and native body rectangles."
+  ],
+  "validation_limits": [
+    "Source preparation and static visual observations only; no generated animation quality review or human acceptance.",
+    "All distinct source poses inspected enlarged; native and projected idle scale viewed. Every action has not been reviewed at game size.",
+    "No GIF playback, original timing verification, mirror review, final export, browser, engine or runtime validation.",
+    "No idle reuse, new artwork, gameplay edits, dependency installation, Git operation or peer message."
+  ]
+}

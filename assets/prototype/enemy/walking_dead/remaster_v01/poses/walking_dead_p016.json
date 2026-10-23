@@ -1,0 +1,100 @@
+{
+  "pose_id": "walking_dead_p016",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "35c54077b41055147cf05b25e68a756291c53b5658cbe8283da434d3546a6de8:179:183:39:84:450:400",
+  "original_representative": {
+    "group_id": 2,
+    "original_block": 2,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_02_block_02_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_02_block_02_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "Czombi03.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 8929,
+      "stored_size": 3190,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 39,
+      "height": 84,
+      "left": 179,
+      "top": 183,
+      "legacy_header": false,
+      "index_sha256": "35c54077b41055147cf05b25e68a756291c53b5658cbe8283da434d3546a6de8"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/repair-idle-015-017-v02.png",
+  "raw_sha256": "7f8372155286bb52adf0d91f5532b29dff8a337b1390cb4b5f800239c75faeb9",
+  "prompt": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/repair-idle-015-017-v02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/isolated/repair-idle-015-017-v02-walking_dead_p016.png",
+  "isolated_sha256": "6857764644015eae77c55fbe087345c46ab4434e14e4a3f48e40d4a48aad6769",
+  "source_grid_region": [
+    724,
+    0,
+    724,
+    724
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p016.png",
+  "registered_pose_sha256": "d53bdfd6d7931ae4d9823b67d8e6bf615d2c502d0118e8222675225764c30fbb",
+  "mirror_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p016_mirror.png",
+  "mirror_sha256": "736801c29381fc1d0347622480b96b4603b713851d5bb5bab4449de34edb059f",
+  "registration": {
+    "source_body_rect": [
+      180,
+      184,
+      37,
+      82
+    ],
+    "artwork_crop": [
+      211,
+      59,
+      504,
+      690
+    ],
+    "registered_rect": [
+      473,
+      311,
+      91,
+      196
+    ],
+    "uniform_artwork_fit": 0.310580204778157
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Repaired subtle idle F2: same restrained silhouette and foot positions with small original idle variation; separately generated drawing. Static OG/candidate and both-facing frame inspection only; candidate, not human animation acceptance.",
+    "source_sha256_at_review": "d53bdfd6d7931ae4d9823b67d8e6bf615d2c502d0118e8222675225764c30fbb",
+    "mirror_sha256_at_review": "736801c29381fc1d0347622480b96b4603b713851d5bb5bab4449de34edb059f"
+  },
+  "human_animation_acceptance": false
+}

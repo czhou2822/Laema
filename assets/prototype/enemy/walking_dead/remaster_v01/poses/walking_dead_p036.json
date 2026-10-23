@@ -1,0 +1,100 @@
+{
+  "pose_id": "walking_dead_p036",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "f326abe322d56a3d32319a141882616519c9e09496fe92116be6276406b0a003:176:220:41:37:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 7,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 7,
+      "name": "Czombi59.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 400,
+      "offset": 162286,
+      "stored_size": 1381,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 41,
+      "height": 37,
+      "left": 176,
+      "top": 220,
+      "legacy_header": false,
+      "index_sha256": "f326abe322d56a3d32319a141882616519c9e09496fe92116be6276406b0a003"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/production-004-v01.png",
+  "raw_sha256": "e6167c1449ad04295f3e24ad2f541ccecbc7ec929a6a0a4ec40eb750aeb07daf",
+  "prompt": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/production-004-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/isolated/production-004-v01-walking_dead_p036.png",
+  "isolated_sha256": "fdf88272c2339a9fffbb89ffb406fe3008a528088326788eb20f33ef6ff6487c",
+  "source_grid_region": [
+    0,
+    444,
+    444,
+    443
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p036.png",
+  "registered_pose_sha256": "967c54a3279cb213054b4d79bdbe58ab03d9e31a6eb2d2dfea0eea3981a145a6",
+  "mirror_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p036_mirror.png",
+  "mirror_sha256": "77debbbcb278dd3a49a555b3cfa723e2fe22dfd4dfda540bee1c45b6f6957b05",
+  "registration": {
+    "source_body_rect": [
+      176,
+      220,
+      41,
+      37
+    ],
+    "artwork_crop": [
+      33,
+      48,
+      411,
+      395
+    ],
+    "registered_rect": [
+      464,
+      394,
+      99,
+      91
+    ],
+    "uniform_artwork_fit": 0.2622478386167147
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Death rebound/bounce drawing raises arms and curled knees from low corpse shape; distinct from neighbouring resting frames. Static OG/candidate and both-facing frame inspection only; candidate, not human animation acceptance.",
+    "source_sha256_at_review": "967c54a3279cb213054b4d79bdbe58ab03d9e31a6eb2d2dfea0eea3981a145a6",
+    "mirror_sha256_at_review": "77debbbcb278dd3a49a555b3cfa723e2fe22dfd4dfda540bee1c45b6f6957b05"
+  },
+  "human_animation_acceptance": false
+}

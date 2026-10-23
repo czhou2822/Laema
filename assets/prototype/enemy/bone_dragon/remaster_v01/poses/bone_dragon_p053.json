@@ -1,0 +1,100 @@
+{
+  "pose_id": "bone_dragon_p053",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "c2486ec04512872507ef2f0e00ba6d6d2c52a4042b3e4d5c0d59762a6696e335:137:131:148:144:450:400",
+  "original_representative": {
+    "group_id": 13,
+    "original_block": 12,
+    "frame_index": 4,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_13_block_12_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_13_block_12_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 4,
+      "name": "cndrgn17.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 400,
+      "offset": 166611,
+      "stored_size": 10001,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 148,
+      "height": 144,
+      "left": 137,
+      "top": 131,
+      "legacy_header": false,
+      "index_sha256": "c2486ec04512872507ef2f0e00ba6d6d2c52a4042b3e4d5c0d59762a6696e335"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-repair-source-geometry-a05.png",
+  "raw_sha256": "b29dbd70ebb823662c7bbbd367f3a7c5813a1fed562ecf5332d7e62edf2e1e3e",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-repair-source-geometry-a05.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/full-repair-source-geometry-a05-bone_dragon_p053.png",
+  "isolated_sha256": "6cfa9bacfd2a8ed6a8d8461f09b960fe18319e8e6fa76cfb0722e8449f147871",
+  "source_grid_region": [
+    1635,
+    28,
+    528,
+    651
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p053.png",
+  "registered_pose_sha256": "df2338d1dec43f3779515fec74e45a73d7eab2f70dd5da687e17cf8e17a686b0",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p053_mirror.png",
+  "mirror_sha256": "0f0d78eeb1dd7ee6fa85ffc6bf568c370ab48e1aa3178e34d579875b4f4ccf73",
+  "registration": {
+    "source_body_rect": [
+      149,
+      131,
+      136,
+      144
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      530,
+      653
+    ],
+    "registered_rect": [
+      420,
+      174,
+      288,
+      355
+    ],
+    "uniform_artwork_fit": 0.5453149001536098
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Lower melee: rising setup into descending low skull arc and recovery retained. Tall p051/p052/p053 source wing posture restored by individual/source-guided redraws; visible forearm occlusion follows original rather than imposed idle anatomy. Final fixed-scale original/candidate pose comparisons, all source-ordered group contacts and offline decoded source/mirror GIF frames viewed. No known blocking anatomy, direction, order or clipping defect observed. Worker asset review only; no browser/Godot/human playback or original timing acceptance.",
+    "source_sha256_at_review": "df2338d1dec43f3779515fec74e45a73d7eab2f70dd5da687e17cf8e17a686b0",
+    "mirror_sha256_at_review": "0f0d78eeb1dd7ee6fa85ffc6bf568c370ab48e1aa3178e34d579875b4f4ccf73"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p028",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "f7e00d93d2ced23261d06db5fa217be2e0e5320d8eb493729cb87998e5a28a61:181:160:61:102:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cskele20.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 52936,
+      "stored_size": 2474,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 61,
+      "height": 102,
+      "left": 181,
+      "top": 160,
+      "legacy_header": false,
+      "index_sha256": "f7e00d93d2ced23261d06db5fa217be2e0e5320d8eb493729cb87998e5a28a61"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-batch-003-a01-components-c01.png",
+  "raw_sha256": "54ab31bb62aa73f58d0de7d6f3b7a736ae05aa3b7652686e7e2711eb3848f3d6",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-batch-003-a01-components-c01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/full-batch-003-a01-components-c01-skeleton_p028.png",
+  "isolated_sha256": "6b73e0453898caa341917658d93c4ac4abb13b04e612f05405f271834a603c91",
+  "source_grid_region": [
+    126,
+    443,
+    299,
+    418
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p028.png",
+  "registered_pose_sha256": "64447e7fc155dc9bc82d34e5fa2792dba25cfe182f6ca804970320f40368ea50",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p028_mirror.png",
+  "mirror_sha256": "c0412ec3b118963f2ba4d6c51c7265dd198e8eb9a1aa1f5544cbf1fe530a0e44",
+  "registration": {
+    "source_body_rect": [
+      181,
+      160,
+      60,
+      102
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      301,
+      420
+    ],
+    "registered_rect": [
+      475,
+      290,
+      148,
+      207
+    ],
+    "uniform_artwork_fit": 0.49498327759197325
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected original and candidate at registered size and enlarged, plus both facings and source-order sequence. Descending death pose reaches both arms upward, sword still held and legs folding under torso. Worker candidate review only; human motion acceptance and original timing unverified.",
+    "source_sha256_at_review": "64447e7fc155dc9bc82d34e5fa2792dba25cfe182f6ca804970320f40368ea50",
+    "mirror_sha256_at_review": "c0412ec3b118963f2ba4d6c51c7265dd198e8eb9a1aa1f5544cbf1fe530a0e44"
+  },
+  "human_animation_acceptance": false
+}

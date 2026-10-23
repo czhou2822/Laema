@@ -1,0 +1,34 @@
+{
+  "creature_id": "walking_dead",
+  "sequence": [
+    "record 60 actual per-pose observations through parent mark_review",
+    "build walking_dead",
+    "validate walking_dead: passed with 60 reviewed poses, 15 groups, 86 cells, zero errors",
+    "spriteframes walking_dead",
+    "validate walking_dead: passed"
+  ],
+  "spriteframes": {
+    "resources": [
+      "assets/prototype/enemy/walking_dead/remaster_v01/original_groups.tres",
+      "assets/prototype/enemy/walking_dead/remaster_v01/original_groups_mirrored.tres"
+    ],
+    "groups_per_resource": 15,
+    "positions_per_resource": 86
+  },
+  "final_validation": {
+    "creature_id": "walking_dead",
+    "coverage": {
+      "complete_groups": 15,
+      "total_groups": 15,
+      "available_poses": 60,
+      "total_poses": 60,
+      "missing_pose_ids": [],
+      "frame_positions": 86,
+      "reviewed_poses": 60
+    },
+    "frame_cells_verified": 86,
+    "errors": [],
+    "complete": true
+  },
+  "engine_run_performed": false
+}

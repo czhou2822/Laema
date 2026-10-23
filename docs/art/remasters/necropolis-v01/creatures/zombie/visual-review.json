@@ -1,0 +1,1827 @@
+{
+  "schema_version": 2,
+  "creature_id": "zombie",
+  "stage": "full_creature_production",
+  "status": "COMPLETE_WORKER_REVIEWED_CANDIDATE",
+  "appearance_reference_approved": true,
+  "human_animation_acceptance": false,
+  "original_timing_verified": false,
+  "coverage": {
+    "complete_groups": 15,
+    "total_groups": 15,
+    "available_poses": 60,
+    "total_poses": 60,
+    "missing_pose_ids": [],
+    "frame_positions": 86,
+    "reviewed_poses": 60
+  },
+  "counts": {
+    "pose_pngs_including_mirrors": 120,
+    "group_atlases_including_mirrors": 30,
+    "ordered_frame_pngs_including_mirrors": 172,
+    "group_contacts": 15,
+    "gif_previews": 30,
+    "spriteframes_resources": 2,
+    "original_positions": 86,
+    "positions_with_mirrors": 172,
+    "new_active_poses": 60,
+    "reused_approved_idle_poses": 0,
+    "built_in_imagegen_calls": 9,
+    "new_pose_drawings_including_superseded": 61,
+    "single_pose_repairs": 1
+  },
+  "source_manifest": "assets/prototype/enemy/zombie/remaster_v01/source_manifest.json",
+  "source_manifest_sha256": "a52c6d572648603965166fe71872a64d58499eb4271a9033e19835bea1dc3578",
+  "plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+  "helper_sha256": "763bccc9052e527d13ecbbdc0502bc539fbbb68994181be9446a9ab3d5cb8e3d",
+  "provenance_file": "generation-provenance.json",
+  "initial_preparation_review": "preparation-visual-review.json",
+  "review_method": "Actual raw generation images, eight original guides plus one repair guide, per-pose registered original/candidate comparison contacts, then all fifteen source-ordered group contacts and decoded source/mirror GIF frame strips in fifteen review boards. Static images were viewed; no timed animation playback is asserted.",
+  "review_scales": "Raw pages and single repair were inspected enlarged. Registered comparison files retain projected original/candidate pixels at 1:1 within panels; the tool may downsample the whole contact for display. Group review boards are reduced overviews for order/entry/exit/repeat/facing checks, not fine-pixel anatomical proof.",
+  "review_sets": [
+    {
+      "review_set_id": 0,
+      "pose_suffix_range": [
+        0,
+        7
+      ],
+      "observations": "Viewed raw batch-000-a, original guide and registered 1:1 comparison; walked source pose order shows changing feet and low carried hammer, with free/secondary hand placement visible. Full hammer and both feet remain inside the registered frame. Generated master anatomy is broader than OG and aspect-fit can reduce visible height; no scaling override applied."
+    },
+    {
+      "review_set_id": 1,
+      "pose_suffix_range": [
+        8,
+        14
+      ],
+      "observations": "Viewed raw batch-001-a, original guide and registered comparison; walk return and idle gesture keep source facing, bare foot/boot and progressively lowered hammer. Candidate rendering differs in proportions from OG. No extra limbs, missing equipment or clipping observed at inspected scales."
+    },
+    {
+      "review_set_id": 2,
+      "pose_suffix_range": [
+        15,
+        15
+      ],
+      "observations": "Repair: original batch-001-a p015 hammer was too vertical. Viewed single-pose source guide, newly generated repair-p015-b and registered comparison. The replacement restores the diagonal down-right shaft and corresponding grip/free hand; full feet and cross-head fit. Retained the old attempt/history and rebuilt G2."
+    },
+    {
+      "review_set_id": 3,
+      "pose_suffix_range": [
+        16,
+        23
+      ],
+      "observations": "Viewed raw batch-002-a and registered OG comparison for every pose. Quiet idle variants lead into forward crouch, arms-up recoil, backward lean, sideways lean and recovery. Hammer, bent legs, bare foot/boot and raised/free arm transitions are visible without added limbs or frame clipping."
+    },
+    {
+      "review_set_id": 4,
+      "pose_suffix_range": [
+        24,
+        31
+      ],
+      "observations": "Viewed raw batch-003-a and registered OG comparisons. Two-hand defence lifts from low horizontal through diagonal/vertical guard then lowers. Death recoil then lifts the booted knee with spread arms. Hammer head/shaft and hands stay attached and visible."
+    },
+    {
+      "review_set_id": 5,
+      "pose_suffix_range": [
+        32,
+        39
+      ],
+      "observations": "Viewed raw batch-004-a and all registered OG comparisons. Death sequence folds to a low corpse, preserving the boot and bare foot with hammer across/above the folded body; no extra detached limbs observed. Turn changes from three-quarter toward frontal view and vertical hammer, not a fabricated back view. Native low corpse bounds retained by registration."
+    },
+    {
+      "review_set_id": 6,
+      "pose_suffix_range": [
+        40,
+        47
+      ],
+      "observations": "Viewed raw batch-005-a and registered OG comparison for each pose. Upper windup, behind-head hammer, raised strike and lowering recovery remain distinct from front-attack preparation. Two-hand grip during lifted actions and one-hand recovery are visible; complete hammer/feet retained."
+    },
+    {
+      "review_set_id": 7,
+      "pose_suffix_range": [
+        48,
+        55
+      ],
+      "observations": "Viewed raw batch-006-a and registered OG comparison for each pose. Front attack extends horizontally, recovers diagonally, then low attack winds overhead and folds forward toward ground. Hand grips, hammer head angle and both feet remain present; no missing limbs or clipped artwork observed."
+    },
+    {
+      "review_set_id": 8,
+      "pose_suffix_range": [
+        56,
+        59
+      ],
+      "observations": "Viewed raw batch-007-a and registered OG comparisons. Low-attack recovery rises toward separate movement-start/end source poses. Distinct foot/torso/hammer drawings remain separate IDs; full weapon and feet fit. No idle substitution was used."
+    }
+  ],
+  "poses": [
+    {
+      "pose_id": "zombie_p000",
+      "source_group": 0,
+      "source_frame_index": 0,
+      "original_signature": "982b239e5d544c6eaf96d6e1af70c94502ebc69409a00d5cc0a785edc816d782:171:178:45:88:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.png",
+      "raw_sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3",
+      "registered_sha256": "538bc67da8ff7dbf526e21f9003d3a0f1d67789fdd0fe8827bbab99c4ef7ae89",
+      "mirror_sha256": "bb05aff2b4a352de23e85fa559d6c6cc905938154c846c5ba265e4a5427d06d9",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-000-a-comparison.png",
+      "review_set_id": 0,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p001",
+      "source_group": 0,
+      "source_frame_index": 1,
+      "original_signature": "24fda898bb71de10bb706f752bfb6dfe5b662f935a4e98db0745999d1badfcf2:168:177:50:90:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.png",
+      "raw_sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3",
+      "registered_sha256": "14ac7b37903fabe3ce6fb6fb97ce62ff664cdab73b2c3ddb4d6fcd5f2a34baa7",
+      "mirror_sha256": "0726b0f9abd392d934b0ba320d4976e6bd714a9bb4a89859ebd5ccbf6a00928c",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-000-a-comparison.png",
+      "review_set_id": 0,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p002",
+      "source_group": 0,
+      "source_frame_index": 2,
+      "original_signature": "f99cd3721df3c76ec599d9a82bc5187fd7d07ba680bf1c8ca7af94939f8a4dd4:168:177:51:90:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.png",
+      "raw_sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3",
+      "registered_sha256": "f7cbbbe75817deaf7ab97abf72de509de1a5741bbd566083551f3f3b7a8f6aae",
+      "mirror_sha256": "19d1717f5495ba06ae335e95c36c9118dec752d5ddaa329ace07d4595b9d4617",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-000-a-comparison.png",
+      "review_set_id": 0,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p003",
+      "source_group": 0,
+      "source_frame_index": 3,
+      "original_signature": "eb9ed2a545ce617f3d6f31a53cdb3b79fa9c4398b303d1057c30c1d0c79d5a80:172:178:45:89:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.png",
+      "raw_sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3",
+      "registered_sha256": "cb273febf697431f3d14c9724d7e513ba323ca26d4cd6a4eeb91d57dd8ff950e",
+      "mirror_sha256": "cb9e453e1099a7f947d333c9fc14714aad712bae4643fbe8f08e129978aac479",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-000-a-comparison.png",
+      "review_set_id": 0,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p004",
+      "source_group": 0,
+      "source_frame_index": 4,
+      "original_signature": "98b2b845d2831588a95fe0b97dd08958fdaa86cf1b36963a055ec07b826dcc3b:179:181:45:85:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.png",
+      "raw_sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3",
+      "registered_sha256": "e14dfbca319414cc6c485eb32013daef4b64dc7ca8f9de5cd2a02bcb4f977d72",
+      "mirror_sha256": "f46aee8b498804cc63c88542a2c4aced937e3cf111f06537c6f4e65d317ae5eb",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-000-a-comparison.png",
+      "review_set_id": 0,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p005",
+      "source_group": 0,
+      "source_frame_index": 5,
+      "original_signature": "415ec8350a01a1c5d254b6c580f320c088a1a6041e5494c1079ce79c94b5fff6:176:185:57:82:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.png",
+      "raw_sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3",
+      "registered_sha256": "aaf58ce6aa8b3acc334b741ae1101cf310ced7a99cae58ea72bef1cd367ace88",
+      "mirror_sha256": "411b66c6ba8aa7d3b28cd5d224a9a87f585f5da067312f4a9d5207f8ef1dd87e",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-000-a-comparison.png",
+      "review_set_id": 0,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p006",
+      "source_group": 0,
+      "source_frame_index": 6,
+      "original_signature": "9e7eee647da313076ea10838db353ae7a2185772e2c8a1c253906c7e6bf326e5:173:186:65:81:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.png",
+      "raw_sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3",
+      "registered_sha256": "a49ada88e98f0a8865f6d3afef7b1c0ccc8cd7d40c940eed654e98dcc6c0b81d",
+      "mirror_sha256": "dba8ff3426f50fdcaf5885d3489dfe7364ed7d5878b0320943963435c2bf887c",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-000-a-comparison.png",
+      "review_set_id": 0,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p007",
+      "source_group": 0,
+      "source_frame_index": 7,
+      "original_signature": "74a2b3fc47dd27a42baed3ba92cf3a26f4a78e9e4420375c77729edd3242f73d:173:185:62:83:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.png",
+      "raw_sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3",
+      "registered_sha256": "67807a3aee5bcf432dfddecfd363d25a86556db1ca9763ab635872cc97e152d4",
+      "mirror_sha256": "0e5fe96251020e03113db7927a6708143b882bae4cabf7581d5148c6757ef332",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-000-a-comparison.png",
+      "review_set_id": 0,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p008",
+      "source_group": 0,
+      "source_frame_index": 8,
+      "original_signature": "a68871c0a22ada6226e70d6050b88997d7f71e37c9975c2e875bdd2f4749ac46:173:183:55:85:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-001-a-components.png",
+      "raw_sha256": "b555d1132ffaf7055c69e270e44a2d13426858d5ca2144a2d01b10508a2b982e",
+      "registered_sha256": "7a7acd8ab9eb8d4a9199f94ec532c7a45004c84a4e9739fa11b3c4046bc6e9be",
+      "mirror_sha256": "2d066586f3be930f0e2989cf453aa0b8f6312deb5e5d7f2cbdeac31d707ebad2",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-001-a-comparison.png",
+      "review_set_id": 1,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p009",
+      "source_group": 0,
+      "source_frame_index": 9,
+      "original_signature": "035718a8bc5706e41f7627266e9f00263a9362974e7707bc0b32d08c076398af:174:180:47:87:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-001-a-components.png",
+      "raw_sha256": "b555d1132ffaf7055c69e270e44a2d13426858d5ca2144a2d01b10508a2b982e",
+      "registered_sha256": "1ce8c53e4648840831c3f11c5636b466aab6d6549080842617402f9762275b78",
+      "mirror_sha256": "5c77160038909929ae5cb787fd25c85ac5340c5b0db48bae907d34c142f7e750",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-001-a-comparison.png",
+      "review_set_id": 1,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p010",
+      "source_group": 1,
+      "source_frame_index": 0,
+      "original_signature": "b446e3ac9344f0d69a2715ce2b8797d35b9c9239cafc26d6acabd9f451507ab2:176:181:41:88:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-001-a-components.png",
+      "raw_sha256": "b555d1132ffaf7055c69e270e44a2d13426858d5ca2144a2d01b10508a2b982e",
+      "registered_sha256": "df2c2631c753022744c0b546c8850a8477800bb93fc0c69a86580b265ba63a8e",
+      "mirror_sha256": "74a4691dd30039d2e6a31c445c930277b020aee2b3552aa0474c48a4e236459a",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-001-a-comparison.png",
+      "review_set_id": 1,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p011",
+      "source_group": 1,
+      "source_frame_index": 1,
+      "original_signature": "5e86161360aa3d89cfe8204f02eace13441250a66e88b1cdef1d0fd35306440f:176:181:40:88:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-001-a-components.png",
+      "raw_sha256": "b555d1132ffaf7055c69e270e44a2d13426858d5ca2144a2d01b10508a2b982e",
+      "registered_sha256": "ff74f2a5651ede0ddf56423606ecba4d513e8cf374746749150454c5d8c3e93a",
+      "mirror_sha256": "d1c6d57c8350839debb5bfc9cb11b95a20650a000c5c8d14ded01f96c79659b6",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-001-a-comparison.png",
+      "review_set_id": 1,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p012",
+      "source_group": 1,
+      "source_frame_index": 2,
+      "original_signature": "0eb82fc3feeb6ddcd6d0f2de52542b7504389250e9721ee4eca09bf56fc3ea43:176:180:39:90:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-001-a-components.png",
+      "raw_sha256": "b555d1132ffaf7055c69e270e44a2d13426858d5ca2144a2d01b10508a2b982e",
+      "registered_sha256": "09054c845b493364279c6f5e99129b1ba13eb9143d8e4867a4fe161f595583c1",
+      "mirror_sha256": "7a7824c7a8f6be5c1f4e8c1141a259d63774eddd764b48036975c2cbb1c05f57",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-001-a-comparison.png",
+      "review_set_id": 1,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p013",
+      "source_group": 1,
+      "source_frame_index": 3,
+      "original_signature": "97f863b7f0427efeba70074a0657e1a8528a7dac1606028053d1a2555f26598a:175:179:41:91:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-001-a-components.png",
+      "raw_sha256": "b555d1132ffaf7055c69e270e44a2d13426858d5ca2144a2d01b10508a2b982e",
+      "registered_sha256": "66eb6c8703643bc828fd711cafc8396324c7b3364ab1507252c5c6e3a3e75ad2",
+      "mirror_sha256": "3e165a402785b08fa0fcf1e97a25e761850084c8264cba69eb96e70555bfa8db",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-001-a-comparison.png",
+      "review_set_id": 1,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p014",
+      "source_group": 1,
+      "source_frame_index": 4,
+      "original_signature": "29413d5b0ac0ff4aa381b79833b8fc8f723d27a5b6dbd40cfec59f462da347d9:175:179:42:91:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-001-a-components.png",
+      "raw_sha256": "b555d1132ffaf7055c69e270e44a2d13426858d5ca2144a2d01b10508a2b982e",
+      "registered_sha256": "8195e23abec38fa851a82df0772d974d8cce23a86e740dc853529e493874faaa",
+      "mirror_sha256": "e1ef2f909a5c631cebe071054300f4e20f4d9adfd650c626d2e642a20cfbcf67",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-001-a-comparison.png",
+      "review_set_id": 1,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p015",
+      "source_group": 2,
+      "source_frame_index": 1,
+      "original_signature": "62b0e17ae2ee70bf2e108428813bb8c2c936f7459048e4f2e23466437d76830c:176:181:41:88:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/repair-p015-b.png",
+      "raw_sha256": "43d74291752e4034cf75917ef858dfcacd678c0b444dfebc68c23ff0c3f2ec12",
+      "registered_sha256": "7dd99bb0e1e56cbaa75c0d893fa21a1afc731e7230a07117db1d74a64bfa0f0d",
+      "mirror_sha256": "917fb692e0d3a3e48bb65f1957ad32c6130d4749f2c8805a115d9e0d235e2cb1",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/repair-p015-b-comparison.png",
+      "review_set_id": 2,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p016",
+      "source_group": 2,
+      "source_frame_index": 2,
+      "original_signature": "f59daadb3032169e2c3db29a8a991781052b03a429818553b5b7c37e6cbc1511:176:181:41:88:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.png",
+      "raw_sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0",
+      "registered_sha256": "9c076e7020ce5dd41bca94609af5f7cdc93f10ac2f304a180119417a00ac440a",
+      "mirror_sha256": "7cabbcd344fb57cfed53a464b09e652613fee137ae5a01176545cc6494fe068a",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-002-a-comparison.png",
+      "review_set_id": 3,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p017",
+      "source_group": 2,
+      "source_frame_index": 3,
+      "original_signature": "93df9fb176e20f74b76ae2d1ca593a6855f7da6d35345f0a8095cabd5f6ccfa0:176:181:41:88:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.png",
+      "raw_sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0",
+      "registered_sha256": "c8f1f52279df23afe62cf8ec5feff5ac411f311fcd674afc6edd27e9691536e1",
+      "mirror_sha256": "2aeccf4a7c795bb88f82efdad820a47c48f2bdb0941ea8699bc6206d35e5f1ce",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-002-a-comparison.png",
+      "review_set_id": 3,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p018",
+      "source_group": 3,
+      "source_frame_index": 1,
+      "original_signature": "93e0520150d4d0b956f30f939d04ebea1fd10793bda5dfdf276646dd8cba0d92:177:196:59:70:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.png",
+      "raw_sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0",
+      "registered_sha256": "1f2368b6775317d80aa36387997c746b0d4bd0a8a56f65177d236c012911dda7",
+      "mirror_sha256": "ff882f3a8ebf5aabdfbbe03810834110cf951e4672bb8cd1b97f7d0e6612e6eb",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-002-a-comparison.png",
+      "review_set_id": 3,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p019",
+      "source_group": 3,
+      "source_frame_index": 2,
+      "original_signature": "f0b7f3868ee2aeb0463a6655b46ca4d5fe0e2488bb14dcb35553cf2f043d845c:132:156:80:111:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.png",
+      "raw_sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0",
+      "registered_sha256": "3ecf62a0adf63c75ff29fc9d8b4348a6e932fce43cf76463a38b2154f72293a0",
+      "mirror_sha256": "5a13afd50c7403faa55b1a659a1158885723bf3bf4be25d28b45b26a1579d628",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-002-a-comparison.png",
+      "review_set_id": 3,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p020",
+      "source_group": 3,
+      "source_frame_index": 3,
+      "original_signature": "6b6feeec97eab25f5e4be723a9ee0ae650485c381047130d86c275012215d111:107:180:108:88:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.png",
+      "raw_sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0",
+      "registered_sha256": "a507d63f872ac1a89efba0dbe930d2afa9ab0b788dd0d5c071eff7972e273988",
+      "mirror_sha256": "99ca738d655a28021d5f9c203ce7f47f3b43b86772c4d13e6a57910b39d5025c",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-002-a-comparison.png",
+      "review_set_id": 3,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p021",
+      "source_group": 3,
+      "source_frame_index": 4,
+      "original_signature": "ff1cd07d183066b84ee475f9c98171babaf4f25a8d1529f83be1f722a23a0b16:128:192:86:77:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.png",
+      "raw_sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0",
+      "registered_sha256": "6d6e1ae586fcef6ebe77d5880c83ad30af1889ecbe88c5af37c994bea60c864e",
+      "mirror_sha256": "9f4065db58042b34b3635b9e833f33244f8883cc849db20984995945ffef0353",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-002-a-comparison.png",
+      "review_set_id": 3,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p022",
+      "source_group": 3,
+      "source_frame_index": 5,
+      "original_signature": "dc756b106775fa67d52756b5650153377e509bfd9c72ffe27a517a52cf5ba4b6:159:186:60:86:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.png",
+      "raw_sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0",
+      "registered_sha256": "791321d497e67322c6fbac89c02eeb1a2baa1bbe97947f98da785a22e93fc173",
+      "mirror_sha256": "30bb026651216d488476af58ad392cf830c0081a2213fab47035208ccd799ba2",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-002-a-comparison.png",
+      "review_set_id": 3,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p023",
+      "source_group": 3,
+      "source_frame_index": 6,
+      "original_signature": "0b7a57843cd74ea24650c36c47b3962b165c0cef1703da7284f9b58dcc9cbb16:171:183:46:88:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.png",
+      "raw_sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0",
+      "registered_sha256": "c2e9867abb516dc42e0d12ba60b51c57e31843bc12300d6f21d7a2923c669955",
+      "mirror_sha256": "e14ac2f3771f81994ee07236590f7ea4255addd7b3c950c116fdabe9b08a30a6",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-002-a-comparison.png",
+      "review_set_id": 3,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p024",
+      "source_group": 4,
+      "source_frame_index": 1,
+      "original_signature": "0e669c0d51439115c7ff318e19086c55f1dd280f681dfc02a6d947a17018ef21:177:183:54:83:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.png",
+      "raw_sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f",
+      "registered_sha256": "bfa373de71a7a78da820f21ad430fe95434dd68ed098d7079bc38625759a7b95",
+      "mirror_sha256": "edbab8a8e56dd46316cf1d7523f818a19e3033da92057532416b2bfb72d3915e",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-003-a-comparison.png",
+      "review_set_id": 4,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p025",
+      "source_group": 4,
+      "source_frame_index": 2,
+      "original_signature": "59eb82e44ed8e70d21cac3830dad98e08735dd5653b11d1ce470f3e30970e0e0:177:186:64:80:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.png",
+      "raw_sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f",
+      "registered_sha256": "149f7ae4980efcc9ecf6e6d5a04d0d4f141ab90fb87e132cfa536920f11019f5",
+      "mirror_sha256": "1d6880d60ab65f8d12f7ae787ca1371da598bcc4e11bb5ed6124423ac5039cdb",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-003-a-comparison.png",
+      "review_set_id": 4,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p026",
+      "source_group": 4,
+      "source_frame_index": 3,
+      "original_signature": "309a7046c063e92a9238ac92c5da85389907f4172c015dad3b0c07f0f0c89203:177:180:60:86:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.png",
+      "raw_sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f",
+      "registered_sha256": "4b6052843369f1f081dc4357f14bd9a5881d370cf7f832f33d1cee57c472c518",
+      "mirror_sha256": "503da139873a7130170a2f6b119d00d033927a21de76ad01c262e6a27df13ea0",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-003-a-comparison.png",
+      "review_set_id": 4,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p027",
+      "source_group": 4,
+      "source_frame_index": 4,
+      "original_signature": "e908a3f8b064598a7c2077bb2ddf2110469cd303e6f75139f604dd0c1258e799:177:176:54:90:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.png",
+      "raw_sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f",
+      "registered_sha256": "4b6c8b30e9ae7e13ccb38a39331aaa1bb1f386baddc927b9cfec746ded8f279e",
+      "mirror_sha256": "0f04d7b16a5b5a870aa71845367b2b14b8a0c4600c125e983a585a1f8042f197",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-003-a-comparison.png",
+      "review_set_id": 4,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p028",
+      "source_group": 4,
+      "source_frame_index": 6,
+      "original_signature": "16c1bd5477b9b8ce51b1b1fdc6d4644c69f3d0b54e776db1e06274af73b31f6c:177:181:63:85:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.png",
+      "raw_sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f",
+      "registered_sha256": "ae2f7b58adebf2bfa4077b83c50b3104693c9ebbaed016e6fdf24d6df218f374",
+      "mirror_sha256": "f644dc7e15f38c6f6fa2add91a7cbdc77307885e980504c82550be62d28a0d87",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-003-a-comparison.png",
+      "review_set_id": 4,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p029",
+      "source_group": 4,
+      "source_frame_index": 7,
+      "original_signature": "9dccd5445e15e5454175521fc9566354864a3244f59b34fe1420d1a5fc591f91:177:184:60:82:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.png",
+      "raw_sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f",
+      "registered_sha256": "7099c3c5c46173c2dddfe367fe28f9de9bc1f90830ad5f4306b6ad8b529b25f2",
+      "mirror_sha256": "c57777d49033c6069d46186e860957a842cc1bdf7e1c625e7d2631fb0aba8e31",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-003-a-comparison.png",
+      "review_set_id": 4,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p030",
+      "source_group": 5,
+      "source_frame_index": 1,
+      "original_signature": "839bb966e4c7427d30ba2d64bb9083a009849272c7d322d408d061a415c70460:151:177:77:90:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.png",
+      "raw_sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f",
+      "registered_sha256": "77b20b08f88736c1d2bfd34f3ada2bf74307581a401d362011d9e256fa0f3482",
+      "mirror_sha256": "7ccbecc443db23f3d4dfecad0e407e61fbad1bb947e513bc90c3654035bf84ab",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-003-a-comparison.png",
+      "review_set_id": 4,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p031",
+      "source_group": 5,
+      "source_frame_index": 2,
+      "original_signature": "c49a98187de6b9108aa6b9ef74c40c17070943df78dd2a0a6e806395c2421223:129:151:101:114:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.png",
+      "raw_sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f",
+      "registered_sha256": "6b7b0cbccd85fc52f90cd4766a98ad436efa3b8d2470a69dbe916144eadc9033",
+      "mirror_sha256": "b448ec2007408d0ebc9b6b38160a92ebaf5ade375e842c206ced18e7cdfdbec2",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-003-a-comparison.png",
+      "review_set_id": 4,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p032",
+      "source_group": 5,
+      "source_frame_index": 3,
+      "original_signature": "c01550ad4b5dd54be75e2867474e9534fde69e18e2d19b621ff5c33680092fab:157:142:72:122:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.png",
+      "raw_sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38",
+      "registered_sha256": "ad5d28781d8f43a91b776f4b47048ec6fc1c719a3c7aa16f6fd09a84cddf32f5",
+      "mirror_sha256": "74f2f444125c50fe7a9f4edcfe35ea9dcfd49292dd3737ed31f3328dd4c7729d",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-004-a-comparison.png",
+      "review_set_id": 5,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p033",
+      "source_group": 5,
+      "source_frame_index": 4,
+      "original_signature": "4af11b6ea231cc3978aacfc3e56948ae9ddac2ca02740b3d9cc8554a71e996d6:165:184:57:74:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.png",
+      "raw_sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38",
+      "registered_sha256": "c9d65111f29755c29e1524ea787492869ee682792f0d369f13d95c4d4c9d0d52",
+      "mirror_sha256": "544d2b3b6a407507631f4ab87fd316855ea16af0c824415cfc440018029971ee",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-004-a-comparison.png",
+      "review_set_id": 5,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p034",
+      "source_group": 5,
+      "source_frame_index": 5,
+      "original_signature": "4b68dfb25a70143dfbc9bc89d4a6eeb56bbb764114283e566c5c1af36fb66209:171:217:46:46:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.png",
+      "raw_sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38",
+      "registered_sha256": "32850bda41566ab539b11b1e517affa1e9f77b125cf3dabafca86a0b5cf2ef43",
+      "mirror_sha256": "b7b59786f677c54040f6473de1eb698cad1940380d0408a9d7e777672ea4639e",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-004-a-comparison.png",
+      "review_set_id": 5,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p035",
+      "source_group": 5,
+      "source_frame_index": 6,
+      "original_signature": "07959dcf9867fea8d19028a2d95a01394cbaa9bbe129fbc7093cc0c5006c604a:175:229:42:35:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.png",
+      "raw_sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38",
+      "registered_sha256": "da5cd2a4dea42b93f57738835b77a1bcef426f1a249b2cf8b4cc66d8e1a45ef1",
+      "mirror_sha256": "99fe7fb9b41fd1942808434d7bd23118572febe46c1d3387d4396fa3b8598599",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-004-a-comparison.png",
+      "review_set_id": 5,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p036",
+      "source_group": 5,
+      "source_frame_index": 7,
+      "original_signature": "5c60da4649ea1aa6398e5ccc78f6245f30ae2b15a4234f0a6f633e2387541868:176:202:41:56:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.png",
+      "raw_sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38",
+      "registered_sha256": "754d2eb0be3be709060186db514c5e60e7b697251ba4543bc006455ff0262768",
+      "mirror_sha256": "59921eab1d8e57ba688756397cb9b35c10aa467575da001d5992e48b6202027b",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-004-a-comparison.png",
+      "review_set_id": 5,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p037",
+      "source_group": 5,
+      "source_frame_index": 8,
+      "original_signature": "cb225faf44adec93cdd379dd13b808dd1dabbb297f77ac9c09a74c9cf66a0be4:177:228:40:30:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.png",
+      "raw_sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38",
+      "registered_sha256": "26cdd5a0d3b2b4d94b2c997f8f07774e732c37e5702931a6c40b725a5c937db8",
+      "mirror_sha256": "f17b726acea3b57996a3ba2586e1e9a57173571496373b333734d7520d0c0fcb",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-004-a-comparison.png",
+      "review_set_id": 5,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p038",
+      "source_group": 7,
+      "source_frame_index": 1,
+      "original_signature": "edcdaf7a7e8d40c4d9cc451a4bdff126136e2069d8279d90f139ca7eaed28447:178:182:47:83:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.png",
+      "raw_sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38",
+      "registered_sha256": "630986bf4506ef6ad2f364703f5d01bba791d2cb6209c63bdec2fccf3b4ee7c1",
+      "mirror_sha256": "74a5fbe49ad1abe9b8888cd60825b71338555a13e1ed88855e9c0a2e8f066cf5",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-004-a-comparison.png",
+      "review_set_id": 5,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p039",
+      "source_group": 7,
+      "source_frame_index": 2,
+      "original_signature": "6a231ab62a956e3d30576d6479666573b06411008c4fd0759a82b22b1e17dfb9:179:180:34:85:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.png",
+      "raw_sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38",
+      "registered_sha256": "dc6961ed0a75683478aab571d58a5fddd903b265ce6b7d1e914442abc5ffff01",
+      "mirror_sha256": "94356bec54f875d8f1f4e00d4b86acf4f611ece3f807b5dc7f3a32c574b9b0be",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-004-a-comparison.png",
+      "review_set_id": 5,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p040",
+      "source_group": 11,
+      "source_frame_index": 1,
+      "original_signature": "df566c2cd263d6b7e6e3aabdc37dcaf98af4936932d415b1a899f42a6bcd57cd:177:169:40:97:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-005-a-components.png",
+      "raw_sha256": "041f80e7d90f4c5673a4cb8a9070dab678021729f31261e15afa7738f8cf8720",
+      "registered_sha256": "0a5187f9ecddee33fbfa352d637c751f9783b8b5fff7aa37937e9a0030be39c2",
+      "mirror_sha256": "a22bfa8a3c648bd44e5f7898ba437369a9b951e88a84dd7977875db68054bb89",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-005-a-comparison.png",
+      "review_set_id": 6,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p041",
+      "source_group": 11,
+      "source_frame_index": 2,
+      "original_signature": "2e8cf6437f881128dde33c6c9f47fc8d0ad32dcd469e53b3306a2536fce605ae:146:170:67:96:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-005-a-components.png",
+      "raw_sha256": "041f80e7d90f4c5673a4cb8a9070dab678021729f31261e15afa7738f8cf8720",
+      "registered_sha256": "055a73044203cbe879fac7579d0a002999dc82c53740fcfe7802323e068c0272",
+      "mirror_sha256": "7d28e4506c9ed389eb669edd62cba97d800d93f26d3993ff68dfaaa649fa9412",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-005-a-comparison.png",
+      "review_set_id": 6,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p042",
+      "source_group": 11,
+      "source_frame_index": 3,
+      "original_signature": "cb09c11050d7f853efd0866a936d18d94c1dacdc66cb93f3f3d831413cd7968d:176:169:56:97:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-005-a-components.png",
+      "raw_sha256": "041f80e7d90f4c5673a4cb8a9070dab678021729f31261e15afa7738f8cf8720",
+      "registered_sha256": "f0c82679d293e0da3ae04f00a55c374b499d80b27fb137c5825406764a05b4b2",
+      "mirror_sha256": "ae262f498d7a6dc3820fa7ea67cb12c7d12d121f3094e86e2b6875e4aeb41871",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-005-a-comparison.png",
+      "review_set_id": 6,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p043",
+      "source_group": 11,
+      "source_frame_index": 4,
+      "original_signature": "4f1223a0ca275913c85d5f1692cb6d5514fc8b3e33c984bf2a1a62a2757285fb:176:186:59:80:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-005-a-components.png",
+      "raw_sha256": "041f80e7d90f4c5673a4cb8a9070dab678021729f31261e15afa7738f8cf8720",
+      "registered_sha256": "3a1cfcdafd5c405b53c76b380262ad890dc76cbe393937c62fe599abaaca8250",
+      "mirror_sha256": "48fc999e93ae787c41dc8ca4167c1375e21f850ae35ca8e6661807e1ad387f56",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-005-a-comparison.png",
+      "review_set_id": 6,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p044",
+      "source_group": 11,
+      "source_frame_index": 5,
+      "original_signature": "5ce5e76c45ba7ee562af64068b0b75bf2fea9b1fd6c293fb12dae61c765e2421:177:185:58:81:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-005-a-components.png",
+      "raw_sha256": "041f80e7d90f4c5673a4cb8a9070dab678021729f31261e15afa7738f8cf8720",
+      "registered_sha256": "bbb30d9fd182b0221f9877fd515bbeba55f649df98fed1f4fbefca92afb87627",
+      "mirror_sha256": "6dc44a6b4a488d63207780dbc886944a9473e37b593a3f1e05e9cdc3ff25760a",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-005-a-comparison.png",
+      "review_set_id": 6,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p045",
+      "source_group": 11,
+      "source_frame_index": 6,
+      "original_signature": "32e1669b11f9332b62e49d4aadb32316f391adefd5910bf06e45bc1110cee43e:177:183:58:83:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-005-a-components.png",
+      "raw_sha256": "041f80e7d90f4c5673a4cb8a9070dab678021729f31261e15afa7738f8cf8720",
+      "registered_sha256": "e074e32f0188b7e43816ece719dea02f73f8155f00152ac64cb051a94f254ff8",
+      "mirror_sha256": "83f71036ddd3174c4c4539b7fa94ca57c0a301eb2486390f57c908427e9233a1",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-005-a-comparison.png",
+      "review_set_id": 6,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p046",
+      "source_group": 12,
+      "source_frame_index": 1,
+      "original_signature": "1961762668e85d874f1f5e9a0e761fa4a0487109e557546866e0472daa658d02:177:169:51:97:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-005-a-components.png",
+      "raw_sha256": "041f80e7d90f4c5673a4cb8a9070dab678021729f31261e15afa7738f8cf8720",
+      "registered_sha256": "51d4b14c629bc2c87c4099e92e3d6a932fa2d91f932d29f44eaf6aa9d279efd9",
+      "mirror_sha256": "ab95a9fb739dca6ccad95ee46db850b7d94b8f20e62361a824eed9fc3e0964e6",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-005-a-comparison.png",
+      "review_set_id": 6,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p047",
+      "source_group": 12,
+      "source_frame_index": 2,
+      "original_signature": "dc7b10e1faecddc3ecfb882d5ecb19b40796419ccf143135aa22bc56dd2e4810:140:168:73:98:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-005-a-components.png",
+      "raw_sha256": "041f80e7d90f4c5673a4cb8a9070dab678021729f31261e15afa7738f8cf8720",
+      "registered_sha256": "619cfdda454a6b9c77e61a28d1d659721ca6b7a9a07a5cdb98f9370353397cf5",
+      "mirror_sha256": "f82c7259fc2d301e4624db08eb56aaa68ea8c3d2ee9955d19ddf12c53ac687c0",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-005-a-comparison.png",
+      "review_set_id": 6,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p048",
+      "source_group": 12,
+      "source_frame_index": 3,
+      "original_signature": "9766e1c35c8618777d5b0f33fe759ff16b815138755a80437af06f9e57f513dd:176:194:94:72:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-006-a-components.png",
+      "raw_sha256": "d55c55a0a5298fe65ed445063b2d5f8d51077eb9a0f31159a47609b00960e390",
+      "registered_sha256": "324406d2af5b2706382c9336022b7e341d2ffa5e9e2ce755e53944f1a888b958",
+      "mirror_sha256": "6d96f4deaf9f5f22ed6447bef69169fe5dc2a7b3542c17fb3d574ef4d1e12a47",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-006-a-comparison.png",
+      "review_set_id": 7,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p049",
+      "source_group": 12,
+      "source_frame_index": 4,
+      "original_signature": "9e289e89d55ef062562de11a77cb3cd12abd63766f2950774a2bd447379a085e:177:195:84:74:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-006-a-components.png",
+      "raw_sha256": "d55c55a0a5298fe65ed445063b2d5f8d51077eb9a0f31159a47609b00960e390",
+      "registered_sha256": "c254c1debfd969d79f00cf7d64bdf31636b09b8c8e0e45de118033bf1735872e",
+      "mirror_sha256": "bf9d6a58d931661fba95dd0f807d3cb83c29a0269fa88cf1ced1a010cefd5992",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-006-a-comparison.png",
+      "review_set_id": 7,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p050",
+      "source_group": 12,
+      "source_frame_index": 5,
+      "original_signature": "b49056154e13bbf76649f07860fbac826ff0d461d570ea10c3996ba7fb47346c:177:190:69:78:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-006-a-components.png",
+      "raw_sha256": "d55c55a0a5298fe65ed445063b2d5f8d51077eb9a0f31159a47609b00960e390",
+      "registered_sha256": "c751a73bcb1947986bf68b42dee1e957f324090caf852f625027625e54148351",
+      "mirror_sha256": "e36a3480397f4fc8e3cb8ce4a8d3a24835a9699af89dfcad74efb036028d777e",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-006-a-comparison.png",
+      "review_set_id": 7,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p051",
+      "source_group": 12,
+      "source_frame_index": 6,
+      "original_signature": "db4bef481ba7e7ca49fb10d1c4aacf18c1de01a9be6c5ac9d5fae6828f15f88e:177:186:57:83:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-006-a-components.png",
+      "raw_sha256": "d55c55a0a5298fe65ed445063b2d5f8d51077eb9a0f31159a47609b00960e390",
+      "registered_sha256": "10776ddfc8ad522532d8d51817952d7fb7a3db6c7f57bf7a2353ede4d4aa96ca",
+      "mirror_sha256": "5718d19e123a2d74549e771b04ea7d07dbde8cfa69fc2a2f1033781a8c2ba973",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-006-a-comparison.png",
+      "review_set_id": 7,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p052",
+      "source_group": 13,
+      "source_frame_index": 1,
+      "original_signature": "1cfb0c9b42f3d8a8a2c1609cb0edd250605127e2bf3908515eb24dfa49d457be:177:167:50:99:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-006-a-components.png",
+      "raw_sha256": "d55c55a0a5298fe65ed445063b2d5f8d51077eb9a0f31159a47609b00960e390",
+      "registered_sha256": "0b5e05d58143a2291984969e92da8be9a72b2bf1971b4471e6d7dd407d409453",
+      "mirror_sha256": "700c9e59337c797c8b6f8d003370d1b6eba82c0246b172c386727fc087d58451",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-006-a-comparison.png",
+      "review_set_id": 7,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p053",
+      "source_group": 13,
+      "source_frame_index": 2,
+      "original_signature": "7860a174deccd63400d1e15b9742ddcb35ef968dd7bb8b17b3636181190c1f11:157:152:56:114:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-006-a-components.png",
+      "raw_sha256": "d55c55a0a5298fe65ed445063b2d5f8d51077eb9a0f31159a47609b00960e390",
+      "registered_sha256": "9f697a4b93122cff64a614e6f3f0fd8f8fd09192dc717ea1fc77b892d18d5b09",
+      "mirror_sha256": "6c1da40db0f4bc4b4ed7614d622f25a03342d46269d5aac3b186d8be39c58ef8",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-006-a-comparison.png",
+      "review_set_id": 7,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p054",
+      "source_group": 13,
+      "source_frame_index": 3,
+      "original_signature": "bf49be174824f023070131f30bce024191f2237c23f2bcb7d630a3125e5ba2ed:178:213:53:63:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-006-a-components.png",
+      "raw_sha256": "d55c55a0a5298fe65ed445063b2d5f8d51077eb9a0f31159a47609b00960e390",
+      "registered_sha256": "88d59b9508ba93efcfd6689a2c458f78c88f1f7061bbf6af10978c45a355a523",
+      "mirror_sha256": "889147d8710c285836ac86f3939570c3126e90471c8bb1096c44ee64f85f87e6",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-006-a-comparison.png",
+      "review_set_id": 7,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p055",
+      "source_group": 13,
+      "source_frame_index": 4,
+      "original_signature": "87a1f42d6335b8f2b1462c46a31bd5596f516b012cfc9c4931aea1b1c2447700:178:211:43:70:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-006-a-components.png",
+      "raw_sha256": "d55c55a0a5298fe65ed445063b2d5f8d51077eb9a0f31159a47609b00960e390",
+      "registered_sha256": "e69866b19ba848bd99247298ebe1c3a46c7bf95fa87d933ffed96f792aaf764e",
+      "mirror_sha256": "f552f825839711a9a58a228346542e66cac81404260aed045dbe0c4006f7e424",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-006-a-comparison.png",
+      "review_set_id": 7,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p056",
+      "source_group": 13,
+      "source_frame_index": 5,
+      "original_signature": "dad49959509f49d0ef26dac0ec4cb16dfb77a4f1af8e3f9774db2debf6c8130c:178:197:42:73:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-007-a-components.png",
+      "raw_sha256": "7f1774a23356d93f7c97d354e8bfdf198ef573454fc0593e86ef0c7330b2eb6e",
+      "registered_sha256": "0b7826caa81297b55d12f6a24d49b5e195ee77c99159b90b377982c31b9198a0",
+      "mirror_sha256": "c133f9770cf477a35c337d885e7cdf49c64cd121aa28b55524ddc35b26c5be35",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-007-a-comparison.png",
+      "review_set_id": 8,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p057",
+      "source_group": 13,
+      "source_frame_index": 6,
+      "original_signature": "c1cb184b600c479a6f4cdb4c523b6ce42d5dc5a953c3824e8383f17cb9c3aca2:178:188:40:80:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-007-a-components.png",
+      "raw_sha256": "7f1774a23356d93f7c97d354e8bfdf198ef573454fc0593e86ef0c7330b2eb6e",
+      "registered_sha256": "170a33ecdf429677bbc0bfc00a7a8766d79c60cfff9969cf8cbbbe8e838d5310",
+      "mirror_sha256": "0378af9b0e94eac3f9738dde231f8635d493a5d3a383b69d853969dee8f4d183",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-007-a-comparison.png",
+      "review_set_id": 8,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p058",
+      "source_group": 20,
+      "source_frame_index": 0,
+      "original_signature": "f9c08e6588f9bf904c8348993d37e933629ab840e461ce51a6a72f3c9cacb0aa:174:181:40:87:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-007-a-components.png",
+      "raw_sha256": "7f1774a23356d93f7c97d354e8bfdf198ef573454fc0593e86ef0c7330b2eb6e",
+      "registered_sha256": "2012ef06ddce982241939260d852d944c34613f220c0508cf5ed205cd4b6dace",
+      "mirror_sha256": "7ca06b4177f787a4efdfd9c69482218d3859eb276f66d71785505978e5d84da9",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-007-a-comparison.png",
+      "review_set_id": 8,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    },
+    {
+      "pose_id": "zombie_p059",
+      "source_group": 21,
+      "source_frame_index": 0,
+      "original_signature": "c43eb2bdbccdec222f44a30c18b507f6f06446617dd8e6b2806815c59a08b23d:176:180:42:87:450:400",
+      "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-007-a-components.png",
+      "raw_sha256": "7f1774a23356d93f7c97d354e8bfdf198ef573454fc0593e86ef0c7330b2eb6e",
+      "registered_sha256": "4503f9a1074dd261f852131c5a6dcf27b79dc61b3551c88b9255f03c0c4e97c6",
+      "mirror_sha256": "7e562f07982e6ca2095e3bc777cf2e28c1467b7c61d7ef5468a862247c79a4ae",
+      "review_hash_current": true,
+      "comparison": "assets/prototype/enemy/zombie/remaster_v01/_source/review/batch-007-a-comparison.png",
+      "review_set_id": 8,
+      "worker_static_review": "reviewed against original; candidate",
+      "human_animation_acceptance": false
+    }
+  ],
+  "groups": [
+    {
+      "group_id": 0,
+      "original_block": 0,
+      "role": "movement",
+      "frame_count": 10,
+      "pose_ids_in_source_order": [
+        "zombie_p000",
+        "zombie_p001",
+        "zombie_p002",
+        "zombie_p003",
+        "zombie_p004",
+        "zombie_p005",
+        "zombie_p006",
+        "zombie_p007",
+        "zombie_p008",
+        "zombie_p009"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_00_block_00.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_00_block_00_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_00_block_00.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_00_block_00_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_00_block_00_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g00_b00-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 10,
+        "mirror": 10
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected all ten positions through the walk loop in source and mirrored decoded GIF frames. Carried hammer lowers toward horizontal through the stride; both feet and return to first pose remain present.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 1,
+      "original_block": 1,
+      "role": "idle gesture",
+      "frame_count": 9,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p011",
+        "zombie_p012",
+        "zombie_p013",
+        "zombie_p014",
+        "zombie_p014",
+        "zombie_p013",
+        "zombie_p012",
+        "zombie_p011"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_01_block_01.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_01_block_01_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_01_block_01.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_01_block_01_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_01_block_01_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g01_b01-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 8,
+        "mirror": 8
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100,
+          100,
+          200,
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100,
+          100,
+          200,
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected idle gesture outward and return order, including the repeated p014 hold. Mirror retains corresponding weapon and foot sides.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 2,
+      "original_block": 2,
+      "role": "idle",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p015",
+        "zombie_p016",
+        "zombie_p017",
+        "zombie_p017",
+        "zombie_p016",
+        "zombie_p015",
+        "zombie_p010"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_02_block_02.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_02_block_02_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_02_block_02.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_02_block_02_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_02_block_02_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g02_b02-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 7,
+        "mirror": 7
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100,
+          200,
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100,
+          200,
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected idle in/out and the repeated p017 hold. Repaired p015 diagonal hammer now appears in both occurrences; p010 bookends are the same source pose.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 3,
+      "original_block": 3,
+      "role": "hurt",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p018",
+        "zombie_p019",
+        "zombie_p020",
+        "zombie_p021",
+        "zombie_p022",
+        "zombie_p023"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_03_block_03.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_03_block_03_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_03_block_03.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_03_block_03_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_03_block_03_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g03_b03-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 7,
+        "mirror": 7
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected crouch to arms-up/backward recoil, lateral lean and recovery in both facings. Hammer stays with the carrying arm throughout.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 4,
+      "original_block": 4,
+      "role": "defensive reaction",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p024",
+        "zombie_p025",
+        "zombie_p026",
+        "zombie_p027",
+        "zombie_p027",
+        "zombie_p028",
+        "zombie_p029"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_04_block_04.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_04_block_04_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_04_block_04.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_04_block_04_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_04_block_04_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g04_b04-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 7,
+        "mirror": 7
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100,
+          100,
+          200,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100,
+          100,
+          200,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected low-to-high two-hand brace and lowering recovery, including the p027 repeat. Both-facing decoded frame sequences preserve the guard arc.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 5,
+      "original_block": 5,
+      "role": "death",
+      "frame_count": 9,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p030",
+        "zombie_p031",
+        "zombie_p032",
+        "zombie_p033",
+        "zombie_p034",
+        "zombie_p035",
+        "zombie_p036",
+        "zombie_p037"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_05_block_05.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_05_block_05_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_05_block_05.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_05_block_05_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_05_block_05_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g05_b05-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 9,
+        "mirror": 9
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected nine source positions in both facings: initial recoil, raised boot/arms, fall, folded low corpse, hammer-above-body bounce and final low rest. Corpse stays low under native bounds, not rescaled to standing height.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 7,
+      "original_block": 6,
+      "role": "turn part 1",
+      "frame_count": 3,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p038",
+        "zombie_p039"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_07_block_06.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_07_block_06_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_07_block_06.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_07_block_06_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_07_block_06_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g07_b06-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 3,
+        "mirror": 3
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected three ordered poses 010,038,039: side/three-quarter through frontal with vertical hammer. Alias G9 preserved.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 8,
+      "original_block": 7,
+      "role": "turn part 2",
+      "frame_count": 3,
+      "pose_ids_in_source_order": [
+        "zombie_p039",
+        "zombie_p038",
+        "zombie_p010"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_08_block_07.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_08_block_07_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_08_block_07.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_08_block_07_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_08_block_07_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g08_b07-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 3,
+        "mirror": 3
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected reverse three-pose order 039,038,010 back toward side/three-quarter. Alias G10 preserved.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 9,
+      "original_block": 8,
+      "role": "legacy turn",
+      "frame_count": 3,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p038",
+        "zombie_p039"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_09_block_08.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_09_block_08_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_09_block_08.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_09_block_08_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_09_block_08_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g09_b08-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 3,
+        "mirror": 3
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Independently inspected its board and both-facing GIF frame strips. Same three-pose turn order as G7; atlas bytes also match.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 10,
+      "original_block": 9,
+      "role": "legacy turn",
+      "frame_count": 3,
+      "pose_ids_in_source_order": [
+        "zombie_p039",
+        "zombie_p038",
+        "zombie_p010"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_10_block_09.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_10_block_09_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_10_block_09.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_10_block_09_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_10_block_09_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g10_b09-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 3,
+        "mirror": 3
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Independently inspected its board and both-facing GIF frame strips. Same reverse turn order as G8; atlas bytes also match.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 11,
+      "original_block": 10,
+      "role": "melee upper",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p040",
+        "zombie_p041",
+        "zombie_p042",
+        "zombie_p043",
+        "zombie_p044",
+        "zombie_p045"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_11_block_10.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_11_block_10_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_11_block_10.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_11_block_10_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_11_block_10_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g11_b10-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 7,
+        "mirror": 7
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected all seven upper-attack positions, overhead/behind-head windup, raised forward strike and recovery in both facings. Complete hammer head, hands and feet remain framed.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 12,
+      "original_block": 11,
+      "role": "melee front",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p046",
+        "zombie_p047",
+        "zombie_p048",
+        "zombie_p049",
+        "zombie_p050",
+        "zombie_p051"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_12_block_11.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_12_block_11_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_12_block_11.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_12_block_11_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_12_block_11_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g12_b11-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 7,
+        "mirror": 7
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected all seven front-attack positions, overhead windup, horizontal extension, diagonal follow-through and return in both facings. Source-ordered front strike remains distinct from upper and lower actions.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 13,
+      "original_block": 12,
+      "role": "melee lower",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "zombie_p010",
+        "zombie_p052",
+        "zombie_p053",
+        "zombie_p054",
+        "zombie_p055",
+        "zombie_p056",
+        "zombie_p057"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_13_block_12.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_13_block_12_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_13_block_12.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_13_block_12_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_13_block_12_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g13_b12-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 7,
+        "mirror": 7
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "mirror": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected all seven low-attack positions, overhead windup into deep bend and low hammer, then rising recovery in both facings. No idle substitution for bent poses.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 20,
+      "original_block": 13,
+      "role": "movement start",
+      "frame_count": 1,
+      "pose_ids_in_source_order": [
+        "zombie_p058"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_20_block_13.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_20_block_13_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_20_block_13.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_20_block_13_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_20_block_13_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g20_b13-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 1,
+        "mirror": 1
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100
+        ],
+        "mirror": [
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected its own single movement-start position in the source contact and both-facing GIF frame previews; retained its separate pose ID.",
+      "timed_playback": false
+    },
+    {
+      "group_id": 21,
+      "original_block": 14,
+      "role": "movement end",
+      "frame_count": 1,
+      "pose_ids_in_source_order": [
+        "zombie_p059"
+      ],
+      "exact_aliases": [],
+      "complete": true,
+      "source_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_21_block_14.png",
+      "mirror_atlas": "assets/prototype/enemy/zombie/remaster_v01/group_21_block_14_mirror.png",
+      "contact": "assets/prototype/enemy/zombie/remaster_v01/contacts/group_21_block_14.png",
+      "source_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_21_block_14_source.gif",
+      "mirror_gif": "assets/prototype/enemy/zombie/remaster_v01/previews/group_21_block_14_mirror.gif",
+      "review_board": "assets/prototype/enemy/zombie/remaster_v01/_source/review/g21_b14-group-review-board.png",
+      "gif_decoded_frame_counts": {
+        "source": 1,
+        "mirror": 1
+      },
+      "gif_frame_durations_ms": {
+        "source": [
+          100
+        ],
+        "mirror": [
+          100
+        ]
+      },
+      "source_contact_inspected": true,
+      "decoded_source_gif_frames_inspected": true,
+      "decoded_mirror_gif_frames_inspected": true,
+      "observations": "Inspected its own single movement-end position in the source contact and both-facing GIF frame previews; retained its separate pose ID.",
+      "timed_playback": false
+    }
+  ],
+  "alias_checks": [
+    {
+      "pair": [
+        7,
+        9
+      ],
+      "source_atlas_bytes_identical": true,
+      "mirror_atlas_bytes_identical": true
+    },
+    {
+      "pair": [
+        8,
+        10
+      ],
+      "source_atlas_bytes_identical": true,
+      "mirror_atlas_bytes_identical": true
+    }
+  ],
+  "repairs": [
+    {
+      "pose_id": "zombie_p015",
+      "rejected_art": "batch-001-a-components",
+      "replacement": "repair-p015-b",
+      "reason": "Incorrect near-vertical hammer changed to source diagonal down-right",
+      "dependent_groups_rebuilt": [
+        2
+      ],
+      "old_record_preserved_under": "assets/prototype/enemy/zombie/remaster_v01/_source/history/zombie_p015"
+    }
+  ],
+  "extraction_events": [
+    {
+      "attempt": "batch-000-a",
+      "path": "adaptive rectangular gutters",
+      "outcome": "rejected: Figure touches raw/grid boundary: zombie_p001; attempt retained"
+    },
+    {
+      "attempts": "batch-000-a-components through batch-007-a-components",
+      "path": "user-approved strict alpha components using preinstalled SciPy overlay",
+      "outcome": "accepted all eight separate-figure pages without weakening component count or outer-edge checks"
+    },
+    {
+      "attempt": "repair-p015-b",
+      "path": "1x1 Pillow clear-background ingestion",
+      "outcome": "accepted"
+    }
+  ],
+  "blocking_defects_observed_after_repair": [],
+  "quality_limits": [
+    "Independent high-resolution drawings are not pixel-identical silhouettes; body proportions, cloth folds and texture vary slightly. The required source-bound aspect-fit can reduce visible height where the high-resolution silhouette is broader. No independent pose/weapon/body scaling was introduced.",
+    "Static overview review establishes inspected pose/order/facing observations, not smoothness, subjective animation acceptance, subpixel edge perfection or original timing.",
+    "No browser, Godot, engine import, gameplay, human playback or final motion approval was performed."
+  ],
+  "validation_before_spriteframes": {
+    "creature_id": "zombie",
+    "coverage": {
+      "complete_groups": 15,
+      "total_groups": 15,
+      "available_poses": 60,
+      "total_poses": 60,
+      "missing_pose_ids": [],
+      "frame_positions": 86,
+      "reviewed_poses": 60
+    },
+    "frame_cells_verified": 86,
+    "errors": [],
+    "complete": true
+  },
+  "validation_after_spriteframes": {
+    "creature_id": "zombie",
+    "coverage": {
+      "complete_groups": 15,
+      "total_groups": 15,
+      "available_poses": 60,
+      "total_poses": 60,
+      "missing_pose_ids": [],
+      "frame_positions": 86,
+      "reviewed_poses": 60
+    },
+    "frame_cells_verified": 86,
+    "errors": [],
+    "complete": true
+  }
+}

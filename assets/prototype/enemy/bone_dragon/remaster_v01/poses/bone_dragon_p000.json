@@ -1,0 +1,98 @@
+{
+  "pose_id": "bone_dragon_p000",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "cd5f832c6e5042e48482d1ac4ce45e354880ba6330fa04c07e739cc7c6e9073d:116:89:188:171:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cndrgn43.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 396474,
+      "stored_size": 12524,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 188,
+      "height": 171,
+      "left": 116,
+      "top": 89,
+      "legacy_header": false,
+      "index_sha256": "cd5f832c6e5042e48482d1ac4ce45e354880ba6330fa04c07e739cc7c6e9073d"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p000-a02.png",
+  "raw_sha256": "4d8ccb21d3979a6328c5a71cbb93a8101ee7ba41d0a8634ac1155687147031ca",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p000-a02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/pilot-p000-a02-bone_dragon_p000.png",
+  "isolated_sha256": "cba44cffe490d92791d23fe3d679d46449ec00e4360c72ff6339454231bbe151",
+  "source_grid_region": [
+    0,
+    0,
+    1254,
+    1254
+  ],
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p000.png",
+  "registered_pose_sha256": "32e2ffbba4130db1b47a26ed19266fba83402f05a436c3f1c10b76d260624f86",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p000_mirror.png",
+  "mirror_sha256": "46228beb99e6231bd0fa7a45ede3d6342193ddf29f54c62bd507b2c0150ed729",
+  "registration": {
+    "source_body_rect": [
+      128,
+      89,
+      176,
+      149
+    ],
+    "artwork_crop": [
+      34,
+      89,
+      1219,
+      1089
+    ],
+    "registered_rect": [
+      344,
+      72,
+      434,
+      366
+    ],
+    "uniform_artwork_fit": 0.3662447257383966
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Flight: source upstrokes, rearward/downstroke wing phases, dangling feet and tail changes remain distinct in source order. Retained parent-confirmed p002 A06 far-wing repair (6ce2514eb8e4a25997ada878085dcdbe3efd781f6c5d81494745e0fb99a4f0f3), not the rejected shallow attempt. Final fixed-scale original/candidate pose comparisons, all source-ordered group contacts and offline decoded source/mirror GIF frames viewed. No known blocking anatomy, direction, order or clipping defect observed. Worker asset review only; no browser/Godot/human playback or original timing acceptance.",
+    "source_sha256_at_review": "32e2ffbba4130db1b47a26ed19266fba83402f05a436c3f1c10b76d260624f86",
+    "mirror_sha256_at_review": "46228beb99e6231bd0fa7a45ede3d6342193ddf29f54c62bd507b2c0150ed729"
+  },
+  "human_animation_acceptance": false
+}

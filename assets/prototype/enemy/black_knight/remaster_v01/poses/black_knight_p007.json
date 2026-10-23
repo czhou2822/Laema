@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p007",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "feb6e9ba8b09c9bfedd39bff1f94a4fcd399253f12dc6c3331038a7c515c29ac:173:169:89:99:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 7,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 7,
+      "name": "cbknig46.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 400,
+      "offset": 244220,
+      "stored_size": 5156,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 89,
+      "height": 99,
+      "left": 173,
+      "top": 169,
+      "legacy_header": false,
+      "index_sha256": "feb6e9ba8b09c9bfedd39bff1f94a4fcd399253f12dc6c3331038a7c515c29ac"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-000-v01.png",
+  "raw_sha256": "2dc17a7e075127d5f37c483d34afc0b1012908ca3585fd5f6d7635252bf7efe0",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-000-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/batch-000-v01-black_knight_p007.png",
+  "isolated_sha256": "1816f65fe4ebb725fcbad1d742fe86cef0373e17fcf1fbd97abfbf2ad1655c4f",
+  "source_grid_region": [
+    1100,
+    590,
+    330,
+    424
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p007.png",
+  "registered_pose_sha256": "0acd745bbd1cc8a5d784b0296799689b3bec5b0407109e05276dce831a82378c",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p007_mirror.png",
+  "mirror_sha256": "b8b563f53fce6d85c80d5b71df049149a8836e59d3d35c74b763ebf064418158",
+  "registration": {
+    "source_body_rect": [
+      173,
+      169,
+      86,
+      97
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      332,
+      426
+    ],
+    "registered_rect": [
+      468,
+      268,
+      186,
+      239
+    ],
+    "uniform_artwork_fit": 0.5636792452830188
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Final extended stride keeps the walking blade and returns toward entry without changing equipment. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "0acd745bbd1cc8a5d784b0296799689b3bec5b0407109e05276dce831a82378c",
+    "mirror_sha256_at_review": "b8b563f53fce6d85c80d5b71df049149a8836e59d3d35c74b763ebf064418158"
+  },
+  "human_animation_acceptance": false
+}

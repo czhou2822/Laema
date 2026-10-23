@@ -1,0 +1,43 @@
+{
+  "source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-repair-arm-pair-0-a03.png",
+  "method": "Exact complete-cell crop; 10px bands verified alpha<=8; all detached pieces retained; unchanged helper clipping/registration checks",
+  "x_cuts": [
+    0,
+    890,
+    1774
+  ],
+  "y_cuts": [
+    0,
+    887
+  ],
+  "records": [
+    {
+      "pose_id": "bone_dragon_p047",
+      "page_sha256": "a807f91091274dfe84dfebb0c4c3694418efad69f98340fd9c843a11ee6d576d",
+      "exact_crop": [
+        0,
+        0,
+        890,
+        887
+      ],
+      "derivative": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/derived/full-arm-pair0-salvage-a04/bone_dragon_p047.png",
+      "derivative_sha256": "eac1f5a8e97a3ddd3c92e64e348fc88b0794d2546102966dfca5d86bb90db2d3",
+      "ingested": true,
+      "helper_output": "{\n  \"creature_id\": \"bone_dragon\",\n  \"ingested_pose_ids\": [\n    \"bone_dragon_p047\"\n  ],\n  \"raw_source\": \"assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-arm-pair0-salvage-a04-bone_dragon_p047.png\"\n}\n"
+    },
+    {
+      "pose_id": "bone_dragon_p051",
+      "page_sha256": "a807f91091274dfe84dfebb0c4c3694418efad69f98340fd9c843a11ee6d576d",
+      "exact_crop": [
+        890,
+        0,
+        884,
+        887
+      ],
+      "derivative": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/derived/full-arm-pair0-salvage-a04/bone_dragon_p051.png",
+      "derivative_sha256": "6a1e7f6742dab34eda8b136121577f836cdbf1f1b0a001cbcbc819ecdb35bd33",
+      "ingested": false,
+      "helper_output": "Traceback (most recent call last):\n  File \"C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\tools\\art\\necropolis_remaster.py\", line 495, in <module>\n    main()\n  File \"C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\tools\\art\\necropolis_remaster.py\", line 486, in main\n    result=ingest(args.creature,args.image,args.pose_ids.split(','),args.cols,args.rows,args.batch,args.prompt_file,args.adaptive_grid,args.components,args.reuse_approved_idle)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\tools\\art\\necropolis_remaster.py\", line 312, in ingest\n    raise ValueError('Figure touches raw/grid boundary: '+pid+'; preserve attempt and regenerate')\nValueError: Figure touches raw/grid boundary: bone_dragon_p051; preserve attempt and regenerate\n"
+    }
+  ]
+}

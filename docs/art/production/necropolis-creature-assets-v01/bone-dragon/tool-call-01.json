@@ -1,0 +1,55 @@
+{
+  "tool": "functions.exec -> tools.image_gen__imagegen",
+  "mode": "built-in imagegen",
+  "args": {
+    "prompt": "Use case: style-transfer\nAsset type: one static whole-body transparent game-creature master, Bone Dragon (CNDRGN), awaiting human approval.\nInput images: Image 1 (native-idle-6x.png) is the exact anatomy, identity, native ready-pose, facing, palette and proportion authority. Image 2 (pikeman-rendering-master.png) supplies fine modeled-volume rendering and finish ONLY; borrow no human anatomy, equipment, costume, heraldry or colors.\nPrimary request: redraw Image 1 as a new finely modeled, high-resolution painted/pre-rendered fantasy sprite. Preserve the actual original Bone Dragon, not a new dragon design. Replace the enlarged block pixels with carefully shaded solid bone forms and fine dry wing texture while preserving the original silhouette and placement of every anatomical part.\nScene/backdrop: genuine transparent background, clean RGBA whole-body cutout; empty space around the entire creature. No ground, floor, cast shadow, scenery, lighting halo, glow or effects.\nComposition/framing: one creature only, right-facing side/very slight three-quarter view exactly as Image 1. Match Image 1's narrow upright ready stance and full width-to-height proportion, about 93:114 (0.816 width/height). The skull points horizontally right near the upper right, long horns angle backward up-left; the neck is erect and slightly S-curved, thorax upright, two small clawed forearms lifted forward, two bent hind legs planted with long spread bony toes. Tail follows the source: descends behind the pelvis, bends near the heel and curves low along the feet, all visible. Keep the complete skeleton, all wing tips, tail tip, horns, fingers and toes inside the image with generous transparent margins. Do not turn it into a sprawling horizontal quadruped. Do not enlarge the head or widen the body.\nIdentity and anatomy: an entirely skeletal undead dragon with warm aged yellow/ivory bones, tan/ochre in the joints and crevices. Long thin angular dragon skull, deep unlit eye sockets, open toothy jaw as in the source, long back-angled horns. Clearly separated exposed ribs and vertebrae, thin bony neck, pelvis, skeletal limbs, long articulated spinal tail with small bony spines. Preserve the source's wiry slenderness, large feet and skeletal negative spaces; no flesh, scaled torso or armored plates.\nWings: preserve the large folded pair behind the body, visually overlapping in the native side view. The near wing forms the tall narrow left/back silhouette, its top joint behind the neck, long bony finger spars sweeping down toward the heels. Dark charcoal/slate, desiccated leathery membranes stretch BETWEEN the pale skeletal fingers with ragged scalloped/tattered ends as in Image 1. Fine dry creases and muted gray-violet shading, not bright colored or glossy living wing skin. Keep wing fingers thin, long and legible. Wings remain folded vertically, not spread wide, and do not hide the skull, neck, rib cage or feet.\nStyle/medium: fine sculptural modeled volume, nuanced warm ivory highlights and restrained occlusion inside joints, subtle bone surface wear, legible clean silhouette at a final visible size around 229x281 pixels. Comparable finish to Image 2 while retaining all CNDRGN source colors, pose and proportions. Smooth detailed material rendering, not chunky pixel clusters, cartoon outlines, chibi or a cinematic painting.\nLighting: soft directional light from above/front, natural internal form shading only, no cast floor shadow. Dark membranes stay visibly desiccated with readable finger supports.\nOutput: a single large master cutout on a square transparent canvas, with the whole silhouette approximately 660 pixels wide by 810 pixels high, centered and safely padded. Final 1024x768 registration is a separate mechanical step; do not draw any guides, numbers, captions or comparison panels.\nConstraints: CNDRGN Bone Dragon only. No living scaled black/green dragon (CBDRGN), no Ghost Dragon (CHDRGN), no cyan/blue/green spectral tint, flames, mist, magical eyes, smoke, runes, armor, saddle, rider, extra props or added limbs. Do not copy the Pikeman. Do not change the original facing or idle pose. Do not crop the body, bones, wings, claws, horns or tail. No text, watermark or background checkerboard baked into the art.",
+    "referenced_image_paths": [
+      "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/bone-dragon/native-idle-6x.png",
+      "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/references/pikeman-rendering-master.png"
+    ],
+    "transparent_background": true
+  },
+  "prompt_file": "prompt-01.txt",
+  "prompt_file_sha256": "c19b09b8db5c9defde8a25f60e0f1203df49f984309aab6ca09a6aad55965577",
+  "prompt_argument_utf8_sha256": "bb53c369d44107d0ee649d5406f7131b51be65ff8beabc4dcf6e45110787dfa0",
+  "inputs": [
+    {
+      "file": "native-idle-6x.png",
+      "sha256": "90d24b0a4fbe254e42117b83f32ddc1d5571e5b2ab9afd6159cd22b1e71a4756"
+    },
+    {
+      "file": "../references/pikeman-rendering-master.png",
+      "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+    }
+  ],
+  "returned_generated_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a1638f-9d8c-71e0-a893-483b88687d3f\\exec-835d63a4-f8a1-45f1-b5bd-2fbafc481f02.png",
+  "archived_raw": "raw-01.png",
+  "returned_raw_sha256": "41c56f05d6cceb0377d09295bd53c3b2b7069d16ff9f2b9ee2015138b3a3bcf1",
+  "archived_raw_sha256": "41c56f05d6cceb0377d09295bd53c3b2b7069d16ff9f2b9ee2015138b3a3bcf1",
+  "metadata": {
+    "width": 1132,
+    "height": 1389,
+    "channels": 4,
+    "hasAlpha": true
+  },
+  "alpha_bounds_threshold8": {
+    "left": 77,
+    "top": 3,
+    "width": 1049,
+    "height": 1380,
+    "right": 1126,
+    "bottom": 1383,
+    "transparent_pixels": 764665,
+    "opaque_pixels": 686741
+  },
+  "alpha_statistics": {
+    "transparent": 764665,
+    "partial": 806919,
+    "opaque": 764,
+    "borderNonzero": 122,
+    "redYellowSaturated": 0
+  },
+  "raw_preserved_byte_identical": true,
+  "approval": false,
+  "animation_generated": false
+}

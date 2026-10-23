@@ -1,0 +1,100 @@
+{
+  "pose_id": "wight_p018",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "9d0c0ddc09e9eb66a1d109193d70bf4d9986c8e4d4dbd3c888f239176424ff9a:178:180:57:85:450:400",
+  "original_representative": {
+    "group_id": 3,
+    "original_block": 3,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_03_block_03_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_03_block_03_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cwight50.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 130156,
+      "stored_size": 2519,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 57,
+      "height": 85,
+      "left": 178,
+      "top": 180,
+      "legacy_header": false,
+      "index_sha256": "9d0c0ddc09e9eb66a1d109193d70bf4d9986c8e4d4dbd3c888f239176424ff9a"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-002-attempt-01-components.png",
+  "raw_sha256": "59bf8e616180d872be23d85ed2491d75ee0e25580a5f28d6d81defecad356685",
+  "prompt": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-002-attempt-01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wight/remaster_v01/_source/isolated/page-002-attempt-01-components-wight_p018.png",
+  "isolated_sha256": "0d92aa4376cfbbc0e9eb8421bec0c5145f26ccd2a4d9dbf17120ed7675397a65",
+  "source_grid_region": [
+    953,
+    65,
+    398,
+    369
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p018.png",
+  "registered_pose_sha256": "de2fc337b7f0dfa4845fbe89fd8e2cb4ebb86944a6382cfa21c3ac2a0ac282db",
+  "mirror_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p018_mirror.png",
+  "mirror_sha256": "0bbff342cbe4d805b4259fd7758bff33454adc6471a515ab28a95f4027192086",
+  "registration": {
+    "source_body_rect": [
+      179,
+      180,
+      56,
+      60
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      400,
+      371
+    ],
+    "registered_rect": [
+      470,
+      315,
+      138,
+      128
+    ],
+    "uniform_artwork_fit": 0.34673366834170855
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Hurt/death shared second pose: bent low body with long rightward trailing hem and two hands. Inspected registered-scale OG/candidate and both facings; 2x source comparison. Worker candidate review only.",
+    "source_sha256_at_review": "de2fc337b7f0dfa4845fbe89fd8e2cb4ebb86944a6382cfa21c3ac2a0ac282db",
+    "mirror_sha256_at_review": "0bbff342cbe4d805b4259fd7758bff33454adc6471a515ab28a95f4027192086"
+  },
+  "human_animation_acceptance": false
+}

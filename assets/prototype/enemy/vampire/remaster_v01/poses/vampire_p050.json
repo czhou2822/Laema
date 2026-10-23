@@ -1,0 +1,100 @@
+{
+  "pose_id": "vampire_p050",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "6a28c8975e00a34d1c397a46e3c4c2e888c1edbf591b4019b393340ae6072ea5:144:180:89:89:450:400",
+  "original_representative": {
+    "group_id": 20,
+    "original_block": 13,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_20_block_13_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_20_block_13_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "Cvamp10.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 33609,
+      "stored_size": 4592,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 89,
+      "height": 89,
+      "left": 144,
+      "top": 180,
+      "legacy_header": false,
+      "index_sha256": "6a28c8975e00a34d1c397a46e3c4c2e888c1edbf591b4019b393340ae6072ea5"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/batch-006-attempt-01.png",
+  "raw_sha256": "39d10bc70b54594738f6c90a2bc8e43373a5dd03fe15e9d542a7c764e0ced9b3",
+  "prompt": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/batch-006-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/vampire/remaster_v01/_source/isolated/batch-006-attempt-01-vampire_p050.png",
+  "isolated_sha256": "feca881ed30abc36e0abed9bc1ef491da2acf44648f7df016fb7d12c62ed7a22",
+  "source_grid_region": [
+    977,
+    15,
+    336,
+    451
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p050.png",
+  "registered_pose_sha256": "e8a0e9e59bfc21b3ba3104de130d5405f8a45c9835703130133dae5f4533151c",
+  "mirror_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p050_mirror.png",
+  "mirror_sha256": "06c1977d7942a091b478faa74aa7c3aba5cdf040418f7cc15cc0b11ace95a89a",
+  "registration": {
+    "source_body_rect": [
+      167,
+      180,
+      65,
+      89
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      338,
+      453
+    ],
+    "registered_rect": [
+      441,
+      299,
+      160,
+      215
+    ],
+    "uniform_artwork_fit": 0.47619047619047616
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected original transformation guides, raw pages and cleaned repair plus registered comparisons in both facings. Lower-body smoke grows to occluding column then source bat wing phases; removed invented miniature bats. Embedded smoke remains part of each creature pose, no standalone VFX.",
+    "source_sha256_at_review": "e8a0e9e59bfc21b3ba3104de130d5405f8a45c9835703130133dae5f4533151c",
+    "mirror_sha256_at_review": "06c1977d7942a091b478faa74aa7c3aba5cdf040418f7cc15cc0b11ace95a89a"
+  },
+  "human_animation_acceptance": false
+}

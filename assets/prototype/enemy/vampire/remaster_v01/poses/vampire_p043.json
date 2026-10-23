@@ -1,0 +1,100 @@
+{
+  "pose_id": "vampire_p043",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "3b4c2fd59615d3c3677a03719bfc1c15007ba7111dbdc53eb9f2726bc6cedcc3:165:181:62:86:450:400",
+  "original_representative": {
+    "group_id": 13,
+    "original_block": 12,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_13_block_12_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_13_block_12_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "Cvamp38.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 123211,
+      "stored_size": 3167,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 62,
+      "height": 86,
+      "left": 165,
+      "top": 181,
+      "legacy_header": false,
+      "index_sha256": "3b4c2fd59615d3c3677a03719bfc1c15007ba7111dbdc53eb9f2726bc6cedcc3"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/batch-005-attempt-01.png",
+  "raw_sha256": "ccb3d9b60442e7195382fba5eeb17e6eeb263bae5b69f09509e85165386f310d",
+  "prompt": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/batch-005-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/vampire/remaster_v01/_source/isolated/batch-005-attempt-01-vampire_p043.png",
+  "isolated_sha256": "635c82af15d7940dfc1bddcc9656f1ed2c4d866d1bb4bc36046856c216b54d6a",
+  "source_grid_region": [
+    1403,
+    12,
+    346,
+    428
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p043.png",
+  "registered_pose_sha256": "3cc9efffa030099c50d19723dd1cf40cf8e586b66353f0d2bdacd46d1806ea0e",
+  "mirror_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p043_mirror.png",
+  "mirror_sha256": "1ca234f98eac30d910b2421c1e5d0c316be67b9359003aa7e3ccc24b2026baf2",
+  "registration": {
+    "source_body_rect": [
+      166,
+      181,
+      61,
+      86
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      348,
+      430
+    ],
+    "registered_rect": [
+      438,
+      324,
+      150,
+      186
+    ],
+    "uniform_artwork_fit": 0.43352601156069365
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected low-reach raw and registered comparisons in both facings. Arms spread/raise, deep bent-forward reach, low recovery and rising recovery remain distinct, without normalizing low poses to standing height.",
+    "source_sha256_at_review": "3cc9efffa030099c50d19723dd1cf40cf8e586b66353f0d2bdacd46d1806ea0e",
+    "mirror_sha256_at_review": "1ca234f98eac30d910b2421c1e5d0c316be67b9359003aa7e3ccc24b2026baf2"
+  },
+  "human_animation_acceptance": false
+}

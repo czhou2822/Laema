@@ -1,0 +1,100 @@
+{
+  "pose_id": "bone_dragon_p026",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "8f832765e26950db71bb70da7813cbe8d3b911a81a6b6e76eb5db8b00b1f2cd2:116:158:154:110:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cndrgn19.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 186436,
+      "stored_size": 10393,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 154,
+      "height": 110,
+      "left": 116,
+      "top": 158,
+      "legacy_header": false,
+      "index_sha256": "8f832765e26950db71bb70da7813cbe8d3b911a81a6b6e76eb5db8b00b1f2cd2"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-repair-death-start-a02.png",
+  "raw_sha256": "ac85a6cbc390f2ec9dd6aba2068ad94184c90c868978460e5bfa1f152275ffc5",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-repair-death-start-a02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/full-repair-death-start-a02-bone_dragon_p026.png",
+  "isolated_sha256": "a4189b88a0fb17bf15f8aba4d9fa61f3d2619750be1f6855f548b1ed7c15ca18",
+  "source_grid_region": [
+    0,
+    0,
+    1254,
+    1254
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p026.png",
+  "registered_pose_sha256": "de38a0fe08ce3ffce0e56ac362f5535fc966ae83ef161dcc37997967b35657aa",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p026_mirror.png",
+  "mirror_sha256": "2b01e35c8895615281658064b3a45d23a5bbd5ffa1bd4f8f01eb66296ae9588e",
+  "registration": {
+    "source_body_rect": [
+      120,
+      158,
+      150,
+      110
+    ],
+    "artwork_crop": [
+      29,
+      148,
+      1248,
+      1145
+    ],
+    "registered_rect": [
+      344,
+      241,
+      331,
+      271
+    ],
+    "uniform_artwork_fit": 0.27181544633901705
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Death: intact-to-disintegrating source sequence, frontal changes, detached skull/wing/bone/tail fragments and final low heap retained as complete whole-pose cells. No forced intact master or deleted disconnected fragments. Final fixed-scale original/candidate pose comparisons, all source-ordered group contacts and offline decoded source/mirror GIF frames viewed. No known blocking anatomy, direction, order or clipping defect observed. Worker asset review only; no browser/Godot/human playback or original timing acceptance.",
+    "source_sha256_at_review": "de38a0fe08ce3ffce0e56ac362f5535fc966ae83ef161dcc37997967b35657aa",
+    "mirror_sha256_at_review": "2b01e35c8895615281658064b3a45d23a5bbd5ffa1bd4f8f01eb66296ae9588e"
+  },
+  "human_animation_acceptance": false
+}

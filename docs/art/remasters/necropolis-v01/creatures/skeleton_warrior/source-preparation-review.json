@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "phase": "historical_initial_preparation_snapshot",
+  "current_production_report": "CREATURE_REPORT.md",
+  "creature_id": "skeleton_warrior",
+  "date_hong_kong": "2026-10-23",
+  "status": "prepared_waiting_for_parent_pilot_clearance",
+  "generation_allowed": false,
+  "hold_reason": "Explicit user instruction: hold new artwork until parent clears Skeleton/Bone Dragon pilots.",
+  "counts": {
+    "source_groups": 15,
+    "source_frame_positions": 86,
+    "unique_registered_source_poses": 57,
+    "repeat_occurrences_beyond_unique_poses": 29,
+    "source_rgba_sheets": 15,
+    "source_indexed_sheets": 15,
+    "prepared_guides": 8,
+    "pending_candidate_poses": 57,
+    "generated_artwork": 0,
+    "approved_idle_reuses": 0,
+    "registered_candidates": 0,
+    "complete_candidate_groups": 0
+  },
+  "verified_sha256": {
+    "appearance_reference": "b5c927d1906aaf32eb4d9c0df532d7094fd24afdfbb1ef453870fd45c20e20ee",
+    "original_metadata": "38d52108452c5c9bed2261bd44d4372ba43a745ce63e945476d62625d9142567",
+    "original_def": "d5b4ddf69f1688af80350ba98d941b4ae1fddb191b3956d45c49580e13798489"
+  },
+  "asset_checks": {
+    "read_only_audit": "check_sources.py",
+    "audit_exit_code": 0,
+    "complete_native_group_record_matches": 15,
+    "indexed_frame_crop_hash_matches": 86,
+    "rgba_body_bound_matches": 86,
+    "unique_pose_occurrence_lists_checked": 57,
+    "all_projected_poses_fit_padded_cell": true,
+    "prepared_master_copy_byte_identical": true,
+    "guide_json_and_dimensions_match": true,
+    "source_def_independently_redecoded_this_turn": false
+  },
+  "exact_group_alias_pairs": [[7, 9], [8, 10]],
+  "visual_source_inspection": {
+    "method": "view_image",
+    "approved_master_viewed": true,
+    "original_rgba_sheet_viewed": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWSKEL/group_02_block_02_page_00.png",
+    "guide_root": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/guides",
+    "guides": [
+      {"file": "batch-000.png", "pose_suffixes": [0, 7], "observed": "walk leg alternation, sword angle, shield exposure"},
+      {"file": "batch-001.png", "pose_suffixes": [8, 15], "observed": "raised gesture and ordinary idle"},
+      {"file": "batch-002.png", "pose_suffixes": [16, 23], "observed": "idle, hurt lean/recovery, defence entry"},
+      {"file": "batch-003.png", "pose_suffixes": [24, 31], "observed": "shield defence and death collapse"},
+      {"file": "batch-004.png", "pose_suffixes": [32, 39], "observed": "final remains, turn views, upper attack"},
+      {"file": "batch-005.png", "pose_suffixes": [40, 47], "observed": "upper recovery and forward attack"},
+      {"file": "batch-006.png", "pose_suffixes": [48, 55], "observed": "lower attack bend and movement transitions"},
+      {"file": "batch-007.png", "pose_suffixes": [56, 56], "observed": "movement end"}
+    ],
+    "unique_source_drawings_viewed_statically": 57,
+    "all_source_ordered_motion_reviewed": false,
+    "both_facing_playback_reviewed": false,
+    "generated_candidates_reviewed": 0
+  },
+  "issues": [],
+  "production_cautions": [
+    "Preserve repeated source positions and reversed turn order.",
+    "Shared attack entry/exit drawings do not make attack groups aliases.",
+    "Guide per-drawing enlargement is reference presentation, not output registration.",
+    "Death includes collapsed remains; ordinary idle is not a substitute.",
+    "Original timing remains unverified."
+  ],
+  "imagegen_calls": 0,
+  "engine_build_gameplay_tests_run": false,
+  "git_operations_performed": false,
+  "peer_messages_sent": false,
+  "resume_point": "Await explicit parent pilot clearance; retain skeleton_warrior ownership."
+}

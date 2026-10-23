@@ -1,0 +1,100 @@
+{
+  "pose_id": "zombie_p020",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "6b6feeec97eab25f5e4be723a9ee0ae650485c381047130d86c275012215d111:107:180:108:88:450:400",
+  "original_representative": {
+    "group_id": 3,
+    "original_block": 3,
+    "frame_index": 3,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_03_block_03_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_03_block_03_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 3,
+      "name": "CzomLO49.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 0,
+      "offset": 152058,
+      "stored_size": 3703,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 108,
+      "height": 88,
+      "left": 107,
+      "top": 180,
+      "legacy_header": false,
+      "index_sha256": "6b6feeec97eab25f5e4be723a9ee0ae650485c381047130d86c275012215d111"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.png",
+  "raw_sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0",
+  "prompt": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-002-a-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/zombie/remaster_v01/_source/isolated/batch-002-a-components-zombie_p020.png",
+  "isolated_sha256": "26d1496ee1bc370486289a152e4ec63a7be6bf00d04d2a9a5399635266ec0be3",
+  "source_grid_region": [
+    15,
+    474,
+    457,
+    385
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p020.png",
+  "registered_pose_sha256": "a507d63f872ac1a89efba0dbe930d2afa9ab0b788dd0d5c071eff7972e273988",
+  "mirror_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p020_mirror.png",
+  "mirror_sha256": "99ca738d655a28021d5f9c203ce7f47f3b43b86772c4d13e6a57910b39d5025c",
+  "registration": {
+    "source_body_rect": [
+      111,
+      180,
+      104,
+      88
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      459,
+      387
+    ],
+    "registered_rect": [
+      303,
+      296,
+      256,
+      216
+    ],
+    "uniform_artwork_fit": 0.5601750547045952
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Viewed raw batch-002-a and registered OG comparison for every pose. Quiet idle variants lead into forward crouch, arms-up recoil, backward lean, sideways lean and recovery. Hammer, bent legs, bare foot/boot and raised/free arm transitions are visible without added limbs or frame clipping.",
+    "source_sha256_at_review": "a507d63f872ac1a89efba0dbe930d2afa9ab0b788dd0d5c071eff7972e273988",
+    "mirror_sha256_at_review": "99ca738d655a28021d5f9c203ce7f47f3b43b86772c4d13e6a57910b39d5025c"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,479 @@
+{
+  "schema_version": 1,
+  "creature": "Ghost Dragon",
+  "slug": "ghost-dragon",
+  "source_id": "CHDRGN",
+  "status": "static master proposal; awaiting human approval",
+  "human_approved": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "runtime_verified": false,
+  "review_result": "ready_for_human_static_review_with_documented_limits",
+  "context": {
+    "worker_brief_read_completely": true,
+    "job_read_completely": true,
+    "skills_read": [
+      "C:/Users/zhouc/.codex/skills/mali/SKILL.md",
+      "C:/Users/zhouc/.codex/skills/.system/imagegen/SKILL.md"
+    ],
+    "workflow_references_read": [
+      "Mali references/art-review-and-direction.md",
+      "imagegen references/prompting.md",
+      "imagegen references/sample-prompts.md"
+    ],
+    "project_context_read": [
+      "AGENTS.md",
+      "docs/README.md",
+      "docs/art/ART_DIRECTION.md",
+      "relevant current sections of docs/GAME_DESIGN.md",
+      "relevant current sections of docs/TECH_ARCHITECTURE.md",
+      "relevant current sections of docs/IMPLEMENTATION_STATUS.md"
+    ],
+    "physical_personal_profile_read": "C:/Users/zhouc/Documents/Codex/Runtime/Fanor/Skills/records/mali/personal-art-profile.md",
+    "context_priority": "Latest user brief and original native colors/pose; Pikeman supplies rendering quality only.",
+    "profile_record_changed": false,
+    "canonical_project_records_changed": false
+  },
+  "source": {
+    "verified_resource": "H3sprite/CHDRGN.def",
+    "unrelated_CGDRAG_used": false,
+    "original_def_sha256": "1edebaea4cf6bdcaafd1247434486b26fd1156a27d5434f07b65b7240b0ed660",
+    "metadata_sha256": "12ffe336741a72c73ed251c332c65e18f03322c6a26b4ea2ee27b271ded359dc",
+    "idle_file": "native-idle.png",
+    "idle_frame": "G2 F0 / chdrgn61.pcx",
+    "idle_sha256": "d6f29a1c1aa7dd6808cd2e46de7ce6653344b948291d54233c6bcabe66e6b8d0",
+    "native_cell": [
+      450,
+      400
+    ],
+    "native_idle_bounds_alpha64": {
+      "left": 169,
+      "top": 153,
+      "width": 93,
+      "height": 114,
+      "right": 262,
+      "bottom": 267
+    },
+    "source_groups": 15,
+    "timeline_frames": 88,
+    "distinct_indexed_drawings": 61,
+    "job_groups_match_actual_native_metadata": true,
+    "inspected_images": [
+      "native-idle-6x.png",
+      "native-all-groups-contact.png",
+      "native-g00-guide.png",
+      "native-g01-guide.png",
+      "native-g02-guide.png",
+      "native-g03-guide.png",
+      "native-g04-guide.png",
+      "native-g05-guide.png",
+      "native-g07-guide.png",
+      "native-g08-guide.png",
+      "native-g09-guide.png",
+      "native-g10-guide.png",
+      "native-g11-guide.png",
+      "native-g12-guide.png",
+      "native-g13-guide.png",
+      "native-g20-guide.png",
+      "native-g21-guide.png",
+      "../bone-dragon/native-idle-6x.png",
+      "../references/pikeman-rendering-master.png"
+    ],
+    "guide_panel_count": 45,
+    "sampled_groups": [
+      {
+        "group_id": 0,
+        "timeline_frames": 6,
+        "visually_inspected_guide_frames": [
+          0,
+          3,
+          5
+        ],
+        "format_role_label": "movement",
+        "visual_observation": "Airborne wing-flap and extended-tail samples.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 1,
+        "timeline_frames": 9,
+        "visually_inspected_guide_frames": [
+          0,
+          4,
+          8
+        ],
+        "format_role_label": "gesture / mouse-over",
+        "visual_observation": "Dithered/solid spectral body samples in the ready stance.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 2,
+        "timeline_frames": 8,
+        "visually_inspected_guide_frames": [
+          0,
+          4,
+          7
+        ],
+        "format_role_label": "idle",
+        "visual_observation": "Upright right-facing ready stance; primary master pose.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 3,
+        "timeline_frames": 6,
+        "visually_inspected_guide_frames": [
+          0,
+          3,
+          5
+        ],
+        "format_role_label": "hit reaction",
+        "visual_observation": "Recoil, head/neck rotation and changed wing extent.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 4,
+        "timeline_frames": 11,
+        "visually_inspected_guide_frames": [
+          0,
+          5,
+          10
+        ],
+        "format_role_label": "defence",
+        "visual_observation": "Wing closes across the chest, then returns.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 5,
+        "timeline_frames": 8,
+        "visually_inspected_guide_frames": [
+          0,
+          4,
+          7
+        ],
+        "format_role_label": "death",
+        "visual_observation": "Skeleton separates into bones and settles.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 7,
+        "timeline_frames": 3,
+        "visually_inspected_guide_frames": [
+          0,
+          1,
+          2
+        ],
+        "format_role_label": "turn",
+        "visual_observation": "Side-to-front rotation; wing and rib anatomy visible.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 8,
+        "timeline_frames": 3,
+        "visually_inspected_guide_frames": [
+          0,
+          1,
+          2
+        ],
+        "format_role_label": "turn",
+        "visual_observation": "Reverse front-to-side rotation.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 9,
+        "timeline_frames": 3,
+        "visually_inspected_guide_frames": [
+          0,
+          1,
+          2
+        ],
+        "format_role_label": "turn",
+        "visual_observation": "Repeated side-to-front source sequence.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 10,
+        "timeline_frames": 3,
+        "visually_inspected_guide_frames": [
+          0,
+          1,
+          2
+        ],
+        "format_role_label": "turn",
+        "visual_observation": "Repeated reverse source sequence.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 11,
+        "timeline_frames": 7,
+        "visually_inspected_guide_frames": [
+          0,
+          3,
+          6
+        ],
+        "format_role_label": "melee upper",
+        "visual_observation": "Upward neck/jaw extension with raised wings.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 12,
+        "timeline_frames": 7,
+        "visually_inspected_guide_frames": [
+          0,
+          3,
+          6
+        ],
+        "format_role_label": "melee front",
+        "visual_observation": "Forward neck/jaw extension with raised wings.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 13,
+        "timeline_frames": 7,
+        "visually_inspected_guide_frames": [
+          0,
+          3,
+          6
+        ],
+        "format_role_label": "melee lower",
+        "visual_observation": "Downward neck/jaw extension.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 20,
+        "timeline_frames": 3,
+        "visually_inspected_guide_frames": [
+          0,
+          1,
+          2
+        ],
+        "format_role_label": "movement start",
+        "visual_observation": "Wings rise and tail releases from the curled ready pose.",
+        "role_engine_verified": false
+      },
+      {
+        "group_id": 21,
+        "timeline_frames": 4,
+        "visually_inspected_guide_frames": [
+          0,
+          2,
+          3
+        ],
+        "format_role_label": "movement end",
+        "visual_observation": "Wings and legs return toward the ready pose.",
+        "role_engine_verified": false
+      }
+    ],
+    "scope_limit": "All job/native metadata read; 45 guide panels plus all-group contact and enlarged idle visually inspected. This is not a claim to have watched all 88 source timeline positions in motion.",
+    "benchmark_sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4",
+    "bone_dragon_distinction": "CNDRGN comparison shows warm aged ivory bones and dark membranes; CHDRGN is pale silver-white with cool gray shading and pale membranes.",
+    "native_preview_limit": "RGBA exports interpret special palette indices as transparency/shadows; the native alpha comparison retains those export shadows. DEF/indexed originals remain the preservation source. Original playback timing and historical retail-byte identity are not established."
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "workflow": "built-in only",
+    "calls": 1,
+    "targeted_art_edit_calls": 0,
+    "raw_attempts_retained": 1,
+    "selected_attempt": 1,
+    "selected_raw": "raw/001-master.png",
+    "raw_sha256": "76d9eb465dc5b953dc522dab11fc4ccaec5114af8e667c952741d8f9f3400311",
+    "raw_dimensions": [
+      1132,
+      1389
+    ],
+    "original_tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16392-8fa8-75d3-840c-cfbddb652c56/exec-3ab4e61c-9065-4b07-9e8d-817a24f7a5c0.png",
+    "original_tool_output_retained": true,
+    "exact_prompt_file": "prompts/001-master.txt",
+    "prompt_file_sha256": "27d5de8a9e5d74cf0ec1582aded04b67886ab4c520831d5b688d40204317dc80",
+    "exact_tool_request_file": "prompts/001-request.json",
+    "request_file_sha256": "390899ad6fa1cd385f99f0ddf2b47fa3c02f38acf41955667a564d2548547776",
+    "exact_tool_result_metadata_file": "prompts/001-tool-result.json",
+    "tool_result_metadata_sha256": "b9e5456f7ca2f386836661929cbdc87b1bb4b9a940be51f930dc43630cfcd845",
+    "reference_and_raw_inventory": "generation-provenance.json",
+    "provenance_file_sha256": "736f729690e301bdad59ca155fca5efa860968585eec40ae05722bd574c5599a",
+    "manual_redrawing": false,
+    "upscaled_source_passed_off_as_new_art": false,
+    "iteration_decision": "No concrete missing head, wing, tail, limb, facing, scale-material or blue-VFX identity failure was identified on enlarged and game-size inspection. Retained attempt 1; minor silhouette/ornament differences remain explicit human-review limits."
+  },
+  "visual_checks": [
+    {
+      "criterion": "Identity and native stance",
+      "result": "pass_with_limits",
+      "observation": "Right-facing upright skeletal dragon, backward horns, open toothed jaw, exposed vertebral neck/ribs, two raised foreclaws, two bent hind legs and a tail curled forward along the feet. Pose family and primary silhouette match; the redraw is slightly narrower."
+    },
+    {
+      "criterion": "Wing anatomy",
+      "result": "pass_with_occlusion_limit",
+      "observation": "Near wing arches behind the neck on the left and hangs toward the feet, supported by separate long bony fingers and thin torn pale membranes. The far wing is largely occluded, as in the native idle; its full topology is not proven by this single view."
+    },
+    {
+      "criterion": "Materials and upgrade distinction",
+      "result": "pass_visual",
+      "observation": "Predominantly pale silver-white and neutral cool-gray bones/membranes, with restrained highlights and some near-white local warmth. Distinct from CNDRGN's dominant warm aged ivory/dark wings. No blue flames, large aura, smoke or living scales."
+    },
+    {
+      "criterion": "Rendering benchmark",
+      "result": "art_director_assessment",
+      "observation": "Fine modeled bone volume, differentiated membrane surfaces and smoothly resolved edges follow Pikeman's rendering role. Skull, neck spines and claw hooks are more elaborate than the low-resolution original; this is not exact anatomical replication."
+    },
+    {
+      "criterion": "Complete framing",
+      "result": "pass_visual_and_mechanical",
+      "observation": "Horns, hanging wing fingers, tail tip and both feet remain present. The registered 1024x768 cutout has generous margins; the high-resolution padded version adds 128 transparent pixels on every side."
+    },
+    {
+      "criterion": "Cutout and alpha",
+      "result": "pass_with_raw_limit",
+      "observation": "True RGBA alpha; no opaque canvas, floor, shadow or text on the master assets. Open limb/jaw/wing gaps are transparent. Raw has faint alpha-1 edge noise; shared >8-alpha crop removes outer faint noise, without repainting. Original raw is preserved."
+    },
+    {
+      "criterion": "At intended visible scale",
+      "result": "pass_visual_with_width_limit",
+      "observation": "Inspected game-size comparison and full-cell dark/light previews at 281px visible height. Horn, skull, ribs, wing fingers and curled tail remain readable. Final width is 217px rather than native target 229px."
+    },
+    {
+      "criterion": "Source and mirror",
+      "result": "pass",
+      "observation": "Both facings visually inspected; shared helper compared exact reflected RGBA pixel values. Mirror is a mechanical derivative, not another generated pose."
+    }
+  ],
+  "registration": {
+    "helper": "../tools/lib.cjs",
+    "helper_used_read_only": true,
+    "worker_script": "build-master.cjs",
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "override": false,
+    "aspect_stretched": false,
+    "cell": [
+      1024,
+      768
+    ],
+    "anchor": [
+      512,
+      512
+    ],
+    "original_reference": [
+      196,
+      268
+    ],
+    "shared_scale_fraction": "180/73",
+    "shared_scale": 2.4657534246575343,
+    "native_idle_target": {
+      "left": 445,
+      "top": 228,
+      "width": 229,
+      "height": 281
+    },
+    "actual": {
+      "left": 451,
+      "top": 228,
+      "width": 217,
+      "height": 281,
+      "right": 668,
+      "bottom": 509,
+      "transparent_pixels": 749834,
+      "opaque_pixels": 29102
+    },
+    "width_delta_pixels": -12,
+    "width_delta_percent": -5.240174672489083,
+    "target_center_x": 559.5,
+    "actual_center_x": 559.5,
+    "target_bottom_y": 509,
+    "actual_bottom_y": 509,
+    "margins": {
+      "left": 451,
+      "top": 228,
+      "right": 356,
+      "bottom": 259
+    },
+    "high_resolution_cutout": [
+      1058,
+      1373
+    ],
+    "high_resolution_padded": [
+      1314,
+      1629
+    ],
+    "raw_alpha": {
+      "zero": 721230,
+      "partial": 850893,
+      "opaque": 225,
+      "edge_nonzero": 76,
+      "edge_max_alpha": 1
+    },
+    "exact_mirror_verified": true
+  },
+  "preview_inspection": {
+    "opened_with": "view_image",
+    "files": [
+      "raw/001-master.png",
+      "master-inspection-dark.png",
+      "source-vs-master.png",
+      "game-size-comparison.png",
+      "source-vs-master-alpha.png",
+      "master-game-size-dark.png",
+      "master-game-size-light.png",
+      "master-mirror-game-size-dark.png",
+      "master-alpha.png"
+    ],
+    "transparent_viewer_limit": "The direct local raw transparency preview appeared blank in the viewer; alpha statistics and opaque-backed inspection/game-size composites supplied visible verification. The built-in generated-image preview showed the creature."
+  },
+  "master_outputs": [
+    {
+      "file": "master_rgba.png",
+      "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a",
+      "role": "high-resolution cropped RGBA cutout"
+    },
+    {
+      "file": "master_padded_rgba.png",
+      "bytes": 2670355,
+      "sha256": "cbdf046d46dc31b474e1ca28b2bd00fd01f0bfefc985a77a17a958127e198210",
+      "role": "high-resolution RGBA cutout with 128px transparent padding"
+    },
+    {
+      "file": "master_source_1024x768.png",
+      "sha256": "45b3203e3fd9353f01c696f89e02e080de0a21d34b65faacab9acb0e119fb86a",
+      "role": "registered native right-facing static master"
+    },
+    {
+      "file": "master_mirror_1024x768.png",
+      "sha256": "179e11daa8b11ac5097ace291af9d33ba7bfff06d0c7151ef456370134bcfa74",
+      "role": "exact mirrored left-facing static derivative"
+    },
+    {
+      "file": "master-manifest.json",
+      "role": "shared registration and provenance manifest"
+    },
+    {
+      "file": "mechanical-review.json",
+      "role": "alpha, dimensions, source coverage and output hash inventory"
+    }
+  ],
+  "actual_limits": [
+    "Human approval is pending; master is a proposal.",
+    "Width is 217px, 12px / 5.24 percent narrower than native 229px target; height, center and bottom are matched without stretching.",
+    "Fine skull/neck-spine/claw detail and far-wing occlusion require human taste/anatomy acceptance; pixel-identical reconstruction is not claimed.",
+    "Raw generation did not supply generous outer margins. Registered and padded masters supply them mechanically; original raw margins and alpha-1 noise are retained in the evidence.",
+    "Native source preview alpha includes interpreted original shadows; master has no floor/cast shadow.",
+    "No animation frames, engine import, editor, tests, game build, runtime, motion continuity or gameplay validation.",
+    "No original engine timing inferred from group counts."
+  ],
+  "execution_boundaries": {
+    "authored_project_files_only_in_assigned_folder": true,
+    "shared_helper_modified": false,
+    "source_reference_modified": false,
+    "approved_castle_package_modified": false,
+    "animation_or_flipbooks_created": false,
+    "gameplay_or_game_code_changed": false,
+    "imports_run": false,
+    "editor_run": false,
+    "tests_run": false,
+    "game_build_run": false,
+    "runtime_run": false,
+    "peer_messages_sent": false,
+    "git_mutations": false,
+    "commit": false,
+    "push": false,
+    "deviation": "One initial read-only git status --short ran while checking repository instructions, despite the current no-Git direction. No Git state changed and no further Git operations were performed."
+  },
+  "next_gate": "Human approval of this Ghost Dragon static master before any animation production."
+}

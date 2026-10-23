@@ -1,0 +1,100 @@
+{
+  "pose_id": "vampire_p003",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "e7cfa5038f8d7fe8e2e37172d3db878cb75afec70f520931c4fc9b42783a53e1:170:174:49:76:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 4,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 4,
+      "name": "Cvamp17.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 400,
+      "offset": 56820,
+      "stored_size": 1924,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 49,
+      "height": 76,
+      "left": 170,
+      "top": 174,
+      "legacy_header": false,
+      "index_sha256": "e7cfa5038f8d7fe8e2e37172d3db878cb75afec70f520931c4fc9b42783a53e1"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/batch-000-attempt-01.png",
+  "raw_sha256": "8b3b0cff585a3e0f89c9409bfbf8dc02aa5163b56f127b35976444140c2e36e7",
+  "prompt": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/batch-000-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/vampire/remaster_v01/_source/isolated/batch-000-attempt-01-vampire_p003.png",
+  "isolated_sha256": "2146e0e5ac9e96ef775687a052435e68545e5671c26e312d2205a0f6fa00e8b4",
+  "source_grid_region": [
+    1368,
+    34,
+    379,
+    349
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p003.png",
+  "registered_pose_sha256": "a41f7d91ad9671e68ece526faed0c1a04b6ed4c80f05dbaa01a72fbbfdc06f49",
+  "mirror_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p003_mirror.png",
+  "mirror_sha256": "4a1df530e0b3c496e7a20a52c9e9178cd02f409c1743066516ddcd949f8a19e6",
+  "registration": {
+    "source_body_rect": [
+      172,
+      174,
+      47,
+      40
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      381,
+      351
+    ],
+    "registered_rect": [
+      457,
+      280,
+      108,
+      99
+    ],
+    "uniform_artwork_fit": 0.2836676217765043
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected raw and registered OG/candidate comparisons in both facings. Four distinct right-facing natural bat silhouettes preserve low, downward, partial-up and tall-up wing phases; no humanoid body or equipment.",
+    "source_sha256_at_review": "a41f7d91ad9671e68ece526faed0c1a04b6ed4c80f05dbaa01a72fbbfdc06f49",
+    "mirror_sha256_at_review": "4a1df530e0b3c496e7a20a52c9e9178cd02f409c1743066516ddcd949f8a19e6"
+  },
+  "human_animation_acceptance": false
+}

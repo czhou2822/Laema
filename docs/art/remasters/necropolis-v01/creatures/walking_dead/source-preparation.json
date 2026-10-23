@@ -1,0 +1,54 @@
+{
+  "creature_id": "walking_dead",
+  "date_hong_kong": "2026-10-23",
+  "historical_preparation_snapshot": true,
+  "superseded_by": "PRODUCTION_REPORT.md",
+  "status": "prepared_awaiting_parent_pilot_clearance",
+  "generation_authorized_now": false,
+  "source": {
+    "archive": "H3sprite",
+    "def_id": "CZOMBI",
+    "groups": 15,
+    "distinct_group_sequences": 13,
+    "frame_positions": 86,
+    "unique_registered_poses": 60,
+    "occurrences_checked": 86,
+    "referenced_rgba_sheets": 15,
+    "referenced_indexed_sheets": 15,
+    "mapping_discrepancies": [],
+    "exact_alias_pairs": [[7, 9], [8, 10]],
+    "idle_pose_id": "walking_dead_p010",
+    "idle_pose_occurrences": 13,
+    "original_timing_verified": false
+  },
+  "verified_sha256": {
+    "master": "c7c876d8b59106f422408e72c6570fc7260e3b8bd5d95fb21e2407c0531f3cd5",
+    "metadata": "8b5c7c9eaa21cbefd910b2bb91c3369f38457ddbe126b089a900e1a7576caca9",
+    "def": "fee70e4ce759b793b42def1dae19e77b3ca65baca71016d88184772c35800266",
+    "plan": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+    "helper": "e889a9588118cabe8a50a7b8460b2f7b1ecb1435cb684f523d27876816f098fd",
+    "copied_master": "c7c876d8b59106f422408e72c6570fc7260e3b8bd5d95fb21e2407c0531f3cd5"
+  },
+  "preparation": {
+    "command": "python -B tools/art/necropolis_remaster.py prepare walking_dead",
+    "batches": 8,
+    "pending_poses": 60,
+    "guide_row_major_mapping_matches_plan": true,
+    "guides_viewed": ["batch-000", "batch-001", "batch-002", "batch-003", "batch-004", "batch-005", "batch-006", "batch-007"],
+    "static_unique_pose_inspection_count": 60,
+    "native_source_sheets_viewed_group_ids": [2, 5, 7, 12],
+    "approved_master_viewed": true,
+    "motion_playback_review_performed": false
+  },
+  "artwork": {
+    "imagegen_calls": 0,
+    "new_poses": 0,
+    "reused_poses": 0,
+    "missing_poses": 60,
+    "completed_groups": 0,
+    "animation_accepted": false,
+    "mirrored_exports_complete": false,
+    "engine_validation_performed": false
+  },
+  "resume": "Keep Walking Dead ownership; await explicit parent clearance of Skeleton/Bone Dragon pilots, then use existing guides and approved appearance master."
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "lich_p030",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "96ab6bc15c2f98896050dda25311f5d033c53207cdcfd8bfda9c239ef5de2bb3:172:175:54:91:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 3,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 3,
+      "name": "clich38.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 0,
+      "offset": 130211,
+      "stored_size": 3419,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 54,
+      "height": 91,
+      "left": 172,
+      "top": 175,
+      "legacy_header": false,
+      "index_sha256": "96ab6bc15c2f98896050dda25311f5d033c53207cdcfd8bfda9c239ef5de2bb3"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/lich/remaster_v01/_source/raw/page-003-a01-row1.png",
+  "raw_sha256": "b1267353038848351e004dc311912d1787ec64f11f3388ade186e47c66136666",
+  "prompt": "assets/prototype/enemy/lich/remaster_v01/_source/raw/page-003-a01-row1.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/lich/remaster_v01/_source/isolated/page-003-a01-row1-lich_p030.png",
+  "isolated_sha256": "0ddd2d0511496f595cd1354e9f75fb59c4ed5c2b99639660ed3e3d357b1ef22c",
+  "source_grid_region": [
+    887,
+    0,
+    443,
+    437
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p030.png",
+  "registered_pose_sha256": "763350ae3cf6d91c05a3e86d4f892c69de1c73b5b2782faf2876d13081b025ce",
+  "mirror_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p030_mirror.png",
+  "mirror_sha256": "3e3dcf76d664720ae903f174f75a315823529f2c91de1d42fe6bab2e099fcea2",
+  "registration": {
+    "source_body_rect": [
+      173,
+      175,
+      51,
+      91
+    ],
+    "artwork_crop": [
+      93,
+      24,
+      370,
+      429
+    ],
+    "registered_rect": [
+      455,
+      323,
+      126,
+      184
+    ],
+    "uniform_artwork_fit": 0.4548736462093863
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected every death drawing and source comparison. Raised-arm entry breaks into separated skull/coif, hands/arm bones, armor, boots and staff, then a low fragment pile. p029 redrawn to show transparent neck and arm gaps; no fragment discarded by connected-component isolation. Placement uses source death bounds, not standing normalization. Static worker candidate review.",
+    "source_sha256_at_review": "763350ae3cf6d91c05a3e86d4f892c69de1c73b5b2782faf2876d13081b025ce",
+    "mirror_sha256_at_review": "3e3dcf76d664720ae903f174f75a315823529f2c91de1d42fe6bab2e099fcea2"
+  },
+  "human_animation_acceptance": false
+}

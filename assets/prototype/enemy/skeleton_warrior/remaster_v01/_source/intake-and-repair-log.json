@@ -1,0 +1,89 @@
+{
+  "creature_id": "skeleton_warrior",
+  "preservation": "Every generated page remains verbatim; no raw attempt names were reused for different bytes.",
+  "attempts": [
+    {
+      "batch": "sw-b001-a01",
+      "mode": "adaptive_grid",
+      "result": "rejected",
+      "error": "Figure touches raw/grid boundary: skeleton_warrior_p011; preserve attempt and regenerate",
+      "resolution": "Seven intact cells retained by mechanical cropping with source-region provenance; p011 redrawn singly."
+    },
+    {
+      "batch": "sw-b002-a01",
+      "mode": "adaptive_grid",
+      "result": "rejected",
+      "error": "Figure touches raw/grid boundary: skeleton_warrior_p017; preserve attempt and regenerate",
+      "resolution": "Six intact cells retained; p017 and p018 rejected at their grid-cell boundaries and redrawn singly."
+    },
+    {
+      "batch": "sw-b003-a01",
+      "mode": "adaptive_grid",
+      "result": "rejected",
+      "error": "No clear transparent gutter; regenerate individual poses instead of clipping",
+      "resolution": "Same unchanged page ingested successfully with strict components and preinstalled dependency overlay."
+    },
+    {
+      "batch": "sw-b005-a01",
+      "mode": "adaptive_grid",
+      "result": "rejected",
+      "error": "Figure touches raw/grid boundary: skeleton_warrior_p040; preserve attempt and regenerate",
+      "resolution": "Same unchanged page ingested successfully with strict components; figures were separate and crossing nominal cells."
+    },
+    {
+      "batch": "sw-b006-a01",
+      "mode": "adaptive_grid",
+      "result": "rejected",
+      "error": "Figure touches raw/grid boundary: skeleton_warrior_p050; preserve attempt and regenerate",
+      "resolution": "Same unchanged page ingested successfully with strict components; true global clipping checks passed."
+    },
+    {
+      "batch": "sw-b003-a01/sw-b004-a01",
+      "mode": "visual_review",
+      "result": "selected_pose_replacements",
+      "findings": [
+        "p025 exposed forward blade rather than source hidden/edge-on weapon",
+        "p032 broad remains composition needed tall upright sword",
+        "p033 resembled idle with exposed diagonal blade"
+      ],
+      "resolution": "Single-pose source-guided replacements retained old isolated artwork and record history."
+    },
+    {
+      "batch": "sw-p025-a02",
+      "mode": "visual_review",
+      "result": "replaced",
+      "findings": [
+        "Added metal forearm guards"
+      ],
+      "resolution": "sw-p025-a03 removes them while preserving defensive pose."
+    },
+    {
+      "batch": "selected poses p019-p023,p040,p041,p045-p051,p053-p055",
+      "mode": "visual_review",
+      "result": "appearance_corrected",
+      "findings": [
+        "Unapproved forearm bracers"
+      ],
+      "resolution": "Only selected generated figures arranged as edit references; three built-in correction calls retained poses."
+    },
+    {
+      "batch": "sw-gear-2-a01",
+      "mode": "visual_review",
+      "result": "p054_replaced",
+      "findings": [
+        "p054 still had a forearm guard"
+      ],
+      "resolution": "Single-figure sw-p054-a02 fixes the remaining guard."
+    }
+  ],
+  "unused_repair_guides": [
+    {
+      "file": "repair-p026-a02.png",
+      "reason": "Suspected blade-angle mismatch cleared on direct enlarged OG inspection; retained generated pose."
+    },
+    {
+      "file": "repair-p048-a02.png",
+      "reason": "Suspected windup-angle mismatch cleared on direct OG inspection; later appearance-only correction used its matching pose."
+    }
+  ]
+}

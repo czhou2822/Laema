@@ -1,0 +1,100 @@
+{
+  "pose_id": "walking_dead_p004",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "b5623fde75dc1424133f5f46369028c756fafba1b639c439c40027b124ed613a:180:183:47:85:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 4,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 4,
+      "name": "Czombi14.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 400,
+      "offset": 42874,
+      "stored_size": 2719,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 47,
+      "height": 85,
+      "left": 180,
+      "top": 183,
+      "legacy_header": false,
+      "index_sha256": "b5623fde75dc1424133f5f46369028c756fafba1b639c439c40027b124ed613a"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/repair-walk-000-007-v02-components.png",
+  "raw_sha256": "aaebeb4d919d29c56e2d4a815815a7458075a91b958fa794de0e8472279d8f32",
+  "prompt": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/repair-walk-000-007-v02-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/isolated/repair-walk-000-007-v02-components-walking_dead_p004.png",
+  "isolated_sha256": "4b95a014384895975376bd831486b92c7d64585c5cd2b5de64bfb4867a9121c3",
+  "source_grid_region": [
+    120,
+    457,
+    248,
+    417
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p004.png",
+  "registered_pose_sha256": "dc13107cda0b4bf92216c130dd3357db751099838add8f07ef81cc6e1b06f9f9",
+  "mirror_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p004_mirror.png",
+  "mirror_sha256": "bfa9d4d99e060258df92a397e8413d3779c78fb7e67e422f43ade23bf676452d",
+  "registration": {
+    "source_body_rect": [
+      181,
+      183,
+      46,
+      85
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      250,
+      419
+    ],
+    "registered_rect": [
+      475,
+      322,
+      113,
+      190
+    ],
+    "uniform_artwork_fit": 0.45564516129032256
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Repaired walk step: knees flex and cleaver comes down toward a forward diagonal; both feet visible. Static OG/candidate and both-facing frame inspection only; candidate, not human animation acceptance.",
+    "source_sha256_at_review": "dc13107cda0b4bf92216c130dd3357db751099838add8f07ef81cc6e1b06f9f9",
+    "mirror_sha256_at_review": "bfa9d4d99e060258df92a397e8413d3779c78fb7e67e422f43ade23bf676452d"
+  },
+  "human_animation_acceptance": false
+}

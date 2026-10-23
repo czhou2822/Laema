@@ -1,0 +1,503 @@
+{
+  "creature_id": "ghost_dragon",
+  "calls": [
+    {
+      "id": "batch-000-v01",
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/batch-000-v01.txt",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png"
+      ],
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/batch-000-v01.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-f53ff630-5f47-4daa-b60a-7df207dbfc5f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "308715a0fca97a98c297369408ff424eaa90b57abb25d521eac5dcb958e15c88",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent production sprite pose sheet, Ghost Dragon, 8 separately drawn figures.\nInput image 1 is the approved appearance master ONLY: silver-white skeletal dragon, elongated horned skull, open toothed jaws, segmented spiny neck and tail, exposed ribs, two small clawed arms plus two large hind legs, two torn pale parchment wing membranes. Match its fine painted modeled-volume texture and grey highlights. Input image 2 is the authoritative ORIGINAL POSE guide. Translate EACH original silhouette into that approved high-resolution treatment. Do not copy the master's upright idle into other poses.\nLayout: 4 columns by 2 rows, exactly 8 complete separate figures in row-major order, large clear transparent gutters and at least 30px transparent outer margins. No overlaps. No labels, grid, floor, shadow, checkerboard, background, or added effects. True transparent RGBA background. Each entire dragon and all wing tips, tail, claws and teeth fully in frame.\nExact poses, all facing right: top row p000 airborne horizontal body, both wings swept steeply upward, long tail trailing left, feet hanging; p001 next downward beat with wings diagonal up-left, head level, feet hanging; p002 wings extended near horizontal backward, airborne body and long tail horizontal, hanging bent legs; p003 downstroke with wings thrust down-left below torso, head raised forward. Bottom row p004 wings farther folded down-left, body horizontal with tail trailing left; p005 wings sweeping back close to horizontal body, long low trailing wing tips, head right; p006 upright original idle gesture with large wing draped down left, S neck and raised clawed arms, rear feet planted and long tail on floor; p007 next upright idle gesture, slightly more open jaw and subtly different neck/wing lift exactly as guide.\nPreserve each guide cell's actual camera, wing rotation, body pitch, limb arrangement, jaw opening and tail curve. No invented perspective or anatomy. Do not draw checkered/dithered pixels from the low-resolution references: render continuous pale spectral bone and torn membrane like approved master. No glow, magical breath, props, armor or accessories. Newly draw every pose; never warp an idle image. Separate figures on transparent background for isolation and later fixed source-coordinate registration.",
+      "exact_tool_prompt_sha256": "22fd9d57e0e0ac6235d85f42e42010f164eb198f93f0c8f50c77e0fc23f28823",
+      "raw_sha256": "b11348496df09e2114f34cfc34b11f0df16fcf23b9a08b538690d5d811495bb9",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-000.png",
+          "sha256": "d7bb73034e8c6cafe61e6517c85a4191bd61c704ee19723152a006a30c28e5cb"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "batch-001-v01",
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/batch-001-v01.txt",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png"
+      ],
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/batch-001-v01.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-2fef6522-f4b5-47de-bb10-6775382d84ed.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "4def320e17bdfb4a9c816ca444f33f3129df831b771dffc6b93a7bb34cfb9744",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent production sprite pose sheet, Ghost Dragon, 8 separately drawn figures.\nImage 1 is the approved appearance master ONLY. Image 2 is the authoritative original POSE guide. Newly draw each guide pose with the master's silver-white bone, long horned skull, open toothed jaw, segmented spiny neck and tail, exposed ribs, two short clawed arms, two bent hind legs, and two torn white parchment wings. Fine painted modeled-volume texture, cold grey shadows, no coarse pixels or dither pattern.\nExactly 4 columns by 2 rows, 8 complete separate figures, row-major p008 p009 p010 p011 / p012 p013 p014 p015. All face right in original side-three-quarter view. Follow the small but REAL neck, jaw, wing and torso changes in each guide cell. These are subtly moving upright idle frames, not identical copies. Two claws raised before the chest; rear feet planted; long tail along floor curling forward right; nearer torn wing draped down left. Keep the original wing contour, thin limbs, skull tilt and open jaw for each individual cell. Match master's anatomy and detail consistently across all 8.\nTrue transparent RGBA background. Generous clear transparent gutters, at least 40px outer margins. Each whole figure fits fully with all horns, wing tips, tail and toes visible. No figure crosses a cell. No labels, grid, background, checkerboard, floor, cast shadow, added glow, magical breath, armor, props or new VFX. Appearance master is not pose authority. Do not redesign the silhouette, thicken limbs or inflate wings. Each source drawing has its own newly drawn corresponding pose.",
+      "exact_tool_prompt_sha256": "a89e707e067df45011841c36a91446ee37667e5953c58835f229c0da97c7eaa8",
+      "raw_sha256": "bdb795944cf2ecd48032cc725de5cf1828fc22a7454f9fd02e53959b1a3dd2fc",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-001.png",
+          "sha256": "4fa17901f3040528448aacadb6b37fd48ebc97296fde6eb7278dc142c70f5305"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "batch-002-v01",
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/batch-002-v01.txt",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png"
+      ],
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/batch-002-v01.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-a720b071-c9ca-4c50-97d5-6bb84b26b2ba.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "986ad84e64776b076956a5a4e3b7db2acb90747ec64f2a89a7304c866a0ef1f3",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent production sprite pose sheet, 8 Ghost Dragon reaction poses.\nImage 1 is approved appearance ONLY: finely painted silver-white skeletal dragon, long horned toothy skull, segmented spiny S neck and tail, exposed ribs, two short clawed arms, two bent hind legs, two torn pale parchment wings. Image 2 controls every pose and camera. Newly redraw its eight source figures with that master material and anatomy. Do not turn them all into a right-facing idle.\nExactly 4 columns x 2 rows, row-major p016 p017 p018 p019 / p020 p021 p022 p023. Top row: p016 hurt recoil, neck/head thrown BACK LEFT over the shoulder, near wing hanging left, claws lifted right, feet wide; p017 deeper recoil head obscured by near wing lifted above shoulder and swept left, body leaned back and knees bent; p018 recovering head raised upper-right behind forward-swept wing, claws bunched in front, feet wide, long low tail behind; p019 head strongly foreshortened toward viewer/up with narrow face, wing extended horizontally left like a canopy, torso twisted, feet planted. Bottom: p020 follow-through with similarly frontal foreshortened skull and wing folding downward left; p021 returns to three-quarter right head with lowered snout, claws slightly apart and ragged wing lowered left; p022 defence start with right-facing lowered head and upper wing bent into forward shoulder shield, two arms forward and feet planted; p023 defensive turn bringing head toward viewer and DOWN, shoulder wings raised to partly surround head, torso more upright. Closely follow each original guide silhouette, relative tail shape, wing bend, skull direction and exact visible limbs.\nFine modeled-volume painted texture, continuous white bone and grey shadows. No checkered/dithered pixels from guide. True transparent RGBA. Keep all figures fully in frame and separated by broad clear transparent gutters with at least 40px outer margins. No figure crosses a cell, no cropped horns/tails/wings/toes. No labels/grid/background/floor/shadow. No glow, props, armor, magical breath or new effects. Do not substitute the master's pose or generic variants for these original reactions.",
+      "exact_tool_prompt_sha256": "eff2ce8666128ce912c6b62b605c8b80e8d24b95a12ed4563ab16fad7783d3d1",
+      "raw_sha256": "746c090921cf85984c1830cdb78ab3bd5bcb34f47dfaadccdb8f7348f53f3537",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-002.png",
+          "sha256": "9d1b701cfeea392de996d65ceb5d2cb8db519de30bb770f2fa42933ed0621a38"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "batch-003-v01",
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/batch-003-v01.txt",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png"
+      ],
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/batch-003-v01.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-189db6e0-a732-4a1d-917c-0dc03273fd16.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "4839e65eb261fe7aff78d34eac70d3eb4be3e4f2ec4de1568126a7a0e88e4d93",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent production sprite pose sheet, Ghost Dragon defensive turn and skeletal death breakup.\nImage 1 is the silver-white skeletal dragon appearance master ONLY. Image 2 is authoritative original POSE and camera guide. EXACTLY 8 separate source drawings in a 4-column 2-row layout, row-major p024 p025 p026 p027 / p028 p029 p030 p031. Match fine painted bone and torn white parchment wings of master, grey highlights and shadows, bony claws and spiny neck/tail. No checkered or dotted pixels.\nTop row: p024 defensive back/three-quarter view, mostly wing shield, narrow skull partly hidden at top LEFT behind wing; p025 next defensive back view, broad folded wing entirely conceals most chest and head, only top horn/skull visible at top LEFT, feet and tail visible below. p026 death start: body recoiling upright right, wings behind left, arms forward, one leg reaching forward right, tail behind left. p027 skeleton beginning disintegration, mostly frontal skull elevated at RIGHT, both arms stretched out, lower legs braced and wing sagging behind left; keep original dispersal spots as small bone debris.\nBottom row follows exact original non-gory skeletal breakup: p028 skull and neck upright FRONT at center, wing spars open on both sides with shredded/disintegrating membrane, limbs falling away, feet below. p029 loose vertically oriented elongated skull at upper center, detached arcing wing bones left/right and scattered ribs surrounding a collapsing low pelvis and two feet. p030 skull a separate vertical floating fragment at upper center-left, smaller broken neck and wing/rib pieces at both sides, much torso collapsed at feet near bottom. p031 skull still vertical near upper center-left but lower, many disconnected small bone fragments falling to ground, remaining mound and disjointed feet along bottom. Do NOT keep an intact idle dragon in fragment frames. Follow all fragment positions and views from original guide; these are native creature death fragments, not standalone new VFX.\nTrue transparent RGBA background. Keep each cell's entire figure OR fragment cluster compactly inside its own nominal cell with at least 50px transparent separation between neighboring clusters and broad transparent outer margins. Draw all native fragments within their correct cluster. No parts touching neighboring cells. No labels, grid, floor, shadow, environment, glow, breath, props, armor or extra effects. No clipping of any wing tip, horn, toe, tail or debris. Preserve source camera and original collapse silhouette exactly.",
+      "exact_tool_prompt_sha256": "9985dfca2a75722ed1fbb39dda4cbc5a1c7d183f93c5b41c0ef148951517ff29",
+      "raw_sha256": "964ef0d9030e4ca8ac3d964b29f07b6b8e58464b6e959058ed8671c1db2aaba2",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-003.png",
+          "sha256": "d678dca977542ed08ef48f19a7b344e2e3ae04dce6e60b44bce9dd8096a46bdd"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "batch-004-v01",
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/batch-004-v01.txt",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png"
+      ],
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/batch-004-v01.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-444b7182-048d-4a5f-ac7c-5a885ddeef03.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "097966ea8d2bd5bd67e7ec049acbd26f492d2de641232c008762a0c8b09a746c",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent production sprite sheet, Ghost Dragon, 8 distinct original poses.\nImage 1 is the approved silver-white skeletal dragon appearance master ONLY; image 2 is the authoritative source POSE guide. Finely painted modeled bone, grey shadows, thin exposed ribs and bony limbs, elongated horned skull, spiny segmented neck and tail, torn white parchment wing membranes. No pixel/checker/dither pattern. Source pose and camera must override master's idle.\nExactly 4 columns by 2 rows, row-major p032 p033 p034 p035 / p036 p037 p038 p039. Top row p032: late death, disjointed bone pile at bottom, two disintegrated side clusters lifted left/right, elongated skull fragment floating upper center diagonally, preserve original disconnected pieces. p033: final death low horizontal compact pile of pale skeletal fragments, ribs/skull/wings collapsed completely on ground, NO standing neck or intact dragon. p034: turn begins upright three-quarter right, neck and open skull right, nearer torn wing extended down-left, claws lifted, hind feet planted. p035: turn middle, frontal foreshortened narrow skull and neck, thin torso and tail extended horizontally left along ground, nearer wing foreshortened diagonally left and upward, arms partly overlapping near chest. Bottom row p036: EXACT FRONTAL view with long narrow vertical skull, ribs facing viewer, BOTH wings symmetrically raised and spread like a tall V, two arms and two separated hind legs visible, tail mostly behind; do not draw a side-view idle. p037: upper melee windup, three-quarter right, neck craned up-right and jaw opened upward, wing draped left, arms forward. p038: neck/head reared almost vertical backward behind forward shoulder, wings lifting high, body twisted, one leg stepped forward; p039: attack torso leaning right with neck straight and skull almost vertical above chest, wings arched high, feet wide and arms close together as guide.\nPreserve all source wing angles, camera changes, foot contacts, jaw directions and anatomy. True transparent RGBA with broad clear gutters and at least 50px outer margins. Keep every figure or death fragment cluster wholly within its own cell with clear transparent columns and rows. No clipping of horns, wings, tail, toes or debris. No text, grid, floor, shadows, environment, props, armor, glow or new VFX. Death fragments are native source creature content.",
+      "exact_tool_prompt_sha256": "d8466dfd6e2665f32757a30adbf5a805da44f84e14745e80cfd0c45d6c579fdb",
+      "raw_sha256": "e12b57c57742bf810987008813de4858248864e1dab63ceaafda2de44383cd88",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-004.png",
+          "sha256": "2a28dd9c425112edb48f6e01e35609f9d22e19afc7b01b5a1128547acfd476d9"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "batch-005-v01",
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/batch-005-v01.txt",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png"
+      ],
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/batch-005-v01.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-4a7734b6-95b5-4b73-9ec8-633a91c9b9f9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "29ddbe427c22c0914ceb36612bd99b1541e765fb289d21020f52f8b213308be7",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent Ghost Dragon production animation pose sheet, 8 individually redrawn original melee poses.\nImage 1 supplies approved appearance ONLY: fine painted silver-white skeletal dragon with elongated horned skull, segmented spiny neck/tail, exposed ribs, thin bony arms and hind legs, torn white parchment wing pair. Image 2 is absolute POSE and camera authority. Source guide controls head directions, wing rotation, foot placement and exact silhouette; never substitute master's idle for action.\n4 columns x 2 rows, exactly 8 figures row-major p040 p041 p042 p043 / p044 p045 p046 p047. Top: p040 upper bite stroke, body crouched forward-right and long neck extended forward/up-right, skull small foreshortened diagonally up-right at chest height, tall near wing sweeping high overhead, legs spread. p041 follow-through head turns down toward viewer/right, neck bent forward/down and wing still raised tall, feet spread. p042 recovery head on long curved neck pointing DOWN RIGHT, nearer wing descending left, rear leg lifts slightly behind, arms curled in front. p043 recovery upright three-quarter right with head lowered right, wing draped down-left and one hind foot stepping right. Bottom: p044 front melee windup same raised-neck open-jaw pitch as original, wings lifting. p045 neck extended up-right and open jaws pointed diagonally upward as windup peaks, wings tall, legs wide. p046 front bite: skull and long neck thrust horizontally to RIGHT at upper chest height, open jaws level, near wing high overhead, body leaned right, hind feet braced wide. p047 follow-through: skull turned FRONT and downward, neck hooked down at right of chest, tall raised wing, feet planted wide.\nRender all figures with same master palette, head horns, thin limb anatomy, rib count impression and torn membrane texture. Preserve meaningful original differences. No checker/dither pixels. Transparent RGBA background with clear rows and columns, generous 50px outer margins and gutters. All complete figures wholly contained, including long neck thrust, wing tips, horns, claws and tail. No labels/grid/floor/shadows/background/glow/armor/props/magical breath or new effects.",
+      "exact_tool_prompt_sha256": "e0853f3d8a67e605906305d517c79e0e021ca4b5d7876307685a9127d86b9dd4",
+      "raw_sha256": "314dce98d4125d3e11824bfb5aa76a4114426cba9ed070caa9d28164b62b8597",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-005.png",
+          "sha256": "4ee9510862999a2d1fca5f2c4495d2295765488b2d4c50eda9da4dcbd563d117"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "batch-006-v01",
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/batch-006-v01.txt",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png"
+      ],
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/batch-006-v01.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-4b060a70-1215-4a5d-bd04-1246a10bfbcc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "b911463bf3ba9ae33ba39c5a4df1d493a0947af7c9479a8c045e4e2248248e87",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent Ghost Dragon production animation pose sheet, 8 newly drawn original melee and movement poses.\nImage 1 is approved appearance ONLY: fine modeled-volume painted silver-white bone, grey shadows, horned long toothy skull, segmented spiny neck/tail, thin bony limbs and exposed ribs, two torn white parchment wings. Image 2 controls all actual poses and views. Preserve its silhouette, motion, limb placement and skull directions. No coarse pixels/checker/dither pattern.\nExactly 4 columns by 2 rows in row-major order p048 p049 p050 p051 / p052 p053 p054 p055. Top p048 front melee recovery, neck hooked down-right and snout lowered, wing draped diagonally down-left, one hind leg lifting back as source; p049 lower melee anticipation, upright with neck stretched UP RIGHT and wide open jaws raised, near wing hanging left, claws forward and feet planted; p050 deeper upward windup, skull narrow nearly vertical/up-right behind lifted wing, both arms forward, braced legs; p051 lower bite beginning, neck reaching forward and curling DOWN RIGHT, head tilted downward right, near wing arched high and legs wide. Bottom p052 exact low bite: neck thrust diagonally DOWN RIGHT so skull's nose reaches almost to ground near front foot; wing very high over crouched body, forearms tucked, feet braced. p053 low bite follow-through with head still down-right beside front knee, open jaws aimed lower-right, near wing high, tail extended left behind. p054 recovery, skull foreshortened FRONT DOWN at chest height, wing descending left, one hind leg lifted back. p055 movement start: upright three-quarter right, head raised diagonally up-right with open jaw, wings lowered left, forearms lifted parallel right, hind feet planted and spiny tail flat under body.\nMatch individual source wing angles, leg separation and head tilt, even where poses are similar. Camera must follow guide. No idle substitution. True transparent RGBA background with generous clear gutters and at least 50px outer margins. All complete figures including long downward-thrust neck, wing tips, horns, toes and tails fully inside individual cells. No labels/grid/background/floor/shadow/armor/props/glow/magical breath or invented effects.",
+      "exact_tool_prompt_sha256": "e4b769b5f7c8c5529350f6623f6913aa4c22712937c29d9e5f7e870dbdc455db",
+      "raw_sha256": "7989247025c724b519ed09367361c766add036ceeb2581de00d1a02cf8a647ed",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-006.png",
+          "sha256": "9327b9dcb706d2f579ca0f992259bda14b6f3994e25341d2705d1389d4cabd59"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "batch-007-v01",
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/batch-007-v01.txt",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png"
+      ],
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/batch-007-v01.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-4909ae23-ccd1-4150-8392-f28374e85296.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "a942a77be2f75dff5f55cc67b7f7f177705b3f373957df5183e42bc27d885c17",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent Ghost Dragon production animation pose sheet, EXACTLY 5 figures.\nImage 1 is approved appearance master ONLY: finely painted silver-white skeletal dragon, long horned toothed skull, segmented spiny neck/tail, thin bony legs and short clawed arms, exposed ribs, torn white parchment wing membranes. Image 2 is exact original POSE and camera authority. Newly draw each distinct source silhouette in the approved treatment, no master idle substitutions.\nLayout matches guide: 4 equal columns and 2 equal rows, FOUR figures across top row p056 p057 p058 p059, ONE figure at BOTTOM LEFT p060. Remaining three bottom cells are EMPTY TRANSPARENT. Do not change layout to 3+2 or add figures. Broad transparent gutters and at least 50px outer margin; each entire figure contained within its own cell.\nTop p056: movement start, crouched upright right, head lowered slightly right, wings draped diagonally down-left, claws lifted forward, hind feet planted. p057: taking off, wings swept tall up-left, long tail curving in wide C loop behind left, body pitched forward, two rear legs unfolding with toes down. p058: fully airborne horizontal body facing right, wings lifted high above shoulders like original tall upward flap, tail stretched left with undulating curve, legs hanging and forearms curled forward. p059: landing approach, torso somewhat more upright, head right and neck arched forward, wings still raised up-left, tail trailing horizontal left and curling tip upward, rear legs dangling lower as original. Bottom-left p060: settling into landing, body becoming upright and feet almost together below, wings beginning downward stroke tilted diagonally left, tail loops down-left behind the legs, head looking right. Preserve exact original poses, wing angles, skull tilt, limb placement and camera in each cell.\nSame approved bone materials and anatomy, continuous fine modeled shading with no checker/dither pattern. True transparent RGBA. No clipping, overlap, labels, grid, background, floor, shadows, glow, magical breath, props, armor, new VFX or extra limbs. Both wings and all toes, horn tips and long tail remain fully visible as the source allows.",
+      "exact_tool_prompt_sha256": "53d26faa0f055c041a3ebcb27d74e1d7fbeb24f79efdc1d8ef53d581a70c115c",
+      "raw_sha256": "4b14edcce3581eeaa0081a3672ade3708f935ef1e741b37e3ee7b54808e6b26b",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/batch-007.png",
+          "sha256": "c164a422f3df519a44c6d69759b2d032a6c87f586417292e9a300d002e45e4d0"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "repair-recoil-shield-turn-v02",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png"
+      ],
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/repair-recoil-shield-turn-v02.txt",
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-recoil-shield-turn-v02.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-1c564b5f-37d3-4844-9fc7-ec0ca1b0361b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "c0232b3b4b4f3f4312f77bf12b88415191c4d1f82b1d0114685a1cc44e5919e6",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent production sprite sheet, exactly four Ghost Dragon repair poses in ONE horizontal row.\nImage 1 is approved APPEARANCE ONLY: finely painted silver-white bone, elongated horned toothy skull, thin segmented spiny neck and tail, exposed ribs, two short clawed arms, two bent hind legs, two ragged white parchment wings. Image 2 is absolute SOURCE POSE authority. Use the source camera even where it conceals anatomy.\nFour separate figures left to right: p016, p017, p023, p035. Broad transparent margins and clear gutters, with all tails, feet, horns, wings and claws fully visible and uncropped. Do not reuse a generic side idle.\nFIRST p016 is the BACKWARD recoil: skull turns sharply to face LEFT, chin lowered left over the shoulder. Its snout must point LEFT, not upper-right. Neck arches BACK LEFT from chest on the right, with skull above the left wing. Body and raised forearms remain aimed right, feet spread wide right, long low tail trailing left. Near wing drapes down-left and is partly folded over back. Follow first source silhouette exactly.\nSECOND p017 deep recoil: a huge near wing swings up and forward LEFT over the head and CONCEALS THE SKULL, with far wing/horn shapes only minimally visible behind it. No prominent right-facing skull. Body tilted back, forearms raised right, knees deeply bent and feet spread, long tail low behind left. Match the source's overhead wing and hidden face precisely.\nTHIRD p023 defensive shoulder turn: slim upright body, neck and skull pointing diagonally DOWN RIGHT in side/three-quarter view, elongated snout visible to the RIGHT of upper chest. The close wing is lifted upright behind the head at left, far wing lifted backward RIGHT above the skull, making a compact protective canopy. Forearms short and forward right, feet close, long tail flat at feet. Do not make a straight frontal face or hide all head behind wing. Follow guide third cell.\nFOURTH p035 middle turn: skull and neck seen from the FRONT with narrow vertically foreshortened snout, torso turned front, near wing foreshortened extending diagonally up-left, tail long and horizontal LEFT on ground, thin arms turned forward with one visible on RIGHT, both bent hind feet planted. Preserve original frontal proportions. Crucially all right-side CLAWS fully inside frame with wide transparent margin; previous attempt clipped them.\nRender source shapes in master texture with continuous pale spectral bone and grey shading, no checker or dither pattern. True transparent RGBA. No labels/grid/background/floor/shadow/glow/breath/armor/props or extra effects. Do not invent extra wings or limbs. Preserve genuine pose changes and exact head directions.",
+      "exact_tool_prompt_sha256": "56b4dddff256e3704a9ab91db0ced6a3729aea97f1f3c129da133b01c090b629",
+      "raw_sha256": "9b01e43629837aa7c5e3a41e2ef58a757dc5286818d550c73615f42bf2322391",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-recoil-shield-turn-v02.png",
+          "sha256": "d8bb04cddd214e4f228437b389931e7ac8bf4c9c105acb708186ddbe7c33b118"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "repair-melee-tail-reach-v02",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png"
+      ],
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/repair-melee-tail-reach-v02.txt",
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-melee-tail-reach-v02.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-3722688d-bcd8-4fa4-914f-d05881b2694d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "a151bebdde7bcb966fea07ae7f2bc8c928b9c734d79dd6761bfcaf19330fa518",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: transparent production sprite sheet, seven corrected Ghost Dragon melee poses.\nImage 1 is approved APPEARANCE ONLY. Image 2 is exact ORIGINAL POSE authority. Newly redraw the seven source silhouettes in the master's silver-white finely painted skeletal bone, grey modeling, long horned toothy skull, exposed thin ribs/limbs and spiny segmented neck/tail, two small clawed arms, two hind legs, two torn white parchment wings. No pixel/dither/checker texture.\nLayout EXACTLY 4 columns x 2 rows. Top row p040 p042 p043 p044. Bottom row p045 p046 p047 then EMPTY transparent cell. Each complete separate figure fits fully within its own cell, generous 50px transparent margins/gutters, no overlap/cropping. Source camera, wing shape, tail pose and limb angles govern. No generic idle substitution.\nCritical repair throughout: the TAIL stays LOW, running from pelvis diagonally DOWN LEFT toward ground, then making only the small source curve near hind foot. NEVER make a large circular C loop, coil, raised hook or wide floating loop behind body. Follow the thin tail line in each exact source cell.\np040 upper bite peak: crouched torso leaning right under very high raised wing. Neck extends diagonally FORWARD RIGHT at moderate height, skull at right of chest pointing diagonally up-right, substantially BELOW the top wing tip. Do NOT overextend the neck vertically. Two hind feet brace wide, small forearms tucked forward. Low diagonal tail left.\np042 recovery: neck hooked DOWN RIGHT with skull nose pointed down-right; near wing lowered diagonally down-left; one hind leg stepped forward and opposite foot lifting back; thin tail low behind left, without a loop. Match original body pitch.\np043 shared end recovery: upright three-quarter right with long neck curved forward, skull lowered slightly right; near wing draped down-left; arms reaching forward right; one hind leg stepping right and the other planted; tail from pelvis down to ground and small curve near rear foot.\np044 windup: body upright right, skull and narrow neck tilted UP RIGHT behind wing shoulder, jaws opening upward; near wing rises diagonally up-left, hind feet braced, tail low to ground behind left.\np045 front attack windup: torso leans forward right, skull and neck extended diagonally UP RIGHT with open jaws, tall raised wing behind left, hind legs wide, tail runs straight diagonally DOWN LEFT without a loop.\np046 front bite peak: long neck thrust HORIZONTALLY RIGHT at upper-chest height, open jaws level facing right, upper wing very high overhead, torso crouched right, rear feet braced wide, low diagonal tail left.\np047 follow-through: neck hooks downward to right of ribs, skull turned toward viewer/down with narrow foreshortened snout; wings still high left; feet braced wide; thin tail diagonal DOWN LEFT ending near ground without circular curl.\nTrue transparent RGBA. Preserve every source skull angle, wing bend, foot contact and limb silhouette, even when different from master. No added limbs, armor, props, labels, grid, floor, shadows, background, glow, breath or VFX. Continuous painted appearance like master, all horns/toes/wing tips/tail ends fully in frame.",
+      "exact_tool_prompt_sha256": "d8ce902d3b7086dd9c27fe70aba1dc6979f5372bee4da6254cc2603ba629c484",
+      "raw_sha256": "eb87e27487d4fb54ae5448b7d4946652a1033b74e805e0031b02ac8e86e0172e",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-melee-tail-reach-v02.png",
+          "sha256": "bb155ab18672ff4368bfe7cc56487fe78bff3245e28ea0902d48c9ed3350c3d1"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "repair-p044-v03",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png"
+      ],
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/repair-p044-v03.txt",
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-p044-v03.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-9f24b958-755e-4bc5-a0fa-c1608f9f7e7e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "5e9bff6559cfc2f324a2da9577e5a54322de427b9ac9e81256f6a2ebfed6554e",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: ONE transparent Ghost Dragon production animation pose, p044, full figure.\nImage 1 is approved appearance only; image 2 is exact original pose guide. Newly draw this one source pose in the master's finely painted silver-white skeletal bone, grey modeled volume, horned elongated toothed skull, spiny segmented neck and tail, exposed ribs, two short clawed arms, two hind legs and two ragged white parchment wings.\nExact p044 anticipation: upright right-facing three-quarter body, long neck tilted UP RIGHT behind wing shoulder, open jaws pointing diagonally up-right below the wing's top height; near wing lifted and fanning diagonally up-left. Two bent bony forearms reach forward RIGHT, each complete claw visible; two hind feet planted and separated. Thin tail runs from pelvis diagonally DOWN LEFT ending along ground near rear foot. No large tail coil/loop/hook. Match original camera, wing silhouette, narrow skull tilt and leg angles.\nComposition: exactly ONE whole complete dragon centered with generous EMPTY transparent margin on ALL FOUR sides, at least 15 percent of canvas around wings, horns, right claws, feet and tail. Figure must fit wholly; previous page clipped the RIGHT CLAWS. Include their full curved tips and much empty space beyond them. Do not make figure fill the canvas edges. True transparent RGBA background. No labels, grid, floor, shadow, background, armor, props, glow, breath, VFX, checker/dither pattern or new anatomy. No idle substitution or code-style warp.",
+      "exact_tool_prompt_sha256": "9453b9e0682a1351dbd7004662ff9d00715038769c5137ad354317727c41e508",
+      "raw_sha256": "c73907ae51f7e54e93bf467af8e617fbbeb79fc38a49ffdfe1f332bbd9b11305",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+          "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "repair-p044-v04",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-p044-v03.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png"
+      ],
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/repair-p044-v04.txt",
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-p044-v04.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-3f37bc00-e0fa-44b4-aed9-3818c60e5ac6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "97de455ebb194ef61a81f35c7e5eb23e0f61d9c49df40f72d52bb4527e4e4dd6",
+      "exact_tool_prompt": "Use case: precise-object-edit\nImage 1 is the edit target, a complete white skeletal dragon candidate. Image 2 is the authoritative original p044 POSE guide. Correct the head and upper neck of Image 1 to match Image 2. Keep its bone materials, horn identity, two short clawed arms, two hind legs, long LOW tail and torn white wing anatomy intact.\nCRITICAL head pose: draw the entire elongated skull pitched sharply UPWARD at about 55 degrees above the horizontal, so the snout points to the UPPER RIGHT and the open jaw bites upward into the air. The skull's jaw hinge is close to the upper shoulder, with the upper neck withdrawn back and raised behind the near wing shoulder. Do NOT leave the snout horizontal or merely tilt its nose a little. The source has a long diagonal up-right head with open lower jaw angled forward, not the master's horizontal idle head.\nMatch Image 2's upper wing folding forward-left: near wing lies diagonally down-left from shoulder and far wing arches above it. Keep whole figure and every right claw, foot, wing tip, horn and tail tip fully framed with clear transparent margins. Preserve Image 1's finely painted silver-white bone, grey volume, exposed ribs, segmented spines and torn parchment wings. True transparent RGBA background. ONE complete figure. No extra limbs, objects, labels, grid, floor, shadows, glow, breath, dither/checker pattern or new VFX. This is an exact source animation pose correction.",
+      "exact_tool_prompt_sha256": "4d8cf964a983b875b909e51d85f70a9c414aca704936ef186ec357c8235c79b6",
+      "raw_sha256": "704c7f3dcd6ee23c034eea20a422b75a41fcfca6657de7c7857915665927992e",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-p044-v03.png",
+          "sha256": "c73907ae51f7e54e93bf467af8e617fbbeb79fc38a49ffdfe1f332bbd9b11305"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-p044-v03.png",
+          "sha256": "d5162a13e5315b0e4de3c0f76f8dd4a4a682167044bd8a48cf026d74e7626112"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "repair-flight-digits-phase-v02",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png"
+      ],
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/repair-flight-digits-phase-v02.txt",
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-flight-digits-phase-v02.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-e5c5a1f0-1683-4c03-83d0-974d07408a00.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "fe2d8ff76465e8548a36d6079bbc8079841106505d951dcb63735e16851b3a7c",
+      "exact_tool_prompt": "Use case: stylized-concept\nAsset type: FOUR transparent Ghost Dragon flying animation poses with corrected bony digits and source phase visibility.\nImage 1 is approved APPEARANCE ONLY. Image 2 is exact original pose AND visibility guide. Newly redraw all four source poses in fine silver-white skeletal bone and torn pale wing membrane like the master. One row, FOUR figures left to right p000 p001 p002 p005. Keep all original source wing angles, body pitch, long trailing tail and hanging limbs. Large empty transparent gutters and outer margins, whole figures fully in frame.\nCRITICAL FEET: the dragon has narrow articulated bone finger/toe segments and sharp curved claw tips. Each front hand has three SEPARATE hooked bony digits, open gaps between them, no connected ring around their tips. No gray circular balls, pads, solid discs, knuckles shaped as orbs, armor or jewelry. Curl toes only slightly as in native guide. Keep rear legs thin and bent, terminating in three visibly separated toes. Preserve the exact source hanging-leg arrangement, not walking legs.\np000: airborne horizontal body, wings swept steeply UP LEFT, tail undulates left behind, arms and rear feet hanging; normal clearly visible pale bone.\np001: next downward wingbeat, wings diagonally up-left, head level right, tail behind left, hanging bent legs. The source is in a PHASE FADE: render all dragon bones and membranes with REAL partial alpha, about 75 percent visibility. It must be genuinely translucent against arbitrary dark OR light backgrounds, not simply gray opaque paint. All skeletal detail and open bony digits remain readable.\np002: wings swept back almost horizontally, body horizontal, tail trailing left and bent legs dangling. Source is the FAINTER phase: render REAL roughly half-opacity skeletal dragon and membrane, including faint bony feet. Continuous semitransparent white-grey bone, not an opaque white dragon. Do not add a checkerboard, hatch, dither texture, magic aura or colored haze. Preserve original silhouette while visibility diminishes.\np005: later flight wing recovery, wings swept back along low horizontal body, longer folded tips trailing left and partly occluding rear legs; head right, forearms extend down-forward with three separate skeletal hook digits. Normal visibility.\nTrue transparent RGBA throughout, including the actual partially translucent body pixels of p001 and p002. Source binary dither is a visibility reference, not decorative surface texture. No added effects or disappearance of body parts not absent in source. No whole idle substitution. No labels, grid, floor, shadows, background, glow, breath, props, new VFX or clipped claws, wings, tails or horns.",
+      "exact_tool_prompt_sha256": "9b31fbc9880f307255fe81b9b02f619515f8bea63a4c00a003a4ed0da4ae8faa",
+      "raw_sha256": "35c8e69e3ad2009bfc75311e35d21eccd77b4c1adcff71c698f1d96d115ac7e1",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/appearance-master.png",
+          "sha256": "bb9e9bc4021e8bd0dc73f8e486b90e71a17e62a9a8fd777bbcd679724324620a"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+          "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "repair-flight-digits-phase-v03",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-flight-digits-phase-v02.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png"
+      ],
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/repair-flight-digits-phase-v03.txt",
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-flight-digits-phase-v03.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-dc1f847b-15e7-4373-a944-017113e0a575.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "b9802302f3edfc080a4b5681f99be9f134b1a9093f664cd72a82967d519b6980",
+      "exact_tool_prompt": "Use case: precise-object-edit\nImage 1 is the edit target: four separate flying skeletal dragon animation poses in a single row. Image 2 is original pose authority. Correct ONLY their visible hands/feet. Keep the exact whole-body poses, wing angles, tails, heads, painted bone appearance, existing transparent background, and their DIFFERENT actual alpha values: figure 1 clear, figure 2 moderately translucent, figure 3 faintly translucent, figure 4 clear. Do not make all figures opaque.\nThe current small FRONT HANDS beneath the head/chest read as gray balls or closed rings. REMOVE those ball-shaped or ring-shaped hand masses. Replace each with three THIN articulated BONE FINGERS that are OPEN and visibly SEPARATED, like a skeletal bird's talons. Each finger consists of narrow light bone segments with a dark sharp claw at its end. Fingers splay downward and forward, with open transparent air gaps running all the way from finger roots almost to their tips. No circular palm pad, no disc, no solid gray sphere, no loop closed around empty space, no touching claw tips. Do not merely etch lines onto the ball: remove the ball silhouette and draw separate fingers. Preserve thin wrist connections.\nOn the rear hanging feet likewise use three separated bone toes, not rounded mittens. Original guides show narrow bony digits. Keep all limbs exactly where they are, without adding a leg, a hand, any object or VFX. No armor, jewelry, foot pads or orbs. This is a focused anatomical correction, not a redesign. Keep all four figures fully framed and nonoverlapping with transparent margins. No labels, grid, floor, shadows, new glows or checker texture. Preserve real semitransparent alpha of figures 2 and 3 and genuine clear RGBA background.",
+      "exact_tool_prompt_sha256": "2118dc184e3b5635638032f20fd7a01b3c61b809ddc188a418eca9e504326699",
+      "raw_sha256": "68a9341c2862314bed757d87cf706f418e5b251298bd57d3f8cfed60de544976",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-flight-digits-phase-v02.png",
+          "sha256": "35c8e69e3ad2009bfc75311e35d21eccd77b4c1adcff71c698f1d96d115ac7e1"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-flight-digits-phase-v02.png",
+          "sha256": "aad0d7d958d59a424cb55f5bd7baf13eb64d76d0b089225a0f0f42398ac412e9"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "repair-source-phase-alpha-v02",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png"
+      ],
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/repair-source-phase-alpha-v02.txt",
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-source-phase-alpha-v02.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-e5cfe7c6-0de8-437f-b335-65d69dd831c1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "b7c89cb42e36669044115e2f401e20591b94ff675d1920243d945aced927a473",
+      "exact_tool_prompt": "Use case: precise-object-edit\nImage 1 is an edit target sheet of eight already-drawn Ghost Dragon animation poses. Image 2 is their exact original source pose/visibility guide. Correct ONLY the PHASE VISIBILITY in Image 1 using true partial alpha. Preserve its anatomy, pose silhouettes, original-specific heads, limbs, tails, wing shapes, bone texture, layout and original source camera. This is not a body redesign.\nExactly 4 columns x 2 rows, row-major p003 p006 p007 p010 / p016 p017 p018 p026. One whole figure in each cell, no labels, borders or background. Keep all complete outlines fully inside cells with wide clear gutters and outer margins.\nThe original exports have binary dither gaps representing differing visible coverage. Re-express that as CONTINUOUS real translucency in the existing painted bones, NOT a checker, hatch, dotted skin or decorative texture. All body and wing pixels participate, including feet and teeth. Background must show through the actual RGBA alpha channel, not be painted onto opaque gray anatomy.\nTop-left p003 flight downstroke: medium phase fade, roughly 75 percent visibility. p006 upright gesture: distinctly fainter phase, roughly HALF visibility across the whole dragon. p007 upright gesture: medium phase fade, roughly 80 percent visibility. p010 upright gesture: medium phase fade, roughly 80 percent visibility.\nBottom p016 repaired BACK LEFT-facing recoil: retain its backward head, apply medium phase fade roughly 80 percent visibility. p017 wing-concealed-head recoil: retain hidden skull behind lifted wing, apply distinctly faint phase roughly HALF visibility. p018 recovery with right-facing head and wing behind left: medium phase fade roughly 80 percent visibility. p026 first death recoil with one foot reaching forward and limbs intact: medium phase fade roughly 80 percent visibility.\nKeep these individually drawn poses exactly; do not substitute a solid idle master. Do not delete real bones or limbs from intact phase silhouettes, and do not reconstruct any parts absent from source. Preserve two arms, two hind legs and two wings where visible, all on true transparent RGBA. No scenery, floor, shadow, glow, haze, magical breath, props, armor, checkerboard, grid, text or invented VFX. The only correction is materially differing actual body alpha per source phase, not changes of RGB brightness alone.",
+      "exact_tool_prompt_sha256": "fca97c5a16ce66d6d57e92788e8968c3a03d033f95b7617c026700af011321d6",
+      "raw_sha256": "3a88f2ff395ab713bc99260e546d220eeaefc1f4fa15aaecac2e59e01952b881",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/phase-alpha-target-v02.png",
+          "sha256": "4f7025ef6c1d04e8243aef69c788272567230430dfcd32a395731a609adbfc1e"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-source-phase-alpha-v02.png",
+          "sha256": "1c5335f8e7b6f22377cfd48b5382bbcaee360829988b7009903533d34dac76a2"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "repair-death-phase-alpha-v02",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png"
+      ],
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/repair-death-phase-alpha-v02.txt",
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-death-phase-alpha-v02.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-f2866075-3da1-4cbf-b816-0b1a10048eb0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "e9ea65b6ca0a1ae0f71a1e0c7cee61cb9a9e658b78fe234f330588098175728a",
+      "exact_tool_prompt": "Use case: precise-object-edit\nImage 1 is the edit target with TWO existing Ghost Dragon death drawings; image 2 is original pose, destruction and visibility authority. Left p027 is beginning skeletal dissolution with wing membrane falling away and limbs spread; right p028 is frontal disintegration with rib/neck/wing spars and debris already separated. Preserve exactly those pose silhouettes and ALL native fragment clusters. Do not restore an intact idle creature, reconnect broken fragments or add new VFX.\nChange ONLY opacity to real roughly HALF-visibility continuous RGBA alpha across each existing bone, remaining membrane and fragment. Original source dither is a phase/disintegration visibility reference, not a checker texture to paint. Make the actual dragon and fragments translucent against any arbitrary background. Do not fake this with opaque darker gray pixels, a backdrop, haze, aura, dots or grid. Keep fine silver-white modeled bone and all original camera/body/fragments intact.\nONE row, TWO complete separated figures/fragment clusters left-to-right p027 p028. Wide clear transparent gutters and margins, all wings, horns, toes, falling pieces and tail fully in frame. No fragment deletion, no forced full standing master, no background/floor/shadows/glow/props/armor/text/new effects. Retain actual partly destroyed skeleton content and source order; true transparent RGBA including semitransparent subject pixels.",
+      "exact_tool_prompt_sha256": "1ad671d7e757c7f519a57746e044390d2862cce10d8cb72f9cbf3ba3cb613879",
+      "raw_sha256": "bd53e6de4f20eb303ccb07fec2018d02694e1002cc2986c2773c63cee274debf",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/death-phase-alpha-target-v02.png",
+          "sha256": "e99073599cb932d3d3de220fee06da2e593d4cb713d4d4ea435d216b48d6287c"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-death-phase-alpha-v02.png",
+          "sha256": "0b4a34ee3fe86daea12a721b5d954cc4f737d889fd44cd6d1bf9339c80b760a7"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    },
+    {
+      "id": "repair-remaining-source-phase-v03",
+      "references": [
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+        "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png"
+      ],
+      "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/prompts/repair-remaining-source-phase-v03.txt",
+      "raw_copy": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/repair-remaining-source-phase-v03.png",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae as C:\\Users\\zhouc\\.codex\\generated_images\\01a16833-3155-7230-91a3-4b54600438ae\\exec-31cc0231-d2c9-4c94-b89f-fa6ea1a1f102.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "prompt_file_sha256": "fee94126a3da9de138b3ad381167905b702f1c5c3d54742eb885f089c1354d0d",
+      "exact_tool_prompt": "Use case: precise-object-edit\nEdit Image 1, preserving its EIGHT exact dragon poses, skeletal fragments, fine bone painting, anatomy, wings, heads, tails and limbs. Image 2 is original pose and visibility authority. Keep the same 4-column 2-row layout. Top p003 p007 p010 p016; bottom p018 p026 p027 p028.\nThis is an OPACITY correction. These are GHOST PHASE frames. Their entire foreground MUST be visibly, materially SEMITRANSPARENT using real RGBA alpha. Previous attempts left the body nearly fully opaque. That is wrong. Lower actual alpha, not RGB brightness. Use a clear genuine transparent background so arbitrary colored backgrounds show THROUGH the entire dragon and all fragments.\nFor p003, p007, p010, p016, p018, p026, use roughly 65 percent opaque body pixels (alpha around 165/255 in the middle of a broad bone or membrane, never 245-255). They should visibly fade with translucent bone/membrane compared to solid neighboring frames, preserving detail.\nFor p027 and p028 use roughly 35 percent opaque bone and membrane (alpha around 90/255), so the already disintegrating skeletal fragments nearly vanish. Keep EVERY existing fragment, including broken wing/rib pieces and debris. Do not reconnect them or substitute an intact idle. Do not turn source dither into a painted checker/dotted texture; continuous partial alpha is the requested new-art interpretation of the original binary phase gaps.\nPreserve the exact image 1 poses: p003 horizontal flying body downstroke; p007 and p010 upright gesture; p016 head thrown BACK LEFT; p018 recovering right-facing; p026 death recoil; p027 partly disintegrating right/three-quarter skeleton; p028 frontal disintegrating skeleton with raised wing spars and separated debris. Keep all whole outlines/clusters fully framed and distinct, wide transparent gutters and outer margins. No labels, grid, floor, shadows, glow, haze, props, armor, added effects or new anatomy. DO NOT produce fully opaque silver-white figures. This request specifically requires true semitransparent foreground alpha while keeping pose and artwork invariant.",
+      "exact_tool_prompt_sha256": "468a539585c5eb65526a8ec256bbcea4ac2c814cdd7908045f51d2dda411355a",
+      "raw_sha256": "1ea1b0d4585d4e8f6109431c1134c87fbf3eedcdd9166e7b635481c4f97e0184",
+      "reference_hashes": [
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/remaining-phase-alpha-target-v03.png",
+          "sha256": "6ef7614ebc24a93e0b92bf6e256f754db20cd0929c8722e2a340b82528fc8a43"
+        },
+        {
+          "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/guides/repair-remaining-source-phase-v03.png",
+          "sha256": "12a41b2e4594c7ae9c615ace641ccd15fda0c8e436d863947012896d5e69305a"
+        }
+      ],
+      "returned_raw_matches_copy": true
+    }
+  ],
+  "unavailable_metadata": [
+    "model",
+    "seed"
+  ],
+  "note": "Only metadata actually returned is retained; no model or seed is invented. Prompt-file final whitespace was trimmed before calls except batch 000, whose literal prompt equals that trimmed text."
+}

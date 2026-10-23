@@ -1,0 +1,100 @@
+{
+  "pose_id": "wraith_p051",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "c2968075ff6f1c3a592d3f4be2f5c12b74a7c968b51088c98c83e52379e9f3a0:167:177:54:88:450:400",
+  "original_representative": {
+    "group_id": 13,
+    "original_block": 12,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_13_block_12_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_13_block_12_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cwrait17.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 53128,
+      "stored_size": 3575,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 54,
+      "height": 88,
+      "left": 167,
+      "top": 177,
+      "legacy_header": false,
+      "index_sha256": "c2968075ff6f1c3a592d3f4be2f5c12b74a7c968b51088c98c83e52379e9f3a0"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-006-attempt-01.png",
+  "raw_sha256": "edd112f1c578ac66ce6b04c9ebe88d2cd1f26a6ca921cadbc6bf4ad73393261c",
+  "prompt": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-006-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wraith/remaster_v01/_source/isolated/batch-006-attempt-01-wraith_p051.png",
+  "isolated_sha256": "bf7248fe6b70b361269fc4c8e0dc76a1aa4346bbda50af3454dd0134a9e6cd73",
+  "source_grid_region": [
+    1417,
+    16,
+    323,
+    475
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p051.png",
+  "registered_pose_sha256": "671c0c8c10d4a470c363178840de3c832c22ed1fa28162002e31b98de2761b6a",
+  "mirror_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p051_mirror.png",
+  "mirror_sha256": "d18ce01d39a902f0af865e48f3a213d6a8d7378c26a23e227fbab3613a48d85b",
+  "registration": {
+    "source_body_rect": [
+      167,
+      177,
+      54,
+      86
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      325,
+      477
+    ],
+    "registered_rect": [
+      441,
+      304,
+      133,
+      196
+    ],
+    "uniform_artwork_fit": 0.4117647058823529
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Lower windup leans forward with overhead claw streak and hand change, preserving source camera. G13/G16 both facings inspected.",
+    "source_sha256_at_review": "671c0c8c10d4a470c363178840de3c832c22ed1fa28162002e31b98de2761b6a",
+    "mirror_sha256_at_review": "d18ce01d39a902f0af865e48f3a213d6a8d7378c26a23e227fbab3613a48d85b"
+  },
+  "human_animation_acceptance": false
+}

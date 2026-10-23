@@ -1,0 +1,100 @@
+{
+  "pose_id": "bone_dragon_p005",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "195eeb3bfd9768a8cdf9bebd302dc6c09846d5b19d66b0c3751a2e5315104e6d:112:158:192:110:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "cndrgn48.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 446856,
+      "stored_size": 7923,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 192,
+      "height": 110,
+      "left": 112,
+      "top": 158,
+      "legacy_header": false,
+      "index_sha256": "195eeb3bfd9768a8cdf9bebd302dc6c09846d5b19d66b0c3751a2e5315104e6d"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-batch-000-a01.png",
+  "raw_sha256": "588c00a00193476b701ceee78740bb2a15cc0da23efb110db74edcd48beef41f",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-batch-000-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/full-batch-000-a01-bone_dragon_p005.png",
+  "isolated_sha256": "5749664c49096724d794785d7515e62a2a52491432bc9553edda6f5e705004c3",
+  "source_grid_region": [
+    1303,
+    143,
+    459,
+    201
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p005.png",
+  "registered_pose_sha256": "de0dbaeb5b5afefa6957af9afd8466371f01349997727035913f6215c676c8c0",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p005_mirror.png",
+  "mirror_sha256": "b7981302a2d93cc600c21ff7b091c59a6bfcb1bc5ee311d11fdf669e2fb7d27a",
+  "registration": {
+    "source_body_rect": [
+      125,
+      158,
+      179,
+      77
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      461,
+      203
+    ],
+    "registered_rect": [
+      341,
+      241,
+      434,
+      190
+    ],
+    "uniform_artwork_fit": 0.945273631840796
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Flight: source upstrokes, rearward/downstroke wing phases, dangling feet and tail changes remain distinct in source order. Retained parent-confirmed p002 A06 far-wing repair (6ce2514eb8e4a25997ada878085dcdbe3efd781f6c5d81494745e0fb99a4f0f3), not the rejected shallow attempt. Final fixed-scale original/candidate pose comparisons, all source-ordered group contacts and offline decoded source/mirror GIF frames viewed. No known blocking anatomy, direction, order or clipping defect observed. Worker asset review only; no browser/Godot/human playback or original timing acceptance.",
+    "source_sha256_at_review": "de0dbaeb5b5afefa6957af9afd8466371f01349997727035913f6215c676c8c0",
+    "mirror_sha256_at_review": "b7981302a2d93cc600c21ff7b091c59a6bfcb1bc5ee311d11fdf669e2fb7d27a"
+  },
+  "human_animation_acceptance": false
+}

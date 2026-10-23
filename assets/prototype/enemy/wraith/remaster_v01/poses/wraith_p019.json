@@ -1,0 +1,100 @@
+{
+  "pose_id": "wraith_p019",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "c26f34ff613d056ac6e535b1714984f314710302a2ec5cd2738b5ec146d55f5f:175:180:54:88:450:400",
+  "original_representative": {
+    "group_id": 3,
+    "original_block": 3,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_03_block_03_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_03_block_03_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cwrait51.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 153572,
+      "stored_size": 3047,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 54,
+      "height": 88,
+      "left": 175,
+      "top": 180,
+      "legacy_header": false,
+      "index_sha256": "c26f34ff613d056ac6e535b1714984f314710302a2ec5cd2738b5ec146d55f5f"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-002-attempt-01-components.png",
+  "raw_sha256": "c83086b6f59b5c2e164ec2cc81cb7008274eca4c43be4b11eaf8ae4d6b000ce3",
+  "prompt": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-002-attempt-01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wraith/remaster_v01/_source/isolated/batch-002-attempt-01-components-wraith_p019.png",
+  "isolated_sha256": "436e5bad730fdc923b83273135cf91d7e42eb4d6c1e3847b11f47a86ae3b5172",
+  "source_grid_region": [
+    1407,
+    16,
+    349,
+    428
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p019.png",
+  "registered_pose_sha256": "c160e79bcc42e3d554dd863c7aba74c62cf65ce19af988c353855453f44f70de",
+  "mirror_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p019_mirror.png",
+  "mirror_sha256": "3f6f6930cac33844134bab838c45c620b5eda53b6fc8d5a2d2215fca8913b5c9",
+  "registration": {
+    "source_body_rect": [
+      176,
+      180,
+      51,
+      69
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      351,
+      430
+    ],
+    "registered_rect": [
+      463,
+      310,
+      126,
+      155
+    ],
+    "uniform_artwork_fit": 0.36103151862464183
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Recoil with one skeletal arm stretched forward, other close to body and cloth sweeping right. Skull remains right-facing. Raw and registered original comparison plus both facings inspected.",
+    "source_sha256_at_review": "c160e79bcc42e3d554dd863c7aba74c62cf65ce19af988c353855453f44f70de",
+    "mirror_sha256_at_review": "3f6f6930cac33844134bab838c45c620b5eda53b6fc8d5a2d2215fca8913b5c9"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p010",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "f878bb1a182ecefc8e5393ae95337f929103738c76a3e1f47b33f422c758e498:172:165:86:103:450:400",
+  "original_representative": {
+    "group_id": 1,
+    "original_block": 1,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_01_block_01_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_01_block_01_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cbknig31.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 159539,
+      "stored_size": 6466,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 86,
+      "height": 103,
+      "left": 172,
+      "top": 165,
+      "legacy_header": false,
+      "index_sha256": "f878bb1a182ecefc8e5393ae95337f929103738c76a3e1f47b33f422c758e498"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/repair-e-v01.png",
+  "raw_sha256": "95b0d5dcdc7b031d6a3c046b0f93848354a6edfa4bac5ba6d2b64be4621f1116",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/repair-e-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/repair-e-v01-black_knight_p010.png",
+  "isolated_sha256": "2d7cea84a8364c9d90ad52a9c4f7cd3a5c2f485dd9e77d75fc627103b584f4f3",
+  "source_grid_region": [
+    12,
+    106,
+    717,
+    879
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p010.png",
+  "registered_pose_sha256": "e2b16fb0f9b5cb5a6e570ff47d783a803adbd6a83c46055e718db0f0fcdbdba7",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p010_mirror.png",
+  "mirror_sha256": "205fbaabf1a18401856e114ab81b3b429a8af525b58f0529a092fc019eb32baa",
+  "registration": {
+    "source_body_rect": [
+      173,
+      166,
+      82,
+      101
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      719,
+      881
+    ],
+    "registered_rect": [
+      455,
+      262,
+      202,
+      248
+    ],
+    "uniform_artwork_fit": 0.28172942817294283
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Final targeted repair retains cheek-height sword hand and shallow blade across forehead; raised free fist restored; exactly two rider arms visible. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "e2b16fb0f9b5cb5a6e570ff47d783a803adbd6a83c46055e718db0f0fcdbdba7",
+    "mirror_sha256_at_review": "205fbaabf1a18401856e114ab81b3b429a8af525b58f0529a092fc019eb32baa"
+  },
+  "human_animation_acceptance": false
+}

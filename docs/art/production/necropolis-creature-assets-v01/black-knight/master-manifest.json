@@ -1,0 +1,215 @@
+{
+  "name": "Black Knight",
+  "slug": "black-knight",
+  "status": "proposal; awaiting user master approval",
+  "artwork_method": "built-in image generation; mechanical crop and aspect-preserving registration",
+  "cell": [
+    1024,
+    768
+  ],
+  "anchor": [
+    512,
+    512
+  ],
+  "original_reference": [
+    196,
+    268
+  ],
+  "source_scale": 2.4657534246575343,
+  "target_native_bounds": {
+    "left": 468,
+    "top": 268,
+    "width": 200,
+    "height": 242
+  },
+  "actual_registered_bounds": {
+    "left": 465,
+    "top": 268,
+    "width": 208,
+    "height": 242,
+    "right": 673,
+    "bottom": 510,
+    "transparent_pixels": 762777,
+    "opaque_pixels": 20647
+  },
+  "registration": {
+    "crop": {
+      "left": 88,
+      "top": 106,
+      "width": 1027,
+      "height": 1190
+    },
+    "width": 209,
+    "height": 242,
+    "left": 464,
+    "top": 268,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "original_def_sha256": "68758791ac3be0ae5426797775cb7c564e6220d0e54154adac6d6094f68742c4",
+  "source_metadata_sha256": "99473fbd5b8e4fb98f20fb9abffead8ba876626e1e9815fa08a6e7916cf91468",
+  "high_res_master": "master_rgba.png",
+  "high_res_sha256": "85201864e57a520489f6b9e893c6b787dc692203ed991e396db5007d01f3b4fd",
+  "source": "master_source_1024x768.png",
+  "source_sha256": "4dc839df7f5a2eac117b34140bebe609988fdac897e52d2d0fce475bbb67a720",
+  "mirror": "master_mirror_1024x768.png",
+  "mirror_sha256": "091387c2128c90bc6f5bef90203b788b01e8550241f07a6aa68ed0ff7f70b3b2",
+  "generated_input_sha256": "fe3b59cdb48b9bd1216a13751fe3bddc8692a2b06c16bd090e4ba824a313e985",
+  "transparent_background": true,
+  "exact_mirror_verified": true,
+  "mechanical_checks_only": true,
+  "visual_approval": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "provenance": {
+    "attempt": "06",
+    "tool": "image_gen.imagegen",
+    "tool_path": "functions.exec -> tools.image_gen__imagegen",
+    "mode": "built-in; targeted muzzle-edge repair and transparent reframing of attempt 05",
+    "original_generated_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-55cc-7f11-9800-dffd6504c132/exec-daaf6c71-4c4f-4d3b-bbf7-04d4e0237b81.png",
+    "raw_copy": "raw-master-06.png",
+    "parent_raw": "raw-master-05.png",
+    "parent_raw_sha256": "50f3dc3c67e2958f886608f99b3c813e8fde6b682b1d603ba49819be4f3ae0a8",
+    "derived_reference": {
+      "file": "edit-margin-reference-05.png",
+      "method": "raw-master-05.png extended with 160 transparent pixels on each side using sharp; no painted or reconstructed pixels; actual contour repair performed by built-in imagegen"
+    },
+    "postprocessing": "byte-identical raw copy; alpha-preserving crop, uniform scale and registration through read-only ../tools/lib.cjs; no painted, tonal or anatomy edits outside imagegen",
+    "status": "selected static proposal; awaiting human approval before animation",
+    "selected_raw": "raw-master-06.png",
+    "selected_raw_sha256": "fe3b59cdb48b9bd1216a13751fe3bddc8692a2b06c16bd090e4ba824a313e985",
+    "exact_request": {
+      "path": "request-master-06.json",
+      "sha256": "57a839e51af6662ae14afd2671c80ea139e472d6a322a754a2ffe66c4f28e489"
+    },
+    "exact_prompt": {
+      "path": "prompt-master-06.txt",
+      "sha256": "ebf47dd599875cbd3618b2d699b3c78d5a6b47dc5d4a7013f5c069ca44e57a04"
+    },
+    "reference_images": [
+      {
+        "path": "edit-margin-reference-05.png",
+        "sha256": "dc4fe34eac37d9bc6c00948f7b816f16faed5831301be3678ee4e5ad4a28a282"
+      },
+      {
+        "path": "raw-master-04.png",
+        "sha256": "7fbd264ac2b27a56d58c76790b5102608f8ce403600ae5e7328326e3bac5703a"
+      },
+      {
+        "path": "native-idle-6x.png",
+        "sha256": "5d3f3b27098076c06442f90b6f6df9958084af6bbb8128ea23fc54c759ed0585"
+      }
+    ],
+    "preservation_inputs": [
+      {
+        "path": "job.json",
+        "sha256": "a3569a67b07f82315f9c1cfef99cec95b0e9b9323bf9654d150b3e22833d5036"
+      },
+      {
+        "path": "../worker-brief.md",
+        "sha256": "3858d8e01f996f49b9ee2c7f15038c04918092fdfba64129db8796e370ea1806"
+      },
+      {
+        "path": "../tools/lib.cjs",
+        "sha256": "b8676cb91e388bf30f67f73e6ce0bca17f644a9203719393451ee9186b7ded60"
+      },
+      {
+        "path": "../../../references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/metadata.json",
+        "sha256": "99473fbd5b8e4fb98f20fb9abffead8ba876626e1e9815fa08a6e7916cf91468"
+      },
+      {
+        "path": "../../../references/heroes3-original-flipbooks/originals/H3sprite/CBKNIG.def",
+        "sha256": "68758791ac3be0ae5426797775cb7c564e6220d0e54154adac6d6094f68742c4"
+      },
+      {
+        "path": "native-idle.png",
+        "sha256": "f64825033b464fbef8182aeb25dbcff253d2ae414ca6a022aa119b525e317da0"
+      },
+      {
+        "path": "native-idle-6x.png",
+        "sha256": "5d3f3b27098076c06442f90b6f6df9958084af6bbb8128ea23fc54c759ed0585"
+      },
+      {
+        "path": "native-scale-guide.png",
+        "sha256": "5a03f6b1c82f3f8bc5beeb762de1d8f15daab6ab5d18a38f9908414dc50cfa05"
+      },
+      {
+        "path": "native-all-groups-contact.png",
+        "sha256": "41048d6cc54ad2b2561fabd6e3afa6ac8a5c7952797c66e337575775bd5acbc9"
+      },
+      {
+        "path": "native-g00-guide.png",
+        "sha256": "a8e05427f7ba96acff6a14df6d5a030fb10b48d73fd21b9771b7db2fa21ee410"
+      },
+      {
+        "path": "native-g01-guide.png",
+        "sha256": "80206bcd0012960f27ea5562a22f55f7f40de856d319e7c1f7288a94bd42ecda"
+      },
+      {
+        "path": "native-g02-guide.png",
+        "sha256": "71aac3b7629ad9ae3794a9785b6399642ded7ddc8c95b05b9bbce24b65c3fa90"
+      },
+      {
+        "path": "native-g03-guide.png",
+        "sha256": "0c22cb33ee922f01d057419223aa6f7ddeeebbbfb7d24c6cf990a043190486fd"
+      },
+      {
+        "path": "native-g04-guide.png",
+        "sha256": "0e3bd569f98b72e6a59b658416533ddbd6ead7643237967f6638c0ec50ae61b5"
+      },
+      {
+        "path": "native-g05-guide.png",
+        "sha256": "0bf74f7793ebb954ab48640b51b8ea6630024b18fd9c14c733d6ab7576fccf74"
+      },
+      {
+        "path": "native-g07-guide.png",
+        "sha256": "08f8bea83b63b5e343c00e4f3e26c5759386c5a524df03ff81ded15b428a91c3"
+      },
+      {
+        "path": "native-g08-guide.png",
+        "sha256": "10671d6ccc532375af9a6651332c390b80eaebfa39135a4a815f7136989d0242"
+      },
+      {
+        "path": "native-g09-guide.png",
+        "sha256": "67dbc739953ce8dcf516cc15cf61d8715f59e46abce53b13440300dae432e5dd"
+      },
+      {
+        "path": "native-g10-guide.png",
+        "sha256": "f40324b6c2028d8017e520c3817f1abf1c8404059016f5ff1ad831015336966d"
+      },
+      {
+        "path": "native-g11-guide.png",
+        "sha256": "e62bbbb190e2aceb3eed8df10c6dc45b889c962568cc970f95a0b6fad48d0e80"
+      },
+      {
+        "path": "native-g12-guide.png",
+        "sha256": "80aea37305284f0e35046db65c97a972b783656dd8ab3efb357a47d2834ae6ec"
+      },
+      {
+        "path": "native-g13-guide.png",
+        "sha256": "fed2af5162510ab87b7d1c494514cb0b2318bd92036d3f22288c7d661adb6a2d"
+      },
+      {
+        "path": "native-g20-guide.png",
+        "sha256": "4d2f94d59e7f48c12ea334fa82f18f674b7955f6d0a98e0be1944ba93dc7b944"
+      },
+      {
+        "path": "native-g21-guide.png",
+        "sha256": "d453ba406dbab35accdf14ce666087a8a9e6c63299160d3cbc146c8dc255abff"
+      },
+      {
+        "path": "../references/pikeman-rendering-master.png",
+        "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+      }
+    ],
+    "source_verification": {
+      "metadata_sha256": "99473fbd5b8e4fb98f20fb9abffead8ba876626e1e9815fa08a6e7916cf91468",
+      "def_sha256": "68758791ac3be0ae5426797775cb7c564e6220d0e54154adac6d6094f68742c4",
+      "idle_sha256": "f64825033b464fbef8182aeb25dbcff253d2ae414ca6a022aa119b525e317da0",
+      "complete_group_metadata_matches_job": true,
+      "groups": 15,
+      "timeline_positions": 92,
+      "distinct_indexed_drawings": 58
+    }
+  }
+}

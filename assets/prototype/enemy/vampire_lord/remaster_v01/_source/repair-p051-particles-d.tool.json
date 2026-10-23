@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "returned_keys": [
+    "image_url",
+    "output_hint"
+  ],
+  "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019\\exec-e634f5fc-c5df-43bb-82d8-b420693c3699.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "prompt": "Use case: stylized-concept. ONE transparent production sprite p051: newly draw this exact original Vampire Lord pose from Image 2; Image 1 supplies appearance only. Bald gray pale Nosferatu, pointed ears/red eyes/fangs, brown charcoal ragged narrow robe with orange gold collar/cuffs/red lining. Exact original raised arm placement and head angle: the nearer arm and bare hand reach almost vertically above the head, other hand bends forward at chest. Tall slender complete silhouette width:height approximately43:107, narrow straight-falling robe, no broad bell skirt. Preserve source embedded WHITE/PINK DISCRETE DISINTEGRATING SPARKLE FLECKS concentrated around the raised hand/fingertips. The fingertip area is partly obscured in source, use small white pale pink scattered particles with empty transparent gaps. Absolutely NO large oval glowing bubble, NO solid magic backdrop, NO disk, NO aura, NO new beam/fire/smoke. Keep source's effect extent compact to the raised hand. Finely painted modeled shading matching master, no original pixel enlargement, no extra weapons or accessories. One whole figure centered on square transparent canvas with100px empty margins above highest particle and below robe. No floor/shadow/text/grid/background.\n",
+  "transparent_background": true,
+  "repair_reason": "Reject broad oval glow in peak p051; restore compact scattered source particles.",
+  "references": [
+    {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire-lord/master_rgba.png",
+      "sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/guides/repair-p051-particles-source.png",
+      "sha256": "735262b8ce1d195ecead5c09f3e108e8ab6b9e1c0e84224671520017a30c4b0b"
+    }
+  ],
+  "raw_sha256": "aebd8a6bda63281535783d2becc8ad5a53744128416526451a7b46c3eee3267f",
+  "model": null,
+  "seed": null
+}

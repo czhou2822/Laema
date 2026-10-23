@@ -1,0 +1,100 @@
+{
+  "pose_id": "zombie_p015",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "62b0e17ae2ee70bf2e108428813bb8c2c936f7459048e4f2e23466437d76830c:176:181:41:88:450:400",
+  "original_representative": {
+    "group_id": 2,
+    "original_block": 2,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_02_block_02_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_02_block_02_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "CzomLO02.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 5851,
+      "stored_size": 3330,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 41,
+      "height": 88,
+      "left": 176,
+      "top": 181,
+      "legacy_header": false,
+      "index_sha256": "62b0e17ae2ee70bf2e108428813bb8c2c936f7459048e4f2e23466437d76830c"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/repair-p015-b.png",
+  "raw_sha256": "43d74291752e4034cf75917ef858dfcacd678c0b444dfebc68c23ff0c3f2ec12",
+  "prompt": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/repair-p015-b.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/zombie/remaster_v01/_source/isolated/repair-p015-b-zombie_p015.png",
+  "isolated_sha256": "2d52191d64b78dcd174bd0c342512a9ed8911c9e563ba064ed516ec318eb0ab4",
+  "source_grid_region": [
+    0,
+    0,
+    1254,
+    1254
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p015.png",
+  "registered_pose_sha256": "7dd99bb0e1e56cbaa75c0d893fa21a1afc731e7230a07117db1d74a64bfa0f0d",
+  "mirror_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p015_mirror.png",
+  "mirror_sha256": "917fb692e0d3a3e48bb65f1957ad32c6130d4749f2c8805a115d9e0d235e2cb1",
+  "registration": {
+    "source_body_rect": [
+      177,
+      182,
+      39,
+      84
+    ],
+    "artwork_crop": [
+      369,
+      65,
+      994,
+      1190
+    ],
+    "registered_rect": [
+      465,
+      334,
+      96,
+      173
+    ],
+    "uniform_artwork_fit": 0.1536
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Repair: original batch-001-a p015 hammer was too vertical. Viewed single-pose source guide, newly generated repair-p015-b and registered comparison. The replacement restores the diagonal down-right shaft and corresponding grip/free hand; full feet and cross-head fit. Retained the old attempt/history and rebuilt G2.",
+    "source_sha256_at_review": "7dd99bb0e1e56cbaa75c0d893fa21a1afc731e7230a07117db1d74a64bfa0f0d",
+    "mirror_sha256_at_review": "917fb692e0d3a3e48bb65f1957ad32c6130d4749f2c8805a115d9e0d235e2cb1"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "ghost_dragon_p026",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "70e7bdb077b213df4b293721fa4d82dad8a0594edeabab91ab7cc21f2e62b05e:116:158:154:110:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "chdrgn19.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 186504,
+      "stored_size": 13391,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 154,
+      "height": 110,
+      "left": 116,
+      "top": 158,
+      "legacy_header": false,
+      "index_sha256": "70e7bdb077b213df4b293721fa4d82dad8a0594edeabab91ab7cc21f2e62b05e"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-remaining-source-phase-v03.png",
+  "raw_sha256": "1ea1b0d4585d4e8f6109431c1134c87fbf3eedcdd9166e7b635481c4f97e0184",
+  "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-remaining-source-phase-v03.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/isolated/repair-remaining-source-phase-v03-ghost_dragon_p026.png",
+  "isolated_sha256": "af27d12e06b84f054307661bfbbd36e4fa6af2aa0db79ba7c9ed7de4391e9c61",
+  "source_grid_region": [
+    444,
+    444,
+    443,
+    443
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p026.png",
+  "registered_pose_sha256": "a554e72b23ec95c2181ca8f7a3f09ea2dd8abaedb1c0e591f56ba4cac7881e9c",
+  "mirror_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p026_mirror.png",
+  "mirror_sha256": "eeb1d4f3693e9e9c93fbb72362a1414fa5fe02796fd96723194fd51189ed8818",
+  "registration": {
+    "source_body_rect": [
+      120,
+      158,
+      150,
+      110
+    ],
+    "artwork_crop": [
+      15,
+      49,
+      426,
+      381
+    ],
+    "registered_rect": [
+      342,
+      241,
+      335,
+      271
+    ],
+    "uniform_artwork_fit": 0.8162650602409639
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Death recoil starts with reaching leg and raised arms; moderate phase alpha, source action retained. Inspected OG guide, native-scale and registered comparisons, raw selected art and both-facing sequence frames. Candidate review only.",
+    "source_sha256_at_review": "a554e72b23ec95c2181ca8f7a3f09ea2dd8abaedb1c0e591f56ba4cac7881e9c",
+    "mirror_sha256_at_review": "eeb1d4f3693e9e9c93fbb72362a1414fa5fe02796fd96723194fd51189ed8818"
+  },
+  "human_animation_acceptance": false
+}

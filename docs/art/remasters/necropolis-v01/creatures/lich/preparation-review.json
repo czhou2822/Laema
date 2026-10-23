@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "creature_id": "lich",
+  "status": "source_preparation_complete_awaiting_parent_pilot_clearance",
+  "authority": "Initial preparation only; parent must explicitly clear pilots and instruct full generation.",
+  "skills_applied": [
+    "Mali",
+    "imagegen"
+  ],
+  "input_audit": "source-audit.json",
+  "source_visual_review": {
+    "method": "Static view_image inspection only",
+    "approved_master": {
+      "path": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+      "sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+      "size": [
+        529,
+        1443
+      ],
+      "inspected": true,
+      "appearance_authority_only": true
+    },
+    "guides": [
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-000.png",
+        "pose_ids": [
+          "lich_p000",
+          "lich_p001",
+          "lich_p002",
+          "lich_p003",
+          "lich_p004",
+          "lich_p005",
+          "lich_p006",
+          "lich_p007"
+        ],
+        "inspected": true
+      },
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-001.png",
+        "pose_ids": [
+          "lich_p008",
+          "lich_p009",
+          "lich_p010",
+          "lich_p011",
+          "lich_p012",
+          "lich_p013",
+          "lich_p014",
+          "lich_p015"
+        ],
+        "inspected": true
+      },
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-002.png",
+        "pose_ids": [
+          "lich_p016",
+          "lich_p017",
+          "lich_p018",
+          "lich_p019",
+          "lich_p020",
+          "lich_p021",
+          "lich_p022",
+          "lich_p023"
+        ],
+        "inspected": true
+      },
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-003.png",
+        "pose_ids": [
+          "lich_p024",
+          "lich_p025",
+          "lich_p026",
+          "lich_p027",
+          "lich_p028",
+          "lich_p029",
+          "lich_p030",
+          "lich_p031"
+        ],
+        "inspected": true
+      },
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-004.png",
+        "pose_ids": [
+          "lich_p032",
+          "lich_p033",
+          "lich_p034",
+          "lich_p035",
+          "lich_p036",
+          "lich_p037",
+          "lich_p038",
+          "lich_p039"
+        ],
+        "inspected": true
+      },
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-005.png",
+        "pose_ids": [
+          "lich_p040",
+          "lich_p041",
+          "lich_p042",
+          "lich_p043",
+          "lich_p044",
+          "lich_p045",
+          "lich_p046",
+          "lich_p047"
+        ],
+        "inspected": true
+      },
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-006.png",
+        "pose_ids": [
+          "lich_p048",
+          "lich_p049",
+          "lich_p050",
+          "lich_p051",
+          "lich_p052",
+          "lich_p053",
+          "lich_p054",
+          "lich_p055"
+        ],
+        "inspected": true
+      },
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-007.png",
+        "pose_ids": [
+          "lich_p056",
+          "lich_p057",
+          "lich_p058",
+          "lich_p059",
+          "lich_p060",
+          "lich_p061",
+          "lich_p062",
+          "lich_p063"
+        ],
+        "inspected": true
+      },
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-008.png",
+        "pose_ids": [
+          "lich_p064",
+          "lich_p065",
+          "lich_p066",
+          "lich_p067",
+          "lich_p068",
+          "lich_p069",
+          "lich_p070",
+          "lich_p071"
+        ],
+        "inspected": true
+      },
+      {
+        "path": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-009.png",
+        "pose_ids": [
+          "lich_p072",
+          "lich_p073"
+        ],
+        "inspected": true
+      }
+    ],
+    "all_registered_source_poses_inspected": 74,
+    "additional_original_guides": [
+      "docs/art/production/necropolis-creature-assets-v01/lich/native-scale-guide.png",
+      "docs/art/production/necropolis-creature-assets-v01/lich/native-g05-guide.png",
+      "docs/art/production/necropolis-creature-assets-v01/lich/native-g15-guide.png"
+    ],
+    "observations": [
+      "Base Lich skeletal humanoid: pale bones, red eyes, low dark cap with gold band, chainmail coif and skirt, dark gold-trimmed breastplate and tall boots, plain long brown staff with capped ends.",
+      "Movement alternates booted steps with a mostly upright staff; idle contains small source-drawing differences.",
+      "Melee drawings rotate torso, show rear/side views and use two-hand staff grips; direction and grip must follow the source pose.",
+      "Death separates the skull, hands/limbs, armor and staff before collapsing into a low pile; detached fragments belong to the same pose.",
+      "Source idle gesture, hurt and defensive drawings include green, yellow and purple color accents; ranged-numbered slots include red accents. Their engine meaning and timing were not established."
+    ]
+  },
+  "counts": {
+    "groups": 18,
+    "timeline_positions": 120,
+    "registered_poses": 74,
+    "rgba_body_bounds_checked": 120,
+    "source_sheets": 36,
+    "prepared_guides": 10,
+    "new_artwork_calls": 0,
+    "new_drawings": 0,
+    "approved_idle_reuses": 0,
+    "ingested_poses": 0,
+    "reviewed_candidate_poses": 0,
+    "exported_groups": 0,
+    "missing_animation_poses": 74,
+    "groups_without_remaster_artwork": 18
+  },
+  "exact_group_alias_pairs": [
+    [
+      7,
+      9
+    ],
+    [
+      8,
+      10
+    ]
+  ],
+  "risks": [
+    "Do not substitute the idle master for turns, attacks, other idle drawings, hurt or movement.",
+    "Preserve staff length, grip, bone proportions, chainmail continuity and rear-view identity.",
+    "Preserve internal death-fragment placement and shrinking bounds; component isolation must not mistake one disassembled pose for multiple creatures or discard pieces.",
+    "Reference guides normalize each pose for inspection; only native coordinates and fixed 180/73 transform establish scale and placement.",
+    "Colored accents are visible in decoded source frames; do not infer standalone effects, projectile artwork or original timing.",
+    "The approved master has alpha 0..254 and a tight crop; future generated-page alpha/gutter/padding checks remain pending."
+  ],
+  "limitations": [
+    "Source inspection and static data/image checks only.",
+    "No newly generated or ingested candidate, animation playback, browser, engine, runtime or human animation acceptance.",
+    "No full export, mirror, atlas, SpriteFrames or offline package was produced.",
+    "Missing groups 6 and 17..19 are absent in CLICH metadata and are not missing remaster deliverables."
+  ],
+  "resume": "Remain assigned to lich. Wait for explicit parent pilot clearance and full-generation instructions; then retain the prepared mappings and approved appearance master."
+}

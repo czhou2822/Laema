@@ -1,0 +1,100 @@
+{
+  "pose_id": "zombie_p038",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "edcdaf7a7e8d40c4d9cc451a4bdff126136e2069d8279d90f139ca7eaed28447:178:182:47:83:450:400",
+  "original_representative": {
+    "group_id": 7,
+    "original_block": 6,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_07_block_06_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_07_block_06_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "CzomLO21.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 66333,
+      "stored_size": 3054,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 47,
+      "height": 83,
+      "left": 178,
+      "top": 182,
+      "legacy_header": false,
+      "index_sha256": "edcdaf7a7e8d40c4d9cc451a4bdff126136e2069d8279d90f139ca7eaed28447"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.png",
+  "raw_sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38",
+  "prompt": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-004-a-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/zombie/remaster_v01/_source/isolated/batch-004-a-components-zombie_p038.png",
+  "isolated_sha256": "c29c43d326f396f3f895d349570dd4d10fd9f84f3067e2147eadaf7d9ce24744",
+  "source_grid_region": [
+    993,
+    461,
+    247,
+    411
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p038.png",
+  "registered_pose_sha256": "630986bf4506ef6ad2f364703f5d01bba791d2cb6209c63bdec2fccf3b4ee7c1",
+  "mirror_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p038_mirror.png",
+  "mirror_sha256": "74a5fbe49ad1abe9b8888cd60825b71338555a13e1ed88855e9c0a2e8f066cf5",
+  "registration": {
+    "source_body_rect": [
+      178,
+      182,
+      46,
+      82
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      249,
+      413
+    ],
+    "registered_rect": [
+      468,
+      314,
+      113,
+      188
+    ],
+    "uniform_artwork_fit": 0.4574898785425101
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Viewed raw batch-004-a and all registered OG comparisons. Death sequence folds to a low corpse, preserving the boot and bare foot with hammer across/above the folded body; no extra detached limbs observed. Turn changes from three-quarter toward frontal view and vertical hammer, not a fabricated back view. Native low corpse bounds retained by registration.",
+    "source_sha256_at_review": "630986bf4506ef6ad2f364703f5d01bba791d2cb6209c63bdec2fccf3b4ee7c1",
+    "mirror_sha256_at_review": "74a5fbe49ad1abe9b8888cd60825b71338555a13e1ed88855e9c0a2e8f066cf5"
+  },
+  "human_animation_acceptance": false
+}

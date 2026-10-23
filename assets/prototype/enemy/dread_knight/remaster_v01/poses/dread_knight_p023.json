@@ -1,0 +1,100 @@
+{
+  "pose_id": "dread_knight_p023",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "c95758bf9d5bca319ed68620ebea934ab25deb27dac46072ab772a06d8ef81e8:176:168:88:98:450:400",
+  "original_representative": {
+    "group_id": 4,
+    "original_block": 4,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBLORD/group_04_block_04_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBLORD/group_04_block_04_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cblord25.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 138410,
+      "stored_size": 5431,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 88,
+      "height": 98,
+      "left": 176,
+      "top": 168,
+      "legacy_header": false,
+      "index_sha256": "c95758bf9d5bca319ed68620ebea934ab25deb27dac46072ab772a06d8ef81e8"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/dread_knight/remaster_v01/_source/raw/batch-002-v01.png",
+  "raw_sha256": "25aa94233b9ecdf406e061a7a43cc553b67faaecd84a29740500a8cc4025b926",
+  "prompt": "assets/prototype/enemy/dread_knight/remaster_v01/_source/raw/batch-002-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/dread_knight/remaster_v01/_source/isolated/batch-002-v01-dread_knight_p023.png",
+  "isolated_sha256": "716adfa1a7c54c0eaa8e3e4e7046f8e0458f857ccfadb6e09aa543831364b9d1",
+  "source_grid_region": [
+    1161,
+    546,
+    368,
+    434
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/dread_knight/remaster_v01/poses/dread_knight_p023.png",
+  "registered_pose_sha256": "98d50efa05d002bca9f573001fc19ffb3b30e85f98ed85ddb7336ebaa531914f",
+  "mirror_file": "assets/prototype/enemy/dread_knight/remaster_v01/poses/dread_knight_p023_mirror.png",
+  "mirror_sha256": "4499320fc91bd8edc04fd85ace0def85382bf0895137d7a954b12841d7b05619",
+  "registration": {
+    "source_body_rect": [
+      177,
+      168,
+      83,
+      98
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      370,
+      436
+    ],
+    "registered_rect": [
+      465,
+      265,
+      205,
+      242
+    ],
+    "uniform_artwork_fit": 0.5570652173913043
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Guard entry: saber near horizontal at horse neck; complete mount and rider leg separation. Static native/enlarged source and exact-mirror review; no continuous playback, engine or human acceptance.",
+    "source_sha256_at_review": "98d50efa05d002bca9f573001fc19ffb3b30e85f98ed85ddb7336ebaa531914f",
+    "mirror_sha256_at_review": "4499320fc91bd8edc04fd85ace0def85382bf0895137d7a954b12841d7b05619"
+  },
+  "human_animation_acceptance": false
+}

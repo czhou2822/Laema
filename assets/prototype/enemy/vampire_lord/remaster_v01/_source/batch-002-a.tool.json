@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "returned_keys": [
+    "image_url",
+    "output_hint"
+  ],
+  "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019\\exec-f0b51a93-27e3-4546-b2c1-e49526f7c301.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "prompt": "Use case: stylized-concept. High-resolution production sprite redraw sheet on genuinely transparent background. Image 1 is approved Vampire Lord APPEARANCE ONLY; image 2 is authoritative ORIGINAL POSE GUIDE. Newly paint each occupied cell separately in exactly 4 columns x 2 rows, exact row-major order. Preserve original silhouette, camera/view, bent joints, hand height, gaze and robe outline; never substitute the idle. Fine painted modeled shading and fabric detail like master, not enlarged pixel art.\n\nSame character: pale bald wrinkled Nosferatu with large pointed ears, red eyes, fangs, long clawlike pale fingers; charcoal/brown ragged floor-length robe, orange-gold high collar/cuffs/tattered trim, dark red lining. Unarmed. Keep clothing identity and proportions. No new weapon, armor, hair, accessory or gameplay. All tips/hems/fragments fully inside each cell with generous transparent gutters and outer margins. No labels, text, grid, colored backdrop, halo, ground or cast shadow. Do not carry the master's dark background into the output. Embedded effects only where each source pose shows them. Prefer 2048x1024.\n\nEIGHT figures. TOP ROW p016,p017,p018,p019: p016 bent forward deeply head down, both arms spread low; p017 hunched settling; p018-p019 defensive posture progressively raises one forearm/cuff toward face while other hand stays forward. BOTTOM ROW p020,p021,p022,p023: p020 bent protective forearm across face with lifted sleeve; p021 hand shields face more upright; p022 starts death with one hand rising; p023 throws both arms up/out and head back. Follow source faithfully; p022-p023 are still intact in this sheet. No invented death particles earlier than source.\n\nExact row-major mapping is the labeled guide order; remove labels in new artwork.\n",
+  "transparent_background": true,
+  "references": [
+    {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire-lord/master_rgba.png",
+      "sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/guides/batch-002.png",
+      "sha256": "08690455f22739e2c1593985bc3345945e3fbd4c813c9e26602e23ed02d64a9f"
+    }
+  ],
+  "raw_sha256": "92d665afd766581ca7c4810ca458cd74743b7425050a98fdee1bdc3a70651e75",
+  "model": null,
+  "seed": null
+}
