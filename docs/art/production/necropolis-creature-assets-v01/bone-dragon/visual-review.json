@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "creature": "Bone Dragon",
+  "slug": "bone-dragon",
+  "source_id": "CNDRGN",
+  "phase": "single static master approval gate",
+  "status": "ready for human static master review; proposal only",
+  "human_approved": false,
+  "selected_raw": "raw-04.png",
+  "selected_raw_sha256": "ec6f8e88970bbbf6a37c81f861ad4347e35a56ea58bc5dc72df8a8fa6d707a7e",
+  "selected_master": "master_source_1024x768.png",
+  "selected_master_sha256": "1de02dfc4aa54ac930a5017de08b6b762603b5a884111c2257681e4513979136",
+  "high_resolution_master": "master_rgba.png",
+  "high_resolution_master_sha256": "bcc402249960e2febabf8482b952de84763c65c88a3202b37c3d7a3ff65955a4",
+  "mirror": "master_mirror_1024x768.png",
+  "mirror_sha256": "8f154da9800d8cf77fa456b8e19ce75918a03474cc39f4e29bb430725dd225e7",
+  "source": {
+    "metadata_path_relative_to_package": "../../references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/metadata.json",
+    "metadata_sha256": "b0f84da6800e79020b5ec9eeaaf8a28d997302deea1f04fbb2acc267f5a501de",
+    "original_def_path_relative_to_package": "../../references/heroes3-original-flipbooks/originals/H3sprite/CNDRGN.def",
+    "original_def_sha256": "58135b0772daff477ca118434052631255fd6e8de89d405529fa7b068f23bf3a",
+    "native_idle_frame": "G2 F0 / cndrgn61.pcx",
+    "native_idle_frame_sha256": "82015f2156bafc3401ff6a5bd856eac51ccc4e7d3e5c9966bb2c289abe8001e7",
+    "native_idle_alpha64": { "left": 169, "top": 153, "width": 93, "height": 114 },
+    "all_metadata_group_records_match_job": true,
+    "group_count": 15,
+    "timeline_frame_count": 84,
+    "distinct_indexed_drawings": 61,
+    "group_ids": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 20, 21],
+    "frame_counts_in_group_id_order": [6, 5, 8, 6, 11, 8, 3, 3, 3, 3, 7, 7, 7, 3, 4],
+    "group_role_mapping_status": "format mappings retained from job; no runtime role or timing verification",
+    "full_contact_image_inspected": true,
+    "sampled_native_guides": [
+      { "file": "native-g00-guide.png", "frames": [0, 3, 5] },
+      { "file": "native-g02-guide.png", "frames": [0, 4, 7] },
+      { "file": "native-g04-guide.png", "frames": [0, 5, 10] },
+      { "file": "native-g07-guide.png", "frames": [0, 1, 2] },
+      { "file": "native-g12-guide.png", "frames": [0, 3, 6] },
+      { "file": "native-g20-guide.png", "frames": [0, 1, 2] }
+    ],
+    "benchmark": "../references/pikeman-rendering-master.png",
+    "benchmark_role": "fine modeled-volume rendering only; no anatomy, costume or palette transfer",
+    "excluded_identity_mappings": { "CBDRGN": "unrelated living dragon", "CHDRGN": "Ghost Dragon" },
+    "evidence_file": "source-evidence.json"
+  },
+  "registration": {
+    "helper": "../tools/lib.cjs",
+    "helper_usage": "read-only registerMaster import from creature-local build-master.cjs",
+    "helper_hash_and_output_measurements": "master-image-metrics.json",
+    "cell": [1024, 768],
+    "anchor": [512, 512],
+    "original_reference": [196, 268],
+    "source_scale_fraction": "180/73",
+    "source_scale": 2.4657534246575343,
+    "target_native_bounds": { "left": 445, "top": 228, "width": 229, "height": 281 },
+    "actual_alpha64_bounds": { "left": 447, "top": 228, "width": 225, "height": 281, "right": 672, "bottom": 509 },
+    "high_resolution_crop": { "left": 15, "top": 2, "width": 1109, "height": 1382 },
+    "method": "uniform aspect-preserving height scale with integer dimension rounding; native idle center and bottom",
+    "overrides": {},
+    "normalized_to_180px": false,
+    "stretched": false,
+    "width_difference_from_native_px": -4,
+    "width_difference_percent": -1.7467248908296944,
+    "same_center_and_bottom": true,
+    "exact_mirror_verified": true
+  },
+  "observations": [
+    "Warm aged yellow/ivory bone surfaces with tan/ochre crevice shading; no living scaled body.",
+    "Long back-angled horns, angular skull, unlit eye sockets, open jaw, exposed ribs and vertebral neck/spine are legible.",
+    "Two raised forearms, bent skeletal hind legs, long bony toes and low curved articulated tail retain the native upright ready pose facing right.",
+    "Folded overlapping dark charcoal/slate desiccated wing membranes hang between long pale bony fingers; folds and ragged ends remain visible.",
+    "Fine modeled rendering follows the benchmark finish; no Castle costume, blue heraldry or human equipment was introduced.",
+    "All wing tips, horns, claws, feet and tail are inside the registered transparent cell; no floor, cast shadow, props, spectral color or VFX is visible.",
+    "Source, proposal and exact mirror remain readable at actual registered size; skeletal negative spaces remain open.",
+    "Light/dark/checker composites and the actual alpha panel show clean cutout edges. Initial red/yellow preview fringe is not present in composited pixels."
+  ],
+  "reviewed_output_files": [
+    "source-vs-master.png",
+    "game-size-review.png",
+    "alpha-review.png",
+    "master_source_1024x768.png"
+  ],
+  "alpha_checks": {
+    "genuine_transparency": true,
+    "registered_transparent_pixels": 749873,
+    "registered_opaque_pixels_alpha255": 2131,
+    "registered_partial_alpha_pixels": 34428,
+    "nonzero_alpha_at_registered_canvas_border": 0,
+    "all_four_corners_transparent": true,
+    "minimum_registered_margin_px": 228,
+    "visual_checks_are_agent_observations_not_human_approval": true
+  },
+  "generation": {
+    "tool": "functions.exec -> tools.image_gen__imagegen",
+    "mode": "built-in imagegen with local image references and transparent_background=true",
+    "raw_outputs_preserved_byte_identical": true,
+    "exact_prompt_storage": "prompt-NN.txt and tool-call-NN.json; prompt argument equals file text with trailing whitespace removed",
+    "attempts": [
+      {
+        "attempt": "01", "prompt": "prompt-01.txt", "exact_call": "tool-call-01.json", "raw": "raw-01.png",
+        "raw_sha256": "41c56f05d6cceb0377d09295bd53c3b2b7069d16ff9f2b9ee2015138b3a3bcf1",
+        "review": "Identity/material base retained; 214x281 registration was too narrow.",
+        "registered_review_archive": "attempt-01-registration"
+      },
+      {
+        "attempt": "02", "prompt": "prompt-02.txt", "exact_call": "tool-call-02.json", "raw": "raw-02.png",
+        "raw_sha256": "26de0ace1b58bbce710d53a5bec4d994885be664fd354e012e0e37ecf250626c",
+        "review": "Not selected: tail dipped and full silhouette aspect narrowed to 1069/1450 despite attempted wing repair.",
+        "registered_review_archive": null
+      },
+      {
+        "attempt": "03", "prompt": "prompt-03.txt", "exact_call": "tool-call-03.json", "raw": "raw-03.png",
+        "raw_sha256": "25ca260f62aa02e593a6c82c516ae0be9984f3964d59277bba5aaeb01255150d",
+        "review": "Not selected: source-led redraw retained the narrow silhouette at 213x281.",
+        "registered_review_archive": "attempt-03-registration"
+      },
+      {
+        "attempt": "04", "prompt": "prompt-04.txt", "exact_call": "tool-call-04.json", "raw": "raw-04.png",
+        "raw_sha256": "ec6f8e88970bbbf6a37c81f861ad4347e35a56ea58bc5dc72df8a8fa6d707a7e",
+        "review": "Selected: broader folded wing, retained upright anatomy and low tail; 225x281 with no registration override.",
+        "selected": true
+      }
+    ],
+    "chosen_returned_generated_path": "C:/Users/zhouc/.codex/generated_images/01a1638f-9d8c-71e0-a893-483b88687d3f/exec-1267a101-ae2f-4310-8d61-2143fc029de2.png",
+    "chosen_prompt_argument_utf8_sha256": "983e40ffbde73c3e8f2b45249f9da1e5675a7e2fdfb5065610b16cb491a8a1d1"
+  },
+  "context_read_before_artwork": [
+    "../worker-brief.md",
+    "job.json (complete)",
+    "repository AGENTS.md",
+    "repository docs/README.md",
+    "repository docs/art/ART_DIRECTION.md",
+    "installed Mali SKILL.md and references/art-review-and-direction.md",
+    "physical Fanor Skills/records/mali/personal-art-profile.md (read only; private profile contents not copied)",
+    "installed imagegen SKILL.md, references/prompting.md and references/sample-prompts.md",
+    "actual CNDRGN native metadata and required native images; Pikeman rendering benchmark"
+  ],
+  "limitations": [
+    "User approval is pending; agent review does not accept the master on the user's behalf.",
+    "Visible width remains four pixels (1.75 percent) narrower than the native target; height, center and bottom match.",
+    "This is a new redraw, not a pixel-identical skeletal reconstruction; fine bone contours, spine spikes and membrane tears remain generated interpretations.",
+    "Only static contact/guide samples were viewed; original playback timing and all 84 frames were not visually audited.",
+    "No animation frames, engine imports, game code changes, editor/runtime runs, tests/builds, Git operations or peer messages were made. Runtime is unverified."
+  ],
+  "next_gate": "User approval of the static master before any animation production",
+  "animation_generated": false,
+  "engine_imported": false,
+  "runtime_verified": false,
+  "project_writes_confined_to_assigned_creature_folder": true,
+  "originals_and_references_unchanged": true
+}

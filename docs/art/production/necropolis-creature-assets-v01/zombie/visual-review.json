@@ -1,0 +1,338 @@
+{
+  "schema": 1,
+  "creature": "Zombie",
+  "slug": "zombie",
+  "source_id": "CZOMLO",
+  "status": "static master awaiting human approval",
+  "visual_approval": false,
+  "animation_begun": false,
+  "animation_generated": false,
+  "runtime_verified": false,
+  "engine_imported": false,
+  "tests_builds_or_engine_runs_performed": false,
+  "scope": "One Zombie static master proposal; complete native group inventory examined in metadata. No animation-frame production.",
+  "skills_used": [
+    "C:/Users/zhouc/.codex/skills/mali/SKILL.md",
+    "C:/Users/zhouc/.codex/skills/.system/imagegen/SKILL.md"
+  ],
+  "source": {
+    "metadata": "../../references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/metadata.json",
+    "metadata_sha256": "bc9f2c681db210b383b1bfbe1ee6c828ac8d6bd6cc6bfc44dba1028bda9ad0f3",
+    "original_def": "../../references/heroes3-original-flipbooks/originals/H3sprite/CZOMLO.def",
+    "original_def_sha256": "3ae05f80407ef6d79615186805df8e4c17fd49ea9c1d489494ea6e6c63eaa3f8",
+    "idle_frame": "CzomLO01.pcx",
+    "idle_sha256": "477a3efaf61c83ceff5b50f7c910db0f5e3b6c0d1a57190066244559c210ff82",
+    "hashes_verified_against_job": true,
+    "original_groups": 15,
+    "original_timeline_frames": 86,
+    "original_distinct_indexed_drawings": 60,
+    "group_inventory": [
+      {
+        "id": 0,
+        "format_role": "movement",
+        "timeline_frames": 10,
+        "distinct_in_group": 10
+      },
+      {
+        "id": 1,
+        "format_role": "gesture / mouse-over",
+        "timeline_frames": 9,
+        "distinct_in_group": 5
+      },
+      {
+        "id": 2,
+        "format_role": "idle",
+        "timeline_frames": 8,
+        "distinct_in_group": 4
+      },
+      {
+        "id": 3,
+        "format_role": "hit reaction",
+        "timeline_frames": 7,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 4,
+        "format_role": "defence",
+        "timeline_frames": 8,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 5,
+        "format_role": "death",
+        "timeline_frames": 9,
+        "distinct_in_group": 9
+      },
+      {
+        "id": 7,
+        "format_role": "turn",
+        "timeline_frames": 3,
+        "distinct_in_group": 3
+      },
+      {
+        "id": 8,
+        "format_role": "turn",
+        "timeline_frames": 3,
+        "distinct_in_group": 3
+      },
+      {
+        "id": 9,
+        "format_role": "turn",
+        "timeline_frames": 3,
+        "distinct_in_group": 3
+      },
+      {
+        "id": 10,
+        "format_role": "turn",
+        "timeline_frames": 3,
+        "distinct_in_group": 3
+      },
+      {
+        "id": 11,
+        "format_role": "melee upper",
+        "timeline_frames": 7,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 12,
+        "format_role": "melee front",
+        "timeline_frames": 7,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 13,
+        "format_role": "melee lower",
+        "timeline_frames": 7,
+        "distinct_in_group": 7
+      },
+      {
+        "id": 20,
+        "format_role": "movement start",
+        "timeline_frames": 1,
+        "distinct_in_group": 1
+      },
+      {
+        "id": 21,
+        "format_role": "movement end",
+        "timeline_frames": 1,
+        "distinct_in_group": 1
+      }
+    ],
+    "role_caveat": "Roles are inherited DEF-format mappings, not runtime-verified action labels or timing evidence."
+  },
+  "inspection": {
+    "complete_job_read": true,
+    "native_idle": "native-idle-6x.png",
+    "all_groups_contact": {
+      "file": "native-all-groups-contact.png",
+      "groups": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        20,
+        21
+      ],
+      "level": "one overview image per group, not every frame"
+    },
+    "guides_viewed": [
+      {
+        "file": "native-g00-guide.png",
+        "frames": [
+          0,
+          5,
+          9
+        ]
+      },
+      {
+        "file": "native-g02-guide.png",
+        "frames": [
+          0,
+          4,
+          7
+        ]
+      },
+      {
+        "file": "native-g04-guide.png",
+        "frames": [
+          0,
+          4,
+          7
+        ]
+      },
+      {
+        "file": "native-g05-guide.png",
+        "frames": [
+          0,
+          4,
+          8
+        ]
+      },
+      {
+        "file": "native-g07-guide.png",
+        "frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "file": "native-g11-guide.png",
+        "frames": [
+          0,
+          3,
+          6
+        ]
+      },
+      {
+        "file": "native-g12-guide.png",
+        "frames": [
+          0,
+          3,
+          6
+        ]
+      },
+      {
+        "file": "native-g13-guide.png",
+        "frames": [
+          0,
+          3,
+          6
+        ]
+      }
+    ],
+    "extra_native_detail": "native-head-detail-20x.png",
+    "guides_not_individually_viewed": [
+      1,
+      3,
+      8,
+      9,
+      10,
+      20,
+      21
+    ],
+    "rendering_reference": {
+      "file": "../references/pikeman-rendering-master.png",
+      "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4",
+      "role": "fine modeled-volume shading, texture and concentrated highlights only; no costume, palette, helmet, pose or weapon borrowing"
+    },
+    "generated_outputs_viewed": [
+      "built-in tool display",
+      "tool output via view_image",
+      "source-vs-master.png",
+      "alpha-edge-review.png",
+      "master_source_1024x768.png",
+      "master_mirror_1024x768.png"
+    ],
+    "not_reviewed": "Continuous motion, every native drawing at detail scale, a paired upgrade source, animation timing, engine import and gameplay."
+  },
+  "native_identity_observations": [
+    "Gaunt adult humanoid in a compact, slightly hunched three-quarter idle stance facing right.",
+    "Pale grey-violet face and exposed arms, dark eye sockets and a light forehead within a compact dark-brown crown/head outline.",
+    "Dark brown-olive sleeveless torso garment with subdued rusty red edging, small brass-colored fittings and a brass-colored belt/wrist treatment.",
+    "Worn olive-brown trousers. Screen-left/rear lower shin and foot are pale bare flesh below a small muted red cuff; screen-right/front foot is dark and boot-shaped.",
+    "One warm-brown wooden shaft slopes downward to the right from the near hand at the hip; a compact pale transverse iron tool head sits low at the front.",
+    "The opposite hand is free; no shield, cape, added weapon, spell effect or new armor is evidenced."
+  ],
+  "generation": {
+    "method": "built-in image_gen.imagegen only",
+    "calls": 1,
+    "edits": 0,
+    "selected_raw": "attempt-01-raw.png",
+    "generated_sha256": "a238885d0ffa45111d1358c45e07878e1b20e1e38002b76d319fddabb22fce51",
+    "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-567f-7311-8fea-87f05485d7f9/exec-009cef1e-bd47-4d60-9668-bcd0e99970e6.png",
+    "exact_prompt": "Use case: stylized-concept\nAsset type: one proposed full-body static creature master for a 2D game, not an animation sheet.\nPrimary request: repaint the original Heroes III Necropolis Zombie from the native reference as a newly modeled, finely textured sprite master. Follow Image 1 for identity, exact idle pose, proportions, facing, and costume. The reference source is CZOMLO; preserve this supplied creature's actual appearance rather than a generic zombie.\nInput images: Image 1 native-idle-6x.png is the subject/idle-pose authority. Image 2 native-g12-guide.png supplies additional original material and tool-head evidence ONLY; ignore its labels, other poses and ground shadows. Image 3 pikeman-rendering-master.png supplies ONLY the rendering treatment, not its subject, colors, uniform, weapon, helmet, pose or facing.\nScene/backdrop: genuine transparent alpha, no background, floor, ground shadow, smoke, particles or visual effects.\nSubject and silhouette: one gaunt, narrow adult human-sized undead laborer, slightly hunched but standing in the same compact three-quarter view facing RIGHT as Image 1. Pale grey-violet skin, sunken dark eye sockets and desiccated face, exposed light forehead surrounded by the reference's close dark-brown cap-like head silhouette. No glowing eyes. Keep normal adult proportions and the reference's restrained anatomy; do not bulk up torso or limbs.\nCostume: preserve the original dark brown-olive sleeveless close-fitting vest/tunic, muted rusty red edging and seams, small dull brass-colored fasteners and waist belt, restrained brass wrist fittings, worn brown-olive trousers and ragged hems. Preserve the asymmetric lower legs: the screen-left/rear foot and lower shin show pale grey flesh below a small muted red torn cuff, while the screen-right/front foot wears the original dark brown boot. Preserve the native head outline; do not add a Castle soldier's helmet, elaborate armor, pauldrons, cape, or new equipment.\nTool: exactly ONE original long warm-brown wooden-handled axe/mattock-like implement, with the compact pale iron transverse wedge head seen in the reference. Its shaft is gripped low beside the screen-left hip and slopes DOWN toward the lower RIGHT, where the short pale cross-head sits in front of the lower leg. Keep original shaft length, head shape/scale and orientation; do not replace it with a giant battleaxe, scythe, spear or club. The other hand remains free and slightly curled beside the waist on screen-right. Do not add another weapon.\nPose and camera: match Image 1's narrow silhouette, bent elbows, slight forward head angle, separated uneven feet, weight and low diagonally held tool. Do not borrow Image 2's attack pose or Image 3's left-facing spear pose. Keep every body part, bare foot, boot and full tool visible.\nStyle/medium: match Image 3's fine modeled-volume rendering, subtle continuous shading, restrained textured leather/cloth/skin and small concentrated iron/brass highlights. Clean readable silhouette, fine detail suited to downscaling to approximately 212 pixels high. This is a carefully painted/pre-rendered classic strategy-game creature, not block-pixel art, cartoon, chibi, thick-outlined comic art or a photographic person.\nLighting/color: quiet upper-left sculptural light, controlled shadows on the body only; desaturated olive-brown clothing and cold grey-violet flesh, tiny muted rust-red and dull brass accents, localized pale tool-metal highlights. Retain Necropolis's original materials and palette.\nComposition/framing: a single isolated full-body figure centered within a portrait 1024x1536 image, roughly 1100 pixels high, with generous transparent margins on all sides and below feet/tool. No cropping.\nText: none. No labels, signature, watermark, border, checkerboard pattern or visible matte.\nConstraints: NEW generated artwork, not an enlargement or filter of the source pixels. Preserve the native identity, anatomy, asymmetric footwear, exact idle pose and RIGHT facing. Do not invent gore, dangling organs, extra ornaments, new colors or magic.",
+    "exact_prompt_file": "attempt-01-prompt.txt",
+    "complete_provenance": "generation-provenance.json",
+    "rejected_raws": [],
+    "selection_reason": "No unambiguous identity, facing, clipping or perspective failure requiring a corrective edit was observed after source comparison. Retained as a proposal with the differences below disclosed.",
+    "native_pixel_enlargement_substituted": false
+  },
+  "registration": {
+    "helper": "../tools/lib.cjs registerMaster",
+    "reproducible_script": "register-master.cjs",
+    "cell": [
+      1024,
+      768
+    ],
+    "anchor": [
+      512,
+      512
+    ],
+    "native_reference": [
+      196,
+      268
+    ],
+    "common_source_scale": 2.4657534246575343,
+    "native_alpha64": {
+      "left": 177,
+      "top": 182,
+      "width": 39,
+      "height": 86,
+      "right": 216,
+      "bottom": 268
+    },
+    "target_bounds": {
+      "left": 465,
+      "top": 300,
+      "width": 96,
+      "height": 212
+    },
+    "actual_alpha64": {
+      "left": 460,
+      "top": 300,
+      "width": 106,
+      "height": 212,
+      "right": 566,
+      "bottom": 512
+    },
+    "raw_alpha8_crop": {
+      "left": 207,
+      "top": 99,
+      "width": 665,
+      "height": 1330
+    },
+    "method": "default uniform height scale; aspect ratio maintained; native silhouette center and bottom registration",
+    "override": null,
+    "nonuniform_stretch": false,
+    "bottom_contact": 512,
+    "width_delta_px": 10,
+    "width_delta_percent": 10.416666666666666,
+    "true_alpha": true,
+    "exact_mirror_verified_by_helper": true,
+    "source_transparent_pixels": 774660
+  },
+  "visual_judgment": {
+    "at_shared_scale": "Cold face/arms separate from subdued olive-brown clothing; asymmetric feet and low pale tool head remain readable at 212px high. Full figure and tool fit comfortably in the registered cell.",
+    "materials": "Fine continuous volume, textured cloth/leather, weathered warm wood, cold pale iron and concentrated brass highlights. No Castle palette or helmet.",
+    "alpha": "Inspected on dark and light opaque review mattes. No baked floor, shadow, checkerboard or visible glow surrounds the selected cutout.",
+    "pose": "Right-facing compact idle recreation with the original low diagonal tool arrangement and free opposite hand; not a pixel-exact silhouette tracing.",
+    "remaining_risks": [
+      "Generated silhouette is 106px wide against the native mapped 96px target; preserved as a uniform aspect ratio instead of squeezing it.",
+      "Native head pixels do not establish hair versus a close head covering conclusively. The generated master resolves the dark crown as brown hair; this interpretation remains for human review.",
+      "Individual fasteners, cuff construction, cloth tears, wood grain, skin wear and metal corrosion are newly rendered interpretations of coarse native evidence.",
+      "Generated cloth tears and brass detailing are clearer/more elaborate than the small native pixels; the human must approve their restraint and fidelity.",
+      "The standalone high-detail master does not establish consistency with a paired upgrade, the rest of the collection, or future animation frames."
+    ]
+  },
+  "deliverables": {
+    "high_resolution": "master_rgba.png",
+    "registered_source": "master_source_1024x768.png",
+    "exact_mirror": "master_mirror_1024x768.png",
+    "comparison": "source-vs-master.png",
+    "alpha_review": "alpha-edge-review.png",
+    "manifest": "master-manifest.json",
+    "report": "report.md",
+    "source_evidence": "source-evidence.json"
+  },
+  "approval_gate": "Static master awaits human approval; animation must not begin before that approval. Runtime remains unverified."
+}

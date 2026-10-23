@@ -1,0 +1,128 @@
+{
+  "name": "Vampire Lord",
+  "slug": "vampire-lord",
+  "status": "proposal; awaiting user master approval",
+  "artwork_method": "built-in image generation; mechanical crop and aspect-preserving registration",
+  "cell": [
+    1024,
+    768
+  ],
+  "anchor": [
+    512,
+    512
+  ],
+  "original_reference": [
+    196,
+    268
+  ],
+  "source_scale": 2.4657534246575343,
+  "target_native_bounds": {
+    "left": 448,
+    "top": 295,
+    "width": 118,
+    "height": 215
+  },
+  "actual_registered_bounds": {
+    "left": 453,
+    "top": 295,
+    "width": 109,
+    "height": 215,
+    "right": 562,
+    "bottom": 510,
+    "transparent_pixels": 770678,
+    "opaque_pixels": 14387
+  },
+  "registration": {
+    "crop": {
+      "left": 161,
+      "top": 40,
+      "width": 732,
+      "height": 1448
+    },
+    "width": 109,
+    "height": 215,
+    "left": 453,
+    "top": 295,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "original_def_sha256": "7f3fe9079b255ad09ded551a82017580087905f0e6f4484aad90b357b84a0cfa",
+  "source_metadata_sha256": "4ac5906db377f31902170fdd68224eaf2c92d379b4f7b74317023dacc9f6bd8d",
+  "high_res_master": "master_rgba.png",
+  "high_res_sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64",
+  "source": "master_source_1024x768.png",
+  "source_sha256": "004795a96785288edd83855825ee6e31253d41899f5ef709508920d2e86f9a73",
+  "mirror": "master_mirror_1024x768.png",
+  "mirror_sha256": "bcbfa2fe9d6a7401c5063be808be8b2d410799d0826d8bb90f88e16b9a32cb66",
+  "generated_input_sha256": "a93dffd13994558217c00512d38d058daf49cd850ef4846496e8eb81a04973cd",
+  "transparent_background": true,
+  "exact_mirror_verified": true,
+  "mechanical_checks_only": true,
+  "visual_approval": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "provenance": {
+    "tool": "built-in imagegen",
+    "tool_path": "functions.exec -> tools.image_gen__imagegen",
+    "request_file": "generation-02.request.json",
+    "request_sha256": "e86e1c7d849ce3ef9b85df2ab2a972d03dc72f9c839f05de9a6d3c222fc13192",
+    "exact_prompt_sha256_utf8": "b7a0be02974968f352a1817a48e69c3ea4a33b0fdd4ecf6d07e382e957d31037",
+    "requested_transparent_background": true,
+    "reference_inputs": [
+      {
+        "path": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/vampire-lord/raw-generation-01.png",
+        "sha256": "8fdf7614d6b056da50e0e323ed094961330a7b2ec92195365e812cb1766424a9"
+      },
+      {
+        "path": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/vampire-lord/native-idle-6x.png",
+        "sha256": "e03c137386b72e6b39ee0061015f0f517dc2511809d06007775bb110c4ff3eeb"
+      },
+      {
+        "path": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/vampire-lord/native-g02-guide.png",
+        "sha256": "bf3bc9d882426af28a71a527dca0bbc4a4266ae74d1b74ed9e2dffa416d6fc42"
+      },
+      {
+        "path": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/references/pikeman-rendering-master.png",
+        "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+      }
+    ],
+    "selected_attempt": "02",
+    "preserved_raw": "raw-generation-02.png",
+    "raw_sha256": "a93dffd13994558217c00512d38d058daf49cd850ef4846496e8eb81a04973cd",
+    "builtin_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a1638a-b962-7670-a6c4-8962f51d3ab6\\exec-28abafcd-2eb3-4d3b-8cb9-41db3ecb884c.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1024,
+      "height": 1536,
+      "space": "srgb",
+      "channels": 4,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": true,
+      "autoOrient": {
+        "width": 1024,
+        "height": 1536
+      }
+    },
+    "shared_registration_helper": "../tools/lib.cjs",
+    "shared_registration_helper_sha256": "b8676cb91e388bf30f67f73e6ce0bca17f644a9203719393451ee9186b7ded60",
+    "original_source_checks": {
+      "original_def": true,
+      "metadata": true,
+      "idle_png": true,
+      "group_metadata": true,
+      "timeline_count": true,
+      "distinct_drawing_count": true
+    },
+    "source_group_count": 18,
+    "source_timeline_frames": 111,
+    "source_distinct_indexed_drawings": 62,
+    "source_roles": "Format mappings in job.json; static guide review does not establish playback or timing.",
+    "artwork_scope": "One static idle master for the full creature collection. Awaiting human approval; no animation production."
+  }
+}

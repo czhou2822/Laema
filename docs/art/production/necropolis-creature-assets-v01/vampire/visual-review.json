@@ -1,0 +1,78 @@
+{
+  "creature": "Vampire",
+  "slug": "vampire",
+  "source_id": "CVAMP",
+  "status": "proposal; awaiting human master approval",
+  "selected_raw": "raw/master-attempt-02.png",
+  "selected_master": "master_rgba.png",
+  "generation": {
+    "initial_masters": 1,
+    "targeted_repairs": 1,
+    "method": "built-in image_gen.imagegen",
+    "provenance": "provenance.json"
+  },
+  "source_evidence": "source-evidence.json",
+  "full_inventory": "job.json",
+  "inspected_outputs": [
+    "master_rgba.png",
+    "master_source_1024x768.png",
+    "master_mirror_1024x768.png",
+    "source-vs-master.png",
+    "alpha-review.png"
+  ],
+  "observations": [
+    "Pale bald pointed-eared base creature; hooked angular face, lean adult proportions and compact bent-wrist native right-facing idle.",
+    "Dark fitted ragged charcoal/brown-gray attire, pale hands, restrained dark-red nail tips and low black footwear.",
+    "Oversized glossy red talons in attempt 01 were shortened in the selected repair.",
+    "Full-body edges visible; no floor shadow, baked backdrop, cape, armor, props, bat or transformation VFX."
+  ],
+  "registration": {
+    "cell": [
+      1024,
+      768
+    ],
+    "anchor": [
+      512,
+      512
+    ],
+    "original_reference": [
+      196,
+      268
+    ],
+    "scale": "180/73",
+    "overrides": {},
+    "target_native_bounds": [
+      465,
+      302,
+      96,
+      207
+    ],
+    "registered_bounds": [
+      467,
+      302,
+      92,
+      207
+    ]
+  },
+  "mechanical_checks": {
+    "source_def_and_metadata_hashes_match_job": true,
+    "complete_native_groups_match_job": true,
+    "genuine_alpha": true,
+    "exact_horizontal_mirror": true
+  },
+  "limitations": [
+    "Approximately 4% narrower than native idle target; reconstructed details are not pixel-exact.",
+    "Low-resolution face/finger and cloth evidence requires interpretation; surface wear is more explicit.",
+    "Targeted claw edit subtly resynthesized texture outside hands.",
+    "Static guide samples only; no motion playback, timing/semantic verification or runtime evidence."
+  ],
+  "approval": {
+    "assistant_visual_review_complete": true,
+    "human_master_approved": false,
+    "collection_qa": "parent-owned"
+  },
+  "animation_generated": false,
+  "engine_imported": false,
+  "runtime_verified": false,
+  "git_operations_performed": false
+}

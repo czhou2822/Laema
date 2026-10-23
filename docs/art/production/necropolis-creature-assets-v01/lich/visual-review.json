@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "creature": "Lich",
+  "slug": "lich",
+  "source_id": "CLICH",
+  "phase": "static master approval",
+  "status": "proposal; awaiting human master approval",
+  "selected_raw": "raw/master-01.png",
+  "generator": "image_gen.imagegen",
+  "calls": 1,
+  "exact_prompt": "prompts/master-01.txt",
+  "provenance": "provenance.json",
+  "measurements": "artifact-checks.json",
+  "source_coverage": "Complete inventory retained in job.json; 18 groups, 120 timeline frames, 74 distinct indexed drawings.",
+  "inspected_samples": [
+    "idle G02 F0/F4/F7",
+    "G04 F0/F5/F10",
+    "G07 F0/F1",
+    "G12 F0/F4/F7",
+    "G15 F0/F5/F10",
+    "all-group contact representatives"
+  ],
+  "visual_observations": {
+    "identity": "Right-facing slender skeleton; simple dark gold-banded cap/coif, dark armor, chain skirt, narrow greaves and upright plain staff.",
+    "upgrade_distinction": "No large crescent, crown, horns, elaborate staff head or added equipment observed.",
+    "materials": "Pale bone, cool dark steel, restrained wood and warm gold separate at 224px; fine mail detail merges at 91px.",
+    "composition": "Full body, both hands, boots and complete staff visible; no clipping or floor shadow.",
+    "transparency": "Actual alpha inspected on dark and light grounds; no visible opaque backdrop or halo."
+  },
+  "inspected_outputs": [
+    "master_source_1024x768.png",
+    "source-vs-master.png",
+    "game-size-review.png"
+  ],
+  "mechanical_checks": {
+    "cell": [
+      1024,
+      768
+    ],
+    "anchor": [
+      512,
+      512
+    ],
+    "original_reference": [
+      196,
+      268
+    ],
+    "shared_scale": "180/73",
+    "registered_bounds": [
+      474,
+      285,
+      82,
+      224
+    ],
+    "native_target_bounds": [
+      468,
+      285,
+      94,
+      224
+    ],
+    "registration_override": false,
+    "aspect_preserving": true,
+    "exact_mirror_verified": true,
+    "raw_byte_identical": true,
+    "native_metadata_and_def_hashes_match": true
+  },
+  "limitations": [
+    "Silhouette is about 13% narrower than source target; no stretching used.",
+    "Fine anatomy, mail and clasp details are interpretations; gold trim is more emphatic.",
+    "224px and 91px static inspection only; no motion or runtime evidence."
+  ],
+  "human_approved": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "runtime_verified": false,
+  "parent_collection_qa_pending": true
+}

@@ -1,0 +1,55 @@
+{
+  "tool": "functions.exec -> tools.image_gen__imagegen",
+  "mode": "built-in imagegen",
+  "args": {
+    "prompt": "Use case: precise-object-edit\nAsset type: targeted proportion repair to one static CNDRGN Bone Dragon master.\nInput images: Image 1 (raw-01.png) is the edit target and rendering/identity lock. Image 2 (native-idle-6x.png) is the exact original native silhouette and pose authority.\nPrimary request: repair ONLY the slightly too-narrow folded-wing silhouette of Image 1. Keep the creature's visible height unchanged. The original source silhouette has width/height 93/114 = 0.816; Image 1 currently has visible width/height 1049/1380 = 0.760. Bring the overall visible width close to 0.816 of its height by carrying the outer folded wing and its long supporting bony fingers a little farther LEFT/back, approximately 75 pixels relative to the current 1380-pixel-high creature. Preserve the exact size and positions of the skull, horns, neck, ribs, pelvis, two raised forearms, hind legs, feet and articulated low-curving tail. Do not stretch the image or thicken the bones; adjust the outer wing's sweep anatomically, keeping the wings folded and hanging vertically as in Image 2.\nInvariants: same right-facing native upright ready pose; same long back-angled horns and open skeletal jaw; same warm aged yellow/ivory bone with subtle ochre shading; exposed rib cage and spine, unlit eye sockets, thin articulated skeletal limbs; same folded overlapping dark charcoal/slate desiccated membranes with long pale finger supports, all ragged tips visible. Preserve the current fine modeled-volume rendering and subtle bone wear. Keep the whole skeleton and all wings, tail, horns, toes and claws visible. Preserve natural negative spaces and the two original forearms; add no limbs or props.\nComposition/background: genuine clean transparent RGBA cutout, one whole creature. Add generous transparent outer padding around the entire repaired silhouette so every extremity has breathing room. Padding may enlarge the canvas and does not count toward silhouette proportions. No floor, ground shadow, background, checkerboard, text, watermark or comparison panels.\nConstraints: one targeted folded-wing-width correction only; all other identity, pose, anatomy, colors and materials stay locked. CNDRGN Bone Dragon, not CBDRGN living dragon or CHDRGN Ghost Dragon. No scales/flesh, green/black living body, cyan spectral tint, glowing eyes, flames, mist, aura or VFX. Do not spread the wings horizontally and do not change the silhouette height to match a 180-pixel human.",
+    "referenced_image_paths": [
+      "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/bone-dragon/raw-01.png",
+      "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/bone-dragon/native-idle-6x.png"
+    ],
+    "transparent_background": true
+  },
+  "prompt_file": "prompt-02.txt",
+  "prompt_file_sha256": "f94d2504eea119c5a43d82c23187594cf822a251e645de27b9aadfed9961ecd1",
+  "prompt_argument_utf8_sha256": "1bf2daaf23f34a33a1ddb0c869d49497e2ecb9506e5b64cf4a9ffed9afbeb0d6",
+  "inputs": [
+    {
+      "file": "raw-01.png",
+      "sha256": "41c56f05d6cceb0377d09295bd53c3b2b7069d16ff9f2b9ee2015138b3a3bcf1"
+    },
+    {
+      "file": "native-idle-6x.png",
+      "sha256": "90d24b0a4fbe254e42117b83f32ddc1d5571e5b2ab9afd6159cd22b1e71a4756"
+    }
+  ],
+  "returned_generated_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a1638f-9d8c-71e0-a893-483b88687d3f\\exec-f55bff6a-658c-4c8c-96c7-36664449ab98.png",
+  "archived_raw": "raw-02.png",
+  "returned_raw_sha256": "26de0ace1b58bbce710d53a5bec4d994885be664fd354e012e0e37ecf250626c",
+  "archived_raw_sha256": "26de0ace1b58bbce710d53a5bec4d994885be664fd354e012e0e37ecf250626c",
+  "metadata": {
+    "width": 1080,
+    "height": 1456,
+    "channels": 4,
+    "hasAlpha": true
+  },
+  "alpha_bounds_threshold8": {
+    "left": 8,
+    "top": 4,
+    "width": 1069,
+    "height": 1450,
+    "right": 1077,
+    "bottom": 1454,
+    "transparent_pixels": 707901,
+    "opaque_pixels": 759299
+  },
+  "alpha_statistics": {
+    "transparent": 707901,
+    "partial": 864088,
+    "opaque": 491,
+    "borderNonzero": 209,
+    "redYellowSaturated": 0
+  },
+  "raw_preserved_byte_identical": true,
+  "approval": false,
+  "animation_generated": false
+}

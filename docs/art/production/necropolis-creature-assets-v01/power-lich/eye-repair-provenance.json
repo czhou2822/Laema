@@ -1,0 +1,84 @@
+{
+  "method": "Only red pixels from built-in generated head edit; uniform 3:4 reduction and integer socket alignment; no new colors painted",
+  "base_file": "raw/attempt-02.png",
+  "base_sha256": "70a22c10f5299460a33a1a2e10e3a2bdd9432538ef6a2d702458448d5cd25c7e",
+  "generated_eye_source": "raw/attempt-05.png",
+  "generated_eye_source_sha256": "9a040320c8d0ca21d1eb58d4b2c6a30e4b5b5cfa6902de48eacfb2270d1a1e02",
+  "generated_head_dimensions": [
+    1086,
+    1448
+  ],
+  "reduced_head_dimensions": [
+    135,
+    180
+  ],
+  "accent_scale_relative_to_base_crop": 1.5,
+  "base_head_crop": [
+    515,
+    250,
+    90,
+    120
+  ],
+  "eye_parts": [
+    {
+      "name": "near",
+      "generated_region": [
+        23,
+        21,
+        52,
+        48
+      ],
+      "generated_red_bounds": {
+        "left": 50,
+        "right": 59,
+        "top": 43,
+        "bottom": 54
+      },
+      "translation_to_original": [
+        500,
+        237
+      ],
+      "original_center": [
+        554,
+        285
+      ],
+      "copied_pixels": 78
+    },
+    {
+      "name": "far",
+      "generated_region": [
+        53,
+        20,
+        68,
+        40
+      ],
+      "generated_red_bounds": {
+        "left": 90,
+        "right": 92,
+        "top": 44,
+        "bottom": 49
+      },
+      "translation_to_original": [
+        487,
+        234
+      ],
+      "original_center": [
+        578,
+        280
+      ],
+      "copied_pixels": 14
+    }
+  ],
+  "changed_rgb_pixels": 92,
+  "changed_bounds": {
+    "left": 550,
+    "top": 278,
+    "right": 580,
+    "bottom": 292
+  },
+  "changed_pixels_outside_eye_selection": 0,
+  "alpha_changes": 0,
+  "all_non_eye_pixels_equal_base": true,
+  "output_file": "master-input-eye-repair.png",
+  "output_sha256": "9ef32f2627292d6ea0583dfc341c60dada04133c223f7e78f589cec82d8f94ca"
+}

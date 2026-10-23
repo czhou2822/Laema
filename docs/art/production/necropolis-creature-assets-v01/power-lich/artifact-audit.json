@@ -1,0 +1,227 @@
+{
+  "status": "mechanical artifact verification; no tests, build, engine or runtime",
+  "source_hashes_match_job": true,
+  "original_metadata_groups_equal_job": true,
+  "original_group_count": 18,
+  "original_timeline_frames": 120,
+  "original_distinct_drawings": 74,
+  "native_idle_frame_sha256": "33a130544200ddc0a94948a75c7ec8f11f8a2ca691a251b92dee1f975edf5844",
+  "raw": {
+    "file": "master-input-eye-repair.png",
+    "sha256": "9ef32f2627292d6ea0583dfc341c60dada04133c223f7e78f589cec82d8f94ca",
+    "width": 1024,
+    "height": 1536,
+    "has_alpha": true,
+    "bounds_alpha8": {
+      "left": 226,
+      "top": 16,
+      "width": 575,
+      "height": 1481,
+      "right": 801,
+      "bottom": 1497,
+      "transparent_pixels": 1081522,
+      "opaque_pixels": 452347
+    }
+  },
+  "generated_tool_raw": {
+    "file": "raw/attempt-05.png",
+    "sha256": "9a040320c8d0ca21d1eb58d4b2c6a30e4b5b5cfa6902de48eacfb2270d1a1e02"
+  },
+  "eye_repair": {
+    "method": "Only red pixels from built-in generated head edit; uniform 3:4 reduction and integer socket alignment; no new colors painted",
+    "base_file": "raw/attempt-02.png",
+    "base_sha256": "70a22c10f5299460a33a1a2e10e3a2bdd9432538ef6a2d702458448d5cd25c7e",
+    "generated_eye_source": "raw/attempt-05.png",
+    "generated_eye_source_sha256": "9a040320c8d0ca21d1eb58d4b2c6a30e4b5b5cfa6902de48eacfb2270d1a1e02",
+    "generated_head_dimensions": [
+      1086,
+      1448
+    ],
+    "reduced_head_dimensions": [
+      135,
+      180
+    ],
+    "accent_scale_relative_to_base_crop": 1.5,
+    "base_head_crop": [
+      515,
+      250,
+      90,
+      120
+    ],
+    "eye_parts": [
+      {
+        "name": "near",
+        "generated_region": [
+          23,
+          21,
+          52,
+          48
+        ],
+        "generated_red_bounds": {
+          "left": 50,
+          "right": 59,
+          "top": 43,
+          "bottom": 54
+        },
+        "translation_to_original": [
+          500,
+          237
+        ],
+        "original_center": [
+          554,
+          285
+        ],
+        "copied_pixels": 78
+      },
+      {
+        "name": "far",
+        "generated_region": [
+          53,
+          20,
+          68,
+          40
+        ],
+        "generated_red_bounds": {
+          "left": 90,
+          "right": 92,
+          "top": 44,
+          "bottom": 49
+        },
+        "translation_to_original": [
+          487,
+          234
+        ],
+        "original_center": [
+          578,
+          280
+        ],
+        "copied_pixels": 14
+      }
+    ],
+    "changed_rgb_pixels": 92,
+    "changed_bounds": {
+      "left": 550,
+      "top": 278,
+      "right": 580,
+      "bottom": 292
+    },
+    "changed_pixels_outside_eye_selection": 0,
+    "alpha_changes": 0,
+    "all_non_eye_pixels_equal_base": true,
+    "output_file": "master-input-eye-repair.png",
+    "output_sha256": "9ef32f2627292d6ea0583dfc341c60dada04133c223f7e78f589cec82d8f94ca"
+  },
+  "registration": {
+    "crop": {
+      "left": 226,
+      "top": 16,
+      "width": 575,
+      "height": 1481
+    },
+    "width": 101,
+    "height": 259,
+    "left": 461,
+    "top": 251,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "registered_alpha64": {
+    "left": 461,
+    "top": 251,
+    "width": 101,
+    "height": 259,
+    "right": 562,
+    "bottom": 510,
+    "transparent_pixels": 770486,
+    "opaque_pixels": 13621
+  },
+  "exact_mirror_verified": true,
+  "helper_sha256": "b8676cb91e388bf30f67f73e6ce0bca17f644a9203719393451ee9186b7ded60",
+  "visually_sampled_guides": [
+    {
+      "group": 0,
+      "frames": [
+        0,
+        4,
+        7
+      ]
+    },
+    {
+      "group": 2,
+      "frames": [
+        0,
+        4,
+        7
+      ]
+    },
+    {
+      "group": 4,
+      "frames": [
+        0,
+        5,
+        10
+      ]
+    },
+    {
+      "group": 7,
+      "frames": [
+        0,
+        1
+      ]
+    },
+    {
+      "group": 12,
+      "frames": [
+        0,
+        4,
+        7
+      ]
+    },
+    {
+      "group": 15,
+      "frames": [
+        0,
+        5,
+        10
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "file": "master_rgba.png",
+      "sha256": "0953e37e537356a924f8e820ff6d4513a1d679eb70150d6a68185fe83bdba1e5"
+    },
+    {
+      "file": "master_source_1024x768.png",
+      "sha256": "0ee5944a0dcfd1e2e30536617f5a215dbacd5f96e5d9ec066776724c8b770c41"
+    },
+    {
+      "file": "master_mirror_1024x768.png",
+      "sha256": "8be75824b614f2294448d1fea46e45aa5821f7669c95f974d9a037ce537d3bce"
+    },
+    {
+      "file": "source-vs-master.png",
+      "sha256": "9d46e23875896f3a1e7483c46e6a93e2ecc1a02e2508795fccd3dd2d7a46d221"
+    },
+    {
+      "file": "cutout-background-review.png",
+      "sha256": "29376ff5ee87e26fbdff4f80b7bf08868069b4d8ecc11fdfdf062d2f4f773661"
+    },
+    {
+      "file": "eye-repair-review.png",
+      "sha256": "76a5f8a32a7067c21c285ac48d4a2d7d7cb27341d479deb21ba6ed29f41d3d74"
+    },
+    {
+      "file": "eye-repair-provenance.json",
+      "sha256": "5531ced31b8ef7f8e71a8cdc6dc963c50d88c45fbdce723695a109ebfba99efc"
+    },
+    {
+      "file": "master-manifest.json",
+      "sha256": "3f869789a469aef91f252dcdb6ad3db0acaafcdc3ac6a7f3bde2a9e6ee478499"
+    }
+  ],
+  "human_approved": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "runtime_verified": false
+}

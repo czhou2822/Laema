@@ -1,0 +1,55 @@
+{
+  "tool": "functions.exec -> tools.image_gen__imagegen",
+  "mode": "built-in imagegen",
+  "args": {
+    "prompt": "Use case: style-transfer\nAsset type: ONE transparent static CNDRGN Bone Dragon master, still a proposal for human approval.\nInput images: Image 1 (native-idle-6x.png) is the EDIT TARGET and absolute silhouette, proportion, anatomy, color and pose authority. Image 2 (raw-01.png) supplies the new finely modeled bone and dry membrane RENDERING ONLY. Where they differ, Image 1 wins.\nRedraw Image 1 at high resolution with Image 2's fine sculptural bone modeling and dry dark wing rendering. Preserve Image 1's exact whole-body silhouette and anatomical placements. Do not copy its enlarged block pixels: paint newly modeled details inside the original shapes. Do not substitute Image 2's narrower silhouette.\nCritical proportion repair: the ORIGINAL creature silhouette is 93 units wide by 114 units tall, width/height 0.816. Match this visible bounding-box aspect closely. Its broad folded wing occupies the LEFT/back of the silhouette, while the forward-raised claws set the right edge. Preserve the source's compact low tail curling along the feet, rather than dropping it lower and making the body taller. The original wings are folded vertically behind the rib cage; do not spread them sideways or inflate them. Do not stretch the artwork. Preserve the entire body and source proportions together.\nKeep the upright ready pose facing RIGHT: long back-angled horns, long thin angular skull and open toothy jaw, unlit eye sockets, slender curved skeletal neck, exposed ribs/spine, two small raised clawed forearms, two bent skeletal hind legs, long bony toes and the low curved articulated tail. Warm aged yellow/ivory bones with subtle tan/ochre crevices. Two overlapping folded wings with dark desiccated charcoal/slate membranes suspended between long thin pale bony fingers, original ragged ends and dry creases. Match the source's thin skeletal forms and visible gaps.\nFinish: fine modeled-volume fantasy game sprite, nuanced bone highlights, restrained internal occlusion, fine dry surface wear. Sharp readable shape at about 229x281 visible pixels after registration. No chunky pixel blocks, cartoon outlines or chibi proportions.\nDeliver one whole-body clean RGBA cutout on a genuinely transparent background. All wing tips, claws, horns and tail must be complete. Generous padding may surround the entire source-shaped silhouette, but it does not count toward the 93:114 body proportion. No floor, shadow, text, props, checkerboard or VFX. No flesh/scales, living black/green dragon, cyan ghost, glowing eyes, flames, aura or smoke. CNDRGN only; CBDRGN and CHDRGN are different creatures.",
+    "referenced_image_paths": [
+      "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/bone-dragon/native-idle-6x.png",
+      "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/bone-dragon/raw-01.png"
+    ],
+    "transparent_background": true
+  },
+  "prompt_file": "prompt-03.txt",
+  "prompt_file_sha256": "cea11fb3d05d37a764bfba45643c716123d988c055c56721b16b81e99dee0510",
+  "prompt_argument_utf8_sha256": "9ac44852770e21a6a4d239c48de5dd757e770d1f78869a321db5738740559f41",
+  "inputs": [
+    {
+      "file": "native-idle-6x.png",
+      "sha256": "90d24b0a4fbe254e42117b83f32ddc1d5571e5b2ab9afd6159cd22b1e71a4756"
+    },
+    {
+      "file": "raw-01.png",
+      "sha256": "41c56f05d6cceb0377d09295bd53c3b2b7069d16ff9f2b9ee2015138b3a3bcf1"
+    }
+  ],
+  "returned_generated_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a1638f-9d8c-71e0-a893-483b88687d3f\\exec-207cdb84-8082-4495-848b-6d2b9ba28eda.png",
+  "archived_raw": "raw-03.png",
+  "returned_raw_sha256": "25ca260f62aa02e593a6c82c516ae0be9984f3964d59277bba5aaeb01255150d",
+  "archived_raw_sha256": "25ca260f62aa02e593a6c82c516ae0be9984f3964d59277bba5aaeb01255150d",
+  "metadata": {
+    "width": 1132,
+    "height": 1389,
+    "channels": 4,
+    "hasAlpha": true
+  },
+  "alpha_bounds_threshold8": {
+    "left": 70,
+    "top": 6,
+    "width": 1042,
+    "height": 1374,
+    "right": 1112,
+    "bottom": 1380,
+    "transparent_pixels": 726702,
+    "opaque_pixels": 702236
+  },
+  "alpha_statistics": {
+    "transparent": 726702,
+    "partial": 845324,
+    "opaque": 322,
+    "borderNonzero": 27,
+    "redYellowSaturated": 0
+  },
+  "raw_preserved_byte_identical": true,
+  "approval": false,
+  "animation_generated": false
+}

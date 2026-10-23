@@ -1,0 +1,147 @@
+{
+  "name": "Zombie",
+  "slug": "zombie",
+  "status": "proposal; awaiting user master approval",
+  "artwork_method": "built-in image generation; mechanical crop and aspect-preserving registration",
+  "cell": [
+    1024,
+    768
+  ],
+  "anchor": [
+    512,
+    512
+  ],
+  "original_reference": [
+    196,
+    268
+  ],
+  "source_scale": 2.4657534246575343,
+  "target_native_bounds": {
+    "left": 465,
+    "top": 300,
+    "width": 96,
+    "height": 212
+  },
+  "actual_registered_bounds": {
+    "left": 460,
+    "top": 300,
+    "width": 106,
+    "height": 212,
+    "right": 566,
+    "bottom": 512,
+    "transparent_pixels": 774660,
+    "opaque_pixels": 10094
+  },
+  "registration": {
+    "crop": {
+      "left": 207,
+      "top": 99,
+      "width": 665,
+      "height": 1330
+    },
+    "width": 106,
+    "height": 212,
+    "left": 460,
+    "top": 300,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "original_def_sha256": "3ae05f80407ef6d79615186805df8e4c17fd49ea9c1d489494ea6e6c63eaa3f8",
+  "source_metadata_sha256": "bc9f2c681db210b383b1bfbe1ee6c828ac8d6bd6cc6bfc44dba1028bda9ad0f3",
+  "high_res_master": "master_rgba.png",
+  "high_res_sha256": "2475a0958922c1ad54875612b7a871c49c1d39480da772f2647ca8829e8d8b1e",
+  "source": "master_source_1024x768.png",
+  "source_sha256": "c03017a5d1cac8e9189729cdf905c222a84c5185af9a59b0ddbdf85155973ab3",
+  "mirror": "master_mirror_1024x768.png",
+  "mirror_sha256": "710db70e1afe90c6fa3c6f97c36427e30ce647b133cda2d5166b7839cbe1abba",
+  "generated_input_sha256": "a238885d0ffa45111d1358c45e07878e1b20e1e38002b76d319fddabb22fce51",
+  "transparent_background": true,
+  "exact_mirror_verified": true,
+  "mechanical_checks_only": true,
+  "visual_approval": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "provenance": {
+    "subject": "Zombie",
+    "source_id": "CZOMLO",
+    "approval_status": "static master awaiting human approval",
+    "method": "built-in image_gen; no API or CLI fallback",
+    "selected_attempt": 1,
+    "selected_raw": "attempt-01-raw.png",
+    "generated_sha256": "a238885d0ffa45111d1358c45e07878e1b20e1e38002b76d319fddabb22fce51",
+    "attempts": [
+      {
+        "number": 1,
+        "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-567f-7311-8fea-87f05485d7f9/exec-009cef1e-bd47-4d60-9668-bcd0e99970e6.png",
+        "local_raw": "attempt-01-raw.png",
+        "prompt_file": "attempt-01-prompt.txt",
+        "tool": "image_gen.imagegen",
+        "transparent_background_requested": true,
+        "references": [
+          "native-idle-6x.png",
+          "native-g12-guide.png",
+          "../references/pikeman-rendering-master.png"
+        ],
+        "selected": true,
+        "tool_output_sha256": "a238885d0ffa45111d1358c45e07878e1b20e1e38002b76d319fddabb22fce51",
+        "local_raw_sha256": "a238885d0ffa45111d1358c45e07878e1b20e1e38002b76d319fddabb22fce51",
+        "prompt_file_sha256": "12935fdbdf452ac2a7c066c68cd78ebeb157227c2cfac0f75db1372c09e813cf",
+        "exact_prompt": "Use case: stylized-concept\nAsset type: one proposed full-body static creature master for a 2D game, not an animation sheet.\nPrimary request: repaint the original Heroes III Necropolis Zombie from the native reference as a newly modeled, finely textured sprite master. Follow Image 1 for identity, exact idle pose, proportions, facing, and costume. The reference source is CZOMLO; preserve this supplied creature's actual appearance rather than a generic zombie.\nInput images: Image 1 native-idle-6x.png is the subject/idle-pose authority. Image 2 native-g12-guide.png supplies additional original material and tool-head evidence ONLY; ignore its labels, other poses and ground shadows. Image 3 pikeman-rendering-master.png supplies ONLY the rendering treatment, not its subject, colors, uniform, weapon, helmet, pose or facing.\nScene/backdrop: genuine transparent alpha, no background, floor, ground shadow, smoke, particles or visual effects.\nSubject and silhouette: one gaunt, narrow adult human-sized undead laborer, slightly hunched but standing in the same compact three-quarter view facing RIGHT as Image 1. Pale grey-violet skin, sunken dark eye sockets and desiccated face, exposed light forehead surrounded by the reference's close dark-brown cap-like head silhouette. No glowing eyes. Keep normal adult proportions and the reference's restrained anatomy; do not bulk up torso or limbs.\nCostume: preserve the original dark brown-olive sleeveless close-fitting vest/tunic, muted rusty red edging and seams, small dull brass-colored fasteners and waist belt, restrained brass wrist fittings, worn brown-olive trousers and ragged hems. Preserve the asymmetric lower legs: the screen-left/rear foot and lower shin show pale grey flesh below a small muted red torn cuff, while the screen-right/front foot wears the original dark brown boot. Preserve the native head outline; do not add a Castle soldier's helmet, elaborate armor, pauldrons, cape, or new equipment.\nTool: exactly ONE original long warm-brown wooden-handled axe/mattock-like implement, with the compact pale iron transverse wedge head seen in the reference. Its shaft is gripped low beside the screen-left hip and slopes DOWN toward the lower RIGHT, where the short pale cross-head sits in front of the lower leg. Keep original shaft length, head shape/scale and orientation; do not replace it with a giant battleaxe, scythe, spear or club. The other hand remains free and slightly curled beside the waist on screen-right. Do not add another weapon.\nPose and camera: match Image 1's narrow silhouette, bent elbows, slight forward head angle, separated uneven feet, weight and low diagonally held tool. Do not borrow Image 2's attack pose or Image 3's left-facing spear pose. Keep every body part, bare foot, boot and full tool visible.\nStyle/medium: match Image 3's fine modeled-volume rendering, subtle continuous shading, restrained textured leather/cloth/skin and small concentrated iron/brass highlights. Clean readable silhouette, fine detail suited to downscaling to approximately 212 pixels high. This is a carefully painted/pre-rendered classic strategy-game creature, not block-pixel art, cartoon, chibi, thick-outlined comic art or a photographic person.\nLighting/color: quiet upper-left sculptural light, controlled shadows on the body only; desaturated olive-brown clothing and cold grey-violet flesh, tiny muted rust-red and dull brass accents, localized pale tool-metal highlights. Retain Necropolis's original materials and palette.\nComposition/framing: a single isolated full-body figure centered within a portrait 1024x1536 image, roughly 1100 pixels high, with generous transparent margins on all sides and below feet/tool. No cropping.\nText: none. No labels, signature, watermark, border, checkerboard pattern or visible matte.\nConstraints: NEW generated artwork, not an enlargement or filter of the source pixels. Preserve the native identity, anatomy, asymmetric footwear, exact idle pose and RIGHT facing. Do not invent gore, dangling organs, extra ornaments, new colors or magic.",
+        "prompt_sha256": "976dd4df98062e1dfd9f922f228514ed3084ed36c9dfab3602632003b9093a22",
+        "image_metadata": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1024,
+          "height": 1536,
+          "space": "srgb",
+          "channels": 4,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": true,
+          "autoOrient": {
+            "width": 1024,
+            "height": 1536
+          }
+        },
+        "alpha_bounds_8": {
+          "left": 207,
+          "top": 99,
+          "width": 665,
+          "height": 1330,
+          "right": 872,
+          "bottom": 1429,
+          "transparent_pixels": 1137125,
+          "opaque_pixels": 406589
+        },
+        "alpha_bounds_64": {
+          "left": 208,
+          "top": 101,
+          "width": 664,
+          "height": 1328,
+          "right": 872,
+          "bottom": 1429,
+          "transparent_pixels": 1137125,
+          "opaque_pixels": 406589
+        },
+        "reference_hashes": [
+          {
+            "reference": "native-idle-6x.png",
+            "sha256": "3994759a3bbcb4ca51dfedf6f39a94c2568a74742c0016ae337de78252da272d"
+          },
+          {
+            "reference": "native-g12-guide.png",
+            "sha256": "9ccf64a96cebeb2d1ebf7ddc6823abaafcbb70ef13e7e9b7759151949b4c1e26"
+          },
+          {
+            "reference": "../references/pikeman-rendering-master.png",
+            "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+          }
+        ]
+      }
+    ]
+  }
+}

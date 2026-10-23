@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "creature": "Vampire Lord",
+  "slug": "vampire-lord",
+  "status": "static master proposal; awaiting human approval",
+  "selected_attempt": "02",
+  "selected_raw": "raw-generation-02.png",
+  "selected_raw_sha256": "a93dffd13994558217c00512d38d058daf49cd850ef4846496e8eb81a04973cd",
+  "source": {
+    "id": "CNOSFE",
+    "inventory": "job.json",
+    "idle": "G2 F0 / cnosfe01.pcx",
+    "original_def_metadata_idle_hashes_verified": true,
+    "all_job_native_groups_equal_actual_metadata": true,
+    "all_groups_contact_visually_inspected": true,
+    "detailed_guide_samples": [
+      "G0 F0/F3/F5", "G2 F0/F4/F7", "G4 F0/F4/F8", "G5 F0/F4/F7",
+      "G11 F0/F3/F6", "G12 F0/F3/F6", "G13 F0/F3/F6",
+      "G17 F0/F3/F6", "G20 F0/F2/F4", "G21 F0/F2/F4"
+    ],
+    "role_limit": "job.json roles are format mappings; static sample inspection is not playback/timing verification.",
+    "benchmark": "../references/pikeman-rendering-master.png; rendering only"
+  },
+  "observations": {
+    "identity": "Pale gaunt head, prominent ears, rust-orange/brown high collar, torn sleeve panels, long ivory bony hands and dark full-length robe remain legible.",
+    "pose": "Right-facing three-quarter hunch; lower near hand over belly, higher farther hand to the right; robe hides feet.",
+    "materials": "Edit 02 replaces luminous scorched edges with softer matte rust cloth and shortens invented talons. Dark robe remains strongly textured.",
+    "rendering": "Fine modeled shading; no enlarged source pixels or block-pixel treatment. Enlarged and 1:1 reviews inspected.",
+    "alpha": "Clean visible cutout on light/dark mattes; no generated floor shadow, backdrop, text, props or VFX. Source comparison alone retains exporter shadow."
+  },
+  "registration": {
+    "helper": "../tools/lib.cjs / registerMaster",
+    "cell": [1024, 768],
+    "anchor": [512, 512],
+    "original_reference": [196, 268],
+    "scale": "180/73",
+    "alpha64_bounds_xywh": [453, 295, 109, 215],
+    "overrides": {},
+    "aspect_preserved": true,
+    "exact_mirror_verified": true,
+    "clipping_or_margin_failure_observed": false
+  },
+  "reviewed_outputs": [
+    "source-vs-master.png", "game-size-mattes.png",
+    "master_source_1024x768.png", "master_mirror_1024x768.png"
+  ],
+  "provenance": "master-manifest.json; generation-provenance.json; generation-01/02.request.json, .output.json and .provenance.json; raw-generation-01/02.png",
+  "remaining_differences": [
+    "109px visible width versus 118px source target; no independent width normalization applied.",
+    "Ears and sleeve tatters are more pronounced; fabric wear is more detailed and rust color more subdued than the source.",
+    "Source resolution limits unique recovery of facial/fabric microdetails."
+  ],
+  "human_approved": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "runtime_verified": false,
+  "collection_qa": "Parent-owned; this review covers this static worker proposal only.",
+  "next_gate": "Human master approval before animation production."
+}

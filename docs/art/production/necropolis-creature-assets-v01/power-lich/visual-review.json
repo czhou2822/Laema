@@ -1,0 +1,90 @@
+{
+  "creature": "Power Lich",
+  "slug": "power-lich",
+  "source_id": "CPLICH",
+  "status": "static master proposal; awaiting human approval",
+  "human_approved": false,
+  "chosen_raw": "raw/attempt-05.png",
+  "selected_master_input": "master-input-eye-repair.png",
+  "body_baseline": "raw/attempt-02.png",
+  "source_pose": "G2 F0 / cplich74.pcx; original right-facing idle",
+  "source_evidence": {
+    "original_def_metadata_idle_hashes_match_job": true,
+    "complete_inventory": "job.json",
+    "inspected_guides": "G0 0/4/7; G2 0/4/7; G4 0/5/10; G7 0/1; G12 0/4/7; G15 0/5/10; native idle and all-group contact",
+    "head_audit": {
+      "file": "../references/native-power-lich-head-audit.png",
+      "sha256": "1f745035fdc17f138bbf4b6517bbe0060adc1f016fcdf1bc5fd29df7dc3f083f",
+      "observation": "Two small red facial/socket accents below the crown; not crown stones"
+    },
+    "corrected_diagnosis": "Two red facial/socket accents are present below the source crown. Earlier unsolicited-eye diagnosis and removal were incorrect."
+  },
+  "eye_repair": {
+    "near_accent": "restored",
+    "far_accent": "restored; smaller and partly occluded",
+    "no_glow_aura_halo_or_red_spill_observed": true,
+    "changed_full_resolution_rgb_pixels": 92,
+    "all_non_eye_pixels_equal_attempt02": true,
+    "alpha_unchanged": true,
+    "registration_unchanged": true,
+    "registered_delta": {
+      "changed_rgb_pixels": 35,
+      "changed_bounds": [
+        516,
+        294,
+        526,
+        301
+      ],
+      "alpha_changes": 0
+    },
+    "method": "Built-in head edit; mechanical red-pixel extraction/alignment only; incidental non-eye generations not applied",
+    "review_image": "eye-repair-review.png",
+    "provenance": "eye-repair-provenance.json"
+  },
+  "visual_observations": [
+    "Gold/black crown, skeletal skull and hands, dark mail coif, gold-trimmed armor, extensive mail skirt, feet and crescent staff/black orb unchanged.",
+    "Updated source comparison, near/far head accents, light/dark mattes and exact mirror inspected."
+  ],
+  "registration": {
+    "cell": [
+      1024,
+      768
+    ],
+    "anchor": [
+      512,
+      512
+    ],
+    "original_reference": [
+      196,
+      268
+    ],
+    "source_scale": "180/73",
+    "alpha64_bounds": [
+      461,
+      251,
+      101,
+      259
+    ],
+    "uniform": true,
+    "override": false,
+    "exact_mirror_verified": true
+  },
+  "limitations": [
+    "Far socket accent is very small at shared 259px display height; both accents distinct in enlarged head review.",
+    "Prior approximate proportions, 5% narrower silhouette, brighter regular mail and interpreted fine details remain.",
+    "Still-image review only; no animation continuity, engine or runtime evidence."
+  ],
+  "provenance": {
+    "tool": "image_gen.imagegen; built-in only",
+    "exact_arguments": "prompts/attempt-01.json through attempt-05.json",
+    "tool_records": "generation-attempt-01.json through generation-attempt-05.json",
+    "selected_raw_sha256": "9a040320c8d0ca21d1eb58d4b2c6a30e4b5b5cfa6902de48eacfb2270d1a1e02",
+    "registered_input_sha256": "9ef32f2627292d6ea0583dfc341c60dada04133c223f7e78f589cec82d8f94ca",
+    "master_sha256": "0953e37e537356a924f8e820ff6d4513a1d679eb70150d6a68185fe83bdba1e5",
+    "all_final_hashes": "final-hashes.json"
+  },
+  "animation_generated": false,
+  "engine_imported": false,
+  "runtime_verified": false,
+  "next_gate": "Human approval; parent collection QA"
+}

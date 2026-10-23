@@ -1,0 +1,24 @@
+const { fs, path, root, sharp, sha, json, alphaBounds, cropRect, label } = require('./lib.cjs');
+const inventory = JSON.parse(fs.readFileSync(path.join(root, 'source-inventory.json'), 'utf8'));
+
+async function main() {
+  const selected = [], parts = [], cols = 4, cw = 360, ch = 380;
+  for (let i = 0; i < inventory.roster.length; i++) {
+    const u = inventory.roster[i], dir = path.join(root, u.slug), mf = path.join(dir, 'master-manifest.json');
+    if (!fs.existsSync(mf)) continue;
+    const m = JSON.parse(fs.readFileSync(mf, 'utf8')), png = fs.readFileSync(path.join(dir, m.source)), b = await alphaBounds(png, 64), subject = await sharp(png).extract(cropRect(b)).png().toBuffer();
+    const x = (i % cols) * cw, y = Math.floor(i / cols) * ch;
+    parts.push({ input: subject, left: x + 180 + b.left - m.anchor[0], top: y + 325 + b.top - m.anchor[1] });
+    parts.push({ input: label(`${u.number}. ${u.name}`, cw, ch, 18), left: x, top: y });
+    parts.push({ input: Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${cw}" height="${ch}"><path d="M20 325H340" stroke="#657076" stroke-width="1" opacity="0.35"/><text x="12" y="365" font-family="Arial" font-size="14" fill="#afb9be">OG: ${u.original_flipbooks} sequences / ${u.original_timeline_frames} positions</text></svg>`), left: x, top: y });
+    selected.push({ ...u, master: `${u.slug}/${m.high_res_master}`, source: `${u.slug}/${m.source}`, mirror: `${u.slug}/${m.mirror}`, comparison: `${u.slug}/source-vs-master.png`, manifest: `${u.slug}/master-manifest.json`, report: `${u.slug}/report.md`, source_sha256: sha(png), master_sha256: m.high_res_sha256, approval: false });
+  }
+  const totalRows = Math.ceil(inventory.roster.length / cols);
+  await sharp({ create: { width: cols * cw, height: totalRows * ch, channels: 4, background: '#172431' } }).composite(parts).png().toFile(path.join(root, 'master-comparison-shared-scale.png'));
+  json(path.join(root, 'selected-masters.json'), { status: selected.length === 14 ? '14 static proposals for human approval' : 'work in progress; not a complete review', selected_count: selected.length, source_groups: inventory.total_groups, source_positions: inventory.total_timeline_frames, identical_scale: 180 / 73, cell: [1024, 768], anchor: [512, 512], master_approval: false, animation_started: false, engine_imported: false, entries: selected });
+  const esc = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
+  const cards = selected.map(u => `<article><h2>${u.number}. ${esc(u.name)}</h2><div class="sprite"><img src="${u.source}" alt="${esc(u.name)} proposed master"></div><p>${u.original_flipbooks} original groups · ${u.original_timeline_frames} frame positions</p><p><a href="${u.master}">Full-resolution master</a> · <a href="${u.comparison}">Original comparison</a> · <a href="${u.slug}/native-all-groups-contact.png">Original groups</a> · <a href="${u.manifest}">Provenance</a></p></article>`).join('\n');
+  fs.writeFileSync(path.join(root, 'review.html'), `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Necropolis masters — approval review</title><style>body{margin:32px;background:#101b25;color:#e8e6df;font:16px system-ui}h1{font-size:26px}.limit{max-width:960px;color:#bdc8cd}a{color:#9bd3f2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(390px,1fr));gap:20px}article{padding:16px;background:#1b2a37;border:1px solid #354957;border-radius:12px}h2{font-size:18px;margin:0 0 8px}.sprite{height:380px;overflow:hidden;position:relative;background:linear-gradient(0deg,#34404b 1px,transparent 1px) 0 325px/100% 100% no-repeat}.sprite img{position:absolute;left:calc(50% - 512px);top:-187px;width:1024px;height:768px;max-width:none}article p{font-size:14px;line-height:1.7}</style><h1>Necropolis — ${selected.length}/14 proposed character masters</h1><p class="limit">Shared source-relative scale calibrated from approved Pikeman (180 / 73). These are static proposals, not approved animations or runtime assets. All ${inventory.total_groups} original groups / ${inventory.total_timeline_frames} positions are inventoried. Animation production waits for master approval. Original art and generated reinterpretations remain separate.</p><p><a href="master-comparison-shared-scale.png">Comparison sheet</a> · <a href="original-roster-shared-scale.png">Original roster</a> · <a href="README.md">Scope and rights notes</a> · <a href="source-inventory.json">Complete original inventory</a></p><section class="grid">${cards}</section></html>`);
+  console.log(JSON.stringify({ masters: selected.length, original_groups: inventory.total_groups, original_positions: inventory.total_timeline_frames }));
+}
+main().catch(e => { console.error(e); process.exitCode = 1; });

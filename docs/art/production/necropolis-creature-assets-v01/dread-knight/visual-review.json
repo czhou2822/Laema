@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "creature": "Dread Knight",
+  "slug": "dread-knight",
+  "phase": "static master proposal only",
+  "status": "awaiting human master approval",
+  "human_approved": false,
+  "selected_raw_result": "raw-master-v02.png",
+  "selected_raw_sha256": "59ef49e4ff40ea716c56c63092e4cbcb2770121dcef6333622b4ffd24f35b592",
+  "artwork_tool": "image_gen.imagegen",
+  "artwork_tool_mode": "built-in image generation followed by one targeted built-in edit",
+  "generation_calls": 2,
+  "source": {
+    "source_id": "CBLORD",
+    "original_def": "../../references/heroes3-original-flipbooks/originals/H3sprite/CBLORD.def",
+    "original_def_sha256": "898d935bc0945dad26f591df2a5e9a525d0d4564f3b2eff4986825ff845e56c8",
+    "metadata": "../../references/heroes3-original-flipbooks/sprites/H3sprite/CBLORD/metadata.json",
+    "metadata_sha256": "34a865fba3e949b1adab3ca56bc62e941de914e935ca31357a832841b33cb305",
+    "paths_relative_to": "necropolis-creature-assets-v01 production root",
+    "complete_job_read": true,
+    "native_metadata_all_groups_equal_job": true,
+    "hashes_match_job": true,
+    "original_groups": 18,
+    "original_frame_positions": 125,
+    "original_distinct_indexed_drawings": 62,
+    "all_source_group_ids": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 17, 18, 19, 20, 21],
+    "idle_authority": {
+      "group": 2,
+      "frame": 0,
+      "name": "cblord62.pcx",
+      "facing": "right",
+      "native_alpha64_bounds": {"left": 178, "top": 168, "width": 83, "height": 99}
+    },
+    "native_preview_limitation": "RGBA preview transparency and source shadow handling are extraction interpretations; original DEF and indexed sheets remain preservation evidence.",
+    "source_audit": "source-audit.json",
+    "immutable_sources_checked": 67
+  },
+  "context_read": {
+    "worker_brief": "../worker-brief.md",
+    "project_instructions": "AGENTS.md",
+    "project_document_map": "docs/README.md",
+    "project_art_direction": "docs/art/ART_DIRECTION.md",
+    "mali_skill_and_art_review_reference": true,
+    "physical_mali_personal_profile": "read; project-specific source authority took precedence",
+    "imagegen_skill_prompting_and_sample_prompts": true,
+    "production_readme_and_original_extraction_readmes": true
+  },
+  "native_visual_inspection": {
+    "idle": "native-idle-6x.png",
+    "scale": "native-scale-guide.png",
+    "all_group_contact": "native-all-groups-contact.png",
+    "contact_sampling": "one middle frame per group; zero-based index floor(frame_count/2)",
+    "contact_sample_indices": {
+      "0": 4, "1": 5, "2": 4, "3": 3, "4": 5, "5": 4,
+      "7": 1, "8": 1, "9": 1, "10": 1, "11": 4, "12": 4,
+      "13": 4, "17": 5, "18": 5, "19": 5, "20": 1, "21": 1
+    },
+    "detailed_guides": [
+      {"path": "native-g00-guide.png", "group": 0, "frames": [0, 4, 7]},
+      {"path": "native-g01-guide.png", "group": 1, "frames": [0, 5, 10]},
+      {"path": "native-g02-guide.png", "group": 2, "frames": [0, 4, 7]},
+      {"path": "native-g03-guide.png", "group": 3, "frames": [0, 3, 5]},
+      {"path": "native-g04-guide.png", "group": 4, "frames": [0, 5, 10]},
+      {"path": "native-g05-guide.png", "group": 5, "frames": [0, 4, 7]},
+      {"path": "native-g07-guide.png", "group": 7, "frames": [0, 1, 2]},
+      {"path": "native-g11-guide.png", "group": 11, "frames": [0, 4, 7]},
+      {"path": "native-g12-guide.png", "group": 12, "frames": [0, 4, 7]},
+      {"path": "native-g13-guide.png", "group": 13, "frames": [0, 4, 7]},
+      {"path": "native-g17-guide.png", "group": 17, "frames": [0, 5, 10]}
+    ],
+    "upgrade_comparator": "../black-knight/native-idle-6x.png",
+    "upgrade_observation": "CBKNIG's exposed dark horse differs from CBLORD's conspicuous pale barding, front spikes and shoulder spikes. The selected proposal preserves the upgraded treatment.",
+    "animation_playback_performed": false,
+    "role_label_limit": "Job group names are format mappings; static samples do not establish original engine timing or gameplay behavior."
+  },
+  "rendering_reference": {
+    "path": "../references/pikeman-rendering-master.png",
+    "role": "fine modeled volume, graduated steel highlights and material finish only",
+    "costume_palette_or_weapon_transferred": false
+  },
+  "observations": {
+    "identity": "Mounted dark armored rider; tall narrow enclosed helm, black plume and slim red visor; pale metal shoulder and horse-face spikes; silver barding; red saddle panels and fringe.",
+    "pose_and_anatomy": "Native right-facing three-quarter idle is retained as a redraw: upright seated rider, compact horse torso, staggered legs, hanging rider leg, black tail, complete hooves and helmet. No skeletal or rearing mount.",
+    "weapon": "One continuous smooth curved silver saber held low across the near side of the horse, brass-toned hilt at the hip, tip directed right.",
+    "materials": "Dark blue-black rider plate is separated from pale steel horse barding and conical metal spikes. Red cloth remains distinct from leather and horse coat. Small fasteners retain restrained warm metal accents.",
+    "headgear": "A tall straight-sided enclosed helmet with a black trailing plume and red slit is retained; no large helmet horns were introduced.",
+    "rendering": "Fine tonal modeling, curved plate highlights and restrained surface texture replace source pixel blocks while preserving the principal dark/steel/red divisions."
+  },
+  "repair_history": [
+    {
+      "attempt": "v01",
+      "raw": "raw-master-v01.png",
+      "raw_sha256": "a14095231d993198094c84940f49d3d6c1b41f68ba65458c89192012aa468687",
+      "issues": ["warm gold/ivory spike and trim treatment", "invented large spike on near horse breast armor", "invented saber barbs"],
+      "disposition": "preserved; superseded"
+    },
+    {
+      "attempt": "v02",
+      "raw": "raw-master-v02.png",
+      "corrections_observed": ["pale silver spike and armor-edge treatment", "smooth horse breast plate without the extra spike", "smooth continuous saber without the barbs"],
+      "disposition": "selected proposal awaiting human approval"
+    }
+  ],
+  "registration": {
+    "helper": "../tools/lib.cjs registerMaster",
+    "caller": "build-master.cjs",
+    "helper_options": {},
+    "cell": [1024, 768],
+    "anchor": [512, 512],
+    "original_reference": [196, 268],
+    "source_scale_formula": "180/73",
+    "source_scale": 2.4657534246575343,
+    "native_visible_height": 99,
+    "registered_visible_height": 244,
+    "registered_alpha64_bounds": {"left": 468, "top": 265, "width": 207, "height": 244, "right": 675, "bottom": 509},
+    "minimum_visible_cell_padding_px": 259,
+    "anatomy_measurement_override": false,
+    "independent_dimension_stretch": false,
+    "silhouette_aspect_ratio_difference_percent": 1.6525804711382763,
+    "mechanical_details": "registration-checks.json"
+  },
+  "visual_checks": [
+    {"check": "source comparison", "result": "reviewed", "file": "source-vs-master.png", "observation": "Same mounted height, original right-facing idle, dark/steel/red upgrade markers and low saber are retained. The generated redraw has a slightly fuller contour."},
+    {"check": "game-size readability", "result": "reviewed", "file": "game-size-alpha-review.png", "observation": "Helm, silver barding, spikes, red fringe, four hooves and single low blade remain readable at 244 px visible mounted height."},
+    {"check": "alpha on dark/pale/checker backgrounds", "result": "reviewed", "file": "game-size-alpha-review.png", "observation": "No visible matte rectangle, floor, cast/contact shadow or detached effects. Open leg gaps and cutout contour remain clear."},
+    {"check": "source facing", "result": "reviewed", "file": "master_source_1024x768.png", "observation": "Original right facing; all major extremities inside the review cell."},
+    {"check": "mirror facing", "result": "reviewed and mechanically verified", "file": "master_mirror_1024x768.png", "observation": "Exact full-cell horizontal mirror, visually inspected as a left-facing static preview."}
+  ],
+  "alpha_checks": {
+    "genuine_rgba": true,
+    "registered_zero_alpha_pixels": 760265,
+    "registered_border_nonzero_pixels": 0,
+    "registered_connected_components_alpha64": 1,
+    "registered_component_pixels_alpha64": 24172,
+    "exact_mirror_verified": true,
+    "raw_limit": "Preserved V02 raw contains faint alpha <=8 traces at canvas edges. Standard helper registration crops to the alpha >8 bounds; the registered cell and padded review provide clear margins. Raw bytes were not retouched."
+  },
+  "provenance": {
+    "full_exact_calls_and_input_hashes": "generation-record.json",
+    "source_immutability": "source-audit.json",
+    "master_hashes_and_transform": "master-manifest.json",
+    "mechanical_checks": "registration-checks.json",
+    "exact_prompts": [
+      {"file": "prompt-master-v01.txt", "exact_argument_sha256": "c77ffb96173ab5750e8400ae7297479145bd3498089364ff28d1857de250dfdf"},
+      {"file": "prompt-master-v02-edit.txt", "exact_argument_sha256": "a662fb9d6fdcbec0c85f1ce4d6f4794aceb3e01945f9f185ec7fca1cce307e4b"}
+    ],
+    "prompt_hash_encoding": "UTF-8, LF, no trailing newline; exact text also embedded in generation-record.json",
+    "raws_preserved_byte_for_byte": true,
+    "selected_original_tool_output": "C:/Users/zhouc/.codex/generated_images/01a1638e-579c-7601-b05f-5c0b568e0023/exec-e4025d40-5849-420c-813f-661b27a31c97.png"
+  },
+  "outputs": {
+    "high_resolution_cutout": {"file": "master_rgba.png", "size": [1142, 1340], "sha256": "9c5f43f33419e8c0dca200fb17453b52224e8edd1e7f12d74ff12737b904b64e"},
+    "registered_original_facing": {"file": "master_source_1024x768.png", "sha256": "f66b6d25006c9b680cd0ece3e44cb1e6f77d68d06ea4824ed093577ec41542a6"},
+    "registered_mirror": {"file": "master_mirror_1024x768.png", "sha256": "dc310d4bc440058404513b4a3af4486ee3def01135d47d034c499287eb1122bc"},
+    "padded_high_resolution_review": "master-padded-review.png",
+    "source_comparison": "source-vs-master.png",
+    "game_size_alpha_review": "game-size-alpha-review.png",
+    "report": "report.md"
+  },
+  "limitations": [
+    "This is a generated reinterpretation, not literal original-pixel preservation or an approved Laema production identity.",
+    "Ambiguous native details were interpreted. The full silhouette aspect ratio is 1.65 percent broader than native without independent stretching.",
+    "Fine rivets and textures soften at game size; main material and equipment markers remain readable in the static review.",
+    "No animation continuity, timing, engine import or runtime appearance is verified."
+  ],
+  "scope": {
+    "writes_confined_to_assigned_creature_folder": true,
+    "shared_helpers_modified": false,
+    "originals_modified": false,
+    "other_creature_files_modified": false,
+    "animation_generated": false,
+    "implementation_changed": false,
+    "engine_imported": false,
+    "game_changed": false,
+    "engine_or_editor_run": false,
+    "tests_or_game_builds_run": false,
+    "runtime_verified": false,
+    "git_operations_performed": false,
+    "peer_messages_sent": false
+  },
+  "next_gate": "User approval of this static master before any animation production."
+}

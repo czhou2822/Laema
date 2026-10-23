@@ -1,0 +1,218 @@
+{
+  "name": "Wight",
+  "slug": "wight",
+  "status": "proposal; awaiting user master approval",
+  "artwork_method": "built-in image generation; mechanical crop and aspect-preserving registration",
+  "cell": [
+    1024,
+    768
+  ],
+  "anchor": [
+    512,
+    512
+  ],
+  "original_reference": [
+    196,
+    268
+  ],
+  "source_scale": 2.4657534246575343,
+  "target_native_bounds": {
+    "left": 477,
+    "top": 290,
+    "width": 72,
+    "height": 217
+  },
+  "actual_registered_bounds": {
+    "left": 475,
+    "top": 290,
+    "width": 76,
+    "height": 217,
+    "right": 551,
+    "bottom": 507,
+    "transparent_pixels": 775339,
+    "opaque_pixels": 9972
+  },
+  "registration": {
+    "crop": {
+      "left": 221,
+      "top": 91,
+      "width": 545,
+      "height": 1546
+    },
+    "width": 76,
+    "height": 217,
+    "left": 475,
+    "top": 290,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "original_def_sha256": "211ff3e4d786b50fdd3666b2f8b2e80ef44a455b47eb4f9560a562a305b52bdb",
+  "source_metadata_sha256": "d618cc973a1880a703a6a2302964d8a5a64c483b7310f7a709e2031185a2d5ab",
+  "high_res_master": "master_rgba.png",
+  "high_res_sha256": "3a4e7927611d40175af4f308291329420f987d79f61f863247e571cf96e62cc2",
+  "source": "master_source_1024x768.png",
+  "source_sha256": "39fb9986096c47957140289d1b0fb6c2709267e929b11ee903aa347e17bd5dc4",
+  "mirror": "master_mirror_1024x768.png",
+  "mirror_sha256": "5e6211a494576468a05baa7afdadd02bf5e3e7170faafa8b58fb9b5a61243811",
+  "generated_input_sha256": "49c788c3b32664ef949d6d3c6003734b52b986e80e460a4ddb6ded409d177eca",
+  "transparent_background": true,
+  "exact_mirror_verified": true,
+  "mechanical_checks_only": true,
+  "visual_approval": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "provenance": {
+    "schema": 1,
+    "creature": "Wight",
+    "slug": "wight",
+    "phase": "static master review gate",
+    "tool": "built-in image_gen.imagegen",
+    "proposal_only": true,
+    "approval": "awaiting human approval",
+    "animation_started": false,
+    "runtime_verified": false,
+    "source_authority": {
+      "native_metadata": "../../../references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/metadata.json",
+      "native_metadata_sha256": "d618cc973a1880a703a6a2302964d8a5a64c483b7310f7a709e2031185a2d5ab",
+      "original_def": "../../../references/heroes3-original-flipbooks/originals/H3sprite/CWIGHT.def",
+      "original_def_sha256": "211ff3e4d786b50fdd3666b2f8b2e80ef44a455b47eb4f9560a562a305b52bdb",
+      "idle": "native-idle.png",
+      "idle_sha256": "dac8dd98ef892333939d0570d411e163ad514ddf928b51cf067b70a27d7f53c3",
+      "rendering_reference": "../references/pikeman-rendering-master.png",
+      "rendering_reference_sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4",
+      "rendering_reference_role": "fine modeled-volume shading and material rendering only; no Castle identity"
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "mode": "generation with references",
+        "selected": false,
+        "disposition": "rejected; raw preserved",
+        "prompt_file": "prompt-01.txt",
+        "exact_prompt": "Use case: stylized-concept.\nAsset type: one proposed static full-body Wight master for a Heroes III Necropolis creature asset review. Generate a newly rendered image, not an enlargement of the source pixels.\nInput image 1 is the ORIGINAL Wight native idle sprite, enlarged by nearest neighbor only for inspection: use it as the authority for creature identity, brown costume, body proportions, silhouette, idle pose and right-facing view. Input image 2 is the approved Pikeman rendering master: use it ONLY for fine modeled-volume shading, subtle texture, concentrated highlights and crisp readable materials. Do not copy that soldier's body, pose, helmet, armor, weapon, heraldry or colors.\nSubject: faithfully render the Wight in image 1 as a tall very slender hooded undead specter, in the same quiet upright idle pose, head and body facing screen RIGHT in the same slight three-quarter side view. Deep, muted dark earth-brown rough cloth hood and loose robe, worn but restrained brown folds; small pale grey-ivory skeletal face recessed in the hood with dark eye sockets and the long narrow pale lower-face/throat detail visible in the source. Thin pale bony hands, empty and held close to the torso: the near forearm crosses loosely across the upper belly, the far hand is slightly higher near the chest. Long hanging sleeves. The cloth body tapers down to a narrow irregular ragged trailing hem; no visible feet or footwear. Preserve the source's slight forward curve and compact shoulder width. Whole hood, both hands, sleeve tips and lowest cloth point fully visible.\nSilhouette/proportion lock: native visible bounds are 29 pixels wide by 88 pixels tall, so aim for the same narrow width-to-height ratio, approximately 0.33, without spreading the arms or billowing the cloak sideways. No heroic broad shoulders, no inflated robe, no chibi head. Match the native hood angle, face direction, hand placement, robe weight and asymmetry instead of creating a generic reaper.\nRendering: the same refined classic pre-rendered game-sprite finish as input image 2: fine sculptural volume, small controlled highlights, subtle cloth grain, bone texture, deep restrained shadow planes, crisp fine edges. Readable at small game size. Smooth finely modeled shading, not block-pixel art, not cartoon cel shading, not a flat silhouette. Keep the original warm dark brown cloth and dull pale bone palette; highlights remain concentrated on existing material forms.\nComposition/output: ONE character only on a genuinely transparent RGBA background. Portrait framing with generous empty alpha margins around every extremity, no cropping. No labels, no text, no watermark, no background, no floor, no cast shadow, no pedestal.\nStrict exclusions: no scythe, staff, sword, shield or any other weapon; no armor, jewelry, belt buckle or added costume symbols; no blue/white Castle colors; no glowing eyes in this idle pose; no smoke, aura, magic, slash arc, particles or invented effects. All silhouette detail must belong to this brown-robed Wight. This is one idle master proposal, not an animation sheet.",
+        "referenced_image_paths": [
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/wight/native-idle-6x.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/references/pikeman-rendering-master.png"
+        ],
+        "transparent_background": true,
+        "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-5767-78e3-918f-b3bc0e998b6c/exec-10062b76-841d-40c4-a359-0a223ff953e8.png",
+        "tool_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-5767-78e3-918f-b3bc0e998b6c as C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-5767-78e3-918f-b3bc0e998b6c\\exec-10062b76-841d-40c4-a359-0a223ff953e8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "saved_raw": "generated-01.png",
+        "sha256": "cd9bf0f0ec8825d3d4ac4fb3fb29977854b03ecb15cb7714faaf15ce23f0c98f",
+        "raw_dimensions": [
+          725,
+          2170
+        ],
+        "alpha_bounds_8": {
+          "left": 103,
+          "top": 66,
+          "width": 523,
+          "height": 2056,
+          "right": 626,
+          "bottom": 2122
+        },
+        "observed_issue": "Extra pale hand-like form at screen-right waist and overly narrow silhouette: initial registration was 55x217 against native target 72x217."
+      },
+      {
+        "attempt": 2,
+        "mode": "targeted edit of attempt 1",
+        "selected": false,
+        "disposition": "rejected; raw preserved",
+        "prompt_file": "prompt-02.txt",
+        "exact_prompt": "Use case: identity-preserve.\nEdit target: input image 1 is the newly generated brown-robed Wight proposal. Input image 2 is the original native Wight idle and is the authority for identity, proportions and pose. Input image 3 is the Pikeman rendering reference for rendering finish ONLY.\nCorrect two concrete source-identity/anatomy failures in image 1:\n1. Remove the extra small pale hand-like shape protruding from the extreme screen-right waist below the raised chest hand. The Wight must have exactly TWO skeletal hands and two arms total: keep the existing near hand crossing the upper belly and the existing far hand held near the chest. Replace only that extra pale waist shape with continuous brown robe folds.\n2. Restore the native idle's proportions: image 1 is excessively narrow and elongated. Redraw the hood/shoulders/sleeves/torso with the native compact fullness so the complete visible silhouette is approximately 0.33 as wide as it is tall (native 29 by 88). This is a slender upright specter, but it must not be stretched into a needle. Keep the same relative hand heights, quiet forward curve, narrow tapered cloth bottom and native right-facing three-quarter side view. Reconstruct natural folds and anatomy; do not merely stretch the image horizontally. Avoid a long spindly extra tail beyond the native hem.\nPreserve the successful muted dark earth-brown cloth, pale grey-ivory skeletal face and long narrow pale lower-face/throat detail, deep non-glowing eye sockets, empty hands, hanging sleeves, and restrained ragged robe. Keep the fine modeled volumes, subtle textured material and concentrated highlights matching the Pikeman rendering finish without copying any soldier identity or colors.\nReturn ONE complete static idle Wight only, full hood to lowest cloth tip visible with generous transparent margins. Genuine transparent RGBA background. No labels, text, floor, shadow, background, weapons, armor, belt, symbols, VFX, smoke, aura, glow, particles or animation frames. Preserve original right facing. This remains a proposal for human master approval.",
+        "referenced_image_paths": [
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/wight/generated-01.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/wight/native-idle-6x.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/references/pikeman-rendering-master.png"
+        ],
+        "transparent_background": true,
+        "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-5767-78e3-918f-b3bc0e998b6c/exec-cacd2ad1-288a-4fae-bc01-6d4b600a805f.png",
+        "tool_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-5767-78e3-918f-b3bc0e998b6c as C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-5767-78e3-918f-b3bc0e998b6c\\exec-cacd2ad1-288a-4fae-bc01-6d4b600a805f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "saved_raw": "generated-02.png",
+        "sha256": "936815a534d1e797727eb3db5761af6e6448764ac01f911cfb529380d764ce02",
+        "raw_dimensions": [
+          941,
+          1672
+        ],
+        "alpha_bounds_8": {
+          "left": 223,
+          "top": 93,
+          "width": 541,
+          "height": 1545,
+          "right": 764,
+          "bottom": 1638
+        },
+        "observed_issue": "Proportions improved to approximately native ratio, but invented ornamental cloth grain and a residual pale sleeve-edge sliver required a final edit."
+      },
+      {
+        "attempt": 3,
+        "mode": "targeted material and anatomy edit of attempt 2",
+        "selected": true,
+        "disposition": "selected proposal; awaiting human approval",
+        "prompt_file": "prompt-03.txt",
+        "exact_prompt": "Use case: precise-object-edit.\nInput image 1 is the Wight edit target. Input image 2 is the original native brown Wight idle, the identity and material authority. Input image 3 is the Pikeman reference for finely modeled sprite rendering only.\nMake this final localized material/anatomy correction while keeping image 1's current full-body proportions, pose and framing:\n- Replace the invented ornamental, swirling, leaf-like brocade pattern across the robe with PLAIN coarse worn dark earth-brown cloth. The source is a simple unadorned brown hood and robe. Keep subtle irregular textile grain, sculptural folds and small concentrated highlights, but NO woven floral designs, scrollwork, runes, embroidery, symbols, decorative edging or leather-like engraving. Preserve the same brown color family; darken broad midtones toward the restrained native brown while keeping fold separation readable.\n- At approximately x=730, y=710 in the 941x1672 target, remove the small pale finger/arm-like sliver at the extreme screen-right sleeve edge below the raised chest hand. That side edge must be uninterrupted brown cloth. There must be exactly TWO hands total: retain the one bone hand across the upper belly and the one bone hand near the chest. No other exposed bone anywhere except the skull/throat and those two hands.\nPreserve everything else: same naturally slender but compact silhouette (about 0.33 width/height), same right-facing three-quarter side view and hood angle, same skeletal skull with dark non-glowing sockets, same pale long narrow lower-face/throat detail, same empty hands in idle, no visible feet, full tapered ragged cloth bottom. Keep the source-based subdued character identity and finely modeled material finish, not cartoon blocks or photorealistic concept scenery. Do not add any garment layers or lengthen the hem.\nONE static full-body master only on genuinely transparent RGBA, generous alpha margins. No cropping, background, floor, cast shadow, props, weapons, armor, belt, jewelry, VFX, aura, smoke, glow, text or labels. No animation.",
+        "referenced_image_paths": [
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/wight/generated-02.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/wight/native-idle-6x.png",
+          "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/references/pikeman-rendering-master.png"
+        ],
+        "transparent_background": true,
+        "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-5767-78e3-918f-b3bc0e998b6c/exec-8e9c3283-861e-413e-872b-312951f0b88e.png",
+        "tool_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-5767-78e3-918f-b3bc0e998b6c as C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-5767-78e3-918f-b3bc0e998b6c\\exec-8e9c3283-861e-413e-872b-312951f0b88e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "saved_raw": "generated-03.png",
+        "sha256": "49c788c3b32664ef949d6d3c6003734b52b986e80e460a4ddb6ded409d177eca",
+        "raw_dimensions": [
+          941,
+          1670
+        ],
+        "alpha_bounds_8": {
+          "left": 221,
+          "top": 91,
+          "width": 545,
+          "height": 1546,
+          "right": 766,
+          "bottom": 1637
+        },
+        "transparent_pixels": 1036732,
+        "opaque_pixels_above_200": 514881,
+        "observed_result": "Two clear hands and no pale waist sliver; compact right-facing brown-robed silhouette retained. Material pattern reduced, but fine repeated etched-looking grain remains visible enlarged and is an explicit approval risk."
+      }
+    ],
+    "remaining_art_risks": [
+      "Fine cloth grain still has a repeated etched or ornamental appearance at enlarged inspection; plain native cloth fidelity is partial.",
+      "Pale lower-face/throat detail has been interpreted as articulated bone; native 29x88 silhouette does not resolve every anatomical detail.",
+      "Generated hood, face and sleeve-edge shape are interpretations rather than a pixel-exact native match.",
+      "Only a static master is proposed. No motion continuity or runtime validation exists."
+    ],
+    "registration_contract": {
+      "cell": [
+        1024,
+        768
+      ],
+      "anchor": [
+        512,
+        512
+      ],
+      "native_reference": [
+        196,
+        268
+      ],
+      "shared_source_relative_scale": "180/73",
+      "native_alpha64_bounds": {
+        "left": 182,
+        "top": 178,
+        "width": 29,
+        "height": 88,
+        "right": 211,
+        "bottom": 266
+      },
+      "target_master_alpha_bounds": {
+        "left": 477,
+        "top": 290,
+        "width": 72,
+        "height": 217
+      },
+      "method": "default helper uniform height scale, native silhouette center and bottom; no override, no nonuniform stretching"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "scope": "Vampire base static master in complete Necropolis collection; awaiting human approval",
+  "source_evidence": "source-evidence.json",
+  "chosen_raw": "raw/master-attempt-02.png",
+  "attempts": [
+    {
+      "attempt": 1,
+      "operation": "initial static master",
+      "tool_path": "functions.exec -> tools.image_gen__imagegen (built-in image_gen.imagegen)",
+      "backend_model": "not exposed by tool; not inferred",
+      "request_file": "generation-01.request.json",
+      "request_file_sha256": "478474dcd81cd74ece03ed16833284ef9a6927dc9c6803dd3dbe86a67530278b",
+      "exact_prompt": "Use case: style-transfer\nAsset type: one source-faithful static creature master for human approval; no animation\nPrimary request: redraw the native Heroes of Might and Magic III BASE VAMPIRE, CVAMP, as a finely modeled full-body transparent game-art cutout. Follow the supplied original pixels closely rather than redesigning the creature.\nInput images: Image 1 is native-idle-6x.png and is the exact identity, proportion, silhouette, facing and idle-pose authority. Image 2 is native-g07-guide.png, supporting head and costume evidence only. Image 3 is native-g12-guide.png, supporting hands, clothing and anatomy only, NOT the requested attack pose. Image 4 is the approved Pikeman rendering master, used ONLY for fine modeled-volume rendering, clean edges and material finish; take no human soldier anatomy, armor, weapon, costume or colors from it.\nScene/backdrop: genuine transparent background, empty negative space. One figure only, all of its head, hands, claws and feet visible with generous clear margins. No floor, shadow, backdrop color or checkerboard pixels.\nSubject: the lean pale bald pointed-eared claw-handed base Vampire visible in Image 1. Preserve its tall narrow adult anatomy and elongated angular pallid face and chin, smooth bald skull, hooked profile, recessed reddish eyes, and pointed ears. Preserve the restrained source palette: dark charcoal and worn brown-gray fitted ragged tunic, short close shoulder cloth, dull gray front and uneven split thigh-length hem, close brownish leggings, simple low black footwear, pale exposed wrists and hands with small dark-red claw tips. Clothing stays modest and close to the body, with the subtle dark reddish chest fastenings visible in the source. No ornate hardware or invented costume.\nPose and camera: replicate Image 1's native right-facing three-quarter idle exactly. Upright long-legged stance with modestly bent knees and two separated planted feet, head pitched slightly forward from the hunched shoulders. Both elbows bent near the ribs; both hands held loosely in front of the belly, wrists bent down and long fingers hanging in small claw curves. The near hand is lower and crosses the waist; the far hand sits slightly higher and farther to screen right. Keep the source's compact arm silhouette, limb lengths and narrow shoulder-to-hip proportions. Overall visible silhouette width approximately 0.46 times its height. Do not turn it into a crouching, lunging or reaching attack pose.\nStyle/medium: match the Pikeman's finely shaded, carefully modeled painted game-art volume and restrained surface detail. Crisp readable silhouette, subtle worn cloth/leather grain, gently sculpted pale skin and small controlled highlights. Render new detailed artwork; do not upscale, mosaic or trace enlarged block pixels.\nConstraints: one static master; no captions, labels, watermark, panel layout or extra props. No noble Dracula red cape, flowing cloak, red lining, aristocratic suit, crown, weapon, armor plates, hood, hair, beard, wings, bat, smoke, transformation effect, glow, magic or ground shadow. Preserve the original base creature and pose; avoid cartoon blocks, chibi proportions, inflated muscles and exaggerated monster claws.",
+      "prompt_utf8_sha256": "0aa6ef580c27102d9aab92152f24322b64b4f823868108397fa6a7dea91a1c41",
+      "transparent_background_requested": true,
+      "references": [
+        {
+          "file": "native-idle-6x.png",
+          "sha256": "dce64cfab5857ae696808739f3e0b844bf294f79904cad0933e8b9fd918b692a"
+        },
+        {
+          "file": "native-g07-guide.png",
+          "sha256": "c1b7eb582763c83dee64523e857518b0c5f0f88b2a759895a5c33f575c10bdfc"
+        },
+        {
+          "file": "native-g12-guide.png",
+          "sha256": "38cf1e97037101c987589dec9af7b556ae13bdbddb8793ebaed5b35a82f60b87"
+        },
+        {
+          "file": "../references/pikeman-rendering-master.png",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "tool_saved_output": "C:/Users/zhouc/.codex/generated_images/01a16388-f539-7fb3-ade4-410eb691024d/exec-d50a83e9-4a2a-4b9b-b96a-784596af6251.png",
+      "preserved_raw": "raw/master-attempt-01.png",
+      "raw_sha256": "2d65fe754b7d901c37ca7f3cc189d810b8704997f992e1a56324d7db80c0dd4a",
+      "raw_dimensions": [
+        1022,
+        1539
+      ],
+      "has_alpha": true,
+      "raw_alpha_bounds": {
+        "left": 202,
+        "top": 28,
+        "width": 657,
+        "height": 1480,
+        "right": 859,
+        "bottom": 1508,
+        "transparent_pixels": 1095374,
+        "opaque_pixels": 441567
+      },
+      "selected": false
+    },
+    {
+      "attempt": 2,
+      "operation": "targeted claw-tip repair",
+      "tool_path": "functions.exec -> tools.image_gen__imagegen (built-in image_gen.imagegen)",
+      "backend_model": "not exposed by tool; not inferred",
+      "request_file": "generation-02.request.json",
+      "request_file_sha256": "3dd945a3546eab5da772480bc5971ba2e430bc04b88c04da54d1ddb64dd55a0b",
+      "exact_prompt": "Use case: precise-object-edit\nAsset type: repair of the same static base Vampire master, not a new variation\nInput images: Image 1 is the generated master to edit. Image 2 is the native idle guide, authoritative for finger lengths, red nail-tip extent and hand shape. Image 3 is the native attack guide, supporting pale bony hand anatomy only, not the desired pose.\nPrimary request: change ONLY the claws on both hands. The current generated red talons are too long, thick and glossy. Shorten and slim every nail to the modest narrow dark-red nail tips seen in the native references. Keep the long pale bony fingers, but use small tapered nail endings rather than long curved red blades. Reduce the saturated shiny red area substantially. Make the overlapping fingertips read as distinct anatomically coherent fingers.\nInvariants: preserve the existing bald pale pointed-eared Vampire identity, face, head size, expression, body proportions, exact right-facing three-quarter idle pose, hand positions, bent elbows and wrists, foot placement, costume shapes and folds, dark charcoal/brown/gray materials, chest fastenings, ragged hem, lighting, modeled rendering style, framing and image dimensions. Preserve the genuine transparent background and all full-body edges. Do not change the pose or introduce props, text, ground shadow, wings, smoke, cape, armor, hair, beard, glow or VFX. Return one repaired static cutout only.",
+      "prompt_utf8_sha256": "5de045dc8c6cce05e1d44a3b8876845955e84de17f6d72db1e0c3e5e09370114",
+      "transparent_background_requested": true,
+      "references": [
+        {
+          "file": "raw/master-attempt-01.png",
+          "sha256": "2d65fe754b7d901c37ca7f3cc189d810b8704997f992e1a56324d7db80c0dd4a"
+        },
+        {
+          "file": "native-idle-6x.png",
+          "sha256": "dce64cfab5857ae696808739f3e0b844bf294f79904cad0933e8b9fd918b692a"
+        },
+        {
+          "file": "native-g12-guide.png",
+          "sha256": "38cf1e97037101c987589dec9af7b556ae13bdbddb8793ebaed5b35a82f60b87"
+        }
+      ],
+      "tool_saved_output": "C:/Users/zhouc/.codex/generated_images/01a16388-f539-7fb3-ade4-410eb691024d/exec-7c205562-cb49-4650-89f6-ac12fa73fd5f.png",
+      "preserved_raw": "raw/master-attempt-02.png",
+      "raw_sha256": "3a9ebe29fb6ac2ebda3d374b5e75027450d315dfeec7c2ed7a75b93798fb96df",
+      "raw_dimensions": [
+        1022,
+        1538
+      ],
+      "has_alpha": true,
+      "raw_alpha_bounds": {
+        "left": 201,
+        "top": 27,
+        "width": 660,
+        "height": 1481,
+        "right": 861,
+        "bottom": 1508,
+        "transparent_pixels": 1101368,
+        "opaque_pixels": 446540
+      },
+      "selected": true
+    }
+  ],
+  "mechanical_edits": "Original raw bytes retained; alpha crop, uniform aspect-preserving scale, cell placement, exact horizontal mirror. No paint, color rewrite, matting or silhouette deformation.",
+  "registration_overrides": {}
+}

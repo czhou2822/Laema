@@ -1,0 +1,50 @@
+{
+  "tool": "functions.exec -> tools.image_gen__imagegen",
+  "mode": "built-in imagegen",
+  "args": {
+    "prompt": "Use case: precise-object-edit\nImage 1 is the Bone Dragon master edit target. Make ONE geometric correction: make its folded wings approximately 15 percent BROADER from left to right while keeping their current HEIGHT. Carry the OUTER LEFT outline of the wings farther left/back; keep the inner wing attachment at the shoulder in its current place. Redraw the finger sweep and membrane folds naturally; do not stretch or thicken the bones. The wings stay folded and hang down; do not open them into a spread-wing pose.\nFreeze EVERYTHING ELSE: exact current skull, horns, neck, rib cage, two raised forearms and hands, pelvis, two hind legs, long toes and low horizontal tail, including their positions, proportions, height, direction, colors and fine modeled rendering. In particular do NOT lower or tilt the tail, shift the hands inward, enlarge the skull or increase the silhouette height. Preserve the warm aged yellow/ivory skeleton and dry charcoal/slate membranes. This correction should make the whole visible silhouette about 0.816 times as wide as it is tall, matching the native CNDRGN reference.\nOne whole-body transparent RGBA cutout only, with all wing tips, tail tip, horns and claws intact. Expand transparent padding/canvas as needed around the complete silhouette. No floor, cast shadow, text, checkerboard, props, extra limbs, scales/flesh, spectral color, glowing eyes, flames, mist or other effects. Preserve the upright right-facing native ready pose.",
+    "referenced_image_paths": [
+      "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/bone-dragon/raw-01.png"
+    ],
+    "transparent_background": true
+  },
+  "prompt_file": "prompt-04.txt",
+  "prompt_file_sha256": "281db3287ec75f5b843310d581ff1883030e0c0bb5b6226d289b9c23f0fe855b",
+  "prompt_argument_utf8_sha256": "983e40ffbde73c3e8f2b45249f9da1e5675a7e2fdfb5065610b16cb491a8a1d1",
+  "inputs": [
+    {
+      "file": "raw-01.png",
+      "sha256": "41c56f05d6cceb0377d09295bd53c3b2b7069d16ff9f2b9ee2015138b3a3bcf1"
+    }
+  ],
+  "returned_generated_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a1638f-9d8c-71e0-a893-483b88687d3f\\exec-1267a101-ae2f-4310-8d61-2143fc029de2.png",
+  "archived_raw": "raw-04.png",
+  "returned_raw_sha256": "ec6f8e88970bbbf6a37c81f861ad4347e35a56ea58bc5dc72df8a8fa6d707a7e",
+  "archived_raw_sha256": "ec6f8e88970bbbf6a37c81f861ad4347e35a56ea58bc5dc72df8a8fa6d707a7e",
+  "metadata": {
+    "width": 1132,
+    "height": 1389,
+    "channels": 4,
+    "hasAlpha": true
+  },
+  "alpha_bounds_threshold8": {
+    "left": 15,
+    "top": 2,
+    "width": 1109,
+    "height": 1382,
+    "right": 1124,
+    "bottom": 1384,
+    "transparent_pixels": 731135,
+    "opaque_pixels": 748309
+  },
+  "alpha_statistics": {
+    "transparent": 731135,
+    "partial": 839151,
+    "opaque": 2062,
+    "borderNonzero": 82,
+    "redYellowSaturated": 0
+  },
+  "raw_preserved_byte_identical": true,
+  "approval": false,
+  "animation_generated": false
+}

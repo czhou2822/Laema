@@ -1,0 +1,154 @@
+{
+  "tool": "image_gen.imagegen",
+  "exact_request_file": "prompts/001-request.json",
+  "exact_prompt_in_request": "Use case: stylized-concept\nAsset type: ONE high-resolution static creature master for a 2D strategy-inspired game sprite. This is the Ghost Dragon, original Heroes III resource CHDRGN.\n\nInput images and authority:\n1. native-idle-6x.png: PRIMARY identity, exact native ready pose, silhouette, anatomy, proportions, material colors and right-facing orientation. Redraw this creature with fine modeled volume. Do not redraw the source as blocky enlarged pixels.\n2. native-g02-guide.png: supporting original idle views of the SAME creature, not an animation sheet to reproduce. Use only to clarify obscured anatomy. Ignore the guide text and ground shadows.\n3. pikeman-rendering-master.png: approved RENDERING QUALITY reference only, for fine modeled-volume shading, restrained texture, clear separated shapes and polished edges. Do not copy its human anatomy, costume, equipment or colors.\n\nPrimary request: Create a single full-body transparent cutout of the original CHDRGN Ghost Dragon in the exact upright, compact native idle ready pose shown in image 1. Keep the head looking RIGHT, held high on the curved segmented neck, with narrow elongated dragon skull, open toothed jaw and long backward-sweeping horns. Preserve its small hollow torso with exposed rib cage and vertebral spine, two small separate forearms held forward at chest height with hooked skeletal claws, and two thin bent hind legs with complete long clawed feet. Keep the two original skeletal wings attached behind the shoulders. In this IDLE pose the large near wing arches behind the neck on the LEFT and hangs DOWN almost to the feet like the source, its long curved bony fingers supporting pale torn membranes; the far wing is mostly occluded. Do not replace the folded hanging wings with a majestic spread-flight pose. Keep the segmented spiny bony tail descending from the pelvis, curling along the bottom around the feet with its forward-pointing terminal portion, as in the source. Preserve the complete original tail, both feet, horns and every wing tip in frame. The native silhouette is about 93 wide by 114 high, an upright compact shape, not a long horizontal quadruped.\n\nColors/materials: source-faithful pale silver-white bones and spectral wing membranes, cool neutral gray/slate-gray shading, restrained white highlights. Fine matte bone surfaces, fine sculpted edges and subtly shaded thin papery membranes, with open dark or transparent spaces between ribs and limbs. Keep bone and membranes visibly separate. CHDRGN is the pale cool upgrade of the warm aged-ivory CNDRGN Bone Dragon. Do not introduce yellow ivory, blue flames, blue energy, a large glowing aura, smoke, sparkles, chrome armor, flesh or living scales. Small source-faithful dark eye sockets only; no invented bright colored eye effects.\n\nStyle/medium: high-quality finely painted pre-rendered fantasy game sprite, believable modeled bone volume and subtle material texture at the approved Pikeman benchmark's level, readable at a final 281-pixel visible height. Smooth fine details rather than coarse pixel blocks, thick outlines, flat vector art, cartoon simplification or chibi proportions.\n\nComposition/framing: only ONE complete creature, centered with generous fully transparent padding on ALL sides, on a portrait-oriented working canvas. Entire cutout must fit, especially the bottom tail and claw tips and leftmost hanging wing fingers. Make the subject large enough for fine inspection while leaving at least 10 percent clear margin around all extremities. True RGBA transparent background, including holes between ribs and limbs; no opaque black/white canvas, no checkerboard drawn into the art. Neutral directional light modeled within the creature only. No floor, no contact shadow, no cast shadow, no pedestal, text, labels, watermark, border, extra creatures, extra props, background, animation frames or reference sheet.",
+  "raw_copy": {
+    "file": "raw/001-master.png",
+    "bytes": 2219184,
+    "sha256": "76d9eb465dc5b953dc522dab11fc4ccaec5114af8e667c952741d8f9f3400311"
+  },
+  "original_tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16392-8fa8-75d3-840c-cfbddb652c56/exec-3ab4e61c-9065-4b07-9e8d-817a24f7a5c0.png",
+  "original_output_matches_copy": true,
+  "attempts": 1,
+  "targeted_art_edits": 0,
+  "selected_attempt": 1,
+  "raw_metadata": {
+    "width": 1132,
+    "height": 1389,
+    "format": "png",
+    "channels": 4,
+    "hasAlpha": true
+  },
+  "references": [
+    {
+      "file": "job.json",
+      "bytes": 61706,
+      "sha256": "15cc2d368395683587f631f378a352fb027186555f3ed308059819d6e4750d33"
+    },
+    {
+      "file": "native-idle.png",
+      "bytes": 9903,
+      "sha256": "d6f29a1c1aa7dd6808cd2e46de7ce6653344b948291d54233c6bcabe66e6b8d0"
+    },
+    {
+      "file": "native-idle-6x.png",
+      "bytes": 22408,
+      "sha256": "512345f4523c66660604ae601a21bf2aaea01826c026617afd2509e799966110"
+    },
+    {
+      "file": "native-scale-guide.png",
+      "bytes": 18489,
+      "sha256": "a7098e6188a365ac8985fbb934f98e08b35da63c5238f9a8bcd9a46aa621dc2e"
+    },
+    {
+      "file": "native-all-groups-contact.png",
+      "bytes": 285232,
+      "sha256": "8fd1ae7ac2792957b9b31eb804b13879be64268b0b0b627ecc23b285596d0bc5"
+    },
+    {
+      "file": "native-g00-guide.png",
+      "bytes": 56184,
+      "sha256": "4611ade092647a605d689112711474491a78b16f80298ca7962ab32638e536d9"
+    },
+    {
+      "file": "native-g01-guide.png",
+      "bytes": 36686,
+      "sha256": "2fa941b40cbf3ac7bcf4fcbb3b803f3e5d52b3a92f6394d915e79d60a7996fa8"
+    },
+    {
+      "file": "native-g02-guide.png",
+      "bytes": 44803,
+      "sha256": "d675aeb58863dadd309b22969991cc235d73505525ca70bef70e8e6662ed8f1d"
+    },
+    {
+      "file": "native-g03-guide.png",
+      "bytes": 59829,
+      "sha256": "981881210c960f290d8380956f2651060195f09ad18276d9946ae481d6a90216"
+    },
+    {
+      "file": "native-g04-guide.png",
+      "bytes": 46484,
+      "sha256": "ecd99418be1e22b99f83abbd6b51f63adffa8f5cfa50af5112056cf15b0c9b11"
+    },
+    {
+      "file": "native-g05-guide.png",
+      "bytes": 45563,
+      "sha256": "f8b2b40d015c517c5e88bff2da4bd4380b47dd87f447623b52f0327b1df59ddf"
+    },
+    {
+      "file": "native-g07-guide.png",
+      "bytes": 56942,
+      "sha256": "1294cc460479e84700755514c2cd7551ca37a1231440812ff6b89db8df6fc974"
+    },
+    {
+      "file": "native-g08-guide.png",
+      "bytes": 57102,
+      "sha256": "2730ec7c0d32a35ec5ada47786d70efa3070d09e1a046edcf3891f9dc26e343e"
+    },
+    {
+      "file": "native-g09-guide.png",
+      "bytes": 57019,
+      "sha256": "8a6bcdd2a7a29f0d4b9fabbb3bc7f4193dfbe26a0a8f480ae292133b1c5af659"
+    },
+    {
+      "file": "native-g10-guide.png",
+      "bytes": 57116,
+      "sha256": "dcac302c8afc9f6994749084c88a17ba557602d9e1e280afaaa54a7a9da01198"
+    },
+    {
+      "file": "native-g11-guide.png",
+      "bytes": 61449,
+      "sha256": "8d1ea0d90453ebbf2538399bc837edaf063659cb0f2e95ef79d0818a5800d168"
+    },
+    {
+      "file": "native-g12-guide.png",
+      "bytes": 62006,
+      "sha256": "f730961d75d2a6d6391cc4eadcd4e0e871ce084c9e9baa8cce44c6b8f926f753"
+    },
+    {
+      "file": "native-g13-guide.png",
+      "bytes": 62036,
+      "sha256": "94634bfadeaf8cae1dca7e8afbf0931c2151a2c6e51a99d7ddd0c1cbea4d38fa"
+    },
+    {
+      "file": "native-g20-guide.png",
+      "bytes": 61086,
+      "sha256": "b23ab9445e26a41344cd1f9c8a378138fef31fff06e1a4611b6f367235d2a29d"
+    },
+    {
+      "file": "native-g21-guide.png",
+      "bytes": 67820,
+      "sha256": "2de5241408e92a6e980e16903ca11c20dd01ace7ba930fb5662d176b47a09bc5"
+    },
+    {
+      "file": "../references/pikeman-rendering-master.png",
+      "bytes": 965006,
+      "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+    },
+    {
+      "file": "../bone-dragon/native-idle-6x.png",
+      "bytes": 23838,
+      "sha256": "90d24b0a4fbe254e42117b83f32ddc1d5571e5b2ab9afd6159cd22b1e71a4756"
+    },
+    {
+      "file": "../worker-brief.md",
+      "bytes": 3314,
+      "sha256": "3858d8e01f996f49b9ee2c7f15038c04918092fdfba64129db8796e370ea1806"
+    },
+    {
+      "file": "../tools/lib.cjs",
+      "bytes": 5763,
+      "sha256": "b8676cb91e388bf30f67f73e6ce0bca17f644a9203719393451ee9186b7ded60"
+    },
+    {
+      "file": "../../../references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/metadata.json",
+      "bytes": 52245,
+      "sha256": "12ffe336741a72c73ed251c332c65e18f03322c6a26b4ea2ee27b271ded359dc"
+    },
+    {
+      "file": "../../../references/heroes3-original-flipbooks/originals/H3sprite/CHDRGN.def",
+      "bytes": 641333,
+      "sha256": "1edebaea4cf6bdcaafd1247434486b26fd1156a27d5434f07b65b7240b0ed660"
+    }
+  ]
+}
