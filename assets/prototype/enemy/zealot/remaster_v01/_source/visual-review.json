@@ -1,0 +1,46 @@
+{
+  "review_date": "2026-10-23",
+  "artwork_type": "New imagegen remaster drawn from original HoMM3 flipbook poses; not recovered original high-resolution masters",
+  "review_scope": [
+    "All generation references inspected before drawing",
+    "All generated raw batches visually inspected for character count, broad pose/action, equipment, orientation and transparency",
+    "Distinct walking, idle/fidget, hurt, defence, death, turning and directional attack poses retained",
+    "Technical RGBA/nonempty/no-edge preflight on each ingested batch",
+    "Group frame ordering and exact original aliases preserved by manifest"
+  ],
+  "limitations": [
+    "These are generated/reused art candidates; exact limb, cloth and weapon parity against every native pixel pose is not certified",
+    "Original DEF extraction has no frame durations; no timing invented",
+    "Sequential rendered playback and human in-game acceptance remain pending",
+    "Hand-painted generated art introduces fine-detail differences between frames; identity refs constrain design but do not guarantee zero flicker"
+  ],
+  "creature_id": "zealot",
+  "source_guide": "Original per-pose crop from source metadata, original pose ordering in source_manifest.json",
+  "observed_design": "Deep navy hooded robe with gold edging, gold rope belt, warm gold hood opening; blue/white/gold and white/gold effects where original frames show them",
+  "rejected_generation": [
+    {
+      "batch": 4,
+      "source": "exec-bfcf88eb-41f3-4e45-ada1-58c426b1a0bc.png",
+      "reason": "Magic effects clipped by global top edge; entire batch regenerated with additional padding",
+      "depot_source": "_source/rejected-batch-04-top-clipping.png"
+    },
+    {
+      "batch": 8,
+      "source": "exec-fc27c2f1-7896-4481-a1d0-69f4ec2c97b3.png",
+      "reason": "First two casting poses have magic touching/clipping global top edge; these two redrawn with more margin. Original final three unclipped poses retained using technical crops to preserve sparse dissipating sparks and recovery silhouettes.",
+      "depot_source": "_source/rejected-batch-08-top-clipping.png"
+    }
+  ],
+  "technical_validation": {
+    "complete_groups": 20,
+    "total_groups": 20,
+    "unique_poses": 69,
+    "source_frame_positions": 154,
+    "errors": []
+  },
+  "final_batch_selection": {
+    "pose064_065": "Redrawn uncropped retry batch91-a0ffdd29b790.png",
+    "pose066_067_068": "Original unclipped source frames selected and technically repacked into batch92-c46257b8d5db.png; recipe retained in batch-92-preprocessing.json",
+    "reason": "Preserve original sparse dissipating sparks on pose066 rather than introducing a sustained magic orb"
+  }
+}

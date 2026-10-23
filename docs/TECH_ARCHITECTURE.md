@@ -5,6 +5,39 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
+## Castle original-group remaster candidate — October 23
+
+The user authorized source-guided generation after the original animation audit.
+All fourteen base/upgraded Castle creatures now have one RGBA atlas per original
+group: 225 sheets, preserving 1,324 source frame positions and exact source
+aliases. Their 847 registered poses use 633 new generated drawings and 214
+existing high-resolution candidates. `assets/prototype/enemy/<id>/remaster_v01/`
+contains the atlases, source manifest, retained artwork/provenance and a native
+`original_groups.tres` SpriteFrames preview. Its 10 fps preview speed is explicitly
+provisional; original DEF timing was not recovered.
+
+The portable `tools/art/castle_remaster.py` packs independent artwork. Registration
+uses one original-coordinate transform per creature and opaque source body bounds
+(alpha >160), excluding palette shadows. Target cells retain four columns,
+anchor(384,448), Pikeman 768x512 / others 768x640. Raw source pages are retained;
+rebuilds never rescale previously packed output. Individual poses and raw sources
+are Godot-ignored to avoid duplicate imports; group atlases remain importable.
+
+The existing seven actual enemy scenes/defaults now bind groups0/2/3/5 for
+movement/idle/hurt/death, group12 for front melee, and Archer/Monk group15 for
+shooting. The existing Sprite2D state playback and nine native Animation clocks
+continue owning execution. Only texture bindings and Pikeman's equivalent
+recovery-region addresses change; durations, markers, geometry, behavior and
+collision are preserved. The seven upgraded asset sets and additional OG groups
+are available for review without inventing actors, combat rules or gameplay
+states absent from the current catalog. Angel's ranged-numbered aliases do not
+create a shooting behavior.
+
+[Inventory and comparison viewer](art/remasters/castle-v01/README.md) contain the
+complete coverage and validation records. This is an implementation/art candidate,
+not user playtest acceptance or original-timing certification. Earlier art paths
+in historical amendment receipts below describe their earlier revisions.
+
 ## Player-X geometry and shared reaction ownership — October 22
 
 This exact user-approved reconciliation is based on committed `1141f574` in
@@ -1181,6 +1214,15 @@ index5 / 0.5s and end1.0s. Existing scripted Idle8fps, Walk9fps, captured-durati
 Hurt and Death8fps/terminal hold remain. Existing result-screen freezing is not
 changed to force death playback. Player art, AI, movement, SFX, reactions, shared
 settings, progression and Gym framing05 are preserved.
+
+The October 23 original-sequence repair changes only melee_swing's two recovery
+region keys: 0.8s samples existing atlas cell2 and 0.9s samples cell1. Cells6/7
+already duplicate4/3, so the ten visible pose positions now follow
+0,1,2,3,4,5,4,3,2,1 before the existing frame0 reset at1.0s. The v02 PNG bytes,
+native resource path, clock, markers and all AttackCast tracks remain unchanged.
+The existing private-animation clone/reload path applies this resource to the
+actual Pikeman; other Castle native clips retain their own resources. This is
+a playback repair, not a repaired master atlas or proof of original-game timing.
 
 The new illustration does not define collision reach. Its right full-thrust
 alpha edge projects to local x211 versus the unchanged query edge x96; the

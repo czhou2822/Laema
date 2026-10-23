@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "creature_id": "royal_griffin",
+  "artwork_origin": "New imagegen remaster drawings from original pose references; not recovered original hires masters. No low-resolution upscale is used as remaster output.",
+  "tool_calls": [
+    {
+      "generation_call": "rgIdentityResult",
+      "tool": "image_gen.imagegen",
+      "prompt": "Create one production-quality high-resolution game sprite of the ROYAL GRIFFIN upgrade from original Heroes of Might and Magic III. IMAGE ONE is the exact ORIGINAL Royal Griffin identity and idle pose authority: silver-white eagle head, throat, breast and long folded feather wings, green eye, ochre golden hooked beak, bright golden eagle foreclaws raised forward, brown lion hindquarters and tail. Do not turn it into the ordinary all-golden Griffin. IMAGE TWO is the existing base Griffin high-resolution paint style only: match its detailed hand-painted classic fantasy game rendering, clean dark definition, realistic layered feathers, warm lion fur and coherent directional lighting. Repaint the ORIGINAL Royal Griffin as a faithful polished remaster, keeping its exact proportions, folded wings and upright pose, facing RIGHT in three-quarter side view with both eagle foreclaws held raised, grounded lion hindfeet. Preserve the white/silver plumage and feather shapes of the first reference. One complete full-body isolated figure, ample transparent padding all sides, centered in a 768x768 square. True alpha transparency; no floor, no ground shadow, no background, no labels, no border, no additional characters. High resolution continuous painted detail, not enlarged pixel art.",
+      "transparent_background": true,
+      "original_generated_png": "_source/batch-90-3df38b61f104.png",
+      "original_generated_png_sha256": "3df38b61f1046c1c2b62676ee1d7d0228dc6bf4fcb6ac89fa08417928e3ee917",
+      "reference_guides": [
+        "_source/references/royal_griffin-og-identity.png",
+        "_source/references/royal_griffin-base-style.png"
+      ],
+      "appearance_identity_generation_call": null,
+      "status": "Used as identity or candidate pose artwork",
+      "notes": null
+    },
+    {
+      "generation_call": "rgBatch0Result",
+      "tool": "image_gen.imagegen",
+      "prompt": "Produce a transparent HIGH-RES ROYAL GRIFFIN ANIMATION SPRITE SHEET, exactly FOUR COLUMNS and TWO ROWS, eight equal square cells, matching IMAGE ONE's row-major eight poses ONE FOR ONE. This is faithful remastering, not a new pose selection. IMAGE ONE supplies exact wings, body angle, legs, claw position, head angle and tail shape for EACH CELL. IMAGE TWO supplies the already approved painted Royal Griffin appearance: silver-white eagle head/chest/wings, green eye, gold beak and front talons, brown lion hindquarters, silver claws. Use precisely that identity/rendering throughout. Top row cells1-3 are distinct flying wingbeats: cell1 body horizontal wingsstretched backward nearlyhorizontal; cell2 wings DOWN bigfeatherfan coveringbody; cell3 wings UP and back, bodyhorizontal. Toprow4 and bottomrow1-4 are distinct upright foldedwing idle/fidget frames matching corresponding guide. Preserve all subtle pose differences, do NOT replace them all with identity idle. Every figure complete and separately centered WITHIN its equalcell, no overlap acrosscells and ample transparent padding. Exactly 8figures arranged4x2; output canvas2048x1024. Detailed smooth hand-painted classic HoMM3 game art, crisp feather/fur definition, consistent lighting and size, not enlarged pixelart. No labels/numbers/gridlines/background/floor/shadows; true transparent alpha. Do not reproduce the dark original shadow from guide.",
+      "transparent_background": true,
+      "original_generated_png": "_source/batch-00-409b2414be9e.png",
+      "original_generated_png_sha256": "409b2414be9e69171a0189ea072fd422e8cb9ebc9311fe3af80ab1c349e9eaf6",
+      "reference_guides": [
+        "_source/references/batch-00-og-reference.png"
+      ],
+      "appearance_identity_generation_call": "rgIdentityResult",
+      "status": "Used as identity or candidate pose artwork",
+      "notes": null
+    },
+    {
+      "generation_call": "royal_griffin_1",
+      "tool": "image_gen.imagegen",
+      "prompt": "Create exactly EIGHT high-resolution ROYAL GRIFFIN animation frames arranged FOUR columns by TWO rows on transparent2048x1024canvas, one full figurepercell. IMAGE1 is the exact eight ORIGINAL poses, row-major. Follow each distinct body angle, wingfeatherposition, head lean, openbeak, claws/legs/tail. IMAGE2 is the highdetail remastered identity to use consistently, silverwhite feathers and head, greengreeneye, goldenbeak and foreclaws, brownlionhindquarters. Toprow:1 uprightidle;2 upright recoilingback headbackraised;3 headthrown upward/body leaningback,foreclawsraised;4 heavy recoil bentback with head thrown up and wing extended leftalmosthorizontal. Bottomrow:1 recoilwithwingback-left and headup;2 recoveringupright headright wingshalfopen;3 braceupright wingsslightlyspread;4 bodylower crouched wing swept upbackleft,foreclawsout. These are NOT identical idleframes; faithfullymatch corresponding referencecellexactly. Completefigureineachcell, nooverlap, comfortablepadding insideeverycell. Do notdraw guide'sdarkshadoworloosefeatherparticles. Match detailed painted fantasygame styleofIMAGE2, no pixelart/no nearestneighbor. No labels/numbers/gridlines/floor/background/shadows; true alphatransparency.",
+      "transparent_background": true,
+      "original_generated_png": "_source/batch-01-original-with-edge-issues.png",
+      "original_generated_png_sha256": "49e302199929acc253a5d23743a5c8cb581616c2150e38d55ec48510546efbda",
+      "reference_guides": [
+        "_source/references/batch-01-og-reference.png"
+      ],
+      "appearance_identity_generation_call": "rgIdentityResult",
+      "status": "Rejected crowded layout; superseded by rgBatch1Retry",
+      "notes": null
+    },
+    {
+      "generation_call": "royal_griffin_2",
+      "tool": "image_gen.imagegen",
+      "prompt": "Create RoyalGriffin defensive/death animation frames. Silverwhiteeaglehead chestwings, goldbeakforeclaws, brownlionhindquarters, exactidentityIMAGE2. Toprow1 guardingwithwingsraisedoutbackleft andclawsforward;top2 recoilingback headup and wingsspread;top3 violentheadthrownup wingsspread;top4 bodyfallingback,nearwingverticaloverhead,legsleftout,clawsraised. Bottom1 sidewaysfalling,tallwingup,bodypartiallyturnedaway;bottom2 bodycrumplingdown/headlowwingstillup;bottom3 low collapsealmosthorizontal bodyrolledleftwingup;bottom4 lyingonrightsidebodyalmosthorizontal,wingsdrapedlongtowardlowerleft,foreclawsextendedright. Thisisdeathfallprogression, notflying. Preserveeach ORIGINAL referenced pose, omit onlyshadowandlooseparticles. EXACTLY8figures arranged FOURcolumns and TWOrows equalcells on transparent2048x1024canvas, in row-major order matching IMAGE1. IMAGE2 supplies consistent alreadyremasteredidentity and paintedstyle. Original IMAGE1 is exactposeauthority percell: preserve bodyorientation, limb/wing/weaponangle and progression; notgeneric idlecopies. Highresolution smooth detailed classic fantasygameart, no enlargedpixelart. Smallfigures WITHINcells, MAX60%cellwidth and60%cellheight, minimum50transparentpixels allaroundeachcell, verywidecleartransparentgutters horizontalandvertical, nooverlap, nocanvasclipping. Completefigureswithallweapon/wingtipsinsideowncell. No labels/numbers/gridlines/floor/background/shadows/looseparticles; truealpha.",
+      "transparent_background": true,
+      "original_generated_png": "_source/batch-02-5fabeb3bcedf.png",
+      "original_generated_png_sha256": "5fabeb3bcedfc8d4b82255ae80fd715d31648bcd11c3559c76c30d29fd7c3e3f",
+      "reference_guides": [
+        "_source/references/batch-02-og-reference.png"
+      ],
+      "appearance_identity_generation_call": "rgIdentityResult",
+      "status": "Used as identity or candidate pose artwork",
+      "notes": null
+    },
+    {
+      "generation_call": "royal_griffin_3",
+      "tool": "image_gen.imagegen",
+      "prompt": "Remaster RoyalGriffin originaldeath/turn/upwardstrikeframes. White-silvereagleheadbodywings, greeneye goldenbeak/talons brownlionhindquarters. Toprow1 FINALDEADpose: lyingonRIGHTside, lowhorizontalcrumpled eagleandlion corpse,wingscollapsedacrossbody, headrestingleft-lowbeakrightgoldclawsright. Top2 uprightTURNhalfway towardviewer facealmostfront wingverticalleft;Top3 uprightFRONTALturn wingssymmetricallyraised facefront legsfront, notrightprofile;Top4 upwardattackwindup leanback headupwingshalfspread. Bottom1 bodylaunchupward and slightlyAWAYfromviewer, showbackleft, wingsspreadup-leftandup-right;bottom2 flyingup diagonalrightbacktowardviewer tailleftdown wingsVspread;bottom3 upwardlunge tilted backheadup wingsoutwide nearlyhorizontal;bottom4 upwardlunge mostlyBACKview, lionbacktowardviewerheadtiltedup-right hugefrontwing extendingright, bodyvertical. Followexactoriginalcameraangleandwingpositions; theyareturnandattackposesnotidles. EXACTLY8 full figures FOURcolumns x TWOrows, equalcells2048x1024 transparentcanvas, matching ORIGINAL IMAGE1 in rowmajororder. IMAGE2 isconsistent highresolutionpainted identity/style, exactsamegear/colors throughout. Primaryposeauthority IMAGE1, eachcell distinct; donotreplaceposeswithidentityidle. Smallfigures max60%cellwidthheight, at least50pixels transparentpaddingaroundeachfigure includingallwings/weapons/feet. Wide transparentgutters, nooverlap/noedgeclipping. Smoothhighdetail handpaintedclassicgameart,no enlargedpixels. No labels,gridlines,numbers,groundshadows,floor,backgroundorparticles. Truealpha.",
+      "transparent_background": true,
+      "original_generated_png": "_source/batch-03-56134bc91788.png",
+      "original_generated_png_sha256": "56134bc917886d0f25ae57121576f76ad007376d19204f354520433dc09c23de",
+      "reference_guides": [
+        "_source/references/batch-03-og-reference.png"
+      ],
+      "appearance_identity_generation_call": "rgIdentityResult",
+      "status": "Used as identity or candidate pose artwork",
+      "notes": null
+    },
+    {
+      "generation_call": "royal_griffin_4",
+      "tool": "image_gen.imagegen",
+      "prompt": "RemasterRoyalGriffinupwardattackrecovery+frontalattackframes. Identitysilverwhiteeagleheadbodywings greeneyegoldenbeak/foreclaws brownlionhindquarters. Top1 landing recovery nearwingfoldedverticalfrontbody,left hindlegback tailleft;top2 uprightrecovery foldedwings andheadright;top3 frontalattackwindup bodycrouchedwingsback;top4 wingsraisedsteepupbackleft headright legsbracedclawsforward. Bottom1 leapingFORWARDRIGHT withopenbeaknearwinghalfup bodyhorizontal;bottom2 greatestforwardhorizontalLUNGE openbeakneckstretchedright wingssweptback-left, foreclawsreachingfar-right, lionlegsstretchedbackleft;bottom3 forwardattackrecovery bodydiagonalrightdown, nearwingdownoverback;bottom4 nearlyuprightland bodylower nearwingdrapedverticalfront foreclawsforward. Matchsourcebodyanglesandwingsforeachframe. EXACTLY8 full characterposes FOURcolumns x TWOrows equalcells2048x1024 transparentcanvas, matching ORIGINAL IMAGE1 rowmajororder. IMAGE2 isconsistent highresolutionpainted identity/style, samegear/colors. FolloweachIMAGE1 poseexactly, especiallybodyangle andwing/weaponplacement; no genericidlecopies. Smallfigures max60%cellwidthheight, minimum50transparentpixelsaroundeachfigure inclallwings/weapons/feet. Wide transparentgutters, nooverlap,noedgeclipping. Highresolutiondetailedhandpaintedclassicgameart,no enlargedpixelart. No labels,gridlines,numbers,groundshadows,floor,backgroundorparticles. Truealpha.",
+      "transparent_background": true,
+      "original_generated_png": "_source/batch-04-b87fc3ab37ef.png",
+      "original_generated_png_sha256": "b87fc3ab37ef3422ee8d9bf1dc0cf17e4719adb64993924e0146866eb45235b0",
+      "reference_guides": [
+        "_source/references/batch-04-og-reference.png"
+      ],
+      "appearance_identity_generation_call": "rgIdentityResult",
+      "status": "Used as identity or candidate pose artwork",
+      "notes": null
+    },
+    {
+      "generation_call": "royal_griffin_5",
+      "tool": "image_gen.imagegen",
+      "prompt": "RoyalGriffin frontalattacklastrecovery/downwardattack. Silverwhiteeaglebodywingsgreenyegoldbeaktalonsbrownlionhindquarters. Top1 almostuprightnearwingfoldedverticalandclawsforward;top2 windupcrouchedheadangledDOWNrightwingshalfspread;top3 dippingbodytowardcamera headfrontdown wingsraisedupwideV;top4 DOWNWARDLUNGE atcamera-right bodyshortforeshortened angleddown, wingsspreadeither sidealmosthorizontal foreclawsreachingdown. Bottom1 mostforeshortenedDOWNWARDSTRIKE headlownearcamera clawsdownbelowface bodyhorizontalbackandtailup-left wingsoutstretchedhorizontalsides;bottom2 recoveringfromdownstrike headFRONTlow bodyrising wingshalfdown spreadleftandright clawsdownnearfeet;bottom3 headfront angleddown-right risingupright wingslooselyraisedandslightspread;bottom4 returnready facingright foldedwings verticalclawsforward. EXACTperspectivefromeachreference; notallrightprofile. EXACTLY8 completecharacterposes FOURcolumns x TWOrows equalcells2048x1024 transparentcanvas, matching ORIGINAL IMAGE1 rowmajororder. IMAGE2 isconsistent highresolutionpainted identity/style, samegear/colors. FolloweachIMAGE1 poseexactlyespeciallybodyorientationandwing/weaponplacement; no genericidlecopies. Smallfigures max55%cellwidthheight, minimum70transparentpixelsaroundeachfigure inclallwings/weapons/feet. Verywidecleartransparentgutters, nooverlap,noedgeclipping. Highresolutiondetailedhandpaintedclassicgameart,no enlargedpixelart. No labels,gridlines,numbers,groundshadows,floor,backgroundorparticles. Truealpha.",
+      "transparent_background": true,
+      "original_generated_png": "_source/batch-05-d957a51b0fb1.png",
+      "original_generated_png_sha256": "d957a51b0fb1723be61d4d3c6d441b7e41ad33e1bae855392486622d9c8465a6",
+      "reference_guides": [
+        "_source/references/batch-05-og-reference.png"
+      ],
+      "appearance_identity_generation_call": "rgIdentityResult",
+      "status": "Used as identity or candidate pose artwork",
+      "notes": null
+    },
+    {
+      "generation_call": "royal_griffin_6",
+      "tool": "image_gen.imagegen",
+      "prompt": "Create EXACTLYFIVE RoyalGriffin move-start/move-end frames: FOURtoprow, ONEbottomleft, otherTHREEbottomcellsEMPTYtransparent. Silverwhiteeagleheadwings goldbeaktalons brownlionhindquarters. Top1 crouchtakeoffwingsraisedoutback-left clawsforward feetgrounded;top2 wingstrokeupwideV bodyrisingfeetraised;top3 hoveringlift legsstretchedbackleft wingsupwideVforeclawsforward;top4 landingrecoverybodyuprightnearwingfoldedDOWNinfrontchestrightfootsteppingforward;bottomleft1 finalsettlerightprofilewingsfoldedbackverticalforeclawsraisedfeetbraced. Matchwingposition andfeet/taileachoriginalcell. Exactly5completefigures4top1bottomleft. EqualcellFOURcolumns x TWOrows layout2048x1024 transparentcanvas, rowmajor matching ORIGINAL IMAGE1 exactly. IMAGE2 isconsistent highresolutionpainted identity/style,samegear/colors. Followeachoriginalpose, especiallybodyangleandwing/weaponpositions, no genericidlecopies. FullfiguresSMALL withinowncell, max55%cellwidthheight, minimum70transparentpixelpaddingfromeachcellboundaryinclallwings/weapontipsfeet. Verywidecleartransparentgutters,nooverlap,noclipping. Highresolutionhandpaintedclassicgameart,nopixelart. No labels,gridlines,numbers,groundshadows,floor,backgroundorparticles. Truealpha.",
+      "transparent_background": true,
+      "original_generated_png": "_source/batch-06-76589497a6a5.png",
+      "original_generated_png_sha256": "76589497a6a50c98d5235a36bd68019e4e0a5b08868172a14896ebb8bd4a7822",
+      "reference_guides": [
+        "_source/references/batch-06-og-reference.png"
+      ],
+      "appearance_identity_generation_call": "rgIdentityResult",
+      "status": "Used as identity or candidate pose artwork",
+      "notes": null
+    },
+    {
+      "generation_call": "rgBatch1Retry",
+      "tool": "image_gen.imagegen",
+      "prompt": "Create exactly EIGHT high-resolution ROYAL GRIFFIN animation frames arranged FOUR columns by TWO rows on transparent2048x1024canvas, one full figurepercell. IMAGE1 is the exact eight ORIGINAL poses, row-major. Follow each distinct body angle, wingfeatherposition, head lean, openbeak, claws/legs/tail. IMAGE2 is the highdetail remastered identity to use consistently, silverwhite feathers and head, greengreeneye, goldenbeak and foreclaws, brownlionhindquarters. Toprow:1 uprightidle;2 upright recoilingback headbackraised;3 headthrown upward/body leaningback,foreclawsraised;4 heavy recoil bentback with head thrown up and wing extended leftalmosthorizontal. Bottomrow:1 recoilwithwingback-left and headup;2 recoveringupright headright wingshalfopen;3 braceupright wingsslightlyspread;4 bodylower crouched wing swept upbackleft,foreclawsout. These are NOT identical idleframes; faithfullymatch corresponding referencecellexactly. Completefigureineachcell, nooverlap, comfortablepadding insideeverycell. Do notdraw guide'sdarkshadoworloosefeatherparticles. Match detailed painted fantasygame styleofIMAGE2, no pixelart/no nearestneighbor. No labels/numbers/gridlines/floor/background/shadows; true alphatransparency.\nCRITICAL REGENERATION: All eight sprites must be SMALL within their equal cells. Set each complete figure bounding box to at most SIXTY PERCENT of the cell width and SIXTY PERCENT of cell height. A wide transparent gutter must visibly separate every neighbor horizontally AND vertically. Each figure has MINIMUM 50 transparent pixels of padding from every cell boundary, including wing tips, feet, beaks and claws. Do not fill the canvas with large figures. This sheet is intended for automatic safe slicing at exactly4x2 equal grid. All eight figures must fit fully, leaving large blank transparent margins, so nothing is clipped at the canvas edges. Do not enlarge the figures.",
+      "transparent_background": true,
+      "original_generated_png": "_source/batch-01-70453418a431.png",
+      "original_generated_png_sha256": "70453418a43185a59766fa9b566f16a1bcac59b3be1265e1b1da26b608a14db2",
+      "reference_guides": [
+        "_source/references/batch-01-og-reference.png"
+      ],
+      "appearance_identity_generation_call": "rgIdentityResult",
+      "status": "Used as identity or candidate pose artwork",
+      "notes": "Supersedes crowded first batch1 attempt; first source retained as rejected candidate."
+    }
+  ],
+  "review": {
+    "technical_coverage": "All original groups and frame positions built and independently validated by shared pipeline",
+    "visual_review": "All generated batch images compared to OG guides; overview of every registered pose inspected. Distinct walk/fidget/recoil/death/turn and directional attack poses present with upgraded colors/gear.",
+    "limitations": "Generated candidate art. Subtle pose, anatomy, micro-detail continuity and final gameplay playback still need human art acceptance. Original frame timings unavailable."
+  }
+}
