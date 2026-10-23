@@ -1,0 +1,100 @@
+{
+  "pose_id": "lich_p064",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "bb12ec70ad58a04b1dabf2f8aa1bee1833232fadd2c1012e642d4c9d0e043c77:162:158:83:108:450:400",
+  "original_representative": {
+    "group_id": 15,
+    "original_block": 14,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_15_block_14_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_15_block_14_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "clich03.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 10818,
+      "stored_size": 4104,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 83,
+      "height": 108,
+      "left": 162,
+      "top": 158,
+      "legacy_header": false,
+      "index_sha256": "bb12ec70ad58a04b1dabf2f8aa1bee1833232fadd2c1012e642d4c9d0e043c77"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-ranged-effects-a02-components.png",
+  "raw_sha256": "977af8e1d821144dcdb1f5d540950f18dff208c66e9430dccf82bae7340a83d1",
+  "prompt": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-ranged-effects-a02-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/lich/remaster_v01/_source/isolated/repair-ranged-effects-a02-components-lich_p064.png",
+  "isolated_sha256": "aeb2352ff423a57f9bedfefe227b59f28f6ed7039263d319dd6d75dd993c6c77",
+  "source_grid_region": [
+    72,
+    21,
+    307,
+    441
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p064.png",
+  "registered_pose_sha256": "4dfdaeace6b8c5e96a8b0ee3b1f71a1c0e8b33f6c4b8095eab7785a677c40df9",
+  "mirror_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p064_mirror.png",
+  "mirror_sha256": "0970674113e74ab2d4a32dad2adfed1b22120d2c69468596332b0985d74e2f58",
+  "registration": {
+    "source_body_rect": [
+      162,
+      158,
+      79,
+      108
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      309,
+      443
+    ],
+    "registered_rect": [
+      433,
+      241,
+      185,
+      266
+    ],
+    "uniform_artwork_fit": 0.6031746031746031
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Compared all twelve ranged-numbered drawings against original guides and target-pixel pairs. Original changing staff angle, single-hand extension, free arm and boot phases retained; repaired red staff-tip/body accents, including muted first lower-slot p066. No standalone projectile added. Static worker candidate review.",
+    "source_sha256_at_review": "4dfdaeace6b8c5e96a8b0ee3b1f71a1c0e8b33f6c4b8095eab7785a677c40df9",
+    "mirror_sha256_at_review": "0970674113e74ab2d4a32dad2adfed1b22120d2c69468596332b0985d74e2f58"
+  },
+  "human_animation_acceptance": false
+}

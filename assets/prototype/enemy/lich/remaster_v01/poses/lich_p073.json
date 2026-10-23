@@ -1,0 +1,100 @@
+{
+  "pose_id": "lich_p073",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "7b99540c635fe247639cd36227b7988a4783dc02671b98fba4a5b74a375dee69:178:166:39:101:450:400",
+  "original_representative": {
+    "group_id": 21,
+    "original_block": 17,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_21_block_17_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_21_block_17_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "clich65.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 226435,
+      "stored_size": 3389,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 39,
+      "height": 101,
+      "left": 178,
+      "top": 166,
+      "legacy_header": false,
+      "index_sha256": "7b99540c635fe247639cd36227b7988a4783dc02671b98fba4a5b74a375dee69"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-red-effects-a02-components.png",
+  "raw_sha256": "ba34674eeca8b33b82a8163341588044f0e1b76318d07032ed09640cb142153b",
+  "prompt": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-red-effects-a02-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/lich/remaster_v01/_source/isolated/repair-red-effects-a02-components-lich_p073.png",
+  "isolated_sha256": "1bda2027f7908966755d362f49a7868553c749618f324d4bab580197fb66928c",
+  "source_grid_region": [
+    1489,
+    459,
+    160,
+    410
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p073.png",
+  "registered_pose_sha256": "1aa81be262b2231a529d97575d67fe05c1b36ef5218f79032005dddfc1466160",
+  "mirror_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p073_mirror.png",
+  "mirror_sha256": "c773c6564745ef76dde38256cfce4d8d02ecc28bf9579f2c245c71be4c122850",
+  "registration": {
+    "source_body_rect": [
+      178,
+      166,
+      39,
+      101
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      162,
+      412
+    ],
+    "registered_rect": [
+      468,
+      264,
+      96,
+      246
+    ],
+    "uniform_artwork_fit": 0.6
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Compared both movement-end drawings after red-accent repair: vertical forward staff, free hand near waist and different planted/lifted front-boot phases, full tips and feet. Source red accents retained. Static worker candidate review.",
+    "source_sha256_at_review": "1aa81be262b2231a529d97575d67fe05c1b36ef5218f79032005dddfc1466160",
+    "mirror_sha256_at_review": "c773c6564745ef76dde38256cfce4d8d02ecc28bf9579f2c245c71be4c122850"
+  },
+  "human_animation_acceptance": false
+}
