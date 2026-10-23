@@ -72,6 +72,29 @@ func _run() -> void:
 	actor.feedback._flush_impacts()
 	check(cues.size() == 1, "pause rejects new cues")
 	paused = false
+	# C2 contrast is Weight-only and shares the existing accent transform/lifetime.
+	for treatment in ["precise", "weight"]:
+		options["impact_treatment"] = treatment
+		actor.feedback.clear_impact_feedback(true)
+		actor.feedback.accept_impact(result(actor, 3, 4))
+		actor.feedback._flush_impacts()
+		var accent: Node2D = actor.feedback._impact_entries[0]["node"]
+		if treatment == "precise":
+			check(accent.get_child_count() == 2 and not accent.has_node("WeightCenter"), "Precise stays unchanged")
+		else:
+			check(accent.get_child_count() == 5, "Weight retains wedge/two flecks plus edge/center")
+			var edge := accent.get_node("WeightEdge") as Polygon2D
+			var center := accent.get_node("WeightCenter") as Polygon2D
+			check(edge.color == Color.BLACK and center.color == Color.WHITE, "existing black/white palette only")
+			check(edge.polygon == PackedVector2Array([Vector2(-4, -3), Vector2(4, -3), Vector2(4, 3), Vector2(-4, 3)]), "8x6 outer edge gives 1px black border")
+			check(center.polygon == PackedVector2Array([Vector2(-3, -2), Vector2(3, -2), Vector2(3, 2), Vector2(-3, 2)]), "white center is 6x4px")
+			for shape in [edge, center]:
+				for point in shape.polygon:
+					check(point.length() <= 5.0, "rotated center/edge stays inside smallest 28px footprint")
+			check(is_equal_approx(float(actor.feedback._impact_entries[0]["duration"]), 0.11), "Weight keeps 110ms lifetime")
+			check(accent.scale == Vector2.ONE * 0.65, "Weight keeps initial expansion scale")
+		actor.feedback.clear_impact_feedback(true)
+		check(actor.feedback._impact_entries.is_empty(), "center and edge share normal cleanup")
 	for treatment in ["precise", "weight"]:
 		var weight: bool = treatment == "weight"
 		for polygon in FeedbackComponent.contact_polygons(weight):

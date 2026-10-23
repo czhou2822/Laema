@@ -180,6 +180,18 @@ func _spawn_contact(cue: Dictionary) -> void:
 			shape.vertex_colors = PackedColorArray([Color.WHITE, shape.color, shape.color, shape.color])
 			shape.color = Color.WHITE
 		accent.add_child(shape)
+	if weight:
+		# Fixed viewport pixels before the existing shared expansion/rotation/fade.
+		var edge := Polygon2D.new()
+		edge.name = "WeightEdge"
+		edge.polygon = PackedVector2Array([Vector2(-4, -3), Vector2(4, -3), Vector2(4, 3), Vector2(-4, 3)])
+		edge.color = Color.BLACK
+		accent.add_child(edge)
+		var center := Polygon2D.new()
+		center.name = "WeightCenter"
+		center.polygon = PackedVector2Array([Vector2(-3, -2), Vector2(3, -2), Vector2(3, 2), Vector2(-3, 2)])
+		center.color = Color.WHITE
+		accent.add_child(center)
 	accent.position = transform * Vector2(cue["point"])
 	accent.scale = Vector2.ONE * (0.65 if weight else 1.0)
 	_impact_entries.append({"node": accent, "point": cue["point"], "started": Time.get_ticks_msec(),
