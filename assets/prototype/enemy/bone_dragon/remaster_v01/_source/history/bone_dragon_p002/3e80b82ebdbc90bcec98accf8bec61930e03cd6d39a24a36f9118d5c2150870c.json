@@ -1,0 +1,98 @@
+{
+  "pose_id": "bone_dragon_p002",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "8b64d7fd3a4e60cd6334d2eae813c528dec6e2466e6258dcfb20c119283c2767:113:136:192:122:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cndrgn45.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 420328,
+      "stored_size": 8685,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 192,
+      "height": 122,
+      "left": 113,
+      "top": 136,
+      "legacy_header": false,
+      "index_sha256": "8b64d7fd3a4e60cd6334d2eae813c528dec6e2466e6258dcfb20c119283c2767"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p002-a03.png",
+  "raw_sha256": "3e80b82ebdbc90bcec98accf8bec61930e03cd6d39a24a36f9118d5c2150870c",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p002-a03.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/pilot-p002-a03-bone_dragon_p002.png",
+  "isolated_sha256": "c588a49e296d2fa4b863f1e58fbc528e712ded96f31abca750bafa7279146add",
+  "source_grid_region": [
+    0,
+    0,
+    1721,
+    914
+  ],
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p002.png",
+  "registered_pose_sha256": "cbd9988e431e65aaae82df26865d3344dd7ac21a4bc5d24f7af324ff75d99fb8",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p002_mirror.png",
+  "mirror_sha256": "63f9ec475b4c87549120624f7a28b780b668d09feaeb204e83bd8639ee4815e2",
+  "registration": {
+    "source_body_rect": [
+      124,
+      136,
+      181,
+      96
+    ],
+    "artwork_crop": [
+      68,
+      83,
+      1667,
+      845
+    ],
+    "registered_rect": [
+      335,
+      210,
+      446,
+      213
+    ],
+    "uniform_artwork_fit": 0.2789243277048155
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Pilot only. Inspected G0 F2 source, native 1:1 backprojection, registered comparison and 2x detail after a03. Distinct lower swept-back flight wings, four hanging limbs and S tail; a03 increases lower membrane overlap. No cropped extremities or visible floor/grid/shadow. Registered all-alpha padding L/T/R/B 335/210/243/345. Fidelity limitation remains: candidate height 213px versus source envelope about 237px; tail/body proportions and jaw opening remain interpretation, so further pose fidelity review is open before full animation lock. Worker-reviewed candidate only.",
+    "source_sha256_at_review": "cbd9988e431e65aaae82df26865d3344dd7ac21a4bc5d24f7af324ff75d99fb8",
+    "mirror_sha256_at_review": "63f9ec475b4c87549120624f7a28b780b668d09feaeb204e83bd8639ee4815e2"
+  },
+  "human_animation_acceptance": false
+}

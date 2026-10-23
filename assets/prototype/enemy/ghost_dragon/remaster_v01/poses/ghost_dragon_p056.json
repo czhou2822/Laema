@@ -1,0 +1,100 @@
+{
+  "pose_id": "ghost_dragon_p056",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "22c36558af65ab43874e476f0a029f6f25fecda9aee3b97314db40d81f9d7292:111:160:165:107:450:400",
+  "original_representative": {
+    "group_id": 20,
+    "original_block": 13,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_20_block_13_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_20_block_13_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "chdrgn41.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 396812,
+      "stored_size": 9871,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 165,
+      "height": 107,
+      "left": 111,
+      "top": 160,
+      "legacy_header": false,
+      "index_sha256": "22c36558af65ab43874e476f0a029f6f25fecda9aee3b97314db40d81f9d7292"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-007-v01.png",
+  "raw_sha256": "4b14edcce3581eeaa0081a3672ade3708f935ef1e741b37e3ee7b54808e6b26b",
+  "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-007-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/isolated/batch-007-v01-ghost_dragon_p056.png",
+  "isolated_sha256": "61130df85215d468894abb5a24b2527ef369e916a55f6f3a331d557fba467616",
+  "source_grid_region": [
+    16,
+    113,
+    422,
+    303
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p056.png",
+  "registered_pose_sha256": "309fd7bf22a5b5bf62f82cf56bcd84439da420925376728216b282b55dff6944",
+  "mirror_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p056_mirror.png",
+  "mirror_sha256": "4482ffb02927e8f444157a7494580c8a928ab38a04c7395550d5c72ddef6bde2",
+  "registration": {
+    "source_body_rect": [
+      118,
+      160,
+      158,
+      106
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      424,
+      305
+    ],
+    "registered_rect": [
+      332,
+      246,
+      364,
+      261
+    ],
+    "uniform_artwork_fit": 0.8613861386138614
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Movement crouch with lowered right head, draped wings and planted hind feet. Inspected OG guide, native-scale and registered comparisons, raw selected art and both-facing sequence frames. Candidate review only.",
+    "source_sha256_at_review": "309fd7bf22a5b5bf62f82cf56bcd84439da420925376728216b282b55dff6944",
+    "mirror_sha256_at_review": "4482ffb02927e8f444157a7494580c8a928ab38a04c7395550d5c72ddef6bde2"
+  },
+  "human_animation_acceptance": false
+}

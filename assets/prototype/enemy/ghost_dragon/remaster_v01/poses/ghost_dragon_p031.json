@@ -1,0 +1,100 @@
+{
+  "pose_id": "ghost_dragon_p031",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "2720a3e516a4c8e90ca203c62079c06b0dcc36cffb27374c5c93a6a2c001ab09:153:157:125:110:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "chdrgn24.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 242802,
+      "stored_size": 5794,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 125,
+      "height": 110,
+      "left": 153,
+      "top": 157,
+      "legacy_header": false,
+      "index_sha256": "2720a3e516a4c8e90ca203c62079c06b0dcc36cffb27374c5c93a6a2c001ab09"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-003-v01-bottom.png",
+  "raw_sha256": "2fd490427effe37f2bbe28f8841efc6d3bbc5b85621f6f181ed48713abf604af",
+  "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/batch-003-v01-bottom.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/isolated/batch-003-v01-bottom-ghost_dragon_p031.png",
+  "isolated_sha256": "7c74d30ab1147a3602585940ba1648bab60e916f3462dc25f9ba0001fe64bfca",
+  "source_grid_region": [
+    1332,
+    0,
+    444,
+    415
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p031.png",
+  "registered_pose_sha256": "107f0f4c576db29185d77bf19f315ee7283db1f577d8943934d7f93d505e23ca",
+  "mirror_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p031_mirror.png",
+  "mirror_sha256": "b2058567171ee3dc396ba0206646f6c636364a82e7a726daea46cbd4195567ac",
+  "registration": {
+    "source_body_rect": [
+      162,
+      157,
+      116,
+      110
+    ],
+    "artwork_crop": [
+      27,
+      20,
+      415,
+      397
+    ],
+    "registered_rect": [
+      432,
+      239,
+      279,
+      271
+    ],
+    "uniform_artwork_fit": 0.7188328912466844
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Lowering skull and more collapsed bones; detached pieces around the low mound remain visible. Inspected OG guide, native-scale and registered comparisons, raw selected art and both-facing sequence frames. Candidate review only.",
+    "source_sha256_at_review": "107f0f4c576db29185d77bf19f315ee7283db1f577d8943934d7f93d505e23ca",
+    "mirror_sha256_at_review": "b2058567171ee3dc396ba0206646f6c636364a82e7a726daea46cbd4195567ac"
+  },
+  "human_animation_acceptance": false
+}

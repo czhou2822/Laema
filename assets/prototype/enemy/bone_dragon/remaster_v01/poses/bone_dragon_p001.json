@@ -1,0 +1,100 @@
+{
+  "pose_id": "bone_dragon_p001",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "33d5b09c76c0b9b0dc31118e517002a23af7f6379a6d4b9d086cbd051102f3ae:115:106:190:154:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cndrgn44.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 409030,
+      "stored_size": 11266,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 190,
+      "height": 154,
+      "left": 115,
+      "top": 106,
+      "legacy_header": false,
+      "index_sha256": "33d5b09c76c0b9b0dc31118e517002a23af7f6379a6d4b9d086cbd051102f3ae"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-batch-000-a01.png",
+  "raw_sha256": "588c00a00193476b701ceee78740bb2a15cc0da23efb110db74edcd48beef41f",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-batch-000-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/full-batch-000-a01-bone_dragon_p001.png",
+  "isolated_sha256": "76539db4be0b10be84f2164c23f7318481712bc4ad16db87a44cdbc19bc66211",
+  "source_grid_region": [
+    19,
+    25,
+    436,
+    374
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p001.png",
+  "registered_pose_sha256": "4bd03d49f727e3f6c207eb408d5fd3f769f8df303d6d23571703acca89eaf896",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p001_mirror.png",
+  "mirror_sha256": "87a7a706bf4fdb11aafe3c934ca3f227e45b0ce0bbfb99dbe77aef15e2d3be9d",
+  "registration": {
+    "source_body_rect": [
+      128,
+      106,
+      177,
+      135
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      438,
+      376
+    ],
+    "registered_rect": [
+      369,
+      112,
+      388,
+      333
+    ],
+    "uniform_artwork_fit": 0.8903743315508021
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Flight: source upstrokes, rearward/downstroke wing phases, dangling feet and tail changes remain distinct in source order. Retained parent-confirmed p002 A06 far-wing repair (6ce2514eb8e4a25997ada878085dcdbe3efd781f6c5d81494745e0fb99a4f0f3), not the rejected shallow attempt. Final fixed-scale original/candidate pose comparisons, all source-ordered group contacts and offline decoded source/mirror GIF frames viewed. No known blocking anatomy, direction, order or clipping defect observed. Worker asset review only; no browser/Godot/human playback or original timing acceptance.",
+    "source_sha256_at_review": "4bd03d49f727e3f6c207eb408d5fd3f769f8df303d6d23571703acca89eaf896",
+    "mirror_sha256_at_review": "87a7a706bf4fdb11aafe3c934ca3f227e45b0ce0bbfb99dbe77aef15e2d3be9d"
+  },
+  "human_animation_acceptance": false
+}

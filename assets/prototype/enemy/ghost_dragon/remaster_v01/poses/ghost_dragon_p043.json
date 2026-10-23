@@ -1,0 +1,100 @@
+{
+  "pose_id": "ghost_dragon_p043",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "f38ed91a6764ea576e735644602f8506363ff3774a43dacc9726f24860db66e9:157:154:119:116:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 6,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 6,
+      "name": "chdrgn07.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 400,
+      "offset": 64818,
+      "stored_size": 9022,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 119,
+      "height": 116,
+      "left": 157,
+      "top": 154,
+      "legacy_header": false,
+      "index_sha256": "f38ed91a6764ea576e735644602f8506363ff3774a43dacc9726f24860db66e9"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-melee-tail-reach-v02-top.png",
+  "raw_sha256": "bc2f0e490609864e2d44dd03d2e4c6bf768f65845860978c9ca98dfffb7f243c",
+  "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-melee-tail-reach-v02-top.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/isolated/repair-melee-tail-reach-v02-top-ghost_dragon_p043.png",
+  "isolated_sha256": "55fd34309d9d53e2a4326fb4e358924b393e2af2cdda3f85d70c0782a8f55a5c",
+  "source_grid_region": [
+    927,
+    51,
+    419,
+    383
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p043.png",
+  "registered_pose_sha256": "0290870a6c15593628d029bb0d45beb1baa4666e8137ab0b0b96998aae938bef",
+  "mirror_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p043_mirror.png",
+  "mirror_sha256": "17b88f2d887613eebde1d3b26b6270b36e356996762b28fc6cdebec047e1bd79",
+  "registration": {
+    "source_body_rect": [
+      160,
+      154,
+      116,
+      113
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      421,
+      385
+    ],
+    "registered_rect": [
+      423,
+      249,
+      286,
+      261
+    ],
+    "uniform_artwork_fit": 0.6825775656324582
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Shared melee recovery pose with lowered right-facing skull and draped wing; low tail and stepping hind leg repaired. Inspected OG guide, native-scale and registered comparisons, raw selected art and both-facing sequence frames. Candidate review only.",
+    "source_sha256_at_review": "0290870a6c15593628d029bb0d45beb1baa4666e8137ab0b0b96998aae938bef",
+    "mirror_sha256_at_review": "17b88f2d887613eebde1d3b26b6270b36e356996762b28fc6cdebec047e1bd79"
+  },
+  "human_animation_acceptance": false
+}
