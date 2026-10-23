@@ -20,6 +20,20 @@ class TeardownArea:
 		return super.get_targets()
 
 
+class CameraArenaFixture:
+	extends "res://scripts/prototype/prototype_arena.gd"
+	func _ready() -> void:
+		pass # Exercise only the real camera lifecycle, not scene startup/gameplay.
+	func _process(_delta: float) -> void:
+		pass
+
+
+class QuietTuningBridge:
+	extends CombatTuningBridge
+	func _ready() -> void:
+		pass
+
+
 func _initialize() -> void:
 	call_deferred("_run")
 
@@ -157,8 +171,59 @@ func _run() -> void:
 	check(camera.offset == Vector2(4.0, 9.0), "detached teardown still restores only owned camera offset")
 	area.free()
 	arena.free()
+	_check_detached_camera_callback()
 	print("Impact feedback: %d checks, %d failures" % [checks, failures.size()])
 	quit(0 if failures.is_empty() else 1)
+
+
+func _check_detached_camera_callback() -> void:
+	var fixture := CameraArenaFixture.new()
+	var player_stub := Fighter.new()
+	player_stub.name = "Player"
+	for component in [HealthComponent.new(), HealthResolver.new(), Node.new(), HitReaction.new(), FeedbackComponent.new()]:
+		component.name = ["Health", "HealthResolver", "Status", "HitReaction", "Feedback"][player_stub.get_child_count()]
+		player_stub.add_child(component)
+	var bridge := QuietTuningBridge.new()
+	bridge.name = "CombatTuning"
+	player_stub.add_child(bridge)
+	fixture.add_child(player_stub)
+	for child_name in ["HUD", "PauseMenu"]:
+		var child := Node.new()
+		child.name = child_name
+		fixture.add_child(child)
+	var director := StageDirector.new()
+	director.name = "StageDirector"
+	fixture.add_child(director)
+	var areas := Node2D.new()
+	areas.name = "StageAreas"
+	fixture.add_child(areas)
+	var camera := Camera2D.new()
+	camera.name = "Camera2D"
+	fixture.add_child(camera)
+	for audio_name in ["AmbientAudio", "MusicAudio", "ProjectileImpactAudio"]:
+		var audio := AudioStreamPlayer.new()
+		audio.name = audio_name
+		fixture.add_child(audio)
+	root.add_child(fixture)
+	fixture._config = {"ui": {"impact_camera_enabled": true}}
+	camera.offset = Vector2(4, 9)
+	fixture._impact_camera_level = 4
+	fixture._impact_camera_treatment = "weight"
+	fixture._impact_camera_started = Time.get_ticks_msec() - 20
+	process_frame.connect(fixture._update_impact_camera)
+	check(fixture.is_inside_tree() and process_frame.is_connected(fixture._update_impact_camera), "valid arena owns process-frame callback")
+	fixture._update_impact_camera()
+	check(fixture._impact_camera_applied.length() > 0.0, "normal in-tree camera response still updates")
+	root.remove_child(fixture)
+	check(is_instance_valid(fixture) and not fixture.is_inside_tree(), "removed arena remains instance-valid but detached")
+	check(not process_frame.is_connected(fixture._update_impact_camera), "arena exit disconnects its owned process-frame callback")
+	check(camera.offset.is_equal_approx(Vector2(4, 9)), "normal exit restores only camera-owned offset")
+	camera.offset = Vector2(6, 10)
+	fixture._impact_camera_applied = Vector2(2, 1)
+	fixture._update_impact_camera()
+	check(camera.offset.is_equal_approx(Vector2(4, 9)), "late detached camera update restores contribution without querying tree")
+	check(fixture._impact_camera_started == -1, "detached callback clears transient timer")
+	fixture.free()
 
 
 func _legacy_label_position(actor: Entity, label: Label, offset: Vector2) -> Vector2:

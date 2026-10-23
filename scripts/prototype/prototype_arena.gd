@@ -590,6 +590,9 @@ static func impact_camera_pixels(age: float, level: int, direction: Vector2, tre
 
 
 func _update_impact_camera() -> void:
+	if not is_inside_tree():
+		_clear_impact_feedback()
+		return
 	if not is_instance_valid(transition_camera):
 		return
 	# Subtract only this cue's previous contribution, preserving other offsets.
@@ -633,4 +636,8 @@ func _clear_impact_feedback() -> void:
 
 
 func _exit_tree() -> void:
+	if is_inside_tree():
+		var tree := get_tree()
+		if tree.process_frame.is_connected(_update_impact_camera):
+			tree.process_frame.disconnect(_update_impact_camera)
 	_clear_impact_feedback()
