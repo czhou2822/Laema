@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p041",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "b478b176cf93da2a3b37ad73be581ca5b4d87cc9f176a72cf6645b13a7e57fbc:179:182:58:84:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 6,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 6,
+      "name": "cskele13.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 400,
+      "offset": 35438,
+      "stored_size": 2674,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 58,
+      "height": 84,
+      "left": 179,
+      "top": 182,
+      "legacy_header": false,
+      "index_sha256": "b478b176cf93da2a3b37ad73be581ca5b4d87cc9f176a72cf6645b13a7e57fbc"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-batch-004-a01.png",
+  "raw_sha256": "0ba6cbfcc25291c9dd276b90fc36b5a53644dfcbc6b5e93ca27bc555d1f4c225",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-batch-004-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/full-batch-004-a01-skeleton_p041.png",
+  "isolated_sha256": "e5fc96609d5b696ed12167696fcd07c1d534971cde2f263659c5ce975b1dcec7",
+  "source_grid_region": [
+    535,
+    474,
+    327,
+    404
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p041.png",
+  "registered_pose_sha256": "51440c03108054e2b3e004ee2046b4fe32e9ccc86da7af955ab8c3d4d9b41a97",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p041_mirror.png",
+  "mirror_sha256": "9e9a30e9aa082bed9818b4cf0f0f7599a3f04c7a471ac0155b96a44001de2c6d",
+  "registration": {
+    "source_body_rect": [
+      179,
+      182,
+      56,
+      84
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      329,
+      406
+    ],
+    "registered_rect": [
+      470,
+      337,
+      138,
+      170
+    ],
+    "uniform_artwork_fit": 0.42201834862385323
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected original and candidate at registered size and enlarged, plus both facings and source-order sequence. Upper-attack recovery keeps low forward hilt, steep up-right blade, bent rear empty arm and lifted stepping foot. Worker candidate review only; human motion acceptance and original timing unverified.",
+    "source_sha256_at_review": "51440c03108054e2b3e004ee2046b4fe32e9ccc86da7af955ab8c3d4d9b41a97",
+    "mirror_sha256_at_review": "9e9a30e9aa082bed9818b4cf0f0f7599a3f04c7a471ac0155b96a44001de2c6d"
+  },
+  "human_animation_acceptance": false
+}

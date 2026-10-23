@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p034",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "1138138a6b97579f1e409d6c43795f32db57bd567905f7cc47ae2638d15cb298:181:159:38:108:450:400",
+  "original_representative": {
+    "group_id": 7,
+    "original_block": 6,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_07_block_06_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_07_block_06_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cskele56.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 148012,
+      "stored_size": 2440,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 38,
+      "height": 108,
+      "left": 181,
+      "top": 159,
+      "legacy_header": false,
+      "index_sha256": "1138138a6b97579f1e409d6c43795f32db57bd567905f7cc47ae2638d15cb298"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/pilot-attack-turn-00-a01-components-c01.png",
+  "raw_sha256": "27341d3e0d8ac26922c9834632ef5ba8e8ff93af4d126c18ea397933e22b5068",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/pilot-attack-turn-00-a01-components-c01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/pilot-attack-turn-00-a01-components-c01-skeleton_p034.png",
+  "isolated_sha256": "54b28c871f0926d2a322e60edd97b80fcf751dd73c3549dcff00a7fa6f329b7e",
+  "source_grid_region": [
+    553,
+    8,
+    208,
+    442
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p034.png",
+  "registered_pose_sha256": "5ae5dc50d26ac62c17aff7ea91a8101716e9f8c014fd541cbf059dadd3c002be",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p034_mirror.png",
+  "mirror_sha256": "fc4053b11d537102206463275f70b5038b0bae4dd1acbb8932a511c5e11e7c9b",
+  "registration": {
+    "source_body_rect": [
+      181,
+      159,
+      38,
+      108
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      210,
+      444
+    ],
+    "registered_rect": [
+      475,
+      310,
+      94,
+      200
+    ],
+    "uniform_artwork_fit": 0.4519230769230769
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Reviewed source versus candidate at fixed registered scale and enlarged in both facings. Genuine frontal skull/ribs/pelvis and central vertical sword distinguish this turn from p033. Narrow source pixels do not resolve every finger overlap; rendered hilt is broader. Candidate review only.",
+    "source_sha256_at_review": "5ae5dc50d26ac62c17aff7ea91a8101716e9f8c014fd541cbf059dadd3c002be",
+    "mirror_sha256_at_review": "fc4053b11d537102206463275f70b5038b0bae4dd1acbb8932a511c5e11e7c9b"
+  },
+  "human_animation_acceptance": false
+}

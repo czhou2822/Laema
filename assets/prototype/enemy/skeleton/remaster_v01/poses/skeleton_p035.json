@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p035",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "f1b675715380bad440cec24321fe25b2c21de8e8ad4228af9cc88b89fbb7222c:156:181:62:85:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cskele01.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 2486,
+      "stored_size": 2561,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 62,
+      "height": 85,
+      "left": 156,
+      "top": 181,
+      "legacy_header": false,
+      "index_sha256": "f1b675715380bad440cec24321fe25b2c21de8e8ad4228af9cc88b89fbb7222c"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/pilot-attack-turn-00-a01-components-c01.png",
+  "raw_sha256": "27341d3e0d8ac26922c9834632ef5ba8e8ff93af4d126c18ea397933e22b5068",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/pilot-attack-turn-00-a01-components-c01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/pilot-attack-turn-00-a01-components-c01-skeleton_p035.png",
+  "isolated_sha256": "7c3491928481359bfd446754108a56b3e3b9cca7b8db6e87a3d41d324f1cc61b",
+  "source_grid_region": [
+    930,
+    58,
+    342,
+    390
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p035.png",
+  "registered_pose_sha256": "e570aadbe4584ef7f256e78d8216b4cee992c64f1654a5a7aca89b0d5d12c8c2",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p035_mirror.png",
+  "mirror_sha256": "c7e6ffdf7328bd18780736e91ec2cf533e99c9d6a2f155e2f5ab0db024d66ba2",
+  "registration": {
+    "source_body_rect": [
+      158,
+      181,
+      60,
+      85
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      344,
+      392
+    ],
+    "registered_rect": [
+      418,
+      338,
+      148,
+      169
+    ],
+    "uniform_artwork_fit": 0.4327485380116959
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Reviewed source and candidate at fixed scale and enlarged, both facings and attack entry. Sword arm drawn back at shoulder height, empty arm forward, front knee lifted; same anatomical sword hand. Aspect-fitted rendered silhouette is shorter/broader than source. Candidate review only.",
+    "source_sha256_at_review": "e570aadbe4584ef7f256e78d8216b4cee992c64f1654a5a7aca89b0d5d12c8c2",
+    "mirror_sha256_at_review": "c7e6ffdf7328bd18780736e91ec2cf533e99c9d6a2f155e2f5ab0db024d66ba2"
+  },
+  "human_animation_acceptance": false
+}

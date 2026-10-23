@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_warrior_p015",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "5c660cd0e8c40c7cf7319dc43ac27cec87c8c39533e006df4354c38a18c110b2:174:179:44:89:450:400",
+  "original_representative": {
+    "group_id": 2,
+    "original_block": 2,
+    "frame_index": 3,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWSKEL/group_02_block_02_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWSKEL/group_02_block_02_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 3,
+      "name": "cwskel35.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 0,
+      "offset": 111824,
+      "stored_size": 3599,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 44,
+      "height": 89,
+      "left": 174,
+      "top": 179,
+      "legacy_header": false,
+      "index_sha256": "5c660cd0e8c40c7cf7319dc43ac27cec87c8c39533e006df4354c38a18c110b2"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/raw/sw-b001-a01-cell-7.png",
+  "raw_sha256": "c591d7dc02abb8ac180465180140f2ad252095bfe5f480be28fee75f65d26487",
+  "prompt": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/raw/sw-b001-a01-cell-7.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/isolated/sw-b001-a01-cell-7-skeleton_warrior_p015.png",
+  "isolated_sha256": "c591d7dc02abb8ac180465180140f2ad252095bfe5f480be28fee75f65d26487",
+  "source_grid_region": [
+    0,
+    0,
+    444,
+    443
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/skeleton_warrior/remaster_v01/poses/skeleton_warrior_p015.png",
+  "registered_pose_sha256": "d55705682f019767b8df38f4e5ff4a995128df64dc6504f43f9e83b7af34c156",
+  "mirror_file": "assets/prototype/enemy/skeleton_warrior/remaster_v01/poses/skeleton_warrior_p015_mirror.png",
+  "mirror_sha256": "7dd32fe6ebc72b4160f6e4ef5c6d31bc5a43d28ee4aead144022727e5fd71765",
+  "registration": {
+    "source_body_rect": [
+      175,
+      180,
+      42,
+      87
+    ],
+    "artwork_crop": [
+      129,
+      37,
+      342,
+      420
+    ],
+    "registered_rect": [
+      460,
+      323,
+      104,
+      187
+    ],
+    "uniform_artwork_fit": 0.48826291079812206
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Idle variant: hand/torso contour variation remains distinct; no action substituted for the quiet stance. Inspected against OG in fixed registration contacts, enlarged comparison and exact mirror; static worker review only.",
+    "source_sha256_at_review": "d55705682f019767b8df38f4e5ff4a995128df64dc6504f43f9e83b7af34c156",
+    "mirror_sha256_at_review": "7dd32fe6ebc72b4160f6e4ef5c6d31bc5a43d28ee4aead144022727e5fd71765"
+  },
+  "human_animation_acceptance": false
+}

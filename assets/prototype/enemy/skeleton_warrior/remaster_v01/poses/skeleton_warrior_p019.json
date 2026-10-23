@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_warrior_p019",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "6c793e283c319a73621af5b038fd5d730185f9341cca669f87a3eec604afba4a:123:194:93:73:450:400",
+  "original_representative": {
+    "group_id": 3,
+    "original_block": 3,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWSKEL/group_03_block_03_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWSKEL/group_03_block_03_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cwskel51.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 160089,
+      "stored_size": 3052,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 93,
+      "height": 73,
+      "left": 123,
+      "top": 194,
+      "legacy_header": false,
+      "index_sha256": "6c793e283c319a73621af5b038fd5d730185f9341cca669f87a3eec604afba4a"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/raw/sw-gear-1-a01.png",
+  "raw_sha256": "f703b73488ecfabcb058d8f91bb33dfe2820209c36691358a27f70065434f045",
+  "prompt": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/raw/sw-gear-1-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/isolated/sw-gear-1-a01-skeleton_warrior_p019.png",
+  "isolated_sha256": "f5586de67174f5c2d55ad0c1fb948d9e27625fc7386117770cd2a4221e6ad963",
+  "source_grid_region": [
+    0,
+    0,
+    444,
+    444
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/skeleton_warrior/remaster_v01/poses/skeleton_warrior_p019.png",
+  "registered_pose_sha256": "b04c8e18768c780397af982da5b9e289ee76e415781f0599b1d4073d9b9f4ec8",
+  "mirror_file": "assets/prototype/enemy/skeleton_warrior/remaster_v01/poses/skeleton_warrior_p019_mirror.png",
+  "mirror_sha256": "0fea1482f60be8c1dd778f80133deefe01d0fcbfa85e2fbae41aa3d71955f98e",
+  "registration": {
+    "source_body_rect": [
+      127,
+      194,
+      89,
+      73
+    ],
+    "artwork_crop": [
+      70,
+      68,
+      416,
+      396
+    ],
+    "registered_rect": [
+      357,
+      330,
+      190,
+      180
+    ],
+    "uniform_artwork_fit": 0.5487804878048781
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Hurt recoil: backward/side torso and high leftward sword; equipment correction restores bare forearm. Inspected against OG in fixed registration contacts, enlarged comparison and exact mirror; static worker review only.",
+    "source_sha256_at_review": "b04c8e18768c780397af982da5b9e289ee76e415781f0599b1d4073d9b9f4ec8",
+    "mirror_sha256_at_review": "0fea1482f60be8c1dd778f80133deefe01d0fcbfa85e2fbae41aa3d71955f98e"
+  },
+  "human_animation_acceptance": false
+}

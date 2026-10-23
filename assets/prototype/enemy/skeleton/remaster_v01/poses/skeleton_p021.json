@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p021",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "3027b9c9faefe1bb634b6b64e78f1c6d91475412b57b1e64fceeb6a55350a1b9:180:204:59:63:450:400",
+  "original_representative": {
+    "group_id": 3,
+    "original_block": 3,
+    "frame_index": 4,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_03_block_03_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_03_block_03_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 4,
+      "name": "cskele53.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 400,
+      "offset": 141307,
+      "stored_size": 2075,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 59,
+      "height": 63,
+      "left": 180,
+      "top": 204,
+      "legacy_header": false,
+      "index_sha256": "3027b9c9faefe1bb634b6b64e78f1c6d91475412b57b1e64fceeb6a55350a1b9"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-batch-002-a01.png",
+  "raw_sha256": "65ea8a0ac929fb81a5df708de4c8579c8fa98a745cacfbf86c53dfdd772403e8",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-batch-002-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/full-batch-002-a01-skeleton_p021.png",
+  "isolated_sha256": "91e8bab402997e3a242100297c6bbbe2df855644657c0bb932f010181e98ed19",
+  "source_grid_region": [
+    494,
+    471,
+    362,
+    391
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p021.png",
+  "registered_pose_sha256": "f1319ec9383b37fd6a7fcc5bd93fbd24ec473ebbeec4362181353c39e67920a6",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p021_mirror.png",
+  "mirror_sha256": "22609ac74c4dcb1d51671b7d2d635e4c1b7acad386fc6bc117bde0806510cf45",
+  "registration": {
+    "source_body_rect": [
+      180,
+      204,
+      59,
+      63
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      364,
+      393
+    ],
+    "registered_rect": [
+      473,
+      355,
+      144,
+      155
+    ],
+    "uniform_artwork_fit": 0.39641943734015345
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected original and candidate at registered size and enlarged, plus both facings and source-order sequence. Deep forward hunch with low grip and shallow up-right blade; feet planted and free arm separate. Worker candidate review only; human motion acceptance and original timing unverified.",
+    "source_sha256_at_review": "f1319ec9383b37fd6a7fcc5bd93fbd24ec473ebbeec4362181353c39e67920a6",
+    "mirror_sha256_at_review": "22609ac74c4dcb1d51671b7d2d635e4c1b7acad386fc6bc117bde0806510cf45"
+  },
+  "human_animation_acceptance": false
+}

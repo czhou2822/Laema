@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p055",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "972f9e665416af97eaabc7e8c0ab3cbd9ae687822c395d37393563c3557bdc37:175:195:70:72:450:400",
+  "original_representative": {
+    "group_id": 21,
+    "original_block": 14,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_21_block_14_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_21_block_14_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cskele47.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 125870,
+      "stored_size": 2414,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 70,
+      "height": 72,
+      "left": 175,
+      "top": 195,
+      "legacy_header": false,
+      "index_sha256": "972f9e665416af97eaabc7e8c0ab3cbd9ae687822c395d37393563c3557bdc37"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-batch-005-a01.png",
+  "raw_sha256": "5ba3121dc14074d36ef439435c37ff0773137cf519c5647104ac6e8025f60ec0",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-batch-005-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/full-batch-005-a01-skeleton_p055.png",
+  "isolated_sha256": "9c7d992ed1c1925ed3fad69486ca040059d78b5b9e84e5b05e43ba25f4e6b925",
+  "source_grid_region": [
+    507,
+    467,
+    420,
+    384
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p055.png",
+  "registered_pose_sha256": "ec8c256d2e3ed18c840c545b44d895e97c0a043adc7ba6b445a07573abf9d62b",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p055_mirror.png",
+  "mirror_sha256": "ab7de60f965680be23c26f8a296e526cfc813e4c0922aa7f4851503e06b195e1",
+  "registration": {
+    "source_body_rect": [
+      175,
+      195,
+      70,
+      72
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      422,
+      386
+    ],
+    "registered_rect": [
+      460,
+      352,
+      173,
+      158
+    ],
+    "uniform_artwork_fit": 0.4119047619047619
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected original and candidate at registered size and enlarged, plus both facings and source-order sequence. Movement end begins with upward sword, forward knee and rear leg extended; complete tips and feet. Worker candidate review only; human motion acceptance and original timing unverified.",
+    "source_sha256_at_review": "ec8c256d2e3ed18c840c545b44d895e97c0a043adc7ba6b445a07573abf9d62b",
+    "mirror_sha256_at_review": "ab7de60f965680be23c26f8a296e526cfc813e4c0922aa7f4851503e06b195e1"
+  },
+  "human_animation_acceptance": false
+}
