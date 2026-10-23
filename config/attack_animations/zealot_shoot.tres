@@ -1,0 +1,53 @@
+[gd_resource type="Animation" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/zealot/highres_v01/Shoot.png" id="sheet"]
+
+[resource]
+resource_name = "monk_shoot"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.5
+}, {
+"name": &"timing_split",
+"time": 0.5
+}, {
+"name": &"active_end",
+"time": 0.625
+}, {
+"name": &"launch",
+"time": 0.5
+}]
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisual:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("sheet")]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisual:region_enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisual:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.071428571, 0.142857143, 0.214285714, 0.285714286, 0.357142857, 0.428571429, 0.5, 0.571428571, 0.642857143, 0.714285714, 0.785714286, 0.857142857, 0.928571429, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 768, 640), Rect2(768, 0, 768, 640), Rect2(1536, 0, 768, 640), Rect2(2304, 0, 768, 640), Rect2(0, 640, 768, 640), Rect2(768, 640, 768, 640), Rect2(1536, 640, 768, 640), Rect2(2304, 640, 768, 640), Rect2(0, 1280, 768, 640), Rect2(768, 1280, 768, 640), Rect2(1536, 1280, 768, 640), Rect2(2304, 1280, 768, 640), Rect2(0, 1920, 768, 640), Rect2(768, 1920, 768, 640), Rect2(0, 0, 768, 640)]
+}

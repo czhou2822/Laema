@@ -1,5 +1,62 @@
 # Implementation Status
 
+## Castle/Necropolis roster and number-row cycles — October 23
+
+Status: `AWAITING_USER_VALIDATION`. The user approved all fourteen Necropolis
+bindings and seven Castle upgrades, plus plain1–7 faction-base cycling and
+Shift+1–7 base/upgrade toggling within the selected faction. The three-step
+cycle is superseded. This candidate is local to the Art worktree based on
+42775d9e. The user subsequently authorized its local commit/merge into main and
+selected Art's remastered presentation and controls over the overlapping original-
+sprite/ranged-Lich draft. Preserve that superseded draft recoverably and leave
+unrelated research/department work unchanged. No push or engine run is authorized.
+
+- Added 21 inherited scenes and 23 native clips: fourteen Necropolis melee,
+  seven Castle upgrade melee and two upgrade shooting. The shared catalog now
+  supplies 28 IDs to both Portals/config validation. Pikeman remains the saved
+  default; preference format, selection/save/retry and restart owners are unchanged.
+- Necropolis uses the current grounded CombatEnemy/shared settings, including
+  Liches and winged creatures. Castle upgrades inherit their base actor's behavior;
+  Marksman retains Archer's arrow, Zealot retains Monk's bolt. No new ability,
+  flight, stat, behavior tree, projectile or combat rule. The original seven
+  Castle actors, their resources and combat tuning are unchanged.
+- Bound 70 existing Necropolis atlases in place and copied 37 selected Castle
+  upgrade atlases byte-for-byte. Seven provenance notes/manifests retain package
+  paths, source-index/manifest/PNG hashes, block IDs, geometry and frame counts.
+  Original drawings, complete collections and remaster validation are unchanged.
+- The existing PrototypeArena shortcut table owns all seven four-ID tier maps.
+  Plain presses alternate faction bases at that tier; entering from another
+  tier starts at Castle base. Either variant identifies its faction. Shift
+  preserves faction and toggles the requested pair; Shift+another tier selects
+  that faction's upgrade. There is no persistent cycle cursor or new setting.
+- Both paths use Spawn / Restart in Gym/Final Arena, not live-actor replacement.
+  Echo/release, Alt/Ctrl/Meta, numpad, pause/Portal, transition and missing
+  FinalEnemy safeguards remain; only Shift is newly permitted. D-pad selection,
+  practice targets, completion identity and Shift's defence binding are unchanged.
+  GDD, TDR and GYM/control guide record this final mapping and scope.
+
+Checks: standalone gdtoolkit4.5 grammar parsing passed for both changed scripts
+with caching disabled; this is not Godot type/import checking. Static inspection
+matched all 28 catalog IDs/seven tier mappings, 21 new scenes, 23 clips,
+151 external references, 107 atlas headers/SHA256 values and 790 selected source
+positions. State frame counts, attack frame order/bounds, resource IDs, actor
+inheritance, clocks/markers and nonvisual tracks matched their source data.
+No missing references/mismatches; `git diff --check` passed. Source tracing
+covered config validation, Portal options, selected ID, spawn, Gym retry metadata,
+Final Arena restart and Save ownership. No game code, Godot import/editor/runtime,
+build or automated tests were run.
+
+User validation after local integration into main: stop/rerun Gym, alternate faction bases
+with each plain number and toggle each faction's pair with Shift+that number.
+Check Shift+another tier, a plain press from an upgrade, held/numpad/modified
+keys and pause/open-unpaused-Portal safeguards. Confirm full reset, retry/save/
+relaunch, both facings, feet, hurt/death and attack frames; check the existing
+Marksman/Zealot ranged/close-melee paths and inherited projectiles. Repeat in
+Final Arena while retaining practice targets/completion. Large/mounted/winged
+bodies still use inherited collision, label/warning positions and temporary query
+geometry; alignment remains unverified. Appearance masters and isolated asset
+checks do not establish human motion, actor runtime, final art or original timing.
+
 ## Documentation update — attack feel reference, October 23
 
 Added [Laema attack feel guidelines](ATTACK_FEEL_GUIDELINES.md) from the user's
@@ -439,6 +496,9 @@ check range-to-melee choice, muzzle/bolt, wall collision, defence, interruption
 before/after launch and projectile cleanup.
 
 ## Creature number-row shortcuts — October 22
+
+Historical initial slice: the October23 candidate above supersedes this fixed
+seven-base mapping; its earlier evidence does not validate the expanded roster.
 
 Status: `AWAITING_USER_VALIDATION`. The user approved top-row **1 = Pikeman**,
 **2 = Archer**, **3 = Griffin**, followed by **4 = Swordsman**, **5 = Monk**,

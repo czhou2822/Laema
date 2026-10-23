@@ -156,6 +156,61 @@ roster. All four new actors leave their inherited Pikeman audio streams null;
 new SFX assignments remain open. Source/static checks establish no Godot import,
 runtime, final art, mounted/airborne presentation or contact-alignment approval.
 
+## Necropolis presentation bindings — October 23
+
+The user approved adding all fourteen published Necropolis remasters to the
+existing creature selector/restart flow. They use the same CombatEnemy scene,
+shared character Settings, behavior tree, grounded movement, reactions and
+collision contract. Liches do not use Archer's subclass; no new projectile,
+flight, ability, AI task or room profile is introduced. Castle execution stays
+unchanged. This is a presentation-selection candidate, not runtime acceptance.
+
+Each `scenes/enemy/<necropolis_id>.tscn` inherits `combat_enemy.tscn` and binds
+its own external `config/attack_animations/<necropolis_id>_melee.tres` under the
+existing `melee_swing` alias. IDs match the published folders under
+`assets/prototype/enemy/<necropolis_id>/remaster_v01/`; the catalog supplies both
+Portals and the existing config validator without changing preference format.
+
+Bindings read each source manifest's group0 movement, group2 idle, group3 hurt,
+group5 death and group12 front melee, including its actual original block alias
+and frame count. Atlases remain byte-identical. Four-column 1024x768 cells use
+scale1 and offset(0,-128), mapping anchor(512,512) to the existing BodyVisual
+origin. Existing facing reflection mirrors about that anchor. The shared body,
+label/warning positions and source-relative creature sizes are not retuned.
+
+Native melee resources preserve the current 1.0s clock, active0.5..1.0,
+timing_split0.5 and temporary AttackCast tracks; only the texture and source-frame
+rectangles differ. Each source frame receives one evenly spaced key, followed
+by the existing return-to-first-cell key at the end. Idle, movement, hurt and
+death use the existing CombatEnemy playback owners, not the art package's
+provisional 10fps SpriteFrames libraries. Neither scheme establishes original
+timing. `use_shared_melee_geometry` is false, following the non-Pikeman scenes;
+unassigned inherited Pikeman audio streams are null. Creature-specific contact,
+large-body collision and mounted/winged grounding remain user-review seams.
+
+The complete remaster collections, manifests, mirrors and offline validation
+evidence remain unchanged. Their isolated asset-fixture evidence is not evidence
+that these new actor scenes ran in Gym or Final Arena.
+
+The subsequent approved Castle upgrade extension adds seven inherited scenes:
+Halberdier -> CombatEnemy, Marksman -> Archer, Royal Griffin -> Griffin,
+Crusader -> Swordsman, Zealot -> Monk, Champion -> Cavalier and Archangel -> Angel.
+Their IDs are halberdier/marksman/royal_griffin/crusader/zealot/champion/archangel.
+All 28 IDs use the same catalog and existing preference/restart ownership.
+The original seven Castle scenes are unchanged.
+
+Castle upgrades bind 37 byte-identical selected atlases under each upgrade's
+highres_v01/: group0/2/3/5/12 for all seven, plus group15 for Marksman and Zealot.
+Per-creature source-manifest.json and PROVENANCE.md retain selected collection
+paths, index/manifest/PNG digests, original block IDs and frame counts.
+These use the existing 768x640/four-column/anchor(384,448) geometry and
+offset(0,-128). Seven native melee and two shooting resources retain their
+base actor's clocks, markers and query tracks while changing texture/frame
+rectangles only. Marksman retains the existing arrow; Zealot inherits the
+existing Monk bolt. No new ranged owner, projectile, AI or combat tuning is
+introduced. New upgrade audio remains unassigned. Human animation acceptance
+and Godot actor validation remain separate from selected-file verification.
+
 ## Creature roster amendment — October 22
 
 This scoped candidate adds Pikeman, Archer and Griffin to one selector without
@@ -189,12 +244,20 @@ The runtime Portal emits the spawn request; the editor sends the equivalent
 `spawn_creature` debugger command. Both call the arena's existing restart path.
 Training stages without a final-enemy slot reject that action with a message.
 
-PrototypeArena also owns physical top-row 1–7 creature shortcuts in
-`_unhandled_key_input`: Pikeman/Archer/Griffin/Swordsman/Monk/Cavalier/Angel
-route through the same
-`spawn_developer_creature` request and existing restart owner, with no new
-selection setting or live-actor mutation. Only fresh, unmodified key presses
-are accepted; echoes, releases and numpad keys are ignored. Shortcuts do not run
+PrototypeArena owns physical top-row 1–7 creature shortcuts in
+`_unhandled_key_input`. The October23 extension stores the seven tier mappings
+as Castle/Necropolis base-upgrade pairs in its existing shortcut table. Plain
+presses alternate faction bases at the selected tier; from a different tier
+they start at Castle base. Either variant identifies its faction when advancing.
+Shift+number locates the selected ID's faction across the table, then toggles
+the requested tier's pair: its selected upgrade returns to base, otherwise it
+selects that faction's upgrade. It never cycles factions. Thus Shift+another
+tier selects that faction's upgrade. No mutable cycle cursor, new config field
+or persistence policy is added; the selected creature ID remains the only state.
+
+Both paths call the same `spawn_developer_creature` request and existing restart
+owner, with no live-actor mutation. Fresh presses with optional Shift are
+accepted; Alt/Ctrl/Meta, echoes, releases and numpad keys are ignored. Shortcuts do not run
 while the Portal or pause menu is open, before an area exists, during transitions,
 or in training areas without `FinalEnemy`. Input-map setup removes the former 1–4
 school-key bindings, including stale bindings from an earlier arena in the same

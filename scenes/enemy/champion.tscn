@@ -1,0 +1,48 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemy/cavalier.tscn" id="base"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/champion/highres_v01/Idle.png" id="idle"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/champion/highres_v01/Walk.png" id="walk"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/champion/highres_v01/Hurt.png" id="hurt"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/champion/highres_v01/Dead.png" id="dead"]
+[ext_resource type="Animation" path="res://config/attack_animations/champion_melee.tres" id="melee"]
+
+[sub_resource type="AnimationLibrary" id="animations"]
+_data = {
+&"melee_swing": ExtResource("melee")
+}
+
+[node name="Champion" instance=ExtResource("base")]
+idle_texture = ExtResource("idle")
+walk_texture = ExtResource("walk")
+dead_texture = ExtResource("dead")
+hurt_texture = ExtResource("hurt")
+sheet_cell_size = Vector2(768, 640)
+sheet_columns = 4
+idle_frames = 4
+walk_frames = 8
+dead_frames = 8
+hurt_frames = 8
+mirror_sprite_offset = true
+use_shared_melee_geometry = false
+
+[node name="BodyVisual" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("idle")
+offset = Vector2(0, -128)
+region_rect = Rect2(0, 0, 768, 640)
+
+[node name="HitReactionAudio" parent="." index="9"]
+stream = null
+
+[node name="AnimationPlayer" parent="." index="15"]
+libraries/ = SubResource("animations")
+
+[node name="PikemanAttackAudio" parent="."]
+stream = null
+
+[node name="PikemanDeathAudio" parent="."]
+stream = null
+
+[node name="PikemanMovementAudio" parent="."]
+stream = null

@@ -1,0 +1,48 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemy/combat_enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/skeleton/remaster_v01/group_02_block_02.png" id="2_idle"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/skeleton/remaster_v01/group_00_block_00.png" id="3_walk"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/skeleton/remaster_v01/group_03_block_03.png" id="4_hurt"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/skeleton/remaster_v01/group_05_block_05.png" id="5_dead"]
+[ext_resource type="Animation" path="res://config/attack_animations/skeleton_melee.tres" id="6_attack"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_skeleton"]
+_data = {
+&"melee_swing": ExtResource("6_attack")
+}
+
+[node name="Skeleton" instance=ExtResource("1_base")]
+idle_texture = ExtResource("2_idle")
+walk_texture = ExtResource("3_walk")
+dead_texture = ExtResource("5_dead")
+hurt_texture = ExtResource("4_hurt")
+sheet_cell_size = Vector2(1024, 768)
+sheet_columns = 4
+idle_frames = 8
+walk_frames = 8
+dead_frames = 6
+hurt_frames = 6
+mirror_sprite_offset = true
+use_shared_melee_geometry = false
+
+[node name="BodyVisual" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_idle")
+offset = Vector2(0, -128)
+region_rect = Rect2(0, 0, 1024, 768)
+
+[node name="HitReactionAudio" parent="." index="9"]
+stream = null
+
+[node name="AnimationPlayer" parent="." index="15"]
+libraries/ = SubResource("AnimationLibrary_skeleton")
+
+[node name="PikemanAttackAudio" parent="."]
+stream = null
+
+[node name="PikemanDeathAudio" parent="."]
+stream = null
+
+[node name="PikemanMovementAudio" parent="."]
+stream = null

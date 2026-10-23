@@ -1,0 +1,83 @@
+[gd_resource type="Animation" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/bone_dragon/remaster_v01/group_12_block_11.png" id="1_sheet"]
+
+[resource]
+resource_name = "melee_swing"
+length = 1.0
+markers = [{
+"name": &"active_start",
+"time": 0.5
+}, {
+"name": &"timing_split",
+"time": 0.5
+}, {
+"name": &"active_end",
+"time": 1.0
+}]
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisual:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_sheet")]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisual:region_enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisual:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.142857143, 0.285714286, 0.428571429, 0.571428571, 0.714285714, 0.857142857, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 1024, 768), Rect2(1024, 0, 1024, 768), Rect2(2048, 0, 1024, 768), Rect2(3072, 0, 1024, 768), Rect2(0, 768, 1024, 768), Rect2(1024, 768, 1024, 768), Rect2(2048, 768, 1024, 768), Rect2(0, 0, 1024, 768)]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackCast:position")
+tracks/3/interp = 0
+tracks/3/loop_wrap = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(11.9843047, -113.2051826), Vector2(17.8984938, -102.4647883), Vector2(25.3914051, -92.6330118), Vector2(26.5096277, -82.375711), Vector2(42.8478039, -68.342829), Vector2(58, -67), Vector2(42.8499509, -68.3334447), Vector2(25.4808127, -80.4414529), Vector2(24.0619689, -101.221253), Vector2(11.9843047, -113.2051826), Vector2(11.9843047, -113.2051826)]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AttackCast:target_position")
+tracks/4/interp = 0
+tracks/4/loop_wrap = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(37.0313907, -64.5896349), Vector2(72.2030123, -51.0704234), Vector2(75.2171898, -36.7339764), Vector2(97.9807446, -42.248578), Vector2(123.3043922, -28.3143419), Vector2(147, 0), Vector2(124.3000982, -28.3331106), Vector2(99.0383746, -44.1170942), Vector2(77.8760621, -49.5574941), Vector2(37.0313907, -64.5896349), Vector2(37.0313907, -64.5896349)]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AttackCast:shape:radius")
+tracks/5/interp = 0
+tracks/5/loop_wrap = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+}

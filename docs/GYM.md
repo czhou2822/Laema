@@ -35,13 +35,8 @@ Controls retain the current implementation:
 | Fire parry / hold to block | R1 | Shift |
 | Fire dodge | Circle | No keyboard default |
 | Pause / retry menu | Start | Esc |
-| Spawn / Restart with Pikeman | No controller shortcut | Top-row 1 |
-| Spawn / Restart with Castle Archer | No controller shortcut | Top-row 2 |
-| Spawn / Restart with Castle Griffin | No controller shortcut | Top-row 3 |
-| Spawn / Restart with Castle Swordsman | No controller shortcut | Top-row 4 |
-| Spawn / Restart with Castle Monk | No controller shortcut | Top-row 5 |
-| Spawn / Restart with Castle Cavalier | No controller shortcut | Top-row 6 |
-| Spawn / Restart with Castle Angel | No controller shortcut | Top-row 7 |
+| Cycle Castle/Necropolis base at tier 1–7; Spawn / Restart | No controller shortcut | Top-row 1–7 |
+| Toggle base/upgraded within selected faction; Spawn / Restart | No controller shortcut | Shift + top-row 1–7 |
 
 School selection uses the controller D-pad just as it does in the Arena. The
 former 1–4 keyboard school-selection defaults have been removed.
@@ -49,24 +44,49 @@ Casting uses the shared L2 binding. R1 is defence; Fire uses the October 21 pres
 
 ## Choose an opponent
 
-During play, use the physical top-row keys: **1 = Pikeman**, **2 = Archer**,
-**3 = Griffin**, **4 = Swordsman**, **5 = Monk**, **6 = Cavalier**, **7 = Angel**.
-Each fresh, unmodified press uses the same
+Roster and number-row controls updated October23; runtime validation pending.
+
+During play, each physical top-row number identifies one tier:
+
+| Number | Castle base / upgrade | Necropolis base / upgrade |
+| --- | --- | --- |
+| 1 | Pikeman / Halberdier | Skeleton / Skeleton Warrior |
+| 2 | Archer / Marksman | Walking Dead / Zombie |
+| 3 | Griffin / Royal Griffin | Wight / Wraith |
+| 4 | Swordsman / Crusader | Vampire / Vampire Lord |
+| 5 | Monk / Zealot | Lich / Power Lich |
+| 6 | Cavalier / Champion | Black Knight / Dread Knight |
+| 7 | Angel / Archangel | Bone Dragon / Ghost Dragon |
+
+Press a number repeatedly to alternate Castle/Necropolis **bases** at that tier.
+From another tier, the first plain press selects Castle base. A plain press
+from an upgrade advances to the other faction's base at that tier.
+Hold Shift and press that number to toggle base ↔ upgrade **within the selected
+faction**, without advancing factions. Shift+another number selects the selected
+faction's upgrade at that tier. For example: Pikeman → Shift+1 → Halberdier →
+Shift+1 → Pikeman → 1 → Skeleton → Shift+1 → Skeleton Warrior → 1 → Pikeman.
+This replaces the earlier proposed three-step cycle.
+
+Each fresh press, plain or with Shift, uses the same
 **Spawn / Restart** action below, including full Health, empty orbs, zero Heat
 and reset actions/positions. Holding the key does not repeat. Close the pause
 menu and Dev Portal first; shortcuts stay inactive while either is open, even
-if the Portal has unpaused play. Numpad keys are not shortcuts. The choice is
+if the Portal has unpaused play. Alt/Ctrl/Meta and numpad keys are not shortcuts.
+Shift's separate keyboard-defence binding is otherwise unchanged. The choice is
 run-only until Save Tuning, and no new creature behavior or tuning is added.
 
-All seven base Castle creatures share the Dev Portal's **Creature to spawn**
-choice: Pikeman, Archer, Griffin, Swordsman, Monk, Cavalier and Angel.
+All 28 creatures above share the Dev Portal's **Creature to spawn** choice.
 The saved default remains Pikeman; the room still
 contains one opponent at a time. Griffin currently uses the existing grounded
 melee behavior. Archer shoots at range and has a separate close-range melee.
 The added level4 Swordsman, level6 Cavalier and level7 Angel use the current
 grounded melee prototype; level5 Monk uses the existing ranged/close-melee
 pattern with its own bolt visual. Their character sheets are the existing
-high-resolution candidates. Stop and rerun Gym before selecting a new creature.
+high-resolution candidates. Castle upgrades inherit their base actor's behavior;
+Marksman keeps Archer's arrow, and Zealot keeps Monk's bolt. All fourteen
+Necropolis choices use the existing grounded-melee stand-in behavior, including
+Liches and winged creatures. No new creature ability, flight, stat or original
+game timing is added. Stop and rerun Gym to load the new scenes/resources.
 
 1. Open the in-game Dev Portal with backtick and select **General**.
 2. Under the UI fields, set **Creature to spawn**.

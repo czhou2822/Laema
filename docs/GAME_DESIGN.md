@@ -18,7 +18,7 @@ Current design, consolidated October 20, 2026. Implementation candidates and sco
 
 [Pre-housekeeping document](history/2026-10-20-document-housekeeping/sources/docs/GAME_DESIGN.md) preserves earlier wording, superseded rules, experiment reports and the detailed validation checklist. Historical snapshots are not current requirements.
 
-## Selectable combat creatures — October 22
+## Selectable combat creatures — October 22–23
 
 **Decision:** Add the Castle Griffin alongside Pikeman as a selectable opponent,
 using the existing grounded approach, committed melee attack, shared combat
@@ -34,7 +34,7 @@ prototype. Monk reuses Archer's ranged and close-melee pattern. All four retain
 the current shared character settings and hit-reaction behavior.
 
 The Gym still contains one attacking opponent at a time. **Creature to spawn**
-chooses Pikeman, Archer, Griffin, Swordsman, Monk, Cavalier or Angel;
+chooses any of the 28 Castle/Necropolis base and upgraded creatures listed below;
 **Spawn / Restart** starts a fresh encounter
 with that choice, resetting fighters, Health, orbs, Heat and actions through the
 existing restart flow. Choosing a different creature does not change an attack
@@ -42,6 +42,49 @@ already in progress. Retry retains the chosen creature; Save Tuning remembers
 the choice for subsequent launches. Final Arena uses the same selected opponent
 in its existing final-enemy slot, preserving its completion objective and
 separate practice targets. Pikeman remains the saved default.
+
+**Decision — Necropolis presentation, October 23:** add Skeleton, Skeleton
+Warrior, Walking Dead, Zombie, Wight, Wraith, Vampire, Vampire Lord, Lich,
+Power Lich, Black Knight, Dread Knight, Bone Dragon and Ghost Dragon to this
+same selector and fresh-encounter flow. All fourteen use the existing grounded
+CombatEnemy melee behavior and shared settings for this prototype, including
+the Liches and winged creatures. This does not add ranged spells, flight,
+resurrection, life drain, creature abilities or new AI. Existing Castle behavior
+is unchanged; the room still has only one attacking opponent.
+
+Necropolis presentation uses the published remaster's movement, idle, hurt,
+death and front-melee source groups. Other retained source sequences are not
+new gameplay actions. Appearance masters are approved references; generated
+motion, creature-specific timing, hit alignment and balance remain separate
+review items. No original Heroes III timing is asserted by this binding.
+
+**Decision — Castle upgrades and keyboard selection, October 23:** also add
+Halberdier, Marksman, Royal Griffin, Crusader, Zealot, Champion and Archangel
+using their existing generated animation candidates. Each inherits its Castle
+base actor's existing behavior/shared settings; Marksman retains Archer's
+ranged/close-melee pattern and arrow, and Zealot retains Monk's pattern and bolt.
+The remaining upgrades retain grounded melee. No upgrade grants new abilities,
+flight, stats, combat rules or original-game timing.
+
+| Tier / number | Castle base / upgrade | Necropolis base / upgrade |
+| --- | --- | --- |
+| 1 | Pikeman / Halberdier | Skeleton / Skeleton Warrior |
+| 2 | Archer / Marksman | Walking Dead / Zombie |
+| 3 | Griffin / Royal Griffin | Wight / Wraith |
+| 4 | Swordsman / Crusader | Vampire / Vampire Lord |
+| 5 | Monk / Zealot | Lich / Power Lich |
+| 6 | Cavalier / Champion | Black Knight / Dread Knight |
+| 7 | Angel / Archangel | Bone Dragon / Ghost Dragon |
+
+Plain top-row 1–7 cycles Castle ↔ Necropolis **base** creatures at that tier.
+From another tier, the first press selects that tier's Castle base; subsequent
+presses alternate the two faction bases. An upgrade at that tier counts as its
+faction when advancing, and a plain press always returns a base creature.
+Shift plus the same number toggles base ↔ upgraded within the selected faction;
+it never advances factions. Shift plus another tier selects that faction's
+upgrade at the requested tier. Both operations restart the encounter through
+the existing owner rather than replacing an active actor in place.
+This supersedes the proposed three-step Castle/base-Necropolis/upgraded cycle.
 
 The current presentation candidate uses the existing high-resolution Castle
 animation review sheets for Archer, Griffin, Swordsman, Monk, Cavalier and Angel,
@@ -266,22 +309,19 @@ remaining editor/runtime evidence are recorded in IMPLEMENTATION_STATUS.md.
 | R1 | Use the active school’s available defence |
 | Circle | Dodge while using Fire |
 | Start / Esc | Pause or resume through the pause menu |
-| Top-row 1 | Spawn / Restart with Pikeman in Gym or Final Arena |
-| Top-row 2 | Spawn / Restart with Castle Archer in Gym or Final Arena |
-| Top-row 3 | Spawn / Restart with Castle Griffin in Gym or Final Arena |
-| Top-row 4 | Spawn / Restart with Castle Swordsman in Gym or Final Arena |
-| Top-row 5 | Spawn / Restart with Castle Monk in Gym or Final Arena |
-| Top-row 6 | Spawn / Restart with Castle Cavalier in Gym or Final Arena |
-| Top-row 7 | Spawn / Restart with Castle Angel in Gym or Final Arena |
+| Top-row 1–7 | Cycle Castle/Necropolis base creatures at the corresponding tier; Spawn / Restart |
+| Shift + top-row 1–7 | Toggle base/upgraded at that tier within the selected faction; Spawn / Restart |
 
-**Keyboard decision — October 22:** physical top-row keys 1–7 select the seven
-opponents through the existing fresh-encounter restart, not
-an in-place replacement. The former 1–4 keyboard school-selection defaults are
-removed; controller D-pad school selection is unchanged. Each fresh press starts
-one restart; holding a key does not repeat it. These shortcuts are inactive while
-the pause menu or Dev Portal is open, including when the Portal leaves play
-unpaused. Numpad keys are not bound. Selection remains run-only until Save Tuning;
-the existing restart resets fighters, Health, orbs, Heat and actions.
+**Keyboard decision — October 23:** physical top-row keys 1–7 use the tier/faction
+mapping above through the existing fresh-encounter restart, not an in-place
+replacement. The former 1–4 keyboard school-selection defaults remain removed;
+controller D-pad school selection is unchanged. Each fresh press starts one
+restart; holding a key does not repeat it. Alt/Ctrl/Meta combinations and numpad
+keys are not bound. Shortcuts are inactive while the pause menu or Dev Portal
+is open, including when the Portal leaves play unpaused, during transitions
+and in training areas without the final-enemy slot. Selection remains run-only
+until Save Tuning; restart resets fighters, Health, positions, orbs, Heat and
+actions. Shift's existing keyboard-defence binding is otherwise unchanged.
 
 Laema is affected by gravity and remains grounded on solid collision. Every current stage area uses the same continuous flat ground height, and adjacent ground sections overlap at stage boundaries so transitions do not introduce a gap. The camera follows Laema horizontally while preserving fixed vertical framing.
 
