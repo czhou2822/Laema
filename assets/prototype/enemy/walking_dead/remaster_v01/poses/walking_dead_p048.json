@@ -1,0 +1,100 @@
+{
+  "pose_id": "walking_dead_p048",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "c968176d4404f5834f8e29b0b4a17eab662e11376ec8d50da730682c041c92da:181:196:78:70:450:400",
+  "original_representative": {
+    "group_id": 12,
+    "original_block": 11,
+    "frame_index": 3,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_12_block_11_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_12_block_11_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 3,
+      "name": "Czombi37.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 0,
+      "offset": 104561,
+      "stored_size": 2464,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 78,
+      "height": 70,
+      "left": 181,
+      "top": 196,
+      "legacy_header": false,
+      "index_sha256": "c968176d4404f5834f8e29b0b4a17eab662e11376ec8d50da730682c041c92da"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/production-006-v01-components.png",
+  "raw_sha256": "938a2a1f9ca64054d44b1800d5c30a2844b86ee8305fe382137d5dd9e4640e0c",
+  "prompt": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/production-006-v01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/isolated/production-006-v01-components-walking_dead_p048.png",
+  "isolated_sha256": "e4bcd66126b5f88900f7fbfd24a7f63b89fce164430863fd0232124094422039",
+  "source_grid_region": [
+    28,
+    28,
+    424,
+    395
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p048.png",
+  "registered_pose_sha256": "bcd9037ed00927766473082e887d8f8b1699737b6a60496020952021a1144f75",
+  "mirror_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p048_mirror.png",
+  "mirror_sha256": "05db6fa09614533146ada14a99207da232bf4d1ddfa4f409acfd5b8d11134f4c",
+  "registration": {
+    "source_body_rect": [
+      181,
+      196,
+      76,
+      70
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      426,
+      397
+    ],
+    "registered_rect": [
+      476,
+      334,
+      186,
+      173
+    ],
+    "uniform_artwork_fit": 0.4379746835443038
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Front melee forward stroke extends cleaver horizontally and leans body forward; skeletal hand foreshortened near thigh. Static OG/candidate and both-facing frame inspection only; candidate, not human animation acceptance.",
+    "source_sha256_at_review": "bcd9037ed00927766473082e887d8f8b1699737b6a60496020952021a1144f75",
+    "mirror_sha256_at_review": "05db6fa09614533146ada14a99207da232bf4d1ddfa4f409acfd5b8d11134f4c"
+  },
+  "human_animation_acceptance": false
+}

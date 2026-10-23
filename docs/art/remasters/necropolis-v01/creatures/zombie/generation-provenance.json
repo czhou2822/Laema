@@ -1,0 +1,308 @@
+{
+  "creature_id": "zombie",
+  "attempts": [
+    {
+      "attempt": "batch-000-a",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/zombie/master_rgba.png",
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/guides/batch-000.png"
+      ],
+      "prompt_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/prompts/batch-000-a.txt",
+      "raw_project_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/batch-000-a.png",
+      "returned_response_keys": [
+        "image_url",
+        "output_hint"
+      ],
+      "returned_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39 as C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39\\exec-44f34332-be3b-4a23-9fc7-8001a425a212.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "image_url_storage": "Returned PNG is retained byte-for-byte; data URL is represented by raw PNG bytes, not duplicated in JSON.",
+      "ingestion": "strict components",
+      "prior_rejection": "Rectangular adaptive gutter: Figure touches raw/grid boundary: zombie_p001",
+      "exact_prompt_sent": "Use case: stylized-concept\nAsset type: production game animation sprite page, one Zombie creature in separate complete poses.\nInput image 1: the user-approved high-resolution Zombie master; appearance, costume, anatomy, color, texture, materials and weapon identity ONLY.\nInput image 2: the actual original CZOMLO pose guide; EXACT pose, body rotation, view, limb placement, foot placement, hand grip and hammer direction for EACH corresponding row-major figure. Re-draw these exact original poses with the master appearance. Do not copy the master's static stance onto other motions.\nSubject: the same pallid gray-purple male undead with short brown hair, hollow dark eyes, torn olive sleeveless tunic/trousers exposing red lining, gold/brass rivets and wrist cuffs, belt, one exposed injured bare lower leg/foot and one dark boot, long wooden-shaft cross-head iron hammer. Preserve the source-side bare foot and boot; preserve both hands and all equipment. Match the original three-quarter side battle camera, not a top-down, cinematic or front character-design sheet unless the particular OG turn pose itself turns frontal.\nStyle: freshly drawn high-resolution modeled-volume fantasy game rendering matching the approved master, crisp readable silhouette, subtle material texture; not pixel art or an enlarged OG sprite. No extra glow.\nLayout: exactly FOUR columns, TWO rows, EIGHT complete separate figures in exact row-major guide order, 2048x1024 landscape sheet. Each figure entirely inside its own equal 512x512 slot with at least 30 pixels clear transparent padding on every side, including full weapon, hair, feet and death fragments. Distinct adjacent silhouettes must not touch. If a body is lying down, preserve its horizontal orientation; do not stand it up to fit.\nBackground: genuine transparent RGBA, no background paint, floor, ground shadow, halo, panel borders, labels, numbers, text or grid. Render opaque interior body/materials with smooth alpha edges. Lighting is consistent with the master.\nCritical: each slot is one exact source pose, not a generic animation suggestion. Include no additional creatures, duplicate bodies, standalone VFX or projectiles. Observe source poses individually, not a smooth invented replacement action.\n\nOrdered pose IDs: zombie_p000,p001,p002,p003,p004,p005,p006,p007 (all IDs use zombie_ prefix).\nWalk frames G0 F0-F7. Carefully vary the feet/leg stride and carried hammer exactly as in image2: initial top-row hammer slopes down-right; lower-row stride brings hammer increasingly near-horizontal forward. The free hand stays in the original bent/lowered position. No arms-forward generic zombie walk. Keep source character scale consistent.\n"
+    },
+    {
+      "attempt": "batch-001-a",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/zombie/master_rgba.png",
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/guides/batch-001.png"
+      ],
+      "prompt_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/prompts/batch-001-a.txt",
+      "raw_project_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/batch-001-a.png",
+      "returned_response_keys": [
+        "image_url",
+        "output_hint"
+      ],
+      "returned_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39 as C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39\\exec-4acacdbd-0e58-4544-ae0b-24e3a1845623.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "image_url_storage": "Returned PNG is retained byte-for-byte; data URL is represented by raw PNG bytes, not duplicated in JSON.",
+      "ingestion": "strict components",
+      "prior_rejection": null,
+      "exact_prompt_sent": "Use case: stylized-concept\nAsset type: production game animation sprite page, one Zombie creature in separate complete poses.\nInput image 1: the user-approved high-resolution Zombie master; appearance, costume, anatomy, color, texture, materials and weapon identity ONLY.\nInput image 2: the actual original CZOMLO pose guide; EXACT pose, body rotation, view, limb placement, foot placement, hand grip and hammer direction for EACH corresponding row-major figure. Re-draw these exact original poses with the master appearance. Do not copy the master's static stance onto other motions.\nSubject: the same pallid gray-purple male undead with short brown hair, hollow dark eyes, torn olive sleeveless tunic/trousers exposing red lining, gold/brass rivets and wrist cuffs, belt, one exposed injured bare lower leg/foot and one dark boot, long wooden-shaft cross-head iron hammer. Preserve the source-side bare foot and boot; preserve both hands and all equipment. Match the original three-quarter side battle camera, not a top-down, cinematic or front character-design sheet unless the particular OG turn pose itself turns frontal.\nStyle: freshly drawn high-resolution modeled-volume fantasy game rendering matching the approved master, crisp readable silhouette, subtle material texture; not pixel art or an enlarged OG sprite. No extra glow.\nLayout: exactly FOUR columns, TWO rows, EIGHT complete separate figures in exact row-major guide order, 2048x1024 landscape sheet. Each figure entirely inside its own equal 512x512 slot with at least 30 pixels clear transparent padding on every side, including full weapon, hair, feet and death fragments. Distinct adjacent silhouettes must not touch. If a body is lying down, preserve its horizontal orientation; do not stand it up to fit.\nBackground: genuine transparent RGBA, no background paint, floor, ground shadow, halo, panel borders, labels, numbers, text or grid. Render opaque interior body/materials with smooth alpha edges. Lighting is consistent with the master.\nCritical: each slot is one exact source pose, not a generic animation suggestion. Include no additional creatures, duplicate bodies, standalone VFX or projectiles. Observe source poses individually, not a smooth invented replacement action.\n\nOrdered pose IDs: zombie_p008,p009,p010,p011,p012,p013,p014,p015 (all IDs use zombie_ prefix).\nFirst two slots finish walking with hammer across body. Third is the exact relaxed source idle with hammer diagonal downward. Fourth through seventh are the idle gesture: same costume but torso/face/free hand subtly change and hammer lowers increasingly toward vertical at the side. Eighth is source idle variation G2 F1. Preserve every actual difference in the guide; do not repeat one image across slots.\n"
+    },
+    {
+      "attempt": "batch-002-a",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/zombie/master_rgba.png",
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/guides/batch-002.png"
+      ],
+      "prompt_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/prompts/batch-002-a.txt",
+      "raw_project_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/batch-002-a.png",
+      "returned_response_keys": [
+        "image_url",
+        "output_hint"
+      ],
+      "returned_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39 as C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39\\exec-ad5eb31c-a6bb-493d-953d-d91cc0d20673.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "image_url_storage": "Returned PNG is retained byte-for-byte; data URL is represented by raw PNG bytes, not duplicated in JSON.",
+      "ingestion": "strict components",
+      "prior_rejection": null,
+      "exact_prompt_sent": "Use case: stylized-concept\nAsset type: production game animation sprite page, one Zombie creature in separate complete poses.\nInput image 1: the user-approved high-resolution Zombie master; appearance, costume, anatomy, color, texture, materials and weapon identity ONLY.\nInput image 2: the actual original CZOMLO pose guide; EXACT pose, body rotation, view, limb placement, foot placement, hand grip and hammer direction for EACH corresponding row-major figure. Re-draw these exact original poses with the master appearance. Do not copy the master's static stance onto other motions.\nSubject: the same pallid gray-purple male undead with short brown hair, hollow dark eyes, torn olive sleeveless tunic/trousers exposing red lining, gold/brass rivets and wrist cuffs, belt, one exposed injured bare lower leg/foot and one dark boot, long wooden-shaft cross-head iron hammer. Preserve the source-side bare foot and boot; preserve both hands and all equipment. Match the original three-quarter side battle camera, not a top-down, cinematic or front character-design sheet unless the particular OG turn pose itself turns frontal.\nStyle: freshly drawn high-resolution modeled-volume fantasy game rendering matching the approved master, crisp readable silhouette, subtle material texture; not pixel art or an enlarged OG sprite. No extra glow.\nLayout: exactly FOUR columns, TWO rows, EIGHT complete separate figures in exact row-major guide order, 2048x1024 landscape sheet. Each figure entirely inside its own equal 512x512 slot with at least 30 pixels clear transparent padding on every side, including full weapon, hair, feet and death fragments. Distinct adjacent silhouettes must not touch. If a body is lying down, preserve its horizontal orientation; do not stand it up to fit.\nBackground: genuine transparent RGBA, no background paint, floor, ground shadow, halo, panel borders, labels, numbers, text or grid. Render opaque interior body/materials with smooth alpha edges. Lighting is consistent with the master.\nCritical: each slot is one exact source pose, not a generic animation suggestion. Include no additional creatures, duplicate bodies, standalone VFX or projectiles. Observe source poses individually, not a smooth invented replacement action.\n\nOrdered pose IDs: zombie_p016,p017,p018,p019,p020,p021,p022,p023 (all IDs use zombie_ prefix).\nFirst two are quiet idle variations. Then exact hurt sequence: p018 bends forward/crouches, hammer diagonal upward in front; p019 arches back with BOTH arms raised, weapon arm extended up-left and free fist up-right; p020 leans backward with hammer arm stretched left, shaft nearly horizontal; p021 body tilts strongly toward screen-left with arm/hammer down-left and other arm out right; p022 recovering at side with near-vertical hammer down; p023 returns bent standing recovery. Preserve large hurt silhouettes and exact source anatomy.\n"
+    },
+    {
+      "attempt": "batch-003-a",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/zombie/master_rgba.png",
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/guides/batch-003.png"
+      ],
+      "prompt_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/prompts/batch-003-a.txt",
+      "raw_project_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/batch-003-a.png",
+      "returned_response_keys": [
+        "image_url",
+        "output_hint"
+      ],
+      "returned_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39 as C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39\\exec-231821cd-92dd-45ac-8e6e-ce0864847c5e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "image_url_storage": "Returned PNG is retained byte-for-byte; data URL is represented by raw PNG bytes, not duplicated in JSON.",
+      "ingestion": "strict components",
+      "prior_rejection": null,
+      "exact_prompt_sent": "Use case: stylized-concept\nAsset type: production game animation sprite page, one Zombie creature in separate complete poses.\nInput image 1: the user-approved high-resolution Zombie master; appearance, costume, anatomy, color, texture, materials and weapon identity ONLY.\nInput image 2: the actual original CZOMLO pose guide; EXACT pose, body rotation, view, limb placement, foot placement, hand grip and hammer direction for EACH corresponding row-major figure. Re-draw these exact original poses with the master appearance. Do not copy the master's static stance onto other motions.\nSubject: the same pallid gray-purple male undead with short brown hair, hollow dark eyes, torn olive sleeveless tunic/trousers exposing red lining, gold/brass rivets and wrist cuffs, belt, one exposed injured bare lower leg/foot and one dark boot, long wooden-shaft cross-head iron hammer. Preserve the source-side bare foot and boot; preserve both hands and all equipment. Match the original three-quarter side battle camera, not a top-down, cinematic or front character-design sheet unless the particular OG turn pose itself turns frontal.\nStyle: freshly drawn high-resolution modeled-volume fantasy game rendering matching the approved master, crisp readable silhouette, subtle material texture; not pixel art or an enlarged OG sprite. No extra glow.\nLayout: exactly FOUR columns, TWO rows, EIGHT complete separate figures in exact row-major guide order, 2048x1024 landscape sheet. Each figure entirely inside its own equal 512x512 slot with at least 30 pixels clear transparent padding on every side, including full weapon, hair, feet and death fragments. Distinct adjacent silhouettes must not touch. If a body is lying down, preserve its horizontal orientation; do not stand it up to fit.\nBackground: genuine transparent RGBA, no background paint, floor, ground shadow, halo, panel borders, labels, numbers, text or grid. Render opaque interior body/materials with smooth alpha edges. Lighting is consistent with the master.\nCritical: each slot is one exact source pose, not a generic animation suggestion. Include no additional creatures, duplicate bodies, standalone VFX or projectiles. Observe source poses individually, not a smooth invented replacement action.\n\nOrdered pose IDs: zombie_p024,p025,p026,p027,p028,p029,p030,p031 (all IDs use zombie_ prefix).\nFirst SIX poses are defensive reaction: from low horizontal hammer in both hands, through diagonal to vertical raised guard, then diagonal lowering. Both hands remain visibly gripping shaft per OG, elbows/torso change exactly. Seventh p030 death recoil begins with free arm right and hammer low-left. Eighth p031 leans back strongly with both arms spread upward, one knee/boot lifting; hammer points up-left. These are not eight standing idle poses.\n"
+    },
+    {
+      "attempt": "batch-004-a",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/zombie/master_rgba.png",
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/guides/batch-004.png"
+      ],
+      "prompt_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/prompts/batch-004-a.txt",
+      "raw_project_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/batch-004-a.png",
+      "returned_response_keys": [
+        "image_url",
+        "output_hint"
+      ],
+      "returned_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39 as C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39\\exec-a996cecb-47fa-4ed2-b55d-3d69933df47c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "image_url_storage": "Returned PNG is retained byte-for-byte; data URL is represented by raw PNG bytes, not duplicated in JSON.",
+      "ingestion": "strict components",
+      "prior_rejection": null,
+      "exact_prompt_sent": "Use case: stylized-concept\nAsset type: production game animation sprite page, one Zombie creature in separate complete poses.\nInput image 1: the user-approved high-resolution Zombie master; appearance, costume, anatomy, color, texture, materials and weapon identity ONLY.\nInput image 2: the actual original CZOMLO pose guide; EXACT pose, body rotation, view, limb placement, foot placement, hand grip and hammer direction for EACH corresponding row-major figure. Re-draw these exact original poses with the master appearance. Do not copy the master's static stance onto other motions.\nSubject: the same pallid gray-purple male undead with short brown hair, hollow dark eyes, torn olive sleeveless tunic/trousers exposing red lining, gold/brass rivets and wrist cuffs, belt, one exposed injured bare lower leg/foot and one dark boot, long wooden-shaft cross-head iron hammer. Preserve the source-side bare foot and boot; preserve both hands and all equipment. Match the original three-quarter side battle camera, not a top-down, cinematic or front character-design sheet unless the particular OG turn pose itself turns frontal.\nStyle: freshly drawn high-resolution modeled-volume fantasy game rendering matching the approved master, crisp readable silhouette, subtle material texture; not pixel art or an enlarged OG sprite. No extra glow.\nLayout: exactly FOUR columns, TWO rows, EIGHT complete separate figures in exact row-major guide order, 2048x1024 landscape sheet. Each figure entirely inside its own equal 512x512 slot with at least 30 pixels clear transparent padding on every side, including full weapon, hair, feet and death fragments. Distinct adjacent silhouettes must not touch. If a body is lying down, preserve its horizontal orientation; do not stand it up to fit.\nBackground: genuine transparent RGBA, no background paint, floor, ground shadow, halo, panel borders, labels, numbers, text or grid. Render opaque interior body/materials with smooth alpha edges. Lighting is consistent with the master.\nCritical: each slot is one exact source pose, not a generic animation suggestion. Include no additional creatures, duplicate bodies, standalone VFX or projectiles. Observe source poses individually, not a smooth invented replacement action.\n\nOrdered pose IDs: zombie_p032,p033,p034,p035,p036,p037,p038,p039 (all IDs use zombie_ prefix).\nFirst SIX are exact successive DEATH poses, not attacks: p032 arms up, hammer vertical up-left, lifted boot; p033 falling backward with lifted boot to right and hammer diagonal overhead; p034 and p035 low curled/tumbled corpse horizontal, head toward left, boot toward right, hands and hammer follow guide; p036 low curled corpse with hammer diagonally rising up-right; p037 final low horizontal corpse with head left and hammer lying across. Last TWO are turn poses: p038 near-frontal three-quarter turn with hammer across waist; p039 almost full frontal with two hands holding vertical hammer in front of face/chest, not a back view. Preserve exactly the visible limbs and folded anatomy; do not invent detached limbs.\n"
+    },
+    {
+      "attempt": "batch-005-a",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/zombie/master_rgba.png",
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/guides/batch-005.png"
+      ],
+      "prompt_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/prompts/batch-005-a.txt",
+      "raw_project_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/batch-005-a.png",
+      "returned_response_keys": [
+        "image_url",
+        "output_hint"
+      ],
+      "returned_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39 as C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39\\exec-b34f13c3-638a-4a7a-9161-0803f822fba4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "image_url_storage": "Returned PNG is retained byte-for-byte; data URL is represented by raw PNG bytes, not duplicated in JSON.",
+      "ingestion": "strict components",
+      "prior_rejection": null,
+      "exact_prompt_sent": "Use case: stylized-concept\nAsset type: production game animation sprite page, one Zombie creature in separate complete poses.\nInput image 1: the user-approved high-resolution Zombie master; appearance, costume, anatomy, color, texture, materials and weapon identity ONLY.\nInput image 2: the actual original CZOMLO pose guide; EXACT pose, body rotation, view, limb placement, foot placement, hand grip and hammer direction for EACH corresponding row-major figure. Re-draw these exact original poses with the master appearance. Do not copy the master's static stance onto other motions.\nSubject: the same pallid gray-purple male undead with short brown hair, hollow dark eyes, torn olive sleeveless tunic/trousers exposing red lining, gold/brass rivets and wrist cuffs, belt, one exposed injured bare lower leg/foot and one dark boot, long wooden-shaft cross-head iron hammer. Preserve the source-side bare foot and boot; preserve both hands and all equipment. Match the original three-quarter side battle camera, not a top-down, cinematic or front character-design sheet unless the particular OG turn pose itself turns frontal.\nStyle: freshly drawn high-resolution modeled-volume fantasy game rendering matching the approved master, crisp readable silhouette, subtle material texture; not pixel art or an enlarged OG sprite. No extra glow.\nLayout: exactly FOUR columns, TWO rows, EIGHT complete separate figures in exact row-major guide order, 2048x1024 landscape sheet. Each figure entirely inside its own equal 512x512 slot with at least 30 pixels clear transparent padding on every side, including full weapon, hair, feet and death fragments. Distinct adjacent silhouettes must not touch. If a body is lying down, preserve its horizontal orientation; do not stand it up to fit.\nBackground: genuine transparent RGBA, no background paint, floor, ground shadow, halo, panel borders, labels, numbers, text or grid. Render opaque interior body/materials with smooth alpha edges. Lighting is consistent with the master.\nCritical: each slot is one exact source pose, not a generic animation suggestion. Include no additional creatures, duplicate bodies, standalone VFX or projectiles. Observe source poses individually, not a smooth invented replacement action.\n\nOrdered pose IDs: zombie_p040,p041,p042,p043,p044,p045,p046,p047 (all IDs use zombie_ prefix).\nUpper attack source G11 F1-F6 then front attack G12 F1-F2. p040 holds hammer nearly vertical up-right in two-hand guard; p041 raises it across and behind the head toward left; p042 turns torso and brings hammer high to upper-right; p043 extends a higher horizontal forward strike; p044 and p045 recover lowering hammer diagonally front. p046 raises hammer vertically as front attack preparation; p047 raises it behind/over head pointing left. Preserve two-hand grips, viewpoint and the original upper attack elevation distinct from front attack.\n"
+    },
+    {
+      "attempt": "batch-006-a",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/zombie/master_rgba.png",
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/guides/batch-006.png"
+      ],
+      "prompt_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/prompts/batch-006-a.txt",
+      "raw_project_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/batch-006-a.png",
+      "returned_response_keys": [
+        "image_url",
+        "output_hint"
+      ],
+      "returned_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39 as C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39\\exec-27c07eb1-9f1e-4a3a-9721-9960cb604c5d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "image_url_storage": "Returned PNG is retained byte-for-byte; data URL is represented by raw PNG bytes, not duplicated in JSON.",
+      "ingestion": "strict components",
+      "prior_rejection": null,
+      "exact_prompt_sent": "Use case: stylized-concept\nAsset type: production game animation sprite page, one Zombie creature in separate complete poses.\nInput image 1: the user-approved high-resolution Zombie master; appearance, costume, anatomy, color, texture, materials and weapon identity ONLY.\nInput image 2: the actual original CZOMLO pose guide; EXACT pose, body rotation, view, limb placement, foot placement, hand grip and hammer direction for EACH corresponding row-major figure. Re-draw these exact original poses with the master appearance. Do not copy the master's static stance onto other motions.\nSubject: the same pallid gray-purple male undead with short brown hair, hollow dark eyes, torn olive sleeveless tunic/trousers exposing red lining, gold/brass rivets and wrist cuffs, belt, one exposed injured bare lower leg/foot and one dark boot, long wooden-shaft cross-head iron hammer. Preserve the source-side bare foot and boot; preserve both hands and all equipment. Match the original three-quarter side battle camera, not a top-down, cinematic or front character-design sheet unless the particular OG turn pose itself turns frontal.\nStyle: freshly drawn high-resolution modeled-volume fantasy game rendering matching the approved master, crisp readable silhouette, subtle material texture; not pixel art or an enlarged OG sprite. No extra glow.\nLayout: exactly FOUR columns, TWO rows, EIGHT complete separate figures in exact row-major guide order, 2048x1024 landscape sheet. Each figure entirely inside its own equal 512x512 slot with at least 30 pixels clear transparent padding on every side, including full weapon, hair, feet and death fragments. Distinct adjacent silhouettes must not touch. If a body is lying down, preserve its horizontal orientation; do not stand it up to fit.\nBackground: genuine transparent RGBA, no background paint, floor, ground shadow, halo, panel borders, labels, numbers, text or grid. Render opaque interior body/materials with smooth alpha edges. Lighting is consistent with the master.\nCritical: each slot is one exact source pose, not a generic animation suggestion. Include no additional creatures, duplicate bodies, standalone VFX or projectiles. Observe source poses individually, not a smooth invented replacement action.\n\nOrdered pose IDs: zombie_p048,p049,p050,p051,p052,p053,p054,p055 (all IDs use zombie_ prefix).\nFirst FOUR are front attack: p048 two arms thrust hammer horizontal toward right with torso pitched forward and rear leg extended; p049 follows through hammer diagonally down-right; p050 recovery hammer diagonal down; p051 recovers further. Last FOUR are lower attack: p052 two-hand vertical prep; p053 overhead windup with hammer extending up-left; p054 bends deeply over lowering hammer almost to ground at right with straight arms; p055 remains deeply bent, hammer more vertical at lower right. Match source stance, rotation and full hammer length. Do not replace lower attack with upper/front strike.\n"
+    },
+    {
+      "attempt": "batch-007-a",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/zombie/master_rgba.png",
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/guides/batch-007.png"
+      ],
+      "prompt_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/prompts/batch-007-a.txt",
+      "raw_project_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/batch-007-a.png",
+      "returned_response_keys": [
+        "image_url",
+        "output_hint"
+      ],
+      "returned_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39 as C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39\\exec-b5097c85-da99-4e2e-b856-72f89737735d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "image_url_storage": "Returned PNG is retained byte-for-byte; data URL is represented by raw PNG bytes, not duplicated in JSON.",
+      "ingestion": "strict components",
+      "prior_rejection": null,
+      "exact_prompt_sent": "Use case: stylized-concept\nAsset type: production game animation sprite page, one Zombie creature in separate complete poses.\nInput image 1: the user-approved high-resolution Zombie master; appearance, costume, anatomy, color, texture, materials and weapon identity ONLY.\nInput image 2: the actual original CZOMLO pose guide; EXACT pose, body rotation, view, limb placement, foot placement, hand grip and hammer direction for EACH corresponding row-major figure. Re-draw these exact original poses with the master appearance. Do not copy the master's static stance onto other motions.\nSubject: the same pallid gray-purple male undead with short brown hair, hollow dark eyes, torn olive sleeveless tunic/trousers exposing red lining, gold/brass rivets and wrist cuffs, belt, one exposed injured bare lower leg/foot and one dark boot, long wooden-shaft cross-head iron hammer. Preserve the source-side bare foot and boot; preserve both hands and all equipment. Match the original three-quarter side battle camera, not a top-down, cinematic or front character-design sheet unless the particular OG turn pose itself turns frontal.\nStyle: freshly drawn high-resolution modeled-volume fantasy game rendering matching the approved master, crisp readable silhouette, subtle material texture; not pixel art or an enlarged OG sprite. No extra glow.\nLayout: exactly FOUR columns, TWO rows, EIGHT complete separate figures in exact row-major guide order, 2048x1024 landscape sheet. Each figure entirely inside its own equal 512x512 slot with at least 30 pixels clear transparent padding on every side, including full weapon, hair, feet and death fragments. Distinct adjacent silhouettes must not touch. If a body is lying down, preserve its horizontal orientation; do not stand it up to fit.\nBackground: genuine transparent RGBA, no background paint, floor, ground shadow, halo, panel borders, labels, numbers, text or grid. Render opaque interior body/materials with smooth alpha edges. Lighting is consistent with the master.\nCritical: each slot is one exact source pose, not a generic animation suggestion. Include no additional creatures, duplicate bodies, standalone VFX or projectiles. Observe source poses individually, not a smooth invented replacement action.\n\nOrdered pose IDs: zombie_p056,p057,p058,p059 (all IDs use zombie_ prefix).\nLayout override: exactly FOUR columns, ONE row, FOUR complete figures, 2048x512 sheet, each its own padded 512x512 slot, exact row-major order. Only four figures, no second row.\nFirst p056 is bent low attack recovery with hammer hanging downward at right. p057 rises slightly, hammer diagonal down-right and free hand lowered. p058 is distinct movement-start pose G20 F0, carrying hammer diagonally across lower body. p059 is distinct movement-end pose G21 F0, similar but not identical feet/torso/hammer. Copy these subtle OG differences rather than generating repeated idle.\n"
+    },
+    {
+      "attempt": "repair-p015-b",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/docs/art/production/necropolis-creature-assets-v01/zombie/master_rgba.png",
+        "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/zombie/remaster_v01/_source/guides/repair-p015-angle-b.png"
+      ],
+      "prompt_file": "assets/prototype/enemy/zombie/remaster_v01/_source/prompts/repair-p015-b.txt",
+      "exact_prompt_sent": "Use case: stylized-concept\nAsset type: ONE newly drawn transparent high-resolution game animation pose, Zombie zombie_p015.\nInput 1: approved Zombie master, appearance and materials only.\nInput 2: exact original zombie_p015 OG G2 F1 pose, authoritative for pose and camera.\nRedraw this ONE exact original pose with the approved master rendering. The previous attempt let the hammer hang almost vertical: this is wrong. In this pose the wooden shaft runs diagonally DOWN AND RIGHT from the carrying hand near the near hip toward the hammer head at the front boot/knee area, about 40 degrees below horizontal. Copy that exact source angle and grip, the free forearm bent slightly in front, both feet, body rotation and head direction. The character remains upright with only the original forward lean, not a deep squat. Keep the original tall narrow side-view silhouette and pose proportions while retaining the master's anatomy, olive ragged clothing/red lining, gold rivets/cuffs/belt, brown hair, pallid gray skin, one bare exposed injured lower leg and one dark boot. Do not restyle into a broad frontal character or turn the hammer vertical. No duplicated hands/limbs.\nOne complete figure centered on a square transparent canvas with at least 90 pixels empty margin around the entire figure and hammer. Opaque body/material interiors, smooth transparent edges. No background, ground shadow, halo, grid, text, labels or extra figures. Newly draw the pose; do not paste or warp the master.\n",
+      "raw_project_file": "assets/prototype/enemy/zombie/remaster_v01/_source/repair-p015-b.png",
+      "returned_response_keys": [
+        "image_url",
+        "output_hint"
+      ],
+      "returned_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39 as C:\\Users\\zhouc\\.codex\\generated_images\\01a1681c-bdf2-7990-b122-c01f75edfc39\\exec-44c45e6d-b5b5-4bb9-a3ab-8411f5253ce3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "ingestion": "1x1 clear transparent background; no components",
+      "replaces": "zombie_p015 from batch-001-a-components",
+      "reason": "Source hammer angle was too vertical; replacement is diagonal down-right."
+    }
+  ],
+  "file_hashes": [
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\docs\\art\\production\\necropolis-creature-assets-v01\\zombie\\master_rgba.png",
+      "sha256": "2475a0958922c1ad54875612b7a871c49c1d39480da772f2647ca8829e8d8b1e"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\tools\\art\\necropolis_remaster.py",
+      "sha256": "763bccc9052e527d13ecbbdc0502bc539fbbb68994181be9446a9ab3d5cb8e3d"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\docs\\art\\remasters\\necropolis-v01\\generation-plan.json",
+      "sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\guides\\batch-000.png",
+      "sha256": "e96b9c87444e1478c53fd86da78b573f1bbfbda44e11b180b4b43d2f3b786119"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\guides\\batch-001.png",
+      "sha256": "098d71a64e1aa982b705dc347e96e2665af264a6f0658c1acba7569e81e86e15"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\guides\\batch-002.png",
+      "sha256": "fc58efa32742a896782a93c69ba52a4c209deade61e7d773a3309ccc3ea72f43"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\guides\\batch-003.png",
+      "sha256": "e502d5ae3cfecf59df9d4fac22af21136283415d625a778d91c2647615e352c2"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\guides\\batch-004.png",
+      "sha256": "18eba3134478ed98fe921aa8df5c482fd175f06845e528d548206491ba385ac6"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\guides\\batch-005.png",
+      "sha256": "57c19d66075aa17dfb9307b81355741a33df86786ea01e23abdbbb7baaf69c11"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\guides\\batch-006.png",
+      "sha256": "18e67b7853c22ccab57b4ced62eb023d1713d29172d9479efea510cefd387655"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\guides\\batch-007.png",
+      "sha256": "7fb310ff650418af1faf25da75cef2ab01b32bb28b340b49511391bbfd22f895"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\batch-000-a.png",
+      "sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\batch-001-a.png",
+      "sha256": "b555d1132ffaf7055c69e270e44a2d13426858d5ca2144a2d01b10508a2b982e"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\batch-002-a.png",
+      "sha256": "de372078bfc775a05ab606d8c6d9d4939dd67e8643893e86d355a8756cd574c0"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\batch-003-a.png",
+      "sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\batch-004-a.png",
+      "sha256": "5269afe548f4d3666dd6861e597379996eebdb1a46741ac6b5d53b25fe39db38"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\batch-005-a.png",
+      "sha256": "041f80e7d90f4c5673a4cb8a9070dab678021729f31261e15afa7738f8cf8720"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\batch-006-a.png",
+      "sha256": "d55c55a0a5298fe65ed445063b2d5f8d51077eb9a0f31159a47609b00960e390"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\batch-007-a.png",
+      "sha256": "7f1774a23356d93f7c97d354e8bfdf198ef573454fc0593e86ef0c7330b2eb6e"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\prompts\\batch-000-a.txt",
+      "sha256": "263f92a29b172868e7c453d72f8929552d909e465f289ed7272cf43956cd8c08"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\prompts\\batch-001-a.txt",
+      "sha256": "0a77573834cff10a0312b54354e6af37d782632cf4bce7137ef02792b64f1add"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\prompts\\batch-002-a.txt",
+      "sha256": "d06d0f2f7c829c7e024d5f3391ab246d755f7b5a684ac33279f476a54b8222c1"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\prompts\\batch-003-a.txt",
+      "sha256": "54634b0e50737e735613b8d090e5986ad8181a9054ee1d70e91e29d49e788608"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\prompts\\batch-004-a.txt",
+      "sha256": "e1cd0fb9ca6c707d228a9c7b99e61716313179a49012c6dfa630c1cda3e44afa"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\prompts\\batch-005-a.txt",
+      "sha256": "688d43c2ebe9609cfd9ce17f915ee1d72cf7cccec20f10213a4e8a051e8db541"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\prompts\\batch-006-a.txt",
+      "sha256": "585f449f75a4dfdf4608c04baed281278e23e566415844245f10b33353cfd369"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\prompts\\batch-007-a.txt",
+      "sha256": "b003a32f960c9aeddfdf324adcb1b3275cde1e1fbc1f336bc39f6947fc763eb9"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\guides\\repair-p015-angle-b.png",
+      "sha256": "d87013c476c3ef082939950ba68ede78aa10ad6b3e1d3deb00a11c5d3a3be90f"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\prompts\\repair-p015-b.txt",
+      "sha256": "b99da3945212e75efde1a4c7286e997a23870ae8526f438256800446cc200201"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\zombie\\remaster_v01\\_source\\repair-p015-b.png",
+      "sha256": "43d74291752e4034cf75917ef858dfcacd678c0b444dfebc68c23ff0c3f2ec12"
+    }
+  ],
+  "model_seed_note": "The tool returned image_url and output_hint only. No model or seed is asserted."
+}

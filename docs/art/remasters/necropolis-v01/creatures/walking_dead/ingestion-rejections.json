@@ -1,0 +1,28 @@
+{
+  "creature_id": "walking_dead",
+  "checks_weakened": false,
+  "dependencies_installed_by_worker": false,
+  "rejected_attempts": [
+    {
+      "batch": "production-002-v01",
+      "error": "Figure touches raw/grid boundary: walking_dead_p020; preserve attempt and regenerate",
+      "resolution": "Strict component isolation accepted the genuinely separate figures as production-002-v01-components; no global-edge clipping rejection occurred."
+    },
+    {
+      "batch": "production-005-v01",
+      "error": "No clear transparent gutter; regenerate individual poses instead of clipping",
+      "resolution": "Strict component isolation accepted production-005-v01-components."
+    },
+    {
+      "batch": "production-006-v01",
+      "error": "No clear transparent gutter; regenerate individual poses instead of clipping",
+      "resolution": "Strict component isolation accepted production-006-v01-components."
+    },
+    {
+      "batch": "repair-walk-000-007-v02",
+      "error": "Figure touches raw/grid boundary: walking_dead_p002; preserve attempt and regenerate",
+      "resolution": "Strict component isolation accepted repair-walk-000-007-v02-components."
+    }
+  ],
+  "retention": "Every rejected submission retains its original PNG, prompt and submission JSON under the creature _source/raw folder; component retries use separate batch names."
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "walking_dead_p041",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "8a3db73f78e5c73ee34111b8cd2e2f593c6ceebbd92c272835e4d28af06532c2:148:174:65:92:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "Czombi30.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 85790,
+      "stored_size": 2740,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 65,
+      "height": 92,
+      "left": 148,
+      "top": 174,
+      "legacy_header": false,
+      "index_sha256": "8a3db73f78e5c73ee34111b8cd2e2f593c6ceebbd92c272835e4d28af06532c2"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/production-005-v01-components.png",
+  "raw_sha256": "3b84513651e8e68b2e08d015b6560979d5ce4bd4f4740994b0629f71fa2d3ac0",
+  "prompt": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/production-005-v01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/isolated/production-005-v01-components-walking_dead_p041.png",
+  "isolated_sha256": "cd74c9bb1242a1efd9817a87aab44975159154ada415eea30ffac78c087e328e",
+  "source_grid_region": [
+    500,
+    10,
+    335,
+    434
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p041.png",
+  "registered_pose_sha256": "a624cd8c331cff5e503bff53ad3fd5e06123567c9c1f4ba1ce122d9e6a935b61",
+  "mirror_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p041_mirror.png",
+  "mirror_sha256": "dab1ec49c041c2bb5dc8d491429cfbba26496fb147d0c99865ef61a6f5ca1cbb",
+  "registration": {
+    "source_body_rect": [
+      151,
+      174,
+      62,
+      92
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      337,
+      436
+    ],
+    "registered_rect": [
+      401,
+      309,
+      153,
+      198
+    ],
+    "uniform_artwork_fit": 0.45671641791044776
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Upper melee windup reaches weapon backward overhead while torso leans back and skeletal hand extends forward; full blade preserved by component isolation. Static OG/candidate and both-facing frame inspection only; candidate, not human animation acceptance.",
+    "source_sha256_at_review": "a624cd8c331cff5e503bff53ad3fd5e06123567c9c1f4ba1ce122d9e6a935b61",
+    "mirror_sha256_at_review": "dab1ec49c041c2bb5dc8d491429cfbba26496fb147d0c99865ef61a6f5ca1cbb"
+  },
+  "human_animation_acceptance": false
+}

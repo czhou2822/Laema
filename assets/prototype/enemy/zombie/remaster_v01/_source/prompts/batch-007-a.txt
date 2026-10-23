@@ -1,0 +1,14 @@
+Use case: stylized-concept
+Asset type: production game animation sprite page, one Zombie creature in separate complete poses.
+Input image 1: the user-approved high-resolution Zombie master; appearance, costume, anatomy, color, texture, materials and weapon identity ONLY.
+Input image 2: the actual original CZOMLO pose guide; EXACT pose, body rotation, view, limb placement, foot placement, hand grip and hammer direction for EACH corresponding row-major figure. Re-draw these exact original poses with the master appearance. Do not copy the master's static stance onto other motions.
+Subject: the same pallid gray-purple male undead with short brown hair, hollow dark eyes, torn olive sleeveless tunic/trousers exposing red lining, gold/brass rivets and wrist cuffs, belt, one exposed injured bare lower leg/foot and one dark boot, long wooden-shaft cross-head iron hammer. Preserve the source-side bare foot and boot; preserve both hands and all equipment. Match the original three-quarter side battle camera, not a top-down, cinematic or front character-design sheet unless the particular OG turn pose itself turns frontal.
+Style: freshly drawn high-resolution modeled-volume fantasy game rendering matching the approved master, crisp readable silhouette, subtle material texture; not pixel art or an enlarged OG sprite. No extra glow.
+Layout: exactly FOUR columns, TWO rows, EIGHT complete separate figures in exact row-major guide order, 2048x1024 landscape sheet. Each figure entirely inside its own equal 512x512 slot with at least 30 pixels clear transparent padding on every side, including full weapon, hair, feet and death fragments. Distinct adjacent silhouettes must not touch. If a body is lying down, preserve its horizontal orientation; do not stand it up to fit.
+Background: genuine transparent RGBA, no background paint, floor, ground shadow, halo, panel borders, labels, numbers, text or grid. Render opaque interior body/materials with smooth alpha edges. Lighting is consistent with the master.
+Critical: each slot is one exact source pose, not a generic animation suggestion. Include no additional creatures, duplicate bodies, standalone VFX or projectiles. Observe source poses individually, not a smooth invented replacement action.
+
+Ordered pose IDs: zombie_p056,p057,p058,p059 (all IDs use zombie_ prefix).
+Layout override: exactly FOUR columns, ONE row, FOUR complete figures, 2048x512 sheet, each its own padded 512x512 slot, exact row-major order. Only four figures, no second row.
+First p056 is bent low attack recovery with hammer hanging downward at right. p057 rises slightly, hammer diagonal down-right and free hand lowered. p058 is distinct movement-start pose G20 F0, carrying hammer diagonally across lower body. p059 is distinct movement-end pose G21 F0, similar but not identical feet/torso/hammer. Copy these subtle OG differences rather than generating repeated idle.
+

@@ -1,0 +1,100 @@
+{
+  "pose_id": "walking_dead_p009",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "152ee2f406cc6a52169e836dbf94d7192e1c60732324ade9c81f8a80c7398867:179:182:50:83:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 9,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      800,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 9,
+      "name": "Czombi19.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 800,
+      "offset": 56161,
+      "stored_size": 2816,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 50,
+      "height": 83,
+      "left": 179,
+      "top": 182,
+      "legacy_header": false,
+      "index_sha256": "152ee2f406cc6a52169e836dbf94d7192e1c60732324ade9c81f8a80c7398867"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/repair-move-008-009-058-059-v02.png",
+  "raw_sha256": "8b64457301775e7166758c9e3effb370213474c7f534a82bad0b27b84694e0b6",
+  "prompt": "assets/prototype/enemy/walking_dead/remaster_v01/_source/raw/repair-move-008-009-058-059-v02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/walking_dead/remaster_v01/_source/isolated/repair-move-008-009-058-059-v02-walking_dead_p009.png",
+  "isolated_sha256": "e8ff9e5da6c1f2fb228dc7bd9fb375348fa58e27b843bca1803fa10d43c5d3cf",
+  "source_grid_region": [
+    543,
+    0,
+    543,
+    724
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p009.png",
+  "registered_pose_sha256": "321338589e8ed0228cffe86d17503b954d23ce20083a8739b12a31f1758b91ad",
+  "mirror_file": "assets/prototype/enemy/walking_dead/remaster_v01/poses/walking_dead_p009_mirror.png",
+  "mirror_sha256": "c89a1051f5df8b5dde2ae86a2329eb1a32f86ad1e26461a94884fd50edeeb372",
+  "registration": {
+    "source_body_rect": [
+      179,
+      182,
+      49,
+      83
+    ],
+    "artwork_crop": [
+      93,
+      28,
+      509,
+      676
+    ],
+    "registered_rect": [
+      470,
+      317,
+      121,
+      188
+    ],
+    "uniform_artwork_fit": 0.29086538461538464
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Repaired final walk drawing: chest rises and blade stays low/forward, distinct from p008 and movement endpoints. Static OG/candidate and both-facing frame inspection only; candidate, not human animation acceptance.",
+    "source_sha256_at_review": "321338589e8ed0228cffe86d17503b954d23ce20083a8739b12a31f1758b91ad",
+    "mirror_sha256_at_review": "c89a1051f5df8b5dde2ae86a2329eb1a32f86ad1e26461a94884fd50edeeb372"
+  },
+  "human_animation_acceptance": false
+}
