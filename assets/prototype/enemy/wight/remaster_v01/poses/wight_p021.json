@@ -1,0 +1,100 @@
+{
+  "pose_id": "wight_p021",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "ae0352443d117680453ff79f31b1cccac455a24e4eea88a9e8649b097e22e98e:156:179:51:84:450:400",
+  "original_representative": {
+    "group_id": 3,
+    "original_block": 3,
+    "frame_index": 4,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_03_block_03_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_03_block_03_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 4,
+      "name": "cwight53.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 400,
+      "offset": 138118,
+      "stored_size": 2657,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 51,
+      "height": 84,
+      "left": 156,
+      "top": 179,
+      "legacy_header": false,
+      "index_sha256": "ae0352443d117680453ff79f31b1cccac455a24e4eea88a9e8649b097e22e98e"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-002-attempt-01-components.png",
+  "raw_sha256": "59bf8e616180d872be23d85ed2491d75ee0e25580a5f28d6d81defecad356685",
+  "prompt": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-002-attempt-01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wight/remaster_v01/_source/isolated/page-002-attempt-01-components-wight_p021.png",
+  "isolated_sha256": "8722203fa82f4c5618ea0f7d2c12febdc675fbf13f496bef9523b996a0e5e2a0",
+  "source_grid_region": [
+    515,
+    458,
+    318,
+    416
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p021.png",
+  "registered_pose_sha256": "f5bffb5287097926cb4386cdf759ce12c9abfce7fd10a94b5cbd711e93a00dc6",
+  "mirror_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p021_mirror.png",
+  "mirror_sha256": "47d55c89911ad7a0b06da13cd6ee12d6409ae0c278862aec83fe9d268a5a9bbd",
+  "registration": {
+    "source_body_rect": [
+      159,
+      179,
+      48,
+      73
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      320,
+      418
+    ],
+    "registered_rect": [
+      421,
+      319,
+      118,
+      154
+    ],
+    "uniform_artwork_fit": 0.3710691823899371
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Hurt F4: head back, leftward arm and second hand near face. Inspected registered-scale OG/candidate and both facings; 2x source comparison. Worker candidate review only.",
+    "source_sha256_at_review": "f5bffb5287097926cb4386cdf759ce12c9abfce7fd10a94b5cbd711e93a00dc6",
+    "mirror_sha256_at_review": "47d55c89911ad7a0b06da13cd6ee12d6409ae0c278862aec83fe9d268a5a9bbd"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "wight_p003",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "8e61c15196bcd7cb18cb8e33330108800ba184018c1ccf71138b6ec14b992a2e:168:178:43:83:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 3,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 3,
+      "name": "cwight44.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 0,
+      "offset": 115504,
+      "stored_size": 2335,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 43,
+      "height": 83,
+      "left": 168,
+      "top": 178,
+      "legacy_header": false,
+      "index_sha256": "8e61c15196bcd7cb18cb8e33330108800ba184018c1ccf71138b6ec14b992a2e"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-000-attempt-01.png",
+  "raw_sha256": "30a7d3445ac6e9eca4871bb59d9efce5819c94ea7080b70cbd5e4dabbeebcf29",
+  "prompt": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-000-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wight/remaster_v01/_source/isolated/page-000-attempt-01-wight_p003.png",
+  "isolated_sha256": "352517cfdae4c2d0fcc9c17a71d3ea2be3dadb4c46a276c3bb19153c1d43b76c",
+  "source_grid_region": [
+    1330,
+    0,
+    444,
+    444
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p003.png",
+  "registered_pose_sha256": "ad287a33a53d0712ee3f9a989d66e880789ffd6b70567eea36059b0cdb43c7e2",
+  "mirror_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p003_mirror.png",
+  "mirror_sha256": "48d429acc9c59d0b9b9ef456c3a1abf07552c6eec795a418d1a784a86aa6034e",
+  "registration": {
+    "source_body_rect": [
+      168,
+      178,
+      43,
+      67
+    ],
+    "artwork_crop": [
+      60,
+      13,
+      372,
+      435
+    ],
+    "registered_rect": [
+      443,
+      312,
+      106,
+      143
+    ],
+    "uniform_artwork_fit": 0.33974358974358976
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Movement F3: flatter leftward hem extension follows source cycle. Inspected registered-scale OG/candidate and both facings; 2x source comparison. Worker candidate review only.",
+    "source_sha256_at_review": "ad287a33a53d0712ee3f9a989d66e880789ffd6b70567eea36059b0cdb43c7e2",
+    "mirror_sha256_at_review": "48d429acc9c59d0b9b9ef456c3a1abf07552c6eec795a418d1a784a86aa6034e"
+  },
+  "human_animation_acceptance": false
+}

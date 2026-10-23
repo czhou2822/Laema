@@ -1,0 +1,100 @@
+{
+  "pose_id": "wraith_p050",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "966cfe1b4e246f0e29f16f53b75ff954f342075277ee9667a4f7c46dcf18188c:166:166:50:105:450:400",
+  "original_representative": {
+    "group_id": 13,
+    "original_block": 12,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_13_block_12_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_13_block_12_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cwrait16.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 48745,
+      "stored_size": 4351,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 50,
+      "height": 105,
+      "left": 166,
+      "top": 166,
+      "legacy_header": false,
+      "index_sha256": "966cfe1b4e246f0e29f16f53b75ff954f342075277ee9667a4f7c46dcf18188c"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-006-attempt-01.png",
+  "raw_sha256": "edd112f1c578ac66ce6b04c9ebe88d2cd1f26a6ca921cadbc6bf4ad73393261c",
+  "prompt": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-006-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wraith/remaster_v01/_source/isolated/batch-006-attempt-01-wraith_p050.png",
+  "isolated_sha256": "f67317967ef812c46c568456020a2b55076e530f267b1161f9b5c796dbe229c2",
+  "source_grid_region": [
+    1010,
+    15,
+    263,
+    480
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p050.png",
+  "registered_pose_sha256": "1e986187ac7993614e89e1ed5c22d1315f4bd38b6504e6d2aef55a4e222288a8",
+  "mirror_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p050_mirror.png",
+  "mirror_sha256": "65226c066f1ba9fe79fd8d0cfbe5836e754a95011f8d9bf7343b0e6d68e9649b",
+  "registration": {
+    "source_body_rect": [
+      168,
+      166,
+      48,
+      100
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      265,
+      482
+    ],
+    "registered_rect": [
+      443,
+      292,
+      118,
+      215
+    ],
+    "uniform_artwork_fit": 0.44866920152091255
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Lower attack lifts thin skeletal hand above hood while other stays before chest. G13/G16 both facings inspected.",
+    "source_sha256_at_review": "1e986187ac7993614e89e1ed5c22d1315f4bd38b6504e6d2aef55a4e222288a8",
+    "mirror_sha256_at_review": "65226c066f1ba9fe79fd8d0cfbe5836e754a95011f8d9bf7343b0e6d68e9649b"
+  },
+  "human_animation_acceptance": false
+}

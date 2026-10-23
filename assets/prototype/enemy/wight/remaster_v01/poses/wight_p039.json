@@ -1,0 +1,100 @@
+{
+  "pose_id": "wight_p039",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "e55f1f48d48167d06df45fb49aa2f379126c4b84004b48c3e45e444682575448:172:182:65:87:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 4,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 4,
+      "name": "cwight12.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 400,
+      "offset": 32481,
+      "stored_size": 2829,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 65,
+      "height": 87,
+      "left": 172,
+      "top": 182,
+      "legacy_header": false,
+      "index_sha256": "e55f1f48d48167d06df45fb49aa2f379126c4b84004b48c3e45e444682575448"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wight/remaster_v01/_source/raw/repair-camera-trails-attempt-01.png",
+  "raw_sha256": "b5611d81b15f00fbf436013fafca80243a083973a93b3b31a045f71704665cfc",
+  "prompt": "assets/prototype/enemy/wight/remaster_v01/_source/raw/repair-camera-trails-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wight/remaster_v01/_source/isolated/repair-camera-trails-attempt-01-wight_p039.png",
+  "isolated_sha256": "f2b2b9adfbf3f21ab8ef760160d8cdf5972e5c84761d27fb8367c6a22fdc8abb",
+  "source_grid_region": [
+    627,
+    627,
+    627,
+    627
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p039.png",
+  "registered_pose_sha256": "6f1da78399770113899d3f712258ba9eb0261b9fe842058b23a9e09866bce8bb",
+  "mirror_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p039_mirror.png",
+  "mirror_sha256": "ff32b140987a20670efd9952b32eb10792e5c356d1ae0ceb5a53bee995d7fc11",
+  "registration": {
+    "source_body_rect": [
+      172,
+      182,
+      64,
+      59
+    ],
+    "artwork_crop": [
+      91,
+      53,
+      569,
+      556
+    ],
+    "registered_rect": [
+      463,
+      300,
+      138,
+      145
+    ],
+    "uniform_artwork_fit": 0.2882703777335984
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Upper attack F4: low follow-through, two arms and pale source hand-swipe form; broad generated crescent reduced. Inspected registered-scale OG/candidate and both facings; 2x source comparison. Worker candidate review only.",
+    "source_sha256_at_review": "6f1da78399770113899d3f712258ba9eb0261b9fe842058b23a9e09866bce8bb",
+    "mirror_sha256_at_review": "ff32b140987a20670efd9952b32eb10792e5c356d1ae0ceb5a53bee995d7fc11"
+  },
+  "human_animation_acceptance": false
+}

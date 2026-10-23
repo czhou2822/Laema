@@ -1,0 +1,100 @@
+{
+  "pose_id": "wraith_p056",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "b1dc7d2f7eb4409c65adb871acc0b79c1175a90a4c2fe2fdce35747263dfa60c:179:180:36:89:450:400",
+  "original_representative": {
+    "group_id": 20,
+    "original_block": 16,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_20_block_16_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_20_block_16_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cwrait40.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 123099,
+      "stored_size": 2751,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 36,
+      "height": 89,
+      "left": 179,
+      "top": 180,
+      "legacy_header": false,
+      "index_sha256": "b1dc7d2f7eb4409c65adb871acc0b79c1175a90a4c2fe2fdce35747263dfa60c"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-007-attempt-01.png",
+  "raw_sha256": "0b847750e8eb38655657054eb296fbe765c58abd270b8ef454fd3981187eccc5",
+  "prompt": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-007-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wraith/remaster_v01/_source/isolated/batch-007-attempt-01-wraith_p056.png",
+  "isolated_sha256": "1da4620ebb844e287475dfc342dd787360bccb482e326aba369d99954f7cd343",
+  "source_grid_region": [
+    0,
+    0,
+    1024,
+    1536
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p056.png",
+  "registered_pose_sha256": "7156b263e9fe3d5ed8ceaaa4a8d9d465b8d6f36454e2c6eaaca761efc2ffa14c",
+  "mirror_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p056_mirror.png",
+  "mirror_sha256": "9c741eb9b124e9907d1df74e2408f7137c0c5276c8a44929fffe15e0cdb7310f",
+  "registration": {
+    "source_body_rect": [
+      179,
+      180,
+      35,
+      81
+    ],
+    "artwork_crop": [
+      205,
+      55,
+      840,
+      1496
+    ],
+    "registered_rect": [
+      470,
+      300,
+      86,
+      195
+    ],
+    "uniform_artwork_fit": 0.13543307086614173
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Newly drawn movement boundary has separated hands and lower robe curving left; differs from quiet idle. G20/G21 one-frame exact aliases and both facings inspected.",
+    "source_sha256_at_review": "7156b263e9fe3d5ed8ceaaa4a8d9d465b8d6f36454e2c6eaaca761efc2ffa14c",
+    "mirror_sha256_at_review": "9c741eb9b124e9907d1df74e2408f7137c0c5276c8a44929fffe15e0cdb7310f"
+  },
+  "human_animation_acceptance": false
+}

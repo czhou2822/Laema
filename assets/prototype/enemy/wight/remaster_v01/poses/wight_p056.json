@@ -1,0 +1,100 @@
+{
+  "pose_id": "wight_p056",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "93c190257775f83254dd637f88233d4fbd273d2fc3cecbe17eed6c3b7acdb048:182:178:29:86:450:400",
+  "original_representative": {
+    "group_id": 20,
+    "original_block": 16,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_20_block_16_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_20_block_16_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cwight40.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 105932,
+      "stored_size": 2369,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 29,
+      "height": 86,
+      "left": 182,
+      "top": 178,
+      "legacy_header": false,
+      "index_sha256": "93c190257775f83254dd637f88233d4fbd273d2fc3cecbe17eed6c3b7acdb048"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-007-attempt-01.png",
+  "raw_sha256": "50cce021baac0f23655ba78946925d23814b2ce72186f1ddf1ae67269acbdafb",
+  "prompt": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-007-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wight/remaster_v01/_source/isolated/page-007-attempt-01-wight_p056.png",
+  "isolated_sha256": "03d0571a6ea930a7b20b9a6f7ac3d68fdbafe2fae83888d3457eda75a6b21a60",
+  "source_grid_region": [
+    0,
+    0,
+    1024,
+    1536
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p056.png",
+  "registered_pose_sha256": "b131f1e7da5c0d588b144162afc7aa0174b37efa38a6ebb88a6fe3870b9b9888",
+  "mirror_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p056_mirror.png",
+  "mirror_sha256": "c14ec395ace167fd8bdb15788f17f47df731522025d9add2347b126eeeb1dcbd",
+  "registration": {
+    "source_body_rect": [
+      182,
+      178,
+      29,
+      81
+    ],
+    "artwork_crop": [
+      247,
+      82,
+      840,
+      1498
+    ],
+    "registered_rect": [
+      477,
+      318,
+      72,
+      172
+    ],
+    "uniform_artwork_fit": 0.12141652613827993
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Movement start/end shared pose: newly drawn right-facing lowered hands and curved left hem; no idle/master substitution. Inspected registered-scale OG/candidate and both facings; 2x source comparison. Worker candidate review only.",
+    "source_sha256_at_review": "b131f1e7da5c0d588b144162afc7aa0174b37efa38a6ebb88a6fe3870b9b9888",
+    "mirror_sha256_at_review": "c14ec395ace167fd8bdb15788f17f47df731522025d9add2347b126eeeb1dcbd"
+  },
+  "human_animation_acceptance": false
+}

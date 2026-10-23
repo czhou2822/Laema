@@ -1,0 +1,100 @@
+{
+  "pose_id": "wraith_p027",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "f3ae6f4a336691dce8837bd380e16db976693e8528a3065f0650bf916138dc4c:167:182:68:82:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cwrait22.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 66055,
+      "stored_size": 2799,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 68,
+      "height": 82,
+      "left": 167,
+      "top": 182,
+      "legacy_header": false,
+      "index_sha256": "f3ae6f4a336691dce8837bd380e16db976693e8528a3065f0650bf916138dc4c"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/repair-b-attempt-02.png",
+  "raw_sha256": "a7a94b63810044ad1c62daa37046cdcd6c34ff368f25de7ae283c7ee1d8077ab",
+  "prompt": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/repair-b-attempt-02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wraith/remaster_v01/_source/isolated/repair-b-attempt-02-wraith_p027.png",
+  "isolated_sha256": "09a0002ac2f830bd47a3a2bc81dbe93bdfe5101da57fa457d30f629af785ea70",
+  "source_grid_region": [
+    43,
+    126,
+    542,
+    332
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p027.png",
+  "registered_pose_sha256": "8d0292db7b04ec9b8ba80fa89c712a6f87661a9a84816ad8cc9909c3f58da158",
+  "mirror_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p027_mirror.png",
+  "mirror_sha256": "f9a342fd0d899396d8fa056bf6927dae8125db29308d8944373c93c5b1f5e680",
+  "registration": {
+    "source_body_rect": [
+      168,
+      182,
+      67,
+      50
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      544,
+      334
+    ],
+    "registered_rect": [
+      443,
+      322,
+      165,
+      101
+    ],
+    "uniform_artwork_fit": 0.3044280442804428
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Early low curved death pose retains skull and both attached arms; robe trails right. Redraw removed stray detached speck below early collapse. No intact-idle substitution. Both-facing death sequence inspected.",
+    "source_sha256_at_review": "8d0292db7b04ec9b8ba80fa89c712a6f87661a9a84816ad8cc9909c3f58da158",
+    "mirror_sha256_at_review": "f9a342fd0d899396d8fa056bf6927dae8125db29308d8944373c93c5b1f5e680"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "creature_id": "wight",
+  "record_kind": "historical_initial_preparation",
+  "superseded_by": "report.md",
+  "status": "source_prepared_artwork_held",
+  "hold": "Await explicit parent Skeleton/Bone Dragon pilot clearance before imagegen",
+  "source": {
+    "original_def_id": "CWIGHT",
+    "groups": 18,
+    "timeline_positions": 102,
+    "unique_registered_poses": 57,
+    "distinct_ordered_sequences": 12,
+    "exact_alias_pairs": [[7,9],[8,10],[11,14],[12,15],[13,16],[20,21]],
+    "source_sheet_files_present": 36,
+    "indexed_occurrence_hashes_checked": 102,
+    "all_group_and_occurrence_records_match_metadata": true,
+    "all_57_opaque_rectangles_match_plan": true,
+    "all_57_poses_fit_fixed_geometry_padding": true,
+    "master_metadata_def_hashes_match_plan": true,
+    "prepared_master_copy_byte_identical": true,
+    "master_approval_entry_verified": true,
+    "errors": []
+  },
+  "visual_evidence": {
+    "inspection_tool": "view_image",
+    "master_inspected": "docs/art/production/necropolis-creature-assets-v01/wight/master_rgba.png",
+    "actual_og_sheets_inspected": [
+      "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_02_block_02_page_00.png",
+      "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_00_block_00_page_00.png"
+    ],
+    "guide_root": "assets/prototype/enemy/wight/remaster_v01/_source/guides",
+    "inspected_guides": ["batch-000.png","batch-001.png","batch-002.png","batch-003.png","batch-004.png","batch-005.png","batch-006.png","batch-007.png"],
+    "unique_pose_stills_inspected": 57,
+    "pose_id_range": ["wight_p000","wight_p056"],
+    "categories_inspected": ["movement","idle gesture","idle","hurt","defence","death","turn","upper attack","front attack","lower attack","movement start/end"],
+    "source_ordered_playback_reviewed": false,
+    "both_animation_facings_reviewed": false,
+    "original_timing_verified": false,
+    "observed_cautions": [
+      "Guide crops are independently enlarged; use plan geometry for registration",
+      "Idle gesture includes red eye accent",
+      "Attack hand trails are embedded in original frames",
+      "Death includes detached skeletal sections and terminal heap",
+      "G14-16 are exact G11-13 aliases; ranged labels do not establish gameplay",
+      "Historical master approval wording is superseded by current explicit approval"
+    ]
+  },
+  "outputs": {
+    "preparation": "assets/prototype/enemy/wight/remaster_v01/_source/preparation.json",
+    "guide_pages": 8,
+    "supplied_remaster_poses": 0,
+    "missing_remaster_poses": 57,
+    "complete_remaster_groups": 0,
+    "new_artwork_calls": 0,
+    "approved_idle_reuse_count": 0,
+    "review_marked_candidate_poses": 0,
+    "placeholder_count": 0
+  },
+  "verification": {
+    "audit_script": "docs/art/remasters/necropolis-v01/creatures/wight/audit_source.py",
+    "audit_exit_code": 0,
+    "audit_is_read_only": true,
+    "python_no_bytecode_flag": "-B",
+    "engine_or_gameplay_tests_run": false,
+    "git_operations_performed": false,
+    "peer_messages_sent": false,
+    "human_animation_acceptance": false
+  }
+}
