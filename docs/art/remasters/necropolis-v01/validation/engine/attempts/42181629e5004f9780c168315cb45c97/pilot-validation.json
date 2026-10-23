@@ -1,0 +1,902 @@
+{
+  "mode": "pilot smoke check, temporary partial libraries",
+  "godot_version": "4.7.1.stable.official.a13da4feb",
+  "compatible_declared_engine": true,
+  "fixture_path": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\necropolis-validation-v01\\fixtures\\pilot-\\42181629e5004f9780c168315cb45c97",
+  "texture_imports": 162,
+  "expected_libraries": 10,
+  "expected_groups": 162,
+  "expected_frame_regions": 1022,
+  "import_exit": 0,
+  "resource_exit": 0,
+  "result": {
+    "engine_version": {
+      "build": "official",
+      "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+      "hex": 263937,
+      "major": 4,
+      "minor": 7,
+      "patch": 1,
+      "status": "stable",
+      "string": "4.7.1-stable (official)",
+      "timestamp": 0
+    },
+    "failures": [],
+    "frame_regions_checked": 1022,
+    "groups_loaded": 162,
+    "human_gameplay_validation": false,
+    "libraries_loaded": 10,
+    "original_timing_verified": false,
+    "test_scope": "isolated asset import/resource load only"
+  },
+  "errors": [],
+  "passed": true,
+  "human_gameplay_validation": false,
+  "original_timing_verified": false,
+  "original_game_project_loaded": false,
+  "project_code_changed": false,
+  "engine_userdata_and_cache": "Task-local child-process APPDATA/LOCALAPPDATA/TEMP/TMP, self-contained editor copy where configured; no host preferences changed",
+  "asset_inputs": [
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_00_block_00.png",
+      "sha256": "fbb2d279f627017c67fec0bc3c141603f460a9dd848419b129e10f5ad04a4eff",
+      "bytes": 572046
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_00_block_00_mirror.png",
+      "sha256": "362bb166129b51682d4d3d03e01d50a7a7ba9d34ff8fc790c744fd6e2553b586",
+      "bytes": 574725
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_01_block_01.png",
+      "sha256": "e3c4a6266c52498f2c950ba315989e1fd1bd7cadd7f42276f83c4af428aa3b2e",
+      "bytes": 631895
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_01_block_01_mirror.png",
+      "sha256": "4c60b466853e68baacf249024b980a082fbf62ebf51ca381d325cf0061ef9ee5",
+      "bytes": 634512
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_02_block_02.png",
+      "sha256": "db3f760283fae8f88aaa50a89e77783fae96d6c189c75398778302f7fc19e1f6",
+      "bytes": 584912
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_02_block_02_mirror.png",
+      "sha256": "0b124881801dfbf5fb78967f9595a7e80669d6e7dc1992906234aecdb8ad72eb",
+      "bytes": 584728
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_03_block_03.png",
+      "sha256": "dd08156eb3df7ce938642b512c3add66e901b787a21ed0a32079423e2d0172ed",
+      "bytes": 442973
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_03_block_03_mirror.png",
+      "sha256": "0d57ed069f2681e83453cbb7669ca17f9dcec3ae2328b52f40c5449b13f83a80",
+      "bytes": 443920
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_04_block_04.png",
+      "sha256": "6035a1ca12cf2a407fa7f45795d1cb923e3c290a2c294bcc6cfae6d8cd04d67c",
+      "bytes": 605332
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_04_block_04_mirror.png",
+      "sha256": "75ffdf1013462f6694d58e05e077c9a7de2199c49e7f6852eb2f1fb1e58cc1db",
+      "bytes": 607376
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_05_block_05.png",
+      "sha256": "3ad21c2bda34463066f69918cf4847982a13a1c6be03ff808f46f9664e252907",
+      "bytes": 546021
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_05_block_05_mirror.png",
+      "sha256": "5da3dff7b910b98388849f2168815c89a0841a4a166ccac86f3af808be5db7ce",
+      "bytes": 546185
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_07_block_06.png",
+      "sha256": "a3c3ae1bdf3f173c9be4b4259e62065cb8dd4ebe148f02a86ca948a4f8e97240",
+      "bytes": 179626
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_07_block_06_mirror.png",
+      "sha256": "1ed3aa10505365419cddebb404015e12ad5b211fc3aa59a36c012e1425a42678",
+      "bytes": 179498
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_08_block_07.png",
+      "sha256": "afcc8a5417ab98dae54af6282316f19a79e754e4cfd40b7a1db8e9af4d15b705",
+      "bytes": 179543
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_08_block_07_mirror.png",
+      "sha256": "a91202943ac3a2d3c4864253e614461f3f2bb3083a5b34a22c4e6af9f0f40992",
+      "bytes": 179616
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_09_block_08.png",
+      "sha256": "a3c3ae1bdf3f173c9be4b4259e62065cb8dd4ebe148f02a86ca948a4f8e97240",
+      "bytes": 179626
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_09_block_08_mirror.png",
+      "sha256": "1ed3aa10505365419cddebb404015e12ad5b211fc3aa59a36c012e1425a42678",
+      "bytes": 179498
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_10_block_09.png",
+      "sha256": "afcc8a5417ab98dae54af6282316f19a79e754e4cfd40b7a1db8e9af4d15b705",
+      "bytes": 179543
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_10_block_09_mirror.png",
+      "sha256": "a91202943ac3a2d3c4864253e614461f3f2bb3083a5b34a22c4e6af9f0f40992",
+      "bytes": 179616
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_11_block_10.png",
+      "sha256": "b13387db3b2018bb5aca07c9e32287eced1976090d2dff283181c81b72f9181f",
+      "bytes": 597940
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_11_block_10_mirror.png",
+      "sha256": "c87a7af0d3dc47e57f8b83c1cedf86c517dbeebea13610c3bdb2e1d7c1515038",
+      "bytes": 599562
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_12_block_11.png",
+      "sha256": "5a6831f13084802c34b85b59745c619a754050063a258512783cc5fb458382dc",
+      "bytes": 566558
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_12_block_11_mirror.png",
+      "sha256": "e14c3f891aaf21a6b3c46aff470b2e24318f47a054e911bc2e34401b6e0b2c25",
+      "bytes": 567930
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_13_block_12.png",
+      "sha256": "0d86d0fda051a157497954728f89c72aa4a6ca855fcbd51863a7b5d3348091ef",
+      "bytes": 566100
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_13_block_12_mirror.png",
+      "sha256": "9ec2595964385529a753988744e1694670354905b9f1f7d4bbc4617df7716d6f",
+      "bytes": 566920
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_20_block_13.png",
+      "sha256": "20cbe10210b42aabd04d4945656593b2e4c218093518d1f11ccdcc4929a647ea",
+      "bytes": 150715
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_20_block_13_mirror.png",
+      "sha256": "1522ee27de061c65b628a11b719d2a50b72d07a0b4dccbdc77e61bbb42cbccef",
+      "bytes": 150880
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_21_block_14.png",
+      "sha256": "bec3b6428e60126b2f40396354d8d9c53ffedc773af6650e24d463fd58b21886",
+      "bytes": 141134
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/group_21_block_14_mirror.png",
+      "sha256": "1f90192927604254b65f4262bd86ba05819e0d97bbf24cf38f531fe747571304",
+      "bytes": 140997
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/original_groups.tres",
+      "sha256": "16c5cb62e02a2acd13187ea659b8d125514b56a1152e2fc7e48b4591349d04b9",
+      "bytes": 19853
+    },
+    {
+      "path": "assets/prototype/enemy/black_knight/remaster_v01/original_groups_mirrored.tres",
+      "sha256": "d50923f05c26867be1689d6ea2008382956266855bb70408208b7d287d7867ce",
+      "bytes": 19957
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_00_block_00.png",
+      "sha256": "cdab8469ba8ba2410790d05838c7b2896d7428e94465fb073248296b2fd170ec",
+      "bytes": 674426
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_00_block_00_mirror.png",
+      "sha256": "2be9451de2a04847cabc5fc9c1888124f00bfe96f02b96df577ef30b2951093c",
+      "bytes": 676653
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_01_block_01.png",
+      "sha256": "736d73d8b00f03943b7400eff0d4b8823d8600a4a563eb64f5c7a8fc531e3b05",
+      "bytes": 733572
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_01_block_01_mirror.png",
+      "sha256": "29999758e54d468969d9935bcf6f2cae027fd07710238c26c046b42280b96883",
+      "bytes": 735008
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_02_block_02.png",
+      "sha256": "2c894e13b9154894d4642d22f554b83684c4514d7c5bb3bf61f74f6bb0669490",
+      "bytes": 659331
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_02_block_02_mirror.png",
+      "sha256": "58905fc5633a243d0ac99de6981c352605affc4683f9511078855dd7bc518c11",
+      "bytes": 658085
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_03_block_03.png",
+      "sha256": "e55cf3c9d82364ceeb9f45d70cb21790106cc9fe109470f93fbbad780123798d",
+      "bytes": 494270
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_03_block_03_mirror.png",
+      "sha256": "5fb3b55e3e3789bf691ba6bd55267a9dac3d0790a92e529247f245c3e91c4419",
+      "bytes": 494136
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_04_block_04.png",
+      "sha256": "f5aef71f1ecb91798d6ae923f1fce95f0f5360a34dba33f60cd8255d5707b7f2",
+      "bytes": 693936
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_04_block_04_mirror.png",
+      "sha256": "9385c6d756abccc95381e00abf1a4e8e7b822f0dbbb6af740a358ddccee950b1",
+      "bytes": 695440
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_05_block_05.png",
+      "sha256": "c5f3eb1e88a98334b784578416a8c01d9a4ed13382a0ec71035ed989123840ba",
+      "bytes": 608487
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_05_block_05_mirror.png",
+      "sha256": "ee13c3463eded4395bf98fe1b765b69e028f436ce2b39fbeb8cde5bade7503cf",
+      "bytes": 609088
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_07_block_06.png",
+      "sha256": "456b1dcd8bab3c17fce70c2b18fd144755f359c1021c794525af9bc9bada0b33",
+      "bytes": 210410
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_07_block_06_mirror.png",
+      "sha256": "400a90f86253dfda82d6ab5526ffed7a59461310711dbf56946202bc43393e0e",
+      "bytes": 210655
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_08_block_07.png",
+      "sha256": "d1a9ef401ee3fe8dd856494904bc0b47f5a064ba065b030b511626260a74b6e2",
+      "bytes": 210418
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_08_block_07_mirror.png",
+      "sha256": "22254e259f833e02e2fd27e629bed83ecac977d29c501e3f5c8111dbcbf34a07",
+      "bytes": 210610
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_09_block_08.png",
+      "sha256": "456b1dcd8bab3c17fce70c2b18fd144755f359c1021c794525af9bc9bada0b33",
+      "bytes": 210410
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_09_block_08_mirror.png",
+      "sha256": "400a90f86253dfda82d6ab5526ffed7a59461310711dbf56946202bc43393e0e",
+      "bytes": 210655
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_10_block_09.png",
+      "sha256": "d1a9ef401ee3fe8dd856494904bc0b47f5a064ba065b030b511626260a74b6e2",
+      "bytes": 210418
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_10_block_09_mirror.png",
+      "sha256": "22254e259f833e02e2fd27e629bed83ecac977d29c501e3f5c8111dbcbf34a07",
+      "bytes": 210610
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_11_block_10.png",
+      "sha256": "bd476b95389758e2413ac201bda17864a8cc4fdcc2825e52159491d73ab5bd6a",
+      "bytes": 662631
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_11_block_10_mirror.png",
+      "sha256": "956a98764b3e99068308a01440c570e875533eac4b103ae6b354ad12bc23ef69",
+      "bytes": 664966
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_12_block_11.png",
+      "sha256": "b537af39dc2f786fee257a12f70530a48e06ddea7827209ad1bb4145eecc9b27",
+      "bytes": 670997
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_12_block_11_mirror.png",
+      "sha256": "17bc07c45dddc5926bb279ef16330233b1660189713bb99a32338fc2698fbc7b",
+      "bytes": 671633
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_13_block_12.png",
+      "sha256": "e1084747e71aee19d9f3e1d07afb7c331aeec2bdcffc0d1cb8779d4ad544ab3b",
+      "bytes": 648637
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_13_block_12_mirror.png",
+      "sha256": "aaf4122771960fe85be20c17afe2a4ffd272d842123dbd520d4104ebe556134c",
+      "bytes": 649129
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_17_block_13.png",
+      "sha256": "7e413fb47e18b47a4423e7b190507fb89547d90c5e7c62f56ed3884f6b758c35",
+      "bytes": 737805
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_17_block_13_mirror.png",
+      "sha256": "35cf17879adee128b63efb59a82e6a4de8cb273bcb7ada921b929bf752a5511f",
+      "bytes": 738452
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_18_block_14.png",
+      "sha256": "7e413fb47e18b47a4423e7b190507fb89547d90c5e7c62f56ed3884f6b758c35",
+      "bytes": 737805
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_18_block_14_mirror.png",
+      "sha256": "35cf17879adee128b63efb59a82e6a4de8cb273bcb7ada921b929bf752a5511f",
+      "bytes": 738452
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_19_block_15.png",
+      "sha256": "7e413fb47e18b47a4423e7b190507fb89547d90c5e7c62f56ed3884f6b758c35",
+      "bytes": 737805
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_19_block_15_mirror.png",
+      "sha256": "35cf17879adee128b63efb59a82e6a4de8cb273bcb7ada921b929bf752a5511f",
+      "bytes": 738452
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_20_block_16.png",
+      "sha256": "6aa540e70eb96d9434636c9a0534cf524006f8d247d646e23b742146af4e7a52",
+      "bytes": 168407
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_20_block_16_mirror.png",
+      "sha256": "dbbdfe72d1642a4388d070b5fba639630db4cd1f63020f7a00cc50bdcc248a6e",
+      "bytes": 168609
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_21_block_17.png",
+      "sha256": "46836a65d88ae99c408794801148cc320198fa7b2b60b971d540088a1f76cf65",
+      "bytes": 167014
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/group_21_block_17_mirror.png",
+      "sha256": "39cbaa72387ddca8ce98d2959646d35b99ae4508fc4e52931383eca3b99a644a",
+      "bytes": 166912
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/original_groups.tres",
+      "sha256": "c19919da7fedc1a8cb31a6eeba67503502d7b1c942b05ca0387b826ec0c0e5e0",
+      "bytes": 26405
+    },
+    {
+      "path": "assets/prototype/enemy/dread_knight/remaster_v01/original_groups_mirrored.tres",
+      "sha256": "74246a23e8ba1a7413d6b826f685a3dab45936225eb89e3a204919d0ff453cc1",
+      "bytes": 26530
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_00_block_00.png",
+      "sha256": "820727eadfc6d8c06f5f612f9a5d3dc416aa16f3d6b637009a2b7b9124f4b040",
+      "bytes": 856856
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_00_block_00_mirror.png",
+      "sha256": "a308ef612363522c0d532ca29ab1899c21f00213699e5ffbe02f4fe7def32caf",
+      "bytes": 856138
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_01_block_01.png",
+      "sha256": "c435d25405399d2f7f8d6150b8d33bbec611c79fa32b3cdf0f6644df33394e48",
+      "bytes": 1033980
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_01_block_01_mirror.png",
+      "sha256": "498deefdbea3c2c8de650de42e09cb167249bead35f5f0183744f77ca08f314c",
+      "bytes": 1030793
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_02_block_02.png",
+      "sha256": "146fd05392667dd09277d364e46abfb9031ae3055ec48ef6eafd86c7c12d40a1",
+      "bytes": 900396
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_02_block_02_mirror.png",
+      "sha256": "d14b0a025689c24ced1ce0d19ccf524dc40737b72f2df9ba394d88396b6264c3",
+      "bytes": 898649
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_03_block_03.png",
+      "sha256": "c4ea38765181fd43f84183cd0a374b3eeaad34caad4f78538f0d652d5af2a925",
+      "bytes": 932361
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_03_block_03_mirror.png",
+      "sha256": "2ef3066d701132bb5e84b38b7c2e7dbf10a6742ea0f800187b40db62e06b8bd5",
+      "bytes": 937854
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_04_block_04.png",
+      "sha256": "9bd8fbcf0b7f8da5953f9d7647757ab7899159e6f4a133e2063eb507393f07eb",
+      "bytes": 1186992
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_04_block_04_mirror.png",
+      "sha256": "a7d5d63a5bfa9f0f8a6d8b5184bc5f13a353a2475febc16875074ff85d600f3e",
+      "bytes": 1185261
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_05_block_05.png",
+      "sha256": "c565094c788ca730ab230bb0b23f5ff551d87f19ef7ab6f51ef882d8ff7bccd8",
+      "bytes": 1154960
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_05_block_05_mirror.png",
+      "sha256": "f52672f9635824e339cc177796d3181cf976dd077d6754b2d343cbdc4e8e26fd",
+      "bytes": 1155312
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_07_block_06.png",
+      "sha256": "6fb2a013289fc9422e6f2440414126007ade232fd6643791d3b1402d4dec8964",
+      "bytes": 528937
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_07_block_06_mirror.png",
+      "sha256": "7a85589fc182325b115dfba58751262beabdcb6480390e42c085ef6a44c3cb88",
+      "bytes": 530240
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_08_block_07.png",
+      "sha256": "d698ebbcdf0d54c363628267c1d85774bd98fdcceabfb89477ab49cfe786596f",
+      "bytes": 528909
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_08_block_07_mirror.png",
+      "sha256": "0835a7bdaa08f38f0e5e28d41bbcf2a467534e98e170a8a3d44074180a9d1434",
+      "bytes": 530566
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_09_block_08.png",
+      "sha256": "6fb2a013289fc9422e6f2440414126007ade232fd6643791d3b1402d4dec8964",
+      "bytes": 528937
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_09_block_08_mirror.png",
+      "sha256": "7a85589fc182325b115dfba58751262beabdcb6480390e42c085ef6a44c3cb88",
+      "bytes": 530240
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_10_block_09.png",
+      "sha256": "d698ebbcdf0d54c363628267c1d85774bd98fdcceabfb89477ab49cfe786596f",
+      "bytes": 528909
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_10_block_09_mirror.png",
+      "sha256": "0835a7bdaa08f38f0e5e28d41bbcf2a467534e98e170a8a3d44074180a9d1434",
+      "bytes": 530566
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_11_block_10.png",
+      "sha256": "b5ac7ba8fbb658ccfacfc9cdf0bc1ffea5039b9b177c6f08b15f2bd32f62aa3b",
+      "bytes": 1176356
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_11_block_10_mirror.png",
+      "sha256": "7ee125dee8cbd7ce644d6e4684db02ca49e8c9aea2db95b2ca984de7a20fe88a",
+      "bytes": 1179847
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_12_block_11.png",
+      "sha256": "b4a750d4d28bfeb2101c86b0d1b847112a452a0b8ccf157384a879b5084b962f",
+      "bytes": 1173049
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_12_block_11_mirror.png",
+      "sha256": "24506098a76a7264552ee12d50dd8f658d28653eaca81ca2ca2a407058de7e31",
+      "bytes": 1177159
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_13_block_12.png",
+      "sha256": "f4efe726679000f6be3e0dcee15215d7877e23ba58d4da56c1ba3e1f32fa1ba8",
+      "bytes": 1137383
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_13_block_12_mirror.png",
+      "sha256": "2914d5aa8e9b7d5fcc3f2a95c38d1fa571682dcefc2868810ff72e37f91d3940",
+      "bytes": 1140263
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_20_block_13.png",
+      "sha256": "29ee00ffe48b855f65c0ef654893ea97b6ca2d481df7f0fa235c1fe8a4db5dac",
+      "bytes": 523807
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_20_block_13_mirror.png",
+      "sha256": "83a8e8895108b4e321446340deb6dece91f6cbb605fb27937d0be80970b6c149",
+      "bytes": 524891
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_21_block_14.png",
+      "sha256": "21a21c49a11225f096bd569f5104bdef9e4f36d6f88c28d265c1d58faceb7b2a",
+      "bytes": 811242
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/group_21_block_14_mirror.png",
+      "sha256": "43de0a310d3487560d817eca5cd52d82d6c4d21ef9d4b7fde0335a2150774ba2",
+      "bytes": 812174
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/original_groups.tres",
+      "sha256": "2fc20d453a63fa5576f22998b2329e6b504959d98e546d682e4c52f66cc1c230",
+      "bytes": 19125
+    },
+    {
+      "path": "assets/prototype/enemy/ghost_dragon/remaster_v01/original_groups_mirrored.tres",
+      "sha256": "1c42155956f3d46dc0cb330befa9e8d687278f20a0491cf06a785b0a67b5d2e1",
+      "bytes": 19229
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_00_block_00.png",
+      "sha256": "83330412f79adf3589bad687477fc59726581acc4dc9b2689391d36b5f5e8950",
+      "bytes": 489326
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_00_block_00_mirror.png",
+      "sha256": "9413da50af5d3ad8dc7264e48c189cafe6414d83eadb1b13ac56839928b1125b",
+      "bytes": 489871
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_01_block_01.png",
+      "sha256": "73ba2803720903a8f0af3dc37b27bf49617e9983a6bb6696813b05629e962616",
+      "bytes": 585864
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_01_block_01_mirror.png",
+      "sha256": "aaf3efb1ac602afb3f27251bb6759eb9b1db86307f951d224aa886b60d229d9e",
+      "bytes": 586690
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_02_block_02.png",
+      "sha256": "17d3149c0759d8370c8ec477064d99f9f012756b80666a1a720ba0d2bd15658a",
+      "bytes": 450740
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_02_block_02_mirror.png",
+      "sha256": "8caf12a66b822b586ab2d9e808ab388e490ef0b98c85ee4cc9857f6a810bbbcb",
+      "bytes": 451538
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_03_block_03.png",
+      "sha256": "dad6a39454cde5ced499700dfc77c98b7bf6abf4b45e74c5a1fecc9ea0b6813d",
+      "bytes": 485453
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_03_block_03_mirror.png",
+      "sha256": "5755659e0fa5eeca99bec573cd6153a20a62b4cfc166e8521bfb076afbdde203",
+      "bytes": 484850
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_04_block_04.png",
+      "sha256": "f2fb9cf48cc346e426649fd94ff0065e66d6cc3a3ceef4ab68bb0bd17cb264a8",
+      "bytes": 503610
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_04_block_04_mirror.png",
+      "sha256": "163289cf74fede67f6b09c8098cd25ba1c44df34b6b1666defb62fd719460be4",
+      "bytes": 502781
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_05_block_05.png",
+      "sha256": "ebb504d1b264d3b95250e3a6e2b4dcf2a242533d3e7e13060d53517e24265c07",
+      "bytes": 376006
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_05_block_05_mirror.png",
+      "sha256": "e523538612088550506f9a85783eac34ffb756ec96d5aaa142c9c641b2e4125d",
+      "bytes": 374935
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_07_block_06.png",
+      "sha256": "f27f821a8931a9c9c4b98ca66b7f4e9d28ec370639ee42d1fe6da386ee87df89",
+      "bytes": 117753
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_07_block_06_mirror.png",
+      "sha256": "7f0c3254abac4d531a8c6cc8bbdb7c73b2679dc9ae3493464eeac784c684add6",
+      "bytes": 117555
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_08_block_07.png",
+      "sha256": "e1fd8629eeed1143e7e9f1aa5e27c1d4a5cfb6c1834b31ee7b878e3bb7caa37e",
+      "bytes": 117788
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_08_block_07_mirror.png",
+      "sha256": "fb409c9c296de8325d57aceacaa7f9c48f7e1bd93756bb008879096693fbcf16",
+      "bytes": 117511
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_09_block_08.png",
+      "sha256": "f27f821a8931a9c9c4b98ca66b7f4e9d28ec370639ee42d1fe6da386ee87df89",
+      "bytes": 117753
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_09_block_08_mirror.png",
+      "sha256": "7f0c3254abac4d531a8c6cc8bbdb7c73b2679dc9ae3493464eeac784c684add6",
+      "bytes": 117555
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_10_block_09.png",
+      "sha256": "e1fd8629eeed1143e7e9f1aa5e27c1d4a5cfb6c1834b31ee7b878e3bb7caa37e",
+      "bytes": 117788
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_10_block_09_mirror.png",
+      "sha256": "fb409c9c296de8325d57aceacaa7f9c48f7e1bd93756bb008879096693fbcf16",
+      "bytes": 117511
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_11_block_10.png",
+      "sha256": "a5d059bd032c58fcd8ac228ead5203659ac3c82f5d3c45fff72d155bcc75467d",
+      "bytes": 539119
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_11_block_10_mirror.png",
+      "sha256": "2249f3201e0e5e28e4d6da1a233e608214cc6e99f78e82c3919c054ef8394c9b",
+      "bytes": 541133
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_12_block_11.png",
+      "sha256": "bacd5ad25b117f80a2ade43d997d3ee6dabc5fb289bb8ed1bb5220ee86536faf",
+      "bytes": 529600
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_12_block_11_mirror.png",
+      "sha256": "cc3ea13c85a4a70cb380e15c6388f4b5a656c35ffcedcb2eb05a1d52f62ba5e8",
+      "bytes": 530154
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_13_block_12.png",
+      "sha256": "4e9f2d4d9de42c6597c6fd6dc2e0831046c9dccdb5d683339e5c8feb8ef64b9d",
+      "bytes": 555023
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_13_block_12_mirror.png",
+      "sha256": "61d0d0ec42ac103a2c5be0e10cc839b51e4e70826ffb2e6faf1401a1e79341a3",
+      "bytes": 556438
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_14_block_13.png",
+      "sha256": "3568b77d6c3a159572325a561a93fa2fa023eabc761d1ea11a8ffba17a44c0c0",
+      "bytes": 555344
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_14_block_13_mirror.png",
+      "sha256": "29f4875a100a05dc964e8c0867e1d7466975b79c6b53f10fb4e1672516da9167",
+      "bytes": 556027
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_15_block_14.png",
+      "sha256": "85be4d082f6a77468f2ec56634c9a5ca3f1713d627af1dfb8fca9418e4a59875",
+      "bytes": 690769
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_15_block_14_mirror.png",
+      "sha256": "e113a72359984221a2d5b9adce821c7127aa63fb362b591239d4831fee806c0e",
+      "bytes": 691858
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_16_block_15.png",
+      "sha256": "7661c2e45f786b4ed8031aadc608a4881fad74e360ac83b5273462df6038644e",
+      "bytes": 566384
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_16_block_15_mirror.png",
+      "sha256": "422190a253f33cdc5a6d7c6c17591fa378c5f47144ce0dd46634faf8a7f649e6",
+      "bytes": 568001
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_20_block_16.png",
+      "sha256": "0e8ba37f6ab94b2e993bd6216bfa41a345b5f31fe5e8570bebb5958216b2cd78",
+      "bytes": 128703
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_20_block_16_mirror.png",
+      "sha256": "510055c35cc9b6f9d1a5832e1845f854be5484313855dd1d69dee895fe6d7840",
+      "bytes": 128815
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_21_block_17.png",
+      "sha256": "2df4909924eff62e5d182ed024a368e03fdbd80578ff8bf2370093a952cf3226",
+      "bytes": 127833
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/group_21_block_17_mirror.png",
+      "sha256": "89f0f75c1ba63c5c05e33adc36718e673498a4edd0051ff1e6755e09fb8445ba",
+      "bytes": 127826
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/original_groups.tres",
+      "sha256": "1717cfdf7a9e519167cc3080e9d852cb7013f2639e5926eebd1c8fb15ccdbde6",
+      "bytes": 25474
+    },
+    {
+      "path": "assets/prototype/enemy/power_lich/remaster_v01/original_groups_mirrored.tres",
+      "sha256": "d630dc0efea5f0d853d4ac90f1e709b69e6a983610f78b3df529059d4fc5e021",
+      "bytes": 25599
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_00_block_00.png",
+      "sha256": "07cfa4e810531406aecf2d524c31c337190e271baa4de0cbbdb2993e6e2e95bb",
+      "bytes": 275331
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_00_block_00_mirror.png",
+      "sha256": "6ef936375a3349a383092c652a03dd30add95bce3471da129021e54e06432139",
+      "bytes": 277379
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_01_block_01.png",
+      "sha256": "56eaf8460159484dc5c48392f275ab67378c8b35f5aa0d5dd93cca51a294cef6",
+      "bytes": 324246
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_01_block_01_mirror.png",
+      "sha256": "6ab85f97849661b5062f33963347dc3990d478c18ee26fc96fed474b33042e31",
+      "bytes": 324192
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_02_block_02.png",
+      "sha256": "bf80242ebee428a0d90617133353b40cd37c74d2216435b76132390e3dc78849",
+      "bytes": 283799
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_02_block_02_mirror.png",
+      "sha256": "e9c6337e367ef47c0dbcb6d1459e437cdb6dc5eaaf734c50575cc425f0412d70",
+      "bytes": 283949
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_03_block_03.png",
+      "sha256": "39b1dd9d33a5767cc092cfc6722e77df8747f182e265cef3de9aae38aa85d211",
+      "bytes": 243770
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_03_block_03_mirror.png",
+      "sha256": "bdadff6223acee2f62e0dfc125b282274b71ea266a31027d4d3f6d7e48fe817d",
+      "bytes": 243936
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_04_block_04.png",
+      "sha256": "8e42d38256c2ebe0380c044387928eeb1621658fb646780d8985bbeb0b332a8f",
+      "bytes": 329282
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_04_block_04_mirror.png",
+      "sha256": "3bac5c9526a841d40649b7c0e1eaa05099ac6ad304c38912ae0672a0a50608e5",
+      "bytes": 329848
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_05_block_05.png",
+      "sha256": "d81cb40664b038a8ce304365f35bea783b62e54f7d6c6156b233f7a2326a1676",
+      "bytes": 209174
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_05_block_05_mirror.png",
+      "sha256": "bcbf1457fd3cd6dfd042be4ca6b01e600714a24821b16bf5a169e80ad45b69a5",
+      "bytes": 209044
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_07_block_06.png",
+      "sha256": "c891340d1930640ceeb0cfc1df335cae564abcce90cef6b2e516b28aa96469ba",
+      "bytes": 68118
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_07_block_06_mirror.png",
+      "sha256": "6030b0c184f5cd3035f13967c246de32fe5dc7b203678b049af915dde02559e2",
+      "bytes": 67935
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_08_block_07.png",
+      "sha256": "defd3e1259e2d6175d168f62afc8ed796fe4255660639b21aec1a58918fe3f40",
+      "bytes": 68116
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_08_block_07_mirror.png",
+      "sha256": "5183ac1daaba36c8ced6e46dad9bd5b0e185a0592a8bb1eff24735a7aad99479",
+      "bytes": 67956
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_09_block_08.png",
+      "sha256": "c891340d1930640ceeb0cfc1df335cae564abcce90cef6b2e516b28aa96469ba",
+      "bytes": 68118
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_09_block_08_mirror.png",
+      "sha256": "6030b0c184f5cd3035f13967c246de32fe5dc7b203678b049af915dde02559e2",
+      "bytes": 67935
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_10_block_09.png",
+      "sha256": "defd3e1259e2d6175d168f62afc8ed796fe4255660639b21aec1a58918fe3f40",
+      "bytes": 68116
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_10_block_09_mirror.png",
+      "sha256": "5183ac1daaba36c8ced6e46dad9bd5b0e185a0592a8bb1eff24735a7aad99479",
+      "bytes": 67956
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_11_block_10.png",
+      "sha256": "cd8efab98ad5f9698dd6dbd2a9b46b35f4908017bb9f26104acc41b0b113255b",
+      "bytes": 291940
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_11_block_10_mirror.png",
+      "sha256": "875422667a107876be937ac3f71796c900307344aac477bd57a29bee4a56e2db",
+      "bytes": 292026
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_12_block_11.png",
+      "sha256": "88585718b26c88676de53395e1696507f6f50928e44a64d1e81b55b976720322",
+      "bytes": 333520
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_12_block_11_mirror.png",
+      "sha256": "1d2c00c110bb9ac42bd1bb43fecc894c29d2547fd5d643388ced7b52c96868d1",
+      "bytes": 333788
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_13_block_12.png",
+      "sha256": "4f134bcbbfb6011ab78a7734586721b53e7bc19d94ad4d4d0a78220afdfa0226",
+      "bytes": 312168
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_13_block_12_mirror.png",
+      "sha256": "f14d085064e8fca2b31878d4163c784cca7a26e2f87c028596d8a00b7423aa5e",
+      "bytes": 312100
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_20_block_13.png",
+      "sha256": "8a1cefe45329ab46b00ecbd122da6142e72bbc8a4f98294ea3083c30471ead74",
+      "bytes": 81400
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_20_block_13_mirror.png",
+      "sha256": "8bf3b42ad5f48e9d36c054e4f1b2d0f393d55fefcc2df6562add8eb14536a91d",
+      "bytes": 81676
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_21_block_14.png",
+      "sha256": "f28402d6de4663ffa21193897dc39a99ce39886ca758a765f87189eba9432eec",
+      "bytes": 78102
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/group_21_block_14_mirror.png",
+      "sha256": "e9df04f7630e6e8b510a9298633a224db1f40f3bd1c8e5b565035ac9da0433f2",
+      "bytes": 78544
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/original_groups.tres",
+      "sha256": "8145be3e62455b3ae6ee56b59de4fafeaf8f0d5b6cfdb56f6e1305ff444cb022",
+      "bytes": 18716
+    },
+    {
+      "path": "assets/prototype/enemy/skeleton/remaster_v01/original_groups_mirrored.tres",
+      "sha256": "7b4cd007aa25711929f593ab7af5d4a5ec72454ebb0a1683ef43eb2b801506ce",
+      "bytes": 18820
+    }
+  ],
+  "validator_sha256": "e7ae1c7b3f02257b9455dc8da52b729cc61a8265dc7e36ccd7da28a8de2e7ea2"
+}

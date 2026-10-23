@@ -1,0 +1,185 @@
+{
+  "scope": "Parent sampled source/candidate contacts and actual viewer controls, combined with dedicated worker exhaustive static pose/sequence review; not human motion acceptance",
+  "complete_review": true,
+  "human_animation_acceptance": false,
+  "original_timing_verified": false,
+  "unresolved_blocking_defects": [],
+  "engine_scope": "Full isolated Godot 4.7.1 import/resource validation passed: 28 actual libraries, 456 textures, 2756 frame regions, zero errors; no game loaded",
+  "creatures": [
+    {
+      "creature_id": "skeleton",
+      "worker_report": "creatures/skeleton/FULL_REPORT.md",
+      "parent_contacts": [
+        "full_g05_source_comparison.png",
+        "full_g11_source_comparison.png"
+      ],
+      "observations": "Released sword and collapsing bone pile, upper attack torso/weapon direction and earlier pilot turns inspected. Source/interpretation limits retained.",
+      "browser_evidence": "viewer/skeleton-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "skeleton_warrior",
+      "worker_report": "creatures/skeleton_warrior/CREATURE_REPORT.md",
+      "parent_contacts": [
+        "group_04_block_04.png",
+        "group_05_block_05.png",
+        "group_07_block_06.png",
+        "group_12_block_11.png"
+      ],
+      "observations": "Helmet, chest armor, round shield, boots and bare forearms distinguish upgrade; shield/weapon planes and equipped final remains inspected.",
+      "browser_evidence": "viewer/skeleton-warrior-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "walking_dead",
+      "worker_report": "creatures/walking_dead/PRODUCTION_REPORT.md",
+      "parent_contacts": [
+        "group_00_block_00.png",
+        "group_05_block_05.png",
+        "group_12_block_11.png"
+      ],
+      "observations": "Upright shuffling gait, cleaver, damaged leg, curled corpse and front attack inspected. Native single-position G20/G21 preserved.",
+      "browser_evidence": "viewer/walking-dead-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "zombie",
+      "worker_report": "creatures/zombie/COMPLETION.md",
+      "parent_contacts": [
+        "group_02_block_02.png",
+        "group_05_block_05.png",
+        "group_12_block_11.png"
+      ],
+      "observations": "Hammer identity, corrected idle shaft angle, overhead/front strike and folded corpse inspected. Native single-position G20/G21 preserved.",
+      "browser_evidence": "viewer/zombie-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "power_lich",
+      "worker_report": "creatures/power_lich/REPORT.md",
+      "parent_contacts": [
+        "group_04_block_04.png",
+        "group_05_block_05.png",
+        "group_15_block_14.png"
+      ],
+      "observations": "Purple defensive versus orange-red orb slot, staff grip, native reflections and detached crown/head/hand/armor/robe/staff content inspected.",
+      "browser_evidence": "viewer/power-lich-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "black_knight",
+      "worker_report": "creatures/black_knight/REPORT.md",
+      "parent_contacts": [
+        "group_01_block_01.png",
+        "group_05_block_05.png",
+        "group_12_block_11.png"
+      ],
+      "observations": "Gesture free fist and blade, rearing/fallen mount, front slash and initial walking source guide inspected; unarmored mount remains distinct from upgrade.",
+      "browser_evidence": "viewer/black-knight-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "dread_knight",
+      "worker_report": "creatures/dread_knight/REPORT.md",
+      "parent_contacts": [
+        "group_05_block_05.png",
+        "group_07_block_06.png",
+        "group_12_block_11.png",
+        "group_17_block_13.png"
+      ],
+      "observations": "Barded mount, plume, curved blade, turn view, falling rider/mount and embedded red-blade special inspected.",
+      "browser_evidence": "viewer/dread-knight-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "ghost_dragon",
+      "worker_report": "creatures/ghost_dragon/REPORT.md",
+      "parent_contacts": [
+        "group_00_block_00.png",
+        "group_05_block_05.png",
+        "group_12_block_11.png"
+      ],
+      "observations": "Flight wing/tail framing, fragmented death and front melee inspected. Repaired separate flying claws viewed on light/dark mattes. Native dither is reinterpreted as continuous alpha, not claimed as recovered engine behavior.",
+      "browser_evidence": "viewer/ghost-dragon-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "wraith",
+      "worker_report": "creatures/wraith/report.md",
+      "parent_contacts": [
+        "group_01_block_01.png",
+        "group_05_block_05.png",
+        "group_12_block_11.png"
+      ],
+      "observations": "Gesture red face patch, hood/skull, flowing robe, progressive bone/cloth collapse and attached white claw streak inspected. Ranged-numbered slots retain exact melee aliases, not new ranged actions.",
+      "browser_evidence": "viewer/wraith-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "wight",
+      "worker_report": "creatures/wight/report.md",
+      "parent_contacts": [
+        "group_02_block_02.png",
+        "group_05_block_05.png",
+        "group_12_block_11.png"
+      ],
+      "observations": "Brown hood/robe, articulated attack hands and native white claw trails inspected. Idle, cloth collapse, separated bone sections and terminal heap retain source order. Original ranged-numbered slots are melee aliases.",
+      "browser_evidence": "viewer/wight-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "vampire_lord",
+      "worker_report": "creatures/vampire_lord/PRODUCTION_REPORT.md",
+      "parent_contacts": [
+        "group_00_block_00.png",
+        "group_05_block_05.png",
+        "group_17_block_13.png",
+        "group_20_block_16.png",
+        "group_21_block_17.png"
+      ],
+      "observations": "Bat-wing cycle, orange-trimmed robe, disintegrating remains, native special particles and smoke-obscured transformation/reversal inspected. Smoke-only middle pose hides intact head/hands as source does; no added gameplay.",
+      "browser_evidence": "viewer/vampire-lord-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "lich",
+      "worker_report": "creatures/lich/production-report.md",
+      "parent_contacts": [
+        "group_02_block_02.png",
+        "group_05_block_05.png",
+        "group_12_block_11.png",
+        "group_15_block_14.png"
+      ],
+      "observations": "Plain cap/staff, chainmail skirt/boots and native red staff accents retain base identity distinct from Power Lich. Idle, melee camera/grip, disassembled death and native coloured slot inspected. Fine contour/volume variations remain disclosed, not claimed as a recovered mesh.",
+      "browser_evidence": "viewer/lich-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "vampire",
+      "worker_report": "creatures/vampire/REPORT.md",
+      "parent_contacts": [
+        "group_00_block_00.png",
+        "group_05_block_05.png",
+        "group_20_block_13.png",
+        "group_21_block_14.png"
+      ],
+      "observations": "Base dark clothing differs from orange-trimmed upgrade. Bat cycle, progressive native death/low horizontal remnant and smoke-obscured transformation order/reversal inspected; no invented miniature bats or gameplay.",
+      "browser_evidence": "viewer/vampire-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    },
+    {
+      "creature_id": "bone_dragon",
+      "worker_report": "creatures/bone_dragon/FULL_REPORT.md",
+      "parent_contacts": [
+        "group_00_block_00.png",
+        "group_02_block_02.png",
+        "group_05_block_05.png",
+        "group_11_block_10.png",
+        "group_13_block_12.png"
+      ],
+      "observations": "Selected p002 A06 wing sweep directly re-reviewed and unchanged. Repaired tall idle/attack wing postures and chest-height forelimbs, flight cycle, complete tail, disintegrating skull/wing/bone clusters and low final heap inspected; prior material flattening concerns resolved. Fine tooth/rib/texture interpretation remains a candidate limit.",
+      "browser_evidence": "viewer/bone-dragon-ui-checks.json",
+      "parent_observed_blocking_defects": []
+    }
+  ]
+}

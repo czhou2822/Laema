@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Necropolis original / remaster review</title>
+<style>
+body{margin:24px;background:#111c27;color:#e5e7e9;font:15px system-ui}h1{font-size:25px;margin-bottom:8px}a{color:#9cd4f3}.note{max-width:1100px;color:#b6c2cc;line-height:1.55}.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0;padding:12px;background:#223241;border-radius:8px}label{display:flex;gap:7px;align-items:center}select,button,input{font:inherit}select,button{padding:5px;background:#e7ecf0;color:#122332;border:0;border-radius:4px}button{cursor:pointer}.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.panel{min-width:0;background:#1c2c3a;border:1px solid #42515d;border-radius:8px;padding:12px}.viewport{overflow:auto;max-height:80vh;min-height:200px;display:grid;justify-items:center;background:#172431}.viewport.light{background:#e6e2d7}.viewport.checker{background:repeating-conic-gradient(#394854 0% 25%,#263541 0% 50%) 0 0/24px 24px}canvas{display:block;flex-shrink:0;width:512px;height:384px}.warning{color:#ffc773}output{font-variant-numeric:tabular-nums}h2{font-size:18px;margin:5px 0 10px}@media(max-width:850px){.panels{grid-template-columns:1fr}}#readout{white-space:pre-wrap;line-height:1.6}
+</style>
+<h1>Necropolis — original versus remaster</h1>
+<p class="note">Original poses, source order and aliases are the reference. Generated artwork is a candidate, not recovered original art. All playback speeds and loops here are review controls; original timing and human animation acceptance remain unverified. No gameplay actors or abilities are assigned.</p>
+<p><a href="README.md">Report</a> · <a href="inventory.json">Inventory</a> · <a href="generation-plan.json">Source plan</a> · <a href="OFFLINE_HANDOFF.md">Offline handoff</a></p>
+<div class="controls">
+<label>Creature <select id="creature" aria-label="Creature"></select></label>
+<label>Group <select id="group" aria-label="Original group"></select></label>
+<label>Facing <select id="facing"><option value="source">Original orientation</option><option value="mirror">Exact mirror</option></select></label>
+<button id="play">Play</button><button id="previous">Previous frame</button><button id="next">Next frame</button>
+<label>Frame <input id="frame" type="range" min="0" max="0" value="0"><output id="frameLabel"></output></label>
+<label>Review fps <input id="fps" type="number" min="1" max="30" value="10" style="width:60px"></label>
+<label>Zoom <select id="zoom"><option value="0.25">25%</option><option value="0.5" selected>50%</option><option value="1">100%</option><option value="2">200%</option></select></label>
+<label>Background <select id="background"><option value="dark">Dark</option><option value="light">Light</option><option value="checker">Checker</option></select></label>
+</div>
+<div class="panels"><section class="panel"><h2>Original — source-coordinate projection</h2><div class="viewport"><canvas id="original" width="1024" height="768"></canvas></div></section><section class="panel"><h2>Remaster — registered candidate</h2><div class="viewport"><canvas id="candidate" width="1024" height="768"></canvas></div></section></div>
+<p id="status" role="status">Loading local inventory…</p><p id="readout"></p><p id="links"></p>
+<script>
+'use strict';
+const $=s=>document.getElementById(s),root=new URL('../../../../',location.href),cache=new Map();
+let data,unit,group,index=0,playing=false,last=0,accumulator=0,generation=0;
+// Full collection review must not retain hundreds of decoded 4K atlas images.
+const image=path=>{if(cache.has(path)){const hit=cache.get(path);cache.delete(path);cache.set(path,hit);return hit}const pending=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>{cache.delete(path);reject(new Error('Image unavailable: '+path))};im.src=new URL(path,root).href});cache.set(path,pending);while(cache.size>12)cache.delete(cache.keys().next().value);return pending};
+const pause=()=>{playing=false;$('play').textContent='Play'};
+async function render(){
+ if(!group)return;const ticket=++generation,mirrored=$('facing').value==='mirror';
+ const og=$('original').getContext('2d'),art=$('candidate').getContext('2d');og.clearRect(0,0,1024,768);art.clearRect(0,0,1024,768);
+ $('frame').value=index;$('frameLabel').textContent=`${index+1} / ${group.frame_count}`;
+ $('status').className=group.complete?'':'warning';$('status').textContent=group.complete?'Loading source and candidate…':'Candidate group is incomplete; no placeholder is substituted.';
+ try{
+  const f=group.source_frames[index],src=await image(f.rgba_sheet);if(ticket!==generation)return;
+  const [sx,sy,sw,sh]=f.sheet_cell_region;
+  const tmp=document.createElement('canvas');tmp.width=sw;tmp.height=sh;const ctx=tmp.getContext('2d',{willReadFrequently:true});ctx.drawImage(src,sx,sy,sw,sh,0,0,sw,sh);
+  const pixels=ctx.getImageData(0,0,sw,sh);for(let k=3;k<pixels.data.length;k+=4)if(pixels.data[k]<=160)pixels.data[k]=0;ctx.putImageData(pixels,0,0);
+  const scale=data.geometry.uniform_scale,anchor=data.geometry.anchor,sourceAnchor=data.geometry.source_anchor;
+  og.save();if(mirrored){og.translate(1024,0);og.scale(-1,1)}og.imageSmoothingEnabled=false;og.drawImage(tmp,anchor[0]-sourceAnchor[0]*scale,anchor[1]-sourceAnchor[1]*scale,sw*scale,sh*scale);og.restore();
+  if(group.complete){const candidate=await image(mirrored?group.mirror_file:group.file);if(ticket!==generation)return;art.drawImage(candidate,index%4*1024,Math.floor(index/4)*768,1024,768,0,0,1024,768);$('status').textContent='Original and candidate loaded — synchronized review only.'}
+  const frame=f.source_record;$('readout').textContent=`${unit.creature} / ${unit.original_def_id} / group ${group.group_id} block ${group.original_block}\n${group.purpose_interpretation}; source frame ${frame.index} ${frame.name}\nPose ${group.pose_ids_in_source_order[index]}; original offset (${frame.left},${frame.top}); exact aliases: ${group.exact_aliases.join(', ')||'none'}\nCoverage: ${data.totals.complete_groups} / ${data.totals.groups} groups; ${data.totals.supplied_frame_positions} / ${data.totals.frame_positions} source positions supplied.`;
+  $('links').replaceChildren();for(const[label,path]of [['Atlas',group.file],['Mirror atlas',group.mirror_file],['GIF',mirrored?group.mirror_preview:group.preview],['All-frame contact',group.contact]])if(path){const a=document.createElement('a');a.textContent=label;a.href=new URL(path,root).href;a.style.marginRight='14px';$('links').append(a)}
+ }catch(e){if(ticket===generation){$('status').className='warning';$('status').textContent=e.message}}
+}
+function chooseGroup(){pause();group=unit.groups.find(g=>g.group_id===Number($('group').value));index=0;$('frame').max=group.frame_count-1;render()}
+function chooseCreature(){unit=data.creatures.find(c=>c.creature_id===$('creature').value);$('group').replaceChildren();for(const g of unit.groups){const o=new Option(`G${g.group_id} / ${g.frame_count} frames / ${g.complete?'supplied':'MISSING'} — ${g.purpose_interpretation}`,g.group_id);$('group').add(o)}chooseGroup()}
+function step(delta){pause();index=(index+delta+group.frame_count)%group.frame_count;render()}
+$('creature').onchange=chooseCreature;$('group').onchange=chooseGroup;$('facing').onchange=render;
+$('frame').oninput=()=>{pause();index=Number($('frame').value);render()};$('previous').onclick=()=>step(-1);$('next').onclick=()=>step(1);
+$('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'Pause':'Play';last=0;accumulator=0};
+$('zoom').onchange=()=>{for(const c of document.querySelectorAll('canvas')){c.style.width=1024*Number($('zoom').value)+'px';c.style.height=768*Number($('zoom').value)+'px'}};
+$('background').onchange=()=>{for(const v of document.querySelectorAll('.viewport'))v.className='viewport '+$('background').value};
+function tick(t){if(playing&&group){if(last)accumulator+=t-last;const duration=1000/Math.max(1,Number($('fps').value)||10);if(accumulator>=duration){index=(index+Math.floor(accumulator/duration))%group.frame_count;accumulator%=duration;render()}}last=t;requestAnimationFrame(tick)}requestAnimationFrame(tick);
+fetch('inventory.json').then(r=>{if(!r.ok)throw new Error('Inventory HTTP '+r.status);return r.json()}).then(x=>{data=x;for(const c of data.creatures)$('creature').add(new Option(c.creature,c.creature_id));chooseCreature()}).catch(e=>{$('status').textContent=e.message+' — serve the complete checkout with a local HTTP server.'});
+</script>
+</html>
