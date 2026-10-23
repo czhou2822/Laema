@@ -1,0 +1,214 @@
+{
+  "method": "built-in image_gen only; no CLI or API fallback",
+  "status": "static master proposal awaiting human approval",
+  "selected_attempt": 1,
+  "selected_raw": "generated-01-raw.png",
+  "attempts": [
+    {
+      "attempt": 1,
+      "operation": "generation with native identity and rendering-style reference images",
+      "prompt_file": "generation-01.prompt.txt",
+      "exact_prompt": "Use case: stylized-concept\nAsset type: one static full-body transparent creature master for a 2D game asset review; not an animation sheet.\nPrimary request: Render the ORIGINAL Heroes III Necropolis Skeleton shown in the supplied native reference. Preserve its specific identity, native idle pose, proportions, right-facing orientation, weapon and empty hand. Create new fine rendered artwork, not enlarged original pixels.\nInput images: Image 1 (native-idle-6x.png) is the authoritative identity, exact silhouette, pose, equipment and color reference. Image 2 (native-g02-guide.png) confirms the same idle pose across source frames; render only the FIRST idle pose once, not the contact sheet. Image 3 (pikeman-rendering-master.png) is RENDERING STYLE ONLY: borrow its fine modeled volume, subtly textured surfaces, restrained base colors, concentrated material highlights and clear small-scale silhouette. Do not borrow the Pikeman's facing, proportions, clothing, armor, helmet, heraldry, blue/yellow palette or polearm.\nScene/backdrop: genuine transparent RGBA background, isolated character. No floor, ground plane, cast shadow, contact shadow, environment, vignette or backdrop.\nSubject and anatomy: a lanky, unarmored, unclothed adult human skeleton in three-quarter side view facing screen RIGHT, skull and empty dark eye sockets looking right. Natural adult skeletal proportions and slender long limb bones; visible ribs and sternum, clavicles, open pelvis and bony hands and feet. Aged pale ivory / muted yellow-gray bone with olive-gray recesses and subtle worn surface texture. No flesh, hair, beard, glowing eyes, cloth, belt, boots, helmet, armor, jewelry or shield. This is the basic Skeleton, not Skeleton Warrior.\nPose lock: Match the first native idle reference closely. Head at upper right of the narrow silhouette, neck and ribcage leaning slightly forward toward screen right; shoulders behind the head. Sword-bearing near arm bends BACK toward screen left, elbow behind torso and fist low beside the left/back hip. Opposite empty arm bends forward toward screen right, with the bony hand open near waist level. Pelvis centered under torso. Knees slightly bent in the native spread stance: rear foot extends toward screen left, forward foot toward screen right. Both complete feet visible at the same ground-contact level. Do not straighten into a heroic upright stance or turn toward the viewer.\nWeapon lock: ONE plain straight pointed sword in the low hand at the screen-left hip, with small aged brass/gold crossguard and tiny dark blue-violet grip accent seen in the native pixels. Blade runs diagonally DOWN and RIGHT across the lower body, from hip past the forward knee toward the lower right, matching the native angle and length. Restrained pale steel edge highlight, subdued warm gray steel body; no scabbard, extra blade, axe, spear, shield, giant guard, runes or effects.\nStyle/medium: match Image 3's finely modeled game-character rendering, delicate material shading, subtle texture, controlled sharp silhouette and concentrated highlights. Preserve readable slender bones and the dark negative spaces between ribs and between the limbs. Smooth fine detail suitable for later reduction to roughly 192 visible pixels tall. No coarse square pixel clusters, heavy cartoon outlines, chibi anatomy, inflated joints or armor, painterly background or plastic toy look.\nComposition/framing: exactly ONE complete skeleton with its ONE entire sword visible. Full body including skull crown, fingertips, both feet and sword tip. Generous transparent margins on every side. Keep natural aspect ratio and the original idle camera perspective. Supply a large clean master with approximately 0.54 overall width-to-height silhouette ratio as in the native idle; do not stretch body parts to force a bounding box. The registration into a 1024x768 cell will be done mechanically after generation.\nText: none. No labels, titles, borders, grid, watermark, annotations, palette swatches or alternate views.",
+      "prompt_sha256_utf8": "7cf1baae3f4d50944338231aa552b11d5fb309766b060ad4ffa7ed6992024076",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        {
+          "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\docs\\art\\production\\necropolis-creature-assets-v01\\skeleton\\native-idle-6x.png",
+          "role": "identity, pose, silhouette, equipment, colors",
+          "sha256": "3200483c84b2ae6666a6205a95487256b1dfa5ea3e5a0add84e7a94ce6d714a9"
+        },
+        {
+          "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\docs\\art\\production\\necropolis-creature-assets-v01\\skeleton\\native-g02-guide.png",
+          "role": "native idle pose confirmation; first pose only",
+          "sha256": "c2c46311169324e53377187ec097f0ebe9b1ea0e741c55b4bcd189bedb936bcc"
+        },
+        {
+          "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\docs\\art\\production\\necropolis-creature-assets-v01\\references\\pikeman-rendering-master.png",
+          "role": "rendering style only",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-53e2-7d13-961e-482bcd4abce7/exec-4a2e4e3f-16a6-4033-ac1b-44f29fe9f6d7.png",
+      "preserved_raw": "generated-01-raw.png",
+      "generated_sha256": "37ce8e09c3fdab4f4bbf1150f9547d044d09f820bb89dfc336d6aba2a9a55efe",
+      "generated_metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 920,
+        "height": 1708,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 920,
+          "height": 1708
+        }
+      },
+      "generated_alpha_bounds": {
+        "left": 59,
+        "top": 25,
+        "width": 830,
+        "height": 1594,
+        "right": 889,
+        "bottom": 1619,
+        "transparent_pixels": 1089933,
+        "opaque_pixels": 406395
+      },
+      "disposition": "selected for static human review; not accepted production art"
+    }
+  ],
+  "source_evidence": {
+    "metadata_path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\CSKELE\\metadata.json",
+    "metadata_sha256": "25da587f62a5132ffa993ea08ec31b498d6da87e99060f69e364fb399599df4f",
+    "expected_metadata_sha256": "25da587f62a5132ffa993ea08ec31b498d6da87e99060f69e364fb399599df4f",
+    "original_def_path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\originals\\H3sprite\\CSKELE.def",
+    "original_def_sha256": "3cb2a3ad4a4faaec0cc38c0cb38a71a7c2e67e93ac88ba9d389f5157e302df78",
+    "expected_original_def_sha256": "3cb2a3ad4a4faaec0cc38c0cb38a71a7c2e67e93ac88ba9d389f5157e302df78",
+    "idle_frame": {
+      "index": 0,
+      "name": "cskele57.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 150484,
+      "stored_size": 3157,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 44,
+      "height": 80,
+      "left": 175,
+      "top": 188,
+      "legacy_header": false,
+      "index_sha256": "3a214f1d40137120b514fd5682f91686e185efa7a6ba989f59fdee56eb5649cf"
+    },
+    "native_group_count": 15,
+    "native_timeline_frame_count": 86,
+    "distinct_indexed_drawings": 57,
+    "native_groups": [
+      {
+        "id": 0,
+        "format_mapping": "movement",
+        "frame_count": 8,
+        "distinct_indexed_drawings": 8,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 1,
+        "format_mapping": "gesture / mouse-over",
+        "frame_count": 11,
+        "distinct_indexed_drawings": 4,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 2,
+        "format_mapping": "idle",
+        "frame_count": 8,
+        "distinct_indexed_drawings": 5,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 3,
+        "format_mapping": "hit reaction",
+        "frame_count": 6,
+        "distinct_indexed_drawings": 6,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 4,
+        "format_mapping": "defence",
+        "frame_count": 11,
+        "distinct_indexed_drawings": 4,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 5,
+        "format_mapping": "death",
+        "frame_count": 6,
+        "distinct_indexed_drawings": 6,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 7,
+        "format_mapping": "turn",
+        "frame_count": 2,
+        "distinct_indexed_drawings": 2,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 8,
+        "format_mapping": "turn",
+        "frame_count": 2,
+        "distinct_indexed_drawings": 2,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 9,
+        "format_mapping": "turn",
+        "frame_count": 2,
+        "distinct_indexed_drawings": 2,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 10,
+        "format_mapping": "turn",
+        "frame_count": 2,
+        "distinct_indexed_drawings": 2,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 11,
+        "format_mapping": "melee upper",
+        "frame_count": 8,
+        "distinct_indexed_drawings": 8,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 12,
+        "format_mapping": "melee front",
+        "frame_count": 8,
+        "distinct_indexed_drawings": 8,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 13,
+        "format_mapping": "melee lower",
+        "frame_count": 8,
+        "distinct_indexed_drawings": 8,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 20,
+        "format_mapping": "movement start",
+        "frame_count": 2,
+        "distinct_indexed_drawings": 2,
+        "role_mapping_is_not_runtime_verified": true
+      },
+      {
+        "id": 21,
+        "format_mapping": "movement end",
+        "frame_count": 2,
+        "distinct_indexed_drawings": 2,
+        "role_mapping_is_not_runtime_verified": true
+      }
+    ]
+  },
+  "mechanical_operations": [
+    "byte-exact raw copy",
+    "alpha-bound crop",
+    "aspect-preserving uniform registration",
+    "horizontal mirror",
+    "side-by-side static preview"
+  ],
+  "registration_override": null,
+  "animation_generated": false,
+  "engine_imported": false,
+  "runtime_verified": false,
+  "human_approved": false
+}

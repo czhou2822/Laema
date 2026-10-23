@@ -1,0 +1,88 @@
+{
+  "tool": "image_gen.imagegen",
+  "workflow": "built-in image generation with three local image references; one master call",
+  "request": "requests/master-01.json",
+  "request_sha256": "dc5bda4eabfc9f594da5c2cfc64c2f99bd741e5897b2b113a0cebfab91073bec",
+  "exact_prompt": "prompts/master-01.txt",
+  "prompt_sha256": "dbdcf5d922b2a751c5b935f1dc89a32591320b33cb845123db8d0c32dd9fb3ee",
+  "tool_result_record": "generation-result-01.json",
+  "tool_returned_file": "C:/Users/zhouc/.codex/generated_images/01a1638a-bbfb-77b3-a689-d7dcfb69551e/exec-bab22e49-d70c-4e04-ba25-e66d8ef53576.png",
+  "chosen_raw": "raw/master-01.png",
+  "raw_sha256": "6f571124a230cd6ebf66a8f509b000446bcc45beda1b9be290932c589038c6db",
+  "raw_byte_identical_to_tool_output": true,
+  "raw_alpha_bounds": {
+    "left": 258,
+    "top": 22,
+    "width": 529,
+    "height": 1443,
+    "right": 787,
+    "bottom": 1465,
+    "transparent_pixels": 1162817,
+    "opaque_pixels": 361089
+  },
+  "generation_references": [
+    {
+      "index": 1,
+      "role": "original CLICH identity and idle pose",
+      "path": "native-idle-6x.png",
+      "sha256": "e3a71c003799e99ba6f03560c4507da87dcc8622c53f360f1c8062726fd15b38"
+    },
+    {
+      "index": 2,
+      "role": "original CLICH identity and idle pose",
+      "path": "native-g02-guide.png",
+      "sha256": "9135ccb6cbd16acb645747253497f50dc19014d8580059746ef4c0f724e57d0a"
+    },
+    {
+      "index": 3,
+      "role": "rendering finish only",
+      "path": "../references/pikeman-rendering-master.png",
+      "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+    }
+  ],
+  "inspected_native_guides": [
+    {
+      "path": "native-idle-6x.png",
+      "sha256": "e3a71c003799e99ba6f03560c4507da87dcc8622c53f360f1c8062726fd15b38"
+    },
+    {
+      "path": "native-all-groups-contact.png",
+      "sha256": "2828b3b8f8fa8e89e4438c556ef152327d081411a314f094289b7d8732aec15f"
+    },
+    {
+      "path": "native-g02-guide.png",
+      "sha256": "9135ccb6cbd16acb645747253497f50dc19014d8580059746ef4c0f724e57d0a"
+    },
+    {
+      "path": "native-g04-guide.png",
+      "sha256": "2e52cad52469f8a65b78c9916e0cfbbe39ddafa01066aa5684295ddd6453515a"
+    },
+    {
+      "path": "native-g07-guide.png",
+      "sha256": "52f676ecc50208cc98e62a084ef6eceb61d0d29cef8180455929565149a880b8"
+    },
+    {
+      "path": "native-g12-guide.png",
+      "sha256": "29e00d9c00715f93eeb67feaa2da809e50647008f1abcff94e61a652cd9d376b"
+    },
+    {
+      "path": "native-g15-guide.png",
+      "sha256": "f29aadf3037ebf5f92e56d5a9aa778d753fe743ce378efbc210f2f53f7e3f7cb"
+    }
+  ],
+  "native_metadata": {
+    "path": "../../../references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/metadata.json",
+    "sha256": "bf5ad1f839e18bcedded40a857bd91bb05af4f7a315ee3ab65313800ae789873",
+    "original_def_sha256": "409506a7915b25cb0a3fd7c722e378dd0735e26757c1896aba8d2bcd45ef9d54",
+    "all_job_native_groups_equal": true,
+    "group_count": 18,
+    "timeline_frames": 120,
+    "distinct_indexed_drawings": 74
+  },
+  "job_sha256": "4beccbb0e3f74179a350b785a8bb01707eedbd4d733ed045cc9ce26c88677a21",
+  "registration_helper": "../tools/lib.cjs",
+  "registration_helper_sha256": "b8676cb91e388bf30f67f73e6ce0bca17f644a9203719393451ee9186b7ded60",
+  "reference_scope": "Entire CLICH collection is retained in job.json; static idle master approval only.",
+  "processing": "Byte-preserving raw copy; alpha crop; uniform aspect-preserving scale; translation; exact horizontal mirror. No painted or generated changes through code.",
+  "interpretation_limit": "Fine source pixels resolve costume and materials; high-resolution chain-link, clasp and facial detail are generated interpretations."
+}

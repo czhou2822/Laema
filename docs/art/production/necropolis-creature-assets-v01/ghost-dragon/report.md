@@ -1,0 +1,17 @@
+# Ghost Dragon — static master review
+
+Status: **Proposal awaiting human approval. Animation has not begun.**
+
+**Source and coverage.** Verified **CHDRGN**, not the unrelated CGDRAG. The original DEF, actual native metadata and idle PNG match the job SHA-256 records. Source: **15 groups, 88 timeline positions, 61 distinct indexed drawings**. Read the complete job and inspected enlarged idle, all-group contact, and all 15 guides: 45 panels, sampling first/middle/last positions. Counts by group: 0:6, 1:9, 2:8, 3:6, 4:11, 5:8, 7–10:3 each, 11–13:7 each, 20:3, 21:4. These are source sequences, not generated animation or verified engine timing.
+
+**Treatment.** Mali's source-first review retained the upright, right-facing ready stance, backward horns, exposed ribs/vertebrae, raised skeletal foreclaws, bent hind legs, hanging bony wing fingers and tail curled along the feet. Pale silver-white/cool-gray bones and membranes distinguish Ghost Dragon from the inspected CNDRGN's warm ivory/dark wings. No living scales, blue flames or large aura. Approved Pikeman supplies fine modeled-volume rendering only. Skull, neck spines and claw hooks are somewhat more elaborate than the original; the largely hidden far wing cannot be fully assessed from one pose.
+
+**Generation and provenance.** One built-in `image_gen.imagegen` call; selected [raw attempt 001](raw/001-master.png), retained unchanged. No targeted edit was needed for a concrete missing/anatomically broken identity feature. Exact prompt, full request and returned output location are in [prompts/](prompts/001-request.json); [generation-provenance.json](generation-provenance.json) records all inspected image hashes, native source hashes and original tool path. Selected raw SHA-256: `76d9eb465dc5b953dc522dab11fc4ccaec5114af8e667c952741d8f9f3400311`.
+
+**Registration and files.** [build-master.cjs](build-master.cjs) calls shared read-only `../tools/lib.cjs` without overrides. Cell **1024×768**, anchor **(512,512)**, original reference **(196,268)**, shared scale **180/73**. Native target: **229×281** at (445,228); actual: **217×281** at (451,228), preserving center 559.5 and bottom 509. Width is **12px / 5.24% narrower**; no stretching or independent 180px normalization. Registered margins are 451/228/356/259px (left/top/right/bottom).
+
+Deliverables: [cropped master](master_rgba.png), [padded high-resolution cutout](master_padded_rgba.png), [registered source](master_source_1024x768.png), [exact mirror](master_mirror_1024x768.png), [manifest](master-manifest.json), and [visual review](visual-review.json).
+
+**Checks and limits.** Inspected enlarged rendering, [1:1 game-size comparison](game-size-comparison.png), [source/master comparison](source-vs-master.png), [alpha comparison](source-vs-master-alpha.png), dark/light cells and mirrored facing. All major tips/feet/tail remain in frame; final cells have generous transparent margins, no floor/shadow/text. Raw margins were tight and contain faint alpha-1 outer noise; the helper's >8-alpha crop preserves visible anatomy and the untouched raw remains recoverable. Reference alpha retains interpreted native shadow pixels. Exact mirrored RGBA was checked mechanically. No motion, import, editor, tests, build or runtime evidence.
+
+Only this creature folder was authored. One initial read-only Git status check was a deviation from the no-Git instruction; no Git state changed, commit/push or peer messaging occurred. **Human approval is the next gate before animation.**

@@ -1,0 +1,130 @@
+{
+  "name": "Skeleton Warrior",
+  "slug": "skeleton-warrior",
+  "status": "proposal; awaiting user master approval",
+  "artwork_method": "built-in image generation; mechanical crop and aspect-preserving registration",
+  "cell": [
+    1024,
+    768
+  ],
+  "anchor": [
+    512,
+    512
+  ],
+  "original_reference": [
+    196,
+    268
+  ],
+  "source_scale": 2.4657534246575343,
+  "target_native_bounds": {
+    "left": 460,
+    "top": 297,
+    "width": 104,
+    "height": 212
+  },
+  "actual_registered_bounds": {
+    "left": 462,
+    "top": 297,
+    "width": 101,
+    "height": 212,
+    "right": 563,
+    "bottom": 509,
+    "transparent_pixels": 776089,
+    "opaque_pixels": 8174
+  },
+  "registration": {
+    "crop": {
+      "left": 71,
+      "top": 43,
+      "width": 755,
+      "height": 1582
+    },
+    "width": 101,
+    "height": 212,
+    "left": 462,
+    "top": 297,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "original_def_sha256": "d5b4ddf69f1688af80350ba98d941b4ae1fddb191b3956d45c49580e13798489",
+  "source_metadata_sha256": "38d52108452c5c9bed2261bd44d4372ba43a745ce63e945476d62625d9142567",
+  "high_res_master": "master_rgba.png",
+  "high_res_sha256": "b5c927d1906aaf32eb4d9c0df532d7094fd24afdfbb1ef453870fd45c20e20ee",
+  "source": "master_source_1024x768.png",
+  "source_sha256": "5e812dc36563abff16dfff3759f3d50641fc0c2337fb63a951e804820f2359ad",
+  "mirror": "master_mirror_1024x768.png",
+  "mirror_sha256": "633423d8adc8ddcf7ed401dcb1eec251a6131069c984718073d4caaa45f725dc",
+  "generated_input_sha256": "eac2644fb7cb167134a727075de8cd62f58ff58e09cbf822eda7f7403891dbdf",
+  "transparent_background": true,
+  "exact_mirror_verified": true,
+  "mechanical_checks_only": true,
+  "visual_approval": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "provenance": {
+    "tool": "image_gen.imagegen (built-in)",
+    "mode": "targeted identity correction",
+    "attempt": 3,
+    "prompt_file": "prompt-attempt-03.txt",
+    "exact_prompt": "Use case: precise-object-edit\nAsset type: final corrected single static Skeleton Warrior proposal on genuine alpha.\nInput images: Image 1 (generated-attempt-02.png) is the EDIT TARGET. Image 2 (native-idle-6x.png) is the original authoritative idle reference. Image 3 (native-g07-guide.png) and Image 4 (native-g01-guide.png) clarify the original equipment in other poses. Image 5 (pikeman-rendering-master.png) is rendering style only, never costume/colors/weapon.\nPrimary request: change ONLY the SHIELD PERSPECTIVE in Image 1. Its round shield currently shows too much of its front surface compared with the native idle in Image 2. Rotate that same small round bronze-rimmed dark violet-gray shield in place so that the visible ellipse is about 30 percent narrower horizontally, with unchanged vertical height and position, as seen at the oblique angle in the native right-facing idle. Preserve the worn bronze rim, sparse small studs and compact central boss in correct perspective. The shield hand stays hidden behind the shield. No fingers through the boss and no extra straps crossing the front.\nEverything else is locked: preserve the exact head and skull, dark helmet with one modest spike, fine pale bone texture, bare bony forearms, thin legs, muted violet-gray slim torso armor and small hip covering, native dark flared boots, ONE slim straight sword and small crossguard, all limb angles, forward torso lean, right-facing three-quarter idle, foot positions, diagonal sword position and fine modeled-volume restrained material shading. Do not enlarge shoulder armor or add anatomy, costume, weapons, glow, eyes or VFX. Keep the complete body, spike, sword tip, shield and boots visible with generous transparent margins. Outside the creature and through all open gaps must be genuine transparent alpha. No floor, contact/cast shadow, scene, background, text, label, watermark, border or sheet. Output ONE full-body static character.\n\r\n",
+    "exact_tool_arguments_file": "tool-submissions.json",
+    "tool_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-54a4-76f3-bb5b-11f7f44741fc as C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-54a4-76f3-bb5b-11f7f44741fc\\exec-7a988184-6b4b-4bdb-954a-1e44455bde00.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "transparent_background_requested": true,
+    "referenced_image_paths": [
+      {
+        "relative_path": "raw/generated-attempt-02.png",
+        "sha256": "51136bac9b9829bce0314205faf495907173495615da5fd4f881f600ef0adf0c"
+      },
+      {
+        "relative_path": "native-idle-6x.png",
+        "sha256": "944418ba843c0f5a60a28fb88c5f3d9af9f537026a360a78f36e326dcb8ca431"
+      },
+      {
+        "relative_path": "native-g07-guide.png",
+        "sha256": "d41c26ec9e494ef694e20a32f03003913d959b0d87714e78f5f80637aa8b02b2"
+      },
+      {
+        "relative_path": "native-g01-guide.png",
+        "sha256": "773ec0abbe77b157ab1f79ccfcee4900505314e919fd861afdcb414b5785d397"
+      },
+      {
+        "relative_path": "../references/pikeman-rendering-master.png",
+        "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+      }
+    ],
+    "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-54a4-76f3-bb5b-11f7f44741fc/exec-7a988184-6b4b-4bdb-954a-1e44455bde00.png",
+    "tool_output_sha256": "eac2644fb7cb167134a727075de8cd62f58ff58e09cbf822eda7f7403891dbdf",
+    "preserved_raw": "raw/generated-attempt-03.png",
+    "preserved_raw_sha256": "eac2644fb7cb167134a727075de8cd62f58ff58e09cbf822eda7f7403891dbdf",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 876,
+      "height": 1795,
+      "space": "srgb",
+      "channels": 4,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": true,
+      "autoOrient": {
+        "width": 876,
+        "height": 1795
+      }
+    },
+    "raw_alpha_bounds": {
+      "left": 71,
+      "top": 44,
+      "width": 755,
+      "height": 1580,
+      "right": 826,
+      "bottom": 1624,
+      "transparent_pixels": 1058731,
+      "opaque_pixels": 472333
+    },
+    "selected_for_master": true
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "creature": "Skeleton Warrior",
+  "slug": "skeleton-warrior",
+  "status": "static master awaiting human approval",
+  "human_approved": false,
+  "animation_begun": false,
+  "runtime_verified": false,
+  "source": {
+    "id": "CWSKEL",
+    "inventory": "job.json",
+    "groups": 15,
+    "timeline_frames": 86,
+    "distinct_indexed_drawings": 57,
+    "master_pose": "G2 F0 / cwskel57.pcx",
+    "metadata_and_def_hashes_match_job": true,
+    "native_metadata_groups_match_job": true
+  },
+  "inspected": {
+    "native": ["native-idle-6x.png", "native-scale-guide.png", "native-all-groups-contact.png"],
+    "detailed_guide_frames": {"G1": [0, 5, 10], "G2": [0, 4, 7], "G4": [0, 5, 10], "G7": [0, 1], "G12": [0, 4, 7]},
+    "rendering_only": "../references/pikeman-rendering-master.png",
+    "selected_outputs": ["source-vs-master.png", "master_source_1024x768.png", "master_mirror_1024x768.png", "alpha-review.png"],
+    "full_timeline_playback": false
+  },
+  "observed_identity": "Lean pale skeletal frame; empty sockets; one pointed dark helmet; muted violet-gray torso armor; dark flared boots; lowered straight sword; small oblique bronze-rimmed shield; right-facing native idle.",
+  "rendering_review": "Fine modeled volume and differentiated bone, dull violet steel, bronze and dark boots remain readable at 212 px. Texture wear is denser than the original.",
+  "corrected_failures": ["Removed invented sword-forearm bracer", "Removed impossible hand through shield front", "Narrowed shield perspective toward native idle"],
+  "alpha_review": "Genuine alpha retained; no visible floor, shadow, labels or VFX. Open gaps and edges inspected on light, middle and dark backgrounds.",
+  "selection": {
+    "attempt": 3,
+    "raw": "raw/generated-attempt-03.png",
+    "generated_sha256": "eac2644fb7cb167134a727075de8cd62f58ff58e09cbf822eda7f7403891dbdf",
+    "superseded_raws_preserved": ["raw/generated-attempt-01.png", "raw/generated-attempt-02.png"],
+    "exact_prompts_and_tool_outputs": "tool-submissions.json",
+    "generation_provenance": "generation-provenance.json"
+  },
+  "registration": {
+    "cell": [1024, 768],
+    "anchor": [512, 512],
+    "native_reference": [196, 268],
+    "source_scale": "180/73",
+    "native_alpha_size": [42, 86],
+    "target_alpha_bounds": [460, 297, 104, 212],
+    "actual_alpha_bounds": [462, 297, 101, 212],
+    "uniform_scale": true,
+    "override": null,
+    "exact_mirror_mechanically_verified": true
+  },
+  "remaining_limits": ["Tiny source details require interpretation; armor wear and local contours are not an exact reconstruction", "Group labels are format mappings, not runtime-confirmed behavior", "Static sampling only; animation continuity, timing, collisions and engine appearance unverified", "No human approval yet; no animation generated"]
+}

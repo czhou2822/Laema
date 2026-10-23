@@ -1,0 +1,96 @@
+{
+  "name": "Dread Knight",
+  "slug": "dread-knight",
+  "status": "proposal; awaiting user master approval",
+  "artwork_method": "built-in image generation; mechanical crop and aspect-preserving registration",
+  "cell": [
+    1024,
+    768
+  ],
+  "anchor": [
+    512,
+    512
+  ],
+  "original_reference": [
+    196,
+    268
+  ],
+  "source_scale": 2.4657534246575343,
+  "target_native_bounds": {
+    "left": 468,
+    "top": 265,
+    "width": 205,
+    "height": 244
+  },
+  "actual_registered_bounds": {
+    "left": 468,
+    "top": 265,
+    "width": 207,
+    "height": 244,
+    "right": 675,
+    "bottom": 509,
+    "transparent_pixels": 760265,
+    "opaque_pixels": 23149
+  },
+  "registration": {
+    "crop": {
+      "left": 4,
+      "top": 11,
+      "width": 1142,
+      "height": 1340
+    },
+    "width": 208,
+    "height": 244,
+    "left": 467,
+    "top": 265,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "original_def_sha256": "898d935bc0945dad26f591df2a5e9a525d0d4564f3b2eff4986825ff845e56c8",
+  "source_metadata_sha256": "34a865fba3e949b1adab3ca56bc62e941de914e935ca31357a832841b33cb305",
+  "high_res_master": "master_rgba.png",
+  "high_res_sha256": "9c5f43f33419e8c0dca200fb17453b52224e8edd1e7f12d74ff12737b904b64e",
+  "source": "master_source_1024x768.png",
+  "source_sha256": "f66b6d25006c9b680cd0ece3e44cb1e6f77d68d06ea4824ed093577ec41542a6",
+  "mirror": "master_mirror_1024x768.png",
+  "mirror_sha256": "dc310d4bc440058404513b4a3af4486ee3def01135d47d034c499287eb1122bc",
+  "generated_input_sha256": "59ef49e4ff40ea716c56c63092e4cbcb2770121dcef6333622b4ffd24f35b592",
+  "transparent_background": true,
+  "exact_mirror_verified": true,
+  "mechanical_checks_only": true,
+  "visual_approval": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "provenance": {
+    "tool": "image_gen.imagegen",
+    "exact_prompt_file": "prompt-master-v02-edit.txt",
+    "exact_prompt_sha256": "a662fb9d6fdcbec0c85f1ce4d6f4794aceb3e01945f9f185ec7fca1cce307e4b",
+    "raw_file": "raw-master-v02.png",
+    "raw_sha256": "59ef49e4ff40ea716c56c63092e4cbcb2770121dcef6333622b4ffd24f35b592",
+    "original_tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a1638e-579c-7601-b05f-5c0b568e0023/exec-e4025d40-5849-420c-813f-661b27a31c97.png",
+    "generation_record": "generation-record.json",
+    "source_audit": "source-audit.json",
+    "inspected_native_guides": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      11,
+      12,
+      13,
+      17
+    ],
+    "primary_pose": "CBLORD G2 F0 cblord62.pcx, original right-facing idle",
+    "rendering_reference": "../references/pikeman-rendering-master.png",
+    "rendering_reference_role": "modeled volume and material finish only",
+    "corrected_from_v01": [
+      "pale silver metal spikes and armor edging",
+      "removed invented horse chest spike",
+      "smooth single curved saber without barbs"
+    ],
+    "human_approval": false
+  }
+}

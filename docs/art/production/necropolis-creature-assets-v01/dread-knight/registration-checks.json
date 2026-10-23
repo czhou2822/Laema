@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "check_type": "mechanical image export only; no game/engine/test execution",
+  "cell": [
+    1024,
+    768
+  ],
+  "anchor": [
+    512,
+    512
+  ],
+  "original_reference": [
+    196,
+    268
+  ],
+  "source_scale": 2.4657534246575343,
+  "formula": "180/73",
+  "native_idle_bounds": {
+    "left": 178,
+    "top": 168,
+    "width": 83,
+    "height": 99,
+    "right": 261,
+    "bottom": 267
+  },
+  "target_bounds": {
+    "left": 468,
+    "top": 265,
+    "width": 205,
+    "height": 244
+  },
+  "registration": {
+    "crop": {
+      "left": 4,
+      "top": 11,
+      "width": 1142,
+      "height": 1340
+    },
+    "width": 208,
+    "height": 244,
+    "left": 467,
+    "top": 265,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "anatomy_scale_override": false,
+  "independent_width_or_height_normalization": false,
+  "native_silhouette_aspect_ratio": 0.8383838383838383,
+  "generated_silhouette_aspect_ratio": 0.8522388059701492,
+  "silhouette_aspect_ratio_difference_percent": 1.6525804711382763,
+  "registered_alpha": {
+    "width": 1024,
+    "height": 768,
+    "channels": 4,
+    "zero_alpha_pixels": 760265,
+    "partial_alpha_pixels": 25074,
+    "full_alpha_pixels": 1093,
+    "border_nonzero_pixels": 0,
+    "bounds_alpha0": {
+      "left": 467,
+      "top": 265,
+      "width": 208,
+      "height": 244,
+      "right": 675,
+      "bottom": 509,
+      "transparent_pixels": 760265,
+      "opaque_pixels": 23149
+    },
+    "bounds_alpha8": {
+      "left": 467,
+      "top": 265,
+      "width": 208,
+      "height": 244,
+      "right": 675,
+      "bottom": 509,
+      "transparent_pixels": 760265,
+      "opaque_pixels": 23149
+    },
+    "bounds_alpha64": {
+      "left": 468,
+      "top": 265,
+      "width": 207,
+      "height": 244,
+      "right": 675,
+      "bottom": 509,
+      "transparent_pixels": 760265,
+      "opaque_pixels": 23149
+    },
+    "connected_components_alpha64": [
+      {
+        "pixels": 24172,
+        "bounds": {
+          "left": 468,
+          "top": 265,
+          "width": 207,
+          "height": 244
+        }
+      }
+    ]
+  },
+  "minimum_visible_padding_px": 259,
+  "exact_mirror_verified": true,
+  "source_sha256": "f66b6d25006c9b680cd0ece3e44cb1e6f77d68d06ea4824ed093577ec41542a6",
+  "mirror_sha256": "dc310d4bc440058404513b4a3af4486ee3def01135d47d034c499287eb1122bc",
+  "review_images": [
+    "source-vs-master.png",
+    "game-size-alpha-review.png",
+    "master-padded-review.png"
+  ],
+  "note": "A silhouette ratio is a mechanical check, not proof of anatomical or artistic equivalence."
+}

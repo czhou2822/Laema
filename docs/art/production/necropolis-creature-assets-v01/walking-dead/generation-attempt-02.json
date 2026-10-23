@@ -1,0 +1,84 @@
+{
+  "attempt": 2,
+  "tool": "built-in image_gen",
+  "transparent_background_requested": true,
+  "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-559b-7091-8a4e-08a93aea92b7/exec-a3135e26-2324-42a5-ae0d-d8fda8b67a87.png",
+  "preserved_raw": "generated-attempt-02.png",
+  "generated_sha256": "e45a5ff33085d292e88a309176ae63739843a00614fc5d13cb8697c1f15708af",
+  "exact_prompt_file": "prompt-attempt-02.txt",
+  "exact_prompt": "Use case: identity-preserve.\nEdit target: Image 1, the generated Walking Dead proposed master. Image 2 (native-idle-6x.png) is the original CZOMBI identity and proportion authority. Image 3 (pikeman-rendering-master.png) is rendering treatment only, never costume, face, weapon, pose or colors.\nMake one focused correction to the Walking Dead's anatomical proportions: the first pass has an undersized head and too much heroic pectoral/abdominal definition. Enlarge the bald head about 18 percent relative to the body, keeping its right-facing sunken-eyed gaunt face, so the head-to-body relationship agrees more closely with Image 2. Slightly narrow the shoulders and soften the athletic muscle definition into the original corpse's rounded pale mint-gray chest and thin ribcage. Keep the limbs lean and cool gray-lavender. Do not make a chibi, a muscular ghoul, a skeleton or an armored zombie.\nPreserve the current native idle composition and right-facing three-quarter view: gently slouched torso, bent knees, viewer-left rear calf bent back, that rear foot slightly lower, front arm down holding exactly one compact brown-handled gray meat cleaver angled upward. Preserve the skeletal empty rear hand, ragged dark olive-brown knee trousers, bare feet, small red/ochre decay patches at the viewer-left ribs and upper arm, and the red/yellow exposed-bone rear-calf detail. Preserve the blade silhouette and wood/steel materials. Keep both hands, both feet and whole cleaver fully visible.\nContinue the Pikeman reference's fine modeled-volume rendering with restrained mottled textures and concentrated small steel highlights. Keep non-glowing eyes, matte cloth, subdued colors and no heavy black cartoon outlines or block pixels. Do not increase gore.\nReturn ONE complete full-body static creature with generous transparent margins. GENUINE ALPHA TRANSPARENCY. No background, no floor, no pedestal, no cast or ground shadow, no halo or mist, no VFX, no text, no labels, no second view or frame. Everything except the targeted head/torso proportion correction and associated volume shading stays consistent.",
+  "prompt_file_sha256": "48762ca961ec0805f88c54cf156ec607998611bcc9e2f3f85fce3dda3a35a35e",
+  "input_paths": [
+    "generated-attempt-01.png",
+    "native-idle-6x.png",
+    "../references/pikeman-rendering-master.png"
+  ],
+  "width": 1024,
+  "height": 1536,
+  "channels": 4,
+  "has_alpha": true,
+  "alpha_counts": {
+    "transparent": 1066828,
+    "partial": 506036,
+    "opaque": 0
+  },
+  "alpha_bounds": {
+    "0": {
+      "left": 0,
+      "top": 22,
+      "width": 912,
+      "height": 1486,
+      "right": 912,
+      "bottom": 1508,
+      "transparent_pixels": 1066828,
+      "opaque_pixels": 471564
+    },
+    "8": {
+      "left": 185,
+      "top": 24,
+      "width": 721,
+      "height": 1467,
+      "right": 906,
+      "bottom": 1491,
+      "transparent_pixels": 1066828,
+      "opaque_pixels": 471564
+    },
+    "64": {
+      "left": 185,
+      "top": 25,
+      "width": 720,
+      "height": 1465,
+      "right": 905,
+      "bottom": 1490,
+      "transparent_pixels": 1066828,
+      "opaque_pixels": 471564
+    },
+    "200": {
+      "left": 186,
+      "top": 25,
+      "width": 719,
+      "height": 1465,
+      "right": 905,
+      "bottom": 1490,
+      "transparent_pixels": 1066828,
+      "opaque_pixels": 471564
+    }
+  },
+  "visual_approval": false,
+  "animation_generated": false,
+  "runtime_verified": false,
+  "inputs": [
+    {
+      "path": "generated-attempt-01.png",
+      "sha256": "c8fb52727210e7a2a98b898728a48493a305423a7150100d0b358860be9d67c9"
+    },
+    {
+      "path": "native-idle-6x.png",
+      "sha256": "70a3d43927dd5c73003867619c32b8b482ed64b16415c7856dd13318dee6bf55"
+    },
+    {
+      "path": "../references/pikeman-rendering-master.png",
+      "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "creature": "Skeleton Warrior",
+  "status": "static master awaiting human approval",
+  "built_in_only": true,
+  "animation_begun": false,
+  "attempts": [
+    {
+      "tool": "image_gen.imagegen (built-in)",
+      "mode": "reference generation",
+      "attempt": 1,
+      "prompt_file": "prompt-attempt-01.txt",
+      "exact_prompt": "Use case: stylized-concept\nAsset type: a single static master proposal for the Heroes of Might and Magic III Necropolis Skeleton Warrior, for a 2D game sprite collection. Produce ONE full-body character, no sheet, no animation.\nInput images: Image 1 (native-idle-6x.png) is the authoritative identity, silhouette, facing, proportions and idle pose. Image 2 (native-g07-guide.png) is supplementary ORIGINAL equipment/anatomy evidence from turning poses, not a requested output pose. Image 3 (native-g01-guide.png) is supplementary ORIGINAL shield/sword material evidence, not a requested output pose. Image 4 (pikeman-rendering-master.png) is RENDERING STYLE ONLY: fine modeled volume, textured surfaces, restrained colors and concentrated highlights. Do not borrow Pikeman's helmet, body, outfit, heraldry, blue/yellow palette or weapon.\nPrimary request: faithfully redraw the original upgraded Skeleton Warrior as finely modeled, textured game artwork, keeping the exact native idle stance in Image 1 and its right-facing three-quarter side view. The original reference takes priority over generic skeleton fantasy design. This must be newly rendered artwork, not enlarged original pixels.\nIdentity and materials: a very slender, human-proportioned undead skeleton with aged pale ivory/gray-green bones, empty dark eye sockets and exposed skeletal upper arms, forearms, hands, thighs, shins and feet inside the native boots. Dark charcoal helmet with ONE small pointed top spike and modest cheek/neck guards as shown. Slim muted violet-gray metal torso cuirass with subtle plate/rib shaping and a small dark hip covering; keep the arms and long legs uncovered bone. Dark brown-black armored ankle/calf boots with flared tops and a few concentrated worn steel glints. One straight narrow steel sword with a modest crossguard and dark grip. One small round dark violet/black metal shield with a worn bronze/gold rim, sparse rim studs and central boss; its native idle perspective makes it a narrow vertical oval on the screen-right side of the body. No extravagant decoration.\nPose: match Image 1 closely. Skull looks to screen-right, neck and upper torso lean slightly forward, pelvis sits back, narrow legs in the same separated bent ready stance with both boot soles at the same ground level. The sword arm is on screen-left, elbow bent behind the torso, hand held low beside the rear hip; blade runs diagonally downward to screen-right across the legs and ends near the forward boot's ankle. Shield arm is on screen-right, bent in front of the torso, holding the small shield close to ribs/hip with the same oblique angle. Do not turn the chest or shield face toward the viewer more than the native idle. Preserve the source's lean sparse silhouette, long thin bones, ordinary skull size and original prop length.\nStyle/medium: match the Pikeman reference's polished but restrained textured modeled-volume illustration, with fine rounded shading, clearly differentiated porous old bone, dull violet steel, worn bronze rim and dark boot leather/metal. Small purposeful concentrated steel highlights; subdued broad tones. Clean sprite silhouette, crisp fine detail, no chunky pixel clusters and no heavy cartoon outline.\nComposition/framing: one isolated full body at large useful resolution, approximately 600 pixels tall in a 1024x1024 transparent image, centered with generous empty margins on all sides. Keep the entire helmet spike, both feet, sword tip, guard and shield inside frame. Preserve the narrow width-to-height ratio of the native idle (approximately 42:86) without stretching the anatomy. This high-resolution raw will later be uniformly registered to a 1024x768 transparent cell at about 212 pixels visible height using the common 180/73 source scale; do not add registration guides.\nScene/backdrop: genuine transparent alpha outside the character AND through all open gaps between its bones and limbs. No ground, floor, cast shadow, contact shadow, halo, glow, atmospheric effects or background.\nConstraints: original Necropolis identity and upgraded equipment first. No Castle costume or colors, no new weapons, no cape, no horns, no glowing eyes, no magic, no inflated armor, no full suit of armor, no chibi proportions, no labels, text, border, watermark or comparison panel. Only this single right-facing native-idle Skeleton Warrior.\n\r\n",
+      "transparent_background_requested": true,
+      "referenced_image_paths": [
+        {
+          "relative_path": "native-idle-6x.png",
+          "sha256": "944418ba843c0f5a60a28fb88c5f3d9af9f537026a360a78f36e326dcb8ca431"
+        },
+        {
+          "relative_path": "native-g07-guide.png",
+          "sha256": "d41c26ec9e494ef694e20a32f03003913d959b0d87714e78f5f80637aa8b02b2"
+        },
+        {
+          "relative_path": "native-g01-guide.png",
+          "sha256": "773ec0abbe77b157ab1f79ccfcee4900505314e919fd861afdcb414b5785d397"
+        },
+        {
+          "relative_path": "../references/pikeman-rendering-master.png",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-54a4-76f3-bb5b-11f7f44741fc/exec-d9baa72c-ea0c-47b8-a397-ccce621991b1.png",
+      "tool_output_sha256": "d08c738f42642e2176346865ac6f9749573c163a58fa8c9b89fb93037b1d74e3",
+      "preserved_raw": "raw/generated-attempt-01.png",
+      "preserved_raw_sha256": "d08c738f42642e2176346865ac6f9749573c163a58fa8c9b89fb93037b1d74e3",
+      "raw_metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1046,
+        "height": 1504,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 1046,
+          "height": 1504
+        }
+      },
+      "raw_alpha_bounds": {
+        "left": 208,
+        "top": 17,
+        "width": 671,
+        "height": 1427,
+        "right": 879,
+        "bottom": 1444,
+        "transparent_pixels": 1136552,
+        "opaque_pixels": 398082
+      },
+      "selected_for_master": false,
+      "exact_tool_arguments_file": "tool-submissions.json",
+      "tool_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-54a4-76f3-bb5b-11f7f44741fc as C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-54a4-76f3-bb5b-11f7f44741fc\\exec-d9baa72c-ea0c-47b8-a397-ccce621991b1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "tool": "image_gen.imagegen (built-in)",
+      "mode": "targeted identity correction",
+      "attempt": 2,
+      "prompt_file": "prompt-attempt-02.txt",
+      "exact_prompt": "Use case: precise-object-edit\nAsset type: one corrected transparent static Skeleton Warrior master, not an animation or comparison.\nInput images: Image 1 (generated-attempt-01.png) is the EDIT TARGET. Image 2 (native-idle-6x.png) is the authoritative original idle pose and equipment. Image 3 (native-g07-guide.png) and Image 4 (native-g01-guide.png) supply original equipment evidence only. Image 5 (pikeman-rendering-master.png) supplies rendering style ONLY; none of its costume, helmet, colors or weapon belongs on this creature.\nPrimary request: correct only the equipment/prop fidelity problems in Image 1, retaining its right-facing original idle stance, thin skeletal build, aged pale bone, muted violet-gray armor, fine modeled-volume texture and concentrated highlights.\nCorrections: remove the invented metal bracer from the sword forearm entirely, showing the same exposed slender old bone as the original. Simplify the shoulders to the small native cuirass edges, with no layered projecting pauldrons, and replace the elaborate hanging waist tassets with the native small dark hip covering. Shorten the oversized helmet spike to the modest single point of Image 2 while retaining the dark Necropolis helmet and small cheek/neck guards. Narrow the sword to the native slim straight steel blade with a small nearly straight crossguard; keep the same hand position and diagonal downward-right blade direction, with the tip beside the forward boot ankle. Reduce and turn the shield to the original small oblique oval held close to the screen-right ribs/hip: its outside surface is a plain dark violet-gray metal face, bronze/gold rim, sparse studs and a small central metal boss. CRITICAL: the shield hand grips behind the shield, hidden by the shield; no hand, fingers or arm may emerge through its front boss or face. The shield remains in the original screen-right position and its orientation must stay consistent with the right-facing idle viewpoint.\nInvariants: keep the skull looking right, torso leaning forward, pelvis back, rear sword arm bent, both bent legs, same planted boot positions and native idle silhouette. Retain ONE sword and ONE shield, a human-size skull, long thin exposed bones and dark native flared boots. Do not enlarge armor or add clothes, horns, cape, eyes, glow, effects or decoration. Bone remains matte old ivory/gray-green, armor dull violet-gray, rim worn bronze, blade steel. Preserve the fine textured modeled shading of the target; no coarse pixel blocks, heavy outlines or cartoon/chibi forms.\nComposition/framing: output one complete full-body character with the entire spike, sword tip, shield and boots visible and generous transparent margins, especially above the helmet and below the boots. Preserve the native narrow approximate 42:86 silhouette ratio. Genuine transparent alpha outside and through all anatomical gaps. No floor, cast/contact shadow, background, glow, labels, text, guides, border or watermark.\n\r\n",
+      "transparent_background_requested": true,
+      "referenced_image_paths": [
+        {
+          "relative_path": "raw/generated-attempt-01.png",
+          "sha256": "d08c738f42642e2176346865ac6f9749573c163a58fa8c9b89fb93037b1d74e3"
+        },
+        {
+          "relative_path": "native-idle-6x.png",
+          "sha256": "944418ba843c0f5a60a28fb88c5f3d9af9f537026a360a78f36e326dcb8ca431"
+        },
+        {
+          "relative_path": "native-g07-guide.png",
+          "sha256": "d41c26ec9e494ef694e20a32f03003913d959b0d87714e78f5f80637aa8b02b2"
+        },
+        {
+          "relative_path": "native-g01-guide.png",
+          "sha256": "773ec0abbe77b157ab1f79ccfcee4900505314e919fd861afdcb414b5785d397"
+        },
+        {
+          "relative_path": "../references/pikeman-rendering-master.png",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-54a4-76f3-bb5b-11f7f44741fc/exec-fafe6466-1f62-40f4-a0b0-c683ef2ed490.png",
+      "tool_output_sha256": "51136bac9b9829bce0314205faf495907173495615da5fd4f881f600ef0adf0c",
+      "preserved_raw": "raw/generated-attempt-02.png",
+      "preserved_raw_sha256": "51136bac9b9829bce0314205faf495907173495615da5fd4f881f600ef0adf0c",
+      "raw_metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 876,
+        "height": 1795,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 876,
+          "height": 1795
+        }
+      },
+      "raw_alpha_bounds": {
+        "left": 72,
+        "top": 47,
+        "width": 753,
+        "height": 1575,
+        "right": 825,
+        "bottom": 1622,
+        "transparent_pixels": 1047863,
+        "opaque_pixels": 478446
+      },
+      "selected_for_master": false,
+      "exact_tool_arguments_file": "tool-submissions.json",
+      "tool_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-54a4-76f3-bb5b-11f7f44741fc as C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-54a4-76f3-bb5b-11f7f44741fc\\exec-fafe6466-1f62-40f4-a0b0-c683ef2ed490.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "tool": "image_gen.imagegen (built-in)",
+      "mode": "targeted identity correction",
+      "attempt": 3,
+      "prompt_file": "prompt-attempt-03.txt",
+      "exact_prompt": "Use case: precise-object-edit\nAsset type: final corrected single static Skeleton Warrior proposal on genuine alpha.\nInput images: Image 1 (generated-attempt-02.png) is the EDIT TARGET. Image 2 (native-idle-6x.png) is the original authoritative idle reference. Image 3 (native-g07-guide.png) and Image 4 (native-g01-guide.png) clarify the original equipment in other poses. Image 5 (pikeman-rendering-master.png) is rendering style only, never costume/colors/weapon.\nPrimary request: change ONLY the SHIELD PERSPECTIVE in Image 1. Its round shield currently shows too much of its front surface compared with the native idle in Image 2. Rotate that same small round bronze-rimmed dark violet-gray shield in place so that the visible ellipse is about 30 percent narrower horizontally, with unchanged vertical height and position, as seen at the oblique angle in the native right-facing idle. Preserve the worn bronze rim, sparse small studs and compact central boss in correct perspective. The shield hand stays hidden behind the shield. No fingers through the boss and no extra straps crossing the front.\nEverything else is locked: preserve the exact head and skull, dark helmet with one modest spike, fine pale bone texture, bare bony forearms, thin legs, muted violet-gray slim torso armor and small hip covering, native dark flared boots, ONE slim straight sword and small crossguard, all limb angles, forward torso lean, right-facing three-quarter idle, foot positions, diagonal sword position and fine modeled-volume restrained material shading. Do not enlarge shoulder armor or add anatomy, costume, weapons, glow, eyes or VFX. Keep the complete body, spike, sword tip, shield and boots visible with generous transparent margins. Outside the creature and through all open gaps must be genuine transparent alpha. No floor, contact/cast shadow, scene, background, text, label, watermark, border or sheet. Output ONE full-body static character.\n\r\n",
+      "exact_tool_arguments_file": "tool-submissions.json",
+      "tool_output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-54a4-76f3-bb5b-11f7f44741fc as C:\\Users\\zhouc\\.codex\\generated_images\\01a16383-54a4-76f3-bb5b-11f7f44741fc\\exec-7a988184-6b4b-4bdb-954a-1e44455bde00.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "transparent_background_requested": true,
+      "referenced_image_paths": [
+        {
+          "relative_path": "raw/generated-attempt-02.png",
+          "sha256": "51136bac9b9829bce0314205faf495907173495615da5fd4f881f600ef0adf0c"
+        },
+        {
+          "relative_path": "native-idle-6x.png",
+          "sha256": "944418ba843c0f5a60a28fb88c5f3d9af9f537026a360a78f36e326dcb8ca431"
+        },
+        {
+          "relative_path": "native-g07-guide.png",
+          "sha256": "d41c26ec9e494ef694e20a32f03003913d959b0d87714e78f5f80637aa8b02b2"
+        },
+        {
+          "relative_path": "native-g01-guide.png",
+          "sha256": "773ec0abbe77b157ab1f79ccfcee4900505314e919fd861afdcb414b5785d397"
+        },
+        {
+          "relative_path": "../references/pikeman-rendering-master.png",
+          "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+        }
+      ],
+      "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-54a4-76f3-bb5b-11f7f44741fc/exec-7a988184-6b4b-4bdb-954a-1e44455bde00.png",
+      "tool_output_sha256": "eac2644fb7cb167134a727075de8cd62f58ff58e09cbf822eda7f7403891dbdf",
+      "preserved_raw": "raw/generated-attempt-03.png",
+      "preserved_raw_sha256": "eac2644fb7cb167134a727075de8cd62f58ff58e09cbf822eda7f7403891dbdf",
+      "raw_metadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 876,
+        "height": 1795,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 876,
+          "height": 1795
+        }
+      },
+      "raw_alpha_bounds": {
+        "left": 71,
+        "top": 44,
+        "width": 755,
+        "height": 1580,
+        "right": 826,
+        "bottom": 1624,
+        "transparent_pixels": 1058731,
+        "opaque_pixels": 472333
+      },
+      "selected_for_master": true
+    }
+  ],
+  "selected_raw": "raw/generated-attempt-03.png",
+  "selected_raw_sha256": "eac2644fb7cb167134a727075de8cd62f58ff58e09cbf822eda7f7403891dbdf"
+}

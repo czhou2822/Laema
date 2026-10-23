@@ -1,0 +1,146 @@
+{
+  "creature": "Wraith",
+  "slug": "wraith",
+  "status": "static master awaiting human approval",
+  "proposal_only": true,
+  "human_approved": false,
+  "animation_not_begun": true,
+  "runtime_unverified": true,
+  "source": {
+    "id": "CWRAIT",
+    "archive": "H3sprite",
+    "metadata": "../../references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/metadata.json",
+    "metadata_sha256": "6fae0fdc8d4a67eda68e140eecdbdc7b0d69bdca7f194529cf77637c00397266",
+    "original_def_sha256": "9148c306d115fd514964cea16d0c6d9ed6b336365ef3e7ef592797bc52c2e47e",
+    "idle_frame": "G02 F0 / cwrait57.pcx",
+    "idle_png_sha256": "6e59615287a99da0a8e90136f260b881ac3f90cc88965bb9add0342c34267237",
+    "source_hashes_match_job": true,
+    "original_groups": 18,
+    "original_timeline_frames": 102,
+    "original_distinct_indexed_drawings": 57,
+    "native_cell": [450, 400],
+    "group_inventory": [
+      {"id": 0, "frames": 8, "distinct_drawings_in_group": 8, "format_role": "movement"},
+      {"id": 1, "frames": 10, "distinct_drawings_in_group": 4, "format_role": "gesture / mouse-over"},
+      {"id": 2, "frames": 8, "distinct_drawings_in_group": 5, "format_role": "idle"},
+      {"id": 3, "frames": 6, "distinct_drawings_in_group": 6, "format_role": "hit reaction"},
+      {"id": 4, "frames": 10, "distinct_drawings_in_group": 4, "format_role": "defence"},
+      {"id": 5, "frames": 8, "distinct_drawings_in_group": 8, "format_role": "death"},
+      {"id": 7, "frames": 2, "distinct_drawings_in_group": 2, "format_role": "turn"},
+      {"id": 8, "frames": 2, "distinct_drawings_in_group": 2, "format_role": "turn"},
+      {"id": 9, "frames": 2, "distinct_drawings_in_group": 2, "format_role": "turn"},
+      {"id": 10, "frames": 2, "distinct_drawings_in_group": 2, "format_role": "turn"},
+      {"id": 11, "frames": 7, "distinct_drawings_in_group": 7, "format_role": "melee upper"},
+      {"id": 12, "frames": 7, "distinct_drawings_in_group": 7, "format_role": "melee front"},
+      {"id": 13, "frames": 7, "distinct_drawings_in_group": 7, "format_role": "melee lower"},
+      {"id": 14, "frames": 7, "distinct_drawings_in_group": 7, "format_role": "ranged upper"},
+      {"id": 15, "frames": 7, "distinct_drawings_in_group": 7, "format_role": "ranged front"},
+      {"id": 16, "frames": 7, "distinct_drawings_in_group": 7, "format_role": "ranged lower"},
+      {"id": 20, "frames": 1, "distinct_drawings_in_group": 1, "format_role": "movement start"},
+      {"id": 21, "frames": 1, "distinct_drawings_in_group": 1, "format_role": "movement end"}
+    ],
+    "role_limit": "Format labels are retained from the job, not confirmed gameplay behavior, timing, or proof of a ranged weapon."
+  },
+  "native_visual_sampling": {
+    "idle_enlargement": "native-idle-6x.png",
+    "contact_sheet": "native-all-groups-contact.png",
+    "contact_coverage": "One representative static pose from each of all 18 groups; not a complete per-frame review.",
+    "guides": [
+      {"file": "native-g02-guide.png", "group": 2, "positions": [0, 4, 7], "observation": "Narrow upright idle, pale face and hands, hands close to abdomen, pointed robe hem."},
+      {"file": "native-g00-guide.png", "group": 0, "positions": [0, 4, 7], "observation": "Body leans and robe trails backward; hands separate from dark cloth."},
+      {"file": "native-g04-guide.png", "group": 4, "positions": [0, 5, 9], "observation": "Hands move upward toward face; no held weapon in these samples."},
+      {"file": "native-g07-guide.png", "group": 7, "positions": [0, 1], "observation": "More frontal turn poses show sloped shoulders, skeletal hands and hanging sleeve/hem strips."},
+      {"file": "native-g12-guide.png", "group": 12, "positions": [0, 3, 6], "observation": "Extended skeletal reach, trailing robe and temporary white streak in middle pose; streak not included in idle master."}
+    ],
+    "observed_identity": [
+      "Original right-facing three-quarter idle profile.",
+      "Tall gaunt body and close-fitting brown-black hood.",
+      "Elongated pale skull-like face, dark eye sockets and light strands below chin.",
+      "Near-black umber cloth, narrow ragged sleeves and long uneven tapering hem.",
+      "Pale skeletal forearms and long fingers held near the abdomen.",
+      "No visible feet or held weapon in controlling idle."
+    ],
+    "interpretation_limit": "Exact material of pale chin/throat strands is unresolved by native pixels. No separate upgrade-pair comparison was conducted."
+  },
+  "rendering_reference": {
+    "file": "../references/pikeman-rendering-master.png",
+    "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4",
+    "viewed_before_generation": true,
+    "role": "Fine modeled volume, texture, restrained shadow and concentrated highlights only; no Castle costume, colors, helmet or weapon transfer."
+  },
+  "generation": {
+    "tool": "built-in image_gen",
+    "calls": 1,
+    "targeted_edits": 0,
+    "fallback_used": false,
+    "transparent_background_requested": true,
+    "selected_raw": "generated-raw-01.png",
+    "rejected_raws": [],
+    "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-5861-7752-accc-11b93ac0ea7a/exec-b132a464-0e79-43ed-9667-2f003ca52b5e.png",
+    "generated_sha256": "ecbbcc08e4ecd2336698645a103aa6f9317885cf06008458b3573478b67853eb",
+    "exact_prompt_file": "generation-prompt-01.txt",
+    "exact_prompt_in_provenance": "generation-provenance.json / attempts[0].exact_prompt",
+    "raw_size": [1024, 1536],
+    "raw_alpha_zero_pixels": 1132759,
+    "raw_alpha_partial_pixels": 440105,
+    "raw_alpha_255_pixels": 0,
+    "alpha_limit": "Genuine transparent exterior exists; the generated body uses near-opaque alpha rather than alpha 255. No alpha hardening was applied."
+  },
+  "registration": {
+    "cell": [1024, 768],
+    "anchor": [512, 512],
+    "native_reference": [196, 268],
+    "source_scale": 2.4657534246575343,
+    "scale_authority": "180/73 shared source-relative calibration",
+    "native_idle_alpha64_bounds": {"left": 180, "top": 180, "width": 33, "height": 88},
+    "target_master_alpha_bounds": {"left": 473, "top": 295, "width": 81, "height": 217},
+    "raw_crop": {"left": 259, "top": 52, "width": 510, "height": 1445},
+    "registered_rectangle": {"left": 475, "top": 295, "width": 77, "height": 217},
+    "actual_alpha64_bounds": {"left": 475, "top": 295, "width": 77, "height": 216, "right": 552, "bottom": 511},
+    "method": "Shared registerMaster default: uniform height scale with integer dimension rounding, native silhouette center and bottom registration.",
+    "override": null,
+    "nonuniform_stretching": false,
+    "dimension_note": "Four pixels narrower than native mapped target; faint antialiased lowest tip accounts for alpha64 height being one pixel below the 217px placement rectangle."
+  },
+  "output_visual_review": {
+    "viewed": ["generated-raw-01.png", "master_rgba.png", "master_source_1024x768.png", "source-vs-master.png", "master-light-review.png"],
+    "display_scale_reviewed": "Registered 77 x 217 placement rectangle in 1024 x 768 cell, plus same-scale native comparison.",
+    "observations": [
+      "Narrow right-facing silhouette and hands close to abdomen retained.",
+      "Dark umber cloth remains separate from pale face and fingers at registered size.",
+      "Fine modeled cloth and bone are newly rendered, without enlarged pixel clusters.",
+      "No added weapon, armor, Castle palette, background, floor, shadow, label or VFX visible in usable master.",
+      "All fingertips, sleeve tails and hem tips are contained within the cell with generous margins.",
+      "Transparent finger and cloth gaps remain visible on navy and light review backgrounds."
+    ],
+    "remaining_risks": [
+      "Skull anatomy is more explicit than the native low-resolution face.",
+      "Cloth wear and pale throat fringe are more articulated than the source pixels.",
+      "Generated silhouette is slightly narrower and has finer hem tatters than the native mapped target.",
+      "Small fingers and fringe strands merge at display size.",
+      "No upgrade-pair, animation continuity, timing, complete per-frame, engine or runtime validation."
+    ],
+    "judgment": "Suitable to present for the static master review gate; no human approval inferred."
+  },
+  "mechanical_evidence": {
+    "helper": "../tools/lib.cjs / registerMaster",
+    "exact_mirror_verified": true,
+    "real_transparent_exterior": true,
+    "master_sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d",
+    "registered_source_sha256": "2824bb8aec497d120e3421f661b51c439e49f355eb0a29d19edd7aba310168ec",
+    "mirror_sha256": "8b13b8eaa7bace6936173352271595128e6fd4c31261d0c25bed2292c0b96a7c"
+  },
+  "validation_boundary": {
+    "static_visual_review_only": true,
+    "animation_generated": false,
+    "tests_run": false,
+    "build_run": false,
+    "engine_run": false,
+    "engine_imported": false,
+    "runtime_verified": false,
+    "git_mutated": false,
+    "peer_messages_sent": false,
+    "writes_limited_to": "wraith creature directory; built-in tool output retained at its own default location",
+    "next_gate": "Human approval of this single static master before any animation frames."
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "creature": "Wraith",
+  "slug": "wraith",
+  "status": "static master awaiting human approval",
+  "artwork_method": "built-in image_gen only; no CLI or API fallback",
+  "animation_generated": false,
+  "runtime_verified": false,
+  "attempts": [
+    {
+      "attempt": 1,
+      "tool": "built-in image_gen",
+      "transparent_background_requested": true,
+      "tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-5861-7752-accc-11b93ac0ea7a/exec-b132a464-0e79-43ed-9667-2f003ca52b5e.png",
+      "saved_raw": "generated-raw-01.png",
+      "generated_sha256": "ecbbcc08e4ecd2336698645a103aa6f9317885cf06008458b3573478b67853eb",
+      "prompt_file": "generation-prompt-01.txt",
+      "exact_prompt": "Use case: stylized-concept\nAsset type: one high-resolution static creature master, a proposal for a 2D side-view game sprite; not an animation sheet.\nPrimary request: faithfully redraw the original Heroes of Might and Magic III Necropolis Wraith shown in reference image 1, preserving its native idle pose, original right-facing three-quarter profile, costume, proportions and silhouette. Create newly rendered artwork, not enlarged or filtered original pixels.\nInput images: image 1 (native-idle-6x.png) is the controlling creature identity, pose, silhouette, palette and anatomy reference. Image 2 (native-g02-guide.png) confirms the same idle pose across its sequence; ignore its labels, background and exported ground shadow. Image 3 (pikeman-rendering-master.png) is a rendering-quality reference ONLY: use its fine modeled volumes, subtle surface texture, restrained shadows, precise small highlights and clean detailed contour. Do not borrow its human body, armor, helmet, weapon, heraldry, blue, gold or white costume.\nScene/backdrop: genuinely transparent alpha everywhere outside the single creature, including gaps between fingers and robe tatters. No ground, no floor, no cast shadow, no backdrop, no fog, no checkerboard pattern.\nSubject identity: a very tall, narrow, gaunt hooded undead Wraith. A small close-fitting dark brown-black cowl with its crown bending slightly back left surrounds a pale gray-ivory skull-like face looking right; deep dark eye sockets and a long pale chin/throat fringe continue downward inside the neckline exactly as in the native reference. The shoulders slope, the torso is slight and elongated, and the robe is almost black with restrained brown/umber folds and worn cloth texture. Narrow ragged sleeve tails hang at the sides. Pale bony forearms and thin long skeletal fingers are held close to the abdomen in the original quiet idle arrangement: the nearer hand crosses diagonally in front of the belly, the other is slightly higher and farther right with loosely curled fingers. The long robe narrows down into a few uneven pointed torn strips, with no visible legs or feet. No handheld prop or weapon.\nStyle/medium: finely rendered painted game-character sprite with believable sculptural form, subtle fine cloth grain, soft modeled folds, bone planes and concentrated tiny edge highlights matching image 3's degree of finish. Keep the Necropolis dark brown-black cloth and aged pale bone palette from image 1. The dark cloth must remain readable as layered material without turning gray or shiny metal. No coarse pixel clusters, no blocky shading, no cartoon simplification, no chibi proportions, no heavy comic outline.\nComposition/framing: a single complete full-body creature centered on a portrait canvas, preferably 1024x1536. Preserve the slender native visible width-to-height ratio, approximately 33:88, and the exact idle body arrangement; do not widen its robe or spread its arms. Keep the skull, every fingertip, all sleeve tails and the longest hem tip fully visible with generous clear margins on all sides. Stable mostly vertical idle silhouette, original right-facing view; no front view and no dramatic camera perspective. Render the creature at high resolution for later uniform downscaling and registration.\nLighting/mood: restrained neutral directional light from upper left, enough to reveal dark worn fabric and aged bone; small concentrated highlights, dark recesses, no bloom. Solemn native undead presence rather than exaggerated horror.\nConstraints: preserve native silhouette, anatomy, original facing, hand placement, dark hood/robe material and pale face/fingers. No scythe, staff, sword, armor, belt ornament, jewelry, chains, spikes, horns, wings, additional limbs, invented magic, glowing eyes, light aura, effects, floating particles, labels, letters, border, watermark, scenery or ground shadow. Exactly one creature in one idle pose on genuine transparency.",
+      "width": 1024,
+      "height": 1536,
+      "has_alpha": true,
+      "alpha_pixels": {
+        "zero": 1132759,
+        "partial": 440105,
+        "full": 0
+      },
+      "bounds_alpha8": {
+        "left": 259,
+        "top": 52,
+        "width": 510,
+        "height": 1445,
+        "right": 769,
+        "bottom": 1497,
+        "transparent_pixels": 1132759,
+        "opaque_pixels": 405382
+      },
+      "bounds_alpha64": {
+        "left": 260,
+        "top": 53,
+        "width": 509,
+        "height": 1443,
+        "right": 769,
+        "bottom": 1496,
+        "transparent_pixels": 1132759,
+        "opaque_pixels": 405382
+      },
+      "selected": true
+    }
+  ],
+  "selected_raw": "generated-raw-01.png",
+  "selected_generated_sha256": "ecbbcc08e4ecd2336698645a103aa6f9317885cf06008458b3573478b67853eb",
+  "source_evidence": {
+    "source_id": "CWRAIT",
+    "metadata": "../../references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/metadata.json",
+    "metadata_sha256": "6fae0fdc8d4a67eda68e140eecdbdc7b0d69bdca7f194529cf77637c00397266",
+    "original_def": "../../references/heroes3-original-flipbooks/originals/H3sprite/CWRAIT.def",
+    "original_def_sha256": "9148c306d115fd514964cea16d0c6d9ed6b336365ef3e7ef592797bc52c2e47e",
+    "groups": 18,
+    "timeline_frames": 102,
+    "distinct_indexed_drawings": 57
+  },
+  "reference_images": [
+    {
+      "image_index": 1,
+      "file": "native-idle-6x.png",
+      "role": "controlling native identity and pose",
+      "sha256": "ed04ea7cef729048e94b93842a365ac8105e20604f12c6ac507b8e5b670e9787"
+    },
+    {
+      "image_index": 2,
+      "file": "native-g02-guide.png",
+      "role": "native idle pose confirmation; background and labels excluded",
+      "sha256": "9ab1f7b7c04bbc50f4f6c26d8ad6eb6827111729cd4170259109df5bfd93e0af"
+    },
+    {
+      "image_index": 3,
+      "file": "../references/pikeman-rendering-master.png",
+      "role": "rendering only; no costume or palette transfer",
+      "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+    }
+  ],
+  "visual_approval": false,
+  "registration_override": null
+}

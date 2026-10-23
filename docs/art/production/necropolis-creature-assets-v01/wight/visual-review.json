@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "creature": "Wight",
+  "slug": "wight",
+  "status": "static master awaiting human approval",
+  "animation": "not begun",
+  "runtime": "unverified",
+  "human_approved": false,
+  "source": {
+    "id": "CWIGHT",
+    "inventory": "job.json",
+    "groups": 18,
+    "timeline_frames": 102,
+    "distinct_indexed_drawings": 57,
+    "metadata_sha256": "d618cc973a1880a703a6a2302964d8a5a64c483b7310f7a709e2031185a2d5ab",
+    "def_sha256": "211ff3e4d786b50fdd3666b2f8b2e80ef44a455b47eb4f9560a562a305b52bdb",
+    "metadata_groups_match_job": true
+  },
+  "visual_evidence": {
+    "inspected": [
+      "native-idle-6x.png",
+      "native-all-groups-contact.png",
+      "all 18 native-gNN-guide.png files listed in job.json",
+      "../references/pikeman-rendering-master.png",
+      "final source-vs-master.png",
+      "both registered 1024x768 facings"
+    ],
+    "groups_sampled": "all groups listed in job.json",
+    "guide_positions": 46,
+    "sampling_rule": "For each guide: F0, Ffloor(n/2), F(n-1), or both positions for n=2, or sole position for n=1.",
+    "coverage_limit": "Selected stills only; not every one of 102 timeline frames. No playback, timing or runtime review.",
+    "native_observations": [
+      "Narrow right-facing brown hooded specter; pale face/throat and hands; hands near torso.",
+      "Long sleeves and tapered ragged cloth hem; no feet or idle weapon visible.",
+      "Gesture eye accent and attack claw/sweep forms are separate states and absent from master."
+    ],
+    "mapping_limit": "G14-16 repeat G11-13 drawings. Ranged format labels do not establish ranged gameplay.",
+    "upgrade_limit": "Only assigned CWIGHT source reviewed; no Wraith comparison.",
+    "style_reference_role": "Pikeman modeled volume, fine texture and concentrated highlights only."
+  },
+  "generation": {
+    "tool": "built-in image_gen.imagegen",
+    "new_generation_count": 1,
+    "targeted_edit_count": 2,
+    "selected_raw": "generated-03.png",
+    "sha256": "49c788c3b32664ef949d6d3c6003734b52b986e80e460a4ddb6ded409d177eca",
+    "original_tool_output_path": "C:/Users/zhouc/.codex/generated_images/01a16383-5767-78e3-918f-b3bc0e998b6c/exec-8e9c3283-861e-413e-872b-312951f0b88e.png",
+    "exact_prompts_and_all_raw_paths_hashes": "generation-provenance.json",
+    "verbatim_prompt_files": [
+      "prompt-01.txt",
+      "prompt-02.txt",
+      "prompt-03.txt"
+    ],
+    "rejected_raw_preserved": [
+      "generated-01.png",
+      "generated-02.png"
+    ],
+    "concrete_repairs": [
+      "Restored compact native-like proportions.",
+      "Removed extra pale waist/sleeve shape; two clear hands remain."
+    ]
+  },
+  "registration": {
+    "cell": [
+      1024,
+      768
+    ],
+    "anchor": [
+      512,
+      512
+    ],
+    "native_reference": [
+      196,
+      268
+    ],
+    "source_scale": "180/73",
+    "target_bounds": {
+      "left": 477,
+      "top": 290,
+      "width": 72,
+      "height": 217
+    },
+    "actual_alpha64_bounds": {
+      "left": 475,
+      "top": 290,
+      "width": 76,
+      "height": 217,
+      "bottom": 507
+    },
+    "method": "Default uniform height scale, native silhouette center and bottom.",
+    "override": null,
+    "nonuniform_stretch": false,
+    "genuine_alpha": true,
+    "exact_mirror_verified": true,
+    "registered_fully_transparent_pixels": 775339,
+    "manifest": "master-manifest.json"
+  },
+  "outputs": {
+    "high_resolution": "master_rgba.png",
+    "registered": "master_source_1024x768.png",
+    "mirror": "master_mirror_1024x768.png",
+    "comparison": "source-vs-master.png",
+    "registered_sha256": "39fb9986096c47957140289d1b0fb6c2709267e929b11ee903aa347e17bd5dc4"
+  },
+  "remaining_risks": [
+    "Fine cloth grain still looks etched or ornamental enlarged; native plain-cloth fidelity is partial.",
+    "Articulated bone throat, explicit skull and additional torn robe layers are interpretations of low-resolution source detail.",
+    "Candidate is four registered pixels wider and somewhat brighter than native; pose is an interpretation, not pixel-exact.",
+    "Static readability checked only in supplied comparison and transparent cell; no game-scene or motion validation."
+  ],
+  "limits": {
+    "animation_generated": false,
+    "engine_imported": false,
+    "build_run": false,
+    "tests_run": false,
+    "runtime_verified": false,
+    "human_approved": false
+  }
+}

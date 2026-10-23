@@ -1,0 +1,76 @@
+{
+  "name": "Bone Dragon",
+  "slug": "bone-dragon",
+  "status": "proposal; awaiting user master approval",
+  "artwork_method": "built-in image generation; mechanical crop and aspect-preserving registration",
+  "cell": [
+    1024,
+    768
+  ],
+  "anchor": [
+    512,
+    512
+  ],
+  "original_reference": [
+    196,
+    268
+  ],
+  "source_scale": 2.4657534246575343,
+  "target_native_bounds": {
+    "left": 445,
+    "top": 228,
+    "width": 229,
+    "height": 281
+  },
+  "actual_registered_bounds": {
+    "left": 453,
+    "top": 228,
+    "width": 214,
+    "height": 281,
+    "right": 667,
+    "bottom": 509,
+    "transparent_pixels": 751560,
+    "opaque_pixels": 27813
+  },
+  "registration": {
+    "crop": {
+      "left": 77,
+      "top": 3,
+      "width": 1049,
+      "height": 1380
+    },
+    "width": 214,
+    "height": 281,
+    "left": 453,
+    "top": 228,
+    "method": "uniform height scale, original idle silhouette center and bottom registration",
+    "options": {}
+  },
+  "original_def_sha256": "58135b0772daff477ca118434052631255fd6e8de89d405529fa7b068f23bf3a",
+  "source_metadata_sha256": "b0f84da6800e79020b5ec9eeaaf8a28d997302deea1f04fbb2acc267f5a501de",
+  "high_res_master": "master_rgba.png",
+  "high_res_sha256": "de366e1c98ae8dcbe7786a10961b058859f642dcf41b8d73318feb18fcda6126",
+  "source": "master_source_1024x768.png",
+  "source_sha256": "e8fd6e7fa3f4324d3067d505c6006c09b10b5184ddece95ed2e924b0a0753147",
+  "mirror": "master_mirror_1024x768.png",
+  "mirror_sha256": "f5cf0a0dbab494e7c0810742b283880731a23bcb3b3c1e78895467b49666041d",
+  "generated_input_sha256": "41c56f05d6cceb0377d09295bd53c3b2b7069d16ff9f2b9ee2015138b3a3bcf1",
+  "transparent_background": true,
+  "exact_mirror_verified": true,
+  "mechanical_checks_only": true,
+  "visual_approval": false,
+  "animation_generated": false,
+  "engine_imported": false,
+  "provenance": {
+    "selected_raw": "raw-01.png",
+    "exact_tool_call": "tool-call-01.json",
+    "exact_prompt": "prompt-01.txt",
+    "prompt_argument_utf8_sha256": "bb53c369d44107d0ee649d5406f7131b51be65ff8beabc4dcf6e45110787dfa0",
+    "tool": "functions.exec -> tools.image_gen__imagegen",
+    "returned_generated_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a1638f-9d8c-71e0-a893-483b88687d3f\\exec-835d63a4-f8a1-45f1-b5bd-2fbafc481f02.png",
+    "raw_sha256": "41c56f05d6cceb0377d09295bd53c3b2b7069d16ff9f2b9ee2015138b3a3bcf1",
+    "source_evidence": "source-evidence.json",
+    "art_direction": "Source-led CNDRGN redraw; Pikeman supplies modeled-volume rendering only.",
+    "status": "Static proposal awaiting user approval; animation has not begun."
+  }
+}
