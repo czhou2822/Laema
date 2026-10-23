@@ -13,6 +13,8 @@ var _impact_layer: CanvasLayer
 var _owner_entity: Entity
 var _duration := 2.0
 const VIEWPORT_MARGIN := 12.0
+const LABEL_SIBLING_GAP := 8.0
+var _label_batches: Dictionary = {}
 
 
 func configure(owner_entity: Entity, duration: float, ui: Dictionary = {}) -> void:
@@ -41,6 +43,7 @@ func show_cast_level(school: StringName, level: int) -> void:
 	_owner_entity.add_child(label)
 	_clamp_label_to_viewport(label, local_offset)
 	var entry_duration := _duration
+	_group_frame_label(label, &"cast")
 	get_tree().create_timer(entry_duration).timeout.connect(label.queue_free)
 
 
@@ -57,6 +60,7 @@ func show_damage(school: StringName, amount: float) -> void:
 	label.add_theme_constant_override("outline_size", 3)
 	_owner_entity.add_child(label)
 	_clamp_label_to_viewport(label, local_offset)
+	_group_frame_label(label, &"damage")
 	var tween := _owner_entity.create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(label, "position:y", label.position.y - 20.0, _duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -94,6 +98,56 @@ func _clamp_label_to_viewport(label: Label, local_offset: Vector2) -> void:
 	screen_position.x = clampf(screen_position.x, VIEWPORT_MARGIN, viewport_size.x - label_size.x - VIEWPORT_MARGIN)
 	screen_position.y = clampf(screen_position.y, VIEWPORT_MARGIN, viewport_size.y - label_size.y - VIEWPORT_MARGIN)
 	label.global_position = inverse_canvas_transform * screen_position
+
+
+func _group_frame_label(label: Label, family: StringName) -> void:
+	var frame := Engine.get_process_frames()
+	var batch: Dictionary = _label_batches.get(family, {})
+	if int(batch.get("frame", -1)) != frame:
+		batch = {"frame": frame, "labels": []}
+	var siblings: Array[Label] = []
+	for reference in batch["labels"]:
+		var sibling := reference.get_ref() as Label
+		if is_instance_valid(sibling) and sibling.is_inside_tree() and not sibling.is_queued_for_deletion():
+			siblings.append(sibling)
+	if siblings.is_empty():
+		batch["left"] = _label_screen_bounds(label).position.x
+	siblings.append(label)
+	var references: Array[WeakRef] = []
+	for sibling in siblings:
+		references.append(weakref(sibling))
+	batch["labels"] = references
+	_label_batches[family] = batch
+	if siblings.size() == 1:
+		return # Preserve the exact legacy single-label position.
+	var width := LABEL_SIBLING_GAP * float(siblings.size() - 1)
+	for sibling in siblings:
+		width += _label_screen_bounds(sibling).size.x
+	var viewport := _owner_entity.get_viewport()
+	var visible := viewport.get_visible_rect()
+	var left := visible.position.x + VIEWPORT_MARGIN
+	# Current two-layer families fit the viewport without changing text or fonts.
+	var right := maxf(left, visible.end.x - VIEWPORT_MARGIN - width)
+	var cursor := clampf(float(batch["left"]), left, right)
+	var inverse_canvas := viewport.get_canvas_transform().affine_inverse()
+	for sibling in siblings:
+		var bounds := _label_screen_bounds(sibling)
+		var screen_shift := Vector2(cursor - bounds.position.x, 0.0)
+		# Only horizontal screen displacement; leave the existing vertical Tween alone.
+		sibling.global_position += inverse_canvas * screen_shift - inverse_canvas.origin
+		cursor += bounds.size.x + LABEL_SIBLING_GAP
+
+
+func _label_screen_bounds(label: Label) -> Rect2:
+	var size := label.get_combined_minimum_size()
+	size = Vector2(maxf(size.x, label.size.x), maxf(size.y, label.size.y))
+	var outline := float(label.get_theme_constant("outline_size"))
+	var local := Rect2(Vector2.ONE * -outline, size + Vector2.ONE * outline * 2.0)
+	var transform := label.get_global_transform_with_canvas()
+	var bounds := Rect2(transform * local.position, Vector2.ZERO)
+	for corner in [Vector2(local.end.x, local.position.y), local.end, Vector2(local.position.x, local.end.y)]:
+		bounds = bounds.expand(transform * corner)
+	return bounds
 
 
 func _school_color(school: StringName) -> Color:
@@ -215,6 +269,7 @@ static func contact_polygons(weight: bool) -> Array[PackedVector2Array]:
 
 func _process(_delta: float) -> void:
 	if get_tree().paused:
+		_label_batches.clear()
 		clear_impact_feedback()
 		return
 	for index in range(_impact_entries.size() - 1, -1, -1):
@@ -243,4 +298,5 @@ func clear_impact_feedback(clear_history: bool = false) -> void:
 
 
 func _exit_tree() -> void:
+	_label_batches.clear()
 	clear_impact_feedback(true)

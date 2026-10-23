@@ -120,6 +120,7 @@ func _run() -> void:
 	Loader._normalize_impact_feedback(legacy)
 	check(not legacy["ui"]["impact_contact_enabled"] and not legacy["ui"]["impact_camera_enabled"], "legacy config remains off")
 	check(legacy["ui"]["impact_treatment"] == "precise", "legacy treatment is stable")
+	await _check_frame_labels(actor)
 	actor.free()
 	var arena := Arena.new()
 	var camera := Camera2D.new()
@@ -158,3 +159,101 @@ func _run() -> void:
 	arena.free()
 	print("Impact feedback: %d checks, %d failures" % [checks, failures.size()])
 	quit(0 if failures.is_empty() else 1)
+
+
+func _legacy_label_position(actor: Entity, label: Label, offset: Vector2) -> Vector2:
+	var canvas := actor.get_viewport().get_canvas_transform()
+	var screen := canvas * (actor.global_position + offset)
+	var size := label.get_combined_minimum_size()
+	var visible := actor.get_viewport().get_visible_rect().size
+	screen.x = clampf(screen.x, 12.0, visible.x - size.x - 12.0)
+	screen.y = clampf(screen.y, 12.0, visible.y - size.y - 12.0)
+	return canvas.affine_inverse() * screen
+
+
+func _check_family(actor: Entity, first: Label, second: Label, description: String) -> void:
+	var a := actor.feedback._label_screen_bounds(first)
+	var b := actor.feedback._label_screen_bounds(second)
+	var viewport := actor.get_viewport().get_visible_rect()
+	check(is_equal_approx(b.position.x - a.end.x, 8.0), description + " keeps 8 viewport px between outlined bounds")
+	check(a.position.x >= viewport.position.x + 11.99 and b.end.x <= viewport.end.x - 11.99, description + " clamps whole family inside margins")
+	check(is_equal_approx(first.global_position.y, second.global_position.y), description + " keeps the same vertical lane")
+
+
+func _check_frame_labels(actor: Entity) -> void:
+	var saved_size := root.size
+	root.size = Vector2i(1280, 720)
+	actor.scale = Vector2(2, 2) # Include actor scale in actual outlined viewport bounds.
+	actor.position = Vector2(640, 420)
+	await process_frame
+	await process_frame
+	actor.feedback.show_damage(&"fire", 13.0)
+	var first := actor.get_children().back() as Label
+	check(first.global_position.is_equal_approx(_legacy_label_position(actor, first, Vector2(-10, -186))), "single damage anchor unchanged")
+	var first_x := first.position.x
+	var first_y := first.position.y
+	actor.feedback.show_damage(&"water", 10.0)
+	var second := actor.get_children().back() as Label
+	check(first.text == "13" and second.text == "10", "13 and 10 stay separate, not aggregated")
+	check(is_equal_approx(first.position.x, first_x), "first damage stays at its anchor when room exists")
+	_check_family(actor, first, second, "center damage")
+	check(first.get_theme_font_size("font_size") == 18 and first.get_theme_constant("outline_size") == 3, "damage font/outline unchanged")
+	check(first.get_theme_color("font_color") == Color("ff493d") and second.get_theme_color("font_color") == Color("3a96ff"), "individual school colors retained")
+	actor.feedback.show_cast_level(&"water", 4)
+	var water := actor.get_children().back() as Label
+	check(water.global_position.is_equal_approx(_legacy_label_position(actor, water, Vector2(-48, -118))), "single Cast anchor unchanged")
+	var water_x := water.position.x
+	actor.feedback.show_cast_level(&"fire", 2)
+	var fire := actor.get_children().back() as Label
+	check(water.text == "Water Lv.4" and fire.text == "Fire Lv.2", "mixed Cast captions remain individual in creation order")
+	check(is_equal_approx(water.position.x, water_x), "first caption stays at its anchor when room exists")
+	_check_family(actor, water, fire, "center captions")
+	check(water.get_theme_font_size("font_size") == 16 and water.get_theme_constant("outline_size") == 3, "Cast font/outline unchanged")
+	actor.feedback.show_dot_damage(&"fire", 5.0)
+	var dot := actor.get_children().back() as Label
+	check(dot.global_position.is_equal_approx(_legacy_label_position(actor, dot, Vector2(-8, -154))), "DoT position unchanged")
+	check(dot.text == "5" and dot.get_theme_font_size("font_size") == 12 and dot.get_theme_constant("outline_size") == 2, "DoT text, 12px font and outline unchanged")
+	check(is_equal_approx(first.position.x, first_x) and is_equal_approx(water.position.x, water_x), "independent families and DoT do not regroup each other")
+	var labels: Array[Label] = [first, second, water, fire, dot]
+	var center_positions := [first.position, second.position, water.position, fire.position]
+	for edge_x in [0.0, 1280.0]:
+		await process_frame
+		await process_frame
+		actor.position.x = edge_x
+		actor.feedback.show_damage(&"fire", 13.0)
+		var edge_first := actor.get_children().back() as Label
+		actor.feedback.show_damage(&"water", 10.0)
+		var edge_second := actor.get_children().back() as Label
+		_check_family(actor, edge_first, edge_second, "viewport-edge damage")
+		actor.feedback.show_cast_level(&"water", 4)
+		var edge_water := actor.get_children().back() as Label
+		actor.feedback.show_cast_level(&"fire", 2)
+		var edge_fire := actor.get_children().back() as Label
+		_check_family(actor, edge_water, edge_fire, "viewport-edge captions")
+		labels.append_array([edge_first, edge_second, edge_water, edge_fire])
+		for index in range(4):
+			check(is_equal_approx(labels[index].position.x, Vector2(center_positions[index]).x), "new-frame group does not reposition older labels")
+	await create_timer(0.10).timeout
+	check(is_instance_valid(first) and first.modulate.a < 1.0 and first.position.y < first_y, "existing damage upward/fade Tween still advances")
+	check(is_instance_valid(dot) and dot.modulate.a < 1.0, "existing DoT Tween still advances")
+	check(is_instance_valid(water) and is_equal_approx(water.modulate.a, 1.0), "Cast caption retains timer-only lifetime")
+	var lifetime_refs: Array[WeakRef] = []
+	for label in labels:
+		lifetime_refs.append(weakref(label))
+	await create_timer(2.10).timeout
+	for reference in lifetime_refs:
+		check(reference.get_ref() == null, "each original 2s lifetime cleans its label")
+	actor.feedback.show_cast_level(&"water", 1)
+	var freed := actor.get_children().back() as Label
+	freed.free()
+	actor.feedback.show_cast_level(&"fire", 2)
+	var survivor := actor.get_children().back() as Label
+	check(survivor.global_position.is_equal_approx(_legacy_label_position(actor, survivor, Vector2(-48, -118))), "freed same-frame sibling is pruned without stale-node access")
+	survivor.free()
+	paused = true
+	actor.feedback._process(0.0)
+	check(actor.feedback._label_batches.is_empty(), "pause drops regrouping metadata without repositioning older labels")
+	paused = false
+	actor.feedback._exit_tree()
+	check(actor.feedback._label_batches.is_empty(), "teardown leaves no stale frame-label bookkeeping")
+	root.size = saved_size
