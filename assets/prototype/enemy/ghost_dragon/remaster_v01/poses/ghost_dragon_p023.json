@@ -1,0 +1,100 @@
+{
+  "pose_id": "ghost_dragon_p023",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "db8d2704d8b306e6571e61d9427c180fd979d8f37db71d0d192204e282eed4df:172:138:112:130:450:400",
+  "original_representative": {
+    "group_id": 4,
+    "original_block": 4,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_04_block_04_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_04_block_04_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "chdrgn28.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 265541,
+      "stored_size": 8363,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 112,
+      "height": 130,
+      "left": 172,
+      "top": 138,
+      "legacy_header": false,
+      "index_sha256": "db8d2704d8b306e6571e61d9427c180fd979d8f37db71d0d192204e282eed4df"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-recoil-shield-turn-v02.png",
+  "raw_sha256": "9b01e43629837aa7c5e3a41e2ef58a757dc5286818d550c73615f42bf2322391",
+  "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-recoil-shield-turn-v02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/isolated/repair-recoil-shield-turn-v02-ghost_dragon_p023.png",
+  "isolated_sha256": "e2fd81606a05b93c45e5e1d93abbd76f254d69f33f5fa479131f5081cea55910",
+  "source_grid_region": [
+    1122,
+    69,
+    512,
+    586
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p023.png",
+  "registered_pose_sha256": "4fd169b028d59de9f6aa5de8083685d5a7f955ab60262e2d44f91e04dec7ee8f",
+  "mirror_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p023_mirror.png",
+  "mirror_sha256": "3176ad47f36971e8b0db63398d2fc1c3a91beca1bb0918395ec1c6648d0167d2",
+  "registration": {
+    "source_body_rect": [
+      180,
+      138,
+      104,
+      129
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      514,
+      588
+    ],
+    "registered_rect": [
+      473,
+      217,
+      256,
+      293
+    ],
+    "uniform_artwork_fit": 0.5
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Defensive shoulder turn repaired to down-right skull beneath raised wings, without initial straight-frontal substitution. Inspected OG guide, native-scale and registered comparisons, raw selected art and both-facing sequence frames. Candidate review only.",
+    "source_sha256_at_review": "4fd169b028d59de9f6aa5de8083685d5a7f955ab60262e2d44f91e04dec7ee8f",
+    "mirror_sha256_at_review": "3176ad47f36971e8b0db63398d2fc1c3a91beca1bb0918395ec1c6648d0167d2"
+  },
+  "human_animation_acceptance": false
+}

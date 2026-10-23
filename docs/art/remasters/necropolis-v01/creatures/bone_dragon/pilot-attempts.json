@@ -1,0 +1,80 @@
+{
+  "creature_id": "bone_dragon",
+  "scope": "PILOT ONLY: bone_dragon_p000,bone_dragon_p002,bone_dragon_p042",
+  "attempts": [
+    {
+      "attempt": "pilot-extents-a01",
+      "result": "geometric rejection",
+      "exact_error": "ValueError: Figure touches raw/grid boundary: bone_dragon_p002; preserve attempt and regenerate",
+      "followup": "All three regenerated individually with 1x1 ingestion. Failed page retained verbatim."
+    },
+    {
+      "attempt": "pilot-p042-a02",
+      "result": "superseded by a03",
+      "observations": "Tail spreads horizontally too far left; skull and foreclaws sit too high.",
+      "followup": "Builtin a03 redraw. Lower head/hands and narrow low tail hook inspected against G11 F5."
+    },
+    {
+      "attempt": "pilot-p002-a02",
+      "result": "superseded by a03",
+      "observations": "Membrane too reduced over ribcage; registered height217 versus source envelope237.",
+      "followup": "Builtin a03 increases lower membrane overlap. Remaining height213 versus237 explicitly open."
+    }
+  ],
+  "retained_raw_attempts": [
+    {
+      "metadata": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/prompts/pilot-extents-a01.tool-result.json",
+      "archived": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-extents-a01.png",
+      "sha256": "b53d787b427ddaf7e4edbff455e9d400dd402ffb47cf8adbd88af5b72449c405",
+      "byte_identical_to_builtin_png": true
+    },
+    {
+      "metadata": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/prompts/pilot-p000-a02.tool-result.json",
+      "archived": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p000-a02.png",
+      "sha256": "4d8ccb21d3979a6328c5a71cbb93a8101ee7ba41d0a8634ac1155687147031ca",
+      "byte_identical_to_builtin_png": true
+    },
+    {
+      "metadata": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/prompts/pilot-p002-a02.tool-result.json",
+      "archived": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p002-a02.png",
+      "sha256": "bd59876364956626f0b6801333bc9ba4a5d497beeaa112fba3e314a0443fd715",
+      "byte_identical_to_builtin_png": true
+    },
+    {
+      "metadata": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/prompts/pilot-p002-a03.tool-result.json",
+      "archived": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p002-a03.png",
+      "sha256": "3e80b82ebdbc90bcec98accf8bec61930e03cd6d39a24a36f9118d5c2150870c",
+      "byte_identical_to_builtin_png": true
+    },
+    {
+      "metadata": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/prompts/pilot-p042-a02.tool-result.json",
+      "archived": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p042-a02.png",
+      "sha256": "235bcb051c9e4ce8accb600b96b886cd32c69ec312d2b7a74c2ddc45234c4cd0",
+      "byte_identical_to_builtin_png": true
+    },
+    {
+      "metadata": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/prompts/pilot-p042-a03.tool-result.json",
+      "archived": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p042-a03.png",
+      "sha256": "d355f62d978468ec75ada70c92c8ae206ac691f9fba3aceb52a22eb2e965e6af",
+      "byte_identical_to_builtin_png": true
+    }
+  ],
+  "final_raws": [
+    {
+      "pose_id": "bone_dragon_p000",
+      "raw": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p000-a02.png",
+      "sha256": "4d8ccb21d3979a6328c5a71cbb93a8101ee7ba41d0a8634ac1155687147031ca"
+    },
+    {
+      "pose_id": "bone_dragon_p002",
+      "raw": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p002-a03.png",
+      "sha256": "3e80b82ebdbc90bcec98accf8bec61930e03cd6d39a24a36f9118d5c2150870c"
+    },
+    {
+      "pose_id": "bone_dragon_p042",
+      "raw": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p042-a03.png",
+      "sha256": "d355f62d978468ec75ada70c92c8ae206ac691f9fba3aceb52a22eb2e965e6af"
+    }
+  ],
+  "full_creature_complete": false
+}

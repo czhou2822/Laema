@@ -1,0 +1,100 @@
+{
+  "pose_id": "ghost_dragon_p001",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "bd0cd8fabd1b4b88e9be44b8b278e6388237e319f8b8ce0ec7d570a343635061:115:106:190:154:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CHDRGN/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "chdrgn44.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 430129,
+      "stored_size": 15089,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 190,
+      "height": 154,
+      "left": 115,
+      "top": 106,
+      "legacy_header": false,
+      "index_sha256": "bd0cd8fabd1b4b88e9be44b8b278e6388237e319f8b8ce0ec7d570a343635061"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-flight-digits-phase-v03.png",
+  "raw_sha256": "68a9341c2862314bed757d87cf706f418e5b251298bd57d3f8cfed60de544976",
+  "prompt": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/raw/repair-flight-digits-phase-v03.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/ghost_dragon/remaster_v01/_source/isolated/repair-flight-digits-phase-v03-ghost_dragon_p001.png",
+  "isolated_sha256": "a5466d9db9a03daac7a9e8c7a76591b91a9236b8b58a3221409b3bbc0a51795f",
+  "source_grid_region": [
+    562,
+    149,
+    554,
+    459
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p001.png",
+  "registered_pose_sha256": "e8ad9f96d524e18bd8f4d1c4c25c13d559109fac4aec571ee96c262a71db5369",
+  "mirror_file": "assets/prototype/enemy/ghost_dragon/remaster_v01/poses/ghost_dragon_p001_mirror.png",
+  "mirror_sha256": "989e35137ddb525e8dc19cc1a728d231d575c8cd87760432e82da3039326dd5b",
+  "registration": {
+    "source_body_rect": [
+      128,
+      106,
+      177,
+      135
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      556,
+      461
+    ],
+    "registered_rect": [
+      362,
+      112,
+      402,
+      333
+    ],
+    "uniform_artwork_fit": 0.7254901960784313
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Diagonal upward wing position and hanging legs; separated bony digits. Moderately translucent generated phase, not painted dither. Inspected OG guide, native-scale and registered comparisons, raw selected art and both-facing sequence frames. Candidate review only.",
+    "source_sha256_at_review": "e8ad9f96d524e18bd8f4d1c4c25c13d559109fac4aec571ee96c262a71db5369",
+    "mirror_sha256_at_review": "989e35137ddb525e8dc19cc1a728d231d575c8cd87760432e82da3039326dd5b"
+  },
+  "human_animation_acceptance": false
+}

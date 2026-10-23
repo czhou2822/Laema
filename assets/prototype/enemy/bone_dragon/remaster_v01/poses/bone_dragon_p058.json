@@ -1,0 +1,100 @@
+{
+  "pose_id": "bone_dragon_p058",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "7b82149e0b83ca987de30613669d3390186b9795fdf2601bbc5e9524b25e0ca9:110:91:188:170:450:400",
+  "original_representative": {
+    "group_id": 21,
+    "original_block": 14,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_21_block_14_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_21_block_14_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cndrgn49.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 454811,
+      "stored_size": 13037,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 188,
+      "height": 170,
+      "left": 110,
+      "top": 91,
+      "legacy_header": false,
+      "index_sha256": "7b82149e0b83ca987de30613669d3390186b9795fdf2601bbc5e9524b25e0ca9"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-batch-006-a01.png",
+  "raw_sha256": "d337eace285ec5596ba3a3f8d00060e28009c4581cdf51b6d9fc08fa74134e98",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-batch-006-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/full-batch-006-a01-bone_dragon_p058.png",
+  "isolated_sha256": "08a7f1c6313288ca686c496dd8b8f3f8465f612c9aed8930673b84381a5e12e7",
+  "source_grid_region": [
+    1332,
+    465,
+    423,
+    390
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p058.png",
+  "registered_pose_sha256": "aaf8d4d3f0d94c02ff8e961f001d980b957fdfe80bab8bac117211805ad244ef",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p058_mirror.png",
+  "mirror_sha256": "d0ebe6ee9bf23994555215ad53e727e66821f53337eada180ae7124f4d679ebc",
+  "registration": {
+    "source_body_rect": [
+      124,
+      91,
+      174,
+      164
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      425,
+      392
+    ],
+    "registered_rect": [
+      334,
+      84,
+      429,
+      396
+    ],
+    "uniform_artwork_fit": 1.0141843971631206
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Movement end: airborne approach, landing/settling and curled-tail descent inspected; G21 then returns to exact p055. Source wing sweep and feet contact progression retained in mirrored frames. Final fixed-scale original/candidate pose comparisons, all source-ordered group contacts and offline decoded source/mirror GIF frames viewed. No known blocking anatomy, direction, order or clipping defect observed. Worker asset review only; no browser/Godot/human playback or original timing acceptance.",
+    "source_sha256_at_review": "aaf8d4d3f0d94c02ff8e961f001d980b957fdfe80bab8bac117211805ad244ef",
+    "mirror_sha256_at_review": "d0ebe6ee9bf23994555215ad53e727e66821f53337eada180ae7124f4d679ebc"
+  },
+  "human_animation_acceptance": false
+}

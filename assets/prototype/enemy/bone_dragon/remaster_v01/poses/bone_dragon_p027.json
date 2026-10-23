@@ -1,0 +1,100 @@
+{
+  "pose_id": "bone_dragon_p027",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "5907d17f91250cd82b03aee6cda552e62bb52bbd9156d0f022606ce19a4b15e9:87:148:184:119:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cndrgn20.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 196861,
+      "stored_size": 11087,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 184,
+      "height": 119,
+      "left": 87,
+      "top": 148,
+      "legacy_header": false,
+      "index_sha256": "5907d17f91250cd82b03aee6cda552e62bb52bbd9156d0f022606ce19a4b15e9"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-p027-wide-gutter-a02.png",
+  "raw_sha256": "045e3fd4913ee9919775fe9b65b19ddfbef2a9f81a29db383fcc8f945000c0b2",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-p027-wide-gutter-a02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/full-p027-wide-gutter-a02-bone_dragon_p027.png",
+  "isolated_sha256": "045e3fd4913ee9919775fe9b65b19ddfbef2a9f81a29db383fcc8f945000c0b2",
+  "source_grid_region": [
+    0,
+    0,
+    456,
+    444
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p027.png",
+  "registered_pose_sha256": "e10c8e7770599bb54edf565bc2ce9355dc74039dddfc00fe726540a66345b3aa",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p027_mirror.png",
+  "mirror_sha256": "5be6324d9b30964f4d5c1f8dcb60541ad0d845bb3fca306649210e65efc1d5df",
+  "registration": {
+    "source_body_rect": [
+      102,
+      148,
+      169,
+      119
+    ],
+    "artwork_crop": [
+      0,
+      76,
+      446,
+      420
+    ],
+    "registered_rect": [
+      299,
+      217,
+      380,
+      293
+    ],
+    "uniform_artwork_fit": 0.8517441860465116
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Death: intact-to-disintegrating source sequence, frontal changes, detached skull/wing/bone/tail fragments and final low heap retained as complete whole-pose cells. No forced intact master or deleted disconnected fragments. Final fixed-scale original/candidate pose comparisons, all source-ordered group contacts and offline decoded source/mirror GIF frames viewed. No known blocking anatomy, direction, order or clipping defect observed. Worker asset review only; no browser/Godot/human playback or original timing acceptance.",
+    "source_sha256_at_review": "e10c8e7770599bb54edf565bc2ce9355dc74039dddfc00fe726540a66345b3aa",
+    "mirror_sha256_at_review": "5be6324d9b30964f4d5c1f8dcb60541ad0d845bb3fca306649210e65efc1d5df"
+  },
+  "human_animation_acceptance": false
+}

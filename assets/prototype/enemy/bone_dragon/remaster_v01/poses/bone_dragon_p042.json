@@ -1,0 +1,98 @@
+{
+  "pose_id": "bone_dragon_p042",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "5e0d4442760789972c76f9a32b51563b8ed0857b0b786bfe2e62c4fc8201737e:140:147:143:129:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "cndrgn12.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 115885,
+      "stored_size": 9816,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 143,
+      "height": 129,
+      "left": 140,
+      "top": 147,
+      "legacy_header": false,
+      "index_sha256": "5e0d4442760789972c76f9a32b51563b8ed0857b0b786bfe2e62c4fc8201737e"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p042-a03.png",
+  "raw_sha256": "d355f62d978468ec75ada70c92c8ae206ac691f9fba3aceb52a22eb2e965e6af",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/pilot-p042-a03.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/pilot-p042-a03-bone_dragon_p042.png",
+  "isolated_sha256": "30e220ce2f443fe6f109157e0eb751998c60df451d5c8196dfb435a647e9bde4",
+  "source_grid_region": [
+    0,
+    0,
+    1292,
+    1217
+  ],
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p042.png",
+  "registered_pose_sha256": "81fbd2cabb4d8646af5ee0b26cca79fd9a7f4fb4defcbdacd9671c3ce70cf1f8",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p042_mirror.png",
+  "mirror_sha256": "ab7e0dfbd8e6d5be739d097a4583b0dff4a76f02ff2b2990a349a6d7900f0d17",
+  "registration": {
+    "source_body_rect": [
+      146,
+      147,
+      137,
+      129
+    ],
+    "artwork_crop": [
+      51,
+      42,
+      1255,
+      1185
+    ],
+    "registered_rect": [
+      390,
+      214,
+      335,
+      318
+    ],
+    "uniform_artwork_fit": 0.2782152230971129
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Upper melee: open-jaw rise, tall wings, upward skull pitch, lowering neck/skull and recovery follow source. p039-p041 height/p040 pitch repairs inspected; p042 is G11 F5 melee, not death. Final fixed-scale original/candidate pose comparisons, all source-ordered group contacts and offline decoded source/mirror GIF frames viewed. No known blocking anatomy, direction, order or clipping defect observed. Worker asset review only; no browser/Godot/human playback or original timing acceptance.",
+    "source_sha256_at_review": "81fbd2cabb4d8646af5ee0b26cca79fd9a7f4fb4defcbdacd9671c3ce70cf1f8",
+    "mirror_sha256_at_review": "ab7e0dfbd8e6d5be739d097a4583b0dff4a76f02ff2b2990a349a6d7900f0d17"
+  },
+  "human_animation_acceptance": false
+}

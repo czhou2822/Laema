@@ -1,0 +1,100 @@
+{
+  "pose_id": "bone_dragon_p002",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "8b64d7fd3a4e60cd6334d2eae813c528dec6e2466e6258dcfb20c119283c2767:113:136:192:122:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNDRGN/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cndrgn45.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 420328,
+      "stored_size": 8685,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 192,
+      "height": 122,
+      "left": 113,
+      "top": 136,
+      "legacy_header": false,
+      "index_sha256": "8b64d7fd3a4e60cd6334d2eae813c528dec6e2466e6258dcfb20c119283c2767"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-p002-a06-far-wing.png",
+  "raw_sha256": "5df8d8506301fbb0138e5dacfa91ff17e7278d99ff4231364be9809cc55339e2",
+  "prompt": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/raw/full-p002-a06-far-wing.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/bone_dragon/remaster_v01/_source/isolated/full-p002-a06-far-wing-bone_dragon_p002.png",
+  "isolated_sha256": "2e8d7a41830126729db0e19a4feb065baf6820cfe008a46c34723af78b655767",
+  "source_grid_region": [
+    0,
+    0,
+    1721,
+    914
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p002.png",
+  "registered_pose_sha256": "6ce2514eb8e4a25997ada878085dcdbe3efd781f6c5d81494745e0fb99a4f0f3",
+  "mirror_file": "assets/prototype/enemy/bone_dragon/remaster_v01/poses/bone_dragon_p002_mirror.png",
+  "mirror_sha256": "7dd319deb9f072da5479bf0d2e11c865237cdc0c5b4389ddb729942e30437fcf",
+  "registration": {
+    "source_body_rect": [
+      124,
+      136,
+      181,
+      96
+    ],
+    "artwork_crop": [
+      68,
+      12,
+      1673,
+      870
+    ],
+    "registered_rect": [
+      336,
+      186,
+      443,
+      237
+    ],
+    "uniform_artwork_fit": 0.2762237762237762
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Flight: source upstrokes, rearward/downstroke wing phases, dangling feet and tail changes remain distinct in source order. Retained parent-confirmed p002 A06 far-wing repair (6ce2514eb8e4a25997ada878085dcdbe3efd781f6c5d81494745e0fb99a4f0f3), not the rejected shallow attempt. Final fixed-scale original/candidate pose comparisons, all source-ordered group contacts and offline decoded source/mirror GIF frames viewed. No known blocking anatomy, direction, order or clipping defect observed. Worker asset review only; no browser/Godot/human playback or original timing acceptance.",
+    "source_sha256_at_review": "6ce2514eb8e4a25997ada878085dcdbe3efd781f6c5d81494745e0fb99a4f0f3",
+    "mirror_sha256_at_review": "7dd319deb9f072da5479bf0d2e11c865237cdc0c5b4389ddb729942e30437fcf"
+  },
+  "human_animation_acceptance": false
+}
