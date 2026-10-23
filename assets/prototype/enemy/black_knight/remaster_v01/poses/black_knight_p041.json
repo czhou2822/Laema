@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p041",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "31d7dfbf831cfec043f9678c8a0678908253617d649ee50e8842d7a05646dea5:181:168:92:98:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "cbknig11.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 56514,
+      "stored_size": 5165,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 92,
+      "height": 98,
+      "left": 181,
+      "top": 168,
+      "legacy_header": false,
+      "index_sha256": "31d7dfbf831cfec043f9678c8a0678908253617d649ee50e8842d7a05646dea5"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/repair-c-v01.png",
+  "raw_sha256": "b59039e521c314105f8de8a896afeda6b3e9417f82a8a0474f6375f97c1ed10e",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/repair-c-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/repair-c-v01-black_knight_p041.png",
+  "isolated_sha256": "fb476b416e56968830c94dc1330762667c3ea3ad8f4411e75cd56aa41cb47e15",
+  "source_grid_region": [
+    680,
+    25,
+    542,
+    609
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p041.png",
+  "registered_pose_sha256": "9ca1c62ced0e3f9a046334a99f5bc70449b0d525813c6901baab6d8fc0d39f76",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p041_mirror.png",
+  "mirror_sha256": "b0ae6556b71c0473810658141cc9738321c21bc6f7277a43a3946c93b48ae01e",
+  "registration": {
+    "source_body_rect": [
+      182,
+      168,
+      87,
+      98
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      544,
+      611
+    ],
+    "registered_rect": [
+      477,
+      265,
+      215,
+      242
+    ],
+    "uniform_artwork_fit": 0.3966789667896679
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Repaired rear view rises from low followthrough with dark edge-on blade behind helmet and bowed horse/front knees. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "9ca1c62ced0e3f9a046334a99f5bc70449b0d525813c6901baab6d8fc0d39f76",
+    "mirror_sha256_at_review": "b0ae6556b71c0473810658141cc9738321c21bc6f7277a43a3946c93b48ae01e"
+  },
+  "human_animation_acceptance": false
+}

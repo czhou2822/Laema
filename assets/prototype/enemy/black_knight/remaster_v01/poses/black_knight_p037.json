@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p037",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "22735f18c226123d343fa13500bfb05ad7d2fbf233341f77f19ccd8a071e060e:158:153:93:110:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cbknig02.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 7859,
+      "stored_size": 5939,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 93,
+      "height": 110,
+      "left": 158,
+      "top": 153,
+      "legacy_header": false,
+      "index_sha256": "22735f18c226123d343fa13500bfb05ad7d2fbf233341f77f19ccd8a071e060e"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-004-v01.png",
+  "raw_sha256": "6c9d864c8ca552116eb1c1ca453cd24095f27c8aa018106267820ba49f2f5432",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-004-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/batch-004-v01-black_knight_p037.png",
+  "isolated_sha256": "537708ee5c2f713b0948dc21cfaae79c4cced974a08ef9f872e67accaf14a77f",
+  "source_grid_region": [
+    420,
+    548,
+    308,
+    476
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p037.png",
+  "registered_pose_sha256": "8a5d11128e866bd5e3508ef5f6acd5416a20d73bb86d00f42e25f6825618ff1a",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p037_mirror.png",
+  "mirror_sha256": "dfcea460c6c6e83149a2092d6296cef1b9e5a4869bb2ebf24bdbe6f311d1e754",
+  "registration": {
+    "source_body_rect": [
+      166,
+      153,
+      82,
+      109
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      310,
+      478
+    ],
+    "registered_rect": [
+      452,
+      228,
+      174,
+      269
+    ],
+    "uniform_artwork_fit": 0.5651260504201681
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Shared windup raises saber back-left as horse begins rearing; rider remains seated and reins/boots retained. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "8a5d11128e866bd5e3508ef5f6acd5416a20d73bb86d00f42e25f6825618ff1a",
+    "mirror_sha256_at_review": "dfcea460c6c6e83149a2092d6296cef1b9e5a4869bb2ebf24bdbe6f311d1e754"
+  },
+  "human_animation_acceptance": false
+}

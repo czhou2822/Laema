@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p036",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "630013f7b0c67ff0fc9296850cd52f29f4a8d5e25f8a4e2f76e1b9613b3d821f:174:174:92:93:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cbknig01.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 2588,
+      "stored_size": 5239,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 92,
+      "height": 93,
+      "left": 174,
+      "top": 174,
+      "legacy_header": false,
+      "index_sha256": "630013f7b0c67ff0fc9296850cd52f29f4a8d5e25f8a4e2f76e1b9613b3d821f"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-004-v01.png",
+  "raw_sha256": "6c9d864c8ca552116eb1c1ca453cd24095f27c8aa018106267820ba49f2f5432",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-004-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/batch-004-v01-black_knight_p036.png",
+  "isolated_sha256": "c9e2f712293b56a96ba785e18ea39442b6f2f286155e7cb2fc3bb4b9e35e1b65",
+  "source_grid_region": [
+    14,
+    630,
+    382,
+    385
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p036.png",
+  "registered_pose_sha256": "f54d503786d692400c13b960ffe5417a1d9d9ec70453e1f76d0fba2799167961",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p036_mirror.png",
+  "mirror_sha256": "16d82d602d1368d3129531bfc17918c4e14c6f79943b65147ccc780eaa19f9fa",
+  "registration": {
+    "source_body_rect": [
+      174,
+      174,
+      89,
+      93
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      384,
+      387
+    ],
+    "registered_rect": [
+      458,
+      289,
+      219,
+      221
+    ],
+    "uniform_artwork_fit": 0.5732984293193717
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Shared attack preparation lowers horse head and saber; all three attack groups use this exact registered drawing. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "f54d503786d692400c13b960ffe5417a1d9d9ec70453e1f76d0fba2799167961",
+    "mirror_sha256_at_review": "16d82d602d1368d3129531bfc17918c4e14c6f79943b65147ccc780eaa19f9fa"
+  },
+  "human_animation_acceptance": false
+}

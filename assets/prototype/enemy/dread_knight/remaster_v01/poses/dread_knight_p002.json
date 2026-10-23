@@ -1,0 +1,100 @@
+{
+  "pose_id": "dread_knight_p002",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "cf2bd0dfd8d3dcba53d9a81f5acca011ac7f026d470346cb6cdc2e15f6292ec4:176:167:86:100:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBLORD/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBLORD/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cblord41.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 236663,
+      "stored_size": 5775,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 86,
+      "height": 100,
+      "left": 176,
+      "top": 167,
+      "legacy_header": false,
+      "index_sha256": "cf2bd0dfd8d3dcba53d9a81f5acca011ac7f026d470346cb6cdc2e15f6292ec4"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/dread_knight/remaster_v01/_source/raw/batch-000-v01-components.png",
+  "raw_sha256": "da1339650c68a3d25257c6e4799aca18c7544866eddcef77cefc075b58c854d8",
+  "prompt": "assets/prototype/enemy/dread_knight/remaster_v01/_source/raw/batch-000-v01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/dread_knight/remaster_v01/_source/isolated/batch-000-v01-components-dread_knight_p002.png",
+  "isolated_sha256": "ec9ab77895df7b1fb9c980f1b0600c79d0f5ab7878764572eb1c15a5c434cd67",
+  "source_grid_region": [
+    797,
+    56,
+    344,
+    413
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/dread_knight/remaster_v01/poses/dread_knight_p002.png",
+  "registered_pose_sha256": "7553fc1474388cf399870a407148f7a6d3b5a60a578777f5ff782f2d87a1e58f",
+  "mirror_file": "assets/prototype/enemy/dread_knight/remaster_v01/poses/dread_knight_p002_mirror.png",
+  "mirror_sha256": "b7ab7fdb510cc92ff407b621a4323af844e41d6b6499940eeb3d9675463ae380",
+  "registration": {
+    "source_body_rect": [
+      177,
+      167,
+      83,
+      100
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      346,
+      415
+    ],
+    "registered_rect": [
+      465,
+      264,
+      205,
+      246
+    ],
+    "uniform_artwork_fit": 0.5959302325581395
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Walk third: far foreleg folds upward while near foreleg extends; rump and plume stay coherent. Static native/enlarged source and exact-mirror review; no continuous playback, engine or human acceptance.",
+    "source_sha256_at_review": "7553fc1474388cf399870a407148f7a6d3b5a60a578777f5ff782f2d87a1e58f",
+    "mirror_sha256_at_review": "b7ab7fdb510cc92ff407b621a4323af844e41d6b6499940eeb3d9675463ae380"
+  },
+  "human_animation_acceptance": false
+}
