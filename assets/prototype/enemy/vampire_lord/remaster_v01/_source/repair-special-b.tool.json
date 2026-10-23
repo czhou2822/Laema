@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "returned_keys": [
+    "image_url",
+    "output_hint"
+  ],
+  "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019\\exec-42310198-897b-4e27-b392-2a847e2b7694.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "prompt": "Use case: stylized-concept. Production repair redraw using Image 1 as approved APPEARANCE ONLY and Image 2 as exact ORIGINAL pose silhouettes. Genuine transparent background, fine hand-painted high-resolution shading. Same pale bald wrinkled Nosferatu, pointed ears, red eyes, fangs, long bare claws, charcoal/brown ragged robe and orange-gold collar/cuffs/edges with red lining. Unarmed, no hair/armor/accessories. All poses must be newly drawn separately; no pixel upscale or warped master. No labels/grid/floor/cast shadow/background. Keep generous transparent gutters, at least 40 pixels outside all tips, including topmost hands/effects. Preserve original camera, hand directions, head bends and exact pose. Robe mostly falls STRAIGHT DOWN as a NARROW COLUMN, NOT a broad triangular bell skirt. Figures must retain original overall width/height ratios listed below; excessive wide sleeves or hem made prior drawings shrink. Do not shorten the body or widen clothing.\n\nEight figures four columns/two rows. IDs p047,p048,p049,p050 / p051,p052,p053,p054. Exact silhouette width/height ratios 42/75,41/82,46/89,48/93 / 43/107,45/90,46/88,44/87. All are NARROW COLUMN robes and closely held arms. p047 partly crouched rising; p048 standing settling; p049 one hand at chest with small pale pink embedded bloom; p050 hand up in front of face with compact bloom hiding hand/part of face; p051 arm fully raised ABOVE HEAD with narrow vertically extended white/pink particle spray obscuring raised hand, face remains only as in guide; p052 arm lowers with residual compact bloom covering face/hand; p053 hand at chest NO continuing spark cloud if absent in guide; p054 both claws forward/down no glow. Preserve exact source effect extent, no big bubble or new magic. Tall p051 must fit with margin, not be cut. Prefer 2048x1024.\n",
+  "transparent_background": true,
+  "repair_reason": "Restore narrow robe proportions and tall raised hand; remove effect absent from p053.",
+  "references": [
+    {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire-lord/master_rgba.png",
+      "sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/guides/repair-special-source.png",
+      "sha256": "1396f8af5033bccab24f96f4cfafe68158900eb7a6942e49fec58ccc59fccbf6"
+    }
+  ],
+  "raw_sha256": "91a5e0ae0132ba9c893159ac6ed7cb639beb775779bb2ab4e562092a47141a7b",
+  "model": null,
+  "seed": null
+}

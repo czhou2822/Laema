@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "returned_keys": [
+    "image_url",
+    "output_hint"
+  ],
+  "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019\\exec-b14480b8-8998-461c-8363-fe0e98e547ec.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "prompt": "Use case: stylized-concept. Production repair redraw using Image 1 as approved APPEARANCE ONLY and Image 2 as exact ORIGINAL pose silhouettes. Genuine transparent background, fine hand-painted high-resolution shading. Same pale bald wrinkled Nosferatu, pointed ears, red eyes, fangs, long bare claws, charcoal/brown ragged robe and orange-gold collar/cuffs/edges with red lining. Unarmed, no hair/armor/accessories. All poses must be newly drawn separately; no pixel upscale or warped master. No labels/grid/floor/cast shadow/background. Keep generous transparent gutters, at least 40 pixels outside all tips, including topmost hands/effects. Preserve original camera, hand directions, head bends and exact pose. Robe mostly falls STRAIGHT DOWN as a NARROW COLUMN, NOT a broad triangular bell skirt. Figures must retain original overall width/height ratios listed below; excessive wide sleeves or hem made prior drawings shrink. Do not shorten the body or widen clothing.\n\nEight figures in four columns/two rows. IDs p004,p005,p006,p007 / p008,p009,p010,p011. Nearly upright narrow bodies despite hunched shoulders. Each full silhouette is approximately 0.47-0.49 as wide as tall (about 195-205 pixels maximum width if 420 pixels tall). NOT 280 pixels wide at 410 pixels tall. The head is small and narrow; robe hem no wider than shoulders/hands. Individually copy each guide's subtle hand/head/posture variation: p004 and p005 both wrists forward/down; p006 hands slightly farther forward; p007 one hand advancing over chest; p008 hand high across chest and other lower; p009-p011 distinct small breathing finger/head changes. Final height across all eight consistent with source. Produce 2048x1024, leave each figure large within its cell but NARROW and tall.\n",
+  "transparent_background": true,
+  "repair_reason": "Original narrow silhouette was broadened, shortening registered pose.",
+  "references": [
+    {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire-lord/master_rgba.png",
+      "sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/guides/repair-idle-source.png",
+      "sha256": "4c6e8dcb48802ea991c706ce6545b81eec6c242ae198fdef5bd715fd22178088"
+    }
+  ],
+  "raw_sha256": "879993a8e4f4ba9d08a79ac2eb14d55697a1b7c152f8771223d0507e33006833",
+  "model": null,
+  "seed": null
+}

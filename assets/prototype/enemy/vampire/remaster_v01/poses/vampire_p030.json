@@ -1,0 +1,100 @@
+{
+  "pose_id": "vampire_p030",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "51f0ec530be1ef13d2a1750012c56b058fe747bc56e884961e6777ff7fd633ca:172:181:47:86:450:400",
+  "original_representative": {
+    "group_id": 7,
+    "original_block": 6,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_07_block_06_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_07_block_06_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "Cvamp21.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 69835,
+      "stored_size": 3390,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 47,
+      "height": 86,
+      "left": 172,
+      "top": 181,
+      "legacy_header": false,
+      "index_sha256": "51f0ec530be1ef13d2a1750012c56b058fe747bc56e884961e6777ff7fd633ca"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/batch-003-attempt-01-components.png",
+  "raw_sha256": "2da5e42214aa3bf91cdf1d87bf7b6f7b85c5ece0a6f83deae9db1b5d17537089",
+  "prompt": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/batch-003-attempt-01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/vampire/remaster_v01/_source/isolated/batch-003-attempt-01-components-vampire_p030.png",
+  "isolated_sha256": "9ebceecd0bc8cf7c65c9762f5a7b28b8949ed6ec2bac84310604770818452fcb",
+  "source_grid_region": [
+    1006,
+    456,
+    206,
+    398
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p030.png",
+  "registered_pose_sha256": "14bb9f22811f9b8cf0fb724175fbc566f1a7307d5afd0b528f7a36c593d2156b",
+  "mirror_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p030_mirror.png",
+  "mirror_sha256": "b6005416ce668a05269414de540013509bcd616bb647b6f76a78df3ceaf390cf",
+  "registration": {
+    "source_body_rect": [
+      172,
+      181,
+      46,
+      83
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      208,
+      400
+    ],
+    "registered_rect": [
+      457,
+      297,
+      106,
+      205
+    ],
+    "uniform_artwork_fit": 0.5150753768844221
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected original/candidate and mirrored output-scale turn comparisons. Three-quarter transition and distinct frontal view present with two hands/feet; not mirrored-idle substitution.",
+    "source_sha256_at_review": "14bb9f22811f9b8cf0fb724175fbc566f1a7307d5afd0b528f7a36c593d2156b",
+    "mirror_sha256_at_review": "b6005416ce668a05269414de540013509bcd616bb647b6f76a78df3ceaf390cf"
+  },
+  "human_animation_acceptance": false
+}

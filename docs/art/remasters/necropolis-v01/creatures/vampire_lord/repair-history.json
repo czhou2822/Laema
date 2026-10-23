@@ -1,0 +1,66 @@
+{
+  "rejected_submission": "_source/raw/repair-special-b.submission.json",
+  "error_type": "ValueError",
+  "error": "Missing figure or ambiguous primary component",
+  "checks_unchanged": true,
+  "unsafe_cells_redrawn": [
+    47,
+    50,
+    51
+  ],
+  "original_source": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/repair-special-b.png",
+  "original_sha256": "91a5e0ae0132ba9c893159ac6ed7cb639beb775779bb2ab4e562092a47141a7b",
+  "method": "Five visually separate complete cells copied by rectangular crop only; each alpha>8 bound verified more than 2 pixels inside crop before normal 1x1 helper ingestion. No rescaling, painting, recoloring, or clipping repair.",
+  "cells": [
+    {
+      "pose_id": "vampire_lord_p048",
+      "crop_xyxy": [
+        444,
+        0,
+        887,
+        444
+      ],
+      "derived_sha256": "2ee0a9649d23b206a2c3c0b27dfe8de2731fc42ac11cfd2c7fb3d91dad03d917"
+    },
+    {
+      "pose_id": "vampire_lord_p049",
+      "crop_xyxy": [
+        887,
+        0,
+        1330,
+        444
+      ],
+      "derived_sha256": "a8006b0de11d0ad86bb4bada76af7e062e5a0c35d62959981213e174002c2418"
+    },
+    {
+      "pose_id": "vampire_lord_p052",
+      "crop_xyxy": [
+        444,
+        444,
+        887,
+        887
+      ],
+      "derived_sha256": "a0fb5ca2a4fa1f99631fde65c69536762cc549be91ed001b81c579fb65727bf1"
+    },
+    {
+      "pose_id": "vampire_lord_p053",
+      "crop_xyxy": [
+        887,
+        444,
+        1330,
+        887
+      ],
+      "derived_sha256": "5db7b07993ef8973e342d98db71b31154b0b14dd34342f7f93f7338b8c5820d9"
+    },
+    {
+      "pose_id": "vampire_lord_p054",
+      "crop_xyxy": [
+        1330,
+        444,
+        1774,
+        887
+      ],
+      "derived_sha256": "b0f666979f556c7ac6d610ccff438f34052efbfbdf0396928d23815dc785799f"
+    }
+  ]
+}

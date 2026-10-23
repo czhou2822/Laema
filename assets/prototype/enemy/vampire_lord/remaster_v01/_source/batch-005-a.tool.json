@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "returned_keys": [
+    "image_url",
+    "output_hint"
+  ],
+  "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019\\exec-ddfe400d-217e-46fe-90d2-22194d641e79.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "prompt": "Use case: stylized-concept. High-resolution production sprite redraw sheet on genuinely transparent background. Image 1 is approved Vampire Lord APPEARANCE ONLY; image 2 is authoritative ORIGINAL POSE GUIDE. Newly paint each occupied cell separately in exactly 4 columns x 2 rows, exact row-major order. Preserve original silhouette, camera/view, bent joints, hand height, gaze and robe outline; never substitute the idle. Fine painted modeled shading and fabric detail like master, not enlarged pixel art.\n\nSame character: pale bald wrinkled Nosferatu with large pointed ears, red eyes, fangs, long clawlike pale fingers; charcoal/brown ragged floor-length robe, orange-gold high collar/cuffs/tattered trim, dark red lining. Unarmed. Keep clothing identity and proportions. No new weapon, armor, hair, accessory or gameplay. All tips/hems/fragments fully inside each cell with generous transparent gutters and outer margins. No labels, text, grid, colored backdrop, halo, ground or cast shadow. Do not carry the master's dark background into the output. Embedded effects only where each source pose shows them. Prefer 2048x1024.\n\nEIGHT figures. TOP ROW p040,p041,p042,p043: p040 pitches/lunges forward in attack recovery with hands extended low; p041 slightly rises; p042 near settling; p043 low-attack windup with hands spread outward and lifted. BOTTOM ROW p044 raises both arms high beside head, face forward/down preparing low strike; p045 is VERY DEEP CROUCH, head down forward, torso compressed and both long claws thrust DOWN/right near ground; p046 remains crouched but begins rising, arms hanging forward; p047 rises with hands extended low. Do not draw standing figures for p045/p046. Preserve low robe silhouette and source foreshortening, arm reach, camera and hidden feet. No effects.\n\nExact row-major mapping is the labeled guide order; remove labels in new artwork.\n",
+  "transparent_background": true,
+  "references": [
+    {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire-lord/master_rgba.png",
+      "sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/guides/batch-005.png",
+      "sha256": "5d3cf932858ca64f1d33cef27fce4768a4f7adc8125e145377ec3ba937d2f95d"
+    }
+  ],
+  "raw_sha256": "7ed92c6df9c6265ac1160418c621dfc9e56fe73e62733a437f5af59a04aefba2",
+  "model": null,
+  "seed": null
+}
