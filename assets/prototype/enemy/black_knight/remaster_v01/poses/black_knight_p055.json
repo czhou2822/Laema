@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p055",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "d886ec42c2c1a175d3a15b045fd01630489ba673b639c69a2a7b0cb4f42ec240:179:170:81:96:450:400",
+  "original_representative": {
+    "group_id": 20,
+    "original_block": 13,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_20_block_13_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_20_block_13_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cbknig38.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 202934,
+      "stored_size": 4999,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 81,
+      "height": 96,
+      "left": 179,
+      "top": 170,
+      "legacy_header": false,
+      "index_sha256": "d886ec42c2c1a175d3a15b045fd01630489ba673b639c69a2a7b0cb4f42ec240"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-006-v01.png",
+  "raw_sha256": "05cd387e0abdacadd2efc82d7f331d42511646dd5727584fd9a42f8f05abfab1",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-006-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/batch-006-v01-black_knight_p055.png",
+  "isolated_sha256": "3f896d78d20d76bb20b8d7f2b8afb370a7eff12c15596d6efc38132cf89f6761",
+  "source_grid_region": [
+    1108,
+    624,
+    318,
+    406
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p055.png",
+  "registered_pose_sha256": "034f5948c87d7a36f79e83709821d646af069392e49342eee0ad6b0e9f82801e",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p055_mirror.png",
+  "mirror_sha256": "b70fa8698e8b9ab9014af82d2b78f19da71e968255e235389259ba52110a81b9",
+  "registration": {
+    "source_body_rect": [
+      179,
+      170,
+      78,
+      96
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      320,
+      408
+    ],
+    "registered_rect": [
+      473,
+      270,
+      186,
+      237
+    ],
+    "uniform_artwork_fit": 0.583743842364532
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Second movement-start drawing raises blade over neck and lifts front knee into stride. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "034f5948c87d7a36f79e83709821d646af069392e49342eee0ad6b0e9f82801e",
+    "mirror_sha256_at_review": "b70fa8698e8b9ab9014af82d2b78f19da71e968255e235389259ba52110a81b9"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p024",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "729549299dd9749e2a7be12192fa4acf35ecbd9205e67ae237d2e363400c7dce:174:168:88:98:450:400",
+  "original_representative": {
+    "group_id": 4,
+    "original_block": 4,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_04_block_04_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_04_block_04_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cbknig26.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 131147,
+      "stored_size": 5198,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 88,
+      "height": 98,
+      "left": 174,
+      "top": 168,
+      "legacy_header": false,
+      "index_sha256": "729549299dd9749e2a7be12192fa4acf35ecbd9205e67ae237d2e363400c7dce"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-003-v01.png",
+  "raw_sha256": "410827d1bdf8a86f0e9b4c8c473cb105499cc05249e84ef755a0bcb5be342abd",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-003-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/batch-003-v01-black_knight_p024.png",
+  "isolated_sha256": "bdea1f51c1eba24bd3412c1cdc8f7258eaa32746fe11d59426a38dd53389704c",
+  "source_grid_region": [
+    16,
+    91,
+    350,
+    437
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p024.png",
+  "registered_pose_sha256": "0a833227a3ff8acfb1aaf14e6e3d536ab356ae0781e15366654b063951f4207d",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p024_mirror.png",
+  "mirror_sha256": "97e573764ef18ffa5270137e58e6caf288db073796d1a7b8fb08f35b7693ff2e",
+  "registration": {
+    "source_body_rect": [
+      174,
+      168,
+      84,
+      98
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      352,
+      439
+    ],
+    "registered_rect": [
+      464,
+      265,
+      194,
+      242
+    ],
+    "uniform_artwork_fit": 0.5537757437070938
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Defence transition raises curved saber diagonally right and keeps source foreleg lift. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "0a833227a3ff8acfb1aaf14e6e3d536ab356ae0781e15366654b063951f4207d",
+    "mirror_sha256_at_review": "97e573764ef18ffa5270137e58e6caf288db073796d1a7b8fb08f35b7693ff2e"
+  },
+  "human_animation_acceptance": false
+}

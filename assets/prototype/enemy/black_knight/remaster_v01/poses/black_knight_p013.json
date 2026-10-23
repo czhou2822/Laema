@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p013",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "8d29f272169e6cf41b8ff3a401817287671cea368d93f1eda721a225aefe26f0:177:168:83:100:450:400",
+  "original_representative": {
+    "group_id": 2,
+    "original_block": 2,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_02_block_02_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_02_block_02_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cbknig33.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 173074,
+      "stored_size": 6125,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 83,
+      "height": 100,
+      "left": 177,
+      "top": 168,
+      "legacy_header": false,
+      "index_sha256": "8d29f272169e6cf41b8ff3a401817287671cea368d93f1eda721a225aefe26f0"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-001-v01.png",
+  "raw_sha256": "62390a6f57494363c457c7f1e084864cc28a34f977da084a14c04c9b643a5960",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-001-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/batch-001-v01-black_knight_p013.png",
+  "isolated_sha256": "57a4329110b77912222a0b195b6b9cb9eb1cd6bc6c5c43a922f86cdb967f97ba",
+  "source_grid_region": [
+    388,
+    617,
+    323,
+    436
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p013.png",
+  "registered_pose_sha256": "f9dbb96238c3c857a2e1c8ec911cf4a88c34712fb13c1dfa5cf59dd66c080079",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p013_mirror.png",
+  "mirror_sha256": "3066f863320c35454e568ddc8b684235406ecffb850f8e7ad0b644d518c6f9ce",
+  "registration": {
+    "source_body_rect": [
+      178,
+      169,
+      79,
+      98
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      325,
+      438
+    ],
+    "registered_rect": [
+      476,
+      268,
+      179,
+      242
+    ],
+    "uniform_artwork_fit": 0.555045871559633
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Separate idle breathing drawing retains low saber and stance; source reverse occurrence uses this exact same ID. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "f9dbb96238c3c857a2e1c8ec911cf4a88c34712fb13c1dfa5cf59dd66c080079",
+    "mirror_sha256_at_review": "3066f863320c35454e568ddc8b684235406ecffb850f8e7ad0b644d518c6f9ce"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p045",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "68a393a119ad87922ea6e7b1b3dee43817a8b6cae7e5c0de25885b6e91996d0d:162:184:129:83:450:400",
+  "original_representative": {
+    "group_id": 12,
+    "original_block": 11,
+    "frame_index": 4,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_12_block_11_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_12_block_11_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 4,
+      "name": "cbknig05.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 400,
+      "offset": 24702,
+      "stored_size": 5118,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 129,
+      "height": 83,
+      "left": 162,
+      "top": 184,
+      "legacy_header": false,
+      "index_sha256": "68a393a119ad87922ea6e7b1b3dee43817a8b6cae7e5c0de25885b6e91996d0d"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-005-v01.png",
+  "raw_sha256": "ab6f5f81b4234579fc15a55f4fb1dfd31190d6631650e5f3c0a15ca5183529ad",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/batch-005-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/batch-005-v01-black_knight_p045.png",
+  "isolated_sha256": "f46662ddf16a12dd8169ed80cf839902b9ed0ad4e2afbd9d93b139fa6e1362af",
+  "source_grid_region": [
+    394,
+    693,
+    375,
+    308
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p045.png",
+  "registered_pose_sha256": "9b6edb07a8e30482dbdd353727ebaa15a6e01f3a21872dea21242a1cc30fdec7",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p045_mirror.png",
+  "mirror_sha256": "e8e00681d3aa844d57c088c9b713dd9c6c98fac665f9d40863c1221c67859c42",
+  "registration": {
+    "source_body_rect": [
+      162,
+      184,
+      124,
+      83
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      377,
+      310
+    ],
+    "registered_rect": [
+      456,
+      305,
+      250,
+      205
+    ],
+    "uniform_artwork_fit": 0.6655844155844156
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Front strike stretches rider forward and saber far right near muzzle level, with horse landing and tail lifted. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "9b6edb07a8e30482dbdd353727ebaa15a6e01f3a21872dea21242a1cc30fdec7",
+    "mirror_sha256_at_review": "e8e00681d3aa844d57c088c9b713dd9c6c98fac665f9d40863c1221c67859c42"
+  },
+  "human_animation_acceptance": false
+}

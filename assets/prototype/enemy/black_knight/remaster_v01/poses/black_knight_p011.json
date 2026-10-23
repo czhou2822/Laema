@@ -1,0 +1,100 @@
+{
+  "pose_id": "black_knight_p011",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "45dfe8899cef0916470cadadb3263816c3265507c7971732e43469968adda53a:171:148:84:120:450:400",
+  "original_representative": {
+    "group_id": 1,
+    "original_block": 1,
+    "frame_index": 3,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_01_block_01_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CBKNIG/group_01_block_01_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 3,
+      "name": "cbknig32.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 0,
+      "offset": 166037,
+      "stored_size": 7005,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 84,
+      "height": 120,
+      "left": 171,
+      "top": 148,
+      "legacy_header": false,
+      "index_sha256": "45dfe8899cef0916470cadadb3263816c3265507c7971732e43469968adda53a"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/repair-a-v01.png",
+  "raw_sha256": "973e59c6995a6eb61a52aec47e28a6c67696b54c88aef6afc23b2e272ea0488a",
+  "prompt": "assets/prototype/enemy/black_knight/remaster_v01/_source/raw/repair-a-v01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/black_knight/remaster_v01/_source/isolated/repair-a-v01-black_knight_p011.png",
+  "isolated_sha256": "e3eca1714650833f56132a1f06fa246bd33bdff3eaa20f7151e40d86a6676ec5",
+  "source_grid_region": [
+    691,
+    10,
+    478,
+    635
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p011.png",
+  "registered_pose_sha256": "1149655a93a5d18e0764ae93fdfcdf7583e5fa63811148bfb06171057960b076",
+  "mirror_file": "assets/prototype/enemy/black_knight/remaster_v01/poses/black_knight_p011_mirror.png",
+  "mirror_sha256": "959e4965b37e076680665942a8c280c80f4a6a4c85e1744400af5749ed570d5e",
+  "registration": {
+    "source_body_rect": [
+      172,
+      149,
+      79,
+      118
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      480,
+      637
+    ],
+    "registered_rect": [
+      453,
+      251,
+      195,
+      259
+    ],
+    "uniform_artwork_fit": 0.40794979079497906
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Gesture peak has steep overhead saber and separate raised empty fist; repeated peak is intentionally the same registered pose. Source/mirror comparison and static decoded preview inspected; no playback or human acceptance claimed.",
+    "source_sha256_at_review": "1149655a93a5d18e0764ae93fdfcdf7583e5fa63811148bfb06171057960b076",
+    "mirror_sha256_at_review": "959e4965b37e076680665942a8c280c80f4a6a4c85e1744400af5749ed570d5e"
+  },
+  "human_animation_acceptance": false
+}
