@@ -1,5 +1,241 @@
 # Implementation Status
 
+## Documentation update — attack feel reference, October 23
+
+Added [Laema attack feel guidelines](ATTACK_FEEL_GUIDELINES.md) from the user's
+supplied six-page transcript. Linked it from the GDD, attack-authoring guide and
+document map, and recorded the adopted reference in Combat continuity. The guide
+was reconciled with source `a41c900d`, including active-window contact, shared
+motion/stun parameters, existing post-reaction AI wait and original Heroes III
+SFX. This is documentation only: gameplay, assets and tuning remain unchanged.
+No engine/editor runs or automated gameplay tests were made for this update.
+Earlier test counts below belong to their stated source work; they do not
+establish the new guideline's subjective feel goals.
+
+## Native Player registration migration — October 22
+
+Status: `AWAITING_USER_VALIDATION`. The user approved moving the existing Fire
+and legacy alignment values into native Godot properties/animations, removing
+runtime alignment overrides, preserving current hitbox tuning and integrating
+locally into main. Push, export, Godot/editor/runtime and tests remain outside
+this authorization. This slice follows local-main basis1debd6a5 and retains the
+earlier isolated practice-target rest-pose correction ee686162.
+
+- scenes/player/player.tscn now saves the actual Fire registration and a complete
+  native RESET. Its existing main AnimationPlayer and AttackCast node/shape
+  settings are retained. Sprite/CastOrigin is a visible Marker2D.
+- All26 existing Player native clips (20X, four Cast, attack_clock and Fire
+  Dodge) receive time0 registration properties only. Existing geometry, frame
+  keys, markers, lengths and timings are preserved. The five current manual Fire
+  files were saved without changing working-file bytes in local authoring
+  checkpoint479d1a3c7c8ba786d464736c449b5d4f100ffc9e, then three-way merged.
+- config/player_presentation/ contains the fixed Fire/legacy rectangles, the
+  preserved outline shader and four saved legacy school materials. Fire remains
+  offset(0,-124)/body30x90 at(0,-19); legacy remains offset0/body26x30 at(0,11).
+  Both bottoms remain localY26/worldY52 at the unchanged root2/Sprite0.5 scales.
+- A separate native PresentationPlayer applies saved setup/palette clips for
+  code-driven Idle/Walk/Hurt/guard without changing Might's assigned animation,
+  speed, sample clock or action callbacks. Code selects saved data, not offsets
+  or constructed shapes. Legacy selected-school palette behaviour is retained.
+- Player launch reads the native CastOrigin marker and retains facing. Its Fire
+  right-facing offset remains(-19,-113)world; legacy remains(42,0). No projectile
+  timing/size, input, damage, Heat, lunge or shared reaction tuning is changed.
+- The confirmed practice-target flinch correction captures its scene-authored
+  BodyVisual rest position rather than forcing zero; flinch distance/duration,
+  audio and collision remain. Enemy authored registration, legitimate mirroring,
+  body motion, native query sampling, level-dependent effects and logs remain.
+
+Static evidence: standalone GDScript grammar parsing passes for player.gd using
+the existing gdtoolkit4.5 dependency, not Godot's type/import checker; enemy.gd
+also parses. After the guarded authoring merge, all26 original animation texts
+are identical after removing only the appended setup tracks/resources and
+load_steps bookkeeping: five match the user's actual working-file snapshots,
+and21 match the preserved base. All52 original dirty-file SHA256 values remained
+unchanged before final fast-forward; only the five Fire files were committed.
+Resource-ID/reference review passes:34 native data documents,76 unique paths.
+Protected Scene AttackCast, its circle shape and main AnimationPlayer blocks are
+unchanged. Source arithmetic preserves floor/emission offsets; whitespace checks
+pass. No editor preview, running gameplay, automated test or build pass is claimed.
+
+User validation after integration: stop/rerun; scrub FireX2 at0.2798 and across
+its active window, then FireX1–X5, legacy clips, Cast and Dodge. Compare sprite,
+body and hitbox registration in-game in both facings. Check Idle/Walk/Hurt/guard,
+mid-action school selection, interruption, retry and marker emission. Confirm
+manual hitbox tuning survives. Remaining risk is unrun engine import/property
+application and transition behaviour, not authorization to retune geometry.
+
+## Player-X geometry / shared reaction reconciliation — October 22
+
+Status: `AWAITING_USER_VALIDATION`; exact GDD wording remains
+`AWAITING_GDD_VERIFICATION`. The user approved the exact 46-file plan.
+Source basis: committed `1141f574eca95a147b7d3e30ddd3848276b865bf`, which
+already contains the X-direction fix and tooltip companion, in the isolated
+`codex/movestyle-shared-reactions` branch. Combat owns review and safe local-main
+integration. Shared-main dirty tuning/import/art is not copied or edited here.
+Local commit/handoff is authorized; push/export is not.
+
+Current result:
+- Player-X geometry comes only from its saved native Animation position,
+  target and radius curves, including every later active pose. Scalar
+  reach/radius, global fallback, native-key writeback and runtime size replacement
+  are retired. Enemy/Pikeman size controls and their guarded save path remain.
+- MoveStyle retains Animation/identity links, windup/recovery and attacker lunge
+  distance/start/end, with existing tooltip meanings and Heat semantics.
+  Its per-attack push scale and motion-time controls/fields/transport are removed,
+  including the earlier Fire-X5 0.15s exception.
+- Shared reaction Levels 1–5 own victim distance, positive motion duration and
+  separate existing stun duration. Initial motion seconds are
+  0.25/0.55/0.85/1.15/1.45. Existing distances 5/10/15/20/25, stun values,
+  range starts, eligibility and clash rules are not retuned. Motion is uniform
+  and capped at stun lifetime; shorter motion does not shorten hurt, control
+  lock, invulnerability or the separate Enemy post-reaction wait.
+- Legacy full JSON initializes missing motion time from its own level duration,
+  not a Fire-X5 override. Config validation, retained-dictionary copies,
+  three-way save merges and Portal enumeration remove only retired Player-X
+  fields. Startup/reload stays read-only; no schema-wide rewrite or hidden
+  per-move equivalent is added.
+
+Exact changed-file inventory (18 scripts, 23 Resources, 5 documents):
+- `scripts/combat/attack_style.gd`: timing/lunge capture and narrow retired-key cleanup.
+- `scripts/combat/attack_geometry.gd`: native Player-X sampling/validation only;
+  retain Enemy size/save behavior.
+- `scripts/combat/might_component.gd`: remove scalar geometry preview and
+  per-attack reaction payload; other action/contact/dodge logic unchanged.
+- `scripts/config/move_style_tuning.gd`: retain seven exported identity,
+  Animation, timing/lunge fields; remove four retired controls.
+- `scripts/config/player_combat_settings.gd`: prevent retired move/global
+  fields from being reapplied or saved.
+- `scripts/config/developer_config_store.gd`: retire cached fields during
+  existing merge/copy paths without removing unrelated leaves.
+- `addons/laema_dev_portal/move_style_inspector.gd`: native-editor help, no size
+  writeback claim.
+- `scripts/config/combat_reaction_level_tuning.gd`: shared motion-time export
+  and distinct stun/motion/distance tooltips.
+- `scripts/config/character_reaction_settings.gd`: shared motion mapping.
+- `scripts/config/combat_tuning_settings.gd`: mirror/Inspector/save mapping,
+  retaining the established nonauthoritative mirror.
+- `scripts/config/prototype_config_loader.gd`: retired-field and missing-motion
+  migration, positive finite motion validation, unchanged save guards.
+- `scripts/entities/health_event.gd`: remove attack-owned shove payload.
+- `scripts/entities/health_resolver.gd`: retain strongest value/direction,
+  remove per-attack shove transport.
+- `scripts/entities/entity.gd`: value/direction reaction request only.
+- `scripts/enemy/combat_enemy.gd`: shared-value capture through existing
+  pending/tree dispatch; no alignment/AI/physics-consumer edit.
+- `scripts/entities/hit_reaction.gd`: capture shared distance/motion/lifetime,
+  retain collision-motion consumption and stun completion.
+- `scripts/config/developer_settings_catalog.gd`: five style controls per move
+  (100 total), four shared fields per level and distinct tooltips.
+- `scripts/ui/developer_settings_fields.gd`: preserve the specific reaction
+  field descriptions when dynamic ranges refresh.
+- All twenty existing `config/attack_styles/{fire,water,air,earth}_x{1..5}.tres`:
+  remove 58 serialized retired-property lines only; preserve every other value,
+  UID and Animation link.
+- `config/characters/player.tres`: remove only the two retired global shape keys.
+- `config/characters/hit_reaction.tres` and `config/combat_tuning.tres`: add
+  the five explicit shared motion times, preserving all existing properties.
+- `docs/GAME_DESIGN.md`, `docs/TECH_ARCHITECTURE.md`,
+  `docs/ATTACK_STYLES.md`, `docs/GYM.md` and this status: exact current
+  ownership, editing instructions and evidence boundaries. Earlier X5 shove
+  records below are historical and superseded, not a current control/API.
+
+Checks actually run: read-only source/diff inspection, producer-to-consumer and
+complete changed-function/caller inspection, Resource text comparison and
+`git diff --check`. All 23 Resources match exactly the scoped line removals or
+motion additions; all 35 tracked files under `config/attack_animations/` match
+their base Git blob byte hashes. No native key/marker/frame, scene, art, body
+profile, player.gd, movement owner, audio, input or test file is edited.
+Retired production identifiers remain only as narrow migration keys, not
+controls or reaction consumers. Existing IMPACT/TRACE instrumentation is retained.
+
+Static distinguishing trace, not an executed gameplay scenario: a hypothetical
+Level 2 with distance10, motion0.10 and stun0.55 captures 10px/0.10s movement
+while keeping the full0.55s stun lifetime. Motion above0.55 is capped. A legacy
+level with duration1.23 and no motion key obtains1.23; stale scalar geometry or
+push fields cannot change native curves or reaction distance.
+
+No Godot/editor/game, build, compiler or automated test was run, created or
+modified. No standalone gdparse/gdlint/gdtoolkit checker is available, so grammar,
+types, Resource import and runtime behavior remain unverified. Existing
+attack_authoring, attack_style, clash_formula, dev_portal and gym_encounter
+fixtures still contain retired-field/control-count assumptions; they require
+separately authorized maintenance/execution. Old check totals and rendered
+observations below do not validate this reconciliation. Inherited X5 UID-path
+fallback warnings remain outside this cleanup.
+
+Manual validation after Combat integration:
+1. Restart Godot/Gym. Inspect Player styles and both Portals: only timing/lunge
+   numerical style controls remain; shared levels expose starting value, stun,
+   motion time and distance. Hover each to check units/meaning.
+2. Scrub a Player-X clip with distinct early/later geometry; save native edits
+   separately, restart and compare the active-window overlay in both facings.
+   Portal timing/reaction saves must leave every Player-X native key unchanged.
+3. In an unsaved live draft, shorten one shared level's motion time while
+   retaining its distance/stun. Trigger that level on Player and Enemy: movement
+   ends earlier but hurt/control lock/invulnerability finish at stun end. Check
+   motion longer than stun is capped, walls consume blocked motion, subsequent
+   tuning does not change an active capture, and lower-band X5 uses the same level.
+   Retry/reload to restore saved tuning.
+4. Save/reload deliberately chosen shared values and style timing/lunge, compare
+   both Portals and Inspector, and verify no retired fields return. Review a
+   retained legacy full profile separately if migration coverage is required.
+   Recheck X direction/buffering, raised-hand Cast, dodge, ordinary/clash contact,
+   practice recoil, pause and retry as unchanged regression boundaries.
+
+Residual risk: Godot/import/runtime and user feel remain unverified; legacy
+fixtures are stale. Main has overlapping user-owned Resource/Animation tuning
+and separate authored-alignment work: Combat must preserve unrelated fields,
+UIDs and all native keys, never force/stash/reset or replace whole dirty files.
+This isolated patch supplies no main-merge, remote-publication or Ultron clearance
+receipt.
+
+## X input direction capture — October 22
+
+Status: `AWAITING_USER_VALIDATION`; exact GDD wording remains
+`AWAITING_GDD_VERIFICATION`. Approved five-file follow-up based on committed
+main `7e9dff463efb61473133a2c313a93a46b744fb71`, prepared in the isolated
+`codex/combat-feedback-fixes` checkout. Shared-main tuning/imports are not copied
+or edited; Combat owns review and eventual local integration. No push/export.
+
+- `scripts/player/movement_controller.gd`: the previously unused attack sampler
+  now reads existing mapped horizontal input/deadzones without changing facing;
+  held input returns its normalized direction, neutral returns facing. A separate
+  explicit commit applies captured horizontal facing only at actual X start.
+- `scripts/player/player.gd`: only X requests use that pure sampler. The existing
+  light-action start event commits facing; Cast and other input retain their
+  previous route. An accepted queued/buffered X cannot turn the current swing.
+- `docs/GAME_DESIGN.md` and `docs/TECH_ARCHITECTURE.md`: synchronize stick-first X,
+  neutral fallback, existing immutable buffer intention and actual-start commit.
+  This status is the fifth approved file. No Might/CombatController, input-map,
+  timing/window, tuning, asset, Cast or dodge implementation edits are included.
+
+Source trace: pure X sample -> existing Combat/Might acceptance -> stored
+buffer/pending direction -> actual attack_started -> facing commit. Presentation,
+hitbox mirroring, contact direction and lunge continue reading that same action
+direction. Rejected input has no sampler-side facing event; first-wins and buffer
+promotion remain unchanged. Neutral after a new X retains its committed facing
+rather than an older Movement direction.
+
+Checks: source/data-flow and complete changed-function inspection plus
+`git diff --check`. No Godot, editor, game, build or automated test is run or
+created for this slice. A standalone GDScript checker was not available in the
+current Python/PATH; this is not a grammar/type or runtime pass. Earlier dodge/
+shared/combat observations below do not validate this new direction change.
+
+Tooltip-only companion: `scripts/config/move_style_tuning.gd` now documents all
+11 exported Inspector fields, including units, timing phases and zero behavior.
+Source comparison with documentation comments removed confirms unchanged
+declarations/logic/defaults; whitespace check passes. Inspector hover display
+has not been run. The user authorized committing this companion together with
+the five-file X fix for Combat's local-main integration, with no push.
+
+Manual validation on the review source: face right and press left+X, then check
+the reverse case; hold opposite direction during a swing without X and verify
+it does not turn. Queue/buffer opposite-direction X: the old action stays locked,
+the new action turns only at its own start, and releasing/changing the stick
+after capture cannot retarget it. Check neutral follow-up, rejected early/full-
+queue X, both-facing visual/hitbox/lunge agreement, and unchanged Cast/dodge.
+
 ## Local main review handoff — October 22
 
 The user requested immediate integration for review. Local `main` was

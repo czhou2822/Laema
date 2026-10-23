@@ -9,6 +9,7 @@ This directory holds durable project state that travels with the repository.
 - IMPLEMENTATION_STATUS.md — current candidate state, scoped verification notes and historical evidence links
 - GYM.md — combat Gym, shared character settings, retry, formula readout and launch controls
 - ATTACK_STYLES.md — current native-animation/hitbox authoring and per-move tuning; earlier presets linked as history
+- [ATTACK_FEEL_GUIDELINES.md](ATTACK_FEEL_GUIDELINES.md) — transcript-based attack authoring principles, Laema constraints and playtest review prompts
 - [feedback/2026-10-19-judge-panel.md](feedback/2026-10-19-judge-panel.md) — formal panel feedback received October 19, with the user's separate caveat
 - [history/2026-10-20-document-housekeeping/](history/2026-10-20-document-housekeeping/README.md) — exact documents before housekeeping, including uncommitted wording; superseded history, not current authority
 - DECISIONS.md and elemental-endurance-merge-review.md retain dated historical decisions/review questions; their old pending labels do not override later decisions.

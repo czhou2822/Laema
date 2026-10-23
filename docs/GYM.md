@@ -108,9 +108,11 @@ To tune a character in the editor:
 2. Select its root node and expand **Settings** in the Inspector.
 3. Change one value in its named section, then save the external Resource.
    The files are `config/characters/player.tres` and `combat_enemy.tres`.
-4. For hurt duration/knockback, expand **Shared Hit Reaction → Hit Reaction →
-   Combat Levels**, select a level and change **Duration** (seconds) or
-   **Distance** (pixels). Both characters reference `hit_reaction.tres`.
+4. For victim reactions, expand **Shared Hit Reaction → Hit Reaction →
+   Combat Levels**. **Duration** is stun/hurt/control-lock/invulnerability time;
+   **Motion Duration** is independent shove time, capped at that lifetime;
+   **Distance** is body displacement. Both characters reference
+   `hit_reaction.tres`; no Player-X move multiplies or overrides these values.
 5. Run either scene to compare. The editor and in-game Dev Portals expose the
    same data; **Review & save / Save Tuning** persists it to these same assets.
    Unsaved runtime edits last until retry/reload; saved edits survive.
@@ -131,6 +133,13 @@ that interval, once per target. There is no melee contact marker. The optional
 `active_end` to author recovery. There are no character/Gym timing overrides.
 See [ATTACK_STYLES.md](ATTACK_STYLES.md) for scrubbing and keying.
 
+Player-X hitboxes are authored only in each linked native Animation's
+`AttackCast:position`, `target_position` and `shape:radius` curves.
+MoveStyle and **Combat → Attack styles** now expose only timing and attacker
+lunge; no reach/radius, push scale or per-move motion-time controls remain.
+Save native edits separately and restart the scene. Portal Save does not patch
+Player-X curves; Enemy/Pikeman shortcuts keep their existing behavior.
+
 Player Fire X windup/recovery pairs at zero Heat are .21/.51, .24/.51,
 .195/.45, .33/.36 and .30/1.10 seconds. X4's daytime candidate totals0.69s,
 replacing only its0.51s recovery; native normalized windows/geometry stay fixed,
@@ -149,13 +158,14 @@ produce Levels 1/1/2/3/4. Cast Levels 1–4 use Impacts 10/20/30/40
 and produce Levels 1/1/2/3. Player's ordinary zero result qualifies for Level 1. The receiver's active-move Impact can
 weaken or prevent a reaction. Hurt, control lock and invulnerability share
 the selected duration; nonqualifying damage has no separate hurt animation.
-The October22 candidate gives every qualifying Fire X5 band its unchanged
-knockback distance over a separate0.15s shove, capped at the reaction lifetime.
-Hurt/control lock/invulnerability continue after movement ends; other moves keep
-full-duration knockback and the separate AI wait is unchanged. Tune **Push motion
-duration** in Fire / X5's existing style controls or `config/attack_styles/fire_x5.tres`;
-zero restores full-duration motion. Do not change shared reaction Duration to
-speed up this shove. Active X5 keeps the value captured when it began.
+All qualifying hits, including Fire X5 and lower-band winning clashes, now use
+the selected shared level's distance and motion time. The former per-X5 0.15s
+override and all per-X push multipliers are retired. In **Combat → Hit-reaction
+levels**, adjust **Motion duration** to change shove speed without shortening
+**Stun duration**; values above stun are capped during execution. Initial motion
+times are .25/.55/.85/1.15/1.45 seconds, matching the existing ordinary durations.
+Active reactions retain their captured values; the separate Enemy AI wait is
+unchanged. Practice-target legacy recoil is separate.
 Current stored duration/distance pairs are .25 s/5 px, .55/10, .85/15, 1.15/20
 and 1.45/25. The user retained this shorter sequence on October 20; the earlier
 October 14 durations remain historical rather than an open conflict. Cast level Impact overrides live in Player Settings / Moves / Cast.
@@ -170,7 +180,8 @@ with committed facing. Actual projectile collision moves with the drawing;
 launch time, travel/damage, level-dependent size and audio are retained.
 Non-Fire emission is unchanged. The user accepted that the raised horizontal
 shot can miss the short legacy dummy; no dummy or trajectory repair is included.
-Combat owns rendered checks of the new origin and shove against tall opponents.
+The raised-hand mapping is preserved by this reconciliation. Rendered checks
+of current shared reactions remain pending; earlier shove evidence is historical.
 The approved dodge follow-up keeps clear rolls at0.4s, but actual end-overlap
 with an already excepted combat Enemy grants one0.1s extension at captured
 speed/direction. Protection, ignored actions and pass-through last until actual

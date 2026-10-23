@@ -1,11 +1,25 @@
 # School attack styles
 
-## Current ownership — October 20
+## Attack feel reference
+
+Use [Laema attack feel guidelines](ATTACK_FEEL_GUIDELINES.md) alongside the editor
+workflow below. It adapts the user's October 23 transcript reference into
+principles for motion, real contact, target response, sound, effects and rhythm.
+It includes comparison prompts for X1→X2, the user's earlier positive X4→X5
+reference, and melee/Charging/Cast handoffs. Current authored candidates and
+ownership rules below remain authoritative; this guide changes no presets.
+
+## Current ownership — October 22
 
 Numerical combat settings belong to Player and CombatEnemy root **Settings**,
 with the former Gym baseline used in all rooms. Portal saves update those same
 native Resources. The old Gym-only multiplier and run-only save restriction are
-retired. Historical overnight comparisons below retain their original context.
+retired. Player-X styles retain identity/Animation links, windup/recovery and
+attacker lunge only. Native saved Animation position/target/radius curves are
+the sole Player-X hitbox source. Shared reaction Levels 1–5 own victim distance,
+motion duration and separate stun duration; no per-X push multiplier or motion
+override remains. Historical comparisons below retain their original context
+and do not validate this ownership reconciliation.
 
 
 Status: implemented candidate; numeric presets await user playtesting.
@@ -15,12 +29,14 @@ Status: implemented candidate; numeric presets await user playtesting.
 Fire X4 now reads windup0.33/recovery0.36 from
 `config/attack_styles/fire_x4.tres` (90f963de; base0.69s before Heat), replacing
 only recovery0.51. Native timing_split0.70, active0.36..0.8666667, Sprite/geometry
-keys, lunge10/0.15..0.55 and push0.75 remain. Recovery includes late active frames;
+keys and lunge10/0.15..0.55 remain. The later ownership reconciliation retires
+its historical push0.75 multiplier. Recovery includes late active frames;
 its shorter duration also shortens real-time input/contact windows. X5 can begin
 0.15/Heat-multiplier seconds earlier, not with guaranteed Enemy-relative safety.
 X5 is now C7: windup0.30/recovery1.10, base1.40s (651d9978), replacing only
 D's0.45 windup. Its native split0.60, active0.36..0.80, all Sprite/geometry keys,
-lunge12/0.15..0.55 and push2 remain. Pre-split playback runs1.5x the D rate;
+lunge12/0.15..0.55 remain. Its historical push2 multiplier is retired.
+Pre-split playback runs1.5x the D rate;
 later playback rate is unchanged. Lunge/contact and real-time input/buffer timing
 advance despite fixed normalized rules. X5 action start after X4 is unchanged;
 completion/queued Cast can advance0.15/Heat-multiplier seconds at constant Heat.
@@ -154,6 +170,23 @@ presets and the older `earth_x1.png` Fire example are not current defaults.
 4. Insert/update keys for the properties you changed, using the Inspector key icons. The existing tracks are `AttackCast:position`, `AttackCast:target_position`, and `AttackCast:shape:radius`. Moving a handle alone does not save a per-move key. Author the attack facing right; gameplay mirrors its horizontal coordinates for left-facing attacks.
 5. Save the external Animation resource (`config/attack_animations/fire_x1.tres`) and save the scene if marked modified. Save native animation edits before making a Portal draft. Rerun the Gym to compare. Gameplay samples the saved geometry across the active interval. Extra keyed poses do not permit repeated hits on the same target within one attack.
 
+Player clips now also contain constant time0 setup tracks for Sprite offset,
+filter/material/colour, CollisionShape2D shape/position and Sprite/CastOrigin
+position. Fire and legacy scrubbing therefore use the same authored registration
+as playback, including a pre-window pose such as fire_x2 at0.2798. These setup
+tracks are separate from your three AttackCast curves: do not move hitboxes to
+compensate for the old misleading preview. Existing hitbox key values, times,
+markers and sprite-frame keys are not changed by this migration.
+
+Scene/RESET default to the saved Fire pose. PresentationPlayer's fire/legacy
+setup animations supply those same native properties for Idle/Walk/Hurt/guard;
+its palette clips hold the legacy material/colour values. These stopped setup
+clips are not Might's combat clock. If registration is intentionally changed
+later, keep the affected combat setup keys and base setup/RESET consistent.
+Select Sprite/CastOrigin to author the emission point, and key that marker in
+the Cast animation if needed. Stop/rerun after saving and compare before calling
+the result validated; no new Godot/editor/runtime evidence is supplied here.
+
 For Enemy melee, open `scenes/enemy/combat_enemy.tscn`, select **AnimationPlayer → melee_swing**, and follow the same scrub/select/key/save workflow. Its hitbox reach/radius are separate from **Enemy AI → Attack range**, which only controls when the enemy approaches/starts windup.
 
 Player timelines use the existing normalized one-second clocks. Actual Player windup/recovery duration still comes from move tuning, Heat; their timeline seconds are not wall-clock combat seconds. Sprite-frame key spacing belongs to the assigned flipbook; Fire/Earth exchanged those frame tracks for the sword benchmark. Cast artwork uses the corresponding `cast_fire`, `cast_water`, `cast_air` or `cast_earth` clip; projectile damage keeps its existing path.
@@ -188,19 +221,21 @@ bottom map to the Gym floorY52 (screenY610). The older12-pixel visible-floor-art
 offset belongs to the previous artwork and must not be reapplied to this repaint.
 Keep attack geometry in **AttackCast** and its native Animation tracks.
 
-Fire Player uses a30×90-local rectangle at(0,-19), root scale2, bottomY26. Its
-existing Fire sprite offset(0,-124) stays unchanged. Other-school artwork restores
-the26×30 rectangle at(0,11). These stable body profiles exclude weapons and are
-not keyed to individual poses. Preserve the authored floor relationship. Older
+Fire Player uses saved fire_body.tres (30x90) at(0,-19), root scale2, bottomY26.
+Its authored Fire sprite offset(0,-124) is unchanged. Legacy clips select saved
+legacy_body.tres (26x30) at(0,11). These resources are under
+config/player_presentation/. The native setup keys select a fixed body per
+profile, not a body that changes size through attack poses. The script no longer
+constructs or repositions these shapes. Preserve the authored floor relationship. Older
 calculations remain in the [historical guide](history/2026-10-20-document-housekeeping/sources/docs/ATTACK_STYLES.md#align-the-enemy-body-with-the-floor).
 
 ## Tune numerical settings
 
-- Both editor and in-game Dev Portals expose **Combat → Attack styles**. Reach/radius show the native active-start pose. Save updates only the changed active-start size keys, preserving authored offsets, angle, other frames and sprite tracks. **General → Final Enemy** exposes its separate hitbox reach/radius.
-- Open `scenes/player/player.tscn`, select **Player → Settings → Moves → Attack Styles**, then expand the move. Saving its external `.tres` updates the settings read by both scenes.
-- Saved native animations own geometry and sprite frames. Player/CombatEnemy Settings own timing, lunge, Impact and other combat settings; stored geometry scalars are compatibility/readback mirrors. A native animation save overrides stale geometry mirrors at the next read, without writing files on startup.
-- The Portal and active Inspector bridge watch character Settings and animation-file changes. Reload the Portal after saving native edits if it has an unsaved draft; stale changes to the same active-start size are rejected.
-- Unsaved runtime edits affect the current run and private Animation copies. Portal Save persists the shared character assets; retry loads saved authoring. Active attacks retain their captured geometry curves; edits affect subsequent attacks.
+- Both editor and in-game Dev Portals expose **Combat → Attack styles** for windup, recovery and lunge distance/start/end only. There are no Player-X reach/radius or per-move reaction controls. **General → Final Enemy** retains the existing separate Pikeman hitbox shortcuts.
+- Open `scenes/player/player.tscn`, select **Player → Settings → Moves → Attack Styles**, then expand a move. Its Animation link and **Edit animation & hitbox** button navigate to the native editor. Saving the style's external `.tres` persists its timing/lunge values.
+- Key Player-X position, target and radius in the linked native Animation, save it separately and restart the scene to compare the full active-window curve. Portal Save never rewrites these Player-X files or keys.
+- Character Settings still own Impact/Poise, timing and lunge; the shared reaction Resource owns victim distance, motion time and stun. Both Portals share those effective sources and reject same-field save conflicts.
+- Unsaved numeric runtime edits last until retry/reload; Save persists the shared character assets. Active attacks/reactions retain their captured values. Legacy/cached scalar hitbox and per-X shove fields are retired on config load/validation/merge, not applied as hidden fallbacks.
 
 ## Locate the underlying files
 
@@ -214,21 +249,30 @@ resource and use **Show in FileSystem** to reveal it. Use Local assets for persi
 |---|---|
 | Windup duration | Player phase duration up to the optional pacing-only timing_split (active_start if absent), before Heat scaling. |
 | Recovery duration | Player playback after the pacing split until completion. It can include active frames; the hit window independently follows active_start/active_end. |
-| Shape reach / radius | Active-start ShapeCast target-vector length and circle radius, in local pixels. Native tracks own the full curve; debug geometry follows active-window samples. |
 | Lunge distance | Total attacker-body displacement in pixels over the selected phase interval. |
 | Lunge start/end phase | Normalized animation-clock interval; start must precede end. |
-| Push scale | Multiplier on the existing qualifying combat reaction distance. It changes neither eligibility nor duration/invincibility; stationary practice targets retain legacy recoil. |
-| Push motion duration (Fire X5 only) | Seconds used to deliver the unchanged qualifying knockback distance; current value 0.15. Zero inherits the full selected reaction lifetime, and a positive value is capped by that lifetime. Hurt, control lock, invulnerability and AI recovery are not shortened. |
 
-A zero timing value inherits that phase of the shared duration. Native zero reach is a point query; radius must be positive. Legacy custom JSON profiles with omitted geometry retain their shared fallback. Zero lunge distance disables forward motion. Walls consume blocked motion rather than storing it for later.
+A zero timing value inherits that phase of the shared duration. Native zero
+target length is a point query; its animated radius must be positive. Zero lunge
+distance disables attacker forward motion. Walls consume blocked motion rather
+than storing it for later. There is no Player-X scalar geometry fallback.
 
-The October22 Fire X5 motion override applies to every qualifying reaction band,
-including lower bands after active-move resistance and a winning-clash Level1.
-Nonqualifying hits remain nonqualifying. Tune it in the assigned `fire_x5.tres`
-or the existing Portal's Fire / X5 style group; Save Tuning persists it through
-the same style asset. Active X5 retains its captured value. Other moves keep
-zero/full-duration motion, with no new Portal field. Do not shorten shared
-reaction Duration to tune this shove. Rendered spacing/feel remains unvalidated.
+Tune victim reactions in **Shared Hit Reaction → Combat Levels** or the Portal's
+**Combat → Hit-reaction levels**, not in an attack style:
+
+| Shared level setting | Meaning |
+| --- | --- |
+| Starting value | First eligible reaction value in this level; Level 1 starts at zero. Does not change eligibility. |
+| Duration / Stun duration | Hurt animation, control lock and invulnerability lifetime in seconds. |
+| Motion duration | Positive seconds for uniform body displacement, capped at stun lifetime. Shortening it does not shorten stun. |
+| Distance | Total victim-body displacement in pixels, with no per-attack multiplier; walls can consume it. |
+
+Existing distances and stun values are unchanged. Initial motion durations are
+0.25/0.55/0.85/1.15/1.45 seconds, matching the ordinary shared durations. Edits
+affect subsequent reactions, not an active captured one. These levels also
+govern qualifying Fire X5 hits, including lower bands; its former 0.15-second
+exception is retired. Practice-target/defence/failed-Cast legacy recoil remains
+separate. Rendered spacing/feel and save/reload behavior await user validation.
 
 ## Initial presets — historical reference
 

@@ -289,8 +289,10 @@ func update_snapshots(saved: Dictionary, active: Dictionary = {}, baseline: Dict
 			_reaction_headings[index].text = "Level %d / hit-reaction value %s" % [index + 1, Catalog.ReactionRanges.range_text(levels, index)]
 	for field in _entries:
 		var keys: Array = field["path"]
-		if (keys[0] == "moves" and keys.back() == "impact") or field["id"] in ["player.poise", "enemy_ai.poise"] or (str(field["id"]).contains(".combat_levels.") and keys.back() != "minimum_value"):
+		if (keys[0] == "moves" and keys.back() == "impact") or field["id"] in ["player.poise", "enemy_ai.poise"]:
 			field["description"] = Catalog.impact_tooltip(_data)
+		elif str(field["id"]).contains(".combat_levels.") and keys.back() != "minimum_value":
+			field["description"] = Catalog.reaction_field_tooltip(_data, str(keys.back()))
 		var tooltip: String = str(field["description"]) + "\n" + str(field["id"])
 		_inputs[field["id"]].tooltip_text = tooltip
 		_captions[field["id"]].tooltip_text = tooltip

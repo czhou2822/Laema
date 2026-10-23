@@ -26,13 +26,13 @@ const COMBAT_SECTION_ORDER := [
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
 const Creatures = preload("res://scripts/config/creature_catalog.gd")
-const STYLE_HELP := "Scrub sprite frames and edit hitboxes in Player / AnimationPlayer. Geometry shown here is sampled at active_start. Saving reach or radius changes that active_start key while preserving other keys and the hitbox angle/offset. Windup and recovery split at the pacing-only timing_split marker (active_start when absent), in seconds before Heat scaling; zero timing inherits shared timing. All active frames query their animated geometry. Forward motion uses the existing collision body. Push scale changes qualifying reaction distance only. Runtime edits apply to the next attack; Save persists the character Settings used in every scene."
+const STYLE_HELP := "Scrub sprite frames and key Player X hitbox position, target and radius in Player / AnimationPlayer; native curves alone own geometry. Windup and recovery split at the pacing-only timing_split marker (active_start when absent), in seconds before Heat scaling; zero timing inherits shared timing. Lunge is attacker-body travel through collision, not victim knockback. Shared reaction levels alone own victim distance, motion time and stun. Numeric edits affect subsequent actions; Save persists the character Settings. Save native Animation edits separately and restart the scene to compare."
 
 const AUDIO_GROUP_ORDER := ["ambient", "sfx", "bgm"]
 # October 15 accepted formula: Combat Systems / Design Decision Log in Laema Space.
 # Implemented receiver-side formula; October 16 zero/negative and 0/0 decisions.
 const IMPACT_HELP := "Subtract the receiver's Poise and active-move Impact from incoming Impact. Outside active frames, the move contributes 0.\nOrdinary positive results interrupt; Player zero against a combat Enemy selects Level 1. Other ordinary non-positive hits deal damage without interruption.\nWhen both active melee hitboxes reach their opponents simultaneously, compare signed results: larger wins, equality favors Player. Only the winner deals damage and interrupts; a winning non-positive result selects configured Level 1."
-const REACTION_LEVEL_HELP := "Set where each reaction level starts, how long it lasts and how far it pushes the character. Its range ends just before the next level starts; Level 5 covers all higher values. Level 1 starts at 0. These ranges choose the level after the game decides whether the hit causes a reaction."
+const REACTION_LEVEL_HELP := "Each shared level owns its starting value, victim distance, motion duration and separate stun duration. Motion is uniform and capped at stun lifetime; ending motion does not end hurt, control lock or invulnerability. The range ends just before the next level starts; Level 5 covers higher values. Level 1 starts at 0. These ranges choose the level only after reaction eligibility is decided."
 const IMPACT_TOOLTIP := "Impact and Poise range from 0 to 100. Poise is defensive.\n\nHit-reaction value = incoming Impact - receiver Poise - receiver active-move Impact. Outside active_start..active_end the move contribution is zero.\n\nAn ordinary connected negative hit deals damage without interruption. Player zero against a combat Enemy selects configured Level 1; Enemy zero does not interrupt.\n\nOnly when both active melee hitboxes reach their opposing characters at the same sample is there a simultaneous clash: larger signed result wins, equality favors Player. Only the winner deals damage and interrupts. Winning zero/negative explicitly selects configured Level 1; positive uses configured ranges. Weapon-to-weapon overlap is unnecessary. An unconnected attack causes no reverse damage or interruption.\n\nInvincibility/block/parry still intercept; first contact spends the target allowance even when ignored. Practice targets, defence and failed Cast retain their separate controls."
 # Legacy field meanings confirmed read-only with Combat against execute() and callers.
 const LEGACY_REACTION_NOTICE := "These legacy settings do not affect the new combat hit reactions."
@@ -40,8 +40,6 @@ const LEGACY_REACTION_HELP := LEGACY_REACTION_NOTICE + "\nUsed by stationary pra
 const HIDDEN_PORTAL_FIELDS := {
 	"enemy_ai.windup_duration": true, # Legacy profile fields; Enemy timing is authored in its animation.
 	"enemy_ai.recovery_duration": true,
-	"combat.shape_reach": true, # Legacy fallback; authored per-move tracks own geometry.
-	"combat.shape_radius": true,
 	"fire.visual_motion_exponent": true, # Frame pacing is baked into native sprite tracks.
 	"water.visual_motion_exponent": true,
 	"air.visual_motion_exponent": true,
@@ -79,8 +77,6 @@ const FIELD_RANGES := {
 	"combat.attack_duration": Vector3(0.05, 5.0, 0.01),
 	"combat.hit_phase": Vector3(0.0, 1.0, 0.01),
 	"combat.input_window_start": Vector3(0.0, 1.0, 0.01),
-	"combat.shape_radius": Vector3(1.0, 200.0, 1.0),
-	"combat.shape_reach": Vector3(1.0, 400.0, 1.0),
 	"combat.light_damage": Vector3(0.0, 1000.0, 1.0),
 	"combat.casting_damage": Vector3(0.0, 1000.0, 1.0),
 	"combat.direct_impact": Vector3(0.0, 5.0, 1.0),
@@ -161,8 +157,6 @@ const TUNABLE_TOOLTIPS := {
 	"combat.x_buffer_width": "Normalized pre-window buffer width for X and full-press Cast requests.",
 	"combat.collect_orb_without_contact": "Testing toggle: grant one orb on a missed X without applying damage.",
 	"combat.light_damage": "Direct damage applied by a successful X hit.",
-	"combat.shape_radius": "Radius of the X contact query.",
-	"combat.shape_reach": "Forward reach of the X contact query.",
 	"casting.charge_step_duration": "Seconds required to add one Charging-capacity step before Heat scaling.",
 	"casting.empowered_primary_multiplier": "Damage multiplier for the primary school of an empowered Cast.",
 	"casting.max_marked_capacity": "Maximum charged-orb capacity for one Cast. Fixed at eight in this prototype.",
@@ -260,6 +254,8 @@ const UNUSED_CAST_FIELDS := [
 
 
 static func fields(config: Dictionary, section: String) -> Array:
+	config = config.duplicate(true)
+	Style.strip_retired_fields(config)
 	var result: Array = []
 	if section == "attack_styles":
 		for school in ["fire", "water", "air", "earth"]:
@@ -307,13 +303,11 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 		return # Creature-specific Animation tracks own these values.
 	if HIDDEN_PORTAL_FIELDS.has(id) or id == "tutorial.stages":
 		return
-	if styles_only and keys.size() == 3 and keys.back() == "push_motion_duration" and keys[1] != "fire_x5":
-		return
 	if typeof(value) == TYPE_DICTIONARY:
 		var names: Array = value.keys()
 		names.sort()
 		if keys.size() == 3 and keys[1] == "combat_levels":
-			names = ["minimum_value", "duration", "distance"]
+			names = ["minimum_value", "duration", "motion_duration", "distance"]
 		for key in names:
 			_collect(value[key], keys + [key], result, config, styles_only)
 		return
@@ -345,10 +339,13 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 	if id.begins_with("hit_reaction."):
 		field["allow_greater"] = true
 	if id.contains(".combat_levels."):
-		field.merge({"minimum": 0.001 if keys.back() == "duration" else 0.0,
-			"maximum": 60.0 if keys.back() == "duration" else 1000.0,
-			"step": 0.001 if keys.back() == "duration" else 0.1,
-			"description": "Affects subsequent reactions. Active reactions retain captured duration and distance.\n" + impact_tooltip(config)}, true)
+		var is_duration: bool = keys.back() in ["duration", "motion_duration"]
+		field.merge({"minimum": 0.001 if is_duration else 0.0,
+			"maximum": 60.0 if is_duration else 1000.0,
+			"step": 0.001 if is_duration else 0.1,
+			"description": reaction_field_tooltip(config, str(keys.back()))}, true)
+		if keys.back() == "duration":
+			field["label"] = "Stun duration"
 	if id.contains(".combat_levels.") and keys.back() == "minimum_value":
 		field.merge({"label": "Starting value", "minimum": 0, "maximum": 2147483647, "step": 1, "integer": true, "allow_greater": false, "readonly": keys[2] == 0,
 			"description": "First hit-reaction value assigned to this level. The previous level ends one below it. Starts must increase; Level 1 stays at 0. This does not make an otherwise ineligible hit react."}, true)
@@ -398,7 +395,7 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 	if field["kind"] == "number":
 		if id.contains("duration") or id.ends_with("timer") or id.ends_with("lifetime") or id.ends_with("window"):
 			field["unit"] = "s"
-		elif keys.back() in ["distance", "base_distance", "distance_per_level", "shape_radius", "shape_reach", "hitbox_radius", "hitbox_reach", "base_radius", "radius_per_level", "chain_radius", "aggro_range", "attack_range"]:
+		elif keys.back() in ["distance", "base_distance", "distance_per_level", "hitbox_radius", "hitbox_reach", "base_radius", "radius_per_level", "chain_radius", "aggro_range", "attack_range"]:
 			field["unit"] = "px"
 		elif keys.back() in ["speed", "movement_speed"]:
 			field["unit"] = "px/s"
@@ -422,13 +419,6 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 			field.merge({"maximum": 1.0, "allow_greater": false, "unit": "", "step": 0.01}, true)
 		if keys.back() in ["windup_duration", "recovery_duration"]:
 			field["unit"] = "s"
-		if keys.back() == "push_scale":
-			field["unit"] = "×"
-		if keys.back() == "push_motion_duration":
-			field["unit"] = "s"
-			field["description"] = "Fire X5 knockback motion time. Zero uses the full selected reaction lifetime; positive seconds are capped by that lifetime. Does not shorten hurt, control lock or invulnerability. Applies to the next captured X5."
-		if keys.back() == "shape_radius":
-			field["minimum"] = 0.001
 	result.append(field)
 
 
@@ -477,6 +467,15 @@ static func reaction_bands(config: Dictionary) -> String:
 	for index in range(levels.size()):
 		lines.append("%s → Level %d" % [ReactionRanges.range_text(levels, index), index + 1])
 	return "\n".join(lines)
+
+
+static func reaction_field_tooltip(config: Dictionary, key: String) -> String:
+	var meanings := {
+		"duration": "Stun lifetime in seconds: hurt animation, control lock and reaction invulnerability. Independent of shove time and the later Enemy AI wait.",
+		"motion_duration": "Seconds used to deliver the selected level's distance uniformly. Capped at stun duration; a shorter shove does not end hurt, control lock or invulnerability.",
+		"distance": "Total victim-body displacement in pixels, with no per-attack multiplier. Walls consume blocked motion. Attacker lunge is separate.",
+	}
+	return str(meanings.get(key, REACTION_LEVEL_HELP)) + "\nAffects subsequent reactions; active reactions retain all captured values.\n\n" + impact_tooltip(config)
 
 
 static func impact_tooltip(config: Dictionary) -> String:

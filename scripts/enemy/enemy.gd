@@ -21,6 +21,7 @@ const ENDURANCE_ICONS := {
 }
 
 @onready var body_visual: Sprite2D = $BodyVisual
+@onready var _practice_body_rest_position: Vector2 = $BodyVisual.position
 @onready var health_label: Label = $HealthLabel
 @onready var status_display: HBoxContainer = $StatusDisplay
 @onready var vfx: AnimatedSprite2D = $VFX
@@ -115,11 +116,11 @@ func _on_reaction_started(level: int, direction: Vector2, distance: float, durat
 		hit_reaction_audio.play()
 	if _flinch_tween != null and _flinch_tween.is_valid():
 		_flinch_tween.kill()
-	body_visual.position = Vector2.ZERO
+	body_visual.position = _practice_body_rest_position
 	var offset := direction.normalized() * distance
 	_flinch_tween = create_tween()
-	_flinch_tween.tween_property(body_visual, "position", offset, duration * 0.4)
-	_flinch_tween.tween_property(body_visual, "position", Vector2.ZERO, duration * 0.6)
+	_flinch_tween.tween_property(body_visual, "position", _practice_body_rest_position + offset, duration * 0.4)
+	_flinch_tween.tween_property(body_visual, "position", _practice_body_rest_position, duration * 0.6)
 
 
 func _on_status_changed(snapshot: Dictionary) -> void:

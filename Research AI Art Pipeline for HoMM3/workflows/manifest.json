@@ -1,0 +1,130 @@
+{
+  "status": "PROPOSED HANDOFF ONLY; no Qwen model loaded or inference performed",
+  "created_utc_date": "2026-10-23",
+  "validation": {
+    "official_json_parses": true,
+    "proposed_python_ast_parses": true,
+    "models_loaded": false,
+    "gpu_run": false,
+    "comfyui_graph_run": false
+  },
+  "available_hardware": {
+    "cuda_gpu": false,
+    "host_memory_gb_approx": 18
+  },
+  "downloaded_official_sources": [
+    {
+      "path": "official/image_qwen_image_edit_2511.json",
+      "source_url": "https://raw.githubusercontent.com/Comfy-Org/workflow_templates/67984637eefcd4825dcf5c134e39034785be1682/templates/image_qwen_image_edit_2511.json",
+      "sha256": "b23103935f437e1fe3184247fa5bafb891a28113d0c63de7449b7cdfb0419111",
+      "bytes": 59841,
+      "modified": false
+    },
+    {
+      "path": "official/pipeline_qwenimage_edit_plus.py",
+      "source_url": "https://raw.githubusercontent.com/huggingface/diffusers/48cdbaef5ee3d718aaee392b44f2099ae511c4a5/src/diffusers/pipelines/qwenimage/pipeline_qwenimage_edit_plus.py",
+      "sha256": "9ce666ed3e0029a35e8743e558f23fc8143d888f418d9fe924e05df43d46856f",
+      "bytes": 43995,
+      "modified": false
+    },
+    {
+      "path": "official/Qwen-Image-Edit-2511-model-card.md",
+      "source_url": "https://huggingface.co/Qwen/Qwen-Image-Edit-2511/raw/6f3ccc0b56e431dc6a0c2b2039706d7d26f22cb9/README.md",
+      "sha256": "9724c194bef2a6d821090f0cd65774962e8f77e3acbfb2a7cbbdd58c92049902",
+      "bytes": 7179,
+      "modified": false
+    },
+    {
+      "path": "official/Qwen-ControlNet-Union-model-card.md",
+      "source_url": "https://huggingface.co/InstantX/Qwen-Image-ControlNet-Union/raw/b13036f066d6dee7c20513e263d3d673055e9de8/README.md",
+      "sha256": "8ded521e30430cdce4a352fdedb5fc4c820018fba3f80371d8c8f7bf0053adc0",
+      "bytes": 5786,
+      "modified": false
+    },
+    {
+      "path": "official/workflow_templates_LICENSE",
+      "source_url": "https://raw.githubusercontent.com/Comfy-Org/workflow_templates/67984637eefcd4825dcf5c134e39034785be1682/LICENSE",
+      "sha256": "5dccd61c80c847cd6b22fa98124010163ab8646e573557a16a5cae31122f2056",
+      "bytes": 1074,
+      "modified": false
+    }
+  ],
+  "official_template": {
+    "commit": "67984637eefcd4825dcf5c134e39034785be1682",
+    "root_node_count": 6,
+    "core_version_recorded_on_subgraph": "0.16.4",
+    "unchanged": true
+  },
+  "proposed_qwen2511": {
+    "pipeline": "QwenImageEditPlusPipeline",
+    "model": "Qwen/Qwen-Image-Edit-2511",
+    "revision": "6f3ccc0b56e431dc6a0c2b2039706d7d26f22cb9",
+    "diffusers_revision": "48cdbaef5ee3d718aaee392b44f2099ae511c4a5",
+    "dtype": "bfloat16",
+    "cpu_offload": true,
+    "num_inference_steps": 40,
+    "true_cfg_scale": 4.0,
+    "guidance_scale": 1.0,
+    "seed": 42,
+    "num_images_per_prompt": 1,
+    "negative_prompt": " ",
+    "source_input_size": [
+      584,
+      416
+    ],
+    "neutral_padding_ltrb": [
+      12,
+      0,
+      12,
+      0
+    ],
+    "model_output_size": [
+      608,
+      416
+    ],
+    "crop_output_size": [
+      584,
+      416
+    ],
+    "repeated_source_map": {
+      "6": 4,
+      "7": 3,
+      "8": 2,
+      "9": 1
+    },
+    "first_reference": "current original pose, neutral-composited; never previous generated output",
+    "second_reference": "human-approved highres master; included appearance_proxy is unapproved placeholder",
+    "native_controlnet": false,
+    "native_alpha": false
+  },
+  "separate_union_edge_trial": {
+    "pipeline": "QwenImageControlNetPipeline",
+    "base_model": "Qwen/Qwen-Image",
+    "base_revision": "75e0b4be04f60ec59a75f475837eced720f823b6",
+    "controlnet_class": "QwenImageControlNetModel",
+    "controlnet": "InstantX/Qwen-Image-ControlNet-Union",
+    "controlnet_revision": "b13036f066d6dee7c20513e263d3d673055e9de8",
+    "control_modes": [
+      "canny",
+      "soft_edge",
+      "depth",
+      "pose"
+    ],
+    "proposed_control": "canny/manual corrected edges",
+    "conditioning_scale": 1.0,
+    "documented_sweep": [
+      0.8,
+      1.0
+    ],
+    "steps": 30,
+    "true_cfg_scale": 4.0,
+    "seed": 42,
+    "character_reference_conditioning": false,
+    "not_compatible_by_assumption": [
+      "Qwen-Image-Edit-2511",
+      "Qwen-Image-2.1"
+    ]
+  },
+  "hardware_caveat": "No memory peak measured. BF16 visual20B alone ~40GB decimal weights, plus encoder/activations; this18GB CPU environment is unsuitable for this handoff execution.",
+  "readme": "README.txt"
+}

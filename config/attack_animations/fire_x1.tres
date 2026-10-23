@@ -1,6 +1,8 @@
 [gd_resource type="Animation" format=3 uid="uid://ciifelblcvs06"]
 
-[ext_resource type="Texture2D" path="res://assets/prototype/player/fire_sword_shield_v01/overnight_v04/fire_x1.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://b2sih8aoeqrxd" path="res://assets/prototype/player/fire_sword_shield_v01/overnight_v04/fire_x1.png" id="1_sheet"]
+
+[ext_resource type="Shape2D" path="res://config/player_presentation/fire_body.tres" id="registration_body"]
 
 [resource]
 resource_name = "fire_x1"
@@ -48,7 +50,7 @@ tracks/2/path = NodePath("Sprite:region_rect")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.18574929, 0.37149858, 0.45, 0.53, 0.60950685, 0.711878675, 0.8142505),
+"times": PackedFloat32Array(0, 0.18574929, 0.37149858, 0.45, 0.53, 0.60950685, 0.71187866, 0.8142505),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(0, 0, 448, 448), Rect2(448, 0, 448, 448), Rect2(896, 0, 448, 448), Rect2(1344, 0, 448, 448), Rect2(1792, 0, 448, 448), Rect2(2240, 0, 448, 448), Rect2(2688, 0, 448, 448), Rect2(3136, 0, 448, 448)]
@@ -60,10 +62,10 @@ tracks/3/path = NodePath("AttackCast:position")
 tracks/3/interp = 0
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0.0, 0.18574929, 0.36, 0.37149858, 0.45, 0.53, 0.60950685, 0.711878675, 0.8142505, 0.8333333),
+"times": PackedFloat32Array(0, 0.18574929, 0.36, 0.37149858, 0.45, 0.53, 0.60950685, 0.71187866, 0.8142505, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-27.4424151, -47.6322803), Vector2(-17.6038348, -66.9652550), Vector2(-17.6038348, -66.9652550), Vector2(-0.7463161, -63.3082169), Vector2(4.1674594, -68.8995406), Vector2(9.9592112, -45.8689755), Vector2(25.9735697, -30.5706824), Vector2(-3.0134470, -24.1934898), Vector2(0.2948319, -32.6068732), Vector2(0.2948319, -32.6068732)]
+"values": [Vector2(-27.442415, -47.63228), Vector2(-17.603834, -66.965256), Vector2(-17.603834, -66.965256), Vector2(-0.7463161, -63.308216), Vector2(4.1674595, -68.89954), Vector2(9.959211, -45.868977), Vector2(25.97357, -30.570683), Vector2(-3.013447, -24.19349), Vector2(0.2948319, -32.606873), Vector2(0.2948319, -32.606873)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -72,10 +74,10 @@ tracks/4/path = NodePath("AttackCast:target_position")
 tracks/4/interp = 0
 tracks/4/loop_wrap = false
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0, 0.18574929, 0.36, 0.37149858, 0.45, 0.53, 0.60950685, 0.711878675, 0.8142505, 0.8333333),
+"times": PackedFloat32Array(0, 0.18574929, 0.36, 0.37149858, 0.45, 0.53, 0.60950685, 0.71187866, 0.8142505, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-42.1151698, -7.7354394), Vector2(22.2076696, -15.0694901), Vector2(22.2076696, -15.0694901), Vector2(-27.0073677, -10.8835661), Vector2(-4.3349189, -17.7009188), Vector2(32.0815777, -20.2620491), Vector2(37.5528606, 4.6413648), Vector2(38.5268941, 3.3869797), Vector2(26.9103363, -20.2862535), Vector2(26.9103363, -20.2862535)]
+"values": [Vector2(-42.11517, -7.7354393), Vector2(22.20767, -15.06949), Vector2(22.20767, -15.06949), Vector2(-27.007368, -10.883566), Vector2(-4.334919, -17.700918), Vector2(32.081577, -20.262049), Vector2(37.55286, 4.6413646), Vector2(38.526894, 3.3869798), Vector2(26.910336, -20.286253), Vector2(26.910336, -20.286253)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -84,8 +86,92 @@ tracks/5/path = NodePath("AttackCast:shape:radius")
 tracks/5/interp = 0
 tracks/5/loop_wrap = false
 tracks/5/keys = {
-"times": PackedFloat32Array(0.0, 0.36, 0.37149858, 0.60950685, 0.8142505, 0.8333333),
+"times": PackedFloat32Array(0, 0.36, 0.37149858, 0.60950685, 0.8142505, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [3.5, 3.5, 3.5, 3.5, 3.5, 3.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite:offset")
+tracks/6/interp = 0
+tracks/6/loop_wrap = false
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -124)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite:texture_filter")
+tracks/7/interp = 0
+tracks/7/loop_wrap = false
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprite:material")
+tracks/8/interp = 0
+tracks/8/loop_wrap = false
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprite:self_modulate")
+tracks/9/interp = 0
+tracks/9/loop_wrap = false
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CollisionShape2D:shape")
+tracks/10/interp = 0
+tracks/10/loop_wrap = false
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("registration_body")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CollisionShape2D:position")
+tracks/11/interp = 0
+tracks/11/loop_wrap = false
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -19)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sprite/CastOrigin:position")
+tracks/12/interp = 0
+tracks/12/loop_wrap = false
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-19, -113)]
 }

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laema / Original motion R&D / Review 01</title>
+<style>
+:root{color-scheme:dark;--ink:#e8edf3;--dim:#a2b1c2;--line:#304356;--bg:#101923;--card:#192634;--mint:#6ed1bd;--gold:#efbe75}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:64px 28px 100px}h1{font-size:clamp(32px,5vw,58px);line-height:1.1;letter-spacing:-.035em;margin:20px 0}h2{font-size:26px;margin:46px 0 16px}h3{margin:10px 0}p{max-width:88ch}a{color:var(--mint)}.eyebrow{letter-spacing:.15em;color:var(--mint);font-size:12px;text-transform:uppercase}.lede{font-size:21px;color:#c9d6e3}.muted,small{color:var(--dim)}.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:14px;margin:22px 0}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.button{display:inline-block;background:#244438;padding:12px 20px;border:1px solid #4c8876;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600}.button.secondary{background:var(--card);border-color:var(--line)}table{border-collapse:collapse;width:100%;font-size:14px;margin:18px 0}td,th{border-bottom:1px solid var(--line);padding:12px 10px;text-align:left;vertical-align:top}th{color:var(--dim);font-size:12px;letter-spacing:.04em}code{color:#cfdfec;font-size:13px}video,img{max-width:100%;border-radius:12px;background:#0c141d}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.pill{color:var(--gold);border:1px solid #685638;border-radius:5px;padding:4px 9px;font-size:12px}li{margin:8px 0}hr{border:0;border-top:1px solid var(--line);margin:38px 0}@media(max-width:760px){.grid{grid-template-columns:1fr}main{padding:30px 18px}table{display:block;overflow-x:auto}}
+</style>
+<main>
+<div class="eyebrow">Laema · Character animation pipeline R&D · 23 October 2026</div>
+<h1>Approve the movement<br>before the artwork.</h1>
+<p class="lede">Phase 1 diagnosis and three original Fire X1 motion studies. The production-method comparison begins after a motion is selected.</p>
+<span class="pill">AWAITING MOTION REVIEW · NO PRODUCTION-READINESS CLAIM</span>
+<div class="actions"><a class="button" href="review.html">Open interactive motion comparison</a><a class="button secondary" href="preview/project.godot">Godot preview project</a><a class="button secondary" href="motion-studies.mp4">Motion video</a><a class="button secondary" href="evidence/live-baseline.mp4">Current live-sheet comparison</a></div>
+<p class="muted">The browser comparison uses original joint targets at the project's 1280×720 viewport and approximately 180-pixel standing body height. Godot is a separate standalone preview, headlessly checked in 4.6.3. Neither preview is an integrated combat replacement.</p>
+
+<h2>What the inspection established</h2>
+<p>Inspected checkout: <code>16b4c3b7199589439a276881eca7516cc0f7401c</code>. The working tree was clean at inspection. Source and image inspection covered the live Fire five-hit chain, four school Cast resources, Fire locomotion, later reviewed handoff, AI-study records, registration, playback clocks, queues and contact geometry. Native Laema dashboard and host chat history were unavailable; no dialogue restoration or checkpoint work occurred.</p>
+<div class="box"><strong>A source mismatch matters here.</strong> Live X1/X4/X5 use <code>overnight_v04</code>; X2/X3 use <code>angle_proofs_v03</code>. A later reviewed handoff selects a different 4/3/4/5/4-pose set and explicitly excludes substituting those older sheets. Its integration authorization is preserved, but these new studies do not install it. “Reviewed artwork,” “currently bound artwork” and “runtime-accepted result” remain separate states.</div>
+<table>
+<tr><th>Cause</th><th>Evidence</th><th>Implication</th></tr>
+<tr><td>Motion design</td><td>Most live attacks retain a similar wide, planted stance; arms and blade carry most changes. X4 contains three actual poses held over six keys. X1/X5 have similar raised chambers. Cast raises the blade early and stays overhead.</td><td>More generated detail will not supply weight transfer, braking, action distinction or a complete recovery. Those must be authored and reviewed in motion.</td></tr>
+<tr><td>Character-art consistency</td><td>Pale ponytail/blue vest/white shirt/red sash survive broadly. Hilt, guard, shield perspective/size, face, gloves and boot materials drift; Idle/Cast use more ornate glowing steel and narrower stances than attacks.</td><td>A fixed registration anchor cannot solve anatomy, equipment or material continuity. Use a reference pack plus per-frame continuity checks.</td></tr>
+<tr><td>Timing</td><td>Normalized AnimationPlayer time is remapped through a pacing split and Heat. X1's eight holds are approximately 65/65/27.5/28/36.6/130.5/130.5/236.8 ms at Heat 0.</td><td>Uniform GIF playback and editor speed 1 misrepresent the game. At Heat 100 some strike drawings last 18–24 ms; recovery drawing exposure dominates. This needs visual judgment, not an automatic speed fix.</td></tr>
+<tr><td>Transitions</td><td>Independent sheets switch without sprite blending. Cast's final drawing stays overhead while Idle returns to low ready; stance and equipment differences magnify the discontinuity.</td><td>Author entry/exit poses across actions. A good isolated strip is insufficient evidence of whole-chain flow.</td></tr>
+<tr><td>Technical integration</td><td>Native Sprite2D region tracks, registration and contact curves are already separated. Current code samples active-window geometry and mirrors committed direction. Earlier geometry fixes exist.</td><td>No new engine defect was established. Older provenance describing misalignment is historical. A new blade arc still requires fresh geometry review; retaining timings alone does not align it.</td></tr>
+</table>
+<p>Prior X2 revisions through v07 and the X5 posture/shield corrections demonstrate repeated correction work. Complete-pose regeneration can change details outside the requested repair. No reliable retrospective labor times were found; no historical hours are invented here.</p>
+
+<p>Static inspection evidence: <a href="evidence/live-contact.png">live-frame contact sheet</a> · <a href="evidence/equipment-details.png">equipment details</a> · <a href="evidence/reference-context.png">reference context</a>.</p>
+<h2>Current playback contract</h2>
+<table>
+<tr><th>Move</th><th>Distinct live drawings</th><th>Heat 0 duration</th><th>Heat 0 contact / launch</th><th>Fixed Heat 100 duration</th></tr>
+<tr><td>Fire X1</td><td>8</td><td>0.720 s</td><td>0.126–0.5075 s</td><td>0.480 s</td></tr>
+<tr><td>Fire X2</td><td>6</td><td>0.750 s</td><td>0.1851–0.5906 s</td><td>0.500 s</td></tr>
+<tr><td>Fire X3</td><td>5</td><td>0.645 s</td><td>0.117–0.4575 s</td><td>0.430 s</td></tr>
+<tr><td>Fire X4</td><td>3 across 6 keys</td><td>0.690 s</td><td>0.1697–0.530 s</td><td>0.460 s</td></tr>
+<tr><td>Fire X5</td><td>7</td><td>1.400 s</td><td>0.180–0.850 s</td><td>0.9333 s</td></tr>
+<tr><td>Fire Cast</td><td>10</td><td>1.200 s</td><td>Launch 0.288 s</td><td>0.800 s</td></tr>
+</table>
+<p>Heat can change during an action; the previews intentionally hold it fixed at 0 or 100. X1 uses normalized split 0.60, not an impact event. Its nominal “windup” ends at 0.210 s after the hit-capable interval has begun; “recovery” includes late active frames. Fire Cast launch is once-only and separate from projectile collision. Other schools retain the legacy shared Cast character and a later normalized launch (0.36 versus Fire 0.24).</p>
+<video controls preload="metadata" poster="evidence/live-baseline.png" src="evidence/live-baseline.mp4"></video>
+<p class="muted">Source-timed reconstruction: unchanged live atlas cells, fixed Heat 0 then 100, native scale, 60 fps. This is not a Godot recording or gameplay test. Each clip includes a labelled review gap. Timing, input file paths and texture hashes: <a href="evidence/live-contract.json">live-contract.json</a>.</p>
+
+<h2>Three original X1 directions</h2>
+<p>Fire X1 is representative because it touches ready, chain continuation, Casting and return to locomotion without making the finisher the first problem. The 32 joint keys were authored for this experiment; no existing animation was traced, imported, retargeted or used as pose-generation input. All three keep the same 0.720/0.480-second action envelope. They are unranked.</p>
+<div class="grid">
+<div class="box"><h3>A · Diagonal cut</h3><p>Rear-foot load and shoulder chamber; a forward descending release; a low braking arc; settle to the common guard.</p><p class="muted">Review focus: does the hip lead the blade, and does the low follow-through feel controlled at Heat 100?</p></div>
+<div class="box"><h3>B · Level backhand</h3><p>Closed shoulder coil and hip counter-shift; a level sweep; a compact elbow brake; open back into the common guard.</p><p class="muted">Review focus: is the flatter silhouette readable without excessive windup, and is the torso turn clear enough in side view?</p></div>
+<div class="box"><h3>C · Rising cut</h3><p>A small compression and low chamber; upward diagonal release; a high catch; lower the blade into the common guard.</p><p class="muted">Review focus: is the rising path distinct at native scale, and does the high catch make recovery feel too busy?</p></div>
+</div>
+<table>
+<tr><th>Study phase</th><th>Heat 0 authored time</th><th>Meaning</th></tr>
+<tr><td>Anticipation</td><td>0–0.126 s</td><td>Body load and clear blade chamber; readable response starts before hit-capable time.</td></tr>
+<tr><td>Release / impact-emphasis poses</td><td>Approximately 0.126–0.210 s</td><td>A emphasis 0.158; B 0.151–0.190; C 0.162–0.210. These are artistic pose accents, not hit-event times.</td></tr>
+<tr><td>Follow-through / braking</td><td>A/B: 0.210–0.340 s; C: 0.210–0.440 s</td><td>Distinct low / level / high endings. Existing contact remains possible during braking and early recovery; selected motion must be checked against the full window.</td></tr>
+<tr><td>Recovery to common guard</td><td>A/B: 0.340–0.720 s; C: 0.440–0.720 s</td><td>Stable feet and return to an explicit reusable endpoint. This visual recovery starts while the existing contact window is still open.</td></tr>
+</table>
+<p>At fixed Heat 100 divide these times by 1.5. The ground anchor is fixed, the blade is a constant 88-pixel blocking shape, and fine costume/anatomy are omitted. The prototype's existing 3-pixel body lunge is not simulated. These choices isolate movement; they do not establish final weapon dimensions or character proportions.</p>
+<img src="motion-keyposes.png" alt="Three original motion studies at key phases">
+<video controls preload="metadata" poster="motion-keyposes.png" src="motion-studies.mp4"></video>
+<p class="muted">Open <a href="review.html">the interactive viewer</a> for 1×/2×, both facings, Heat settings, frame stepping and scrubbing. Slow playback is explicitly labelled and is not used as gameplay-speed evidence. Browser and Godot render the same authored data through separate drawing implementations.</p>
+
+<h2>Transitions and gameplay constraints</h2>
+<p>All proposals start and finish in the same provisional sword/shield guard. The identity reference is Laema Open from the preserved character set; Fire Idle supplies provisional side-view equipment context. Neither the outfit nor weapon becomes a final production lock. The latest request for three motion proposals takes precedence over the older five-concept comparison convention.</p>
+<table>
+<tr><th>Transition</th><th>Definition for all three proposals</th><th>Evidence status</th></tr>
+<tr><td>Idle / Walk → X1</td><td>Enter the common guard/load immediately; input-facing and existing movement lock remain owned by gameplay. Root lunge remains distinct from body-art alignment.</td><td>Guard pose continuity shown; actual locomotion boundary not simulated.</td></tr>
+<tr><td>X1 → queued X2 / Cast</td><td>Next action begins at X1 completion, 0.720 s at Heat 0. Design a future matching entry to the approved endpoint; do not add a blend that delays input. Existing buffer opens about 0.098 s, ordinary queue about 0.168 s; these are not transition times.</td><td>Endpoint defined; real X2/Cast handoff pending. No new intermediate drawings approved.</td></tr>
+<tr><td>X1 → Idle / Walk / Charging</td><td>Settle to guard by completion; existing rules decide locomotion and retained chain state.</td><td>Guard entry/exit shown; no gameplay arbitration test.</td></tr>
+<tr><td>X1 → Dodge</td><td>Preserve current Fire rule: only strictly before active_start. Do not allow an active/recovery cancel to hide a poor recovery. Selected anticipation needs a readable interruption pose.</td><td>Rule inspected; no dodge animation/probe run.</td></tr>
+<tr><td>Hit reaction / interruption / restart</td><td>Gameplay may replace the action through existing rules; avoid relying on a last-frame-only repair for equipment identity.</td><td>Integration and retry remain future checks.</td></tr>
+</table>
+<p>The current actor root is source (224,348), while the foot registration is (224,400). The 52-pixel difference is intentional. Current query conversion is actor-local, not foot-local; do not reuse the preview's foot anchor as a hitbox origin. The new sword paths are not aligned to the old full-window queries.</p>
+
+<h2>The production experiment after motion approval</h2>
+<p>The method winner is intentionally unresolved. Existing AI studies supply evidence of continuity and correction problems, but there is no controlled AI-versus-rig comparison yet. The blocking renderer is an authoring aid, not evidence that a production cutout rig has succeeded.</p>
+<table>
+<tr><th>Method</th><th>Actual experiment to run</th><th>Record</th></tr>
+<tr><td>Reference-guided AI sprite strip</td><td>Generate the selected motion against one fixed character/equipment pack and approved pose/phase board. Preserve every attempt. Export raw and corrected strips at the same anchor, size and timing.</td><td>Prompts, model/tool details exposed, attempts/rejections, anatomy/material/equipment repairs, corrected frames, export work.</td></tr>
+<tr><td>2D rig + frame-by-frame hybrid</td><td>Prepare reusable layered character art; rig the approved motion. Use replacement drawings for depth changes, sword-hand occlusion, shield turns and difficult compression. Export identical playable timings.</td><td>Part separation, rig setup/weights, motion labor, deformation repairs, replacement drawings, reuse and per-action labor.</td></tr>
+<tr><td>3D-assisted 2D render, conditional</td><td>Test if blade depth, foreshortening or repeatable character volume remains the controlling failure, or reuse justifies setup. Author motion from scratch; match camera and scale. Otherwise mark not tested.</td><td>Model/rig setup, motion, camera/light/render work, style conversion, overpainting and remaining drift.</td></tr>
+</table>
+<p>For each method compare raw and corrected output in the same Godot scene and synchronized video, at native scale and fixed Heat 0/100, both facings. Include silhouette playback, frame stepping, anchors/feet, action boundaries and the selected blade/query overlay. Record motion quality, responsiveness, readability, identity, alignment, transition snaps and remaining defects. Do not average away a blocking defect.</p>
+<p>Use the prepared <a href="effort-log.csv">effort worksheet</a>. Track active human minutes separately from machine/wait time; record setup, rejected attempts, motion authoring, per-frame correction, integration and review rework. One-time rig cost and per-action cost remain separate. The next-action cost stays an estimate until a materially different action is also tried. No production workflow recommendation is defensible until comparable corrected outputs and total effort exist.</p>
+
+<h2>Checks and limits</h2>
+<ul>
+<li>Godot 4.6.3 imported the standalone preview, sampled 219 poses and completed 120 headless scene frames. Fixed blade length checks passed. Details: <a href="preview/verification.json">verification.json</a>.</li>
+<li>No graphical Godot capture or integrated combat playtest was established here. The game declares a 4.7 feature target; the isolated preview was checked on the installed 4.6.3 engine.</li>
+<li>Current-animation video is a source-derived reconstruction, not engine evidence. Motion-review media uses the browser renderer of the new data.</li>
+<li>No product assets, contact geometry, rules, canonical GDD/TDR, commits, pushes or live exports were changed. Research work is isolated in this folder, excluded from the main Godot project by .gdignore.</li>
+<li>Phase 3 polished method trials and Phase 4 integrated comparisons await the selected motion. No bulk replacement or production readiness is claimed.</li>
+</ul>
+
+<h2>Decision for this review</h2>
+<p>Select A, B or C to develop, or give changes to one proposal. Approving a direction approves the motion experiment; it does not approve final artwork, contact geometry, production integration or a final outfit/weapon. Review the normal-speed native-size view before using the enlarged or slowed views to explain corrections.</p>
+<hr>
+<p class="muted">Primary sources in the parent Laema checkout: <code>AGENTS.md</code>; <code>docs/GAME_DESIGN.md</code>; <code>docs/TECH_ARCHITECTURE.md</code>; <code>docs/IMPLEMENTATION_STATUS.md</code>; <code>docs/ATTACK_STYLES.md</code>; <code>docs/art/ART_DIRECTION.md</code>; <code>docs/art/handoffs/2026-10-21-fire-x1-x5-pose-match/HANDOFF.md</code>; <code>config/attack_animations/*.tres</code>; <code>config/attack_styles/fire_x*.tres</code>; <code>scenes/player/player.tscn</code>; <code>scripts/combat/{might_component,attack_style,attack_geometry,heat_controller}.gd</code>; <code>scripts/player/player.gd</code>. See live-contract.json for exact current textures and hashes. Department assignment remains unconfirmed; no routing metadata was invented.</p>
+</main></html>

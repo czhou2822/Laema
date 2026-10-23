@@ -1,14 +1,28 @@
 @tool
 class_name AttackStyle
 extends RefCounted
-## Per-X presentation/spacing data. Zero timing/geometry retains the shared baseline.
+## Per-X pacing and attacker lunge. Native Animation curves alone own geometry.
 
 const DEFAULTS := {
 	"windup_duration": 0.0, "recovery_duration": 0.0,
-	"shape_reach": 0.0, "shape_radius": 0.0, "push_scale": 1.0,
-	"push_motion_duration": 0.0,
 }
 const LUNGE_DEFAULTS := {"distance": 0.0, "start_phase": 0.0, "end_phase": 0.5}
+# Migration keys only: no retained controls, capture fields or runtime overrides.
+const RETIRED_FIELDS := ["shape_reach", "shape_radius", "push_scale", "push_motion_duration"]
+
+
+static func strip_retired_fields(config: Dictionary) -> void:
+	if config.get("combat") is Dictionary:
+		config["combat"].erase("shape_reach")
+		config["combat"].erase("shape_radius")
+	if not config.get("moves") is Dictionary:
+		return
+	for school in ["fire", "water", "air", "earth"]:
+		for position in range(1, 6):
+			var id := "%s_x%d" % [school, position]
+			if config["moves"].get(id) is Dictionary:
+				for key in RETIRED_FIELDS:
+					config["moves"][id].erase(key)
 
 
 static func read_move(move: Dictionary) -> Dictionary:
@@ -22,9 +36,6 @@ static func read_move(move: Dictionary) -> Dictionary:
 static func capture(move: Dictionary, combat: Dictionary) -> Dictionary:
 	var result := read_move(move)
 	result["shared_duration"] = float(combat["attack_duration"])
-	for key in ["shape_reach", "shape_radius"]:
-		if float(result[key]) <= 0.0:
-			result[key] = float(combat[key])
 	return result
 
 

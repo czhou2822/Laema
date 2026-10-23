@@ -91,7 +91,6 @@ func configure(
 func apply_runtime_tuning() -> void:
 	if _config.is_empty() or _animation_player == null or _attack_cast == null:
 		return
-	Geometry.apply_player_preview(_animation_player, _config)
 	_refresh_action_speed()
 
 
@@ -697,9 +696,6 @@ func collect_melee_contacts() -> Array[HealthEvent]:
 		_current_action["hit_targets"].append(target.get_instance_id())
 		var event := HealthEvent.damage(_owner_entity, target, float(_config["combat"][move["damage_key"]]), int(move["impact"]), HealthEvent.Delivery.DIRECT, StringName(_current_action["school"]), {}, _current_action["direction"], _attack_cast.get_collision_point(index), action_id, [StringName(_current_action["school"])])
 		event.melee_contact = true
-		event.push_scale = float(_current_action["style"]["push_scale"])
-		if StringName(_current_action["move_id"]) == &"fire_x5":
-			event.push_motion_duration = float(_current_action["style"]["push_motion_duration"])
 		ImpactProbe.record("contact_event", {"actor": str(_owner_entity.get_path()), "move_id": _current_action["move_id"], "action_id": action_id, "target": str(target.get_path()), "impact": event.impact, "target_poise": target.get_poise()})
 		events.append(event)
 	_attack_cast.position = live_position
@@ -985,7 +981,6 @@ func get_melee_snapshot() -> Dictionary:
 		"action_id": _current_action["source_action_id"],
 		"composition": [_current_action["school"]],
 		"hit_targets": _current_action["hit_targets"].duplicate(),
-		"push_scale": float(_current_action["style"]["push_scale"]),
 	}
 
 

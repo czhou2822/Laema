@@ -1,6 +1,8 @@
 [gd_resource type="Animation" format=3 uid="uid://rq3y3lwspmev"]
 
-[ext_resource type="Texture2D" path="res://assets/prototype/player/fire_sword_shield_v01/angle_proofs_v03/fire_x2.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://caiblir58yetq" path="res://assets/prototype/player/fire_sword_shield_v01/angle_proofs_v03/fire_x2.png" id="1_sheet"]
+
+[ext_resource type="Shape2D" path="res://config/player_presentation/fire_body.tres" id="registration_body"]
 
 [resource]
 resource_name = "fire_x2"
@@ -60,10 +62,10 @@ tracks/3/path = NodePath("AttackCast:position")
 tracks/3/interp = 0
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0.0, 0.2, 0.36, 0.45624605, 0.6, 0.7485495, 0.8333333),
+"times": PackedFloat32Array(0, 0.2, 0.36, 0.45624605, 0.6, 0.7485495, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-28.8655623, -13.4903849), Vector2(-23.7973592, -31.1736363), Vector2(-23.7973592, -31.1736363), Vector2(3.4895682, -26.9799739), Vector2(38.4999201, -32.7263519), Vector2(30.3569016, -33.2405611), Vector2(30.3569016, -33.2405611)]
+"values": [Vector2(-28.865562, -13.490385), Vector2(-23.79736, -31.173635), Vector2(-23.79736, -31.173635), Vector2(3.4895682, -26.979975), Vector2(38.49992, -32.726353), Vector2(30.356901, -33.240562), Vector2(30.356901, -33.240562)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -72,10 +74,10 @@ tracks/4/path = NodePath("AttackCast:target_position")
 tracks/4/interp = 0
 tracks/4/loop_wrap = false
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0, 0.2, 0.36, 0.45624605, 0.6, 0.7485495, 0.8333333),
+"times": PackedFloat32Array(0, 0.2, 0.36, 0.45624605, 0.6, 0.7485495, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-32.7688755, 22.9807698), Vector2(-22.9052816, -8.1527273), Vector2(-22.9052816, -8.1527273), Vector2(35.0208637, 2.7099478), Vector2(30.0001598, 0.2027038), Vector2(23.7861967, -7.0188777), Vector2(23.7861967, -7.0188777)]
+"values": [Vector2(-32.768875, 22.98077), Vector2(-22.905281, -8.152727), Vector2(-22.905281, -8.152727), Vector2(35.020863, 2.7099478), Vector2(30.00016, 0.2027038), Vector2(23.786196, -7.0188775), Vector2(23.786196, -7.0188775)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -84,8 +86,92 @@ tracks/5/path = NodePath("AttackCast:shape:radius")
 tracks/5/interp = 0
 tracks/5/loop_wrap = false
 tracks/5/keys = {
-"times": PackedFloat32Array(0.0, 0.36, 0.45624605, 0.7485495, 0.8333333),
+"times": PackedFloat32Array(0, 0.36, 0.45624605, 0.7485495, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [3.5, 3.5, 3.5, 3.5, 3.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite:offset")
+tracks/6/interp = 0
+tracks/6/loop_wrap = false
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -124)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite:texture_filter")
+tracks/7/interp = 0
+tracks/7/loop_wrap = false
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprite:material")
+tracks/8/interp = 0
+tracks/8/loop_wrap = false
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprite:self_modulate")
+tracks/9/interp = 0
+tracks/9/loop_wrap = false
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CollisionShape2D:shape")
+tracks/10/interp = 0
+tracks/10/loop_wrap = false
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("registration_body")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CollisionShape2D:position")
+tracks/11/interp = 0
+tracks/11/loop_wrap = false
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -19)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sprite/CastOrigin:position")
+tracks/12/interp = 0
+tracks/12/loop_wrap = false
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-19, -113)]
 }

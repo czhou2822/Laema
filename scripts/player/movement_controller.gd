@@ -71,9 +71,12 @@ func set_effect_multiplier(multiplier: float) -> void:
 
 func sample_attack_direction() -> Vector2:
 	var input_direction := _sample_input_direction()
-	if not input_direction.is_zero_approx():
-		_set_facing(input_direction)
-	return _facing
+	return input_direction.normalized() if not input_direction.is_zero_approx() else _facing
+
+
+func commit_attack_direction(direction: Vector2) -> void:
+	if not is_zero_approx(direction.x):
+		_set_facing(Vector2(signf(direction.x), 0.0))
 
 
 func get_facing_direction() -> Vector2:
