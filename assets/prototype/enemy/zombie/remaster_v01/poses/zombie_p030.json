@@ -1,0 +1,100 @@
+{
+  "pose_id": "zombie_p030",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "839bb966e4c7427d30ba2d64bb9083a009849272c7d322d408d061a415c70460:151:177:77:90:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "CzomLO53.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 166042,
+      "stored_size": 3613,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 77,
+      "height": 90,
+      "left": 151,
+      "top": 177,
+      "legacy_header": false,
+      "index_sha256": "839bb966e4c7427d30ba2d64bb9083a009849272c7d322d408d061a415c70460"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.png",
+  "raw_sha256": "efa9588fe75d327e5a21ee2d270b0e8b27b3d7d2bbb7b3a852490f3803c4bf5f",
+  "prompt": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-003-a-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/zombie/remaster_v01/_source/isolated/batch-003-a-components-zombie_p030.png",
+  "isolated_sha256": "452dff05b0403c796eefb116f6f51af6d5c585b92f49af1f89ff0c76dd85634d",
+  "source_grid_region": [
+    908,
+    456,
+    382,
+    416
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p030.png",
+  "registered_pose_sha256": "77b20b08f88736c1d2bfd34f3ada2bf74307581a401d362011d9e256fa0f3482",
+  "mirror_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p030_mirror.png",
+  "mirror_sha256": "7ccbecc443db23f3d4dfecad0e407e61fbad1bb947e513bc90c3654035bf84ab",
+  "registration": {
+    "source_body_rect": [
+      153,
+      177,
+      74,
+      90
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      384,
+      418
+    ],
+    "registered_rect": [
+      406,
+      312,
+      182,
+      198
+    ],
+    "uniform_artwork_fit": 0.47643979057591623
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Viewed raw batch-003-a and registered OG comparisons. Two-hand defence lifts from low horizontal through diagonal/vertical guard then lowers. Death recoil then lifts the booted knee with spread arms. Hammer head/shaft and hands stay attached and visible.",
+    "source_sha256_at_review": "77b20b08f88736c1d2bfd34f3ada2bf74307581a401d362011d9e256fa0f3482",
+    "mirror_sha256_at_review": "7ccbecc443db23f3d4dfecad0e407e61fbad1bb947e513bc90c3654035bf84ab"
+  },
+  "human_animation_acceptance": false
+}

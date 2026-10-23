@@ -1,0 +1,100 @@
+{
+  "pose_id": "zombie_p006",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "9e7eee647da313076ea10838db353ae7a2185772e2c8a1c253906c7e6bf326e5:173:186:65:81:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 6,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMLO/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 6,
+      "name": "CzomLO16.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 400,
+      "offset": 50882,
+      "stored_size": 2927,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 65,
+      "height": 81,
+      "left": 173,
+      "top": 186,
+      "legacy_header": false,
+      "index_sha256": "9e7eee647da313076ea10838db353ae7a2185772e2c8a1c253906c7e6bf326e5"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.png",
+  "raw_sha256": "4dcdd48cd75861df1f3d6a586a102383f19b6b0c922d1b6da956c67af8d1bcd3",
+  "prompt": "assets/prototype/enemy/zombie/remaster_v01/_source/raw/batch-000-a-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/zombie/remaster_v01/_source/isolated/batch-000-a-components-zombie_p006.png",
+  "isolated_sha256": "8670cbafc3f5f12cde42febe53bfb9e584f5a816a92515d34a39aa2f6ef61c9b",
+  "source_grid_region": [
+    935,
+    483,
+    380,
+    384
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p006.png",
+  "registered_pose_sha256": "a49ada88e98f0a8865f6d3afef7b1c0ccc8cd7d40c940eed654e98dcc6c0b81d",
+  "mirror_file": "assets/prototype/enemy/zombie/remaster_v01/poses/zombie_p006_mirror.png",
+  "mirror_sha256": "dba8ff3426f50fdcaf5885d3489dfe7364ed7d5878b0320943963435c2bf887c",
+  "registration": {
+    "source_body_rect": [
+      173,
+      186,
+      64,
+      81
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      382,
+      386
+    ],
+    "registered_rect": [
+      455,
+      350,
+      158,
+      160
+    ],
+    "uniform_artwork_fit": 0.41578947368421054
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Viewed raw batch-000-a, original guide and registered 1:1 comparison; walked source pose order shows changing feet and low carried hammer, with free/secondary hand placement visible. Full hammer and both feet remain inside the registered frame. Generated master anatomy is broader than OG and aspect-fit can reduce visible height; no scaling override applied.",
+    "source_sha256_at_review": "a49ada88e98f0a8865f6d3afef7b1c0ccc8cd7d40c940eed654e98dcc6c0b81d",
+    "mirror_sha256_at_review": "dba8ff3426f50fdcaf5885d3489dfe7364ed7d5878b0320943963435c2bf887c"
+  },
+  "human_animation_acceptance": false
+}
