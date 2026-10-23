@@ -47,6 +47,11 @@ var _current_descriptor: Dictionary = {}
 var _next_descriptor: Dictionary = {}
 var _preloaded_next_scene: PackedScene
 var _transitioning := false
+var _impact_camera_started := -1
+var _impact_camera_level := 0
+var _impact_camera_treatment := "precise"
+var _impact_camera_direction := Vector2.RIGHT
+var _impact_camera_applied := Vector2.ZERO
 
 
 func _ready() -> void:
@@ -72,6 +77,9 @@ func _ready() -> void:
 	_configure_default_input_map()
 	hud.configure(_config)
 	player.configure(_config)
+	_bind_impact_feedback(player)
+	get_tree().process_frame.connect(_update_impact_camera)
+	pause_menu.opening_requested.connect(_clear_impact_feedback)
 	player.heat_changed.connect(hud.update_heat)
 	player.heat_changed.connect(stage_director.consume_heat)
 	player.combo_sequence_changed.connect(hud.update_combo)
@@ -93,6 +101,7 @@ func _ready() -> void:
 	pause_menu.configure(func(): return not _transitioning and _current_area != null, _get_pause_restart_label())
 	pause_menu.opening_requested.connect(func(): _developer_overlay._set_open(false))
 	_developer_overlay.opening_requested.connect(pause_menu.close)
+	_developer_overlay.opening_requested.connect(_clear_impact_feedback)
 	pause_menu.restart_requested.connect(_restart_current_encounter)
 	player.set_attack_hitbox_debug_enabled(bool(_config["ui"]["attack_hitbox_visible"]))
 	var dev_session := DevSession.new()
@@ -216,6 +225,7 @@ func _prepare_area(area: StageArea) -> void:
 
 func _bind_active_area(area: StageArea) -> void:
 	for target in area.get_targets():
+		_bind_impact_feedback(target)
 		target.connect(&"outcome_published", _consume_public_outcome)
 		target.connect(&"enemy_health_changed", hud.update_enemy_health)
 
@@ -307,6 +317,7 @@ func _load_stage_from_developer(stage_index: int) -> void:
 	if descriptor.is_empty():
 		return
 	_transitioning = true
+	_clear_impact_feedback()
 	player.set_stage_input_locked(true)
 	_clear_root_owned_projectiles()
 	if _next_area != null:
@@ -391,6 +402,8 @@ func _on_creature_spawn_requested(creature_id: String) -> void:
 
 
 func set_game_paused(paused: bool) -> void:
+	if paused:
+		_clear_impact_feedback()
 	_developer_overlay._set_open(false)
 	pause_menu.set_open(paused)
 	# An explicit editor resume also clears a pause set outside the pause menu.
@@ -542,3 +555,80 @@ func _apply_audio_settings() -> void:
 func _trace(event_name: StringName, data: Dictionary) -> void:
 	if OS.is_debug_build():
 		print("[TRACE][ARENA] %s %s" % [event_name, data])
+
+
+func _bind_impact_feedback(actor: Entity) -> void:
+	if not actor.feedback.impact_confirmed.is_connected(_on_impact_confirmed):
+		actor.feedback.impact_confirmed.connect(_on_impact_confirmed)
+
+
+func _on_impact_confirmed(cue: Dictionary) -> void:
+	if get_tree().paused or _transitioning or not bool(_config["ui"].get("impact_camera_enabled", false)):
+		return
+	var level := int(cue["level"])
+	if level < 3: # Only stronger qualifying combat reactions, never legacy recoil.
+		return
+	_impact_camera_treatment = str(_config["ui"].get("impact_treatment", "precise"))
+	if _impact_camera_started < 0 or float(Time.get_ticks_msec() - _impact_camera_started) / 1000.0 >= impact_camera_duration(_impact_camera_treatment):
+		_impact_camera_level = 0
+	_impact_camera_level = maxi(level, _impact_camera_level)
+	_impact_camera_direction = Vector2(cue["direction"]).normalized()
+	_impact_camera_started = Time.get_ticks_msec()
+
+
+static func impact_camera_duration(treatment: String) -> float:
+	return 0.11 if treatment == "weight" else 0.08
+
+
+static func impact_camera_pixels(age: float, level: int, direction: Vector2, treatment: String) -> Vector2:
+	var duration := impact_camera_duration(treatment)
+	if age < 0.0 or age >= duration or level < 3:
+		return Vector2.ZERO
+	var amplitude := 3.0 if treatment == "weight" else 1.0
+	var phase := age / duration
+	return direction.normalized() * amplitude * clampf(float(level) / 5.0, 0.0, 1.0) * sin(phase * TAU) * (1.0 - phase)
+
+
+func _update_impact_camera() -> void:
+	if not is_instance_valid(transition_camera):
+		return
+	# Subtract only this cue's previous contribution, preserving other offsets.
+	transition_camera.offset -= _impact_camera_applied
+	_impact_camera_applied = Vector2.ZERO
+	if _config.is_empty():
+		return
+	if get_tree().paused or _transitioning:
+		_clear_impact_feedback()
+		return
+	if not bool(_config["ui"].get("impact_camera_enabled", false)):
+		_impact_camera_started = -1
+		_impact_camera_level = 0
+		return
+	if _impact_camera_started < 0:
+		return
+	var age := float(Time.get_ticks_msec() - _impact_camera_started) / 1000.0
+	if age >= impact_camera_duration(_impact_camera_treatment):
+		_impact_camera_started = -1
+		_impact_camera_level = 0
+		return
+	var pixels := impact_camera_pixels(age, _impact_camera_level, _impact_camera_direction, _impact_camera_treatment)
+	_impact_camera_applied = pixels / transition_camera.zoom
+	transition_camera.offset += _impact_camera_applied
+
+
+func _clear_impact_feedback() -> void:
+	if is_instance_valid(transition_camera):
+		transition_camera.offset -= _impact_camera_applied
+	_impact_camera_applied = Vector2.ZERO
+	_impact_camera_started = -1
+	_impact_camera_level = 0
+	if is_instance_valid(player) and is_instance_valid(player.feedback):
+		player.feedback.clear_impact_feedback(true)
+	if is_instance_valid(_current_area):
+		for target in _current_area.get_targets():
+			if target is Entity and is_instance_valid(target.feedback):
+				target.feedback.clear_impact_feedback(true)
+
+
+func _exit_tree() -> void:
+	_clear_impact_feedback()

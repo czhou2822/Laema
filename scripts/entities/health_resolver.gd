@@ -169,6 +169,9 @@ func _deliver_result(result: HealthResult) -> void:
 	if result.event.is_direct_damage():
 		ImpactProbe.record("health_result", {"target": str(result.event.target.get_path()) if is_instance_valid(result.event.target) else "invalid", "action_id": result.event.source_action_id, "impact": result.event.impact, "outcome": HealthResult.Outcome.keys()[result.outcome], "reaction_level": result.final_reaction_level, "health_delta": result.health_delta, "tag": result.resolution_tag})
 	var target := result.event.target
+	var receiver := target as Entity
+	if is_instance_valid(receiver) and is_instance_valid(receiver.feedback):
+		receiver.feedback.accept_impact(result)
 	if is_instance_valid(target) and target.has_method("receive_health_result"):
 		target.call("receive_health_result", result)
 	var instigator := result.event.instigator

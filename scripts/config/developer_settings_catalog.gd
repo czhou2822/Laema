@@ -366,6 +366,16 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 		field.merge({"minimum": 1.0, "maximum": 32.0, "integer": true, "step": 1.0, "allow_greater": false}, true)
 	if id == "ui.cast_feedback_duration":
 		field.merge({"minimum": 0.1, "maximum": 20.0, "step": 0.1, "allow_greater": false}, true)
+	if id in ["ui.impact_contact_enabled", "ui.impact_camera_enabled"]:
+		field["label"] = "Contact accent" if id == "ui.impact_contact_enabled" else "Heavy impact camera"
+		field["group"] = "Cosmetic impact feedback"
+		field["description"] = "Optional confirmed direct-Health-loss feedback. Off by default; never changes combat. Contact is <=40px/120ms; camera only Level 3+ combat reactions, <=3 viewport pixels/120ms. Existing damage/status information stays visible."
+	if id == "ui.impact_treatment":
+		field["kind"] = "choice"
+		field["label"] = "Impact treatment"
+		field["group"] = "Cosmetic impact feedback"
+		field["options"] = [["precise", "Precise contact"], ["weight", "Weight accent"]]
+		field["description"] = "Precise: two tapered ticks (20/24px complete footprint, 90/100ms); strong camera <=1px/80ms. Weight: wedge and two flecks (28/38px complete footprint, expansion/fade <=110ms); strong camera <=3px/110ms. Enable contact/camera separately; damage cues do not imply stun."
 	if id == "ui.attack_hitbox_visible":
 		field["label"] = "Show attack hitboxes"
 		field["description"] = "Saved debug visibility shared by the editor and in-game Portal."

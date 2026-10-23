@@ -52,6 +52,7 @@ static func load_and_validate(path: String) -> Dictionary:
 		var characters := Characters.apply_to_config(data)
 		if not characters["ok"]:
 			return characters
+	_normalize_impact_feedback(data)
 	_normalize_legacy_audio_volumes(data)
 	ReactionRanges.normalize_legacy(data)
 	_normalize_reaction_motion(data)
@@ -111,6 +112,7 @@ static func _normalize_fire_defence(data: Dictionary) -> void:
 static func validate(data: Dictionary) -> Dictionary:
 	# Retire obsolete overrides even in cached drafts, without changing caller data.
 	var candidate := data.duplicate(true)
+	_normalize_impact_feedback(candidate)
 	Style.strip_retired_fields(candidate)
 	_normalize_reaction_motion(candidate)
 	var validation_error := _validate(candidate)
@@ -357,6 +359,11 @@ static func _validate(data: Dictionary) -> String:
 			return "earth.levels[%d].slow_percent must be between 0 and 1." % index
 
 	var ui: Dictionary = data["ui"]
+	for key in ["impact_contact_enabled", "impact_camera_enabled"]:
+		if typeof(ui.get(key, false)) != TYPE_BOOL:
+			return "ui.%s must be Boolean." % key
+	if ui.get("impact_treatment", "precise") not in ["precise", "weight"]:
+		return "ui.impact_treatment must be precise or weight."
 	if not ui.has("developer_overlay_visible") or typeof(ui["developer_overlay_visible"]) != TYPE_BOOL:
 		return "ui.developer_overlay_visible must be Boolean."
 	if not ui.has("attack_hitbox_visible") or typeof(ui["attack_hitbox_visible"]) != TYPE_BOOL:
@@ -397,6 +404,14 @@ static func _validate_audio(audio: Dictionary) -> String:
 		if volume_db < -80.0 or volume_db > 0.0:
 			return "audio.%s.volume_db must be between -80 and 0." % group_name
 	return ""
+
+
+static func _normalize_impact_feedback(data: Dictionary) -> void:
+	if not data.get("ui") is Dictionary:
+		return
+	for pair in [["impact_contact_enabled", false], ["impact_camera_enabled", false], ["impact_treatment", "precise"]]:
+		if not data["ui"].has(pair[0]):
+			data["ui"][pair[0]] = pair[1]
 
 
 static func _normalize_legacy_audio_volumes(data: Dictionary) -> void:

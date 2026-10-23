@@ -21,7 +21,7 @@ func configure_entity(
 ) -> void:
 	_base_defensive_level = maxi(defensive_level, 0)
 	_refill_at_zero = refill_at_zero
-	feedback.configure(self, float(status_config["ui"]["cast_feedback_duration"]))
+	feedback.configure(self, float(status_config["ui"]["cast_feedback_duration"]), status_config["ui"])
 	health.configure(maximum_health)
 	hit_reaction.configure(hit_reaction_config)
 	status_controller.configure(self, status_config)
