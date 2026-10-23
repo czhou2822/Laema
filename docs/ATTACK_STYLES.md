@@ -1,5 +1,14 @@
 # School attack styles
 
+## Attack feel reference
+
+Use [Laema attack feel guidelines](ATTACK_FEEL_GUIDELINES.md) alongside the editor
+workflow below. It adapts the user's October 23 transcript reference into
+principles for motion, real contact, target response, sound, effects and rhythm.
+It includes comparison prompts for X1→X2, the user's earlier positive X4→X5
+reference, and melee/Charging/Cast handoffs. Current authored candidates and
+ownership rules below remain authoritative; this guide changes no presets.
+
 ## Current ownership — October 22
 
 Numerical combat settings belong to Player and CombatEnemy root **Settings**,

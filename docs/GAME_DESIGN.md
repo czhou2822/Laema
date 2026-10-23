@@ -1,5 +1,17 @@
 # Laema Side-Scrolling Orb Casting Prototype
 
+## Attack authoring reference — October 23
+
+At the user's request, [Laema attack feel guidelines](ATTACK_FEEL_GUIDELINES.md)
+adapts the supplied `游戏打击感是怎么来的_逐字稿.pdf` into an attack-authoring
+reference. It covers coordinated animation/contact/reaction/audio/effects,
+weapon weight, rhythm and readable Charging/Casting. Apply it to Player melee,
+Casts and the selected Enemy while preserving current active-window detection,
+shared reaction settings, original Heroes III SFX and character-owned tuning.
+Optional hit stop, camera effects, finishers and haptics remain future evaluation
+topics; this documentation adds no feature or tuning change. Source page/time
+references and review prompts are recorded in the guideline.
+
 Current design, consolidated October 20, 2026. Implementation candidates and scoped evidence are recorded in [Implementation Status](IMPLEMENTATION_STATUS.md); acceptance of earlier versions does not validate the full current tree.
 
 **Resolved decisions — October 20:** keep the current shorter reaction durations of 0.25/0.55/0.85/1.15/1.45 seconds for Levels 1–5. Cast commitment and qualifying landed direct hits each restart the five-second Heat Reset Timer. Both former documentation conflicts are resolved; these selections do not add runtime-validation evidence.

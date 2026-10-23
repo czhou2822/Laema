@@ -1,5 +1,17 @@
 # Implementation Status
 
+## Documentation update — attack feel reference, October 23
+
+Added [Laema attack feel guidelines](ATTACK_FEEL_GUIDELINES.md) from the user's
+supplied six-page transcript. Linked it from the GDD, attack-authoring guide and
+document map, and recorded the adopted reference in Combat continuity. The guide
+was reconciled with source `a41c900d`, including active-window contact, shared
+motion/stun parameters, existing post-reaction AI wait and original Heroes III
+SFX. This is documentation only: gameplay, assets and tuning remain unchanged.
+No engine/editor runs or automated gameplay tests were made for this update.
+Earlier test counts below belong to their stated source work; they do not
+establish the new guideline's subjective feel goals.
+
 ## Native Player registration migration — October 22
 
 Status: `AWAITING_USER_VALIDATION`. The user approved moving the existing Fire

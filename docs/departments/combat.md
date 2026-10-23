@@ -1,5 +1,22 @@
 # Combat
 
+## Adopted attack feel reference — October 23
+
+Decision: the user asked to use `游戏打击感是怎么来的_逐字稿.pdf` as a guideline
+for Laema's attacks. `docs/ATTACK_FEEL_GUIDELINES.md` records the source and
+adaptation: coordinated motion/contact/consequence, complementary swing/impact
+sound, readable effects, weapon weight and rhythmic breathing room for Charging
+and Casting. It covers Player X/Cast and the selected reusable Enemy across scenes.
+
+Current character-owned tuning, active-window contact, shared level motion/stun
+parameters, LimboAI execution/post-reaction wait, original Heroes III SFX and
+native animation ownership remain constraints. The user's earlier positive
+X4→X5 report is a historical comparison reference, not acceptance of subsequent
+timing/art candidates. Hit stop, camera shake, richer reaction/audio variation,
+finishers and haptics remain optional work, with no treatment or numbers chosen.
+This documentation update is reconciled with `a41c900d` and claims no new gameplay
+validation or mechanical changes.
+
 ## Castle levels 4–7 — October 22
 
 - **Decision:** The user approved adding base Swordsman, Monk, Cavalier and
