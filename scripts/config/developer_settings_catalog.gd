@@ -374,7 +374,7 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 		field["kind"] = "choice"
 		field["label"] = "Impact treatment"
 		field["group"] = "Cosmetic impact feedback"
-		field["options"] = [["precise", "Precise contact"], ["weight", "Weight accent"]]
+		field["options"] = [["precise", "Precise"], ["weight", "Weight"]]
 		field["description"] = "Precise: two tapered ticks (20/24px complete footprint, 90/100ms); strong camera <=1px/80ms. Weight: wedge and two flecks (28/38px complete footprint, expansion/fade <=110ms); strong camera <=3px/110ms. Enable contact/camera separately; damage cues do not imply stun."
 	if id == "ui.attack_hitbox_visible":
 		field["label"] = "Show attack hitboxes"
