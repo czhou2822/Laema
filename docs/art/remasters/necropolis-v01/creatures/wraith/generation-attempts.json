@@ -1,0 +1,421 @@
+{
+  "creature_id": "wraith",
+  "artwork_method": "Built-in image_gen only; mechanical isolation, registration and exact mirrors through read-only shared helper",
+  "artwork_calls": 11,
+  "attempts": [
+    {
+      "attempt": "batch-000-attempt-01",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-54324f83-409e-424d-9014-9b3e25f1c842.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-54324f83-409e-424d-9014-9b3e25f1c842.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-000-attempt-01.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/batch-000-attempt-01.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: eight newly painted source animation poses of the approved Wraith, on one transparent sprite reference page.\nInput image 1 is the ORIGINAL source-pose guide batch-000.png. It alone controls each pose, facing, hand placement, lean and cloth outline. Input image 2 is the approved high-resolution appearance master. It controls rendering, dark cloth and bone identity only, not the idle pose.\nMake exactly EIGHT independently drawn complete Wraith figures arranged FOUR columns by TWO rows, exact row-major correspondence to guide cells 1-8 (wraith_p000 through wraith_p007). Prefer a 2048x1024 canvas. Equal invisible cells; center each figure within its own cell. Leave at least 40 pixels clear transparent margin around every complete figure, including sleeve tails and hem tips; no touching between figures, no clipping, no labels, no grid. Keep an entirely empty transparent vertical gutter at every column boundary and a full-width empty transparent horizontal gutter between rows.\nIdentity: slender hooded undead, close dark brown-black cowl with back-bent crown, ivory skull-like face and long ragged pale throat fringe, thin skeletal arms and long fingers, near-black umber worn flowing robe with long torn sleeve/hem strips, no visible feet, no weapon or prop. Fine modeled painted volumes and restrained cloth texture exactly like the approved master. Do not turn it into Wight gray/blue robes. No armor, horns, wings, belt ornaments or glowing eyes.\nThese eight ORIGINAL movement poses lean slightly forward facing RIGHT in three-quarter side view, hem trailing toward lower LEFT and one bony hand forward near the abdomen while the nearer hand hangs lower. Match the source's individual arm/hand gestures, head tilt, sweep of robe and small changing tatter shapes separately for every cell. They are not upright idle variations: preserve the narrower, shorter, diagonally trailing airborne silhouette of the source. Do not reuse the master image or repeat one figure eight times. Do not mirror the camera or substitute frontal anatomy. No boots, floor or cast shadow.\nThe guide is nearest-neighbor enlarged original pixels for pose reading only. Produce genuinely NEW high-resolution painted artwork with clean contours, soft sculptural shading and tiny purposeful bone/fabric highlights; do not upscale, trace pixel blocks, or filter the original sprites. Match the visible width/height and curvature of each guide silhouette, allowing source-defined motion rather than giving all poses equal standing height.\nBackground: actual transparent alpha everywhere outside each body and through finger and cloth gaps. No background color, fog, aura, checkerboard, shadow, scenery, text or watermark. Precisely eight complete independent original-matching figures in four columns and two rows.",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/batch-000.png",
+          "sha256": "21dde2a7d8109085dd351acd32fcfd7af292aac98b8a54cf5b521c7f398a283c"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "062f604477b2eaca428c25effb3b5c1dd78ab210e1cafef0233b87e24c2f86a3",
+      "raw_size": [
+        1774,
+        887
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "21dde2a7d8109085dd351acd32fcfd7af292aac98b8a54cf5b521c7f398a283c",
+      "prompt_file_sha256": "532daec8d0218a968c5b5e0e32a640ffe4dc7a40b27361571b549fb5a2a500ec"
+    },
+    {
+      "attempt": "batch-001-attempt-01",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-59ec7ac7-3d3f-405c-a325-db78dfbe309a.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-59ec7ac7-3d3f-405c-a325-db78dfbe309a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-001-attempt-01.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/batch-001-attempt-01.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: newly painted Wraith source animation poses on a genuinely transparent sprite page.\nInput image 1 is the ORIGINAL pose guide and controls exact pose, camera, silhouette, body lean, hands, robe and all native embedded effects. Input image 2 is the approved high-resolution master and controls appearance and rendering ONLY. Original pose authority overrides the master's idle arrangement.\nIdentity: slender hooded undead in near-black brown/umber worn cloth, small cowl with back-bent crown, aged ivory skull-like face, long pale ragged throat fringe, two thin skeletal arms and long fingers, ragged long sleeves and hem strips. No held weapon, armor, horns, wings, visible legs or feet. Fine modeled painted volumes, subtle fabric texture, precise bone highlights like the approved master; no coarse pixel blocks and no blue/gray Wight costume.\nRedraw each occupied guide cell independently in exact row-major order. Do not repeat an idle or copy/repose the master. Match native changes of view, relative silhouette proportions, arm and finger positions, ragged cloth direction, back-facing cloak, collapse and detachment. Actual source white hand/claw streaks or broken bone fragments belong inside their pose and must remain. Do not invent a magic aura, scythe, projectile, smoke, floor, shadow or standalone VFX.\nNo labels, numbers, text, grid, border or watermark. Actual transparent alpha outside each pose, through finger/cloth gaps and between any native detached fragments. No painted background, fog, colored matte or checkerboard. Every visible source-defined tip/fragment must be fully inside its own slot with generous clear margin. Maintain whole-figure separation and empty transparent gutters at all nominal row/column boundaries. New painted high-resolution artwork, not upscaled/traced/filtered original pixel art.\n\nLayout and source order: exactly EIGHT figures in FOUR columns by TWO rows on a preferably 2048x1024 canvas, at least 36px transparent margins around each full silhouette. The row-major IDs are wraith_p008 through wraith_p015.\nSpecific source observations:\nTop row is G01's gesture: cell1 mouth/face has a small red opening; cell2 it opens further; cell3 large open red mouth/face interior; cell4 maximum broad red opening with changed hand curl. Preserve the native red patch as visible mouth/face coloration, not glowing eyes or added magic. These are individual skull/jaw changes, not four identical neutral faces.\nBottom row is G02 F0-F3 quiet idle: slender upright right-facing three-quarter view, both long bony hands close to abdomen/chest, slightly different fingers, shoulders, hem contours and tiny head/robe shifts exactly as each cell. Keep them distinct. Neutral face in bottom row; NO red gesture patch there.\n",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/batch-001.png",
+          "sha256": "abf1883fc575189385d6b5f12db5dcb486856dd60684348848f620712df98de5"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "67d5554cbeb8046dbb9c4218fd47784b2f0c23f201b80939fd416fb9f5d5b49f",
+      "raw_size": [
+        1774,
+        887
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "abf1883fc575189385d6b5f12db5dcb486856dd60684348848f620712df98de5",
+      "prompt_file_sha256": "77abe014c37fd7d21371ee442f4eea0da17713d7a28894a62afd377b161c48e4"
+    },
+    {
+      "attempt": "batch-002-attempt-01",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-3541cdf7-e08e-40a5-b2ec-45a210ce7194.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-3541cdf7-e08e-40a5-b2ec-45a210ce7194.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-002-attempt-01.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/batch-002-attempt-01.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: newly painted Wraith source animation poses on a genuinely transparent sprite page.\nInput image 1 is the ORIGINAL pose guide and controls exact pose, camera, silhouette, body lean, hands, robe and all native embedded effects. Input image 2 is the approved high-resolution master and controls appearance and rendering ONLY. Original pose authority overrides the master's idle arrangement.\nIdentity: slender hooded undead in near-black brown/umber worn cloth, small cowl with back-bent crown, aged ivory skull-like face, long pale ragged throat fringe, two thin skeletal arms and long fingers, ragged long sleeves and hem strips. No held weapon, armor, horns, wings, visible legs or feet. Fine modeled painted volumes, subtle fabric texture, precise bone highlights like the approved master; no coarse pixel blocks and no blue/gray Wight costume.\nRedraw each occupied guide cell independently in exact row-major order. Do not repeat an idle or copy/repose the master. Match native changes of view, relative silhouette proportions, arm and finger positions, ragged cloth direction, back-facing cloak, collapse and detachment. Actual source white hand/claw streaks or broken bone fragments belong inside their pose and must remain. Do not invent a magic aura, scythe, projectile, smoke, floor, shadow or standalone VFX.\nNo labels, numbers, text, grid, border or watermark. Actual transparent alpha outside each pose, through finger/cloth gaps and between any native detached fragments. No painted background, fog, colored matte or checkerboard. Every visible source-defined tip/fragment must be fully inside its own slot with generous clear margin. Maintain whole-figure separation and empty transparent gutters at all nominal row/column boundaries. New painted high-resolution artwork, not upscaled/traced/filtered original pixel art.\n\nLayout and source order: exactly EIGHT figures in FOUR columns by TWO rows on a preferably 2048x1024 canvas, at least 36px transparent margins around each full silhouette. The row-major IDs are wraith_p016 through wraith_p023.\nSpecific source observations:\nCell1 is last unique quiet idle p016: upright right-facing hands close.\nCells2-7 are hurt/recoil G03 F0-F5: p017 slight backward lean and arms near belly; p018 torso bends far back, robe curls to lower right and hands stretch forward right; p019 taller recoiling curve with forward arm extended; p020 head tilted back and both arms flung upward/outward, robe swept lower right; p021 head still tilted up with separated raised hands and lean; p022 return with both arms open outward and trailing robe. Match each source silhouette and true camera; do NOT substitute calm upright poses.\nCell8 p023 starts defence: right-facing upright with hands near front of chest/abdomen. No weapons, no new impact flash.\n",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/batch-002.png",
+          "sha256": "49e8bb84a9a21cdbc995593c808809b11028b1a82998810211b7f6c28a566469"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "c83086b6f59b5c2e164ec2cc81cb7008274eca4c43be4b11eaf8ae4d6b000ce3",
+      "raw_size": [
+        1774,
+        887
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "49e8bb84a9a21cdbc995593c808809b11028b1a82998810211b7f6c28a566469",
+      "prompt_file_sha256": "7f6ba63257ddfef94d871ac6aaf3738462b08eee7c96f8d7538663ceee50e54c"
+    },
+    {
+      "attempt": "batch-003-attempt-01",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-a1168d8b-9071-4430-bcc6-3e391e5fc474.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-a1168d8b-9071-4430-bcc6-3e391e5fc474.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-003-attempt-01.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/batch-003-attempt-01.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: newly painted Wraith source animation poses on a genuinely transparent sprite page.\nInput image 1 is the ORIGINAL pose guide and controls exact pose, camera, silhouette, body lean, hands, robe and all native embedded effects. Input image 2 is the approved high-resolution master and controls appearance and rendering ONLY. Original pose authority overrides the master's idle arrangement.\nIdentity: slender hooded undead in near-black brown/umber worn cloth, small cowl with back-bent crown, aged ivory skull-like face, long pale ragged throat fringe, two thin skeletal arms and long fingers, ragged long sleeves and hem strips. No held weapon, armor, horns, wings, visible legs or feet. Fine modeled painted volumes, subtle fabric texture, precise bone highlights like the approved master; no coarse pixel blocks and no blue/gray Wight costume.\nRedraw each occupied guide cell independently in exact row-major order. Do not repeat an idle or copy/repose the master. Match native changes of view, relative silhouette proportions, arm and finger positions, ragged cloth direction, back-facing cloak, collapse and detachment. Actual source white hand/claw streaks or broken bone fragments belong inside their pose and must remain. Do not invent a magic aura, scythe, projectile, smoke, floor, shadow or standalone VFX.\nNo labels, numbers, text, grid, border or watermark. Actual transparent alpha outside each pose, through finger/cloth gaps and between any native detached fragments. No painted background, fog, colored matte or checkerboard. Every visible source-defined tip/fragment must be fully inside its own slot with generous clear margin. Maintain whole-figure separation and empty transparent gutters at all nominal row/column boundaries. New painted high-resolution artwork, not upscaled/traced/filtered original pixel art.\n\nLayout and source order: exactly EIGHT source pose depictions in FOUR columns by TWO rows on a preferably 2048x1024 canvas, at least 40px transparent margins including every detached fragment. The row-major IDs are wraith_p024 through wraith_p031.\nSpecific source observations:\nTop row cells1-3 are defence p024-p026: hands move from extended at chest height to raised palms then both skeletal hands covering/in front of face. Preserve differing finger spread and forearm overlap, not eight idle figures.\nTop row cell4 p027 begins death collapse: the creature bends into a low curved/floating cloth mass trailing right, both long arms spread; no upright standing torso.\nBottom row p028,p029,p030,p031 shows progressive death/disintegration: p028 low robe collapsing into a spread mass with skull and both arms raised; p029 two long raised forearms whose outer finger/bone pieces begin separating; p030 further separated finger/hand bones and low robe body with skull; p031 skull also visibly separates/lowers and more hand bones float apart above the collapsing robe. Reproduce the precise original distribution of connected and detached bones and cloth, keeping ALL fragments within each slot. Source fragments are part of one pose, not extra creatures. No invented dust, dissolve particles, aura or smoke. Do not repair fragmented source anatomy into an intact living/standing figure.\n",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/batch-003.png",
+          "sha256": "f0bc2504905c24af98e9ac28c8c221a994405cccdbf77205943bc33fbe537b81"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "2b687c82e4025d3110850a70402ff66740856bb26bdab38a48291e10f234f1d3",
+      "raw_size": [
+        1774,
+        887
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "f0bc2504905c24af98e9ac28c8c221a994405cccdbf77205943bc33fbe537b81",
+      "prompt_file_sha256": "91cc4b028094d8d6d19395bb8f91716636a5d7f2d103970be71e72d3acac4504"
+    },
+    {
+      "attempt": "batch-004-attempt-01",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-ac891ea9-5451-4fad-ae2c-6dc45efb20aa.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-ac891ea9-5451-4fad-ae2c-6dc45efb20aa.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-004-attempt-01.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/batch-004-attempt-01.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: newly painted Wraith source animation poses on a genuinely transparent sprite page.\nInput image 1 is the ORIGINAL pose guide and controls exact pose, camera, silhouette, body lean, hands, robe and all native embedded effects. Input image 2 is the approved high-resolution master and controls appearance and rendering ONLY. Original pose authority overrides the master's idle arrangement.\nIdentity: slender hooded undead in near-black brown/umber worn cloth, small cowl with back-bent crown, aged ivory skull-like face, long pale ragged throat fringe, two thin skeletal arms and long fingers, ragged long sleeves and hem strips. No held weapon, armor, horns, wings, visible legs or feet. Fine modeled painted volumes, subtle fabric texture, precise bone highlights like the approved master; no coarse pixel blocks and no blue/gray Wight costume.\nRedraw each occupied guide cell independently in exact row-major order. Do not repeat an idle or copy/repose the master. Match native changes of view, relative silhouette proportions, arm and finger positions, ragged cloth direction, back-facing cloak, collapse and detachment. Actual source white hand/claw streaks or broken bone fragments belong inside their pose and must remain. Do not invent a magic aura, scythe, projectile, smoke, floor, shadow or standalone VFX.\nNo labels, numbers, text, grid, border or watermark. Actual transparent alpha outside each pose, through finger/cloth gaps and between any native detached fragments. No painted background, fog, colored matte or checkerboard. Every visible source-defined tip/fragment must be fully inside its own slot with generous clear margin. Maintain whole-figure separation and empty transparent gutters at all nominal row/column boundaries. New painted high-resolution artwork, not upscaled/traced/filtered original pixel art.\n\nLayout and source order: exactly EIGHT source pose depictions in FOUR columns by TWO rows on a preferably 2048x1024 canvas, at least 40px transparent margins including every detached fragment or claw streak. The row-major IDs are wraith_p032 through wraith_p039.\nSpecific source observations:\nCell1 p032 is the final DEATH frame: ONLY a low collapsed dark ragged robe heap with pale disconnected bone/skull pieces above/on it. No upright body, no restored hooded face or intact arms. Match its low wide silhouette exactly.\nCells2-3 p033,p034 are TURN views: first near-frontal three-quarter and then almost straight frontal, sloping shoulders, hands low before torso, wide hanging sleeves, ragged pale throat fringe, dark skull sockets. Do not preserve the master side profile here.\nCell4 p035 begins upper melee windup: side/back three-quarter body, one upper arm raised/bent, cloak rotated, other hand nearer front.\nBottom row cells1-4 p036-p039 progress through upper claw swipe: raised bony hand, then more rear view and overhead white curved source claw streak; then broad back view leaning diagonally with right-reaching hand and white curved streak; then low diagonal back/side follow-through and bright pale moving hand. White streaks must match the source cell, never become swords/scythes. Preserve hidden skull in back-facing poses, two arms and exact robe sweep.\n",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/batch-004.png",
+          "sha256": "2fdaed2369dad9c3777947e5c8671899a36f3abf7bfbd36f460b4bb8fd893007"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "5f6c5605742d179dfa7f35067c40b7f54fe1275c5f491a93f02bdfb44e329582",
+      "raw_size": [
+        1774,
+        887
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "2fdaed2369dad9c3777947e5c8671899a36f3abf7bfbd36f460b4bb8fd893007",
+      "prompt_file_sha256": "e310b6046f146da2ad4edbca3aab4b0b738a060d8e416a48fda826923dd4009e"
+    },
+    {
+      "attempt": "batch-005-attempt-01",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-01516f28-6d00-459e-8c9a-61038de34426.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-01516f28-6d00-459e-8c9a-61038de34426.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-005-attempt-01.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/batch-005-attempt-01.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: newly painted Wraith source animation poses on a genuinely transparent sprite page.\nInput image 1 is the ORIGINAL pose guide and controls exact pose, camera, silhouette, body lean, hands, robe and all native embedded effects. Input image 2 is the approved high-resolution master and controls appearance and rendering ONLY. Original pose authority overrides the master's idle arrangement.\nIdentity: slender hooded undead in near-black brown/umber worn cloth, small cowl with back-bent crown, aged ivory skull-like face, long pale ragged throat fringe, two thin skeletal arms and long fingers, ragged long sleeves and hem strips. No held weapon, armor, horns, wings, visible legs or feet. Fine modeled painted volumes, subtle fabric texture, precise bone highlights like the approved master; no coarse pixel blocks and no blue/gray Wight costume.\nRedraw each occupied guide cell independently in exact row-major order. Do not repeat an idle or copy/repose the master. Match native changes of view, relative silhouette proportions, arm and finger positions, ragged cloth direction, back-facing cloak, collapse and detachment. Actual source white hand/claw streaks or broken bone fragments belong inside their pose and must remain. Do not invent a magic aura, scythe, projectile, smoke, floor, shadow or standalone VFX.\nNo labels, numbers, text, grid, border or watermark. Actual transparent alpha outside each pose, through finger/cloth gaps and between any native detached fragments. No painted background, fog, colored matte or checkerboard. Every visible source-defined tip/fragment must be fully inside its own slot with generous clear margin. Maintain whole-figure separation and empty transparent gutters at all nominal row/column boundaries. New painted high-resolution artwork, not upscaled/traced/filtered original pixel art.\n\nLayout and source order: exactly EIGHT figures in FOUR columns by TWO rows on a preferably 2048x1024 canvas, at least 40px clear transparent margin around every silhouette and embedded claw streak. The row-major IDs are wraith_p040 through wraith_p047.\nSpecific source observations:\nCell1 p040 and cell2 p041 finish upper melee: diagonal cloth trailing down-left, skull returns to right profile, pale moving hand low in front, then both hands gather back before torso. Keep the native pale hand-motion patch.\nCells3-8 p042-p047 are front melee windup and swipe: p042 broader near-frontal chest with one arm out/back to left and other close to chest; p043 hand rises overhead; p044 raised hand has the native short WHITE curved claw streak above fingers; p045 full forward horizontal lunge toward RIGHT with outstretched skeletal forearm/hand and white arc extending beyond it; p046 low forward follow-through, downward hand and robe trailing LEFT; p047 curls back toward upright, hands returning. Preserve each exact front/side/back rotation and native pale-yellow moving-hand shading. No weapon, no sword, no idle substitution. Whole streak and every fingertip remain visible.\n",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/batch-005.png",
+          "sha256": "cd2e133e51e4c4d4c01ffe16d1456f7002d8767122da1977d1f2f10e4f28a432"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "fdca8e9c748a96acb5d1dcee142c6ddb4a83c43811e4a2ce265e123b725c309a",
+      "raw_size": [
+        1774,
+        887
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "cd2e133e51e4c4d4c01ffe16d1456f7002d8767122da1977d1f2f10e4f28a432",
+      "prompt_file_sha256": "0f04b6a5684d9a32b0a7a6623ef8bc10adfa773f040d4e2a895cd9e806bb1279"
+    },
+    {
+      "attempt": "batch-006-attempt-01",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-6c3eb77d-bf60-47be-8d45-c2b31aaff2b2.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-6c3eb77d-bf60-47be-8d45-c2b31aaff2b2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-006-attempt-01.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/batch-006-attempt-01.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: newly painted Wraith source animation poses on a genuinely transparent sprite page.\nInput image 1 is the ORIGINAL pose guide and controls exact pose, camera, silhouette, body lean, hands, robe and all native embedded effects. Input image 2 is the approved high-resolution master and controls appearance and rendering ONLY. Original pose authority overrides the master's idle arrangement.\nIdentity: slender hooded undead in near-black brown/umber worn cloth, small cowl with back-bent crown, aged ivory skull-like face, long pale ragged throat fringe, two thin skeletal arms and long fingers, ragged long sleeves and hem strips. No held weapon, armor, horns, wings, visible legs or feet. Fine modeled painted volumes, subtle fabric texture, precise bone highlights like the approved master; no coarse pixel blocks and no blue/gray Wight costume.\nRedraw each occupied guide cell independently in exact row-major order. Do not repeat an idle or copy/repose the master. Match native changes of view, relative silhouette proportions, arm and finger positions, ragged cloth direction, back-facing cloak, collapse and detachment. Actual source white hand/claw streaks or broken bone fragments belong inside their pose and must remain. Do not invent a magic aura, scythe, projectile, smoke, floor, shadow or standalone VFX.\nNo labels, numbers, text, grid, border or watermark. Actual transparent alpha outside each pose, through finger/cloth gaps and between any native detached fragments. No painted background, fog, colored matte or checkerboard. Every visible source-defined tip/fragment must be fully inside its own slot with generous clear margin. Maintain whole-figure separation and empty transparent gutters at all nominal row/column boundaries. New painted high-resolution artwork, not upscaled/traced/filtered original pixel art.\n\nLayout and source order: exactly EIGHT figures in FOUR columns by TWO rows on a preferably 2048x1024 canvas, at least 40px clear transparent margin around every silhouette and embedded claw streak. The row-major IDs are wraith_p048 through wraith_p055.\nSpecific source observations:\nCell1 p048 finishes front melee: diagonal hovering right-facing return, pale near hand before belly, cloth trailing lower left.\nCells2-8 p049-p055 are LOWER claw attack. p049 upright broader windup with far arm to left and near hand at chest; p050 arm/fingers lift high overhead; p051 same rising arm with white source claw streak and torso lean; p052 body lunges almost horizontal toward right and forearm plunges DOWN to a hooked white streak at bottom-right; p053 body turns toward viewer while arm sweeps down-left with the hooked white streak below; p054 very low crouched/folded front view, hooded skull high over low robe mass, one claw hand stretched down-left with native pale smear, other hand curled; p055 gathers toward a right-facing hunched recovery, hands close in front. Original source heights compress sharply during lower strike; do not normalize them into tall standing silhouettes. Match camera and robe flow and keep every claw curve visible. No scythe, sword or invented aura.\n",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/batch-006.png",
+          "sha256": "31d6f2d70685b32c3998a0e05d1e888e2673a16ef0d00ebd732461c21400852b"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "edd112f1c578ac66ce6b04c9ebe88d2cd1f26a6ca921cadbc6bf4ad73393261c",
+      "raw_size": [
+        1774,
+        887
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "31d6f2d70685b32c3998a0e05d1e888e2673a16ef0d00ebd732461c21400852b",
+      "prompt_file_sha256": "a360cab5b099e806ab025f864647cec26cda8667cf13e5635a518ca3f0e56d55"
+    },
+    {
+      "attempt": "batch-007-attempt-01",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-0ce2cb69-fa4f-4a03-ad57-0afc5b9c86b8.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-0ce2cb69-fa4f-4a03-ad57-0afc5b9c86b8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-007-attempt-01.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/batch-007-attempt-01.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: newly painted Wraith source animation poses on a genuinely transparent sprite page.\nInput image 1 is the ORIGINAL pose guide and controls exact pose, camera, silhouette, body lean, hands, robe and all native embedded effects. Input image 2 is the approved high-resolution master and controls appearance and rendering ONLY. Original pose authority overrides the master's idle arrangement.\nIdentity: slender hooded undead in near-black brown/umber worn cloth, small cowl with back-bent crown, aged ivory skull-like face, long pale ragged throat fringe, two thin skeletal arms and long fingers, ragged long sleeves and hem strips. No held weapon, armor, horns, wings, visible legs or feet. Fine modeled painted volumes, subtle fabric texture, precise bone highlights like the approved master; no coarse pixel blocks and no blue/gray Wight costume.\nRedraw each occupied guide cell independently in exact row-major order. Do not repeat an idle or copy/repose the master. Match native changes of view, relative silhouette proportions, arm and finger positions, ragged cloth direction, back-facing cloak, collapse and detachment. Actual source white hand/claw streaks or broken bone fragments belong inside their pose and must remain. Do not invent a magic aura, scythe, projectile, smoke, floor, shadow or standalone VFX.\nNo labels, numbers, text, grid, border or watermark. Actual transparent alpha outside each pose, through finger/cloth gaps and between any native detached fragments. No painted background, fog, colored matte or checkerboard. Every visible source-defined tip/fragment must be fully inside its own slot with generous clear margin. Maintain whole-figure separation and empty transparent gutters at all nominal row/column boundaries. New painted high-resolution artwork, not upscaled/traced/filtered original pixel art.\n\nLayout and source order: exactly ONE complete figure, centered on a preferably 1024x1536 portrait canvas, with generous transparent margins on all sides. The row-major IDs are wraith_p056 only.\nSpecific source observations:\nThis is original G20 F0, also the exact G21 alias, a movement start/end pose. It is NOT the approved quiet idle. Match the guide's right-facing three-quarter skull, pale throat fringe, the nearer skeletal hand hanging diagonally across lower abdomen and the far hand curled slightly higher to the right, separated rather than clasped. The long ragged lower robe curves/trails to lower LEFT while upper torso remains mostly upright. No feet. Match precise silhouette and sleeve/hand placement, not generic idle.\n",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/batch-007.png",
+          "sha256": "5090a4dc426667e8d0be3d595ac39529affdcd2943fca61427c55237d5c8fe25"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "0b847750e8eb38655657054eb296fbe765c58abd270b8ef454fd3981187eccc5",
+      "raw_size": [
+        1024,
+        1536
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        254
+      ],
+      "guide_sha256": "5090a4dc426667e8d0be3d595ac39529affdcd2943fca61427c55237d5c8fe25",
+      "prompt_file_sha256": "9ca370298bde21b367559de13ceeb4dda9de14c0d776d74f8e36c573f7ec76e9"
+    },
+    {
+      "attempt": "repair-a-attempt-02",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-68ca481c-5f66-4299-b1fc-ed61f922ca0c.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-68ca481c-5f66-4299-b1fc-ed61f922ca0c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/repair-a-attempt-02.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/repair-a-attempt-02.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: targeted source-pose corrections for the approved Wraith animation, transparent page.\nImage1 is repair-a-proportions-perspective.png and is exact pose/camera/silhouette authority. Image2 is the approved high-resolution Wraith master for rendering and identity only.\nCreate EIGHT separately redrawn poses, FOUR columns by TWO rows, in exactly the guide's row-major order: p008,p009,p010,p011,p017,p020,p026,p033. Genuine transparency, full empty gutters at row/column boundaries and generous clear outer margins. No labels, grid, shadow or background.\nRepair the prior too-wide/too-short silhouettes: these source Wraiths are extremely TALL and NARROW, with SMALL skull, slim shoulders, long vertical dark brown-black robe, tiny thin skeletal fingers and slender pale throat fringe. Do not widen/spread fingers or flare the robe sideways. Preserve exact total silhouette WIDTH:HEIGHT ratios, including hands: cell1 39:86; cell2 38:85; cell3 40:84; cell4 39:84; cell5 39:81; cell6 59:80; cell7 32:86; cell8 41:85. Keep each figure's original ratio; robe length and hand span must fit it without body distortion. Tall silhouettes fill about 80 percent of cell height and remain fully framed. No swollen skulls, oversized palms, short robe, chibi proportions or squat figures.\nTop row: four near-identical original G01 gesture bodies with low hands beside abdomen. Preserve small source hand curls, vertical cloak and changing RED mouth/face opening: small red patch in cell1, wider cell2, open red cavity cell3, maximum open red face/mouth cell4. It is mouth coloration, no glowing eyes, blood spray or magic. Body height stays stable through these four drawings.\nBottom cell1 p017: right-facing hurt/death entry, small skull looking slightly down, upper body leans backward, hands close before belly, long robe bends lower-right; do not curl into a crouch.\nBottom cell2 p020: exact source recoil with head thrown back looking UP, one skeletal arm reaching left, other hand raised HIGH ABOVE head to the upper right; long narrow robe flowing down-right. Copy raised hand/head/shoulder layout exactly; no extra arms.\nBottom cell3 p026: slim straight vertical defence, both skeletal hands cover the face with overlapping fingers; long robe and unchanged narrow silhouette. Hands do not widen beyond original.\nBottom cell4 p033: TURN VIEW, near-FRONTAL three-quarter, BOTH eye sockets visible, face only slightly toward right. It must visibly differ from the master's right-side profile. Shoulders more front-on, two hands hanging near lower torso, long ragged sleeves and narrow robe with torn points. Do not show only one socket or a side skull.\nFine painted sculptural volumes, aged ivory bone, worn near-black brown/umber cloth and pale ragged throat fringe like the approved master. No held weapon, feet, armor, horns, wings or new effects. NEW painted drawings, no original-pixel upscales, no warped/copy-pasted master. All finger gaps and robe gaps genuinely transparent. Exactly eight full source-matching figures.",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/repair-a-proportions-perspective.png",
+          "sha256": "9bd4e31c89e40b0694391bbc355f47cb60ac90c921e30176f3e7262fd990b77d"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "7e2da3eb6311cc273300ab76e6177b5d61d953216160a91ef1b59e7c964c92ee",
+      "raw_size": [
+        1774,
+        887
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "9bd4e31c89e40b0694391bbc355f47cb60ac90c921e30176f3e7262fd990b77d",
+      "prompt_file_sha256": "ad35ebbf0dfe96ccd167182834fda9f95fb39aad86c4c8c9c1f67b9d1a7ba9e2"
+    },
+    {
+      "attempt": "repair-b-attempt-02",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-761b446f-9342-4576-ad74-4b5c60b3adc9.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-761b446f-9342-4576-ad74-4b5c60b3adc9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/repair-b-attempt-02.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/repair-b-attempt-02.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: five targeted Wraith source-pose corrections on a transparent page.\nImage1 is repair-b-upper-camera-collapse.png and alone controls pose, camera, proportions and embedded effects. Image2 is approved master for worn brown-black cloth, ivory bone and fine painted rendering only.\nDraw exactly FIVE independent depictions in FOUR columns by TWO rows: p027,p035,p036,p037 across TOP row, then p054 at bottom-LEFT. Other three bottom cells stay completely transparent and empty. Preserve empty gutters between cells and ample outer margin. No labels, lines, numbers, floor or shadow.\nRepair camera and silhouette, closely following the original shapes. Total source silhouette WIDTH:HEIGHT ratios: p027=67:50; p035=39:83; p036=47:86; p037=51:96; p054=57:49. Small skull, thin arms/fingers and long narrow cloth. Do not widen hands/cape, shorten standing robes or invent camera turns.\nCell1 p027: early DEATH collapse, a low wide curved cloth body trailing right, upright right-facing skull on upper-left of mass, near arm hangs left and other stretches right. Both arms still attached. No stray floating bone/particle below this pose and no new fragments at this early death stage. Original silhouette is low and wide, not intact standing idle.\nCell2 p035: UPPER ATTACK WINDUP in exact SIDE three-quarter view, skull looks RIGHT, body remains near-vertical and very narrow. Near bent forearm/shoulder is lifted at SHOULDER height on the left of torso, pale elbow/hand contour matching guide. Other hand stays near upper front of torso to right. Do NOT put a hand behind or above the head, do not expose a full rear cloak, do not lean into a diagonal flight pose.\nCell3 p036: source rotates more AWAY from viewer: hood BACK/SIDE hides face, no pale skull face showing. Raised open skeletal hand above-left of hood, other hand out to right. Long robe descends mostly downward with mild lean exactly like source. No far-turned visible face and no wide flared cape.\nCell4 p037: nearly FULL BACK view; dark back of cowl, NO visible skull face. One very thin skeletal arm extends straight UP to top-right with the source thin WHITE curved claw swipe from the fingertips toward upper-left. The robe is long, narrow and nearly VERTICAL beneath it; do NOT make the torso fly diagonally or widen the robe into a wing. No sword/scythe.\nBottom-left p054: LOW compact front/three-quarter crouched follow-through, cowl tipped slightly RIGHT so skull also faces slightly right, pale long throat fringe before chest, hand spread down-left with only original pale-yellow hand-motion patch and other hand curled at right. Maintain source low width:height 57:49, more body height than a flattened cape heap. Not a straight-on symmetrical staring face, not upright idle. No new white crescent in this specific cell.\nRender newly painted complete source poses with detailed but restrained brown-black fabric and aged bone. No weapon, feet, armor, horns, wings, smoke or aura. True transparent alpha through all gaps, no matte background or checkerboard. Do not reuse or code-warp master. Keep every source fingertip and streak fully inside its cell.",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/repair-b-upper-camera-collapse.png",
+          "sha256": "31ab17a828aa44194977b33500da2d4fb761ddb32327b06d845781b2a4e25b99"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "a7a94b63810044ad1c62daa37046cdcd6c34ff368f25de7ae283c7ee1d8077ab",
+      "raw_size": [
+        1774,
+        887
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "31ab17a828aa44194977b33500da2d4fb761ddb32327b06d845781b2a4e25b99",
+      "prompt_file_sha256": "ba138c1044bcdd97eb3e3afb509d02554e0f9a1a476713ddfde527d67040585b"
+    },
+    {
+      "attempt": "repair-c-attempt-03",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "tool_output_path": "C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-67799392-eaee-4fca-bddb-d938fb87e683.png",
+      "tool_returned_metadata": {
+        "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-421d-7860-9ab9-da95ec7118d5\\exec-67799392-eaee-4fca-bddb-d938fb87e683.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "raw_file": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/repair-c-attempt-03.png",
+      "prompt_file": "assets/prototype/enemy/wraith/remaster_v01/_source/prompts/repair-c-attempt-03.txt",
+      "exact_submitted_prompt": "Use case: stylized-concept\nAsset type: single exact Wraith recoil source pose, replacement p020.\nInput image1 is the exact original pose and silhouette. Input image2 is the approved Wraith appearance only.\nDraw ONE full-body Wraith matching the source: skull thrown back looking UP and slightly right, dark hood tipped back, one thin skeletal arm reaches LEFT at about shoulder/head height, other skeletal hand lifted HIGH ABOVE the head toward upper RIGHT. Torso arches backward and the long dark ragged robe sweeps down and right, no legs or feet. Native total silhouette width:height is exactly 59:80 (about 0.7375). Preserve small skull and tiny thin fingers rather than oversized hands. Fill central 75 percent of a portrait 1024x1536 canvas, large clear margins on every side.\nAged ivory/gray skull face with BLACK mouth/eye cavities only. Absolutely NO red, pink, orange, blood, glowing eyes or colored face patch anywhere; the red-mouth gesture belongs to other source poses and is NOT this frame. No beam, glow, smoke, fragments, white claw arc, weapon or effect.\nSame fine painted rendering as master, near-black brown/umber worn fabric, pale ragged throat fringe, thin bony fingers, subtly modeled folds and restrained highlights. NEW drawing, no upscaled original pixels and no warped/repeated master. Preserve source anatomy and exact raised-arm/head/robe arrangement; do not substitute calm idle or a collapsed heap.\nGenuinely transparent alpha outside body and through gaps, no backdrop, floor, shadow, labels or watermark. Every fingertip and hem point fully framed with generous transparent padding.",
+      "references": [
+        {
+          "role": "controlling original pose guide",
+          "file": "assets/prototype/enemy/wraith/remaster_v01/_source/guides/repair-c-recoil-neutral-face.png",
+          "sha256": "7ae3ce3b49f82ce10347f709de5701bd2e571aeadf7f28c7f8e5ef19d973f617"
+        },
+        {
+          "role": "approved appearance only",
+          "file": "docs/art/production/necropolis-creature-assets-v01/wraith/master_rgba.png",
+          "sha256": "b319f9536813d002cb7832c739a4ed840ac5c61968fa474335b5233d9689c33d"
+        }
+      ],
+      "raw_sha256": "426a371ff1424d1ec44eaf3e0a51804a628c12d6c9ff7175de378077141b8f31",
+      "raw_size": [
+        1078,
+        1459
+      ],
+      "raw_mode": "RGBA",
+      "raw_alpha_extrema": [
+        0,
+        255
+      ],
+      "guide_sha256": "7ae3ce3b49f82ce10347f709de5701bd2e571aeadf7f28c7f8e5ef19d973f617",
+      "prompt_file_sha256": "20709fa4852523d7fb10debcbfb755730ddcde5e1d8ebf5658397dee524d8577"
+    }
+  ],
+  "ingestion_retry_notes": [
+    {
+      "attempt": "batch-002-attempt-01",
+      "failure": "Default clear-gutter path: No clear transparent gutter; strict components retry succeeded.",
+      "retained_success": "batch-002-attempt-01-components"
+    },
+    {
+      "attempt": "batch-003-attempt-01",
+      "failure": "Default clear-gutter path: No clear transparent gutter; strict components retry succeeded.",
+      "retained_success": "batch-003-attempt-01-components"
+    },
+    {
+      "attempt": "batch-004-attempt-01",
+      "failure": "Default clear-gutter path: No clear transparent gutter; strict components retry succeeded.",
+      "retained_success": "batch-004-attempt-01-components"
+    }
+  ],
+  "limitations": "No seed, model version, original engine effects, local model workflow or deterministic cloud regeneration is claimed. Exact submitted prompt is retained separately from its newline-terminated prompt file."
+}

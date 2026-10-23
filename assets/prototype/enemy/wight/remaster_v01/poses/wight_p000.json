@@ -1,0 +1,100 @@
+{
+  "pose_id": "wight_p000",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "7bac45301a6e88b107cc743a7241214cb7e0b17529a3f8ce5b2880251076e267:173:179:40:83:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "cwight41.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 108333,
+      "stored_size": 2362,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 40,
+      "height": 83,
+      "left": 173,
+      "top": 179,
+      "legacy_header": false,
+      "index_sha256": "7bac45301a6e88b107cc743a7241214cb7e0b17529a3f8ce5b2880251076e267"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-000-attempt-01.png",
+  "raw_sha256": "30a7d3445ac6e9eca4871bb59d9efce5819c94ea7080b70cbd5e4dabbeebcf29",
+  "prompt": "assets/prototype/enemy/wight/remaster_v01/_source/raw/page-000-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wight/remaster_v01/_source/isolated/page-000-attempt-01-wight_p000.png",
+  "isolated_sha256": "dd5cf3654ddd1b0bbb3d7393dfaebbfdd825fc458554936b5d36d69aea7589ed",
+  "source_grid_region": [
+    0,
+    0,
+    444,
+    444
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p000.png",
+  "registered_pose_sha256": "9ed8adc82a92eb68bf0c297692dced4ec84e64b5854a2147225c32514b85d9a6",
+  "mirror_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p000_mirror.png",
+  "mirror_sha256": "36256547f99e782f8bea7faebd7da36f8994986f48e0865ba62da0ffcd591822",
+  "registration": {
+    "source_body_rect": [
+      173,
+      179,
+      40,
+      72
+    ],
+    "artwork_crop": [
+      89,
+      12,
+      375,
+      437
+    ],
+    "registered_rect": [
+      455,
+      323,
+      99,
+      147
+    ],
+    "uniform_artwork_fit": 0.34615384615384615
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Movement F0: right-facing hover, two lowered hands and swept left hem; no weapon or feet. Inspected registered-scale OG/candidate and both facings; 2x source comparison. Worker candidate review only.",
+    "source_sha256_at_review": "9ed8adc82a92eb68bf0c297692dced4ec84e64b5854a2147225c32514b85d9a6",
+    "mirror_sha256_at_review": "36256547f99e782f8bea7faebd7da36f8994986f48e0865ba62da0ffcd591822"
+  },
+  "human_animation_acceptance": false
+}

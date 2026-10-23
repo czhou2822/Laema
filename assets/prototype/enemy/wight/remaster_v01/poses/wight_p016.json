@@ -1,0 +1,100 @@
+{
+  "pose_id": "wight_p016",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "e91cc25ace596f132642ba8f7a9bbb58890d7a5fd056bd0ae0be074f45867945:181:176:30:90:450:400",
+  "original_representative": {
+    "group_id": 2,
+    "original_block": 2,
+    "frame_index": 4,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_02_block_02_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWIGHT/group_02_block_02_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 4,
+      "name": "cwight39.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 400,
+      "offset": 103035,
+      "stored_size": 2865,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 30,
+      "height": 90,
+      "left": 181,
+      "top": 176,
+      "legacy_header": false,
+      "index_sha256": "e91cc25ace596f132642ba8f7a9bbb58890d7a5fd056bd0ae0be074f45867945"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wight/remaster_v01/_source/raw/repair-idle-continuity-attempt-01.png",
+  "raw_sha256": "52d6793ec3b046ec0b3fa64947635bc1f6bab1b6f0c892ac270497dc6224e46f",
+  "prompt": "assets/prototype/enemy/wight/remaster_v01/_source/raw/repair-idle-continuity-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wight/remaster_v01/_source/isolated/repair-idle-continuity-attempt-01-wight_p016.png",
+  "isolated_sha256": "588bb92ecfb8f99f138f3e200a56eb06e1964c1a2f11b68cf4a235a20e7346a0",
+  "source_grid_region": [
+    0,
+    0,
+    804,
+    1957
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p016.png",
+  "registered_pose_sha256": "f9e28c35fe1ab28b4330ae18d560e2f3dc3537890d580d0d91e8d628b89aa415",
+  "mirror_file": "assets/prototype/enemy/wight/remaster_v01/poses/wight_p016_mirror.png",
+  "mirror_sha256": "9d4993b132616f2512f02bb146795ca898c054be601d4964fc1878db08aec937",
+  "registration": {
+    "source_body_rect": [
+      182,
+      177,
+      28,
+      86
+    ],
+    "artwork_crop": [
+      51,
+      60,
+      753,
+      1859
+    ],
+    "registered_rect": [
+      478,
+      323,
+      69,
+      177
+    ],
+    "uniform_artwork_fit": 0.09829059829059829
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Idle F4: newly redrawn for adjacent idle proportions; exact p016 source remains pose authority. Inspected registered-scale OG/candidate and both facings; 2x source comparison. Worker candidate review only.",
+    "source_sha256_at_review": "f9e28c35fe1ab28b4330ae18d560e2f3dc3537890d580d0d91e8d628b89aa415",
+    "mirror_sha256_at_review": "9d4993b132616f2512f02bb146795ca898c054be601d4964fc1878db08aec937"
+  },
+  "human_animation_acceptance": false
+}

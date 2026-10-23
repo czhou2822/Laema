@@ -1,0 +1,100 @@
+{
+  "pose_id": "wraith_p011",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "6567a8f21254a2026bc98cef60a799a87cba77a06f6140ad94957c20f4abacb0:174:179:41:89:450:400",
+  "original_representative": {
+    "group_id": 1,
+    "original_block": 1,
+    "frame_index": 3,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_01_block_01_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_01_block_01_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 3,
+      "name": "cwrait35.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 0,
+      "offset": 106510,
+      "stored_size": 3341,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 41,
+      "height": 89,
+      "left": 174,
+      "top": 179,
+      "legacy_header": false,
+      "index_sha256": "6567a8f21254a2026bc98cef60a799a87cba77a06f6140ad94957c20f4abacb0"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/repair-a-attempt-02.png",
+  "raw_sha256": "7e2da3eb6311cc273300ab76e6177b5d61d953216160a91ef1b59e7c964c92ee",
+  "prompt": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/repair-a-attempt-02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wraith/remaster_v01/_source/isolated/repair-a-attempt-02-wraith_p011.png",
+  "isolated_sha256": "edad562b87c279730834d9f025df6a061af14346b7021bc18b74d04266760e71",
+  "source_grid_region": [
+    1438,
+    15,
+    192,
+    419
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p011.png",
+  "registered_pose_sha256": "da13432998a83c076168a45332482ab87d20f85096d5dff178b04b0c52f5bcca",
+  "mirror_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p011_mirror.png",
+  "mirror_sha256": "3fdedb5ece2f70332208c0075f1e06a135f5861be1643a0dfc440088dab67f73",
+  "registration": {
+    "source_body_rect": [
+      175,
+      180,
+      39,
+      84
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      194,
+      421
+    ],
+    "registered_rect": [
+      461,
+      295,
+      95,
+      207
+    ],
+    "uniform_artwork_fit": 0.49403341288782815
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Native red mouth/face gesture develops across four drawings. Targeted redraw restored tall narrow silhouette; hands remain low. G1 p011 hold at F3-F6 and return order inspected in both facings; red is limited to this gesture, not added standalone magic.",
+    "source_sha256_at_review": "da13432998a83c076168a45332482ab87d20f85096d5dff178b04b0c52f5bcca",
+    "mirror_sha256_at_review": "3fdedb5ece2f70332208c0075f1e06a135f5861be1643a0dfc440088dab67f73"
+  },
+  "human_animation_acceptance": false
+}

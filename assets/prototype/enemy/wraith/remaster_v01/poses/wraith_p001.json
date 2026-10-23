@@ -1,0 +1,100 @@
+{
+  "pose_id": "wraith_p001",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "82467578a5227b5b5158ced5db61d4b740175bac64f1b389927bf7546433f75e:171:180:51:86:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cwrait42.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 128693,
+      "stored_size": 2715,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 51,
+      "height": 86,
+      "left": 171,
+      "top": 180,
+      "legacy_header": false,
+      "index_sha256": "82467578a5227b5b5158ced5db61d4b740175bac64f1b389927bf7546433f75e"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-000-attempt-01.png",
+  "raw_sha256": "062f604477b2eaca428c25effb3b5c1dd78ab210e1cafef0233b87e24c2f86a3",
+  "prompt": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-000-attempt-01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wraith/remaster_v01/_source/isolated/batch-000-attempt-01-wraith_p001.png",
+  "isolated_sha256": "1edcd531bff8651c8352c0528286064f58bcb18f45b5b8e174633c9c822b92d7",
+  "source_grid_region": [
+    444,
+    0,
+    443,
+    444
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p001.png",
+  "registered_pose_sha256": "7e090c3a2870600be773273afe4fd92a7f21253b25884e90633279060469ea6c",
+  "mirror_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p001_mirror.png",
+  "mirror_sha256": "7339acd584be0a681c4ceb51bf59a3ee0007a3f339b2d6514dab68112c5d15e6",
+  "registration": {
+    "source_body_rect": [
+      171,
+      180,
+      50,
+      72
+    ],
+    "artwork_crop": [
+      67,
+      21,
+      393,
+      430
+    ],
+    "registered_rect": [
+      450,
+      319,
+      123,
+      154
+    ],
+    "uniform_artwork_fit": 0.3773006134969325
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Right-facing hovering movement, lower robe trailing left, near hand lower than forward hand; individual finger/hem variations remain. No feet, weapon or clipped robe tips. Raw artwork, enlarged original/candidate and both-facing timeline/GIF frames inspected.",
+    "source_sha256_at_review": "7e090c3a2870600be773273afe4fd92a7f21253b25884e90633279060469ea6c",
+    "mirror_sha256_at_review": "7339acd584be0a681c4ceb51bf59a3ee0007a3f339b2d6514dab68112c5d15e6"
+  },
+  "human_animation_acceptance": false
+}

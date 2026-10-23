@@ -1,0 +1,100 @@
+{
+  "pose_id": "wraith_p022",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "e488f744e19080524ee63a2ebcea7a453d9558aa510e4f0e8b8ec115a68f0dda:166:180:57:90:450:400",
+  "original_representative": {
+    "group_id": 3,
+    "original_block": 3,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_03_block_03_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWRAIT/group_03_block_03_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "cwrait54.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 163245,
+      "stored_size": 3295,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 57,
+      "height": 90,
+      "left": 166,
+      "top": 180,
+      "legacy_header": false,
+      "index_sha256": "e488f744e19080524ee63a2ebcea7a453d9558aa510e4f0e8b8ec115a68f0dda"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-002-attempt-01-components.png",
+  "raw_sha256": "c83086b6f59b5c2e164ec2cc81cb7008274eca4c43be4b11eaf8ae4d6b000ce3",
+  "prompt": "assets/prototype/enemy/wraith/remaster_v01/_source/raw/batch-002-attempt-01-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/wraith/remaster_v01/_source/isolated/batch-002-attempt-01-components-wraith_p022.png",
+  "isolated_sha256": "a8a1b2179591b35b19cab48c47aeef70e791c3777578f561a5ca07d0fbd9540f",
+  "source_grid_region": [
+    946,
+    456,
+    341,
+    418
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p022.png",
+  "registered_pose_sha256": "3cb4b57365c267e26b2ec6f587b45751ec0e5dedd1539b28b6012edc5fb5ddc9",
+  "mirror_file": "assets/prototype/enemy/wraith/remaster_v01/poses/wraith_p022_mirror.png",
+  "mirror_sha256": "971ff13fcba3179573f176e56f061b114200968a04a8aca13b606f1fba3c89ce",
+  "registration": {
+    "source_body_rect": [
+      168,
+      180,
+      55,
+      80
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      343,
+      420
+    ],
+    "registered_rect": [
+      443,
+      325,
+      136,
+      167
+    ],
+    "uniform_artwork_fit": 0.39882697947214074
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Hurt recovery has head returning right and hands separated outward, not substituted idle. Ragged hem remains framed. Both facings inspected.",
+    "source_sha256_at_review": "3cb4b57365c267e26b2ec6f587b45751ec0e5dedd1539b28b6012edc5fb5ddc9",
+    "mirror_sha256_at_review": "971ff13fcba3179573f176e56f061b114200968a04a8aca13b606f1fba3c89ce"
+  },
+  "human_animation_acceptance": false
+}
