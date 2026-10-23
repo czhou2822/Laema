@@ -2,6 +2,28 @@
 
 Current guide, consolidated October 20. [Pre-housekeeping version](history/2026-10-20-document-housekeeping/sources/docs/GYM.md) preserves earlier instructions and reports. Heat timer and shared reaction durations are settled by the October 20 decisions in [GAME_DESIGN.md](GAME_DESIGN.md).
 
+## Optional feedback review — October 23–24 candidate
+
+The runtime Portal's **General → UI → Cosmetic impact feedback** provides
+independent **Contact accent** and **Heavy impact camera** switches and a
+**Precise / Weight** treatment selector. Both switches default off; Precise is
+the default. Live edits reach both fighters; **Save Tuning** remembers the
+preferences. The editor Portal uses its own navigation over the same catalog.
+
+Only confirmed APPLIED direct damage with actual Health lost receives the new
+ordinary-hit cue. Misses, zero, block, parry, invincibility and DoT do not.
+Mixed Casts keep both damage amounts/captions but one contact accent. Stronger
+qualifying reactions can receive the optional camera offset. At1280×720,
+camera stays within3px/120ms and complete contact footprint within40px/120ms.
+No hit stop, zoom/rotation or actor-wide flash is added. Both-off is the useful
+comparison baseline, not a loss of existing damage or status information.
+
+Same-frame direct numbers and Cast captions now space horizontally in their
+existing lanes, with8px between outlined siblings and a12px viewport margin.
+Formed families retain that margin as the owner moves. Older fading numbers
+can still crowd the row. The [overnight report](iterations/2026-10-23-fire-combat-overnight/REPORT.md)
+separates actual agent play/native images from pending controller/feel acceptance.
+
 Status: implemented candidate for a user playtest. Fire is the default
 school; character tuning remains provisional. No gameplay-feel or
 physical-controller acceptance is claimed.
@@ -161,14 +183,14 @@ Save native edits separately and restart the scene. Portal Save does not patch
 Player-X curves; Enemy/Pikeman shortcuts keep their existing behavior.
 
 Player Fire X windup/recovery pairs at zero Heat are .21/.51, .24/.51,
-.195/.45, .33/.36 and .30/1.10 seconds. X4's daytime candidate totals0.69s,
+.195/.45, .33/.36 and .55/1.10 seconds. X4's daytime candidate totals0.69s,
 replacing only its0.51s recovery; native normalized windows/geometry stay fixed,
-but their real-time duration shortens. X5's current C7 (651d9978) is a provisional
-human-review candidate, base1.40s, not accepted final latency/feel. Cast total is
+but their real-time duration shortens. X5's current T1 (5cc98e8e/local3200279f) is
+a provisional human-review candidate, base1.65s, not accepted final latency/feel. Cast total is
 1.2 seconds. The unchanged shared baselines already contain the old Gym1.5× pace
-once; C7 changes only X5's pre-split windup from D0.45 to0.30, retaining1.10
-recovery and no room multiplier. Earlier lunge/contact and real input-window
-timing accompany that faster preparation; normalized rules/values do not change,
+once; T1 changes only X5's pre-split duration from C7's0.30 to0.55, retaining1.10
+recovery and no room multiplier. Later lunge/contact and changed real input/buffer
+timing accompany that slower preparation; normalized rules/values do not change,
 and following Cast safety is not guaranteed. Charging retains
 its previous speed. Native Fire X4/X5 geometry and authored lunge values are
 unchanged; actual timed displacement can differ through pacing and collision.
@@ -183,7 +205,9 @@ the selected shared level's distance and motion time. The former per-X5 0.15s
 override and all per-X push multipliers are retired. In **Combat → Hit-reaction
 levels**, adjust **Motion duration** to change shove speed without shortening
 **Stun duration**; values above stun are capped during execution. Initial motion
-times are .25/.55/.85/1.15/1.45 seconds, matching the existing ordinary durations.
+times originally matched stun. The October23–24 candidate now stores
+.25/.55/.85/.15/1.45 seconds; only Level4 motion changed. Its20px shove finishes
+promptly while its1.15s stun, control lock and invulnerability continue.
 Active reactions retain their captured values; the separate Enemy AI wait is
 unchanged. Practice-target legacy recoil is separate.
 Current stored duration/distance pairs are .25 s/5 px, .55/10, .85/15, 1.15/20
@@ -201,7 +225,9 @@ launch time, travel/damage, level-dependent size and audio are retained.
 Non-Fire emission is unchanged. The user accepted that the raised horizontal
 shot can miss the short legacy dummy; no dummy or trajectory repair is included.
 The raised-hand mapping is preserved by this reconciliation. Rendered checks
-of current shared reactions remain pending; earlier shove evidence is historical.
+of the current Level4 candidate include an actual20px/approximately0.15s shove
+and unchanged1.15s hurt in the overnight report. Human spacing/feel acceptance
+and full level/creature coverage remain pending.
 The approved dodge follow-up keeps clear rolls at0.4s, but actual end-overlap
 with an already excepted combat Enemy grants one0.1s extension at captured
 speed/direction. Protection, ignored actions and pass-through last until actual
@@ -333,7 +359,8 @@ rules are changed by toggling the overlay.
 
 ### Daytime candidates — October 22
 
-X5 is provisionally retained as C7 .30/1.10 for human review. Main's Right D/C7
+At daytime closure X5 was provisionally retained as C7 .30/1.10; October24 T1
+is now the0.55/1.10 human-review candidate described above. Main's earlier Right D/C7
 openings both landed five X and empowered Lv5/APPLIED13; C7 contact/launch were
 earlier, with both continuous fights ending70HP. A separate Left opening and
 continuation also succeeded. This supports reduced setup delay into existing
@@ -355,8 +382,9 @@ extension.
 
 Fire projectile child size is now36x27 at Lv1 and72x54 at Lv3. Selected in-flight
 images support larger drawings, not a matched-distance readability or hip-origin/
-point-blank visibility cure. The saved SFX candidate is -6dB internally, with
-original clips/pitches retained. Actual12s Master WAVs show lower recorded RMS and
+point-blank visibility cure. That daytime SFX candidate was-6dB; the later
+authored f6ccfbe0 baseline stores-20dB, preserved by the October23–24 run.
+Original clips/pitches remain retained. The daytime12s Master WAVs show lower recorded RMS and
 fewer encoder-overrange samples; no comfortable-loudness/audition pass is claimed.
 The recorder's optional capture_audio_seconds defaults off and changes no game
 mix. Main also verified an early-quit WAV prefix, not a full requested duration.

@@ -1,5 +1,93 @@
 # Implementation Status
 
+## Overnight Fire game-feel candidates — October 23–24
+
+Status: `AWAITING_USER_VALIDATION`. User-authorized bounded implementation,
+rendered comparison, canonical synchronization and local merge; no push or Web
+export. Source basis is f6ccfbe03143b5bf591ee83f5725ddb3919644b3 plus shared
+Resource commit4b715460 and U's feedback/support sequence through1660dd04.
+R1ab284aa7 was integrated locally asd6a74074; T1's one-Resource5cc98e8e was
+integrated as3200279f. Current product head is3200279f4f69f0f9e6fdb5bac0f0674befda5890.
+The [numbered report](iterations/2026-10-23-fire-combat-overnight/REPORT.md) and
+[ledger](iterations/2026-10-23-fire-combat-overnight/PROGRESS.md) own exact local
+integration/replay receipts, selected original evidence and trial limitations.
+
+Retained scope:
+
+- Shared Level4 motion1.15→0.15s in the authoritative Resource and existing
+  mirror only. Same20px distance and1.15s stun; every other level unchanged.
+- Fire X5 T1 pre-split duration0.30→0.55, recovery1.10 retained, base1.65s.
+  Other style values, native poses/geometry/markers and normalized rules fixed.
+- Optional confirmed-damage Precise/Weight contact and additive heavy-camera
+  response in existing Feedback/Resolver/Arena/config owners. Independent
+  switches default off. Mixed layers keep separate results and one cue.
+- Same-frame amount/caption sibling spacing and lifetime moving-edge clamp in
+  existing Feedback, preserving separate numbers, fonts, timing and DoT.
+- New-control label/tooltip fit, exact detached-Area cleanup guard and the
+  actually used read-only recorder observations; no new gameplay owner.
+  R1 additionally guards/disconnects the detached Arena camera callback.
+
+Actual agent evidence: Windows Godot4.7.1/1280×720/60physicsHz, normal bound input,
+no forced Health/Heat/orbs/hits/positions/AI/clocks. Baseline and retained variants
+completed encounters with zero unexpected inputs in the clean trials. Level4
+delivered20px in9physics steps while hurt persisted approximately1.15s. Native
+mixed-Cast before/after showed separate13/10 and Water4/Fire2;22right-edge samples
+kept8px gaps and outlined bounds within12px margins during target movement.
+Native controls, live independent off switches, Save and fresh-process reload
+were checked. Configuration serialization was then restored byte-identically
+before subsequent comparisons. Actual Retry/quit no longer reproduced the new
+detached-Area error. A separate normal Gym Retry camera-callback error was then
+found in final play and repaired by R1; fresh ordinary Retry/complete fights
+did not reproduce it. Generic ObjectDB/resource exit diagnostics remain.
+
+T1's longer X5 pre-split playback moved observed low-Heat X4→X5 contact from
+815ms/INVINCIBLE0 to1067ms/APPLIED10/Level4 under the same fixed0.85s protection.
+The compared preludes endedP90/E150/H8; natural AI/input variation remains, so
+final Health differences are not a controlled treatment effect. Two complete
+T1 fights endedP77.5/E0/H21 andP70/E0/H13, with full right/left five-hit chains
+observed. Native/Mali review found no obvious new blade/body separation in the
+samples; smoothness/sluggishness and higher-Heat safety remain unverified.
+
+Late isolated comparisons were actually played and left unmerged: U's X5 T2
+0.45/1.10 cleared the sampled low-Heat interval but had less margin than T1 and
+no established compensating feel win. After explicit human writer authorization,
+Dum-E's X1 P1 0.28/0.44 retained total0.72s and ordinary chains, but an early
+second press moved from native progress0.333/buffered to0.250/before-buffer.
+Main retains X1 0.21/0.51; these experiments are not accepted defaults.
+
+Final exact-product3200279f/default-JSON PrototypeArena replay completed
+Player80/FinalEnemy0/Heat28/unexpected0 and visibly entered 'now you are free'.
+Optional contact/camera remained off and camera offset0. No gameplay script
+error; generic16ObjectDB/9resource exit diagnostics remain. The telemetry Enemy
+Health field can still follow a practice target after final Enemy defeat; that
+existing focus policy was not changed. Ordinary Dodge cancellation/resource,
+post-launch ignored input and wall/overlap cases are bounded in the report,
+not a blanket controller/immunity-matrix pass.
+
+Limited regression completed Archer and Archangel encounters using their
+existing policies/stats. Archangel body-debug frames expose a pre-existing
+humanoid/capsule registration separation; no collider/art/AI correction or wider
+roster clearance. Air/Earth five-X hits and real-orb Casts were exercised on a
+normal training target, not an attacking-enemy or full tutorial-flow pass.
+Natural practice reached Heat91, but Fire's five high-Heat actions missed the
+short dummies; this is not high-Heat contact against a live Enemy.
+
+Supplementary focused feedback fixture after R1:1,998checks/0failures. Separate dodge
+fixture:512/513passes; its sole failing retired-control-count assertion remains
+stale. Native X2 editor scrubs at0.2798/0.64/0.80 showed saved capsule/blade
+agreement without edits. Old unused contact-API tests still parse-fail; no clean
+whole-editor/full-suite claim. Audio was captured but not auditioned; no audio
+change or comfort claim. Synthetic input is not physical-controller acceptance.
+
+Apart from the stated X5 timing candidate, this record accepts no new AI policy,
+artwork, other Fire timing, native geometry/lunge values, damage/Impact/Poise,
+Heat/orb/input, Cast timing, defence or dodge changes. The
+exact synchronized GDD still awaits user verification. Final controller feel,
+camera comfort, rendered left-viewport clamp stress/high-Heat live-enemy coverage, wider creature
+alignment, short-target/floor registration and inherited fixture/exit warnings
+remain open. Earlier records below retain their original scope and evidence;
+their old pending-merge wording is historical, not the current handoff.
+
 ## Castle/Necropolis roster and number-row cycles — October 23
 
 Status: `AWAITING_USER_VALIDATION`. The user approved all fourteen Necropolis
@@ -640,7 +728,8 @@ Source review/agent play is not user controller, numerical, art or comfort accep
 | `config/prototype_combat.json` | Saved SFX volume_db0->-6 only; original clips/pitches/ducking and Ambient/BGM preserved | `ddab1126` |
 | `tools/tests/overnight_fire_playtest.gd` | Optional Master WAV capture0..30s, default off; bounded2s ring/2048-frame drain, actual-rate stereo PCM16, loss/timing/cleanup metrics | `63409fd5` |
 
-Current X5 is C7 as above; D0.45/1.10 (base1.55s,57aef5ab) remains historical
+At the October22 daytime closure X5 was C7 as above; the later October24 T1
+candidate is recorded at the top of this file. D0.45/1.10 (base1.55s,57aef5ab) remains historical
 comparison evidence. Enemy attack_range72/A9682BE0 was restored after the
 [rejected range96 trial](iterations/2026-10-22-fire-combat-daytime/ITERATION6_REVIEW.md).
 The other retained overnight repairs/evidence below are preserved. Daytime source changes add no new art, AI

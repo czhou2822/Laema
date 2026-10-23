@@ -3,7 +3,9 @@
 Status: adopted reference and authoring guideline at the user's request on
 2026-10-23. Applies to Laema's X attacks, Casts and selectable reusable Enemies across
 all scenes. This document guides future authoring and evaluation; it does not
-change gameplay or establish that optional effects have been implemented.
+change gameplay. The separately approved October23–24 optional contact/camera
+prototype is recorded in the GDD and overnight report; it is a candidate, not
+final artwork, motion comfort or controller acceptance.
 
 Source: user-supplied `游戏打击感是怎么来的_逐字稿.pdf`, six pages, prepared
 2026-10-23 from the 14:46 recording `我做了个游戏，告诉你游戏打击感是怎么来的？.mp4`.
@@ -145,8 +147,10 @@ The behavior tree triggers and holds the Enemy's shared reaction execution.
 Exact reaction tuning remains in character settings/Dev Portal. Its existing
 post-reaction BTRandomWait stays separate from hurt and invulnerability; this
 guide changes neither the wait nor reaction ownership. Sound-variation logic,
-hit stop, camera effects and haptics are separate implementation work, not new
-controls introduced by this guideline.
+hit stop and haptics remain separate future work. The October23–24 candidate
+adds independently disabled contact/camera controls through existing owners;
+it does not add time manipulation or change reaction ownership. This guideline
+itself does not introduce those controls or establish their subjective success.
 
 ## Review an attack in context
 

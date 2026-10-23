@@ -1,0 +1,4216 @@
+{
+  "scope": "Actual scheduled bound hardware events from the isolated October23-24 run; synthetic input is not physical-controller acceptance. UI01 is excluded as combat comparison. State/outcome evidence remains separately labelled. No forced game-state commands.",
+  "startup": {
+    "id": 1,
+    "actions": [
+      {
+        "at_ms": 0,
+        "action": "pause",
+        "pressed": true
+      },
+      {
+        "at_ms": 70,
+        "action": "pause",
+        "pressed": false
+      }
+    ],
+    "capture_seconds": 1,
+    "capture_every_ms": 125,
+    "capture_scale": 0.5
+  },
+  "trials": [
+    {
+      "trial": "C2-failure-mixed-01",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "developer_overlay",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "developer_overlay",
+              "pressed": false
+            },
+            {
+              "at_ms": 180,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 300,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 800,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 860,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 1.2,
+          "capture_every_ms": 50,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            400
+          ]
+        },
+        {
+          "id": 3,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 80,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 900,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 930,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1000,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1080,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1660,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1740,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2150,
+              "action": "select_water",
+              "pressed": true
+            },
+            {
+              "at_ms": 2230,
+              "action": "select_water",
+              "pressed": false
+            },
+            {
+              "at_ms": 2310,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2390,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2710,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2790,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3200,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 5150,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 5230,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 5.6,
+          "capture_every_ms": 50,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 4,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "select_fire",
+              "pressed": true
+            },
+            {
+              "at_ms": 180,
+              "action": "select_fire",
+              "pressed": false
+            },
+            {
+              "at_ms": 200,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 250,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 330,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1450,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 2200,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2280,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3950,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 4030,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 4.4,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            1800
+          ]
+        },
+        {
+          "id": 5,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 650,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 690,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 730,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1250,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 1330,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 1.7,
+          "capture_every_ms": 50,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 6,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 500,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 600,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 680,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1230,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1310,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1860,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1940,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2490,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2570,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3120,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3200,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 5400,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 5480,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 6100,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 6180,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 6800,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 8450,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 8530,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 8.9,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 7,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 400,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 480,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1050,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1130,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1700,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1780,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2350,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2430,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3000,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3080,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 5000,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 5080,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 5.5,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        }
+      ]
+    },
+    {
+      "trial": "C2-ui-01",
+      "excluded_as_combat_comparison": true,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "developer_overlay",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "developer_overlay",
+              "pressed": false
+            },
+            {
+              "at_ms": 180,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 350,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 360,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 380,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 440,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1080,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1140,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1780,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1840,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2480,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2540,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3180,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3240,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4200,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 5900,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 6000,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 6060,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 6080,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 6800,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 6970,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 7200,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 7260,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.7,
+          "capture_every_ms": 50,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 3,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 1,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        }
+      ]
+    },
+    {
+      "trial": "C2-ui-save-02",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [],
+          "capture_seconds": 1,
+          "capture_every_ms": 250,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            100,
+            800
+          ]
+        }
+      ]
+    },
+    {
+      "trial": "C2-camera-only-01",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "developer_overlay",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "developer_overlay",
+              "pressed": false
+            },
+            {
+              "at_ms": 180,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 350,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 360,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 380,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 440,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1080,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1140,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1780,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1840,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2480,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2540,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3180,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3240,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4200,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 5900,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 6000,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 6060,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 6080,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 6800,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 6970,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 7200,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 7260,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.7,
+          "capture_every_ms": 50,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 3,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 250,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 300,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 360,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 960,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1020,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1620,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1680,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2280,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2340,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2940,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3000,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4080,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 5750,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 5810,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 6.2,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 4,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 200,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 250,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 310,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 880,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 940,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1510,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1570,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2140,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2200,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2770,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2830,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4050,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6100,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 6150,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 6210,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 6780,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 6840,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 7410,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 7470,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 8040,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 8100,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 8670,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 8730,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 9950,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 11900,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 11960,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 12.3,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        }
+      ]
+    },
+    {
+      "trial": "C2-contact-only-01",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "developer_overlay",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "developer_overlay",
+              "pressed": false
+            },
+            {
+              "at_ms": 180,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 350,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 360,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 380,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 440,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1080,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1140,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1780,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1840,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2480,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2540,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3180,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3240,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4200,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 5900,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 6000,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 6060,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 6080,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 6800,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 6970,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 7200,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 7260,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.7,
+          "capture_every_ms": 50,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 3,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 80,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 900,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 930,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1000,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1080,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1660,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1740,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2150,
+              "action": "select_water",
+              "pressed": true
+            },
+            {
+              "at_ms": 2230,
+              "action": "select_water",
+              "pressed": false
+            },
+            {
+              "at_ms": 2310,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2390,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2710,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2790,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3200,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 5150,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 5230,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 5.6,
+          "capture_every_ms": 50,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            3900,
+            4200
+          ]
+        },
+        {
+          "id": 4,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 200,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 250,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 310,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 880,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 940,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1510,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1570,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2140,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2200,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2770,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2830,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4050,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6100,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 6150,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 6210,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 6780,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 6840,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 7410,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 7470,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 8040,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 8100,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 8670,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 8730,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 9950,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 11900,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 11960,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 12.3,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        }
+      ]
+    },
+    {
+      "trial": "C6-labels-center-01",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "developer_overlay",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "developer_overlay",
+              "pressed": false
+            },
+            {
+              "at_ms": 180,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 350,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 360,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 380,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 440,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1080,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1140,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1780,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1840,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2480,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2540,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3180,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3240,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4200,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 5900,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 6000,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 6060,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 6080,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 6800,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 6970,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 7200,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 7260,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.7,
+          "capture_every_ms": 50,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 3,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 80,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 900,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 930,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1000,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1080,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1660,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1740,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2150,
+              "action": "select_water",
+              "pressed": true
+            },
+            {
+              "at_ms": 2230,
+              "action": "select_water",
+              "pressed": false
+            },
+            {
+              "at_ms": 2310,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2390,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2710,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2790,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3200,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 5150,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 5230,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 5.6,
+          "capture_every_ms": 50,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            3900,
+            4200
+          ]
+        },
+        {
+          "id": 4,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 200,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 250,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 310,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 880,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 940,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1510,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1570,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2140,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2200,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2770,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2830,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4050,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6100,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 6150,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 6210,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 6780,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 6840,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 7410,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 7470,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 8040,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 8100,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 8670,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 8730,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 9950,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 11900,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 11960,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 12.3,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        }
+      ]
+    },
+    {
+      "trial": "C7-right-edge-01",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "developer_overlay",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "developer_overlay",
+              "pressed": false
+            },
+            {
+              "at_ms": 180,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 300,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 380,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 500,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 900,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 3500,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 3600,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 3630,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 5500,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 12500,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 13000,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 13080,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 13.5,
+          "capture_every_ms": 150,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            3500,
+            8500,
+            12200
+          ]
+        },
+        {
+          "id": 3,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 130,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 210,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 220,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 700,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 730,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 740,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 800,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 880,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1430,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1510,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2060,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2140,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2690,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2770,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3320,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3400,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4450,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6200,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 6380,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 6600,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 6680,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            600,
+            3650,
+            5150,
+            6400
+          ]
+        },
+        {
+          "id": 4,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 130,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 210,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 220,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 700,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 900,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 1300,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 1380,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 1.8,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 5,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 80,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 190,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 550,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 600,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 680,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1230,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1310,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1860,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1940,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2490,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2570,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3120,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3200,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4350,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6200,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 6380,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 6650,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 6730,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.1,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            3600,
+            5200,
+            6500
+          ]
+        },
+        {
+          "id": 6,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 80,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 1500,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 1530,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1600,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1680,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2260,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2340,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2750,
+              "action": "select_water",
+              "pressed": true
+            },
+            {
+              "at_ms": 2830,
+              "action": "select_water",
+              "pressed": false
+            },
+            {
+              "at_ms": 2910,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2990,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3310,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3390,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3800,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6500,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 6580,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 6.9,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            4400,
+            5000,
+            6000
+          ]
+        },
+        {
+          "id": 7,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 200,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 250,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 310,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 880,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 940,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1510,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1570,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2140,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2200,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2770,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2830,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4050,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6100,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 6150,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 6210,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 6780,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 6840,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 7410,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 7470,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 8040,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 8100,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 8670,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 8730,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 9950,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 11900,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 11960,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 12.3,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        }
+      ]
+    },
+    {
+      "trial": "C7-archer-legacy-off-01",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "developer_overlay",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "developer_overlay",
+              "pressed": false
+            },
+            {
+              "at_ms": 2400,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 2480,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 2.9,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            900,
+            1800
+          ]
+        },
+        {
+          "id": 3,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 500,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 6900,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 7350,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 7430,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.8,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            2000,
+            6500
+          ]
+        },
+        {
+          "id": 4,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 1300,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 1500,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 4500,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 4800,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 4880,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 5.2,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            1000,
+            2200,
+            4000
+          ]
+        },
+        {
+          "id": 5,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 130,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 210,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 220,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 700,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 730,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 900,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1000,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1080,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1630,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1710,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2260,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2340,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2890,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2970,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3520,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3600,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4600,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6600,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 6680,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            600,
+            2300,
+            5400
+          ]
+        },
+        {
+          "id": 6,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 1000,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 1030,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1100,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1180,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1730,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1810,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2360,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2440,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2990,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3070,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3620,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3700,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4800,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6800,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 6880,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.3,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 7,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 1000,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 1030,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1100,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1180,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1730,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1810,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2360,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2440,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2990,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3070,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3620,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3700,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4800,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6800,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 6880,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.3,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 8,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 1200,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 1250,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 1270,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 1350,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 1360,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 1950,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 1980,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 2000,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 2050,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2130,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2680,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2760,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3310,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3390,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3940,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 4020,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4570,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 4650,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 5600,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 7400,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 7480,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 8500,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 8580,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 9,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            1700,
+            6500,
+            7900
+          ]
+        },
+        {
+          "id": 9,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 180,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 750,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 830,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1500,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 1580,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 2,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            1000
+          ]
+        }
+      ]
+    },
+    {
+      "trial": "C7-archangel-01",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "developer_overlay",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "developer_overlay",
+              "pressed": false
+            },
+            {
+              "at_ms": 2400,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 2480,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 2.9,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            1200,
+            2100
+          ]
+        },
+        {
+          "id": 3,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 130,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 210,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 220,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 250,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 330,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 700,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 780,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 1100,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 1180,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 2100,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 3200,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 3500,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 5000,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 5400,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 5480,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 5.9,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            600,
+            1500,
+            4200
+          ]
+        },
+        {
+          "id": 4,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 80,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 1500,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 1530,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1600,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1680,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2260,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2340,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2750,
+              "action": "select_water",
+              "pressed": true
+            },
+            {
+              "at_ms": 2830,
+              "action": "select_water",
+              "pressed": false
+            },
+            {
+              "at_ms": 2910,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2990,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3310,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3390,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3800,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6500,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 6580,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 6.9,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            4400,
+            5000,
+            6000
+          ]
+        },
+        {
+          "id": 5,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "select_fire",
+              "pressed": true
+            },
+            {
+              "at_ms": 180,
+              "action": "select_fire",
+              "pressed": false
+            },
+            {
+              "at_ms": 220,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 250,
+              "action": "dodge",
+              "pressed": true
+            },
+            {
+              "at_ms": 330,
+              "action": "dodge",
+              "pressed": false
+            },
+            {
+              "at_ms": 340,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 800,
+              "action": "move_left",
+              "pressed": true
+            },
+            {
+              "at_ms": 830,
+              "action": "move_left",
+              "pressed": false
+            },
+            {
+              "at_ms": 850,
+              "action": "select_air",
+              "pressed": true
+            },
+            {
+              "at_ms": 930,
+              "action": "select_air",
+              "pressed": false
+            },
+            {
+              "at_ms": 950,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1000,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1060,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1180,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1240,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1440,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1500,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1690,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1750,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1950,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2010,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2300,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 4150,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 4230,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 4.6,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            1500,
+            3000
+          ]
+        },
+        {
+          "id": 6,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "select_fire",
+              "pressed": true
+            },
+            {
+              "at_ms": 180,
+              "action": "select_fire",
+              "pressed": false
+            },
+            {
+              "at_ms": 200,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 230,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 300,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 1500,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 1530,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1600,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1680,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2230,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2310,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2860,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2940,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3490,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3570,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4120,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 4200,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 5300,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 7400,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 7480,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.9,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            3000,
+            6300
+          ]
+        },
+        {
+          "id": 7,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 1000,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 1030,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1100,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1180,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1730,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1810,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2360,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2440,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2990,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3070,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3620,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3700,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4800,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6800,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 6880,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.3,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        },
+        {
+          "id": 8,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "defend",
+              "pressed": true
+            },
+            {
+              "at_ms": 1000,
+              "action": "defend",
+              "pressed": false
+            },
+            {
+              "at_ms": 1030,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1100,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1180,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1730,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1810,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2360,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2440,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2990,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3070,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3620,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3700,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4800,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 6800,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 6880,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.3,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": []
+        }
+      ]
+    },
+    {
+      "trial": "C7-archangel-body-debug",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "developer_overlay",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "developer_overlay",
+              "pressed": false
+            },
+            {
+              "at_ms": 4000,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 4080,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 4.5,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            250,
+            1210,
+            1510,
+            2110,
+            3500
+          ]
+        }
+      ]
+    },
+    {
+      "trial": "C7-training-other-schools",
+      "excluded_as_combat_comparison": false,
+      "commands": [
+        {
+          "id": 2,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "move_right",
+              "pressed": true
+            },
+            {
+              "at_ms": 400,
+              "action": "move_right",
+              "pressed": false
+            },
+            {
+              "at_ms": 430,
+              "action": "select_earth",
+              "pressed": true
+            },
+            {
+              "at_ms": 490,
+              "action": "select_earth",
+              "pressed": false
+            },
+            {
+              "at_ms": 900,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 1000,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1070,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1860,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1930,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 2780,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 2850,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 3400,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 3470,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 4400,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 4470,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 5470,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 7300,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 7380,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 7.9,
+          "capture_every_ms": 100,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            1500,
+            3750,
+            5200,
+            6100
+          ]
+        },
+        {
+          "id": 3,
+          "actions": [
+            {
+              "at_ms": 0,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 70,
+              "action": "pause",
+              "pressed": false
+            },
+            {
+              "at_ms": 100,
+              "action": "select_air",
+              "pressed": true
+            },
+            {
+              "at_ms": 160,
+              "action": "select_air",
+              "pressed": false
+            },
+            {
+              "at_ms": 200,
+              "action": "casting",
+              "pressed": true,
+              "value": 1
+            },
+            {
+              "at_ms": 300,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 350,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 570,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 620,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 830,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 880,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1080,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1130,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1350,
+              "action": "light_attack",
+              "pressed": true
+            },
+            {
+              "at_ms": 1400,
+              "action": "light_attack",
+              "pressed": false
+            },
+            {
+              "at_ms": 1770,
+              "action": "casting",
+              "pressed": false,
+              "value": 0
+            },
+            {
+              "at_ms": 3200,
+              "action": "pause",
+              "pressed": true
+            },
+            {
+              "at_ms": 3280,
+              "action": "pause",
+              "pressed": false
+            }
+          ],
+          "capture_seconds": 3.8,
+          "capture_every_ms": 75,
+          "capture_scale": 0.5,
+          "keyframes_ms": [
+            700,
+            1500,
+            2200
+          ]
+        }
+      ]
+    }
+  ]
+}

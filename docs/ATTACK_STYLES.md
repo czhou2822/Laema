@@ -24,7 +24,19 @@ and do not validate this ownership reconciliation.
 
 Status: implemented candidate; numeric presets await user playtesting.
 
-## Daytime timing candidate — October 22
+## Current X5 timing candidate — October 24
+
+T1 stores windup0.55/recovery1.10 in `config/attack_styles/fire_x5.tres`,
+base1.65s before Heat, replacing C7's0.30/1.10. This is a retained morning-review
+candidate, not final pacing acceptance. Only the existing pre-split duration
+changed; native poses/geometry/markers, lunge12/0.15..0.55 and all other styles
+remain fixed. The same phase-speed consumer delays real-time contact, lunge,
+input/buffer spans and completion/queued Cast by up to the changed phase time;
+at constant Heat, completion is0.25/Heat-multiplier seconds later than C7.
+Observed low-Heat protection overlap improved, not guaranteed high-Heat safety
+or solved visual continuity. See the October23–24 overnight report.
+
+## Historical daytime timing candidate — October 22
 
 Fire X4 now reads windup0.33/recovery0.36 from
 `config/attack_styles/fire_x4.tres` (90f963de; base0.69s before Heat), replacing
@@ -33,7 +45,7 @@ keys and lunge10/0.15..0.55 remain. The later ownership reconciliation retires
 its historical push0.75 multiplier. Recovery includes late active frames;
 its shorter duration also shortens real-time input/contact windows. X5 can begin
 0.15/Heat-multiplier seconds earlier, not with guaranteed Enemy-relative safety.
-X5 is now C7: windup0.30/recovery1.10, base1.40s (651d9978), replacing only
+At daytime closure X5 was C7: windup0.30/recovery1.10, base1.40s (651d9978), replacing only
 D's0.45 windup. Its native split0.60, active0.36..0.80, all Sprite/geometry keys,
 lunge12/0.15..0.55 remain. Its historical push2 multiplier is retired.
 Pre-split playback runs1.5x the D rate;
@@ -267,12 +279,16 @@ Tune victim reactions in **Shared Hit Reaction → Combat Levels** or the Portal
 | Motion duration | Positive seconds for uniform body displacement, capped at stun lifetime. Shortening it does not shorten stun. |
 | Distance | Total victim-body displacement in pixels, with no per-attack multiplier; walls can consume it. |
 
-Existing distances and stun values are unchanged. Initial motion durations are
-0.25/0.55/0.85/1.15/1.45 seconds, matching the ordinary shared durations. Edits
+Existing distances and stun values are unchanged. Motion durations initially
+matched stun; the October23–24 candidate stores0.25/0.55/0.85/0.15/1.45 seconds.
+Only shared Level4 motion changed; its distance20px and stun1.15s remain fixed.
+This is not a restored per-X5 exception. The [overnight report](iterations/2026-10-23-fire-combat-overnight/REPORT.md)
+records actual rendered comparison and pending human acceptance. Edits
 affect subsequent reactions, not an active captured one. These levels also
 govern qualifying Fire X5 hits, including lower bands; its former 0.15-second
 exception is retired. Practice-target/defence/failed-Cast legacy recoil remains
-separate. Rendered spacing/feel and save/reload behavior await user validation.
+separate. Limited agent Level4 spacing and isolated Save/relaunch checks are
+recorded, not a full authoring/level matrix. Final feel awaits user validation.
 
 ## Initial presets — historical reference
 

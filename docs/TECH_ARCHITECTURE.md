@@ -5,10 +5,98 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
+## Overnight feedback and shared-motion candidate — October 23–24
+
+Exact retained source: baseline `f6ccfbe03143b5bf591ee83f5725ddb3919644b3`,
+shared Resource commit `4b7154600042ea094f91d2da4edc7796b72d07ba`, and U's
+feedback/support sequence through `1660dd04dca32d7a992934a915904fdaede53570`.
+Later bounded R1 isab284aa7 (locald6a74074), and T1 is5cc98e8e (local3200279f).
+Current product integration is3200279f4f69f0f9e6fdb5bac0f0674befda5890;
+the report owns the subsequent documentation/evidence receipt.
+The later isolated X5 T2 and newly human-authorized X1 P1 experiments were
+actually compared but left unmerged. Main retains X1 0.21/0.51 and X5 0.55/1.10;
+P1's phase warp moved an early input before the unchanged normalized buffer,
+not a new buffer policy. Their evidence/branches belong to the overnight report.
+The user authorized local integration and directly affected record synchronization,
+not push/export or final gameplay acceptance. The [overnight report](iterations/2026-10-23-fire-combat-overnight/REPORT.md)
+owns effective-source receipts, actual play and remaining gaps. This is an exact
+technical synchronization, not independent audit or submission clearance.
+
+**Shared reaction:** existing CharacterReactionSettings and CombatTuningSettings
+mirror alone store Level 4 motion 0.15s, distance20px and stun1.15s. Other levels
+and all eligibility/Impact/Poise remain unchanged. HitReaction already captures
+and consumes these independent values; no product-code change or per-move
+override implements this tuning. This supersedes only Level 4's initial1.15s
+motion value below, not its stun/control-lock/invincibility or Enemy wait.
+
+**X5 timing leaf:** the existing MoveStyle Resource alone stores T1
+windup_duration0.55/recovery_duration1.10, replacing0.30/1.10. No new code path,
+native key, marker, lunge value or normalized rule changes. The existing
+two-phase speed consumer maps this to later real-time pose/contact/lunge/input
+and buffered-Cast timing; total is1.65s before Heat, completion0.25/Heat-multiplier
+seconds later than C7 at constant Heat. The observed low-Heat protection overlap
+improved, not a guaranteed high-Heat protection or controller-feel contract.
+
+**Confirmed-result feedback:** HealthResolver's target delivery supplies its
+existing final result to FeedbackComponent. The new ordinary accent qualifies
+only APPLIED direct negative Health delta. Per-instigator/action/target pending
+records coalesce same-transaction layers and retain the strongest reaction;
+deferred presentation never aggregates or changes the two Health results. DoT,
+misses, zero, protected outcomes and failed-Cast self-reaction are excluded.
+Legacy practice targets can receive contact accents but not heavy combat-camera
+response. This feedback channel changes no damage, reaction, input, physics or
+animation clock; the separately stated Resource tuning remains distinct.
+
+Feedback owns short viewport-space contact geometry in its existing lifetime.
+Its local impact signal lets the existing Arena camera owner apply an additive,
+owned offset while retaining follow/transition framing. Each update removes its
+previous contribution; cleanup restores that contribution, not a presumed global
+baseline. Camera response requires qualifying Level3+, with Precise at most1px/
+80ms and Weight at most3px/110ms. Contact geometry remains within40px/120ms at
+1280×720; Weight's refined6×4px white center/black edge stays inside its footprint.
+No time modification, zoom/rotation, fullscreen or actor flash, manager or pool.
+Retry/teardown clear transients. Arena skips StageArea group lookup once detached;
+each Feedback still owns its own exit cleanup.
+The later R1 also guards camera updates before querying a detached Arena's tree
+and disconnects its owned SceneTree process-frame callback on exit. It restores
+only its additive contribution. Actual normal Gym Retry no longer reproduced
+the separate detached-camera callback error found in final default-off play.
+
+**Existing configuration path:** `ui.impact_contact_enabled=false`,
+`ui.impact_camera_enabled=false`, `ui.impact_treatment="precise"`. The validated
+catalog, existing live dictionary/store and Save path own these independent
+preferences. Missing legacy keys normalize in memory without a startup write.
+Runtime controls are General → UI → Cosmetic impact feedback, with Precise/Weight
+labels and wrapped tooltips; the editor's separate navigation is unchanged.
+
+**Simultaneous labels:** existing Feedback groups same-owner/same-process-frame
+direct amounts and Cast captions separately in their existing vertical lanes.
+Outlined sibling bounds have8viewport-px separation; the first anchor stays when
+space permits, and the whole family clamps to a12px horizontal margin. Weak
+references retain a formed family only for its existing lifetime; unpaused
+edge-only horizontal correction handles later owner motion. Different-frame
+labels are not regrouped. Single labels, text/fonts/colors, DoT, vertical tweens
+and lifetimes remain unchanged. Pause clears new batching state but valid formed
+families survive under their existing pause/timer behavior; expiry/exit prunes
+references. No new UI owner, caller API or aggregation contract is introduced.
+
+**Support/evidence:** the actually used recorder is `cb9a114b` (SHA256 prefix),
+preserved by1660dd04. Its33added lines only observe userdata path, camera state,
+live accents and label bounds/text; input scheduling, capture/audio and gameplay
+are unchanged. Windows Godot4.7.1 normal-input encounters/native images support
+bounded behavior, not controller feel or all-roster acceptance. Focused feedback
+fixtures passed1,998checks after R1 (Main independently reran the same fixture);
+the separate dodge suite passed512/513, with only an
+obsolete retired-control-count assertion failing. Old unused contact-API tests
+still parse-fail in Editor. No clean whole-editor/full-suite claim. GDD candidate
+verification, controller comfort, audio audition, rendered left-clamp stress/high-Heat
+live-enemy coverage and wider creature alignment remain open.
+
 ## Player-X geometry and shared reaction ownership — October 22
 
-This exact user-approved reconciliation is based on committed `1141f574` in
-the isolated `codex/movestyle-shared-reactions` branch. The GDD defines the
+This exact user-approved reconciliation originated at committed `1141f574` in
+`codex/movestyle-shared-reactions` and is inherited by the f6ccfbe0 baseline.
+The GDD defines the
 settled rule: native saved Player-X Animation curves alone own hitbox geometry;
 MoveStyle owns only identity/Animation links, phase timing and attacker lunge;
 the shared Levels 1–5 alone own victim distance, motion time and stun lifetime.
@@ -53,9 +141,11 @@ restart/reload the scene to compare authored curve edits.
 The exact 46-file inventory and static-only check results belong to
 [Implementation Status](IMPLEMENTATION_STATUS.md). Tests that still use removed
 APIs/control counts are retained but stale, not run or rewritten in this slice.
-Runtime, visual authoring/save/reload, legacy-profile migration and user review
-of the synchronized GDD remain pending. Combat owns safe local-main integration
-while preserving its dirty tuning; no push or export is authorized.
+The original slice had static-only evidence. The later overnight report adds
+limited X2 native-editor scrub, actual shared-motion play and isolated Portal
+Save/relaunch evidence; it does not establish every clip/facing or legacy schema.
+User verification of the synchronized GDD and final feel remain pending. No push
+or export is authorized by this overnight integration.
 
 ## Historical local main integration receipt — October 22
 
@@ -361,9 +451,9 @@ Main verified the push and independent remote-main/local-HEAD equality at
 and [daytime report](iterations/2026-10-22-fire-combat-daytime/REPORT.md).
 That first lunch receipt remains a historical snapshot; later candidate publication
 state belongs to Main's receipts/source identities, not this numerical sync.
-The current provisional human-review candidate uses Player
+The historical October22 daytime provisional candidate used Player
 9b705e0d (C2), Fire projectilecc1101fc, X4 style90f963de, SFX JSONddab1126 and
-opt-in recorder63409fd5, plus ObjectiveWidgete91201b5 (C4). X5 is now C7
+opt-in recorder63409fd5, plus ObjectiveWidgete91201b5 (C4). X5 was C7
 651d9978: windup0.30/recovery1.10, base1.40s. Enemy attack_range72/A9682BE0 is
 restored after the rejected range96 trial; no retreat policy was introduced.
 The overnight X5 D57aef5ab is historical comparison evidence, not the current
@@ -506,7 +596,11 @@ windows and lunge are unchanged. The later ownership reconciliation removes
 per-move push scaling without changing this timing. X5 can start0.15/Heat-multiplier seconds
 earlier; this does not guarantee unchanged timing relative to the Enemy.
 
-Fire X5's current provisional C7 Resource is windup0.30/recovery1.10 (base1.40s,
+Current X5 T1 is0.55/1.10, base1.65s, through the same Player Settings/style
+path and unchanged native split0.60/active0.36..0.80/lunge12. Its evidence is
+the October23–24 report above; older C7 results do not validate T1.
+
+Historical C7 Resource was windup0.30/recovery1.10 (base1.40s,
 651d9978), captured through the same Player Settings/style path. Native length1,
 timing_split0.60, active0.36..0.80, geometry/Sprite keys,12-unit lunge at0.15..0.55
 remain. Its historical push2 multiplier is retired by the ownership
@@ -1261,8 +1355,9 @@ recipients gate target-only feedback to avoid duplication. Numbers use final
 Health loss including zero; DoT has the smaller path. A Cast layer shows its
 school/level only for APPLIED negative health_delta. Entry lifetime is captured
 from validated UI duration; later edits affect future entries. Labels use the
-existing viewport clamp. Current direct/DoT offsets, crowding/drift and pause
-asymmetry remain provisional: owner tweens pause, while the Cast-label timer's
+existing viewport clamp, with the October23–24 simultaneous-family spacing and
+moving-edge correction above. Current direct/DoT offsets, older-number crowding
+and pause asymmetry remain provisional: owner tweens pause, while the Cast-label timer's
 pause behavior differs. Layout probes are not gameplay HealthResults.
 
 The retained October22 empowered-cue candidate remains Player-owned on the same
@@ -1283,14 +1378,16 @@ unassigned projectile flight/impact are in assets/prototype/audio/ORIGINAL_HEROE
 and the docs/audio/2026-10-20-original-heroes-sfx-audit.md (local candidate audit). Pikeman attack,
 movement, hurt and death retain their actor lifecycle. Ambient/SFX/BGM controls
 use existing buses. Game recordings are not CC0; preservation establishes no
-redistribution permission. The daytime saved SFX candidate is audio.sfx.volume_db
--6.0 in config/prototype_combat.json; Arena's existing runtime consumer applies
-that value to SFX, overriding the bus-layout default. Clips, pitches, event
+redistribution permission. The historical daytime SFX candidate was-6.0dB;
+the later authored f6ccfbe0 baseline stores `audio.sfx.volume_db=-20.0` in
+config/prototype_combat.json, unchanged by the October23–24 run. Arena's existing
+runtime consumer applies the saved SFX value, overriding the bus-layout default. Clips, pitches, event
 ownership, ducking and Ambient/BGM settings are unchanged. Main has captured
 current full-Master playback; audition/comfort and exact hardware output remain
 unverified, not silently accepted from recorded RMS or encoder clipping counts.
 
-The support-only overnight_fire_playtest.gd recorder63409fd5 accepts optional
+The support-only overnight_fire_playtest.gd recorder (current cb9a114b; audio
+path inherited unchanged from63409fd5) accepts optional
 capture_audio_seconds in0..30, default0. Requested capture appends its own
 pass-through AudioEffectCapture to Master with a2s ring, writes at most2048 stereo
 PCM16 frames per tick at actual mix rate, then removes only its own effect by
@@ -1470,10 +1567,12 @@ C7 is not new gameplay/architecture, a reason widget, a high-Heat safety pass or
 human acceptance; no further rule or visual treatment was selected by that
 daytime record.
 
-Current bounded handoff: the approved Player-X geometry/shared-reaction
-reconciliation at the top of this report, based on `1141f574`, is implemented
-on `codex/movestyle-shared-reactions` for Combat's local-main integration.
-Its 46 files preserve native curves, timing/lunge, distance/stun and unrelated
-tuning. Only permitted static inspection has been performed for this slice;
-legacy fixtures are stale, runtime/user validation and exact GDD verification
-remain pending. No push/export or submission clearance is claimed.
+Current bounded handoff: the October23–24 retained shared-Level4 motion, X5 T1
+and optional-feedback/label/lifecycle candidates at the top of this report,
+locally integrated through3200279f over f6ccfbe0.
+The earlier46-file geometry/ownership migration is already inherited; it is not
+an unmerged new handoff. Combat owns guarded local integration, final exact-source
+replay and the morning report. Native curves, other X timing, authored lunge
+values, distance/stun, combat rules and unrelated dirty work remain preserved. The report records actual
+agent evidence separately from open human/controller, GDD verification and broader
+legacy-fixture/runtime gaps. No push/export or submission clearance is claimed.

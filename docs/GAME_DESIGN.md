@@ -8,8 +8,9 @@ reference. It covers coordinated animation/contact/reaction/audio/effects,
 weapon weight, rhythm and readable Charging/Casting. Apply it to Player melee,
 Casts and the selected Enemy while preserving current active-window detection,
 shared reaction settings, original Heroes III SFX and character-owned tuning.
-Optional hit stop, camera effects, finishers and haptics remain future evaluation
-topics; this documentation adds no feature or tuning change. Source page/time
+Hit stop, finishers and haptics remain future evaluation topics. The separately
+approved October 23–24 optional contact/camera candidate is recorded below;
+the guideline itself adds no feature or tuning change. Source page/time
 references and review prompts are recorded in the guideline.
 
 Current design, consolidated October 20, 2026. Implementation candidates and scoped evidence are recorded in [Implementation Status](IMPLEMENTATION_STATUS.md); acceptance of earlier versions does not validate the full current tree.
@@ -17,6 +18,52 @@ Current design, consolidated October 20, 2026. Implementation candidates and sco
 **Resolved decisions — October 20:** keep the current shorter reaction durations of 0.25/0.55/0.85/1.15/1.45 seconds for Levels 1–5. Cast commitment and qualifying landed direct hits each restart the five-second Heat Reset Timer. Both former documentation conflicts are resolved; these selections do not add runtime-validation evidence.
 
 [Pre-housekeeping document](history/2026-10-20-document-housekeeping/sources/docs/GAME_DESIGN.md) preserves earlier wording, superseded rules, experiment reports and the detailed validation checklist. Historical snapshots are not current requirements.
+
+## Overnight game-feel candidates — October 23–24
+
+The user approved bounded implementation, rendered comparison and local
+integration, not final feel acceptance. These candidates remain
+`AWAITING_USER_VALIDATION`; exact source, iterations and evidence belong to the
+[overnight report](iterations/2026-10-23-fire-combat-overnight/REPORT.md).
+This exact GDD synchronization is `AWAITING_GDD_VERIFICATION`.
+
+- Shared reaction Level 4 keeps its 20px distance and 1.15s stun, but its
+  candidate motion duration is 0.15s. This affects every qualifying Level 4
+  reaction, not Fire X5 alone. All other levels, bands, eligibility, protection
+  and the separate Enemy wait remain unchanged.
+- Fire X5's retained T1 timing candidate uses pre-split duration0.55s and
+  recovery1.10s, total1.65s before Heat, replacing C7's0.30/1.10. Native poses,
+  geometry, markers, lunge values and all other X timings stay unchanged. The
+  same normalized rules now map to later wall-time contact, lunge, input/buffer
+  spans and queued Cast start. This relieved one observed low-Heat protection
+  overlap; it does not guarantee high-Heat damage, safety or a smoother feel.
+- Optional Precise/Weight contact accents require confirmed APPLIED direct
+  damage with actual Health lost. Misses, zero damage, block, parry,
+  invincibility rejection and DoT do not receive this ordinary-hit accent.
+  Mixed Cast layers retain their separate results but produce one accent per
+  source action/target. Stronger qualifying reactions may also receive the
+  optional camera response. At 1280×720, complete contact footprint is at most
+  40px/120ms and camera displacement at most 3px/120ms. No hit stop, zoom,
+  rotation, full-screen flash or whole-character strobe is introduced.
+- Contact and camera switches are independent and default off; Precise is the
+  default treatment. Weight retains a small white-centered prototype accent.
+  Both-off preserves the previous information and combat behavior.
+- Simultaneous damage amounts and Cast school/level captions remain separate,
+  with same-frame siblings spaced horizontally in their existing lanes. A
+  formed group stays inside the horizontal viewport margin as its owner moves.
+  Text, amounts, fonts, colors, duration, vertical motion and DoT are unchanged;
+  older fading numbers can still crowd the display.
+
+Agent-rendered normal-input encounters and selected native frames support these
+bounded candidates, not physical-controller usability, motion comfort, final
+art, audio or whole-roster acceptance. In the retained source, apart from the
+stated X5 timing contrast, other Fire X timings, authored lunge values and native
+geometry remain unchanged. Unmerged X1 P1 and X5 T2 comparisons in the report
+are not new requirements or accepted defaults. No
+damage, Heat/orb/input, Cast timing, defence, dodge or AI policy changed in this
+run. Limited Archer/Archangel and Air/Earth checks do not validate every creature
+or tutorial stage. Archangel body registration and the short practice-target/
+floor relationship remain separate open presentation findings.
 
 ## Selectable combat creatures — October 22–23
 
@@ -223,24 +270,27 @@ Pikeman's left attack mirrors about its visual foot anchor, not the actor root.
 These are accepted behavior choices; implementation evidence and remaining human
 validation are recorded in IMPLEMENTATION_STATUS.md.
 
-### Current provisional Fire timing — October 22 afternoon
+### Current provisional Fire timing — October 24
 
-Fire X5 currently uses windup0.30/recovery1.10 seconds before Heat scaling
-(C7; total1.40 seconds). Fire X4 remains0.33/0.36, total0.69 seconds. These are
+Fire X5 currently uses windup0.55/recovery1.10 seconds before Heat scaling
+(T1; total1.65 seconds). C7's0.30/1.10 remains the comparison baseline.
+Fire X4 remains0.33/0.36, total0.69 seconds. These are
 provisional tuning candidates for human review, not final numerical or feel acceptance.
-X5's shorter pre-split preparation advances its poses, lunge and active boundaries;
-real-time input/contact windows and the following Cast can occur earlier. The
+X5's longer pre-split playback delays its poses, lunge and active boundaries;
+real-time input/buffer/contact spans and the following queued Cast also change.
+At constant Heat, completion is0.25/Heat-multiplier seconds later than C7. The
 normalized rules, authored geometry/lunge values, reaction/invulnerability and
 shared Cast timing are unchanged. No safe Cast outcome or improved artistic
 continuity is guaranteed. Scoped agent-play evidence is in
 [Implementation Status](IMPLEMENTATION_STATUS.md); live high-Heat protection and
-human/controller aesthetics remain unverified. No new AI retreat, dodge safe-end,
-impact-feedback treatment or art direction is selected by this numerical candidate.
+human/controller aesthetics remain unverified. No new AI retreat, dodge safe-end
+or art direction is selected by this numerical candidate. The separately
+approved optional impact treatment is recorded in the overnight section above.
 
 ### Historical overnight implementation and tuning — October 22
 
 The following records the overnight baseline. Its X5 D timing is superseded by
-C7 above; the other retained repairs remain inherited. These are
+the later C7/T1 candidates above; the other retained repairs remain inherited. These are
 agent-tested implementation/presentation/tuning candidates, not user-verified
 gameplay-feel, final art or final numerical acceptance:
 
@@ -747,15 +797,15 @@ Each attack has Attack Impact in 0–100, and Player/Final Enemy Poise is defens
 
 Ordinary positive results qualify for combat reaction. A direct Player melee or Cast hit at exactly zero qualifies against a combat Enemy and selects Level 1; ordinary Enemy zero and ordinary negative results deal damage without combat interruption. These rules still respect valid contact, defence and invincibility. The Melee contact and simultaneous clashes section defines the separate reciprocal-contact winner rule; there is no spell-versus-melee clash rule.
 
-| Difference after eligibility | Level | Stun duration | Initial motion duration | World-space displacement |
+| Difference after eligibility | Level | Stun duration | Current candidate motion duration | World-space displacement |
 |---|---:|---:|---:|---:|
 | 0–10 | 1 | 0.25 s | 0.25 s | 5 px |
 | 11–20 | 2 | 0.55 s | 0.55 s | 10 px |
 | 21–30 | 3 | 0.85 s | 0.85 s | 15 px |
-| 31–40 | 4 | 1.15 s | 1.15 s | 20 px |
+| 31–40 | 4 | 1.15 s | 0.15 s | 20 px |
 | 41+ | 5 | 1.45 s | 1.45 s | 25 px |
 
-Player and combat Enemy use the selected level's stun duration for hurt, control lock and reaction invincibility. Each shared level independently exposes displacement distance, motion duration and stun duration in the Inspector and Developer Portal. Motion durations initially match the existing ordinary shared durations above; this does not retune the existing distances, stun values, bands or eligibility. Each level's starting value remains configurable.
+Player and combat Enemy use the selected level's stun duration for hurt, control lock and reaction invincibility. Each shared level independently exposes displacement distance, motion duration and stun duration in the Inspector and Developer Portal. Motion initially matched stun in the October 22 ownership migration; the October 23–24 Level 4 candidate alone shortens motion to 0.15s. Distances, stun values, bands and eligibility remain unchanged. Each level's starting value remains configurable.
 
 The whole character and collision body are pushed backward and remain displaced.
 Every qualifying attack, including Fire X5 and qualifying winning clashes, uses
@@ -855,7 +905,7 @@ When active, the protective buff displays an icon above the Enemy's head. The ic
 
 Floating damage numbers always display the final Health actually lost after Elemental Endurance, blocking, and every other damage modifier. A final Health loss of zero still displays `0`. Every DoT tick displays its final damage number using a much smaller font than direct-hit damage.
 
-The provisional direct/DoT feedback-anchor adjustment and its remaining overlap/readability limits are recorded in [GYM.md](GYM.md) and the overnight ledger. It establishes no final visual acceptance.
+The provisional direct/DoT feedback anchors remain. The October 23–24 candidate separates simultaneous direct amounts and Cast captions without aggregation, and keeps their formed groups inside the horizontal viewport margin. Older fading-number crowding and pause behavior remain open; see [GYM.md](GYM.md) and the overnight report. This establishes no final visual acceptance.
 
 ### First Enemy Attack Pattern
 
