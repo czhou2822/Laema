@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p036",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "7243f3923fea1aa6a7ba3dadd9d2a05a075936a5de2a90aa34b6da1a9ead51ea:143:159:73:107:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cskele02.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 5079,
+      "stored_size": 3163,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 73,
+      "height": 107,
+      "left": 143,
+      "top": 159,
+      "legacy_header": false,
+      "index_sha256": "7243f3923fea1aa6a7ba3dadd9d2a05a075936a5de2a90aa34b6da1a9ead51ea"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/pilot-attack-turn-00-a01-components-c01.png",
+  "raw_sha256": "27341d3e0d8ac26922c9834632ef5ba8e8ff93af4d126c18ea397933e22b5068",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/pilot-attack-turn-00-a01-components-c01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/pilot-attack-turn-00-a01-components-c01-skeleton_p036.png",
+  "isolated_sha256": "6f8546c8b1ba986f5eb9fa85557cb915546fcbaf9a6d55c71f8574380ecc6678",
+  "source_grid_region": [
+    1428,
+    10,
+    287,
+    439
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p036.png",
+  "registered_pose_sha256": "f1ea48c9c1e417b8462d0785d4564efac0a19dd1167294e718b52a258a2da587",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p036_mirror.png",
+  "mirror_sha256": "c11225e6771a3c810c1955a8a0f00978e1ccbe5e64bb7b43ef118a2b57e8582a",
+  "registration": {
+    "source_body_rect": [
+      148,
+      159,
+      68,
+      107
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      289,
+      441
+    ],
+    "registered_rect": [
+      393,
+      250,
+      168,
+      257
+    ],
+    "uniform_artwork_fit": 0.5853658536585366
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Reviewed source and candidate at fixed scale and enlarged, both facings and ordered attack. One-handed overhead wind-up points upper right; free arm separate and forward, front knee raised. Forearm and rib foreshortening differ slightly from original. Candidate review only.",
+    "source_sha256_at_review": "f1ea48c9c1e417b8462d0785d4564efac0a19dd1167294e718b52a258a2da587",
+    "mirror_sha256_at_review": "c11225e6771a3c810c1955a8a0f00978e1ccbe5e64bb7b43ef118a2b57e8582a"
+  },
+  "human_animation_acceptance": false
+}

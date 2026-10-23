@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p014",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "6415386b4c5256f292d1445c60fcb94da1187a2ae78514c4c189e6658f9da020:175:187:44:81:450:400",
+  "original_representative": {
+    "group_id": 2,
+    "original_block": 2,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_02_block_02_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_02_block_02_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cskele34.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 91997,
+      "stored_size": 3171,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 44,
+      "height": 81,
+      "left": 175,
+      "top": 187,
+      "legacy_header": false,
+      "index_sha256": "6415386b4c5256f292d1445c60fcb94da1187a2ae78514c4c189e6658f9da020"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-repair-p014-a03.png",
+  "raw_sha256": "44448f370bfd2ece349280d43a989c99a6ff4a863d1166e07c25dd27a0f344fd",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-repair-p014-a03.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/full-repair-p014-a03-skeleton_p014.png",
+  "isolated_sha256": "f1304466a375f05e0ace15a1faa242d0a841ef624e10b2509d549bd708013590",
+  "source_grid_region": [
+    0,
+    0,
+    1015,
+    1549
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p014.png",
+  "registered_pose_sha256": "b32984b77c27575fceea01729a6bccac237fee9180fd63e44224df7328a8f129",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p014_mirror.png",
+  "mirror_sha256": "1d8ddf7ed2dbfa6df8929c81ca88e4148361d95ce1078ba6c49203fd00e14851",
+  "registration": {
+    "source_body_rect": [
+      176,
+      188,
+      42,
+      79
+    ],
+    "artwork_crop": [
+      9,
+      8,
+      985,
+      1511
+    ],
+    "registered_rect": [
+      462,
+      350,
+      104,
+      160
+    ],
+    "uniform_artwork_fit": 0.10655737704918032
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected original and candidate at registered size and enlarged, plus both facings and source-order sequence. A03 redraw corrected excessive straightening and leg extension; low hunched torso and bent knees now align with neighbouring idle frames. Worker candidate review only; human motion acceptance and original timing unverified.",
+    "source_sha256_at_review": "b32984b77c27575fceea01729a6bccac237fee9180fd63e44224df7328a8f129",
+    "mirror_sha256_at_review": "1d8ddf7ed2dbfa6df8929c81ca88e4148361d95ce1078ba6c49203fd00e14851"
+  },
+  "human_animation_acceptance": false
+}

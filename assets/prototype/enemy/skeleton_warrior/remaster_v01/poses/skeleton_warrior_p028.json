@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_warrior_p028",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "87579888d2270ea0da46ed3a97b7b4531ae20c7af4a8c2f153d8fe268486d4b1:183:165:59:102:450:400",
+  "original_representative": {
+    "group_id": 5,
+    "original_block": 5,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWSKEL/group_05_block_05_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CWSKEL/group_05_block_05_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "cwskel20.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 62745,
+      "stored_size": 2799,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 59,
+      "height": 102,
+      "left": 183,
+      "top": 165,
+      "legacy_header": false,
+      "index_sha256": "87579888d2270ea0da46ed3a97b7b4531ae20c7af4a8c2f153d8fe268486d4b1"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/raw/sw-b003-a01.png",
+  "raw_sha256": "a5417495951ac82feb6bb10faba9b6207f8ef51e8ef2983217e84898c6afda36",
+  "prompt": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/raw/sw-b003-a01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton_warrior/remaster_v01/_source/isolated/sw-b003-a01-skeleton_warrior_p028.png",
+  "isolated_sha256": "040e5330d3592b056d18bdbbf57d31ba9af87d8be112a8e6d746a646e9d96a28",
+  "source_grid_region": [
+    96,
+    446,
+    241,
+    427
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/skeleton_warrior/remaster_v01/poses/skeleton_warrior_p028.png",
+  "registered_pose_sha256": "c174879d7ce56ea3de57ec6107ac5a0711f24a9c8cfc4cb16bbb3022fe1b2931",
+  "mirror_file": "assets/prototype/enemy/skeleton_warrior/remaster_v01/poses/skeleton_warrior_p028_mirror.png",
+  "mirror_sha256": "d913797ad21554f42ac1fb70d16905b14b88e5262932ed29147e481b89f10bb9",
+  "registration": {
+    "source_body_rect": [
+      183,
+      165,
+      58,
+      102
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      243,
+      429
+    ],
+    "registered_rect": [
+      480,
+      258,
+      142,
+      252
+    ],
+    "uniform_artwork_fit": 0.5901639344262295
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Death rise: torso leans back and arms reach upward, blade diagonal up-right and shield foreshortened. Inspected against OG in fixed registration contacts, enlarged comparison and exact mirror; static worker review only.",
+    "source_sha256_at_review": "c174879d7ce56ea3de57ec6107ac5a0711f24a9c8cfc4cb16bbb3022fe1b2931",
+    "mirror_sha256_at_review": "d913797ad21554f42ac1fb70d16905b14b88e5262932ed29147e481b89f10bb9"
+  },
+  "human_animation_acceptance": false
+}

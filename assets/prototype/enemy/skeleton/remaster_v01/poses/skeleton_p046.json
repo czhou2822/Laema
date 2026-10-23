@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p046",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "16932a5453e2df942c2f9dfff77ef0ea1a40085f60a4365ecbd69391bd6c419c:180:193:78:76:450:400",
+  "original_representative": {
+    "group_id": 12,
+    "original_block": 11,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_12_block_11_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_12_block_11_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "cskele06.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 16716,
+      "stored_size": 2799,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 78,
+      "height": 76,
+      "left": 180,
+      "top": 193,
+      "legacy_header": false,
+      "index_sha256": "16932a5453e2df942c2f9dfff77ef0ea1a40085f60a4365ecbd69391bd6c419c"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/pilot-attack-turn-00-a01-components-c01.png",
+  "raw_sha256": "27341d3e0d8ac26922c9834632ef5ba8e8ff93af4d126c18ea397933e22b5068",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/pilot-attack-turn-00-a01-components-c01.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/pilot-attack-turn-00-a01-components-c01-skeleton_p046.png",
+  "isolated_sha256": "f0bf68169520aa451b7d6828704a88eeb825e2118ab62bfe3cf38ddbc324cc87",
+  "source_grid_region": [
+    1354,
+    494,
+    379,
+    380
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p046.png",
+  "registered_pose_sha256": "45ad01480f24d09ee456c31a81ac33ed2b9b805592d3f73750d6ce264c4173d3",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p046_mirror.png",
+  "mirror_sha256": "aa27f9e04c2c25d9fa943035e6e93eb09348f9635f96b8611a85f54db5c25ead",
+  "registration": {
+    "source_body_rect": [
+      180,
+      193,
+      75,
+      76
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      381,
+      382
+    ],
+    "registered_rect": [
+      473,
+      329,
+      185,
+      185
+    ],
+    "uniform_artwork_fit": 0.48812664907651715
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Reviewed source and candidate at fixed scale and enlarged, both facings and ordered attack. Low sword grip and steeper upper-right blade distinguish early recovery; empty arm backward/up and torso bowed. Joint placement is an interpretation of low-resolution source. Candidate review only.",
+    "source_sha256_at_review": "45ad01480f24d09ee456c31a81ac33ed2b9b805592d3f73750d6ce264c4173d3",
+    "mirror_sha256_at_review": "aa27f9e04c2c25d9fa943035e6e93eb09348f9635f96b8611a85f54db5c25ead"
+  },
+  "human_animation_acceptance": false
+}

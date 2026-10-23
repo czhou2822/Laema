@@ -1,0 +1,100 @@
+{
+  "pose_id": "skeleton_p037",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "149486413d5709bbbf90ac0b3cff246d5513762612101b032d0de8fe90cbacfc:178:158:35:108:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 2,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      900,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 2,
+      "name": "cskele09.pcx",
+      "page": 0,
+      "x": 900,
+      "y": 0,
+      "offset": 24317,
+      "stored_size": 2596,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 35,
+      "height": 108,
+      "left": 178,
+      "top": 158,
+      "legacy_header": false,
+      "index_sha256": "149486413d5709bbbf90ac0b3cff246d5513762612101b032d0de8fe90cbacfc"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-repair-p037-a02.png",
+  "raw_sha256": "1120e2dbf6499df275829eedc3b01eaae6d213cb021cbccf58008cf55643ffd9",
+  "prompt": "assets/prototype/enemy/skeleton/remaster_v01/_source/raw/full-repair-p037-a02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/skeleton/remaster_v01/_source/isolated/full-repair-p037-a02-skeleton_p037.png",
+  "isolated_sha256": "dc536759894c8e1c3ceca02c81b6344a99f78f078b52d422be6ba568acdd3c77",
+  "source_grid_region": [
+    0,
+    0,
+    899,
+    1750
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p037.png",
+  "registered_pose_sha256": "37603187bdce94f6c824059f936f80a56b78431de68583159da800134b529a8a",
+  "mirror_file": "assets/prototype/enemy/skeleton/remaster_v01/poses/skeleton_p037_mirror.png",
+  "mirror_sha256": "2ee20dc947ad7ba2dd30a870687d18524e6c840800f7f1318088c88aaee93b92",
+  "registration": {
+    "source_body_rect": [
+      178,
+      158,
+      35,
+      108
+    ],
+    "artwork_crop": [
+      269,
+      6,
+      711,
+      1662
+    ],
+    "registered_rect": [
+      475,
+      241,
+      71,
+      266
+    ],
+    "uniform_artwork_fit": 0.1606280193236715
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected original and candidate at registered size and enlarged, plus both facings and source-order sequence. A02 redraw restores narrow side profile and steep up-left overhead blade; raised knee and original sword arm complete. Worker candidate review only; human motion acceptance and original timing unverified.",
+    "source_sha256_at_review": "37603187bdce94f6c824059f936f80a56b78431de68583159da800134b529a8a",
+    "mirror_sha256_at_review": "2ee20dc947ad7ba2dd30a870687d18524e6c840800f7f1318088c88aaee93b92"
+  },
+  "human_animation_acceptance": false
+}
