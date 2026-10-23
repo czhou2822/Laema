@@ -149,6 +149,7 @@ func _start() -> void:
 		return
 	_log.seek_end()
 	_metadata = {
+		"user_data_dir": OS.get_user_data_dir(),
 		"engine": Engine.get_version_info(), "display_server": DisplayServer.get_name(),
 		"rendering_method": RenderingServer.call("get_current_rendering_method") if RenderingServer.has_method("get_current_rendering_method") else "unavailable",
 		"configured_renderer": ProjectSettings.get_setting("rendering/renderer/rendering_method", "forward_plus"),
@@ -723,6 +724,10 @@ func _snapshot() -> Dictionary:
 		return state
 	state["scene"] = scene.scene_file_path
 	state["scene_instance_id"] = scene.get_instance_id()
+	# Observation only: report the active cosmetic camera without changing it.
+	var observed_camera := root.get_camera_2d()
+	if observed_camera != null:
+		state["camera"] = {"position": [observed_camera.global_position.x, observed_camera.global_position.y], "offset": [observed_camera.offset.x, observed_camera.offset.y], "zoom": [observed_camera.zoom.x, observed_camera.zoom.y]}
 	var player := scene.get_node_or_null("Player")
 	if player != null:
 		state["player"] = _actor_snapshot(player)
@@ -760,6 +765,34 @@ func _actor_snapshot(actor: Node, sprite_path := "Sprite") -> Dictionary:
 	var health := actor.get_node_or_null("Health")
 	if health != null:
 		state["hp"] = health.call("get_current")
+	var observed_labels: Array = []
+	for observed_child: Node in actor.get_children():
+		var observed_label := observed_child as Label
+		if observed_label == null or not observed_label.is_visible_in_tree():
+			continue
+		var observed_transform := observed_label.get_global_transform_with_canvas()
+		var observed_scale := observed_transform.get_scale()
+		var observed_minimum := observed_label.get_combined_minimum_size()
+		observed_labels.append({"text": observed_label.text, "screen_position": [observed_transform.origin.x, observed_transform.origin.y],
+			"minimum_size": [observed_minimum.x, observed_minimum.y], "control_size": [observed_label.size.x, observed_label.size.y],
+			"screen_scale": [observed_scale.x, observed_scale.y], "outline": observed_label.get_theme_constant("outline_size"),
+			"font_size": observed_label.get_theme_font_size("font_size"), "alpha": observed_label.modulate.a,
+			"instance_id": observed_label.get_instance_id()})
+	state["floating_labels"] = observed_labels
+	# Read-only candidate diagnostics; never creates, extends or moves an effect.
+	var observed_feedback := actor.get_node_or_null("Feedback")
+	if observed_feedback != null:
+		for property in observed_feedback.get_property_list():
+			if property["name"] == "_impact_entries":
+				var observed_entries: Array = observed_feedback.get("_impact_entries")
+				var observed_accents: Array = []
+				for observed_entry: Dictionary in observed_entries:
+					var observed_node: Node2D = observed_entry["node"]
+					var observed_point: Vector2 = observed_entry["point"]
+					observed_accents.append({"world_point": [observed_point.x, observed_point.y], "screen_position": [observed_node.position.x, observed_node.position.y], "alpha": observed_node.modulate.a, "age_ms": Time.get_ticks_msec() - int(observed_entry["started"]), "weight": observed_entry["weight"]})
+				state["impact_accents"] = observed_accents
+				state["impact_options"] = observed_feedback.get("_impact_options").duplicate(true)
+				break
 	var sprite := actor.get_node_or_null(sprite_path) as Sprite2D
 	if sprite != null:
 		state["sprite"] = {"texture": sprite.texture.resource_path if sprite.texture != null else "", "region": [sprite.region_rect.position.x, sprite.region_rect.position.y, sprite.region_rect.size.x, sprite.region_rect.size.y], "flip_h": sprite.flip_h}
