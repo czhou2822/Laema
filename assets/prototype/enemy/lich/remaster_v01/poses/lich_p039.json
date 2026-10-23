@@ -1,0 +1,100 @@
+{
+  "pose_id": "lich_p039",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "db7cf3933c1b8b383a0d6030430544ccf46a4b2afd85ebc2fa66b3e1fcc99e07:177:178:49:89:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 3,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      1350,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 3,
+      "name": "clich22.pcx",
+      "page": 0,
+      "x": 1350,
+      "y": 0,
+      "offset": 75740,
+      "stored_size": 2950,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 49,
+      "height": 89,
+      "left": 177,
+      "top": 178,
+      "legacy_header": false,
+      "index_sha256": "db7cf3933c1b8b383a0d6030430544ccf46a4b2afd85ebc2fa66b3e1fcc99e07"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/lich/remaster_v01/_source/raw/page-004-a01-lich_p039.png",
+  "raw_sha256": "64cdb595c73ef9765ab79c3a665ff8f9b59a834e8ba9ef45a724a20a431bb77a",
+  "prompt": "assets/prototype/enemy/lich/remaster_v01/_source/raw/page-004-a01-lich_p039.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/lich/remaster_v01/_source/isolated/page-004-a01-lich_p039-lich_p039.png",
+  "isolated_sha256": "64cdb595c73ef9765ab79c3a665ff8f9b59a834e8ba9ef45a724a20a431bb77a",
+  "source_grid_region": [
+    0,
+    0,
+    414,
+    431
+  ],
+  "component_isolation": false,
+  "isolation_method": "Transparent rectangular gutters",
+  "registered_pose_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p039.png",
+  "registered_pose_sha256": "9ecfa7f9bf127e9f6f6af000a0887efb851faa9ab874667725e7cee205b70e94",
+  "mirror_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p039_mirror.png",
+  "mirror_sha256": "436ec7dbc781f8354315342ca7097faa7c68d0dac6ec82cfa9ad0b5d88cf2e01",
+  "registration": {
+    "source_body_rect": [
+      177,
+      178,
+      48,
+      89
+    ],
+    "artwork_crop": [
+      150,
+      45,
+      362,
+      409
+    ],
+    "registered_rect": [
+      465,
+      307,
+      118,
+      203
+    ],
+    "uniform_artwork_fit": 0.5566037735849056
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected all 22 source-registered melee drawings in original guides, enlarged raw sheets and target-pixel comparisons. Two-hand staff windup, horizontal/upper/lower strike directions and changing front/side/rear coif/armor views retained; recovery returns toward vertical staff. No clipped staff ends, extra limbs or upgraded equipment seen. Shared source starts p036/p037 remain shared. Static worker candidate review.",
+    "source_sha256_at_review": "9ecfa7f9bf127e9f6f6af000a0887efb851faa9ab874667725e7cee205b70e94",
+    "mirror_sha256_at_review": "436ec7dbc781f8354315342ca7097faa7c68d0dac6ec82cfa9ad0b5d88cf2e01"
+  },
+  "human_animation_acceptance": false
+}

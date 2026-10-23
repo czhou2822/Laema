@@ -1,0 +1,100 @@
+{
+  "pose_id": "lich_p021",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "88453dc8c053b2d8065f903148135d4b57fe1910f90fcf70d08f338e1a93c704:179:180:52:87:450:400",
+  "original_representative": {
+    "group_id": 3,
+    "original_block": 3,
+    "frame_index": 4,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_03_block_03_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_03_block_03_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 4,
+      "name": "clich70.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 400,
+      "offset": 244996,
+      "stored_size": 3501,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 52,
+      "height": 87,
+      "left": 179,
+      "top": 180,
+      "legacy_header": false,
+      "index_sha256": "88453dc8c053b2d8065f903148135d4b57fe1910f90fcf70d08f338e1a93c704"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-hurt-effects-a02-components.png",
+  "raw_sha256": "00e3c92354689fbc0d6f4548658cea1412b60b43381b2a6443cbfda803414584",
+  "prompt": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-hurt-effects-a02-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/lich/remaster_v01/_source/isolated/repair-hurt-effects-a02-components-lich_p021.png",
+  "isolated_sha256": "b81026273d03d9a7ee094aa227aa20e0a4c1f7249c0cda37294f09062fb38424",
+  "source_grid_region": [
+    106,
+    477,
+    231,
+    393
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p021.png",
+  "registered_pose_sha256": "75749c9e2f892d9b0ce799d331e7feb8d985500d47e3024cbe32f51c7cff808e",
+  "mirror_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p021_mirror.png",
+  "mirror_sha256": "3e0371de51ae10f460a42f9ebd32f9c9452c15cfbab942ac389ca7982999da61",
+  "registration": {
+    "source_body_rect": [
+      179,
+      180,
+      50,
+      87
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      233,
+      395
+    ],
+    "registered_rect": [
+      470,
+      301,
+      123,
+      209
+    ],
+    "uniform_artwork_fit": 0.5324675324675324
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Compared every hurt/recovery source and new drawing: backward lean deepens then recovers, changing free hand, knees and diagonal-to-upright staff; embedded yellow staff/collar/limb/boot highlights restored. Complete hands, staff and boots seen. Static worker candidate review.",
+    "source_sha256_at_review": "75749c9e2f892d9b0ce799d331e7feb8d985500d47e3024cbe32f51c7cff808e",
+    "mirror_sha256_at_review": "3e0371de51ae10f460a42f9ebd32f9c9452c15cfbab942ac389ca7982999da61"
+  },
+  "human_animation_acceptance": false
+}

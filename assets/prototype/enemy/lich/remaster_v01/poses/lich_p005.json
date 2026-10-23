@@ -1,0 +1,100 @@
+{
+  "pose_id": "lich_p005",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "6809b5a145014b32c4dcee638b9008445f9fe2f5a5e992892b290920b4f6c988:170:167:49:103:450:400",
+  "original_representative": {
+    "group_id": 0,
+    "original_block": 0,
+    "frame_index": 5,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_00_block_00_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_00_block_00_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      400,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 5,
+      "name": "clich61.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 400,
+      "offset": 212564,
+      "stored_size": 3570,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 49,
+      "height": 103,
+      "left": 170,
+      "top": 167,
+      "legacy_header": false,
+      "index_sha256": "6809b5a145014b32c4dcee638b9008445f9fe2f5a5e992892b290920b4f6c988"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-movement-effects-a02-components.png",
+  "raw_sha256": "87a45358e758b8065d1d7dc99298ea0337a7bc5e6add15697301dff0ad6c4e3d",
+  "prompt": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-movement-effects-a02-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/lich/remaster_v01/_source/isolated/repair-movement-effects-a02-components-lich_p005.png",
+  "isolated_sha256": "eb586c5a5af203f730816de400c12732393ecc242ee057017f119841f1359335",
+  "source_grid_region": [
+    102,
+    450,
+    225,
+    426
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p005.png",
+  "registered_pose_sha256": "e4e981c6528956df454bc4607d4af00521e3ed8adc15235dd1b9982a70ff9819",
+  "mirror_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p005_mirror.png",
+  "mirror_sha256": "c5970912c81aaa0f2e40be42699deb02d30e15b48fe9cd2ef41e42032614abbc",
+  "registration": {
+    "source_body_rect": [
+      171,
+      167,
+      48,
+      103
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      227,
+      428
+    ],
+    "registered_rect": [
+      451,
+      294,
+      118,
+      223
+    ],
+    "uniform_artwork_fit": 0.5244444444444445
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Compared all eight source walking poses enlarged and at target pixels. Distinct planted/lifted/crossing boot phases and free-arm swing retained with upright plain staff. Repaired p001-p007 source red cap/limb accents. No clipped tips, extra limbs or Power Lich equipment observed. Static worker candidate review.",
+    "source_sha256_at_review": "e4e981c6528956df454bc4607d4af00521e3ed8adc15235dd1b9982a70ff9819",
+    "mirror_sha256_at_review": "c5970912c81aaa0f2e40be42699deb02d30e15b48fe9cd2ef41e42032614abbc"
+  },
+  "human_animation_acceptance": false
+}

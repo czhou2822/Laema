@@ -1,0 +1,100 @@
+{
+  "pose_id": "lich_p012",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "957117e2cd7dc89bf7316d5f443a2b4e7f2afdac6ba6a2faf6992afd6076be64:177:175:40:93:450:400",
+  "original_representative": {
+    "group_id": 2,
+    "original_block": 2,
+    "frame_index": 0,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_02_block_02_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_02_block_02_page_00_indexed.png",
+    "sheet_cell_region": [
+      0,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 0,
+      "name": "clich74.pcx",
+      "page": 0,
+      "x": 0,
+      "y": 0,
+      "offset": 258558,
+      "stored_size": 4294,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 40,
+      "height": 93,
+      "left": 177,
+      "top": 175,
+      "legacy_header": false,
+      "index_sha256": "957117e2cd7dc89bf7316d5f443a2b4e7f2afdac6ba6a2faf6992afd6076be64"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-idle-a02-components.png",
+  "raw_sha256": "16be8d66f652ed0ecc6223b0ed08820347a2cd318ff423e13708d3819eca6537",
+  "prompt": "assets/prototype/enemy/lich/remaster_v01/_source/raw/repair-idle-a02-components.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/lich/remaster_v01/_source/isolated/repair-idle-a02-components-lich_p012.png",
+  "isolated_sha256": "8dab04f16b0abf256c363be571928554b49860855587e3a069d93d68699801fe",
+  "source_grid_region": [
+    132,
+    21,
+    192,
+    436
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p012.png",
+  "registered_pose_sha256": "937a042bb046401a8f24a1093f28b3b68e74ac15ba94325ecbfdb8b4120acdc0",
+  "mirror_file": "assets/prototype/enemy/lich/remaster_v01/poses/lich_p012_mirror.png",
+  "mirror_sha256": "0b856b332cfecd5bfb9bc206521ee8b8c11be249dd20a7750f9ac8042b746a7b",
+  "registration": {
+    "source_body_rect": [
+      178,
+      176,
+      38,
+      91
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      194,
+      438
+    ],
+    "registered_rect": [
+      467,
+      297,
+      94,
+      213
+    ],
+    "uniform_artwork_fit": 0.4895833333333333
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Repaired and inspected each distinct idle drawing: narrower tall silhouette, vertical staff beside forward boot, lowered free hand, restrained-to-strong red accents across p012-p016. Each is a separate generated cell; no approved-master/idle substitution. Static worker candidate review.",
+    "source_sha256_at_review": "937a042bb046401a8f24a1093f28b3b68e74ac15ba94325ecbfdb8b4120acdc0",
+    "mirror_sha256_at_review": "0b856b332cfecd5bfb9bc206521ee8b8c11be249dd20a7750f9ac8042b746a7b"
+  },
+  "human_animation_acceptance": false
+}

@@ -1,0 +1,458 @@
+{
+  "creature_id": "lich",
+  "coverage": {
+    "complete_groups": 18,
+    "total_groups": 18,
+    "available_poses": 74,
+    "total_poses": 74,
+    "missing_pose_ids": [],
+    "frame_positions": 120,
+    "reviewed_poses": 74
+  },
+  "counts": {
+    "source_frame_pngs": 120,
+    "mirror_frame_pngs": 120,
+    "source_mirror_gifs": 36,
+    "contacts": 18,
+    "pose_history_records": 37,
+    "selected_components": 53
+  },
+  "libraries": [
+    {
+      "path": "assets/prototype/enemy/lich/remaster_v01/original_groups.tres",
+      "sha256": "7d6d8801df7dc71d5e21ff91743b0cca2c89833a93e63c4c087286ea5e3cbf47",
+      "texture_count": 18,
+      "atlas_texture_count": 120,
+      "animation_count": 18,
+      "preview_only": true
+    },
+    {
+      "path": "assets/prototype/enemy/lich/remaster_v01/original_groups_mirrored.tres",
+      "sha256": "c8e49f7087702af1f706c8d21623bd53bb1a9030bae3d2644efe3d5c92d1003d",
+      "texture_count": 18,
+      "atlas_texture_count": 120,
+      "animation_count": 18,
+      "preview_only": true
+    }
+  ],
+  "source_manifest_sha256": "97bf2ef280a6ea36ccdcf8003510a009d3b2ec80f68da5bb4f3ddd22abb8266b",
+  "helper_sha256": "763bccc9052e527d13ecbbdc0502bc539fbbb68994181be9446a9ab3d5cb8e3d",
+  "groups": [
+    {
+      "group_id": 0,
+      "original_block": 0,
+      "purpose_interpretation": "movement",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p000",
+        "lich_p001",
+        "lich_p002",
+        "lich_p003",
+        "lich_p004",
+        "lich_p005",
+        "lich_p006",
+        "lich_p007"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_00_block_00.png",
+      "sha256": "210b78201c604b7211b9734d1521b89f2f1ef039ca3bcc79f6a139778f3e4035",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_00_block_00_mirror.png",
+      "mirror_sha256": "4a9bee89fd7e5c80df38c16c0f843bb73467dbc0f44f5b62a69c1434317742a4",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_00_block_00.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_00_block_00_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_00_block_00_mirror.gif"
+    },
+    {
+      "group_id": 1,
+      "original_block": 1,
+      "purpose_interpretation": "idle gesture",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p008",
+        "lich_p009",
+        "lich_p010",
+        "lich_p011",
+        "lich_p011",
+        "lich_p011",
+        "lich_p011",
+        "lich_p011",
+        "lich_p010",
+        "lich_p009",
+        "lich_p008"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_01_block_01.png",
+      "sha256": "fa9554d27c2b46f31814f5dad0f5d4f9212a798aa49e74b000a16ae94a320389",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_01_block_01_mirror.png",
+      "mirror_sha256": "02c6dc7301ce14e3a67caa4ed06f12e96311f43189ffdeb4b2ccea2345aaae8e",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_01_block_01.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_01_block_01_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_01_block_01_mirror.gif"
+    },
+    {
+      "group_id": 2,
+      "original_block": 2,
+      "purpose_interpretation": "idle",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p012",
+        "lich_p013",
+        "lich_p014",
+        "lich_p015",
+        "lich_p016",
+        "lich_p015",
+        "lich_p014",
+        "lich_p013"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_02_block_02.png",
+      "sha256": "2bd7d6f3042bdd952fb810cf1a43c1a0e882596bcb0ef316f8072f43f5467c1e",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_02_block_02_mirror.png",
+      "mirror_sha256": "f8e3ca141bcb01aa49ea30a3ea2c9bf1f01366b478f2cda443884ebb93754de4",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_02_block_02.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_02_block_02_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_02_block_02_mirror.gif"
+    },
+    {
+      "group_id": 3,
+      "original_block": 3,
+      "purpose_interpretation": "hurt",
+      "frame_count": 6,
+      "pose_ids_in_source_order": [
+        "lich_p017",
+        "lich_p018",
+        "lich_p019",
+        "lich_p020",
+        "lich_p021",
+        "lich_p022"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_03_block_03.png",
+      "sha256": "baf5916f2b64980450b6b43bbb74ee021d6bc812842dd6464b0184f3fd611538",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_03_block_03_mirror.png",
+      "mirror_sha256": "1b0854d5ddcb6002a8a08334f3cd0c8f576a3537f2b301bd858ed06bcb407f8e",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_03_block_03.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_03_block_03_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_03_block_03_mirror.gif"
+    },
+    {
+      "group_id": 4,
+      "original_block": 4,
+      "purpose_interpretation": "defensive reaction",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p023",
+        "lich_p024",
+        "lich_p025",
+        "lich_p026",
+        "lich_p026",
+        "lich_p026",
+        "lich_p026",
+        "lich_p026",
+        "lich_p025",
+        "lich_p024",
+        "lich_p023"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_04_block_04.png",
+      "sha256": "88df5d0afe3ea8abed78459fa502546ddfcb7555207f5c54b9a34b3de2400a63",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_04_block_04_mirror.png",
+      "mirror_sha256": "c163242f38ba2952ee36a05ca97e4984cdb1e9f5612fbfceb190e9d67683f2b4",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_04_block_04.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_04_block_04_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_04_block_04_mirror.gif"
+    },
+    {
+      "group_id": 5,
+      "original_block": 5,
+      "purpose_interpretation": "death",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "lich_p027",
+        "lich_p028",
+        "lich_p029",
+        "lich_p030",
+        "lich_p031",
+        "lich_p032",
+        "lich_p033"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_05_block_05.png",
+      "sha256": "9eb6bb8310d0b0aabcecc1626c931c2f8f2cd646d3206e7c5f8e6d1d0e8fed67",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_05_block_05_mirror.png",
+      "mirror_sha256": "5ad2a0951a28f18dcdad6ca76ae3b968a1565c225f340aeb598a464354a7a02f",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_05_block_05.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_05_block_05_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_05_block_05_mirror.gif"
+    },
+    {
+      "group_id": 7,
+      "original_block": 6,
+      "purpose_interpretation": "turn part 1",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p034",
+        "lich_p035"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_07_block_06.png",
+      "sha256": "3a165e68c912215a84e9cea39d0246a631b4350a935e492f65d84e3e4d087c74",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_07_block_06_mirror.png",
+      "mirror_sha256": "82519aaa1f758af811ca075374587fb7b0276ed5d911f73283267838b1d33aa7",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_07_block_06.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_07_block_06_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_07_block_06_mirror.gif"
+    },
+    {
+      "group_id": 8,
+      "original_block": 7,
+      "purpose_interpretation": "turn part 2",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p035",
+        "lich_p034"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_08_block_07.png",
+      "sha256": "a22f8947ee91cccef7e5c3fa0f7b2dcde649c896d20d461c7bd5941b7e7cb1ce",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_08_block_07_mirror.png",
+      "mirror_sha256": "ee3d4dfdada3c67ddec7ed0347f19e63a500edb562c2526b790c3d207f87b33e",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_08_block_07.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_08_block_07_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_08_block_07_mirror.gif"
+    },
+    {
+      "group_id": 9,
+      "original_block": 8,
+      "purpose_interpretation": "legacy turn",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p034",
+        "lich_p035"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_09_block_08.png",
+      "sha256": "3a165e68c912215a84e9cea39d0246a631b4350a935e492f65d84e3e4d087c74",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_09_block_08_mirror.png",
+      "mirror_sha256": "82519aaa1f758af811ca075374587fb7b0276ed5d911f73283267838b1d33aa7",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_09_block_08.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_09_block_08_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_09_block_08_mirror.gif"
+    },
+    {
+      "group_id": 10,
+      "original_block": 9,
+      "purpose_interpretation": "legacy turn",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p035",
+        "lich_p034"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_10_block_09.png",
+      "sha256": "a22f8947ee91cccef7e5c3fa0f7b2dcde649c896d20d461c7bd5941b7e7cb1ce",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_10_block_09_mirror.png",
+      "mirror_sha256": "ee3d4dfdada3c67ddec7ed0347f19e63a500edb562c2526b790c3d207f87b33e",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_10_block_09.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_10_block_09_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_10_block_09_mirror.gif"
+    },
+    {
+      "group_id": 11,
+      "original_block": 10,
+      "purpose_interpretation": "melee upper",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p036",
+        "lich_p037",
+        "lich_p038",
+        "lich_p039",
+        "lich_p040",
+        "lich_p041",
+        "lich_p042",
+        "lich_p043"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_11_block_10.png",
+      "sha256": "841bafd52e79e5acdb56e55f423d9b918cc3909ea62591410cdaf03069573178",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_11_block_10_mirror.png",
+      "mirror_sha256": "028f484745b57cd4316e09651e5460cece221a1107cb33e423ea9c549ac4cf55",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_11_block_10.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_11_block_10_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_11_block_10_mirror.gif"
+    },
+    {
+      "group_id": 12,
+      "original_block": 11,
+      "purpose_interpretation": "melee front",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p036",
+        "lich_p037",
+        "lich_p044",
+        "lich_p045",
+        "lich_p046",
+        "lich_p047",
+        "lich_p048",
+        "lich_p049"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_12_block_11.png",
+      "sha256": "20a4ca88a35564a8145005e309d1eadb37858c18a1840ca61feab55955948641",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_12_block_11_mirror.png",
+      "mirror_sha256": "4c4de601672884288bfc3ea899681840f96e5f10574828de2c635d894e7ffcff",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_12_block_11.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_12_block_11_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_12_block_11_mirror.gif"
+    },
+    {
+      "group_id": 13,
+      "original_block": 12,
+      "purpose_interpretation": "melee lower",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p050",
+        "lich_p051",
+        "lich_p052",
+        "lich_p053",
+        "lich_p054",
+        "lich_p055",
+        "lich_p056",
+        "lich_p057"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_13_block_12.png",
+      "sha256": "19a21cee335a20317a35a2f5fa0ead3b90a074f1e6e96550bb5cf891d64c3ba6",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_13_block_12_mirror.png",
+      "mirror_sha256": "2a99319f7c32259e5f2c87c9d8e9b1fb478ca22ea50762e75c9eea10ec612fed",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_13_block_12.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_13_block_12_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_13_block_12_mirror.gif"
+    },
+    {
+      "group_id": 14,
+      "original_block": 13,
+      "purpose_interpretation": "ranged-numbered upper slot",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p058",
+        "lich_p059",
+        "lich_p060",
+        "lich_p061",
+        "lich_p061",
+        "lich_p061",
+        "lich_p061",
+        "lich_p061",
+        "lich_p060",
+        "lich_p059",
+        "lich_p058"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_14_block_13.png",
+      "sha256": "1b3253690fdb2c8b2471ad2565142246a0b18e1f7eeb3bdebb24c1ee3ca1c44b",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_14_block_13_mirror.png",
+      "mirror_sha256": "ad7bcfacb73756e65a4a80ff34d69ec41e05e00bb88fd71ebd1ab25baedf4107",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_14_block_13.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_14_block_13_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_14_block_13_mirror.gif"
+    },
+    {
+      "group_id": 15,
+      "original_block": 14,
+      "purpose_interpretation": "ranged-numbered front slot",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p062",
+        "lich_p063",
+        "lich_p064",
+        "lich_p065",
+        "lich_p065",
+        "lich_p065",
+        "lich_p065",
+        "lich_p065",
+        "lich_p064",
+        "lich_p063",
+        "lich_p062"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_15_block_14.png",
+      "sha256": "bebc89f4d66a0f6a97b10538d5d8c280eabcac4ebe120c2bdfa6084b1a7e7093",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_15_block_14_mirror.png",
+      "mirror_sha256": "90cd0b170e77abe606b0a821cf25741b3a1ea8fcd682676dcfed339335f0d5aa",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_15_block_14.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_15_block_14_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_15_block_14_mirror.gif"
+    },
+    {
+      "group_id": 16,
+      "original_block": 15,
+      "purpose_interpretation": "ranged-numbered lower slot",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p066",
+        "lich_p067",
+        "lich_p068",
+        "lich_p069",
+        "lich_p069",
+        "lich_p069",
+        "lich_p069",
+        "lich_p069",
+        "lich_p068",
+        "lich_p067",
+        "lich_p066"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_16_block_15.png",
+      "sha256": "a37fc6b9e4775f17a5affd5061816080a830206b41a5238cda5231a90cebf392",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_16_block_15_mirror.png",
+      "mirror_sha256": "2f378a1f49ee4f878c0aa85b712e244d69d7b4eaf93d41e3be92367cad52a9fb",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_16_block_15.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_16_block_15_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_16_block_15_mirror.gif"
+    },
+    {
+      "group_id": 20,
+      "original_block": 16,
+      "purpose_interpretation": "movement start",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p070",
+        "lich_p071"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_20_block_16.png",
+      "sha256": "5896595b0321b7c9369dd262e9405bc648789e4c5d7d19973393199e24d338a2",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_20_block_16_mirror.png",
+      "mirror_sha256": "34c3be31f35e58f985ebbfc2f1a8ea8c8bf8ab0c4ba2fc37b8251f87f52b4ff8",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_20_block_16.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_20_block_16_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_20_block_16_mirror.gif"
+    },
+    {
+      "group_id": 21,
+      "original_block": 17,
+      "purpose_interpretation": "movement end",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p072",
+        "lich_p073"
+      ],
+      "exact_aliases": [],
+      "file": "assets/prototype/enemy/lich/remaster_v01/group_21_block_17.png",
+      "sha256": "8e1a84701f9b44d34e123c360a24c3cbe6297d17d1fc961f4f68afdc7a38922b",
+      "mirror_file": "assets/prototype/enemy/lich/remaster_v01/group_21_block_17_mirror.png",
+      "mirror_sha256": "f29c24a507be8be192a0f6460a3c63f242e05a93578a9099b0c3e83029a58cd2",
+      "contact": "assets/prototype/enemy/lich/remaster_v01/contacts/group_21_block_17.png",
+      "preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_21_block_17_source.gif",
+      "mirror_preview": "assets/prototype/enemy/lich/remaster_v01/previews/group_21_block_17_mirror.gif"
+    }
+  ]
+}

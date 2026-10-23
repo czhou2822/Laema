@@ -1,0 +1,2363 @@
+{
+  "creature_id": "lich",
+  "scope": "source preparation only; no animation artwork review",
+  "complete_creature_entry_parsed": true,
+  "generation_plan_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+  "creature_entry_sha256": "85b24e04a2ca30d02f5a46d2bccc7391f641195ccaeceeb41e866809ddbd47f2",
+  "source_hashes": {
+    "original_metadata": {
+      "path": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/metadata.json",
+      "actual_sha256": "bf5ad1f839e18bcedded40a857bd91bb05af4f7a315ee3ab65313800ae789873",
+      "matches_plan": true
+    },
+    "original_def": {
+      "path": "docs/art/references/heroes3-original-flipbooks/originals/H3sprite/CLICH.def",
+      "actual_sha256": "409506a7915b25cb0a3fd7c722e378dd0735e26757c1896aba8d2bcd45ef9d54",
+      "matches_plan": true
+    },
+    "appearance_reference": {
+      "path": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+      "actual_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+      "matches_plan": true
+    }
+  },
+  "native_header": {
+    "name": "CLICH.def",
+    "archive": "H3sprite",
+    "type": 66,
+    "category": "creatures",
+    "header_width": 450,
+    "header_height": 400,
+    "def_sha256": "409506a7915b25cb0a3fd7c722e378dd0735e26757c1896aba8d2bcd45ef9d54",
+    "original": "originals/H3sprite/CLICH.def",
+    "palette": "palette.rgb",
+    "frame_count": 120
+  },
+  "master": {
+    "size": [
+      529,
+      1443
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "alpha_gt_8_bounds": [
+      0,
+      0,
+      529,
+      1443
+    ]
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "idle_pose_id": "lich_p012",
+  "mapped_opaque_union_ltrb": [
+    356.6575342465753,
+    218.5753424657534,
+    706.7945205479452,
+    519.3972602739726
+  ],
+  "counts": {
+    "groups": 18,
+    "timeline_positions": 120,
+    "registered_poses": 74,
+    "rgba_body_bounds_checked": 120,
+    "source_sheets": 36
+  },
+  "checks_passed": [
+    "DEF/metadata/master hashes",
+    "master selection and approval",
+    "all native group records",
+    "all source sequence entries",
+    "all indexed crop hashes",
+    "all opaque body bounds",
+    "all representatives and occurrence maps",
+    "all exact group aliases",
+    "fixed-transform source bounds and padding"
+  ],
+  "groups": [
+    {
+      "group_id": 0,
+      "original_block": 0,
+      "purpose_interpretation": "movement",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p000",
+        "lich_p001",
+        "lich_p002",
+        "lich_p003",
+        "lich_p004",
+        "lich_p005",
+        "lich_p006",
+        "lich_p007"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 1,
+      "original_block": 1,
+      "purpose_interpretation": "idle gesture",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p008",
+        "lich_p009",
+        "lich_p010",
+        "lich_p011",
+        "lich_p011",
+        "lich_p011",
+        "lich_p011",
+        "lich_p011",
+        "lich_p010",
+        "lich_p009",
+        "lich_p008"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 2,
+      "original_block": 2,
+      "purpose_interpretation": "idle",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p012",
+        "lich_p013",
+        "lich_p014",
+        "lich_p015",
+        "lich_p016",
+        "lich_p015",
+        "lich_p014",
+        "lich_p013"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 3,
+      "original_block": 3,
+      "purpose_interpretation": "hurt",
+      "frame_count": 6,
+      "pose_ids_in_source_order": [
+        "lich_p017",
+        "lich_p018",
+        "lich_p019",
+        "lich_p020",
+        "lich_p021",
+        "lich_p022"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 4,
+      "original_block": 4,
+      "purpose_interpretation": "defensive reaction",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p023",
+        "lich_p024",
+        "lich_p025",
+        "lich_p026",
+        "lich_p026",
+        "lich_p026",
+        "lich_p026",
+        "lich_p026",
+        "lich_p025",
+        "lich_p024",
+        "lich_p023"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 5,
+      "original_block": 5,
+      "purpose_interpretation": "death",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "lich_p027",
+        "lich_p028",
+        "lich_p029",
+        "lich_p030",
+        "lich_p031",
+        "lich_p032",
+        "lich_p033"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 7,
+      "original_block": 6,
+      "purpose_interpretation": "turn part 1",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p034",
+        "lich_p035"
+      ],
+      "exact_aliases": [
+        9
+      ]
+    },
+    {
+      "group_id": 8,
+      "original_block": 7,
+      "purpose_interpretation": "turn part 2",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p035",
+        "lich_p034"
+      ],
+      "exact_aliases": [
+        10
+      ]
+    },
+    {
+      "group_id": 9,
+      "original_block": 8,
+      "purpose_interpretation": "legacy turn",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p034",
+        "lich_p035"
+      ],
+      "exact_aliases": [
+        7
+      ]
+    },
+    {
+      "group_id": 10,
+      "original_block": 9,
+      "purpose_interpretation": "legacy turn",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p035",
+        "lich_p034"
+      ],
+      "exact_aliases": [
+        8
+      ]
+    },
+    {
+      "group_id": 11,
+      "original_block": 10,
+      "purpose_interpretation": "melee upper",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p036",
+        "lich_p037",
+        "lich_p038",
+        "lich_p039",
+        "lich_p040",
+        "lich_p041",
+        "lich_p042",
+        "lich_p043"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 12,
+      "original_block": 11,
+      "purpose_interpretation": "melee front",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p036",
+        "lich_p037",
+        "lich_p044",
+        "lich_p045",
+        "lich_p046",
+        "lich_p047",
+        "lich_p048",
+        "lich_p049"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 13,
+      "original_block": 12,
+      "purpose_interpretation": "melee lower",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "lich_p050",
+        "lich_p051",
+        "lich_p052",
+        "lich_p053",
+        "lich_p054",
+        "lich_p055",
+        "lich_p056",
+        "lich_p057"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 14,
+      "original_block": 13,
+      "purpose_interpretation": "ranged-numbered upper slot",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p058",
+        "lich_p059",
+        "lich_p060",
+        "lich_p061",
+        "lich_p061",
+        "lich_p061",
+        "lich_p061",
+        "lich_p061",
+        "lich_p060",
+        "lich_p059",
+        "lich_p058"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 15,
+      "original_block": 14,
+      "purpose_interpretation": "ranged-numbered front slot",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p062",
+        "lich_p063",
+        "lich_p064",
+        "lich_p065",
+        "lich_p065",
+        "lich_p065",
+        "lich_p065",
+        "lich_p065",
+        "lich_p064",
+        "lich_p063",
+        "lich_p062"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 16,
+      "original_block": 15,
+      "purpose_interpretation": "ranged-numbered lower slot",
+      "frame_count": 11,
+      "pose_ids_in_source_order": [
+        "lich_p066",
+        "lich_p067",
+        "lich_p068",
+        "lich_p069",
+        "lich_p069",
+        "lich_p069",
+        "lich_p069",
+        "lich_p069",
+        "lich_p068",
+        "lich_p067",
+        "lich_p066"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 20,
+      "original_block": 16,
+      "purpose_interpretation": "movement start",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p070",
+        "lich_p071"
+      ],
+      "exact_aliases": []
+    },
+    {
+      "group_id": 21,
+      "original_block": 17,
+      "purpose_interpretation": "movement end",
+      "frame_count": 2,
+      "pose_ids_in_source_order": [
+        "lich_p072",
+        "lich_p073"
+      ],
+      "exact_aliases": []
+    }
+  ],
+  "poses": [
+    {
+      "pose_id": "lich_p000",
+      "original_signature": "a4561e75cca2334cf5e57c77ac31203aeb392f6f15fedc38836f01df62ee2fff:176:168:47:99:450:400",
+      "opaque_body_rect": [
+        176,
+        168,
+        47,
+        99
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 0
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p001",
+      "original_signature": "7f12f2f4d8561927cdfdd2fde90e0812f1b02a34086ce0cd6c1ce322c6dccf06:176:167:42:100:450:400",
+      "opaque_body_rect": [
+        176,
+        167,
+        42,
+        100
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 1
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p002",
+      "original_signature": "4ebcc07bde8c46e0dc9ec53dfc7d4c0e77506bdf7b7d447b6e87a9f87859357d:181:165:37:100:450:400",
+      "opaque_body_rect": [
+        181,
+        165,
+        37,
+        100
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 2
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p003",
+      "original_signature": "0ad12ed88b7fa4414dcd9215b80dbe3fee032748c5854898f0ea60a08c719427:177:167:42:100:450:400",
+      "opaque_body_rect": [
+        178,
+        167,
+        41,
+        97
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 3
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p004",
+      "original_signature": "5d41694c82d770372ec59e1c0361f43b80f50c7bade61e96811914b55c3f84c1:172:169:48:102:450:400",
+      "opaque_body_rect": [
+        173,
+        169,
+        46,
+        102
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 4
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p005",
+      "original_signature": "6809b5a145014b32c4dcee638b9008445f9fe2f5a5e992892b290920b4f6c988:170:167:49:103:450:400",
+      "opaque_body_rect": [
+        171,
+        167,
+        48,
+        103
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 5
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p006",
+      "original_signature": "e73dcc3728dd30c63e856b95450812f8aab12e686565e2d271bcd495dea3a4b4:178:165:40:103:450:400",
+      "opaque_body_rect": [
+        178,
+        165,
+        40,
+        103
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 6
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p007",
+      "original_signature": "566e032df5579ce2731c689f6ae6094710563bc592bb27ff44aacfbbaf0c32c1:180:167:42:101:450:400",
+      "opaque_body_rect": [
+        180,
+        167,
+        42,
+        101
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p008",
+      "original_signature": "0c01c6a2c47d35b0a73fef24555986df8a924b0ad8c495b75be09841d2e36be2:171:174:52:94:450:400",
+      "opaque_body_rect": [
+        172,
+        175,
+        50,
+        92
+      ],
+      "occurrences": [
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 0
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 10
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p009",
+      "original_signature": "9d8a0f32de60b6bbea7820ea43b21e8173c997a45d3d45f9ab85c169ac282b15:171:169:60:99:450:400",
+      "opaque_body_rect": [
+        172,
+        170,
+        56,
+        97
+      ],
+      "occurrences": [
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 1
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 9
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p010",
+      "original_signature": "0e59a2f55786ee04e24f1c90f04178dbefca599b1d99c90bd4b33184a8fb8eb4:171:160:61:108:450:400",
+      "opaque_body_rect": [
+        172,
+        161,
+        58,
+        106
+      ],
+      "occurrences": [
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 2
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 8
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p011",
+      "original_signature": "e39cb4a7efff1f10e0c77ac519b04307d0da1c914eb08f806d5dae01e53ec8c0:157:153:71:115:450:400",
+      "opaque_body_rect": [
+        160,
+        154,
+        65,
+        113
+      ],
+      "occurrences": [
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 3
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 4
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 5
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 6
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p012",
+      "original_signature": "957117e2cd7dc89bf7316d5f443a2b4e7f2afdac6ba6a2faf6992afd6076be64:177:175:40:93:450:400",
+      "opaque_body_rect": [
+        178,
+        176,
+        38,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 0
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p013",
+      "original_signature": "3c714d0bdca28798c30fef5fa28efc75569e6ea778bed52e2b86016787e11520:177:175:40:93:450:400",
+      "opaque_body_rect": [
+        178,
+        176,
+        38,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 1
+        },
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p014",
+      "original_signature": "6d7fdfe5aba6bab9e0a22fd70ef3e7939d8754b05f48752b4a8fdf2ce295e7d7:177:175:40:93:450:400",
+      "opaque_body_rect": [
+        178,
+        176,
+        38,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 2
+        },
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 6
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p015",
+      "original_signature": "4c07a786fa71da2b4cf53195d4329e66314c9ab16e7bc0ee158c866070cac434:177:175:40:93:450:400",
+      "opaque_body_rect": [
+        178,
+        176,
+        38,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 3
+        },
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 5
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p016",
+      "original_signature": "981b81200707f0ff89db0a997eb45fc20eaecfb5be27a00c74c70a5b41dfb2eb:177:175:40:93:450:400",
+      "opaque_body_rect": [
+        178,
+        176,
+        38,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 4
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p017",
+      "original_signature": "ae9420ded95c5d689c6d54c55b8fa46c42e9dede3b33192d73345e3e82281dd4:169:169:79:98:450:400",
+      "opaque_body_rect": [
+        171,
+        169,
+        76,
+        98
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 0
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p018",
+      "original_signature": "031cf6e0114a6e05b4e632baa25f0dcc3a8613c9293b5211bc1fbcef3f1cf399:158:167:92:100:450:400",
+      "opaque_body_rect": [
+        158,
+        167,
+        92,
+        100
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 1
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p019",
+      "original_signature": "8e59bb66caa001c60bb128f324040efc3df42ddc7e67a6b712fcd19eae3ac70b:155:165:85:102:450:400",
+      "opaque_body_rect": [
+        156,
+        165,
+        84,
+        102
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 2
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p020",
+      "original_signature": "32601ab6b55f561c09b97f8762b8224a0a8ba2256cf29e38d7c4ff49d2297332:171:171:61:96:450:400",
+      "opaque_body_rect": [
+        172,
+        171,
+        60,
+        96
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 3
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p021",
+      "original_signature": "88453dc8c053b2d8065f903148135d4b57fe1910f90fcf70d08f338e1a93c704:179:180:52:87:450:400",
+      "opaque_body_rect": [
+        179,
+        180,
+        50,
+        87
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 4
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p022",
+      "original_signature": "acc2d5d586b2c94bd113899da40cb2986e5aacfbe563c1199104d094a6624c22:179:179:46:88:450:400",
+      "opaque_body_rect": [
+        179,
+        179,
+        45,
+        88
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 5
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p023",
+      "original_signature": "638fe20c26d94cf2ececea69e426cc3338bf0935568e10b72f9785dc83b852e9:175:175:56:92:450:400",
+      "opaque_body_rect": [
+        175,
+        175,
+        56,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 0
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 10
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p024",
+      "original_signature": "53027024efbd311724a244b3e36e983fb4039c30bb3fdf4fd8317bb9b2701255:170:175:63:94:450:400",
+      "opaque_body_rect": [
+        170,
+        175,
+        63,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 1
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 9
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p025",
+      "original_signature": "afff0f9bf1a44a0dd1f150c35f9f982e7298d988b856ec6b93214df5c674ddcb:166:175:50:95:450:400",
+      "opaque_body_rect": [
+        166,
+        175,
+        50,
+        92
+      ],
+      "occurrences": [
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 2
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 8
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p026",
+      "original_signature": "69a7ac8f5206d9387e5d1af162515497df8ed86d6a8071ff6cb171d33e5bf3f5:160:173:54:95:450:400",
+      "opaque_body_rect": [
+        160,
+        173,
+        54,
+        93
+      ],
+      "occurrences": [
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 3
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 4
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 5
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 6
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p027",
+      "original_signature": "ff83c9cb8d49d7fd8fdb1208a2d5e19f69f7fa0daf4cf7e43e26286c6435da0e:169:175:81:95:450:400",
+      "opaque_body_rect": [
+        171,
+        175,
+        78,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 0
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p028",
+      "original_signature": "3afef3382495c6c79304e176df456a69a36481b38219d6e4a8d3e73283c4e285:170:149:74:119:450:400",
+      "opaque_body_rect": [
+        172,
+        149,
+        71,
+        117
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 1
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p029",
+      "original_signature": "7c1f44a4021bac692f01c3771e3ed46cd562e29b4048c159180f75cc16bbf956:171:151:63:116:450:400",
+      "opaque_body_rect": [
+        173,
+        151,
+        61,
+        116
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 2
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p030",
+      "original_signature": "96ab6bc15c2f98896050dda25311f5d033c53207cdcfd8bfda9c239ef5de2bb3:172:175:54:91:450:400",
+      "opaque_body_rect": [
+        173,
+        175,
+        51,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 3
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p031",
+      "original_signature": "07ee4a9d2e4d0927aaeb75869ce91ec1759b4df49ff8944531f2b18d146b594b:174:198:47:65:450:400",
+      "opaque_body_rect": [
+        174,
+        198,
+        47,
+        64
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 4
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p032",
+      "original_signature": "bdc59f9b2032417989bc2b490bf7be56d0c53608a95bdb7486869da6badc443d:174:215:46:47:450:400",
+      "opaque_body_rect": [
+        174,
+        215,
+        46,
+        47
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 5
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p033",
+      "original_signature": "de81da454a6285607f6d358851c7be5bc2a30023a8d5a40a1544026258db24c8:175:230:45:29:450:400",
+      "opaque_body_rect": [
+        175,
+        230,
+        45,
+        28
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 6
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p034",
+      "original_signature": "29c253a3a7a0f7ee322c601aa3b28ceeefffbab0ffcbd0efc344660e46903c97:179:176:44:95:450:400",
+      "opaque_body_rect": [
+        180,
+        176,
+        41,
+        95
+      ],
+      "occurrences": [
+        {
+          "group_id": 7,
+          "original_block": 6,
+          "frame_index": 0
+        },
+        {
+          "group_id": 8,
+          "original_block": 7,
+          "frame_index": 1
+        },
+        {
+          "group_id": 9,
+          "original_block": 8,
+          "frame_index": 0
+        },
+        {
+          "group_id": 10,
+          "original_block": 9,
+          "frame_index": 1
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p035",
+      "original_signature": "831386366efac7c049aa8175914a2d3e8750b8c57a8c503a6f3a5686fca42c50:181:175:33:97:450:400",
+      "opaque_body_rect": [
+        181,
+        175,
+        33,
+        92
+      ],
+      "occurrences": [
+        {
+          "group_id": 7,
+          "original_block": 6,
+          "frame_index": 1
+        },
+        {
+          "group_id": 8,
+          "original_block": 7,
+          "frame_index": 0
+        },
+        {
+          "group_id": 9,
+          "original_block": 8,
+          "frame_index": 1
+        },
+        {
+          "group_id": 10,
+          "original_block": 9,
+          "frame_index": 0
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p036",
+      "original_signature": "62911d0db57bf712a57d874c73da3f442f914ffbeed5ff6fe35c75240f7390b7:168:164:43:103:450:400",
+      "opaque_body_rect": [
+        170,
+        164,
+        40,
+        103
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 0
+        },
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 0
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p037",
+      "original_signature": "a414cf42681c27b625e87b66c20f1350007b45c27050d9b7b26ba9ed85101b81:126:157:81:110:450:400",
+      "opaque_body_rect": [
+        133,
+        157,
+        74,
+        110
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 1
+        },
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 1
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p038",
+      "original_signature": "0036cd68d167d60688beb5c737979ac1fd286e5fa27f416d2da20281a383c30c:176:172:107:94:450:400",
+      "opaque_body_rect": [
+        177,
+        172,
+        98,
+        94
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 2
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p039",
+      "original_signature": "db7cf3933c1b8b383a0d6030430544ccf46a4b2afd85ebc2fa66b3e1fcc99e07:177:178:49:89:450:400",
+      "opaque_body_rect": [
+        177,
+        178,
+        48,
+        89
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 3
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p040",
+      "original_signature": "b78ac5b99d12eeabe94d98196a29db42f5bdfc5f76a62cd982044e3952bf72cc:175:174:46:93:450:400",
+      "opaque_body_rect": [
+        175,
+        174,
+        46,
+        93
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 4
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p041",
+      "original_signature": "195133ca7bb68746226192b1eb181b1ae7a4dc7316243205f1197b1b7313da2b:179:180:74:87:450:400",
+      "opaque_body_rect": [
+        179,
+        180,
+        70,
+        87
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 5
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p042",
+      "original_signature": "fc75738d132a135ddd86fc88b8cbac45ee306b4ab297f1f466250f7aa5356f40:179:178:73:89:450:400",
+      "opaque_body_rect": [
+        179,
+        178,
+        69,
+        89
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 6
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p043",
+      "original_signature": "18d95d3da22878e4d7ca852ce01a05307a6622a224eb06154cdf2faa8323bd4e:179:175:53:92:450:400",
+      "opaque_body_rect": [
+        179,
+        175,
+        51,
+        92
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p044",
+      "original_signature": "92a06d312fb8d6823a711870227b1660984a19dc10d333a9773a91b635000d4c:139:175:71:91:450:400",
+      "opaque_body_rect": [
+        143,
+        175,
+        67,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 2
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p045",
+      "original_signature": "b9907d61e3da6dd64c75de59b371be8e985a6c19b3f06dc27bb7e3cfb9e0134f:176:179:80:88:450:400",
+      "opaque_body_rect": [
+        177,
+        179,
+        76,
+        88
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 3
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p046",
+      "original_signature": "9b8040bce71364c89c702e86d4af995f3279287ce6cee0ad81d81274e8fb691f:179:177:75:90:450:400",
+      "opaque_body_rect": [
+        179,
+        177,
+        73,
+        90
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 4
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p047",
+      "original_signature": "da943bd3ef139036a3c58eca4572a6e4780c802d1b321e7b0b23ff6e2d924af8:179:180:72:87:450:400",
+      "opaque_body_rect": [
+        179,
+        180,
+        69,
+        87
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 5
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p048",
+      "original_signature": "3308abd1c56478b0d8c2c2ae33e8f52b71252eca7a9fb7502ac00a00662847b1:179:177:71:90:450:400",
+      "opaque_body_rect": [
+        179,
+        177,
+        67,
+        90
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 6
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p049",
+      "original_signature": "c4d9c48760bf240faa2ee1fdee1a3c5216613715d006ab1874fa912d501d426c:179:174:53:93:450:400",
+      "opaque_body_rect": [
+        179,
+        174,
+        51,
+        93
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p050",
+      "original_signature": "7087b3bc827339aaa408c389ce36748526d1fcfa87ca33a2d887019d48f4d4c6:168:163:43:104:450:400",
+      "opaque_body_rect": [
+        170,
+        163,
+        39,
+        104
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 0
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p051",
+      "original_signature": "3562c3d44d4d489d3d8c6460d9ff95c061adcf07a826eebbf7d660bac145ec37:126:157:81:110:450:400",
+      "opaque_body_rect": [
+        133,
+        157,
+        74,
+        110
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 1
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p052",
+      "original_signature": "5ae81eee013f8e1fd524fe7fc6b522c29cf5c6239866b8be663d25f6da7f7961:140:175:70:91:450:400",
+      "opaque_body_rect": [
+        144,
+        175,
+        66,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 2
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p053",
+      "original_signature": "a4ffe4dbe86998709a4871067691d0509e1e660c56e2837cf3431455e187e597:179:177:48:101:450:400",
+      "opaque_body_rect": [
+        179,
+        177,
+        48,
+        90
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 3
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p054",
+      "original_signature": "53332ca11869e6ff5440cbe4084219fa13ede51f2b5fb96172615310de0a9a5e:179:178:100:89:450:400",
+      "opaque_body_rect": [
+        179,
+        178,
+        94,
+        89
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 4
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p055",
+      "original_signature": "e9580f483759817a285ab20847930b3a72e10e9dd21150e093b0fafc281edf8c:179:180:101:87:450:400",
+      "opaque_body_rect": [
+        179,
+        180,
+        95,
+        87
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 5
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p056",
+      "original_signature": "f1f7db4b4259ebc3a130ce69dda0a9ee3a24ff3ce237d1d26f6f968dfb37ef41:179:174:77:93:450:400",
+      "opaque_body_rect": [
+        179,
+        174,
+        72,
+        93
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 6
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p057",
+      "original_signature": "aec41e4fe1d9ea38915de9ca4c3b6b71d35a6a0d8d55ec9d4cfc65ec468a3bf0:179:173:54:94:450:400",
+      "opaque_body_rect": [
+        179,
+        173,
+        51,
+        94
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p058",
+      "original_signature": "6f888179b594f42714f047ffac583e6fbb7d30433652bcdc9a394073402989aa:174:168:63:98:450:400",
+      "opaque_body_rect": [
+        174,
+        168,
+        63,
+        98
+      ],
+      "occurrences": [
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 0
+        },
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 10
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p059",
+      "original_signature": "538296ec23f60468b79e1de0faf1407d9dd0518501f3affd9dbb326b5e6eaee0:170:161:62:105:450:400",
+      "opaque_body_rect": [
+        170,
+        161,
+        61,
+        105
+      ],
+      "occurrences": [
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 1
+        },
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 9
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p060",
+      "original_signature": "3ab48731d47d004973a7dcb0c9aaeca6c347a7e8dc4c3c63d892babb852eeb37:169:152:45:114:450:400",
+      "opaque_body_rect": [
+        169,
+        152,
+        45,
+        114
+      ],
+      "occurrences": [
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 2
+        },
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 8
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p061",
+      "original_signature": "aa120b44bc3ca84e28251d5a4ee549f75bcab0c41f21e90016a25489e95c6ee3:168:169:82:98:450:400",
+      "opaque_body_rect": [
+        169,
+        169,
+        77,
+        98
+      ],
+      "occurrences": [
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 3
+        },
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 4
+        },
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 5
+        },
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 6
+        },
+        {
+          "group_id": 14,
+          "original_block": 13,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p062",
+      "original_signature": "efe44683bf205da12a80c3021244ef4e23de8c24fdf544d6915ac0d4553b5ac7:174:169:74:97:450:400",
+      "opaque_body_rect": [
+        174,
+        169,
+        74,
+        97
+      ],
+      "occurrences": [
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 0
+        },
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 10
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p063",
+      "original_signature": "a1bca42e14e314eb4ff4c261bae35a860a9c69d0b3f66e0ab31a95322a7b5318:169:161:90:105:450:400",
+      "opaque_body_rect": [
+        169,
+        161,
+        89,
+        105
+      ],
+      "occurrences": [
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 1
+        },
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 9
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p064",
+      "original_signature": "bb12ec70ad58a04b1dabf2f8aa1bee1833232fadd2c1012e642d4c9d0e043c77:162:158:83:108:450:400",
+      "opaque_body_rect": [
+        162,
+        158,
+        79,
+        108
+      ],
+      "occurrences": [
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 2
+        },
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 8
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p065",
+      "original_signature": "97d593767d7958f5d9492c9b617cb5595a02b0f1a7e2793705dc0694fd3d6e07:153:177:115:90:450:400",
+      "opaque_body_rect": [
+        154,
+        177,
+        108,
+        90
+      ],
+      "occurrences": [
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 3
+        },
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 4
+        },
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 5
+        },
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 6
+        },
+        {
+          "group_id": 15,
+          "original_block": 14,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p066",
+      "original_signature": "2308ab739e61167a730081f02f39a307509bbcfbaf05db0d69db50faaef090bc:171:176:66:90:450:400",
+      "opaque_body_rect": [
+        172,
+        176,
+        64,
+        90
+      ],
+      "occurrences": [
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 0
+        },
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 10
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p067",
+      "original_signature": "39d7d0d21352ed5d1b7df4c245e7e53081e8b6cf29f4be570f9e38e274726ca8:169:176:87:90:450:400",
+      "opaque_body_rect": [
+        169,
+        176,
+        82,
+        90
+      ],
+      "occurrences": [
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 1
+        },
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 9
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p068",
+      "original_signature": "90e82202b687772272ec9ca0546861e97b30c887f87f1ec03b15480da06f4526:165:176:105:90:450:400",
+      "opaque_body_rect": [
+        166,
+        176,
+        100,
+        90
+      ],
+      "occurrences": [
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 2
+        },
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 8
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p069",
+      "original_signature": "cac195505e15aa99135ad83290ffb0ac5aab230cddaff2d785d6fef03923c89d:164:176:68:95:450:400",
+      "opaque_body_rect": [
+        164,
+        176,
+        68,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 3
+        },
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 4
+        },
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 5
+        },
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 6
+        },
+        {
+          "group_id": 16,
+          "original_block": 15,
+          "frame_index": 7
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p070",
+      "original_signature": "56f3d766b08a2a811b05680ac2133dc73a3a170cce70e0288cb470804e6e48cf:178:176:38:91:450:400",
+      "opaque_body_rect": [
+        178,
+        176,
+        38,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 20,
+          "original_block": 16,
+          "frame_index": 0
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p071",
+      "original_signature": "e3b9ee793c060cf2cdb46fd2674102bef2cfa14d8f62da6813d1a73aee284dca:177:173:44:94:450:400",
+      "opaque_body_rect": [
+        177,
+        173,
+        44,
+        94
+      ],
+      "occurrences": [
+        {
+          "group_id": 20,
+          "original_block": 16,
+          "frame_index": 1
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p072",
+      "original_signature": "5526e927aa3f89ee2e6b831c217633446d90582eafd2efa57de1799ec29cd6f3:176:167:43:101:450:400",
+      "opaque_body_rect": [
+        176,
+        167,
+        43,
+        101
+      ],
+      "occurrences": [
+        {
+          "group_id": 21,
+          "original_block": 17,
+          "frame_index": 0
+        }
+      ]
+    },
+    {
+      "pose_id": "lich_p073",
+      "original_signature": "7b99540c635fe247639cd36227b7988a4783dc02671b98fba4a5b74a375dee69:178:166:39:101:450:400",
+      "opaque_body_rect": [
+        178,
+        166,
+        39,
+        101
+      ],
+      "occurrences": [
+        {
+          "group_id": 21,
+          "original_block": 17,
+          "frame_index": 1
+        }
+      ]
+    }
+  ],
+  "source_sheets": {
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_00_block_00_page_00.png": {
+      "sha256": "ebfff91a309d4e70c6e0fec6411334f10085e071c2f61d37e3dd1f48e70e90af",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_00_block_00_page_00_indexed.png": {
+      "sha256": "bff334cc59d04235144442f203890a48774666899ace602e77fbac51e1f1fff9",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_01_block_01_page_00.png": {
+      "sha256": "495534f7a1f78f98860ea120d16b5d106c9cf13f2aada361544002f0c9f6fa02",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_01_block_01_page_00_indexed.png": {
+      "sha256": "7a0d266ba7436295c90bc64d209e677aa3d7360629b72405ed8d0474d8e0d644",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_02_block_02_page_00.png": {
+      "sha256": "fb51f0c4741da8b6d38d8ddd0e3d336c49bda4ce0ef695853289b70fb27edc7e",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_02_block_02_page_00_indexed.png": {
+      "sha256": "4c5285445040adcaeec1e242b4f667ee27eae7bd5b97f9738ce60fc420e0999f",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_03_block_03_page_00.png": {
+      "sha256": "f71f978168f118d01aa8e793cd71ab3f0560b0719976f72e58e6e919d030e7db",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_03_block_03_page_00_indexed.png": {
+      "sha256": "e7356d459c3df79956ee1601a38a90fd08858ca1d945875b0ce879091593b128",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_04_block_04_page_00.png": {
+      "sha256": "11862f3a2948616cfd9c1e6d2029f0e35b9df6007a3e7f3eabc3ee2839d435f7",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_04_block_04_page_00_indexed.png": {
+      "sha256": "10f2adf638db7375b03490cfd23e2beefcfff0aecd4d52672cc7083df81bac07",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_05_block_05_page_00.png": {
+      "sha256": "ebddd95040246342b3a19728764d3c24ee1c1b05c0ca529b6c02abbb7b6bd257",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_05_block_05_page_00_indexed.png": {
+      "sha256": "21eeecfddba3edaf3d0cda4a024fd05abf3367ad356b67ff1c651c8c87767369",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_07_block_06_page_00.png": {
+      "sha256": "2589d4c040dd84ff509cc87f61f9a11591c51d0363fa7edd22ee9f815a3a1ca8",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_07_block_06_page_00_indexed.png": {
+      "sha256": "b1023186601060c493bd1b32937e7377c84e0f78b5956939547bf53fcebde496",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_08_block_07_page_00.png": {
+      "sha256": "e219fb36a279143ee06f30f1619530d10dba4af6b94bbcac55338f482f6ec487",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_08_block_07_page_00_indexed.png": {
+      "sha256": "6d5e89637ace3813bb114a35f4a33fae44a134f0b35d88618af895177e2ead16",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_09_block_08_page_00.png": {
+      "sha256": "2589d4c040dd84ff509cc87f61f9a11591c51d0363fa7edd22ee9f815a3a1ca8",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_09_block_08_page_00_indexed.png": {
+      "sha256": "b1023186601060c493bd1b32937e7377c84e0f78b5956939547bf53fcebde496",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_10_block_09_page_00.png": {
+      "sha256": "e219fb36a279143ee06f30f1619530d10dba4af6b94bbcac55338f482f6ec487",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_10_block_09_page_00_indexed.png": {
+      "sha256": "6d5e89637ace3813bb114a35f4a33fae44a134f0b35d88618af895177e2ead16",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_11_block_10_page_00.png": {
+      "sha256": "264460e80fdf0f6f29fe5b4ead36f39d101c12c0f5eae10e75f69ec25fbf60f7",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_11_block_10_page_00_indexed.png": {
+      "sha256": "2fee29a417d1b67fb1bf189fc632c7de8952ec2b99d6818973c51c73676bc8f1",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_12_block_11_page_00.png": {
+      "sha256": "cce2d5e6200ce6c6d6f5f7d4e71694773c1256da25faf0cf993738b8cdcf5367",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_12_block_11_page_00_indexed.png": {
+      "sha256": "c56e4d973173c7fa21c355c636ce3f38235b9f0374ef3de02302dfe6924f79c7",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_13_block_12_page_00.png": {
+      "sha256": "7c2b4aa38a1bee3dd1fc4b1dadae0607028cfd5120f8a4ab616f28d2d49ee757",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_13_block_12_page_00_indexed.png": {
+      "sha256": "28c7d0f10572a156138033220bef8182990c8aef770c24b2b8a316872e7b98f2",
+      "size": [
+        1800,
+        800
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_14_block_13_page_00.png": {
+      "sha256": "667c29753fa02a1691a27d72af0689d13c16aabbefde520d9ba246effb15f9b9",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_14_block_13_page_00_indexed.png": {
+      "sha256": "ad6d749fc69c1bb393b0c53be781e00e9e700c65aa5c3e0961142cdbbb01e3b2",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_15_block_14_page_00.png": {
+      "sha256": "2a082076cb647dcce5141fee07ab999dffb8072c152910ebd4d339bad78bd94a",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_15_block_14_page_00_indexed.png": {
+      "sha256": "718d674761394867867e4893daa624532f899a5506c92c306e817cd5103b5cf4",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_16_block_15_page_00.png": {
+      "sha256": "5b4148cb38fe2d6d02ac4c39b13affe6d0579d58f7b817abc1ac094b4044662f",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_16_block_15_page_00_indexed.png": {
+      "sha256": "18cc6c0f8bf333b3a045b60e16365b4b73996e8b3fc5b3f67922230b13fbc179",
+      "size": [
+        1800,
+        1200
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_20_block_16_page_00.png": {
+      "sha256": "324429c54e6e31c758f3f874cc09283b4ce44d67edee14626b94bc6d4608eccc",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_20_block_16_page_00_indexed.png": {
+      "sha256": "7ea6048f19deb58f65f0f8673543c7e5134d44df5dd4287ab2161b4db6c97290",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "P"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_21_block_17_page_00.png": {
+      "sha256": "b3a8c4db00c6c5065cc00bfc37a785098bad3fab01d5b38d2eaf77b701386bca",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "RGBA"
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_21_block_17_page_00_indexed.png": {
+      "sha256": "f415bbbecea7000449a6474b4fdaa4c751925a15d7d4004e3da32c9ed255ccca",
+      "size": [
+        900,
+        400
+      ],
+      "mode": "P"
+    }
+  },
+  "preparation": {
+    "pending_poses": 74,
+    "batch_count": 10,
+    "guides": [
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p000",
+          "lich_p001",
+          "lich_p002",
+          "lich_p003",
+          "lich_p004",
+          "lich_p005",
+          "lich_p006",
+          "lich_p007"
+        ],
+        "columns": 4,
+        "rows": 2,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-000.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      },
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p008",
+          "lich_p009",
+          "lich_p010",
+          "lich_p011",
+          "lich_p012",
+          "lich_p013",
+          "lich_p014",
+          "lich_p015"
+        ],
+        "columns": 4,
+        "rows": 2,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-001.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      },
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p016",
+          "lich_p017",
+          "lich_p018",
+          "lich_p019",
+          "lich_p020",
+          "lich_p021",
+          "lich_p022",
+          "lich_p023"
+        ],
+        "columns": 4,
+        "rows": 2,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-002.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      },
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p024",
+          "lich_p025",
+          "lich_p026",
+          "lich_p027",
+          "lich_p028",
+          "lich_p029",
+          "lich_p030",
+          "lich_p031"
+        ],
+        "columns": 4,
+        "rows": 2,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-003.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      },
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p032",
+          "lich_p033",
+          "lich_p034",
+          "lich_p035",
+          "lich_p036",
+          "lich_p037",
+          "lich_p038",
+          "lich_p039"
+        ],
+        "columns": 4,
+        "rows": 2,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-004.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      },
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p040",
+          "lich_p041",
+          "lich_p042",
+          "lich_p043",
+          "lich_p044",
+          "lich_p045",
+          "lich_p046",
+          "lich_p047"
+        ],
+        "columns": 4,
+        "rows": 2,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-005.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      },
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p048",
+          "lich_p049",
+          "lich_p050",
+          "lich_p051",
+          "lich_p052",
+          "lich_p053",
+          "lich_p054",
+          "lich_p055"
+        ],
+        "columns": 4,
+        "rows": 2,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-006.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      },
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p056",
+          "lich_p057",
+          "lich_p058",
+          "lich_p059",
+          "lich_p060",
+          "lich_p061",
+          "lich_p062",
+          "lich_p063"
+        ],
+        "columns": 4,
+        "rows": 2,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-007.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      },
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p064",
+          "lich_p065",
+          "lich_p066",
+          "lich_p067",
+          "lich_p068",
+          "lich_p069",
+          "lich_p070",
+          "lich_p071"
+        ],
+        "columns": 4,
+        "rows": 2,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-008.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      },
+      {
+        "creature_id": "lich",
+        "pose_ids": [
+          "lich_p072",
+          "lich_p073"
+        ],
+        "columns": 2,
+        "rows": 1,
+        "guide": "assets/prototype/enemy/lich/remaster_v01/_source/guides/batch-009.png",
+        "appearance_reference": "docs/art/production/necropolis-creature-assets-v01/lich/master_rgba.png",
+        "appearance_reference_sha256": "02f1b9e198236f6d0089076f7551f4671d651afb53b3eb23a0e87f6887cb316c",
+        "purpose": "Reference only. Generate newly drawn transparent figures in exactly this row-major source-pose order. Appearance is not pose authority."
+      }
+    ],
+    "master_copy_matches": true
+  },
+  "artwork_created": 0,
+  "approved_idle_reused": 0,
+  "runtime_or_playback_checked": false
+}
