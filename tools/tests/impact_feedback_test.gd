@@ -12,6 +12,14 @@ class Fighter:
 		return true
 
 
+class TeardownArea:
+	extends StageArea
+	var target_queries := 0
+	func get_targets() -> Array[Node]:
+		target_queries += 1
+		return super.get_targets()
+
+
 func _initialize() -> void:
 	call_deferred("_run")
 
@@ -122,6 +130,31 @@ func _run() -> void:
 	arena._clear_impact_feedback()
 	check(camera.offset == Vector2(4.0, 9.0), "cleanup removes only owned camera contribution")
 	check(arena._impact_camera_started == -1, "cleanup cancels camera timer")
+	var area := TeardownArea.new()
+	for marker_name in ["EntryAnchor", "ExitAnchor", "PlayerSpawn", "CameraAnchor"]:
+		var marker := Marker2D.new()
+		marker.name = marker_name
+		area.add_child(marker)
+	var gate := StaticBody2D.new()
+	gate.name = "RightGate"
+	area.add_child(gate)
+	var trigger := Area2D.new()
+	trigger.name = "ExitTrigger"
+	area.add_child(trigger)
+	arena._current_area = area
+	check(is_instance_valid(area) and not area.is_inside_tree(), "detached area remains instance-valid")
+	arena._clear_impact_feedback()
+	check(area.target_queries == 0, "detached cleanup never asks StageArea for group targets")
+	root.add_child(area)
+	arena._clear_impact_feedback()
+	check(area.target_queries == 1, "normal in-tree cleanup still queries area targets")
+	root.remove_child(area)
+	camera.offset = Vector2(6.0, 10.0)
+	arena._impact_camera_applied = Vector2(2.0, 1.0)
+	arena._exit_tree()
+	check(area.target_queries == 1, "exit after area removal does not query a null SceneTree")
+	check(camera.offset == Vector2(4.0, 9.0), "detached teardown still restores only owned camera offset")
+	area.free()
 	arena.free()
 	print("Impact feedback: %d checks, %d failures" % [checks, failures.size()])
 	quit(0 if failures.is_empty() else 1)

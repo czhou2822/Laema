@@ -624,7 +624,9 @@ func _clear_impact_feedback() -> void:
 	_impact_camera_level = 0
 	if is_instance_valid(player) and is_instance_valid(player.feedback):
 		player.feedback.clear_impact_feedback(true)
-	if is_instance_valid(_current_area):
+	# An area can still be instance-valid after its SceneTree has gone away.
+	# Its Feedback children own their exit cleanup; never query groups detached.
+	if is_instance_valid(_current_area) and _current_area.is_inside_tree():
 		for target in _current_area.get_targets():
 			if target is Entity and is_instance_valid(target.feedback):
 				target.feedback.clear_impact_feedback(true)
