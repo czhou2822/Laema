@@ -369,13 +369,13 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 	if id in ["ui.impact_contact_enabled", "ui.impact_camera_enabled"]:
 		field["label"] = "Contact accent" if id == "ui.impact_contact_enabled" else "Heavy impact camera"
 		field["group"] = "Cosmetic impact feedback"
-		field["description"] = "Optional confirmed direct-Health-loss feedback. Off by default; never changes combat. Contact is <=40px/120ms; camera only Level 3+ combat reactions, <=3 viewport pixels/120ms. Existing damage/status information stays visible."
+		field["description"] = "Optional confirmed direct Health-loss feedback; off by default.\nNever changes combat. Contact: <=40px / 120ms.\nCamera: Level 3+ only, <=3 viewport pixels / 120ms.\nExisting damage/status information stays visible."
 	if id == "ui.impact_treatment":
 		field["kind"] = "choice"
 		field["label"] = "Impact treatment"
 		field["group"] = "Cosmetic impact feedback"
 		field["options"] = [["precise", "Precise"], ["weight", "Weight"]]
-		field["description"] = "Precise: two tapered ticks (20/24px complete footprint, 90/100ms); strong camera <=1px/80ms. Weight: wedge and two flecks (28/38px complete footprint, expansion/fade <=110ms); strong camera <=3px/110ms. Enable contact/camera separately; damage cues do not imply stun."
+		field["description"] = "Precise: two tapered ticks; 20/24px complete footprint.\nFade: 90/100ms. Strong camera: <=1px / 80ms.\nWeight: wedge + two flecks; 28/38px complete footprint.\nExpansion/fade: <=110ms. Strong camera: <=3px / 110ms.\nC2 adds a small white center with a black edge to Weight only.\nEnable or disable contact and camera independently.\nDamage cues do not imply stun."
 	if id == "ui.attack_hitbox_visible":
 		field["label"] = "Show attack hitboxes"
 		field["description"] = "Saved debug visibility shared by the editor and in-game Portal."
