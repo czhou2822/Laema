@@ -1,0 +1,182 @@
+{
+  "griffin_attack": {
+    "note": "Fixed original-root transform and groupwide scale, no optimization. Original mask alpha>200 removes indexed shadow; generated alpha>127. This measures shape correspondence only, not image quality. Griffin/Archer use documented runtime scale; Pikeman uses measured 74px helmet-to-foot ->180px.",
+    "frames": [
+      {
+        "frame": 0,
+        "silhouette_iou": 0.3196,
+        "source_area": 15219,
+        "generated_area": 24520
+      },
+      {
+        "frame": 1,
+        "silhouette_iou": 0.2879,
+        "source_area": 17367,
+        "generated_area": 27290
+      },
+      {
+        "frame": 2,
+        "silhouette_iou": 0.2446,
+        "source_area": 19069,
+        "generated_area": 29146
+      },
+      {
+        "frame": 3,
+        "silhouette_iou": 0.3646,
+        "source_area": 16204,
+        "generated_area": 21857
+      },
+      {
+        "frame": 4,
+        "silhouette_iou": 0.3079,
+        "source_area": 12357,
+        "generated_area": 17299
+      },
+      {
+        "frame": 5,
+        "silhouette_iou": 0.2972,
+        "source_area": 10840,
+        "generated_area": 17366
+      },
+      {
+        "frame": 6,
+        "silhouette_iou": 0.2798,
+        "source_area": 12017,
+        "generated_area": 20731
+      },
+      {
+        "frame": 7,
+        "silhouette_iou": 0.2383,
+        "source_area": 13119,
+        "generated_area": 21432
+      },
+      {
+        "frame": 8,
+        "silhouette_iou": 0.3196,
+        "source_area": 15219,
+        "generated_area": 24520
+      }
+    ],
+    "mean_iou": 0.2955
+  },
+  "archer_shoot": {
+    "note": "Fixed original-root transform and groupwide scale, no optimization. Original mask alpha>200 removes indexed shadow; generated alpha>127. This measures shape correspondence only, not image quality. Griffin/Archer use documented runtime scale; Pikeman uses measured 74px helmet-to-foot ->180px.",
+    "frames": [
+      {
+        "frame": 0,
+        "silhouette_iou": 0.5608,
+        "source_area": 8630,
+        "generated_area": 10246
+      },
+      {
+        "frame": 1,
+        "silhouette_iou": 0.5894,
+        "source_area": 8229,
+        "generated_area": 9723
+      },
+      {
+        "frame": 2,
+        "silhouette_iou": 0.421,
+        "source_area": 8329,
+        "generated_area": 10060
+      },
+      {
+        "frame": 3,
+        "silhouette_iou": 0.4139,
+        "source_area": 8085,
+        "generated_area": 11342
+      },
+      {
+        "frame": 4,
+        "silhouette_iou": 0.4139,
+        "source_area": 8085,
+        "generated_area": 11342
+      },
+      {
+        "frame": 5,
+        "silhouette_iou": 0.4139,
+        "source_area": 8085,
+        "generated_area": 11342
+      },
+      {
+        "frame": 6,
+        "silhouette_iou": 0.4954,
+        "source_area": 8749,
+        "generated_area": 10829
+      },
+      {
+        "frame": 7,
+        "silhouette_iou": 0.4855,
+        "source_area": 8344,
+        "generated_area": 11170
+      }
+    ],
+    "mean_iou": 0.4742
+  },
+  "pikeman_attack": {
+    "note": "Fixed original-root transform and groupwide scale, no optimization. Original mask alpha>200 removes indexed shadow; generated alpha>127. This measures shape correspondence only, not image quality. Griffin/Archer use documented runtime scale; Pikeman uses measured 74px helmet-to-foot ->180px.",
+    "frames": [
+      {
+        "frame": 0,
+        "silhouette_iou": 0.5154,
+        "source_area": 7902,
+        "generated_area": 9460
+      },
+      {
+        "frame": 1,
+        "silhouette_iou": 0.4766,
+        "source_area": 7993,
+        "generated_area": 9844
+      },
+      {
+        "frame": 2,
+        "silhouette_iou": 0.4616,
+        "source_area": 8067,
+        "generated_area": 9171
+      },
+      {
+        "frame": 3,
+        "silhouette_iou": 0.4943,
+        "source_area": 8165,
+        "generated_area": 9550
+      },
+      {
+        "frame": 4,
+        "silhouette_iou": 0.448,
+        "source_area": 8217,
+        "generated_area": 10107
+      },
+      {
+        "frame": 5,
+        "silhouette_iou": 0.3411,
+        "source_area": 8258,
+        "generated_area": 9490
+      },
+      {
+        "frame": 6,
+        "silhouette_iou": 0.448,
+        "source_area": 8217,
+        "generated_area": 10107
+      },
+      {
+        "frame": 7,
+        "silhouette_iou": 0.4943,
+        "source_area": 8165,
+        "generated_area": 9550
+      },
+      {
+        "frame": 8,
+        "silhouette_iou": 0.4558,
+        "source_area": 8067,
+        "generated_area": 9844
+      },
+      {
+        "frame": 9,
+        "silhouette_iou": 0.443,
+        "source_area": 7993,
+        "generated_area": 9460
+      }
+    ],
+    "mean_iou": 0.4578
+  }
+}

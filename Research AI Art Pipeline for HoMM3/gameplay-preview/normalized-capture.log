@@ -1,0 +1,98 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+[TRACE][HUD] mark_progress_displayed { "marked_count": 0, "partial_progress": 0.0, "bar_value": 0.0 }
+SCRIPT ERROR: Invalid assignment of property or key 'custom_maximum_size' with value of type 'Vector2' on a base object of type 'Label'.
+          at: ObjectiveWidget._add_row (res://scripts/ui/objective_widget.gd:68)
+          GDScript backtrace (most recent call first):
+              [0] _add_row (res://scripts/ui/objective_widget.gd:68)
+              [1] present (res://scripts/ui/objective_widget.gd:56)
+              [2] update_tutorial_objective (res://scripts/ui/prototype_hud.gd:199)
+              [3] _emit_objective (res://scripts/prototype/stage_director.gd:149)
+              [4] activate_stage (res://scripts/prototype/stage_director.gd:83)
+              [5] _start_initial_stage (res://scripts/prototype/prototype_arena.gd:147)
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 80.0 }
+[TRACE][ARENA] stage_activated { "stage_id": "gym", "initial": true }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 160.0 }
+[TRACE][MOVEMENT] grounded_changed { "grounded": true, "position": (-80.0, 0.0) }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 146.500183105469 }
+CAPTURE current-fullthrust 0
+CAPTURE frames/current/frame_00 0
+CAPTURE frames/current/frame_01 0
+CAPTURE frames/current/frame_02 0
+CAPTURE frames/current/frame_03 0
+CAPTURE frames/current/frame_04 0
+CAPTURE frames/current/frame_05 0
+CAPTURE frames/current/frame_06 0
+CAPTURE frames/current/frame_07 0
+CAPTURE frames/current/frame_08 0
+CAPTURE frames/current/frame_09 0
+CAPTURE a-realesrgan-fullthrust 0
+CAPTURE frames/a-realesrgan/frame_00 0
+CAPTURE frames/a-realesrgan/frame_01 0
+CAPTURE frames/a-realesrgan/frame_02 0
+CAPTURE frames/a-realesrgan/frame_03 0
+CAPTURE frames/a-realesrgan/frame_04 0
+CAPTURE frames/a-realesrgan/frame_05 0
+CAPTURE frames/a-realesrgan/frame_06 0
+CAPTURE frames/a-realesrgan/frame_07 0
+CAPTURE frames/a-realesrgan/frame_08 0
+CAPTURE frames/a-realesrgan/frame_09 0
+CAPTURE a-nearest-fullthrust 0
+CAPTURE frames/a-nearest/frame_00 0
+CAPTURE frames/a-nearest/frame_01 0
+CAPTURE frames/a-nearest/frame_02 0
+CAPTURE frames/a-nearest/frame_03 0
+CAPTURE frames/a-nearest/frame_04 0
+CAPTURE frames/a-nearest/frame_05 0
+CAPTURE frames/a-nearest/frame_06 0
+CAPTURE frames/a-nearest/frame_07 0
+CAPTURE frames/a-nearest/frame_08 0
+CAPTURE frames/a-nearest/frame_09 0
+CAPTURE b-edit-fullthrust 0
+CAPTURE frames/b-edit/frame_00 0
+CAPTURE frames/b-edit/frame_01 0
+CAPTURE frames/b-edit/frame_02 0
+CAPTURE frames/b-edit/frame_03 0
+CAPTURE frames/b-edit/frame_04 0
+CAPTURE frames/b-edit/frame_05 0
+CAPTURE frames/b-edit/frame_06 0
+CAPTURE frames/b-edit/frame_07 0
+CAPTURE frames/b-edit/frame_08 0
+CAPTURE frames/b-edit/frame_09 0
+CAPTURE c-strip-fullthrust 0
+CAPTURE frames/c-strip/frame_00 0
+CAPTURE frames/c-strip/frame_01 0
+CAPTURE frames/c-strip/frame_02 0
+CAPTURE frames/c-strip/frame_03 0
+CAPTURE frames/c-strip/frame_04 0
+CAPTURE frames/c-strip/frame_05 0
+CAPTURE frames/c-strip/frame_06 0
+CAPTURE frames/c-strip/frame_07 0
+CAPTURE frames/c-strip/frame_08 0
+CAPTURE frames/c-strip/frame_09 0
+WARNING: 1 RID of type "CanvasItem" was leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2690)
+ERROR: Texture with GL ID of 77: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:77)
+ERROR: Texture with GL ID of 78: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:77)
+ERROR: Texture with GL ID of 79: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:77)
+ERROR: Texture with GL ID of 80: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:77)
+ERROR: Texture with GL ID of 83: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:77)
+ERROR: Texture with GL ID of 86: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:77)
+ERROR: Texture with GL ID of 87: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:77)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+ERROR: 9 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)
+ERROR: 7 RID allocations of type 'N5GLES37TextureE' were leaked at exit.
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.
