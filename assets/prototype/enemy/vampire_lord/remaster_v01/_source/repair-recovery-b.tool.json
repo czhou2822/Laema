@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "returned_keys": [
+    "image_url",
+    "output_hint"
+  ],
+  "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019\\exec-78f4840c-fc1d-4c8c-a78b-776f3f2eb057.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "prompt": "Use case: stylized-concept. Production repair redraw using Image 1 as approved APPEARANCE ONLY and Image 2 as exact ORIGINAL pose silhouettes. Genuine transparent background, fine hand-painted high-resolution shading. Same pale bald wrinkled Nosferatu, pointed ears, red eyes, fangs, long bare claws, charcoal/brown ragged robe and orange-gold collar/cuffs/edges with red lining. Unarmed, no hair/armor/accessories. All poses must be newly drawn separately; no pixel upscale or warped master. No labels/grid/floor/cast shadow/background. Keep generous transparent gutters, at least 40 pixels outside all tips, including topmost hands/effects. Preserve original camera, hand directions, head bends and exact pose. Robe mostly falls STRAIGHT DOWN as a NARROW COLUMN, NOT a broad triangular bell skirt. Figures must retain original overall width/height ratios listed below; excessive wide sleeves or hem made prior drawings shrink. Do not shorten the body or widen clothing.\n\nEight figures four columns/two rows. p017,p018,p031,p035 / p036,p040,p041,p042. Overall visible widths/heights respectively 47/81,53/88,38/91,54/86 / 50/86,64/79,52/82,47/85. Use these exact relative silhouettes. p017 deeply hunched head down settling, near hand low; p018 early defence raising forward hand; p031 very narrow tall side-view with head lifted back and one claw hand close to face, the other forward at chest; p035 side profile attack recovery, hands forward but CLOSE to body, not far reach; p036 hands low settling; p040 remains bent forward at waist with hands down/right and narrow lower robe; p041 begins rising; p042 near upright settling. Avoid spreading cloak sideways. Copy guide exactly. Prefer 2048x1024.\n",
+  "transparent_background": true,
+  "repair_reason": "Broad recovery/windup silhouettes caused excessive height loss in fixed native bounds.",
+  "references": [
+    {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire-lord/master_rgba.png",
+      "sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/guides/repair-recovery-source.png",
+      "sha256": "c6abcd6e6d24c320dc5d26b1e9c1efdfc7ec6e11b508d1e076ce421efb26311d"
+    }
+  ],
+  "raw_sha256": "a3b860ddb47761d098c3a5751594a1bdb5197c9ec86d322400d92eabfe582d74",
+  "model": null,
+  "seed": null
+}

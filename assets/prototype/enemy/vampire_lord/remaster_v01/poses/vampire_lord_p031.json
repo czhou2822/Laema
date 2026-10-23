@@ -1,0 +1,100 @@
+{
+  "pose_id": "vampire_lord_p031",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "5bfb9d4a32f39727391a8fb52da6689ebc9bbf3e51aeea703949f16c966f020c:170:177:44:91:450:400",
+  "original_representative": {
+    "group_id": 11,
+    "original_block": 10,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNOSFE/group_11_block_10_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CNOSFE/group_11_block_10_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "Cnosfe26.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 97316,
+      "stored_size": 3067,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 44,
+      "height": 91,
+      "left": 170,
+      "top": 177,
+      "legacy_header": false,
+      "index_sha256": "5bfb9d4a32f39727391a8fb52da6689ebc9bbf3e51aeea703949f16c966f020c"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/raw/repair-recovery-b.png",
+  "raw_sha256": "a3b860ddb47761d098c3a5751594a1bdb5197c9ec86d322400d92eabfe582d74",
+  "prompt": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/raw/repair-recovery-b.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/isolated/repair-recovery-b-vampire_lord_p031.png",
+  "isolated_sha256": "6cf7642c8ced38143009f8d907eb81431d665faa838404b23259cf509452ee61",
+  "source_grid_region": [
+    1026,
+    15,
+    208,
+    430
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/vampire_lord/remaster_v01/poses/vampire_lord_p031.png",
+  "registered_pose_sha256": "1ae3e321635b53d0579802efff5a33dd9d207aff47971871495ae7db131c6bce",
+  "mirror_file": "assets/prototype/enemy/vampire_lord/remaster_v01/poses/vampire_lord_p031_mirror.png",
+  "mirror_sha256": "4138c4aa050163329ffd65870f7a449a03f28c680ecb1686b85a283ebb75cd1d",
+  "registration": {
+    "source_body_rect": [
+      175,
+      177,
+      38,
+      91
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      210,
+      432
+    ],
+    "registered_rect": [
+      460,
+      318,
+      94,
+      194
+    ],
+    "uniform_artwork_fit": 0.4519230769230769
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected enlarged raw/source guide and registered native OG/new/exact mirror comparison. Narrow side-view windup, head lifts and hands rise close to face; width repaired. Worker candidate review only; no human animation acceptance.",
+    "source_sha256_at_review": "1ae3e321635b53d0579802efff5a33dd9d207aff47971871495ae7db131c6bce",
+    "mirror_sha256_at_review": "4138c4aa050163329ffd65870f7a449a03f28c680ecb1686b85a283ebb75cd1d"
+  },
+  "human_animation_acceptance": false
+}

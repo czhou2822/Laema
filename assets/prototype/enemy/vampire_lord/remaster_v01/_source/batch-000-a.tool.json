@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "returned_keys": [
+    "image_url",
+    "output_hint"
+  ],
+  "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-4471-75a0-b293-f122f5c4c019\\exec-4fa22f5c-0c84-469c-b921-a809e3aa44b4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "returned_image_payload": "image_url data:image/png;base64; exact PNG retained as batch-000-a.png",
+  "prompt_file": "_source/prompts/batch-000-a.txt",
+  "references": [
+    {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire-lord/master_rgba.png",
+      "sha256": "ce85d841852af7fedf5ebdad8b0451bc7f85dcd7c8494f1de35e0a7e85713d64"
+    },
+    {
+      "path": "assets/prototype/enemy/vampire_lord/remaster_v01/_source/guides/batch-000.png",
+      "sha256": "400f15faf35622a7e00ff596096552bcaad705d17d1574fc3c32171d7a83aa2a"
+    }
+  ],
+  "transparent_background": true,
+  "model": null,
+  "submitted_prompt": "Use case: stylized-concept. Production sprite redraw sheet, eight separate complete poses, 4 columns x 2 rows on genuinely transparent background. Image 1 is the approved Vampire Lord appearance reference only. Image 2 is the authoritative original pose guide. Newly draw every occupied guide cell in exact row-major order; no enlarged original pixels, no copy-and-warp art.\n\nMatch the master: bald wrinkled pale gray Nosferatu, large pointed ears, red eyes, small visible fangs, long pale clawlike fingers, dark charcoal/brown tattered floor-length robe with burnt-orange gold high collar and ragged cuff/edge trim, deep red lining. Fine painted modeled volume and fabric detail, clear silhouette. No weapon, armor, hair, shoes added outside source silhouette. No warm reference background, no shadow, floor, text, labels, grid or outlines.\n\nCrucially TOP ROW is FOUR RIGHT-FACING BATS, NOT HUMANOIDS. Follow each original bat exactly, including the reddish/brown membranes, pale fanged snout and different wing angles: p000 very flat extended wing silhouette; p001 near wing fans downward; p002 wing tilted upward in narrow triangular silhouette; p003 near wing tall upright broad membrane. Keep each bat horizontal facing right, matching guide camera and anatomy. Do not attach a robed man to a bat.\nBOTTOM ROW: p004 original hunched idle, both hands bent forward low; p005 slightly changed head/shoulder/hand posture; p006 subtle taller gesture with hand placement from guide; p007 the next distinct gesture. Trace the guide's orientation, hand locations, bends, robe shape and each silhouette, not a repeated idle. Long robe hides feet exactly as source.\n\nEight complete isolated figures, each centered within its own equal cell with generous transparent gutters and outer margins. Keep all wing tips, nails, robe hems inside cell. Use the full guide composition but remove all labels and dark guide backdrop. Do not combine cells or add particles to these eight poses. Render at high resolution, preferably 2048x1024. Exact row-major IDs: vampire_lord_p000,p001,p002,p003 / p004,p005,p006,p007.",
+  "seed": null
+}

@@ -1,0 +1,100 @@
+{
+  "pose_id": "vampire_p005",
+  "artwork_origin": "built-in image-generation artwork",
+  "original_signature": "bc1ed9be2ff6506c12dec85f02f1abf628500bc18e966aa29bec6ccb150e5ef5:175:181:42:87:450:400",
+  "original_representative": {
+    "group_id": 1,
+    "original_block": 1,
+    "frame_index": 1,
+    "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_01_block_01_page_00.png",
+    "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_01_block_01_page_00_indexed.png",
+    "sheet_cell_region": [
+      450,
+      0,
+      450,
+      400
+    ],
+    "source_record": {
+      "index": 1,
+      "name": "Cvamp05.pcx",
+      "page": 0,
+      "x": 450,
+      "y": 0,
+      "offset": 16045,
+      "stored_size": 3403,
+      "format": 1,
+      "full_width": 450,
+      "full_height": 400,
+      "width": 42,
+      "height": 87,
+      "left": 175,
+      "top": 181,
+      "legacy_header": false,
+      "index_sha256": "bc1ed9be2ff6506c12dec85f02f1abf628500bc18e966aa29bec6ccb150e5ef5"
+    }
+  },
+  "raw_source": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/repair-gesture-prep-02.png",
+  "raw_sha256": "e5ded7ef1c2de0f870393ccf122255ed570f39f4a23cea2c5cf985a540d573c3",
+  "prompt": "assets/prototype/enemy/vampire/remaster_v01/_source/raw/repair-gesture-prep-02.prompt.txt",
+  "isolated_source": "assets/prototype/enemy/vampire/remaster_v01/_source/isolated/repair-gesture-prep-02-vampire_p005.png",
+  "isolated_sha256": "f9ec251893dcd5eba0898c7035d82204927287347e8f5384d1313c06b75da2b9",
+  "source_grid_region": [
+    115,
+    15,
+    206,
+    446
+  ],
+  "component_isolation": true,
+  "isolation_method": "Strict alpha connected components, row-major assignment, nearest antialias ownership; ambiguous counts/clipping rejected; no painted/recolored pixels",
+  "registered_pose_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p005.png",
+  "registered_pose_sha256": "9d0899ddb6f61be079c422bdb0db76a53ea1b01fb654b6a39adce1005e444ce2",
+  "mirror_file": "assets/prototype/enemy/vampire/remaster_v01/poses/vampire_p005_mirror.png",
+  "mirror_sha256": "5cf7ae817aa444191a1434521b26e7906b629311bffe0c935f83714491c05f8f",
+  "registration": {
+    "source_body_rect": [
+      176,
+      182,
+      40,
+      85
+    ],
+    "artwork_crop": [
+      2,
+      2,
+      208,
+      448
+    ],
+    "registered_rect": [
+      464,
+      300,
+      97,
+      210
+    ],
+    "uniform_artwork_fit": 0.47085201793721976
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "visual_review": {
+    "status": "worker reviewed source comparison; candidate, not human acceptance",
+    "note": "Inspected final repair raw and registered OG/candidate/mirror comparisons. Gesture hands progress from waist across abdomen to lower chest, far hand lowers; separate idle drawings remain distinct. Standing stance repaired; no duplicated idle substitution.",
+    "source_sha256_at_review": "9d0899ddb6f61be079c422bdb0db76a53ea1b01fb654b6a39adce1005e444ce2",
+    "mirror_sha256_at_review": "5cf7ae817aa444191a1434521b26e7906b629311bffe0c935f83714491c05f8f"
+  },
+  "human_animation_acceptance": false
+}

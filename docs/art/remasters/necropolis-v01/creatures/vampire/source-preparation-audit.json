@@ -1,0 +1,2468 @@
+{
+  "creature_id": "vampire",
+  "phase": "source_preparation_only",
+  "status": "source_checks_passed_awaiting_pilot_clearance",
+  "plan_path": "docs/art/remasters/necropolis-v01/generation-plan.json",
+  "plan_file_sha256": "084dcc8ed5bdbf4ade05ec7f6bd9cf2f78bfe575884c6ebad256a3927012488f",
+  "helper_path": "tools/art/necropolis_remaster.py",
+  "helper_sha256": "8bb3b36bbc0470c144ac005987adc763f69fd47a016f6acfeec478719887cf52",
+  "approval_path": "docs/art/remasters/necropolis-v01/master-approval.json",
+  "appearance_approved": true,
+  "animation_approved": false,
+  "fingerprints": {
+    "original_metadata": {
+      "path": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/metadata.json",
+      "sha256": "99faef81225d3ef789f496f65874d8a71bda1542cdcbc1d91e4b37c78f7a98b7",
+      "matches_plan": true
+    },
+    "original_def": {
+      "path": "docs/art/references/heroes3-original-flipbooks/originals/H3sprite/CVAMP.def",
+      "sha256": "5d0d2c832aa0e9d6cf1757d281d242b300cbfb89120e9462dc1726452a9ef476",
+      "matches_plan": true
+    },
+    "appearance_reference": {
+      "path": "docs/art/production/necropolis-creature-assets-v01/vampire/master_rgba.png",
+      "sha256": "d069d66f2eb95de77cbaf5e2b518ffa45571cab49384c8f4227a3e3ff82742bd",
+      "matches_plan": true
+    }
+  },
+  "native": {
+    "name": "CVAMP.def",
+    "archive": "H3sprite",
+    "type": 66,
+    "category": "creatures",
+    "header_width": 450,
+    "header_height": 400,
+    "frame_count": 90
+  },
+  "counts": {
+    "groups": 15,
+    "timeline_positions": 90,
+    "registered_poses": 56,
+    "prepared_batches": 7,
+    "indexed_frame_hashes_verified": 90,
+    "rgba_occurrences_verified": 90,
+    "new_artwork_calls": 0,
+    "ingested_poses": 0,
+    "exports_created": 0
+  },
+  "geometry": {
+    "geometry_version": 2,
+    "cell_size": [
+      1024,
+      768
+    ],
+    "columns": 4,
+    "anchor": [
+      512,
+      512
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "uniform_scale": 2.4657534246575343,
+    "original_body_alpha_threshold": 160,
+    "registration": "Fixed shared source-coordinate transform. RGBA artwork aspect-fits opaque native body bounds; horizontal center and bottom follow native coordinates; no stretching or per-action normalization."
+  },
+  "idle_reference_pose": "vampire_p004",
+  "absent_group_ids_within_0_to_21": [
+    6,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "groups": [
+    {
+      "group_id": 0,
+      "original_block": 0,
+      "purpose_interpretation": "movement",
+      "frame_count": 6,
+      "pose_ids_in_source_order": [
+        "vampire_p000",
+        "vampire_p001",
+        "vampire_p000",
+        "vampire_p002",
+        "vampire_p003",
+        "vampire_p002"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 1,
+      "original_block": 1,
+      "purpose_interpretation": "idle gesture",
+      "frame_count": 9,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p005",
+        "vampire_p006",
+        "vampire_p007",
+        "vampire_p008",
+        "vampire_p008",
+        "vampire_p007",
+        "vampire_p006",
+        "vampire_p005"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 2,
+      "original_block": 2,
+      "purpose_interpretation": "idle",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p009",
+        "vampire_p010",
+        "vampire_p011",
+        "vampire_p011",
+        "vampire_p010",
+        "vampire_p009",
+        "vampire_p004"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 3,
+      "original_block": 3,
+      "purpose_interpretation": "hurt",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p012",
+        "vampire_p013",
+        "vampire_p014",
+        "vampire_p015",
+        "vampire_p016",
+        "vampire_p017"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 4,
+      "original_block": 4,
+      "purpose_interpretation": "defensive reaction",
+      "frame_count": 9,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p018",
+        "vampire_p019",
+        "vampire_p020",
+        "vampire_p021",
+        "vampire_p021",
+        "vampire_p020",
+        "vampire_p019",
+        "vampire_p018"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 5,
+      "original_block": 5,
+      "purpose_interpretation": "death",
+      "frame_count": 8,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p022",
+        "vampire_p023",
+        "vampire_p024",
+        "vampire_p025",
+        "vampire_p026",
+        "vampire_p027",
+        "vampire_p028"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 7,
+      "original_block": 6,
+      "purpose_interpretation": "turn part 1",
+      "frame_count": 3,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p029",
+        "vampire_p030"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 8,
+      "original_block": 7,
+      "purpose_interpretation": "turn part 2",
+      "frame_count": 3,
+      "pose_ids_in_source_order": [
+        "vampire_p030",
+        "vampire_p029",
+        "vampire_p004"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 9,
+      "original_block": 8,
+      "purpose_interpretation": "legacy turn",
+      "frame_count": 3,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p029",
+        "vampire_p030"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 10,
+      "original_block": 9,
+      "purpose_interpretation": "legacy turn",
+      "frame_count": 3,
+      "pose_ids_in_source_order": [
+        "vampire_p030",
+        "vampire_p029",
+        "vampire_p004"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 11,
+      "original_block": 10,
+      "purpose_interpretation": "melee upper",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p031",
+        "vampire_p032",
+        "vampire_p033",
+        "vampire_p034",
+        "vampire_p035",
+        "vampire_p036"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 12,
+      "original_block": 11,
+      "purpose_interpretation": "melee front",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p037",
+        "vampire_p038",
+        "vampire_p039",
+        "vampire_p040",
+        "vampire_p041",
+        "vampire_p042"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 13,
+      "original_block": 12,
+      "purpose_interpretation": "melee lower",
+      "frame_count": 7,
+      "pose_ids_in_source_order": [
+        "vampire_p004",
+        "vampire_p043",
+        "vampire_p044",
+        "vampire_p045",
+        "vampire_p046",
+        "vampire_p047",
+        "vampire_p048"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 20,
+      "original_block": 13,
+      "purpose_interpretation": "movement start",
+      "frame_count": 5,
+      "pose_ids_in_source_order": [
+        "vampire_p049",
+        "vampire_p050",
+        "vampire_p051",
+        "vampire_p052",
+        "vampire_p053"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    },
+    {
+      "group_id": 21,
+      "original_block": 14,
+      "purpose_interpretation": "movement end",
+      "frame_count": 5,
+      "pose_ids_in_source_order": [
+        "vampire_p054",
+        "vampire_p055",
+        "vampire_p051",
+        "vampire_p050",
+        "vampire_p049"
+      ],
+      "exact_aliases": [],
+      "original_timing_verified": false
+    }
+  ],
+  "poses": [
+    {
+      "pose_id": "vampire_p000",
+      "native_name": "Cvamp14.pcx",
+      "original_signature": "b84ee1b9e9bdd461001b0fcdd38d47c0327b8cdf15e1823565a4daafb87699e8:169:191:52:68:450:400",
+      "opaque_body_rect": [
+        173,
+        191,
+        48,
+        22
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p001",
+      "native_name": "Cvamp15.pcx",
+      "original_signature": "36d5068f5a2db08b16ed18c1d8b489abf0240555b4191d6b24a6741d875eaeea:170:189:50:74:450:400",
+      "opaque_body_rect": [
+        176,
+        189,
+        44,
+        41
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p002",
+      "native_name": "Cvamp16.pcx",
+      "original_signature": "5eb1188cd1efb8e424899ad9c1d27ae3f7e01ebacfbee77ff86deb42d0b0cc2a:169:182:51:69:450:400",
+      "opaque_body_rect": [
+        172,
+        182,
+        48,
+        31
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 5,
+          "sheet_cell_region": [
+            450,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p003",
+      "native_name": "Cvamp17.pcx",
+      "original_signature": "e7cfa5038f8d7fe8e2e37172d3db878cb75afec70f520931c4fc9b42783a53e1:170:174:49:76:450:400",
+      "opaque_body_rect": [
+        172,
+        174,
+        47,
+        40
+      ],
+      "occurrences": [
+        {
+          "group_id": 0,
+          "original_block": 0,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p004",
+      "native_name": "Cvamp01.pcx",
+      "original_signature": "ce838ab02df81040a64cd07141b0f800dd2f31c64dc9e1dbf91c7b607c947cbb:176:182:41:86:450:400",
+      "opaque_body_rect": [
+        177,
+        183,
+        39,
+        84
+      ],
+      "occurrences": [
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 7,
+          "sheet_cell_region": [
+            1350,
+            400,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 7,
+          "original_block": 6,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 8,
+          "original_block": 7,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 9,
+          "original_block": 8,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 10,
+          "original_block": 9,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p005",
+      "native_name": "Cvamp05.pcx",
+      "original_signature": "bc1ed9be2ff6506c12dec85f02f1abf628500bc18e966aa29bec6ccb150e5ef5:175:181:42:87:450:400",
+      "opaque_body_rect": [
+        176,
+        182,
+        40,
+        85
+      ],
+      "occurrences": [
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 8,
+          "sheet_cell_region": [
+            0,
+            800,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p006",
+      "native_name": "Cvamp06.pcx",
+      "original_signature": "39a3cf1e789f205508ab75d706e6a6d67c121585c30fc1c7bdeaa48dcc2b1e91:173:180:42:88:450:400",
+      "opaque_body_rect": [
+        174,
+        181,
+        40,
+        86
+      ],
+      "occurrences": [
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 7,
+          "sheet_cell_region": [
+            1350,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p007",
+      "native_name": "Cvamp07.pcx",
+      "original_signature": "5b1311eb8a92e790b2caae7fc0406fba7ae9078a9baf0654858dd70a1f5f2290:172:179:43:89:450:400",
+      "opaque_body_rect": [
+        173,
+        180,
+        41,
+        87
+      ],
+      "occurrences": [
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 6,
+          "sheet_cell_region": [
+            900,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p008",
+      "native_name": "Cvamp08.pcx",
+      "original_signature": "5ec95b27535f6eae7a07cbf30e121745ad1d6f7b0d6a182e9ca3eed3854b92cf:171:178:45:90:450:400",
+      "opaque_body_rect": [
+        172,
+        179,
+        43,
+        88
+      ],
+      "occurrences": [
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 1,
+          "original_block": 1,
+          "frame_index": 5,
+          "sheet_cell_region": [
+            450,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p009",
+      "native_name": "Cvamp02.pcx",
+      "original_signature": "93aa246067905a6fc72c8cd3ec432465273d3e84c29f1e435645fe43e549dc31:175:182:42:86:450:400",
+      "opaque_body_rect": [
+        176,
+        183,
+        40,
+        84
+      ],
+      "occurrences": [
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 6,
+          "sheet_cell_region": [
+            900,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p010",
+      "native_name": "Cvamp03.pcx",
+      "original_signature": "338c7dc2c5a1e888f41f14697edf7c0a33639502eeb3111b5c75e7a0584aaf9a:175:182:42:86:450:400",
+      "opaque_body_rect": [
+        176,
+        183,
+        40,
+        84
+      ],
+      "occurrences": [
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 5,
+          "sheet_cell_region": [
+            450,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p011",
+      "native_name": "Cvamp04.pcx",
+      "original_signature": "0e749a8eac63e29737dcd0533296a0d8595a5e447baa02965cfe9f89f4a41ed9:175:181:42:87:450:400",
+      "opaque_body_rect": [
+        176,
+        182,
+        40,
+        85
+      ],
+      "occurrences": [
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 2,
+          "original_block": 2,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p012",
+      "native_name": "Cvamp44.pcx",
+      "original_signature": "d05e23cb4321d88c4ed673ebf934657ed4daf552acbc5b2c44ff732d7e9a6c64:171:180:58:87:450:400",
+      "opaque_body_rect": [
+        171,
+        180,
+        57,
+        87
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p013",
+      "native_name": "Cvamp45.pcx",
+      "original_signature": "4348c7698a522a55fd525e94072c4460c98c2a85079316e83415e70ab7981d39:165:173:59:94:450:400",
+      "opaque_body_rect": [
+        166,
+        173,
+        58,
+        94
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p014",
+      "native_name": "Cvamp46.pcx",
+      "original_signature": "41012aba81e036e64f2b8d23719d1b097e123edcd248c421313010d4d2a43def:149:156:60:111:450:400",
+      "opaque_body_rect": [
+        150,
+        156,
+        59,
+        111
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p015",
+      "native_name": "Cvamp47.pcx",
+      "original_signature": "1ba50768b5c5d5f0eb4fc16db4b31f17fd9b37e049ea0d41e98dd2a0d7997459:144:185:85:82:450:400",
+      "opaque_body_rect": [
+        144,
+        185,
+        85,
+        82
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p016",
+      "native_name": "Cvamp48.pcx",
+      "original_signature": "d048cb55295dd148e19267fcd22dee65dd6089b3adfe834c56e6cd3ee4b838e8:160:198:57:69:450:400",
+      "opaque_body_rect": [
+        164,
+        198,
+        53,
+        69
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 5,
+          "sheet_cell_region": [
+            450,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p017",
+      "native_name": "Cvamp49.pcx",
+      "original_signature": "867bf3ee8071a3e40283c163d429ba2731431e0d5a2d31aaef12f2814b8a542e:176:191:39:76:450:400",
+      "opaque_body_rect": [
+        176,
+        191,
+        39,
+        76
+      ],
+      "occurrences": [
+        {
+          "group_id": 3,
+          "original_block": 3,
+          "frame_index": 6,
+          "sheet_cell_region": [
+            900,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p018",
+      "native_name": "Cvamp22.pcx",
+      "original_signature": "ee13cb3e0c71f7af5d7c54262d0ce3ddeb71c7f962d04ed45b7ed214b28cf8db:177:183:50:84:450:400",
+      "opaque_body_rect": [
+        177,
+        183,
+        49,
+        84
+      ],
+      "occurrences": [
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 8,
+          "sheet_cell_region": [
+            0,
+            800,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p019",
+      "native_name": "Cvamp23.pcx",
+      "original_signature": "158151a915cfb6a48e4277f946538c844acaa79e4755b52c235d8e2493db273e:176:182:53:85:450:400",
+      "opaque_body_rect": [
+        176,
+        182,
+        51,
+        85
+      ],
+      "occurrences": [
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 7,
+          "sheet_cell_region": [
+            1350,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p020",
+      "native_name": "Cvamp24.pcx",
+      "original_signature": "7611c059cb23a7753a0890ac7e921824d6cbeb64e8b7a8eedeac251a009f8aa7:175:182:52:85:450:400",
+      "opaque_body_rect": [
+        175,
+        182,
+        52,
+        85
+      ],
+      "occurrences": [
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 6,
+          "sheet_cell_region": [
+            900,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p021",
+      "native_name": "Cvamp25.pcx",
+      "original_signature": "305c25c44a29294e0386d4c3829627956ad5bacc44485ed361d30f0db722be1c:168:178:43:89:450:400",
+      "opaque_body_rect": [
+        169,
+        178,
+        42,
+        89
+      ],
+      "occurrences": [
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 4,
+          "original_block": 4,
+          "frame_index": 5,
+          "sheet_cell_region": [
+            450,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p022",
+      "native_name": "Cvamp50.pcx",
+      "original_signature": "853a66caa6427ce56617dc300bb06f0ab5b29eb8747ce0a43631c83652c2cecd:171:177:57:90:450:400",
+      "opaque_body_rect": [
+        171,
+        177,
+        55,
+        90
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p023",
+      "native_name": "Cvamp51.pcx",
+      "original_signature": "3cf5880844bcea5f45ed081b6f6551e3ad468f317742323ff68fef36a8e0cafa:163:179:69:88:450:400",
+      "opaque_body_rect": [
+        163,
+        179,
+        64,
+        87
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p024",
+      "native_name": "Cvamp52.pcx",
+      "original_signature": "7da0127ddb3d0c734cfd54b631ecb44d06f2fbc5bea39837c8f2aadc6825d433:152:175:70:92:450:400",
+      "opaque_body_rect": [
+        152,
+        175,
+        67,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p025",
+      "native_name": "Cvamp53.pcx",
+      "original_signature": "ef6ac2e24ee897b1c398fd2b5e49a81f8231713b98309e88675a09391a9333e7:157:175:63:92:450:400",
+      "opaque_body_rect": [
+        157,
+        175,
+        63,
+        91
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p026",
+      "native_name": "Cvamp54.pcx",
+      "original_signature": "58d2f8f8ec22656db48ca964592ce65c5e4fd628ece17c80ff282f3527268764:158:178:60:89:450:400",
+      "opaque_body_rect": [
+        158,
+        178,
+        60,
+        88
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 5,
+          "sheet_cell_region": [
+            450,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p027",
+      "native_name": "Cvamp55.pcx",
+      "original_signature": "502702d67cfb05c21c6ede7690378110ce8cefa786cadcd81d5d97ad20cc2247:166:190:49:76:450:400",
+      "opaque_body_rect": [
+        166,
+        190,
+        48,
+        75
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 6,
+          "sheet_cell_region": [
+            900,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p028",
+      "native_name": "Cvamp56.pcx",
+      "original_signature": "0d1a6a3c70d6884f1855ab2c99bc0c44918b2fd4261964670c110e0882f558f7:173:235:45:30:450:400",
+      "opaque_body_rect": [
+        173,
+        235,
+        45,
+        26
+      ],
+      "occurrences": [
+        {
+          "group_id": 5,
+          "original_block": 5,
+          "frame_index": 7,
+          "sheet_cell_region": [
+            1350,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p029",
+      "native_name": "Cvamp20.pcx",
+      "original_signature": "4e4a3ead8c9d6cc44895c7f677362f14d52d0d301e228e61382f1dd76ef2ddab:173:182:45:84:450:400",
+      "opaque_body_rect": [
+        173,
+        182,
+        45,
+        84
+      ],
+      "occurrences": [
+        {
+          "group_id": 7,
+          "original_block": 6,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 8,
+          "original_block": 7,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 9,
+          "original_block": 8,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 10,
+          "original_block": 9,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p030",
+      "native_name": "Cvamp21.pcx",
+      "original_signature": "51f0ec530be1ef13d2a1750012c56b058fe747bc56e884961e6777ff7fd633ca:172:181:47:86:450:400",
+      "opaque_body_rect": [
+        172,
+        181,
+        46,
+        83
+      ],
+      "occurrences": [
+        {
+          "group_id": 7,
+          "original_block": 6,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 8,
+          "original_block": 7,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 9,
+          "original_block": 8,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 10,
+          "original_block": 9,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p031",
+      "native_name": "Cvamp26.pcx",
+      "original_signature": "97973636e4436be642cf4e6b1d68ecc9cb37af69a0151550a6fd1f19252b9189:176:179:35:88:450:400",
+      "opaque_body_rect": [
+        177,
+        179,
+        33,
+        88
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p032",
+      "native_name": "Cvamp27.pcx",
+      "original_signature": "b451f6cd2da52a915c19f4ed7cc8083a6b044bc42f3ce71bdce7269ec6ffc9ca:169:165:43:102:450:400",
+      "opaque_body_rect": [
+        169,
+        165,
+        43,
+        102
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p033",
+      "native_name": "Cvamp28.pcx",
+      "original_signature": "c16a896f7aa5d0c32e130611d373643eb43ffb7012084e8b7b8ba694f6a0c964:176:164:63:103:450:400",
+      "opaque_body_rect": [
+        176,
+        164,
+        61,
+        103
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p034",
+      "native_name": "Cvamp29.pcx",
+      "original_signature": "34cf02e581515ce22d6a0defe6de97bfbb4115fe23098d5bfa7bc5b8e8097baa:176:186:60:81:450:400",
+      "opaque_body_rect": [
+        176,
+        186,
+        60,
+        81
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p035",
+      "native_name": "Cvamp30.pcx",
+      "original_signature": "408d29f31522f1e7b0d44b9bb314c8e647a71d6cd6b1654666c7d0f17f89dccb:177:185:53:82:450:400",
+      "opaque_body_rect": [
+        177,
+        185,
+        50,
+        82
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 5,
+          "sheet_cell_region": [
+            450,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p036",
+      "native_name": "Cvamp31.pcx",
+      "original_signature": "0eb2a0ded801cef1a512357f3cbf147126e0c7dbde19160a2bf3c6ca43c058fe:177:184:48:83:450:400",
+      "opaque_body_rect": [
+        177,
+        184,
+        46,
+        83
+      ],
+      "occurrences": [
+        {
+          "group_id": 11,
+          "original_block": 10,
+          "frame_index": 6,
+          "sheet_cell_region": [
+            900,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p037",
+      "native_name": "Cvamp32.pcx",
+      "original_signature": "8e8e81da923e74f3a258dbe294938d6ad3a06e576815676026d598e918471c53:174:180:52:87:450:400",
+      "opaque_body_rect": [
+        175,
+        180,
+        50,
+        87
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p038",
+      "native_name": "Cvamp33.pcx",
+      "original_signature": "f7bc6e9bda1525beee27d9c1819559e36001fad4bed8fe1f97a7dd08893db2c9:173:167:42:100:450:400",
+      "opaque_body_rect": [
+        174,
+        167,
+        41,
+        100
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p039",
+      "native_name": "Cvamp34.pcx",
+      "original_signature": "074917f1aedc3690ba265a4cb48afa9ff070996204ce44cc6bf3867c17d37dc9:177:187:75:80:450:400",
+      "opaque_body_rect": [
+        177,
+        187,
+        75,
+        80
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p040",
+      "native_name": "Cvamp35.pcx",
+      "original_signature": "8d5709933f313afcd5a65dec7e5660b4c3c2e25e0fbe59d0233cd039090ae80e:177:191:61:76:450:400",
+      "opaque_body_rect": [
+        177,
+        191,
+        60,
+        76
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p041",
+      "native_name": "Cvamp36.pcx",
+      "original_signature": "bb6f84401c644f8337e4e1f287cc28296436ed0394dfcfc8d1a2948ab00f3eca:177:187:50:80:450:400",
+      "opaque_body_rect": [
+        177,
+        187,
+        48,
+        80
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 5,
+          "sheet_cell_region": [
+            450,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p042",
+      "native_name": "Cvamp37.pcx",
+      "original_signature": "5b1dda3a573e136e066f35ea9491a285b84ee5d852a1d53532ae813d36a007cb:178:185:44:82:450:400",
+      "opaque_body_rect": [
+        178,
+        185,
+        42,
+        82
+      ],
+      "occurrences": [
+        {
+          "group_id": 12,
+          "original_block": 11,
+          "frame_index": 6,
+          "sheet_cell_region": [
+            900,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p043",
+      "native_name": "Cvamp38.pcx",
+      "original_signature": "3b4c2fd59615d3c3677a03719bfc1c15007ba7111dbdc53eb9f2726bc6cedcc3:165:181:62:86:450:400",
+      "opaque_body_rect": [
+        166,
+        181,
+        61,
+        86
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p044",
+      "native_name": "Cvamp39.pcx",
+      "original_signature": "7270fab633b43c517e7535913c726ce765081e8974049588a35c71540b697599:162:172:64:96:450:400",
+      "opaque_body_rect": [
+        162,
+        172,
+        64,
+        96
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p045",
+      "native_name": "Cvamp40.pcx",
+      "original_signature": "989401cdd1b7fc7ea3a6444f2b963a320269416059594e0415ce632c7935c6d9:177:222:56:60:450:400",
+      "opaque_body_rect": [
+        177,
+        222,
+        56,
+        54
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p046",
+      "native_name": "Cvamp41.pcx",
+      "original_signature": "94840ef5aad80cec309f470177591c4259ed03c2681ad2db7ef4e7f64dfb6dcb:177:213:44:58:450:400",
+      "opaque_body_rect": [
+        177,
+        213,
+        44,
+        55
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p047",
+      "native_name": "Cvamp42.pcx",
+      "original_signature": "7397b9beff93ba4f69a36945b251e52da8bbe5d60c9141bb1251c3a9fdf4f547:176:196:36:71:450:400",
+      "opaque_body_rect": [
+        176,
+        196,
+        36,
+        71
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 5,
+          "sheet_cell_region": [
+            450,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p048",
+      "native_name": "Cvamp43.pcx",
+      "original_signature": "cdeb66374a35c60ddb1f2c0a49607a3b06256a3c1d56e51dc6876f1a005dd431:176:189:38:78:450:400",
+      "opaque_body_rect": [
+        176,
+        189,
+        38,
+        78
+      ],
+      "occurrences": [
+        {
+          "group_id": 13,
+          "original_block": 12,
+          "frame_index": 6,
+          "sheet_cell_region": [
+            900,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p049",
+      "native_name": "Cvamp09.pcx",
+      "original_signature": "5d6c63b7e1c54ed7d41b96ae108869f3889e93ddd1c89f00f262adf81e875151:169:181:56:86:450:400",
+      "opaque_body_rect": [
+        169,
+        181,
+        55,
+        86
+      ],
+      "occurrences": [
+        {
+          "group_id": 20,
+          "original_block": 13,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 21,
+          "original_block": 14,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p050",
+      "native_name": "Cvamp10.pcx",
+      "original_signature": "6a28c8975e00a34d1c397a46e3c4c2e888c1edbf591b4019b393340ae6072ea5:144:180:89:89:450:400",
+      "opaque_body_rect": [
+        167,
+        180,
+        65,
+        89
+      ],
+      "occurrences": [
+        {
+          "group_id": 20,
+          "original_block": 13,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 21,
+          "original_block": 14,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p051",
+      "native_name": "Cvamp11.pcx",
+      "original_signature": "aa46b60f5852fa295d46ea365870ca043462e77a67e4c2f114bc66e20fc949cd:145:168:81:97:450:400",
+      "opaque_body_rect": [
+        149,
+        168,
+        77,
+        88
+      ],
+      "occurrences": [
+        {
+          "group_id": 20,
+          "original_block": 13,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        },
+        {
+          "group_id": 21,
+          "original_block": 14,
+          "frame_index": 2,
+          "sheet_cell_region": [
+            900,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p052",
+      "native_name": "Cvamp12.pcx",
+      "original_signature": "425fea9116b201aae950f06933c9a8e673b4c512c65294598fbbf1ffb8a6ec5f:154:163:74:90:450:400",
+      "opaque_body_rect": [
+        154,
+        163,
+        74,
+        81
+      ],
+      "occurrences": [
+        {
+          "group_id": 20,
+          "original_block": 13,
+          "frame_index": 3,
+          "sheet_cell_region": [
+            1350,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p053",
+      "native_name": "Cvamp13.pcx",
+      "original_signature": "5605a1845ea35ea69cebf6f955a2a4fb079ce3efb41368960803cc7c0f3869a7:158:173:69:78:450:400",
+      "opaque_body_rect": [
+        158,
+        173,
+        69,
+        51
+      ],
+      "occurrences": [
+        {
+          "group_id": 20,
+          "original_block": 13,
+          "frame_index": 4,
+          "sheet_cell_region": [
+            0,
+            400,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p054",
+      "native_name": "Cvamp18.pcx",
+      "original_signature": "8bcbcd7a4d57aeb3e35efaaa101d0705eb6e9851ca95c1de1201453915fc6aff:173:173:52:78:450:400",
+      "opaque_body_rect": [
+        173,
+        173,
+        52,
+        53
+      ],
+      "occurrences": [
+        {
+          "group_id": 21,
+          "original_block": 14,
+          "frame_index": 0,
+          "sheet_cell_region": [
+            0,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "pose_id": "vampire_p055",
+      "native_name": "Cvamp19.pcx",
+      "original_signature": "f7c20dbc9309ebb92381b4fafc0b036c2f9792d4e843846731e2bfa930ee78ec:155:161:74:92:450:400",
+      "opaque_body_rect": [
+        155,
+        161,
+        74,
+        65
+      ],
+      "occurrences": [
+        {
+          "group_id": 21,
+          "original_block": 14,
+          "frame_index": 1,
+          "sheet_cell_region": [
+            450,
+            0,
+            450,
+            400
+          ]
+        }
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "path": "assets/prototype/enemy/vampire/remaster_v01/_source/guides/batch-000.png",
+      "sha256": "a240a8c6cd30935e22e603d1651c37c4049cf49e4e3b0f6718c33e5452a641b4",
+      "size": [
+        2048,
+        1024
+      ],
+      "pose_ids": [
+        "vampire_p000",
+        "vampire_p001",
+        "vampire_p002",
+        "vampire_p003",
+        "vampire_p004",
+        "vampire_p005",
+        "vampire_p006",
+        "vampire_p007"
+      ],
+      "columns": 4,
+      "rows": 2
+    },
+    {
+      "path": "assets/prototype/enemy/vampire/remaster_v01/_source/guides/batch-001.png",
+      "sha256": "76dabcf4e81afde8cea235e392deb21120f754d7326013d0e92f8beeff3a3573",
+      "size": [
+        2048,
+        1024
+      ],
+      "pose_ids": [
+        "vampire_p008",
+        "vampire_p009",
+        "vampire_p010",
+        "vampire_p011",
+        "vampire_p012",
+        "vampire_p013",
+        "vampire_p014",
+        "vampire_p015"
+      ],
+      "columns": 4,
+      "rows": 2
+    },
+    {
+      "path": "assets/prototype/enemy/vampire/remaster_v01/_source/guides/batch-002.png",
+      "sha256": "f6ef351d2a8b420a53611fea279858aaa27600994d2dddca7297913f3503838b",
+      "size": [
+        2048,
+        1024
+      ],
+      "pose_ids": [
+        "vampire_p016",
+        "vampire_p017",
+        "vampire_p018",
+        "vampire_p019",
+        "vampire_p020",
+        "vampire_p021",
+        "vampire_p022",
+        "vampire_p023"
+      ],
+      "columns": 4,
+      "rows": 2
+    },
+    {
+      "path": "assets/prototype/enemy/vampire/remaster_v01/_source/guides/batch-003.png",
+      "sha256": "3ef05b70b4a2d4147ca9b0b13afa5f58f1973b75082644fb01ee50e3faaef0ea",
+      "size": [
+        2048,
+        1024
+      ],
+      "pose_ids": [
+        "vampire_p024",
+        "vampire_p025",
+        "vampire_p026",
+        "vampire_p027",
+        "vampire_p028",
+        "vampire_p029",
+        "vampire_p030",
+        "vampire_p031"
+      ],
+      "columns": 4,
+      "rows": 2
+    },
+    {
+      "path": "assets/prototype/enemy/vampire/remaster_v01/_source/guides/batch-004.png",
+      "sha256": "d29de720e97fee9be7b32ebca638e3562031d10b657f60b9bc65f79e621b7bdb",
+      "size": [
+        2048,
+        1024
+      ],
+      "pose_ids": [
+        "vampire_p032",
+        "vampire_p033",
+        "vampire_p034",
+        "vampire_p035",
+        "vampire_p036",
+        "vampire_p037",
+        "vampire_p038",
+        "vampire_p039"
+      ],
+      "columns": 4,
+      "rows": 2
+    },
+    {
+      "path": "assets/prototype/enemy/vampire/remaster_v01/_source/guides/batch-005.png",
+      "sha256": "dd82f9231885a4c88007b13bbdea11e48dacc05752f0068a683dfaa6ce694677",
+      "size": [
+        2048,
+        1024
+      ],
+      "pose_ids": [
+        "vampire_p040",
+        "vampire_p041",
+        "vampire_p042",
+        "vampire_p043",
+        "vampire_p044",
+        "vampire_p045",
+        "vampire_p046",
+        "vampire_p047"
+      ],
+      "columns": 4,
+      "rows": 2
+    },
+    {
+      "path": "assets/prototype/enemy/vampire/remaster_v01/_source/guides/batch-006.png",
+      "sha256": "a9a7268ecef60ad18b0d90797f756bbfad61b6200eece54c736f1f07c0ac5f30",
+      "size": [
+        2048,
+        1024
+      ],
+      "pose_ids": [
+        "vampire_p048",
+        "vampire_p049",
+        "vampire_p050",
+        "vampire_p051",
+        "vampire_p052",
+        "vampire_p053",
+        "vampire_p054",
+        "vampire_p055"
+      ],
+      "columns": 4,
+      "rows": 2
+    }
+  ],
+  "appearance_copy": {
+    "path": "assets/prototype/enemy/vampire/remaster_v01/_source/appearance-master.png",
+    "sha256": "d069d66f2eb95de77cbaf5e2b518ffa45571cab49384c8f4227a3e3ff82742bd",
+    "mode": "RGBA",
+    "size": [
+      660,
+      1481
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_gt8_bounds": [
+      0,
+      0,
+      660,
+      1481
+    ]
+  },
+  "source_files": {
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_00_block_00_page_00_indexed.png": {
+      "sha256": "b1958ae253f11afa793428f7281143648f0fa0edad8105c5b766fcc9e4bca569",
+      "mode": "P",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_00_block_00_page_00.png": {
+      "sha256": "9e9f8fdd1411146973e3771d95cf5e7d5212a2ed15bc363b5f7b76f438fd48c9",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_01_block_01_page_00_indexed.png": {
+      "sha256": "9ea60158aafb631667e9d55d73778b9e3eac9762f2f4220caaba92972859abe2",
+      "mode": "P",
+      "size": [
+        1800,
+        1200
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_01_block_01_page_00.png": {
+      "sha256": "4c1272939f3ab260f9597369bc31bfae54fabbfc1053f4205e66ee18f7910f2a",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        1200
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_02_block_02_page_00_indexed.png": {
+      "sha256": "835144d7a7ee6a1699a8a3ecef902ba720cbb520f16802559380aa8ba3de6202",
+      "mode": "P",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_02_block_02_page_00.png": {
+      "sha256": "ddb773cbb91d797d250bce2411ea9b7ccdc0aab1074ca24ebb9104ae956c03e8",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_03_block_03_page_00_indexed.png": {
+      "sha256": "2020a8c978f4ea6664cfe2b22c6a77843e55a8c2f0daf16340209b400c4a647f",
+      "mode": "P",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_03_block_03_page_00.png": {
+      "sha256": "75bee3b91831302894db29175430c1182777354c3b119daa7313fb44d031386c",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_04_block_04_page_00_indexed.png": {
+      "sha256": "9ea74fa8c7c18c9823febb08c406a18fa99feebe98d81ba5d08a134bb2406c7b",
+      "mode": "P",
+      "size": [
+        1800,
+        1200
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_04_block_04_page_00.png": {
+      "sha256": "46cdcd036b684dc8b872bf8ffa541c95f3a3191e66f0881bb0b198e02ae3ddbd",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        1200
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_05_block_05_page_00_indexed.png": {
+      "sha256": "b8a01aa2082da284702d223affe1f8e323cb55f6e7c7eee4ba8ee629fa1fcd90",
+      "mode": "P",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_05_block_05_page_00.png": {
+      "sha256": "7e5a1ad105fbbd3edaaced9ac3188f5f2977ac63b1ed3a330c29b8f485542d75",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_07_block_06_page_00_indexed.png": {
+      "sha256": "00085eb65708eb265d40c53dd32f7b9ebb96cd20ad0e11bf60baadc218c2da9d",
+      "mode": "P",
+      "size": [
+        1350,
+        400
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_07_block_06_page_00.png": {
+      "sha256": "1847d51d16078dbe4c5b3cf7aa85fa0f8644a3c41b059489a0329ec4fd1806be",
+      "mode": "RGBA",
+      "size": [
+        1350,
+        400
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_08_block_07_page_00_indexed.png": {
+      "sha256": "8d17a3918833e02dab42cc696822f98e99b235625a805395bd375c6d3e82d040",
+      "mode": "P",
+      "size": [
+        1350,
+        400
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_08_block_07_page_00.png": {
+      "sha256": "55e3527e98e8cdf9bbd2018d2260d1fd455b3f0e2821e63a80dbfd8132ade781",
+      "mode": "RGBA",
+      "size": [
+        1350,
+        400
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_09_block_08_page_00_indexed.png": {
+      "sha256": "00085eb65708eb265d40c53dd32f7b9ebb96cd20ad0e11bf60baadc218c2da9d",
+      "mode": "P",
+      "size": [
+        1350,
+        400
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_09_block_08_page_00.png": {
+      "sha256": "1847d51d16078dbe4c5b3cf7aa85fa0f8644a3c41b059489a0329ec4fd1806be",
+      "mode": "RGBA",
+      "size": [
+        1350,
+        400
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_10_block_09_page_00_indexed.png": {
+      "sha256": "8d17a3918833e02dab42cc696822f98e99b235625a805395bd375c6d3e82d040",
+      "mode": "P",
+      "size": [
+        1350,
+        400
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_10_block_09_page_00.png": {
+      "sha256": "55e3527e98e8cdf9bbd2018d2260d1fd455b3f0e2821e63a80dbfd8132ade781",
+      "mode": "RGBA",
+      "size": [
+        1350,
+        400
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_11_block_10_page_00_indexed.png": {
+      "sha256": "d4c89633e4bc31f561890aa7788d8e3935454bdc7dd996f70e79356a6822ec92",
+      "mode": "P",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_11_block_10_page_00.png": {
+      "sha256": "fd09088dd48993765b4e2110ee75652a490618d13935d4ce7e60e9073bcc582c",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_12_block_11_page_00_indexed.png": {
+      "sha256": "71f96a3d0e7bf009b8639c063c3e304f3cf7c1004898f3da5bbc0042efc7ab3b",
+      "mode": "P",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_12_block_11_page_00.png": {
+      "sha256": "cc43bf87508a05869cbcdcf42e868befef7b6f7adce93920893bfc877b1c39e8",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_13_block_12_page_00_indexed.png": {
+      "sha256": "a61512208876a70a49fac06f2c7ee24b3627170ae9b466390a167ee7faa7d2f6",
+      "mode": "P",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_13_block_12_page_00.png": {
+      "sha256": "306ade22a52dcb4e7c162757f03e1d9b880a9c51db1f6d0ebd904afb3713e3ad",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_20_block_13_page_00_indexed.png": {
+      "sha256": "3032423a0b4a53eb8270b620f6018d3b1b16cbf7c37a0e2b3f9b4534e0f37846",
+      "mode": "P",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_20_block_13_page_00.png": {
+      "sha256": "9f129b78221808f70424eb586249d0cc9475914a45ea329540e9efa9ec424f5a",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_21_block_14_page_00_indexed.png": {
+      "sha256": "2b2fa1a4f2889c9c952625eaf9efa66dabeff05f40174ba55f8f6b109a0f37d1",
+      "mode": "P",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/group_21_block_14_page_00.png": {
+      "sha256": "1808e94b12f0f042c9e5f1162c7843c8ec14aab5f39fb9b37129d7970c0a6c75",
+      "mode": "RGBA",
+      "size": [
+        1800,
+        800
+      ]
+    },
+    "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CVAMP/palette.rgb": {
+      "sha256": "e6fb12e690b1efeb2462825051e75b6038ffbdbde35082582603d12849047fef"
+    }
+  },
+  "checks": {
+    "native_groups_equal_plan_records": true,
+    "occurrence_map_exact": true,
+    "representatives_exact": true,
+    "opaque_body_rectangles_verified": true,
+    "aliases_recomputed": true,
+    "approved_master_hash_verified": true,
+    "prepared_pose_coverage_exact": true
+  },
+  "limits": [
+    "Static source and metadata checks only; no new artwork or idle reuse ingested.",
+    "No final atlas, mirror, SpriteFrames, offline package, browser, engine or playback validation.",
+    "Source order and repeated cells are verified; original timing and slot gameplay meaning remain unverified."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "prompt_file": "../prompts/batch-002-attempt-01.txt",
+  "prompt": "Use case: stylized-concept\nAsset type: transparent game-animation source page, eight newly drawn complete source poses.\nInput image 1 is the approved BASE VAMPIRE appearance master only; input image 2 is the ORIGINAL CVAMP action/camera guide and controls each pose. Match every individual source drawing, not generic action approximations.\nExactly FOUR columns and TWO rows, eight figures in the guide's exact row-major order. Give each figure generous transparent margins and clear transparent gutters; no body, limb, cloth, wing, smoke or fragment may touch the page edge or its neighboring figure. Genuinely transparent background, no text, labels, grid, floor or cast shadow.\nPreserve the approved master identity and rendering: bald pale pointed-eared red-eyed gaunt Vampire; hunched slender body, long hands with red-tipped nails; ragged brown-charcoal short shoulder mantle and tunic, torn brown trousers, dark shoes. Fine modeled shading and worn material detail. No hair, noble regalia, new equipment or weapons. Keep exactly the source camera, view, two arms/two legs where intact, finger/hand directions, shoulder line, bent elbows, mantle, staggered feet, silhouette and degree of crouch. Do not force any action into the master idle.\nRow-major pose IDs p016,p017,p018,p019,p020,p021,p022,p023. p016 folds forward with head down and arms lowered asymmetrically; p017 starts recovering but remains lower than standing. p018,p019,p020 progressively raise the two hands across chest/front as shown. p021 defensive peak: one hand raised beside/above the face, the other crossing in front of the chest, hunched shoulders. p022 begins the death action with hands slightly forward; p023 raises both bent arms outward. Draw these original actions exactly, with the original perspective and foot positions, not an invented pose. All are still intact humanoid bodies. No added smoke or particles in this page.\nNew detailed artwork only; the OG pixel art is a reference, not an upscale deliverable. Do not copy guide text or background. All eight full source silhouettes must be separately readable and exactly ordered.",
+  "references": [
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\vampire\\remaster_v01\\_source\\appearance-master.png",
+      "sha256": "d069d66f2eb95de77cbaf5e2b518ffa45571cab49384c8f4227a3e3ff82742bd"
+    },
+    {
+      "path": "C:\\Users\\zhouc\\.codex\\worktrees\\cb05\\Laema\\assets\\prototype\\enemy\\vampire\\remaster_v01\\_source\\guides\\batch-002.png",
+      "sha256": "f6ef351d2a8b420a53611fea279858aaa27600994d2dddca7297913f3503838b"
+    }
+  ],
+  "raw_file": "C:/Users/zhouc/.codex/worktrees/cb05/Laema/assets/prototype/enemy/vampire/remaster_v01/_source/raw/batch-002-attempt-01.png",
+  "raw_sha256": "071959f5a6f9902b79b358577a6c0eed12e9fc1cb1088ef6193208baf325226f",
+  "returned_metadata": {
+    "output_hint": "Generated images are saved to C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-431e-7981-acb2-f906a9efd494 as C:\\Users\\zhouc\\.codex\\generated_images\\01a16828-431e-7981-acb2-f906a9efd494\\exec-e33064a5-63a8-42d7-9e63-e2c1a881a11d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "image_url_omitted": "Base64 image data; exact returned PNG copied verbatim."
+  }
+}
