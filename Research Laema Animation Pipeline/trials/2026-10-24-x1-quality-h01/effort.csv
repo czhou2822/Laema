@@ -1,0 +1,9 @@
+category,item,value,unit,limit
+per_action,Image requests,1,request,Built-in image_gen; raw and prompt preserved
+per_action,Image request elapsed,28,wall seconds,UTC1s resolution; not artist labor
+per_action,Localized edited drawings,3,drawings,Other13 drawings and all key times remain exact
+per_action,Guard registrations,3,translations,No per-pose scaling or anatomical warping
+reusable_setup,"Crop/mask export, fixture and viewer reuse",,,Setup/per-action active time not separately clocked
+agent_elapsed,Preparation through first technical handoff,1948.402021,wall seconds,"Wall time from experiment preparation through first completed technical handoff; includes reasoning, tools and waits. Not active artist labor. Investigation before experiment creation was not separately timed."
+human_artist,Pixel cleanup,0,minutes,No human pixel painting
+human_review,Artistic verdict,,,Pending user; time unknown
