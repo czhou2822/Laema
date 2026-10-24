@@ -573,7 +573,7 @@ func _on_impact_confirmed(cue: Dictionary) -> void:
 	# Capture authored values per cue, as treatment already is; never retime it per frame.
 	_impact_camera_profile = {}
 	for key in ConfigLoader.IMPACT_CAMERA_DEFAULTS:
-		_impact_camera_profile[key] = _config["ui"].get(key, ConfigLoader.IMPACT_CAMERA_DEFAULTS[key])
+		_impact_camera_profile[key] = _config["hit_reaction"].get(key, ConfigLoader.IMPACT_CAMERA_DEFAULTS[key])
 	if _impact_camera_started < 0 or float(Time.get_ticks_msec() - _impact_camera_started) / 1000.0 >= impact_camera_duration(_impact_camera_treatment, _impact_camera_profile):
 		_impact_camera_level = 0
 	_impact_camera_level = maxi(level, _impact_camera_level)

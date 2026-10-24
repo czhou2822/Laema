@@ -2,45 +2,50 @@
 
 Current guide, consolidated October 20. [Pre-housekeeping version](history/2026-10-20-document-housekeeping/sources/docs/GYM.md) preserves earlier instructions and reports. Heat timer and shared reaction durations are settled by the October 20 decisions in [GAME_DESIGN.md](GAME_DESIGN.md).
 
-## Camera strength and duration authoring — October 24
+## Shared hit-reaction camera authoring — October 24
 
-Four independent camera controls now use the same saved JSON values in the
-Inspector and both Dev Portals:
+Camera profiles belong to **Shared Hit Reaction**, not to a particular scene.
+Gym and the tutorial/Final Arena use the same saved Resource and four values:
 
 | Profile | Strength default | Duration default |
 | --- | ---: | ---: |
 | Precise | 1.0 viewport px | 0.08 s |
 | Weight | 3.0 viewport px | 0.11 s |
 
-Strength is the maximum before the existing reaction-level scaling. The
-current caps remain3viewport px and0.120s: strength accepts0–3 and duration
-0.001–0.120s. Zero strength adds no displacement without changing the switch.
-These values do not change contact accents or which hits qualify.
+Strength is the maximum before existing reaction-level scaling. Limits remain
+0–3viewport px and0.001–0.120s. These four global values do not add per-level or
+per-attack controls and do not change distance, motion, stun or hit eligibility.
 
-- **Inspector:** open `scenes/player/player.tscn`, select **CombatTuning**,
-  expand its assigned **Settings → Cosmetic impact feedback**, then
-  **Precise camera** or **Weight camera**. Use this assigned bridge, not the
-  standalone mirror as a separate combat/camera profile. The Local Inspector
-  follows the existing save path; Remote Inspector edits affect the run and
-  persist through the normal Save Tuning flow.
-- **Runtime Dev Portal:** backtick → **General → UI → Cosmetic impact feedback**.
-  Edit **Precise camera strength/duration** or **Weight camera strength/duration**;
-  **Save Tuning** persists them.
-- **Editor Dev Portal:** **Laema Dev Portal → General → UI & debug →
-  Cosmetic impact feedback**. The same four fields use **Review & save**.
+- **Local Inspector:** open `config/characters/hit_reaction.tres` in FileSystem.
+  Expand **Cosmetic impact feedback → Precise camera / Weight camera**, edit
+  strength/duration and save the external Resource. Player and CombatEnemy
+  Settings both reference this same asset.
+- **Live Remote Inspector:** Player → **CombatTuning → Settings → Cosmetic
+  impact feedback → Precise camera / Weight camera**. This is the existing
+  live mirror, not an independent scene profile; use normal Save Tuning to
+  persist through the bridge into Shared Hit Reaction.
+- **Runtime Dev Portal:** backtick → **Combat → Hit Reaction Camera**.
+- **Editor Dev Portal:** **Laema Dev Portal → Combat → Hit reaction camera**.
+  Both Portals edit the same Resource via **Save Tuning / Review & save**.
+  General → UI retains the independent switches and treatment selector only.
 
-The four keys are `ui.impact_precise_camera_strength`,
-`ui.impact_precise_camera_duration`, `ui.impact_weight_camera_strength` and
-`ui.impact_weight_camera_duration` in `config/prototype_combat.json`.
-Missing keys load the defaults above without writing files on startup. Current
-saved treatment and enabled switches are preserved, including user-edited
-values; the authoring change does not reset them to legacy off/Precise defaults.
+The four property names are `impact_precise_camera_strength`,
+`impact_precise_camera_duration`, `impact_weight_camera_strength` and
+`impact_weight_camera_duration`. The effective configuration places them under
+`hit_reaction`; they are no longer saved as UI JSON preferences. Current values,
+treatment and enabled switches were preserved.
 
-Live edits affect the next qualifying camera cue. A running cue retains its
-captured strength/duration. Threshold, direction, waveform, camera restoration,
-combat and independent Contact accent behavior stay unchanged. Save/reload,
-Inspector hover/layout and actual non-default camera behavior await user
-validation; the closed overnight run does not validate these new controls.
+Legacy full profiles can fill missing shared values from their old UI keys or
+the defaults. Conflicting explicit UI/shared values fail with a migration
+message; move the intended values into the shared Resource and remove the old
+UI keys instead of letting a scene override them. Loading never writes files.
+
+Values apply to the next confirmed qualifying hit-reaction camera cue; a running
+cue keeps its capture. Both scene roots share them; camera rendering remains
+with the active Arena. Waveform, trigger, restoration, contact cues and combat
+are unchanged. Inspector/Portal agreement, actual live apply, both scenes and
+save/reload still need user validation; prior overnight checks do not verify
+this ownership migration.
 
 ## Optional feedback review — October 23–24 candidate
 

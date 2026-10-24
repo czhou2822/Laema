@@ -2,13 +2,9 @@
 class_name PrototypeConfigLoader
 extends RefCounted
 
-# JSON is the saved authority; Inspector and camera helpers share legacy defaults.
-const IMPACT_CAMERA_DEFAULTS := {
-	"impact_precise_camera_strength": 1.0,
-	"impact_precise_camera_duration": 0.08,
-	"impact_weight_camera_strength": 3.0,
-	"impact_weight_camera_duration": 0.11,
-}
+# Shared Hit Reaction owns profiles. Keep this alias for existing helper callers.
+const Reaction = preload("res://scripts/config/character_reaction_settings.gd")
+const IMPACT_CAMERA_DEFAULTS := Reaction.IMPACT_CAMERA_DEFAULTS
 
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
@@ -60,7 +56,9 @@ static func load_and_validate(path: String) -> Dictionary:
 		var characters := Characters.apply_to_config(data)
 		if not characters["ok"]:
 			return characters
-	_normalize_impact_feedback(data)
+	var feedback_error := _normalize_impact_feedback(data)
+	if not feedback_error.is_empty():
+		return _failure(feedback_error)
 	_normalize_legacy_audio_volumes(data)
 	ReactionRanges.normalize_legacy(data)
 	_normalize_reaction_motion(data)
@@ -120,7 +118,9 @@ static func _normalize_fire_defence(data: Dictionary) -> void:
 static func validate(data: Dictionary) -> Dictionary:
 	# Retire obsolete overrides even in cached drafts, without changing caller data.
 	var candidate := data.duplicate(true)
-	_normalize_impact_feedback(candidate)
+	var feedback_error := _normalize_impact_feedback(candidate)
+	if not feedback_error.is_empty():
+		return _failure(feedback_error)
 	Style.strip_retired_fields(candidate)
 	_normalize_reaction_motion(candidate)
 	var validation_error := _validate(candidate)
@@ -368,14 +368,14 @@ static func _validate(data: Dictionary) -> String:
 
 	var ui: Dictionary = data["ui"]
 	for key in IMPACT_CAMERA_DEFAULTS:
-		var value = ui.get(key, IMPACT_CAMERA_DEFAULTS[key])
+		var value = reaction.get(key, IMPACT_CAMERA_DEFAULTS[key])
 		var is_duration: bool = str(key).ends_with("_duration")
 		if not _is_number(value) or not is_finite(float(value)):
-			return "ui.%s must be finite numeric data." % key
+			return "hit_reaction.%s must be finite numeric data." % key
 		var minimum := 0.001 if is_duration else 0.0
 		var maximum := 0.12 if is_duration else 3.0
 		if float(value) < minimum or float(value) > maximum:
-			return "ui.%s must be between %s and %s." % [key, minimum, maximum]
+			return "hit_reaction.%s must be between %s and %s." % [key, minimum, maximum]
 	for key in ["impact_contact_enabled", "impact_camera_enabled"]:
 		if typeof(ui.get(key, false)) != TYPE_BOOL:
 			return "ui.%s must be Boolean." % key
@@ -423,15 +423,24 @@ static func _validate_audio(audio: Dictionary) -> String:
 	return ""
 
 
-static func _normalize_impact_feedback(data: Dictionary) -> void:
+static func _normalize_impact_feedback(data: Dictionary) -> String:
 	if not data.get("ui") is Dictionary:
-		return
-	for key in IMPACT_CAMERA_DEFAULTS:
-		if not data["ui"].has(key):
-			data["ui"][key] = IMPACT_CAMERA_DEFAULTS[key]
+		return ""
+	var ui: Dictionary = data["ui"]
+	if data.get("hit_reaction") is Dictionary:
+		var reaction: Dictionary = data["hit_reaction"]
+		for key in IMPACT_CAMERA_DEFAULTS:
+			# Never let an obsolete room/UI value silently override shared authoring.
+			if ui.has(key) and reaction.has(key) and ui[key] != reaction[key]:
+				return "Legacy ui.%s differs from shared Hit Reaction. Migrate that value into the shared reaction Resource, then remove the legacy UI key." % key
+		for key in IMPACT_CAMERA_DEFAULTS:
+			if not reaction.has(key):
+				reaction[key] = ui.get(key, IMPACT_CAMERA_DEFAULTS[key])
+			ui.erase(key)
 	for pair in [["impact_contact_enabled", false], ["impact_camera_enabled", false], ["impact_treatment", "precise"]]:
-		if not data["ui"].has(pair[0]):
-			data["ui"][pair[0]] = pair[1]
+		if not ui.has(pair[0]):
+			ui[pair[0]] = pair[1]
+	return ""
 
 
 static func _normalize_legacy_audio_volumes(data: Dictionary) -> void:

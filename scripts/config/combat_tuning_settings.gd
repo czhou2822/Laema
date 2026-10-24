@@ -8,7 +8,7 @@ const Config = preload("res://scripts/config/prototype_config_loader.gd")
 @export_group("Cosmetic impact feedback")
 @export_subgroup("Precise camera", "impact_precise_camera_")
 ## Maximum viewport-pixel amplitude before the existing reaction-level scaling.
-## JSON remains authoritative through the assigned CombatTuning bridge.
+## Shared Hit Reaction is authoritative; this Resource is an Inspector mirror.
 @export_range(0.0, 3.0, 0.05) var impact_precise_camera_strength := float(Config.IMPACT_CAMERA_DEFAULTS["impact_precise_camera_strength"]):
 	set(value):
 		impact_precise_camera_strength = value
@@ -144,19 +144,20 @@ func get_data() -> Dictionary:
 		if style == null or styles.has(String(style.move_id)):
 			return {}
 		styles[String(style.move_id)] = style.get_data()
+	var reaction := {
+		"base_duration": legacy_base_duration,
+		"duration_per_level": legacy_duration_per_level,
+		"base_distance": legacy_base_distance,
+		"distance_per_level": legacy_distance_per_level,
+		"combat_levels": levels,
+	}
+	reaction.merge(camera, true)
 	return {
 		"player_poise": player_poise,
 		"final_enemy_poise": final_enemy_poise,
-		"impact_camera": camera,
 		"moves": impacts,
 		"attack_styles": styles,
-		"hit_reaction": {
-			"base_duration": legacy_base_duration,
-			"duration_per_level": legacy_duration_per_level,
-			"base_distance": legacy_base_distance,
-			"distance_per_level": legacy_distance_per_level,
-			"combat_levels": levels,
-		},
+		"hit_reaction": reaction,
 	}
 
 
@@ -177,8 +178,6 @@ func apply_to_config(config: Dictionary) -> Dictionary:
 
 
 static func apply_data_to_config(data: Dictionary, config: Dictionary) -> void:
-	for key in Config.IMPACT_CAMERA_DEFAULTS:
-		config["ui"][key] = data.get("impact_camera", {}).get(key, Config.IMPACT_CAMERA_DEFAULTS[key])
 	config["player"]["poise"] = data["player_poise"]
 	config["enemy_ai"]["poise"] = data["final_enemy_poise"]
 	for id in data["moves"]:
@@ -197,10 +196,11 @@ func read_from_config(config: Dictionary) -> void:
 static func data_from_config(config: Dictionary) -> Dictionary:
 	var camera: Dictionary = {}
 	for key in Config.IMPACT_CAMERA_DEFAULTS:
-		camera[key] = config["ui"].get(key, Config.IMPACT_CAMERA_DEFAULTS[key])
+		camera[key] = config["hit_reaction"].get(key, Config.IMPACT_CAMERA_DEFAULTS[key])
 	var reaction: Dictionary = {}
 	for key in ["base_duration", "duration_per_level", "base_distance", "distance_per_level", "combat_levels"]:
 		reaction[key] = config["hit_reaction"][key].duplicate(true) if key == "combat_levels" else config["hit_reaction"][key]
+	reaction.merge(camera, true)
 	var styles: Dictionary = {}
 	for school in ["fire", "water", "air", "earth"]:
 		for position in range(1, 6):
@@ -209,7 +209,6 @@ static func data_from_config(config: Dictionary) -> Dictionary:
 	return {
 		"player_poise": config["player"]["poise"],
 		"final_enemy_poise": config["enemy_ai"]["poise"],
-		"impact_camera": camera,
 		"moves": _read_impacts(config["moves"]),
 		"attack_styles": styles,
 		"hit_reaction": reaction,
@@ -218,7 +217,7 @@ static func data_from_config(config: Dictionary) -> Dictionary:
 
 func read_data(data: Dictionary) -> void:
 	for key in Config.IMPACT_CAMERA_DEFAULTS:
-		set(key, float(data.get("impact_camera", {}).get(key, Config.IMPACT_CAMERA_DEFAULTS[key])))
+		set(key, float(data["hit_reaction"].get(key, Config.IMPACT_CAMERA_DEFAULTS[key])))
 	player_poise = int(data["player_poise"])
 	final_enemy_poise = int(data["final_enemy_poise"])
 	var next_moves: Array[MoveImpactTuning] = []

@@ -1,6 +1,79 @@
 # Implementation Status
 
-## Camera feedback Inspector / Portal authoring — October 24
+## Shared hit-reaction camera ownership follow-up — October 24
+
+Status: `AWAITING_USER_VALIDATION`. The human amended camera authoring to use
+the shared hit-reaction domain rather than scene/UI numeric settings. This
+follow-up starts from main `574270f66bcbeed72db07778ef612ee37ea8d932`; the first
+pass `e1355179` is already integrated. Existing unrelated research/department
+drafts remain user-owned and are excluded. No overnight iteration or unretained
+P1/T2 branch is resumed, and no push/export/automation is authorized.
+
+Exact ten-file scope:
+- `scripts/config/character_reaction_settings.gd`: authoritative defaults,
+  four global Resource exports, get/read mapping.
+- `config/characters/hit_reaction.tres`: move the four current numeric values
+  into the shared Resource without editing existing levels/properties.
+- `scripts/config/combat_tuning_settings.gd`: preserve the existing four live
+  Inspector mirror controls, now mapped through the hit-reaction domain.
+- `scripts/config/prototype_config_loader.gd`: shared-default alias,
+  hit-reaction validation and conflict-preserving legacy migration.
+- `scripts/config/developer_settings_catalog.gd`: both Portals' Hit Reaction
+  Camera category binds the same four shared values, not UI overrides.
+- `scripts/prototype/prototype_arena.gd`: capture from shared reaction data;
+  existing confirmed-result/level trigger and renderer remain unchanged.
+- `config/prototype_combat.json`: remove only the four retired numeric UI
+  keys; preserve all switches, treatment and other preferences.
+- `docs/TECH_ARCHITECTURE.md`, `docs/GYM.md` and this status: current shared
+  ownership, navigation, migration and validation limits.
+
+Saved values/defaults remain Precise1px/0.08s, Weight3px/0.11s; ranges remain
+0–3px and0.001–0.120s. Exactly four profile settings exist, not four per level.
+CharacterSettingsStore's already-shared reaction Resource and existing
+save/hash/conflict path carry the fields; no new manager or scene export is
+needed. An explicit legacy UI/shared mismatch fails rather than silently
+selecting scene data or losing a draft.
+
+Source-covered ordinary scenes are Gym and PrototypeArena, including its
+tutorial areas/Final Arena. Both use the canonical loader, same shared reaction
+Resource and existing Arena renderer. No runtime or custom independent-camera
+coverage is claimed. The original direct Health-loss gating, resolved reaction
+level, Level3+ threshold, deduplication, scaling/waveform, switches, cue capture,
+pause/retry/detached teardown and all gameplay remain outside the change.
+
+Checks performed: five standalone gdtoolkit4.5 grammar parses, whitespace/diff
+checks and complete Resource/Inspector/Portal/legacy/save/cue-source tracing.
+All four numeric values moved unchanged. Removing just those four new Resource
+lines reproduces the original Resource text exactly, including all existing
+levels; removing just the four old UI lines reproduces the new JSON exactly.
+The renderer changed only its profile source read; seven camera/lifecycle/
+apply/save methods compare unchanged. No scenes, actor/gameplay/Feedback code,
+other tuning Resources or tests changed. Bounded source review found no
+established source blockers; it is not submission/runtime clearance.
+
+No engine/editor, automated test, test creation/modification, rendered run or
+save simulation was performed. The old overnight results remain historical.
+Actual new Resource serialization, Inspector/live Portal behavior, cross-scene
+persistence and legacy migration remain unverified.
+
+Manual validation:
+1. Open the shared `hit_reaction.tres`; edit one profile and save. Confirm
+   Player/Enemy both reference it and all existing level values remain intact.
+2. Compare **Combat → Hit Reaction Camera** in both Portals and the assigned
+   live Inspector mirror. Change one of the four values, Save Tuning / Review
+   & save, restart and inspect the shared Resource. UI JSON must not regain
+   numeric camera overrides or reset enable/treatment preferences.
+3. Compare Gym and tutorial/Final Arena using the same shared values, both
+   treatments and the existing trigger/cleanup boundaries. Active cues keep
+   captures; no scene-specific authoring is required.
+4. Check a retained legacy profile separately: missing shared values migrate
+   without startup writes; explicit differing UI/shared data reports the
+   conflict and leaves files untouched.
+
+## Historical initial camera Inspector / Portal pass — October 24
+
+Its JSON numeric ownership is superseded by the shared-reaction follow-up above;
+this retained entry describes the original e1355179 scope/evidence only.
 
 Status: `AWAITING_USER_VALIDATION`. This is a new human-approved task after
 the overnight run closed: expose Precise and Weight camera strength/duration

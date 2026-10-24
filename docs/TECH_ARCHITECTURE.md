@@ -5,54 +5,72 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
-## Camera feedback authoring controls — October 24
+## Shared hit-reaction camera profiles — October 24
 
-This new, user-approved authoring slice is based on local main
-`162ff3f4ce057cdd6bd8fe5b47d4e539ca9c8686`, after the dispatch's `e693b4a4`.
-The intervening save committed the user's tuning and enabled/Weight preferences;
-this slice preserves them. The closed overnight branch and unretained P1/T2
-experiments are not an implementation base or new validation authority.
+The user's amendment makes the shared Hit Reaction Resource authoritative for
+both camera profiles, not a room, Arena, Gym or JSON UI preference. This narrow
+follow-up is based on local main `574270f66bcbeed72db07778ef612ee37ea8d932`.
+It supersedes the initial `e1355179` JSON-authoring representation only; the
+closed overnight evidence and unretained experiments are not resumed.
 
-JSON `ui` remains the single saved source. Four numeric fields flow through
-the existing CombatTuningSettings Inspector mirror/CombatTuningBridge and
-shared Dev Portal catalog, loader and Store:
+`config/characters/hit_reaction.tres` / CharacterReactionSettings now owns exactly
+four global profile fields alongside the existing shared reaction definitions:
 
-| JSON key | Legacy/default value | Unit |
+| Shared property / effective hit_reaction key | Default | Unit |
 | --- | ---: | --- |
 | impact_precise_camera_strength | 1.0 | viewport px before reaction-level scaling |
 | impact_precise_camera_duration | 0.08 | seconds |
 | impact_weight_camera_strength | 3.0 | viewport px before reaction-level scaling |
 | impact_weight_camera_duration | 0.11 | seconds |
 
-The loader defines these defaults once, fills only missing legacy keys in
-memory and validates finite strengths in0–3px and durations in0.001–0.120s,
-preserving the current GDD caps. No startup save or clamp silently replaces an
-authored value. The Inspector's four exported fields map to those same JSON
-leaves; the existing bridge reads/synchronizes, applies live edits and uses
-the current guarded Store save path. The Resource is a mirror, not a second
-camera profile. Existing switches/treatment and unrelated tuning are not replaced.
-No `combat_tuning.tres` serialization or bridge refactor is required to expose
-the new exports; normal bridge saves keep its existing mirror behavior.
+These are four shared settings, not four per level or attack. Existing finite
+limits remain0–3px and0.001–0.120s. The Resource script defines defaults; the
+loader retains its defaults alias for compatibility, validates the hit-reaction
+domain and creates no scene-specific camera profile. The current four values
+were moved unchanged from UI JSON into the Resource. All existing level values,
+Resource identity and other properties remain untouched.
 
-Arena captures the authored profile with each qualifying camera cue. Duration
-and amplitude consume that captured data; an Inspector/Portal edit applies to
-the next cue rather than retiming a running cue per frame. Legacy helper calls
-retain the same defaults. Confirmed Health-loss gating, Level3+ threshold,
-level scaling, treatment/direction, waveform/fade, additive viewport-to-camera
-offset composition and pause/retry/detached teardown paths are unchanged.
-Contact accents are unchanged and keep their separate switch.
+CharacterSettingsStore already requires Player and CombatEnemy to reference
+the same reaction Resource. Its existing load/get_data and read/save path now
+carries the four fields in `config.hit_reaction`. CombatTuningSettings remains
+an Inspector mirror of those same fields through its existing Hit Reaction data
+mapping and bridge. Portal saves update the shared reaction Resource; canonical
+scene-preference JSON strips the whole hit-reaction domain as before.
+General / UI still owns the unchanged enable switches and treatment preference,
+not the profile numbers.
 
-Authoring: Local/Remote Player → CombatTuning → Settings →
-Cosmetic impact feedback → Precise camera / Weight camera. Both Portals expose
-the four controls alongside the existing switches and treatment, under their
-General / UI category. The runtime Portal uses Save Tuning; the editor Portal
-uses Review & save. Local Inspector edits use the established assigned bridge.
+Both Portals expose **Combat → Hit Reaction Camera** over that same domain.
+Local authoring can open the shared Resource directly and save it; live Remote
+Inspector tuning uses the existing Player / CombatTuning / Settings mirror.
+The existing bridge synchronization/hash/conflict/save behavior is retained.
+No manager, component, global bus, scene export, per-level or per-attack override
+is introduced.
 
-This slice has static source/config/grammar evidence only, not new engine,
-editor, automated-test or rendered evidence. The historical overnight report
-below remains unchanged. Exact files, source/integration identities and manual
-save/reload/non-default/cleanup checks belong to Implementation Status.
-Current status remains AWAITING_USER_VALIDATION.
+Legacy full JSON profiles with missing shared fields can migrate old UI numbers
+into the hit-reaction domain in memory, falling back to the same defaults.
+Retired UI keys are then removed from the effective configuration. If both
+domains explicitly contain different values, loading/validation fails with a
+migration message rather than silently overriding shared authoring or discarding
+the draft. Canonical loads use the assigned Resource; obsolete UI values cannot
+win over it. Startup remains read-only.
+
+Resolved hit-reaction levels still reach the camera through the existing
+confirmed HealthResult → target Feedback cue → Arena renderer path. Arena now
+captures the numeric profile from `config.hit_reaction`, never UI or room data.
+APPLIED direct Health-loss gating, Level3+ threshold, deduplication, scaling,
+waveform/direction, independent Contact accent and lifecycle/offset composition
+are unchanged. A running cue retains its captured values.
+
+Static scene coverage: both ordinary production roots, `scenes/gym.tscn` and
+`scenes/prototype_arena.tscn`, share the same canonical loader and reaction
+Resource. Tutorial Stage Areas and Final Arena remain under the persistent
+PrototypeArena camera; no stage owns separate values. Bare actor previews or
+custom test fixtures are not claimed to provide their own camera renderer.
+
+Evidence for this follow-up is source/config/grammar review only. New Godot
+import/type checks, Inspector/Portal interaction, scene switching and actual
+save/reload are unrun. The implementation/status handoff records exact scope
+and preservation checks; current status is AWAITING_USER_VALIDATION.
 
 ## Overnight feedback and shared-motion candidate — October 23–24
 
