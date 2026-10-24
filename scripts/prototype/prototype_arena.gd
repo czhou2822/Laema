@@ -50,6 +50,7 @@ var _transitioning := false
 var _impact_camera_started := -1
 var _impact_camera_level := 0
 var _impact_camera_treatment := "precise"
+var _impact_camera_profile: Dictionary = {}
 var _impact_camera_direction := Vector2.RIGHT
 var _impact_camera_applied := Vector2.ZERO
 
@@ -569,22 +570,28 @@ func _on_impact_confirmed(cue: Dictionary) -> void:
 	if level < 3: # Only stronger qualifying combat reactions, never legacy recoil.
 		return
 	_impact_camera_treatment = str(_config["ui"].get("impact_treatment", "precise"))
-	if _impact_camera_started < 0 or float(Time.get_ticks_msec() - _impact_camera_started) / 1000.0 >= impact_camera_duration(_impact_camera_treatment):
+	# Capture authored values per cue, as treatment already is; never retime it per frame.
+	_impact_camera_profile = {}
+	for key in ConfigLoader.IMPACT_CAMERA_DEFAULTS:
+		_impact_camera_profile[key] = _config["ui"].get(key, ConfigLoader.IMPACT_CAMERA_DEFAULTS[key])
+	if _impact_camera_started < 0 or float(Time.get_ticks_msec() - _impact_camera_started) / 1000.0 >= impact_camera_duration(_impact_camera_treatment, _impact_camera_profile):
 		_impact_camera_level = 0
 	_impact_camera_level = maxi(level, _impact_camera_level)
 	_impact_camera_direction = Vector2(cue["direction"]).normalized()
 	_impact_camera_started = Time.get_ticks_msec()
 
 
-static func impact_camera_duration(treatment: String) -> float:
-	return 0.11 if treatment == "weight" else 0.08
+static func impact_camera_duration(treatment: String, authored: Dictionary = {}) -> float:
+	var key := "impact_weight_camera_duration" if treatment == "weight" else "impact_precise_camera_duration"
+	return float(authored.get(key, ConfigLoader.IMPACT_CAMERA_DEFAULTS[key]))
 
 
-static func impact_camera_pixels(age: float, level: int, direction: Vector2, treatment: String) -> Vector2:
-	var duration := impact_camera_duration(treatment)
+static func impact_camera_pixels(age: float, level: int, direction: Vector2, treatment: String, authored: Dictionary = {}) -> Vector2:
+	var duration := impact_camera_duration(treatment, authored)
 	if age < 0.0 or age >= duration or level < 3:
 		return Vector2.ZERO
-	var amplitude := 3.0 if treatment == "weight" else 1.0
+	var key := "impact_weight_camera_strength" if treatment == "weight" else "impact_precise_camera_strength"
+	var amplitude := float(authored.get(key, ConfigLoader.IMPACT_CAMERA_DEFAULTS[key]))
 	var phase := age / duration
 	return direction.normalized() * amplitude * clampf(float(level) / 5.0, 0.0, 1.0) * sin(phase * TAU) * (1.0 - phase)
 
@@ -610,11 +617,11 @@ func _update_impact_camera() -> void:
 	if _impact_camera_started < 0:
 		return
 	var age := float(Time.get_ticks_msec() - _impact_camera_started) / 1000.0
-	if age >= impact_camera_duration(_impact_camera_treatment):
+	if age >= impact_camera_duration(_impact_camera_treatment, _impact_camera_profile):
 		_impact_camera_started = -1
 		_impact_camera_level = 0
 		return
-	var pixels := impact_camera_pixels(age, _impact_camera_level, _impact_camera_direction, _impact_camera_treatment)
+	var pixels := impact_camera_pixels(age, _impact_camera_level, _impact_camera_direction, _impact_camera_treatment, _impact_camera_profile)
 	_impact_camera_applied = pixels / transition_camera.zoom
 	transition_camera.offset += _impact_camera_applied
 
@@ -625,6 +632,7 @@ func _clear_impact_feedback() -> void:
 	_impact_camera_applied = Vector2.ZERO
 	_impact_camera_started = -1
 	_impact_camera_level = 0
+	_impact_camera_profile.clear()
 	if is_instance_valid(player) and is_instance_valid(player.feedback):
 		player.feedback.clear_impact_feedback(true)
 	# An area can still be instance-valid after its SceneTree has gone away.

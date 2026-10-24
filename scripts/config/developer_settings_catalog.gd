@@ -366,6 +366,14 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 		field.merge({"minimum": 1.0, "maximum": 32.0, "integer": true, "step": 1.0, "allow_greater": false}, true)
 	if id == "ui.cast_feedback_duration":
 		field.merge({"minimum": 0.1, "maximum": 20.0, "step": 0.1, "allow_greater": false}, true)
+	if keys[0] == "ui" and keys.back() in Store.Loader.IMPACT_CAMERA_DEFAULTS:
+		var is_duration: bool = str(keys.back()).ends_with("_duration")
+		var profile := "Weight" if str(keys.back()).begins_with("impact_weight_") else "Precise"
+		field.merge({"label": profile + (" camera duration" if is_duration else " camera strength"),
+			"group": "Cosmetic impact feedback", "minimum": 0.001 if is_duration else 0.0,
+			"maximum": 0.12 if is_duration else 3.0, "step": 0.001 if is_duration else 0.05,
+			"unit": "s" if is_duration else "px", "allow_greater": false}, true)
+		field["description"] = ("Camera cue duration in seconds." if is_duration else "Maximum viewport pixels before reaction-level scaling.") + "\nApplies to the next confirmed Level 3+ camera cue.\nSaved in JSON; the assigned Inspector mirror uses this value.\nStrength 0-3px; duration 0.001-0.120s. No combat changes."
 	if id in ["ui.impact_contact_enabled", "ui.impact_camera_enabled"]:
 		field["label"] = "Contact accent" if id == "ui.impact_contact_enabled" else "Heavy impact camera"
 		field["group"] = "Cosmetic impact feedback"
@@ -375,7 +383,7 @@ static func _collect(value: Variant, keys: Array, result: Array, config: Diction
 		field["label"] = "Impact treatment"
 		field["group"] = "Cosmetic impact feedback"
 		field["options"] = [["precise", "Precise"], ["weight", "Weight"]]
-		field["description"] = "Precise: two tapered ticks; 20/24px complete footprint.\nFade: 90/100ms. Strong camera: <=1px / 80ms.\nWeight: wedge + two flecks; 28/38px complete footprint.\nExpansion/fade: <=110ms. Strong camera: <=3px / 110ms.\nC2 adds a small white center with a black edge to Weight only.\nEnable or disable contact and camera independently.\nDamage cues do not imply stun."
+		field["description"] = "Precise: two tapered ticks; 20/24px complete footprint.\nFade: 90/100ms. Default camera: 1px / 80ms.\nWeight: wedge + two flecks; 28/38px complete footprint.\nExpansion/fade: <=110ms. Default camera: 3px / 110ms.\nAuthor each camera profile below, within 3px / 120ms.\nC2 adds a small white center with a black edge to Weight only.\nEnable or disable contact and camera independently.\nDamage cues do not imply stun."
 	if id == "ui.attack_hitbox_visible":
 		field["label"] = "Show attack hitboxes"
 		field["description"] = "Saved debug visibility shared by the editor and in-game Portal."

@@ -5,6 +5,55 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
+## Camera feedback authoring controls — October 24
+
+This new, user-approved authoring slice is based on local main
+`162ff3f4ce057cdd6bd8fe5b47d4e539ca9c8686`, after the dispatch's `e693b4a4`.
+The intervening save committed the user's tuning and enabled/Weight preferences;
+this slice preserves them. The closed overnight branch and unretained P1/T2
+experiments are not an implementation base or new validation authority.
+
+JSON `ui` remains the single saved source. Four numeric fields flow through
+the existing CombatTuningSettings Inspector mirror/CombatTuningBridge and
+shared Dev Portal catalog, loader and Store:
+
+| JSON key | Legacy/default value | Unit |
+| --- | ---: | --- |
+| impact_precise_camera_strength | 1.0 | viewport px before reaction-level scaling |
+| impact_precise_camera_duration | 0.08 | seconds |
+| impact_weight_camera_strength | 3.0 | viewport px before reaction-level scaling |
+| impact_weight_camera_duration | 0.11 | seconds |
+
+The loader defines these defaults once, fills only missing legacy keys in
+memory and validates finite strengths in0–3px and durations in0.001–0.120s,
+preserving the current GDD caps. No startup save or clamp silently replaces an
+authored value. The Inspector's four exported fields map to those same JSON
+leaves; the existing bridge reads/synchronizes, applies live edits and uses
+the current guarded Store save path. The Resource is a mirror, not a second
+camera profile. Existing switches/treatment and unrelated tuning are not replaced.
+No `combat_tuning.tres` serialization or bridge refactor is required to expose
+the new exports; normal bridge saves keep its existing mirror behavior.
+
+Arena captures the authored profile with each qualifying camera cue. Duration
+and amplitude consume that captured data; an Inspector/Portal edit applies to
+the next cue rather than retiming a running cue per frame. Legacy helper calls
+retain the same defaults. Confirmed Health-loss gating, Level3+ threshold,
+level scaling, treatment/direction, waveform/fade, additive viewport-to-camera
+offset composition and pause/retry/detached teardown paths are unchanged.
+Contact accents are unchanged and keep their separate switch.
+
+Authoring: Local/Remote Player → CombatTuning → Settings →
+Cosmetic impact feedback → Precise camera / Weight camera. Both Portals expose
+the four controls alongside the existing switches and treatment, under their
+General / UI category. The runtime Portal uses Save Tuning; the editor Portal
+uses Review & save. Local Inspector edits use the established assigned bridge.
+
+This slice has static source/config/grammar evidence only, not new engine,
+editor, automated-test or rendered evidence. The historical overnight report
+below remains unchanged. Exact files, source/integration identities and manual
+save/reload/non-default/cleanup checks belong to Implementation Status.
+Current status remains AWAITING_USER_VALIDATION.
+
 ## Overnight feedback and shared-motion candidate — October 23–24
 
 Exact retained source: baseline `f6ccfbe03143b5bf591ee83f5725ddb3919644b3`,

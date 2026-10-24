@@ -1,5 +1,71 @@
 # Implementation Status
 
+## Camera feedback Inspector / Portal authoring — October 24
+
+Status: `AWAITING_USER_VALIDATION`. This is a new human-approved task after
+the overnight run closed: expose Precise and Weight camera strength/duration
+through the existing Inspector and both Dev Portals, then integrate locally.
+Base is current local main `162ff3f4ce057cdd6bd8fe5b47d4e539ca9c8686`; the
+dispatch's `e693b4a4` was followed by a user tuning save. The initially inspected
+main tree is clean. Existing overnight/P1/T2 branches remain preserved; no
+unretained experiment, automation, remote publication or export is resumed.
+
+Exact eight-file scope:
+- `scripts/config/prototype_config_loader.gd`: shared four-field defaults,
+  in-memory legacy normalization and finite/range validation.
+- `scripts/config/combat_tuning_settings.gd`: four exported Inspector controls,
+  mapped through the existing Resource/bridge get/read/apply/save flow to JSON.
+- `scripts/config/developer_settings_catalog.gd`: four clearly labeled controls
+  in Cosmetic impact feedback, matching units, limits and wrapped help.
+- `scripts/prototype/prototype_arena.gd`: consume authored values captured per
+  qualifying cue in the existing camera calculation, not per-frame literals.
+- `config/prototype_combat.json`: add the four exact defaults only; preserve
+  saved enabled switches, Weight treatment and every other value.
+- `docs/TECH_ARCHITECTURE.md`, `docs/GYM.md` and this status: directly affected
+  technical ownership, navigation, authoring and evidence limits.
+
+Defaults are Precise1.0viewport px/0.08s and Weight3.0viewport px/0.11s.
+Both profiles accept0–3px and0.001–0.120s, retaining the GDD caps. JSON remains
+authoritative. The assigned CombatTuningSettings is an Inspector mirror, not a
+competing stored profile. No `combat_tuning.tres` or character/style Resource
+edit, scene change, new manager, bridge refactor or caller change is needed.
+
+Preserved: confirmed APPLIED direct Health-loss gating, Level3+ threshold,
+level scaling, treatment/enable choices, direction, waveform/fade, additive
+camera-offset composition and pause/retry/teardown behavior. Contact accent,
+labels, combat/timing/AI, native geometry/assets, damage/protection, Heat/orbs,
+input, defence/dodge and all user tuning remain outside the change.
+
+Checks performed: four standalone gdtoolkit4.5 grammar parses, whitespace/diff
+checks, exact four-default/JSON preservation review, and complete source tracing
+through Inspector get/read/apply, bridge rollback/sync, guarded Store/Portal save,
+legacy load, per-cue capture and camera consumption. The existing waveform and
+nine unrelated bridge/Arena/mirror methods compare unchanged. Protected
+character/style Resources, native geometry, gameplay, Feedback and tests have no
+diff. A bounded Ultron mode=tech-postflight source review found no established
+source blockers; IMPLEMENTATION_REVIEW_COMPLETE is not submission clearance.
+
+No engine, editor, rendered run, automated test or test creation/modification
+was performed. The closed overnight permissions and old1,998-check/rendered
+receipts do not validate these fields. Godot type/import validation, Inspector
+layout and actual live apply/save/reload remain unverified. Local integration
+is authorized only for this exact source/docs change, preserving the current
+tuning; final implementation/main commit identities accompany the handoff.
+
+Manual validation after local integration:
+1. In Player → CombatTuning → Settings → Cosmetic impact feedback, check both
+   camera groups, units and default values. Compare both Portals' same fields.
+2. Set a non-default Precise value, for example2px/0.10s, using the assigned
+   Inspector bridge; verify JSON/Portal agreement. Change Weight independently
+   and confirm no treatment/switch/contact or character tuning is overwritten.
+3. Use the normal Save Tuning / Review & save flows, restart and compare all
+   four saved values in Inspector and both Portals. Legacy missing keys must
+   restore only the four defaults, without a startup file write.
+4. Exercise qualifying Level3–5 cues in both treatments, camera off/contact on,
+   camera on/contact off, pause/retry and detached teardown. New values affect
+   subsequent cues; active cues keep their captured values. Restore preferred
+   tuning afterward. Human comfort/readability remains unverified.
+
 ## Overnight Fire game-feel candidates — October 23–24
 
 Status: `AWAITING_USER_VALIDATION`. User-authorized bounded implementation,

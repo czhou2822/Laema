@@ -3,6 +3,32 @@ class_name CombatTuningSettings
 extends Resource
 
 const Style = preload("res://scripts/combat/attack_style.gd")
+const Config = preload("res://scripts/config/prototype_config_loader.gd")
+
+@export_group("Cosmetic impact feedback")
+@export_subgroup("Precise camera", "impact_precise_camera_")
+## Maximum viewport-pixel amplitude before the existing reaction-level scaling.
+## JSON remains authoritative through the assigned CombatTuning bridge.
+@export_range(0.0, 3.0, 0.05) var impact_precise_camera_strength := float(Config.IMPACT_CAMERA_DEFAULTS["impact_precise_camera_strength"]):
+	set(value):
+		impact_precise_camera_strength = value
+		emit_changed()
+## Cue duration in seconds; applies to the next qualifying camera cue.
+@export_range(0.001, 0.12, 0.001) var impact_precise_camera_duration := float(Config.IMPACT_CAMERA_DEFAULTS["impact_precise_camera_duration"]):
+	set(value):
+		impact_precise_camera_duration = value
+		emit_changed()
+@export_subgroup("Weight camera", "impact_weight_camera_")
+## Maximum viewport-pixel amplitude before the existing reaction-level scaling.
+@export_range(0.0, 3.0, 0.05) var impact_weight_camera_strength := float(Config.IMPACT_CAMERA_DEFAULTS["impact_weight_camera_strength"]):
+	set(value):
+		impact_weight_camera_strength = value
+		emit_changed()
+## Cue duration in seconds; applies to the next qualifying camera cue.
+@export_range(0.001, 0.12, 0.001) var impact_weight_camera_duration := float(Config.IMPACT_CAMERA_DEFAULTS["impact_weight_camera_duration"]):
+	set(value):
+		impact_weight_camera_duration = value
+		emit_changed()
 
 @export_group("Character Poise")
 @export_range(0, 100, 1) var player_poise := 0:
@@ -99,6 +125,9 @@ static func save_config_mirror(config: Dictionary, path: String) -> Dictionary:
 
 
 func get_data() -> Dictionary:
+	var camera: Dictionary = {}
+	for key in Config.IMPACT_CAMERA_DEFAULTS:
+		camera[key] = get(key)
 	var impacts: Dictionary = {}
 	for move in moves:
 		if move == null or impacts.has(String(move.move_id)):
@@ -118,6 +147,7 @@ func get_data() -> Dictionary:
 	return {
 		"player_poise": player_poise,
 		"final_enemy_poise": final_enemy_poise,
+		"impact_camera": camera,
 		"moves": impacts,
 		"attack_styles": styles,
 		"hit_reaction": {
@@ -147,6 +177,8 @@ func apply_to_config(config: Dictionary) -> Dictionary:
 
 
 static func apply_data_to_config(data: Dictionary, config: Dictionary) -> void:
+	for key in Config.IMPACT_CAMERA_DEFAULTS:
+		config["ui"][key] = data.get("impact_camera", {}).get(key, Config.IMPACT_CAMERA_DEFAULTS[key])
 	config["player"]["poise"] = data["player_poise"]
 	config["enemy_ai"]["poise"] = data["final_enemy_poise"]
 	for id in data["moves"]:
@@ -163,6 +195,9 @@ func read_from_config(config: Dictionary) -> void:
 
 
 static func data_from_config(config: Dictionary) -> Dictionary:
+	var camera: Dictionary = {}
+	for key in Config.IMPACT_CAMERA_DEFAULTS:
+		camera[key] = config["ui"].get(key, Config.IMPACT_CAMERA_DEFAULTS[key])
 	var reaction: Dictionary = {}
 	for key in ["base_duration", "duration_per_level", "base_distance", "distance_per_level", "combat_levels"]:
 		reaction[key] = config["hit_reaction"][key].duplicate(true) if key == "combat_levels" else config["hit_reaction"][key]
@@ -174,6 +209,7 @@ static func data_from_config(config: Dictionary) -> Dictionary:
 	return {
 		"player_poise": config["player"]["poise"],
 		"final_enemy_poise": config["enemy_ai"]["poise"],
+		"impact_camera": camera,
 		"moves": _read_impacts(config["moves"]),
 		"attack_styles": styles,
 		"hit_reaction": reaction,
@@ -181,6 +217,8 @@ static func data_from_config(config: Dictionary) -> Dictionary:
 
 
 func read_data(data: Dictionary) -> void:
+	for key in Config.IMPACT_CAMERA_DEFAULTS:
+		set(key, float(data.get("impact_camera", {}).get(key, Config.IMPACT_CAMERA_DEFAULTS[key])))
 	player_poise = int(data["player_poise"])
 	final_enemy_poise = int(data["final_enemy_poise"])
 	var next_moves: Array[MoveImpactTuning] = []

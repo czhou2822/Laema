@@ -2,6 +2,46 @@
 
 Current guide, consolidated October 20. [Pre-housekeeping version](history/2026-10-20-document-housekeeping/sources/docs/GYM.md) preserves earlier instructions and reports. Heat timer and shared reaction durations are settled by the October 20 decisions in [GAME_DESIGN.md](GAME_DESIGN.md).
 
+## Camera strength and duration authoring — October 24
+
+Four independent camera controls now use the same saved JSON values in the
+Inspector and both Dev Portals:
+
+| Profile | Strength default | Duration default |
+| --- | ---: | ---: |
+| Precise | 1.0 viewport px | 0.08 s |
+| Weight | 3.0 viewport px | 0.11 s |
+
+Strength is the maximum before the existing reaction-level scaling. The
+current caps remain3viewport px and0.120s: strength accepts0–3 and duration
+0.001–0.120s. Zero strength adds no displacement without changing the switch.
+These values do not change contact accents or which hits qualify.
+
+- **Inspector:** open `scenes/player/player.tscn`, select **CombatTuning**,
+  expand its assigned **Settings → Cosmetic impact feedback**, then
+  **Precise camera** or **Weight camera**. Use this assigned bridge, not the
+  standalone mirror as a separate combat/camera profile. The Local Inspector
+  follows the existing save path; Remote Inspector edits affect the run and
+  persist through the normal Save Tuning flow.
+- **Runtime Dev Portal:** backtick → **General → UI → Cosmetic impact feedback**.
+  Edit **Precise camera strength/duration** or **Weight camera strength/duration**;
+  **Save Tuning** persists them.
+- **Editor Dev Portal:** **Laema Dev Portal → General → UI & debug →
+  Cosmetic impact feedback**. The same four fields use **Review & save**.
+
+The four keys are `ui.impact_precise_camera_strength`,
+`ui.impact_precise_camera_duration`, `ui.impact_weight_camera_strength` and
+`ui.impact_weight_camera_duration` in `config/prototype_combat.json`.
+Missing keys load the defaults above without writing files on startup. Current
+saved treatment and enabled switches are preserved, including user-edited
+values; the authoring change does not reset them to legacy off/Precise defaults.
+
+Live edits affect the next qualifying camera cue. A running cue retains its
+captured strength/duration. Threshold, direction, waveform, camera restoration,
+combat and independent Contact accent behavior stay unchanged. Save/reload,
+Inspector hover/layout and actual non-default camera behavior await user
+validation; the closed overnight run does not validate these new controls.
+
 ## Optional feedback review — October 23–24 candidate
 
 The runtime Portal's **General → UI → Cosmetic impact feedback** provides

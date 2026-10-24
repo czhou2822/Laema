@@ -2,6 +2,14 @@
 class_name PrototypeConfigLoader
 extends RefCounted
 
+# JSON is the saved authority; Inspector and camera helpers share legacy defaults.
+const IMPACT_CAMERA_DEFAULTS := {
+	"impact_precise_camera_strength": 1.0,
+	"impact_precise_camera_duration": 0.08,
+	"impact_weight_camera_strength": 3.0,
+	"impact_weight_camera_duration": 0.11,
+}
+
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
 const Geometry = preload("res://scripts/combat/attack_geometry.gd")
@@ -359,6 +367,15 @@ static func _validate(data: Dictionary) -> String:
 			return "earth.levels[%d].slow_percent must be between 0 and 1." % index
 
 	var ui: Dictionary = data["ui"]
+	for key in IMPACT_CAMERA_DEFAULTS:
+		var value = ui.get(key, IMPACT_CAMERA_DEFAULTS[key])
+		var is_duration: bool = str(key).ends_with("_duration")
+		if not _is_number(value) or not is_finite(float(value)):
+			return "ui.%s must be finite numeric data." % key
+		var minimum := 0.001 if is_duration else 0.0
+		var maximum := 0.12 if is_duration else 3.0
+		if float(value) < minimum or float(value) > maximum:
+			return "ui.%s must be between %s and %s." % [key, minimum, maximum]
 	for key in ["impact_contact_enabled", "impact_camera_enabled"]:
 		if typeof(ui.get(key, false)) != TYPE_BOOL:
 			return "ui.%s must be Boolean." % key
@@ -409,6 +426,9 @@ static func _validate_audio(audio: Dictionary) -> String:
 static func _normalize_impact_feedback(data: Dictionary) -> void:
 	if not data.get("ui") is Dictionary:
 		return
+	for key in IMPACT_CAMERA_DEFAULTS:
+		if not data["ui"].has(key):
+			data["ui"][key] = IMPACT_CAMERA_DEFAULTS[key]
 	for pair in [["impact_contact_enabled", false], ["impact_camera_enabled", false], ["impact_treatment", "precise"]]:
 		if not data["ui"].has(pair[0]):
 			data["ui"][pair[0]] = pair[1]
