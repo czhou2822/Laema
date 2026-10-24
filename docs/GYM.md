@@ -2,52 +2,53 @@
 
 Current guide, consolidated October 20. [Pre-housekeeping version](history/2026-10-20-document-housekeeping/sources/docs/GYM.md) preserves earlier instructions and reports. Heat timer and shared reaction durations are settled by the October 20 decisions in [GAME_DESIGN.md](GAME_DESIGN.md).
 
-## Shared hit-reaction camera authoring — October 24
+## Shared five-level camera authoring — October 24
 
-Camera profiles belong to **Shared Hit Reaction**, not to a particular scene.
-Gym and the tutorial/Final Arena use the same saved Resource and four values:
+One shake system belongs to the existing **Shared Hit Reaction** levels. Gym
+and tutorial/Final Arena use the same saved pairs, including Levels1 and2:
 
-| Profile | Strength default | Duration default |
+| Level | Starting strength (viewport px) | Starting duration (s) |
 | --- | ---: | ---: |
-| Precise | 1.0 viewport px | 0.08 s |
-| Weight | 3.0 viewport px | 0.11 s |
+| 1 | 0.5 | 0.04 |
+| 2 | 1.0 | 0.06 |
+| 3 | 1.5 | 0.08 |
+| 4 | 2.0 | 0.10 |
+| 5 | 3.0 | 0.12 |
 
-Strength is the maximum before existing reaction-level scaling. Limits remain
-0–3viewport px and0.001–0.120s. These four global values do not add per-level or
-per-attack controls and do not change distance, motion, stun or hit eligibility.
+These are approved provisional starting values for hand tuning. Strength is
+the amplitude before the existing decaying waveform, without another level
+multiplier; actual displacement stays within it. Limits are0–3px and
+0.001–0.120s. Strength0 disables that level's movement. Duration is independent
+of stun/shove and changes no reaction eligibility, distance or combat timing.
 
-- **Local Inspector:** open `config/characters/hit_reaction.tres` in FileSystem.
-  Expand **Cosmetic impact feedback → Precise camera / Weight camera**, edit
-  strength/duration and save the external Resource. Player and CombatEnemy
-  Settings both reference this same asset.
-- **Live Remote Inspector:** Player → **CombatTuning → Settings → Cosmetic
-  impact feedback → Precise camera / Weight camera**. This is the existing
-  live mirror, not an independent scene profile; use normal Save Tuning to
-  persist through the bridge into Shared Hit Reaction.
-- **Runtime Dev Portal:** backtick → **Combat → Hit Reaction Camera**.
-- **Editor Dev Portal:** **Laema Dev Portal → Combat → Hit reaction camera**.
-  Both Portals edit the same Resource via **Save Tuning / Review & save**.
-  General → UI retains the independent switches and treatment selector only.
+- **Local Inspector:** open `config/characters/hit_reaction.tres`, expand
+  **Combat Levels**, then the desired Level1–5 Resource's **Camera shake**
+  group. Edit **Camera Strength / Camera Duration** and save the Resource.
+- **Live Remote Inspector:** Player → **CombatTuning → Settings → Combat Hit
+  Reaction - Levels 1 to 5 → Combat Levels**, then the level's **Camera shake**.
+  This is the existing mirror; use normal Save Tuning to persist shared values.
+- **Both Dev Portals:** **Combat → Hit-reaction levels → Levels 1–5**. Each
+  level has a camera row below its stun/motion/distance row. Use backtick for
+  the runtime Portal, or Laema Dev Portal in the editor. Use **Save Tuning /
+  Review & save** as appropriate. There is no separate camera tab or shake
+  treatment selector. Reload the editor plugin to refresh existing navigation,
+  first preserving any unsaved draft.
+- **Enable:** General → UI → Cosmetic impact feedback → **Hit-reaction camera**.
+  Contact accent remains independently controlled and unchanged.
 
-The four property names are `impact_precise_camera_strength`,
-`impact_precise_camera_duration`, `impact_weight_camera_strength` and
-`impact_weight_camera_duration`. The effective configuration places them under
-`hit_reaction`; they are no longer saved as UI JSON preferences. Current values,
-treatment and enabled switches were preserved.
+The effective keys are `hit_reaction.combat_levels[0..4].camera_strength` and
+`.camera_duration`. Explicit new values are preserved; old full profiles fill
+only missing fields from the starting table. Old Precise/Weight numbers and
+preferences remain compatibility data, hidden from authoring controls; neither
+numeric profile drives shake. Loading never rewrites files. A running cue keeps
+its captured pair; weaker overlapping cues retain the stronger pair under the
+existing priority rule. Both scenes, native save/reload and visible shake still
+need manual validation; historical overnight evidence does not validate this.
 
-Legacy full profiles can fill missing shared values from their old UI keys or
-the defaults. Conflicting explicit UI/shared values fail with a migration
-message; move the intended values into the shared Resource and remove the old
-UI keys instead of letting a scene override them. Loading never writes files.
+## Historical optional feedback review — October 23–24 candidate
 
-Values apply to the next confirmed qualifying hit-reaction camera cue; a running
-cue keeps its capture. Both scene roots share them; camera rendering remains
-with the active Arena. Waveform, trigger, restoration, contact cues and combat
-are unchanged. Inspector/Portal agreement, actual live apply, both scenes and
-save/reload still need user validation; prior overnight checks do not verify
-this ownership migration.
-
-## Optional feedback review — October 23–24 candidate
+The selector/navigation and camera threshold described below belong to the
+original candidate. Current camera authoring is the five-level system above.
 
 The runtime Portal's **General → UI → Cosmetic impact feedback** provides
 independent **Contact accent** and **Heavy impact camera** switches and a

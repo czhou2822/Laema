@@ -19,6 +19,39 @@ Current design, consolidated October 20, 2026. Implementation candidates and sco
 
 [Pre-housekeeping document](history/2026-10-20-document-housekeeping/sources/docs/GAME_DESIGN.md) preserves earlier wording, superseded rules, experiment reports and the detailed validation checklist. Historical snapshots are not current requirements.
 
+## Shared five-level camera shake — October 24
+
+Decision: one camera-shake treatment follows the existing resolved shared
+hit-reaction Levels 1–5, including Levels 1 and 2. There is no Precise/Weight
+shake selection and no scene- or attack-specific shake tuning. Each level owns
+editable strength and duration alongside its existing reaction settings.
+
+The human approved these provisional starting presets for later hand tuning:
+
+| Resolved hit-reaction level | Strength (viewport px) | Duration (s) |
+| --- | ---: | ---: |
+| 1 | 0.5 | 0.04 |
+| 2 | 1.0 | 0.06 |
+| 3 | 1.5 | 0.08 |
+| 4 | 2.0 | 0.10 |
+| 5 | 3.0 | 0.12 |
+
+Strength is the viewport-pixel amplitude before the existing decaying waveform,
+with no additional reaction-level multiplier. Actual displacement stays within
+that amplitude. Duration is independent of victim shove and stun. These are
+initial presets, not final feel acceptance or runtime validation.
+
+The global camera enable switch remains independent of contact accents. Existing
+direct Health-loss/qualifying-reaction eligibility, direction, waveform and
+camera composition remain; the former Level 3 cutoff is retired. Contact
+accents are unchanged. Legacy profile values remain inactive compatibility data,
+and existing authored new-level values take precedence over initialization.
+Both Portals place the pairs inside the existing Hit-reaction tab; the shared
+Resource Inspector exposes the same five pairs. No startup file rewrite occurs.
+
+This decision does not force X1–X5 to produce Pikeman Levels 1–5 and does not
+change Impact/Poise, defence, invincibility, damage, AI or combat timing.
+
 ## Overnight game-feel candidates — October 23–24
 
 The user approved bounded implementation, rendered comparison and local
@@ -41,12 +74,14 @@ This exact GDD synchronization is `AWAITING_GDD_VERIFICATION`.
   damage with actual Health lost. Misses, zero damage, block, parry,
   invincibility rejection and DoT do not receive this ordinary-hit accent.
   Mixed Cast layers retain their separate results but produce one accent per
-  source action/target. Stronger qualifying reactions may also receive the
-  optional camera response. At 1280×720, complete contact footprint is at most
+  source action/target. Qualifying reactions use the five-level camera decision
+  above, superseding the original stronger-reaction-only camera candidate.
+  At 1280×720, complete contact footprint is at most
   40px/120ms and camera displacement at most 3px/120ms. No hit stop, zoom,
   rotation, full-screen flash or whole-character strobe is introduced.
-- Contact and camera switches are independent and default off; Precise is the
-  default treatment. Weight retains a small white-centered prototype accent.
+- Contact and camera switches are independent and default off. The retained
+  contact treatment preference no longer selects camera behavior or appears as
+  a treatment selector. Weight retains a small white-centered prototype accent.
   Both-off preserves the previous information and combat behavior.
 - Simultaneous damage amounts and Cast school/level captions remain separate,
   with same-frame siblings spaced horizontally in their existing lanes. A

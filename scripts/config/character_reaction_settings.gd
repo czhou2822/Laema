@@ -9,30 +9,24 @@ const IMPACT_CAMERA_DEFAULTS := {
 	"impact_weight_camera_strength": 3.0,
 	"impact_weight_camera_duration": 0.11,
 }
+const IMPACT_CAMERA_LEVEL_DEFAULTS := CombatReactionLevelTuning.CAMERA_DEFAULTS
 
 @export var combat_levels: Array[CombatReactionLevelTuning] = []
 
-@export_group("Cosmetic impact feedback")
-@export_subgroup("Precise camera", "impact_precise_camera_")
-## Maximum viewport-pixel amplitude before the existing reaction-level scaling.
-## Shared Hit Reaction is authoritative in every playable scene.
-@export_range(0.0, 3.0, 0.05) var impact_precise_camera_strength := float(IMPACT_CAMERA_DEFAULTS["impact_precise_camera_strength"]):
+# Inactive compatibility data. Retained on explicit save, hidden in the Inspector.
+@export_storage var impact_precise_camera_strength := float(IMPACT_CAMERA_DEFAULTS["impact_precise_camera_strength"]):
 	set(value):
 		impact_precise_camera_strength = value
 		emit_changed()
-## Cue duration in seconds; applies to the next qualifying camera cue.
-@export_range(0.001, 0.12, 0.001) var impact_precise_camera_duration := float(IMPACT_CAMERA_DEFAULTS["impact_precise_camera_duration"]):
+@export_storage var impact_precise_camera_duration := float(IMPACT_CAMERA_DEFAULTS["impact_precise_camera_duration"]):
 	set(value):
 		impact_precise_camera_duration = value
 		emit_changed()
-@export_subgroup("Weight camera", "impact_weight_camera_")
-## Maximum viewport-pixel amplitude before the existing reaction-level scaling.
-@export_range(0.0, 3.0, 0.05) var impact_weight_camera_strength := float(IMPACT_CAMERA_DEFAULTS["impact_weight_camera_strength"]):
+@export_storage var impact_weight_camera_strength := float(IMPACT_CAMERA_DEFAULTS["impact_weight_camera_strength"]):
 	set(value):
 		impact_weight_camera_strength = value
 		emit_changed()
-## Cue duration in seconds; applies to the next qualifying camera cue.
-@export_range(0.001, 0.12, 0.001) var impact_weight_camera_duration := float(IMPACT_CAMERA_DEFAULTS["impact_weight_camera_duration"]):
+@export_storage var impact_weight_camera_duration := float(IMPACT_CAMERA_DEFAULTS["impact_weight_camera_duration"]):
 	set(value):
 		impact_weight_camera_duration = value
 		emit_changed()
@@ -48,8 +42,7 @@ func get_data() -> Dictionary:
 	for level in combat_levels:
 		if level == null:
 			return {}
-		levels.append({"minimum_value": level.minimum_value, "duration": level.duration,
-			"motion_duration": level.motion_duration, "distance": level.distance})
+		levels.append(level.get_data())
 	var data := {"combat_levels": levels, "base_duration": base_duration,
 		"duration_per_level": duration_per_level, "base_distance": base_distance,
 		"distance_per_level": distance_per_level}
@@ -70,3 +63,4 @@ func read_from_config(config: Dictionary) -> void:
 		level.duration = float(data["combat_levels"][index]["duration"])
 		level.motion_duration = float(data["combat_levels"][index].get("motion_duration", level.duration))
 		level.distance = float(data["combat_levels"][index]["distance"])
+		level.read_camera_data(data["combat_levels"][index], index)

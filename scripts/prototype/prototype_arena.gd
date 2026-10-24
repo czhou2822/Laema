@@ -49,7 +49,6 @@ var _preloaded_next_scene: PackedScene
 var _transitioning := false
 var _impact_camera_started := -1
 var _impact_camera_level := 0
-var _impact_camera_treatment := "precise"
 var _impact_camera_profile: Dictionary = {}
 var _impact_camera_direction := Vector2.RIGHT
 var _impact_camera_applied := Vector2.ZERO
@@ -567,33 +566,32 @@ func _on_impact_confirmed(cue: Dictionary) -> void:
 	if get_tree().paused or _transitioning or not bool(_config["ui"].get("impact_camera_enabled", false)):
 		return
 	var level := int(cue["level"])
-	if level < 3: # Only stronger qualifying combat reactions, never legacy recoil.
+	if level < 1 or level > 5: # Resolved combat reactions only, never legacy recoil.
 		return
-	_impact_camera_treatment = str(_config["ui"].get("impact_treatment", "precise"))
-	# Capture authored values per cue, as treatment already is; never retime it per frame.
-	_impact_camera_profile = {}
-	for key in ConfigLoader.IMPACT_CAMERA_DEFAULTS:
-		_impact_camera_profile[key] = _config["hit_reaction"].get(key, ConfigLoader.IMPACT_CAMERA_DEFAULTS[key])
-	if _impact_camera_started < 0 or float(Time.get_ticks_msec() - _impact_camera_started) / 1000.0 >= impact_camera_duration(_impact_camera_treatment, _impact_camera_profile):
+	if _impact_camera_started < 0 or float(Time.get_ticks_msec() - _impact_camera_started) / 1000.0 >= impact_camera_duration(_impact_camera_profile):
 		_impact_camera_level = 0
-	_impact_camera_level = maxi(level, _impact_camera_level)
+	# Preserve stronger overlapping cues and their captured values. New equal or
+	# stronger cues capture the matching authored pair; never retime it per frame.
+	if level >= _impact_camera_level:
+		var authored: Dictionary = _config["hit_reaction"]["combat_levels"][level - 1]
+		_impact_camera_profile = {"camera_strength": authored["camera_strength"],
+			"camera_duration": authored["camera_duration"]}
+		_impact_camera_level = level
 	_impact_camera_direction = Vector2(cue["direction"]).normalized()
 	_impact_camera_started = Time.get_ticks_msec()
 
 
-static func impact_camera_duration(treatment: String, authored: Dictionary = {}) -> float:
-	var key := "impact_weight_camera_duration" if treatment == "weight" else "impact_precise_camera_duration"
-	return float(authored.get(key, ConfigLoader.IMPACT_CAMERA_DEFAULTS[key]))
+static func impact_camera_duration(authored: Dictionary) -> float:
+	return float(authored.get("camera_duration", 0.0))
 
 
-static func impact_camera_pixels(age: float, level: int, direction: Vector2, treatment: String, authored: Dictionary = {}) -> Vector2:
-	var duration := impact_camera_duration(treatment, authored)
-	if age < 0.0 or age >= duration or level < 3:
+static func impact_camera_pixels(age: float, level: int, direction: Vector2, authored: Dictionary) -> Vector2:
+	var duration := impact_camera_duration(authored)
+	if age < 0.0 or age >= duration or level < 1 or level > 5:
 		return Vector2.ZERO
-	var key := "impact_weight_camera_strength" if treatment == "weight" else "impact_precise_camera_strength"
-	var amplitude := float(authored.get(key, ConfigLoader.IMPACT_CAMERA_DEFAULTS[key]))
+	var amplitude := float(authored["camera_strength"])
 	var phase := age / duration
-	return direction.normalized() * amplitude * clampf(float(level) / 5.0, 0.0, 1.0) * sin(phase * TAU) * (1.0 - phase)
+	return direction.normalized() * amplitude * sin(phase * TAU) * (1.0 - phase)
 
 
 func _update_impact_camera() -> void:
@@ -617,11 +615,11 @@ func _update_impact_camera() -> void:
 	if _impact_camera_started < 0:
 		return
 	var age := float(Time.get_ticks_msec() - _impact_camera_started) / 1000.0
-	if age >= impact_camera_duration(_impact_camera_treatment, _impact_camera_profile):
+	if age >= impact_camera_duration(_impact_camera_profile):
 		_impact_camera_started = -1
 		_impact_camera_level = 0
 		return
-	var pixels := impact_camera_pixels(age, _impact_camera_level, _impact_camera_direction, _impact_camera_treatment, _impact_camera_profile)
+	var pixels := impact_camera_pixels(age, _impact_camera_level, _impact_camera_direction, _impact_camera_profile)
 	_impact_camera_applied = pixels / transition_camera.zoom
 	transition_camera.offset += _impact_camera_applied
 

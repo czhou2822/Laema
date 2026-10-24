@@ -28,12 +28,16 @@
 [sub_resource type="Resource" id="Reaction_1"]
 resource_name = "Level 1"
 script = ExtResource("1_6hcl4")
+camera_strength = 0.5
+camera_duration = 0.04
 duration = 0.25
 motion_duration = 0.25
 
 [sub_resource type="Resource" id="Reaction_2"]
 resource_name = "Level 2"
 script = ExtResource("1_6hcl4")
+camera_strength = 1.0
+camera_duration = 0.06
 minimum_value = 11
 duration = 0.55
 motion_duration = 0.55
@@ -42,6 +46,8 @@ distance = 10.0
 [sub_resource type="Resource" id="Reaction_3"]
 resource_name = "Level 3"
 script = ExtResource("1_6hcl4")
+camera_strength = 1.5
+camera_duration = 0.08
 minimum_value = 21
 duration = 0.85
 motion_duration = 0.85
@@ -50,6 +56,8 @@ distance = 15.0
 [sub_resource type="Resource" id="Reaction_4"]
 resource_name = "Level 4"
 script = ExtResource("1_6hcl4")
+camera_strength = 2.0
+camera_duration = 0.10
 minimum_value = 31
 duration = 1.15
 motion_duration = 0.15
@@ -58,6 +66,8 @@ distance = 20.0
 [sub_resource type="Resource" id="Reaction_5"]
 resource_name = "Level 5"
 script = ExtResource("1_6hcl4")
+camera_strength = 3.0
+camera_duration = 0.12
 minimum_value = 41
 duration = 1.45
 motion_duration = 1.45

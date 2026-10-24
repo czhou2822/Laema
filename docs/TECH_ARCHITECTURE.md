@@ -5,7 +5,64 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
-## Shared hit-reaction camera profiles — October 24
+## Current five-level shared hit-reaction camera — October 24
+
+Approved follow-up to local main `98676e1e4aefcb9453040ae24bd1c30a9dcc4bfd`.
+The [GDD](GAME_DESIGN.md#shared-five-level-camera-shake--october-24) owns the
+one-treatment, all-five-level decision and provisional presets. This section
+supersedes the two global profiles and Level3+ cutoff described historically
+below. Implementation and static evidence do not establish runtime acceptance.
+
+`CombatReactionLevelTuning` adds `camera_strength` (0–3 viewport px) and
+`camera_duration` (0.001–0.120s) to each existing shared reaction-level entry.
+Its five indexed defaults are 0.5/0.04, 1/0.06, 1.5/0.08, 2/0.10, 3/0.12.
+The authoritative asset remains `config/characters/hit_reaction.tres`;
+`config/combat_tuning.tres` remains the existing Inspector bridge mirror.
+Both parents transport the two fields through their existing level dictionaries,
+`CharacterSettingsStore` save/load and `CombatTuningBridge` synchronization.
+No new owner, manager, scene setting or per-attack override is introduced.
+
+The effective paths are `hit_reaction.combat_levels[index].camera_strength`
+and `.camera_duration`. Both Portals expose the pair on a second row inside
+each level under **Combat → Hit-reaction levels → Levels 1–5**. The separate
+camera category and Precise/Weight selector are removed. The global camera
+enable switch remains under General / UI. Existing contact visuals still read
+their retained preference; this slice does not change their renderer.
+
+The four old numeric properties remain `@export_storage` compatibility data
+on both Resources. The authoritative Resource transports its legacy fields in
+its dictionary; the bridge mirror preserves its own old storage independently
+and excludes it from live synchronization, preventing cross-overwrites.
+The loader keeps old UI keys as well, including divergent inactive values;
+neither old domain is a runtime shake authority. No old profile is converted
+into the new presets. Legacy full dictionaries initialize only missing new
+fields by level index before validation; explicit new values, including zero
+strength, win. The two canonical Resource arrays initialize their ten missing
+properties explicitly. Loading performs no disk writes. An explicit save can
+serialize the normalized values through the existing save flow.
+
+The existing confirmed HealthResult → receiver Feedback cue → Arena path is
+retained. Arena accepts resolved combat Levels1–5 and rejects legacy/no-reaction
+level0. It snapshots the selected level's pair for a new/equal-or-stronger cue.
+During the existing stronger-cue overlap policy, a weaker cue retains the
+stronger's captured pair while restarting its lifetime/direction as before.
+Amplitude is used directly, with no former `level / 5` multiplier. The existing
+directional decaying sine waveform remains: actual displacement is bounded by
+the authored amplitude, not guaranteed to reach it. Viewport/zoom conversion,
+additive offset composition, pause/transition/reset and detached cleanup remain.
+Ordinary Gym and persistent tutorial/Final Arena use this same renderer.
+
+No Impact/Poise, eligibility, actor reaction, contact accent, damage, combat
+timing, AI or proposed X1–X5/Pikeman mapping changes belong to this slice.
+No Godot/editor/build/tests or new test creation/modification are authorized.
+Inspector/Portal/native serialization, migration and visible shake behavior
+remain `AWAITING_USER_VALIDATION`; obsolete focused fixture assumptions are
+not silently updated or claimed passing. No push or export is part of the work.
+
+## Historical shared camera-profile ownership — October 24 (superseded)
+
+The following describes the preserved `98676e1e` baseline, not current camera
+authoring or eligibility. Its historical evidence is retained.
 
 The user's amendment makes the shared Hit Reaction Resource authoritative for
 both camera profiles, not a room, Arena, Gym or JSON UI preference. This narrow

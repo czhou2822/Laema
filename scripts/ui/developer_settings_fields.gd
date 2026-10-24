@@ -116,8 +116,13 @@ func _build_foldouts(with_series: bool) -> void:
 			var level_fields := HBoxContainer.new()
 			level_fields.add_theme_constant_override("separation", 12)
 			target.add_child(level_fields)
-			for field in groups[group].slice(1):
+			for field in groups[group].slice(1, 4):
 				_add_field(field, level_fields, target)
+			var camera_fields := HBoxContainer.new()
+			camera_fields.add_theme_constant_override("separation", 12)
+			target.add_child(camera_fields)
+			for field in groups[group].slice(4):
+				_add_field(field, camera_fields, target)
 			target.add_child(HSeparator.new())
 			continue
 		var header := Button.new()

@@ -5,6 +5,7 @@ extends RefCounted
 # Shared Hit Reaction owns profiles. Keep this alias for existing helper callers.
 const Reaction = preload("res://scripts/config/character_reaction_settings.gd")
 const IMPACT_CAMERA_DEFAULTS := Reaction.IMPACT_CAMERA_DEFAULTS
+const IMPACT_CAMERA_LEVEL_DEFAULTS := Reaction.IMPACT_CAMERA_LEVEL_DEFAULTS
 
 const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
 const Style = preload("res://scripts/combat/attack_style.gd")
@@ -274,6 +275,13 @@ static func _validate(data: Dictionary) -> String:
 				return "hit_reaction.combat_levels[%d].%s must be finite numeric data." % [index, key]
 		if float(level["duration"]) <= 0.0 or float(level["motion_duration"]) <= 0.0 or float(level["distance"]) < 0.0:
 			return "Combat reaction stun and motion durations must be positive and distance non-negative."
+		for key in ["camera_strength", "camera_duration"]:
+			if not _is_number(level.get(key)) or not is_finite(float(level[key])):
+				return "hit_reaction.combat_levels[%d].%s must be finite numeric data." % [index, key]
+		if float(level["camera_strength"]) < 0.0 or float(level["camera_strength"]) > 3.0:
+			return "Reaction camera strength must be between 0 and 3 viewport pixels."
+		if float(level["camera_duration"]) < 0.001 or float(level["camera_duration"]) > 0.12:
+			return "Reaction camera duration must be between 0.001 and 0.120 seconds."
 	var move_error := _validate_moves(data["moves"])
 	if not move_error.is_empty():
 		return move_error
@@ -430,13 +438,19 @@ static func _normalize_impact_feedback(data: Dictionary) -> String:
 	if data.get("hit_reaction") is Dictionary:
 		var reaction: Dictionary = data["hit_reaction"]
 		for key in IMPACT_CAMERA_DEFAULTS:
-			# Never let an obsolete room/UI value silently override shared authoring.
-			if ui.has(key) and reaction.has(key) and ui[key] != reaction[key]:
-				return "Legacy ui.%s differs from shared Hit Reaction. Migrate that value into the shared reaction Resource, then remove the legacy UI key." % key
-		for key in IMPACT_CAMERA_DEFAULTS:
+			# Keep both old domains losslessly; neither drives the new shake system.
 			if not reaction.has(key):
 				reaction[key] = ui.get(key, IMPACT_CAMERA_DEFAULTS[key])
-			ui.erase(key)
+		if reaction.get("combat_levels") is Array:
+			for index in range(mini(reaction["combat_levels"].size(), 5)):
+				var level = reaction["combat_levels"][index]
+				if not level is Dictionary:
+					continue # Validation reports malformed entries.
+				var defaults: Vector2 = IMPACT_CAMERA_LEVEL_DEFAULTS[index]
+				if not level.has("camera_strength"):
+					level["camera_strength"] = defaults.x
+				if not level.has("camera_duration"):
+					level["camera_duration"] = defaults.y
 	for pair in [["impact_contact_enabled", false], ["impact_camera_enabled", false], ["impact_treatment", "precise"]]:
 		if not ui.has(pair[0]):
 			ui[pair[0]] = pair[1]

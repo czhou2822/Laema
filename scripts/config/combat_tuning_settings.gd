@@ -5,27 +5,20 @@ extends Resource
 const Style = preload("res://scripts/combat/attack_style.gd")
 const Config = preload("res://scripts/config/prototype_config_loader.gd")
 
-@export_group("Cosmetic impact feedback")
-@export_subgroup("Precise camera", "impact_precise_camera_")
-## Maximum viewport-pixel amplitude before the existing reaction-level scaling.
-## Shared Hit Reaction is authoritative; this Resource is an Inspector mirror.
-@export_range(0.0, 3.0, 0.05) var impact_precise_camera_strength := float(Config.IMPACT_CAMERA_DEFAULTS["impact_precise_camera_strength"]):
+# Inactive compatibility data, never a competing camera profile.
+@export_storage var impact_precise_camera_strength := float(Config.IMPACT_CAMERA_DEFAULTS["impact_precise_camera_strength"]):
 	set(value):
 		impact_precise_camera_strength = value
 		emit_changed()
-## Cue duration in seconds; applies to the next qualifying camera cue.
-@export_range(0.001, 0.12, 0.001) var impact_precise_camera_duration := float(Config.IMPACT_CAMERA_DEFAULTS["impact_precise_camera_duration"]):
+@export_storage var impact_precise_camera_duration := float(Config.IMPACT_CAMERA_DEFAULTS["impact_precise_camera_duration"]):
 	set(value):
 		impact_precise_camera_duration = value
 		emit_changed()
-@export_subgroup("Weight camera", "impact_weight_camera_")
-## Maximum viewport-pixel amplitude before the existing reaction-level scaling.
-@export_range(0.0, 3.0, 0.05) var impact_weight_camera_strength := float(Config.IMPACT_CAMERA_DEFAULTS["impact_weight_camera_strength"]):
+@export_storage var impact_weight_camera_strength := float(Config.IMPACT_CAMERA_DEFAULTS["impact_weight_camera_strength"]):
 	set(value):
 		impact_weight_camera_strength = value
 		emit_changed()
-## Cue duration in seconds; applies to the next qualifying camera cue.
-@export_range(0.001, 0.12, 0.001) var impact_weight_camera_duration := float(Config.IMPACT_CAMERA_DEFAULTS["impact_weight_camera_duration"]):
+@export_storage var impact_weight_camera_duration := float(Config.IMPACT_CAMERA_DEFAULTS["impact_weight_camera_duration"]):
 	set(value):
 		impact_weight_camera_duration = value
 		emit_changed()
@@ -125,9 +118,6 @@ static func save_config_mirror(config: Dictionary, path: String) -> Dictionary:
 
 
 func get_data() -> Dictionary:
-	var camera: Dictionary = {}
-	for key in Config.IMPACT_CAMERA_DEFAULTS:
-		camera[key] = get(key)
 	var impacts: Dictionary = {}
 	for move in moves:
 		if move == null or impacts.has(String(move.move_id)):
@@ -137,8 +127,7 @@ func get_data() -> Dictionary:
 	for level in combat_levels:
 		if level == null:
 			return {}
-		levels.append({"minimum_value": level.minimum_value, "duration": level.duration,
-			"motion_duration": level.motion_duration, "distance": level.distance})
+		levels.append(level.get_data())
 	var styles: Dictionary = {}
 	for style in attack_styles:
 		if style == null or styles.has(String(style.move_id)):
@@ -151,7 +140,6 @@ func get_data() -> Dictionary:
 		"distance_per_level": legacy_distance_per_level,
 		"combat_levels": levels,
 	}
-	reaction.merge(camera, true)
 	return {
 		"player_poise": player_poise,
 		"final_enemy_poise": final_enemy_poise,
@@ -194,13 +182,9 @@ func read_from_config(config: Dictionary) -> void:
 
 
 static func data_from_config(config: Dictionary) -> Dictionary:
-	var camera: Dictionary = {}
-	for key in Config.IMPACT_CAMERA_DEFAULTS:
-		camera[key] = config["hit_reaction"].get(key, Config.IMPACT_CAMERA_DEFAULTS[key])
 	var reaction: Dictionary = {}
 	for key in ["base_duration", "duration_per_level", "base_distance", "distance_per_level", "combat_levels"]:
 		reaction[key] = config["hit_reaction"][key].duplicate(true) if key == "combat_levels" else config["hit_reaction"][key]
-	reaction.merge(camera, true)
 	var styles: Dictionary = {}
 	for school in ["fire", "water", "air", "earth"]:
 		for position in range(1, 6):
@@ -216,8 +200,8 @@ static func data_from_config(config: Dictionary) -> Dictionary:
 
 
 func read_data(data: Dictionary) -> void:
-	for key in Config.IMPACT_CAMERA_DEFAULTS:
-		set(key, float(data["hit_reaction"].get(key, Config.IMPACT_CAMERA_DEFAULTS[key])))
+	# Retain this mirror's inactive legacy fields without overwriting the shared
+	# Resource's independent compatibility data through bridge synchronization.
 	player_poise = int(data["player_poise"])
 	final_enemy_poise = int(data["final_enemy_poise"])
 	var next_moves: Array[MoveImpactTuning] = []
@@ -261,6 +245,7 @@ func read_data(data: Dictionary) -> void:
 		entry.motion_duration = float(values[index].get("motion_duration", entry.duration))
 		entry.minimum_value = int(values[index]["minimum_value"])
 		entry.distance = float(values[index]["distance"])
+		entry.read_camera_data(values[index], index)
 		next_levels.append(entry)
 	combat_levels = next_levels
 	legacy_base_duration = float(data["hit_reaction"]["base_duration"])

@@ -1,6 +1,77 @@
 # Implementation Status
 
-## Shared hit-reaction camera ownership follow-up — October 24
+## Five shared hit-reaction shake levels — October 24
+
+Status: `AWAITING_USER_VALIDATION`. Approved 13-file follow-up to preserved main
+`98676e1e4aefcb9453040ae24bd1c30a9dcc4bfd`, on the isolated
+`codex/five-level-hit-reaction-shake` branch. Local integration is authorized;
+the final handoff records its actual commit/merge result. No push/export or
+closed overnight iteration is authorized. User-owned dirty tuning, research,
+AI and department work are excluded from this slice's commits.
+
+Changed scope:
+- `scripts/config/combat_reaction_level_tuning.gd`: two editable camera fields,
+  indexed provisional defaults and level dictionary transport.
+- `scripts/config/character_reaction_settings.gd`: shared-level transport and
+  hidden, retained old profile data.
+- `scripts/config/combat_tuning_settings.gd`: existing live Inspector mirror
+  carries the new pairs without changing ownership or other tuning.
+- `scripts/config/prototype_config_loader.gd`: missing-only full-profile
+  initialization, finite/range validation and lossless inactive old-domain data.
+- `scripts/prototype/prototype_arena.gd`: resolved Levels1–5 select their
+  captured pair; old Level3 cutoff and second strength multiplier are removed.
+- `scripts/config/developer_settings_catalog.gd` and
+  `scripts/ui/developer_settings_fields.gd`: camera row inside each existing
+  hit-reaction level in both Portals, with units/tooltips; no separate camera
+  category or treatment selector.
+- `config/characters/hit_reaction.tres` and `config/combat_tuning.tres`:
+  initialize only the new camera properties in the two existing level arrays.
+- `docs/GAME_DESIGN.md`, `docs/TECH_ARCHITECTURE.md`, `docs/GYM.md` and this file:
+  exact accepted decision, current data flow, authoring and evidence boundaries.
+
+Starting pairs L1–5 are0.5px/0.04s,1px/0.06s,1.5px/0.08s,2px/0.10s,3px/0.12s.
+They are provisional, not feel acceptance. Explicit authored new fields win
+over missing-only initialization. Old Precise/Weight numeric fields still
+round-trip as inactive storage; old UI numeric keys are retained too. No
+profile is chosen as the new source and startup does not save files. Contact
+accents keep their retained preference and renderer. No actor, eligibility,
+Impact/Poise, damage, AI, reaction stun/motion/distance or X1–X5 mapping changes.
+
+Checks performed: standalone gdtoolkit4.5 grammar parsing of all seven changed
+scripts; JSON parsing; exact 13-path scope and stale-reference review;
+`git diff --check`; static inspection of Resource → configuration → bridge /
+Portal save → selected cue → camera consumption, including a non-default
+L2 pair and explicit zero strength. Removing only the ten added property lines
+from each Resource reproduces its baseline text after newline normalization;
+both arrays match the five accepted pairs. All existing reaction/tuning values
+and Resource identities are retained. Static inspection confirms no Level3
+camera gate, old profile lookup or second level multiplier in the consumer.
+The local integration commit/result is reported in the final handoff.
+No Godot/editor/runtime/build/test execution or test creation/modification is
+authorized. Existing old-profile fixtures are not updated or claimed passing.
+
+User validation:
+1. Preserve unsaved Portal drafts, then refresh the editor plugin. Compare all
+   five camera pairs in the shared Resource Inspector and both Portals under
+   Combat → Hit-reaction levels → Levels1–5. No camera tab/selector should remain.
+2. Set L2 to a distinctive pair, e.g.0.75px/0.09s, Save Tuning / Review & save,
+   reload and compare the shared Resource, live mirror and both Portals. Other
+   levels, reaction values, switches and unrelated tuning must stay unchanged.
+3. With camera enabled, exercise eligible resolved Levels1–5 in Gym and tutorial/
+   Final Arena; Levels1–2 now shake. Camera off and per-level strength0 suppress
+   their motion. Contact cues remain independently unchanged.
+4. Check stronger/weaker overlapping cues, pause/retry, stage transitions and
+   teardown for offset restoration. Confirm native serialization and legacy
+   full-profile save/reload preserve explicit new values and old inactive data.
+
+Remaining risk: native Resource/Inspector/Portal serialization and visible
+behavior are unrun. Static evidence does not establish comfort or runtime
+correctness. The separate Pikeman reaction-mapping proposal remains open.
+
+## Historical shared camera-profile ownership — October 24 (superseded)
+
+The following preserves the earlier ten-file scope/evidence; its four global
+profiles, category and Level3+ threshold are superseded by the current entry.
 
 Status: `AWAITING_USER_VALIDATION`. The human amended camera authoring to use
 the shared hit-reaction domain rather than scene/UI numeric settings. This
