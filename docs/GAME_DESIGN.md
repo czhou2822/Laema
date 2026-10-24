@@ -133,11 +133,20 @@ upgrade at the requested tier. Both operations restart the encounter through
 the existing owner rather than replacing an active actor in place.
 This supersedes the proposed three-step Castle/base-Necropolis/upgraded cycle.
 
-The current presentation candidate uses the existing high-resolution Castle
-animation review sheets for Archer, Griffin, Swordsman, Monk, Cavalier and Angel,
-following the user's correction
-that the original low-resolution sheets were shown in Gym. The accepted static
-masters and the generated animation candidates retain separate approval status.
+The October 23 presentation candidate uses source-ordered `remaster_v01` Castle
+group sheets for all seven existing opponents. After reviewing the audit, the
+user authorized generating missing high-resolution drawings from the original
+flipbooks and required a counterpart for every original Castle group, including
+upgraded variants. The depot contains all 225 groups / 1,324 frame positions;
+existing suitable high-resolution drawings are reused alongside new paintings.
+The accepted earlier artwork and the new animation candidates retain separate
+approval status. The [remaster inventory](art/remasters/castle-v01/README.md)
+records provenance, coverage and review limits.
+
+This authorized main integration retains the existing 28-creature selector,
+Castle upgrades, Necropolis bindings and keyboard selection rules above. The new
+runtime atlas bindings apply to the seven Castle base actors; they do not replace
+the other actors' retained artwork or add abilities, timing or balance changes.
 Original character sheets are preserved; Griffin's original sound cues remain.
 Its wing movement is presentation of the current grounded actor.
 The existing melee timing and hit geometry remain a temporary contract, not
@@ -215,17 +224,25 @@ The Defence section owns Fire parry/partial-block and retained Water guard inter
 
 ## Current decision — character-owned combat, October 20
 
-Pikeman's CombatEnemy uses the accepted generated Pikeman repaint v02 for idle, movement,
-front thrust, hurt and death, referencing the original unupgraded Heroes III
-Castle Pikeman. Fire Laema uses the accepted generated sword-and-shield sheets;
+Pikeman's CombatEnemy uses the original-group `remaster_v01` sheets for idle,
+movement, front thrust, hurt and death. These reuse suitable accepted repaint v02
+drawings and add source-guided missing poses, including hurt recovery, referencing
+the original unupgraded Heroes III Castle Pikeman. Fire Laema uses the accepted generated sword-and-shield sheets;
 other schools retain their legacy artwork. These bindings apply to the reusable
 actors in Gym and Final Arena. Practice targets retain their separate artwork,
 collision and tuning. The user's subsequent
-speed adjustment uses the original Pikeman's one-second base attack duration:
-ten evenly spaced frames, fully extended thrust/active-start at 0.5 seconds, and
+speed adjustment retains the selected one-second attack duration:
+ten evenly spaced source-pose positions, fully extended thrust/active-start at 0.5 seconds, and
 return to idle at 1.0 second. This supersedes the prior 1.1-second windup and
 1.3-second total attack; damage, Impact and Poise remain unchanged. The later
 approved spatial correction below supersedes the earlier preserved hitbox sizes.
+
+The historical CrAnim table claim does not establish exact original-game melee
+timing; the original timing rows and executable playback remain unverified.
+The October 23 source-order correction restores original recovery poses 2 and 1
+at 0.8 and 0.9 seconds. The rebuilt group12 sheet contains those repeats in
+physical cells8/9; its native attack keys now address those cells. This preserves
+the accepted clock, active markers, collision and combat values.
 
 The user selected the current Gym tuning as the baseline for the reusable Player
 and CombatEnemy in every scene. Combat settings belong to the characters, with

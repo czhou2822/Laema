@@ -1,0 +1,5877 @@
+{
+  "schema_version": 1,
+  "creature": "Monk",
+  "creature_id": "monk",
+  "original_def_id": "Cmonkk",
+  "original_metadata": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/metadata.json",
+  "original_metadata_sha256": "21bf467f73448df35b7a34a7216d8d8766294f93ac9e16aa709ea16861d24a98",
+  "generation_plan_sha256": "b4d0e8ce45fe805fe04da2284966f08a88ca80060b479d63bb1d37dab0f2c07d",
+  "geometry": {
+    "geometry_version": 2,
+    "original_body_alpha_threshold": 160,
+    "cell_size": [
+      768,
+      640
+    ],
+    "columns": 4,
+    "anchor": [
+      384,
+      448
+    ],
+    "source_anchor": [
+      196.5,
+      267
+    ],
+    "uniform_scale": 2.5256410256410255,
+    "idle_height_scale": 2.5256410256410255,
+    "scale_clamped_for_all_original_pose_extents": false,
+    "registration": "One creature-wide uniform original-coordinate transform using opaque OG body bounds (alpha>160), excluding decoded palette shadows; generated/existing RGBA crop aspect-fits its original opaque body rectangle, centered horizontally and bottom-aligned; no stretching. Original durations unknown."
+  },
+  "original_timing": "Not encoded by DEF extraction; no invented timing or gameplay state assignment. Group sheets preserve every source frame in order.",
+  "quality_status": "Generated/reused art candidates; technical coverage is not visual parity certification.",
+  "original_group_slots": 17,
+  "original_frame_positions": 113,
+  "unique_registered_poses": 52,
+  "groups": [
+    {
+      "group_id": 0,
+      "original_block": 0,
+      "frame_count": 6,
+      "conventional_name": "Movement",
+      "pose_ids_in_source_order": [
+        "monk_p000",
+        "monk_p001",
+        "monk_p002",
+        "monk_p003",
+        "monk_p004",
+        "monk_p005"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_00_block_00.png",
+      "sha256": "d7af77ed550548d8458cb2be60063f8ae1dd77ee0079f46724f06c01043ac780",
+      "atlas_size": [
+        3072,
+        1280
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    },
+    {
+      "group_id": 1,
+      "original_block": 1,
+      "frame_count": 10,
+      "conventional_name": "Idle variation / hover",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p007",
+        "monk_p008",
+        "monk_p009",
+        "monk_p010",
+        "monk_p010",
+        "monk_p009",
+        "monk_p008",
+        "monk_p007",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_01_block_01.png",
+      "sha256": "db9b271535b4a1552b8362ffb53b5e3b4bacd3c24a2a6c4259c54796c2bd9682",
+      "atlas_size": [
+        3072,
+        1920
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ],
+        [
+          2304,
+          640,
+          768,
+          640
+        ],
+        [
+          0,
+          1280,
+          768,
+          640
+        ],
+        [
+          768,
+          1280,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    },
+    {
+      "group_id": 2,
+      "original_block": 2,
+      "frame_count": 6,
+      "conventional_name": "Idle",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p011",
+        "monk_p012",
+        "monk_p012",
+        "monk_p011",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_02_block_02.png",
+      "sha256": "ce8c2c53db3fee927064ff5434e640ec4f1f763bb5cc78eee24132d8ef2efa56",
+      "atlas_size": [
+        3072,
+        1280
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    },
+    {
+      "group_id": 3,
+      "original_block": 3,
+      "frame_count": 8,
+      "conventional_name": "Hit reaction",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p013",
+        "monk_p014",
+        "monk_p015",
+        "monk_p016",
+        "monk_p017",
+        "monk_p018",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_03_block_03.png",
+      "sha256": "ee924eaebe59faf247c648369c43eca35c3540d39bde00c838cea9c95c894284",
+      "atlas_size": [
+        3072,
+        1280
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ],
+        [
+          2304,
+          640,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 0
+    },
+    {
+      "group_id": 4,
+      "original_block": 4,
+      "frame_count": 7,
+      "conventional_name": "Defensive reaction",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p019",
+        "monk_p020",
+        "monk_p021",
+        "monk_p022",
+        "monk_p023",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_04_block_04.png",
+      "sha256": "b303d0f8ae0d55e95f223720e5825f5bb629221b57720a331799c67014248c45",
+      "atlas_size": [
+        3072,
+        1280
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 1
+    },
+    {
+      "group_id": 5,
+      "original_block": 5,
+      "frame_count": 11,
+      "conventional_name": "Death",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p013",
+        "monk_p014",
+        "monk_p015",
+        "monk_p016",
+        "monk_p024",
+        "monk_p025",
+        "monk_p026",
+        "monk_p027",
+        "monk_p028",
+        "monk_p029"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_05_block_05.png",
+      "sha256": "fdc398c7f56dcc17f63591b7568f1cdee3c4d761c88ff17fec1cf10d626f459d",
+      "atlas_size": [
+        3072,
+        1920
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ],
+        [
+          2304,
+          640,
+          768,
+          640
+        ],
+        [
+          0,
+          1280,
+          768,
+          640
+        ],
+        [
+          768,
+          1280,
+          768,
+          640
+        ],
+        [
+          1536,
+          1280,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 1
+    },
+    {
+      "group_id": 7,
+      "original_block": 6,
+      "frame_count": 2,
+      "conventional_name": "Turning phase 1",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p030"
+      ],
+      "exact_original_alias_group_ids": [
+        9
+      ],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_07_block_06.png",
+      "sha256": "91bec59d54baaf48b8686b1df9f7ceb0dfcd9e9fc68989e37eadfda5a98a81fc",
+      "atlas_size": [
+        3072,
+        640
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    },
+    {
+      "group_id": 8,
+      "original_block": 7,
+      "frame_count": 2,
+      "conventional_name": "Turning phase 2",
+      "pose_ids_in_source_order": [
+        "monk_p030",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [
+        10
+      ],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_08_block_07.png",
+      "sha256": "265dc5c17696e8ca82c6eb9ac8fc0919bd4ab5e134e4950da2c30f427a24f237",
+      "atlas_size": [
+        3072,
+        640
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    },
+    {
+      "group_id": 9,
+      "original_block": 8,
+      "frame_count": 2,
+      "conventional_name": "Legacy H3 slot",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p030"
+      ],
+      "exact_original_alias_group_ids": [
+        7
+      ],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_09_block_08.png",
+      "sha256": "91bec59d54baaf48b8686b1df9f7ceb0dfcd9e9fc68989e37eadfda5a98a81fc",
+      "atlas_size": [
+        3072,
+        640
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    },
+    {
+      "group_id": 10,
+      "original_block": 9,
+      "frame_count": 2,
+      "conventional_name": "Legacy H3 slot",
+      "pose_ids_in_source_order": [
+        "monk_p030",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [
+        8
+      ],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_10_block_09.png",
+      "sha256": "265dc5c17696e8ca82c6eb9ac8fc0919bd4ab5e134e4950da2c30f427a24f237",
+      "atlas_size": [
+        3072,
+        640
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    },
+    {
+      "group_id": 11,
+      "original_block": 10,
+      "frame_count": 9,
+      "conventional_name": "Melee up",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p031",
+        "monk_p032",
+        "monk_p033",
+        "monk_p034",
+        "monk_p035",
+        "monk_p036",
+        "monk_p037",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_11_block_10.png",
+      "sha256": "88e4ab1e8c6d81488d6a2a9cc48a2f5e0cce9fdd14cfd6785018946157def6c2",
+      "atlas_size": [
+        3072,
+        1920
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ],
+        [
+          2304,
+          640,
+          768,
+          640
+        ],
+        [
+          0,
+          1280,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 3
+    },
+    {
+      "group_id": 12,
+      "original_block": 11,
+      "frame_count": 8,
+      "conventional_name": "Melee front",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p038",
+        "monk_p039",
+        "monk_p040",
+        "monk_p041",
+        "monk_p042",
+        "monk_p043",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_12_block_11.png",
+      "sha256": "d32c1fc9bfdddf92a56b2d2e51a6dbc23db6a238f318423515e0f86485a44658",
+      "atlas_size": [
+        3072,
+        1280
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ],
+        [
+          2304,
+          640,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 0
+    },
+    {
+      "group_id": 13,
+      "original_block": 12,
+      "frame_count": 9,
+      "conventional_name": "Melee down",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p044",
+        "monk_p045",
+        "monk_p046",
+        "monk_p047",
+        "monk_p048",
+        "monk_p049",
+        "monk_p050",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [
+        16
+      ],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_13_block_12.png",
+      "sha256": "681fde1bbacbeed658f745ce6b248c63f96b0a7f24ae18ae343c34356f8b776a",
+      "atlas_size": [
+        3072,
+        1920
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ],
+        [
+          2304,
+          640,
+          768,
+          640
+        ],
+        [
+          0,
+          1280,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 3
+    },
+    {
+      "group_id": 14,
+      "original_block": 13,
+      "frame_count": 10,
+      "conventional_name": "Ranged up slot",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p006",
+        "monk_p031",
+        "monk_p032",
+        "monk_p033",
+        "monk_p034",
+        "monk_p035",
+        "monk_p036",
+        "monk_p037",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_14_block_13.png",
+      "sha256": "bc205beaa03ee8c032e1053cb7df61e6fde8221464405058a80e568ea8d6d636",
+      "atlas_size": [
+        3072,
+        1920
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ],
+        [
+          2304,
+          640,
+          768,
+          640
+        ],
+        [
+          0,
+          1280,
+          768,
+          640
+        ],
+        [
+          768,
+          1280,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    },
+    {
+      "group_id": 15,
+      "original_block": 14,
+      "frame_count": 10,
+      "conventional_name": "Ranged front slot",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p006",
+        "monk_p006",
+        "monk_p038",
+        "monk_p039",
+        "monk_p040",
+        "monk_p041",
+        "monk_p042",
+        "monk_p043",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_15_block_14.png",
+      "sha256": "ef09c81e55c597f8f579a9336db7e569f48c7116a468e44a9e95b0dd386b6458",
+      "atlas_size": [
+        3072,
+        1920
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ],
+        [
+          2304,
+          640,
+          768,
+          640
+        ],
+        [
+          0,
+          1280,
+          768,
+          640
+        ],
+        [
+          768,
+          1280,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    },
+    {
+      "group_id": 16,
+      "original_block": 15,
+      "frame_count": 9,
+      "conventional_name": "Ranged down slot",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p044",
+        "monk_p045",
+        "monk_p046",
+        "monk_p047",
+        "monk_p048",
+        "monk_p049",
+        "monk_p050",
+        "monk_p006"
+      ],
+      "exact_original_alias_group_ids": [
+        13
+      ],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_16_block_15.png",
+      "sha256": "681fde1bbacbeed658f745ce6b248c63f96b0a7f24ae18ae343c34356f8b776a",
+      "atlas_size": [
+        3072,
+        1920
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ],
+        [
+          1536,
+          0,
+          768,
+          640
+        ],
+        [
+          2304,
+          0,
+          768,
+          640
+        ],
+        [
+          0,
+          640,
+          768,
+          640
+        ],
+        [
+          768,
+          640,
+          768,
+          640
+        ],
+        [
+          1536,
+          640,
+          768,
+          640
+        ],
+        [
+          2304,
+          640,
+          768,
+          640
+        ],
+        [
+          0,
+          1280,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 3
+    },
+    {
+      "group_id": 20,
+      "original_block": 16,
+      "frame_count": 2,
+      "conventional_name": "Movement start",
+      "pose_ids_in_source_order": [
+        "monk_p006",
+        "monk_p051"
+      ],
+      "exact_original_alias_group_ids": [],
+      "output_group_identity_must_be_preserved": true,
+      "original_per_frame_timing": null,
+      "missing_pose_ids": [],
+      "complete": true,
+      "file": "assets/prototype/enemy/monk/remaster_v01/group_20_block_16.png",
+      "sha256": "6a8526bb25f660e143a1b469fad522f7a1453d6a9690739b668a6b5c15b2f179",
+      "atlas_size": [
+        3072,
+        640
+      ],
+      "columns": 4,
+      "cell_size": [
+        768,
+        640
+      ],
+      "anchor": [
+        384,
+        448
+      ],
+      "frame_regions": [
+        [
+          0,
+          0,
+          768,
+          640
+        ],
+        [
+          768,
+          0,
+          768,
+          640
+        ]
+      ],
+      "padding_frames": 2
+    }
+  ],
+  "poses": [
+    {
+      "pose_id": "monk_p000",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Walk.png",
+        "atlas_cell_index": 0,
+        "atlas_region": [
+          0,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 0,
+        "from_original_frame_index": 0,
+        "actual_cell_rgba_sha256": "89d5c90ced0f52d6a155bebea2bf8780c0191d38d152bf1e32123ecbc4405775",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "41ffb5ffc2decfa06f1bf5fd66ef9ab074e58eb427a048f04fec73913e5ce43c",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p000.png",
+      "registered_pose_png_sha256": "93533ac2fde3ddbdb59124626e53d5454900b04b7dcb48900ab4a96234cbfa23",
+      "original_signature": {
+        "index_sha256": "afa87b6f4d58dbd04b5ef02d4452f3a5ee1649dded4ed058ba73779eb80296a1",
+        "left": 178,
+        "top": 190,
+        "width": 36,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 190,
+        "width": 35,
+        "height": 77,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 0,
+        "frame_index": 0,
+        "original_pcx_name": "CMONKK09.PCX",
+        "def_frame_offset": 24492,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p001",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Walk.png",
+        "atlas_cell_index": 1,
+        "atlas_region": [
+          768,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 0,
+        "from_original_frame_index": 1,
+        "actual_cell_rgba_sha256": "176ec5d4345b5c656b41d677fe32d6b8aa185460da9a1a3a7473071a18ce56aa",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "41ffb5ffc2decfa06f1bf5fd66ef9ab074e58eb427a048f04fec73913e5ce43c",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p001.png",
+      "registered_pose_png_sha256": "bdaabc3410893304e83d9fca4b0e0984e9de22c5fd0393d63a23fa219285aa1f",
+      "original_signature": {
+        "index_sha256": "a84b8c8dfeafadc251374be776d0228f7e15c4a2eff1c9d0819929edd374a8f3",
+        "left": 178,
+        "top": 190,
+        "width": 34,
+        "height": 77,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 190,
+        "width": 34,
+        "height": 77,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 0,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK10.PCX",
+        "def_frame_offset": 26930,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p002",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Walk.png",
+        "atlas_cell_index": 2,
+        "atlas_region": [
+          1536,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 0,
+        "from_original_frame_index": 2,
+        "actual_cell_rgba_sha256": "1e1acf19d44cd241a3e737ce24ca39ab1fc3242a3abd79faf0b8c817956ecc55",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "41ffb5ffc2decfa06f1bf5fd66ef9ab074e58eb427a048f04fec73913e5ce43c",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p002.png",
+      "registered_pose_png_sha256": "6228216b4e63b59d1a46f792f8e910765b06ccf98458df9702cffa51ff2e1b54",
+      "original_signature": {
+        "index_sha256": "14956f50e8c1f706932e79654c6a802bd74003efa0fafe90b75bcd1675c6b376",
+        "left": 178,
+        "top": 189,
+        "width": 33,
+        "height": 77,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 189,
+        "width": 33,
+        "height": 77,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 0,
+        "frame_index": 2,
+        "original_pcx_name": "CMONKK11.PCX",
+        "def_frame_offset": 29279,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p003",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Walk.png",
+        "atlas_cell_index": 3,
+        "atlas_region": [
+          2304,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 0,
+        "from_original_frame_index": 3,
+        "actual_cell_rgba_sha256": "1193684720cbab481b8865271a9328c1d4609281e1687e4618a4a973b12c04f3",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "41ffb5ffc2decfa06f1bf5fd66ef9ab074e58eb427a048f04fec73913e5ce43c",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p003.png",
+      "registered_pose_png_sha256": "60cbdac1ab06cfdc0fb4685a2af2c21239ff3002e5233024073b50a44b70bc3d",
+      "original_signature": {
+        "index_sha256": "9673d2c2190056deb938fe574addb13fabefd1c1d2dc63807eb4a542d93f0b49",
+        "left": 178,
+        "top": 189,
+        "width": 35,
+        "height": 77,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 189,
+        "width": 34,
+        "height": 75,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 0,
+        "frame_index": 3,
+        "original_pcx_name": "CMONKK12.PCX",
+        "def_frame_offset": 31648,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p004",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Walk.png",
+        "atlas_cell_index": 4,
+        "atlas_region": [
+          0,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 0,
+        "from_original_frame_index": 4,
+        "actual_cell_rgba_sha256": "dfaa6afdbb8d7d2d29525f89ba959282866a7b7c0e8e3c96bf125a1b19091696",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "41ffb5ffc2decfa06f1bf5fd66ef9ab074e58eb427a048f04fec73913e5ce43c",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p004.png",
+      "registered_pose_png_sha256": "0bf017afa54ec42e65efdb92014eb734f5bd7b6d1cdef1381a50024f3bafdb5f",
+      "original_signature": {
+        "index_sha256": "07bbcdca9c46fbc77af0b45b4c2b6ef8b211984a3e99e04f8100a79f03fda81f",
+        "left": 178,
+        "top": 189,
+        "width": 36,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 189,
+        "width": 36,
+        "height": 75,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 0,
+        "frame_index": 4,
+        "original_pcx_name": "CMONKK13.PCX",
+        "def_frame_offset": 34021,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p005",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Walk.png",
+        "atlas_cell_index": 5,
+        "atlas_region": [
+          768,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 0,
+        "from_original_frame_index": 5,
+        "actual_cell_rgba_sha256": "4743e0e09c075b659fd83be9350aa9e9896c14879412d30891ca5f46aeb3aa57",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "41ffb5ffc2decfa06f1bf5fd66ef9ab074e58eb427a048f04fec73913e5ce43c",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p005.png",
+      "registered_pose_png_sha256": "678fa599daa4ba200bbf60738e62418808cec387443fd581b58255afe5d3e119",
+      "original_signature": {
+        "index_sha256": "d6c4262d2634d9b47b7bb141ab5e9cdeb401523314dc6da63084c66079390ce2",
+        "left": 178,
+        "top": 189,
+        "width": 38,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 189,
+        "width": 38,
+        "height": 77,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 0,
+        "frame_index": 5,
+        "original_pcx_name": "CMONKK14.PCX",
+        "def_frame_offset": 36450,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_00_block_00_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p006",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Idle.png",
+        "atlas_cell_index": 0,
+        "atlas_region": [
+          0,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 2,
+        "from_original_frame_index": 0,
+        "actual_cell_rgba_sha256": "06813926fbc6a95e456349e786aa4376ecffe8ab84127835eedf771420baa865",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "f87a1fdfc736f04e1739d2cc2dd82072c8a9165718a4cfed9aaac8dd08416ff5",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p006.png",
+      "registered_pose_png_sha256": "a732ac53c00e6711e6dc478c65fca9b2da330e3208a90e317ef5e3a3ec74d601",
+      "original_signature": {
+        "index_sha256": "5febbdd1dc00e3a5890524b7182cad53b74b9a8f306021766540bd35a4c6b093",
+        "left": 179,
+        "top": 188,
+        "width": 35,
+        "height": 80,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 189,
+        "width": 33,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 1,
+        "frame_index": 0,
+        "original_pcx_name": "CMONKK01.PCX",
+        "def_frame_offset": 2977,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p007",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-00-917e34c13e31.png",
+      "generated_source_sha256": "917e34c13e31235a5f408c8a80aa08da91a6754862325d73ad5e242048864448",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          444,
+          887,
+          1332,
+          1774
+        ],
+        "y": [
+          0,
+          442,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            446,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        0,
+        0,
+        444,
+        446
+      ],
+      "source_alpha_bbox": [
+        131,
+        23,
+        316,
+        426
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p007.png",
+      "registered_pose_png_sha256": "8dbf2a7317eff39e387e965449be36707e982431951fa3ccc9db7e11197af071",
+      "original_signature": {
+        "index_sha256": "5aea240eb5a6ef2a7d2bc1d4670f97f1122589fe868cdd0c7aa10bf629187735",
+        "left": 179,
+        "top": 187,
+        "width": 36,
+        "height": 81,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 188,
+        "width": 34,
+        "height": 79,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 1,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK04.PCX",
+        "def_frame_offset": 11135,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p008",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-00-917e34c13e31.png",
+      "generated_source_sha256": "917e34c13e31235a5f408c8a80aa08da91a6754862325d73ad5e242048864448",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          444,
+          887,
+          1332,
+          1774
+        ],
+        "y": [
+          0,
+          442,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            446,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        444,
+        0,
+        443,
+        444
+      ],
+      "source_alpha_bbox": [
+        134,
+        24,
+        324,
+        426
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p008.png",
+      "registered_pose_png_sha256": "19a9a4cb29a34f4cf5bf676aced94d0df2d52999f828a33add507ada4345e856",
+      "original_signature": {
+        "index_sha256": "0935789c645a0f4473d3a096fdf115395f8a1c85d33f82f31d57f7cb9dfdafc1",
+        "left": 179,
+        "top": 187,
+        "width": 37,
+        "height": 81,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 188,
+        "width": 35,
+        "height": 79,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 1,
+        "frame_index": 2,
+        "original_pcx_name": "CMONKK05.PCX",
+        "def_frame_offset": 13862,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p009",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-00-917e34c13e31.png",
+      "generated_source_sha256": "917e34c13e31235a5f408c8a80aa08da91a6754862325d73ad5e242048864448",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          444,
+          887,
+          1332,
+          1774
+        ],
+        "y": [
+          0,
+          442,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            446,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        887,
+        0,
+        445,
+        442
+      ],
+      "source_alpha_bbox": [
+        129,
+        21,
+        323,
+        426
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p009.png",
+      "registered_pose_png_sha256": "4ae76b00d47678d9e350f36911ca18cfcf83d04bd3b2c7cd87ea6618d6f1e17c",
+      "original_signature": {
+        "index_sha256": "a24d351b5387f84afe35781b1df43ecb1f71c3dcd5aa92fdd303f9acb225e71b",
+        "left": 179,
+        "top": 188,
+        "width": 38,
+        "height": 80,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 189,
+        "width": 36,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 1,
+        "frame_index": 3,
+        "original_pcx_name": "CMONKK06.PCX",
+        "def_frame_offset": 16604,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p010",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-00-917e34c13e31.png",
+      "generated_source_sha256": "917e34c13e31235a5f408c8a80aa08da91a6754862325d73ad5e242048864448",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          444,
+          887,
+          1332,
+          1774
+        ],
+        "y": [
+          0,
+          442,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            446,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        1332,
+        0,
+        442,
+        444
+      ],
+      "source_alpha_bbox": [
+        122,
+        21,
+        319,
+        426
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p010.png",
+      "registered_pose_png_sha256": "fa5e319e8649983f65abdd00a579a64c82e1f695eec8d914cd7eef17e2316972",
+      "original_signature": {
+        "index_sha256": "cef06d936f4ac0e787280ed7547876842f521bb37008bcc74eebda6fde857c69",
+        "left": 179,
+        "top": 188,
+        "width": 38,
+        "height": 80,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 189,
+        "width": 36,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 1,
+        "frame_index": 4,
+        "original_pcx_name": "CMONKK07.PCX",
+        "def_frame_offset": 19337,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_01_block_01_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p011",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Idle.png",
+        "atlas_cell_index": 1,
+        "atlas_region": [
+          768,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 2,
+        "from_original_frame_index": 1,
+        "actual_cell_rgba_sha256": "750af8cfc9e2d7a8745cdad2b15845cc595916e3e514ff89f71cbdaf2cf5a21a",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "f87a1fdfc736f04e1739d2cc2dd82072c8a9165718a4cfed9aaac8dd08416ff5",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p011.png",
+      "registered_pose_png_sha256": "680b14be3ef979405606176b29e3224cb96ca211d1652b6f484ff5e2c795cc86",
+      "original_signature": {
+        "index_sha256": "0b5b0209bf29a35e38a8198a93d7848b426eef9e42113d6c258f40c82e7ced16",
+        "left": 179,
+        "top": 188,
+        "width": 36,
+        "height": 80,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 189,
+        "width": 34,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 2,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK02.PCX",
+        "def_frame_offset": 5682,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_02_block_02_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_02_block_02_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p012",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Idle.png",
+        "atlas_cell_index": 2,
+        "atlas_region": [
+          1536,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 2,
+        "from_original_frame_index": 2,
+        "actual_cell_rgba_sha256": "192ba9d920c7567702bda9df4961cc3e3a6f89419e3f3c6b573992764987022f",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "f87a1fdfc736f04e1739d2cc2dd82072c8a9165718a4cfed9aaac8dd08416ff5",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p012.png",
+      "registered_pose_png_sha256": "228c53536b5cb3a221607a727dd758363e425f30d20a8a7594cf74d985edf8a5",
+      "original_signature": {
+        "index_sha256": "f0666ac4c3081cb41150c244ffb95e0ba0a71c19f14c89f11e8e73eb51ff9466",
+        "left": 179,
+        "top": 188,
+        "width": 36,
+        "height": 80,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 189,
+        "width": 34,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 2,
+        "frame_index": 2,
+        "original_pcx_name": "CMONKK03.PCX",
+        "def_frame_offset": 8407,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_02_block_02_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_02_block_02_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p013",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Hurt.png",
+        "atlas_cell_index": 1,
+        "atlas_region": [
+          768,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 3,
+        "from_original_frame_index": 1,
+        "actual_cell_rgba_sha256": "2aefa241fdf92b1379532be0c8d99e1f052fc18e016bd5380e06bd571b165b36",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "8f42120a278d0d5b27dd00d3d174161502211d90d1264c6c08aa5284e38e4984",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p013.png",
+      "registered_pose_png_sha256": "4c3c8eb9379767e8c3dafd3f9b7008dd911356eadef4f7a874852ca348e3e872",
+      "original_signature": {
+        "index_sha256": "0e9a0a0a7dffb3f9ebb2735d075db05474522a0176ea93befd5d913ed098fa9e",
+        "left": 178,
+        "top": 190,
+        "width": 42,
+        "height": 76,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 190,
+        "width": 41,
+        "height": 76,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 3,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK41.PCX",
+        "def_frame_offset": 115261,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p014",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Hurt.png",
+        "atlas_cell_index": 2,
+        "atlas_region": [
+          1536,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 3,
+        "from_original_frame_index": 2,
+        "actual_cell_rgba_sha256": "259a46fb7d084b439e3b9b1ec5d4a67216d4db77c1f5ffee2a1da6b9d3b3a759",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "8f42120a278d0d5b27dd00d3d174161502211d90d1264c6c08aa5284e38e4984",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p014.png",
+      "registered_pose_png_sha256": "a8d11918d14fca18426db6c78378ab2e7d35ae2e0a5bd4b42dbf9b441ba1a447",
+      "original_signature": {
+        "index_sha256": "fac066982316e58caa13a5726e88db51ef530730fc565baca0435f858a9d5349",
+        "left": 176,
+        "top": 192,
+        "width": 45,
+        "height": 73,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 176,
+        "top": 192,
+        "width": 44,
+        "height": 73,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 3,
+        "frame_index": 2,
+        "original_pcx_name": "CMONKK42.PCX",
+        "def_frame_offset": 117859,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p015",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Hurt.png",
+        "atlas_cell_index": 3,
+        "atlas_region": [
+          2304,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 3,
+        "from_original_frame_index": 3,
+        "actual_cell_rgba_sha256": "a9c74b842bcaa9f235e2aa1628f69383598e274ea907a2366e4e483202a4530b",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "8f42120a278d0d5b27dd00d3d174161502211d90d1264c6c08aa5284e38e4984",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p015.png",
+      "registered_pose_png_sha256": "be0e294fce9ec1df26cdbe962e24ffc1c8e56126edce49de771d714c260130a3",
+      "original_signature": {
+        "index_sha256": "4c1a90998c2d0aba851b423ea7aa7e285752361a89195cf37262aacc2383bbb1",
+        "left": 176,
+        "top": 190,
+        "width": 42,
+        "height": 75,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 176,
+        "top": 190,
+        "width": 40,
+        "height": 75,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 3,
+        "frame_index": 3,
+        "original_pcx_name": "CMONKK43.PCX",
+        "def_frame_offset": 120434,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p016",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Hurt.png",
+        "atlas_cell_index": 4,
+        "atlas_region": [
+          0,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 3,
+        "from_original_frame_index": 4,
+        "actual_cell_rgba_sha256": "f941b12a0f64e7036462b81bea3c9563933b4ba7cf7f49b7832d306765f194bf",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "8f42120a278d0d5b27dd00d3d174161502211d90d1264c6c08aa5284e38e4984",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p016.png",
+      "registered_pose_png_sha256": "7e9210a8275c414d5bcf3b7c4c48c83fb33b4dab544ea967fa9d5d9487744ed4",
+      "original_signature": {
+        "index_sha256": "9ed71a8564099d2214e62325c05f555a163e29e826b1c2e72d1a84a93ed5918d",
+        "left": 171,
+        "top": 186,
+        "width": 40,
+        "height": 80,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 171,
+        "top": 186,
+        "width": 40,
+        "height": 80,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 3,
+        "frame_index": 4,
+        "original_pcx_name": "CMONKK44.PCX",
+        "def_frame_offset": 123139,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p017",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Hurt.png",
+        "atlas_cell_index": 5,
+        "atlas_region": [
+          768,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 3,
+        "from_original_frame_index": 5,
+        "actual_cell_rgba_sha256": "3d61c88fb25a7144222bf65e5f36ea01eb9d867d57928c0a7554613c5b4cbab8",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "8f42120a278d0d5b27dd00d3d174161502211d90d1264c6c08aa5284e38e4984",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p017.png",
+      "registered_pose_png_sha256": "ecc59d48b29e52338d0059a6d4135331260adcc33ac639130cbae3901b1c01b4",
+      "original_signature": {
+        "index_sha256": "9c328e53766d5a78383bbaf1e58c29d658cdacc8a7d87c3849fa144cc0e4e46b",
+        "left": 177,
+        "top": 189,
+        "width": 37,
+        "height": 77,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 177,
+        "top": 189,
+        "width": 36,
+        "height": 77,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 3,
+        "frame_index": 5,
+        "original_pcx_name": "CMONKK45.PCX",
+        "def_frame_offset": 126164,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p018",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Hurt.png",
+        "atlas_cell_index": 6,
+        "atlas_region": [
+          1536,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 3,
+        "from_original_frame_index": 6,
+        "actual_cell_rgba_sha256": "d435c9a638f71837a394ca59327d8357be0c877161a4ed4a648134b372d9c65b",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "8f42120a278d0d5b27dd00d3d174161502211d90d1264c6c08aa5284e38e4984",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p018.png",
+      "registered_pose_png_sha256": "4a473ff822a79262bb8f0f09f59e1dc50b616869de2adcdfc80dfbaa30b0cded",
+      "original_signature": {
+        "index_sha256": "153bf3cdbfdceeb3dc3e17afce80fb8ca3e64b6170fe13d97547a20d34e96c28",
+        "left": 178,
+        "top": 189,
+        "width": 37,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 189,
+        "width": 36,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 3,
+        "frame_index": 6,
+        "original_pcx_name": "CMONKK46.PCX",
+        "def_frame_offset": 128751,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_03_block_03_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p019",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-00-917e34c13e31.png",
+      "generated_source_sha256": "917e34c13e31235a5f408c8a80aa08da91a6754862325d73ad5e242048864448",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          444,
+          887,
+          1332,
+          1774
+        ],
+        "y": [
+          0,
+          442,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            446,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        0,
+        446,
+        444,
+        441
+      ],
+      "source_alpha_bbox": [
+        113,
+        20,
+        335,
+        423
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p019.png",
+      "registered_pose_png_sha256": "f1466ab849e78e4af31c1a67931501f82fbf76812b5100f0a3176918f0894778",
+      "original_signature": {
+        "index_sha256": "c3a66b5760b99c8b98796c3034fdc2755646108f5266f7a2514ffffb61ed50be",
+        "left": 178,
+        "top": 189,
+        "width": 42,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 189,
+        "width": 41,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 4,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK16.PCX",
+        "def_frame_offset": 41325,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p020",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-00-917e34c13e31.png",
+      "generated_source_sha256": "917e34c13e31235a5f408c8a80aa08da91a6754862325d73ad5e242048864448",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          444,
+          887,
+          1332,
+          1774
+        ],
+        "y": [
+          0,
+          442,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            446,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        444,
+        444,
+        443,
+        443
+      ],
+      "source_alpha_bbox": [
+        119,
+        20,
+        360,
+        422
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p020.png",
+      "registered_pose_png_sha256": "e44a41c3e12e1bb37a5e3535dfba8e49ee7d277f77f30cc39c9622faa1297035",
+      "original_signature": {
+        "index_sha256": "bb048ff020aa387f1691e47ece29e2293e2a011c27e75d95b18ab3338fd5b7de",
+        "left": 178,
+        "top": 189,
+        "width": 43,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 189,
+        "width": 42,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 4,
+        "frame_index": 2,
+        "original_pcx_name": "CMONKK17.PCX",
+        "def_frame_offset": 43907,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p021",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-00-917e34c13e31.png",
+      "generated_source_sha256": "917e34c13e31235a5f408c8a80aa08da91a6754862325d73ad5e242048864448",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          444,
+          887,
+          1332,
+          1774
+        ],
+        "y": [
+          0,
+          442,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            446,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        887,
+        442,
+        445,
+        445
+      ],
+      "source_alpha_bbox": [
+        115,
+        18,
+        368,
+        427
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p021.png",
+      "registered_pose_png_sha256": "8ddcea7fda3fbb493b25321dcd39ceaa22cd0c391c95cce0f5b162188a216844",
+      "original_signature": {
+        "index_sha256": "8b0f6635212d5ded94453f12039c6503b2b10cefca0098571a2f48e39222cf0f",
+        "left": 178,
+        "top": 187,
+        "width": 45,
+        "height": 80,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 187,
+        "width": 44,
+        "height": 80,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 4,
+        "frame_index": 3,
+        "original_pcx_name": "CMONKK18.PCX",
+        "def_frame_offset": 46609,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p022",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-00-917e34c13e31.png",
+      "generated_source_sha256": "917e34c13e31235a5f408c8a80aa08da91a6754862325d73ad5e242048864448",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          444,
+          887,
+          1332,
+          1774
+        ],
+        "y": [
+          0,
+          442,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            446,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        1332,
+        444,
+        442,
+        443
+      ],
+      "source_alpha_bbox": [
+        110,
+        18,
+        393,
+        425
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p022.png",
+      "registered_pose_png_sha256": "dee45d87d6b50375881489d954b46e282eec3ce8bdf228a9504edf30c467323f",
+      "original_signature": {
+        "index_sha256": "3db5a1abeb2769fbfc424c315c12c358dd9eb8d70b377d0f079dc97b03148ed3",
+        "left": 180,
+        "top": 185,
+        "width": 50,
+        "height": 82,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 185,
+        "width": 50,
+        "height": 82,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 4,
+        "frame_index": 4,
+        "original_pcx_name": "CMONKK19.PCX",
+        "def_frame_offset": 49527,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p023",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-01-24550753cd97.png",
+      "generated_source_sha256": "24550753cd97976033b716908d79354170525ad0ae7a0eff6455d1f93970a712",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          455,
+          892,
+          1358,
+          1774
+        ],
+        "y": [
+          0,
+          444,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            457,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        0,
+        0,
+        455,
+        444
+      ],
+      "source_alpha_bbox": [
+        70,
+        11,
+        377,
+        434
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p023.png",
+      "registered_pose_png_sha256": "f168f737e87977726fc73c999d04701a61281207002ee29a7a13dfd01d72b055",
+      "original_signature": {
+        "index_sha256": "40dd64fc2109986b5340ae1f2030534e3e5af10afee8bfddb5085d97f61b7718",
+        "left": 180,
+        "top": 180,
+        "width": 56,
+        "height": 87,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 180,
+        "width": 56,
+        "height": 87,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 4,
+        "frame_index": 5,
+        "original_pcx_name": "CMONKK20.PCX",
+        "def_frame_offset": 52939,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_04_block_04_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p024",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Dead.png",
+        "atlas_cell_index": 5,
+        "atlas_region": [
+          768,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 5,
+        "from_original_frame_index": 5,
+        "actual_cell_rgba_sha256": "3b21a1c84e9793dcd89530a24f54449973d6e903afac5a8c9a263b48b06a03fe",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "a28e5c2382ad091cb3432f8d97f6748cdd50f306133b52061004a209a5bef446",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p024.png",
+      "registered_pose_png_sha256": "22e61aee0bbf54b5b31b284e75659c62846c20703c47197b5559a323b446b814",
+      "original_signature": {
+        "index_sha256": "38f90df6266c7a2fb67044de2a08e230e35295e30f0291d549446ac468de20ad",
+        "left": 161,
+        "top": 191,
+        "width": 70,
+        "height": 75,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 162,
+        "top": 191,
+        "width": 67,
+        "height": 75,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 5,
+        "frame_index": 5,
+        "original_pcx_name": "CMONKK47.PCX",
+        "def_frame_offset": 131242,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p025",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Dead.png",
+        "atlas_cell_index": 6,
+        "atlas_region": [
+          1536,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 5,
+        "from_original_frame_index": 6,
+        "actual_cell_rgba_sha256": "856bbf1b9c72cbdc7431dcdda43a900aa355cbfd524bffff1acd4f667a416456",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "a28e5c2382ad091cb3432f8d97f6748cdd50f306133b52061004a209a5bef446",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p025.png",
+      "registered_pose_png_sha256": "9034c413f2316a3a17f9ebbe5719fb3cb83aaae520e39efabe5478e568b7f983",
+      "original_signature": {
+        "index_sha256": "7ea788fcb6b6d02260f4873d3b1de95c782ccbd56c355d62237dca7f8497ba7e",
+        "left": 173,
+        "top": 178,
+        "width": 67,
+        "height": 88,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 173,
+        "top": 178,
+        "width": 65,
+        "height": 85,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 5,
+        "frame_index": 6,
+        "original_pcx_name": "CMONKK48.PCX",
+        "def_frame_offset": 134279,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p026",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Dead.png",
+        "atlas_cell_index": 7,
+        "atlas_region": [
+          2304,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 5,
+        "from_original_frame_index": 7,
+        "actual_cell_rgba_sha256": "5991a94907461baaa7601584798c5800fc1983357ee2786c5fd86907e1439163",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "a28e5c2382ad091cb3432f8d97f6748cdd50f306133b52061004a209a5bef446",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p026.png",
+      "registered_pose_png_sha256": "6d98ae9fcc6dedbe6ac757e36bc19611c87ff7cee5bd1d6a7f057e0750d7635b",
+      "original_signature": {
+        "index_sha256": "9c586bc84226a3c618932feb54c9e300a76753acb4b1d58d528705e4da377ea5",
+        "left": 177,
+        "top": 187,
+        "width": 64,
+        "height": 81,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 177,
+        "top": 187,
+        "width": 63,
+        "height": 73,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 5,
+        "frame_index": 7,
+        "original_pcx_name": "CMONKK49.PCX",
+        "def_frame_offset": 137542,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p027",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Dead.png",
+        "atlas_cell_index": 8,
+        "atlas_region": [
+          0,
+          1280,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 5,
+        "from_original_frame_index": 8,
+        "actual_cell_rgba_sha256": "079a1eb6fcd32934be75689f4e70ccc4a3ef0af481aa8ea1bc2ac3ffa604b77c",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "a28e5c2382ad091cb3432f8d97f6748cdd50f306133b52061004a209a5bef446",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p027.png",
+      "registered_pose_png_sha256": "4ecf3a3a7fe0538f53d05ff5965c87c66801aaa9d2f9ead3cf6e3d8d82e4a71e",
+      "original_signature": {
+        "index_sha256": "88130b9ff9016d77ca2d7c79891ea01a64e0aefeccf203ac49210c2767a8c043",
+        "left": 170,
+        "top": 205,
+        "width": 67,
+        "height": 66,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 172,
+        "top": 205,
+        "width": 65,
+        "height": 58,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 5,
+        "frame_index": 8,
+        "original_pcx_name": "CMONKK50.PCX",
+        "def_frame_offset": 140602,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          800,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p028",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Dead.png",
+        "atlas_cell_index": 9,
+        "atlas_region": [
+          768,
+          1280,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 5,
+        "from_original_frame_index": 9,
+        "actual_cell_rgba_sha256": "980821ae1b3b75479c58234f1418442c171451a6499cac2dd0c1a41d2fdcb28e",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "a28e5c2382ad091cb3432f8d97f6748cdd50f306133b52061004a209a5bef446",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p028.png",
+      "registered_pose_png_sha256": "f23a2531ab6616c429554fc62d98c354c1bd45b72c560783d66b84be539e9458",
+      "original_signature": {
+        "index_sha256": "3d589b661202d1c97f94c156751b34476c24463e21f60066cb7aaf44e8500767",
+        "left": 169,
+        "top": 223,
+        "width": 56,
+        "height": 52,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 170,
+        "top": 223,
+        "width": 55,
+        "height": 41,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 5,
+        "frame_index": 9,
+        "original_pcx_name": "CMONKK51.PCX",
+        "def_frame_offset": 143322,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          800,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p029",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Dead.png",
+        "atlas_cell_index": 10,
+        "atlas_region": [
+          1536,
+          1280,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 5,
+        "from_original_frame_index": 10,
+        "actual_cell_rgba_sha256": "42dc5ae92b7e1f4c50f3a6591f45caa1c7111594ffd619496e64dcb4a89afdbe",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "a28e5c2382ad091cb3432f8d97f6748cdd50f306133b52061004a209a5bef446",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p029.png",
+      "registered_pose_png_sha256": "9f08eb9e90f562cccee7aee7503dff4fb261b1c1fbcdb1108982bdb125be5891",
+      "original_signature": {
+        "index_sha256": "24794784320a70a68477f26bdecddfc946779b59408c92213ebc410080eb7fd6",
+        "left": 180,
+        "top": 232,
+        "width": 39,
+        "height": 29,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 232,
+        "width": 39,
+        "height": 27,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 5,
+        "frame_index": 10,
+        "original_pcx_name": "CMONKK52.PCX",
+        "def_frame_offset": 145490,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_05_block_05_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          800,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p030",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-01-24550753cd97.png",
+      "generated_source_sha256": "24550753cd97976033b716908d79354170525ad0ae7a0eff6455d1f93970a712",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          455,
+          892,
+          1358,
+          1774
+        ],
+        "y": [
+          0,
+          444,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            457,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        455,
+        0,
+        437,
+        444
+      ],
+      "source_alpha_bbox": [
+        115,
+        25,
+        297,
+        436
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p030.png",
+      "registered_pose_png_sha256": "370deef2f0decd8a9b347e5c11a0a31f15fc4e91dbba1ba4f767a91f0f4863d0",
+      "original_signature": {
+        "index_sha256": "1512b7ad358c0667d972d847c54685c4d5f61016c2788c9b09b07ecec9f6d63d",
+        "left": 184,
+        "top": 188,
+        "width": 31,
+        "height": 80,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 184,
+        "top": 188,
+        "width": 31,
+        "height": 75,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 7,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK15.PCX",
+        "def_frame_offset": 38900,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_07_block_06_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_07_block_06_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p031",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-01-24550753cd97.png",
+      "generated_source_sha256": "24550753cd97976033b716908d79354170525ad0ae7a0eff6455d1f93970a712",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          455,
+          892,
+          1358,
+          1774
+        ],
+        "y": [
+          0,
+          444,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            457,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        892,
+        0,
+        466,
+        442
+      ],
+      "source_alpha_bbox": [
+        101,
+        41,
+        352,
+        432
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p031.png",
+      "registered_pose_png_sha256": "42f763b754df8f7571c70fe51874371e185d23ff60b00c690854522fca29d7e5",
+      "original_signature": {
+        "index_sha256": "143d57d5af91d8a4fd001ebf5a603ca05babd7597e9b15376c0192e359da5004",
+        "left": 177,
+        "top": 189,
+        "width": 41,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 177,
+        "top": 189,
+        "width": 41,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 11,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK21.PCX",
+        "def_frame_offset": 56606,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p032",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-01-24550753cd97.png",
+      "generated_source_sha256": "24550753cd97976033b716908d79354170525ad0ae7a0eff6455d1f93970a712",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          455,
+          892,
+          1358,
+          1774
+        ],
+        "y": [
+          0,
+          444,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            457,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        1358,
+        0,
+        416,
+        457
+      ],
+      "source_alpha_bbox": [
+        84,
+        38,
+        352,
+        435
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p032.png",
+      "registered_pose_png_sha256": "5da7bc8216917f784496a5e6f02d99a72005a09932342a7b7370a4ed6e726203",
+      "original_signature": {
+        "index_sha256": "8a46a6342f95c79a19dc87c81e7401032aa157a0f6e2ef3d60aabcc753d27915",
+        "left": 177,
+        "top": 189,
+        "width": 44,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 177,
+        "top": 189,
+        "width": 42,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 11,
+        "frame_index": 2,
+        "original_pcx_name": "CMONKK22.PCX",
+        "def_frame_offset": 59237,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p033",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-01-24550753cd97.png",
+      "generated_source_sha256": "24550753cd97976033b716908d79354170525ad0ae7a0eff6455d1f93970a712",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          455,
+          892,
+          1358,
+          1774
+        ],
+        "y": [
+          0,
+          444,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            457,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        0,
+        444,
+        455,
+        443
+      ],
+      "source_alpha_bbox": [
+        99,
+        11,
+        386,
+        432
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p033.png",
+      "registered_pose_png_sha256": "723a08fd8dce8411d4862b268a8a5fa249ee202ccf110539a825998d3d56331a",
+      "original_signature": {
+        "index_sha256": "728935280a3dc6fcdac32c0a6f0cab18981a928f1be0e15dfad46822f4f2b29e",
+        "left": 179,
+        "top": 180,
+        "width": 51,
+        "height": 87,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 179,
+        "top": 180,
+        "width": 51,
+        "height": 87,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 11,
+        "frame_index": 3,
+        "original_pcx_name": "CMONKK23.PCX",
+        "def_frame_offset": 62013,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p034",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-01-24550753cd97.png",
+      "generated_source_sha256": "24550753cd97976033b716908d79354170525ad0ae7a0eff6455d1f93970a712",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          455,
+          892,
+          1358,
+          1774
+        ],
+        "y": [
+          0,
+          444,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            457,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        455,
+        444,
+        437,
+        443
+      ],
+      "source_alpha_bbox": [
+        76,
+        8,
+        362,
+        432
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p034.png",
+      "registered_pose_png_sha256": "3ed02cef36c6550e9cb1650d172caeb18c18ab16c529bfd3d1148147d94d009b",
+      "original_signature": {
+        "index_sha256": "eaa20dc9db889ffb5d83c7fc3d1af10ffe434627eb4d25151fc1ac78a6b8036d",
+        "left": 181,
+        "top": 168,
+        "width": 57,
+        "height": 99,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 181,
+        "top": 168,
+        "width": 57,
+        "height": 99,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 11,
+        "frame_index": 4,
+        "original_pcx_name": "CMONKK24.PCX",
+        "def_frame_offset": 65278,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p035",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-01-24550753cd97.png",
+      "generated_source_sha256": "24550753cd97976033b716908d79354170525ad0ae7a0eff6455d1f93970a712",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          455,
+          892,
+          1358,
+          1774
+        ],
+        "y": [
+          0,
+          444,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            457,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        892,
+        442,
+        466,
+        445
+      ],
+      "source_alpha_bbox": [
+        98,
+        10,
+        414,
+        433
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p035.png",
+      "registered_pose_png_sha256": "a6f5392241717f9e7d51b417a36be4f58caed9bbfcbdbb2869f191614d8fa635",
+      "original_signature": {
+        "index_sha256": "6fd0ada83b759d5d235b636d7f70acb7df45ab19d22a62d25e9d5ab66ef32dd3",
+        "left": 180,
+        "top": 162,
+        "width": 63,
+        "height": 105,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 162,
+        "width": 63,
+        "height": 105,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 11,
+        "frame_index": 5,
+        "original_pcx_name": "CMONKK25.PCX",
+        "def_frame_offset": 69115,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p036",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-01-24550753cd97.png",
+      "generated_source_sha256": "24550753cd97976033b716908d79354170525ad0ae7a0eff6455d1f93970a712",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          455,
+          892,
+          1358,
+          1774
+        ],
+        "y": [
+          0,
+          444,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            442,
+            887
+          ],
+          [
+            0,
+            457,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        1358,
+        457,
+        416,
+        430
+      ],
+      "source_alpha_bbox": [
+        92,
+        23,
+        350,
+        420
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p036.png",
+      "registered_pose_png_sha256": "99e5f9d0d8b2a9dfe369a48a928e0947addfa5b07c996c231704ed217929fb43",
+      "original_signature": {
+        "index_sha256": "e92388b13493ce90836c6a4a9457bb635679d465e51a59b17e4ab3cba10dc343",
+        "left": 180,
+        "top": 188,
+        "width": 41,
+        "height": 79,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 188,
+        "width": 40,
+        "height": 79,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 11,
+        "frame_index": 6,
+        "original_pcx_name": "CMONKK26.PCX",
+        "def_frame_offset": 72715,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p037",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-02-0876538bf6a7.png",
+      "generated_source_sha256": "0876538bf6a7329173ed106ce858a2765189b24531d97af14c9f4c96c575b734",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          474,
+          928,
+          1376,
+          1774
+        ],
+        "y": [
+          0,
+          443,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            452,
+            887
+          ],
+          [
+            0,
+            450,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            443,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        0,
+        0,
+        474,
+        452
+      ],
+      "source_alpha_bbox": [
+        108,
+        23,
+        322,
+        437
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p037.png",
+      "registered_pose_png_sha256": "5123b860cb4377740c5a4d6fadb0464341a7c17fc716c33798d63bfda081a8ec",
+      "original_signature": {
+        "index_sha256": "108177f1ff1cbe9fbf4b435f1a08c3fddee2aaa9acc06df17010e0b50aaf051a",
+        "left": 183,
+        "top": 189,
+        "width": 37,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 183,
+        "top": 189,
+        "width": 36,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 11,
+        "frame_index": 7,
+        "original_pcx_name": "CMONKK27.PCX",
+        "def_frame_offset": 75423,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_11_block_10_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p038",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Melee.png",
+        "atlas_cell_index": 1,
+        "atlas_region": [
+          768,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 12,
+        "from_original_frame_index": 1,
+        "actual_cell_rgba_sha256": "0a6c666f171c5ed4f63fe4ae3c325ee5fa6ce1a158338042cb774e6d1ae113de",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "79b25c3132cd6e64c61e050d63d15d664f8fcc4f06e63e258d442b909fb00615",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p038.png",
+      "registered_pose_png_sha256": "395cf098178e06b9af2d0a99de54eadf1b1b25bccfd1abac365732ab82aa8ab0",
+      "original_signature": {
+        "index_sha256": "81b5e14eb5a9c2afaa16cfdaa308ed7766b067313495df7b7a3f5a2f8f04c73e",
+        "left": 179,
+        "top": 189,
+        "width": 43,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 179,
+        "top": 189,
+        "width": 43,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 12,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK28.PCX",
+        "def_frame_offset": 77924,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p039",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Melee.png",
+        "atlas_cell_index": 2,
+        "atlas_region": [
+          1536,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 12,
+        "from_original_frame_index": 2,
+        "actual_cell_rgba_sha256": "8794cae9f757d4b043812d0ae8c1d3b39419fb177f5ba727570f63186cc3d4c0",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "79b25c3132cd6e64c61e050d63d15d664f8fcc4f06e63e258d442b909fb00615",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p039.png",
+      "registered_pose_png_sha256": "44e82d261cdc157df69f68940d760bb4792a156b14624c2f448203b93ddc9853",
+      "original_signature": {
+        "index_sha256": "013f5b010afb8150118ec225b58fda7fb493e0bf465dd89ec384e69193891c4a",
+        "left": 182,
+        "top": 189,
+        "width": 44,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 182,
+        "top": 189,
+        "width": 43,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 12,
+        "frame_index": 2,
+        "original_pcx_name": "CMONKK29.PCX",
+        "def_frame_offset": 80585,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p040",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Melee.png",
+        "atlas_cell_index": 3,
+        "atlas_region": [
+          2304,
+          0,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 12,
+        "from_original_frame_index": 3,
+        "actual_cell_rgba_sha256": "f25cfdb145c37d3f5d576f6ad7a7d0d2f5dff5bb789dd858144a42ed4d42d3ca",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "79b25c3132cd6e64c61e050d63d15d664f8fcc4f06e63e258d442b909fb00615",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p040.png",
+      "registered_pose_png_sha256": "84e1fa7f0447a3808bc7126be34ef11516b1d911dc93be7a1019e8ed2b71a135",
+      "original_signature": {
+        "index_sha256": "f3fed66c6b75593329fdfa8119a8db41578dfadbbcfd8ae088c2d95d024cfb89",
+        "left": 182,
+        "top": 189,
+        "width": 71,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 182,
+        "top": 189,
+        "width": 71,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 12,
+        "frame_index": 3,
+        "original_pcx_name": "CMONKK30.PCX",
+        "def_frame_offset": 83255,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p041",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Melee.png",
+        "atlas_cell_index": 4,
+        "atlas_region": [
+          0,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 12,
+        "from_original_frame_index": 4,
+        "actual_cell_rgba_sha256": "93a5fa9a03dad8b80cb8cd571917b40f3c9128f0d0b924e2b5fe6e1a999a4c49",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "79b25c3132cd6e64c61e050d63d15d664f8fcc4f06e63e258d442b909fb00615",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p041.png",
+      "registered_pose_png_sha256": "8772c15f0a7ac8cef1e0e05f6655f54367347e92284efed6cbae5579adbfc864",
+      "original_signature": {
+        "index_sha256": "66b9f013c9b3093ab131eea883863691457384e1c2d89eb771f090a735aa276b",
+        "left": 182,
+        "top": 189,
+        "width": 79,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 182,
+        "top": 189,
+        "width": 79,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 12,
+        "frame_index": 4,
+        "original_pcx_name": "CMONKK31.PCX",
+        "def_frame_offset": 86673,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p042",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Melee.png",
+        "atlas_cell_index": 5,
+        "atlas_region": [
+          768,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 12,
+        "from_original_frame_index": 5,
+        "actual_cell_rgba_sha256": "eff67336dcab05e61fc85134f5ba9343e6266c2aeb7be9ec5602768497b618d3",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "79b25c3132cd6e64c61e050d63d15d664f8fcc4f06e63e258d442b909fb00615",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p042.png",
+      "registered_pose_png_sha256": "f0ed4e588ba09260d867212f5db4d9e3e281e433d3e60d9fde86ea2d13a83363",
+      "original_signature": {
+        "index_sha256": "028aa8b46882e9682505beb3646a69ca1f35411a7f27c26147a119a11a0cb194",
+        "left": 182,
+        "top": 189,
+        "width": 42,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 182,
+        "top": 189,
+        "width": 41,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 12,
+        "frame_index": 5,
+        "original_pcx_name": "CMONKK32.PCX",
+        "def_frame_offset": 90229,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p043",
+      "artwork_origin": "existing high-resolution remaster candidate reused",
+      "existing_source": {
+        "file": "assets/prototype/enemy/monk/highres_v01/Melee.png",
+        "atlas_cell_index": 6,
+        "atlas_region": [
+          1536,
+          640,
+          768,
+          640
+        ],
+        "cell_size": [
+          768,
+          640
+        ],
+        "columns": 4,
+        "anchor": [
+          384,
+          448
+        ],
+        "from_original_group": 12,
+        "from_original_frame_index": 6,
+        "actual_cell_rgba_sha256": "1c18afbb05f7e194f1a167317e9909257fac45e8bf6582070f16b9e29f4394d7",
+        "mapping_evidence": "Existing atlas cell corresponding to same source group/index; pose fidelity remains review-pending",
+        "full_original_pose_fidelity_certified": false
+      },
+      "existing_source_png_sha256": "79b25c3132cd6e64c61e050d63d15d664f8fcc4f06e63e258d442b909fb00615",
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p043.png",
+      "registered_pose_png_sha256": "5518411f6a9f67e31918ddb5a12e044871720385e9e1f473d57ef2b0bc0243a7",
+      "original_signature": {
+        "index_sha256": "f3a78310f95aafc0112b394c1bbcbffe5caf989d14c37d6f7a817fb214eef327",
+        "left": 180,
+        "top": 189,
+        "width": 36,
+        "height": 78,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 189,
+        "width": 36,
+        "height": 78,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 12,
+        "frame_index": 6,
+        "original_pcx_name": "CMONKK33.PCX",
+        "def_frame_offset": 92906,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_12_block_11_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Existing candidate; source-order mapping proven, exact visual parity not certified."
+    },
+    {
+      "pose_id": "monk_p044",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-02-0876538bf6a7.png",
+      "generated_source_sha256": "0876538bf6a7329173ed106ce858a2765189b24531d97af14c9f4c96c575b734",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          474,
+          928,
+          1376,
+          1774
+        ],
+        "y": [
+          0,
+          443,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            452,
+            887
+          ],
+          [
+            0,
+            450,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            443,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        474,
+        0,
+        454,
+        450
+      ],
+      "source_alpha_bbox": [
+        90,
+        18,
+        319,
+        437
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p044.png",
+      "registered_pose_png_sha256": "b0b6251b6505877fcc9cceb3c0e6a6f0a8cf6aae53864dd844b37119fc527cc5",
+      "original_signature": {
+        "index_sha256": "5f2ff98903eda4de9b53d1911ae9e088aced8772c405f8e13a5f40269052291a",
+        "left": 178,
+        "top": 190,
+        "width": 38,
+        "height": 77,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 190,
+        "width": 38,
+        "height": 77,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 13,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK34.PCX",
+        "def_frame_offset": 95385,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p045",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-02-0876538bf6a7.png",
+      "generated_source_sha256": "0876538bf6a7329173ed106ce858a2765189b24531d97af14c9f4c96c575b734",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          474,
+          928,
+          1376,
+          1774
+        ],
+        "y": [
+          0,
+          443,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            452,
+            887
+          ],
+          [
+            0,
+            450,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            443,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        928,
+        0,
+        448,
+        444
+      ],
+      "source_alpha_bbox": [
+        62,
+        17,
+        304,
+        437
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p045.png",
+      "registered_pose_png_sha256": "c031bfa5b032e2c0fff182b5e7c0f3b48ec17f3ec1d6ca3f4411432a2f2e0019",
+      "original_signature": {
+        "index_sha256": "fc8d6d0897cc925bf58a4101800a8e11e61ee8ee8ad447b91c0218f1cf918de4",
+        "left": 180,
+        "top": 194,
+        "width": 42,
+        "height": 73,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 194,
+        "width": 41,
+        "height": 73,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 13,
+        "frame_index": 2,
+        "original_pcx_name": "CMONKK35.PCX",
+        "def_frame_offset": 97946,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p046",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-02-0876538bf6a7.png",
+      "generated_source_sha256": "0876538bf6a7329173ed106ce858a2765189b24531d97af14c9f4c96c575b734",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          474,
+          928,
+          1376,
+          1774
+        ],
+        "y": [
+          0,
+          443,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            452,
+            887
+          ],
+          [
+            0,
+            450,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            443,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        1376,
+        0,
+        398,
+        443
+      ],
+      "source_alpha_bbox": [
+        38,
+        29,
+        341,
+        437
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p046.png",
+      "registered_pose_png_sha256": "7877506e4c8640c2fb6e7eb3b94dff8d53f6711ab600638b25ce97e1200e4f05",
+      "original_signature": {
+        "index_sha256": "038cfa92a800f13e4fd86c9f1c25414f2fb67bb3ad4602212f012af2ad5c6cce",
+        "left": 181,
+        "top": 200,
+        "width": 45,
+        "height": 69,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 181,
+        "top": 200,
+        "width": 44,
+        "height": 69,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 13,
+        "frame_index": 3,
+        "original_pcx_name": "CMONKK36.PCX",
+        "def_frame_offset": 100489,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p047",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-02-0876538bf6a7.png",
+      "generated_source_sha256": "0876538bf6a7329173ed106ce858a2765189b24531d97af14c9f4c96c575b734",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          474,
+          928,
+          1376,
+          1774
+        ],
+        "y": [
+          0,
+          443,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            452,
+            887
+          ],
+          [
+            0,
+            450,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            443,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        0,
+        452,
+        474,
+        435
+      ],
+      "source_alpha_bbox": [
+        45,
+        17,
+        457,
+        417
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p047.png",
+      "registered_pose_png_sha256": "9da69303119ef86a33cf8a5e8a1553b01dcac1457d1cc6c73670b84be3210296",
+      "original_signature": {
+        "index_sha256": "48550fbef46b9b598cd1e15f99257c02567c88502e582dcd564a1cff24de7277",
+        "left": 182,
+        "top": 205,
+        "width": 52,
+        "height": 67,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 182,
+        "top": 205,
+        "width": 52,
+        "height": 67,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 13,
+        "frame_index": 4,
+        "original_pcx_name": "CMONKK37.PCX",
+        "def_frame_offset": 103096,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00_indexed.png",
+        "sheet_cell_region": [
+          0,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p048",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-02-0876538bf6a7.png",
+      "generated_source_sha256": "0876538bf6a7329173ed106ce858a2765189b24531d97af14c9f4c96c575b734",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          474,
+          928,
+          1376,
+          1774
+        ],
+        "y": [
+          0,
+          443,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            452,
+            887
+          ],
+          [
+            0,
+            450,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            443,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        474,
+        450,
+        454,
+        437
+      ],
+      "source_alpha_bbox": [
+        17,
+        13,
+        415,
+        412
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p048.png",
+      "registered_pose_png_sha256": "d60be690c42ca9f6e5504a374e202a2944cf1db90ec1b8e099565990c64062b4",
+      "original_signature": {
+        "index_sha256": "4b0432156732c2587e1d83841e0308378c262592ce1c5b7b909e43a87daf2a0e",
+        "left": 181,
+        "top": 200,
+        "width": 62,
+        "height": 84,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 181,
+        "top": 200,
+        "width": 62,
+        "height": 84,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 13,
+        "frame_index": 5,
+        "original_pcx_name": "CMONKK38.PCX",
+        "def_frame_offset": 106060,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p049",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-02-0876538bf6a7.png",
+      "generated_source_sha256": "0876538bf6a7329173ed106ce858a2765189b24531d97af14c9f4c96c575b734",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          474,
+          928,
+          1376,
+          1774
+        ],
+        "y": [
+          0,
+          443,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            452,
+            887
+          ],
+          [
+            0,
+            450,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            443,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        928,
+        444,
+        448,
+        443
+      ],
+      "source_alpha_bbox": [
+        42,
+        7,
+        415,
+        422
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p049.png",
+      "registered_pose_png_sha256": "575c096c4921e8d5558d3f41186b21ef6c26df23069bd28699ff7e7d23ebf065",
+      "original_signature": {
+        "index_sha256": "736307557ea3815cf6d784cf917c356f80fab7e4a9121b9b53c512f7c964e1fd",
+        "left": 180,
+        "top": 195,
+        "width": 60,
+        "height": 91,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 180,
+        "top": 195,
+        "width": 60,
+        "height": 91,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 13,
+        "frame_index": 6,
+        "original_pcx_name": "CMONKK39.PCX",
+        "def_frame_offset": 109535,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00_indexed.png",
+        "sheet_cell_region": [
+          900,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p050",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-02-0876538bf6a7.png",
+      "generated_source_sha256": "0876538bf6a7329173ed106ce858a2765189b24531d97af14c9f4c96c575b734",
+      "source_grid": [
+        4,
+        2
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          474,
+          928,
+          1376,
+          1774
+        ],
+        "y": [
+          0,
+          443,
+          887
+        ],
+        "y_by_column": [
+          [
+            0,
+            452,
+            887
+          ],
+          [
+            0,
+            450,
+            887
+          ],
+          [
+            0,
+            444,
+            887
+          ],
+          [
+            0,
+            443,
+            887
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        1376,
+        443,
+        398,
+        444
+      ],
+      "source_alpha_bbox": [
+        76,
+        7,
+        288,
+        421
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p050.png",
+      "registered_pose_png_sha256": "4263dec2e96ae4964535fee4b13cd63dc3b07b855933a0bbd04a071d92d8ed71",
+      "original_signature": {
+        "index_sha256": "682b70fb97d37e539363f7a28fbfc418cc15b12263719abc48a9143688c77cdb",
+        "left": 178,
+        "top": 190,
+        "width": 40,
+        "height": 77,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 190,
+        "width": 40,
+        "height": 77,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 13,
+        "frame_index": 7,
+        "original_pcx_name": "CMONKK40.PCX",
+        "def_frame_offset": 112696,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_13_block_12_page_00_indexed.png",
+        "sheet_cell_region": [
+          1350,
+          400,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    },
+    {
+      "pose_id": "monk_p051",
+      "artwork_origin": "imagegen-generated remaster based on original pose",
+      "generated_source_file": "assets/prototype/enemy/monk/remaster_v01/_source/batch-03-122e0d5f59c1.png",
+      "generated_source_sha256": "122e0d5f59c185b47631e5ca77c6ec4d51178b9168b6ffea6eb570411ccee646",
+      "source_grid": [
+        1,
+        1
+      ],
+      "component_isolation": false,
+      "source_grid_boundaries": {
+        "x": [
+          0,
+          1199
+        ],
+        "y": [
+          0,
+          1312
+        ],
+        "y_by_column": [
+          [
+            0,
+            1312
+          ]
+        ],
+        "adaptive_transparent_gutter_search": true
+      },
+      "source_grid_region": [
+        0,
+        0,
+        1199,
+        1312
+      ],
+      "source_alpha_bbox": [
+        335,
+        89,
+        874,
+        1234
+      ],
+      "registered_pose_file": "assets/prototype/enemy/monk/remaster_v01/poses/monk_p051.png",
+      "registered_pose_png_sha256": "4378d1a656898296c8af41b366bcd00b3e6aee69fa447e830407327d5288d5f8",
+      "original_signature": {
+        "index_sha256": "5241a5eda77911d3a7c461f376e231ec01a52999300344f6c956650be6a379ad",
+        "left": 178,
+        "top": 189,
+        "width": 37,
+        "height": 77,
+        "full_width": 450,
+        "full_height": 400
+      },
+      "registration_geometry_version": 2,
+      "original_opaque_body_rect": {
+        "left": 178,
+        "top": 189,
+        "width": 37,
+        "height": 76,
+        "alpha_threshold": 160,
+        "coordinate_space": "original registered 450x400 frame; shadow palette alpha excluded"
+      },
+      "original_representative": {
+        "group_id": 20,
+        "frame_index": 1,
+        "original_pcx_name": "CMONKK08.PCX",
+        "def_frame_offset": 22061,
+        "rgba_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_20_block_16_page_00.png",
+        "indexed_sheet": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/group_20_block_16_page_00_indexed.png",
+        "sheet_cell_region": [
+          450,
+          0,
+          450,
+          400
+        ],
+        "original_canvas": [
+          450,
+          400
+        ],
+        "cell_origin": [
+          0,
+          0
+        ]
+      },
+      "review_status": "Generated candidate; technical alignment applied. Exact limb/gear fidelity and sequence playback require visual review; original timings unavailable."
+    }
+  ],
+  "coverage": {
+    "complete_groups": 17,
+    "total_groups": 17,
+    "available_poses": 52,
+    "total_poses": 52,
+    "missing_pose_ids": [],
+    "generated_poses": 25,
+    "reused_poses": 27
+  }
+}

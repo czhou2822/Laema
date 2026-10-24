@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-23",
+  "engine": {
+    "build": "official",
+    "hash": "7d41c59c457bd5a245092b4e7eb2d833e3b3f8c3",
+    "hex": 263683,
+    "major": 4,
+    "minor": 6,
+    "patch": 3,
+    "status": "stable",
+    "string": "4.6.3-stable (official)",
+    "timestamp": 0
+  },
+  "project_target": "4.7",
+  "scope": "Agent-run isolated import, actual gameplay actor presentation and native flipbook resource validation. This is not human visual acceptance.",
+  "actual_actors": {
+    "passed": true,
+    "count": 7,
+    "creatures": [
+      "pikeman",
+      "archer",
+      "griffin",
+      "swordsman",
+      "monk",
+      "cavalier",
+      "angel"
+    ],
+    "state_frames_both_facings": 392,
+    "native_attack_key_samples_both_facings": 168,
+    "private_attack_resources": 9,
+    "errors": [],
+    "duration_marker_frame_key_timing_matches_preintegration_resources": true,
+    "all_56_sampled_source_file_hashes_match_working_depot": true
+  },
+  "native_flipbook_library": {
+    "passed": true,
+    "creatures": 14,
+    "original_groups": 225,
+    "original_frame_positions": 1324,
+    "errors": [],
+    "final_griffin_turn_correction_included": true,
+    "all_478_library_source_file_hashes_match_working_depot": true
+  },
+  "texture_import": {
+    "descriptor_count": 225,
+    "lossless": true,
+    "mipmaps": false,
+    "portable_res_source_paths": true,
+    "descriptors_copied_back_to_working_depot": true,
+    "final_asset_parse_or_load_failures": 0
+  },
+  "known_limits": [
+    "Installed Godot is4.6.3; project declares4.7, which is unavailable here.",
+    "Original per-frame durations are not encoded in the extracted DEFs. SpriteFrames10fps is review playback; existing actual actor clocks remain unchanged.",
+    "Real actor sampling manually drives existing states and private Animation resources after actual Gym configuration. It does not establish human visual approval or ordinary-play combat balance.",
+    "The pre-existing Godot4.6 ObjectiveWidget custom_maximum_size API error repeats when Gym UI builds. The prior Phase5 baseline has the same error. Unrelated scripts remain unchanged.",
+    "Headless editor socket errors and export-preset runnable warnings persist, along with runtime exit resource-leak warnings. Final validation has no art import, parse or load failures."
+  ]
+}

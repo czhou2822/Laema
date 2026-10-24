@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "creature_id": "swordsman",
+  "date": "2026-10-23",
+  "art_tool": "image_gen.imagegen",
+  "source_type": "newly generated artwork from original HoMM3 pose guides plus existing high-resolution appearance reference; not recovered masters and not a pixel upscale",
+  "batches": [
+    {
+      "batch_index": 0,
+      "grid": [
+        4,
+        2
+      ],
+      "final_generated_png_sha256": "cb86b1e5f7a335b850373e6f4245d6cfaab40474194d5d51d27b6ba6e86eb935",
+      "reference_guide": "assets/prototype/enemy/swordsman/remaster_v01/_source/reference-guides/batch_00_guide_clean.png",
+      "prompt": "assets/prototype/enemy/swordsman/remaster_v01/_source/prompts/batch_00.prompt.txt",
+      "additional_cleanup_prompt": null
+    },
+    {
+      "batch_index": 1,
+      "grid": [
+        4,
+        2
+      ],
+      "final_generated_png_sha256": "294313da78bc974d82c29f71bb0953a4e32d51cdae4550ab4a4391d269a8d35d",
+      "reference_guide": "assets/prototype/enemy/swordsman/remaster_v01/_source/reference-guides/batch_01_guide_clean.png",
+      "prompt": "assets/prototype/enemy/swordsman/remaster_v01/_source/prompts/batch_01.prompt.txt",
+      "additional_cleanup_prompt": null
+    },
+    {
+      "batch_index": 2,
+      "grid": [
+        3,
+        2
+      ],
+      "final_generated_png_sha256": "f4042ab9895705035bf3605914d256beeec1ab7b8d5fdd5df6820931241674a0",
+      "reference_guide": "assets/prototype/enemy/swordsman/remaster_v01/_source/reference-guides/batch_02_guide_3x2.png",
+      "prompt": "assets/prototype/enemy/swordsman/remaster_v01/_source/prompts/batch_02.prompt.txt",
+      "additional_cleanup_prompt": "assets/prototype/enemy/swordsman/remaster_v01/_source/prompts/batch_02.cleanup.prompt.txt",
+      "cleanup_input_png": "assets/prototype/enemy/swordsman/remaster_v01/_source/intermediate/batch_02_before_cleanup.png"
+    }
+  ],
+  "appearance_reference": "assets/prototype/enemy/swordsman/highres_v01/Idle.png",
+  "technical_qa": "All generated drawings visually inspected for count/action/identity. Alpha, nonempty frames, boundary safety, source-order packing, original aliases and common creature-wide registration validated by castle_remaster_pipeline geometry v2.",
+  "quality_limits": [
+    "Technical completeness does not certify 1:1 hand-painted pose fidelity; fine silhouette, cloth folds and facial details vary between generated and reused art.",
+    "Original per-frame timings are unavailable in DEF extraction; no timing or gameplay changes made.",
+    "Existing reuse art remains a candidate mapping rather than original-pose fidelity certification."
+  ]
+}

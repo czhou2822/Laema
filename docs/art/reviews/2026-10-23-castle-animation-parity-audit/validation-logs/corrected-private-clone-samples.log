@@ -1,0 +1,27 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[TRACE][HUD] mark_progress_displayed { "marked_count": 0, "partial_progress": 0.0, "bar_value": 0.0 }
+SCRIPT ERROR: Invalid assignment of property or key 'custom_maximum_size' with value of type 'Vector2' on a base object of type 'Label'.
+          at: ObjectiveWidget._add_row (res://scripts/ui/objective_widget.gd:68)
+          GDScript backtrace (most recent call first):
+              [0] _add_row (res://scripts/ui/objective_widget.gd:68)
+              [1] present (res://scripts/ui/objective_widget.gd:56)
+              [2] update_tutorial_objective (res://scripts/ui/prototype_hud.gd:199)
+              [3] _emit_objective (res://scripts/prototype/stage_director.gd:149)
+              [4] activate_stage (res://scripts/prototype/stage_director.gd:83)
+              [5] _start_initial_stage (res://scripts/prototype/prototype_arena.gd:147)
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 80.0 }
+[TRACE][ARENA] stage_activated { "stage_id": "gym", "initial": true }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 160.0 }
+[TRACE][MOVEMENT] grounded_changed { "grounded": true, "position": (-80.0, 0.0) }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 70.0 }
+PHASE5_PRIVATE_CLONE_SAMPLING {"output":"/workspace/work/phase5-engine-logs/corrected-private-clone-samples.json","passed":true,"samples":6}
+WARNING: 1 RID of type "CanvasItem" was leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2690)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+ERROR: 15 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)
+ERROR: 6 RID allocations of type 'PN13RendererDummy14TextureStorage12DummyTextureE' were leaked at exit.
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.

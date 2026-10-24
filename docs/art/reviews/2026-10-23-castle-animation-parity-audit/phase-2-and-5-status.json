@@ -1,0 +1,1303 @@
+{
+  "date_hong_kong": "2026-10-23",
+  "original_audit_baseline_commit": "a41c900de771cea55e3c1819f1c77ff16d8101b5",
+  "phase2_status": "PARTIAL: original installed-copy timing rows and executable/version/settings evidence unavailable",
+  "phase5_status": "Pikeman front-thrust live recovery sampling repaired; AWAITING_USER_VALIDATION; full remaster BLOCKED by source gaps",
+  "original_group_slots": 225,
+  "current_status_counts": {
+    "Complete": 0,
+    "Partial": 1,
+    "Not converted": 0,
+    "Missing source": 187,
+    "Needs verification": 37
+  },
+  "classification_override_from_original_audit": [
+    {
+      "creature": "Pikeman",
+      "group_id": 3,
+      "from": "Needs verification",
+      "to": "Partial",
+      "reason": "Confirmed original recovery poses4/5 have no source-verified equivalents among present hi-res cells; avoid unrelated pose substitutions."
+    }
+  ],
+  "phase2_original_timing_research": {
+    "observed_date": "2026-10-23",
+    "original_cranim_rows_recovered": false,
+    "castle_rows": [
+      {
+        "creature": "Pikeman",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Halberdier",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Archer",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Marksman",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Griffin",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Royal Griffin",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Swordsman",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Crusader",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Monk",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Zealot",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Cavalier",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Champion",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Angel",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      },
+      {
+        "creature": "Archangel",
+        "time_between_fidgets": null,
+        "walk_parameter": null,
+        "ranged_special_parameter": null,
+        "flight_parameter": null,
+        "attack_climax_frame": null,
+        "source_state": "Original installed-copy CrAnim row not recovered"
+      }
+    ],
+    "phase2_original_runtime_parity": "not established",
+    "source_order_and_registration": "verified in existing audit",
+    "primary_source_urls": [
+      "https://github.com/vcmi/vcmi/blob/develop/lib/CCreatureHandler.cpp",
+      "https://github.com/vcmi/vcmi/blob/develop/client/battle/CreatureAnimation.cpp",
+      "https://github.com/vcmi/vcmi/blob/develop/client/battle/BattleAnimationClasses.cpp",
+      "https://github.com/vcmi/vcmi/blob/develop/config/creatures/castle.json",
+      "https://github.com/RoseKavalier/H3Plugins/blob/master/H3API/lib/h3api/H3Structures/H3Structures.hpp",
+      "https://github.com/RoseKavalier/H3Plugins#description"
+    ],
+    "warning": "Current VCMI source is reimplementation evidence; do not certify its timings as original executable behavior. Attack parameter is not universal melee clip duration."
+  },
+  "phase5_changed_runtime_resource": {
+    "path": "config/attack_animations/melee_swing.tres",
+    "before_sha256": "999aeda7c0930fc488b30fb49fb6648d24199c4e72e637e5a1e3d42951769a97",
+    "after_sha256": "84e01b23282f08d314aac05e04f05796484057f89b1a9745c34015bb02a371a6",
+    "changed_key_times_seconds": [
+      0.8,
+      0.9
+    ],
+    "changed_region_values": [
+      [
+        1536,
+        0,
+        768,
+        512
+      ],
+      [
+        768,
+        0,
+        768,
+        512
+      ]
+    ],
+    "other_runtime_resource_text_unchanged": true,
+    "atlas_indexes_at_keys": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      2,
+      1,
+      0
+    ],
+    "pose_identity_before_terminal_reset": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "png_or_import_descriptor_changes": false,
+    "all_37_audited_hires_pngs_unchanged": [
+      {
+        "file": "assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png",
+        "sha256": "a7ea7013ee948508dbb26f64e73def72404da6d2865844ca28eb266db35daa08",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png",
+        "sha256": "6ac371daf3d58a87e92a0a0fc41c7ffe31f611fdfb1ed7a4f02caf0ef08837af",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/pikeman/repaint_v02/hurt_right_sheet.png",
+        "sha256": "b8f7580ff86fcfc557b0308fe87a8cb502534008c144e34aa801329e11084475",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/pikeman/repaint_v02/death_right_sheet.png",
+        "sha256": "7215db7cdfda1596b83cf4291ea70c4d476ae10cacd1932a5d58dd97752ac9aa",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+        "sha256": "be39d07e53554c7ce7941442823d72a4e78343004a199127ac50d2a6426422f4",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/archer/highres_v01/Idle.png",
+        "sha256": "8dbd6c63c24a050ee729d9c8458f5e9f05603267d1454a7efa4c106d441be82f",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/archer/highres_v01/Walk.png",
+        "sha256": "271741e1226206b780a9c06389ee0c1437aadcedcae37efb5e4d0f43cd799492",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/archer/highres_v01/Hurt.png",
+        "sha256": "e50e54ced0dfb2fb4a5d8788c8769209d825f8e19b05acfd54033f13a46d3f10",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/archer/highres_v01/Dead.png",
+        "sha256": "8338f52f8b19c8474f1ea34d648891ab29dbe1710e96b28861da3cb4319eaa5e",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/archer/highres_v01/Melee.png",
+        "sha256": "175a0036a5fa95c9cc55232d8a0ccff9a4db64a3a9267f6a810aa09ae6faed35",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/archer/highres_v01/Shoot.png",
+        "sha256": "2d31cc5864f1ce86d9f1b2aa6f829aa878bc07e716cde591c7a8d920ddea6c0e",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/griffin/highres_v01/Idle.png",
+        "sha256": "9b1e8cdefc730c23447deec0bd7d38ef9ca7d788296d4032a87eb581e027c0a7",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/griffin/highres_v01/Walk.png",
+        "sha256": "a7fdb8f2e81e240f6cd901767c4d1de92fc8de04380d911dafdcfea034302f8f",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/griffin/highres_v01/Hurt.png",
+        "sha256": "5679f949e7e68c181a36ed38fd64beb5dc60aa936103e69f98cdf1fe3ffcba0a",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/griffin/highres_v01/Dead.png",
+        "sha256": "7b940ea30eef2c94b649e97061e6d4002d0f47d5e2bb06254bcb7240ab559a88",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/griffin/highres_v01/Attack.png",
+        "sha256": "20f1ee8793d691a1a9478a2242518e7e1e8c850bd7efe78ba5f73c4f80015110",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/swordsman/highres_v01/Idle.png",
+        "sha256": "79e67b4643576a0b2e16bd6348cfed3ed303a070c3a5ae183547ee284ad9c499",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/swordsman/highres_v01/Walk.png",
+        "sha256": "5863ebfa5d8537785c22eefdb71e5f754598b7eeb070c5d37df0ddbe1c6ff292",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/swordsman/highres_v01/Hurt.png",
+        "sha256": "da0a79c31bbd0ce1cf9ac598beeed03329f46dd88b6a98b177dc07d8afd1606d",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/swordsman/highres_v01/Dead.png",
+        "sha256": "759bd48a7bb1a9f57b153608ef453348af2e81eeab2d88ab61816d978231a277",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/swordsman/highres_v01/Attack.png",
+        "sha256": "a18de3fa2648150a5fe2c69042ac65ad1b9b6bb402358d71788f1dcbbd0b1bd6",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/monk/highres_v01/Walk.png",
+        "sha256": "41ffb5ffc2decfa06f1bf5fd66ef9ab074e58eb427a048f04fec73913e5ce43c",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/monk/highres_v01/Idle.png",
+        "sha256": "f87a1fdfc736f04e1739d2cc2dd82072c8a9165718a4cfed9aaac8dd08416ff5",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/monk/highres_v01/Hurt.png",
+        "sha256": "8f42120a278d0d5b27dd00d3d174161502211d90d1264c6c08aa5284e38e4984",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/monk/highres_v01/Dead.png",
+        "sha256": "a28e5c2382ad091cb3432f8d97f6748cdd50f306133b52061004a209a5bef446",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/monk/highres_v01/Melee.png",
+        "sha256": "79b25c3132cd6e64c61e050d63d15d664f8fcc4f06e63e258d442b909fb00615",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/monk/highres_v01/Shoot.png",
+        "sha256": "26d85b51163e0ca09d34d6545b10f3612bdf4bfba5fb7b6e0489494c66ce8556",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/cavalier/highres_v01/Idle.png",
+        "sha256": "e06152138775b3d7b94f3e8f468d7f76a172466460143775a20ab0572080a314",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/cavalier/highres_v01/Walk.png",
+        "sha256": "109692caae0440140bc9dec43ba9ceb41e3379fc6cee823a9b529f245432203d",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/cavalier/highres_v01/Hurt.png",
+        "sha256": "6631c7151e0e752d6a04a43c9aedd47932ea37b5a45ccbb2f0bc1e3aa0888f4d",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/cavalier/highres_v01/Dead.png",
+        "sha256": "56eeadffe58a5b68326f437f9b7cf6c29def6a02f420b841993db14fdb084d76",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/cavalier/highres_v01/Attack.png",
+        "sha256": "cfefbefa8d0009ccc1487385d8b6a681d615db1b2bf389a859f1e4318036cb7f",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/angel/highres_v01/Idle.png",
+        "sha256": "d7e866eaecbfe7ce49f2e07a3e53bee5c7297fe63228c96aa15826f0d09829be",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/angel/highres_v01/Walk.png",
+        "sha256": "e0796d7fa38e16c0ed14c9868f1d8904ee7865055b48e0b4c61dc488e4654b46",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/angel/highres_v01/Hurt.png",
+        "sha256": "099cf7237e95f3907390b7d364d747adca47c69061a20b98defa6325dbbcdec7",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/angel/highres_v01/Dead.png",
+        "sha256": "9a916c80d43fd897887656d6f5e8d9ac63c59bffa05c15a4fe1a059f9f39e7c7",
+        "unchanged_from_audit": true
+      },
+      {
+        "file": "assets/prototype/enemy/angel/highres_v01/Attack.png",
+        "sha256": "87b3e56c05424484be0f3a43c49451ffa58d922ebcef4557b9a35aa6df8b69b9",
+        "unchanged_from_audit": true
+      }
+    ],
+    "full_original_timing_or_pose_fidelity_certified": false
+  },
+  "engine_validation": {
+    "scope": "Agent-run isolated engine/resource smoke validation; not rendered/human gameplay acceptance",
+    "engine_version": "4.6.3-stable (official)",
+    "project_feature_version": "4.7",
+    "source_original_resource_sha256": "999aeda7c0930fc488b30fb49fb6648d24199c4e72e637e5a1e3d42951769a97",
+    "corrected_resource_sha256": "84e01b23282f08d314aac05e04f05796484057f89b1a9745c34015bb02a371a6",
+    "resource_change_scope_check": {
+      "passed": true,
+      "changed_region_key_indexes": [
+        8,
+        9
+      ],
+      "all_other_text_identical": true
+    },
+    "asset_unchanged_sha256": "be39d07e53554c7ce7941442823d72a4e78343004a199127ac50d2a6426422f4",
+    "isolated_initial_import": {
+      "exit_code": 0,
+      "all_assets_imported": true,
+      "script_parse_resource_import_failures": 0,
+      "environment_or_existing_editor_errors": [
+        "Export preset runnable keys absent",
+        "Sandbox socket listener creation denied"
+      ]
+    },
+    "private_actual_gym_actor_samples": {
+      "passed": true,
+      "count": 6,
+      "both_facings": true,
+      "times": [
+        0.8,
+        0.9,
+        1.0
+      ],
+      "actor": "res://scenes/enemy/combat_enemy.tscn",
+      "private_animation_resource_path": "",
+      "marker_lookup": {
+        "active_end": 1.0,
+        "active_start": 0.5,
+        "timing_split": 0.5
+      },
+      "baseline_marker_lookup": {
+        "active_end": 1.0,
+        "active_start": 0.5,
+        "timing_split": 0.5
+      },
+      "speed_scale": 1.0
+    },
+    "baseline_gym_smoke": {
+      "exit_code": 0,
+      "requested_frames": 120,
+      "same_preexisting_ui_api_error": true
+    },
+    "corrected_gym_smoke": {
+      "exit_code": 0,
+      "requested_frames": 360,
+      "fixed_fps": 60,
+      "state_trace": [
+        "IDLE",
+        "APPROACH",
+        "WINDUP",
+        "ACTIVE",
+        "RECOVERY",
+        "IDLE",
+        "APPROACH",
+        "WINDUP",
+        "ACTIVE",
+        "RECOVERY",
+        "IDLE",
+        "APPROACH",
+        "WINDUP",
+        "ACTIVE",
+        "RECOVERY",
+        "IDLE"
+      ],
+      "active_entries": 3,
+      "recovery_entries": 3,
+      "idle_entries": 4,
+      "melee_hits": 3,
+      "errors": [
+        "SCRIPT ERROR: Invalid assignment of property or key 'custom_maximum_size' with value of type 'Vector2' on a base object of type 'Label'.",
+        "ERROR: 15 resources still in use at exit (run with --verbose for details).",
+        "ERROR: 6 RID allocations of type 'PN13RendererDummy14TextureStorage12DummyTextureE' were leaked at exit.",
+        "ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit."
+      ]
+    },
+    "rendered_visual_playback": {
+      "performed": false,
+      "reason": "Headless dummy rendering; no Xvfb available; no display installation attempted"
+    },
+    "remaining_limits": [
+      "Engine4.6.3 differs from projecttarget4.7",
+      "ExistingObjectiveWidget._add_row custom_maximum_size assignment unsupported by available4.6.3 engine",
+      "Existing exitresource/RID leak reports",
+      "No human acceptance or originalHoMM3timing/parity certification",
+      "No unrelatedprojectfixesperformed"
+    ],
+    "repo_files_edited_by_validation_agent": [],
+    "logs": [
+      "validation-logs/baseline-gym-runtime.log",
+      "validation-logs/baseline-import-configured.log",
+      "validation-logs/baseline-import.log",
+      "validation-logs/corrected-gym-runtime.log",
+      "validation-logs/corrected-import.log",
+      "validation-logs/corrected-private-clone-samples.log"
+    ],
+    "logs_note": "Persisted engine logs are relative to this status JSON; isolated project/user-data prefixes are anonymized. These are agent-run logs, not human or rendered acceptance."
+  },
+  "actual_gym_private_animation_sampling": {
+    "actual_enemy_scene": "res://scenes/enemy/combat_enemy.tscn",
+    "baseline_has_active_start": true,
+    "baseline_loaded_marker_names": [
+      "timing_split",
+      "active_end"
+    ],
+    "baseline_marker_lookup": {
+      "active_end": 1.0,
+      "active_start": 0.5,
+      "timing_split": 0.5
+    },
+    "checks_passed": true,
+    "corrected_private_has_active_start": true,
+    "engine": {
+      "build": "official",
+      "hash": "7d41c59c457bd5a245092b4e7eb2d833e3b3f8c3",
+      "hex": 263683,
+      "major": 4,
+      "minor": 6,
+      "patch": 3,
+      "status": "stable",
+      "string": "4.6.3-stable (official)",
+      "timestamp": 0
+    },
+    "enumerated_marker_names": [
+      "timing_split",
+      "active_end"
+    ],
+    "kind": "Agent-run isolated real Gym actor/private Animation sampling; no rendered or human gameplay approval",
+    "markers": {
+      "active_end": 1.0,
+      "active_start": 0.5,
+      "timing_split": 0.5
+    },
+    "private_animation_resource_path": "",
+    "private_library_animation_length": 1.0,
+    "project_target": "4.7",
+    "region_key_times": [
+      0.0,
+      0.100000001490116,
+      0.200000002980232,
+      0.300000011920929,
+      0.400000005960464,
+      0.5,
+      0.600000023841858,
+      0.699999988079071,
+      0.800000011920929,
+      0.899999976158142,
+      1.0
+    ],
+    "region_key_values": [
+      [
+        0.0,
+        0.0,
+        768.0,
+        512.0
+      ],
+      [
+        768.0,
+        0.0,
+        768.0,
+        512.0
+      ],
+      [
+        1536.0,
+        0.0,
+        768.0,
+        512.0
+      ],
+      [
+        2304.0,
+        0.0,
+        768.0,
+        512.0
+      ],
+      [
+        0.0,
+        512.0,
+        768.0,
+        512.0
+      ],
+      [
+        768.0,
+        512.0,
+        768.0,
+        512.0
+      ],
+      [
+        1536.0,
+        512.0,
+        768.0,
+        512.0
+      ],
+      [
+        2304.0,
+        512.0,
+        768.0,
+        512.0
+      ],
+      [
+        1536.0,
+        0.0,
+        768.0,
+        512.0
+      ],
+      [
+        768.0,
+        0.0,
+        768.0,
+        512.0
+      ],
+      [
+        0.0,
+        0.0,
+        768.0,
+        512.0
+      ]
+    ],
+    "samples": [
+      {
+        "actual_flip_h": false,
+        "actual_region": [
+          1536.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "actual_texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+        "expected_region": [
+          1536.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "facing": "right",
+        "key_time_seconds": 0.800000011920929,
+        "passed": true,
+        "sampled_position_seconds": 0.800010011920929
+      },
+      {
+        "actual_flip_h": false,
+        "actual_region": [
+          768.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "actual_texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+        "expected_region": [
+          768.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "facing": "right",
+        "key_time_seconds": 0.899999976158142,
+        "passed": true,
+        "sampled_position_seconds": 0.900009976158142
+      },
+      {
+        "actual_flip_h": false,
+        "actual_region": [
+          0.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "actual_texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+        "expected_region": [
+          0.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "facing": "right",
+        "key_time_seconds": 1.0,
+        "passed": true,
+        "sampled_position_seconds": 1.0
+      },
+      {
+        "actual_flip_h": true,
+        "actual_region": [
+          1536.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "actual_texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+        "expected_region": [
+          1536.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "facing": "left",
+        "key_time_seconds": 0.800000011920929,
+        "passed": true,
+        "sampled_position_seconds": 0.800010011920929
+      },
+      {
+        "actual_flip_h": true,
+        "actual_region": [
+          768.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "actual_texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+        "expected_region": [
+          768.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "facing": "left",
+        "key_time_seconds": 0.899999976158142,
+        "passed": true,
+        "sampled_position_seconds": 0.900009976158142
+      },
+      {
+        "actual_flip_h": true,
+        "actual_region": [
+          0.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "actual_texture": "res://assets/prototype/enemy/pikeman/repaint_v02/attack_right_sheet.png",
+        "expected_region": [
+          0.0,
+          0.0,
+          768.0,
+          512.0
+        ],
+        "facing": "left",
+        "key_time_seconds": 1.0,
+        "passed": true,
+        "sampled_position_seconds": 1.0
+      }
+    ],
+    "scene": "res://scenes/gym.tscn",
+    "speed_scale": 1.0
+  },
+  "visual_review": {
+    "selected_sequences_reviewed": 37,
+    "source_hires_frame_positions_reviewed": 270,
+    "method": "Actual original/RGBA and current hi-res pixel comparisons with per-group normalized contact sheets; no artwork generated. This is not a registration/scale/timing certification.",
+    "comparison_images": "Scratch-only analysis views; original source and hi-res atlas paths remain in the portable audit evidence.",
+    "pikeman": {
+      "groups": [
+        0,
+        2,
+        3,
+        5,
+        12
+      ],
+      "frame_positions": 34,
+      "findings": [
+        {
+          "group": 12,
+          "finding": "Recovery-repeat composition differed; now repaired by sampling present cells2/1 at0.8/0.9s. Body/weapon fine fidelity remains unverified."
+        },
+        {
+          "group": 3,
+          "finding": "Original free-arm recovery poses4/5 missing from available hi-res pose set; Partial."
+        },
+        {
+          "groups": [
+            0,
+            2,
+            5
+          ],
+          "finding": "Broad gait/idle/fall phases correspond; no additional safe cell-only correction identified. Detailed silhouette and terminal composition remain unverified."
+        }
+      ]
+    },
+    "archer_griffin_swordsman": {
+      "scope": "Read-only visual review of all16 current Archer/Griffin/Swordsman selected sequences; no assets, game resources or engine changed.",
+      "summary": {
+        "creatures": 3,
+        "selected_sequences": 16,
+        "source_hires_frame_pairs_viewed": 114,
+        "additional_unambiguous_pose_coverage_defects_identified": 0,
+        "additional_safe_pixel_reuse_repairs_identified": 0
+      },
+      "method": "Cropped actual original RGBA preservation frames and current hi-res atlas cells; displayed each sheet with one uniform fitted scale for visual phase comparison. Original pixel identity checks remain in earlier audit. Contact-sheet normalization is not original-to-remaster registration verification.",
+      "limitations": [
+        "No exact original timing recovered.",
+        "No gameplay/runtime evidence from this subtask.",
+        "Broad phase correspondence is not full1:1 pose, fine grip/limb/silhouette, registration or art approval.",
+        "Griffin flight/wing drawings under current grounded physics are known prototype behavior; no mechanics inferred."
+      ],
+      "archer_and_swordsman": [
+        {
+          "creature": "Archer",
+          "creature_id": "archer",
+          "original_def_id": "CLCBOW",
+          "group": 2,
+          "frames_viewed": 8,
+          "hires_sheet": "assets/prototype/enemy/archer/highres_v01/Idle.png",
+          "comparison_sheet": "scratch-only:archer-g02.png",
+          "observation": "Standing/idle stance and weapon-at-side variations broadly track source index progression; detailed breathing/body motion is not certified.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Archer",
+          "creature_id": "archer",
+          "original_def_id": "CLCBOW",
+          "group": 0,
+          "frames_viewed": 8,
+          "hires_sheet": "assets/prototype/enemy/archer/highres_v01/Walk.png",
+          "comparison_sheet": "scratch-only:archer-g00.png",
+          "observation": "Eight gait positions and carried crossbow orientations broadly track source leg-cycle progression.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Archer",
+          "creature_id": "archer",
+          "original_def_id": "CLCBOW",
+          "group": 3,
+          "frames_viewed": 6,
+          "hires_sheet": "assets/prototype/enemy/archer/highres_v01/Hurt.png",
+          "comparison_sheet": "scratch-only:archer-g03.png",
+          "observation": "Six recoil/recovery positions broadly track lean-back, raised leg and return with weapon; no clear missing recovery phase like Pikeman was identified.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Archer",
+          "creature_id": "archer",
+          "original_def_id": "CLCBOW",
+          "group": 5,
+          "frames_viewed": 6,
+          "hires_sheet": "assets/prototype/enemy/archer/highres_v01/Dead.png",
+          "comparison_sheet": "scratch-only:archer-g05.png",
+          "observation": "Six standing/recoil/fall/seated-to-supine positions broadly track the source death progression.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Archer",
+          "creature_id": "archer",
+          "original_def_id": "CLCBOW",
+          "group": 12,
+          "frames_viewed": 6,
+          "hires_sheet": "assets/prototype/enemy/archer/highres_v01/Melee.png",
+          "comparison_sheet": "scratch-only:archer-g12.png",
+          "observation": "Six knife wind-up/downward-forward strike/return phases broadly track the original; exact grip/limb/knife-path parity is not certified.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Archer",
+          "creature_id": "archer",
+          "original_def_id": "CLCBOW",
+          "group": 15,
+          "frames_viewed": 8,
+          "hires_sheet": "assets/prototype/enemy/archer/highres_v01/Shoot.png",
+          "comparison_sheet": "scratch-only:archer-g15.png",
+          "observation": "Eight crossbow preparation, aim/fire, raised-weapon recovery and ready-return phases broadly correspond; original climax/hold timing remains unknown.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Swordsman",
+          "creature_id": "swordsman",
+          "original_def_id": "Csword",
+          "group": 2,
+          "frames_viewed": 8,
+          "hires_sheet": "assets/prototype/enemy/swordsman/highres_v01/Idle.png",
+          "comparison_sheet": "scratch-only:swordsman-g02.png",
+          "observation": "Eight ready-pose/sword-angle variations broadly correspond; fine breathing/stance fidelity not certified.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Swordsman",
+          "creature_id": "swordsman",
+          "original_def_id": "Csword",
+          "group": 0,
+          "frames_viewed": 8,
+          "hires_sheet": "assets/prototype/enemy/swordsman/highres_v01/Walk.png",
+          "comparison_sheet": "scratch-only:swordsman-g00.png",
+          "observation": "Eight stride and lowered/raised carried-sword phases broadly correspond.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Swordsman",
+          "creature_id": "swordsman",
+          "original_def_id": "Csword",
+          "group": 3,
+          "frames_viewed": 6,
+          "hires_sheet": "assets/prototype/enemy/swordsman/highres_v01/Hurt.png",
+          "comparison_sheet": "scratch-only:swordsman-g03.png",
+          "observation": "Six recoil, leg-lift and recovery phases broadly correspond; exact sword/grip silhouettes remain artistic fidelity review.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Swordsman",
+          "creature_id": "swordsman",
+          "original_def_id": "Csword",
+          "group": 5,
+          "frames_viewed": 6,
+          "hires_sheet": "assets/prototype/enemy/swordsman/highres_v01/Dead.png",
+          "comparison_sheet": "scratch-only:swordsman-g05.png",
+          "observation": "Six lean/fall/legs-up/supine phases broadly correspond; weapon composition and silhouette detail are not certified.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        },
+        {
+          "creature": "Swordsman",
+          "creature_id": "swordsman",
+          "original_def_id": "Csword",
+          "group": 12,
+          "frames_viewed": 7,
+          "hires_sheet": "assets/prototype/enemy/swordsman/highres_v01/Attack.png",
+          "comparison_sheet": "scratch-only:swordsman-g12.png",
+          "observation": "Seven blade lift, overhead preparation, forward cut/thrust and guard recovery phases broadly correspond; exact hand/grip and trajectory fidelity remain unverified.",
+          "confirmed_pose_coverage_defect": false,
+          "confirmed_safe_existing_pixel_repair": null,
+          "full_parity_certified": false
+        }
+      ],
+      "griffin_independent_review": {
+        "creature": "Griffin",
+        "original_def": "CGRIFF",
+        "scope": "Read-only source-frame side-by-side visual inspection; no asset/gameplay edits, no generation or engine execution.",
+        "frames_reviewed": 37,
+        "method": "Every selected original RGBA frame and same-index hi-res cell viewed in union-cropped, consistently scaled per-sequence contact sheets. Scaling is for inspection only; no runtime registration or timing certification.",
+        "sequences": [
+          {
+            "group": 2,
+            "name": "Idle",
+            "frames": 8,
+            "comparison": "griffin-g02-Idle.png",
+            "finding": "Standing raised-wing/talon idle phases broadly correspond by index. No obvious missing phase or safe source-proven reorder identified."
+          },
+          {
+            "group": 0,
+            "name": "Movement",
+            "frames": 4,
+            "comparison": "griffin-g00-Walk.png",
+            "finding": "Four airborne flap phases correspond: wings swept back, down, swept back, raised. This is original flight artwork; grounded runtime behavior is a separately documented prototype contract."
+          },
+          {
+            "group": 3,
+            "name": "Hurt",
+            "frames": 7,
+            "comparison": "griffin-g03-Hurt.png",
+            "finding": "Ready, recoil/head rise, stronger backward recoil/wing flare, and recovery toward ready broadly correspond. No obvious absent phase or safe cell-reorder repair identified."
+          },
+          {
+            "group": 5,
+            "name": "Death",
+            "frames": 9,
+            "comparison": "griffin-g05-Dead.png",
+            "finding": "Progression from ready through recoil, side rotation/fall and prone terminal pose broadly corresponds. Detailed limb/wing silhouettes differ in redrawn style; no source-proven ordering defect established."
+          },
+          {
+            "group": 12,
+            "name": "Front attack",
+            "frames": 9,
+            "comparison": "griffin-g12-Attack.png",
+            "finding": "Ready, wing lift, airborne forward lunge, downward flap/landing and ready recovery broadly correspond by index. No obvious missing phase or safe source-proven reorder identified."
+          }
+        ],
+        "confirmed_pose_order_or_missing_art_defects": [],
+        "existing_pixel_repairs_identified": [],
+        "limits": [
+          "No full pose fidelity approval from static overview alone.",
+          "Original timing and runtime state transitions remain unverified.",
+          "Per-sequence crops/rescaling are not a world-space pivot/scale comparison.",
+          "No gameplay/engine/user acceptance claimed."
+        ]
+      }
+    },
+    "monk_cavalier_angel": {
+      "scope": "Read-only same-index static visual review of all16 selected Monk/Cavalier/Angel sequences, 122frame positions; no assets or gameplay changed.",
+      "monk_angel_review": {
+        "scope": "Read-only static visual review of every selected Monk and Angel frame against its same-index original. No runtime, tests, image generation, repository edits or corrected artwork.",
+        "method": "Technical contact sheets use group-union source/hi-res crops and independent scale normalization to make poses visible. This preserves within-group relative shifts but is not an original-to-runtime registration or scale proof.",
+        "reviewed_sequences": 11,
+        "reviewed_frame_positions": 84,
+        "creatures": [
+          {
+            "id": "monk",
+            "original_def_id": "Cmonkk",
+            "original_metadata": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/Cmonkk/metadata.json",
+            "sequences": [
+              {
+                "group_id": 0,
+                "role": "movement",
+                "frame_positions_reviewed": 6,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "comparison_image": "scratch-only:monk/group_00_movement.png",
+                "observation": "The six walking poses retain robed, folded-arm locomotion and the broad stride cycle. Higher-detail exposed boots/robe shaping differ; no confirmed ordinal error.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              },
+              {
+                "group_id": 2,
+                "role": "idle",
+                "frame_positions_reviewed": 6,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "comparison_image": "scratch-only:monk/group_02_idle.png",
+                "observation": "The six folded-arm idle poses retain the broad source silhouette and small movement. Static inspection does not establish dwell or original idle-loop policy.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              },
+              {
+                "group_id": 3,
+                "role": "hurt",
+                "frame_positions_reviewed": 8,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "comparison_image": "scratch-only:monk/group_03_hurt.png",
+                "observation": "The eight poses follow rest, arms opening/recoil, raised free hand, lowered recovery and return to folded arms in source-index order. No confirmed missing recovery pose like Pikeman was identified.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              },
+              {
+                "group_id": 5,
+                "role": "death",
+                "frame_positions_reviewed": 11,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "comparison_image": "scratch-only:monk/group_05_death.png",
+                "observation": "The eleven poses follow opening recoil, arms spread, collapsing turn and final curled/prone state. Same-index broad body phases correspond; exact cloth and terminal silhouette remain artistic fidelity questions.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              },
+              {
+                "group_id": 12,
+                "role": "front_melee",
+                "frame_positions_reviewed": 8,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "comparison_image": "scratch-only:monk/group_12_front_melee.png",
+                "observation": "The eight poses follow folded arms, gathered energy, forward extension/expansion and refolding/recovery. No existing-cell reordering correction was identified.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              },
+              {
+                "group_id": 15,
+                "role": "front_shooting",
+                "frame_positions_reviewed": 10,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "comparison_image": "scratch-only:monk/group_15_front_shooting.png",
+                "observation": "The ten poses include three initial resting phases, gathered energy, extension and recovery in the same broad source phases. Effect-star silhouette differs in interpretation; release/dwell timing is not verified.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              }
+            ]
+          },
+          {
+            "id": "angel",
+            "original_def_id": "cangel",
+            "original_metadata": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/cangel/metadata.json",
+            "sequences": [
+              {
+                "group_id": 2,
+                "role": "idle",
+                "frame_positions_reviewed": 8,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "comparison_image": "scratch-only:angel/group_02_idle.png",
+                "observation": "Eight standing poses retain lowered sword and resting wings with small movement. Exact proportions and idle playback policy remain unverified.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              },
+              {
+                "group_id": 0,
+                "role": "movement",
+                "frame_positions_reviewed": 7,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "comparison_image": "scratch-only:angel/group_00_movement.png",
+                "observation": "Seven airborne movement poses follow the broad wingstroke sequence and tucked/trailing legs. Wing-feather and leg proportions differ; no confirmed skipped phase or order reversal.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              },
+              {
+                "group_id": 3,
+                "role": "hurt",
+                "frame_positions_reviewed": 6,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "comparison_image": "scratch-only:angel/group_03_hurt.png",
+                "observation": "Six poses retain opening recoil, head/back arch, wings changing phase and forward recovery. Broad ordinal body/sword phases correspond.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              },
+              {
+                "group_id": 5,
+                "role": "death",
+                "frame_positions_reviewed": 8,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "comparison_image": "scratch-only:angel/group_05_death.png",
+                "observation": "Eight poses retain opening recoil, backward fall with wings, feet forward and final body covered by folded wings. No omitted terminal phase identified.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              },
+              {
+                "group_id": 12,
+                "role": "front_melee",
+                "frame_positions_reviewed": 6,
+                "indexes_reviewed": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "comparison_image": "scratch-only:angel/group_12_front_melee.png",
+                "observation": "Six poses retain arm lift, sword over the head, forward cut and settling recovery. Broad ordinal sword/body phases correspond. Original bright yellow body/weapon highlighting is not identically reproduced in the hi-res interpretation.",
+                "confirmed_wrong_order_or_missing_pose": false,
+                "existing_cell_correction_identified": null
+              }
+            ]
+          }
+        ],
+        "actionable_new_existing_cell_repairs": [],
+        "limits": [
+          "No exact original timing/transition certification.",
+          "No final artistic approval or claim that no subtle pose/silhouette difference exists.",
+          "Contact-sheet normalization cannot certify gameplay pivots or source-to-runtime scale.",
+          "Angel source glow/highlighting and feather/cloth details differ; these remain visual-composition review issues, not a proposed gameplay change."
+        ]
+      },
+      "cavalier_review": {
+        "scope": "Read-only frame-by-frame visual inspection of the five current Cavalier hi-res atlases against original CCAVLR source poses. No repository or game asset changes.",
+        "creature": "Cavalier",
+        "original_def": "CCAVLR.def",
+        "original_metadata": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CCAVLR/metadata.json",
+        "hires_directory": "assets/prototype/enemy/cavalier/highres_v01",
+        "frame_positions_reviewed": 38,
+        "groups": [
+          {
+            "group": 2,
+            "frames": 4,
+            "comparison": "scratch-only:cavalier/G02-idle.png",
+            "observed": "All four pairs inspected. Mounted ready/idle progression remains broadly corresponding; small horse-head and leg adjustments are present. No definite missing action pose or defensible reorder correction identified."
+          },
+          {
+            "group": 0,
+            "frames": 8,
+            "comparison": "scratch-only:cavalier/G00-movement.png",
+            "observed": "All eight pairs inspected. Both sequences advance through a mounted gait with alternating foreleg/hindleg phases. No confirmed reversed or omitted whole gait phase identified; exact leg-joint correspondence is not certified."
+          },
+          {
+            "group": 3,
+            "frames": 8,
+            "comparison": "scratch-only:cavalier/G03-hurt.png",
+            "observed": "All eight pairs inspected. Early/middle recoil retains the rider backward lean and horse foreleg lift, followed by settling in frames6-7. No source-verified reusable-cell correction identified."
+          },
+          {
+            "group": 5,
+            "frames": 8,
+            "comparison": "scratch-only:cavalier/G05-death.png",
+            "observed": "All eight pairs inspected. The sequence retains recoil, rider unbalance, horse collapse/roll and a prone terminal presentation in the same broad order. Rider/horse drawing and final pose differ in silhouette, which alone is not enough to diagnose a missing source pose."
+          },
+          {
+            "group": 12,
+            "frames": 10,
+            "comparison": "scratch-only:cavalier/G12-front_melee.png",
+            "observed": "All ten pairs inspected. Ready/upright lance at0-1, rearing/lowering through2-4, forward lowered-lance phase5-6, then recovery7-9 are broadly corresponding. No obvious source-order reversal or reusable-cell correction identified."
+          }
+        ],
+        "confirmed_missing_or_misordered_poses": [],
+        "confirmed_pivot_or_clipping_errors": [],
+        "repair_from_existing_cells_identified": false,
+        "status": "Needs verification",
+        "limits": [
+          "Broad visible phase correspondence is not verified one-to-one remaster fidelity or artistic approval.",
+          "Exact limb/weapon placement, original runtime timing, facing transitions and actual gameplay behavior were not certified.",
+          "Comparison sheets enlarge original pixels for inspection only, retain fixed registered excerpts per representation and do not modify or upscale any game asset.",
+          "Bounding/silhouette and action-driven height changes alone are not diagnosed as pivot errors."
+        ]
+      },
+      "reviewed_sequences": 16,
+      "reviewed_frame_positions": 122,
+      "confirmed_new_existing_cell_repairs": [],
+      "limits": "No full1:1visual/timing/runtime approval; broadposephasesnotpixelidentity; normalizedcomparisoncroppingcannotcertifypivot/scale."
+    }
+  },
+  "unchanged_gameplay_contract": "Accepted attack length, marker times, AttackCast geometry, collision, AI, damage, Impact, Poise, other native clips, facing and reset behavior retained.",
+  "remaining_inputs": [
+    "Original installed-copy CrAnim rows for14Castle creatures",
+    "Original executable/version/battle-speed/plugin-state evidence",
+    "Full approved Castle master/frame package and upgraded variant masters",
+    "Genuine missing Pikeman Hurt recovery artwork",
+    "Intended Godot4.7 and user visual/playback validation"
+  ],
+  "git_actions": "Uncommitted; no push, merge, export or publication"
+}

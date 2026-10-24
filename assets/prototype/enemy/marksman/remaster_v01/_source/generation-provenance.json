@@ -1,0 +1,146 @@
+{
+  "creature_id": "marksman",
+  "generated_on": "2026-10-23",
+  "artwork": "Newly generated high-resolution artwork based on original HoMM3 per-pose guides; not recovered original high-resolution masters.",
+  "technical_pipeline": "tools/art/castle_remaster_pipeline.py",
+  "review": {
+    "all_raw_pages_visually_inspected": true,
+    "inspected_for": [
+      "correct figure count and ordering",
+      "character identity and equipment",
+      "broad pose and weapon direction against source",
+      "complete uncropped anatomy/weapons",
+      "transparent background"
+    ],
+    "exact_frame_silhouette_fidelity_certified": false,
+    "original_animation_timing_recovered": false,
+    "known_limitations": [
+      "Model-generated artwork has fine pose, grip and detail variation; requires artist playback review before production acceptance.",
+      "Subtle idle and walking phases were redrawn distinctly; exact original silhouette equivalence is not claimed."
+    ],
+    "rejected_batches": []
+  },
+  "generations": [
+    {
+      "key": "marksman_identity",
+      "prompt": "Create a production-quality high-resolution 2D game sprite remaster of the ORIGINAL HoMM3 CASTLE MARKSMAN in image 1. Image 1 is the exact upgraded character design, original proportions and idle pose authority: right-facing three-quarter side view, tall pointed bronze helmet, dark steel chainmail coif surrounding cheeks/neck/shoulders, blue tunic with white heraldic lion chest and white side panels/tails, blue/white hose, brown tall leather boots, brown belt. Right hand at hip/waist and a compact wooden CROSSBOW held lowered alongside the forward/right leg, pointing down-right. A crossbow with short limbs and stock, NOT a long bow, sword, staff, or rifle. Image 2 gives only clean painted detail style and materials; keep upgraded chain coif and design from original image 1. One full-body entire weapon visible, high-detail clean painted game sprite, consistent miniature side-view camera, faithful face/profile, no redesign, no floor shadow, no glow, no text, no scene. True transparent alpha background. Center single figure with generous padding in a 768x768 square.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-b162109e-3b1a-4daa-8c87-7cf1cbf0d9b2.png",
+      "accepted": true,
+      "reference_guide": "marksman-og-identity.png",
+      "appearance_reference": "marksman-base-style.png",
+      "raw_image_sha256": "afbe567beba995721ef59018c992db6d9d52ba1b237a88d6a982eecdf3e807e6",
+      "depot_raw_source": "batch-90-afbe567beba9.png"
+    },
+    {
+      "key": "mk0",
+      "prompt": "Remaster ORIGINAL Castle MARKSMAN eight walking animation frames in IMAGE1 into newly painted highresolutiongameart. EXACTEIGHTfiguresinFOURCOLUMNSTWOROWS,rowmajor,sameposeorderasguide. IMAGE1authoritativeexactlegsteppatterns, bodyorientationandwoodcrossbowheldHORIZONTALinfrontatWAIST. Preserveeightdifferentwalkcyclelegphases,notrepeatedidle. IMAGE2authoritativeconsistenthighresidentity: pointedbronzehelmet,darkmailcoif,bluewhiteheraldicliontunic,brownboots,woodencrossbow. ORIGINALguideposesoverrideidentityidlepose! Samemanandgearacrosseverycell. Detailedsmoothpaintedsprites, originalpixelsreferenceonly. Smallfullbodyfiguresoccupy65%ofeachcellheightwithlarge100pxemptytransparentmargins,completecrossbowandfeetinsidecells. Strict2048x1024transparentalpha, nofloor/shadows/letters/numbers/grid/background.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-ab9c29cd-2494-4290-a09b-ce7afeb30971.png",
+      "accepted": true,
+      "reference_guide": "batch-00-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "417b244cdbc9b843512774060e77738e93c448a117cffb5bbff29537acf1b257",
+      "depot_raw_source": "batch-00-417b244cdbc9.png"
+    },
+    {
+      "key": "mk1",
+      "prompt": "Remaster the eight ORIGINAL HoMM3 CASTLE MARKSMAN poses in IMAGE1 into a high-resolution painted game sprite sheet. EXACTLY8figuresinFOURcolumnsTWOrows, same row-major pose order. IMAGE1 eachpose is authority over the identity'sidlepose; preserve exactarm,legs,head,bodyandcrossboworientation for each. IMAGE2 gives samemanandmaterials: pointedbronzehelmet,darkmailcoifneckshoulders,bluewhiteheraldicliontunic,brownboots,compactwoodcrossbow. Detailedsmoothpaintedart, notpixelartupscale. Fullbodycompletecrossbowpercell, SMALLfiguresoccupyonly60-65%ofcellheight withhugeemptytransparentgutters/outermargin so nothing touchesedges. Canvas2048x1024truealpha, nolabels/text/grid/groundshadow/floor/background. Cells1-4 fidget crossbow changes from lowereddiagonalright towardslightlyraisedright: rearhandatbelt, forwardhandholdsstockalone, limbsright. Cells5-8 idle breathing withcrossbowloweredalongrightlegpointingdown-right, rearhandatbelt. Theseallsmallsubtlevariationsbutdraw8distinctframes; donotreplaceidlewithwalkorhorizontalshooting.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-78980468-5546-4199-be6c-134338bf7d73.png",
+      "accepted": true,
+      "reference_guide": "batch-01-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "e37b2e497319eeaa9e7b254c8b7493d7adab65ffe654d0aa7cc662c0ce2bddbf",
+      "depot_raw_source": "batch-01-e37b2e497319.png"
+    },
+    {
+      "key": "mk2",
+      "prompt": "Remaster the eight ORIGINAL HoMM3 CASTLE MARKSMAN poses in IMAGE1 into a high-resolution painted game sprite sheet. EXACTLY8figuresinFOURcolumnsTWOrows, same row-major pose order. IMAGE1 eachpose is authority over the identity'sidlepose; preserve exactarm,legs,head,bodyandcrossboworientation for each. IMAGE2 gives samemanandmaterials: pointedbronzehelmet,darkmailcoifneckshoulders,bluewhiteheraldicliontunic,brownboots,compactwoodcrossbow. Detailedsmoothpaintedart, notpixelartupscale. Fullbodycompletecrossbowpercell, SMALLfiguresoccupyonly60-65%ofcellheight withhugeemptytransparentgutters/outermargin so nothing touchesedges. Canvas2048x1024truealpha, nolabels/text/grid/groundshadow/floor/background. Cell1 idlecrossbowloweredright. Cells2-4 strong HURTflinch: bodyfallsbackLEFT, front/rightfootliftsforward, rearleftarmflungoutleftwithopenhand, forwardrighthandaloneholdswoodcrossbowoutandUP-RIGHT. Cell3 strongestbackwardleanandkneeup. Cells5-7hurtrecovery: legssettle, bodyupright, freelefthanddroopsdownleft, crossbowone-handedlowerstoRIGHT, nottwohandedready. Cell8defensivestartslightleanwithcrossbowonright. Matchsourceexactly.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-6b90af05-fbfc-4651-919c-8763b5117c8d.png",
+      "accepted": true,
+      "reference_guide": "batch-02-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "8d128a978ca9e7af16ecbd692c92b2d2b1427b7cadb2ece768d1980c737b47f4",
+      "depot_raw_source": "batch-02-8d128a978ca9.png"
+    },
+    {
+      "key": "mk3",
+      "prompt": "Paint faithful HIGHRES remasters of eight original HoMM3 CASTLE MARKSMAN animation poses from IMAGE1, exact4columns2rowsinrowmajororder. IMAGE1 pose/silhouette/camera/weaponorientation authority. IMAGE2consistentidentityanddetailedpaintedmaterials: pointedbronzehelmet,mailcoif,royalbluewhiteheraldicliontunic,brownboots,woodencrossbow. Sameindividualman/gearacrosscells. EXACT8FULLBODYfigurescompleteweapons,eachdifferentposeaspictured. Smallfiguresoccupy60-65%cellheightandmax80%widthwithhugelargetransparentpadding;neveroverlap/touchcellborders. Truealpha2048x1024,nooriginalblackcastshadows,floor,labels,numbers,text,grid/background. No pixel-upscaling. Cell1 defensivecrossbowlowright;cell2 crossbowraisedatfrontchest;cell3crossbowuprightatshoulderandfreehandraised;cell4DEATH flinchleanbackleftonefootkicksforwardarmsoutcrossbowup. Cells5-7 progressiveDEATHfallingbackwards:5 leftfootplantedrightbootraisedtorsoleaningleft;6bodyfallslowerandbothkneesraise;7bodyalmosthorizontalbackfirst. Cell8fallenbodylyingonbackcurledlegsandcrossbowupbesidetorso. Exactsourcepose,notgenericstandingorattack,allframesclothed,nomissinglimbs.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-cb39b336-eb9c-47b9-b9fe-fc6a7fe2bb8d.png",
+      "accepted": true,
+      "reference_guide": "batch-03-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "a60dabe092e22e6e3c7e4073e98b66808e6876edab5b8edf42f86d27737eff13",
+      "depot_raw_source": "batch-03-a60dabe092e2.png"
+    },
+    {
+      "key": "mk4",
+      "prompt": "Paint faithful HIGHRES remasters of eight original HoMM3 CASTLE MARKSMAN animation poses from IMAGE1, exact4columns2rowsinrowmajororder. IMAGE1 pose/silhouette/camera/weaponorientation authority. IMAGE2consistentidentityanddetailedpaintedmaterials: pointedbronzehelmet,mailcoif,royalbluewhiteheraldicliontunic,brownboots,woodencrossbow. Sameindividualman/gearacrosscells. EXACT8FULLBODYfigurescompleteweapons,eachdifferentposeaspictured. Smallfiguresoccupy60-65%cellheightandmax80%widthwithhugelargetransparentpadding;neveroverlap/touchcellborders. Truealpha2048x1024,nooriginalblackcastshadows,floor,labels,numbers,text,grid/background. No pixel-upscaling. Cell1 finalDEADhorizontalbodyonback/sidekneesbentcrossbowlaidbeside,NOTstanding. Cells2-3turnphase,personprogressivelyfacesmorefrontasoriginal. Cells4-8UPWARDdaggermeleeanimation: crossbowheldLOWinleft/supporthand,RIGHT/freehandholdsSHORTDAGGER(knifelength notsword),cell4 daggernearface;cell5daggerarmwindsfarbackleft;cell6daggerhandheldoverhead;cell7daggerstab/thrustuptoright;cell8recoveryrightarmextendsforwarddaggerpointangleddown. Exactlycopyeachsourceposenotbows shooting,daggerrequiresdistinctarmandshortblade.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-7b47914b-f462-4e2a-8d37-f7d7c6539fd9.png",
+      "accepted": true,
+      "reference_guide": "batch-04-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "9300ac0473b9acce6cbeb945da99cd1c5f0148d9ce94c81ff00fc51b82a63bc5",
+      "depot_raw_source": "batch-04-9300ac0473b9.png"
+    },
+    {
+      "key": "mk5",
+      "prompt": "Newly paint HIGHRES remasters of8originalHoMM3 CASTLE MARKSMAN poses in IMAGE1, strict4columns2rowsinrowmajororder. Match exact original bodyandlimbposeandsilhouette, notgenericwarrior. IMAGE2setsconsistentpointedbronzehelmet,mailcoif,bluewhite liontunic,brownboots,compactwoodcrossbow. SAMEcharacterpainteddetailedgameart, nopixelupscale. Fullbody/entireweaponsintactineachcell, exactly8figures. SMALLspritesonly60-65%cellheight,max80%width,hugetransparentpaddingallcells. Canvas2048x1024truealpha,noshadow/floor/text/grid/background. Cell1 uppermelee recoverydaggerhandnearfacecrossbowdownright;cell2frontmeleeanticipationdaggernearfacecrossbowdown;cell3daggerwindbackleftatshoulderheight;cell4daggerarmoverheadbladehorizontal;cell5daggerthruststraightforwardRIGHTatwaist/chestheight,crossbowheldlowleftbesidebackhip;cell6daggerretractedtowardbelt;cell7recoverydaggerclosechestcrossbowdownright;cell8lowermeleeanticipationdaggernearfaceandcrossbowlowright. DaggersSHORTnotlongswords. Preservehandgrips.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-14d3bbf3-aac8-474d-a3fd-3961a6011779.png",
+      "accepted": true,
+      "reference_guide": "batch-05-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "00126895edfc99005acc0c86c575637c124a7c5ea75c9871905f8c71fcd9f980",
+      "depot_raw_source": "batch-05-00126895edfc.png"
+    },
+    {
+      "key": "mk6",
+      "prompt": "Newly paint HIGHRES remasters of8originalHoMM3 CASTLE MARKSMAN poses in IMAGE1, strict4columns2rowsinrowmajororder. Match exact original bodyandlimbposeandsilhouette, notgenericwarrior. IMAGE2setsconsistentpointedbronzehelmet,mailcoif,bluewhite liontunic,brownboots,compactwoodcrossbow. SAMEcharacterpainteddetailedgameart, nopixelupscale. Fullbody/entireweaponsintactineachcell, exactly8figures. SMALLspritesonly60-65%cellheight,max80%width,hugetransparentpaddingallcells. Canvas2048x1024truealpha,noshadow/floor/text/grid/background. Cells1-5 DOWNWARD daggermelee:1daggerwindbackleft;2daggeraboveheadpointup;3STRONGFORWARDBENDtorsofarforwardright,daggerthrustDOWN-RIGHTbelowwaistandcrossbowraisedbackaboveleftshoulder;4recoverybentforwardholdingcrossbowacrossback/shoulderwhilefreehandcomesback;5returntoguarddaggernearfacecrossbowdownright. Cells6-8 UPWARDcrossbowshootanticipation:d aggersheathed,1handatbelt,otherraiseswoodcrossbowfromdownrighttowardUPRIGHTshoulderaim. Cell8stockshoulder,crossbowaimingup-right,horizontalbowlimbsshortcompact,notgunorlongbow. Exactguideposes.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-ffbe5764-e2eb-44e5-b503-8610a7b13804.png",
+      "accepted": true,
+      "reference_guide": "batch-06-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "9882cc7741ebe541ff834cfa4788fcb89c14ac7d0b7eac5268e8d04462715b3c",
+      "depot_raw_source": "batch-06-9882cc7741eb.png"
+    },
+    {
+      "key": "mk7",
+      "prompt": "Create newly painted faithful HIGHRES sprite remasters of ORIGINAL HoMM3 CASTLE MARKSMAN guide IMAGE1. IMAGE1exactpose/crossboworientationauthority,IMAGE2setsconsistenthighresman,pointedbronzehelmet,mailcoif,royalbluewhiteliontunic,brownbootsandwoodcrossbow. Smoothdetailedgameart,nopixelupscale. Everyfigurefullbodycompleteweaponwithinowncell,samecharacter/anatomy/proportion,small60%cellheightwith100pxtransparentpadding/gutters,nothingtouchingimageborders. Truealpha,noshadows/floor/labels/text/grid/background. EXACTEIGHTfiguresinstrict4columns2rows,rowmajor2048x1024. TheseUPandFRONTcrossbowshootingphases. Cell1 crossbowshoulderaimslightlyUPRIGHT,twohandsgripstockandforegrip;cell2recoil/reloadcrossbowtiltedSTEEPUPRIGHTwhileheadlooksUP;cell3returncrossbowforwardRIGHTatshoulder/chestheightsinglehandbriefly. Cell4readycrossbowlowereddownright;cell5armraisescrossbowfromdownright;cell6crossbowraisedtofrontchestpointingright;cell7crossbowshoulderedaiminghorizontallySTRAIGHTRIGHT;cell8recoil/reloadcrossbowtiltedsteepupright. No DAGGER visible during shooting, noarrows/trails/effects.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-6e370c56-027a-4c8c-8c53-981ef65abbae.png",
+      "accepted": true,
+      "reference_guide": "batch-07-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "bb578d41997366bdbf4298db605c1aee16d72f7c5a1e84e206c22bd390d3a453",
+      "depot_raw_source": "batch-07-bb578d419973.png"
+    },
+    {
+      "key": "mk8",
+      "prompt": "Create newly painted faithful HIGHRES sprite remasters of ORIGINAL HoMM3 CASTLE MARKSMAN guide IMAGE1. IMAGE1exactpose/crossboworientationauthority,IMAGE2setsconsistenthighresman,pointedbronzehelmet,mailcoif,royalbluewhiteliontunic,brownbootsandwoodcrossbow. Smoothdetailedgameart,nopixelupscale. Everyfigurefullbodycompleteweaponwithinowncell,samecharacter/anatomy/proportion,small60%cellheightwith100pxtransparentpadding/gutters,nothingtouchingimageborders. Truealpha,noshadows/floor/labels/text/grid/background. EXACTEIGHTfiguresinstrict4columns2rows,rowmajor2048x1024. Cell1frontshootrecoverycrossbowextendedforwardRIGHTatchestheightonehand. Cell2readycrossbowdownright;cell3rightarmstartsliftcrossbowfromdownright;cell4woodcrossbowraisedaimingrightslightlyDOWNatfrontchest;cell5shootingaimDOWNRIGHT,stockshoulderandbowfrontbelowhead;cell6recoil/reloadcrossbowtiltedsteepUPRIGHTnearlyoverhead;cell7returncrossbowforwardRIGHTatchestheightonehand;cell8movementstartloweredcrossbowonehandnearfrontleg. No dagger, noarrows/trails/effects;preserveoriginalorientation.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-5cdafb5f-7f07-45da-8f12-8a78f62c1831.png",
+      "accepted": true,
+      "reference_guide": "batch-08-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "f0d67253144dde3ea6732cff6f1557c397b3390f80a2588b56a782fbe41bc8b6",
+      "depot_raw_source": "batch-08-f0d67253144d.png"
+    },
+    {
+      "key": "mk9",
+      "prompt": "Create newly painted faithful HIGHRES sprite remasters of ORIGINAL HoMM3 CASTLE MARKSMAN guide IMAGE1. IMAGE1exactpose/crossboworientationauthority,IMAGE2setsconsistenthighresman,pointedbronzehelmet,mailcoif,royalbluewhiteliontunic,brownbootsandwoodcrossbow. Smoothdetailedgameart,nopixelupscale. Everyfigurefullbodycompleteweaponwithinowncell,samecharacter/anatomy/proportion,small60%cellheightwith100pxtransparentpadding/gutters,nothingtouchingimageborders. Truealpha,noshadows/floor/labels/text/grid/background. EXACTTHREEfiguresinstrictTHREEequalcolumnsONErow,1536x512strip. ThesearemoveSTARTandSTOP transitionalsteps withwoodcrossbowheldLOWnearWAIST/belly,NOTaiming. LEFT: rightfacinghalfstepfrontbootright,rearbootleft, bothhandsnearwaistholdingcrossbowhorizontal. MIDDLE: widerfinalstopstepwithleftbootbackleftandfrontbootplantedright,crossbowwaisthighpointingright. RIGHT:slightlyturnedtowardfront, feetsettlingcloser,forwardhandholdscrossbowlowereddiagonaldownright. Exactsourceguidelegandarmangles. Allsamemanandscale.",
+      "transparent_background": true,
+      "raw_image_basename": "exec-1fb2c88a-2b74-43e9-b588-524d916308c3.png",
+      "accepted": true,
+      "reference_guide": "batch-09-og-reference.png",
+      "appearance_reference": "identity-master.png",
+      "raw_image_sha256": "c90248f87831b7666ebcd053912f3741d40cd755c8b9f9338f375e054fc67f1b",
+      "depot_raw_source": "batch-09-c90248f87831.png"
+    }
+  ]
+}

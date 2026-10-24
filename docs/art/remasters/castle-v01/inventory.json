@@ -1,0 +1,5233 @@
+{
+  "schema_version": 1,
+  "scope": "All original Castle base/upgraded creature groups",
+  "totals": {
+    "creatures": 14,
+    "groups": 225,
+    "original_frame_positions": 1324,
+    "registered_poses": 847,
+    "new_generated_poses": 633,
+    "reused_high_resolution_poses": 214,
+    "missing_groups": 0,
+    "missing_frame_positions": 0,
+    "original_timing_recovered": false,
+    "human_gameplay_acceptance": false
+  },
+  "creatures": [
+    {
+      "creature": "Pikeman",
+      "id": "pikeman",
+      "groups": 13,
+      "frame_positions": 80,
+      "generated_poses": 25,
+      "reused_poses": 25,
+      "manifest": "assets/prototype/enemy/pikeman/remaster_v01/source_manifest.json",
+      "original_def_id": "CPKMAN"
+    },
+    {
+      "creature": "Halberdier",
+      "id": "halberdier",
+      "groups": 13,
+      "frame_positions": 67,
+      "generated_poses": 50,
+      "reused_poses": 0,
+      "manifest": "assets/prototype/enemy/halberdier/remaster_v01/source_manifest.json",
+      "original_def_id": "chalbd"
+    },
+    {
+      "creature": "Archer",
+      "id": "archer",
+      "groups": 18,
+      "frame_positions": 100,
+      "generated_poses": 40,
+      "reused_poses": 37,
+      "manifest": "assets/prototype/enemy/archer/remaster_v01/source_manifest.json",
+      "original_def_id": "CLCBOW"
+    },
+    {
+      "creature": "Marksman",
+      "id": "marksman",
+      "groups": 18,
+      "frame_positions": 101,
+      "generated_poses": 75,
+      "reused_poses": 0,
+      "manifest": "assets/prototype/enemy/marksman/remaster_v01/source_manifest.json",
+      "original_def_id": "CHCBOW"
+    },
+    {
+      "creature": "Griffin",
+      "id": "griffin",
+      "groups": 15,
+      "frame_positions": 91,
+      "generated_poses": 27,
+      "reused_poses": 26,
+      "manifest": "assets/prototype/enemy/griffin/remaster_v01/source_manifest.json",
+      "original_def_id": "CGRIFF"
+    },
+    {
+      "creature": "Royal Griffin",
+      "id": "royal_griffin",
+      "groups": 15,
+      "frame_positions": 91,
+      "generated_poses": 53,
+      "reused_poses": 0,
+      "manifest": "assets/prototype/enemy/royal_griffin/remaster_v01/source_manifest.json",
+      "original_def_id": "Crgrif"
+    },
+    {
+      "creature": "Swordsman",
+      "id": "swordsman",
+      "groups": 15,
+      "frame_positions": 80,
+      "generated_poses": 22,
+      "reused_poses": 32,
+      "manifest": "assets/prototype/enemy/swordsman/remaster_v01/source_manifest.json",
+      "original_def_id": "Csword"
+    },
+    {
+      "creature": "Crusader",
+      "id": "crusader",
+      "groups": 15,
+      "frame_positions": 80,
+      "generated_poses": 54,
+      "reused_poses": 0,
+      "manifest": "assets/prototype/enemy/crusader/remaster_v01/source_manifest.json",
+      "original_def_id": "Ccrusd"
+    },
+    {
+      "creature": "Monk",
+      "id": "monk",
+      "groups": 17,
+      "frame_positions": 113,
+      "generated_poses": 25,
+      "reused_poses": 27,
+      "manifest": "assets/prototype/enemy/monk/remaster_v01/source_manifest.json",
+      "original_def_id": "Cmonkk"
+    },
+    {
+      "creature": "Zealot",
+      "id": "zealot",
+      "groups": 20,
+      "frame_positions": 154,
+      "generated_poses": 69,
+      "reused_poses": 0,
+      "manifest": "assets/prototype/enemy/zealot/remaster_v01/source_manifest.json",
+      "original_def_id": "Czealt"
+    },
+    {
+      "creature": "Cavalier",
+      "id": "cavalier",
+      "groups": 15,
+      "frame_positions": 87,
+      "generated_poses": 36,
+      "reused_poses": 37,
+      "manifest": "assets/prototype/enemy/cavalier/remaster_v01/source_manifest.json",
+      "original_def_id": "CCAVLR"
+    },
+    {
+      "creature": "Champion",
+      "id": "champion",
+      "groups": 15,
+      "frame_positions": 87,
+      "generated_poses": 73,
+      "reused_poses": 0,
+      "manifest": "assets/prototype/enemy/champion/remaster_v01/source_manifest.json",
+      "original_def_id": "CCHAMP"
+    },
+    {
+      "creature": "Angel",
+      "id": "angel",
+      "groups": 18,
+      "frame_positions": 98,
+      "generated_poses": 27,
+      "reused_poses": 30,
+      "manifest": "assets/prototype/enemy/angel/remaster_v01/source_manifest.json",
+      "original_def_id": "cangel"
+    },
+    {
+      "creature": "Archangel",
+      "id": "archangel",
+      "groups": 18,
+      "frame_positions": 95,
+      "generated_poses": 57,
+      "reused_poses": 0,
+      "manifest": "assets/prototype/enemy/archangel/remaster_v01/source_manifest.json",
+      "original_def_id": "CRANGL"
+    }
+  ],
+  "groups": [
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_00_block_00.png",
+      "sha256": "a0ec6455206dab1e2beb0015ce2a796ec831ccff040ae1db5a87a9f08f38b6a6",
+      "pose_ids": [
+        "pikeman_p000",
+        "pikeman_p001",
+        "pikeman_p002",
+        "pikeman_p003",
+        "pikeman_p004",
+        "pikeman_p005"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_01_block_01.png",
+      "sha256": "e60a3a220574cd08325d38c295ca23acd2fdd59ef8443815dbb28d427aa2a462",
+      "pose_ids": [
+        "pikeman_p006",
+        "pikeman_p007",
+        "pikeman_p008",
+        "pikeman_p009"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_02_block_02.png",
+      "sha256": "2b53de901327091448e327c1e88347f693b6be5bedc8d31f9ad0202c57af477e",
+      "pose_ids": [
+        "pikeman_p010",
+        "pikeman_p011",
+        "pikeman_p012",
+        "pikeman_p013",
+        "pikeman_p012",
+        "pikeman_p011",
+        "pikeman_p010"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_03_block_03.png",
+      "sha256": "aa772380d6ad26fa070aca35a93ff032373fbf4365179bf9edca47149ac19237",
+      "pose_ids": [
+        "pikeman_p014",
+        "pikeman_p015",
+        "pikeman_p016",
+        "pikeman_p017",
+        "pikeman_p018",
+        "pikeman_p019"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 13,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_04_block_04.png",
+      "sha256": "4948869db8601679bde6de93e6289102df3eb9a77fcde89c39c90adbbb888b1e",
+      "pose_ids": [
+        "pikeman_p020",
+        "pikeman_p021",
+        "pikeman_p022",
+        "pikeman_p023",
+        "pikeman_p024",
+        "pikeman_p024",
+        "pikeman_p024",
+        "pikeman_p024",
+        "pikeman_p024",
+        "pikeman_p023",
+        "pikeman_p022",
+        "pikeman_p021",
+        "pikeman_p020"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 5,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_05_block_05.png",
+      "sha256": "56c2b66308833bc2da4ace9a03f9c1e5c9e1525feec5ef3dfe221c2637703fdb",
+      "pose_ids": [
+        "pikeman_p025",
+        "pikeman_p026",
+        "pikeman_p027",
+        "pikeman_p028",
+        "pikeman_p029"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_07_block_06.png",
+      "sha256": "cce6563848a20a68d4e28ada16bed590aaaa521d3c21da6ebc951d49fee248ff",
+      "pose_ids": [
+        "pikeman_p030",
+        "pikeman_p031"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_08_block_07.png",
+      "sha256": "e0094b6b95b54d8c00e10f2981590a293997c7e3ce97aa509a8e3bde1a6e7f4f",
+      "pose_ids": [
+        "pikeman_p031",
+        "pikeman_p030"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_09_block_08.png",
+      "sha256": "cce6563848a20a68d4e28ada16bed590aaaa521d3c21da6ebc951d49fee248ff",
+      "pose_ids": [
+        "pikeman_p030",
+        "pikeman_p031"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_10_block_09.png",
+      "sha256": "e0094b6b95b54d8c00e10f2981590a293997c7e3ce97aa509a8e3bde1a6e7f4f",
+      "pose_ids": [
+        "pikeman_p031",
+        "pikeman_p030"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_11_block_10.png",
+      "sha256": "c530d8ba25cdf3830e77d92d78d84e5d0f9a16249978f87f73c5c48aba94fa0c",
+      "pose_ids": [
+        "pikeman_p032",
+        "pikeman_p033",
+        "pikeman_p034",
+        "pikeman_p035",
+        "pikeman_p036",
+        "pikeman_p037",
+        "pikeman_p036",
+        "pikeman_p035",
+        "pikeman_p034",
+        "pikeman_p033"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_12_block_11.png",
+      "sha256": "690c37cef3d9179bf10260fef7370268a427d290d1e904b7e5fd3891eba0f4b8",
+      "pose_ids": [
+        "pikeman_p038",
+        "pikeman_p039",
+        "pikeman_p040",
+        "pikeman_p041",
+        "pikeman_p042",
+        "pikeman_p043",
+        "pikeman_p042",
+        "pikeman_p041",
+        "pikeman_p040",
+        "pikeman_p039"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Pikeman",
+      "creature_id": "pikeman",
+      "original_def_id": "CPKMAN",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 11,
+      "flipbook": "assets/prototype/enemy/pikeman/remaster_v01/group_13_block_12.png",
+      "sha256": "9978956cc0ca3d382d98f237c25afe6e047aa737075430671b3d191a66945ef5",
+      "pose_ids": [
+        "pikeman_p044",
+        "pikeman_p045",
+        "pikeman_p046",
+        "pikeman_p047",
+        "pikeman_p048",
+        "pikeman_p049",
+        "pikeman_p048",
+        "pikeman_p047",
+        "pikeman_p046",
+        "pikeman_p045",
+        "pikeman_p044"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_00_block_00.png",
+      "sha256": "c4defa201f2f13266a738b7e6903f3e1793dbe0912caa665d8ae0c8852b74ca5",
+      "pose_ids": [
+        "halberdier_p000",
+        "halberdier_p001",
+        "halberdier_p002",
+        "halberdier_p003",
+        "halberdier_p004",
+        "halberdier_p005"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_01_block_01.png",
+      "sha256": "89a1d6f14504eb3dad4686f9e1327216533b9bb2a27ae6799918893005590245",
+      "pose_ids": [
+        "halberdier_p006",
+        "halberdier_p007",
+        "halberdier_p008",
+        "halberdier_p009"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_02_block_02.png",
+      "sha256": "00b308c911eea8453f2740f2b5265c2caa26a7325c53ea1778cfb081d23fbe69",
+      "pose_ids": [
+        "halberdier_p010",
+        "halberdier_p011",
+        "halberdier_p012",
+        "halberdier_p013",
+        "halberdier_p014",
+        "halberdier_p013",
+        "halberdier_p012",
+        "halberdier_p011"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_03_block_03.png",
+      "sha256": "068c61afaf9cb87d3f74d7810a06cdffee8613ac26e618212dbab250b927a070",
+      "pose_ids": [
+        "halberdier_p015",
+        "halberdier_p016",
+        "halberdier_p017",
+        "halberdier_p018",
+        "halberdier_p019",
+        "halberdier_p020"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 12,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_04_block_04.png",
+      "sha256": "1e031178e3a9db3388e3b0e1715a19ffc11d12e364c8acc18bceb3050c5a582f",
+      "pose_ids": [
+        "halberdier_p021",
+        "halberdier_p022",
+        "halberdier_p023",
+        "halberdier_p024",
+        "halberdier_p025",
+        "halberdier_p025",
+        "halberdier_p025",
+        "halberdier_p025",
+        "halberdier_p024",
+        "halberdier_p023",
+        "halberdier_p022",
+        "halberdier_p021"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_05_block_05.png",
+      "sha256": "bb91c62e3fd1ea0da165b1a8fb43c82b5b5eb14d0c31bae28e3c1ed6b91303bc",
+      "pose_ids": [
+        "halberdier_p015",
+        "halberdier_p026",
+        "halberdier_p027",
+        "halberdier_p028"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_07_block_06.png",
+      "sha256": "5307a27f50d57266752276e289a4b79428730c26b2e99d681404c725368faa86",
+      "pose_ids": [
+        "halberdier_p029",
+        "halberdier_p030"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_08_block_07.png",
+      "sha256": "1df623b8802403405a9c4876e2bd57ef576905268cf2b3e60a9960ebad23c54c",
+      "pose_ids": [
+        "halberdier_p030",
+        "halberdier_p029"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_09_block_08.png",
+      "sha256": "5307a27f50d57266752276e289a4b79428730c26b2e99d681404c725368faa86",
+      "pose_ids": [
+        "halberdier_p029",
+        "halberdier_p030"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_10_block_09.png",
+      "sha256": "1df623b8802403405a9c4876e2bd57ef576905268cf2b3e60a9960ebad23c54c",
+      "pose_ids": [
+        "halberdier_p030",
+        "halberdier_p029"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_11_block_10.png",
+      "sha256": "80ce7a3862736314f35d23e8fe20218186fd0bed02d24ad90f200757e81fed95",
+      "pose_ids": [
+        "halberdier_p031",
+        "halberdier_p032",
+        "halberdier_p033",
+        "halberdier_p034",
+        "halberdier_p035",
+        "halberdier_p036"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_12_block_11.png",
+      "sha256": "91b1c10e08dc3323b95b3af80d19df3a7e32baba0e178c2aa94218c58001d36a",
+      "pose_ids": [
+        "halberdier_p037",
+        "halberdier_p038",
+        "halberdier_p039",
+        "halberdier_p040",
+        "halberdier_p041",
+        "halberdier_p042"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Halberdier",
+      "creature_id": "halberdier",
+      "original_def_id": "chalbd",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/halberdier/remaster_v01/group_13_block_12.png",
+      "sha256": "d0e4f9284ca85a4404e28209fee546cafa9e7c1c164978759f0092d347add29d",
+      "pose_ids": [
+        "halberdier_p043",
+        "halberdier_p044",
+        "halberdier_p045",
+        "halberdier_p046",
+        "halberdier_p047",
+        "halberdier_p048",
+        "halberdier_p049"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_00_block_00.png",
+      "sha256": "4815557276ed1c3f2f356672af0a0f92491d347162e2ca6429de624ce85162bc",
+      "pose_ids": [
+        "archer_p000",
+        "archer_p001",
+        "archer_p002",
+        "archer_p003",
+        "archer_p004",
+        "archer_p005",
+        "archer_p006",
+        "archer_p007"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_01_block_01.png",
+      "sha256": "10fb09b75bf6dfc03bdde786438ae648b1343df56c243f0cae021984ee7ae6b5",
+      "pose_ids": [
+        "archer_p008",
+        "archer_p009",
+        "archer_p010",
+        "archer_p011",
+        "archer_p011",
+        "archer_p011",
+        "archer_p010",
+        "archer_p009",
+        "archer_p008"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_02_block_02.png",
+      "sha256": "4913f849b7a435b97d68a70e4f84bd88b829ffd6822c4abf1f472b8336aa6487",
+      "pose_ids": [
+        "archer_p012",
+        "archer_p013",
+        "archer_p014",
+        "archer_p015",
+        "archer_p016",
+        "archer_p015",
+        "archer_p014",
+        "archer_p013"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_03_block_03.png",
+      "sha256": "a1224f2522307ec635c1e4545a93baf78791ecb5164138d847ab292f8115196c",
+      "pose_ids": [
+        "archer_p017",
+        "archer_p018",
+        "archer_p019",
+        "archer_p020",
+        "archer_p021",
+        "archer_p022"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_04_block_04.png",
+      "sha256": "289bae3a79abaa7131ede24911678029329feabd6411cdbac332657711f17a80",
+      "pose_ids": [
+        "archer_p023",
+        "archer_p024",
+        "archer_p025",
+        "archer_p026",
+        "archer_p026",
+        "archer_p026",
+        "archer_p026",
+        "archer_p027",
+        "archer_p028"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_05_block_05.png",
+      "sha256": "4db22d851918b6da445bf265ad8ca5c613ad9e08da9e7f244c926dffecf60553",
+      "pose_ids": [
+        "archer_p029",
+        "archer_p030",
+        "archer_p031",
+        "archer_p032",
+        "archer_p033",
+        "archer_p034"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_07_block_06.png",
+      "sha256": "0f0343f9ae2b296b67afeb498c559e92ae149626e1a5d53c44bb364c59389ecf",
+      "pose_ids": [
+        "archer_p035",
+        "archer_p036"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_08_block_07.png",
+      "sha256": "f50f0c72f97cba7061255b0647ac1681b5eb043c926266583850375744accada",
+      "pose_ids": [
+        "archer_p036",
+        "archer_p035"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_09_block_08.png",
+      "sha256": "0f0343f9ae2b296b67afeb498c559e92ae149626e1a5d53c44bb364c59389ecf",
+      "pose_ids": [
+        "archer_p035",
+        "archer_p036"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_10_block_09.png",
+      "sha256": "f50f0c72f97cba7061255b0647ac1681b5eb043c926266583850375744accada",
+      "pose_ids": [
+        "archer_p036",
+        "archer_p035"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_11_block_10.png",
+      "sha256": "826df738a87432c963987e66b6dedbd95c64b915fa231c61be477f9bd488dcbc",
+      "pose_ids": [
+        "archer_p037",
+        "archer_p038",
+        "archer_p039",
+        "archer_p040",
+        "archer_p041",
+        "archer_p042"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_12_block_11.png",
+      "sha256": "1aad57d098dfe00c616b85ceaaee52366d511ca53de89e9e0e5c427a4ca3626b",
+      "pose_ids": [
+        "archer_p043",
+        "archer_p044",
+        "archer_p045",
+        "archer_p046",
+        "archer_p047",
+        "archer_p048"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_13_block_12.png",
+      "sha256": "8d4d7c02f80b907eb8e9e6af1df0be14fdb5d7089a31e128c7878287013bcafe",
+      "pose_ids": [
+        "archer_p049",
+        "archer_p050",
+        "archer_p051",
+        "archer_p052",
+        "archer_p053",
+        "archer_p054"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 14,
+      "block": 13,
+      "purpose_interpretation": "Ranged up slot",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_14_block_13.png",
+      "sha256": "9546cdf5fee43bde253254efd6f8f774ee9326d3138f66a9ec0ec2a214aefb90",
+      "pose_ids": [
+        "archer_p055",
+        "archer_p056",
+        "archer_p057",
+        "archer_p058",
+        "archer_p058",
+        "archer_p058",
+        "archer_p059",
+        "archer_p060"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 15,
+      "block": 14,
+      "purpose_interpretation": "Ranged front slot",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_15_block_14.png",
+      "sha256": "3fc66fe4a64775a653fbfce3f4037aecb588861421708105694902e9ad638dcf",
+      "pose_ids": [
+        "archer_p061",
+        "archer_p062",
+        "archer_p063",
+        "archer_p064",
+        "archer_p064",
+        "archer_p064",
+        "archer_p065",
+        "archer_p066"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 16,
+      "block": 15,
+      "purpose_interpretation": "Ranged down slot",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_16_block_15.png",
+      "sha256": "088cb286b268c53eec088eb4839e4cd88c96a507060b8d47d52082094da16ac3",
+      "pose_ids": [
+        "archer_p067",
+        "archer_p068",
+        "archer_p069",
+        "archer_p070",
+        "archer_p070",
+        "archer_p070",
+        "archer_p071",
+        "archer_p072"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 20,
+      "block": 16,
+      "purpose_interpretation": "Movement start",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_20_block_16.png",
+      "sha256": "f4ba99f08a7c93482b0dde837495d21e296cdc8a7edfb9d6ecfbd7d0d98e148a",
+      "pose_ids": [
+        "archer_p073",
+        "archer_p074"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archer",
+      "creature_id": "archer",
+      "original_def_id": "CLCBOW",
+      "group": 21,
+      "block": 17,
+      "purpose_interpretation": "Movement end",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archer/remaster_v01/group_21_block_17.png",
+      "sha256": "cd87af0c7e2d133801040b7645c93c598558b22deabc33273531581f901cd686",
+      "pose_ids": [
+        "archer_p075",
+        "archer_p076"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_00_block_00.png",
+      "sha256": "bea9f90c8b2ce077f7904005518863d386b71270ee4d0e4e3c6243fccc719644",
+      "pose_ids": [
+        "marksman_p000",
+        "marksman_p001",
+        "marksman_p002",
+        "marksman_p003",
+        "marksman_p004",
+        "marksman_p005",
+        "marksman_p006",
+        "marksman_p007"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_01_block_01.png",
+      "sha256": "3d3dabe0e948971e9de8c6e14bf5a9e4c9c6fe69c6d5e20578a17c5743517a73",
+      "pose_ids": [
+        "marksman_p008",
+        "marksman_p009",
+        "marksman_p010",
+        "marksman_p011",
+        "marksman_p011",
+        "marksman_p011",
+        "marksman_p010",
+        "marksman_p009",
+        "marksman_p008"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_02_block_02.png",
+      "sha256": "b5a92f7710d5a41a9ae8624b8ed072f749c8ddca4d3d59dcde0eb80f1326d4e3",
+      "pose_ids": [
+        "marksman_p012",
+        "marksman_p013",
+        "marksman_p014",
+        "marksman_p015",
+        "marksman_p016",
+        "marksman_p015",
+        "marksman_p014",
+        "marksman_p013"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_03_block_03.png",
+      "sha256": "380053b8c77815cddd2e11b1ddb41a9581da0cdd178c0d777b7eb89f6d573ae1",
+      "pose_ids": [
+        "marksman_p017",
+        "marksman_p018",
+        "marksman_p019",
+        "marksman_p020",
+        "marksman_p021",
+        "marksman_p022"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_04_block_04.png",
+      "sha256": "adca6beb2d57c4cff8125312fe9b63d6ccdfece67dd37ee7ccd43ac3a710d7ef",
+      "pose_ids": [
+        "marksman_p023",
+        "marksman_p024",
+        "marksman_p025",
+        "marksman_p026",
+        "marksman_p026",
+        "marksman_p026",
+        "marksman_p026",
+        "marksman_p025",
+        "marksman_p024",
+        "marksman_p023"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_05_block_05.png",
+      "sha256": "ca3cc07421c5cc7db7b20b89ff004e4db8906f81cb113a833655d0a7d8a105b7",
+      "pose_ids": [
+        "marksman_p027",
+        "marksman_p028",
+        "marksman_p029",
+        "marksman_p030",
+        "marksman_p031",
+        "marksman_p032"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_07_block_06.png",
+      "sha256": "dc6fbee061709b4a84e439c81d96ba6245340528df1a7bb0ada1ab5d8b08e0df",
+      "pose_ids": [
+        "marksman_p033",
+        "marksman_p034"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_08_block_07.png",
+      "sha256": "e510d5596f5dae8cbdd7d10a90c942d871f6c366ac18c6284afd264826ece5ae",
+      "pose_ids": [
+        "marksman_p034",
+        "marksman_p033"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_09_block_08.png",
+      "sha256": "dc6fbee061709b4a84e439c81d96ba6245340528df1a7bb0ada1ab5d8b08e0df",
+      "pose_ids": [
+        "marksman_p033",
+        "marksman_p034"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_10_block_09.png",
+      "sha256": "e510d5596f5dae8cbdd7d10a90c942d871f6c366ac18c6284afd264826ece5ae",
+      "pose_ids": [
+        "marksman_p034",
+        "marksman_p033"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_11_block_10.png",
+      "sha256": "71a33692d60d942d48c9e54c892a04149f279ce12acd6a39b372e64438e2fdd8",
+      "pose_ids": [
+        "marksman_p035",
+        "marksman_p036",
+        "marksman_p037",
+        "marksman_p038",
+        "marksman_p039",
+        "marksman_p040"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_12_block_11.png",
+      "sha256": "633a759b094867f422157388d14ca4c923acf7ba83fd0d4d69d5a16bb357235b",
+      "pose_ids": [
+        "marksman_p041",
+        "marksman_p042",
+        "marksman_p043",
+        "marksman_p044",
+        "marksman_p045",
+        "marksman_p046"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_13_block_12.png",
+      "sha256": "76e7bf3e8823848812474ee9bb93a39b89a3f96cdb1caf8b609ee41352c5f08e",
+      "pose_ids": [
+        "marksman_p047",
+        "marksman_p048",
+        "marksman_p049",
+        "marksman_p050",
+        "marksman_p051",
+        "marksman_p052"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 14,
+      "block": 13,
+      "purpose_interpretation": "Ranged up slot",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_14_block_13.png",
+      "sha256": "866865e1a5d252a65467e978d7f3e47d59c984998a233391ce4c343c4b6b2a20",
+      "pose_ids": [
+        "marksman_p053",
+        "marksman_p054",
+        "marksman_p055",
+        "marksman_p056",
+        "marksman_p056",
+        "marksman_p056",
+        "marksman_p057",
+        "marksman_p058"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 15,
+      "block": 14,
+      "purpose_interpretation": "Ranged front slot",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_15_block_14.png",
+      "sha256": "edd337ed1fb49741c9f672e9e26aa94d89ab147ba6d4639f047428d69348fded",
+      "pose_ids": [
+        "marksman_p059",
+        "marksman_p060",
+        "marksman_p061",
+        "marksman_p062",
+        "marksman_p062",
+        "marksman_p062",
+        "marksman_p063",
+        "marksman_p064"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 16,
+      "block": 15,
+      "purpose_interpretation": "Ranged down slot",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_16_block_15.png",
+      "sha256": "ee9daced11abf59fef72875cfc6beab95874e2af2d088c94e580e30641c84836",
+      "pose_ids": [
+        "marksman_p065",
+        "marksman_p066",
+        "marksman_p067",
+        "marksman_p068",
+        "marksman_p068",
+        "marksman_p068",
+        "marksman_p069",
+        "marksman_p070"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 20,
+      "block": 16,
+      "purpose_interpretation": "Movement start",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_20_block_16.png",
+      "sha256": "b3dbd4792ace89d590db279e18a5ccd60d2a3d9e87611c4d774fc31a48efd4e5",
+      "pose_ids": [
+        "marksman_p071",
+        "marksman_p072"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Marksman",
+      "creature_id": "marksman",
+      "original_def_id": "CHCBOW",
+      "group": 21,
+      "block": 17,
+      "purpose_interpretation": "Movement end",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/marksman/remaster_v01/group_21_block_17.png",
+      "sha256": "841ffc46a560c30550fd89eeedcdd18083c18f148c39152a13674f231e2656eb",
+      "pose_ids": [
+        "marksman_p073",
+        "marksman_p074"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_00_block_00.png",
+      "sha256": "36ec450d6cc9c0c5abf653c74857c84b9e163490f55eca38dfcce2f2ee8bbe8c",
+      "pose_ids": [
+        "griffin_p000",
+        "griffin_p001",
+        "griffin_p000",
+        "griffin_p002"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_01_block_01.png",
+      "sha256": "b7036011f92b642bc4a1053450e3f619b6710f454a3ab48668fdc32e999ea141",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p004",
+        "griffin_p005",
+        "griffin_p006",
+        "griffin_p006",
+        "griffin_p005",
+        "griffin_p004",
+        "griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_02_block_02.png",
+      "sha256": "bace27f88ec670db4b7cf66605064840974def5a8f0bee2d3ca12ac88d93ee46",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p007",
+        "griffin_p008",
+        "griffin_p008",
+        "griffin_p008",
+        "griffin_p007",
+        "griffin_p003",
+        "griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_03_block_03.png",
+      "sha256": "6596f0e731453c4bee15592e85b2712789a20e350589276d8bfcb5d0db0761f5",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p009",
+        "griffin_p010",
+        "griffin_p011",
+        "griffin_p012",
+        "griffin_p013",
+        "griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_04_block_04.png",
+      "sha256": "0a830cd4ca8a87d7e8b21101ebf84c8707b32e8c3d47fe5e49d327b6c0eab97c",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p014",
+        "griffin_p015",
+        "griffin_p016",
+        "griffin_p016",
+        "griffin_p015",
+        "griffin_p014",
+        "griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_05_block_05.png",
+      "sha256": "c62ea461d7d4b7ec088b2f6744efd73e5f756a24039f297e5029093490b58ba5",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p017",
+        "griffin_p018",
+        "griffin_p019",
+        "griffin_p020",
+        "griffin_p021",
+        "griffin_p022",
+        "griffin_p023",
+        "griffin_p024"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_07_block_06.png",
+      "sha256": "9f7cdeacf4b904520b32c3279da03b8967c9f30f10eed9feddcc15cee4b22485",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p025",
+        "griffin_p026"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_08_block_07.png",
+      "sha256": "5f9d4ecb55aa4b47f4c50eec68c3cd47329ba91c66b85ee20f885da40f2e01fb",
+      "pose_ids": [
+        "griffin_p026",
+        "griffin_p025",
+        "griffin_p003"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_09_block_08.png",
+      "sha256": "9f7cdeacf4b904520b32c3279da03b8967c9f30f10eed9feddcc15cee4b22485",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p025",
+        "griffin_p026"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_10_block_09.png",
+      "sha256": "5f9d4ecb55aa4b47f4c50eec68c3cd47329ba91c66b85ee20f885da40f2e01fb",
+      "pose_ids": [
+        "griffin_p026",
+        "griffin_p025",
+        "griffin_p003"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_11_block_10.png",
+      "sha256": "3eb4976fdf76eaf644c77f971e58ea828635f10e9cbbcb1202a9b7dde5cd5fb3",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p027",
+        "griffin_p028",
+        "griffin_p029",
+        "griffin_p030",
+        "griffin_p031",
+        "griffin_p032",
+        "griffin_p033",
+        "griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_12_block_11.png",
+      "sha256": "b0d57b8764600baa907c28617a6137d81eb8484d7d53a2024f0796396b2587ec",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p034",
+        "griffin_p035",
+        "griffin_p036",
+        "griffin_p037",
+        "griffin_p038",
+        "griffin_p039",
+        "griffin_p040",
+        "griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_13_block_12.png",
+      "sha256": "e63b851843b1d973aaf5761d239c9531a45da6a73d8cfd3fef8881e53661cd47",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p041",
+        "griffin_p042",
+        "griffin_p043",
+        "griffin_p044",
+        "griffin_p045",
+        "griffin_p046",
+        "griffin_p047",
+        "griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 20,
+      "block": 13,
+      "purpose_interpretation": "Movement start",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_20_block_13.png",
+      "sha256": "fec8f136efbaa76291db43bfdf71f002110549c07b7e22d06c0c2de1775909ce",
+      "pose_ids": [
+        "griffin_p003",
+        "griffin_p048",
+        "griffin_p049",
+        "griffin_p050"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Griffin",
+      "creature_id": "griffin",
+      "original_def_id": "CGRIFF",
+      "group": 21,
+      "block": 14,
+      "purpose_interpretation": "Movement end",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/griffin/remaster_v01/group_21_block_14.png",
+      "sha256": "4661ef6cfcd792bb86643b7081b9b08a66f89f337dfc03eca249e028d3ac9612",
+      "pose_ids": [
+        "griffin_p050",
+        "griffin_p051",
+        "griffin_p052",
+        "griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_00_block_00.png",
+      "sha256": "c3cb1c358a9acc08d542afcc46e9a91d5d45250992180c9e2025d9b8b3d4e967",
+      "pose_ids": [
+        "royal_griffin_p000",
+        "royal_griffin_p001",
+        "royal_griffin_p000",
+        "royal_griffin_p002"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_01_block_01.png",
+      "sha256": "0f972dcc8fa40161f4a299c1e5789dcbaa053627a08be1e4203cdd4b45aca347",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p004",
+        "royal_griffin_p005",
+        "royal_griffin_p006",
+        "royal_griffin_p006",
+        "royal_griffin_p005",
+        "royal_griffin_p004",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_02_block_02.png",
+      "sha256": "9c1ce5592912fa7199048b36dfed8c726c8082d14d3cca8801fe1b4c4d6c91cd",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p007",
+        "royal_griffin_p008",
+        "royal_griffin_p008",
+        "royal_griffin_p008",
+        "royal_griffin_p007",
+        "royal_griffin_p003",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_03_block_03.png",
+      "sha256": "01d59c8f1f9b0e57f6e7f5f85cc27c32233bfc2d90249f7b6dbfe5ac2ce47aed",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p009",
+        "royal_griffin_p010",
+        "royal_griffin_p011",
+        "royal_griffin_p012",
+        "royal_griffin_p013",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_04_block_04.png",
+      "sha256": "1864d831633d3309fa75aae6bfdcc609b46bb4aaddbe7408d054455d331d4dfd",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p014",
+        "royal_griffin_p015",
+        "royal_griffin_p016",
+        "royal_griffin_p016",
+        "royal_griffin_p015",
+        "royal_griffin_p014",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_05_block_05.png",
+      "sha256": "abde756f29bae28ee5a7f854322ec075c933f30eb540d6a3cccc39184188406d",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p017",
+        "royal_griffin_p018",
+        "royal_griffin_p019",
+        "royal_griffin_p020",
+        "royal_griffin_p021",
+        "royal_griffin_p022",
+        "royal_griffin_p023",
+        "royal_griffin_p024"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_07_block_06.png",
+      "sha256": "bd00ba138792b5ff927425dd7ab7c4d31542d3f76415ffb87d72c7a5b1371a07",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p025",
+        "royal_griffin_p026"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_08_block_07.png",
+      "sha256": "c7a2c0cf3757659367680403bc2eb6c9a94c5d8166d2500f5ff2ad37016f7d08",
+      "pose_ids": [
+        "royal_griffin_p026",
+        "royal_griffin_p025",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_09_block_08.png",
+      "sha256": "bd00ba138792b5ff927425dd7ab7c4d31542d3f76415ffb87d72c7a5b1371a07",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p025",
+        "royal_griffin_p026"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_10_block_09.png",
+      "sha256": "c7a2c0cf3757659367680403bc2eb6c9a94c5d8166d2500f5ff2ad37016f7d08",
+      "pose_ids": [
+        "royal_griffin_p026",
+        "royal_griffin_p025",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_11_block_10.png",
+      "sha256": "58f6e770fe851fa67f7f16e4ccf16cbcc0f0cf760b7c60b7efc3575d8463b8c2",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p027",
+        "royal_griffin_p028",
+        "royal_griffin_p029",
+        "royal_griffin_p030",
+        "royal_griffin_p031",
+        "royal_griffin_p032",
+        "royal_griffin_p033",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_12_block_11.png",
+      "sha256": "b9b28b2fc5594056577ac7df0bc966ba41ed54d1abeadb405ffcfcb8348621f3",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p034",
+        "royal_griffin_p035",
+        "royal_griffin_p036",
+        "royal_griffin_p037",
+        "royal_griffin_p038",
+        "royal_griffin_p039",
+        "royal_griffin_p040",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_13_block_12.png",
+      "sha256": "f4c157cc6a5da771c56faa27715d9b887eb369b57d5f1031250f42e05b62805c",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p041",
+        "royal_griffin_p042",
+        "royal_griffin_p043",
+        "royal_griffin_p044",
+        "royal_griffin_p045",
+        "royal_griffin_p046",
+        "royal_griffin_p047",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 20,
+      "block": 13,
+      "purpose_interpretation": "Movement start",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_20_block_13.png",
+      "sha256": "5302ec7f51c7fb8ae1534844528ba5fd34167a7c59e7e1dd2192f6d0617c1128",
+      "pose_ids": [
+        "royal_griffin_p003",
+        "royal_griffin_p048",
+        "royal_griffin_p049",
+        "royal_griffin_p050"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Royal Griffin",
+      "creature_id": "royal_griffin",
+      "original_def_id": "Crgrif",
+      "group": 21,
+      "block": 14,
+      "purpose_interpretation": "Movement end",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/royal_griffin/remaster_v01/group_21_block_14.png",
+      "sha256": "284f24fdf1861e3ccfb314104a76e4801388b802583a884428a726be3a6f6005",
+      "pose_ids": [
+        "royal_griffin_p050",
+        "royal_griffin_p051",
+        "royal_griffin_p052",
+        "royal_griffin_p003"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_00_block_00.png",
+      "sha256": "9b561e8c370ad9d69277b25f0c48d574a8a577340325e0e039a7223a6cfec851",
+      "pose_ids": [
+        "swordsman_p000",
+        "swordsman_p001",
+        "swordsman_p002",
+        "swordsman_p003",
+        "swordsman_p004",
+        "swordsman_p005",
+        "swordsman_p006",
+        "swordsman_p007"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_01_block_01.png",
+      "sha256": "7afaeee95b980d5b731a604cd90b77db794d46b93d06bef763d9a68c46c8bf4d",
+      "pose_ids": [
+        "swordsman_p008",
+        "swordsman_p009",
+        "swordsman_p010",
+        "swordsman_p011",
+        "swordsman_p011",
+        "swordsman_p010",
+        "swordsman_p009",
+        "swordsman_p008"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_02_block_02.png",
+      "sha256": "a9b09dfd50fa11a65759f2ec773f58dbf48671383af5480eee87082e41d454ca",
+      "pose_ids": [
+        "swordsman_p012",
+        "swordsman_p013",
+        "swordsman_p014",
+        "swordsman_p015",
+        "swordsman_p016",
+        "swordsman_p015",
+        "swordsman_p014",
+        "swordsman_p013"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_03_block_03.png",
+      "sha256": "d95a86292b66d4b01106049b65832f2058280f962c5490565272f47652212a24",
+      "pose_ids": [
+        "swordsman_p017",
+        "swordsman_p018",
+        "swordsman_p019",
+        "swordsman_p020",
+        "swordsman_p021",
+        "swordsman_p022"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 11,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_04_block_04.png",
+      "sha256": "43402d4596d337244ff5f49536a1be5911542fb1114b23671e9a7e5440d493d0",
+      "pose_ids": [
+        "swordsman_p023",
+        "swordsman_p024",
+        "swordsman_p025",
+        "swordsman_p026",
+        "swordsman_p026",
+        "swordsman_p026",
+        "swordsman_p026",
+        "swordsman_p026",
+        "swordsman_p025",
+        "swordsman_p024",
+        "swordsman_p023"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_05_block_05.png",
+      "sha256": "6e0a58b12a8cbb683d257e31a3da52f6e0a0e0bd84376d4787ae3879c11561b2",
+      "pose_ids": [
+        "swordsman_p027",
+        "swordsman_p028",
+        "swordsman_p029",
+        "swordsman_p030",
+        "swordsman_p031",
+        "swordsman_p032"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_07_block_06.png",
+      "sha256": "a9325b0ac076d6c25248edbbebacd04f784915dfebf40c24cd19b9c0e6e88b13",
+      "pose_ids": [
+        "swordsman_p033",
+        "swordsman_p034"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_08_block_07.png",
+      "sha256": "c8b2f8b09504700901a310e930309d7ebd329cc59d24e524d6f3961763d35ea8",
+      "pose_ids": [
+        "swordsman_p034",
+        "swordsman_p033"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_09_block_08.png",
+      "sha256": "a9325b0ac076d6c25248edbbebacd04f784915dfebf40c24cd19b9c0e6e88b13",
+      "pose_ids": [
+        "swordsman_p033",
+        "swordsman_p034"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_10_block_09.png",
+      "sha256": "c8b2f8b09504700901a310e930309d7ebd329cc59d24e524d6f3961763d35ea8",
+      "pose_ids": [
+        "swordsman_p034",
+        "swordsman_p033"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_11_block_10.png",
+      "sha256": "f893964466d218f63cf3bcf24013f0803c0465240785ae3358da1de878dfa84a",
+      "pose_ids": [
+        "swordsman_p035",
+        "swordsman_p036",
+        "swordsman_p037",
+        "swordsman_p038",
+        "swordsman_p039",
+        "swordsman_p040",
+        "swordsman_p041"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_12_block_11.png",
+      "sha256": "a93a951e2544d90335adda913cc825b8f6659ce578af4b8fea1a6a6089c7dafc",
+      "pose_ids": [
+        "swordsman_p035",
+        "swordsman_p036",
+        "swordsman_p042",
+        "swordsman_p043",
+        "swordsman_p044",
+        "swordsman_p045",
+        "swordsman_p041"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_13_block_12.png",
+      "sha256": "1a6afea1b143c13e4c614ea561a7b7ec1c83791635b4ff3973ffa2bcff3ec048",
+      "pose_ids": [
+        "swordsman_p035",
+        "swordsman_p036",
+        "swordsman_p046",
+        "swordsman_p047",
+        "swordsman_p048",
+        "swordsman_p049",
+        "swordsman_p041"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 20,
+      "block": 13,
+      "purpose_interpretation": "Movement start",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_20_block_13.png",
+      "sha256": "1a26cdfe3c7e48aad7c74502fdd459753374a6f98ac0ad25a86a60555c0438c9",
+      "pose_ids": [
+        "swordsman_p050",
+        "swordsman_p051"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Swordsman",
+      "creature_id": "swordsman",
+      "original_def_id": "Csword",
+      "group": 21,
+      "block": 14,
+      "purpose_interpretation": "Movement end",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/swordsman/remaster_v01/group_21_block_14.png",
+      "sha256": "71f9013015659abd07b2160057df0873134615f7878eb10bc38106ec711623df",
+      "pose_ids": [
+        "swordsman_p052",
+        "swordsman_p053"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_00_block_00.png",
+      "sha256": "7d8281560a9e518cb62a7c240d7cb9e64f464f19d3f159ddca3e49ee32b321ea",
+      "pose_ids": [
+        "crusader_p000",
+        "crusader_p001",
+        "crusader_p002",
+        "crusader_p003",
+        "crusader_p004",
+        "crusader_p005",
+        "crusader_p006",
+        "crusader_p007"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_01_block_01.png",
+      "sha256": "de7d9cce226925ffb80de9a09b40cffb091614dd96e75b55898f2dfba79a5d24",
+      "pose_ids": [
+        "crusader_p008",
+        "crusader_p009",
+        "crusader_p010",
+        "crusader_p011",
+        "crusader_p011",
+        "crusader_p010",
+        "crusader_p009",
+        "crusader_p008"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_02_block_02.png",
+      "sha256": "db8d8d2d575972471f52c7a83b334cb76950fed27a13d9eeddc97b251c7ff668",
+      "pose_ids": [
+        "crusader_p012",
+        "crusader_p013",
+        "crusader_p014",
+        "crusader_p015",
+        "crusader_p016",
+        "crusader_p015",
+        "crusader_p014",
+        "crusader_p013"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_03_block_03.png",
+      "sha256": "d7656692c7262dbb11da92d67dd05d25389ffe2639ef4fe7d2de40f30921657b",
+      "pose_ids": [
+        "crusader_p017",
+        "crusader_p018",
+        "crusader_p019",
+        "crusader_p020",
+        "crusader_p021",
+        "crusader_p022"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 11,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_04_block_04.png",
+      "sha256": "0bd02f5cd7168b0e2f5960e92b7d5f1f8219833b6cd9b514a0e40bc37882c796",
+      "pose_ids": [
+        "crusader_p023",
+        "crusader_p024",
+        "crusader_p025",
+        "crusader_p026",
+        "crusader_p026",
+        "crusader_p026",
+        "crusader_p026",
+        "crusader_p026",
+        "crusader_p025",
+        "crusader_p024",
+        "crusader_p023"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_05_block_05.png",
+      "sha256": "b603dfd41f01b84c856e9d479c989ad56dfa227a51fab8e1d557c02404b0b19f",
+      "pose_ids": [
+        "crusader_p027",
+        "crusader_p028",
+        "crusader_p029",
+        "crusader_p030",
+        "crusader_p031",
+        "crusader_p032"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_07_block_06.png",
+      "sha256": "3ffb4dad5370937f22b642c2cde9b68d01c33c71a7a2735e19d4c92a98de5273",
+      "pose_ids": [
+        "crusader_p033",
+        "crusader_p034"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_08_block_07.png",
+      "sha256": "3b79e97ccb71889212f5f6d3a8e52b11ff8475ecc6d55931c36b6904ca0657bf",
+      "pose_ids": [
+        "crusader_p034",
+        "crusader_p033"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_09_block_08.png",
+      "sha256": "3ffb4dad5370937f22b642c2cde9b68d01c33c71a7a2735e19d4c92a98de5273",
+      "pose_ids": [
+        "crusader_p033",
+        "crusader_p034"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_10_block_09.png",
+      "sha256": "3b79e97ccb71889212f5f6d3a8e52b11ff8475ecc6d55931c36b6904ca0657bf",
+      "pose_ids": [
+        "crusader_p034",
+        "crusader_p033"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_11_block_10.png",
+      "sha256": "7c5c754c399b13afcd5f1c5f17e2c8a737b39a1b58135ae8793b173f22ee0756",
+      "pose_ids": [
+        "crusader_p035",
+        "crusader_p036",
+        "crusader_p037",
+        "crusader_p038",
+        "crusader_p039",
+        "crusader_p040",
+        "crusader_p041"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_12_block_11.png",
+      "sha256": "2b2949168e0a645790201bdc2eb7cda876efdac6981fbea3a91406c8e8f74399",
+      "pose_ids": [
+        "crusader_p035",
+        "crusader_p036",
+        "crusader_p042",
+        "crusader_p043",
+        "crusader_p044",
+        "crusader_p045",
+        "crusader_p041"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_13_block_12.png",
+      "sha256": "31dd9d6ed0fb65ef271a909b97492ac2210b895dc7bc2c070187d1782a466501",
+      "pose_ids": [
+        "crusader_p035",
+        "crusader_p036",
+        "crusader_p046",
+        "crusader_p047",
+        "crusader_p048",
+        "crusader_p049",
+        "crusader_p041"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 20,
+      "block": 13,
+      "purpose_interpretation": "Movement start",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_20_block_13.png",
+      "sha256": "fd095dc49372d7f56f230c43760012a6cbfe7a93672a918872c527ffd989f720",
+      "pose_ids": [
+        "crusader_p050",
+        "crusader_p051"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Crusader",
+      "creature_id": "crusader",
+      "original_def_id": "Ccrusd",
+      "group": 21,
+      "block": 14,
+      "purpose_interpretation": "Movement end",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/crusader/remaster_v01/group_21_block_14.png",
+      "sha256": "81a822bb7d95a40642360523f6cb252779cedc72ed9244c69cf342a1bf522564",
+      "pose_ids": [
+        "crusader_p052",
+        "crusader_p053"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_00_block_00.png",
+      "sha256": "d7af77ed550548d8458cb2be60063f8ae1dd77ee0079f46724f06c01043ac780",
+      "pose_ids": [
+        "monk_p000",
+        "monk_p001",
+        "monk_p002",
+        "monk_p003",
+        "monk_p004",
+        "monk_p005"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_01_block_01.png",
+      "sha256": "db9b271535b4a1552b8362ffb53b5e3b4bacd3c24a2a6c4259c54796c2bd9682",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p007",
+        "monk_p008",
+        "monk_p009",
+        "monk_p010",
+        "monk_p010",
+        "monk_p009",
+        "monk_p008",
+        "monk_p007",
+        "monk_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_02_block_02.png",
+      "sha256": "ce8c2c53db3fee927064ff5434e640ec4f1f763bb5cc78eee24132d8ef2efa56",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p011",
+        "monk_p012",
+        "monk_p012",
+        "monk_p011",
+        "monk_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_03_block_03.png",
+      "sha256": "ee924eaebe59faf247c648369c43eca35c3540d39bde00c838cea9c95c894284",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p013",
+        "monk_p014",
+        "monk_p015",
+        "monk_p016",
+        "monk_p017",
+        "monk_p018",
+        "monk_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_04_block_04.png",
+      "sha256": "b303d0f8ae0d55e95f223720e5825f5bb629221b57720a331799c67014248c45",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p019",
+        "monk_p020",
+        "monk_p021",
+        "monk_p022",
+        "monk_p023",
+        "monk_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 11,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_05_block_05.png",
+      "sha256": "fdc398c7f56dcc17f63591b7568f1cdee3c4d761c88ff17fec1cf10d626f459d",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p013",
+        "monk_p014",
+        "monk_p015",
+        "monk_p016",
+        "monk_p024",
+        "monk_p025",
+        "monk_p026",
+        "monk_p027",
+        "monk_p028",
+        "monk_p029"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_07_block_06.png",
+      "sha256": "91bec59d54baaf48b8686b1df9f7ceb0dfcd9e9fc68989e37eadfda5a98a81fc",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p030"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_08_block_07.png",
+      "sha256": "265dc5c17696e8ca82c6eb9ac8fc0919bd4ab5e134e4950da2c30f427a24f237",
+      "pose_ids": [
+        "monk_p030",
+        "monk_p006"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_09_block_08.png",
+      "sha256": "91bec59d54baaf48b8686b1df9f7ceb0dfcd9e9fc68989e37eadfda5a98a81fc",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p030"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_10_block_09.png",
+      "sha256": "265dc5c17696e8ca82c6eb9ac8fc0919bd4ab5e134e4950da2c30f427a24f237",
+      "pose_ids": [
+        "monk_p030",
+        "monk_p006"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_11_block_10.png",
+      "sha256": "88e4ab1e8c6d81488d6a2a9cc48a2f5e0cce9fdd14cfd6785018946157def6c2",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p031",
+        "monk_p032",
+        "monk_p033",
+        "monk_p034",
+        "monk_p035",
+        "monk_p036",
+        "monk_p037",
+        "monk_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_12_block_11.png",
+      "sha256": "d32c1fc9bfdddf92a56b2d2e51a6dbc23db6a238f318423515e0f86485a44658",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p038",
+        "monk_p039",
+        "monk_p040",
+        "monk_p041",
+        "monk_p042",
+        "monk_p043",
+        "monk_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_13_block_12.png",
+      "sha256": "681fde1bbacbeed658f745ce6b248c63f96b0a7f24ae18ae343c34356f8b776a",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p044",
+        "monk_p045",
+        "monk_p046",
+        "monk_p047",
+        "monk_p048",
+        "monk_p049",
+        "monk_p050",
+        "monk_p006"
+      ],
+      "exact_aliases": [
+        16
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 14,
+      "block": 13,
+      "purpose_interpretation": "Ranged up slot",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_14_block_13.png",
+      "sha256": "bc205beaa03ee8c032e1053cb7df61e6fde8221464405058a80e568ea8d6d636",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p006",
+        "monk_p031",
+        "monk_p032",
+        "monk_p033",
+        "monk_p034",
+        "monk_p035",
+        "monk_p036",
+        "monk_p037",
+        "monk_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 15,
+      "block": 14,
+      "purpose_interpretation": "Ranged front slot",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_15_block_14.png",
+      "sha256": "ef09c81e55c597f8f579a9336db7e569f48c7116a468e44a9e95b0dd386b6458",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p006",
+        "monk_p006",
+        "monk_p038",
+        "monk_p039",
+        "monk_p040",
+        "monk_p041",
+        "monk_p042",
+        "monk_p043",
+        "monk_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 16,
+      "block": 15,
+      "purpose_interpretation": "Ranged down slot",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_16_block_15.png",
+      "sha256": "681fde1bbacbeed658f745ce6b248c63f96b0a7f24ae18ae343c34356f8b776a",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p044",
+        "monk_p045",
+        "monk_p046",
+        "monk_p047",
+        "monk_p048",
+        "monk_p049",
+        "monk_p050",
+        "monk_p006"
+      ],
+      "exact_aliases": [
+        13
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Monk",
+      "creature_id": "monk",
+      "original_def_id": "Cmonkk",
+      "group": 20,
+      "block": 16,
+      "purpose_interpretation": "Movement start",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/monk/remaster_v01/group_20_block_16.png",
+      "sha256": "6a8526bb25f660e143a1b469fad522f7a1453d6a9690739b668a6b5c15b2f179",
+      "pose_ids": [
+        "monk_p006",
+        "monk_p051"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_00_block_00.png",
+      "sha256": "a2a625e4e16099a005e5451e5d0fab3d3af64e19303ef825f1b22f113c5775c9",
+      "pose_ids": [
+        "zealot_p000",
+        "zealot_p001",
+        "zealot_p002",
+        "zealot_p003",
+        "zealot_p004",
+        "zealot_p005"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_01_block_01.png",
+      "sha256": "e365934bf83478de6276ac89a5d958f0d47b952d0cec23dff5e1e6d562144ba5",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p007",
+        "zealot_p008",
+        "zealot_p009",
+        "zealot_p010",
+        "zealot_p010",
+        "zealot_p009",
+        "zealot_p008",
+        "zealot_p007",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_02_block_02.png",
+      "sha256": "e0081c817dc943c34086a46c746204b1d8d67a8d33048732269d973165da9f65",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p011",
+        "zealot_p012",
+        "zealot_p012",
+        "zealot_p011",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_03_block_03.png",
+      "sha256": "fc11f24cf736878ad42464d3c724212c7219d65b0110a0fc7f9fc79e8a34bbf7",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p013",
+        "zealot_p014",
+        "zealot_p015",
+        "zealot_p016",
+        "zealot_p017",
+        "zealot_p018",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_04_block_04.png",
+      "sha256": "dfd992fce3909f7f145b89ddd598fb10c38224e4bc56dc52530c3ea5e16cb116",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p019",
+        "zealot_p020",
+        "zealot_p021",
+        "zealot_p022",
+        "zealot_p023",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 11,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_05_block_05.png",
+      "sha256": "e3c3fdd7591f3b96d4a7eb3cfdbdf61deaf1bd99055c649397dab3b0633a22f3",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p013",
+        "zealot_p014",
+        "zealot_p015",
+        "zealot_p016",
+        "zealot_p024",
+        "zealot_p025",
+        "zealot_p026",
+        "zealot_p027",
+        "zealot_p028",
+        "zealot_p029"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_07_block_06.png",
+      "sha256": "f3ca522ef49c327d9fd2be5fb6ee415d4b8c9619c42c5a84230a2a48a223365d",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p030"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_08_block_07.png",
+      "sha256": "28a3463dd548bab36527e079a16c32b92462e8bd551f0d5c489902a0c696415c",
+      "pose_ids": [
+        "zealot_p030",
+        "zealot_p006"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_09_block_08.png",
+      "sha256": "f3ca522ef49c327d9fd2be5fb6ee415d4b8c9619c42c5a84230a2a48a223365d",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p030"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_10_block_09.png",
+      "sha256": "28a3463dd548bab36527e079a16c32b92462e8bd551f0d5c489902a0c696415c",
+      "pose_ids": [
+        "zealot_p030",
+        "zealot_p006"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_11_block_10.png",
+      "sha256": "cc6e9fdf04f53ef27c35eb8645859c734d9ad73f7e33472c3e6b772c0399aab2",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p031",
+        "zealot_p032",
+        "zealot_p033",
+        "zealot_p034",
+        "zealot_p035",
+        "zealot_p036",
+        "zealot_p037",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_12_block_11.png",
+      "sha256": "e7c99f0f399fa1e4def40ebf1facb1a36ae85a7032ddd91462ad4ae846c37580",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p038",
+        "zealot_p039",
+        "zealot_p040",
+        "zealot_p041",
+        "zealot_p042",
+        "zealot_p043",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_13_block_12.png",
+      "sha256": "fdd0e0366dfeaf5dafa460d294a26307e8ea82135297b019cecac4717bef053b",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p044",
+        "zealot_p045",
+        "zealot_p046",
+        "zealot_p047",
+        "zealot_p048",
+        "zealot_p049",
+        "zealot_p050",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 14,
+      "block": 13,
+      "purpose_interpretation": "Ranged up slot",
+      "frames": 13,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_14_block_13.png",
+      "sha256": "3e03b84b26183077856dca6ad1f8559c2a1ec32103f5214cdc1830509a9f3af3",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p031",
+        "zealot_p032",
+        "zealot_p051",
+        "zealot_p052",
+        "zealot_p053",
+        "zealot_p053",
+        "zealot_p053",
+        "zealot_p053",
+        "zealot_p053",
+        "zealot_p036",
+        "zealot_p037",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 15,
+      "block": 14,
+      "purpose_interpretation": "Ranged front slot",
+      "frames": 14,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_15_block_14.png",
+      "sha256": "4c9c3bee833fdb70240b5baf2093ca15af67cf2c726840936fe883ac7c061c8e",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p038",
+        "zealot_p039",
+        "zealot_p054",
+        "zealot_p054",
+        "zealot_p055",
+        "zealot_p055",
+        "zealot_p055",
+        "zealot_p055",
+        "zealot_p055",
+        "zealot_p056",
+        "zealot_p042",
+        "zealot_p043",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 16,
+      "block": 15,
+      "purpose_interpretation": "Ranged down slot",
+      "frames": 13,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_16_block_15.png",
+      "sha256": "8d6eaed93f0efed2fedbf328112d2e5cb1f5b64234c96dfe7d9d3f149d7f9ea7",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p044",
+        "zealot_p045",
+        "zealot_p057",
+        "zealot_p058",
+        "zealot_p059",
+        "zealot_p059",
+        "zealot_p059",
+        "zealot_p059",
+        "zealot_p059",
+        "zealot_p049",
+        "zealot_p050",
+        "zealot_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 17,
+      "block": 16,
+      "purpose_interpretation": "Special up slot",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_17_block_16.png",
+      "sha256": "bbc69f1351d5d5c60980e6e090401b736ac4854b7a372cad5169ddd2377e3f1b",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p060",
+        "zealot_p061",
+        "zealot_p062",
+        "zealot_p063",
+        "zealot_p064",
+        "zealot_p065",
+        "zealot_p066",
+        "zealot_p067",
+        "zealot_p006"
+      ],
+      "exact_aliases": [
+        18,
+        19
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 18,
+      "block": 17,
+      "purpose_interpretation": "Special front slot",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_18_block_17.png",
+      "sha256": "bbc69f1351d5d5c60980e6e090401b736ac4854b7a372cad5169ddd2377e3f1b",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p060",
+        "zealot_p061",
+        "zealot_p062",
+        "zealot_p063",
+        "zealot_p064",
+        "zealot_p065",
+        "zealot_p066",
+        "zealot_p067",
+        "zealot_p006"
+      ],
+      "exact_aliases": [
+        17,
+        19
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 19,
+      "block": 18,
+      "purpose_interpretation": "Special down slot",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_19_block_18.png",
+      "sha256": "bbc69f1351d5d5c60980e6e090401b736ac4854b7a372cad5169ddd2377e3f1b",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p060",
+        "zealot_p061",
+        "zealot_p062",
+        "zealot_p063",
+        "zealot_p064",
+        "zealot_p065",
+        "zealot_p066",
+        "zealot_p067",
+        "zealot_p006"
+      ],
+      "exact_aliases": [
+        17,
+        18
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Zealot",
+      "creature_id": "zealot",
+      "original_def_id": "Czealt",
+      "group": 20,
+      "block": 19,
+      "purpose_interpretation": "Movement start",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/zealot/remaster_v01/group_20_block_19.png",
+      "sha256": "6802373c7a5c4d2f254cc9b1245a21a531788bef8af42b1fb28e44da8c8a1223",
+      "pose_ids": [
+        "zealot_p006",
+        "zealot_p068"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_00_block_00.png",
+      "sha256": "817a473f168a6b442da91c4fd03623b2e9034af30ddc9708c4491838d2515619",
+      "pose_ids": [
+        "cavalier_p000",
+        "cavalier_p001",
+        "cavalier_p002",
+        "cavalier_p003",
+        "cavalier_p004",
+        "cavalier_p005",
+        "cavalier_p006",
+        "cavalier_p007"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 5,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_01_block_01.png",
+      "sha256": "2ad2d5b5b6744d33c1589da489b3d8ddebb1293674877c493052d7d3b880c5a8",
+      "pose_ids": [
+        "cavalier_p008",
+        "cavalier_p009",
+        "cavalier_p010",
+        "cavalier_p011",
+        "cavalier_p012"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_02_block_02.png",
+      "sha256": "f7b0449c44c8c119099abce7cb6b286c16bad91d99d5576af082b4cc768dd820",
+      "pose_ids": [
+        "cavalier_p013",
+        "cavalier_p014",
+        "cavalier_p015",
+        "cavalier_p016"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_03_block_03.png",
+      "sha256": "408b40586a759226bfc44e51db5958f26725a4945ca26abeb9abb18b8e234e65",
+      "pose_ids": [
+        "cavalier_p017",
+        "cavalier_p018",
+        "cavalier_p019",
+        "cavalier_p020",
+        "cavalier_p017",
+        "cavalier_p021",
+        "cavalier_p022",
+        "cavalier_p023"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_04_block_04.png",
+      "sha256": "4cf9fd5d6d0abe4df5abcbef6eeb2f8f1b7971d8bb32c2b3cf180dbb34fa0ef3",
+      "pose_ids": [
+        "cavalier_p024",
+        "cavalier_p025",
+        "cavalier_p026",
+        "cavalier_p027",
+        "cavalier_p028",
+        "cavalier_p029"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_05_block_05.png",
+      "sha256": "d323f9dd446bd4870eca703111720cd2d1ef435a3d057dea97b8c8a553e37a39",
+      "pose_ids": [
+        "cavalier_p030",
+        "cavalier_p031",
+        "cavalier_p032",
+        "cavalier_p033",
+        "cavalier_p034",
+        "cavalier_p035",
+        "cavalier_p036",
+        "cavalier_p037"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_07_block_06.png",
+      "sha256": "11ec092729f04d3c7306ab137ff6e7d41a059e2b728319c873d2483d2e9933ce",
+      "pose_ids": [
+        "cavalier_p038",
+        "cavalier_p039",
+        "cavalier_p040"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_08_block_07.png",
+      "sha256": "331d94651020ff642057f0605fa6955eca2d4bb71bf7d2c9696579af541b1def",
+      "pose_ids": [
+        "cavalier_p040",
+        "cavalier_p039",
+        "cavalier_p038"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_09_block_08.png",
+      "sha256": "11ec092729f04d3c7306ab137ff6e7d41a059e2b728319c873d2483d2e9933ce",
+      "pose_ids": [
+        "cavalier_p038",
+        "cavalier_p039",
+        "cavalier_p040"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_10_block_09.png",
+      "sha256": "331d94651020ff642057f0605fa6955eca2d4bb71bf7d2c9696579af541b1def",
+      "pose_ids": [
+        "cavalier_p040",
+        "cavalier_p039",
+        "cavalier_p038"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_11_block_10.png",
+      "sha256": "97299f5a8a13225b34395b22231d77eef169ecda61cb564c0ebaa69ca0174870",
+      "pose_ids": [
+        "cavalier_p041",
+        "cavalier_p042",
+        "cavalier_p043",
+        "cavalier_p044",
+        "cavalier_p045",
+        "cavalier_p046",
+        "cavalier_p047",
+        "cavalier_p048",
+        "cavalier_p049",
+        "cavalier_p050"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_12_block_11.png",
+      "sha256": "470bd214421cafdf4a1bc64bf1b66fdf712bf34668606834e8a543e1cdf0d285",
+      "pose_ids": [
+        "cavalier_p041",
+        "cavalier_p051",
+        "cavalier_p052",
+        "cavalier_p053",
+        "cavalier_p054",
+        "cavalier_p055",
+        "cavalier_p056",
+        "cavalier_p057",
+        "cavalier_p058",
+        "cavalier_p059"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_13_block_12.png",
+      "sha256": "3ca89139217ca60ccf97d08abc19972e675ad2ea5ae272c1af2238158aa181f9",
+      "pose_ids": [
+        "cavalier_p060",
+        "cavalier_p061",
+        "cavalier_p062",
+        "cavalier_p063",
+        "cavalier_p064",
+        "cavalier_p062",
+        "cavalier_p065",
+        "cavalier_p061",
+        "cavalier_p060"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 20,
+      "block": 13,
+      "purpose_interpretation": "Movement start",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_20_block_13.png",
+      "sha256": "eec62b2350c77201843673fc88e41699cc539d258fd31f7ceb73899ec165a59d",
+      "pose_ids": [
+        "cavalier_p066",
+        "cavalier_p067",
+        "cavalier_p068"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Cavalier",
+      "creature_id": "cavalier",
+      "original_def_id": "CCAVLR",
+      "group": 21,
+      "block": 14,
+      "purpose_interpretation": "Movement end",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/cavalier/remaster_v01/group_21_block_14.png",
+      "sha256": "b984d9593afd3da30a25f8aac9173379e07681d0d7459d501e3b35cf11156cfa",
+      "pose_ids": [
+        "cavalier_p069",
+        "cavalier_p070",
+        "cavalier_p071",
+        "cavalier_p072"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_00_block_00.png",
+      "sha256": "fd3bd0d8b6fbfc7f420cb1bd20744d13c270df2a1e26675109379279fbdbfe6d",
+      "pose_ids": [
+        "champion_p000",
+        "champion_p001",
+        "champion_p002",
+        "champion_p003",
+        "champion_p004",
+        "champion_p005",
+        "champion_p006",
+        "champion_p007"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 5,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_01_block_01.png",
+      "sha256": "033c1782108a0a259e20aee7138822a7d22331a70c8070321f3d56191c3ce843",
+      "pose_ids": [
+        "champion_p008",
+        "champion_p009",
+        "champion_p010",
+        "champion_p011",
+        "champion_p012"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_02_block_02.png",
+      "sha256": "ec8d2eb6fd27afd6799c309e1f3b239a474155207be2aa267fb8bcc00c865bf5",
+      "pose_ids": [
+        "champion_p013",
+        "champion_p014",
+        "champion_p015",
+        "champion_p016"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_03_block_03.png",
+      "sha256": "78b4d08dfcb57da96faaa92ea17ffb8e3737cf8050ea02b61eb11bbbcd471fe2",
+      "pose_ids": [
+        "champion_p017",
+        "champion_p018",
+        "champion_p019",
+        "champion_p020",
+        "champion_p017",
+        "champion_p021",
+        "champion_p022",
+        "champion_p023"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_04_block_04.png",
+      "sha256": "36c465eb216afe65711cd9d9b678d727d906756b8ea7c89f06eab32799b2d715",
+      "pose_ids": [
+        "champion_p024",
+        "champion_p025",
+        "champion_p026",
+        "champion_p027",
+        "champion_p028",
+        "champion_p029"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_05_block_05.png",
+      "sha256": "449b2b465796fd26bb7ec8b07b40d3d35119e101a0c72d13698c9a89701d1080",
+      "pose_ids": [
+        "champion_p030",
+        "champion_p031",
+        "champion_p032",
+        "champion_p033",
+        "champion_p034",
+        "champion_p035",
+        "champion_p036",
+        "champion_p037"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_07_block_06.png",
+      "sha256": "531d6e46157ea7976525a06f52a1f8ff8f7eb4628479fabd51c202a1f344f844",
+      "pose_ids": [
+        "champion_p038",
+        "champion_p039",
+        "champion_p040"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_08_block_07.png",
+      "sha256": "b4e165a81e3f842fdd0e4502184fdc09e142dc48775af62b99d59f7e640e198f",
+      "pose_ids": [
+        "champion_p040",
+        "champion_p039",
+        "champion_p038"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_09_block_08.png",
+      "sha256": "531d6e46157ea7976525a06f52a1f8ff8f7eb4628479fabd51c202a1f344f844",
+      "pose_ids": [
+        "champion_p038",
+        "champion_p039",
+        "champion_p040"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_10_block_09.png",
+      "sha256": "b4e165a81e3f842fdd0e4502184fdc09e142dc48775af62b99d59f7e640e198f",
+      "pose_ids": [
+        "champion_p040",
+        "champion_p039",
+        "champion_p038"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_11_block_10.png",
+      "sha256": "df427db77bee6b6994a7e591dd76e426c524c7bc59adf1ef0fc4c65979af7b58",
+      "pose_ids": [
+        "champion_p041",
+        "champion_p042",
+        "champion_p043",
+        "champion_p044",
+        "champion_p045",
+        "champion_p046",
+        "champion_p047",
+        "champion_p048",
+        "champion_p049",
+        "champion_p050"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_12_block_11.png",
+      "sha256": "f4ed5e23473e9f4b7015e15a57b042dfbb653f16baca9bedc812288a938c61ac",
+      "pose_ids": [
+        "champion_p041",
+        "champion_p051",
+        "champion_p052",
+        "champion_p053",
+        "champion_p054",
+        "champion_p055",
+        "champion_p056",
+        "champion_p057",
+        "champion_p058",
+        "champion_p059"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 9,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_13_block_12.png",
+      "sha256": "c1928ac57742ed22dfa71c508e011119b313c298accef50d47404b557b97fb1f",
+      "pose_ids": [
+        "champion_p060",
+        "champion_p061",
+        "champion_p062",
+        "champion_p063",
+        "champion_p064",
+        "champion_p062",
+        "champion_p065",
+        "champion_p061",
+        "champion_p060"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 20,
+      "block": 13,
+      "purpose_interpretation": "Movement start",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_20_block_13.png",
+      "sha256": "84d7fb692c5bb4140b891f10540b52a0e407685428ef19dfec0b3972e919725b",
+      "pose_ids": [
+        "champion_p066",
+        "champion_p067",
+        "champion_p068"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Champion",
+      "creature_id": "champion",
+      "original_def_id": "CCHAMP",
+      "group": 21,
+      "block": 14,
+      "purpose_interpretation": "Movement end",
+      "frames": 4,
+      "flipbook": "assets/prototype/enemy/champion/remaster_v01/group_21_block_14.png",
+      "sha256": "c71b596da6fd772e3adf6009e2fa01b3fe9ff032bfe9b0fc952056c453ee9996",
+      "pose_ids": [
+        "champion_p069",
+        "champion_p070",
+        "champion_p071",
+        "champion_p072"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_00_block_00.png",
+      "sha256": "e77218062284ca565845400092c27b39277e7e68c373856b7081c50f380472a5",
+      "pose_ids": [
+        "angel_p000",
+        "angel_p001",
+        "angel_p002",
+        "angel_p003",
+        "angel_p004",
+        "angel_p005",
+        "angel_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_01_block_01.png",
+      "sha256": "97d19a4ca3db556503f3d42bf459eab42d2459c21ad39278439022428b58a001",
+      "pose_ids": [
+        "angel_p007",
+        "angel_p008",
+        "angel_p009",
+        "angel_p010",
+        "angel_p010",
+        "angel_p010",
+        "angel_p010",
+        "angel_p009",
+        "angel_p008",
+        "angel_p007"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_02_block_02.png",
+      "sha256": "2419e072d561711da7bc699ea4a5b2002174dc2f7bc89f646f0e7593edf2af1c",
+      "pose_ids": [
+        "angel_p011",
+        "angel_p012",
+        "angel_p013",
+        "angel_p014",
+        "angel_p015",
+        "angel_p014",
+        "angel_p013",
+        "angel_p012"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_03_block_03.png",
+      "sha256": "cf91040a8a2484e4d66dace5c783c92d935f84c6c06df349df94de3555af240c",
+      "pose_ids": [
+        "angel_p016",
+        "angel_p017",
+        "angel_p018",
+        "angel_p019",
+        "angel_p020",
+        "angel_p021"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_04_block_04.png",
+      "sha256": "fe2b1f1ac953586420a5bcdaccf28d70b7731b6513b7b25d45c3dbc9c3feed8a",
+      "pose_ids": [
+        "angel_p022",
+        "angel_p023",
+        "angel_p024",
+        "angel_p025",
+        "angel_p025",
+        "angel_p025",
+        "angel_p025",
+        "angel_p024",
+        "angel_p023",
+        "angel_p022"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_05_block_05.png",
+      "sha256": "0851c8589f41600b6b2a083b587e884bcb5ae3ca7178dbcbe7586eeec642add8",
+      "pose_ids": [
+        "angel_p016",
+        "angel_p017",
+        "angel_p026",
+        "angel_p027",
+        "angel_p028",
+        "angel_p029",
+        "angel_p030",
+        "angel_p031"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_07_block_06.png",
+      "sha256": "c18d0e9515b6f2c311b21107f5025c1830e90f8b946e8e7462d7c18b45644731",
+      "pose_ids": [
+        "angel_p032",
+        "angel_p033"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_08_block_07.png",
+      "sha256": "cf2af56c13e1f09387051d1663e0a748f3c4a6257f5159ae183f572e7cca0ab0",
+      "pose_ids": [
+        "angel_p033",
+        "angel_p032"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_09_block_08.png",
+      "sha256": "c18d0e9515b6f2c311b21107f5025c1830e90f8b946e8e7462d7c18b45644731",
+      "pose_ids": [
+        "angel_p032",
+        "angel_p033"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_10_block_09.png",
+      "sha256": "cf2af56c13e1f09387051d1663e0a748f3c4a6257f5159ae183f572e7cca0ab0",
+      "pose_ids": [
+        "angel_p033",
+        "angel_p032"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_11_block_10.png",
+      "sha256": "835519b804ffbbe2d411f6303e922eab3aacd4e969fdb05c3e1b332803e41dfa",
+      "pose_ids": [
+        "angel_p034",
+        "angel_p035",
+        "angel_p036",
+        "angel_p037",
+        "angel_p038",
+        "angel_p039"
+      ],
+      "exact_aliases": [
+        14
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_12_block_11.png",
+      "sha256": "a8b36b6e275fb94f017fd90bca2a6d7373f2627b102ad719123f6594b7c5d567",
+      "pose_ids": [
+        "angel_p040",
+        "angel_p041",
+        "angel_p042",
+        "angel_p043",
+        "angel_p044",
+        "angel_p045"
+      ],
+      "exact_aliases": [
+        15
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_13_block_12.png",
+      "sha256": "2e0069394fe8303547e0807fded51b17de2dabf968afdc91ecb6b1fb4728c48c",
+      "pose_ids": [
+        "angel_p046",
+        "angel_p047",
+        "angel_p048",
+        "angel_p049",
+        "angel_p050",
+        "angel_p051"
+      ],
+      "exact_aliases": [
+        16
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 14,
+      "block": 13,
+      "purpose_interpretation": "Ranged up slot",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_14_block_13.png",
+      "sha256": "835519b804ffbbe2d411f6303e922eab3aacd4e969fdb05c3e1b332803e41dfa",
+      "pose_ids": [
+        "angel_p034",
+        "angel_p035",
+        "angel_p036",
+        "angel_p037",
+        "angel_p038",
+        "angel_p039"
+      ],
+      "exact_aliases": [
+        11
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 15,
+      "block": 14,
+      "purpose_interpretation": "Ranged front slot",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_15_block_14.png",
+      "sha256": "a8b36b6e275fb94f017fd90bca2a6d7373f2627b102ad719123f6594b7c5d567",
+      "pose_ids": [
+        "angel_p040",
+        "angel_p041",
+        "angel_p042",
+        "angel_p043",
+        "angel_p044",
+        "angel_p045"
+      ],
+      "exact_aliases": [
+        12
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 16,
+      "block": 15,
+      "purpose_interpretation": "Ranged down slot",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_16_block_15.png",
+      "sha256": "2e0069394fe8303547e0807fded51b17de2dabf968afdc91ecb6b1fb4728c48c",
+      "pose_ids": [
+        "angel_p046",
+        "angel_p047",
+        "angel_p048",
+        "angel_p049",
+        "angel_p050",
+        "angel_p051"
+      ],
+      "exact_aliases": [
+        13
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 20,
+      "block": 16,
+      "purpose_interpretation": "Movement start",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_20_block_16.png",
+      "sha256": "065dcb0ce9a90c3c8777e6f36cbda80628399d8bdb8cdd51a11694783da72b40",
+      "pose_ids": [
+        "angel_p052",
+        "angel_p053"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Angel",
+      "creature_id": "angel",
+      "original_def_id": "cangel",
+      "group": 21,
+      "block": 17,
+      "purpose_interpretation": "Movement end",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/angel/remaster_v01/group_21_block_17.png",
+      "sha256": "e2137c8145140ddf389e7452eb0259cb2e31b2343c927e62e8174ae6da9fe60d",
+      "pose_ids": [
+        "angel_p054",
+        "angel_p055",
+        "angel_p056"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 0,
+      "block": 0,
+      "purpose_interpretation": "Movement",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_00_block_00.png",
+      "sha256": "22449ed78b281ca45fc92a89a9daa965c05112d8de879f369cbf8cd53acbf6f0",
+      "pose_ids": [
+        "archangel_p000",
+        "archangel_p001",
+        "archangel_p002",
+        "archangel_p003",
+        "archangel_p004",
+        "archangel_p005",
+        "archangel_p006"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 1,
+      "block": 1,
+      "purpose_interpretation": "Idle variation / hover",
+      "frames": 7,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_01_block_01.png",
+      "sha256": "ddd81f1bfc45acdc673a53716ad79b2e01974a93198dc08ce68675414060be13",
+      "pose_ids": [
+        "archangel_p007",
+        "archangel_p008",
+        "archangel_p009",
+        "archangel_p010",
+        "archangel_p009",
+        "archangel_p008",
+        "archangel_p007"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 2,
+      "block": 2,
+      "purpose_interpretation": "Idle",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_02_block_02.png",
+      "sha256": "f752c3e95c4955b36aa0ddffb145ec3c88f06f4e7e216a21d5488eee13cb9f59",
+      "pose_ids": [
+        "archangel_p011",
+        "archangel_p012",
+        "archangel_p013",
+        "archangel_p014",
+        "archangel_p015",
+        "archangel_p014",
+        "archangel_p013",
+        "archangel_p012"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 3,
+      "block": 3,
+      "purpose_interpretation": "Hit reaction",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_03_block_03.png",
+      "sha256": "44478724eec6ecf12fcb088c58ba089c070eacddb10d9f9b91cf625706a3930a",
+      "pose_ids": [
+        "archangel_p016",
+        "archangel_p017",
+        "archangel_p018",
+        "archangel_p019",
+        "archangel_p020",
+        "archangel_p021"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 4,
+      "block": 4,
+      "purpose_interpretation": "Defensive reaction",
+      "frames": 10,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_04_block_04.png",
+      "sha256": "87bbe1065134da3d27f8f359f0dd7a21b26074d0a16719d41310f6534a6e0757",
+      "pose_ids": [
+        "archangel_p022",
+        "archangel_p023",
+        "archangel_p024",
+        "archangel_p025",
+        "archangel_p025",
+        "archangel_p025",
+        "archangel_p025",
+        "archangel_p024",
+        "archangel_p023",
+        "archangel_p022"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 5,
+      "block": 5,
+      "purpose_interpretation": "Death",
+      "frames": 8,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_05_block_05.png",
+      "sha256": "5dc52a414cb9d062849d33c8a3d68d1ef589ab2fa22c3e79b23c03b19678370e",
+      "pose_ids": [
+        "archangel_p016",
+        "archangel_p017",
+        "archangel_p026",
+        "archangel_p027",
+        "archangel_p028",
+        "archangel_p029",
+        "archangel_p030",
+        "archangel_p031"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 7,
+      "block": 6,
+      "purpose_interpretation": "Turning phase 1",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_07_block_06.png",
+      "sha256": "c0d756bfb1e005131c403d2ee97ac0c9d6d480a08122a9ea61f7735b7f43e9bc",
+      "pose_ids": [
+        "archangel_p032",
+        "archangel_p033"
+      ],
+      "exact_aliases": [
+        9
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 8,
+      "block": 7,
+      "purpose_interpretation": "Turning phase 2",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_08_block_07.png",
+      "sha256": "b3d3d12acf0f4973d8bee789cf5381724c2403ff65c23497d5a74c983a2e3294",
+      "pose_ids": [
+        "archangel_p033",
+        "archangel_p032"
+      ],
+      "exact_aliases": [
+        10
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 9,
+      "block": 8,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_09_block_08.png",
+      "sha256": "c0d756bfb1e005131c403d2ee97ac0c9d6d480a08122a9ea61f7735b7f43e9bc",
+      "pose_ids": [
+        "archangel_p032",
+        "archangel_p033"
+      ],
+      "exact_aliases": [
+        7
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 10,
+      "block": 9,
+      "purpose_interpretation": "Legacy H3 slot",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_10_block_09.png",
+      "sha256": "b3d3d12acf0f4973d8bee789cf5381724c2403ff65c23497d5a74c983a2e3294",
+      "pose_ids": [
+        "archangel_p033",
+        "archangel_p032"
+      ],
+      "exact_aliases": [
+        8
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 11,
+      "block": 10,
+      "purpose_interpretation": "Melee up",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_11_block_10.png",
+      "sha256": "1a192e6b41c2cdf4d3550e941558b5772b8a5ef7a88184edac59b3b5137a08be",
+      "pose_ids": [
+        "archangel_p034",
+        "archangel_p035",
+        "archangel_p036",
+        "archangel_p037",
+        "archangel_p038",
+        "archangel_p039"
+      ],
+      "exact_aliases": [
+        14
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 12,
+      "block": 11,
+      "purpose_interpretation": "Melee front",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_12_block_11.png",
+      "sha256": "5b7df777bbe1b525e9f526b4ed9668a98a64d0bca47651ba80d20fe0f5b1e2d0",
+      "pose_ids": [
+        "archangel_p040",
+        "archangel_p041",
+        "archangel_p042",
+        "archangel_p043",
+        "archangel_p044",
+        "archangel_p045"
+      ],
+      "exact_aliases": [
+        15
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 13,
+      "block": 12,
+      "purpose_interpretation": "Melee down",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_13_block_12.png",
+      "sha256": "893ad43698492c6170c1e628d86ad7e45963f7512d5e99d8515c3d77fedb3e0c",
+      "pose_ids": [
+        "archangel_p046",
+        "archangel_p047",
+        "archangel_p048",
+        "archangel_p049",
+        "archangel_p050",
+        "archangel_p051"
+      ],
+      "exact_aliases": [
+        16
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 14,
+      "block": 13,
+      "purpose_interpretation": "Ranged up slot",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_14_block_13.png",
+      "sha256": "1a192e6b41c2cdf4d3550e941558b5772b8a5ef7a88184edac59b3b5137a08be",
+      "pose_ids": [
+        "archangel_p034",
+        "archangel_p035",
+        "archangel_p036",
+        "archangel_p037",
+        "archangel_p038",
+        "archangel_p039"
+      ],
+      "exact_aliases": [
+        11
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 15,
+      "block": 14,
+      "purpose_interpretation": "Ranged front slot",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_15_block_14.png",
+      "sha256": "5b7df777bbe1b525e9f526b4ed9668a98a64d0bca47651ba80d20fe0f5b1e2d0",
+      "pose_ids": [
+        "archangel_p040",
+        "archangel_p041",
+        "archangel_p042",
+        "archangel_p043",
+        "archangel_p044",
+        "archangel_p045"
+      ],
+      "exact_aliases": [
+        12
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 16,
+      "block": 15,
+      "purpose_interpretation": "Ranged down slot",
+      "frames": 6,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_16_block_15.png",
+      "sha256": "893ad43698492c6170c1e628d86ad7e45963f7512d5e99d8515c3d77fedb3e0c",
+      "pose_ids": [
+        "archangel_p046",
+        "archangel_p047",
+        "archangel_p048",
+        "archangel_p049",
+        "archangel_p050",
+        "archangel_p051"
+      ],
+      "exact_aliases": [
+        13
+      ],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 20,
+      "block": 16,
+      "purpose_interpretation": "Movement start",
+      "frames": 2,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_20_block_16.png",
+      "sha256": "8b5017e64f65550c7f65cb9ef229cec473a2238d01ef21104fe91fa842f36517",
+      "pose_ids": [
+        "archangel_p052",
+        "archangel_p053"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    },
+    {
+      "creature": "Archangel",
+      "creature_id": "archangel",
+      "original_def_id": "CRANGL",
+      "group": 21,
+      "block": 17,
+      "purpose_interpretation": "Movement end",
+      "frames": 3,
+      "flipbook": "assets/prototype/enemy/archangel/remaster_v01/group_21_block_17.png",
+      "sha256": "20d23e1498215114dd3d9560f2f08d93510bbd4f3abac2bdc35baac68007761a",
+      "pose_ids": [
+        "archangel_p054",
+        "archangel_p055",
+        "archangel_p056"
+      ],
+      "exact_aliases": [],
+      "artwork_status": "All frame positions supplied; generated/reused candidate art",
+      "original_timing_verified": false
+    }
+  ]
+}

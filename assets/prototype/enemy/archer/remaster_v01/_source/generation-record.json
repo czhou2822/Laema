@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "creature_id": "archer",
+  "date": "2026-10-23",
+  "art_tool": "image_gen.imagegen",
+  "source_type": "newly generated artwork from original HoMM3 pose guides plus existing high-resolution appearance reference; not recovered masters and not a pixel upscale",
+  "batches": [
+    {
+      "batch_index": 0,
+      "grid": [
+        4,
+        2
+      ],
+      "final_generated_png_sha256": "e0f4bfc7a896f6575c55bab0a6999ac9415a44978c076fd974bcc38b08b29a06",
+      "reference_guide": "assets/prototype/enemy/archer/remaster_v01/_source/reference-guides/batch_00_guide.png",
+      "prompt": "assets/prototype/enemy/archer/remaster_v01/_source/prompts/batch_00.prompt.txt",
+      "additional_cleanup_prompt": null
+    },
+    {
+      "batch_index": 1,
+      "grid": [
+        4,
+        2
+      ],
+      "final_generated_png_sha256": "48d191d02317990085648525ed2c0523d6066f552507d513eaba3e4935bdca3c",
+      "reference_guide": "assets/prototype/enemy/archer/remaster_v01/_source/reference-guides/batch_01_guide.png",
+      "prompt": "assets/prototype/enemy/archer/remaster_v01/_source/prompts/batch_01.prompt.txt",
+      "additional_cleanup_prompt": null
+    },
+    {
+      "batch_index": 2,
+      "grid": [
+        4,
+        2
+      ],
+      "final_generated_png_sha256": "71ca1ccb5064f2aae982f60c7129b260fd421213a8a0275264811d7c39588499",
+      "reference_guide": "assets/prototype/enemy/archer/remaster_v01/_source/reference-guides/batch_02_guide.png",
+      "prompt": "assets/prototype/enemy/archer/remaster_v01/_source/prompts/batch_02.prompt.txt",
+      "additional_cleanup_prompt": null
+    },
+    {
+      "batch_index": 3,
+      "grid": [
+        4,
+        2
+      ],
+      "final_generated_png_sha256": "e2c5ca35a2c2dc145244b04501b93581fdc542c11c25b9ed68a35973e0887332",
+      "reference_guide": "assets/prototype/enemy/archer/remaster_v01/_source/reference-guides/batch_03_guide.png",
+      "prompt": "assets/prototype/enemy/archer/remaster_v01/_source/prompts/batch_03.prompt.txt",
+      "additional_cleanup_prompt": "assets/prototype/enemy/archer/remaster_v01/_source/prompts/batch_03.cleanup.prompt.txt",
+      "cleanup_input_png": "assets/prototype/enemy/archer/remaster_v01/_source/intermediate/batch_03_before_cleanup.png"
+    },
+    {
+      "batch_index": 4,
+      "grid": [
+        4,
+        2
+      ],
+      "final_generated_png_sha256": "744d47efbc48481ae093ddd5ae6a115919604fecae38be1a6687b4828e4e7a48",
+      "reference_guide": "assets/prototype/enemy/archer/remaster_v01/_source/reference-guides/batch_04_guide.png",
+      "prompt": "assets/prototype/enemy/archer/remaster_v01/_source/prompts/batch_04.prompt.txt",
+      "additional_cleanup_prompt": null
+    }
+  ],
+  "appearance_reference": "assets/prototype/enemy/archer/highres_v01/Idle.png",
+  "technical_qa": "All generated drawings visually inspected for count/action/identity. Alpha, nonempty frames, boundary safety, source-order packing, original aliases and common creature-wide registration validated by castle_remaster_pipeline geometry v2.",
+  "quality_limits": [
+    "Technical completeness does not certify 1:1 hand-painted pose fidelity; fine silhouette, cloth folds and facial details vary between generated and reused art.",
+    "Original per-frame timings are unavailable in DEF extraction; no timing or gameplay changes made.",
+    "Existing reuse art remains a candidate mapping rather than original-pose fidelity certification."
+  ]
+}

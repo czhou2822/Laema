@@ -1,0 +1,28 @@
+{
+  "review_date": "2026-10-23",
+  "artwork_type": "New imagegen remaster drawn from original HoMM3 flipbook poses; not recovered original high-resolution masters",
+  "review_scope": [
+    "All generation references inspected before drawing",
+    "All generated raw batches visually inspected for character count, broad pose/action, equipment, orientation and transparency",
+    "Distinct walking, idle/fidget, hurt, defence, death, turning and directional attack poses retained",
+    "Technical RGBA/nonempty/no-edge preflight on each ingested batch",
+    "Group frame ordering and exact original aliases preserved by manifest"
+  ],
+  "limitations": [
+    "These are generated/reused art candidates; exact limb, cloth and weapon parity against every native pixel pose is not certified",
+    "Original DEF extraction has no frame durations; no timing invented",
+    "Sequential rendered playback and human in-game acceptance remain pending",
+    "Hand-painted generated art introduces fine-detail differences between frames; identity refs constrain design but do not guarantee zero flicker"
+  ],
+  "creature_id": "champion",
+  "source_guide": "Original per-pose crop from source metadata, original pose ordering in source_manifest.json",
+  "observed_design": "Silver-and-gold mounted knight, gold flowing helmet crest, blue/white shield and horse barding, brown horse, red/white lance",
+  "rejected_generation": [],
+  "technical_validation": {
+    "complete_groups": 15,
+    "total_groups": 15,
+    "unique_poses": 73,
+    "source_frame_positions": 87,
+    "errors": []
+  }
+}

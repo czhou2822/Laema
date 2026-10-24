@@ -1,0 +1,49 @@
+{
+  "operation": "technical source crop and row-major repacking; no drawn/recolored pixels",
+  "parent_source": "assets/prototype/enemy/zealot/remaster_v01/_source/batch-08-original-selection-source.png",
+  "parent_sha256": "2a5c4ee4f5d9274d3d2a5c3528b7ec6cfce0eb09188e47cbaa97bcd1822bf08d",
+  "source_crop_regions_ltrb": [
+    [
+      887,
+      0,
+      1331,
+      480
+    ],
+    [
+      1331,
+      0,
+      1774,
+      480
+    ],
+    [
+      0,
+      480,
+      444,
+      887
+    ]
+  ],
+  "target_xy": [
+    [
+      3,
+      5
+    ],
+    [
+      453,
+      5
+    ],
+    [
+      903,
+      5
+    ]
+  ],
+  "target_canvas": [
+    1350,
+    500
+  ],
+  "selected_pose_ids": [
+    "zealot_p066",
+    "zealot_p067",
+    "zealot_p068"
+  ],
+  "reason": "Retain correctly dissipating sparks and unaffected idle/step drawings from otherwise rejected page; top two globally clipped figures were repainted separately."
+}
