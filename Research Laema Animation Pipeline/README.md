@@ -4,7 +4,7 @@ Original-character animation R&D, 23 October 2026 (Hong Kong).
 
 **Local status: v08 now has an actual isolated game trial; human visual approval is pending.** Latest integration: the user requested "put it into the game and lets see". [v08 actual-game trial](trials/2026-10-23-v08-game-integration/README.md) is a fresh isolated Gym copy. [The current replay](trials/2026-10-23-v08-game-integration/review.html) compares real current-art/v08 viewports; a separate normal-controls playable window was opened. Only copied X1 artwork/drawing keys changed. Both sequences observed X1 contact/orb/Charging/Cast impact/Dodge/incoming interruption. Source gameplay is unchanged. Variable sample intervals, pre-command controller events, scheduling limits and retained shutdown warnings are recorded in its evidence. Human visual acceptance remains pending; this test request does not approve artwork or propagation. Current game remains the last stated overall preference. This newer run supersedes older "last integration v02" statements only within its stated scope.
 
-The cloud bundle did not reach this checkout. Text sources and the exact study data were recovered from retained history; original cloud media and its complete manifest remain unavailable. The viewer's missing tail was rebuilt and labeled. [New local Godot captures](local-review/) are separate evidence. The original download links below describe the historical bundle and may be unavailable here.
+The original cloud bundle has now been restored by merge. Its exact published snapshot, including media, original viewer, verification and manifest, is preserved in [history/cloud-publication-3fd153b6](history/cloud-publication-3fd153b6/README.md). The later local A-selected/Combat-assigned work and v08 records remain current. [Merge reconciliation](MERGE_RECONCILIATION.md) explains the scope; [local Godot captures](local-review/) remain separate evidence, not the restored cloud bytes.
 
 ## Start here
 
@@ -12,8 +12,8 @@ The cloud bundle did not reach this checkout. Text sources and the exact study d
 - [Local continuation prompt](CONTINUE_LOCAL.md)
 - [Detailed illustrated report](report.html) — open locally in a browser.
 - [Interactive A/B/C motion comparison](review.html) — offline HTML with embedded data.
-- [Local original-study motion capture](local-review/heat0-right.webp), [fixed Heat100](local-review/heat100-right.webp) and mirrored captures in local-review/. The original cloud MP4/key-pose board were not recovered.
-- The original source-timed live-sheet video was not recovered; its script and historical findings are retained. It was not recorded gameplay.
+- [Local original-study motion capture](local-review/heat0-right.webp), [fixed Heat100](local-review/heat100-right.webp) and mirrored captures in local-review/ remain the later local evidence. [Restored cloud motion video](motion-studies.mp4) and [key-pose board](motion-keyposes.png) are the original published studies.
+- [Restored cloud live-sheet video](evidence/live-baseline.mp4) is a source-timed reconstruction, not recorded gameplay. Restoring it adds no new runtime evidence.
 - [Standalone Godot preview](preview/project.godot) and [controls/verification](preview/README.md).
 - [Effort worksheet](effort-log.csv), [round state](evidence/round-record.json) and [file hashes](artifact-manifest.json).
 
@@ -40,11 +40,10 @@ These were three unranked, provisional Fire X1 studies: 32 original joint keys, 
 
 ![Three original motion studies](motion-keyposes.png)
 
-## Evidence boundaries
+## Historical cloud evidence boundaries
 
 The inspected game revision is `16b4c3b7199589439a276881eca7516cc0f7401c`. Findings are historical to that revision until checked against a newer local tree.
 
 The browser renderer was checked in Chromium; its exported motion video is 12 seconds at 1280×720/60fps. The standalone preview passed Godot 4.6.3 headless import, 219 pose samples and 120 execution frames. The main game declares a 4.7 feature target. No graphical Godot capture, current-product playtest, contact adaptation, human motion approval or production-readiness evidence was established in this round.
 
 Existing gameplay, production art, canonical GDD/TDR and department records are unchanged by this publication. Department assignment for this new task remains unconfirmed. No chat transcripts, restoration dispatch or full checkpoint save is included.
-

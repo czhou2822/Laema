@@ -5,7 +5,7 @@
 :root{color-scheme:dark;--ink:#e8edf3;--dim:#a2b1c2;--line:#304356;--bg:#101923;--card:#192634;--mint:#6ed1bd;--gold:#efbe75}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:64px 28px 100px}h1{font-size:clamp(32px,5vw,58px);line-height:1.1;letter-spacing:-.035em;margin:20px 0}h2{font-size:26px;margin:46px 0 16px}h3{margin:10px 0}p{max-width:88ch}a{color:var(--mint)}.eyebrow{letter-spacing:.15em;color:var(--mint);font-size:12px;text-transform:uppercase}.lede{font-size:21px;color:#c9d6e3}.muted,small{color:var(--dim)}.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:14px;margin:22px 0}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.button{display:inline-block;background:#244438;padding:12px 20px;border:1px solid #4c8876;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600}.button.secondary{background:var(--card);border-color:var(--line)}table{border-collapse:collapse;width:100%;font-size:14px;margin:18px 0}td,th{border-bottom:1px solid var(--line);padding:12px 10px;text-align:left;vertical-align:top}th{color:var(--dim);font-size:12px;letter-spacing:.04em}code{color:#cfdfec;font-size:13px}video,img{max-width:100%;border-radius:12px;background:#0c141d}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.pill{color:var(--gold);border:1px solid #685638;border-radius:5px;padding:4px 9px;font-size:12px}li{margin:8px 0}hr{border:0;border-top:1px solid var(--line);margin:38px 0}@media(max-width:760px){.grid{grid-template-columns:1fr}main{padding:30px 18px}table{display:block;overflow-x:auto}}
 </style>
 <main>
-<div class="box"><strong>Historical cloud report.</strong> The user subsequently selected A and assigned this R&D to Combat. Actual method trials and local graphical Godot evidence are now available. Read <a href="LOCAL_RECONCILIATION.md">local reconciliation</a> and <a href="trials/2026-10-23-A-v01/comparison.html">the current synchronized comparison</a>. Original cloud media linked below was not recovered. No production workflow or contact adaptation is approved.</div>
+<div class="box"><strong>Historical cloud report with later local context.</strong> A is selected and this R&D belongs to Combat. Read <a href="LOCAL_RECONCILIATION.md">local reconciliation</a> and <a href="trials/2026-10-23-v08-game-integration/review.html">the current v08 comparison</a>. Original cloud media is restored, with the unchanged publication in <a href="history/cloud-publication-3fd153b6/report.html">the historical snapshot</a>. No production workflow or contact adaptation is approved.</div>
 <div class="eyebrow">Laema · Character animation pipeline R&D · 23 October 2026</div>
 <h1>Approve the movement<br>before the artwork.</h1>
 <p class="lede">Phase 1 diagnosis and three original Fire X1 motion studies. The production-method comparison begins after a motion is selected.</p>
@@ -26,6 +26,7 @@
 </table>
 <p>Prior X2 revisions through v07 and the X5 posture/shield corrections demonstrate repeated correction work. Complete-pose regeneration can change details outside the requested repair. No reliable retrospective labor times were found; no historical hours are invented here.</p>
 
+<p>Restored static inspection evidence: <a href="evidence/live-contact.png">live-frame contact sheet</a> · <a href="evidence/equipment-details.png">equipment details</a> · <a href="evidence/reference-context.png">reference context</a>.</p>
 <h2>Current playback contract</h2>
 <table>
 <tr><th>Move</th><th>Distinct live drawings</th><th>Heat 0 duration</th><th>Heat 0 contact / launch</th><th>Fixed Heat 100 duration</th></tr>
@@ -51,8 +52,8 @@
 <tr><th>Study phase</th><th>Heat 0 authored time</th><th>Meaning</th></tr>
 <tr><td>Anticipation</td><td>0–0.126 s</td><td>Body load and clear blade chamber; readable response starts before hit-capable time.</td></tr>
 <tr><td>Release / impact-emphasis poses</td><td>Approximately 0.126–0.210 s</td><td>A emphasis 0.158; B 0.151–0.190; C 0.162–0.210. These are artistic pose accents, not hit-event times.</td></tr>
-<tr><td>Follow-through / braking</td><td>0.210–0.5075 s</td><td>Distinct low / level / high endings. Existing contact remains possible across this interval; selected motion must be checked against it.</td></tr>
-<tr><td>Recovery to common guard</td><td>0.5075–0.720 s</td><td>Stable feet and return to an explicit reusable endpoint.</td></tr>
+<tr><td>Follow-through / braking</td><td>A/B: 0.210–0.340 s; C: 0.210–0.440 s</td><td>Distinct low / level / high endings. Existing contact remains possible during braking and early recovery; selected motion must be checked against the full window.</td></tr>
+<tr><td>Recovery to common guard</td><td>A/B: 0.340–0.720 s; C: 0.440–0.720 s</td><td>Stable feet and return to an explicit reusable endpoint. This visual recovery starts while the existing contact window is still open.</td></tr>
 </table>
 <p>At fixed Heat 100 divide these times by 1.5. The ground anchor is fixed, the blade is a constant 88-pixel blocking shape, and fine costume/anatomy are omitted. The prototype's existing 3-pixel body lunge is not simulated. These choices isolate movement; they do not establish final weapon dimensions or character proportions.</p>
 <img src="motion-keyposes.png" alt="Three original motion studies at key phases">
@@ -96,4 +97,3 @@
 <hr>
 <p class="muted">Primary sources in the parent Laema checkout: <code>AGENTS.md</code>; <code>docs/GAME_DESIGN.md</code>; <code>docs/TECH_ARCHITECTURE.md</code>; <code>docs/IMPLEMENTATION_STATUS.md</code>; <code>docs/ATTACK_STYLES.md</code>; <code>docs/art/ART_DIRECTION.md</code>; <code>docs/art/handoffs/2026-10-21-fire-x1-x5-pose-match/HANDOFF.md</code>; <code>config/attack_animations/*.tres</code>; <code>config/attack_styles/fire_x*.tres</code>; <code>scenes/player/player.tscn</code>; <code>scripts/combat/{might_component,attack_style,attack_geometry,heat_controller}.gd</code>; <code>scripts/player/player.gd</code>. See live-contract.json for exact current textures and hashes. Department assignment remains unconfirmed; no routing metadata was invented.</p>
 </main></html>
-

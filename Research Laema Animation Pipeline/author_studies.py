@@ -74,4 +74,3 @@ data = {
 }
 (ROOT/'study-data.json').write_text(json.dumps(data,indent=2)+'\n')
 print('Wrote three original proposals, 32 keys; no source animation input.')
-

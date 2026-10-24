@@ -1,4 +1,10 @@
-Laema original animation R&D - motion review 01 (2026-10-23)
+Laema original animation R&D - historical motion review 01 (2026-10-23)
+
+MERGED CONTINUITY: Read README.md and MERGE_RECONCILIATION.md for current state.
+A is already selected; this task is assigned to Combat, and later local v08
+isolated-game evidence remains current. The instructions below describe the
+original cloud round, not a renewed selection gate. Its exact published bundle
+is preserved under history/cloud-publication-3fd153b6/.
 
 Start with report.html. Open review.html in a local browser for interactive
 motion comparison; it works offline. The report explains the current-source
@@ -23,4 +29,3 @@ author_studies.py reproduces study-data.json without animation inputs.
 review.html and preview/study-data.json embed/copy that same source data.
 render_baseline.py requires the parent Laema checkout and Pillow/FFmpeg to
 rebuild diagnostic baseline media; the included files need no regeneration.
-

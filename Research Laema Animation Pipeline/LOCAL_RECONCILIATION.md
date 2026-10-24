@@ -1,5 +1,16 @@
 # Local continuation — 23 October 2026
 
+## Merge update — 24 October 2026
+
+The original publication from `3fd153b6` has now been recovered through the
+incoming main history. [The complete immutable snapshot](history/cloud-publication-3fd153b6/README.md)
+preserves its original text, scripts, preview UID, media and manifest separately
+from this later local work. The root now also has the nine original media/evidence
+files previously missing here. Earlier missing-bundle statements below describe
+the recovery-time limitation, not current availability. A remains selected, the
+task remains assigned to Combat, and the v08 local evidence and review limits are
+unchanged. Restoring files is not a new engine run or visual acceptance.
+
 Latest integration: the user requested "put it into the game and lets see". [v08 actual-game trial](trials/2026-10-23-v08-game-integration/README.md) is a fresh isolated Gym copy. [The current replay](trials/2026-10-23-v08-game-integration/review.html) compares real current-art/v08 viewports; a separate normal-controls playable window was opened. Only copied X1 artwork/drawing keys changed. Both sequences observed X1 contact/orb/Charging/Cast impact/Dodge/incoming interruption. Source gameplay is unchanged. Variable sample intervals, pre-command controller events, scheduling limits and retained shutdown warnings are recorded in its evidence. Human visual acceptance remains pending; this test request does not approve artwork or propagation. Current game remains the last stated overall preference. This newer run supersedes older "last integration v02" statements only within its stated scope.
 
 Current source is d97c728021ec0cbc3a5e3a6483620150d7ab18a6. Compared with inspected16b4c3b7199589439a276881eca7516cc0f7401c, its only committed addition is the HoMM3 research folder. Product source/assets/configuration are unchanged. The initial local tree was clean; later independent HoMM3 local-trials work was preserved.

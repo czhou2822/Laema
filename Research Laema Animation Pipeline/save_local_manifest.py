@@ -1,4 +1,4 @@
-"""Inventory this local R&D recovery; never stages, commits or changes product files."""
+"""Inventory merged R&D continuity; never stages, commits or changes product files."""
 from pathlib import Path
 import hashlib,json,subprocess
 ROOT=Path(__file__).parent
@@ -18,6 +18,6 @@ files=[]
 for p in sorted(ROOT.rglob('*')):
     if p.is_file() and not set(p.parts)&{'.godot','__pycache__','captures','captures-v03'} and p.name!='artifact-manifest.json':
         files.append({'path':p.relative_to(ROOT).as_posix(),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
-manifest={'kind':'current local recovery and R&D inventory; not original cloud manifest or project checkpoint','source_data_sha256':hashlib.sha256(data.read_bytes()).hexdigest(),'product_protected_diff_paths':changed,'excluded_inventory':'Reproducible derived PNG capture folders and engine cache; files remain locally preserved. Compressed review media included.','files':files}
+manifest={'kind':'current reconciled local/cloud R&D inventory; not original cloud manifest or project checkpoint','source_data_sha256':hashlib.sha256(data.read_bytes()).hexdigest(),'product_protected_diff_paths':changed,'cloud_publication_revision':'3fd153b68f2666059bb768f90ff0898fc7f74120','original_cloud_snapshot':'history/cloud-publication-3fd153b6','excluded_inventory':'Derived PNG capture folders, engine caches and artifact-manifest.json files are excluded; originals remain preserved. Compressed review media and restored cloud files are included.','files':files}
 (ROOT/'artifact-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8',newline='\n')
 print('Local inventory saved; protected product/canonical paths unchanged; exact original motion data verified.')

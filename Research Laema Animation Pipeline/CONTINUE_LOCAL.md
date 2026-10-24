@@ -1,5 +1,10 @@
 # Local continuation prompt
 
+Merge update, 2026-10-24: original cloud media and the complete original bundle
+are restored in [the historical snapshot](history/cloud-publication-3fd153b6/README.md).
+The newer decisions and v08 evidence below remain current. Do not restart the
+older motion-selection or department-assignment gate; see [merge reconciliation](MERGE_RECONCILIATION.md).
+
 Latest integration: the user requested "put it into the game and lets see". [v08 actual-game trial](trials/2026-10-23-v08-game-integration/README.md) is a fresh isolated Gym copy. [The current replay](trials/2026-10-23-v08-game-integration/review.html) compares real current-art/v08 viewports; a separate normal-controls playable window was opened. Only copied X1 artwork/drawing keys changed. Both sequences observed X1 contact/orb/Charging/Cast impact/Dodge/incoming interruption. Source gameplay is unchanged. Variable sample intervals, pre-command controller events, scheduling limits and retained shutdown warnings are recorded in its evidence. Human visual acceptance remains pending; this test request does not approve artwork or propagation. Current game remains the last stated overall preference. This newer run supersedes older "last integration v02" statements only within its stated scope.
 
 Latest feedback: v05's blade angle changed but wrist-to-sword relationship stayed wrong. The user said v06's close-up connection read better, then reported no visible v05/v06 difference. Preserve both statements: v06 changed detail only, not wrist geometry/motion, and did not solve the structural problem. v07 cosmetic propagation stopped with0 image requests. [v08](trials/2026-10-23-x1-structural-grip-v08/README.md) is one structural pose using distinct elbow/wrist/palm/hilt targets. It changes arm silhouette (486 inspected alpha pixels), with open body/equipment drift. The [current tool](trials/2026-10-23-x1-structural-grip-v08/review.html) is frozen at key7 and provides4× crops plus inspection-only blink; optional one-key context is not a corrected animation. Native evidence is four static Godot snapshots, not a full-motion/integrated run. Await structural pose review before propagation. Current game remains preferred; no workflow winner, production art or gameplay/contact change exists.3D remains untested. Source v05 and prior raw/failed outputs remain intact.
@@ -41,4 +46,3 @@ Produce comparable playable Godot previews and synchronized comparisons. Review 
 
 Recommend the production workflow only after demonstrated comparable results and total correction effort. Do not bulk-replace existing animations, change gameplay to hide animation problems, publish a live build, or claim production readiness without my visual review. Do not treat this continuation as motion approval. Continue authorized independent work without repeating settled approvals or adding unnecessary gates.
 ```
-

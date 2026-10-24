@@ -95,4 +95,3 @@ Use [effort-log.csv](effort-log.csv) for actual setup, authoring, wait, correcti
 - Standalone Godot: 4.6.3 headless import, 219 pose samples, 120 execution frames. [Evidence](preview/verification.json). The main game declares 4.7. No graphical Godot or integrated combat validation is claimed.
 - No motion approval, final-art approval, method winner, bulk replacement or production-readiness claim.
 - Publication adds only this isolated research folder. Product sources, gameplay resources, canonical documents and department routing are unchanged.
-

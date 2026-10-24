@@ -51,4 +51,3 @@ Use `--heat100`, `--slow` or `--left` to alter capture playback. Frame output is
 
 In a filesystem sandbox, set `XDG_DATA_HOME`, `XDG_CONFIG_HOME` and
 `XDG_CACHE_HOME` to writable task directories before launching Godot.
-

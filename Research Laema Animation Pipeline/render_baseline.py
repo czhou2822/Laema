@@ -88,4 +88,3 @@ for n in range(720):
 process.stdin.close()
 assert process.wait()==0
 print('Rendered 12s source-timed baseline at60fps; JSON pins cells, exposures and hashes.')
-

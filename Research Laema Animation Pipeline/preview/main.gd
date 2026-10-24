@@ -319,4 +319,3 @@ func _draw_timeline() -> void:
 		draw_string(font, Vector2(tx, y + 34), str(marker[1]), HORIZONTAL_ALIGNMENT_LEFT, -1, 12, MUTED)
 	var current := x + clampf(playhead, 0, DURATION) / DURATION * w
 	draw_line(Vector2(current, y - 8), Vector2(current, y + 19), Color.WHITE, 2)
-
