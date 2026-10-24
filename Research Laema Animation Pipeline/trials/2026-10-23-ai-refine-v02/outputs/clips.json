@@ -1,0 +1,367 @@
+{
+  "selected_method": "AI strip; user-authorized refinement/reuse trial",
+  "cell": [
+    448,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "clips": [
+    {
+      "id": "x1_before",
+      "label": "X1 preferred / 10 keys",
+      "file": "x1-before.png",
+      "columns": 5,
+      "duration": 0.72,
+      "times": [
+        0,
+        0.05,
+        0.1,
+        0.126,
+        0.158,
+        0.21,
+        0.34,
+        0.5075,
+        0.62,
+        0.72
+      ]
+    },
+    {
+      "id": "x1_refined",
+      "label": "X1 refinement / 16 keys",
+      "file": "x1-refined.png",
+      "columns": 8,
+      "duration": 0.72,
+      "times": [
+        0,
+        0.05,
+        0.075,
+        0.1,
+        0.126,
+        0.142,
+        0.158,
+        0.184,
+        0.21,
+        0.265,
+        0.34,
+        0.425,
+        0.5075,
+        0.565,
+        0.62,
+        0.72
+      ]
+    },
+    {
+      "id": "cast_reuse",
+      "label": "Second action / original Cast",
+      "file": "cast-reuse.png",
+      "columns": 4,
+      "duration": 1.2,
+      "times": [
+        0,
+        0.12,
+        0.24,
+        0.288,
+        0.42,
+        0.68,
+        0.92,
+        1.2
+      ]
+    }
+  ],
+  "added_drawing_origins": [
+    {
+      "t": 0,
+      "source": "preferred_original_key"
+    },
+    {
+      "t": 0.05,
+      "source": "preferred_original_key"
+    },
+    {
+      "t": 0.075,
+      "source": "new_AI_inbetween"
+    },
+    {
+      "t": 0.1,
+      "source": "preferred_original_key"
+    },
+    {
+      "t": 0.126,
+      "source": "preferred_original_key"
+    },
+    {
+      "t": 0.142,
+      "source": "new_AI_inbetween"
+    },
+    {
+      "t": 0.158,
+      "source": "preferred_original_key"
+    },
+    {
+      "t": 0.184,
+      "source": "new_AI_inbetween"
+    },
+    {
+      "t": 0.21,
+      "source": "preferred_original_key"
+    },
+    {
+      "t": 0.265,
+      "source": "new_AI_inbetween"
+    },
+    {
+      "t": 0.34,
+      "source": "preferred_original_key"
+    },
+    {
+      "t": 0.425,
+      "source": "new_AI_inbetween"
+    },
+    {
+      "t": 0.5075,
+      "source": "preferred_original_key"
+    },
+    {
+      "t": 0.565,
+      "source": "new_AI_inbetween"
+    },
+    {
+      "t": 0.62,
+      "source": "preferred_original_key"
+    },
+    {
+      "t": 0.72,
+      "source": "preferred_original_key"
+    }
+  ],
+  "x1": {
+    "raw_file": "x1-inbetweens-attempt02.png",
+    "raw_size": [
+      1774,
+      887
+    ],
+    "raw_sha256": "42b6f04c81a9f09601f4440a11627087feb5c1f7d2454ef4b2283509e9423c95",
+    "reused_decoder_definitions": [
+      "components",
+      "component_crop"
+    ],
+    "new_decoder_algorithm": false,
+    "global_scale": 0.5607476635514018,
+    "column_pitch": 443.5,
+    "row_pitch": 420.0,
+    "guard_head_y_from_fixed_center_stripe": 121,
+    "guard_foot_y": 442.0,
+    "per_frame_recentering": false,
+    "frames": [
+      {
+        "frame": 0,
+        "source_bbox": [
+          85,
+          96,
+          404,
+          442
+        ],
+        "lowest_opaque_row_drift_world": 0.0
+      },
+      {
+        "frame": 1,
+        "source_bbox": [
+          557,
+          9,
+          802,
+          444
+        ],
+        "lowest_opaque_row_drift_world": 1.1214953271028036
+      },
+      {
+        "frame": 2,
+        "source_bbox": [
+          990,
+          65,
+          1280,
+          444
+        ],
+        "lowest_opaque_row_drift_world": 1.1214953271028036
+      },
+      {
+        "frame": 3,
+        "source_bbox": [
+          1433,
+          153,
+          1764,
+          444
+        ],
+        "lowest_opaque_row_drift_world": 1.1214953271028036
+      },
+      {
+        "frame": 4,
+        "source_bbox": [
+          117,
+          557,
+          388,
+          863
+        ],
+        "lowest_opaque_row_drift_world": 0.5607476635514018
+      },
+      {
+        "frame": 5,
+        "source_bbox": [
+          560,
+          547,
+          843,
+          865
+        ],
+        "lowest_opaque_row_drift_world": 1.6822429906542054
+      },
+      {
+        "frame": 6,
+        "source_bbox": [
+          986,
+          544,
+          1325,
+          864
+        ],
+        "lowest_opaque_row_drift_world": 1.1214953271028036
+      },
+      {
+        "frame": 7,
+        "source_bbox": [
+          1424,
+          513,
+          1735,
+          864
+        ],
+        "lowest_opaque_row_drift_world": 1.1214953271028036
+      }
+    ],
+    "machine_extract_seconds": 0.0547554999939166
+  },
+  "cast": {
+    "raw_file": "cast-attempt02.png",
+    "raw_size": [
+      1774,
+      887
+    ],
+    "raw_sha256": "c470b4d808fa1b3bd50ca52f6b94cd1131b66710ff308c5b117b34b5e10a02b1",
+    "reused_decoder_definitions": [
+      "components",
+      "component_crop"
+    ],
+    "new_decoder_algorithm": false,
+    "global_scale": 0.5572755417956656,
+    "column_pitch": 443.5,
+    "row_pitch": 436.0,
+    "guard_head_y_from_fixed_center_stripe": 114,
+    "guard_foot_y": 437.0,
+    "per_frame_recentering": false,
+    "frames": [
+      {
+        "frame": 0,
+        "source_bbox": [
+          71,
+          110,
+          383,
+          437
+        ],
+        "lowest_opaque_row_drift_world": 0.0
+      },
+      {
+        "frame": 1,
+        "source_bbox": [
+          549,
+          11,
+          786,
+          438
+        ],
+        "lowest_opaque_row_drift_world": 0.5572755417956656
+      },
+      {
+        "frame": 2,
+        "source_bbox": [
+          1006,
+          4,
+          1251,
+          438
+        ],
+        "lowest_opaque_row_drift_world": 0.5572755417956656
+      },
+      {
+        "frame": 3,
+        "source_bbox": [
+          1448,
+          4,
+          1694,
+          438
+        ],
+        "lowest_opaque_row_drift_world": 0.5572755417956656
+      },
+      {
+        "frame": 4,
+        "source_bbox": [
+          87,
+          445,
+          330,
+          874
+        ],
+        "lowest_opaque_row_drift_world": 0.5572755417956656
+      },
+      {
+        "frame": 5,
+        "source_bbox": [
+          541,
+          506,
+          799,
+          874
+        ],
+        "lowest_opaque_row_drift_world": 0.5572755417956656
+      },
+      {
+        "frame": 6,
+        "source_bbox": [
+          992,
+          549,
+          1307,
+          874
+        ],
+        "lowest_opaque_row_drift_world": 0.5572755417956656
+      },
+      {
+        "frame": 7,
+        "source_bbox": [
+          1434,
+          553,
+          1742,
+          874
+        ],
+        "lowest_opaque_row_drift_world": 0.5572755417956656
+      }
+    ],
+    "machine_extract_seconds": 0.05753629998071119
+  },
+  "explicit_endpoint_reuses": {
+    "cast": [
+      0,
+      7
+    ]
+  },
+  "explicit_peak_reuses": {
+    "cast": {
+      "source_frame": 2,
+      "reused_frames": [
+        3,
+        4
+      ],
+      "reason": "Stable ear-height grip through launch; avoids the clipped tip of generated frame3 and unnecessary high-hold drift."
+    }
+  },
+  "gameplay_changes": false,
+  "human_visual_acceptance": false,
+  "notes": [
+    "Ten preferred original X1 drawings are byte-preserved as normalized source cells; six generated inbetweens added.",
+    "The second action was authored from new joint targets and a fixed existing launch anchor, not an old Cast sequence.",
+    "Extraction head-stripe calibration is a measured trial assumption requiring visual QA."
+  ]
+}

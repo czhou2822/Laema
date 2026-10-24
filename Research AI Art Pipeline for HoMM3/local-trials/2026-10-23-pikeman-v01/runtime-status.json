@@ -1,0 +1,75 @@
+{
+  "system": {
+    "os": "win32",
+    "ram_total": 33396543488,
+    "ram_free": 5024837632,
+    "comfyui_version": "0.42.0",
+    "required_frontend_version": "1.57.1",
+    "installed_templates_version": null,
+    "required_templates_version": "0.11.96",
+    "comfy_package_versions": [
+      {
+        "name": "comfyui-frontend-package",
+        "installed": "1.57.1",
+        "required": "1.57.1"
+      },
+      {
+        "name": "comfyui-workflow-templates",
+        "installed": null,
+        "required": "0.11.96"
+      },
+      {
+        "name": "comfyui-embedded-docs",
+        "installed": "0.5.14",
+        "required": "0.5.14"
+      },
+      {
+        "name": "comfy-aimdo",
+        "installed": "0.6.0",
+        "required": "0.6.0"
+      },
+      {
+        "name": "comfy-kitchen",
+        "installed": "0.2.40",
+        "required": "0.2.40"
+      }
+    ],
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "pytorch_version": "2.9.1+cu128",
+    "embedded_python": false,
+    "deploy_environment": "local-git",
+    "argv": [
+      "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\ComfyUI\\main.py",
+      "--listen",
+      "127.0.0.1",
+      "--port",
+      "8189",
+      "--extra-model-paths-config",
+      "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\model_paths.yaml",
+      "--input-directory",
+      "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\Research AI Art Pipeline for HoMM3\\local-trials\\2026-10-23-pikeman-v01\\inputs",
+      "--output-directory",
+      "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\outputs",
+      "--disable-all-custom-nodes",
+      "--offline",
+      "--preview-method",
+      "none",
+      "--cache-lru",
+      "12",
+      "--bf16-vae",
+      "--reserve-vram",
+      "2"
+    ]
+  },
+  "devices": [
+    {
+      "name": "cuda:0 NVIDIA GeForce RTX 4090 : cudaMallocAsync",
+      "type": "cuda",
+      "index": 0,
+      "vram_total": 25756696576,
+      "vram_free": 24154996736,
+      "torch_vram_total": 0,
+      "torch_vram_free": 0
+    }
+  ]
+}

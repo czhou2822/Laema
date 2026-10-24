@@ -1,0 +1,519 @@
+{
+  "status": "executed",
+  "task": "hero",
+  "tool": "local Qwen Image Edit 2511 FP8 mixed",
+  "started_utc": "2026-10-23T11:25:40.169658+00:00",
+  "submission_to_save_seconds": 344.875,
+  "raw_sha256": "af5b46c989d93d0b7dd9a3a83b662a7097ec21de9de9534d996786072da99d56",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGB",
+  "prompt_file": "prompts/hero.txt",
+  "workflow": "local/workflows/hero.api.json",
+  "history": {
+    "prompt": [
+      0,
+      "0fbe7ae6-5d04-42c8-b3e2-25c0e5c1bac0",
+      {
+        "1": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "unet_name": "qwen_image_edit_2511_fp8mixed.safetensors",
+            "weight_dtype": "default"
+          }
+        },
+        "2": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+            "type": "qwen_image",
+            "device": "default"
+          }
+        },
+        "3": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "qwen_image_vae.safetensors"
+          }
+        },
+        "4": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "01-laema-open.png"
+          }
+        },
+        "5": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "02-laema-hammer.png"
+          }
+        },
+        "6": {
+          "class_type": "TextEncodeQwenImageEditPlus",
+          "inputs": {
+            "clip": [
+              "2",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ],
+            "prompt": "Use case: stylized-concept. Asset type: finished original fantasy game character illustration. Create one new illustration of our original character Laema. Image 1 is the authority for her character identity and costume. Image 2 supplies the hammer construction and materials. Preserve the same recognizable young adult woman's face, curious alert expression, platinum-white high ponytail, fitted blue sleeveless waistcoat, cream rolled-sleeve shirt, red waist sash, brown leather cross-body strap and pouch, brown trousers, fingerless gloves and tall brown boots. Preserve the hammer's broad double-ended geometric head, dark inset panels, steel plates, bronze faceted fittings and narrow orange-red luminous seams. Improve the finish through confident painted shapes, fine modeled-volume shading, convincing cloth/leather/metal separation, clear anatomy and expressive facial drawing. Keep restrained base colors and concentrated metal highlights. Use a polished painterly fantasy illustration finish, without coarse pixel blocks or plastic-looking skin. Composition: a single full-body figure on a plain medium neutral-gray studio background, soft upper-left lighting and a subtle contact shadow. Portrait 2:3 canvas, requested 1024 by 1536 pixels. Keep the whole ponytail, both hands, both boots and the complete hammer comfortably inside the frame. No text, labels, border, extra person, new equipment, scenery, attack effects or motion blur. Pose: an upright three-quarter hero stance looking toward the right, feet planted naturally, shoulders relaxed, holding the hammer diagonally across the front of her body with two anatomically clear hands on the shaft. Make a fresh finished illustration while retaining the supplied design.",
+            "image1": [
+              "4",
+              0
+            ],
+            "image2": [
+              "5",
+              0
+            ]
+          }
+        },
+        "7": {
+          "class_type": "TextEncodeQwenImageEditPlus",
+          "inputs": {
+            "clip": [
+              "2",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ],
+            "prompt": " ",
+            "image1": [
+              "4",
+              0
+            ],
+            "image2": [
+              "5",
+              0
+            ]
+          }
+        },
+        "8": {
+          "class_type": "ModelSamplingAuraFlow",
+          "inputs": {
+            "model": [
+              "1",
+              0
+            ],
+            "shift": 3.1
+          }
+        },
+        "9": {
+          "class_type": "CFGNorm",
+          "inputs": {
+            "model": [
+              "8",
+              0
+            ],
+            "strength": 1.0,
+            "pre_cfg": false
+          }
+        },
+        "10": {
+          "class_type": "EmptySD3LatentImage",
+          "inputs": {
+            "width": 1024,
+            "height": 1536,
+            "batch_size": 1
+          }
+        },
+        "11": {
+          "class_type": "KSampler",
+          "inputs": {
+            "model": [
+              "9",
+              0
+            ],
+            "positive": [
+              "6",
+              0
+            ],
+            "negative": [
+              "7",
+              0
+            ],
+            "latent_image": [
+              "10",
+              0
+            ],
+            "seed": 42,
+            "steps": 40,
+            "cfg": 4.0,
+            "sampler_name": "euler",
+            "scheduler": "simple",
+            "denoise": 1.0
+          }
+        },
+        "12": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": [
+              "11",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ]
+          }
+        },
+        "13": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "12",
+              0
+            ],
+            "filename_prefix": "laema-comparison-v01/hero"
+          }
+        }
+      },
+      {
+        "client_id": "laema-local-vs-imagegen-v01",
+        "create_time": 1792754740173
+      },
+      [
+        "13"
+      ]
+    ],
+    "outputs": {
+      "13": {
+        "images": [
+          {
+            "filename": "hero_00001_.png",
+            "subfolder": "laema-comparison-v01",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1536
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "0fbe7ae6-5d04-42c8-b3e2-25c0e5c1bac0",
+            "timestamp": 1792754740175
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [],
+            "prompt_id": "0fbe7ae6-5d04-42c8-b3e2-25c0e5c1bac0",
+            "timestamp": 1792754740180
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "0fbe7ae6-5d04-42c8-b3e2-25c0e5c1bac0",
+            "timestamp": 1792755083871
+          }
+        ]
+      ]
+    },
+    "meta": {
+      "13": {
+        "node_id": "13",
+        "display_node": "13",
+        "parent_node": null,
+        "real_node_id": "13"
+      }
+    }
+  },
+  "gpu_samples": [
+    {
+      "elapsed_seconds": 0.11,
+      "whole_gpu_memory_mib_util_percent": "3699, 21"
+    },
+    {
+      "elapsed_seconds": 5.17,
+      "whole_gpu_memory_mib_util_percent": "9819, 33"
+    },
+    {
+      "elapsed_seconds": 10.25,
+      "whole_gpu_memory_mib_util_percent": "13146, 75"
+    },
+    {
+      "elapsed_seconds": 15.31,
+      "whole_gpu_memory_mib_util_percent": "4014, 25"
+    },
+    {
+      "elapsed_seconds": 20.45,
+      "whole_gpu_memory_mib_util_percent": "7200, 27"
+    },
+    {
+      "elapsed_seconds": 25.52,
+      "whole_gpu_memory_mib_util_percent": "12643, 32"
+    },
+    {
+      "elapsed_seconds": 30.77,
+      "whole_gpu_memory_mib_util_percent": "17635, 24"
+    },
+    {
+      "elapsed_seconds": 35.88,
+      "whole_gpu_memory_mib_util_percent": "18161, 33"
+    },
+    {
+      "elapsed_seconds": 40.95,
+      "whole_gpu_memory_mib_util_percent": "19086, 21"
+    },
+    {
+      "elapsed_seconds": 46.02,
+      "whole_gpu_memory_mib_util_percent": "19605, 21"
+    },
+    {
+      "elapsed_seconds": 51.08,
+      "whole_gpu_memory_mib_util_percent": "19578, 99"
+    },
+    {
+      "elapsed_seconds": 56.12,
+      "whole_gpu_memory_mib_util_percent": "19610, 97"
+    },
+    {
+      "elapsed_seconds": 61.19,
+      "whole_gpu_memory_mib_util_percent": "19675, 97"
+    },
+    {
+      "elapsed_seconds": 66.27,
+      "whole_gpu_memory_mib_util_percent": "19793, 95"
+    },
+    {
+      "elapsed_seconds": 71.33,
+      "whole_gpu_memory_mib_util_percent": "19865, 98"
+    },
+    {
+      "elapsed_seconds": 76.39,
+      "whole_gpu_memory_mib_util_percent": "19819, 97"
+    },
+    {
+      "elapsed_seconds": 81.47,
+      "whole_gpu_memory_mib_util_percent": "19692, 98"
+    },
+    {
+      "elapsed_seconds": 86.53,
+      "whole_gpu_memory_mib_util_percent": "19667, 98"
+    },
+    {
+      "elapsed_seconds": 91.61,
+      "whole_gpu_memory_mib_util_percent": "19676, 98"
+    },
+    {
+      "elapsed_seconds": 96.67,
+      "whole_gpu_memory_mib_util_percent": "19673, 98"
+    },
+    {
+      "elapsed_seconds": 101.75,
+      "whole_gpu_memory_mib_util_percent": "19673, 98"
+    },
+    {
+      "elapsed_seconds": 106.83,
+      "whole_gpu_memory_mib_util_percent": "19672, 97"
+    },
+    {
+      "elapsed_seconds": 111.88,
+      "whole_gpu_memory_mib_util_percent": "19674, 97"
+    },
+    {
+      "elapsed_seconds": 116.94,
+      "whole_gpu_memory_mib_util_percent": "19745, 98"
+    },
+    {
+      "elapsed_seconds": 122.0,
+      "whole_gpu_memory_mib_util_percent": "19770, 98"
+    },
+    {
+      "elapsed_seconds": 127.09,
+      "whole_gpu_memory_mib_util_percent": "19778, 97"
+    },
+    {
+      "elapsed_seconds": 132.14,
+      "whole_gpu_memory_mib_util_percent": "19704, 98"
+    },
+    {
+      "elapsed_seconds": 137.22,
+      "whole_gpu_memory_mib_util_percent": "19729, 98"
+    },
+    {
+      "elapsed_seconds": 142.27,
+      "whole_gpu_memory_mib_util_percent": "19850, 97"
+    },
+    {
+      "elapsed_seconds": 147.31,
+      "whole_gpu_memory_mib_util_percent": "19903, 98"
+    },
+    {
+      "elapsed_seconds": 152.38,
+      "whole_gpu_memory_mib_util_percent": "19964, 98"
+    },
+    {
+      "elapsed_seconds": 157.45,
+      "whole_gpu_memory_mib_util_percent": "19902, 98"
+    },
+    {
+      "elapsed_seconds": 162.52,
+      "whole_gpu_memory_mib_util_percent": "19900, 98"
+    },
+    {
+      "elapsed_seconds": 167.56,
+      "whole_gpu_memory_mib_util_percent": "19900, 98"
+    },
+    {
+      "elapsed_seconds": 172.61,
+      "whole_gpu_memory_mib_util_percent": "19907, 98"
+    },
+    {
+      "elapsed_seconds": 177.69,
+      "whole_gpu_memory_mib_util_percent": "19880, 98"
+    },
+    {
+      "elapsed_seconds": 182.75,
+      "whole_gpu_memory_mib_util_percent": "19887, 98"
+    },
+    {
+      "elapsed_seconds": 187.81,
+      "whole_gpu_memory_mib_util_percent": "19951, 96"
+    },
+    {
+      "elapsed_seconds": 192.89,
+      "whole_gpu_memory_mib_util_percent": "19913, 98"
+    },
+    {
+      "elapsed_seconds": 197.95,
+      "whole_gpu_memory_mib_util_percent": "19872, 98"
+    },
+    {
+      "elapsed_seconds": 203.02,
+      "whole_gpu_memory_mib_util_percent": "19883, 97"
+    },
+    {
+      "elapsed_seconds": 208.06,
+      "whole_gpu_memory_mib_util_percent": "19974, 97"
+    },
+    {
+      "elapsed_seconds": 213.12,
+      "whole_gpu_memory_mib_util_percent": "19927, 98"
+    },
+    {
+      "elapsed_seconds": 218.17,
+      "whole_gpu_memory_mib_util_percent": "19924, 97"
+    },
+    {
+      "elapsed_seconds": 223.25,
+      "whole_gpu_memory_mib_util_percent": "19949, 98"
+    },
+    {
+      "elapsed_seconds": 228.3,
+      "whole_gpu_memory_mib_util_percent": "19958, 98"
+    },
+    {
+      "elapsed_seconds": 233.36,
+      "whole_gpu_memory_mib_util_percent": "19880, 98"
+    },
+    {
+      "elapsed_seconds": 238.42,
+      "whole_gpu_memory_mib_util_percent": "19954, 97"
+    },
+    {
+      "elapsed_seconds": 243.5,
+      "whole_gpu_memory_mib_util_percent": "19922, 98"
+    },
+    {
+      "elapsed_seconds": 248.58,
+      "whole_gpu_memory_mib_util_percent": "19908, 97"
+    },
+    {
+      "elapsed_seconds": 253.62,
+      "whole_gpu_memory_mib_util_percent": "19894, 98"
+    },
+    {
+      "elapsed_seconds": 258.69,
+      "whole_gpu_memory_mib_util_percent": "19950, 98"
+    },
+    {
+      "elapsed_seconds": 263.73,
+      "whole_gpu_memory_mib_util_percent": "19940, 97"
+    },
+    {
+      "elapsed_seconds": 268.81,
+      "whole_gpu_memory_mib_util_percent": "19952, 98"
+    },
+    {
+      "elapsed_seconds": 273.89,
+      "whole_gpu_memory_mib_util_percent": "19981, 98"
+    },
+    {
+      "elapsed_seconds": 278.95,
+      "whole_gpu_memory_mib_util_percent": "19998, 98"
+    },
+    {
+      "elapsed_seconds": 284.02,
+      "whole_gpu_memory_mib_util_percent": "19975, 98"
+    },
+    {
+      "elapsed_seconds": 289.09,
+      "whole_gpu_memory_mib_util_percent": "20002, 97"
+    },
+    {
+      "elapsed_seconds": 294.14,
+      "whole_gpu_memory_mib_util_percent": "19928, 98"
+    },
+    {
+      "elapsed_seconds": 299.2,
+      "whole_gpu_memory_mib_util_percent": "19920, 97"
+    },
+    {
+      "elapsed_seconds": 304.27,
+      "whole_gpu_memory_mib_util_percent": "19898, 98"
+    },
+    {
+      "elapsed_seconds": 309.34,
+      "whole_gpu_memory_mib_util_percent": "19897, 98"
+    },
+    {
+      "elapsed_seconds": 314.41,
+      "whole_gpu_memory_mib_util_percent": "19899, 98"
+    },
+    {
+      "elapsed_seconds": 319.45,
+      "whole_gpu_memory_mib_util_percent": "19893, 98"
+    },
+    {
+      "elapsed_seconds": 324.52,
+      "whole_gpu_memory_mib_util_percent": "19893, 98"
+    },
+    {
+      "elapsed_seconds": 329.58,
+      "whole_gpu_memory_mib_util_percent": "19897, 98"
+    },
+    {
+      "elapsed_seconds": 334.62,
+      "whole_gpu_memory_mib_util_percent": "19893, 99"
+    },
+    {
+      "elapsed_seconds": 339.78,
+      "whole_gpu_memory_mib_util_percent": "19873, 17"
+    },
+    {
+      "elapsed_seconds": 344.84,
+      "whole_gpu_memory_mib_util_percent": "11766, 11"
+    }
+  ],
+  "gpu_sample_interval_seconds": 5,
+  "manual_art_cleanup_seconds": 0,
+  "art_acceptance": "pending user review"
+}

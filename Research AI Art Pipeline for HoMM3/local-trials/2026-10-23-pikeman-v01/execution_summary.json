@@ -1,0 +1,266 @@
+{
+  "executed_qwen_outputs": 17,
+  "runs": [
+    {
+      "method": "reference",
+      "source_unique": 0,
+      "server_execution_seconds": 156.066,
+      "submission_to_saved_seconds": 156.657,
+      "sampled_gpu_memory_used_mib_max": 23298,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "09c12aae500bf1a78690495bd1c6cb6e91474b097106317a6177dc71de0745a4",
+      "workflow": "reference/workflows/unique_00.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "reference",
+      "source_unique": 5,
+      "server_execution_seconds": 165.558,
+      "submission_to_saved_seconds": 166.719,
+      "sampled_gpu_memory_used_mib_max": 23306,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "f1dde4fbdfda9233e5a47653d8aa80ad65a7ed09c9a5794dfb535d8c2bd35f05",
+      "workflow": "reference/workflows/unique_05.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "reference-2x",
+      "source_unique": 0,
+      "server_execution_seconds": 226.033,
+      "submission_to_saved_seconds": 227.828,
+      "sampled_gpu_memory_used_mib_max": 23623,
+      "raw_dimensions": [
+        1216,
+        832
+      ],
+      "raw_sha256": "a71bc3884da07e3272b824ebcbb776f66d738260bf4479215a7b03ecb3653a83",
+      "workflow": "reference-2x/workflows/unique_00.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "restored-unmasked",
+      "source_unique": 5,
+      "server_execution_seconds": 156.288,
+      "submission_to_saved_seconds": 156.641,
+      "sampled_gpu_memory_used_mib_max": 23522,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "5a6aa4c7d433755385931f3145ec35e84d928dd9a494fc1a5c9262d40bef5d83",
+      "workflow": "restored-unmasked/workflows/unique_05.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-high",
+      "source_unique": 5,
+      "server_execution_seconds": 152.244,
+      "submission_to_saved_seconds": 152.594,
+      "sampled_gpu_memory_used_mib_max": 23557,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "014a25625de9ca3d1ae5355bc72181c997edf2f09022223cfcf7f3e8a47a0018",
+      "workflow": "masked-high/workflows/unique_05.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 0,
+      "server_execution_seconds": 328.052,
+      "submission_to_saved_seconds": 330.062,
+      "sampled_gpu_memory_used_mib_max": 23678,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "36eb41f34609939020978cb214a4bbe538859f68572baaaf92af1434d7f70beb",
+      "workflow": "masked-full/workflows/unique_00.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 1,
+      "server_execution_seconds": 266.768,
+      "submission_to_saved_seconds": 268.062,
+      "sampled_gpu_memory_used_mib_max": 23462,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "7c6a4881ac6ef03de14eaf59e973a3514576f42b074122820c23999755da1967",
+      "workflow": "masked-full/workflows/unique_01.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 2,
+      "server_execution_seconds": 291.08,
+      "submission_to_saved_seconds": 292.297,
+      "sampled_gpu_memory_used_mib_max": 23519,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "577b830a53cc7b04c9a9ac6f684c8a9ec5983f9fbe123a5f2631b1e31bc0d67d",
+      "workflow": "masked-full/workflows/unique_02.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 3,
+      "server_execution_seconds": 206.252,
+      "submission_to_saved_seconds": 207.703,
+      "sampled_gpu_memory_used_mib_max": 20001,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "983cef54540dce1f2b085bcc3031fb4eb0bfad635fe5385a8d76c85047b6c1ee",
+      "workflow": "masked-full/workflows/unique_03.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "static_reserve6_cache32"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 4,
+      "server_execution_seconds": 235.194,
+      "submission_to_saved_seconds": 236.172,
+      "sampled_gpu_memory_used_mib_max": 20288,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "6f1a50f2ab36361b48da3fff4d65ec34e275443598cfba544f7f8c00aa403b3e",
+      "workflow": "masked-full/workflows/unique_04.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "static_reserve6_cache32"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 5,
+      "server_execution_seconds": 183.903,
+      "submission_to_saved_seconds": 185.562,
+      "sampled_gpu_memory_used_mib_max": 23516,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "d10d3778d01ca5156a6ae3b86e08dcd0e6fa14a0dbaca610b12c77fdadfffa33",
+      "workflow": "masked-full/workflows/unique_05.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 0,
+      "server_execution_seconds": 162.57,
+      "submission_to_saved_seconds": 164.735,
+      "sampled_gpu_memory_used_mib_max": 23541,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "a170ca37b3a510f4aa4530d154f435e83f71ebd1357fbebb14ae54cee396dd01",
+      "workflow": "masked/workflows/unique_00.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 1,
+      "server_execution_seconds": 157.324,
+      "submission_to_saved_seconds": 158.516,
+      "sampled_gpu_memory_used_mib_max": 23573,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "cbc182bd4f5f83c641b2d43bccce74f79b3eda01bae6dcba81e2be90bc90b2f0",
+      "workflow": "masked/workflows/unique_01.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 2,
+      "server_execution_seconds": 164.475,
+      "submission_to_saved_seconds": 164.829,
+      "sampled_gpu_memory_used_mib_max": 23563,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "c1a65541a4e15c9e9c32f186429065b3e99290fa0dee1e9e79258fc6ab2c3606",
+      "workflow": "masked/workflows/unique_02.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 3,
+      "server_execution_seconds": 163.49,
+      "submission_to_saved_seconds": 164.687,
+      "sampled_gpu_memory_used_mib_max": 23507,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "645bc90f1098c9175a276afabe61c0bc9374a0c35ab3aee2a62c58c2af231ecd",
+      "workflow": "masked/workflows/unique_03.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 4,
+      "server_execution_seconds": 189.122,
+      "submission_to_saved_seconds": 189.531,
+      "sampled_gpu_memory_used_mib_max": 23532,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "6f539f13b4ed893f8ed017131ace9373caeeabd0fae8aa21b56552575adf631f",
+      "workflow": "masked/workflows/unique_04.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 5,
+      "server_execution_seconds": 190.008,
+      "submission_to_saved_seconds": 191.64,
+      "sampled_gpu_memory_used_mib_max": 23674,
+      "raw_dimensions": [
+        608,
+        416
+      ],
+      "raw_sha256": "557c9fe5be88a597b18d9c9ee6b14ce129d30ee02b3be52547ef2355a9d41149",
+      "workflow": "masked/workflows/unique_05.api.json",
+      "manual_painting_seconds": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    }
+  ],
+  "total_server_execution_seconds": 3394.427,
+  "gpu_memory_caveat": "Whole-GPU usage sampled about every2s, not an exact per-process allocated-memory peak.",
+  "controlnet_executed": false,
+  "artist_time_to_acceptance": null,
+  "operational_interruptions": 2,
+  "speed_comparison_caveat": "Server restarts, memory-loading policy and available resources varied. Timings are observations, not causal speed comparisons."
+}

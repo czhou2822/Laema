@@ -1,0 +1,41 @@
+{
+  "planned_before_generation": true,
+  "tasks": [
+    "hero",
+    "action"
+  ],
+  "outputs_per_tool_per_task": 1,
+  "tools": [
+    "Local Qwen Image Edit 2511 FP8 mixed via installed ComfyUI",
+    "Built-in image_gen"
+  ],
+  "shared": "Exact same two reference PNGs, ordered roles, positive prompt and requested 1024x1536 canvas; one fresh result per task, no artistic selection reruns.",
+  "local_settings": {
+    "seed": 42,
+    "steps": 40,
+    "cfg": 4,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "denoise": 1,
+    "latent": "EmptySD3LatentImage",
+    "shift": 3.1
+  },
+  "memory_policy": {
+    "dynamic_vram": false,
+    "async_offload": false,
+    "cache_lru_nodes": 32,
+    "reserve_vram_gb": 6
+  },
+  "builtin_limitations": "Exact model/version, seed, sampler and internal reference resizing are not exposed by the tool. Requested size may differ from delivered size.",
+  "review": [
+    "Overall artistic finish",
+    "Recognizable Laema identity",
+    "Face and expression",
+    "Hands and anatomy",
+    "Costume and hammer consistency",
+    "New-pose clarity",
+    "Readability when reduced"
+  ],
+  "cleanup": "Keep raw results unchanged. No manual painting, anatomy repair, alpha extraction, generative correction, color grading, or per-character fitting before review. Only equal-canvas display and whole-image thumbnails are comparison derivatives.",
+  "limits": "Two first-result tasks compare these configured workflows, not every capability of either model. Existing generated reference ancestry may favor a similar rendering. No model winner, production art, weapon/outfit lock, animation or runtime acceptance is established. Human review remains pending."
+}

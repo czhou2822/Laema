@@ -1,0 +1,273 @@
+{
+  "repository": "Comfy-Org/workflow_templates",
+  "revision": "67984637eefcd4825dcf5c134e39034785be1682",
+  "templates": [
+    {
+      "file": "templates/image_flux2_klein_image_edit_4b_base.json",
+      "local": "official-templates/image_flux2_klein_image_edit_4b_base.json",
+      "sha256": "e66871102ee6614be8d70b5414536da4c8ef7b0fd13580f2e36b69b2f56d2820",
+      "models": [
+        {
+          "name": "flux-2-klein-base-4b-fp8.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4b-fp8/resolve/main/flux-2-klein-base-4b-fp8.safetensors",
+          "directory": "diffusion_models"
+        },
+        {
+          "name": "qwen_3_4b.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "full_encoder_small_decoder.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-small-decoder/resolve/main/full_encoder_small_decoder.safetensors",
+          "directory": "vae"
+        }
+      ]
+    },
+    {
+      "file": "templates/image_flux2_klein_image_edit_4b_distilled.json",
+      "local": "official-templates/image_flux2_klein_image_edit_4b_distilled.json",
+      "sha256": "7f1ead62d1456d485e95fb432fb492d2783f5ec9cfeefefe4ef71bfb448ba1a3",
+      "models": [
+        {
+          "name": "flux-2-klein-4b-fp8.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8/resolve/main/flux-2-klein-4b-fp8.safetensors",
+          "directory": "diffusion_models"
+        },
+        {
+          "name": "qwen_3_4b.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "flux2-vae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors",
+          "directory": "vae"
+        }
+      ]
+    },
+    {
+      "file": "templates/image_flux3_klein_distilled_image_edit.json",
+      "local": "official-templates/image_flux3_klein_distilled_image_edit.json",
+      "sha256": "75037b9482769ab98f9d00ac304899c48b9b46b9238686eca19ede42c40924cc",
+      "models": [
+        {
+          "name": "flux3-image-klein-int8-convrot.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3-image-klein-int8-convrot.safetensors",
+          "directory": "diffusion_models"
+        },
+        {
+          "name": "qwen3vl_4b_int8_convrot.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "flux2-vae.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/vae/flux2-vae.safetensors",
+          "directory": "vae"
+        },
+        {
+          "name": "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+          "directory": "text_encoders"
+        }
+      ]
+    },
+    {
+      "file": "templates/image_flux3_klein_distilled_t2i.json",
+      "local": "official-templates/image_flux3_klein_distilled_t2i.json",
+      "sha256": "253fa4e783da734acd03b804a8731d0a7a8c564b73961837762800eb5cf85388",
+      "models": [
+        {
+          "name": "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "flux3-image-klein-int8-convrot.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3-image-klein-int8-convrot.safetensors",
+          "directory": "diffusion_models"
+        },
+        {
+          "name": "qwen3vl_4b_int8_convrot.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "flux2-vae.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/vae/flux2-vae.safetensors",
+          "directory": "vae"
+        }
+      ]
+    },
+    {
+      "file": "templates/image_flux3_klein_image_edit.json",
+      "local": "official-templates/image_flux3_klein_image_edit.json",
+      "sha256": "479b4ae80ae3d892ebaf19bb8a9a9d1a8fdbf4045152f1679173625b577f5c61",
+      "models": [
+        {
+          "name": "qwen3vl_4b_int8_convrot.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "flux2-vae.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/vae/flux2-vae.safetensors",
+          "directory": "vae"
+        },
+        {
+          "name": "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "flux3-image-klein-base-int8-convrot.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3-image-klein-base-int8-convrot.safetensors",
+          "directory": "diffusion_models"
+        }
+      ]
+    },
+    {
+      "file": "templates/image_flux3_klein_t2i.json",
+      "local": "official-templates/image_flux3_klein_t2i.json",
+      "sha256": "42235cc535b9db5631374b2fc3d40e14a0d2689ae2f46214f6b0bd95b32aa670",
+      "models": [
+        {
+          "name": "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "flux3-image-klein-base-int8-convrot.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3-image-klein-base-int8-convrot.safetensors",
+          "directory": "diffusion_models"
+        },
+        {
+          "name": "qwen3vl_4b_int8_convrot.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "flux2-vae.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/vae/flux2-vae.safetensors",
+          "directory": "vae"
+        }
+      ]
+    },
+    {
+      "file": "templates/image_longcat_image_edit.json",
+      "local": "official-templates/image_longcat_image_edit.json",
+      "sha256": "084d0e9d674f1f2e364408748647761c54b412990effed748ac0afd07f9c0e4c",
+      "models": [
+        {
+          "name": "ae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors",
+          "directory": "vae"
+        },
+        {
+          "name": "longcat_image_edit_bf16.safetensors",
+          "url": "https://huggingface.co/TalmajM/LongCat-Image-Edit_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/longcat_image_edit_bf16.safetensors",
+          "directory": "diffusion_models"
+        },
+        {
+          "name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "directory": "text_encoders"
+        }
+      ]
+    },
+    {
+      "file": "templates/image_longcat_text_to_image.json",
+      "local": "official-templates/image_longcat_text_to_image.json",
+      "sha256": "0df9cfdf378e68b3776879f548bfa8653ead129ad1e70f689bbd03a7f17d55bf",
+      "models": [
+        {
+          "name": "longcat_image_bf16.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/LongCat-Image/resolve/main/split_files/diffusion_models/longcat_image_bf16.safetensors",
+          "directory": "diffusion_models"
+        },
+        {
+          "name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "ae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors",
+          "directory": "vae"
+        }
+      ]
+    },
+    {
+      "file": "templates/image_z_image_turbo.json",
+      "local": "official-templates/image_z_image_turbo.json",
+      "sha256": "baaf937ff071970cc6b1e2fa0093a4dd664a4cc734d38adc4c7810e535c1f1d3",
+      "models": [
+        {
+          "name": "qwen_3_4b.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "ae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors",
+          "directory": "vae"
+        },
+        {
+          "name": "z_image_turbo_bf16.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors",
+          "directory": "diffusion_models"
+        }
+      ]
+    },
+    {
+      "file": "templates/image_z_image_turbo_int8.json",
+      "local": "official-templates/image_z_image_turbo_int8.json",
+      "sha256": "448ef777610d0235a0de72d6d7f117aad08dabcd88b457c5e9ea78d122d1ca3a",
+      "models": [
+        {
+          "name": "qwen_3_4b_fp8_mixed.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "ae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors",
+          "directory": "vae"
+        },
+        {
+          "name": "z_image_turbo_int8_convrot.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors",
+          "directory": "diffusion_models"
+        }
+      ]
+    },
+    {
+      "file": "templates/utility_z_image_turbo_2k_upscaler.app.json",
+      "local": "official-templates/utility_z_image_turbo_2k_upscaler.app.json",
+      "sha256": "a8f23127fb7671ce6b43b456d6a5ef8639a0e8334208963913597cdc7c84eb42",
+      "models": [
+        {
+          "name": "z_image_turbo_bf16.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors",
+          "directory": "diffusion_models"
+        },
+        {
+          "name": "qwen_3_4b.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+          "directory": "text_encoders"
+        },
+        {
+          "name": "ae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors",
+          "directory": "vae"
+        },
+        {
+          "name": "RealESRGAN_x4plus.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Real-ESRGAN_repackaged/resolve/main/RealESRGAN_x4plus.safetensors",
+          "directory": "upscale_models"
+        }
+      ]
+    }
+  ]
+}

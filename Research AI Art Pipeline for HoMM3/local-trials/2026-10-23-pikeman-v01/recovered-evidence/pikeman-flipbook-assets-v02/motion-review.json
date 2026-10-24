@@ -1,0 +1,230 @@
+{
+  "method": "decoded frame-by-frame review, boundary identity, sheet/individual equivalence, mirror equivalence, alpha-envelope checks; no browser/Godot playback claim",
+  "frames_checked": 34,
+  "sheet_cells_checked": 68,
+  "unused_cells_checked": 20,
+  "mirror_frames_checked": 34,
+  "baseline_bounds": [
+    {
+      "clip": "idle",
+      "frame": 0,
+      "bottom": 448
+    },
+    {
+      "clip": "idle",
+      "frame": 1,
+      "bottom": 448
+    },
+    {
+      "clip": "idle",
+      "frame": 2,
+      "bottom": 448
+    },
+    {
+      "clip": "idle",
+      "frame": 3,
+      "bottom": 448
+    },
+    {
+      "clip": "idle",
+      "frame": 4,
+      "bottom": 448
+    },
+    {
+      "clip": "idle",
+      "frame": 5,
+      "bottom": 448
+    },
+    {
+      "clip": "idle",
+      "frame": 6,
+      "bottom": 448
+    },
+    {
+      "clip": "walk",
+      "frame": 0,
+      "bottom": 448
+    },
+    {
+      "clip": "walk",
+      "frame": 1,
+      "bottom": 448
+    },
+    {
+      "clip": "walk",
+      "frame": 2,
+      "bottom": 448
+    },
+    {
+      "clip": "walk",
+      "frame": 3,
+      "bottom": 448
+    },
+    {
+      "clip": "walk",
+      "frame": 4,
+      "bottom": 448
+    },
+    {
+      "clip": "walk",
+      "frame": 5,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 0,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 1,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 2,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 3,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 4,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 5,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 6,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 7,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 8,
+      "bottom": 448
+    },
+    {
+      "clip": "attack",
+      "frame": 9,
+      "bottom": 448
+    },
+    {
+      "clip": "hurt",
+      "frame": 0,
+      "bottom": 448
+    },
+    {
+      "clip": "hurt",
+      "frame": 1,
+      "bottom": 448
+    },
+    {
+      "clip": "hurt",
+      "frame": 2,
+      "bottom": 448
+    },
+    {
+      "clip": "hurt",
+      "frame": 3,
+      "bottom": 448
+    },
+    {
+      "clip": "hurt",
+      "frame": 4,
+      "bottom": 448
+    },
+    {
+      "clip": "hurt",
+      "frame": 5,
+      "bottom": 448
+    },
+    {
+      "clip": "death",
+      "frame": 0,
+      "bottom": 448
+    },
+    {
+      "clip": "death",
+      "frame": 1,
+      "bottom": 448
+    },
+    {
+      "clip": "death",
+      "frame": 2,
+      "bottom": 448
+    },
+    {
+      "clip": "death",
+      "frame": 3,
+      "bottom": 448
+    },
+    {
+      "clip": "death",
+      "frame": 4,
+      "bottom": 448
+    }
+  ],
+  "gifs": [
+    {
+      "clip": "idle",
+      "frames": 7,
+      "width": 640,
+      "pageHeight": 384
+    },
+    {
+      "clip": "walk",
+      "frames": 6,
+      "width": 640,
+      "pageHeight": 384
+    },
+    {
+      "clip": "attack",
+      "frames": 10,
+      "width": 640,
+      "pageHeight": 384
+    },
+    {
+      "clip": "hurt",
+      "frames": 6,
+      "width": 640,
+      "pageHeight": 384
+    },
+    {
+      "clip": "death",
+      "frames": 5,
+      "width": 640,
+      "pageHeight": 384
+    }
+  ],
+  "boundaries": {
+    "idle_6_equals_idle0": true,
+    "attack_0_equals_idle0": true,
+    "attack_9_equals_idle0": true,
+    "hurt_0_equals_idle0": true,
+    "hurt_5_equals_idle0": true,
+    "death_0_equals_idle0": true
+  },
+  "all_opaque_bottoms_equal_448": true,
+  "all_ready_boundaries_exact": true,
+  "visual_review": "All timeline frames, revised recoil/thrust poses and inter-clip sequences inspected at consistent registration. Walk in-place poses have cyclic alternating leg positions; no perfect native-animation claim.",
+  "limits": [
+    "Small generated cloth/crest/highlight variation remains.",
+    "Walk speed/ground-speed matching is not established by an in-place asset review.",
+    "Five-frame death is a deliberately coarse collapse, with generated side-lying terminal pose.",
+    "Runtime anchor/scaling, playback speed, interruption/reset and visual-versus-ShapeCast alignment need integration-owner verification."
+  ],
+  "engine_import": false,
+  "engine_run": false
+}

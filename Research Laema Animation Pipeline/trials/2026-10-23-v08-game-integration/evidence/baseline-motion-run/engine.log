@@ -1,0 +1,243 @@
+Godot Engine v4.7.1.stable.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 617.42 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4090
+
+[TRACE][HUD] mark_progress_displayed { "marked_count": 0, "partial_progress": 0.0, "bar_value": 0.0 }
+[TRACE][MOVEMENT] grounded_changed { "grounded": true, "position": (0.0, 0.0) }
+OVERNIGHT_PLAYTEST_READY C:/Users/zhouc/OneDrive/Documents/ChatGPT/Laema/Research Laema Animation Pipeline/trials/2026-10-23-v08-game-integration/evidence/baseline-motion-run
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 80.0 }
+[TRACE][ARENA] stage_activated { "stage_id": "gym", "initial": true }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": true }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 160.0 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[TRACE][DEFENCE] entered { "mode": "parry", "guard": 100.0 }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 71.5001831054688 }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 71.5001831054688 }
+[PROBE][IMPACT] {"action_id":1,"clash_resolved":false,"combat_reaction":true,"eligible":false,"hit_reaction_value":-1,"impact":20,"outcome":"BLOCKED","physics_frame":62,"player_winning_tie":false,"reaction_level":0,"stage":"reaction_decision","target":"/root/Gym/Player","target_poise":0,"ticks_ms":2690}
+[PROBE][IMPACT] {"action_id":1,"health_delta":-2.5,"impact":20,"outcome":"BLOCKED","physics_frame":62,"reaction_level":0,"stage":"health_result","tag":"fire_block","target":"/root/Gym/Player","ticks_ms":2690}
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 71.5001831054688 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 71.5001831054688 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","impact":10,"move_id":"fire_x1","physics_frame":99,"stage":"action_started","ticks_ms":3316}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 1 }
+[TRACE][COMBAT] light_attempt { "outcome": "accepted-started", "reason": "accepted", "active_school": &"fire", "combat_state": 1, "chain_position": 1, "action_progress": 0.0, "window_open": false, "current_action_present": true, "pending_action_present": false, "buffered_request_kind": &"", "animation_playing": true, "heat_speed_multiplier": 1.0 }
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":107,"stage":"contact_query","ticks_ms":3434}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":107,"stage":"contact_query","ticks_ms":3434}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":107,"stage":"contact_query","ticks_ms":3434}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":108,"stage":"contact_query","ticks_ms":3447}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":108,"stage":"contact_query","ticks_ms":3447}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":108,"stage":"contact_query","ticks_ms":3447}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":109,"stage":"contact_query","ticks_ms":3461}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":109,"stage":"contact_query","ticks_ms":3461}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":109,"stage":"contact_query","ticks_ms":3461}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":109,"stage":"contact_query","ticks_ms":3462}
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 1.0, "state": &"CHARGING", "initial": false }
+[TRACE][ORBS] charging_started { "marked_capacity": 0, "partial_progress": 0.0 }
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":110,"stage":"contact_query","ticks_ms":3486}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":110,"stage":"contact_query","ticks_ms":3486}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":110,"stage":"contact_query","ticks_ms":3487}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":0,"move_id":"fire_x1","physics_frame":111,"stage":"contact_query","ticks_ms":3505}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":111,"stage":"contact_query","ticks_ms":3505}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","impact":10,"move_id":"fire_x1","physics_frame":111,"stage":"contact_event","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","target_poise":10,"ticks_ms":3505}
+[PROBE][IMPACT] {"action_id":1,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":0,"impact":10,"outcome":"APPLIED","physics_frame":111,"player_winning_tie":false,"reaction_level":1,"stage":"reaction_decision","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","target_poise":10,"ticks_ms":3505}
+[TRACE][COMBAT_ENEMY] state { "state": &"HIT_REACTING", "target_distance": 71.0012989044189 }
+[PROBE][IMPACT] {"difference":0,"distance":5.0,"duration":0.25,"physics_frame":111,"reaction_level":1,"stage":"reaction_started","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":3506}
+[PROBE][IMPACT] {"combat_reaction":true,"distance":5.0,"duration":0.25,"physics_frame":111,"reaction_level":1,"stage":"enemy_reaction_visual","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":3506}
+[PROBE][IMPACT] {"action_id":1,"health_delta":-10.0,"impact":10,"outcome":"APPLIED","physics_frame":111,"reaction_level":1,"stage":"health_result","tag":"","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":3506}
+[TRACE][ORBS] created { "school": &"fire", "queue_size": 1, "marked_count": 0 }
+[TRACE][COMBAT] light_contact_resolved { "result": &"hit", "school": &"fire", "position": 1, "target_count": 1 }
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":111,"stage":"contact_query","ticks_ms":3508}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":111,"stage":"contact_query","ticks_ms":3508}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":112,"stage":"contact_query","ticks_ms":3514}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":112,"stage":"contact_query","ticks_ms":3514}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":112,"stage":"contact_query","ticks_ms":3514}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":112,"stage":"contact_query","ticks_ms":3514}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":113,"stage":"contact_query","ticks_ms":3540}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":113,"stage":"contact_query","ticks_ms":3540}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":113,"stage":"contact_query","ticks_ms":3541}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":113,"stage":"contact_query","ticks_ms":3541}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":114,"stage":"contact_query","ticks_ms":3549}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":114,"stage":"contact_query","ticks_ms":3549}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":114,"stage":"contact_query","ticks_ms":3549}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":115,"stage":"contact_query","ticks_ms":3560}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":115,"stage":"contact_query","ticks_ms":3560}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":115,"stage":"contact_query","ticks_ms":3560}
+[TRACE][HUD] mark_progress_displayed { "marked_count": 0, "partial_progress": 0.20543111111111, "bar_value": 0.02567888888889 }
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":116,"stage":"contact_query","ticks_ms":3578}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":116,"stage":"contact_query","ticks_ms":3578}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":116,"stage":"contact_query","ticks_ms":3578}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":117,"stage":"contact_query","ticks_ms":3601}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":117,"stage":"contact_query","ticks_ms":3601}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":117,"stage":"contact_query","ticks_ms":3601}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":118,"stage":"contact_query","ticks_ms":3618}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":118,"stage":"contact_query","ticks_ms":3619}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":118,"stage":"contact_query","ticks_ms":3619}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":119,"stage":"contact_query","ticks_ms":3626}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":119,"stage":"contact_query","ticks_ms":3626}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":119,"stage":"contact_query","ticks_ms":3626}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":120,"stage":"contact_query","ticks_ms":3658}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":120,"stage":"contact_query","ticks_ms":3658}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":120,"stage":"contact_query","ticks_ms":3658}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":121,"stage":"contact_query","ticks_ms":3664}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":121,"stage":"contact_query","ticks_ms":3664}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":121,"stage":"contact_query","ticks_ms":3664}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":121,"stage":"contact_query","ticks_ms":3664}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":122,"stage":"contact_query","ticks_ms":3677}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":122,"stage":"contact_query","ticks_ms":3677}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":122,"stage":"contact_query","ticks_ms":3677}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":123,"stage":"contact_query","ticks_ms":3696}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":123,"stage":"contact_query","ticks_ms":3696}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":123,"stage":"contact_query","ticks_ms":3696}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":124,"stage":"contact_query","ticks_ms":3717}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":124,"stage":"contact_query","ticks_ms":3717}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":124,"stage":"contact_query","ticks_ms":3717}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":125,"stage":"contact_query","ticks_ms":3736}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":125,"stage":"contact_query","ticks_ms":3736}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":125,"stage":"contact_query","ticks_ms":3736}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":126,"stage":"contact_query","ticks_ms":3740}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":126,"stage":"contact_query","ticks_ms":3740}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":126,"stage":"contact_query","ticks_ms":3740}
+[PROBE][IMPACT] {"body_displacement_x":4.99998092651367,"elapsed_ms":264,"physics_frame":127,"remaining":0.0,"stage":"enemy_reaction_finished","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":3770}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":127,"stage":"contact_query","ticks_ms":3771}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":127,"stage":"contact_query","ticks_ms":3771}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":127,"stage":"contact_query","ticks_ms":3771}
+[TRACE][HUD] mark_progress_displayed { "marked_count": 0, "partial_progress": 0.61798481481481, "bar_value": 0.07724810185185 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 76.0747261047363 }
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":128,"stage":"contact_query","ticks_ms":3778}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":128,"stage":"contact_query","ticks_ms":3779}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":128,"stage":"contact_query","ticks_ms":3779}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":128,"stage":"contact_query","ticks_ms":3779}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":129,"stage":"contact_query","ticks_ms":3793}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":129,"stage":"contact_query","ticks_ms":3793}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":129,"stage":"contact_query","ticks_ms":3793}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":130,"stage":"contact_query","ticks_ms":3811}
+[PROBE][IMPACT] {"action_id":1,"actor":"/root/Gym/Player","collisions":1,"move_id":"fire_x1","physics_frame":130,"stage":"contact_query","ticks_ms":3811}
+[TRACE][ORBS] mark_incremented { "marked_capacity": 1, "queue_size": 1 }
+[TRACE][HUD] mark_progress_displayed { "marked_count": 1, "partial_progress": 0.01522131313131, "bar_value": 0.125 }
+[TRACE][COMBAT] action_finished { "kind": &"light", "school": &"fire", "pending_action": false, "marking_state_active": true }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][MOVEMENT] facing_changed { "direction": (-1.0, 0.0) }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 91.0747261047363 }
+[TRACE][ORBS] mark_incremented { "marked_capacity": 2, "queue_size": 1 }
+[TRACE][HUD] mark_progress_displayed { "marked_count": 2, "partial_progress": 0.0102304040404, "bar_value": 0.125 }
+[TRACE][MOVEMENT] facing_changed { "direction": (1.0, 0.0) }
+[TRACE][ORBS] pressure_state_changed { "raw_strength": 0.0, "state": &"RELEASE", "initial": false }
+[TRACE][HUD] mark_progress_displayed { "marked_count": 0, "partial_progress": 0.0, "bar_value": 0.0 }
+[TRACE][ORBS] cast_committed { "commit_id": 1, "primary_school": &"fire", "primary_level": 1, "empowered": false }
+[TRACE][COMBAT] cast_classified { "outcome": "normal", "commit_id": 1 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"action_id":2,"actor":"/root/Gym/Player","impact":1,"move_id":"cast","physics_frame":187,"stage":"action_started","ticks_ms":4781}
+[TRACE][COMBAT] action_started { "kind": &"cast_normal", "school": &"fire", "position": 2, "attempt_id": 1, "commit_id": 1, "endpoint": false }
+[TRACE][ORBS] projectile_launch_requested { "commit_id": 1, "primary_school": &"fire", "primary_level": 1 }
+[TRACE][PROJECTILE] spawned { "primary_school": &"fire", "primary_level": 1, "secondary_school": &"", "secondary_level": 0, "maximum_distance": 640.0, "speed": 640.0 }
+[TRACE][COMBAT] cast_attempt_resolved { "chain_position": 2, "classification": &"cast_normal", "endpoint": false, "commit_id": 1, "source_action_id": 2, "primary_level": 1, "attempt_id": 1, "terminal": &"launched" }
+[TRACE][PROJECTILE] impacted { "target": &"FinalEnemy", "position": (-86.24121, -113.0747), "travelled_distance": 117.333333333333 }
+[TRACE][ORBS] spell_effect_resolved { "target": &"FinalEnemy", "spell": &"", "school": &"fire", "level": 1, "damage_multiplier": 1.0, "contact_point": (-86.24121, -113.0747) }
+[PROBE][IMPACT] {"action_id":2,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":0,"impact":10,"outcome":"APPLIED","physics_frame":217,"player_winning_tie":false,"reaction_level":1,"stage":"reaction_decision","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","target_poise":10,"ticks_ms":5274}
+[TRACE][COMBAT_ENEMY] state { "state": &"HIT_REACTING", "target_distance": 139.074752807617 }
+[PROBE][IMPACT] {"action_id":2,"health_delta":-10.0,"impact":10,"outcome":"APPLIED","physics_frame":217,"reaction_level":1,"stage":"health_result","tag":"","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":5275}
+[PROBE][IMPACT] {"difference":0,"distance":5.0,"duration":0.25,"physics_frame":217,"reaction_level":1,"stage":"reaction_started","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":5275}
+[PROBE][IMPACT] {"combat_reaction":true,"distance":5.0,"duration":0.25,"physics_frame":217,"reaction_level":1,"stage":"enemy_reaction_visual","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":5275}
+[PROBE][IMPACT] {"body_displacement_x":4.99998092651367,"elapsed_ms":243,"physics_frame":232,"remaining":0.0,"stage":"enemy_reaction_finished","target":"/root/Gym/StageAreas/GymArea/FinalEnemy","ticks_ms":5518}
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 144.074733734131 }
+[TRACE][COMBAT] action_finished { "kind": &"cast_normal", "school": &"fire", "pending_action": false, "marking_state_active": false }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 144.074733734131 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 69.5747299194336 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 70.4252700805664 }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 70.4252700805664 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 70.4252700805664 }
+[TRACE][MOVEMENT] facing_changed { "direction": (-1.0, 0.0) }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 49.0750503540039 }
+[TRACE][MOVEMENT] facing_changed { "direction": (1.0, 0.0) }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"action_id":4,"actor":"/root/Gym/Player","impact":10,"move_id":"fire_x1","physics_frame":432,"stage":"action_started","ticks_ms":8867}
+[TRACE][COMBAT] action_started { "kind": &"light", "school": &"fire", "position": 1 }
+[TRACE][COMBAT] light_attempt { "outcome": "accepted-started", "reason": "accepted", "active_school": &"fire", "combat_state": 1, "chain_position": 1, "action_progress": 0.0, "window_open": false, "current_action_present": true, "pending_action_present": false, "buffered_request_kind": &"", "animation_playing": true, "heat_speed_multiplier": 1.01000000014901 }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 65.1143341064453 }
+[PROBE][IMPACT] {"action_id":3,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":20,"impact":20,"outcome":"APPLIED","physics_frame":438,"player_winning_tie":false,"reaction_level":2,"stage":"reaction_decision","target":"/root/Gym/Player","target_poise":0,"ticks_ms":8943}
+[PROBE][IMPACT] {"difference":20,"distance":10.0,"duration":0.55,"physics_frame":438,"reaction_level":2,"stage":"reaction_started","target":"/root/Gym/Player","ticks_ms":8943}
+[PROBE][IMPACT] {"action_id":3,"health_delta":-10.0,"impact":20,"outcome":"APPLIED","physics_frame":438,"reaction_level":2,"stage":"health_result","tag":"","target":"/root/Gym/Player","ticks_ms":8943}
+[TRACE][COMBAT_ENEMY] melee_hit { "target": &"Player", "damage": 10.0 }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 74.2052841186523 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 74.2052841186523 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 75.1143741607666 }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 70.6143741607666 }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 70.6143741607666 }
+[PROBE][IMPACT] {"action_id":4,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":20,"impact":20,"outcome":"APPLIED","physics_frame":538,"player_winning_tie":false,"reaction_level":2,"stage":"reaction_decision","target":"/root/Gym/Player","target_poise":0,"ticks_ms":10618}
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"difference":20,"distance":10.0,"duration":0.55,"physics_frame":538,"reaction_level":2,"stage":"reaction_started","target":"/root/Gym/Player","ticks_ms":10618}
+[PROBE][IMPACT] {"action_id":4,"health_delta":-10.0,"impact":20,"outcome":"APPLIED","physics_frame":538,"reaction_level":2,"stage":"health_result","tag":"","target":"/root/Gym/Player","ticks_ms":10618}
+[TRACE][COMBAT_ENEMY] melee_hit { "target": &"Player", "damage": 10.0 }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 79.7052745819092 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 79.7052745819092 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 80.6143646240234 }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 71.6143646240234 }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 71.6143646240234 }
+[PROBE][IMPACT] {"action_id":5,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":20,"impact":20,"outcome":"APPLIED","physics_frame":650,"player_winning_tie":false,"reaction_level":2,"stage":"reaction_decision","target":"/root/Gym/Player","target_poise":0,"ticks_ms":12473}
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"difference":20,"distance":10.0,"duration":0.55,"physics_frame":650,"reaction_level":2,"stage":"reaction_started","target":"/root/Gym/Player","ticks_ms":12473}
+[PROBE][IMPACT] {"action_id":5,"health_delta":-10.0,"impact":20,"outcome":"APPLIED","physics_frame":650,"reaction_level":2,"stage":"health_result","tag":"","target":"/root/Gym/Player","ticks_ms":12473}
+[TRACE][COMBAT_ENEMY] melee_hit { "target": &"Player", "damage": 10.0 }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 80.705265045166 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 80.705265045166 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 81.6143550872803 }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 71.1143550872803 }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 71.1143550872803 }
+[PROBE][IMPACT] {"action_id":6,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":20,"impact":20,"outcome":"APPLIED","physics_frame":751,"player_winning_tie":false,"reaction_level":2,"stage":"reaction_decision","target":"/root/Gym/Player","target_poise":0,"ticks_ms":14157}
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"difference":20,"distance":10.0,"duration":0.55,"physics_frame":751,"reaction_level":2,"stage":"reaction_started","target":"/root/Gym/Player","ticks_ms":14157}
+[PROBE][IMPACT] {"action_id":6,"health_delta":-10.0,"impact":20,"outcome":"APPLIED","physics_frame":751,"reaction_level":2,"stage":"health_result","tag":"","target":"/root/Gym/Player","ticks_ms":14157}
+[TRACE][COMBAT_ENEMY] melee_hit { "target": &"Player", "damage": 10.0 }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 80.2052643895149 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 80.2052643895149 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 81.1143553256989 }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 70.6143553256989 }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 70.6143553256989 }
+[PROBE][IMPACT] {"action_id":7,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":20,"impact":20,"outcome":"APPLIED","physics_frame":862,"player_winning_tie":false,"reaction_level":2,"stage":"reaction_decision","target":"/root/Gym/Player","target_poise":0,"ticks_ms":16023}
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"difference":20,"distance":10.0,"duration":0.55,"physics_frame":862,"reaction_level":2,"stage":"reaction_started","target":"/root/Gym/Player","ticks_ms":16023}
+[PROBE][IMPACT] {"action_id":7,"health_delta":-10.0,"impact":20,"outcome":"APPLIED","physics_frame":862,"reaction_level":2,"stage":"health_result","tag":"","target":"/root/Gym/Player","ticks_ms":16023}
+[TRACE][COMBAT_ENEMY] melee_hit { "target": &"Player", "damage": 10.0 }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 79.7052659988403 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 79.7052659988403 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 80.6143560409546 }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 71.6143560409546 }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 71.6143560409546 }
+[PROBE][IMPACT] {"action_id":8,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":20,"impact":20,"outcome":"APPLIED","physics_frame":978,"player_winning_tie":false,"reaction_level":2,"stage":"reaction_decision","target":"/root/Gym/Player","target_poise":0,"ticks_ms":17954}
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"difference":20,"distance":10.0,"duration":0.55,"physics_frame":978,"reaction_level":2,"stage":"reaction_started","target":"/root/Gym/Player","ticks_ms":17954}
+[PROBE][IMPACT] {"action_id":8,"health_delta":-10.0,"impact":20,"outcome":"APPLIED","physics_frame":978,"reaction_level":2,"stage":"health_result","tag":"","target":"/root/Gym/Player","ticks_ms":17955}
+[TRACE][COMBAT_ENEMY] melee_hit { "target": &"Player", "damage": 10.0 }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 80.7052574157715 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 80.7052574157715 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 81.6143474578857 }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 71.1143474578857 }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 71.1143474578857 }
+[PROBE][IMPACT] {"action_id":9,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":20,"impact":20,"outcome":"APPLIED","physics_frame":1067,"player_winning_tie":false,"reaction_level":2,"stage":"reaction_decision","target":"/root/Gym/Player","target_poise":0,"ticks_ms":19446}
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"difference":20,"distance":10.0,"duration":0.55,"physics_frame":1067,"reaction_level":2,"stage":"reaction_started","target":"/root/Gym/Player","ticks_ms":19446}
+[PROBE][IMPACT] {"action_id":9,"health_delta":-10.0,"impact":20,"outcome":"APPLIED","physics_frame":1067,"reaction_level":2,"stage":"health_result","tag":"","target":"/root/Gym/Player","ticks_ms":19446}
+[TRACE][COMBAT_ENEMY] melee_hit { "target": &"Player", "damage": 10.0 }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 80.2052478790283 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 80.2052478790283 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }
+[TRACE][COMBAT_ENEMY] state { "state": &"APPROACH", "target_distance": 81.1143379211426 }
+[TRACE][COMBAT_ENEMY] state { "state": &"WINDUP", "target_distance": 70.6143379211426 }
+[TRACE][COMBAT_ENEMY] state { "state": &"ACTIVE", "target_distance": 70.6143379211426 }
+[PROBE][IMPACT] {"action_id":10,"clash_resolved":false,"combat_reaction":true,"eligible":true,"hit_reaction_value":20,"impact":20,"outcome":"APPLIED","physics_frame":1158,"player_winning_tie":false,"reaction_level":2,"stage":"reaction_decision","target":"/root/Gym/Player","target_poise":0,"ticks_ms":20945}
+[TRACE][MOVEMENT] movement_lock_changed { "locked": true }
+[PROBE][IMPACT] {"difference":20,"distance":10.0,"duration":0.55,"physics_frame":1158,"reaction_level":2,"stage":"reaction_started","target":"/root/Gym/Player","ticks_ms":20945}
+[PROBE][IMPACT] {"action_id":10,"health_delta":-10.0,"impact":20,"outcome":"APPLIED","physics_frame":1158,"reaction_level":2,"stage":"health_result","tag":"","target":"/root/Gym/Player","ticks_ms":20945}
+[TRACE][COMBAT_ENEMY] melee_hit { "target": &"Player", "damage": 10.0 }
+[TRACE][COMBAT_ENEMY] state { "state": &"RECOVERY", "target_distance": 79.7052841186523 }
+[TRACE][COMBAT_ENEMY] state { "state": &"IDLE", "target_distance": 79.7052841186523 }
+[TRACE][MOVEMENT] movement_lock_changed { "locked": false }

@@ -1,0 +1,243 @@
+{
+  "scope": "actual rendered isolated game copy; action-level input fixture; source gameplay unchanged",
+  "engine": "Godot4.7.1",
+  "external_inputs_during_command": 0,
+  "input_delivery": "InputEventAction with original names and strengths; hardware bindings isolated inside this process only",
+  "outcomes": [
+    {
+      "t_ms": 1,
+      "initial": true,
+      "kind": "pressure_state_changed",
+      "state": "RELEASE"
+    },
+    {
+      "t_ms": 1466,
+      "action_kind": "light",
+      "kind": "action_accepted",
+      "position": 1,
+      "school": "fire"
+    },
+    {
+      "t_ms": 1604,
+      "initial": false,
+      "kind": "pressure_state_changed",
+      "state": "CHARGING"
+    },
+    {
+      "t_ms": 1604,
+      "kind": "charging_started",
+      "marked_count": 0
+    },
+    {
+      "t_ms": 1651,
+      "kind": "orb_created",
+      "queue_size": 1,
+      "school": "fire"
+    },
+    {
+      "t_ms": 1658,
+      "kind": "light_contact_resolved",
+      "position": 1,
+      "result": "hit",
+      "school": "fire",
+      "target_count": 1
+    },
+    {
+      "t_ms": 2105,
+      "kind": "orb_marked",
+      "marked_count": 1
+    },
+    {
+      "t_ms": 2188,
+      "kind": "action_finished",
+      "school": "fire"
+    },
+    {
+      "t_ms": 2601,
+      "kind": "orb_marked",
+      "marked_count": 1
+    },
+    {
+      "t_ms": 2904,
+      "initial": false,
+      "kind": "pressure_state_changed",
+      "state": "RELEASE"
+    },
+    {
+      "t_ms": 2905,
+      "commit_id": 1,
+      "empowered": false,
+      "kind": "cast_committed",
+      "primary_level": 1,
+      "primary_school": "fire",
+      "secondary_level": 0,
+      "secondary_school": ""
+    },
+    {
+      "t_ms": 2906,
+      "action_kind": "cast_normal",
+      "attempt_id": 1,
+      "commit_id": 1,
+      "endpoint": false,
+      "kind": "action_accepted",
+      "position": 2,
+      "school": "fire"
+    },
+    {
+      "t_ms": 3200,
+      "commit_id": 1,
+      "empowered": false,
+      "kind": "cast_launched",
+      "primary_level": 1,
+      "primary_school": "fire",
+      "secondary_level": 0,
+      "secondary_school": ""
+    },
+    {
+      "t_ms": 3207,
+      "attempt_id": 1,
+      "chain_position": 2,
+      "classification": "cast_normal",
+      "commit_id": 1,
+      "endpoint": false,
+      "kind": "cast_attempt_resolved",
+      "primary_level": 1,
+      "source_action_id": 2,
+      "terminal": "launched"
+    },
+    {
+      "t_ms": 3207,
+      "attempt_id": 1,
+      "commit_id": 1,
+      "kind": "cast_launch_phase_reached"
+    },
+    {
+      "t_ms": 3421,
+      "kind": "spell_projectile_impacted",
+      "primary_level": 1,
+      "primary_school": "fire",
+      "target": "FinalEnemy"
+    },
+    {
+      "t_ms": 4100,
+      "kind": "action_finished",
+      "school": "fire"
+    },
+    {
+      "t_ms": 4100,
+      "kind": "chain_terminated",
+      "reason": "timeout"
+    },
+    {
+      "t_ms": 4101,
+      "kind": "chain_reset",
+      "reason": "action_finished_without_follow_up"
+    },
+    {
+      "t_ms": 5105,
+      "direction": "(1.0, 0.0)",
+      "duration": 0.4,
+      "kind": "dodge_started"
+    },
+    {
+      "t_ms": 5596,
+      "cooldown": 0.37,
+      "interrupted": false,
+      "kind": "dodge_ended"
+    },
+    {
+      "t_ms": 7011,
+      "action_kind": "light",
+      "kind": "action_accepted",
+      "position": 1,
+      "school": "fire"
+    },
+    {
+      "t_ms": 7409,
+      "kind": "chain_terminated",
+      "reason": "interruption"
+    },
+    {
+      "t_ms": 7409,
+      "kind": "action_interrupted",
+      "reason": "player_hit"
+    }
+  ],
+  "terminal_player_hp": 87.5,
+  "terminal_enemy_hp": 180.0,
+  "captured_frames": 63,
+  "capture_resolution": "640x360 periodic review plus selected1280x720 frames",
+  "source_action_clock": "real engine/physics, no forced Heat, queue, or health state",
+  "capture_timestamps_ms": [
+    8,
+    132,
+    257,
+    382,
+    507,
+    631,
+    757,
+    881,
+    1007,
+    1131,
+    1256,
+    1382,
+    1506,
+    1631,
+    1707,
+    2027,
+    2131,
+    2256,
+    2381,
+    2506,
+    2631,
+    2757,
+    2882,
+    3006,
+    3131,
+    3210,
+    3536,
+    3631,
+    3756,
+    3882,
+    4006,
+    4131,
+    4256,
+    4382,
+    4507,
+    4632,
+    4756,
+    4882,
+    5006,
+    5332,
+    5402,
+    5507,
+    5632,
+    5757,
+    5882,
+    6007,
+    6131,
+    6256,
+    6381,
+    6506,
+    6631,
+    6756,
+    6881,
+    7007,
+    7131,
+    7257,
+    7381,
+    7507,
+    7631,
+    7757,
+    7881,
+    8007,
+    8132
+  ],
+  "max_scheduled_input_lateness_ms": 4,
+  "limits": [
+    "Synthetic action-level input is not physical-controller acceptance.",
+    "Variable-interval diagnostic captures are not a frame-rate or input-latency benchmark.",
+    "Hit-query paths were preserved; successful hits do not clear the known visual/query mismatch.",
+    "Existing Idle/Walk/X2/Dodge/hurt artwork remains unchanged and may have visible handoff differences."
+  ]
+}

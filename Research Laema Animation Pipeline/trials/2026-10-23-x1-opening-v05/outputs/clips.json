@@ -1,0 +1,346 @@
+{
+  "clips": [
+    {
+      "id": "game_x1",
+      "label": "1 \u00b7 Current game / preferred",
+      "file": "current-game-x1.png",
+      "columns": 8,
+      "duration": 0.72,
+      "times": [
+        0.0,
+        0.0650122515,
+        0.130024503,
+        0.1575,
+        0.1855,
+        0.2221212337500001,
+        0.3526452915,
+        0.48316938749999994
+      ],
+      "native_times": [
+        0.0,
+        0.18574929,
+        0.37149858,
+        0.45,
+        0.53,
+        0.60950685,
+        0.71187866,
+        0.8142505
+      ],
+      "native_rects": [
+        [
+          0,
+          0,
+          448,
+          448
+        ],
+        [
+          448,
+          0,
+          448,
+          448
+        ],
+        [
+          896,
+          0,
+          448,
+          448
+        ],
+        [
+          1344,
+          0,
+          448,
+          448
+        ],
+        [
+          1792,
+          0,
+          448,
+          448
+        ],
+        [
+          2240,
+          0,
+          448,
+          448
+        ],
+        [
+          2688,
+          0,
+          448,
+          448
+        ],
+        [
+          3136,
+          0,
+          448,
+          448
+        ]
+      ],
+      "resource": "config/attack_animations/fire_x1.tres",
+      "resource_sha256": "015ddb4d5d3576b85e7f7e898ec93747759f61d39dd6b83947910c0896d0477f",
+      "texture": "assets/prototype/player/fire_sword_shield_v01/overnight_v04/fire_x1.png",
+      "texture_sha256": "7bf37e3393201daeae2ad6fc58a0f87f16a79ea37b971983c765a40a4d2fef9d",
+      "copied_texture_byte_identical": true,
+      "timing_source": {
+        "file": "config/attack_styles/fire_x1.tres",
+        "sha256": "5fd7407570dd529d7f84e6668af29e05bdd3c1000c61a98e8831f4b7321e200a",
+        "windup": 0.21,
+        "recovery": 0.51,
+        "native_split": 0.6
+      }
+    },
+    {
+      "id": "followthrough_v03",
+      "label": "2 \u00b7 v03 / opening reference",
+      "file": "x1-followthrough-v03.png",
+      "columns": 8,
+      "duration": 0.72,
+      "times": [
+        0,
+        0.05,
+        0.075,
+        0.1,
+        0.126,
+        0.142,
+        0.158,
+        0.184,
+        0.21,
+        0.265,
+        0.34,
+        0.425,
+        0.5075,
+        0.565,
+        0.62,
+        0.72
+      ]
+    },
+    {
+      "id": "opening_v05",
+      "label": "3 \u00b7 v05 / opening correction",
+      "file": "x1-opening-v05.png",
+      "columns": 8,
+      "times": [
+        0,
+        0.05,
+        0.075,
+        0.1,
+        0.126,
+        0.142,
+        0.158,
+        0.184,
+        0.21,
+        0.265,
+        0.34,
+        0.425,
+        0.5075,
+        0.565,
+        0.62,
+        0.72
+      ],
+      "duration": 0.72
+    }
+  ],
+  "duration": 0.72,
+  "cell": [
+    448,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "heat100_multiplier": 1.5,
+  "current_game_still_user_preferred": true,
+  "new_drawing_keys_0_based": [
+    4,
+    5,
+    6
+  ],
+  "preferred_v03_drawing2_exact_hold_keys_0_based": [
+    1,
+    2,
+    3
+  ],
+  "preferred_hold_time": [
+    0.05,
+    0.126
+  ],
+  "retained_v04_keys_0_based": [
+    0,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "registration": {
+    "scale": 0.56,
+    "scale_reference": "last raw ready-guard cell against static guard; shared across generated sheet",
+    "raw_guard_head_y": 536,
+    "raw_guard_foot_y": 861,
+    "source_row_origins": [
+      452.0,
+      861.0
+    ],
+    "source_column_pitch": 443.5,
+    "source_frames": [
+      {
+        "source_cell": 0,
+        "source_bbox": [
+          108,
+          24,
+          327,
+          452
+        ],
+        "sole_row_deviation_world": 0.0
+      },
+      {
+        "source_cell": 1,
+        "source_bbox": [
+          575,
+          22,
+          794,
+          452
+        ],
+        "sole_row_deviation_world": 0.0
+      },
+      {
+        "source_cell": 2,
+        "source_bbox": [
+          1003,
+          22,
+          1221,
+          452
+        ],
+        "sole_row_deviation_world": 0.0
+      },
+      {
+        "source_cell": 3,
+        "source_bbox": [
+          1461,
+          29,
+          1682,
+          452
+        ],
+        "sole_row_deviation_world": 0.0
+      },
+      {
+        "source_cell": 4,
+        "source_bbox": [
+          108,
+          490,
+          381,
+          861
+        ],
+        "sole_row_deviation_world": 0.0
+      },
+      {
+        "source_cell": 5,
+        "source_bbox": [
+          542,
+          535,
+          887,
+          861
+        ],
+        "sole_row_deviation_world": 0.0
+      },
+      {
+        "source_cell": 6,
+        "source_bbox": [
+          985,
+          534,
+          1353,
+          861
+        ],
+        "sole_row_deviation_world": 0.0
+      },
+      {
+        "source_cell": 7,
+        "source_bbox": [
+          1448,
+          503,
+          1729,
+          861
+        ],
+        "sole_row_deviation_world": 0.0
+      }
+    ],
+    "front_sole_repairs": [
+      {
+        "key_index_0_based": 4,
+        "source_landmark": [
+          278.94354838709677,
+          399.0
+        ],
+        "target_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation": [
+          -14,
+          0
+        ],
+        "residual": [
+          0.35734149054502495,
+          0.0
+        ]
+      },
+      {
+        "key_index_0_based": 5,
+        "source_landmark": [
+          264.7241379310345,
+          399.0
+        ],
+        "target_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation": [
+          0,
+          0
+        ],
+        "residual": [
+          0.13793103448273314,
+          0.0
+        ]
+      },
+      {
+        "key_index_0_based": 6,
+        "source_landmark": [
+          261.3034188034188,
+          399.0
+        ],
+        "target_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation": [
+          3,
+          0
+        ],
+        "residual": [
+          -0.28278809313292186,
+          0.0
+        ]
+      }
+    ],
+    "per_frame_rescaling_or_anatomy_warp": false,
+    "before_file": "x1-opening-before-foot-registration.png"
+  },
+  "unused_generated_cells_0_based": [
+    0,
+    1,
+    2,
+    6,
+    7
+  ],
+  "unused_reason": "Three context/calibration cells plus two near-repeated chamber cells; exact preferred drawing intentionally reused instead",
+  "other_poses_approved": false,
+  "gameplay_changes": false,
+  "production_approved": false,
+  "machine_export_seconds": 0.156050999998115
+}

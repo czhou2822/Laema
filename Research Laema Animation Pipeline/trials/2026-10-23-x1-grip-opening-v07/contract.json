@@ -1,0 +1,50 @@
+{
+  "created_at_utc": "2026-10-23T12:34:12.695150+00:00",
+  "source_motion_trial": "v05",
+  "reviewed_grip_reference": "v06 key7; user says grip connection reads better",
+  "reference_is_relative_improvement": true,
+  "whole_motion_approved": false,
+  "whole_strip_grip_approved": false,
+  "new_local_edits": [
+    2,
+    5,
+    6
+  ],
+  "reuse_repaired_chamber_at_keys": [
+    2,
+    3,
+    4
+  ],
+  "reuse_v06_repair_at_key": 7,
+  "crop_boxes": {
+    "2": [
+      184,
+      192,
+      312,
+      288
+    ],
+    "5": [
+      200,
+      212,
+      328,
+      308
+    ],
+    "6": [
+      200,
+      214,
+      328,
+      310
+    ]
+  },
+  "target_size": [
+    1024,
+    768
+  ],
+  "scope": "Opening keys2-7 only. Body/pose/alpha and blade orientation stay source-fixed through local RGB masks.",
+  "other_keys_unchanged": true,
+  "gameplay_changes": false,
+  "source_sha256": "fac46d56ffe46a2b693223f7f6336e4a871d5c4a810d1b36c98d4bb5665ed9c0",
+  "status": "Stopped before image generation",
+  "reason": "Latest user feedback reports no visible v05/v06 difference; do not propagate cosmetic-only repair",
+  "image_requests": 0
+}

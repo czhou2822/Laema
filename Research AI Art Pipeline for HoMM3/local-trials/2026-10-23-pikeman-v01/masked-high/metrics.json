@@ -1,0 +1,81 @@
+{
+  "method": "masked-high",
+  "complete_ten_frame_sequence": false,
+  "unique_frames_executed": [
+    5
+  ],
+  "measurements": [
+    {
+      "unique_frame": 5,
+      "diagnostic_foreground_rule": "max channel distance >24 from median RGB of four8x8 corners; not semantic segmentation",
+      "estimated_background_rgb": [
+        127.0,
+        127.0,
+        127.0
+      ],
+      "raw_diagnostic": {
+        "silhouette_iou": 0.7426581895246746,
+        "alpha_changed_pixels": 5234,
+        "opaque_bottom_delta_px": 0,
+        "centroid_delta_px": [
+          -0.774811782686669,
+          8.734574424106512
+        ],
+        "opaque_bbox": [
+          54,
+          62,
+          276,
+          192
+        ],
+        "foreground_outside_source_px": 1050,
+        "source_opaque_without_candidate_px": 650,
+        "diagnostic_foreground_border_pixels": 0
+      },
+      "input_same_foreground_diagnostic": {
+        "silhouette_iou": 0.7583383869011522,
+        "alpha_changed_pixels": 5555,
+        "opaque_bottom_delta_px": 0,
+        "centroid_delta_px": [
+          -0.2579073912418721,
+          8.797329063724561
+        ],
+        "opaque_bbox": [
+          54,
+          62,
+          275,
+          192
+        ],
+        "foreground_outside_source_px": 1040,
+        "source_opaque_without_candidate_px": 554,
+        "diagnostic_foreground_border_pixels": 0
+      },
+      "source_alpha_derivative": {
+        "silhouette_iou": 1.0,
+        "alpha_changed_pixels": 0,
+        "opaque_bottom_delta_px": 0,
+        "centroid_delta_px": [
+          0.0,
+          0.0
+        ],
+        "opaque_bbox": [
+          54,
+          62,
+          276,
+          192
+        ],
+        "foreground_outside_source_px": 0,
+        "source_opaque_without_candidate_px": 0,
+        "diagnostic_foreground_border_pixels": 0
+      },
+      "opaque_rgb_mean_absolute_change_8bit": 19.192044636429085,
+      "source_opaque_pixels_near_output_background_fraction": 0.012419006479481642,
+      "source_opaque_pixels_near_input_background_fraction": 0.01421886249100072,
+      "opaque_pixels_changed_by_gt8_any_channel_fraction": 0.751979841612671,
+      "automated_export_seconds": 0.05113660002825782,
+      "manual_drawing_cleanup_seconds": 0,
+      "cleanup_caveat": "Artist anatomy/color/edge repair and acceptance still unmeasured. Applying a mask is automated packaging, not artist cleanup."
+    }
+  ],
+  "model": "model_lock.json",
+  "mask_warning": "Source alpha imposes IoU1; inspect raw diagnostic for actual model drift."
+}

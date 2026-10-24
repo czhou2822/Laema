@@ -1,0 +1,642 @@
+{
+  "status": "executed",
+  "method": "masked-full",
+  "unique_source_frame": 5,
+  "started_utc": "2026-10-23T09:35:02.209935+00:00",
+  "duration_seconds": 185.562,
+  "raw_file": "masked-full/raw/unique_05.png",
+  "raw_sha256": "d10d3778d01ca5156a6ae3b86e08dcd0e6fa14a0dbaca610b12c77fdadfffa33",
+  "raw_dimensions": [
+    608,
+    416
+  ],
+  "raw_mode": "RGB",
+  "model_lock": "model_lock.json",
+  "workflow": "masked-full/workflows/unique_05.api.json",
+  "history": {
+    "prompt": [
+      11,
+      "29a55a68-c0df-4375-a84d-9ec21793f5a7",
+      {
+        "1": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "unet_name": "qwen_image_edit_2511_fp8mixed.safetensors",
+            "weight_dtype": "default"
+          }
+        },
+        "2": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+            "type": "qwen_image",
+            "device": "default"
+          }
+        },
+        "3": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "qwen_image_vae.safetensors"
+          }
+        },
+        "4": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "restored_05_gray.png"
+          }
+        },
+        "5": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "master_right_gray.png"
+          }
+        },
+        "6": {
+          "class_type": "TextEncodeQwenImageEditPlus",
+          "inputs": {
+            "clip": [
+              "2",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ],
+            "prompt": "Edit Picture 1 only. Picture 1 is the exact historical sprite pose and registration authority. Picture 2 is the same Pikeman appearance reference, not a pose reference. Refine the existing tiny soldier in Picture 1 into a detailed painted game sprite with the face, brown-bronze helmet, silver shoulder armor, white tabard with blue organic crest, blue sleeves and trousers with narrow gold stripes, brown leather boots, and wooden pike materials of Picture 2. Keep the exact original silhouette, body proportions, torso angle, head position, bent knees, two hands, boot contacts, pike angle, pike endpoints, grip spacing and occlusions in Picture 1. The soldier faces right. Do not copy Picture 2 standing pose. Keep the single continuous straight pike and its existing silver spearhead. Do not enlarge, recenter, rotate, reframe or redesign the figure. Preserve all empty margins and the exact flat RGB 127 gray background. No text, extra person, shield, sword, cape, floor, effects, cast shadow or new ornament. Restrained upper-left lighting and historically compatible painted sprite shading. Preserve pose before adding any detail.",
+            "image1": [
+              "4",
+              0
+            ],
+            "image2": [
+              "5",
+              0
+            ]
+          }
+        },
+        "7": {
+          "class_type": "TextEncodeQwenImageEditPlus",
+          "inputs": {
+            "clip": [
+              "2",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ],
+            "prompt": " ",
+            "image1": [
+              "4",
+              0
+            ],
+            "image2": [
+              "5",
+              0
+            ]
+          }
+        },
+        "8": {
+          "class_type": "ModelSamplingAuraFlow",
+          "inputs": {
+            "model": [
+              "1",
+              0
+            ],
+            "shift": 3.1
+          }
+        },
+        "9": {
+          "class_type": "CFGNorm",
+          "inputs": {
+            "model": [
+              "8",
+              0
+            ],
+            "strength": 1.0,
+            "pre_cfg": false
+          }
+        },
+        "10": {
+          "class_type": "VAEEncode",
+          "inputs": {
+            "pixels": [
+              "4",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ]
+          }
+        },
+        "11": {
+          "class_type": "KSampler",
+          "inputs": {
+            "model": [
+              "9",
+              0
+            ],
+            "positive": [
+              "6",
+              0
+            ],
+            "negative": [
+              "7",
+              0
+            ],
+            "latent_image": [
+              "15",
+              0
+            ],
+            "seed": 42,
+            "steps": 40,
+            "cfg": 4.0,
+            "sampler_name": "euler",
+            "scheduler": "simple",
+            "denoise": 1.0
+          }
+        },
+        "12": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": [
+              "11",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ]
+          }
+        },
+        "13": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "12",
+              0
+            ],
+            "filename_prefix": "masked-full/unique_05"
+          }
+        },
+        "14": {
+          "class_type": "LoadImageMask",
+          "inputs": {
+            "image": "edit_mask_05.png",
+            "channel": "red"
+          }
+        },
+        "15": {
+          "class_type": "SetLatentNoiseMask",
+          "inputs": {
+            "samples": [
+              "10",
+              0
+            ],
+            "mask": [
+              "14",
+              0
+            ]
+          }
+        }
+      },
+      {
+        "client_id": "homm3-pikeman-local-v01",
+        "create_time": 1792748102238
+      },
+      [
+        "13"
+      ]
+    ],
+    "outputs": {
+      "13": {
+        "images": [
+          {
+            "filename": "unique_05_00001_.png",
+            "subfolder": "masked-full",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 608,
+              "height": 416
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "29a55a68-c0df-4375-a84d-9ec21793f5a7",
+            "timestamp": 1792748102240
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "2",
+              "3",
+              "5",
+              "8",
+              "9"
+            ],
+            "prompt_id": "29a55a68-c0df-4375-a84d-9ec21793f5a7",
+            "timestamp": 1792748102250
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "29a55a68-c0df-4375-a84d-9ec21793f5a7",
+            "timestamp": 1792748286143
+          }
+        ]
+      ]
+    },
+    "meta": {
+      "13": {
+        "node_id": "13",
+        "display_node": "13",
+        "parent_node": null,
+        "real_node_id": "13"
+      }
+    }
+  },
+  "gpu_samples": [
+    {
+      "elapsed_s": 0.11,
+      "gpu_memory_mib_util_percent": "22068, 84"
+    },
+    {
+      "elapsed_s": 2.17,
+      "gpu_memory_mib_util_percent": "23097, 53"
+    },
+    {
+      "elapsed_s": 4.25,
+      "gpu_memory_mib_util_percent": "22926, 58"
+    },
+    {
+      "elapsed_s": 6.31,
+      "gpu_memory_mib_util_percent": "22278, 60"
+    },
+    {
+      "elapsed_s": 8.38,
+      "gpu_memory_mib_util_percent": "23516, 89"
+    },
+    {
+      "elapsed_s": 10.44,
+      "gpu_memory_mib_util_percent": "23189, 99"
+    },
+    {
+      "elapsed_s": 12.48,
+      "gpu_memory_mib_util_percent": "23000, 99"
+    },
+    {
+      "elapsed_s": 14.61,
+      "gpu_memory_mib_util_percent": "23016, 99"
+    },
+    {
+      "elapsed_s": 16.67,
+      "gpu_memory_mib_util_percent": "22991, 99"
+    },
+    {
+      "elapsed_s": 18.73,
+      "gpu_memory_mib_util_percent": "22984, 99"
+    },
+    {
+      "elapsed_s": 20.81,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 22.89,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 24.95,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 27.0,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 29.06,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 31.11,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 33.17,
+      "gpu_memory_mib_util_percent": "22967, 99"
+    },
+    {
+      "elapsed_s": 35.23,
+      "gpu_memory_mib_util_percent": "23067, 99"
+    },
+    {
+      "elapsed_s": 37.31,
+      "gpu_memory_mib_util_percent": "23050, 99"
+    },
+    {
+      "elapsed_s": 39.36,
+      "gpu_memory_mib_util_percent": "23004, 99"
+    },
+    {
+      "elapsed_s": 41.42,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 43.47,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 45.53,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 47.59,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 49.64,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 51.69,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 53.77,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 55.81,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 57.88,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 59.94,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 61.98,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 64.05,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 66.09,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 68.16,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 70.2,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 72.25,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 74.31,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 76.36,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 78.42,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 80.48,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 82.55,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 84.62,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 86.67,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 88.72,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 90.78,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 92.84,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 94.91,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 96.94,
+      "gpu_memory_mib_util_percent": "22966, 99"
+    },
+    {
+      "elapsed_s": 98.98,
+      "gpu_memory_mib_util_percent": "22971, 99"
+    },
+    {
+      "elapsed_s": 101.03,
+      "gpu_memory_mib_util_percent": "22967, 99"
+    },
+    {
+      "elapsed_s": 103.09,
+      "gpu_memory_mib_util_percent": "22967, 99"
+    },
+    {
+      "elapsed_s": 105.16,
+      "gpu_memory_mib_util_percent": "22967, 99"
+    },
+    {
+      "elapsed_s": 107.2,
+      "gpu_memory_mib_util_percent": "22967, 99"
+    },
+    {
+      "elapsed_s": 109.27,
+      "gpu_memory_mib_util_percent": "22967, 99"
+    },
+    {
+      "elapsed_s": 111.31,
+      "gpu_memory_mib_util_percent": "22967, 99"
+    },
+    {
+      "elapsed_s": 113.38,
+      "gpu_memory_mib_util_percent": "23057, 99"
+    },
+    {
+      "elapsed_s": 115.42,
+      "gpu_memory_mib_util_percent": "23038, 99"
+    },
+    {
+      "elapsed_s": 117.48,
+      "gpu_memory_mib_util_percent": "23037, 99"
+    },
+    {
+      "elapsed_s": 119.53,
+      "gpu_memory_mib_util_percent": "23004, 99"
+    },
+    {
+      "elapsed_s": 121.59,
+      "gpu_memory_mib_util_percent": "22982, 99"
+    },
+    {
+      "elapsed_s": 123.67,
+      "gpu_memory_mib_util_percent": "23111, 99"
+    },
+    {
+      "elapsed_s": 125.73,
+      "gpu_memory_mib_util_percent": "22884, 99"
+    },
+    {
+      "elapsed_s": 127.78,
+      "gpu_memory_mib_util_percent": "22881, 99"
+    },
+    {
+      "elapsed_s": 129.83,
+      "gpu_memory_mib_util_percent": "22825, 99"
+    },
+    {
+      "elapsed_s": 131.89,
+      "gpu_memory_mib_util_percent": "22825, 100"
+    },
+    {
+      "elapsed_s": 133.97,
+      "gpu_memory_mib_util_percent": "22762, 100"
+    },
+    {
+      "elapsed_s": 136.02,
+      "gpu_memory_mib_util_percent": "22758, 100"
+    },
+    {
+      "elapsed_s": 138.06,
+      "gpu_memory_mib_util_percent": "22754, 99"
+    },
+    {
+      "elapsed_s": 140.14,
+      "gpu_memory_mib_util_percent": "22762, 100"
+    },
+    {
+      "elapsed_s": 142.19,
+      "gpu_memory_mib_util_percent": "22754, 100"
+    },
+    {
+      "elapsed_s": 144.25,
+      "gpu_memory_mib_util_percent": "22754, 100"
+    },
+    {
+      "elapsed_s": 146.31,
+      "gpu_memory_mib_util_percent": "22754, 100"
+    },
+    {
+      "elapsed_s": 148.39,
+      "gpu_memory_mib_util_percent": "22837, 100"
+    },
+    {
+      "elapsed_s": 150.47,
+      "gpu_memory_mib_util_percent": "22828, 99"
+    },
+    {
+      "elapsed_s": 152.55,
+      "gpu_memory_mib_util_percent": "22765, 100"
+    },
+    {
+      "elapsed_s": 154.62,
+      "gpu_memory_mib_util_percent": "22764, 100"
+    },
+    {
+      "elapsed_s": 156.69,
+      "gpu_memory_mib_util_percent": "22763, 99"
+    },
+    {
+      "elapsed_s": 158.73,
+      "gpu_memory_mib_util_percent": "22801, 99"
+    },
+    {
+      "elapsed_s": 160.78,
+      "gpu_memory_mib_util_percent": "22769, 100"
+    },
+    {
+      "elapsed_s": 162.86,
+      "gpu_memory_mib_util_percent": "22744, 100"
+    },
+    {
+      "elapsed_s": 164.91,
+      "gpu_memory_mib_util_percent": "22728, 100"
+    },
+    {
+      "elapsed_s": 166.98,
+      "gpu_memory_mib_util_percent": "22751, 100"
+    },
+    {
+      "elapsed_s": 169.05,
+      "gpu_memory_mib_util_percent": "22784, 100"
+    },
+    {
+      "elapsed_s": 171.08,
+      "gpu_memory_mib_util_percent": "22798, 100"
+    },
+    {
+      "elapsed_s": 173.14,
+      "gpu_memory_mib_util_percent": "22782, 100"
+    },
+    {
+      "elapsed_s": 175.19,
+      "gpu_memory_mib_util_percent": "22731, 100"
+    },
+    {
+      "elapsed_s": 177.27,
+      "gpu_memory_mib_util_percent": "22725, 100"
+    },
+    {
+      "elapsed_s": 179.33,
+      "gpu_memory_mib_util_percent": "22721, 99"
+    },
+    {
+      "elapsed_s": 181.38,
+      "gpu_memory_mib_util_percent": "22721, 100"
+    },
+    {
+      "elapsed_s": 183.44,
+      "gpu_memory_mib_util_percent": "22721, 99"
+    },
+    {
+      "elapsed_s": 185.52,
+      "gpu_memory_mib_util_percent": "21569, 11"
+    }
+  ],
+  "gpu_sample_interval_seconds": 2,
+  "manual_drawing_cleanup_seconds": 0,
+  "manual_cleanup_status": "No artist drawing correction performed; production cleanup time remains unmeasured.",
+  "guidance": "Full-strength endpoint with the same restored input and dilated mask, denoise1.0.",
+  "output_alpha": "RGB raw; no native alpha. Source-alpha derivatives are separate."
+}

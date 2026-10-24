@@ -1,0 +1,60 @@
+{
+  "status": "Executed: seventeen local Qwen outputs plus two interrupted attempts without images",
+  "official_template": {
+    "file": "../../workflows/official/image_qwen_image_edit_2511.json",
+    "sha256": "b23103935f437e1fe3184247fa5bafb891a28113d0c63de7449b7cdfb0419111",
+    "template_commit": "67984637eefcd4825dcf5c134e39034785be1682",
+    "recorded_core_version": "0.16.4"
+  },
+  "local_core": {
+    "commit": "d07dff4565ea9804277fff8cdfa0c817e08c3d44",
+    "version": "0.42.0"
+  },
+  "changes": [
+    "Explicit608x416 source/latent canvas; omit automatic FluxKontextImageScale output resize",
+    "Two input references: source pose first, recovered highres master second",
+    "Full40step,CFG4,Euler/simple,seed42,shift3.1,CFGNorm1; no Lightning LoRA",
+    "Official Comfy FP8mixed2511 model plus matching FP8scaled encoder",
+    "Additional independent masked variant: supplied restoration initialization, denoise0.35, dilated original opaque mask via SetLatentNoiseMask",
+    "No added ControlNet; InstantX Union reserved for its documented baseQwen pairing"
+  ],
+  "reference_encoder_behavior": "Core TextEncodeQwenImageEditPlus internally scales VL images to384^2 area and VAE reference images to1024^2 area; output latent remains608x416. Source/reference semantics can still drift.",
+  "inputs": {
+    "edit_mask_00.png": "c600183665bfea4170d2927b7d9084b13beaa223a84676baeb4c8c2b1296f630",
+    "edit_mask_01.png": "56d346415b5ba3bbb84ec4036d5ba4b2bff94aa4686d9ff6c01eeffda7196c58",
+    "edit_mask_02.png": "765c6d7dea52f55242f255ade4038a709a4a1c40976d0174b1618b0abf4f93cf",
+    "edit_mask_03.png": "8f9aded1a52faa0d70153f3dbf59b1c899e4b9f10c1300e5003b9c0e6a859bf3",
+    "edit_mask_04.png": "539b00c2d0aa0e43948ca9c6fc6d5543dec7efd91a6186ed411b4f323703bd59",
+    "edit_mask_05.png": "86beac27e162bb2583b87562f5b4f804be7c5d5279263f201c09e32f47ecffc2",
+    "mask_00.png": "5a34073b06c48bb37af673138d4eeaf841519a99c48901202af41beeff59f034",
+    "mask_01.png": "a4b9d2efc8428bece6c1663da2d2781aa37ea3e5f1b87c99edf076e2d646ccf0",
+    "mask_02.png": "a5b2bbe0ff583f53d77708b897ad5aeca54c0e74acc700ab1088afe24ad0ad54",
+    "mask_03.png": "518d983c357e44e932595bf08627b766e3e538626423f6d0d62fa67bd751f85b",
+    "mask_04.png": "0ebec368cc7b2bbb9d80cca837946fae46cc66f54baeda9d1696f83be2c12c66",
+    "mask_05.png": "b4bf6c73b0a220d5057de6fcd3db1a3de0fa5df4a4db038bac9a894545b8d337",
+    "master_generation_raw.png": "2b3c9fa28100c7985e4c1cb859f9ef26bb0b04edce479f7720422c9ff47ef429",
+    "master_original_left.png": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4",
+    "master_right_gray.png": "9443beb996b54c0044d34cd532686f134ede0f2212b8ff1c8fdd1777e8778545",
+    "master_right_rgba.png": "79a471e02d12c71257b0d81431d19f843b1e8959e2340cd3b05e23de9d2b9521",
+    "pose_00_gray.png": "2614e57ffc4477de1270b365796837c395a7b3d1160e4638aaf958cf80264441",
+    "pose_01_gray.png": "c629bf6018e7a3de9e64cb10552cf5ae424adb35c6d1e8fc11165c0e436994d7",
+    "pose_02_gray.png": "330510ce327ee2008beb24f5572c76616f428664f67a698d90dd8390ccc035e8",
+    "pose_03_gray.png": "ac0c4a7a63dd1cbc95e8cff437b605667e0673357b44a3db3ec387e46cd03e93",
+    "pose_04_gray.png": "1cbd567b6fc8ca6d4247132ae1e35e947e8dbe9e6f15944b7ab2305e834322ad",
+    "pose_05_gray.png": "bac572d3aa9b3d01304713d3b5521f19bb24ba0f8712c8084f7f3c47457ebc9c",
+    "restored_00_gray.png": "bcd4c350b9ec61b093483d30d7851592b4d1b1b89d95ad5a0a0bfc325be66e15",
+    "restored_01_gray.png": "db0af88124846a83d5499a0db1fa5df3d4dc3eb267ee24941522cc58fe5f1d5f",
+    "restored_02_gray.png": "25891a39166049ed809a1de10840f154de8c77d18b005d845b0f5b537b63b5d8",
+    "restored_03_gray.png": "a55ee71d891d48a85d687913853d52212b065f2324c7c05c4d77f86751bbfc1d",
+    "restored_04_gray.png": "d33f3046613d236f516db2b08c7f8e1fe5bc13801081eac7b5ecdef72674bb55",
+    "restored_05_gray.png": "fd31f1a11bb83ddbab7386d6525640ec15d3dacad001504a0eca199e9a4b15d3"
+  },
+  "actual_configurations": [
+    "reference608 denoise1 frames00,05",
+    "reference1216 denoise1 frame00",
+    "restored unmasked denoise0.35 frame05",
+    "restored masked denoise0.35 frames00..05",
+    "restored masked denoise0.65 frame05",
+    "restored masked denoise1 frames00..05"
+  ]
+}

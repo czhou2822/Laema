@@ -1,0 +1,113 @@
+{
+  "verified_at_utc": "2026-10-23T07:27:23.232100+00:00",
+  "scope": "Offline HTML motion-study renderer and exported media only; not product Godot validation or user acceptance.",
+  "browser": {
+    "engine": "Chromium",
+    "version": "154.0.8037.57",
+    "loading": "page.set_content from local file; file:// navigation blocked by browser policy",
+    "sandbox": "Local browser launch required approved require_escalated; external http/https requests blocked"
+  },
+  "review_html_sha256": "61ca8e92d50fd863645d3686d019fdb162a64419a38702cf774c8c2317cf8db8",
+  "embedded_data_matches_source": true,
+  "authored_key_count": 32,
+  "page_errors": [],
+  "resource_requests": [],
+  "canvas_native": {
+    "width": 1280,
+    "height": 720,
+    "cssWidth": 1280,
+    "cssHeight": 720
+  },
+  "canvas_zoom2": {
+    "width": 1280,
+    "height": 720,
+    "cssWidth": 2560,
+    "cssHeight": 1440
+  },
+  "proposal_cards": 3,
+  "key_pose_miniatures": 18,
+  "baseline_clock_at_base_time_0_17": "0.170 / 0.720 s",
+  "heat100_clock_at_base_time_0_17": "0.113 / 0.480 s",
+  "heat100_next_step_base_time": 0.195,
+  "controls_exercised": {
+    "t": 0.195,
+    "playing": false,
+    "speed": 0.25,
+    "heat": 100,
+    "scale": 2,
+    "mirror": true,
+    "joints": true,
+    "arc": true,
+    "guard": true
+  },
+  "scrub_base_time": 0.36,
+  "blade_interpolation_max_error_px": 2.842170943040401e-14,
+  "video_ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "60/1",
+        "avg_frame_rate": "60/1",
+        "duration": "12.000000",
+        "nb_frames": "720"
+      }
+    ],
+    "format": {
+      "duration": "12.000000",
+      "size": "1012104"
+    }
+  },
+  "video_render": {
+    "source": "Exact native studyCanvas sampled via reviewSetTime; Pillow adds timing/review-gap badges",
+    "heat0_seconds": 8,
+    "fixed_heat100_seconds": 4,
+    "review_guard_gap_seconds": 0.2,
+    "review_gap_is_gameplay": false
+  },
+  "key_pose_sheet": {
+    "dimensions": [
+      1280,
+      824
+    ],
+    "rows": 3,
+    "poses_per_row": 5,
+    "heat": 0,
+    "times": [
+      [
+        0.1,
+        0.158,
+        0.34,
+        0.62,
+        0.72
+      ],
+      [
+        0.1,
+        0.19,
+        0.34,
+        0.62,
+        0.72
+      ],
+      [
+        0.1,
+        0.21,
+        0.31,
+        0.62,
+        0.72
+      ]
+    ]
+  },
+  "visual_inspection": {
+    "method": "Inspected contact sheet and an extracted 15-fps frame strip of first MP4 action loop",
+    "observations": [
+      "Distinct blade paths visible",
+      "Foot anchors remain stationary",
+      "Shared guard at recovery endpoint",
+      "No blank or cropped bodies in inspected samples"
+    ],
+    "user_accepted": false
+  }
+}
+

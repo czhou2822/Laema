@@ -1,0 +1,342 @@
+{
+  "1": {
+    "inputs": {
+      "unet_name": "flux-2-klein-4b-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Advanced - UNETLoader",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "2": {
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Advanced - CLIPLoader",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "3": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Advanced - VAELoader",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "4": {
+    "inputs": {
+      "image": "02-laema-hammer.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Reference 1 - Laema identity",
+      "cnr_id": "comfy-core"
+    },
+    "is_changed": [
+      "adf7740ed12b1b0d7a9a01655d1989e6787fe7cf11a6cd658ef0146fa00a1870"
+    ]
+  },
+  "6": {
+    "inputs": {
+      "text": [
+        "22",
+        0
+      ],
+      "clip": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Advanced - CLIPTextEncode",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Advanced - CLIPTextEncode",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "8": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "megapixels": 1.0,
+      "resolution_steps": 1,
+      "image": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "Advanced - ImageScaleToTotalPixels",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "9": {
+    "inputs": {
+      "pixels": [
+        "8",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "Advanced - VAEEncode",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "10": {
+    "inputs": {
+      "width": [
+        "31",
+        0
+      ],
+      "height": [
+        "32",
+        0
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "CANVAS - portrait 1024 x 1536",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "11": {
+    "inputs": {
+      "cfg": 1.0,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "14",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "2. SETTINGS - seed / steps",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "12": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "Advanced - KSamplerSelect",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "13": {
+    "inputs": {
+      "filename_prefix": "Laema/flux-fast",
+      "images": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "3. RESULT - saved in output/Laema",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "14": {
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "Advanced - ReferenceLatent",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "15": {
+    "inputs": {
+      "conditioning": [
+        "7",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "Advanced - ReferenceLatent",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "16": {
+    "inputs": {
+      "steps": 4,
+      "width": [
+        "31",
+        0
+      ],
+      "height": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Advanced - Flux2Scheduler",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "17": {
+    "inputs": {
+      "noise_seed": 42
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "Advanced - RandomNoise",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "18": {
+    "inputs": {
+      "noise": [
+        "17",
+        0
+      ],
+      "guider": [
+        "11",
+        0
+      ],
+      "sampler": [
+        "12",
+        0
+      ],
+      "sigmas": [
+        "16",
+        0
+      ],
+      "latent_image": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "Advanced - SamplerCustomAdvanced",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "19": {
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "Advanced - VAEDecode",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "20": {
+    "inputs": {
+      "value": "Create a full-body illustration of Laema in a relaxed alert stance, holding the reference hammer naturally. Plain gray background, soft light, complete figure and weapon visible."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "1. YOUR PROMPT - edit this",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "21": {
+    "inputs": {
+      "value": "The reference supplies Laema's identity, costume and hammer construction. Laema is the same young adult woman with a curious alert expression, platinum-white high ponytail, fitted blue sleeveless waistcoat, cream rolled-sleeve shirt, red waist sash, brown leather cross-body strap and pouch, brown trousers, fingerless gloves and tall brown boots. Her hammer has a broad double-ended geometric head, dark inset panels, steel plates, bronze faceted fittings and narrow orange-red luminous seams. Render confident painted shapes, fine modeled-volume shading, convincing cloth/leather/metal separation, clear anatomy and expressive facial drawing. Use restrained base colors and concentrated metal highlights, without coarse pixel blocks or plastic-looking skin. Follow the user's requested pose, expression, framing and setting. Use a plain gray background only if no setting is requested. No text or watermark.\n\nUSER REQUEST:\n"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Advanced - PrimitiveStringMultiline",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "22": {
+    "inputs": {
+      "string_a": [
+        "21",
+        0
+      ],
+      "string_b": [
+        "20",
+        0
+      ],
+      "delimiter": ""
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "Advanced - StringConcatenate",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "31": {
+    "inputs": {
+      "value": 512
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Advanced - PrimitiveInt",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "32": {
+    "inputs": {
+      "value": 768
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Advanced - PrimitiveInt",
+      "cnr_id": "comfy-core"
+    }
+  }
+}

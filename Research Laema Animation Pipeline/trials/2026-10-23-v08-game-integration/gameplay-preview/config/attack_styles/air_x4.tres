@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MoveStyleTuning" format=3 uid="uid://bfhnfh3vqgmf1"]
+
+[ext_resource type="Script" uid="uid://cc0mtdcaa323o" path="res://scripts/config/move_style_tuning.gd" id="1_style"]
+[ext_resource type="Animation" path="res://config/attack_animations/air_x4.tres" id="2_animation"]
+
+[resource]
+resource_name = "air_x4"
+script = ExtResource("1_style")
+animation = ExtResource("2_animation")
+move_id = &"air_x4"
+windup_duration = 0.12
+recovery_duration = 0.16
+lunge_distance = 2.0
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55

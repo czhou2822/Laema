@@ -1,0 +1,42 @@
+{
+  "ui_test": "actual ComfyUI App mode: prompt edited, Run clicked, PNG shown in results",
+  "status": "success",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "file": "output/Laema/Qwen_00001_.png",
+  "sha256": "6975a2b1cf12f4f7d53a22fbf25c95e3771d0a9c467788d09506ced774861e3d",
+  "model": "qwen_image_edit_2511_fp8mixed.safetensors",
+  "actual_seed": 42,
+  "entered_prompt": "Create a full-body illustration of Laema standing calmly with her hammer resting across one shoulder. She looks curious and alert. Plain gray background, soft upper-left light, complete figure and hammer visible. Keep the reference outfit and equipment.",
+  "png_contains_api_prompt_and_native_workflow": true,
+  "app_controls_saved": 4,
+  "ui_screenshot": "evidence/app-ready.jpg",
+  "final_app_chooser_screenshot": "evidence/apps-ready.jpg",
+  "python_ast": "passed",
+  "art_acceptance": "not requested or inferred; output has hammer-construction errors",
+  "production_assets_replaced": false,
+  "hosted_image_generation_calls": 0,
+  "restart_validation": {
+    "status": "passed",
+    "root_start_and_stop_launchers_executed": true,
+    "old_pid": 13448,
+    "new_pid": 103912,
+    "stopped_endpoint_unavailable": true,
+    "restarted_endpoint_available": true,
+    "saved_workflows_preserved": 6,
+    "app_count": 5,
+    "completed_utc": "2026-10-23T13:57:08.5972503Z"
+  },
+  "fast_app_resize_test": {
+    "status": "passed",
+    "file": "output/Laema/flux-fast_00001_.png",
+    "sha256": "a9422c1d14ca8b838fa3d0fe913a47ce7f147a2697d1d861de99c2692f88a216",
+    "dimensions": [
+      512,
+      768
+    ],
+    "latent_and_scheduler_dimensions_linked": true
+  }
+}

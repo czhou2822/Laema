@@ -1,0 +1,17 @@
+# v08 X1 in the actual game
+
+The user requested "put it into the game and lets see". The existing v08 strip is now installed in a fresh isolated copy of the actual Gym. No new artwork was generated and no production acceptance is inferred.
+
+Use [the gameplay replay](review.html) or [the playable Godot4.7 project](gameplay-preview/project.godot). The running window is **Laema RND v08 game trial**. Existing controls: A/D move, left click/controller X attack, Shift/right shoulder defence, controller B Dodge, Escape/Start pause. Wait for the chain to end to repeat X1. X2–X5 and Cast retain the current game art.
+
+Only copied X1 texture and Sprite region/drawing-exposure keys change. The atlas is the existing16-key v08 candidate; only key7 differs from v05. The surrounding drawings and drift remain unapproved. The unique application name isolates the copied profile. Added tools scripts are capture/interactive fixtures, not gameplay edits.
+
+[Preservation evidence](evidence/preservation.json) verifies all833 inventoried source files unchanged. Among copied source files only the X1 resource and application name differ. Godot removed a temporary copied editor-DLL alias; its canonical DLL remains byte-identical. [The art patch](evidence/art-only-patch.json) preserves all native markers, contact curves, action clocks, registration, lunge and other resource text. No proposed contact adaptation was installed. X1 remains0.720s at Heat0 /0.480s at fixedHeat100, active0.126–0.5075s at Heat0.
+
+Both actual rendered sequences observed X1 contact/orb creation, Charging, one Cast launch/projectile impact, Dodge and later incoming-hit interruption. Each command ended at Player87.5HP/Enemy180HP, not encounter completion. [Run evidence](evidence/verification.json) preserves218 baseline and232 v08 viewport samples. Median sample intervals38/35ms, maxima57/43ms; replay preserves their timestamps and aligns at first accepted X1. This is not a stable-FPS benchmark or identical-state deterministic replay. Two/one external controller events occurred before command isolation; none during either command. Scheduling lateness reached21/14ms. Physical-controller acceptance remains separate.
+
+The first PNG recordings were too sparse for motion judging and remain preserved. A derived JPEG capture fixture changed only encoding/minimum requested sample interval and metadata; the original recorder remains unchanged. The first v08 editor pass logged the not-yet-imported PNG before importing it. Subsequent actual game runs loaded the v08 texture, including [key7 in combat](outputs/v08-grip-in-game.jpg). Recorder shutdown logs retain the existing13 ObjectDB /9 resource warnings; they were not resolved here.
+
+The interactive launcher uses normal hardware bindings and sends the existing Pause action once. [Its initial paused viewport](evidence/interactive-ready.png) is separate from later user activity. Human play/visual acceptance remains pending. Both facings/high-Heat combat and X2 reuse were not newly validated in this round. Earlier still-pose and v02 Cast-reuse evidence retain their own scope.
+
+The primary game remains untouched. No workflow winner, polished strip, new spatial contact path, production readiness,3D trial, commit, push or publication exists. Current game remains the user's last stated overall preference. Next: user reviews the actual game and supplies corrections before any further pose propagation.

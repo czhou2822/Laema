@@ -1,0 +1,30 @@
+{
+  "tool": "built-in image_gen",
+  "model_revision": "not exposed",
+  "seed": "not exposed",
+  "started_at_utc": "2026-10-23T11:16:22.439819+00:00",
+  "attempts": [
+    {
+      "attempt": 1,
+      "prompt": "prompts/tool-request-attempt01.txt",
+      "inputs": [
+        "inputs/X1-shallow-followthrough-guide.png",
+        "inputs/appearance-guard.png"
+      ],
+      "edit_target": "original pose guide",
+      "appearance_reference": "static guard only",
+      "requested_alpha": true,
+      "status": "exported as unapproved correction candidate",
+      "planning_spec": "prompts/followthrough-attempt01.txt",
+      "observed_service_wall_seconds": 28.478,
+      "output": "raw/followthrough-attempt01.png",
+      "output_sha256": "f4d6118f6cbbb1c49fd197c2dd9abb3f59c3add899bed9342c14d8f3fab64938",
+      "generated_cells": 8,
+      "new_cells_used": 7,
+      "guard_calibration_only": true
+    }
+  ],
+  "completed_at_utc": "2026-10-23T11:23:07.813811+00:00",
+  "human_pixel_paint_minutes": 0,
+  "human_review_minutes": null
+}

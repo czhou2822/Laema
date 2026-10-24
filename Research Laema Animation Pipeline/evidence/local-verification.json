@@ -1,0 +1,52 @@
+{
+  "scope": "isolated original-motion and artwork renderers only",
+  "updated_at_utc": "2026-10-23 09:16:01 UTC",
+  "engine": "4.7.1.stable.official.a13da4feb",
+  "renderer": "OpenGL3.3 compatibility / NVIDIA RTX4090",
+  "source_data_check": {
+    "proposals": 3,
+    "samples": 219,
+    "fixed_blade_length": 88,
+    "status": "passed"
+  },
+  "graphical_original_studies": {
+    "conditions": [
+      "Heat0/right",
+      "Heat100/right",
+      "Heat0/left",
+      "Heat100/left"
+    ],
+    "captured_frames_each": 91,
+    "note": "Original preview quit scheduling emitted one extra derived frame; first90 used in local media"
+  },
+  "graphical_artwork_trial": {
+    "conditions": [
+      "Heat0/right",
+      "Heat100/right",
+      "Heat0/left",
+      "Heat100/left"
+    ],
+    "captured_frames_each": 90,
+    "fps": 60,
+    "requested_resolution": [
+      1280,
+      720
+    ],
+    "data_keys": {
+      "AI": 10,
+      "rig": 51,
+      "hybrid": 51
+    },
+    "hybrid_version": "v03 compositor; only2 replacement keys; rejected as a finished production action"
+  },
+  "browser": {
+    "url": "http://127.0.0.1:58929/trials/2026-10-23-A-v01/comparison.html",
+    "same_phase_clock": true,
+    "local_browser_rebuilt_loop": true
+  },
+  "product_runtime": "not run for this slice",
+  "actual_transition_validation": "not performed",
+  "contact_results": "source correspondence only; no target/collision/runtime result",
+  "human_art_acceptance": false
+}
+

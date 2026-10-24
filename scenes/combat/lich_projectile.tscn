@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/enemy_arrow.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/lich/Projectile.png" id="sheet"]
+
+[node name="LichProjectile" type="Node2D" groups=["enemy_projectiles"]]
+script = ExtResource("script")
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture_filter = 2
+scale = Vector2(1.978021978, 1.978021978)
+texture = ExtResource("sheet")
+region_enabled = true
+region_rect = Rect2(140, 0, 35, 35)

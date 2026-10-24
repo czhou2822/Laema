@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "status": "IMPLEMENTED_AWAITING_USER_VALIDATION",
+  "source_art_task": "01a07f41-7159-70f1-ac7d-e6217941c130",
+  "source_package": "laema-fire-dodge-v01",
+  "school_presentation": "fire",
+  "cell_size": [
+    448,
+    448
+  ],
+  "columns": 4,
+  "nominal_foot_anchor": [
+    224,
+    400
+  ],
+  "nominal_standing_body_height": 180,
+  "root_travel_baked": false,
+  "atlases": [
+    {
+      "file": "fire_dodge_to_idle.png",
+      "exit_presentation": "idle_candidate",
+      "frame_count": 12,
+      "source_pose_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "mirrored": false,
+      "sha256": "7e330cc6490541ad12328e8f4fbf7166d28baa91ba51fc96927bdd01368a1b9c"
+    },
+    {
+      "file": "fire_dodge_to_idle_mirror.png",
+      "exit_presentation": "idle_candidate",
+      "frame_count": 12,
+      "source_pose_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "mirrored": true,
+      "sha256": "a8bb42f2cc2c14ba98a5c42f9fafac0bf64086a8b23055dd0c45a04ddcec0d66"
+    },
+    {
+      "file": "fire_dodge_to_run.png",
+      "exit_presentation": "run_alternative_not_a_gameplay_branch",
+      "frame_count": 10,
+      "source_pose_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        12
+      ],
+      "mirrored": false,
+      "sha256": "41609e394566220b284a9e93b40ef0e0ee879b772b08427fd8e5abd85f351545"
+    },
+    {
+      "file": "fire_dodge_to_run_mirror.png",
+      "exit_presentation": "run_alternative_not_a_gameplay_branch",
+      "frame_count": 10,
+      "source_pose_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        12
+      ],
+      "mirrored": true,
+      "sha256": "6b3f65dc894ecf5ef8fc4ef7376a010baea04a6ab6fe4fd8b6f97391fbaa4481"
+    }
+  ],
+  "facing_note": "Use an original sheet with the existing runtime Sprite.flip_h, OR a pre-mirrored sheet without another flip. Never both.",
+  "runtime_binding": "res://config/attack_animations/fire_dodge.tres",
+  "runtime_duration": 0.4,
+  "runtime_cooldown_after_completion": 0.37,
+  "runtime_state_owner": "MightComponent",
+  "runtime_body_mover": "Movement",
+  "runtime_sheet": "fire_dodge_to_idle.png",
+  "runtime_mirroring": "Sprite.flip_h only",
+  "runtime_input": "Circle fresh press; Fire only",
+  "gameplay_contract_status": "APPROVED_GDD_TDR_FIRST_SLICE",
+  "open_contract": [],
+  "review_timing_note": "GIF delays and endpoint holds are review aids only; no runtime timing is inferred.",
+  "evidence": {
+    "art_reported_png_checks": 26,
+    "art_reported_exact_mirrors": 13,
+    "art_reported_atlas_cell_matches": 44,
+    "art_reported_idle_endpoints_exact": true,
+    "engine_import_run_by_this_task": false,
+    "engine_runtime_validated": false
+  },
+  "known_limits": [
+    "Generated face, cloth and fine sword/shield detail can vary; this is an initial motion study, not final animation acceptance.",
+    "One compact inversion was redrawn; the original tall-leg attempt remains preserved but is not selected.",
+    "Existing Fire idle uses its earlier ornate sword whereas current attack references use the plain diagnostic blade; the study preserves this existing reference distinction.",
+    "Separate to_idle/to_run outputs are art transition candidates, not a mandated engine state machine."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "planned_before_generation": true,
+  "methods": [
+    "qwen",
+    "flux-base",
+    "flux-fast",
+    "longcat",
+    "z-image"
+  ],
+  "tasks": [
+    "hero",
+    "action"
+  ],
+  "outputs_per_task_per_method": 1,
+  "primary_track": "qwen, flux-base, flux-fast, longcat: identical single approved hero reference, identical submitted positive prompt, requested1024x1536, seed42. Single reference enables direct native LongCat comparison.",
+  "secondary_track": "z-image: text-only; receives the same written character/pose description but no image. Its identity fidelity is not compared as equivalent reference conditioning.",
+  "native_sampling": "Qwen40steps CFG4; FLUX base20steps CFG5; FLUX fast4steps CFG1; LongCat50steps CFG4.5; ZImage8steps CFG1. Native model samplers/schedules are recorded in each graph.",
+  "reference_processing": "Qwen/LongCat use native vision/text conditioning and VAE references; Flux reference image uses official1MP preprocessing. LongCat uses a fresh output latent at the shared target size. Full Flux2 VAE used for both Flux variants; current base template's small-decoder optimization is not used.",
+  "selection": "First completed result per cell. No artistic rerolls, retouching or selection. Resource failures recorded separately. No hosted image-generation calls.",
+  "limits": "New single-reference round; previous two-reference Qwen/built-in results are separate historical evidence. First-pass workflow comparison, not statistical ranking or production acceptance."
+}

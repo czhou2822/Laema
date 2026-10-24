@@ -1,0 +1,657 @@
+@tool
+class_name PrototypeConfigLoader
+extends RefCounted
+
+const ReactionRanges = preload("res://scripts/config/combat_reaction_ranges.gd")
+const Style = preload("res://scripts/combat/attack_style.gd")
+const Geometry = preload("res://scripts/combat/attack_geometry.gd")
+const Characters = preload("res://scripts/config/character_settings_store.gd")
+const Creatures = preload("res://scripts/config/creature_catalog.gd")
+
+const REQUIRED_SECTIONS := [
+	"movement",
+	"audio",
+	"player",
+	"enemy",
+	"enemy_ai",
+	"combat",
+	"moves",
+	"casting",
+	"heat",
+	"fire",
+	"water",
+	"air",
+	"earth",
+	"defence",
+	"elemental_endurance",
+	"hit_reaction",
+	"tutorial",
+	"ui",
+]
+
+
+static func load_and_validate(path: String) -> Dictionary:
+	if not FileAccess.file_exists(path):
+		return _failure("Configuration file is missing: %s" % path)
+
+	var json := JSON.new()
+	var parse_error := json.parse(FileAccess.get_file_as_string(path))
+	if parse_error != OK:
+		return _failure(
+			"Configuration parse error at line %d: %s"
+			% [json.get_error_line(), json.get_error_message()]
+		)
+
+	if typeof(json.data) != TYPE_DICTIONARY:
+		return _failure("Configuration root must be a JSON object.")
+
+	var data: Dictionary = json.data
+	if data.get("ui") is Dictionary and not data["ui"].has("enemy_creature"):
+		data["ui"]["enemy_creature"] = Creatures.DEFAULT_ID
+	if path == "res://config/prototype_combat.json":
+		var characters := Characters.apply_to_config(data)
+		if not characters["ok"]:
+			return characters
+	_normalize_legacy_audio_volumes(data)
+	ReactionRanges.normalize_legacy(data)
+	_normalize_reaction_motion(data)
+	_normalize_attack_styles(data)
+	_normalize_fire_defence(data)
+	if data.get("enemy_ai") is Dictionary:
+		for pair in [["hitbox_reach", 72.0], ["hitbox_radius", 24.0]]:
+			if not data["enemy_ai"].has(pair[0]):
+				data["enemy_ai"][pair[0]] = pair[1]
+	if data.get("ui") is Dictionary and not data["ui"].has("attack_hitbox_visible"):
+		# Preserve the previous Player debug default in older configurations.
+		data["ui"]["attack_hitbox_visible"] = true
+	if data.get("ui") is Dictionary and data["ui"].has("gym_formula_visible"):
+		# One visibility preference. Existing developer visibility takes precedence.
+		if not data["ui"].has("developer_overlay_visible"):
+			data["ui"]["developer_overlay_visible"] = data["ui"]["gym_formula_visible"]
+		data["ui"].erase("gym_formula_visible")
+	var validation_error := _validate(data)
+	if not validation_error.is_empty():
+		return _failure(validation_error)
+	if path == "res://config/prototype_combat.json":
+		var geometry := Geometry.read_config(data)
+		if not geometry["ok"]:
+			return geometry
+		validation_error = _validate(data)
+		if not validation_error.is_empty():
+			return _failure(validation_error)
+
+	return {
+		"ok": true,
+		"data": data.duplicate(true),
+		"error": "",
+	}
+
+
+static func _normalize_fire_defence(data: Dictionary) -> void:
+	if not data.get("defence") is Dictionary:
+		return
+	# Older full JSON profiles gain the new Fire fields in memory only.
+	var defaults := {
+		"fire_tap_parry_window": 0.37,
+		"fire_control_commitment": 0.5,
+		"fire_miss_recovery": 0.6,
+		"fire_block_absorption": 0.75,
+	}
+	var early = data["defence"].get("parry_window", 0.2)
+	if _is_number(early) and is_finite(float(early)):
+		defaults["fire_tap_parry_window"] = maxf(0.37, float(early))
+	var tap = data["defence"].get("fire_tap_parry_window", defaults["fire_tap_parry_window"])
+	if _is_number(tap) and is_finite(float(tap)):
+		defaults["fire_control_commitment"] = maxf(0.5, float(tap))
+	for key in defaults:
+		if not data["defence"].has(key):
+			data["defence"][key] = defaults[key]
+
+
+static func validate(data: Dictionary) -> Dictionary:
+	# Retire obsolete overrides even in cached drafts, without changing caller data.
+	var candidate := data.duplicate(true)
+	Style.strip_retired_fields(candidate)
+	_normalize_reaction_motion(candidate)
+	var validation_error := _validate(candidate)
+	if not validation_error.is_empty():
+		return _failure(validation_error)
+	return {
+		"ok": true,
+		"data": candidate,
+		"error": "",
+	}
+
+
+static func validate_and_save(path: String, data: Dictionary, expected_hash: String = "") -> Dictionary:
+	var validation := validate(data)
+	if not validation["ok"]:
+		return validation
+	data = validation["data"]
+
+	var temporary := "%s.pending-%d" % [path, OS.get_process_id()]
+	var file := FileAccess.open(temporary, FileAccess.WRITE)
+	if file == null:
+		return _failure("Cannot save configuration: %s" % path)
+	file.store_string(JSON.stringify(Characters.scene_config(data) if path == "res://config/prototype_combat.json" else data, "\t") + "\n")
+	var write_error := file.get_error()
+	file.close()
+	if write_error != OK:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(temporary))
+		return _failure("Cannot save configuration: %s" % error_string(write_error))
+	if not expected_hash.is_empty() and FileAccess.get_sha256(path) != expected_hash:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(temporary))
+		return _failure("Configuration changed while saving. Reload and review the latest values.")
+	var rename_error := DirAccess.rename_absolute(ProjectSettings.globalize_path(temporary), ProjectSettings.globalize_path(path))
+	if rename_error != OK:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(temporary))
+		return _failure("Cannot replace configuration: %s" % error_string(rename_error))
+
+	return {
+		"ok": true,
+		"data": data.duplicate(true),
+		"error": "",
+	}
+
+
+static func _validate(data: Dictionary) -> String:
+	for section_name in REQUIRED_SECTIONS:
+		if not data.has(section_name) or typeof(data[section_name]) != TYPE_DICTIONARY:
+			return "Missing or invalid configuration section: %s" % section_name
+	var creature_id = data["ui"].get("enemy_creature", Creatures.DEFAULT_ID)
+	if not creature_id is String or not Creatures.available(creature_id):
+		return "Choose an available creature from the Dev Portal."
+	if typeof(data["elemental_endurance"].get("enabled", true)) != TYPE_BOOL:
+		return "elemental_endurance.enabled must be Boolean."
+	for key in ["hitbox_reach", "hitbox_radius"]:
+		var value = data["enemy_ai"].get(key, 72.0 if key == "hitbox_reach" else 24.0)
+		if not _is_number(value) or not is_finite(float(value)) or float(value) < (0.0 if key == "hitbox_reach" else 0.001):
+			return "enemy_ai.%s must be finite and non-negative (radius must be positive)." % key
+
+	var checks := [
+		["movement", "speed", 0.001, INF],
+		["movement", "gravity_scale", 0.001, INF],
+		["player", "max_health", 0.001, INF],
+		["enemy", "max_health", 0.001, INF],
+		["enemy_ai", "aggro_range", 1.0, INF],
+		["enemy_ai", "attack_range", 1.0, INF],
+		["enemy_ai", "movement_speed", 0.0, INF],
+		["enemy_ai", "damage", 0.0, INF],
+		["combat", "attack_duration", 0.001, INF],
+		["combat", "hit_phase", 0.0, 1.0],
+		["combat", "input_window_start", 0.0, 1.0],
+		["combat", "x_buffer_width", 0.0, 1.0],
+		["combat", "light_damage", 0.0, INF],
+		["combat", "casting_damage", 0.0, INF],
+		["casting", "orb_lifetime", 0.001, INF],
+		["casting", "charge_step_duration", 0.001, INF],
+		["casting", "trigger_release_max", 0.0, 1.0],
+		["casting", "trigger_charge_min", 0.0, 1.0],
+		["casting", "empowered_primary_multiplier", 0.001, INF],
+		["casting", "projectile_screen_ratio", 0.001, 1.0],
+		["casting", "projectile_travel_duration", 0.001, INF],
+		["heat", "max_heat", 100.0, 100.0],
+		["heat", "gain_per_charged_orb", 0.0, INF],
+		["heat", "loss_per_direct_hit", 0.0, INF],
+		["heat", "reset_timer", 0.001, INF],
+		["heat", "depletion_per_second", 0.0, INF],
+		["fire", "dot_duration", 0.001, INF],
+		["fire", "dot_tick_interval", 0.001, INF],
+		["fire", "damage_per_stack", 0.0, INF],
+		["fire", "visual_motion_exponent", 0.001, INF],
+		["fire", "vfx_fps", 0.001, INF],
+		["water", "base_radius", 0.001, INF],
+		["water", "radius_per_level", 0.0, INF],
+		["water", "visual_motion_exponent", 0.001, INF],
+		["water", "vfx_fps", 0.001, INF],
+		["air", "visual_motion_exponent", 0.001, INF],
+		["air", "chain_radius", 0.001, INF],
+		["air", "damage_per_level", 0.0, INF],
+		["earth", "base_radius", 0.001, INF],
+		["earth", "radius_per_level", 0.0, INF],
+		["earth", "visual_motion_exponent", 0.001, INF],
+		["defence", "guard_capacity", 0.001, INF],
+		["defence", "blocked_damage_to_guard", 0.0, INF],
+		["defence", "guard_warning_ratio", 0.0, 1.0],
+		["defence", "parry_window", 0.001, INF],
+		["defence", "fire_tap_parry_window", 0.001, INF],
+		["defence", "fire_control_commitment", 0.001, INF],
+		["defence", "fire_miss_recovery", 0.0, INF],
+		["defence", "fire_block_absorption", 0.0, 1.0],
+		["defence", "guard_break_recovery", 0.0, INF],
+		["defence", "heat_drain_per_second", 0.0, INF],
+		["elemental_endurance", "hit_6_damage_percent", 0.0, 1.0],
+		["elemental_endurance", "hit_7_damage_percent", 0.0, 1.0],
+		["elemental_endurance", "hit_8_damage_percent", 0.0, 1.0],
+		["elemental_endurance", "hit_9_damage_percent", 0.0, 1.0],
+		["elemental_endurance", "hit_10_damage_percent", 0.0, 1.0],
+		["hit_reaction", "base_distance", 0.0, INF],
+		["hit_reaction", "distance_per_level", 0.0, INF],
+		["hit_reaction", "base_duration", 0.001, INF],
+		["hit_reaction", "duration_per_level", 0.0, INF],
+		["ui", "completed_combo_display_duration", 0.0, INF],
+	]
+
+	for check in checks:
+		var error := _validate_number(
+			data,
+			str(check[0]),
+			str(check[1]),
+			float(check[2]),
+			float(check[3])
+		)
+		if not error.is_empty():
+			return error
+
+	var defence: Dictionary = data["defence"]
+	if float(defence["fire_tap_parry_window"]) < float(defence["parry_window"]):
+		return "Fire tap-parry endpoint must be at least the early parry window."
+	if float(defence["fire_control_commitment"]) < float(defence["fire_tap_parry_window"]):
+		return "Fire control commitment must be at least the tap-parry endpoint."
+
+	var reaction: Dictionary = data["hit_reaction"]
+	if typeof(reaction.get("combat_levels", null)) != TYPE_ARRAY or reaction["combat_levels"].size() != 5:
+		return "hit_reaction.combat_levels must contain exactly five levels."
+	var ranges_error := ReactionRanges.validation_error(reaction["combat_levels"])
+	if not ranges_error.is_empty():
+		return ranges_error
+	for index in range(5):
+		var level = reaction["combat_levels"][index]
+		if typeof(level) != TYPE_DICTIONARY:
+			return "hit_reaction.combat_levels[%d] must be an object." % index
+		for key in ["duration", "motion_duration", "distance"]:
+			if not _is_number(level.get(key, null)) or is_nan(float(level[key])) or is_inf(float(level[key])):
+				return "hit_reaction.combat_levels[%d].%s must be finite numeric data." % [index, key]
+		if float(level["duration"]) <= 0.0 or float(level["motion_duration"]) <= 0.0 or float(level["distance"]) < 0.0:
+			return "Combat reaction stun and motion durations must be positive and distance non-negative."
+	var move_error := _validate_moves(data["moves"])
+	if not move_error.is_empty():
+		return move_error
+	for section in ["player", "enemy_ai"]:
+		var poise_error := _validate_integer(data, section, "poise", 0, 100)
+		if not poise_error.is_empty():
+			return poise_error
+	var combat: Dictionary = data["combat"]
+	var player: Dictionary = data["player"]
+	if not player.has("one_hp_floor_enabled") or typeof(player["one_hp_floor_enabled"]) != TYPE_BOOL:
+		return "player.one_hp_floor_enabled must be Boolean."
+	var heat: Dictionary = data["heat"]
+	for obsolete_heat_key in ["max_attack_speed_percent", "attack_speed_gain_per_orb", "attack_speed_loss_per_hit", "heat_reset_timer"]:
+		if heat.has(obsolete_heat_key):
+			return "heat.%s is obsolete." % obsolete_heat_key
+	for obsolete_air_key in ["attack_speed_multiplier", "buff_duration"]:
+		if data["air"].has(obsolete_air_key):
+			return "air.%s is obsolete." % obsolete_air_key
+	if not combat.has("collect_orb_without_contact") or typeof(combat["collect_orb_without_contact"]) != TYPE_BOOL:
+		return "combat.collect_orb_without_contact must be Boolean."
+	if float(combat["x_buffer_width"]) > float(combat["input_window_start"]):
+		return "combat.x_buffer_width must not exceed combat.input_window_start."
+	var audio_error := _validate_audio(data["audio"])
+	if not audio_error.is_empty():
+		return audio_error
+	var tutorial_error := _validate_tutorial(data["tutorial"])
+	if not tutorial_error.is_empty():
+		return tutorial_error
+	var casting: Dictionary = data["casting"]
+	if float(casting["trigger_release_max"]) >= float(casting["trigger_charge_min"]):
+		return "casting.trigger_release_max must be lower than casting.trigger_charge_min."
+	var integer_error := _validate_integer(data, "combat", "direct_impact", 0, 2147483647)
+	if not integer_error.is_empty():
+		return integer_error
+	integer_error = _validate_integer(data, "enemy", "defensive_level", 0, 2147483647)
+	if not integer_error.is_empty():
+		return integer_error
+	integer_error = _validate_integer(data, "enemy_ai", "impact", 0, 2147483647)
+	if not integer_error.is_empty():
+		return integer_error
+	if not data["enemy_ai"].has("enabled") or typeof(data["enemy_ai"]["enabled"]) != TYPE_BOOL:
+		return "enemy_ai.enabled must be Boolean."
+	integer_error = _validate_integer(data, "defence", "water_block_defensive_level", 0, 2147483647)
+	if not integer_error.is_empty():
+		return integer_error
+	integer_error = _validate_integer(data, "air", "max_chain_targets", 1, 32)
+	if not integer_error.is_empty():
+		return integer_error
+	integer_error = _validate_integer(data, "casting", "max_marked_capacity", 8, 8)
+	if not integer_error.is_empty():
+		return integer_error
+	integer_error = _validate_integer(data, "casting", "max_storage_capacity", 10, 10)
+	if not integer_error.is_empty():
+		return integer_error
+
+	var water: Dictionary = data["water"]
+	if not water.has("levels") or typeof(water["levels"]) != TYPE_ARRAY or water["levels"].size() != 5:
+		return "water.levels must contain exactly five entries."
+	var expected_statuses := ["wet", "wet", "slow", "slow", "frozen"]
+	for index in range(water["levels"].size()):
+		var water_level = water["levels"][index]
+		if typeof(water_level) != TYPE_DICTIONARY:
+			return "water.levels[%d] must be an object." % index
+		for key in ["status", "duration", "slow_percent"]:
+			if not water_level.has(key):
+				return "water.levels[%d].%s is required." % [index, key]
+		if str(water_level["status"]) != expected_statuses[index]:
+			return "water.levels[%d].status must be %s." % [index, expected_statuses[index]]
+		if not _is_number(water_level["duration"]) or float(water_level["duration"]) <= 0.0:
+			return "water.levels[%d].duration must be positive." % index
+		if not _is_number(water_level["slow_percent"]):
+			return "water.levels[%d].slow_percent must be numeric." % index
+		var slow_percent := float(water_level["slow_percent"])
+		if slow_percent < 0.0 or slow_percent > 1.0:
+			return "water.levels[%d].slow_percent must be between 0 and 1." % index
+
+	var earth: Dictionary = data["earth"]
+	if not earth.has("levels") or typeof(earth["levels"]) != TYPE_ARRAY or earth["levels"].size() != 5:
+		return "earth.levels must contain exactly five entries."
+	for index in range(earth["levels"].size()):
+		var earth_level = earth["levels"][index]
+		if typeof(earth_level) != TYPE_DICTIONARY:
+			return "earth.levels[%d] must be an object." % index
+		for key in ["duration", "slow_percent"]:
+			if not earth_level.has(key) or not _is_number(earth_level[key]):
+				return "earth.levels[%d].%s must be numeric." % [index, key]
+		if float(earth_level["duration"]) <= 0.0:
+			return "earth.levels[%d].duration must be positive." % index
+		var earth_slow := float(earth_level["slow_percent"])
+		if earth_slow < 0.0 or earth_slow > 1.0:
+			return "earth.levels[%d].slow_percent must be between 0 and 1." % index
+
+	var ui: Dictionary = data["ui"]
+	if not ui.has("developer_overlay_visible") or typeof(ui["developer_overlay_visible"]) != TYPE_BOOL:
+		return "ui.developer_overlay_visible must be Boolean."
+	if not ui.has("attack_hitbox_visible") or typeof(ui["attack_hitbox_visible"]) != TYPE_BOOL:
+		return "ui.attack_hitbox_visible must be Boolean."
+	var feedback_error := _validate_number(data, "ui", "cast_feedback_duration", 0.1, 20.0)
+	if not feedback_error.is_empty():
+		return feedback_error
+
+	return ""
+
+
+static func _validate_number(
+	data: Dictionary,
+	section_name: String,
+	key: String,
+	minimum: float,
+	maximum: float
+) -> String:
+	var section: Dictionary = data[section_name]
+	if not section.has(key) or not _is_number(section[key]):
+		return "%s.%s must be numeric." % [section_name, key]
+	var value := float(section[key])
+	if value < minimum or value > maximum:
+		return "%s.%s must be between %s and %s." % [section_name, key, minimum, maximum]
+	return ""
+
+
+static func _validate_audio(audio: Dictionary) -> String:
+	for group_name in ["ambient", "sfx", "bgm"]:
+		if not audio.has(group_name) or typeof(audio[group_name]) != TYPE_DICTIONARY:
+			return "audio.%s must be an object." % group_name
+		var group: Dictionary = audio[group_name]
+		if not group.has("enabled") or typeof(group["enabled"]) != TYPE_BOOL:
+			return "audio.%s.enabled must be Boolean." % group_name
+		if not group.has("volume_db") or not _is_number(group["volume_db"]):
+			return "audio.%s.volume_db must be numeric." % group_name
+		var volume_db := float(group["volume_db"])
+		if volume_db < -80.0 or volume_db > 0.0:
+			return "audio.%s.volume_db must be between -80 and 0." % group_name
+	return ""
+
+
+static func _normalize_legacy_audio_volumes(data: Dictionary) -> void:
+	if not data.has("audio") or typeof(data["audio"]) != TYPE_DICTIONARY:
+		return
+	var audio: Dictionary = data["audio"]
+	for group_name in ["ambient", "sfx", "bgm"]:
+		if not audio.has(group_name) or typeof(audio[group_name]) != TYPE_DICTIONARY:
+			continue
+		var group: Dictionary = audio[group_name]
+		if group.has("volume_db") and _is_number(group["volume_db"]):
+			group["volume_db"] = minf(float(group["volume_db"]), 0.0)
+
+
+static func _validate_tutorial(tutorial: Dictionary) -> String:
+	if tutorial.has("objectives") or tutorial.has("failure_feedback"):
+		return "tutorial.objectives and tutorial.failure_feedback are obsolete."
+	if not tutorial.has("initial_school") or StringName(tutorial["initial_school"]) not in [&"fire", &"water", &"air", &"earth"]:
+		return "tutorial.initial_school must be a functional school."
+	if not tutorial.has("default_stage_id") or typeof(tutorial["default_stage_id"]) != TYPE_STRING or String(tutorial["default_stage_id"]).is_empty():
+		return "tutorial.default_stage_id must be a non-empty string."
+	if not tutorial.has("transition_duration") or not _is_number(tutorial["transition_duration"]):
+		return "tutorial.transition_duration must be numeric."
+	if float(tutorial["transition_duration"]) < 0.1 or float(tutorial["transition_duration"]) > 5.0:
+		return "tutorial.transition_duration must be between 0.1 and 5.0."
+	if not tutorial.has("stages") or typeof(tutorial["stages"]) != TYPE_ARRAY or tutorial["stages"].is_empty():
+		return "tutorial.stages must be a non-empty array."
+	var ids: Dictionary = {}
+	for index in range(tutorial["stages"].size()):
+		var stage = tutorial["stages"][index]
+		if typeof(stage) != TYPE_DICTIONARY:
+			return "tutorial.stages[%d] must be an object." % index
+		for key in ["id", "display_name", "area_scene", "objective", "final"]:
+			if not stage.has(key):
+				return "tutorial.stages[%d].%s is required." % [index, key]
+		if typeof(stage["id"]) != TYPE_STRING or String(stage["id"]).is_empty() or ids.has(stage["id"]):
+			return "tutorial stage ids must be unique non-empty strings."
+		if typeof(stage["display_name"]) != TYPE_STRING or String(stage["display_name"]).is_empty():
+			return "tutorial stage display_name must be a non-empty string."
+		ids[stage["id"]] = true
+		if typeof(stage["area_scene"]) != TYPE_STRING or not ResourceLoader.exists(str(stage["area_scene"]), "PackedScene"):
+			return "tutorial.stages[%d].area_scene must reference a loadable PackedScene." % index
+		if typeof(stage["final"]) != TYPE_BOOL or bool(stage["final"]) != (index == tutorial["stages"].size() - 1):
+			return "tutorial must have exactly one final stage at the end."
+		var objective = stage["objective"]
+		if typeof(objective) != TYPE_DICTIONARY or typeof(objective.get("type", null)) != TYPE_STRING:
+			return "tutorial.stages[%d].objective must define type." % index
+		var presentation_error := _validate_presentation(objective.get("presentation", {}))
+		if not presentation_error.is_empty():
+			return "tutorial.stages[%d].objective.%s" % [index, presentation_error]
+		match StringName(objective["type"]):
+			&"sequence":
+				var sequence_error := _validate_sequence_objective(objective)
+				if not sequence_error.is_empty():
+					return sequence_error
+			&"final_enemy":
+				if StringName(objective.get("encounter_id", &"")) != &"final_enemy" or not stage.has("free_practice_presentation"):
+					return "final_enemy requires final_enemy encounter_id and free_practice_presentation."
+				var free_presentation_error := _validate_presentation(stage["free_practice_presentation"])
+				if not free_presentation_error.is_empty():
+					return "final_enemy.free_practice_%s" % free_presentation_error
+			&"heat_threshold":
+				if not _is_number(objective.get("threshold", null)):
+					return "heat_threshold requires numeric threshold."
+			&"heat_guard_sequence":
+				if not _is_number(objective.get("threshold", null)):
+					return "heat_guard_sequence requires numeric threshold."
+				var guarded_presentation: Dictionary = objective["presentation"]
+				if not _presentation_has_row(guarded_presentation, &"heat") or not objective.has("sequence_row_id"):
+					return "heat_guard_sequence requires heat and sequence presentation rows."
+				var guarded_sequence_error := _validate_sequence_objective(objective)
+				if not guarded_sequence_error.is_empty():
+					return guarded_sequence_error
+			_:
+				return "tutorial objective type is unsupported."
+	if not ids.has(tutorial["default_stage_id"]):
+		return "tutorial.default_stage_id must reference a configured stage."
+	return ""
+
+
+static func _validate_sequence_objective(objective: Dictionary) -> String:
+	for key in ["success_steps", "prestart", "active", "completion_progress"]:
+		if not objective.has(key):
+			return "sequence.%s is required." % key
+	if typeof(objective["success_steps"]) != TYPE_ARRAY or objective["success_steps"].is_empty():
+		return "sequence requires a non-empty success_steps array."
+	if typeof(objective["prestart"]) != TYPE_DICTIONARY or typeof(objective["active"]) != TYPE_DICTIONARY or not _is_number(objective["completion_progress"]):
+		return "sequence prestart, active, and completion_progress are invalid."
+	if objective.has("highlight_next") and typeof(objective["highlight_next"]) != TYPE_BOOL:
+		return "sequence.highlight_next must be Boolean."
+	if objective.has("sequence_row_id"):
+		if typeof(objective["sequence_row_id"]) != TYPE_STRING or String(objective["sequence_row_id"]).is_empty() or not _presentation_has_row(Dictionary(objective["presentation"]), StringName(objective["sequence_row_id"])):
+			return "sequence.sequence_row_id must reference a presentation row."
+	for step_variant in objective["success_steps"]:
+		if typeof(step_variant) != TYPE_DICTIONARY:
+			return "sequence success steps must be objects."
+		var step: Dictionary = step_variant
+		var step_type := StringName(step.get("type", &""))
+		if step_type not in [&"light", &"cast", &"switch"]:
+			return "sequence step type is unsupported."
+		if step.has("school") and StringName(step["school"]) not in [&"fire", &"water", &"air", &"earth"]:
+			return "sequence light school must be functional."
+		if step.has("required_level") and (not _is_number(step["required_level"]) or int(step["required_level"]) < 1 or int(step["required_level"]) > 8):
+			return "sequence required_level must be an integer from 1 through 8."
+		if step.has("endpoint") and typeof(step["endpoint"]) != TYPE_BOOL:
+			return "sequence endpoint must be Boolean."
+		if step.has("chain_position") and (not _is_number(step["chain_position"]) or not is_equal_approx(float(step["chain_position"]), round(float(step["chain_position"])) )):
+			return "sequence chain_position must be an integer."
+	return ""
+
+
+static func _presentation_has_row(presentation: Dictionary, row_id: StringName) -> bool:
+	for row_variant in presentation["rows"]:
+		var row: Dictionary = row_variant
+		if StringName(row["id"]) == row_id:
+			return true
+	return false
+
+
+static func _validate_presentation(presentation: Variant) -> String:
+	if typeof(presentation) != TYPE_DICTIONARY:
+		return "presentation must be an object."
+	var presentation_data: Dictionary = presentation
+	if not presentation_data.has("rows") or typeof(presentation_data["rows"]) != TYPE_ARRAY or presentation_data["rows"].is_empty():
+		return "presentation.rows must be a non-empty array."
+	var ids: Dictionary = {}
+	for row_variant in presentation_data["rows"]:
+		if typeof(row_variant) != TYPE_DICTIONARY:
+			return "presentation.rows entries must be objects."
+		var row: Dictionary = row_variant
+		if typeof(row.get("id", null)) != TYPE_STRING or String(row["id"]).is_empty() or ids.has(row["id"]):
+			return "presentation row ids must be unique non-empty strings."
+		if typeof(row.get("label", null)) != TYPE_STRING or String(row["label"]).is_empty():
+			return "presentation row labels must be non-empty strings."
+		if row.has("tokens"):
+			if typeof(row["tokens"]) != TYPE_ARRAY:
+				return "presentation row tokens must be an array."
+			for token in row["tokens"]:
+				if typeof(token) != TYPE_STRING:
+					return "presentation row tokens must contain strings."
+		ids[row["id"]] = true
+	return ""
+
+
+static func _is_number(value: Variant) -> bool:
+	return typeof(value) == TYPE_INT or typeof(value) == TYPE_FLOAT
+
+
+static func _validate_integer(
+	data: Dictionary,
+	section_name: String,
+	key: String,
+	minimum: int,
+	maximum: int
+) -> String:
+	var section: Dictionary = data[section_name]
+	if not section.has(key) or not _is_number(section[key]):
+		return "%s.%s must be an integer." % [section_name, key]
+	var numeric_value := float(section[key])
+	if not is_equal_approx(numeric_value, round(numeric_value)):
+		return "%s.%s must be an integer." % [section_name, key]
+	var value := int(round(numeric_value))
+	if value < minimum or value > maximum:
+		return "%s.%s must be between %d and %d." % [section_name, key, minimum, maximum]
+	return ""
+
+
+static func _failure(message: String) -> Dictionary:
+	return {
+		"ok": false,
+		"data": {},
+		"error": message,
+	}
+
+
+static func _validate_moves(moves: Dictionary) -> String:
+	var required: Array[String] = ["cast", "final_enemy_attack"]
+	for school in ["fire", "water", "air", "earth"]:
+		for position in range(1, 6):
+			required.append("%s_x%d" % [school, position])
+	for id in required:
+		if not moves.has(id) or typeof(moves[id]) != TYPE_DICTIONARY:
+			return "moves.%s is required." % id
+		var move: Dictionary = moves[id]
+		if typeof(move.get("animation", null)) != TYPE_STRING or String(move["animation"]).is_empty():
+			return "moves.%s.animation must name an animation." % id
+		var impact = move.get("impact", null)
+		if not _is_number(impact) or not is_finite(float(impact)) or float(impact) < 0.0 or float(impact) > 100.0 or float(impact) != round(float(impact)):
+			return "moves.%s.impact must be a whole number from 0 to 100." % id
+		if not move.has("forward_lunge"):
+			return "moves.%s.forward_lunge is required." % id
+		if id not in ["cast", "final_enemy_attack"]:
+			var style_error := _validate_attack_style(move, id)
+			if not style_error.is_empty():
+				return style_error
+		elif move["forward_lunge"] != null:
+			return "moves.%s.forward_lunge must remain null; styles apply to Player X attacks only." % id
+		var damage_key := "damage" if id == "final_enemy_attack" else ("casting_damage" if id == "cast" else "light_damage")
+		var duration_key := "windup_duration" if id == "final_enemy_attack" else "attack_duration"
+		if move.get("damage_key", "") != damage_key or move.get("duration_key", "") != duration_key:
+			return "moves.%s must reference its existing damage and duration tuning." % id
+	var level_impacts = moves["cast"].get("level_impacts", {})
+	if not level_impacts is Dictionary:
+		return "moves.cast.level_impacts must be an object."
+	for level in level_impacts:
+		if level not in ["1", "2", "3", "4", "5", "6", "7", "8"]:
+			return "moves.cast.level_impacts keys must be Spell Levels 1 to 8."
+		var impact = level_impacts[level]
+		if not _is_number(impact) or not is_finite(float(impact)) or float(impact) < 0.0 or float(impact) > 100.0 or float(impact) != round(float(impact)):
+			return "moves.cast.level_impacts.%s must be a whole number from 0 to 100." % level
+	return ""
+
+
+static func _validate_attack_style(move: Dictionary, id: String) -> String:
+	for key in Style.DEFAULTS:
+		var value = move.get(key, Style.DEFAULTS[key])
+		if not _is_number(value) or not is_finite(float(value)) or float(value) < 0.0:
+			return "moves.%s.%s must be finite and non-negative." % [id, key]
+	if move["forward_lunge"] == null:
+		return ""
+	if not move["forward_lunge"] is Dictionary:
+		return "moves.%s.forward_lunge must be an object or null." % id
+	var lunge: Dictionary = move["forward_lunge"]
+	for key in ["distance", "start_phase", "end_phase"]:
+		if not _is_number(lunge.get(key)) or not is_finite(float(lunge[key])):
+			return "moves.%s.forward_lunge.%s must be finite numeric data." % [id, key]
+	if float(lunge["distance"]) < 0.0 or float(lunge["start_phase"]) < 0.0 or float(lunge["end_phase"]) > 1.0 or float(lunge["start_phase"]) >= float(lunge["end_phase"]):
+		return "moves.%s lunge needs non-negative distance and 0 <= start phase < end phase <= 1." % id
+	return ""
+
+
+static func _normalize_reaction_motion(data: Dictionary) -> void:
+	if not data.get("hit_reaction") is Dictionary:
+		return
+	var levels = data["hit_reaction"].get("combat_levels")
+	if not levels is Array:
+		return
+	for level in levels:
+		if level is Dictionary and not level.has("motion_duration") and level.has("duration"):
+			# Legacy profiles preserve their own ordinary shared timing, not X5's override.
+			level["motion_duration"] = level["duration"]
+
+
+static func _normalize_attack_styles(data: Dictionary) -> void:
+	Style.strip_retired_fields(data)
+	if not data.get("moves") is Dictionary:
+		return
+	for school in ["fire", "water", "air", "earth"]:
+		for position in range(1, 6):
+			var id := "%s_x%d" % [school, position]
+			if not data["moves"].get(id) is Dictionary:
+				continue
+			var move: Dictionary = data["moves"][id]
+			for key in Style.DEFAULTS:
+				if not move.has(key):
+					move[key] = Style.DEFAULTS[key]
+			if move.get("forward_lunge") == null:
+				move["forward_lunge"] = Style.LUNGE_DEFAULTS.duplicate()

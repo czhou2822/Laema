@@ -1,0 +1,31 @@
+"""Reuse the existing isolated preview renderer with the two AI trial actions."""
+from pathlib import Path
+import shutil,json
+ROOT=Path(__file__).parent
+PRIOR=ROOT.parent/'2026-10-23-A-v01'
+DEST=ROOT/'preview';DEST.mkdir(exist_ok=True)
+for name in ['main.tscn','project.godot']:shutil.copy2(PRIOR/'preview'/name,DEST/name)
+project=(DEST/'project.godot').read_text().replace('Laema A — actual AI, cutout and hybrid trials','Laema — AI refinement and Cast reuse')
+(DEST/'project.godot').write_text(project,encoding='utf-8',newline='\n')
+s=(PRIOR/'preview/main.gd').read_text(encoding='utf-8')
+s=s.replace('const LABELS := ["AI strip / extracted + endpoint reuse", "Textured 2D cutout rig", "Hybrid / 2 replacement keys of 51"]','const LABELS := ["X1 before / preferred AI", "X1 refinement / +6 drawings", "Reuse test / original Cast"]')
+s=s.replace('const FILES := ["ai-corrected.png", "rig-cutout.png", "hybrid-two-key-repair.png"]','const FILES := ["x1-before.png", "x1-refined.png", "cast-reuse.png"]\nconst DURATIONS := [0.72,0.72,1.2]\nconst COLUMNS := [5,8,4]')
+s=s.replace('metrics.json','clips.json')
+s=s.replace('AI=%d RIG=%d HYBRID=%d','AI_BEFORE=%d AI_REFINED=%d CAST=%d')
+s=s.replace('clocks = [metrics.ai_times, metrics.rig_times, metrics.rig_times]','clocks = [metrics.clips[0].times,metrics.clips[1].times,metrics.clips[2].times]')
+s=s.replace('if t > 1.14:','if t > 1.62:').replace(',1.38)-0.24',',1.86)-0.24')
+s=s.replace('t = minf(.72,t+','t = minf(1.2,t+').replace('* .72','* 1.2')
+s=s.replace('/1208*.72','/1208*1.2')
+s=s.replace('var phase := clampf(t,0,.72)','var phase := clampf(t,0,float(DURATIONS[i]))')
+s=s.replace('var cols := 5 if i == 0 else 8','var cols: int = COLUMNS[i]')
+s=s.replace('LAEMA / A DIAGONAL CUT / ACTUAL ARTWORK TRIALS','LAEMA / AI REFINEMENT + SECOND ACTION')
+s=s.replace('Same motion clock and 180px reference; visual scale/proportions are measured trial limits','X1 before/refined:0.720s | original Cast trial:1.200s | shared reference and export workflow')
+s=s.replace(' | contact geometry NOT adapted',' | unchanged gameplay contract')
+s=s.replace('Unapproved artwork: AI correspondence, rig seams, hybrid pops and real transitions remain open.','Trial artwork: compare continuity/grip/scale; actual game-copy tests are recorded separately.')
+s=s.replace('var progress := clampf(t,0,.72)/.72','var progress := clampf(t,0,1.2)/1.2')
+s=s.replace('.126/.72*1208','.126/1.2*1208').replace('(.5075-.126)/.72*1208','(.5075-.126)/1.2*1208')
+s=s.replace('clampf(t,0,.72)/(1.5','clampf(t,0,1.2)/(1.5')
+s=s.replace('Gold = existing contact TIME only. Guard holds around each loop are for review. No game rules simulated.','Gold=X1 active time. Cast launch=.288s at Heat0. Review holds are outside each action.')
+s=s.replace('Heat %d | %.3fs action | t %.3fs','Heat %d | X1 %.3fs | t %.3fs')
+(DEST/'main.gd').write_text(s,encoding='utf-8',newline='\n')
+print('Prepared a reused renderer for before/refined X1 and the separate1.2s Cast trial.')

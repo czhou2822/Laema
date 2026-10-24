@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laema · Original motion studies</title>
+<style>
+:root{color-scheme:dark;--bg:#0c1015;--panel:#131a22;--line:#26313d;--text:#ecf0f1;--muted:#9caab7;--accent:#d4b884;--a:#e4bc7b;--b:#90c6c3;--c:#b9a9db}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}button,select,input{font:inherit}button,select{background:#1a2530;border:1px solid #3b4a58;border-radius:6px;color:var(--text);padding:8px 12px;cursor:pointer}button:hover,select:hover{border-color:var(--accent)}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}button[aria-pressed=true]{background:#373126;border-color:var(--accent);color:#ffe3b1}.shell{width:min(1344px,calc(100% - 48px));margin:0 auto;padding:34px 0 48px}.eyebrow{letter-spacing:.16em;font-size:10px;color:var(--accent);font-weight:700;text-transform:uppercase}header{display:flex;gap:24px;align-items:end;justify-content:space-between;margin-bottom:22px}h1{font-size:30px;line-height:1.2;font-weight:590;letter-spacing:-.04em;margin:8px 0}h2{font-size:18px;font-weight:590;margin:0 0 12px}h3{font-size:16px;margin:0;font-weight:590}p{margin:8px 0;color:var(--muted)}.status{border:1px solid #5c5038;color:#d8c29d;padding:7px 12px;border-radius:20px;white-space:nowrap;font-size:11px;letter-spacing:.09em}.controls{padding:16px 18px;background:var(--panel);border:1px solid var(--line);border-radius:10px 10px 0 0;display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}.group{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.group-label{font-size:11px;letter-spacing:.07em;color:var(--muted);text-transform:uppercase;margin-right:3px}.separator{height:28px;border-left:1px solid var(--line)}.check{display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:12px;color:#c3ccd3}.check input{accent-color:#d4b884}.timeline{border:1px solid var(--line);border-top:0;padding:13px 18px;background:#111820;display:grid;grid-template-columns:auto 1fr auto;gap:15px;align-items:center}.timeline input{width:100%;accent-color:#d4b884}.clock{font-variant-numeric:tabular-nums;color:#e3d2b5;min-width:133px;font-size:13px}.timeline .hint{font-size:11px;color:var(--muted)}.viewport-wrap{overflow:auto;border:1px solid var(--line);border-top:0;background:#0f151c}.viewport-wrap canvas{display:block;width:1280px;height:720px;max-width:none;margin:auto}.viewport-note{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:9px 15px;border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;color:var(--muted);font-size:11px}.warning{margin:18px 0 26px;border-left:2px solid #8a7045;padding:2px 14px;color:#c4b391;font-size:12px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}.card .tag{font-size:11px;letter-spacing:.13em;margin-bottom:7px}.card p{font-size:12px;min-height:56px}.phase-now{font-size:12px;color:var(--text);border-top:1px solid var(--line);padding-top:10px;font-variant-numeric:tabular-nums}.keyposes{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:14px}.pose{background:#0e151c;border-radius:6px;overflow:hidden;text-align:center}.pose canvas{display:block;width:100%;height:auto}.pose small{display:block;font-size:9px;line-height:1.4;padding:0 2px 8px;color:var(--muted)}.section{margin-top:30px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{font-weight:500;color:#bac5ce;font-size:11px;letter-spacing:.05em}td{color:var(--muted)}td:first-child{color:var(--text);white-space:nowrap}.notes{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}.notes>div{border-top:1px solid var(--line);padding-top:15px}.notes p{font-size:12px}code{font-size:11px;color:#bfcbd5}.footer{margin-top:28px;color:#6f7f8e;font-size:10px;word-break:break-word}#speed-note{font-size:11px;color:#d9ba83;min-width:160px}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0)}@media(max-width:800px){.shell{width:calc(100% - 24px);padding-top:20px}header{display:block}.status{display:inline-block;margin-top:12px}.cards,.notes{grid-template-columns:1fr}h1{font-size:26px}.separator{display:none}.timeline{grid-template-columns:auto 1fr}.timeline .hint{grid-column:1/-1}.card p{min-height:0}}
+</style>
+</head>
+<body>
+<p style="padding:8px 24px;color:#c4b391">Local recovery: original study data and renderer; missing playback tail rebuilt. A 200 ms loop-review hold is outside the action. No motion selected.</p>
+<main class="shell">
+<header><div><div class="eyebrow">Laema / Animation pipeline R&amp;D / Phase 2</div><h1>Three original motion proposals</h1><p>Compare weight, blade path and recovery before choosing a motion for artwork.</p></div><div class="status">MOTION REVIEW ONLY</div></header>
+<section aria-label="Playback controls">
+<div class="controls">
+<div class="group"><button id="play" aria-label="Pause playback">Pause</button><button id="prev" title="Previous 1/60 second of action time" aria-label="Previous frame">←</button><button id="next" title="Next 1/60 second of action time" aria-label="Next frame">→</button></div>
+<div class="group"><span class="group-label">Action timing</span><button id="heat0" aria-pressed="true">Heat 0 · 0.72 s</button><button id="heat100" aria-pressed="false">Fixed Heat 100 · 0.48 s</button></div>
+<div class="group"><label class="group-label" for="speed">Playback</label><select id="speed"><option value="1">1× · gameplay speed</option><option value="0.25">0.25× · slow review</option></select><span id="speed-note">Actual action duration</span></div>
+<div class="group"><label class="group-label" for="scale">View</label><select id="scale"><option value="1">1× · native 180 px body</option><option value="2">2× · enlarged review</option></select></div>
+<div class="group"><label class="check"><input id="mirror" type="checkbox">Mirror</label><label class="check"><input id="joints" type="checkbox">Joints</label><label class="check"><input id="arc" type="checkbox">Blade-tip path</label><label class="check"><input id="guard" type="checkbox">Guard ghost</label></div>
+</div>
+<div class="timeline"><span class="clock" id="clock">0.000 / 0.720 s</span><input id="scrub" type="range" min="0" max="7200" step="1" value="0" aria-label="Scrub synchronized action time"><span class="hint">Space: play / pause · ← →: step 1/60 s</span></div>
+</section>
+<div class="viewport-wrap" aria-label="Scrollable native-size 1280 by 720 motion viewport"><canvas id="studyCanvas" width="1280" height="720" role="img" aria-label="Three synchronized original attack silhouette animations">Canvas playback requires JavaScript.</canvas></div>
+<div class="viewport-note"><span>1280 × 720 context · native CSS pixels · scroll on smaller screens</span><span id="view-note">180 px body reference at 1× · 88 px rigid blade · anchored feet</span></div>
+<div class="warning">Impact-emphasis poses are visual proposals, not hit events. Existing Heat 0 contact window: 0.126–0.5075 s. Contact geometry is not adapted to these silhouettes. No existing animations are replaced; no proposal is marked accepted.</div>
+<section class="cards" id="cards" aria-label="Proposal descriptions and key poses"></section>
+<section class="section"><h2>Read the phases</h2><p style="font-size:12px">Times below use the selected action timing. Card notes retain authored Heat 0 seconds. Fixed Heat 100 uniformly compresses the study to 0.48 s; it does not simulate Heat changing during an action.</p><div class="table-wrap"><table><thead><tr><th>VISUAL PHASE / MARKER</th><th>A · DIAGONAL CUT</th><th>B · LEVEL BACKHAND</th><th>C · RISING CUT</th></tr></thead><tbody id="phase-table"></tbody></table></div></section>
+<section class="notes">
+<div><h2>Entry / exit silhouette probe</h2><p>All proposals start and finish in the same authored guard at 0.000 and <span id="endtime">0.720</span> s. Toggle <b>Guard ghost</b> to compare those endpoint silhouettes against the current pose.</p><p>This checks visual compatibility with a shared pose only. It does not establish legal transitions, combo chaining, movement, cancellation, hit reaction or casting behavior.</p></div>
+<div><h2>What this study can establish</h2><p>Compare the three motions at 1× speed and 1× scale first. Use slow review, enlarged view, joints and blade-tip paths to inspect why a movement reads as it does.</p><p>The foot anchors remain fixed. No root lunge, hit stop, target contact, camera shake or damage event is simulated. Shield depth, torso rotation, limb deformation and character detail are approximate.</p></div>
+</section>
+<div class="footer" id="provenance"></div>
+</main>
+<script id="study-data" type="application/json">__STUDY_JSON__</script>
+<script>
+'use strict';
+const DATA=JSON.parse(document.getElementById('study-data').textContent);
+const C=DATA.contract, COLORS=['#e4bc7b','#90c6c3','#b9a9db'];
+const canvas=document.getElementById('studyCanvas'),ctx=canvas.getContext('2d');
+const state={t:0,playing:true,speed:1,heat:0,scale:1,mirror:false,joints:false,arc:false,guard:false};
+const emphasis={A:.158,B:.151,C:.162}, follow={A:.34,B:.34,C:.44};
+const $=id=>document.getElementById(id);
+function ratio(){return state.heat===100?C.heat100_duration/C.base_duration:1;}
+function shown(t){return (t*ratio()).toFixed(3);}
+function lerp(a,b,u){return a+(b-a)*u;}
+function sample(p,t){
+ const k=p.keys; if(t<=k[0].t)return k[0].points;if(t>=k[k.length-1].t)return k[k.length-1].points;
+ let i=0;while(i<k.length-2&&t>k[i+1].t)i++;
+ const a=k[i],b=k[i+1];let u=(t-a.t)/(b.t-a.t);if(a.mode==='smooth')u=u*u*(3-2*u);
+ const out={};for(const key of Object.keys(a.points))out[key]=[lerp(a.points[key][0],b.points[key][0],u),lerp(a.points[key][1],b.points[key][1],u)];
+ const aa=Math.atan2(a.points.sword_tip[1]-a.points.hand[1],a.points.sword_tip[0]-a.points.hand[0]);
+ const ba=Math.atan2(b.points.sword_tip[1]-b.points.hand[1],b.points.sword_tip[0]-b.points.hand[0]);
+ const delta=Math.atan2(Math.sin(ba-aa),Math.cos(ba-aa)),ang=aa+delta*u;
+ out.sword_tip=[out.hand[0]+C.sword_length*Math.cos(ang),out.hand[1]+C.sword_length*Math.sin(ang)];return out;
+}
+function phase(p,t){if(t<.008||t>.712)return 'Common guard';if(t<.126)return 'Anticipation';if(t<emphasis[p.id])return 'Release';if(t<=.21)return 'Contact-emphasis proposal';if(t<follow[p.id])return 'Follow-through';return 'Recovery';}
+function line(c,a,b,w,color){c.strokeStyle=color;c.lineWidth=w;c.lineCap='round';c.beginPath();c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1]);c.stroke();}
+function polygon(c,points,color){c.fillStyle=color;c.beginPath();c.moveTo(points[0][0],points[0][1]);for(const p of points.slice(1))c.lineTo(p[0],p[1]);c.closePath();c.fill();}
+function drawFigure(c,p,opts={}){
+ const body=opts.ghost?'#d9e1e7':'#dbe0df',back=opts.ghost?body:'#9ba8ac',blade=opts.ghost?body:'#f4ede0';
+ const h=p.hip,n=p.neck,s=p.shoulder,hand=p.hand,tip=p.sword_tip;
+ line(c,h,p.knee_a,19,back);line(c,p.knee_a,[p.ankle_a[0],p.ankle_a[1]-7],14,back);line(c,[p.ankle_a[0],p.ankle_a[1]-5.5],[p.ankle_a[0]+14,p.ankle_a[1]-5.5],11,back);
+ line(c,h,p.knee_b,20,body);line(c,p.knee_b,[p.ankle_b[0],p.ankle_b[1]-7.5],15,body);line(c,[p.ankle_b[0],p.ankle_b[1]-5.5],[p.ankle_b[0]+14,p.ankle_b[1]-5.5],11,body);
+ polygon(c,[[s[0]-17,s[1]+3],[s[0]+15,s[1]+2],[h[0]+17,h[1]+7],[h[0]-17,h[1]+7]],body);
+ line(c,n,p.head,14,body);c.fillStyle=body;c.beginPath();c.ellipse(p.head[0],p.head[1],13.5,16,0,0,Math.PI*2);c.fill();
+ polygon(c,[[p.head[0]+8,p.head[1]-4],[p.head[0]+18,p.head[1]+2],[p.head[0]+9,p.head[1]+6]],body);
+ line(c,[s[0]-5,s[1]+4],[p.shield[0]-7,p.shield[1]+6],15,back);
+ polygon(c,[[p.shield[0]-18,p.shield[1]-20],[p.shield[0]+13,p.shield[1]-18],[p.shield[0]+15,p.shield[1]+7],[p.shield[0]-2,p.shield[1]+25],[p.shield[0]-19,p.shield[1]+7]],back);
+ line(c,s,p.elbow,16,body);line(c,p.elbow,hand,13,body);
+ const dx=tip[0]-hand[0],dy=tip[1]-hand[1],mag=Math.hypot(dx,dy),ux=dx/mag,uy=dy/mag,px=-uy,py=ux;
+ line(c,[hand[0]-ux*10,hand[1]-uy*10],[hand[0]+ux*5,hand[1]+uy*5],5,back);
+ line(c,[hand[0]+px*10+ux*5,hand[1]+py*10+uy*5],[hand[0]-px*10+ux*5,hand[1]-py*10+uy*5],4,blade);
+ polygon(c,[[hand[0]+ux*8+px*3,hand[1]+uy*8+py*3],[tip[0],tip[1]],[hand[0]+ux*8-px*3,hand[1]+uy*8-py*3]],blade);
+ if(opts.joints){for(const name of ['hip','neck','shoulder','elbow','hand','knee_a','knee_b','ankle_a','ankle_b']){const q=p[name];c.fillStyle='#17212a';c.strokeStyle=opts.color;c.lineWidth=1.2;c.beginPath();c.arc(q[0],q[1],3,0,Math.PI*2);c.fill();c.stroke();}}
+}
+function drawPath(c,p,color){c.beginPath();for(let i=0;i<=100;i++){const q=sample(p,.72*i/100).sword_tip;i?c.lineTo(q[0],q[1]):c.moveTo(q[0],q[1]);}c.strokeStyle=color;c.globalAlpha=.30;c.lineWidth=1.4;c.setLineDash([3,5]);c.stroke();c.setLineDash([]);c.globalAlpha=1;}
+function drawMarkers(c,p,left,width,y,color){
+ const vals=[{t:0,label:'GUARD'},{t:.1,label:'LOAD'},{t:p.id==='B'?.19:emphasis[p.id],label:'EMPHASIS'},{t:p.id==='C'?.31:.34,label:'FOLLOW'},{t:.62,label:'RECOVER'},{t:.72,label:'GUARD'}];
+ const barX=left+24,barW=width-48;c.fillStyle='#25313c';c.fillRect(barX,y,barW,3);c.fillStyle='#7c6541';c.globalAlpha=.4;c.fillRect(barX+C.active_start/.72*barW,y-3,(C.active_end-C.active_start)/.72*barW,9);c.globalAlpha=1;
+ for(const m of vals){const x=barX+m.t/.72*barW;c.fillStyle=color;c.beginPath();c.arc(x,y+1.5,3,0,Math.PI*2);c.fill();c.fillStyle='#8e9da9';c.font='8px system-ui';c.textAlign=m.t===0?'left':m.t===.72?'right':'center';const stagger=m.label==='LOAD'?22:0;c.fillText(m.label,x,y+20+stagger);c.fillText(shown(m.t)+' s',x,y+34+stagger);}
+ const pos=barX+state.t/.72*barW;c.fillStyle='#f7f2df';c.fillRect(pos-1,y-7,2,17);c.textAlign='left';
+}
+function render(){
+ ctx.clearRect(0,0,1280,720);ctx.fillStyle='#10171f';ctx.fillRect(0,0,1280,720);
+ const floor=500;
+ DATA.proposals.forEach((p,i)=>{
+  const left=i*1280/3,width=1280/3,cx=left+width/2-12,col=COLORS[i];
+  ctx.save();ctx.beginPath();ctx.rect(left,0,width,720);ctx.clip();
+  ctx.strokeStyle='#1a2630';ctx.lineWidth=1;for(let x=left+22;x<left+width;x+=64){ctx.beginPath();ctx.moveTo(x,105);ctx.lineTo(x,590);ctx.stroke();}for(let y=138;y<590;y+=64){ctx.beginPath();ctx.moveTo(left+12,y);ctx.lineTo(left+width-12,y);ctx.stroke();}
+  ctx.fillStyle=col;ctx.font='600 12px system-ui';ctx.fillText(p.id+' / '+p.title.toUpperCase(),left+24,35);
+  ctx.fillStyle='#8294a3';ctx.font='11px system-ui';ctx.fillText(phase(p,state.t),left+24,56);
+  ctx.strokeStyle='#41505c';ctx.beginPath();ctx.moveTo(left+20,floor);ctx.lineTo(left+width-20,floor);ctx.stroke();
+  ctx.fillStyle='#697b8a';ctx.font='10px system-ui';ctx.fillText('fixed foot anchor',left+24,floor+28);
+  ctx.save();ctx.translate(cx,floor);ctx.scale(state.mirror?-1:1,1);
+  if(state.arc)drawPath(ctx,p,col);
+  if(state.guard){ctx.save();ctx.globalAlpha=.14;drawFigure(ctx,p.keys[0].points,{ghost:true});ctx.restore();}
+  ctx.strokeStyle='#52606c';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-5,12);ctx.lineTo(5,12);ctx.moveTo(0,7);ctx.lineTo(0,17);ctx.stroke();
+  drawFigure(ctx,sample(p,state.t),{joints:state.joints,color:col});ctx.restore();
+  {const bx=left+42;ctx.strokeStyle='#53616b';ctx.beginPath();ctx.moveTo(bx,floor-180);ctx.lineTo(bx,floor);ctx.moveTo(bx-4,floor-180);ctx.lineTo(bx+4,floor-180);ctx.moveTo(bx-4,floor);ctx.lineTo(bx+4,floor);ctx.stroke();ctx.save();ctx.translate(bx-9,floor-80);ctx.rotate(-Math.PI/2);ctx.fillStyle='#71818e';ctx.font='9px system-ui';ctx.fillText('180 px reference',0,0);ctx.restore();}
+  drawMarkers(ctx,p,left,width,634,col);ctx.restore();
+  if(i>0){ctx.strokeStyle='#2b3541';ctx.beginPath();ctx.moveTo(left,15);ctx.lineTo(left,704);ctx.stroke();}
+  const el=$('phase-'+p.id);if(el)el.textContent=shown(state.t)+' s · '+phase(p,state.t);
+ });
+ ctx.fillStyle='#748796';ctx.font='10px system-ui';ctx.fillText('ORIGINAL SILHOUETTE BLOCKING · 3 SYNCHRONIZED PROPOSALS',24,704);
+ ctx.textAlign='right';ctx.fillText(state.speed===1?'1× PLAYBACK · SELECTED ACTION TIMING':'0.25× SLOW REVIEW · NOT GAMEPLAY SPEED',1256,704);ctx.textAlign='left';
+ $('clock').textContent=shown(state.t)+' / '+shown(.72)+' s';$('scrub').value=Math.round(state.t*10000);
+ $('play').textContent=state.playing?'Pause':'Play';$('play').setAttribute('aria-label',state.playing?'Pause playback':'Play playback');
+}
+function phaseTable(){
+ const rows=[['Guard / visual endpoints',()=> '0.000 / '+shown(.72)+' s'],['Anticipation',()=> '0.000–'+shown(.126)+' s'],['Contact-emphasis proposal',p=>shown(emphasis[p.id])+'–'+shown(.21)+' s'],['Follow-through',p=>shown(.21)+'–'+shown(follow[p.id])+' s'],['Recovery',p=>shown(follow[p.id])+'–'+shown(.72)+' s'],['Existing contact window',()=>shown(C.active_start)+'–'+shown(C.active_end)+' s; geometry not adapted']];
+ $('phase-table').innerHTML=rows.map(row=>'<tr><td>'+row[0]+'</td>'+DATA.proposals.map(p=>'<td>'+row[1](p)+'</td>').join('')+'</tr>').join('');$('endtime').textContent=shown(.72);
+}
+function renderMiniatures(){document.querySelectorAll('canvas[data-proposal]').forEach(c=>{const p=DATA.proposals.find(p=>p.id===c.dataset.proposal),q=sample(p,Number(c.dataset.time)),x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);x.save();x.translate(61,125);x.scale(state.mirror?-.43:.43,.43);drawFigure(x,q);x.restore();const label=c.nextElementSibling;label.textContent=c.dataset.label+' · '+shown(Number(c.dataset.time))+' s';});}
+function initCards(){
+ $('cards').innerHTML=DATA.proposals.map((p,i)=>'<article class="card"><div class="tag" style="color:'+COLORS[i]+'">PROPOSAL '+p.id+'</div><h3>'+p.title+'</h3><p>'+p.description+'</p><p>'+p.notes+'</p><div class="phase-now" id="phase-'+p.id+'"></div><div class="keyposes">'+[{t:0,label:'Guard'},{t:.1,label:'Anticipation'},{t:p.id==='B'?.19:emphasis[p.id],label:'Emphasis'},{t:p.id==='C'?.31:.34,label:'Follow-through'},{t:.62,label:'Recovery'},{t:.72,label:'Guard'}].map(k=>'<div class="pose"><canvas width="120" height="140" data-proposal="'+p.id+'" data-time="'+k.t+'" data-label="'+k.label+'" aria-label="'+p.id+' '+k.label+' pose"></canvas><small></small></div>').join('')+'</div></article>').join('');
+ renderMiniatures();
+}
+function setTime(t){state.t=Math.max(0,Math.min(.72,Number(t)||0));render();return state.t;}
+function setPlaying(v){state.playing=Boolean(v);render();}
+function setHeat(v){state.heat=Number(v)===100?100:0;$('heat0').setAttribute('aria-pressed',state.heat===0);$('heat100').setAttribute('aria-pressed',state.heat===100);phaseTable();renderMiniatures();render();}
+function setSpeed(v){state.speed=Number(v)===.25?.25:1;$('speed').value=state.speed;$('speed-note').textContent=state.speed===1?'Actual action duration':'Slow review · duration ×4';render();}
+function setScale(v){state.scale=Number(v)===2?2:1;$('scale').value=state.scale;canvas.style.width=(1280*state.scale)+'px';canvas.style.height=(720*state.scale)+'px';$('view-note').textContent=(state.scale===1?'180 px body reference at 1×':'360 px enlarged body reference at 2×')+' · 88 px rigid blade at 1× · anchored feet';render();}
+function setMirror(v){state.mirror=Boolean(v);$('mirror').checked=state.mirror;renderMiniatures();render();}
+function setOptions(v){for(const k of ['joints','arc','guard'])if(k in v){state[k]=Boolean(v[k]);$(k).checked=state[k];}render();}
+function step(direction){state.playing=false;setTime(state.t+direction/(60*ratio()));}
+window.reviewSetTime=setTime;window.reviewAPI={setTime,render,setPlaying,setHeat,setSpeed,setScale,setMirror,setOptions,sample,getState:()=>Object.assign({},state),data:DATA};
+ $('play').onclick=()=>setPlaying(!state.playing);$('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);$('heat0').onclick=()=>setHeat(0);$('heat100').onclick=()=>setHeat(100);$('speed').onchange=e=>setSpeed(e.target.value);$('scale').onchange=e=>setScale(e.target.value);$('mirror').onchange=e=>setMirror(e.target.checked);for(const k of ['joints','arc','guard'])$(k).onchange=e=>setOptions({[k]:e.target.checked});$('scrub').oninput=e=>{state.playing=false;setTime(Number(e.target.value)/10000);};
+ document.addEventListener('keydown',e=>{if(['INPUT','SELECT','BUTTON'].includes(document.activeElement.tagName))return;if(e.code==='Space'){e.preventDefault();setPlaying(!state.playing);}if(e.code==='ArrowLeft'||e.code==='ArrowRight'){e.preventDefault();step(e.code==='ArrowLeft'?-1:1);}});
+ initCards();phaseTable();render();let last,reviewGap=0;
+ // The archived template tail was truncated. This local loop adds only a labeled review hold.
+ function localReviewFrame(now){
+  if(last!==undefined&&state.playing){
+   const dt=Math.min((now-last)/1000,.05);
+   if(reviewGap>0){reviewGap-=dt;if(reviewGap<=0)state.t=0;}
+   else {state.t+=dt*state.speed/ratio();if(state.t>=C.base_duration){state.t=C.base_duration;reviewGap=.2;}}
+   render();
+  }
+  last=now;requestAnimationFrame(localReviewFrame);
+ }
+ requestAnimationFrame(localReviewFrame);
+</script>
+</body>
+</html>
+

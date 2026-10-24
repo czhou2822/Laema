@@ -1,0 +1,684 @@
+{
+  "status": "13 selected static masters approved by user; animation production authorized and in progress",
+  "method": "built-in imagegen artwork; mechanical crop/registration/export",
+  "cell": [
+    768,
+    640
+  ],
+  "anchor": [
+    384,
+    448
+  ],
+  "calibration": {
+    "reference": "Pikeman",
+    "native_body_px": 73,
+    "target_body_px": 180,
+    "scale": 2.4657534246575343,
+    "cell": [
+      768,
+      640
+    ],
+    "source_anchor": [
+      196,
+      268
+    ],
+    "target_anchor": [
+      384,
+      448
+    ]
+  },
+  "body_landmark_notes": "Source crown/hood/crest/helmet and generated crown landmarks are visually calibrated for this static master pass, not recovered native anatomy or engine pivots. One uniform scale per creature; no independent axis stretch.",
+  "approval": {
+    "masters": true,
+    "animations_started": true
+  },
+  "preserved_pikeman_unchanged": true,
+  "engine_import": false,
+  "runtime_run": false,
+  "creatures": [
+    {
+      "number": 1,
+      "slug": "halberdier",
+      "name": "Halberdier",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\chalbd\\metadata.json",
+      "original_def_sha256": "baade14cb59ab928713496c81cbba0d8f7112a23acfd03ccd0031e3d6977d022",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\halberdier\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 175,
+        "top": 164,
+        "width": 44,
+        "height": 105
+      },
+      "body_landmarks": {
+        "native_crown_y": 193,
+        "native_sole_y": 268,
+        "generated_crown_y": 324
+      },
+      "target_core_height_px": 184.93150684931507,
+      "uniform_scale": 0.1463065718744581,
+      "master_crop": {
+        "left": 187,
+        "top": 7,
+        "width": 752,
+        "height": 1587,
+        "padding": 8
+      },
+      "placement": [
+        331,
+        215
+      ],
+      "output_bounds": {
+        "left": 332,
+        "top": 218,
+        "right": 441,
+        "bottom": 448,
+        "width": 109,
+        "height": 230,
+        "edge": 0,
+        "opaque": 8473
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "994ac3fd5bdfb4987384895744e827c57fe664a92cc99e27f90a87056735b000",
+      "group_count_pending": 13,
+      "timeline_frames_pending": 67
+    },
+    {
+      "number": 2,
+      "slug": "archer",
+      "name": "Archer",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\CLCBOW\\metadata.json",
+      "original_def_sha256": "19d0bf685e3c510eb3cee6c73164ae8f30ce97c7c30841aba4f9f4c0fda6407c",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\archer\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 175,
+        "top": 189,
+        "width": 43,
+        "height": 80
+      },
+      "body_landmarks": {
+        "native_crown_y": 190,
+        "native_sole_y": 268,
+        "generated_crown_y": 25
+      },
+      "target_core_height_px": 192.3287671232877,
+      "uniform_scale": 0.1292532037118869,
+      "master_crop": {
+        "left": 234,
+        "top": 19,
+        "width": 683,
+        "height": 1500,
+        "padding": 8
+      },
+      "placement": [
+        340,
+        254
+      ],
+      "output_bounds": {
+        "left": 342,
+        "top": 256,
+        "right": 428,
+        "bottom": 448,
+        "width": 86,
+        "height": 192,
+        "edge": 0,
+        "opaque": 7695
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "0e6afb837f50ce8100bf62e2bbd07171c11b01d39749167d7fb2d718ad13e22d",
+      "group_count_pending": 18,
+      "timeline_frames_pending": 100
+    },
+    {
+      "number": 3,
+      "slug": "marksman",
+      "name": "Marksman",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\CHCBOW\\metadata.json",
+      "original_def_sha256": "e05b0e12b6902b89684852a5f596afdc9002b61eb6219da05896d0dfc59c7bcf",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\marksman\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 175,
+        "top": 189,
+        "width": 42,
+        "height": 80
+      },
+      "body_landmarks": {
+        "native_crown_y": 190,
+        "native_sole_y": 268,
+        "generated_crown_y": 95
+      },
+      "target_core_height_px": 192.3287671232877,
+      "uniform_scale": 0.12400307358045629,
+      "master_crop": {
+        "left": 93,
+        "top": 89,
+        "width": 796,
+        "height": 1563,
+        "padding": 8
+      },
+      "placement": [
+        334,
+        254
+      ],
+      "output_bounds": {
+        "left": 336,
+        "top": 256,
+        "right": 433,
+        "bottom": 448,
+        "width": 97,
+        "height": 192,
+        "edge": 0,
+        "opaque": 8250
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "d8b5f116c822f1140ae1611eb3d97bd3bb57e684b493ac81232d2161e7c6ba78",
+      "group_count_pending": 18,
+      "timeline_frames_pending": 101
+    },
+    {
+      "number": 4,
+      "slug": "griffin",
+      "name": "Griffin",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\CGRIFF\\metadata.json",
+      "original_def_sha256": "6b2caaff58ead63f9ec2c737379c1f09ebaa231e662cf26395d876bb3e3e3c4c",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\griffin\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 178,
+        "top": 176,
+        "width": 80,
+        "height": 93
+      },
+      "body_landmarks": {
+        "native_crown_y": 177,
+        "native_sole_y": 268,
+        "generated_crown_y": 3
+      },
+      "target_core_height_px": 224.38356164383563,
+      "uniform_scale": 0.16670398339066542,
+      "master_crop": {
+        "left": 0,
+        "top": 0,
+        "width": 1162,
+        "height": 1353,
+        "padding": 8
+      },
+      "placement": [
+        340,
+        222
+      ],
+      "output_bounds": {
+        "left": 342,
+        "top": 224,
+        "right": 535,
+        "bottom": 448,
+        "width": 193,
+        "height": 224,
+        "edge": 0,
+        "opaque": 22852
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "1315520daf04bfdd31c37651cf6e5e6228773298a23c979817aec7f58016f6d7",
+      "group_count_pending": 15,
+      "timeline_frames_pending": 91
+    },
+    {
+      "number": 5,
+      "slug": "royal-griffin",
+      "name": "Royal Griffin",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\Crgrif\\metadata.json",
+      "original_def_sha256": "e80ca08a4291bb760a84de3dfb99b74fa6a832266b2913c3ba9fd76556d5b9c6",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\royal-griffin\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 176,
+        "top": 170,
+        "width": 85,
+        "height": 99
+      },
+      "body_landmarks": {
+        "native_crown_y": 172,
+        "native_sole_y": 268,
+        "generated_crown_y": 7
+      },
+      "target_core_height_px": 236.7123287671233,
+      "uniform_scale": 0.17811311419648104,
+      "master_crop": {
+        "left": 6,
+        "top": 1,
+        "width": 1156,
+        "height": 1341,
+        "padding": 8
+      },
+      "placement": [
+        335,
+        209
+      ],
+      "output_bounds": {
+        "left": 337,
+        "top": 212,
+        "right": 542,
+        "bottom": 448,
+        "width": 205,
+        "height": 236,
+        "edge": 0,
+        "opaque": 28183
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "5cdc63de16055ef8cc4a92bc1f90b5578e11f0fdce05287994f10555215202da",
+      "group_count_pending": 15,
+      "timeline_frames_pending": 91
+    },
+    {
+      "number": 6,
+      "slug": "swordsman",
+      "name": "Swordsman",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\Csword\\metadata.json",
+      "original_def_sha256": "f1b3ba4a5bf31ca76f2ebd56d219e0d56551d66939c55efae9eecc79a2395da3",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\swordsman\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 180,
+        "top": 181,
+        "width": 42,
+        "height": 88
+      },
+      "body_landmarks": {
+        "native_crown_y": 182,
+        "native_sole_y": 268,
+        "generated_crown_y": 52
+      },
+      "target_core_height_px": 212.05479452054794,
+      "uniform_scale": 0.12257502573442078,
+      "master_crop": {
+        "left": 55,
+        "top": 46,
+        "width": 797,
+        "height": 1742,
+        "padding": 8
+      },
+      "placement": [
+        346,
+        235
+      ],
+      "output_bounds": {
+        "left": 348,
+        "top": 236,
+        "right": 444,
+        "bottom": 448,
+        "width": 96,
+        "height": 212,
+        "edge": 0,
+        "opaque": 9123
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "a6799277a6d70f119bddb4a643a79507e7f14496261353fe0efa749c07aadb17",
+      "group_count_pending": 15,
+      "timeline_frames_pending": 80
+    },
+    {
+      "number": 7,
+      "slug": "crusader",
+      "name": "Crusader",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\Ccrusd\\metadata.json",
+      "original_def_sha256": "db0e8149ec873fa85458a6ce67ad432af02ee58a1ad165805fd813b0b88638a1",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\crusader\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 175,
+        "top": 177,
+        "width": 44,
+        "height": 91
+      },
+      "body_landmarks": {
+        "native_crown_y": 195,
+        "native_sole_y": 267,
+        "generated_crown_y": 174
+      },
+      "target_core_height_px": 177.53424657534248,
+      "uniform_scale": 0.11236344719958384,
+      "master_crop": {
+        "left": 73,
+        "top": 15,
+        "width": 760,
+        "height": 1745,
+        "padding": 8
+      },
+      "placement": [
+        343,
+        252
+      ],
+      "output_bounds": {
+        "left": 344,
+        "top": 254,
+        "right": 429,
+        "bottom": 448,
+        "width": 85,
+        "height": 194,
+        "edge": 0,
+        "opaque": 8327
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "7017f4bd2673086d303aed067463c372eb2e7ee8e69abaeed9d2be8a4baaee3b",
+      "group_count_pending": 15,
+      "timeline_frames_pending": 80
+    },
+    {
+      "number": 8,
+      "slug": "monk",
+      "name": "Monk",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\Cmonkk\\metadata.json",
+      "original_def_sha256": "d11b9cce2da77a8df59e1a274a678cc653031311974f0ba0165f7f89d790fe9f",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\monk\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 178,
+        "top": 187,
+        "width": 37,
+        "height": 82
+      },
+      "body_landmarks": {
+        "native_crown_y": 188,
+        "native_sole_y": 268,
+        "generated_crown_y": 41
+      },
+      "target_core_height_px": 197.26027397260276,
+      "uniform_scale": 0.11106997408367272,
+      "master_crop": {
+        "left": 33,
+        "top": 35,
+        "width": 759,
+        "height": 1788,
+        "padding": 8
+      },
+      "placement": [
+        342,
+        249
+      ],
+      "output_bounds": {
+        "left": 344,
+        "top": 251,
+        "right": 426,
+        "bottom": 448,
+        "width": 82,
+        "height": 197,
+        "edge": 0,
+        "opaque": 9753
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "fda0e9e02edfc23bdfe5a33f27c64dfb9a86d9eb9fefa3b069ebc8ac989ebfad",
+      "group_count_pending": 17,
+      "timeline_frames_pending": 113
+    },
+    {
+      "number": 9,
+      "slug": "zealot",
+      "name": "Zealot",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\Czealt\\metadata.json",
+      "original_def_sha256": "91ad028e9befb07b7ab122f48d322d90d329f2d5b9684c6b87c812cd23a48e70",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\zealot\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 176,
+        "top": 185,
+        "width": 41,
+        "height": 84
+      },
+      "body_landmarks": {
+        "native_crown_y": 186,
+        "native_sole_y": 268,
+        "generated_crown_y": 66
+      },
+      "target_core_height_px": 202.1917808219178,
+      "uniform_scale": 0.12035225048923678,
+      "master_crop": {
+        "left": 43,
+        "top": 60,
+        "width": 750,
+        "height": 1692,
+        "padding": 8
+      },
+      "placement": [
+        339,
+        244
+      ],
+      "output_bounds": {
+        "left": 341,
+        "top": 246,
+        "right": 430,
+        "bottom": 448,
+        "width": 89,
+        "height": 202,
+        "edge": 0,
+        "opaque": 9734
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "f78e3e7f3752461e64e1c1e66938c5920994fd71feddaa60e650478ba972f129",
+      "group_count_pending": 20,
+      "timeline_frames_pending": 154
+    },
+    {
+      "number": 10,
+      "slug": "cavalier",
+      "name": "Cavalier",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\CCAVLR\\metadata.json",
+      "original_def_sha256": "1120a4437a05b1f960aeb2668a8895423c9ff66ab4c0e249f687ad84d69da167",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\cavalier\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 173,
+        "top": 163,
+        "width": 92,
+        "height": 105
+      },
+      "body_landmarks": {
+        "native_crown_y": 183,
+        "native_sole_y": 267,
+        "generated_crown_y": 239
+      },
+      "target_core_height_px": 207.12328767123287,
+      "uniform_scale": 0.19339242546333602,
+      "master_crop": {
+        "left": 11,
+        "top": 7,
+        "width": 1141,
+        "height": 1309,
+        "padding": 8
+      },
+      "placement": [
+        329,
+        195
+      ],
+      "output_bounds": {
+        "left": 332,
+        "top": 197,
+        "right": 550,
+        "bottom": 448,
+        "width": 218,
+        "height": 251,
+        "edge": 0,
+        "opaque": 20397
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "76d6b72fbb46a3711907caa5dd21f23d842d08d814a34f514b8e1a5d322c190d",
+      "group_count_pending": 15,
+      "timeline_frames_pending": 87
+    },
+    {
+      "number": 11,
+      "slug": "champion",
+      "name": "Champion",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\CCHAMP\\metadata.json",
+      "original_def_sha256": "6066d9fa5b4679c4a30982b62eca5890848ac9257246bc9a8c3f984379907a3f",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\champion\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 173,
+        "top": 164,
+        "width": 92,
+        "height": 105
+      },
+      "body_landmarks": {
+        "native_crown_y": 177,
+        "native_sole_y": 267,
+        "generated_crown_y": 150
+      },
+      "target_core_height_px": 221.91780821917808,
+      "uniform_scale": 0.1898355930018632,
+      "master_crop": {
+        "left": 11,
+        "top": 7,
+        "width": 1132,
+        "height": 1318,
+        "padding": 8
+      },
+      "placement": [
+        332,
+        198
+      ],
+      "output_bounds": {
+        "left": 335,
+        "top": 201,
+        "right": 547,
+        "bottom": 448,
+        "width": 212,
+        "height": 247,
+        "edge": 0,
+        "opaque": 21609
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "47efdbaf5326f8e8d324e1d52a76b06a37ed6451a09125dcbd807c724796d0cf",
+      "group_count_pending": 15,
+      "timeline_frames_pending": 87
+    },
+    {
+      "number": 12,
+      "slug": "angel",
+      "name": "Angel",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\cangel\\metadata.json",
+      "original_def_sha256": "a804ed3408a60e333021ca0d1aae140e152515ac31229f90f64c16ba547152ba",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\castle-creature-assets-v01\\angel\\master-generated-source.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 173,
+        "top": 169,
+        "width": 48,
+        "height": 100
+      },
+      "body_landmarks": {
+        "native_crown_y": 170,
+        "native_sole_y": 268,
+        "generated_crown_y": 79
+      },
+      "target_core_height_px": 241.64383561643837,
+      "uniform_scale": 0.14461031455202775,
+      "master_crop": {
+        "left": 39,
+        "top": 73,
+        "width": 818,
+        "height": 1683,
+        "padding": 8
+      },
+      "placement": [
+        326,
+        204
+      ],
+      "output_bounds": {
+        "left": 328,
+        "top": 206,
+        "right": 445,
+        "bottom": 448,
+        "width": 117,
+        "height": 242,
+        "edge": 0,
+        "opaque": 19379
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "e024313e92fa1e8ff0f178720d7355a16df585b8b3c0f96ab4cf7a27d02afa19",
+      "group_count_pending": 18,
+      "timeline_frames_pending": 98
+    },
+    {
+      "number": 13,
+      "slug": "archangel",
+      "name": "Archangel",
+      "source_metadata": "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\docs\\art\\references\\heroes3-original-flipbooks\\sprites\\H3sprite\\CRANGL\\metadata.json",
+      "original_def_sha256": "398b24abe436e4c180cef74afbb38c23f665e9f40c0291226adac3f67055b36c",
+      "generated_source": "C:\\Users\\zhouc\\.codex\\generated_images\\01a07f41-7159-70f1-ac7d-e6217941c130\\exec-ca9c730b-33a2-4355-b5fc-6ce923493e0c.png",
+      "source_orientation": "right-facing idle group2/frame0",
+      "source_reference_bounds": {
+        "left": 182,
+        "top": 163,
+        "width": 73,
+        "height": 105
+      },
+      "body_landmarks": {
+        "native_crown_y": 164,
+        "native_sole_y": 267,
+        "generated_crown_y": 20,
+        "selected_file": "exec-ca9c730b-33a2-4355-b5fc-6ce923493e0c.png"
+      },
+      "target_core_height_px": 253.97260273972603,
+      "uniform_scale": 0.1747918807568658,
+      "master_crop": {
+        "left": 21,
+        "top": 13,
+        "width": 1009,
+        "height": 1466,
+        "padding": 8
+      },
+      "placement": [
+        350,
+        192
+      ],
+      "output_bounds": {
+        "left": 352,
+        "top": 194,
+        "right": 526,
+        "bottom": 448,
+        "width": 174,
+        "height": 254,
+        "edge": 0,
+        "opaque": 24044
+      },
+      "frame": "master_source_768x640.png",
+      "master": "master_rgba.png",
+      "source_comparison": "source-vs-master.png",
+      "sha256": "d9245ae6b276a85bf64c7b214e93990b0d163a6a21e7408f89d7b0d9abdc6945",
+      "group_count_pending": 18,
+      "timeline_frames_pending": 95
+    }
+  ],
+  "pending_animation_scope": {
+    "creatures": 13,
+    "groups": 212,
+    "timeline_frames": 1244
+  },
+  "alpha_policy": "Generated alpha preserved; <=2 clear RGB+alpha, >=240 opaque, intermediate edge alpha retained; original generations preserved."
+}

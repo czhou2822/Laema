@@ -1,0 +1,169 @@
+{
+  "profiles": {
+    "dynamic_reserve2_cache12": {
+      "argv": [
+        "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\venv\\Scripts\\python.exe",
+        "-u",
+        "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\ComfyUI\\main.py",
+        "--listen",
+        "127.0.0.1",
+        "--port",
+        "8189",
+        "--extra-model-paths-config",
+        "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\model_paths.yaml",
+        "--input-directory",
+        "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\Research AI Art Pipeline for HoMM3\\local-trials\\2026-10-23-pikeman-v01\\inputs",
+        "--output-directory",
+        "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\outputs",
+        "--disable-all-custom-nodes",
+        "--offline",
+        "--preview-method",
+        "none",
+        "--cache-lru",
+        "12",
+        "--bf16-vae",
+        "--reserve-vram",
+        "2"
+      ],
+      "env": {
+        "HF_HUB_OFFLINE": "1",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "network": "127.0.0.1 only; partner nodes/custom nodes disabled"
+    },
+    "static_reserve6_cache32": {
+      "argv": [
+        "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\venv\\Scripts\\python.exe",
+        "-u",
+        "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\ComfyUI\\main.py",
+        "--listen",
+        "127.0.0.1",
+        "--port",
+        "8189",
+        "--extra-model-paths-config",
+        "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\model_paths.yaml",
+        "--input-directory",
+        "C:\\Users\\zhouc\\OneDrive\\Documents\\ChatGPT\\Laema\\Research AI Art Pipeline for HoMM3\\local-trials\\2026-10-23-pikeman-v01\\inputs",
+        "--output-directory",
+        "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\10\\23\\01a167c5-76fb-7853-8eaf-4f70680205f1\\homm3-cache\\.runtime\\outputs",
+        "--disable-all-custom-nodes",
+        "--offline",
+        "--preview-method",
+        "none",
+        "--cache-lru",
+        "32",
+        "--bf16-vae",
+        "--reserve-vram",
+        "6",
+        "--disable-dynamic-vram",
+        "--disable-async-offload"
+      ],
+      "env": {
+        "HF_HUB_OFFLINE": "1",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "network": "127.0.0.1 only; partner nodes/custom nodes disabled"
+    }
+  },
+  "runs": [
+    {
+      "method": "reference",
+      "source_unique": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "reference",
+      "source_unique": 5,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "reference-2x",
+      "source_unique": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "restored-unmasked",
+      "source_unique": 5,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-high",
+      "source_unique": 5,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 1,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 2,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 3,
+      "runtime_memory_profile": "static_reserve6_cache32"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 4,
+      "runtime_memory_profile": "static_reserve6_cache32"
+    },
+    {
+      "method": "masked-full",
+      "source_unique": 5,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 0,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 1,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 2,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 3,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 4,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    },
+    {
+      "method": "masked",
+      "source_unique": 5,
+      "runtime_memory_profile": "dynamic_reserve2_cache12"
+    }
+  ],
+  "interrupted_attempts": [
+    {
+      "attempt": "unique_03_dynamic",
+      "retry_api_graph_identical": true,
+      "observed_elapsed_seconds_lower_bound": 667,
+      "raw_image_produced": false
+    },
+    {
+      "attempt": "unique_03_static_reserve2",
+      "retry_api_graph_identical": true,
+      "observed_elapsed_seconds_lower_bound": 207,
+      "raw_image_produced": false
+    }
+  ]
+}

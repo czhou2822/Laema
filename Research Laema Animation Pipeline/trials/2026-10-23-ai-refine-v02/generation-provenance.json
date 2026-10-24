@@ -1,0 +1,61 @@
+{
+  "tool": "built-in imagegen",
+  "model_revision": null,
+  "seed": null,
+  "generation_hardware": null,
+  "reference_pack": [
+    "inputs/appearance-guard.png",
+    "inputs/preferred-A-artwork.png",
+    "../../../docs/art/references/2026-10-18-character-concepts/laema-r5-01-laema-open.png"
+  ],
+  "motion_inputs": "Original A targets and newly authored Cast targets; no external animation sequence",
+  "request_wall_times_seconds": [
+    57,
+    57,
+    36,
+    37
+  ],
+  "generation_phase_wall_seconds": 130,
+  "overlap_note": "Initial X1 and Cast requests ran concurrently. Sum of request durations187s is not sequential wall time.",
+  "human_artist_pixel_cleanup_minutes": 0,
+  "human_review_minutes": null,
+  "remaining_artist_labor": null,
+  "attempts": [
+    {
+      "action": "X1 refinement",
+      "attempt": 1,
+      "raw": "raw/x1-inbetweens-attempt01-rejected.png",
+      "prompt": "prompts/x1_refine.txt",
+      "start_utc": "2026-10-23 09:45:56 UTC",
+      "end_utc": "2026-10-23 09:46:53 UTC",
+      "status": "Rejected: reused several old poses instead of requested inbetweens."
+    },
+    {
+      "action": "Cast reuse",
+      "attempt": 1,
+      "raw": "raw/cast-attempt01.png",
+      "prompt": "prompts/cast_reuse.txt",
+      "start_utc": "2026-10-23 09:45:56 UTC",
+      "end_utc": "2026-10-23 09:46:53 UTC",
+      "status": "Rejected: hand raised above fixed launch-anchor height."
+    },
+    {
+      "action": "X1 refinement",
+      "attempt": 2,
+      "raw": "raw/x1-inbetweens-attempt02.png",
+      "prompt": "prompts/x1_refine_attempt02.txt",
+      "start_utc": "2026-10-23 09:48:29 UTC",
+      "end_utc": "2026-10-23 09:49:05 UTC",
+      "status": "Candidate: guide-first edit plus explicit pose directions."
+    },
+    {
+      "action": "Cast reuse",
+      "attempt": 2,
+      "raw": "raw/cast-attempt02.png",
+      "prompt": "prompts/cast_reuse_attempt02.txt",
+      "start_utc": "2026-10-23 09:55:52 UTC",
+      "end_utc": "2026-10-23 09:56:29 UTC",
+      "status": "Candidate with explicit endpoint and stable peak-pose reuse; raw clipped-tip frame not used."
+    }
+  ]
+}

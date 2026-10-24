@@ -1,0 +1,107 @@
+{
+  "status": "First static sprite asset exported; animation set not complete",
+  "inputs": {
+    "source": "C:\\Users\\zhouc\\.codex\\generated_images\\01a07f41-7159-70f1-ac7d-e6217941c130\\exec-7c92379e-0cb2-44a2-a89b-4c4e59ad96c1.png",
+    "reference": "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\pikeman-resolution-study-v01\\07-helmet-colour-corrected-mockup.png",
+    "canvas": [
+      768,
+      512
+    ],
+    "feet_anchor": [
+      384,
+      448
+    ],
+    "standing_body_height": 180,
+    "body_crown_source_y": 320,
+    "feet_center_source_x": 540,
+    "source_facing": "left",
+    "frame_count": 1,
+    "animation_complete": false
+  },
+  "source_opaque_bounds": {
+    "left": 131,
+    "top": 27,
+    "right": 893,
+    "bottom": 1504
+  },
+  "master_crop": {
+    "left": 127,
+    "top": 23,
+    "width": 770,
+    "height": 1485
+  },
+  "source_body_landmarks": {
+    "crown_y": 320,
+    "sole_y": 1504,
+    "body_height": 1184,
+    "method": "Crown from visual inspection; sole from opaque alpha bounds"
+  },
+  "frame": {
+    "width": 768,
+    "height": 512,
+    "feet_anchor": [
+      384,
+      448
+    ],
+    "standing_body_height_px": 180,
+    "source_facing": "left",
+    "right_facing_is_exact_mirror": true,
+    "frame_count": 1
+  },
+  "alpha_policy": "Export: alpha<=2 clears stray nearly invisible pixels and RGB; alpha>=240 made opaque; intermediate silhouette alpha retained. Original generation remains unmodified at its saved source path.",
+  "checks": {
+    "pngs_decoded": true,
+    "frame_transparent_pixels": 384353,
+    "frame_opaque_pixels": 6004,
+    "frame_edge_pixels": 2859,
+    "nonzero_alpha_on_canvas_border": 0,
+    "engine_run": false
+  },
+  "outputs": [
+    {
+      "file": "pikeman_idle_master_rgba.png",
+      "width": 770,
+      "height": 1485,
+      "channels": 4,
+      "has_alpha": true,
+      "bytes": 965006,
+      "sha256": "30fbdb4bdf4ca3dacc175b8139ddace40d84273181ffd698351af05978ce80f4"
+    },
+    {
+      "file": "idle_left_frame_00.png",
+      "width": 768,
+      "height": 512,
+      "channels": 4,
+      "has_alpha": true,
+      "bytes": 33677,
+      "sha256": "851d8ea647b1f69e08b592413582aa0f2d2905a4c2d2ef438735cbf1804cd5bc"
+    },
+    {
+      "file": "idle_right_frame_00.png",
+      "width": 768,
+      "height": 512,
+      "channels": 4,
+      "has_alpha": true,
+      "bytes": 33646,
+      "sha256": "d582ef01c2b2800e8290f8bd62ee2ac4a198e34d7aa27714c3f4b9ebbc64e8a0"
+    },
+    {
+      "file": "idle_asset_preview.png",
+      "width": 520,
+      "height": 380,
+      "channels": 4,
+      "has_alpha": true,
+      "bytes": 55086,
+      "sha256": "e32f63ce68dd914d747dd25a1cbca0aecc548e1c442318af18da20298b317bda"
+    }
+  ],
+  "original_animation_coverage_still_needed": {
+    "idle": 7,
+    "walk": 6,
+    "front_thrust": 10,
+    "hurt": 6,
+    "death": 5,
+    "total": 34
+  },
+  "provenance": "New generated reinterpretation based on user-approved mockup and original Heroes III Pikeman reference. Not an authentic recovered original sprite."
+}

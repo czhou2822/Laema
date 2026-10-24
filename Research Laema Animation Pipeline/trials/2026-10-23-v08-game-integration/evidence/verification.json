@@ -1,0 +1,89 @@
+{
+  "runs": [
+    {
+      "run": "baseline-motion-run",
+      "captured_frames": 218,
+      "capture_interval_median_ms": 38,
+      "capture_interval_max_ms": 57,
+      "max_scheduled_input_lateness_ms": 21,
+      "unexpected_events_before_command": 2,
+      "unexpected_events_during_command": 0,
+      "outcome_counts": {
+        "pressure_state_changed": 3,
+        "action_accepted": 3,
+        "charging_started": 1,
+        "orb_created": 1,
+        "light_contact_resolved": 1,
+        "orb_marked": 2,
+        "action_finished": 2,
+        "cast_committed": 1,
+        "cast_launched": 1,
+        "cast_attempt_resolved": 1,
+        "cast_launch_phase_reached": 1,
+        "spell_projectile_impacted": 1,
+        "chain_terminated": 2,
+        "chain_reset": 1,
+        "dodge_started": 1,
+        "dodge_ended": 1,
+        "action_interrupted": 1
+      },
+      "player_hp_at_command_end": 87.5,
+      "enemy_hp_at_command_end": 180.0,
+      "alignment": "First accepted X1 action, not frame-perfect deterministic encounter replay",
+      "first_X1_accepted_command_ms": 1463
+    },
+    {
+      "run": "v08-motion-run",
+      "captured_frames": 232,
+      "capture_interval_median_ms": 35,
+      "capture_interval_max_ms": 43,
+      "max_scheduled_input_lateness_ms": 14,
+      "unexpected_events_before_command": 1,
+      "unexpected_events_during_command": 0,
+      "outcome_counts": {
+        "pressure_state_changed": 3,
+        "action_accepted": 3,
+        "charging_started": 1,
+        "orb_created": 1,
+        "light_contact_resolved": 1,
+        "orb_marked": 2,
+        "action_finished": 2,
+        "cast_committed": 1,
+        "cast_launched": 1,
+        "cast_attempt_resolved": 1,
+        "cast_launch_phase_reached": 1,
+        "spell_projectile_impacted": 1,
+        "chain_terminated": 2,
+        "chain_reset": 1,
+        "dodge_started": 1,
+        "dodge_ended": 1,
+        "action_interrupted": 1
+      },
+      "player_hp_at_command_end": 87.5,
+      "enemy_hp_at_command_end": 180.0,
+      "alignment": "First accepted X1 action, not frame-perfect deterministic encounter replay",
+      "first_X1_accepted_command_ms": 1466
+    }
+  ],
+  "scope": "Real copied Gym, Godot4.7.1, existing action-level input schedule. Only X1 artwork changes.",
+  "first_PNG_runs": "Preserved diagnostic captures; too sparse for motion judging. Not used in the moving comparison.",
+  "gameplay_changes": false,
+  "human_approval": false,
+  "workflow_winner": null,
+  "startup_input_limit": "External controller events occurred before command/device isolation. None during either recorded command. Separate runs are not identical initial-state or hardware-controller tests.",
+  "shutdown": "All recorder sessions retained the existing13 ObjectDB /9 resource shutdown warnings. Not resolved here.",
+  "import": "First v08 editor pass reported PNG not yet imported before filesystem import; subsequent game runs loaded the expected v08 texture. Initial log preserved.",
+  "key7_observed_in_actual_capture": {
+    "t": 215,
+    "src": "evidence/v08-motion-run/captures/87012_628252/cmd_1_frame_000051.jpg",
+    "region": [
+      2688.0,
+      0.0,
+      448.0,
+      448.0
+    ],
+    "texture": "res://assets/prototype/player/fire_sword_shield_v01/rnd_v08/x1-one-pose-structural-v08.png",
+    "heat": 0.0
+  },
+  "interaction": "Ordinary copied game launched separately with normal hardware bindings; human play/visual acceptance pending."
+}

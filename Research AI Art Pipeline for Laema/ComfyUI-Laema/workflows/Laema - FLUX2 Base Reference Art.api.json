@@ -1,0 +1,247 @@
+{
+  "4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "02-laema-hammer.png"
+    }
+  },
+  "10": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": [
+        "31",
+        0
+      ],
+      "height": [
+        "32",
+        0
+      ],
+      "batch_size": 1
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "filename_prefix": "Laema/flux-base"
+    }
+  },
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-base-4b-fp8.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": [
+        "22",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": ""
+    }
+  },
+  "8": {
+    "class_type": "ImageScaleToTotalPixels",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "megapixels": 1.0,
+      "resolution_steps": 1
+    }
+  },
+  "9": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "8",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "7",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "14",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "cfg": 5.0
+    }
+  },
+  "12": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "16": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 20,
+      "width": [
+        "31",
+        0
+      ],
+      "height": [
+        "32",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 42
+    }
+  },
+  "18": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "17",
+        0
+      ],
+      "guider": [
+        "11",
+        0
+      ],
+      "sampler": [
+        "12",
+        0
+      ],
+      "sigmas": [
+        "16",
+        0
+      ],
+      "latent_image": [
+        "10",
+        0
+      ]
+    }
+  },
+  "19": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "PrimitiveStringMultiline",
+    "inputs": {
+      "value": "Create a full-body illustration of Laema in a relaxed, alert three-quarter stance, holding her hammer naturally. Plain gray background, complete figure and hammer visible."
+    }
+  },
+  "21": {
+    "class_type": "PrimitiveStringMultiline",
+    "inputs": {
+      "value": "The reference supplies Laema's identity, costume and hammer construction. Laema is the same young adult woman with a curious alert expression, platinum-white high ponytail, fitted blue sleeveless waistcoat, cream rolled-sleeve shirt, red waist sash, brown leather cross-body strap and pouch, brown trousers, fingerless gloves and tall brown boots. Her hammer has a broad double-ended geometric head, dark inset panels, steel plates, bronze faceted fittings and narrow orange-red luminous seams. Render confident painted shapes, fine modeled-volume shading, convincing cloth/leather/metal separation, clear anatomy and expressive facial drawing. Use restrained base colors and concentrated metal highlights, without coarse pixel blocks or plastic-looking skin. Follow the user's requested pose, expression, framing and setting. Use a plain gray background only if no setting is requested. No text or watermark.\n\nUSER REQUEST:\n"
+    }
+  },
+  "22": {
+    "class_type": "StringConcatenate",
+    "inputs": {
+      "string_a": [
+        "21",
+        0
+      ],
+      "string_b": [
+        "20",
+        0
+      ],
+      "delimiter": ""
+    }
+  },
+  "31": {
+    "class_type": "PrimitiveInt",
+    "inputs": {
+      "value": 1024
+    }
+  },
+  "32": {
+    "class_type": "PrimitiveInt",
+    "inputs": {
+      "value": 1536
+    }
+  }
+}

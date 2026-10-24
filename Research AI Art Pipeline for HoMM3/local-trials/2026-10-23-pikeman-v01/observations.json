@@ -1,0 +1,70 @@
+{
+  "scope": "Static/all-frame visual inspection of executed research outputs, plus staged renderer; no user acceptance",
+  "observations": [
+    {
+      "method": "reference",
+      "frames": [
+        0,
+        5
+      ],
+      "status": "Observed structural failures",
+      "detail": "Ready00 became a crouched low-pike pose; full-thrust05 changed grip spacing/body orientation and added a baked shadow. Full source-mask projection hides displaced drawings rather than repairing them."
+    },
+    {
+      "method": "reference-2x",
+      "frames": [
+        0
+      ],
+      "status": "Observed fixed-registration failure",
+      "detail": "Upright stance and master identity read more clearly than the small-canvas ready scout, but the figure recenters/enlarges, the feet shift and pike reaches the top boundary. Not a full-sequence test."
+    },
+    {
+      "method": "masked",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "status": "Observed conservative source retention; art judgment pending",
+      "detail": "All six source arrangements remain recognizable at fixed coordinates. Sharp source pixel steps remain. White/blue cloth and highlights change; high-resolution master detail is not fully reproduced. No conclusive gross extra-limb defect seen in these sheets. Fine hands, face, identity/material variation and motion remain for user review."
+    },
+    {
+      "method": "restored-unmasked",
+      "frames": [
+        5
+      ],
+      "status": "Paired ablation, one frame only",
+      "detail": "Low-strength unmasked edit also stays close to the restored pose. The mask alone cannot be credited for structural retention from this comparison."
+    },
+    {
+      "method": "masked-high",
+      "frames": [
+        5
+      ],
+      "status": "Single-frame strength scout",
+      "detail": "0.65 strength increases surface/color changes while remaining close to the source arrangement; no full motion/identity sequence was tested."
+    },
+    {
+      "method": "masked-full",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "status": "Completed trial fails structural fidelity; no art acceptance",
+      "detail": "Completing all six poses exposed missing/cut-off or displaced figure parts at00\u201302, although thrust05 appeared more complete. Other poses reinterpret helmet, face, costume and grip details. Imposed alpha restores a silhouette mask, not missing anatomy. The full motion is retained for user review."
+    }
+  ],
+  "limits": [
+    "Pixel-derived source alpha imposes outer geometry; no anatomical acceptance follows from IoU1.",
+    "Approximate source landmarks are review markers, not measured candidate anatomy.",
+    "No artist-accepted cleanup cost has been measured.",
+    "No ControlNet, propagation or rig execution."
+  ]
+}

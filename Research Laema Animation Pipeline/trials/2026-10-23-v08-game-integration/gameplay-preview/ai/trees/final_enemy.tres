@@ -1,0 +1,104 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://cvt502b6f13r0"]
+
+[ext_resource type="Script" uid="uid://1p2pblcijt3v" path="res://ai/tasks/enemy/enemy_can_engage.gd" id="1_engage"]
+[ext_resource type="Script" uid="uid://dhkpm1osea2xb" path="res://ai/tasks/enemy/enemy_approach.gd" id="2_approach"]
+[ext_resource type="Script" uid="uid://d14ohbwuv0dxh" path="res://ai/tasks/enemy/enemy_windup.gd" id="3_windup"]
+[ext_resource type="Script" uid="uid://b8ynw4m0d2atp" path="res://ai/tasks/enemy/enemy_strike.gd" id="4_strike"]
+[ext_resource type="Script" uid="uid://c21gps602bfkr" path="res://ai/tasks/enemy/enemy_recover.gd" id="5_recover"]
+[ext_resource type="Script" uid="uid://bplprkgfw5hk2" path="res://ai/tasks/enemy/enemy_idle.gd" id="6_idle"]
+[ext_resource type="Script" uid="uid://cfs50m56n4fk7" path="res://ai/tasks/enemy/enemy_is_reacting.gd" id="7_reacting"]
+[ext_resource type="Script" uid="uid://oa8xj5vpajr2" path="res://ai/tasks/enemy/enemy_hit_reaction.gd" id="8_reaction"]
+[ext_resource type="Resource" uid="uid://c62n18h65kjtq" path="res://config/characters/hit_reaction.tres" id="9_reaction_settings"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ai"]
+var/target/name = &"target"
+var/target/type = 24
+var/target/hint = 0
+var/target/hint_string = ""
+var/aggro_range/name = &"aggro_range"
+var/aggro_range/type = 3
+var/aggro_range/value = 600.0
+var/aggro_range/hint = 0
+var/aggro_range/hint_string = ""
+var/attack_range/name = &"attack_range"
+var/attack_range/type = 3
+var/attack_range/value = 72.0
+var/attack_range/hint = 0
+var/attack_range/hint_string = ""
+var/movement_speed/name = &"movement_speed"
+var/movement_speed/type = 3
+var/movement_speed/value = 90.0
+var/movement_speed/hint = 0
+var/movement_speed/hint_string = ""
+var/damage/name = &"damage"
+var/damage/type = 3
+var/damage/value = 10.0
+var/damage/hint = 0
+var/damage/hint_string = ""
+var/impact/name = &"impact"
+var/impact/type = 2
+var/impact/value = 20
+var/impact/hint = 0
+var/impact/hint_string = ""
+var/phase/name = &"phase"
+var/phase/type = 21
+var/phase/value = &"DORMANT"
+var/phase/hint = 0
+var/phase/hint_string = ""
+
+[sub_resource type="BTCondition" id="BTCondition_reacting"]
+custom_name = "Qualifying hit requested or reaction running"
+script = ExtResource("7_reacting")
+
+[sub_resource type="BTAction" id="BTAction_reaction"]
+custom_name = "Execute hit reaction using character settings"
+script = ExtResource("8_reaction")
+hit_reaction_settings = ExtResource("9_reaction_settings")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_0aqjg"]
+min_duration = 0.3
+max_duration = 0.8
+
+[sub_resource type="BTSequence" id="BTSequence_reaction"]
+custom_name = "Interrupted by qualifying hit"
+children = [SubResource("BTCondition_reacting"), SubResource("BTAction_reaction"), SubResource("BTRandomWait_0aqjg")]
+
+[sub_resource type="BTCondition" id="BTCondition_engage"]
+custom_name = "Player within awareness range"
+script = ExtResource("1_engage")
+
+[sub_resource type="BTAction" id="BTAction_approach"]
+custom_name = "Approach until within attack range"
+script = ExtResource("2_approach")
+
+[sub_resource type="BTAction" id="BTAction_windup"]
+custom_name = "Commit position and wind up"
+script = ExtResource("3_windup")
+
+[sub_resource type="BTAction" id="BTAction_strike"]
+custom_name = "Strike committed area once"
+script = ExtResource("4_strike")
+
+[sub_resource type="BTAction" id="BTAction_recover"]
+custom_name = "Play authored recovery to animation end"
+script = ExtResource("5_recover")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_t33y5"]
+min_duration = 0.3
+max_duration = 0.8
+
+[sub_resource type="BTSequence" id="BTSequence_attack"]
+custom_name = "Committed melee cycle"
+children = [SubResource("BTCondition_engage"), SubResource("BTAction_approach"), SubResource("BTAction_windup"), SubResource("BTAction_strike"), SubResource("BTAction_recover"), SubResource("BTRandomWait_t33y5")]
+
+[sub_resource type="BTAction" id="BTAction_idle"]
+custom_name = "Idle outside awareness range"
+script = ExtResource("6_idle")
+
+[sub_resource type="BTSelector" id="BTSelector_root"]
+custom_name = "Final Enemy"
+children = [SubResource("BTSequence_reaction"), SubResource("BTSequence_attack"), SubResource("BTAction_idle")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_ai")
+root_task = SubResource("BTSelector_root")

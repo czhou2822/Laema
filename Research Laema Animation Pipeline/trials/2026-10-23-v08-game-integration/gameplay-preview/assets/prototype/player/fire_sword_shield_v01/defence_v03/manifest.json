@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-21",
+  "status": "AWAITING_USER_VALIDATION",
+  "source_directory": "docs/art/explorations/2026-10-21-fire-shield-catch-refined-v03",
+  "source_sheet": "shield-catch-8x448.png",
+  "runtime_sheet": "shield_catch.png",
+  "sha256": "59a118996c31e83633291876951e5b6601d793f0dee33ed829e2842feda60333",
+  "byte_identical_to_accepted_export": true,
+  "cell": [
+    448,
+    448
+  ],
+  "dimensions": [
+    3584,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "source_order_zero_based": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    0
+  ],
+  "frames_zero_based": {
+    "ready": 0,
+    "raise": 1,
+    "approach": 2,
+    "intercept_guard": 3,
+    "confirmed_contact_with_spark": 4,
+    "release": 5,
+    "recover": 6,
+    "ready_repeat": 7
+  },
+  "consumer": "scripts/player/player.gd",
+  "state_source": "DefenceController.get_fire_visual_snapshot(): read-only captured state; no mechanical changes.",
+  "mapping": {
+    "raise_and_hold": "Frames0..3 over the captured early parry duration; hold frame3 while guarding. A quick-release parry continues showing guard until its captured endpoint.",
+    "missed_tap": "Frames5..7 over the remaining captured control commitment; defence reuse does not prolong the pose or control lock.",
+    "confirmed_parry": "Only an actual Fire PARRIED HealthResult starts frames4..7 over one captured early-window duration. Controls remain immediately available.",
+    "confirmed_block": "Only an actual Fire BLOCKED HealthResult shows frame4, then frame3, over one captured early-window duration; held guarding continues.",
+    "held_release": "Frames5..7 over one captured early-window duration, with no added control lock.",
+    "interruption": "Attacks, hit reactions, school changes, stage lock, death and retry clear presentation. Hurt/attack has priority."
+  },
+  "preserved": [
+    "defence timing/absorption/rearm/input rules",
+    "movement locks",
+    "damage/Heat/orb/reward rules",
+    "hitboxes",
+    "X1-X5/Cast/Idle/Walk/Hurt assets and native resources",
+    "Water and other schools"
+  ],
+  "validation": {
+    "source_image_inspection": true,
+    "byte_identity": true,
+    "rgba_dimensions": [
+      3584,
+      448
+    ],
+    "exact_repeated_endpoint": true,
+    "defence_logic_unchanged_except_read_only_getter": true,
+    "editor_import_runtime_build_tests_run": false
+  },
+  "limits": [
+    "Generated face/hair/sword/shield/garment continuity remains provisional.",
+    "Source review GIF dwell is not used as gameplay timing.",
+    "Engine import, feel, both facings, contacts, release/cancellation and retry need user validation."
+  ]
+}

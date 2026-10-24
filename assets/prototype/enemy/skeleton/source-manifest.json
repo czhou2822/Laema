@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "creature_id": "skeleton",
+  "faction": "necropolis",
+  "tier": 1,
+  "source_collection": "docs/art/references/heroes3-original-flipbooks",
+  "original_def": {
+    "path": "docs/art/references/heroes3-original-flipbooks/originals/H3sprite/CSKELE.def",
+    "sha256": "3cb2a3ad4a4faaec0cc38c0cb38a71a7c2e67e93ac88ba9d389f5157e302df78"
+  },
+  "original_metadata": {
+    "path": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/metadata.json",
+    "sha256": "9b158834ed1e305a81a7516ed3e74ea0e9b598ad322fdc30b459b739fc7147af"
+  },
+  "registration": {
+    "cell_size": [
+      450,
+      400
+    ],
+    "columns": 4,
+    "foot_anchor": [
+      196,
+      267
+    ],
+    "body_visual_position": [
+      -11,
+      31
+    ],
+    "sprite_offset": [
+      29,
+      -67
+    ],
+    "opaque_idle_height": 78,
+    "sprite_scale": 2.307692308,
+    "target_body_height": 180,
+    "mirrored_offset": true
+  },
+  "playback": {
+    "idle_fps": 8,
+    "walk_fps": 9,
+    "death_fps": 8,
+    "hurt": "existing captured reaction duration",
+    "melee_duration": 1,
+    "melee_active_start": 0.5,
+    "melee_active_end": 1,
+    "melee_peak_frame": 3,
+    "melee_frame_keys": {
+      "times": [
+        0,
+        0.16666666666666666,
+        0.3333333333333333,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1
+      ],
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        0
+      ]
+    }
+  },
+  "sheets": [
+    {
+      "runtime": "Idle.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_02_block_02_page_00.png",
+      "sha256": "cb30b93537107792e35a537f8fb1b9fad9721cdf56caa4dba9065fa7bdc2583a",
+      "group": 2,
+      "block": 2,
+      "frame_count": 8,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "cskele57.pcx",
+        "cskele33.pcx",
+        "cskele34.pcx",
+        "cskele35.pcx",
+        "cskele36.pcx",
+        "cskele35.pcx",
+        "cskele34.pcx",
+        "cskele33.pcx"
+      ]
+    },
+    {
+      "runtime": "Walk.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_00_block_00_page_00.png",
+      "sha256": "d5a94bb8f15786b02837c1f0de3cf4139942c09202025cf919b103dc6439e39a",
+      "group": 0,
+      "block": 0,
+      "frame_count": 8,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "cskele39.pcx",
+        "cskele40.pcx",
+        "cskele41.pcx",
+        "cskele42.pcx",
+        "cskele43.pcx",
+        "cskele44.pcx",
+        "cskele45.pcx",
+        "cskele46.pcx"
+      ]
+    },
+    {
+      "runtime": "Hurt.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_03_block_03_page_00.png",
+      "sha256": "d1885bfbfdbfc3bd214565cc519e6ae5cfaed213c38c5d1fe6b10efe090de0f4",
+      "group": 3,
+      "block": 3,
+      "frame_count": 6,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "cskele49.pcx",
+        "cskele50.pcx",
+        "cskele51.pcx",
+        "cskele52.pcx",
+        "cskele53.pcx",
+        "cskele54.pcx"
+      ]
+    },
+    {
+      "runtime": "Dead.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_05_block_05_page_00.png",
+      "sha256": "d4fc5649e74d69a5e02bd3c9852d3d497a46082bc1ff9a9ed9171bd3876c2bf8",
+      "group": 5,
+      "block": 5,
+      "frame_count": 6,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "cskele19.pcx",
+        "cskele20.pcx",
+        "cskele21.pcx",
+        "cskele22.pcx",
+        "cskele23.pcx",
+        "cskele24.pcx"
+      ]
+    },
+    {
+      "runtime": "Attack.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CSKELE/group_12_block_11_page_00.png",
+      "sha256": "60898f9b6fc9e90e466743576e823d12d0720081584ea3e9df1cfa78323e5f9a",
+      "group": 12,
+      "block": 11,
+      "frame_count": 8,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "cskele01.pcx",
+        "cskele02.pcx",
+        "cskele03.pcx",
+        "cskele04.pcx",
+        "cskele05.pcx",
+        "cskele06.pcx",
+        "cskele07.pcx",
+        "cskele08.pcx"
+      ]
+    }
+  ],
+  "limits": [
+    "Byte-identical original RGBA preview sheets; no repaint or resampling.",
+    "DEF/indexed masters and source metadata remain unchanged in the reference collection.",
+    "Preview transparency/shadows retain the extraction interpretation.",
+    "Playback and temporary geometry reuse the current prototype, not original Heroes III engine timing.",
+    "No new audio, special abilities, flying behavior, gameplay tuning or engine/runtime validation."
+  ]
+}

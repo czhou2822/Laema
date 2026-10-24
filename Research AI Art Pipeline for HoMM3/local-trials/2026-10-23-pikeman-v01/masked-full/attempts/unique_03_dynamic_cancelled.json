@@ -1,0 +1,9 @@
+{
+  "status": "interrupted before any raw output was produced",
+  "prompt_id": "1be65c41-0aa8-4a2a-a819-678bc55cc115",
+  "unique_source": 3,
+  "recorded_utc": "2026-10-23T10:21:48.801333+00:00",
+  "reason": "More than10min elapsed with sampler at0/40; GPU memory about23GB. Dynamic loader behavior suspected, root cause not established.",
+  "retry_plan": "Same model/prompt/seed/sampling with dynamic VRAM and async offload disabled, node cache32. Not an art rejection or seed reselection.",
+  "evidence": "full-strength-completion-run.log and server-full-strength-dynamic.log"
+}

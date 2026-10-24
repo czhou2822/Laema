@@ -1,0 +1,97 @@
+class_name Entity
+extends CharacterBody2D
+
+@onready var health: HealthComponent = $Health
+@onready var health_resolver: HealthResolver = $HealthResolver
+@onready var status_controller = $Status
+@onready var hit_reaction: HitReaction = $HitReaction
+@onready var feedback: FeedbackComponent = $Feedback
+
+var _base_defensive_level := 0
+var _refill_at_zero := false
+
+
+func configure_entity(
+	maximum_health: float,
+	defensive_level: int,
+	refill_at_zero: bool,
+	hit_reaction_config: Dictionary,
+	status_config: Dictionary,
+	defence_component = null
+) -> void:
+	_base_defensive_level = maxi(defensive_level, 0)
+	_refill_at_zero = refill_at_zero
+	feedback.configure(self, float(status_config["ui"]["cast_feedback_duration"]))
+	health.configure(maximum_health)
+	hit_reaction.configure(hit_reaction_config)
+	status_controller.configure(self, status_config)
+	health_resolver.configure(
+		self,
+		health,
+		status_controller,
+		hit_reaction,
+		defence_component
+	)
+
+
+func apply_feedback_runtime_tuning(duration: float) -> void:
+	feedback.apply_runtime_tuning(duration)
+
+
+func receive_health_event(event: HealthEvent) -> HealthResult:
+	return health_resolver.resolve(event)
+
+
+func receive_health_result(_result: HealthResult) -> void:
+	pass
+
+
+func get_defensive_level() -> int:
+	return _base_defensive_level
+
+
+func is_combat_invincible() -> bool:
+	return hit_reaction.is_invincible() or has_pending_combat_hit_reaction()
+
+
+func should_refill_health_at_zero() -> bool:
+	return _refill_at_zero
+
+func uses_combat_hit_reaction() -> bool:
+	return false
+
+
+func is_player_combatant() -> bool:
+	return false
+
+
+func get_poise() -> int:
+	return _base_defensive_level
+
+
+func get_melee_snapshot() -> Dictionary:
+	return {}
+
+
+func cancel_combat_attack() -> void:
+	pass
+
+
+func request_combat_hit_reaction(difference: int, direction: Vector2) -> void:
+	hit_reaction.execute_combat(difference, direction)
+
+
+func has_pending_combat_hit_reaction() -> bool:
+	return false
+
+
+func begin_hit_transaction() -> void:
+	health_resolver.begin_hit_transaction()
+
+
+func end_hit_transaction() -> void:
+	health_resolver.end_hit_transaction()
+
+
+func on_clash_contact_resolved(_result: HealthResult) -> void:
+	pass

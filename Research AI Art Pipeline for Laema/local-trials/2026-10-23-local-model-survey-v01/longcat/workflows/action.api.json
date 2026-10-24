@@ -1,0 +1,163 @@
+{
+  "4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "02-laema-hammer.png"
+    }
+  },
+  "10": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1536,
+      "batch_size": 1
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "filename_prefix": "Survey/longcat/action"
+    }
+  },
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "longcat_image_edit_bf16.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "longcat_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "TextEncodeQwenImageEdit",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "prompt": "The supplied reference image is the authority for Laema's identity, costume and hammer construction. Laema is the same young adult woman with a curious alert expression, platinum-white high ponytail, fitted blue sleeveless waistcoat, cream rolled-sleeve shirt, red waist sash, brown leather cross-body strap and pouch, brown trousers, fingerless gloves and tall brown boots. Her hammer has a broad double-ended geometric head, dark inset panels, steel plates, bronze faceted fittings and narrow orange-red luminous seams. Render confident painted shapes, fine modeled-volume shading, convincing cloth/leather/metal separation, clear anatomy and expressive facial drawing. Use restrained base colors and concentrated metal highlights, without coarse pixel blocks or plastic-looking skin. Create one finished original fantasy game character illustration. Show a single full-body figure on a plain medium neutral-gray background, soft upper-left lighting and a subtle contact shadow. Portrait 2:3 canvas, 1024 by 1536 pixels. Keep the whole ponytail, both hands, both boots and the complete hammer comfortably inside the frame. No text, labels, border, extra person, new equipment, scenery, attack effects or motion blur. Pose: an original grounded combat anticipation pose facing right in three-quarter view, knees bent, weight supported over the rear leg, front foot stepping right. Both hands grip separated positions on the shaft; the hammer is held low in front, ready to swing. Keep the face readable and separate the limbs and hammer in silhouette. Make a new pose rather than copying the reference's standing pose. Avoid extreme foreshortening.",
+      "image": [
+        "4",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "TextEncodeQwenImageEdit",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "prompt": "",
+      "image": [
+        "4",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "FluxGuidance",
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "guidance": 4.5
+    }
+  },
+  "9": {
+    "class_type": "FluxGuidance",
+    "inputs": {
+      "conditioning": [
+        "7",
+        0
+      ],
+      "guidance": 4.5
+    }
+  },
+  "14": {
+    "class_type": "FluxKontextMultiReferenceLatentMethod",
+    "inputs": {
+      "conditioning": [
+        "8",
+        0
+      ],
+      "reference_latents_method": "index"
+    }
+  },
+  "15": {
+    "class_type": "FluxKontextMultiReferenceLatentMethod",
+    "inputs": {
+      "conditioning": [
+        "9",
+        0
+      ],
+      "reference_latents_method": "index"
+    }
+  },
+  "11": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "14",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "10",
+        0
+      ],
+      "seed": 42,
+      "steps": 50,
+      "cfg": 4.5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "19": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  }
+}

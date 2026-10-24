@@ -1,0 +1,33 @@
+{
+  "status": "executed",
+  "tool": "image_gen built-in",
+  "raw_file": "raw_unique_05.png",
+  "prompt_file": "prompt.txt",
+  "source_frame": 5,
+  "source_image": "../../../inputs/pose_05.png",
+  "appearance_reference": "../inputs/master_right_rgba.png",
+  "backend_model_revision": null,
+  "seed": null,
+  "sampler": null,
+  "inference_hardware": "Opaque remote tool backend, not this RTX4090",
+  "tool_wall_seconds": 40.9,
+  "tool_wall_window_with_prompt_logging_seconds": 55.218,
+  "requested_size": [
+    584,
+    416
+  ],
+  "actual_size": [
+    1485,
+    1059
+  ],
+  "raw_preserved_before_processing": true,
+  "reference_guidance": "Soft image/text; no ControlNet",
+  "rejection_count": 1,
+  "rejection_scope": "1 scout for exact structural preservation; no model-wide rate estimate",
+  "manual_drawing_cleanup_seconds": 0,
+  "input_sha256": {
+    "../../../inputs/pose_05.png": "a78ec3eb14c1f88c02a5d260e2f44b4f1dbc83d6acec8d4bf27537c194371e7f",
+    "../inputs/master_right_rgba.png": "79a471e02d12c71257b0d81431d19f843b1e8959e2340cd3b05e23de9d2b9521",
+    "prompt.txt": "6df5153920cc8fa77b3ed084b6d001d9f78413a27d01b7aebdb03b6a57486793"
+  }
+}

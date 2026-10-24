@@ -1,0 +1,152 @@
+{
+  "method": "reference",
+  "complete_ten_frame_sequence": false,
+  "unique_frames_executed": [
+    0,
+    5
+  ],
+  "measurements": [
+    {
+      "unique_frame": 0,
+      "diagnostic_foreground_rule": "max channel distance >24 from median RGB of four8x8 corners; not semantic segmentation",
+      "estimated_background_rgb": [
+        130.0,
+        131.0,
+        129.0
+      ],
+      "raw_diagnostic": {
+        "silhouette_iou": 0.20644830240314718,
+        "alpha_changed_pixels": 12491,
+        "opaque_bottom_delta_px": -5,
+        "centroid_delta_px": [
+          30.092001522057032,
+          13.492476226390622
+        ],
+        "opaque_bbox": [
+          13,
+          33,
+          276,
+          187
+        ],
+        "foreground_outside_source_px": 6333,
+        "source_opaque_without_candidate_px": 2946,
+        "diagnostic_foreground_border_pixels": 0
+      },
+      "input_same_foreground_diagnostic": {
+        "silhouette_iou": 0.8401611820013432,
+        "alpha_changed_pixels": 4285,
+        "opaque_bottom_delta_px": 0,
+        "centroid_delta_px": [
+          -0.25791044776119065,
+          7.461300639658845
+        ],
+        "opaque_bbox": [
+          36,
+          16,
+          152,
+          192
+        ],
+        "foreground_outside_source_px": 596,
+        "source_opaque_without_candidate_px": 356,
+        "diagnostic_foreground_border_pixels": 0
+      },
+      "source_alpha_derivative": {
+        "silhouette_iou": 1.0,
+        "alpha_changed_pixels": 0,
+        "opaque_bottom_delta_px": 0,
+        "centroid_delta_px": [
+          0.0,
+          0.0
+        ],
+        "opaque_bbox": [
+          36,
+          16,
+          144,
+          192
+        ],
+        "foreground_outside_source_px": 0,
+        "source_opaque_without_candidate_px": 0,
+        "diagnostic_foreground_border_pixels": 0
+      },
+      "opaque_rgb_mean_absolute_change_8bit": 66.19577114427861,
+      "source_opaque_pixels_near_output_background_fraction": 0.4341417910447761,
+      "source_opaque_pixels_near_input_background_fraction": 0.011007462686567163,
+      "opaque_pixels_changed_by_gt8_any_channel_fraction": 0.985634328358209,
+      "automated_export_seconds": 0.061029399977996945,
+      "manual_drawing_cleanup_seconds": 0,
+      "cleanup_caveat": "Artist anatomy/color/edge repair and acceptance still unmeasured. Applying a mask is automated packaging, not artist cleanup."
+    },
+    {
+      "unique_frame": 5,
+      "diagnostic_foreground_rule": "max channel distance >24 from median RGB of four8x8 corners; not semantic segmentation",
+      "estimated_background_rgb": [
+        136.0,
+        136.0,
+        135.0
+      ],
+      "raw_diagnostic": {
+        "silhouette_iou": 0.3430452674897119,
+        "alpha_changed_pixels": 12001,
+        "opaque_bottom_delta_px": 5,
+        "centroid_delta_px": [
+          -6.751632446992048,
+          -10.151538711320484
+        ],
+        "opaque_bbox": [
+          40,
+          15,
+          276,
+          197
+        ],
+        "foreground_outside_source_px": 6594,
+        "source_opaque_without_candidate_px": 1388,
+        "diagnostic_foreground_border_pixels": 0
+      },
+      "input_same_foreground_diagnostic": {
+        "silhouette_iou": 0.7695573074590661,
+        "alpha_changed_pixels": 5635,
+        "opaque_bottom_delta_px": 0,
+        "centroid_delta_px": [
+          0.949658180386777,
+          8.733776222689642
+        ],
+        "opaque_bbox": [
+          54,
+          62,
+          276,
+          192
+        ],
+        "foreground_outside_source_px": 1040,
+        "source_opaque_without_candidate_px": 480,
+        "diagnostic_foreground_border_pixels": 0
+      },
+      "source_alpha_derivative": {
+        "silhouette_iou": 1.0,
+        "alpha_changed_pixels": 0,
+        "opaque_bottom_delta_px": 0,
+        "centroid_delta_px": [
+          0.0,
+          0.0
+        ],
+        "opaque_bbox": [
+          54,
+          62,
+          276,
+          192
+        ],
+        "foreground_outside_source_px": 0,
+        "source_opaque_without_candidate_px": 0,
+        "diagnostic_foreground_border_pixels": 0
+      },
+      "opaque_rgb_mean_absolute_change_8bit": 76.5550155987521,
+      "source_opaque_pixels_near_output_background_fraction": 0.18394528437724983,
+      "source_opaque_pixels_near_input_background_fraction": 0.014038876889848811,
+      "opaque_pixels_changed_by_gt8_any_channel_fraction": 0.9917206623470123,
+      "automated_export_seconds": 0.04699359997175634,
+      "manual_drawing_cleanup_seconds": 0,
+      "cleanup_caveat": "Artist anatomy/color/edge repair and acceptance still unmeasured. Applying a mask is automated packaging, not artist cleanup."
+    }
+  ],
+  "model": "model_lock.json",
+  "mask_warning": "Source alpha imposes IoU1; inspect raw diagnostic for actual model drift."
+}

@@ -1,0 +1,1351 @@
+{
+  "last_node_id": 32,
+  "last_link_id": 27,
+  "nodes": [
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        40,
+        500
+      ],
+      "size": [
+        280,
+        440
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 0,
+      "mode": 0,
+      "title": "Reference 1 - Laema identity",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            7
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "02-laema-hammer.png"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "EmptyFlux2LatentImage",
+      "pos": [
+        1350,
+        470
+      ],
+      "size": [
+        310,
+        150
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "title": "CANVAS - portrait 1024 x 1536",
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 1,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 2,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            23
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyFlux2LatentImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 13,
+      "type": "SaveImage",
+      "pos": [
+        690,
+        80
+      ],
+      "size": [
+        590,
+        860
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 2,
+      "mode": 0,
+      "title": "3. RESULT - saved in output/Laema",
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "Laema/flux-base"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        -500,
+        275
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 3,
+      "mode": 0,
+      "title": "Advanced - UNETLoader",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            14
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "flux-2-klein-base-4b-fp8.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        -500,
+        340
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "title": "Advanced - CLIPLoader",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            5,
+            6
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "qwen_3_4b.safetensors",
+        "flux2",
+        "default"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "VAELoader",
+      "pos": [
+        -500,
+        405
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 0,
+      "title": "Advanced - VAELoader",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            9,
+            25
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -500,
+        470
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "title": "Advanced - CLIPTextEncode",
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 4,
+          "widget": {
+            "name": "text"
+          }
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            10
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -500,
+        535
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "title": "Advanced - CLIPTextEncode",
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 8,
+      "type": "ImageScaleToTotalPixels",
+      "pos": [
+        -500,
+        600
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "title": "Advanced - ImageScaleToTotalPixels",
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            8
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScaleToTotalPixels",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "nearest-exact",
+        1.0,
+        1
+      ]
+    },
+    {
+      "id": 9,
+      "type": "VAEEncode",
+      "pos": [
+        -500,
+        665
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "title": "Advanced - VAEEncode",
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 8
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            11,
+            13
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 14,
+      "type": "ReferenceLatent",
+      "pos": [
+        -500,
+        730
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "title": "Advanced - ReferenceLatent",
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 10
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            15
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 15,
+      "type": "ReferenceLatent",
+      "pos": [
+        -500,
+        795
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "title": "Advanced - ReferenceLatent",
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 12
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            16
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 11,
+      "type": "CFGGuider",
+      "pos": [
+        1350,
+        80
+      ],
+      "size": [
+        310,
+        300
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 12,
+      "mode": 0,
+      "title": "2. SETTINGS - seed / steps",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 14
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 15
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            20
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CFGGuider",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        5.0
+      ]
+    },
+    {
+      "id": 12,
+      "type": "KSamplerSelect",
+      "pos": [
+        -500,
+        925
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 13,
+      "mode": 0,
+      "title": "Advanced - KSamplerSelect",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            21
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "Flux2Scheduler",
+      "pos": [
+        -500,
+        990
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 0,
+      "title": "Advanced - Flux2Scheduler",
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 17,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 18,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            22
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Flux2Scheduler",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        20
+      ]
+    },
+    {
+      "id": 17,
+      "type": "RandomNoise",
+      "pos": [
+        -500,
+        1055
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 15,
+      "mode": 0,
+      "title": "Advanced - RandomNoise",
+      "inputs": [
+        {
+          "name": "noise_seed",
+          "label": "Seed",
+          "type": "INT",
+          "widget": {
+            "name": "noise_seed"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            19
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        42,
+        "randomize"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        -500,
+        1120
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 16,
+      "mode": 0,
+      "title": "Advanced - SamplerCustomAdvanced",
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 19
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 20
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 21
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 22
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            24
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 19,
+      "type": "VAEDecode",
+      "pos": [
+        -500,
+        1185
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 17,
+      "mode": 0,
+      "title": "Advanced - VAEDecode",
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 24
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 20,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        40,
+        80
+      ],
+      "size": [
+        500,
+        300
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 18,
+      "mode": 0,
+      "title": "1. YOUR PROMPT - edit this",
+      "inputs": [
+        {
+          "name": "value",
+          "label": "Your prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            27
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "Create a full-body illustration of Laema in a relaxed, alert three-quarter stance, holding her hammer naturally. Plain gray background, complete figure and hammer visible."
+      ],
+      "color": "#243f2d",
+      "bgcolor": "#172b20"
+    },
+    {
+      "id": 21,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -500,
+        1315
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 19,
+      "mode": 0,
+      "title": "Advanced - PrimitiveStringMultiline",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            26
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "The reference supplies Laema's identity, costume and hammer construction. Laema is the same young adult woman with a curious alert expression, platinum-white high ponytail, fitted blue sleeveless waistcoat, cream rolled-sleeve shirt, red waist sash, brown leather cross-body strap and pouch, brown trousers, fingerless gloves and tall brown boots. Her hammer has a broad double-ended geometric head, dark inset panels, steel plates, bronze faceted fittings and narrow orange-red luminous seams. Render confident painted shapes, fine modeled-volume shading, convincing cloth/leather/metal separation, clear anatomy and expressive facial drawing. Use restrained base colors and concentrated metal highlights, without coarse pixel blocks or plastic-looking skin. Follow the user's requested pose, expression, framing and setting. Use a plain gray background only if no setting is requested. No text or watermark.\n\nUSER REQUEST:\n"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "StringConcatenate",
+      "pos": [
+        -500,
+        1380
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 20,
+      "mode": 0,
+      "title": "Advanced - StringConcatenate",
+      "inputs": [
+        {
+          "name": "string_a",
+          "type": "STRING",
+          "link": 26,
+          "widget": {
+            "name": "string_a"
+          }
+        },
+        {
+          "name": "string_b",
+          "type": "STRING",
+          "link": 27,
+          "widget": {
+            "name": "string_b"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringConcatenate",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 31,
+      "type": "PrimitiveInt",
+      "pos": [
+        -500,
+        1445
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 21,
+      "mode": 0,
+      "title": "Advanced - PrimitiveInt",
+      "inputs": [
+        {
+          "name": "value",
+          "label": "Width",
+          "type": "INT",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            1,
+            17
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveInt",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        1024,
+        "fixed"
+      ]
+    },
+    {
+      "id": 32,
+      "type": "PrimitiveInt",
+      "pos": [
+        -500,
+        1510
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 22,
+      "mode": 0,
+      "title": "Advanced - PrimitiveInt",
+      "inputs": [
+        {
+          "name": "value",
+          "label": "Height",
+          "type": "INT",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            2,
+            18
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveInt",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        1536,
+        "fixed"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      31,
+      0,
+      10,
+      0,
+      "INT"
+    ],
+    [
+      2,
+      32,
+      0,
+      10,
+      1,
+      "INT"
+    ],
+    [
+      3,
+      19,
+      0,
+      13,
+      0,
+      "IMAGE"
+    ],
+    [
+      4,
+      22,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      5,
+      2,
+      0,
+      6,
+      1,
+      "CLIP"
+    ],
+    [
+      6,
+      2,
+      0,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      7,
+      4,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      9,
+      3,
+      0,
+      9,
+      1,
+      "VAE"
+    ],
+    [
+      10,
+      6,
+      0,
+      14,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      11,
+      9,
+      0,
+      14,
+      1,
+      "LATENT"
+    ],
+    [
+      12,
+      7,
+      0,
+      15,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      13,
+      9,
+      0,
+      15,
+      1,
+      "LATENT"
+    ],
+    [
+      14,
+      1,
+      0,
+      11,
+      0,
+      "MODEL"
+    ],
+    [
+      15,
+      14,
+      0,
+      11,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      16,
+      15,
+      0,
+      11,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      17,
+      31,
+      0,
+      16,
+      0,
+      "INT"
+    ],
+    [
+      18,
+      32,
+      0,
+      16,
+      1,
+      "INT"
+    ],
+    [
+      19,
+      17,
+      0,
+      18,
+      0,
+      "NOISE"
+    ],
+    [
+      20,
+      11,
+      0,
+      18,
+      1,
+      "GUIDER"
+    ],
+    [
+      21,
+      12,
+      0,
+      18,
+      2,
+      "SAMPLER"
+    ],
+    [
+      22,
+      16,
+      0,
+      18,
+      3,
+      "SIGMAS"
+    ],
+    [
+      23,
+      10,
+      0,
+      18,
+      4,
+      "LATENT"
+    ],
+    [
+      24,
+      18,
+      0,
+      19,
+      0,
+      "LATENT"
+    ],
+    [
+      25,
+      3,
+      0,
+      19,
+      1,
+      "VAE"
+    ],
+    [
+      26,
+      21,
+      0,
+      22,
+      0,
+      "STRING"
+    ],
+    [
+      27,
+      20,
+      0,
+      22,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "YOUR REQUEST + REFERENCES",
+      "bounding": [
+        15,
+        25,
+        640,
+        950
+      ],
+      "color": "#3d7051",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "GENERATED ART",
+      "bounding": [
+        665,
+        25,
+        640,
+        950
+      ],
+      "color": "#3f6180",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "OPTIONAL SETTINGS",
+      "bounding": [
+        1325,
+        25,
+        370,
+        680
+      ],
+      "color": "#715d3a",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.65,
+      "offset": [
+        70,
+        50
+      ]
+    },
+    "linearData": {
+      "inputs": [
+        [
+          "46a095b5-16d5-49dd-9956-4af1491a2396:20:value",
+          "value"
+        ],
+        [
+          "46a095b5-16d5-49dd-9956-4af1491a2396:17:noise_seed",
+          "noise_seed"
+        ],
+        [
+          "46a095b5-16d5-49dd-9956-4af1491a2396:31:value",
+          "value"
+        ],
+        [
+          "46a095b5-16d5-49dd-9956-4af1491a2396:32:value",
+          "value"
+        ]
+      ],
+      "outputs": [
+        "13"
+      ]
+    },
+    "linearMode": true,
+    "workflowRendererVersion": "Vue",
+    "frontendVersion": "1.57.1"
+  },
+  "version": 0.4,
+  "id": "46a095b5-16d5-49dd-9956-4af1491a2396",
+  "revision": 0
+}

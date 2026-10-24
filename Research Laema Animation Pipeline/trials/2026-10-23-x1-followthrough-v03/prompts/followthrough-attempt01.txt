@@ -1,0 +1,17 @@
+Use case: sketch-to-render / original 2D game sprite motion correction.
+EDIT TARGET: Image 1 is an eight-cell original pose guide. Replace the gray figures with the exact painted Laema character from Image 2, the static appearance master. Image 1 controls poses and positions; Image 2 controls identity, clothing, equipment, body proportions and painted sprite finish. Do not invent or import a pre-existing animation.
+
+Four columns, two rows, eight isolated complete figures on real transparent alpha. Keep the full guide canvas proportions and fixed feet/cell origins, with one consistent character scale throughout. Preserve each guide wrist, elbow, hand-to-hilt connection and sword direction. Every figure faces right. Firm closed right-hand grip, continuous forearm and straight steel blade with the same crossguard, length and proportions in every cell. Blue shield remains strapped to the left forearm. Same ivory ponytail/face, blue vest, cream sleeves, red sash, brown trousers/gloves/boots. No equipment or material drift.
+
+This is a correction to an excessive downward follow-through. The sword MUST NOT hang vertically down, stab the floor, or sweep close to the feet. Keep the blade tip above knee level throughout the seven correction poses. Use a compact bent elbow and controlled shoulder/torso braking, then a smooth return toward the ready guard, without a second attack or wrist flip. Keep feet planted at the guide positions.
+Cell order and rigid blade directions (screen coordinates, forward right is zero):
+1: static ready guard, blade 42 degrees UP-right. This provides registration only.
+2: end of diagonal cut, blade 22 degrees DOWN-right, hand ahead of lower chest.
+3: maximum follow-through, blade only 30 degrees DOWN-right. Never a steep or vertical downward sword.
+4: braking, blade 26 degrees DOWN-right, elbow beginning to fold toward body.
+5: recovery, blade 16 degrees DOWN-right, relaxed compact bend, body settling.
+6: blade almost horizontal, 4 degrees UP-right.
+7: blade 22 degrees UP-right, approaching the same ready grip.
+8: blade 33 degrees UP-right, nearly at the original ready guard.
+
+Render each pose distinctly and faithfully to the guide; do not repeat the same pose throughout. Remove ALL guide text, dots, skeleton lines, floor and cell borders. No lettering, motion trails, aura, sparkles, cast effects, background, ground shadows or blur. Crisp complete silhouettes and clean transparent edges. No clipped blade tips, floating swords, loose hands or extra fingers.

@@ -1,0 +1,40 @@
+{
+  "tool": "built-in image_gen",
+  "model_revision": "not exposed",
+  "seed": "not exposed",
+  "attempts": [
+    {
+      "attempt": 1,
+      "started_at_utc": "2026-10-23T11:54:52.144183+00:00",
+      "prompt": "prompts/attempt01.txt",
+      "inputs": [
+        "inputs/X1-opening-correction-guide.png",
+        "inputs/previous-drawing02.png",
+        "inputs/appearance-guard.png"
+      ],
+      "input_sha256": [
+        "f2c48c827157ff3697e4303dd7e6ec7da2ff9add382ce8c99beeae0e7be710ca",
+        "884db626601c9e76e4f2eb1ef1e04ee005dc50e65282b10a0897f3465ee4daef",
+        "eb6bf42f64f08b95df9223138359a1bc79e43f6e5cd9d73edc3f9c82b93dfd5e"
+      ],
+      "transparent_background": true,
+      "status": "3 release cells exported; exact preferred drawing held through chamber",
+      "observed_service_wall_seconds": 34.882,
+      "output": "raw/attempt01.png",
+      "output_sha256": "43909271c949f3bffc921ca09829230d5e290c187138323b3cf916506bd65c29",
+      "new_cells_used": 3,
+      "unused_generated_cells": [
+        0,
+        1,
+        2,
+        6,
+        7
+      ],
+      "export_calibration_passes": 2,
+      "rejected_export": "outputs/x1-opening-rejected-scale.png"
+    }
+  ],
+  "human_pixel_paint_minutes": 0,
+  "human_review_minutes": null,
+  "completed_export_at_utc": "2026-10-23T12:06:09.343007+00:00"
+}

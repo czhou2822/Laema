@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "creature_id": "walking_dead",
+  "faction": "necropolis",
+  "tier": 2,
+  "source_collection": "docs/art/references/heroes3-original-flipbooks",
+  "original_def": {
+    "path": "docs/art/references/heroes3-original-flipbooks/originals/H3sprite/CZOMBI.def",
+    "sha256": "fee70e4ce759b793b42def1dae19e77b3ca65baca71016d88184772c35800266"
+  },
+  "original_metadata": {
+    "path": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/metadata.json",
+    "sha256": "56b566e921ea5377202a42bfe0103aa91629dd24c2093b83e9a328803a061923"
+  },
+  "registration": {
+    "cell_size": [
+      450,
+      400
+    ],
+    "columns": 4,
+    "foot_anchor": [
+      196,
+      267
+    ],
+    "body_visual_position": [
+      -11,
+      31
+    ],
+    "sprite_offset": [
+      29,
+      -67
+    ],
+    "opaque_idle_height": 82,
+    "sprite_scale": 2.195121951,
+    "target_body_height": 180,
+    "mirrored_offset": true
+  },
+  "playback": {
+    "idle_fps": 8,
+    "walk_fps": 9,
+    "death_fps": 8,
+    "hurt": "existing captured reaction duration",
+    "melee_duration": 1,
+    "melee_active_start": 0.5,
+    "melee_active_end": 1,
+    "melee_peak_frame": 3,
+    "melee_frame_keys": {
+      "times": [
+        0,
+        0.16666666666666666,
+        0.3333333333333333,
+        0.5,
+        0.6333333333333333,
+        0.7666666666666666,
+        0.9000000000000001,
+        1
+      ],
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ]
+    }
+  },
+  "sheets": [
+    {
+      "runtime": "Idle.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_02_block_02_page_00.png",
+      "sha256": "147e7617f3aa0ab3ae4f2bebfe39c754973d2fd27a999afd75ce4608c5f94a6c",
+      "group": 2,
+      "block": 2,
+      "frame_count": 8,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "Czombi01.pcx",
+        "Czombi02.pcx",
+        "Czombi03.pcx",
+        "Czombi04.pcx",
+        "Czombi04.pcx",
+        "Czombi03.pcx",
+        "Czombi02.pcx",
+        "Czombi01.pcx"
+      ]
+    },
+    {
+      "runtime": "Walk.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_00_block_00_page_00.png",
+      "sha256": "e16ea5fd27ea6fedae2703b053c7b253cb25450042bdf57b7218a9326cc9680e",
+      "group": 0,
+      "block": 0,
+      "frame_count": 10,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        1200
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "Czombi10.pcx",
+        "Czombi11.pcx",
+        "Czombi12.pcx",
+        "Czombi13.pcx",
+        "Czombi14.pcx",
+        "Czombi15.pcx",
+        "Czombi16.pcx",
+        "Czombi17.pcx",
+        "Czombi18.pcx",
+        "Czombi19.pcx"
+      ]
+    },
+    {
+      "runtime": "Hurt.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_03_block_03_page_00.png",
+      "sha256": "0c1378fa5da30e3c5fcd86b7380268849d8f27e4788aca309149760da324812d",
+      "group": 3,
+      "block": 3,
+      "frame_count": 7,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "Czombi01.pcx",
+        "Czombi47.pcx",
+        "Czombi48.pcx",
+        "Czombi49.pcx",
+        "Czombi50.pcx",
+        "Czombi51.pcx",
+        "Czombi52.pcx"
+      ]
+    },
+    {
+      "runtime": "Dead.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_05_block_05_page_00.png",
+      "sha256": "ebf7087b2262180ce90c3d23d4809af1cf50f79d064a5b3948f5090a6ae3a286",
+      "group": 5,
+      "block": 5,
+      "frame_count": 9,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        1200
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "Czombi01.pcx",
+        "Czombi53.pcx",
+        "Czombi54.pcx",
+        "Czombi55.pcx",
+        "Czombi56.pcx",
+        "Czombi57.pcx",
+        "Czombi58.pcx",
+        "Czombi59.pcx",
+        "Czombi60.pcx"
+      ]
+    },
+    {
+      "runtime": "Attack.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CZOMBI/group_12_block_11_page_00.png",
+      "sha256": "d84829d8e2e688c78d62da0c83814809e0dc11a102b4d035d13ab28f8457970f",
+      "group": 12,
+      "block": 11,
+      "frame_count": 7,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "Czombi01.pcx",
+        "Czombi35.pcx",
+        "Czombi36.pcx",
+        "Czombi37.pcx",
+        "Czombi38.pcx",
+        "Czombi39.pcx",
+        "Czombi40.pcx"
+      ]
+    }
+  ],
+  "limits": [
+    "Byte-identical original RGBA preview sheets; no repaint or resampling.",
+    "DEF/indexed masters and source metadata remain unchanged in the reference collection.",
+    "Preview transparency/shadows retain the extraction interpretation.",
+    "Playback and temporary geometry reuse the current prototype, not original Heroes III engine timing.",
+    "No new audio, special abilities, flying behavior, gameplay tuning or engine/runtime validation."
+  ]
+}

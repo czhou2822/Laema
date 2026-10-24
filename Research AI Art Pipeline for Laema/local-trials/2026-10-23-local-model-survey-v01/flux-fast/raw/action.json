@@ -1,0 +1,299 @@
+{
+  "status": "executed",
+  "method": "flux-fast",
+  "task": "action",
+  "started_utc": "2026-10-23T12:51:59.328471+00:00",
+  "submission_to_save_seconds": 5.157,
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGB",
+  "raw_sha256": "b458af6d544e8ad5bf922f919b044c010e19fc13e5f29948c46bb4163f98a04b",
+  "reference_input_count": 1,
+  "reference_sha256": "adf7740ed12b1b0d7a9a01655d1989e6787fe7cf11a6cd658ef0146fa00a1870",
+  "history": {
+    "prompt": [
+      6,
+      "ea5ce037-486e-40d7-8a47-8ab02e7ab7da",
+      {
+        "4": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "02-laema-hammer.png"
+          }
+        },
+        "10": {
+          "class_type": "EmptyFlux2LatentImage",
+          "inputs": {
+            "width": 1024,
+            "height": 1536,
+            "batch_size": 1
+          }
+        },
+        "13": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "19",
+              0
+            ],
+            "filename_prefix": "Survey/flux-fast/action"
+          }
+        },
+        "1": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "unet_name": "flux-2-klein-4b-fp8.safetensors",
+            "weight_dtype": "default"
+          }
+        },
+        "2": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "qwen_3_4b.safetensors",
+            "type": "flux2",
+            "device": "default"
+          }
+        },
+        "3": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "flux2-vae.safetensors"
+          }
+        },
+        "6": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "clip": [
+              "2",
+              0
+            ],
+            "text": "The supplied reference image is the authority for Laema's identity, costume and hammer construction. Laema is the same young adult woman with a curious alert expression, platinum-white high ponytail, fitted blue sleeveless waistcoat, cream rolled-sleeve shirt, red waist sash, brown leather cross-body strap and pouch, brown trousers, fingerless gloves and tall brown boots. Her hammer has a broad double-ended geometric head, dark inset panels, steel plates, bronze faceted fittings and narrow orange-red luminous seams. Render confident painted shapes, fine modeled-volume shading, convincing cloth/leather/metal separation, clear anatomy and expressive facial drawing. Use restrained base colors and concentrated metal highlights, without coarse pixel blocks or plastic-looking skin. Create one finished original fantasy game character illustration. Show a single full-body figure on a plain medium neutral-gray background, soft upper-left lighting and a subtle contact shadow. Portrait 2:3 canvas, 1024 by 1536 pixels. Keep the whole ponytail, both hands, both boots and the complete hammer comfortably inside the frame. No text, labels, border, extra person, new equipment, scenery, attack effects or motion blur. Pose: an original grounded combat anticipation pose facing right in three-quarter view, knees bent, weight supported over the rear leg, front foot stepping right. Both hands grip separated positions on the shaft; the hammer is held low in front, ready to swing. Keep the face readable and separate the limbs and hammer in silhouette. Make a new pose rather than copying the reference's standing pose. Avoid extreme foreshortening."
+          }
+        },
+        "7": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "clip": [
+              "2",
+              0
+            ],
+            "text": ""
+          }
+        },
+        "8": {
+          "class_type": "ImageScaleToTotalPixels",
+          "inputs": {
+            "image": [
+              "4",
+              0
+            ],
+            "upscale_method": "nearest-exact",
+            "megapixels": 1.0,
+            "resolution_steps": 1
+          }
+        },
+        "9": {
+          "class_type": "VAEEncode",
+          "inputs": {
+            "pixels": [
+              "8",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ]
+          }
+        },
+        "14": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "conditioning": [
+              "6",
+              0
+            ],
+            "latent": [
+              "9",
+              0
+            ]
+          }
+        },
+        "15": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "conditioning": [
+              "7",
+              0
+            ],
+            "latent": [
+              "9",
+              0
+            ]
+          }
+        },
+        "11": {
+          "class_type": "CFGGuider",
+          "inputs": {
+            "model": [
+              "1",
+              0
+            ],
+            "positive": [
+              "14",
+              0
+            ],
+            "negative": [
+              "15",
+              0
+            ],
+            "cfg": 1.0
+          }
+        },
+        "12": {
+          "class_type": "KSamplerSelect",
+          "inputs": {
+            "sampler_name": "euler"
+          }
+        },
+        "16": {
+          "class_type": "Flux2Scheduler",
+          "inputs": {
+            "steps": 4,
+            "width": 1024,
+            "height": 1536
+          }
+        },
+        "17": {
+          "class_type": "RandomNoise",
+          "inputs": {
+            "noise_seed": 42
+          }
+        },
+        "18": {
+          "class_type": "SamplerCustomAdvanced",
+          "inputs": {
+            "noise": [
+              "17",
+              0
+            ],
+            "guider": [
+              "11",
+              0
+            ],
+            "sampler": [
+              "12",
+              0
+            ],
+            "sigmas": [
+              "16",
+              0
+            ],
+            "latent_image": [
+              "10",
+              0
+            ]
+          }
+        },
+        "19": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": [
+              "18",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ]
+          }
+        }
+      },
+      {
+        "client_id": "laema-local-model-survey-v01",
+        "create_time": 1792759919341
+      },
+      [
+        "13"
+      ]
+    ],
+    "outputs": {
+      "13": {
+        "images": [
+          {
+            "filename": "action_00001_.png",
+            "subfolder": "Survey\\flux-fast",
+            "type": "output",
+            "metadata": {
+              "kind": "image",
+              "width": 1024,
+              "height": 1536
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "ea5ce037-486e-40d7-8a47-8ab02e7ab7da",
+            "timestamp": 1792759919342
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "4",
+              "10",
+              "1",
+              "2",
+              "3",
+              "7",
+              "8",
+              "9",
+              "15",
+              "12",
+              "16",
+              "17"
+            ],
+            "prompt_id": "ea5ce037-486e-40d7-8a47-8ab02e7ab7da",
+            "timestamp": 1792759919347
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "ea5ce037-486e-40d7-8a47-8ab02e7ab7da",
+            "timestamp": 1792759923394
+          }
+        ]
+      ]
+    },
+    "meta": {
+      "13": {
+        "node_id": "13",
+        "display_node": "13",
+        "parent_node": null,
+        "real_node_id": "13"
+      }
+    }
+  },
+  "gpu_samples": [
+    {
+      "elapsed_seconds": 0.06,
+      "whole_gpu_memory_mib_util_percent": "14563, 2"
+    },
+    {
+      "elapsed_seconds": 5.16,
+      "whole_gpu_memory_mib_util_percent": "18844, 5"
+    }
+  ],
+  "manual_art_cleanup_seconds": 0,
+  "art_acceptance": "pending user review"
+}

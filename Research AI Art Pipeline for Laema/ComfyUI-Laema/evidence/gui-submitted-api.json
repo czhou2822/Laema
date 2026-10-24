@@ -1,0 +1,258 @@
+{
+  "1": {
+    "inputs": {
+      "unet_name": "qwen_image_edit_2511_fp8mixed.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Advanced - UNETLoader",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "2": {
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Advanced - CLIPLoader",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "3": {
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Advanced - VAELoader",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "4": {
+    "inputs": {
+      "image": "01-laema-open.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Reference 1 - Laema identity",
+      "cnr_id": "comfy-core"
+    },
+    "is_changed": [
+      "868fe91e045558ac0de21c2e9da3319a720c0d8b8c267fb95d6005f9b9bb7387"
+    ]
+  },
+  "5": {
+    "inputs": {
+      "image": "02-laema-hammer.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Reference 2 - saved hammer",
+      "cnr_id": "comfy-core"
+    },
+    "is_changed": [
+      "adf7740ed12b1b0d7a9a01655d1989e6787fe7cf11a6cd658ef0146fa00a1870"
+    ]
+  },
+  "6": {
+    "inputs": {
+      "prompt": [
+        "22",
+        0
+      ],
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "image1": [
+        "4",
+        0
+      ],
+      "image2": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "_meta": {
+      "title": "Advanced - TextEncodeQwenImageEditPlus",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "7": {
+    "inputs": {
+      "prompt": " ",
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "image1": [
+        "4",
+        0
+      ],
+      "image2": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "_meta": {
+      "title": "Advanced - TextEncodeQwenImageEditPlus",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "8": {
+    "inputs": {
+      "shift": 3.1,
+      "sampling": "flow",
+      "model": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingAuraFlow",
+    "_meta": {
+      "title": "Advanced - ModelSamplingAuraFlow",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "9": {
+    "inputs": {
+      "strength": 1.0,
+      "pre_cfg": false,
+      "model": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "CFGNorm",
+    "_meta": {
+      "title": "Advanced - CFGNorm",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "10": {
+    "inputs": {
+      "width": 1024,
+      "height": 1536,
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "CANVAS - portrait 1024 x 1536",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "11": {
+    "inputs": {
+      "seed": 42,
+      "steps": 40,
+      "cfg": 4.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0,
+      "model": [
+        "9",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "2. SETTINGS - seed / steps",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "12": {
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "Advanced - VAEDecode",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "13": {
+    "inputs": {
+      "filename_prefix": "Laema/Qwen",
+      "images": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "3. RESULT - saved in output/Laema",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "20": {
+    "inputs": {
+      "value": "Create a full-body illustration of Laema standing calmly with her hammer resting across one shoulder. She looks curious and alert. Plain gray background, soft upper-left light, complete figure and hammer visible. Keep the reference outfit and equipment."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "1. YOUR PROMPT - edit this",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "21": {
+    "inputs": {
+      "value": "Create an original illustration of Laema following the request below. Image 1 supplies her identity and costume. Image 2 supplies the saved hammer design when the request includes her hammer. Keep her recognizable face, platinum-white high ponytail, blue sleeveless waistcoat, cream rolled-sleeve shirt, red waist sash, brown trousers, leather strap/pouch, fingerless gloves and brown boots unless the request explicitly changes them. Render clear anatomy, convincing materials, finely modeled volumes and expressive facial drawing. No text or watermark. Follow the requested pose, framing, setting and lighting.\n\nUSER REQUEST:\n"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Advanced - PrimitiveStringMultiline",
+      "cnr_id": "comfy-core"
+    }
+  },
+  "22": {
+    "inputs": {
+      "string_a": [
+        "21",
+        0
+      ],
+      "string_b": [
+        "20",
+        0
+      ],
+      "delimiter": ""
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "Advanced - StringConcatenate",
+      "cnr_id": "comfy-core"
+    }
+  }
+}

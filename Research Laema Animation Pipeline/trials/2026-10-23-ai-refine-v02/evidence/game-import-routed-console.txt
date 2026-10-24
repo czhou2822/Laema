@@ -1,0 +1,100 @@
+Godot Engine v4.7.1.stable.official.a13da4feb - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+ERROR: Failed loading resource: res://assets/prototype/player/fire_sword_shield_v01/rnd_ai_v02/cast-reuse.png.
+   at: _load (core/io/resource_loader.cpp:317)
+   GDScript backtrace (most recent call first):
+       [0] _settings (res://scripts/config/character_settings_store.gd:13)
+       [1] load_resources (res://scripts/config/character_settings_store.gd:27)
+       [2] apply_to_config (res://scripts/config/character_settings_store.gd:56)
+       [3] load_and_validate (res://scripts/config/prototype_config_loader.gd:52)
+       [4] load_config (res://scripts/config/developer_config_store.gd:22)
+       [5] _reload_file (res://addons/laema_dev_portal/focus_dock.gd:251)
+       [6] _ready (res://addons/laema_dev_portal/focus_dock.gd:168)
+       [7] _enter_tree (res://addons/laema_dev_portal/plugin.gd:23)
+ERROR: Failed loading resource: res://assets/prototype/player/fire_sword_shield_v01/rnd_ai_v02/x1-refined.png.
+   at: _load (core/io/resource_loader.cpp:317)
+   GDScript backtrace (most recent call first):
+       [0] _settings (res://scripts/config/character_settings_store.gd:13)
+       [1] load_resources (res://scripts/config/character_settings_store.gd:27)
+       [2] apply_to_config (res://scripts/config/character_settings_store.gd:56)
+       [3] load_and_validate (res://scripts/config/prototype_config_loader.gd:52)
+       [4] load_config (res://scripts/config/developer_config_store.gd:22)
+       [5] _reload_file (res://addons/laema_dev_portal/focus_dock.gd:251)
+       [6] _ready (res://addons/laema_dev_portal/focus_dock.gd:168)
+       [7] _enter_tree (res://addons/laema_dev_portal/plugin.gd:23)
+ERROR: Failed loading resource: res://assets/prototype/player/fire_sword_shield_v01/rnd_ai_v02/x1-refined.png.
+   at: _load (core/io/resource_loader.cpp:317)
+   GDScript backtrace (most recent call first):
+       [0] load_clock (res://scripts/combat/attack_geometry.gd:22)
+       [1] read_config (res://scripts/combat/attack_geometry.gd:49)
+       [2] load_and_validate (res://scripts/config/prototype_config_loader.gd:76)
+       [3] load_config (res://scripts/config/developer_config_store.gd:22)
+       [4] _reload_file (res://addons/laema_dev_portal/focus_dock.gd:251)
+       [5] _ready (res://addons/laema_dev_portal/focus_dock.gd:168)
+       [6] _enter_tree (res://addons/laema_dev_portal/plugin.gd:23)
+ERROR: Failed loading resource: res://assets/prototype/player/fire_sword_shield_v01/rnd_ai_v02/cast-reuse.png.
+   at: _load (core/io/resource_loader.cpp:317)
+   GDScript backtrace (most recent call first):
+       [0] load_clock (res://scripts/combat/attack_geometry.gd:22)
+       [1] read_config (res://scripts/combat/attack_geometry.gd:49)
+       [2] load_and_validate (res://scripts/config/prototype_config_loader.gd:76)
+       [3] load_config (res://scripts/config/developer_config_store.gd:22)
+       [4] _reload_file (res://addons/laema_dev_portal/focus_dock.gd:251)
+       [5] _ready (res://addons/laema_dev_portal/focus_dock.gd:168)
+       [6] _enter_tree (res://addons/laema_dev_portal/plugin.gd:23)
+ERROR: Failed loading resource: res://assets/prototype/player/fire_sword_shield_v01/rnd_ai_v02/cast-reuse.png.
+   at: _load (core/io/resource_loader.cpp:317)
+   GDScript backtrace (most recent call first):
+       [0] _settings (res://scripts/config/character_settings_store.gd:13)
+       [1] load_resources (res://scripts/config/character_settings_store.gd:27)
+       [2] source_hash (res://scripts/config/character_settings_store.gd:97)
+       [3] source_hash (res://scripts/config/developer_config_store.gd:15)
+       [4] _reload_file (res://addons/laema_dev_portal/focus_dock.gd:253)
+       [5] _ready (res://addons/laema_dev_portal/focus_dock.gd:168)
+       [6] _enter_tree (res://addons/laema_dev_portal/plugin.gd:23)
+ERROR: Failed loading resource: res://assets/prototype/player/fire_sword_shield_v01/rnd_ai_v02/x1-refined.png.
+   at: _load (core/io/resource_loader.cpp:317)
+   GDScript backtrace (most recent call first):
+       [0] _settings (res://scripts/config/character_settings_store.gd:13)
+       [1] load_resources (res://scripts/config/character_settings_store.gd:27)
+       [2] source_hash (res://scripts/config/character_settings_store.gd:97)
+       [3] source_hash (res://scripts/config/developer_config_store.gd:15)
+       [4] _reload_file (res://addons/laema_dev_portal/focus_dock.gd:253)
+       [5] _ready (res://addons/laema_dev_portal/focus_dock.gd:168)
+       [6] _enter_tree (res://addons/laema_dev_portal/plugin.gd:23)
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (2 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | cast-reuse.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | x1-refined.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (2 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | cast-reuse.png[39m[0m
+[  33% ] [90m[1mreimport[22m | x1-refined.png[39m[0m
+[  66% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (2 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[  33% ] [90m[1mloading_editor_layout[22m | Reopening scenes...[39m[0m
+[  50% ] [90m[1mloading_editor_layout[22m | Loading central editor layout...[39m[0m
+[  66% ] [90m[1mloading_editor_layout[22m | Loading plugin window layout...[39m[0m
+[  83% ] [90m[1mloading_editor_layout[22m | Editor layout ready.[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

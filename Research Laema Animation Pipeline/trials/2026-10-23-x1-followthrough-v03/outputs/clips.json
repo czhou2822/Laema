@@ -1,0 +1,299 @@
+{
+  "clips": [
+    {
+      "id": "game_x1",
+      "label": "1 \u00b7 Current game X1",
+      "file": "current-game-x1.png",
+      "columns": 8,
+      "duration": 0.72,
+      "times": [
+        0.0,
+        0.0650122515,
+        0.130024503,
+        0.1575,
+        0.1855,
+        0.2221212337500001,
+        0.3526452915,
+        0.48316938749999994
+      ],
+      "native_times": [
+        0.0,
+        0.18574929,
+        0.37149858,
+        0.45,
+        0.53,
+        0.60950685,
+        0.71187866,
+        0.8142505
+      ],
+      "native_rects": [
+        [
+          0,
+          0,
+          448,
+          448
+        ],
+        [
+          448,
+          0,
+          448,
+          448
+        ],
+        [
+          896,
+          0,
+          448,
+          448
+        ],
+        [
+          1344,
+          0,
+          448,
+          448
+        ],
+        [
+          1792,
+          0,
+          448,
+          448
+        ],
+        [
+          2240,
+          0,
+          448,
+          448
+        ],
+        [
+          2688,
+          0,
+          448,
+          448
+        ],
+        [
+          3136,
+          0,
+          448,
+          448
+        ]
+      ],
+      "resource": "config/attack_animations/fire_x1.tres",
+      "resource_sha256": "015ddb4d5d3576b85e7f7e898ec93747759f61d39dd6b83947910c0896d0477f",
+      "texture": "assets/prototype/player/fire_sword_shield_v01/overnight_v04/fire_x1.png",
+      "texture_sha256": "7bf37e3393201daeae2ad6fc58a0f87f16a79ea37b971983c765a40a4d2fef9d",
+      "copied_texture_byte_identical": true,
+      "timing_source": {
+        "file": "config/attack_styles/fire_x1.tres",
+        "sha256": "5fd7407570dd529d7f84e6668af29e05bdd3c1000c61a98e8831f4b7321e200a",
+        "windup": 0.21,
+        "recovery": 0.51,
+        "native_split": 0.6
+      }
+    },
+    {
+      "id": "refined_v02",
+      "label": "2 \u00b7 Previous AI refinement",
+      "file": "x1-refined-v02.png",
+      "columns": 8,
+      "duration": 0.72,
+      "times": [
+        0,
+        0.05,
+        0.075,
+        0.1,
+        0.126,
+        0.142,
+        0.158,
+        0.184,
+        0.21,
+        0.265,
+        0.34,
+        0.425,
+        0.5075,
+        0.565,
+        0.62,
+        0.72
+      ]
+    },
+    {
+      "id": "followthrough_v03",
+      "label": "3 \u00b7 Shallower follow-through",
+      "file": "x1-followthrough.png",
+      "columns": 8,
+      "duration": 0.72,
+      "times": [
+        0,
+        0.05,
+        0.075,
+        0.1,
+        0.126,
+        0.142,
+        0.158,
+        0.184,
+        0.21,
+        0.265,
+        0.34,
+        0.425,
+        0.5075,
+        0.565,
+        0.62,
+        0.72
+      ]
+    }
+  ],
+  "duration": 0.72,
+  "cell": [
+    448,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "heat100_multiplier": 1.5,
+  "unchanged_source_cells": [
+    {
+      "time": 0,
+      "rgba_exact": true
+    },
+    {
+      "time": 0.05,
+      "rgba_exact": true
+    },
+    {
+      "time": 0.075,
+      "rgba_exact": true
+    },
+    {
+      "time": 0.1,
+      "rgba_exact": true
+    },
+    {
+      "time": 0.126,
+      "rgba_exact": true
+    },
+    {
+      "time": 0.142,
+      "rgba_exact": true
+    },
+    {
+      "time": 0.158,
+      "rgba_exact": true
+    },
+    {
+      "time": 0.184,
+      "rgba_exact": true
+    },
+    {
+      "time": 0.72,
+      "rgba_exact": true
+    }
+  ],
+  "changed_times": [
+    0.21,
+    0.265,
+    0.34,
+    0.425,
+    0.5075,
+    0.565,
+    0.62
+  ],
+  "registration": {
+    "method": "Reused connected-alpha extraction; one group transform with fixed column/row pitch, calibrated to the retained static guard",
+    "raw_size": [
+      1774,
+      887
+    ],
+    "global_scale": 0.4932249322493225,
+    "reference_guard_head_y": 218,
+    "raw_guard_head_y": 63,
+    "raw_guard_foot_y": 432.0,
+    "column_pitch": 443.5,
+    "row_pitch": 432.0,
+    "per_frame_recentering": false,
+    "frames": [
+      {
+        "guide_cell": 0,
+        "source_bbox": [
+          84,
+          23,
+          403,
+          432
+        ],
+        "foot_row_drift_world": 0.0
+      },
+      {
+        "guide_cell": 1,
+        "source_bbox": [
+          522,
+          84,
+          894,
+          430
+        ],
+        "foot_row_drift_world": -0.986449864498645
+      },
+      {
+        "guide_cell": 2,
+        "source_bbox": [
+          959,
+          88,
+          1358,
+          431
+        ],
+        "foot_row_drift_world": -0.4932249322493225
+      },
+      {
+        "guide_cell": 3,
+        "source_bbox": [
+          1409,
+          88,
+          1747,
+          431
+        ],
+        "foot_row_drift_world": -0.4932249322493225
+      },
+      {
+        "guide_cell": 4,
+        "source_bbox": [
+          81,
+          511,
+          434,
+          863
+        ],
+        "foot_row_drift_world": -0.4932249322493225
+      },
+      {
+        "guide_cell": 5,
+        "source_bbox": [
+          518,
+          514,
+          894,
+          863
+        ],
+        "foot_row_drift_world": -0.4932249322493225
+      },
+      {
+        "guide_cell": 6,
+        "source_bbox": [
+          970,
+          510,
+          1327,
+          863
+        ],
+        "foot_row_drift_world": -0.4932249322493225
+      },
+      {
+        "guide_cell": 7,
+        "source_bbox": [
+          1396,
+          478,
+          1723,
+          863
+        ],
+        "foot_row_drift_world": -0.4932249322493225
+      }
+    ]
+  },
+  "gameplay_changed": false,
+  "production_approved": false,
+  "machine_export_seconds": 0.12705300003290176
+}

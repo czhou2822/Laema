@@ -1,0 +1,41 @@
+{
+  "purpose": "Actual viewport recording for motion review. Earlier PNG captures were too sparse and remain preserved.",
+  "capture_only_changes": [
+    [
+      "paths[\"review\"] = stem + \".png\"",
+      "paths[\"review\"] = stem + \".jpg\""
+    ],
+    [
+      "review.save_png(paths[\"review\"])",
+      "review.save_jpg(paths[\"review\"], 0.96)"
+    ],
+    [
+      "review_png_save_us",
+      "review_jpeg_save_us"
+    ],
+    [
+      "clampf(float(raw.get(\"capture_every_ms\", 125.0)), 50.0, 5000.0)",
+      "clampf(float(raw.get(\"capture_every_ms\", 125.0)), 16.0, 5000.0)"
+    ],
+    [
+      "\"res://tools/tests/overnight_fire_playtest.gd\"",
+      "\"res://tools/tests/rnd_gameplay_capture.gd\""
+    ],
+    [
+      "\"input_mode\": \"scheduled bound hardware events; wall-clock only; no state-oracle timing\"",
+      "\"input_mode\": \"scheduled action events via isolated device7; wall-clock only; no state-oracle timing\""
+    ]
+  ],
+  "jpeg_quality": 0.96,
+  "requested_interval_ms": 16,
+  "native_viewport": [
+    1280,
+    720
+  ],
+  "full_png_keyframes_disabled_for_throughput": true,
+  "gameplay_or_clock_changes": false,
+  "input_schedule_changes": false,
+  "source_recorder_sha256": "63409fd583b66aa84676a2c3b4ae549f891a950f68925939663da0842cd48fde",
+  "derived_recorder_sha256": "c24df7592fbca8667f725805914260e667700f907cfc0229cd68908bf5aadc98",
+  "limits": "Captured frame intervals are measured; no stable FPS or physical-controller acceptance claim."
+}

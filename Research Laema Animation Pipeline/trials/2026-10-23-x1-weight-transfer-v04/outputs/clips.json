@@ -1,0 +1,665 @@
+{
+  "clips": [
+    {
+      "id": "game_x1",
+      "label": "1 \u00b7 Current game X1",
+      "file": "current-game-x1.png",
+      "columns": 8,
+      "duration": 0.72,
+      "times": [
+        0.0,
+        0.0650122515,
+        0.130024503,
+        0.1575,
+        0.1855,
+        0.2221212337500001,
+        0.3526452915,
+        0.48316938749999994
+      ],
+      "native_times": [
+        0.0,
+        0.18574929,
+        0.37149858,
+        0.45,
+        0.53,
+        0.60950685,
+        0.71187866,
+        0.8142505
+      ],
+      "native_rects": [
+        [
+          0,
+          0,
+          448,
+          448
+        ],
+        [
+          448,
+          0,
+          448,
+          448
+        ],
+        [
+          896,
+          0,
+          448,
+          448
+        ],
+        [
+          1344,
+          0,
+          448,
+          448
+        ],
+        [
+          1792,
+          0,
+          448,
+          448
+        ],
+        [
+          2240,
+          0,
+          448,
+          448
+        ],
+        [
+          2688,
+          0,
+          448,
+          448
+        ],
+        [
+          3136,
+          0,
+          448,
+          448
+        ]
+      ],
+      "resource": "config/attack_animations/fire_x1.tres",
+      "resource_sha256": "015ddb4d5d3576b85e7f7e898ec93747759f61d39dd6b83947910c0896d0477f",
+      "texture": "assets/prototype/player/fire_sword_shield_v01/overnight_v04/fire_x1.png",
+      "texture_sha256": "7bf37e3393201daeae2ad6fc58a0f87f16a79ea37b971983c765a40a4d2fef9d",
+      "copied_texture_byte_identical": true,
+      "timing_source": {
+        "file": "config/attack_styles/fire_x1.tres",
+        "sha256": "5fd7407570dd529d7f84e6668af29e05bdd3c1000c61a98e8831f4b7321e200a",
+        "windup": 0.21,
+        "recovery": 0.51,
+        "native_split": 0.6
+      }
+    },
+    {
+      "id": "followthrough_v03",
+      "label": "2 \u00b7 Previous: shallow path",
+      "file": "x1-followthrough-v03.png",
+      "columns": 8,
+      "duration": 0.72,
+      "times": [
+        0,
+        0.05,
+        0.075,
+        0.1,
+        0.126,
+        0.142,
+        0.158,
+        0.184,
+        0.21,
+        0.265,
+        0.34,
+        0.425,
+        0.5075,
+        0.565,
+        0.62,
+        0.72
+      ]
+    },
+    {
+      "id": "weight_v04",
+      "label": "3 \u00b7 Weight + steeper cut",
+      "file": "x1-weight-transfer.png",
+      "columns": 8,
+      "duration": 0.72,
+      "times": [
+        0,
+        0.05,
+        0.075,
+        0.1,
+        0.126,
+        0.142,
+        0.158,
+        0.184,
+        0.21,
+        0.265,
+        0.34,
+        0.425,
+        0.5075,
+        0.565,
+        0.62,
+        0.72
+      ]
+    }
+  ],
+  "cell": [
+    448,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "duration": 0.72,
+  "heat100_multiplier": 1.5,
+  "generated_cells": 16,
+  "new_cells_used": 14,
+  "endpoint_reuses": [
+    0,
+    15
+  ],
+  "registration": {
+    "shared_scale": 0.7711864406779662,
+    "raw_size": [
+      1254,
+      1254
+    ],
+    "reference_guard_head_y": 218,
+    "raw_guard_head_y": 92,
+    "raw_guard_foot_y": 328,
+    "column_pitch": 313.5,
+    "row_foot_baselines": [
+      331.0,
+      658.0,
+      951.5,
+      1236.0
+    ],
+    "row_pitch_intervals": [
+      327.0,
+      293.5,
+      284.5
+    ],
+    "layout_repair": "Four shared row origins because source row pitch is not uniform; one common scale and column pitch",
+    "per_frame_front_sole_registration": true,
+    "per_frame_rescaling_or_body_centering": false,
+    "before_registration_file": "x1-weight-transfer-before-foot-registration.png",
+    "front_sole_landmark_method": "Mean x of bottom4 opaque rows in fixed forward-boot ROI x224:342/y375:414; integer translation to static guard sole landmark",
+    "front_sole_repairs": [
+      {
+        "frame": 1,
+        "time": 0.05,
+        "source_sole_landmark": [
+          283.3796296296296,
+          399.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -19,
+          0
+        ],
+        "residual_sole_landmark": [
+          -0.20657726692212464,
+          0.0
+        ]
+      },
+      {
+        "frame": 2,
+        "time": 0.075,
+        "source_sole_landmark": [
+          287.7936507936508,
+          400.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -23,
+          -1
+        ],
+        "residual_sole_landmark": [
+          0.20744389709904,
+          0.0
+        ]
+      },
+      {
+        "frame": 3,
+        "time": 0.1,
+        "source_sole_landmark": [
+          286.3346456692913,
+          401.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -22,
+          -2
+        ],
+        "residual_sole_landmark": [
+          -0.2515612272604244,
+          0.0
+        ]
+      },
+      {
+        "frame": 4,
+        "time": 0.126,
+        "source_sole_landmark": [
+          268.0447154471545,
+          396.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -3,
+          3
+        ],
+        "residual_sole_landmark": [
+          0.458508550602744,
+          0.0
+        ]
+      },
+      {
+        "frame": 5,
+        "time": 0.142,
+        "source_sole_landmark": [
+          272.3090909090909,
+          397.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -8,
+          2
+        ],
+        "residual_sole_landmark": [
+          -0.27711598746083155,
+          0.0
+        ]
+      },
+      {
+        "frame": 6,
+        "time": 0.158,
+        "source_sole_landmark": [
+          268.8196721311475,
+          399.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -4,
+          0
+        ],
+        "residual_sole_landmark": [
+          0.2334652345957693,
+          0.0
+        ]
+      },
+      {
+        "frame": 7,
+        "time": 0.184,
+        "source_sole_landmark": [
+          266.4852941176471,
+          398.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -2,
+          1
+        ],
+        "residual_sole_landmark": [
+          -0.10091277890467154,
+          0.0
+        ]
+      },
+      {
+        "frame": 8,
+        "time": 0.21,
+        "source_sole_landmark": [
+          268.5077519379845,
+          400.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -4,
+          -1
+        ],
+        "residual_sole_landmark": [
+          -0.07845495856724938,
+          0.0
+        ]
+      },
+      {
+        "frame": 9,
+        "time": 0.265,
+        "source_sole_landmark": [
+          261.77007299270076,
+          398.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          3,
+          1
+        ],
+        "residual_sole_landmark": [
+          0.18386609614901772,
+          0.0
+        ]
+      },
+      {
+        "frame": 10,
+        "time": 0.34,
+        "source_sole_landmark": [
+          258.63432835820896,
+          397.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          6,
+          2
+        ],
+        "residual_sole_landmark": [
+          0.048121461657217424,
+          0.0
+        ]
+      },
+      {
+        "frame": 11,
+        "time": 0.425,
+        "source_sole_landmark": [
+          271.86153846153843,
+          400.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -7,
+          -1
+        ],
+        "residual_sole_landmark": [
+          0.2753315649866863,
+          0.0
+        ]
+      },
+      {
+        "frame": 12,
+        "time": 0.5075,
+        "source_sole_landmark": [
+          273.9568965517241,
+          398.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -9,
+          1
+        ],
+        "residual_sole_landmark": [
+          0.3706896551723844,
+          0.0
+        ]
+      },
+      {
+        "frame": 13,
+        "time": 0.565,
+        "source_sole_landmark": [
+          272.02713178294573,
+          399.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -7,
+          0
+        ],
+        "residual_sole_landmark": [
+          0.4409248863939865,
+          0.0
+        ]
+      },
+      {
+        "frame": 14,
+        "time": 0.62,
+        "source_sole_landmark": [
+          270.66923076923075,
+          399.0
+        ],
+        "target_sole_landmark": [
+          264.58620689655174,
+          399.0
+        ],
+        "translation_world_pixels": [
+          -6,
+          0
+        ],
+        "residual_sole_landmark": [
+          0.08302387267900713,
+          0.0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "time": 0,
+        "source_bbox": [
+          90,
+          85,
+          302,
+          328
+        ],
+        "row_anchor_y": 331.0,
+        "source_sole_row_drift_world": -2.3135593220338984
+      },
+      {
+        "frame": 1,
+        "time": 0.05,
+        "source_bbox": [
+          404,
+          17,
+          569,
+          330
+        ],
+        "row_anchor_y": 331.0,
+        "source_sole_row_drift_world": -0.7711864406779662
+      },
+      {
+        "frame": 2,
+        "time": 0.075,
+        "source_bbox": [
+          708,
+          53,
+          889,
+          332
+        ],
+        "row_anchor_y": 331.0,
+        "source_sole_row_drift_world": 0.7711864406779662
+      },
+      {
+        "frame": 3,
+        "time": 0.1,
+        "source_bbox": [
+          1021,
+          61,
+          1201,
+          333
+        ],
+        "row_anchor_y": 331.0,
+        "source_sole_row_drift_world": 1.5423728813559323
+      },
+      {
+        "frame": 4,
+        "time": 0.126,
+        "source_bbox": [
+          78,
+          345,
+          238,
+          654
+        ],
+        "row_anchor_y": 658.0,
+        "source_sole_row_drift_world": -3.0847457627118646
+      },
+      {
+        "frame": 5,
+        "time": 0.142,
+        "source_bbox": [
+          390,
+          382,
+          572,
+          658
+        ],
+        "row_anchor_y": 658.0,
+        "source_sole_row_drift_world": 0.0
+      },
+      {
+        "frame": 6,
+        "time": 0.158,
+        "source_bbox": [
+          705,
+          422,
+          958,
+          659
+        ],
+        "row_anchor_y": 658.0,
+        "source_sole_row_drift_world": 0.7711864406779662
+      },
+      {
+        "frame": 7,
+        "time": 0.184,
+        "source_bbox": [
+          1013,
+          433,
+          1248,
+          658
+        ],
+        "row_anchor_y": 658.0,
+        "source_sole_row_drift_world": 0.0
+      },
+      {
+        "frame": 8,
+        "time": 0.21,
+        "source_bbox": [
+          79,
+          736,
+          313,
+          951
+        ],
+        "row_anchor_y": 951.5,
+        "source_sole_row_drift_world": -0.3855932203389831
+      },
+      {
+        "frame": 9,
+        "time": 0.265,
+        "source_bbox": [
+          390,
+          739,
+          601,
+          952
+        ],
+        "row_anchor_y": 951.5,
+        "source_sole_row_drift_world": 0.3855932203389831
+      },
+      {
+        "frame": 10,
+        "time": 0.34,
+        "source_bbox": [
+          702,
+          747,
+          912,
+          951
+        ],
+        "row_anchor_y": 951.5,
+        "source_sole_row_drift_world": -0.3855932203389831
+      },
+      {
+        "frame": 11,
+        "time": 0.425,
+        "source_bbox": [
+          1026,
+          727,
+          1238,
+          954
+        ],
+        "row_anchor_y": 951.5,
+        "source_sole_row_drift_world": 1.9279661016949154
+      },
+      {
+        "frame": 12,
+        "time": 0.5075,
+        "source_bbox": [
+          87,
+          1012,
+          319,
+          1235
+        ],
+        "row_anchor_y": 1236.0,
+        "source_sole_row_drift_world": -0.7711864406779662
+      },
+      {
+        "frame": 13,
+        "time": 0.565,
+        "source_bbox": [
+          395,
+          1012,
+          611,
+          1236
+        ],
+        "row_anchor_y": 1236.0,
+        "source_sole_row_drift_world": 0.0
+      },
+      {
+        "frame": 14,
+        "time": 0.62,
+        "source_bbox": [
+          710,
+          1011,
+          922,
+          1236
+        ],
+        "row_anchor_y": 1236.0,
+        "source_sole_row_drift_world": 0.0
+      },
+      {
+        "frame": 15,
+        "time": 0.72,
+        "source_bbox": [
+          1025,
+          1012,
+          1229,
+          1238
+        ],
+        "row_anchor_y": 1236.0,
+        "source_sole_row_drift_world": 1.5423728813559323
+      }
+    ]
+  },
+  "gameplay_changes": false,
+  "human_visual_approval": false,
+  "machine_export_seconds": 0.22316430002683774
+}

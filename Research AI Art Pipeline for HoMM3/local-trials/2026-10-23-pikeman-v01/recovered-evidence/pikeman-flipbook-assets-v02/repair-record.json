@@ -1,0 +1,10 @@
+{
+  "method": "built-in imagegen",
+  "prompt": "Use case: precise-object-edit. EDIT TARGET input1 is a transparent two-frame sprite strip, 1024x320, with512x320 cells. Input2 shows the same Pikeman ready pose and establishes the pike's full length only.\nCorrect ONLY the pike rear shafts in input1: each shaft is inexplicably too short beneath the hand. In LEFT cell extend the one existing straight vertical brown shaft downward along its current axis from its present lower end at abouty225 to abouty282 just above boot-sole baseliney287. In RIGHT cell extend its existing slightly tilted shaft downward-left along its exact current axis, ending just above the same baseliney287. Add a tiny simple rear ferrule at each new butt end. The total weapon length should be roughly215px in each512x320 cell, matching the physical pike in input2.\nKeep the TWO soldiers pixel-identical as closely as possible: exact head, face, brown-bronze metal helmet, body size, recoil pose, hands, boots, silver shoulders, white/blue crest, costume, lighting, position and canvas framing. Do NOT redesign, rescale or move the soldier. Do NOT move spearheads, extend shafts above their tips, add weapons, put tips on the bottom, change wrist/arm poses or add labels. Preserve exactly one pike per cell; the new rear section may pass behind clothing but never through a hand discontinuously. Keep actual transparent alpha. No matte, shadows, floor, glow, grid or text. Same two equal cells and empty margins.",
+  "inputs": [
+    "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\pikeman-flipbook-assets-v01\\hurt-shaft-repair-input.png",
+    "C:\\Users\\zhouc\\.codex\\visualizations\\2026\\09\\08\\01a07f41-7159-70f1-ac7d-e6217941c130\\pikeman-flipbook-assets-v01\\idle\\idle_right_00.png"
+  ],
+  "source": "C:\\Users\\zhouc\\.codex\\generated_images\\01a07f41-7159-70f1-ac7d-e6217941c130\\exec-39276607-028b-468b-a913-c04ce2c952ff.png",
+  "purpose": "restore consistent rear pike length in two recoil poses"
+}

@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "creature_id": "lich",
+  "faction": "necropolis",
+  "tier": 5,
+  "source_collection": "docs/art/references/heroes3-original-flipbooks",
+  "original_def": {
+    "path": "docs/art/references/heroes3-original-flipbooks/originals/H3sprite/CLICH.def",
+    "sha256": "409506a7915b25cb0a3fd7c722e378dd0735e26757c1896aba8d2bcd45ef9d54"
+  },
+  "original_metadata": {
+    "path": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/metadata.json",
+    "sha256": "907408609ca99ae1efe24d3a388021a4cb779a37e8eef280552350dbe8943e70"
+  },
+  "registration": {
+    "cell_size": [
+      450,
+      400
+    ],
+    "columns": 4,
+    "foot_anchor": [
+      196,
+      267
+    ],
+    "body_visual_position": [
+      -11,
+      31
+    ],
+    "sprite_offset": [
+      29,
+      -67
+    ],
+    "opaque_idle_height": 91,
+    "sprite_scale": 1.978021978,
+    "target_body_height": 180,
+    "mirrored_offset": true
+  },
+  "playback": {
+    "idle_fps": 8,
+    "walk_fps": 9,
+    "death_fps": 8,
+    "hurt": "existing captured reaction duration",
+    "melee_duration": 1,
+    "melee_active_start": 0.5,
+    "melee_active_end": 1,
+    "melee_peak_frame": 3,
+    "melee_frame_keys": {
+      "times": [
+        0,
+        0.16666666666666666,
+        0.3333333333333333,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1
+      ],
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        0
+      ]
+    },
+    "shoot_duration": 1,
+    "shoot_launch": 0.5,
+    "shoot_active_end": 0.625,
+    "shoot_frame_keys": {
+      "times": [
+        0,
+        0.16666666666666666,
+        0.3333333333333333,
+        0.5,
+        0.5571428571428572,
+        0.6142857142857143,
+        0.6714285714285715,
+        0.7285714285714286,
+        0.7857142857142857,
+        0.842857142857143,
+        0.9,
+        1
+      ],
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        0
+      ]
+    },
+    "projectile_frame": 4,
+    "projectile_region": [
+      140,
+      0,
+      35,
+      35
+    ],
+    "muzzle_source_point": [
+      260,
+      184
+    ],
+    "muzzle_actor_position": [
+      115.593406593,
+      -133.175824176
+    ]
+  },
+  "sheets": [
+    {
+      "runtime": "Idle.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_02_block_02_page_00.png",
+      "sha256": "fb51f0c4741da8b6d38d8ddd0e3d336c49bda4ce0ef695853289b70fb27edc7e",
+      "group": 2,
+      "block": 2,
+      "frame_count": 8,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "clich74.pcx",
+        "clich50.pcx",
+        "clich51.pcx",
+        "clich52.pcx",
+        "clich53.pcx",
+        "clich52.pcx",
+        "clich51.pcx",
+        "clich50.pcx"
+      ]
+    },
+    {
+      "runtime": "Walk.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_00_block_00_page_00.png",
+      "sha256": "ebfff91a309d4e70c6e0fec6411334f10085e071c2f61d37e3dd1f48e70e90af",
+      "group": 0,
+      "block": 0,
+      "frame_count": 8,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "clich56.pcx",
+        "clich57.pcx",
+        "clich58.pcx",
+        "clich59.pcx",
+        "clich60.pcx",
+        "clich61.pcx",
+        "clich62.pcx",
+        "clich63.pcx"
+      ]
+    },
+    {
+      "runtime": "Hurt.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_03_block_03_page_00.png",
+      "sha256": "f71f978168f118d01aa8e793cd71ab3f0560b0719976f72e58e6e919d030e7db",
+      "group": 3,
+      "block": 3,
+      "frame_count": 6,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "clich66.pcx",
+        "clich67.pcx",
+        "clich68.pcx",
+        "clich69.pcx",
+        "clich70.pcx",
+        "clich71.pcx"
+      ]
+    },
+    {
+      "runtime": "Dead.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_05_block_05_page_00.png",
+      "sha256": "ebddd95040246342b3a19728764d3c24ee1c1b05c0ca529b6c02abbb7b6bd257",
+      "group": 5,
+      "block": 5,
+      "frame_count": 7,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "clich35.pcx",
+        "clich36.pcx",
+        "clich37.pcx",
+        "clich38.pcx",
+        "clich39.pcx",
+        "clich40.pcx",
+        "clich41.pcx"
+      ]
+    },
+    {
+      "runtime": "Attack.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_12_block_11_page_00.png",
+      "sha256": "cce2d5e6200ce6c6d6f5f7d4e71694773c1256da25faf0cf993738b8cdcf5367",
+      "group": 12,
+      "block": 11,
+      "frame_count": 8,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        800
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "clich13.pcx",
+        "clich14.pcx",
+        "clich15.pcx",
+        "clich16.pcx",
+        "clich17.pcx",
+        "clich18.pcx",
+        "clich19.pcx",
+        "clich20.pcx"
+      ]
+    },
+    {
+      "runtime": "Shoot.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/CLICH/group_15_block_14_page_00.png",
+      "sha256": "2a082076cb647dcce5141fee07ab999dffb8072c152910ebd4d339bad78bd94a",
+      "group": 15,
+      "block": 14,
+      "frame_count": 11,
+      "cell_size": [
+        450,
+        400
+      ],
+      "columns": 4,
+      "size": [
+        1800,
+        1200
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "clich01.pcx",
+        "clich02.pcx",
+        "clich03.pcx",
+        "clich04.pcx",
+        "clich04.pcx",
+        "clich04.pcx",
+        "clich04.pcx",
+        "clich04.pcx",
+        "clich03.pcx",
+        "clich02.pcx",
+        "clich01.pcx"
+      ]
+    },
+    {
+      "runtime": "Projectile.png",
+      "source": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/PLICH/group_00_block_00_page_00.png",
+      "sha256": "fa9eb3d38a5ebf3fd4df9ce76f1c6f6627577d40d299b2c724a04eb4b4f22502",
+      "group": 0,
+      "block": 0,
+      "frame_count": 9,
+      "cell_size": [
+        35,
+        35
+      ],
+      "columns": 8,
+      "size": [
+        280,
+        70
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "frame_names": [
+        "plich01.pcx",
+        "plich02.pcx",
+        "plich03.pcx",
+        "plich04.pcx",
+        "plich05.pcx",
+        "plich06.pcx",
+        "plich07.pcx",
+        "plich08.pcx",
+        "plich09.pcx"
+      ]
+    }
+  ],
+  "limits": [
+    "Byte-identical original RGBA preview sheets; no repaint or resampling.",
+    "DEF/indexed masters and source metadata remain unchanged in the reference collection.",
+    "Preview transparency/shadows retain the extraction interpretation.",
+    "Playback and temporary geometry reuse the current prototype, not original Heroes III engine timing.",
+    "No new audio, special abilities, flying behavior, gameplay tuning or engine/runtime validation."
+  ],
+  "projectile_original_def": {
+    "path": "docs/art/references/heroes3-original-flipbooks/originals/H3sprite/PLICH.def",
+    "sha256": "7f727a9cbf1351e065c89dc3ea8095136efe9a7329da5396f9e28c15d0e4bc15"
+  },
+  "projectile_original_metadata": {
+    "path": "docs/art/references/heroes3-original-flipbooks/sprites/H3sprite/PLICH/metadata.json",
+    "sha256": "343ace60c15921ea6433d1f1679f4882b56589a93738ba95be96d8829f61de3f"
+  }
+}

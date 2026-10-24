@@ -1,0 +1,324 @@
+{
+  "status": "User-authorized v03 Fire X1-X5 prototype image integration; runtime acceptance pending",
+  "source_task": "01a15800-6824-7d03-aee8-9e7ad7ef3885",
+  "source_packet": "x1-sword-angle-study-v03/angle-proofs",
+  "authority": "Latest INTEGRATION_HANDOFF.md supersedes earlier study-only/no-import flags for this prototype installation. No final production weapon decision.",
+  "cell": [
+    448,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "standing_body_target": 180,
+  "phases": "frames[].phase is the visual key position on each existing native one-second clock. Current UIDs, markers, gameplay durations and all AttackCast tracks are retained.",
+  "copied_assets": "Five horizontal PNG sheets only, byte-identical to selected source sheets. Existing v01 sheets and all Idle/Walk/Hurt/Cast assets remain.",
+  "clips": [
+    {
+      "clip": "fire_x1",
+      "file": "fire_x1.png",
+      "source_sheet": "fire_x1/fire_x1-sheet.png",
+      "sha256": "62598f06ea6a4d1dc39511cd6d713347145b2fc4f7cf44caa2d403e75c798a53",
+      "dimensions": [
+        3584,
+        448
+      ],
+      "frames": [
+        {
+          "file": "fire_x1\\fire_x1_00.png",
+          "phase": 0,
+          "sha256": "2afe3d5fe9adad1e97110281fb71a7ba880855186d1caa3d02312c5b8b3c9f45"
+        },
+        {
+          "file": "fire_x1\\fire_x1_01.png",
+          "phase": 0.18574929,
+          "sha256": "56bba3cddf4eb2debcc1f3d41094df1e5c6ac1113f2da8232c0edd41a4bc40d2"
+        },
+        {
+          "file": "fire_x1\\fire_x1_02.png",
+          "phase": 0.37149858,
+          "sha256": "5472b9493a697a5203a0286e32ed9f3b2bad130443f324758bbaec2b87513049"
+        },
+        {
+          "file": "fire_x1\\fire_x1_03.png",
+          "phase": 0.45,
+          "sha256": "01bcee002406d199cf7b99a6a3805cb70f02b901e0a7cb63e638f97c0a382551"
+        },
+        {
+          "file": "fire_x1\\fire_x1_04.png",
+          "phase": 0.53,
+          "sha256": "3e6bf37be44dfa5b0b572dbcceb42e455ae3d4b07f361fbf115a1cde28638699"
+        },
+        {
+          "file": "fire_x1\\fire_x1_05.png",
+          "phase": 0.60950685,
+          "sha256": "6112cfcafcbaf4f40614f1bcb1e1ab239f65fa730ee141abd1a8444944a8ee77"
+        },
+        {
+          "file": "fire_x1\\fire_x1_06.png",
+          "phase": 0.711878675,
+          "sha256": "b8a6bb996b8b1827623d5a9f4d2e236440e99c1d5feb347d297ed17ca1fda897"
+        },
+        {
+          "file": "fire_x1\\fire_x1_07.png",
+          "phase": 0.8142505,
+          "sha256": "f2523fd428916bb1d2cbcc10098e51e3a1bc1c078b55371a417ee7df5dfea530"
+        }
+      ],
+      "selected_raw_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "markers_reference": {
+        "active_start": 0.36,
+        "timing_split": 0.6,
+        "active_end": 0.8333333
+      },
+      "windup_reference": 0.21,
+      "recovery_reference": 0.51
+    },
+    {
+      "clip": "fire_x2",
+      "file": "fire_x2.png",
+      "source_sheet": "fire_x2/fire_x2-sheet.png",
+      "sha256": "39b90fad4e91440d5c5567b3fa56b2b689f94306d4d2a80e36557f0569d83628",
+      "dimensions": [
+        2688,
+        448
+      ],
+      "frames": [
+        {
+          "file": "fire_x2\\fire_x2_00.png",
+          "phase": 0,
+          "sha256": "78b6830b9fe9c2ef84882ddc8017c42897bd42b25d36a26c05703d23963bcf6f"
+        },
+        {
+          "file": "fire_x2\\fire_x2_01.png",
+          "phase": 0.2,
+          "sha256": "9c7273b63400a1cfd9c2a5891cb21a542b41bfa4fb02d24afb44d840e4d5b067"
+        },
+        {
+          "file": "fire_x2\\fire_x2_02.png",
+          "phase": 0.45624605,
+          "sha256": "2e0c42fe3d6bde1a62b20ba511cae508eebcee7f68dd2896eec626347d8ce32a"
+        },
+        {
+          "file": "fire_x2\\fire_x2_03.png",
+          "phase": 0.6,
+          "sha256": "72f825ca712da872f8fb8aa4c8570edadafa33395d4f5ced56297f5af56d87b1"
+        },
+        {
+          "file": "fire_x2\\fire_x2_04.png",
+          "phase": 0.7485495,
+          "sha256": "86d2ac0c37b241fbfab3a8fa33d7f710c0c70ee3d72fdca217ea0028db5a9271"
+        },
+        {
+          "file": "fire_x2\\fire_x2_05.png",
+          "phase": 0.9,
+          "sha256": "b85f8648fb52a1c159cb63dc5038c9fd6f610dccdb99e3a31d1c5a74a563fa83"
+        }
+      ],
+      "selected_raw_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "markers_reference": {
+        "active_start": 0.36,
+        "timing_split": 0.46666667,
+        "active_end": 0.8333333
+      },
+      "windup_reference": 0.24,
+      "recovery_reference": 0.51
+    },
+    {
+      "clip": "fire_x3",
+      "file": "fire_x3.png",
+      "source_sheet": "fire_x3/fire_x3-sheet.png",
+      "sha256": "ba3a1f48162a199530e5ef3d7b3b4f4b16f48d8a8125947b4f4bf233b15ae8c1",
+      "dimensions": [
+        2240,
+        448
+      ],
+      "frames": [
+        {
+          "file": "fire_x3\\fire_x3_00.png",
+          "phase": 0,
+          "sha256": "f617a0976be9c0d2f3ab690bdaa164e14d8f75e3395584bedda491b73d8c5643"
+        },
+        {
+          "file": "fire_x3\\fire_x3_01.png",
+          "phase": 0.37149858,
+          "sha256": "cd167090c0d6cf301ed594722c635bd7c3c3803926e956aa409ea125b8970d45"
+        },
+        {
+          "file": "fire_x3\\fire_x3_02.png",
+          "phase": 0.60950685,
+          "sha256": "fc73cb1e8535e3bad9ab6b3d079d9d2f315da43930e2997a853e9e2c4c60fd50"
+        },
+        {
+          "file": "fire_x3\\fire_x3_03.png",
+          "phase": 0.711878675,
+          "sha256": "0932a3f7682c7bf2f6aba86f3f0881cdf6d7e6ffbae473ca914c610c91c4e98d"
+        },
+        {
+          "file": "fire_x3\\fire_x3_04.png",
+          "phase": 0.8142505,
+          "sha256": "af8334531bc30aa8d1e736caf7c227c9b95e42f910017a4dfa836f03ff6e061f"
+        }
+      ],
+      "selected_raw_indices": [
+        0,
+        1,
+        3,
+        4,
+        5
+      ],
+      "markers_reference": {
+        "active_start": 0.36,
+        "timing_split": 0.6,
+        "active_end": 0.8333333
+      },
+      "windup_reference": 0.195,
+      "recovery_reference": 0.45
+    },
+    {
+      "clip": "fire_x4",
+      "file": "fire_x4.png",
+      "source_sheet": "fire_x4/fire_x4-sheet.png",
+      "sha256": "dfcdbaf0e24f0316f1e6e60d64faf3c24cf8d76efbe173658a20e72486546eb5",
+      "dimensions": [
+        2688,
+        448
+      ],
+      "frames": [
+        {
+          "file": "fire_x4\\fire_x4_00.png",
+          "phase": 0,
+          "sha256": "90b96d6f153da01d5e2ee89f3d9ae380efcf16fb820e4c4e54fba8ac8fed7ba2"
+        },
+        {
+          "file": "fire_x4\\fire_x4_01.png",
+          "phase": 0.16,
+          "sha256": "928d654e8e06961e761eeca43306e89106f1e0ad6647d17e20d48467a1a05b4b"
+        },
+        {
+          "file": "fire_x4\\fire_x4_02.png",
+          "phase": 0.3167639,
+          "sha256": "913e8baf7e5220e11ce958c1e48d76b1ef653a0b5db064e883770458c2424737"
+        },
+        {
+          "file": "fire_x4\\fire_x4_03.png",
+          "phase": 0.5197053,
+          "sha256": "4f8fae17720701d46e35cfadc6f80b28e4e354bec85f4d75c18579dc8aa8b23a"
+        },
+        {
+          "file": "fire_x4\\fire_x4_04.png",
+          "phase": 0.6942831,
+          "sha256": "abb87a20be51feca4c781ae73f3e30b57be388dc6c36a529af73a055067812eb"
+        },
+        {
+          "file": "fire_x4\\fire_x4_05.png",
+          "phase": 0.85266525,
+          "sha256": "eb436549f18127042f9229235f7b48fbe5d49dcc33d9a833bd731c0ef60d7c13"
+        }
+      ],
+      "selected_raw_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "markers_reference": {
+        "active_start": 0.36,
+        "timing_split": 0.7,
+        "active_end": 0.8666667
+      },
+      "windup_reference": 0.33,
+      "recovery_reference": 0.51
+    },
+    {
+      "clip": "fire_x5",
+      "file": "fire_x5.png",
+      "source_sheet": "fire_x5/fire_x5-sheet.png",
+      "sha256": "debfd8e26cf23f47894a9c24907c7a6c06a82563c6f0632c4746bbac5c0d7af5",
+      "dimensions": [
+        3136,
+        448
+      ],
+      "frames": [
+        {
+          "file": "fire_x5\\fire_x5_00.png",
+          "phase": 0,
+          "sha256": "2ac68944e91c16ddb2fd063c34e946e8c44f31b52bfd48d3627eda847fde69a3"
+        },
+        {
+          "file": "fire_x5\\fire_x5_01.png",
+          "phase": 0.18,
+          "sha256": "2fd23e0c9990979eea84d3b1331a29373da561cf44a9f22a0b82311e0bc00032"
+        },
+        {
+          "file": "fire_x5\\fire_x5_02.png",
+          "phase": 0.37149858,
+          "sha256": "5eadde9ee0f4939c680609bb0647075d5ccc35f3d4030b6d4831d2295ea0304a"
+        },
+        {
+          "file": "fire_x5\\fire_x5_03.png",
+          "phase": 0.5,
+          "sha256": "c18f7cf56c3e399d14e4921a434929c280293e1c2a02fba85f8e1743a82585c2"
+        },
+        {
+          "file": "fire_x5\\fire_x5_04.png",
+          "phase": 0.60950685,
+          "sha256": "99753cdc3509ab963352d5cd7635d27461d39fab80050134f19f4a95bb28aecf"
+        },
+        {
+          "file": "fire_x5\\fire_x5_05.png",
+          "phase": 0.8142505,
+          "sha256": "ec9c97daa8c04ccfba89610451a9bfaca607b11a0ba81bbb9fbd8d9da631b941"
+        },
+        {
+          "file": "fire_x5\\fire_x5_06.png",
+          "phase": 0.94,
+          "sha256": "88458c002820278b45e7fac6f8f1f1799b7c8e6136e318f89b51cd42ee766920"
+        }
+      ],
+      "selected_raw_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "markers_reference": {
+        "active_start": 0.36,
+        "timing_split": 0.6,
+        "active_end": 0.8
+      },
+      "windup_reference": 0.45,
+      "recovery_reference": 0.63
+    }
+  ],
+  "limits": [
+    "X3 reversed candidate raw index 2 is excluded; chamber-to-cut transition gap remains.",
+    "Plain steel sword and crossguard are diagnostic prototype art.",
+    "Generated foot/hip/anatomy/material continuity remains imperfect.",
+    "Existing art-aligned v01 hitbox curves are preserved, not refitted to v03; notably X2 can now extend forward while the retained query stays behind.",
+    "No engine, editor, runtime, build or automated tests run for this swap; older collision-check results do not validate v03.",
+    "Separate pending Fireball VFX plan remains unapproved and untouched."
+  ]
+}

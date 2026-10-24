@@ -1,0 +1,782 @@
+{
+  "last_node_id": 22,
+  "last_link_id": 13,
+  "nodes": [
+    {
+      "id": 10,
+      "type": "EmptySD3LatentImage",
+      "pos": [
+        1350,
+        470
+      ],
+      "size": [
+        310,
+        150
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 0,
+      "mode": 0,
+      "title": "CANVAS - portrait 1024 x 1536",
+      "inputs": [
+        {
+          "name": "width",
+          "label": "Width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "name": "height",
+          "label": "Height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptySD3LatentImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        1024,
+        1536,
+        1
+      ]
+    },
+    {
+      "id": 13,
+      "type": "SaveImage",
+      "pos": [
+        690,
+        80
+      ],
+      "size": [
+        590,
+        860
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "title": "3. RESULT - saved in output/Laema",
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "Laema/z-image"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        -500,
+        210
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "title": "Advanced - UNETLoader",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            5
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "z_image_turbo_bf16.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        -500,
+        275
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 3,
+      "mode": 0,
+      "title": "Advanced - CLIPLoader",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "qwen_3_4b.safetensors",
+        "lumina2",
+        "default"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "VAELoader",
+      "pos": [
+        -500,
+        340
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "title": "Advanced - VAELoader",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            11
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -500,
+        405
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 0,
+      "title": "Advanced - CLIPTextEncode",
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 2,
+          "widget": {
+            "name": "text"
+          }
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            4,
+            7
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 7,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        -500,
+        470
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "title": "Advanced - ConditioningZeroOut",
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            8
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 8,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        -500,
+        535
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "title": "Advanced - ModelSamplingAuraFlow",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelSamplingAuraFlow",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        3.0
+      ]
+    },
+    {
+      "id": 11,
+      "type": "KSampler",
+      "pos": [
+        1350,
+        80
+      ],
+      "size": [
+        310,
+        300
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 8,
+      "mode": 0,
+      "title": "2. SETTINGS - seed / steps",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 6
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 7
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 9
+        },
+        {
+          "name": "seed",
+          "label": "Seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            10
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        42,
+        "randomize",
+        8,
+        1.0,
+        "res_multistep",
+        "simple",
+        1.0
+      ]
+    },
+    {
+      "id": 19,
+      "type": "VAEDecode",
+      "pos": [
+        -500,
+        665
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "title": "Advanced - VAEDecode",
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 10
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 20,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        40,
+        80
+      ],
+      "size": [
+        500,
+        300
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 10,
+      "mode": 0,
+      "title": "1. YOUR PROMPT - edit this",
+      "inputs": [
+        {
+          "name": "value",
+          "label": "Your prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            13
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "Create a full-body illustration of Laema in a relaxed, alert three-quarter stance, holding her hammer naturally. Plain gray background, complete figure and hammer visible."
+      ],
+      "color": "#243f2d",
+      "bgcolor": "#172b20"
+    },
+    {
+      "id": 21,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -500,
+        795
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "title": "Advanced - PrimitiveStringMultiline",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "No reference image is used. Laema is the same young adult woman with a curious alert expression, platinum-white high ponytail, fitted blue sleeveless waistcoat, cream rolled-sleeve shirt, red waist sash, brown leather cross-body strap and pouch, brown trousers, fingerless gloves and tall brown boots. Her hammer has a broad double-ended geometric head, dark inset panels, steel plates, bronze faceted fittings and narrow orange-red luminous seams. Render confident painted shapes, fine modeled-volume shading, convincing cloth/leather/metal separation, clear anatomy and expressive facial drawing. Use restrained base colors and concentrated metal highlights, without coarse pixel blocks or plastic-looking skin. Follow the user's requested pose, expression, framing and setting. Use a plain gray background only if no setting is requested. No text or watermark.\n\nUSER REQUEST:\n"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "StringConcatenate",
+      "pos": [
+        -500,
+        860
+      ],
+      "size": [
+        340,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 12,
+      "mode": 0,
+      "title": "Advanced - StringConcatenate",
+      "inputs": [
+        {
+          "name": "string_a",
+          "type": "STRING",
+          "link": 12,
+          "widget": {
+            "name": "string_a"
+          }
+        },
+        {
+          "name": "string_b",
+          "type": "STRING",
+          "link": 13,
+          "widget": {
+            "name": "string_b"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringConcatenate",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      19,
+      0,
+      13,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      22,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      2,
+      0,
+      6,
+      1,
+      "CLIP"
+    ],
+    [
+      4,
+      6,
+      0,
+      7,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      5,
+      1,
+      0,
+      8,
+      0,
+      "MODEL"
+    ],
+    [
+      6,
+      8,
+      0,
+      11,
+      0,
+      "MODEL"
+    ],
+    [
+      7,
+      6,
+      0,
+      11,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      8,
+      7,
+      0,
+      11,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      9,
+      10,
+      0,
+      11,
+      3,
+      "LATENT"
+    ],
+    [
+      10,
+      11,
+      0,
+      19,
+      0,
+      "LATENT"
+    ],
+    [
+      11,
+      3,
+      0,
+      19,
+      1,
+      "VAE"
+    ],
+    [
+      12,
+      21,
+      0,
+      22,
+      0,
+      "STRING"
+    ],
+    [
+      13,
+      20,
+      0,
+      22,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "YOUR REQUEST + REFERENCES",
+      "bounding": [
+        15,
+        25,
+        640,
+        950
+      ],
+      "color": "#3d7051",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "GENERATED ART",
+      "bounding": [
+        665,
+        25,
+        640,
+        950
+      ],
+      "color": "#3f6180",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "OPTIONAL SETTINGS",
+      "bounding": [
+        1325,
+        25,
+        370,
+        680
+      ],
+      "color": "#715d3a",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.65,
+      "offset": [
+        70,
+        50
+      ]
+    },
+    "linearData": {
+      "inputs": [
+        [
+          "b599d03e-addd-4cc3-a639-9d6a6174573f:20:value",
+          "value"
+        ],
+        [
+          "b599d03e-addd-4cc3-a639-9d6a6174573f:11:seed",
+          "seed"
+        ],
+        [
+          "b599d03e-addd-4cc3-a639-9d6a6174573f:10:width",
+          "width"
+        ],
+        [
+          "b599d03e-addd-4cc3-a639-9d6a6174573f:10:height",
+          "height"
+        ]
+      ],
+      "outputs": [
+        "13"
+      ]
+    },
+    "linearMode": true,
+    "workflowRendererVersion": "Vue",
+    "frontendVersion": "1.57.1"
+  },
+  "version": 0.4,
+  "id": "b599d03e-addd-4cc3-a639-9d6a6174573f",
+  "revision": 0
+}

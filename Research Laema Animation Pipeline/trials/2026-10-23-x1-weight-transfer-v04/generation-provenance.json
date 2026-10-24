@@ -1,0 +1,31 @@
+{
+  "tool": "built-in image_gen",
+  "model_revision": "not exposed",
+  "seed": "not exposed",
+  "attempts": [
+    {
+      "attempt": 1,
+      "started_at_utc": "2026-10-23T11:30:56.109794+00:00",
+      "prompt": "prompts/attempt01.txt",
+      "inputs": [
+        "inputs/X1-weight-transfer-guide.png",
+        "inputs/appearance-guard.png"
+      ],
+      "input_sha256": [
+        "cd65cce07579a3123b6ed99c68f5415423a3804bb442e4053b64bca2b9d0dbd2",
+        "eb6bf42f64f08b95df9223138359a1bc79e43f6e5cd9d73edc3f9c82b93dfd5e"
+      ],
+      "transparent_background": true,
+      "status": "Exported corrective candidate; uniform grid and planted-foot registration required repairs",
+      "observed_service_wall_seconds": 45.953,
+      "output": "raw/attempt01.png",
+      "output_sha256": "ccc61733590ea809a9f4789e5f0fd4a47b5b4dbaeb0a438833e4c7a1e38409c6",
+      "generated_cells": 16,
+      "new_cells_used": 14,
+      "prompt_read_and_transmitted": "Saved prompt read verbatim with outer whitespace trimmed"
+    }
+  ],
+  "human_pixel_paint_minutes": 0,
+  "human_review_minutes": null,
+  "completed_export_at_utc": "2026-10-23T11:43:03.079972+00:00"
+}

@@ -1,0 +1,136 @@
+{
+  "status": "AWAITING_USER_VALIDATION",
+  "authority": "User requested implementation of the reviewed X1, X4 and X5 studies on 2026-10-21; gameplay/timing/direction/hitbox and no-editor/build/test constraints retained.",
+  "source_review_commit": "3894773c003265878be3b9c99c2e6137a0540574",
+  "source_art_commit": "f277903b0f7f9995f9dc715a273427999af01111",
+  "cell": [
+    448,
+    448
+  ],
+  "foot_anchor": [
+    224,
+    400
+  ],
+  "sprite_offset": [
+    0,
+    -124
+  ],
+  "art_method": "Built-in imagegen transparent edits of selected R05/R02/R04 masters; generated artwork is derived and not a pixel-identical alpha extraction. Technical registration/atlas assembly only after generation.",
+  "clips": {
+    "fire_x1": {
+      "file": "fire_x1.png",
+      "sha256": "7bf37e3393201daeae2ad6fc58a0f87f16a79ea37b971983c765a40a4d2fef9d",
+      "dimensions": [
+        3584,
+        448
+      ],
+      "study_poses_one_based": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "key_cell_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "fire_x4": {
+      "file": "fire_x4.png",
+      "sha256": "b04247fd0c27e030c8aa5485e2aa7f91579cfcf0d384e1daf7b15144dbc07e09",
+      "dimensions": [
+        1344,
+        448
+      ],
+      "study_poses_one_based": [
+        1,
+        2,
+        3
+      ],
+      "key_cell_indices_zero_based": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        2
+      ]
+    },
+    "fire_x5": {
+      "file": "fire_x5.png",
+      "sha256": "ef9d5a5c78ba2eaaa3b7d6227f4498d5ae3b0f3bf80218a3de495c4d676a1d94",
+      "dimensions": [
+        3136,
+        448
+      ],
+      "study_poses_one_based": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        9
+      ],
+      "key_cell_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "source_records": "../../../../../docs/art/preparation/2026-10-21-fire-v01/",
+  "preserved": "All previous PNGs, X2/X3 native resources, Idle/Walk/Hurt/Cast, other-school art and gameplay files remain untouched by this task.",
+  "limits": [
+    "Generated fine-detail/face/weapon drift remains provisional.",
+    "X4 holds three poses over six keys; it is not a new six-pose generation.",
+    "X5 R04 poses 5 and 8 are omitted from the seven-key runtime subset.",
+    "Existing pose-versus-query mismatches remain; no hitbox alignment claim.",
+    "Material and weapon transitions into existing v01 nonattack art remain provisional.",
+    "No Godot editor/import/runtime/build/tests were run."
+  ],
+  "static_evidence": {
+    "scope": "Source and image inspection only; not automated gameplay tests or engine validation.",
+    "native_resources_image_only": {
+      "fire_x1": true,
+      "fire_x4": true,
+      "fire_x5": true
+    },
+    "frame_key_times_and_markers": "Preserved byte-for-byte in all three native resources.",
+    "geometry_tracks": "Preserved byte-for-byte in all three native resources.",
+    "atlas_mode": "RGBA",
+    "atlas_dimensions": {
+      "fire_x1": [
+        3584,
+        448
+      ],
+      "fire_x4": [
+        1344,
+        448
+      ],
+      "fire_x5": [
+        3136,
+        448
+      ]
+    },
+    "minimum_nonzero_alpha_cell_margin_px": 42,
+    "measured_anchor_rounding_limit_px": 0.5,
+    "gameplay_code_changed_by_this_task": false,
+    "editor_import_runtime_build_tests_run": false,
+    "user_validation": "Pending; both facings, baseline/high Heat, chains, feet, interruption/retry and nonattack transitions."
+  }
+}

@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://cleptswhprs8c"]
+
+[ext_resource type="Script" uid="uid://bod5jtctyprr0" path="res://scripts/prototype/stage_area.gd" id="1_area"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="2_enemy"]
+[ext_resource type="Texture2D" uid="uid://lib2mht3eyj0" path="res://assets/prototype/arena/platformer/ground_h1x9.png" id="3_ground"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/combat_enemy.tscn" id="7_combat_enemy"]
+
+[sub_resource type="RectangleShape2D" id="floor_shape"]
+size = Vector2(1900, 32)
+
+[sub_resource type="RectangleShape2D" id="gate_shape"]
+size = Vector2(24, 180)
+
+[sub_resource type="RectangleShape2D" id="exit_shape"]
+size = Vector2(48, 180)
+
+[node name="FinalArena" type="Node2D" unique_id=522257129]
+script = ExtResource("1_area")
+camera_left = -320.0
+camera_right = 320.0
+
+[node name="Backdrop" type="Polygon2D" parent="." unique_id=1242829470]
+z_index = -4
+color = Color(0.027, 0.063, 0.145, 1)
+polygon = PackedVector2Array(-960, -520, 960, -520, 960, 340, -960, 340)
+
+[node name="GroundA" type="Sprite2D" parent="." unique_id=881409425]
+z_index = -2
+position = Vector2(-720, 80)
+texture = ExtResource("3_ground")
+
+[node name="GroundB" type="Sprite2D" parent="." unique_id=1348106234]
+z_index = -2
+position = Vector2(-432, 80)
+texture = ExtResource("3_ground")
+
+[node name="GroundC" type="Sprite2D" parent="." unique_id=360746]
+z_index = -2
+position = Vector2(-144, 80)
+texture = ExtResource("3_ground")
+
+[node name="GroundD" type="Sprite2D" parent="." unique_id=429651947]
+z_index = -2
+position = Vector2(144, 80)
+texture = ExtResource("3_ground")
+
+[node name="GroundE" type="Sprite2D" parent="." unique_id=1545671242]
+z_index = -2
+position = Vector2(432, 80)
+texture = ExtResource("3_ground")
+
+[node name="GroundF" type="Sprite2D" parent="." unique_id=1336579877]
+z_index = -2
+position = Vector2(720, 80)
+texture = ExtResource("3_ground")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=908105991]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=559925963]
+position = Vector2(0, 68)
+shape = SubResource("floor_shape")
+
+[node name="Enemy" parent="." instance=ExtResource("2_enemy")]
+position = Vector2(300, 16)
+
+[node name="EnemyLeft" parent="." instance=ExtResource("2_enemy")]
+position = Vector2(220, 16)
+
+[node name="EnemyRight" parent="." instance=ExtResource("2_enemy")]
+position = Vector2(380, 16)
+
+[node name="FinalEnemy" parent="." unique_id=671610447 instance=ExtResource("7_combat_enemy")]
+position = Vector2(620, 16)
+
+[node name="EntryAnchor" type="Marker2D" parent="." unique_id=80709984]
+position = Vector2(-800, 0)
+
+[node name="ExitAnchor" type="Marker2D" parent="." unique_id=287499318]
+position = Vector2(880, 0)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=339912398]
+position = Vector2(-560, 0)
+
+[node name="CameraAnchor" type="Marker2D" parent="." unique_id=1169603764]
+
+[node name="RightGate" type="StaticBody2D" parent="." unique_id=1904894323]
+position = Vector2(850, 0)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGate" unique_id=1024056361]
+shape = SubResource("gate_shape")
+
+[node name="LeftBoundary" type="StaticBody2D" parent="." unique_id=1618249442]
+position = Vector2(-850, 0)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary" unique_id=2025672242]
+shape = SubResource("gate_shape")
+
+[node name="ExitTrigger" type="Area2D" parent="." unique_id=1961225304]
+position = Vector2(900, 0)
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitTrigger" unique_id=596228738]
+shape = SubResource("exit_shape")

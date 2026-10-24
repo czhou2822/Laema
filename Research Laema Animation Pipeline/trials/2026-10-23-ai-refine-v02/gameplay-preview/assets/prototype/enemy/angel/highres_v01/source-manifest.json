@@ -1,0 +1,115 @@
+{
+  "source_package": "castle-creature-assets-v01/animations",
+  "creature": "angel",
+  "source_index": "collection-index.json",
+  "source_index_sha256": "56a4bc391a035c785d833a62b906a57b5301461dd6235c4682f1a7374d731321",
+  "status": "existing generated prototype review artwork; no Godot or final animation acceptance",
+  "cell_size": [
+    768,
+    640
+  ],
+  "columns": 4,
+  "anchor": [
+    384,
+    448
+  ],
+  "orientation": "source-orientation; Sprite2D supplies the facing mirror",
+  "frame_hash_order": "zero-based source index, matching row-major atlas cells",
+  "verification": {
+    "byte_identical_sheets": 5,
+    "source_frames_compared": 35,
+    "comparison": "exact decoded RGBA equality for every populated atlas cell"
+  },
+  "sheets": [
+    {
+      "file": "Idle.png",
+      "source_sheet": "angel/group_02_block_02/atlas_source.png",
+      "source_frame_pattern": "angel/group_02_block_02/frame_{index:03d}_source.png",
+      "group": 2,
+      "block": 2,
+      "frames": 8,
+      "sha256": "d7e866eaecbfe7ce49f2e07a3e53bee5c7297fe63228c96aa15826f0d09829be",
+      "source_frame_sha256": [
+        "ed90161d361126615efe78d920f2c698feb981ed0bf14329b05fd07a55708ad2",
+        "7823c43e215ef4f8c89547f51302a15b02f06d78c022ad98f53b2a15d1b4f738",
+        "eac16a57389034486ccede18f95b27b48940077fc866b39c75313ce8bb8321d3",
+        "5844a70af66ab5dc1b79435c72c26e739de46f870408d711f8ea457324f94161",
+        "aa944cecd70889f3d57f0db38af11c26bbb3345a4ef6b2cc691d8ffc57c3b064",
+        "5844a70af66ab5dc1b79435c72c26e739de46f870408d711f8ea457324f94161",
+        "eac16a57389034486ccede18f95b27b48940077fc866b39c75313ce8bb8321d3",
+        "7823c43e215ef4f8c89547f51302a15b02f06d78c022ad98f53b2a15d1b4f738"
+      ]
+    },
+    {
+      "file": "Walk.png",
+      "source_sheet": "angel/group_00_block_00/atlas_source.png",
+      "source_frame_pattern": "angel/group_00_block_00/frame_{index:03d}_source.png",
+      "group": 0,
+      "block": 0,
+      "frames": 7,
+      "sha256": "e0796d7fa38e16c0ed14c9868f1d8904ee7865055b48e0b4c61dc488e4654b46",
+      "source_frame_sha256": [
+        "52026092e46895fe0fb09a9477670a613935fd79d9371f2d4dcda32b569f428e",
+        "ac17edfbfca1ede5424565ff6622ca07fdf2b7ba2b237a9a040b7b663980ad8b",
+        "2816bd5135f8d11c5173a65072b327a2b68f2f6bab0c7d027363f388dfd94156",
+        "2a3eb6ab5ab5d4ec940a84f5d0335cf3305c45de73311ec9c8ebdc8aff895196",
+        "e4a87172dac8f077eb40846bb25d55d1c68a843801d2452a1aee433840efb644",
+        "d7e44367890cda68ddc9eac13ada5e75aa1b911d6dcb6a3c82f4ca9ca4e000c1",
+        "8f3c3ab6c88376ee554aa7075c965eef4f35dd83618c249efbc552fff3161a77"
+      ]
+    },
+    {
+      "file": "Hurt.png",
+      "source_sheet": "angel/group_03_block_03/atlas_source.png",
+      "source_frame_pattern": "angel/group_03_block_03/frame_{index:03d}_source.png",
+      "group": 3,
+      "block": 3,
+      "frames": 6,
+      "sha256": "099cf7237e95f3907390b7d364d747adca47c69061a20b98defa6325dbbcdec7",
+      "source_frame_sha256": [
+        "8abc35372e81e80fde7a87a2470eb854c9c186e1a2f21b6ab0e50d894b743b98",
+        "421855390138ccf94bc0bbebe27956262d0ded719ea4f50a213faa6bdb4b248e",
+        "de3b88262a7b457b550ae59c003a775e1cd7626cde62fa1a8d83f64300d2a7b6",
+        "6bf35ed054e51b5aead8e47117471d4cc9d4123a686aa6050f14e4df810487f6",
+        "d9d109fd82a7f0e8426deb9d8b2222b4472d881fe2a2e953f96d5f69f2bad043",
+        "8e51e533e806c71ad80a6c080077fe3e0bc00e5aa38ac36d1efcf363039b8628"
+      ]
+    },
+    {
+      "file": "Dead.png",
+      "source_sheet": "angel/group_05_block_05/atlas_source.png",
+      "source_frame_pattern": "angel/group_05_block_05/frame_{index:03d}_source.png",
+      "group": 5,
+      "block": 5,
+      "frames": 8,
+      "sha256": "9a916c80d43fd897887656d6f5e8d9ac63c59bffa05c15a4fe1a059f9f39e7c7",
+      "source_frame_sha256": [
+        "8abc35372e81e80fde7a87a2470eb854c9c186e1a2f21b6ab0e50d894b743b98",
+        "421855390138ccf94bc0bbebe27956262d0ded719ea4f50a213faa6bdb4b248e",
+        "72522c19e2480bf57bcbfa798fe93b6ad7420fbc932f1ad95509ee6d32081914",
+        "107e5070a117f2cf6eaae02bce24e2438dd6537311331fed2e65867f4a966282",
+        "356265a2bd6a70f02271df3d5da08e9230caabcb12948763d206e5fd554b61e2",
+        "c5d68b22920d63aebdadf1d026ddf791d8ec3a09574f492eb9c1c618c2cbeb59",
+        "40de190d70fffda01d6d1b3827815315167f9a5afb72424546283df43e293df6",
+        "c08e95943f8f6a6c585f7e3b45c995948689cd7679f0fcc4b9923984b47bf6a9"
+      ]
+    },
+    {
+      "file": "Attack.png",
+      "source_sheet": "angel/group_12_block_11/atlas_source.png",
+      "source_frame_pattern": "angel/group_12_block_11/frame_{index:03d}_source.png",
+      "group": 12,
+      "block": 11,
+      "frames": 6,
+      "sha256": "87b3e56c05424484be0f3a43c49451ffa58d922ebcef4557b9a35aa6df8b69b9",
+      "source_frame_sha256": [
+        "22bc7f9179b91e5082be340d520a4c94a670b9de91dd646283ec91e374c1ada4",
+        "a0ac25ac81d99e032cdd534f199ec892ca0b0c0d0f59007ce43bcb30daa3fe89",
+        "56124a6c1bd94c5901c760baa20f8ce67aed867143fd9fe80aa0e5fea5d1ed4a",
+        "f4adb002f390fc175cc0c1a80a8437b082cb494cdd0f5967948a213ec07f9c0b",
+        "24e83ebc687e19470311c4579100ddb6a7b72eee63f2641d513ea56a29aae657",
+        "574f2138cea317dc09fa264987c98542ef02e434a1ae780244ddeb69191e4c7c"
+      ]
+    }
+  ]
+}

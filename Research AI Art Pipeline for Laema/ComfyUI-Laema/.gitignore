@@ -1,0 +1,12 @@
+config.local.json
+model-paths.local.yaml
+server.local.json
+user/*
+!user/default/
+user/default/*
+!user/default/workflows/
+!user/default/workflows/**
+user/default/workflows/**/.*
+logs/
+__pycache__/
+.server-start.lock

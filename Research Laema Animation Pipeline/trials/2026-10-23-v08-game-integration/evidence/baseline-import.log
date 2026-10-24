@@ -1,0 +1,789 @@
+Godot Engine v4.7.1.stable.official.a13da4feb - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (75 steps)
+[   0% ] update_scripts_classes | 
+[   1% ] update_scripts_classes | 
+[   2% ] update_scripts_classes | 
+[   3% ] update_scripts_classes | 
+[   5% ] update_scripts_classes | 
+[   6% ] update_scripts_classes | 
+[   7% ] update_scripts_classes | 
+[   9% ] update_scripts_classes | 
+[  10% ] update_scripts_classes | 
+[  11% ] update_scripts_classes | 
+[  13% ] update_scripts_classes | 
+[  14% ] update_scripts_classes | 
+[  15% ] update_scripts_classes | 
+[  17% ] update_scripts_classes | 
+[  18% ] update_scripts_classes | AttackStyle
+[  19% ] update_scripts_classes | CombatComponent
+[  21% ] update_scripts_classes | CombatOutcome
+[  22% ] update_scripts_classes | 
+[  23% ] update_scripts_classes | DefenceController
+[  25% ] update_scripts_classes | 
+[  26% ] update_scripts_classes | 
+[  27% ] update_scripts_classes | 
+[  28% ] update_scripts_classes | HeatComponent
+[  30% ] update_scripts_classes | 
+[  31% ] update_scripts_classes | MagicComponent
+[  32% ] update_scripts_classes | MightComponent
+[  34% ] update_scripts_classes | SpellProjectile
+[  35% ] update_scripts_classes | 
+[  36% ] update_scripts_classes | CharacterReactionSettings
+[  38% ] update_scripts_classes | 
+[  39% ] update_scripts_classes | CombatReactionLevelTuning
+[  40% ] update_scripts_classes | 
+[  42% ] update_scripts_classes | CombatTuningBridge
+[  43% ] update_scripts_classes | CombatTuningSettings
+[  44% ] update_scripts_classes | 
+[  46% ] update_scripts_classes | 
+[  47% ] update_scripts_classes | 
+[  48% ] update_scripts_classes | 
+[  50% ] update_scripts_classes | 
+[  51% ] update_scripts_classes | EnemyCombatSettings
+[  52% ] update_scripts_classes | MoveImpactTuning
+[  53% ] update_scripts_classes | MoveStyleTuning
+[  55% ] update_scripts_classes | PlayerCombatSettings
+[  56% ] update_scripts_classes | PrototypeConfigLoader
+[  57% ] update_scripts_classes | 
+[  59% ] update_scripts_classes | 
+[  60% ] update_scripts_classes | 
+[  61% ] update_scripts_classes | 
+[  63% ] update_scripts_classes | Entity
+[  64% ] update_scripts_classes | FeedbackComponent
+[  65% ] update_scripts_classes | HealthComponent
+[  67% ] update_scripts_classes | HealthEvent
+[  68% ] update_scripts_classes | HealthResolver
+[  69% ] update_scripts_classes | HealthResult
+[  71% ] update_scripts_classes | HitReaction
+[  72% ] update_scripts_classes | 
+[  73% ] update_scripts_classes | 
+[  75% ] update_scripts_classes | FinalEnemyEvaluator
+[  76% ] update_scripts_classes | 
+[  77% ] update_scripts_classes | HeatGuardSequenceEvaluator
+[  78% ] update_scripts_classes | HeatThresholdEvaluator
+[  80% ] update_scripts_classes | ObjectiveEvaluator
+[  81% ] update_scripts_classes | 
+[  82% ] update_scripts_classes | SequenceObjectiveEvaluator
+[  84% ] update_scripts_classes | StageArea
+[  85% ] update_scripts_classes | StageDirector
+[  86% ] update_scripts_classes | 
+[  88% ] update_scripts_classes | 
+[  89% ] update_scripts_classes | 
+[  90% ] update_scripts_classes | 
+[  92% ] update_scripts_classes | ObjectiveWidget
+[  93% ] update_scripts_classes | 
+[  94% ] update_scripts_classes | 
+[  96% ] update_scripts_classes | 
+[  97% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] _update_scan_actions | Started Scanning actions... (265 steps)
+[   0% ] _update_scan_actions | BehaviorTree.svg
+[   0% ] _update_scan_actions | BehaviorTreeView.svg
+[   0% ] _update_scan_actions | BlackboardPlan.svg
+[   1% ] _update_scan_actions | BTAction.svg
+[   1% ] _update_scan_actions | BTAlwaysFail.svg
+[   1% ] _update_scan_actions | BTAlwaysSucceed.svg
+[   2% ] _update_scan_actions | BTAwaitAnimation.svg
+[   2% ] _update_scan_actions | BTCallMethod.svg
+[   3% ] _update_scan_actions | BTCheckAgentProperty.svg
+[   3% ] _update_scan_actions | BTCheckTrigger.svg
+[   3% ] _update_scan_actions | BTCheckVar.svg
+[   4% ] _update_scan_actions | BTComment.svg
+[   4% ] _update_scan_actions | BTCondition.svg
+[   4% ] _update_scan_actions | BTConsolePrint.svg
+[   5% ] _update_scan_actions | BTCooldown.svg
+[   5% ] _update_scan_actions | BTDecorator.svg
+[   6% ] _update_scan_actions | BTDelay.svg
+[   6% ] _update_scan_actions | BTDynamicSelector.svg
+[   6% ] _update_scan_actions | BTDynamicSequence.svg
+[   7% ] _update_scan_actions | BTEvaluateExpression.svg
+[   7% ] _update_scan_actions | BTFail.svg
+[   7% ] _update_scan_actions | BTForEach.svg
+[   8% ] _update_scan_actions | BTInvert.svg
+[   8% ] _update_scan_actions | BTNewScope.svg
+[   9% ] _update_scan_actions | BTParallel.svg
+[   9% ] _update_scan_actions | BTPauseAnimation.svg
+[   9% ] _update_scan_actions | BTPlayAnimation.svg
+[  10% ] _update_scan_actions | BTPlayer.svg
+[  10% ] _update_scan_actions | BTProbability.svg
+[  10% ] _update_scan_actions | BTProbabilitySelector.svg
+[  11% ] _update_scan_actions | BTRandomSelector.svg
+[  11% ] _update_scan_actions | BTRandomSequence.svg
+[  12% ] _update_scan_actions | BTRandomWait.svg
+[  12% ] _update_scan_actions | BTRepeat.svg
+[  12% ] _update_scan_actions | BTRepeatUntilFailure.svg
+[  13% ] _update_scan_actions | BTRepeatUntilSuccess.svg
+[  13% ] _update_scan_actions | BTRunLimit.svg
+[  13% ] _update_scan_actions | BTSelector.svg
+[  14% ] _update_scan_actions | BTSequence.svg
+[  14% ] _update_scan_actions | BTSetAgentProperty.svg
+[  15% ] _update_scan_actions | BTSetVar.svg
+[  15% ] _update_scan_actions | BTState.svg
+[  15% ] _update_scan_actions | BTStopAnimation.svg
+[  16% ] _update_scan_actions | BTSubtree.svg
+[  16% ] _update_scan_actions | BTTimeLimit.svg
+[  16% ] _update_scan_actions | BTWait.svg
+[  17% ] _update_scan_actions | BTWaitTicks.svg
+[  17% ] _update_scan_actions | LimboAI.svg
+[  18% ] _update_scan_actions | LimboDeselectAll.svg
+[  18% ] _update_scan_actions | LimboEditBlackboard.svg
+[  18% ] _update_scan_actions | LimboExtraBlackboard.svg
+[  19% ] _update_scan_actions | LimboExtraClock.svg
+[  19% ] _update_scan_actions | LimboExtractSubtree.svg
+[  19% ] _update_scan_actions | LimboExtraVariable.svg
+[  20% ] _update_scan_actions | LimboHSM.svg
+[  20% ] _update_scan_actions | LimboPercent.svg
+[  21% ] _update_scan_actions | LimboSelectAll.svg
+[  21% ] _update_scan_actions | LimboState.svg
+[  21% ] _update_scan_actions | LimboVarAdd.svg
+[  22% ] _update_scan_actions | LimboVarEmpty.svg
+[  22% ] _update_scan_actions | LimboVarError.svg
+[  22% ] _update_scan_actions | LimboVarExists.svg
+[  23% ] _update_scan_actions | LimboVarNotFound.svg
+[  23% ] _update_scan_actions | LimboVarPrivate.svg
+[  24% ] _update_scan_actions | back_angle.png
+[  24% ] _update_scan_actions | back_diamond.png
+[  24% ] _update_scan_actions | back_marker_32.png
+[  25% ] _update_scan_actions | back_tileset1.png
+[  25% ] _update_scan_actions | ground_h1x9.png
+[  25% ] _update_scan_actions | training_dummy.png
+[  26% ] _update_scan_actions | town_edge_yard_background.png
+[  26% ] _update_scan_actions | town_edge_yard_ground.png
+[  27% ] _update_scan_actions | town_edge_yard_v02_background.png
+[  27% ] _update_scan_actions | town_edge_yard_v02_ground.png
+[  27% ] _update_scan_actions | ground_grasss.png
+[  28% ] _update_scan_actions | training_meadow_v1.png
+[  28% ] _update_scan_actions | wind.ogg
+[  28% ] _update_scan_actions | BLESS.wav
+[  29% ] _update_scan_actions | charging_note_pickup03.wav
+[  29% ] _update_scan_actions | DISPELL.wav
+[  30% ] _update_scan_actions | ICERAY.wav
+[  30% ] _update_scan_actions | LIGHTBLT.wav
+[  30% ] _update_scan_actions | METEOR.wav
+[  31% ] _update_scan_actions | PICKUP04.wav
+[  31% ] _update_scan_actions | SPONTCOMB.wav
+[  31% ] _update_scan_actions | SWRDATTK.wav
+[  32% ] _update_scan_actions | PIKEATTK.wav
+[  32% ] _update_scan_actions | PIKEKILL.wav
+[  33% ] _update_scan_actions | PIKEMOVE.wav
+[  33% ] _update_scan_actions | PIKEWNCE.wav
+[  33% ] _update_scan_actions | PROTECT.wav
+[  34% ] _update_scan_actions | SWRDDFND.wav
+[  34% ] _update_scan_actions | SWRDWNCE.wav
+[  34% ] _update_scan_actions | fairy_battles.ogg
+[  35% ] _update_scan_actions | Attack.png
+[  35% ] _update_scan_actions | Dead.png
+[  36% ] _update_scan_actions | Hurt.png
+[  36% ] _update_scan_actions | Idle.png
+[  36% ] _update_scan_actions | Walk.png
+[  37% ] _update_scan_actions | Dead.png
+[  37% ] _update_scan_actions | Hurt.png
+[  37% ] _update_scan_actions | Idle.png
+[  38% ] _update_scan_actions | Melee.png
+[  38% ] _update_scan_actions | Shoot.png
+[  39% ] _update_scan_actions | Walk.png
+[  39% ] _update_scan_actions | Arrow.png
+[  39% ] _update_scan_actions | Dead.png
+[  40% ] _update_scan_actions | Hurt.png
+[  40% ] _update_scan_actions | Idle.png
+[  40% ] _update_scan_actions | Melee.png
+[  41% ] _update_scan_actions | Shoot.png
+[  41% ] _update_scan_actions | Walk.png
+[  42% ] _update_scan_actions | Attack.png
+[  42% ] _update_scan_actions | Dead.png
+[  42% ] _update_scan_actions | Hurt.png
+[  43% ] _update_scan_actions | Idle.png
+[  43% ] _update_scan_actions | Walk.png
+[  43% ] _update_scan_actions | GRIFATTK.wav
+[  44% ] _update_scan_actions | GRIFKILL.wav
+[  44% ] _update_scan_actions | GRIFMOVE.wav
+[  45% ] _update_scan_actions | GRIFWNCE.wav
+[  45% ] _update_scan_actions | Attack.png
+[  45% ] _update_scan_actions | Dead.png
+[  46% ] _update_scan_actions | Hurt.png
+[  46% ] _update_scan_actions | Idle.png
+[  46% ] _update_scan_actions | Walk.png
+[  47% ] _update_scan_actions | Attack.png
+[  47% ] _update_scan_actions | Dead.png
+[  48% ] _update_scan_actions | Hurt.png
+[  48% ] _update_scan_actions | Idle.png
+[  48% ] _update_scan_actions | Walk.png
+[  49% ] _update_scan_actions | Attack_1.png
+[  49% ] _update_scan_actions | Dead.png
+[  50% ] _update_scan_actions | Hurt.png
+[  50% ] _update_scan_actions | Idle.png
+[  50% ] _update_scan_actions | Walk.png
+[  51% ] _update_scan_actions | Dead.png
+[  51% ] _update_scan_actions | Hurt.png
+[  51% ] _update_scan_actions | Idle.png
+[  52% ] _update_scan_actions | Melee.png
+[  52% ] _update_scan_actions | Shoot.png
+[  53% ] _update_scan_actions | Walk.png
+[  53% ] _update_scan_actions | Bolt.png
+[  53% ] _update_scan_actions | attack_right_sheet.png
+[  54% ] _update_scan_actions | death_right_sheet.png
+[  54% ] _update_scan_actions | hurt_right_sheet.png
+[  54% ] _update_scan_actions | idle_right_sheet.png
+[  55% ] _update_scan_actions | walk_right_sheet.png
+[  55% ] _update_scan_actions | Attack.png
+[  56% ] _update_scan_actions | Dead.png
+[  56% ] _update_scan_actions | Hurt.png
+[  56% ] _update_scan_actions | Idle.png
+[  57% ] _update_scan_actions | Walk.png
+[  57% ] _update_scan_actions | Attack.png
+[  57% ] _update_scan_actions | Dead.png
+[  58% ] _update_scan_actions | Hurt.png
+[  58% ] _update_scan_actions | Idle.png
+[  59% ] _update_scan_actions | Walk.png
+[  59% ] _update_scan_actions | air_x1.png
+[  59% ] _update_scan_actions | air_x2.png
+[  60% ] _update_scan_actions | air_x3.png
+[  60% ] _update_scan_actions | air_x4.png
+[  60% ] _update_scan_actions | air_x5.png
+[  61% ] _update_scan_actions | earth_x1.png
+[  61% ] _update_scan_actions | earth_x2.png
+[  62% ] _update_scan_actions | earth_x3.png
+[  62% ] _update_scan_actions | earth_x4.png
+[  62% ] _update_scan_actions | earth_x5.png
+[  63% ] _update_scan_actions | fire_x1.png
+[  63% ] _update_scan_actions | fire_x2.png
+[  63% ] _update_scan_actions | fire_x3.png
+[  64% ] _update_scan_actions | fire_x4.png
+[  64% ] _update_scan_actions | fire_x4_opposite_limb_trial.png
+[  65% ] _update_scan_actions | fire_x5.png
+[  65% ] _update_scan_actions | hurt.png
+[  65% ] _update_scan_actions | shared_cast.png
+[  66% ] _update_scan_actions | shared_idle.png
+[  66% ] _update_scan_actions | shared_walk.png
+[  66% ] _update_scan_actions | water_x1.png
+[  67% ] _update_scan_actions | water_x2.png
+[  67% ] _update_scan_actions | water_x3.png
+[  68% ] _update_scan_actions | water_x4.png
+[  68% ] _update_scan_actions | water_x5.png
+[  68% ] _update_scan_actions | fire_x1.png
+[  69% ] _update_scan_actions | fire_x2.png
+[  69% ] _update_scan_actions | fire_x3.png
+[  69% ] _update_scan_actions | fire_x4.png
+[  70% ] _update_scan_actions | fire_x5.png
+[  70% ] _update_scan_actions | shield_catch.png
+[  71% ] _update_scan_actions | fire_dodge_to_idle.png
+[  71% ] _update_scan_actions | fire_dodge_to_idle_mirror.png
+[  71% ] _update_scan_actions | fire_dodge_to_run.png
+[  72% ] _update_scan_actions | fire_dodge_to_run_mirror.png
+[  72% ] _update_scan_actions | fire_x1.png
+[  72% ] _update_scan_actions | fire_x4.png
+[  73% ] _update_scan_actions | fire_x5.png
+[  73% ] _update_scan_actions | shield-catch-8x448.png
+[  74% ] _update_scan_actions | cast_fire.png
+[  74% ] _update_scan_actions | fire_x1.png
+[  74% ] _update_scan_actions | fire_x2.png
+[  75% ] _update_scan_actions | fire_x3.png
+[  75% ] _update_scan_actions | fire_x4.png
+[  75% ] _update_scan_actions | fire_x5.png
+[  76% ] _update_scan_actions | hurt.png
+[  76% ] _update_scan_actions | shared_idle.png
+[  77% ] _update_scan_actions | shared_walk.png
+[  77% ] _update_scan_actions | Fighter_Attack_1.png
+[  77% ] _update_scan_actions | Fighter_Attack_2.png
+[  78% ] _update_scan_actions | Fighter_Attack_3.png
+[  78% ] _update_scan_actions | Fighter_Idle.png
+[  78% ] _update_scan_actions | Fighter_Walk.png
+[  79% ] _update_scan_actions | Saber_Attack_1.png
+[  79% ] _update_scan_actions | Saber_Attack_2.png
+[  80% ] _update_scan_actions | Saber_Attack_3.png
+[  80% ] _update_scan_actions | Saber_Idle.png
+[  80% ] _update_scan_actions | Saber_Walk.png
+[  81% ] _update_scan_actions | Samurai_Idle.png
+[  81% ] _update_scan_actions | Samurai_Walk.png
+[  81% ] _update_scan_actions | Shinobi_Attack_1.png
+[  82% ] _update_scan_actions | Shinobi_Attack_2.png
+[  82% ] _update_scan_actions | Shinobi_Attack_3.png
+[  83% ] _update_scan_actions | Shinobi_Idle.png
+[  83% ] _update_scan_actions | Shinobi_Walk.png
+[  83% ] _update_scan_actions | Swordsman_lvl1_attack_with_shadow.png
+[  84% ] _update_scan_actions | Swordsman_lvl1_Idle_with_shadow.png
+[  84% ] _update_scan_actions | Swordsman_lvl1_Walk_with_shadow.png
+[  84% ] _update_scan_actions | endurance_air.png
+[  85% ] _update_scan_actions | endurance_earth.png
+[  85% ] _update_scan_actions | endurance_fire.png
+[  86% ] _update_scan_actions | endurance_water.png
+[  86% ] _update_scan_actions | fire1.png
+[  86% ] _update_scan_actions | fire2.png
+[  87% ] _update_scan_actions | fire3.png
+[  87% ] _update_scan_actions | fire4.png
+[  87% ] _update_scan_actions | fire5.png
+[  88% ] _update_scan_actions | fire6.png
+[  88% ] _update_scan_actions | fire7.png
+[  89% ] _update_scan_actions | fire8.png
+[  89% ] _update_scan_actions | fire9.png
+[  89% ] _update_scan_actions | fire10.png
+[  90% ] _update_scan_actions | ice1.png
+[  90% ] _update_scan_actions | ice2.png
+[  90% ] _update_scan_actions | ice3.png
+[  91% ] _update_scan_actions | ice4.png
+[  91% ] _update_scan_actions | ice5.png
+[  92% ] _update_scan_actions | ice6.png
+[  92% ] _update_scan_actions | ice7.png
+[  92% ] _update_scan_actions | ice8.png
+[  93% ] _update_scan_actions | ice9.png
+[  93% ] _update_scan_actions | ice10.png
+[  93% ] _update_scan_actions | ice11.png
+[  94% ] _update_scan_actions | ice12.png
+[  94% ] _update_scan_actions | ice13.png
+[  95% ] _update_scan_actions | water1.png
+[  95% ] _update_scan_actions | water2.png
+[  95% ] _update_scan_actions | water3.png
+[  96% ] _update_scan_actions | water4.png
+[  96% ] _update_scan_actions | water5.png
+[  96% ] _update_scan_actions | water6.png
+[  97% ] _update_scan_actions | water7.png
+[  97% ] _update_scan_actions | water8.png
+[  98% ] _update_scan_actions | water9.png
+[  98% ] _update_scan_actions | water10.png
+[  98% ] _update_scan_actions | water11.png
+[  99% ] _update_scan_actions | icon.svg
+[ DONE ] _update_scan_actions
+
+[   0% ] reimport | Started (Re)Importing Assets (209 steps)
+[   0% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Preparing files to reimport...
+[   1% ] reimport | Preparing files to reimport...
+[   1% ] reimport | Preparing files to reimport...
+[   2% ] reimport | Preparing files to reimport...
+[   2% ] reimport | Preparing files to reimport...
+[   3% ] reimport | Preparing files to reimport...
+[   3% ] reimport | Preparing files to reimport...
+[   4% ] reimport | Preparing files to reimport...
+[   4% ] reimport | Preparing files to reimport...
+[   5% ] reimport | Preparing files to reimport...
+[   5% ] reimport | Preparing files to reimport...
+[   6% ] reimport | Preparing files to reimport...
+[   6% ] reimport | Preparing files to reimport...
+[   7% ] reimport | Preparing files to reimport...
+[   7% ] reimport | Preparing files to reimport...
+[   8% ] reimport | Preparing files to reimport...
+[   8% ] reimport | Preparing files to reimport...
+[   9% ] reimport | Preparing files to reimport...
+[   9% ] reimport | Preparing files to reimport...
+[  10% ] reimport | Preparing files to reimport...
+[  10% ] reimport | Preparing files to reimport...
+[  10% ] reimport | Preparing files to reimport...
+[  11% ] reimport | Preparing files to reimport...
+[  11% ] reimport | Preparing files to reimport...
+[  12% ] reimport | Preparing files to reimport...
+[  12% ] reimport | Preparing files to reimport...
+[  13% ] reimport | Preparing files to reimport...
+[  13% ] reimport | Preparing files to reimport...
+[  14% ] reimport | Preparing files to reimport...
+[  14% ] reimport | Preparing files to reimport...
+[  15% ] reimport | Preparing files to reimport...
+[  15% ] reimport | Preparing files to reimport...
+[  16% ] reimport | Preparing files to reimport...
+[  16% ] reimport | Preparing files to reimport...
+[  17% ] reimport | Preparing files to reimport...
+[  17% ] reimport | Preparing files to reimport...
+[  18% ] reimport | Preparing files to reimport...
+[  18% ] reimport | Preparing files to reimport...
+[  19% ] reimport | Preparing files to reimport...
+[  19% ] reimport | Preparing files to reimport...
+[  20% ] reimport | Preparing files to reimport...
+[  20% ] reimport | Preparing files to reimport...
+[  20% ] reimport | Preparing files to reimport...
+[  21% ] reimport | Preparing files to reimport...
+[  21% ] reimport | Preparing files to reimport...
+[  22% ] reimport | Preparing files to reimport...
+[  22% ] reimport | Preparing files to reimport...
+[  23% ] reimport | Preparing files to reimport...
+[  23% ] reimport | Preparing files to reimport...
+[  24% ] reimport | Preparing files to reimport...
+[  24% ] reimport | Preparing files to reimport...
+[  25% ] reimport | Preparing files to reimport...
+[  25% ] reimport | Preparing files to reimport...
+[  26% ] reimport | Preparing files to reimport...
+[  26% ] reimport | Preparing files to reimport...
+[  27% ] reimport | Preparing files to reimport...
+[  27% ] reimport | Preparing files to reimport...
+[  28% ] reimport | Preparing files to reimport...
+[  28% ] reimport | Preparing files to reimport...
+[  29% ] reimport | Preparing files to reimport...
+[  29% ] reimport | Preparing files to reimport...
+[  30% ] reimport | Preparing files to reimport...
+[  30% ] reimport | Preparing files to reimport...
+[  30% ] reimport | Preparing files to reimport...
+[  31% ] reimport | Preparing files to reimport...
+[  31% ] reimport | Preparing files to reimport...
+[  32% ] reimport | Preparing files to reimport...
+[  32% ] reimport | Preparing files to reimport...
+[  33% ] reimport | Preparing files to reimport...
+[  33% ] reimport | Preparing files to reimport...
+[  34% ] reimport | Preparing files to reimport...
+[  34% ] reimport | Preparing files to reimport...
+[  35% ] reimport | Preparing files to reimport...
+[  35% ] reimport | Preparing files to reimport...
+[  36% ] reimport | Preparing files to reimport...
+[  36% ] reimport | Preparing files to reimport...
+[  37% ] reimport | Preparing files to reimport...
+[  37% ] reimport | Preparing files to reimport...
+[  38% ] reimport | Preparing files to reimport...
+[  38% ] reimport | Preparing files to reimport...
+[  39% ] reimport | Preparing files to reimport...
+[  39% ] reimport | Preparing files to reimport...
+[  40% ] reimport | Preparing files to reimport...
+[  40% ] reimport | Preparing files to reimport...
+[  40% ] reimport | Preparing files to reimport...
+[  41% ] reimport | Preparing files to reimport...
+[  41% ] reimport | Preparing files to reimport...
+[  42% ] reimport | Preparing files to reimport...
+[  42% ] reimport | Preparing files to reimport...
+[  43% ] reimport | Preparing files to reimport...
+[  43% ] reimport | Preparing files to reimport...
+[  44% ] reimport | Preparing files to reimport...
+[  44% ] reimport | Preparing files to reimport...
+[  45% ] reimport | Preparing files to reimport...
+[  45% ] reimport | Preparing files to reimport...
+[  46% ] reimport | Preparing files to reimport...
+[  46% ] reimport | Preparing files to reimport...
+[  47% ] reimport | Preparing files to reimport...
+[  47% ] reimport | Preparing files to reimport...
+[  48% ] reimport | Preparing files to reimport...
+[  48% ] reimport | Preparing files to reimport...
+[  49% ] reimport | Preparing files to reimport...
+[  49% ] reimport | Preparing files to reimport...
+[  50% ] reimport | Preparing files to reimport...
+[  50% ] reimport | Preparing files to reimport...
+[  50% ] reimport | Preparing files to reimport...
+[  51% ] reimport | Preparing files to reimport...
+[  51% ] reimport | Preparing files to reimport...
+[  52% ] reimport | Preparing files to reimport...
+[  52% ] reimport | Preparing files to reimport...
+[  53% ] reimport | Preparing files to reimport...
+[  53% ] reimport | Preparing files to reimport...
+[  54% ] reimport | Preparing files to reimport...
+[  54% ] reimport | Preparing files to reimport...
+[  55% ] reimport | Preparing files to reimport...
+[  55% ] reimport | Preparing files to reimport...
+[  56% ] reimport | Preparing files to reimport...
+[  56% ] reimport | Preparing files to reimport...
+[  57% ] reimport | Preparing files to reimport...
+[  57% ] reimport | Preparing files to reimport...
+[  58% ] reimport | Preparing files to reimport...
+[  58% ] reimport | Preparing files to reimport...
+[  59% ] reimport | Preparing files to reimport...
+[  59% ] reimport | Preparing files to reimport...
+[  60% ] reimport | Preparing files to reimport...
+[  60% ] reimport | Preparing files to reimport...
+[  60% ] reimport | Preparing files to reimport...
+[  61% ] reimport | Preparing files to reimport...
+[  61% ] reimport | Preparing files to reimport...
+[  62% ] reimport | Preparing files to reimport...
+[  62% ] reimport | Preparing files to reimport...
+[  63% ] reimport | Preparing files to reimport...
+[  63% ] reimport | Preparing files to reimport...
+[  64% ] reimport | Preparing files to reimport...
+[  64% ] reimport | Preparing files to reimport...
+[  65% ] reimport | Preparing files to reimport...
+[  65% ] reimport | Preparing files to reimport...
+[  66% ] reimport | Preparing files to reimport...
+[  66% ] reimport | Preparing files to reimport...
+[  67% ] reimport | Preparing files to reimport...
+[  67% ] reimport | Preparing files to reimport...
+[  68% ] reimport | Preparing files to reimport...
+[  68% ] reimport | Preparing files to reimport...
+[  69% ] reimport | Preparing files to reimport...
+[  69% ] reimport | Preparing files to reimport...
+[  70% ] reimport | Preparing files to reimport...
+[  70% ] reimport | Preparing files to reimport...
+[  70% ] reimport | Preparing files to reimport...
+[  71% ] reimport | Preparing files to reimport...
+[  71% ] reimport | Preparing files to reimport...
+[  72% ] reimport | Preparing files to reimport...
+[  72% ] reimport | Preparing files to reimport...
+[  73% ] reimport | Preparing files to reimport...
+[  73% ] reimport | Preparing files to reimport...
+[  74% ] reimport | Preparing files to reimport...
+[  74% ] reimport | Preparing files to reimport...
+[  75% ] reimport | Preparing files to reimport...
+[  75% ] reimport | Preparing files to reimport...
+[  76% ] reimport | Preparing files to reimport...
+[  76% ] reimport | Preparing files to reimport...
+[  77% ] reimport | Preparing files to reimport...
+[  77% ] reimport | Preparing files to reimport...
+[  78% ] reimport | Preparing files to reimport...
+[  78% ] reimport | Preparing files to reimport...
+[  79% ] reimport | Preparing files to reimport...
+[  79% ] reimport | Preparing files to reimport...
+[  80% ] reimport | Preparing files to reimport...
+[  80% ] reimport | Preparing files to reimport...
+[  80% ] reimport | Preparing files to reimport...
+[  81% ] reimport | Preparing files to reimport...
+[  81% ] reimport | Preparing files to reimport...
+[  82% ] reimport | Preparing files to reimport...
+[  82% ] reimport | Preparing files to reimport...
+[  83% ] reimport | Preparing files to reimport...
+[  83% ] reimport | Preparing files to reimport...
+[  84% ] reimport | Preparing files to reimport...
+[  84% ] reimport | Preparing files to reimport...
+[  85% ] reimport | Preparing files to reimport...
+[  85% ] reimport | Preparing files to reimport...
+[  86% ] reimport | Preparing files to reimport...
+[  86% ] reimport | Preparing files to reimport...
+[  87% ] reimport | Preparing files to reimport...
+[  87% ] reimport | Preparing files to reimport...
+[  88% ] reimport | Preparing files to reimport...
+[  88% ] reimport | Preparing files to reimport...
+[  89% ] reimport | Preparing files to reimport...
+[  89% ] reimport | Preparing files to reimport...
+[  90% ] reimport | Preparing files to reimport...
+[  90% ] reimport | Preparing files to reimport...
+[  90% ] reimport | Preparing files to reimport...
+[  91% ] reimport | Preparing files to reimport...
+[  91% ] reimport | Preparing files to reimport...
+[  92% ] reimport | Preparing files to reimport...
+[  92% ] reimport | Preparing files to reimport...
+[  93% ] reimport | Preparing files to reimport...
+[  93% ] reimport | Preparing files to reimport...
+[  94% ] reimport | Preparing files to reimport...
+[  94% ] reimport | Preparing files to reimport...
+[  95% ] reimport | Preparing files to reimport...
+[  95% ] reimport | Preparing files to reimport...
+[  96% ] reimport | Preparing files to reimport...
+[  96% ] reimport | Preparing files to reimport...
+[  97% ] reimport | Preparing files to reimport...
+[  97% ] reimport | Preparing files to reimport...
+[  98% ] reimport | Preparing files to reimport...
+[  98% ] reimport | Preparing files to reimport...
+[  99% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Executing pre-reimport operations...
+[   0% ] reimport | fairy_battles.ogg
+[   0% ] reimport | wind.ogg
+[   0% ] reimport | fairy_battles.ogg
+[   1% ] reimport | wind.ogg
+[   1% ] reimport | Dead.png
+[   2% ] reimport | Hurt.png
+[   2% ] reimport | Idle.png
+[   3% ] reimport | Walk.png
+[   3% ] reimport | earth_x1.png
+[   4% ] reimport | earth_x2.png
+[   4% ] reimport | earth_x3.png
+[   5% ] reimport | earth_x4.png
+[   5% ] reimport | earth_x5.png
+[   6% ] reimport | fire_x5.png
+[   6% ] reimport | fire_x1.png
+[   7% ] reimport | fire_x4.png
+[   7% ] reimport | fire_x5.png
+[   8% ] reimport | shield_catch.png
+[   8% ] reimport | fire_dodge_to_idle_mirror.png
+[   9% ] reimport | fire_dodge_to_run.png
+[   9% ] reimport | fire_dodge_to_run_mirror.png
+[  10% ] reimport | fire_x1.png
+[  10% ] reimport | fire_x2.png
+[  10% ] reimport | fire_x3.png
+[  11% ] reimport | fire_x4.png
+[  11% ] reimport | fire_x5.png
+[  12% ] reimport | Fighter_Attack_1.png
+[  12% ] reimport | Fighter_Attack_2.png
+[  13% ] reimport | Hurt.png
+[  13% ] reimport | Idle.png
+[  14% ] reimport | Walk.png
+[  14% ] reimport | Attack.png
+[  15% ] reimport | Dead.png
+[  15% ] reimport | Hurt.png
+[  16% ] reimport | Idle.png
+[  16% ] reimport | Walk.png
+[  17% ] reimport | Attack_1.png
+[  17% ] reimport | Dead.png
+[  18% ] reimport | Hurt.png
+[  18% ] reimport | Idle.png
+[  19% ] reimport | Walk.png
+[  19% ] reimport | Dead.png
+[  20% ] reimport | Hurt.png
+[  20% ] reimport | Idle.png
+[  20% ] reimport | Melee.png
+[  21% ] reimport | Shoot.png
+[  21% ] reimport | Walk.png
+[  22% ] reimport | Bolt.png
+[  22% ] reimport | Attack.png
+[  23% ] reimport | Dead.png
+[  23% ] reimport | Hurt.png
+[  24% ] reimport | Idle.png
+[  24% ] reimport | Walk.png
+[  25% ] reimport | Attack.png
+[  25% ] reimport | fire10.png
+[  26% ] reimport | ice1.png
+[  26% ] reimport | ice2.png
+[  27% ] reimport | ice3.png
+[  27% ] reimport | ice4.png
+[  28% ] reimport | ice5.png
+[  28% ] reimport | ice6.png
+[  29% ] reimport | ice7.png
+[  29% ] reimport | ice8.png
+[  30% ] reimport | ice9.png
+[  30% ] reimport | ice10.png
+[  30% ] reimport | ice11.png
+[  31% ] reimport | ice12.png
+[  31% ] reimport | ice13.png
+[  32% ] reimport | water1.png
+[  32% ] reimport | water2.png
+[  33% ] reimport | water3.png
+[  33% ] reimport | water4.png
+[  34% ] reimport | water5.png
+[  34% ] reimport | water6.png
+[  35% ] reimport | water7.png
+[  35% ] reimport | water8.png
+[  36% ] reimport | water9.png
+[  36% ] reimport | water10.png
+[  37% ] reimport | water11.png
+[  37% ] reimport | icon.svg
+[  38% ] reimport | Fighter_Attack_3.png
+[  38% ] reimport | Fighter_Idle.png
+[  39% ] reimport | Fighter_Walk.png
+[  39% ] reimport | Saber_Attack_1.png
+[  40% ] reimport | Saber_Attack_2.png
+[  40% ] reimport | Saber_Attack_3.png
+[  40% ] reimport | Saber_Idle.png
+[  41% ] reimport | Saber_Walk.png
+[  41% ] reimport | Samurai_Idle.png
+[  42% ] reimport | Samurai_Walk.png
+[  42% ] reimport | Shinobi_Attack_1.png
+[  43% ] reimport | Shinobi_Attack_2.png
+[  43% ] reimport | Shinobi_Attack_3.png
+[  44% ] reimport | Shinobi_Idle.png
+[  44% ] reimport | Shinobi_Walk.png
+[  45% ] reimport | Swordsman_lvl1_attack_with_shadow.png
+[  45% ] reimport | Swordsman_lvl1_Idle_with_shadow.png
+[  46% ] reimport | Swordsman_lvl1_Walk_with_shadow.png
+[  46% ] reimport | fire1.png
+[  47% ] reimport | fire2.png
+[  47% ] reimport | fire3.png
+[  48% ] reimport | fire4.png
+[  48% ] reimport | fire5.png
+[  49% ] reimport | fire6.png
+[  49% ] reimport | fire7.png
+[  50% ] reimport | fire8.png
+[  50% ] reimport | fire9.png
+[  50% ] reimport | BTProbabilitySelector.svg
+[  51% ] reimport | BTRandomSelector.svg
+[  51% ] reimport | BTRandomSequence.svg
+[  52% ] reimport | BTRandomWait.svg
+[  52% ] reimport | BTRepeat.svg
+[  53% ] reimport | BTRepeatUntilFailure.svg
+[  53% ] reimport | BTRepeatUntilSuccess.svg
+[  54% ] reimport | BTRunLimit.svg
+[  54% ] reimport | BTSelector.svg
+[  55% ] reimport | BTSequence.svg
+[  55% ] reimport | BTSetAgentProperty.svg
+[  56% ] reimport | BTSetVar.svg
+[  56% ] reimport | BTState.svg
+[  57% ] reimport | BTStopAnimation.svg
+[  57% ] reimport | BTSubtree.svg
+[  58% ] reimport | BTTimeLimit.svg
+[  58% ] reimport | BTWait.svg
+[  59% ] reimport | BTWaitTicks.svg
+[  59% ] reimport | LimboEditBlackboard.svg
+[  60% ] reimport | LimboExtraBlackboard.svg
+[  60% ] reimport | LimboExtraVariable.svg
+[  60% ] reimport | LimboHSM.svg
+[  61% ] reimport | LimboState.svg
+[  61% ] reimport | LimboVarAdd.svg
+[  62% ] reimport | LimboVarEmpty.svg
+[  62% ] reimport | LimboVarError.svg
+[  63% ] reimport | BehaviorTreeView.svg
+[  63% ] reimport | BlackboardPlan.svg
+[  64% ] reimport | BTAction.svg
+[  64% ] reimport | BTAwaitAnimation.svg
+[  65% ] reimport | BTCallMethod.svg
+[  65% ] reimport | BTCheckAgentProperty.svg
+[  66% ] reimport | BTCheckTrigger.svg
+[  66% ] reimport | BTCheckVar.svg
+[  67% ] reimport | BTComment.svg
+[  67% ] reimport | BTCondition.svg
+[  68% ] reimport | BTConsolePrint.svg
+[  68% ] reimport | BTCooldown.svg
+[  69% ] reimport | BTDecorator.svg
+[  69% ] reimport | BTDelay.svg
+[  70% ] reimport | BTDynamicSelector.svg
+[  70% ] reimport | BTDynamicSequence.svg
+[  70% ] reimport | BTEvaluateExpression.svg
+[  71% ] reimport | BTFail.svg
+[  71% ] reimport | BTForEach.svg
+[  72% ] reimport | BTInvert.svg
+[  72% ] reimport | BTNewScope.svg
+[  73% ] reimport | BTParallel.svg
+[  73% ] reimport | BTPauseAnimation.svg
+[  74% ] reimport | BTPlayAnimation.svg
+[  74% ] reimport | BTPlayer.svg
+[  75% ] reimport | BTProbability.svg
+[  75% ] reimport | Dead.png
+[  76% ] reimport | Hurt.png
+[  76% ] reimport | Idle.png
+[  77% ] reimport | Walk.png
+[  77% ] reimport | Dead.png
+[  78% ] reimport | Hurt.png
+[  78% ] reimport | Idle.png
+[  79% ] reimport | Melee.png
+[  79% ] reimport | Shoot.png
+[  80% ] reimport | Walk.png
+[  80% ] reimport | Arrow.png
+[  80% ] reimport | Dead.png
+[  81% ] reimport | Hurt.png
+[  81% ] reimport | Idle.png
+[  82% ] reimport | Melee.png
+[  82% ] reimport | Shoot.png
+[  83% ] reimport | Walk.png
+[  83% ] reimport | Attack.png
+[  84% ] reimport | Dead.png
+[  84% ] reimport | Hurt.png
+[  85% ] reimport | Idle.png
+[  85% ] reimport | Walk.png
+[  86% ] reimport | Attack.png
+[  86% ] reimport | Dead.png
+[  87% ] reimport | LimboVarExists.svg
+[  87% ] reimport | LimboVarNotFound.svg
+[  88% ] reimport | LimboVarPrivate.svg
+[  88% ] reimport | back_angle.png
+[  89% ] reimport | back_diamond.png
+[  89% ] reimport | back_marker_32.png
+[  90% ] reimport | back_tileset1.png
+[  90% ] reimport | ground_h1x9.png
+[  90% ] reimport | town_edge_yard_background.png
+[  91% ] reimport | town_edge_yard_ground.png
+[  91% ] reimport | town_edge_yard_v02_background.png
+[  92% ] reimport | town_edge_yard_v02_ground.png
+[  92% ] reimport | ground_grasss.png
+[  93% ] reimport | fairy_battles.ogg
+[  93% ] reimport | wind.ogg
+[  94% ] reimport | Dead.png
+[  94% ] reimport | Hurt.png
+[  95% ] reimport | Idle.png
+[  95% ] reimport | Walk.png
+[  96% ] reimport | earth_x1.png
+[  96% ] reimport | earth_x2.png
+[  97% ] reimport | earth_x3.png
+[  97% ] reimport | earth_x4.png
+[  98% ] reimport | earth_x5.png
+[  98% ] reimport | fire_x5.png
+[  99% ] reimport | fire_x1.png
+[  99% ] reimport | Finalizing Asset Import...
+[ DONE ] reimport
+
+[   0% ] reimport | Started (Re)Importing Assets (209 steps)
+[   0% ] reimport | Executing post-reimport operations...
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+

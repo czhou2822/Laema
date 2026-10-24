@@ -1,0 +1,15 @@
+{
+  "method": "built-in imagegen",
+  "repair1": {
+    "prompt": "Use case: precise-object-edit. Input1 is the EDIT TARGET: Pikeman fully extended thrust animation frame on transparent background. Input2 is the costume/material reference only. Correct ONLY the wooden pike's missing rear shaft in input1. Current right-pointing spear stops at the forward hands and is much too short. Extend its single straight wooden shaft HORIZONTALLY LEFT from the existing hands, along the exact existing y-axis, behind/under the forearms and across the waist, ending well left of his torso at approximately x=140 on the512wide source. Keep the existing silver spearhead at the far right and unchanged. Complete one full continuous long pike about350px tip-to-butt, with a small plain metal ferrule at rear. Do not add another weapon or second parallel stick. Preserve soldier face, brown-bronze metal helmet, costume, exact lunge pose, two hands, boots, scale, camera, every current body pixel as closely as possible, and full same landscape composition/aspect. No pose redesign or new gesture. Actual transparent alpha, no matte, no haze, no background, no ground/shadow, no text. Keep whole pike and body visible with transparent margin.",
+    "source": "attack-thrust-repair-input.png",
+    "output": "C:\\Users\\zhouc\\.codex\\generated_images\\01a07f41-7159-70f1-ac7d-e6217941c130\\exec-6e8a471e-feb0-4d95-ba46-d856923f09b2.png",
+    "status": "rejected-excessive-rear-shaft-length"
+  },
+  "repair2": {
+    "prompt": "Use case: precise-object-edit. Correct ONLY the excessive rear pike length in this transparent Pikeman thrust frame. Preserve exactly the current soldier, face, brown-bronze helmet, two-hand thrust pose, clothing, armor, anatomy, planted boots, all body proportions and all body/hand pixels; keep camera, registration and scale. Keep spearhead at far right unchanged and keep shaft perfectly straight horizontal through hands. The left rear end now reaches almost to left canvas edge and is TOO LONG: shorten ONLY that left rear segment, so the new capped butt ends just left of the soldier's hip, about x=570 on the1830px-wide reference, NOT x=30. Remove the abandoned old left shaft area back to actual transparency. The whole pike should be about1230px long relative to the soldier's680px head-to-boot body height. Do not shrink or stretch soldier, move hands or change weapon orientation. No new objects, text, haze, background or ground shadow. Retain full same composition and genuine alpha.",
+    "source": "C:\\Users\\zhouc\\.codex\\generated_images\\01a07f41-7159-70f1-ac7d-e6217941c130\\exec-6e8a471e-feb0-4d95-ba46-d856923f09b2.png",
+    "output": "thrust-repaired-source.png",
+    "status": "selected-for-first-review-pass"
+  }
+}
