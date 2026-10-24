@@ -1,9 +1,9 @@
 extends "res://scripts/enemy/enemy.gd"
 
-const IDLE_TEXTURE = preload("res://assets/prototype/enemy/pikeman/remaster_v01/group_02_block_02.png")
-const WALK_TEXTURE = preload("res://assets/prototype/enemy/pikeman/remaster_v01/group_00_block_00.png")
-const DEAD_TEXTURE = preload("res://assets/prototype/enemy/pikeman/remaster_v01/group_05_block_05.png")
-const HURT_TEXTURE = preload("res://assets/prototype/enemy/pikeman/remaster_v01/group_03_block_03.png")
+const IDLE_TEXTURE = preload("res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png")
+const WALK_TEXTURE = preload("res://assets/prototype/enemy/pikeman/repaint_v02/walk_right_sheet.png")
+const DEAD_TEXTURE = preload("res://assets/prototype/enemy/pikeman/repaint_v02/death_right_sheet.png")
+const HURT_TEXTURE = preload("res://assets/prototype/enemy/pikeman/repaint_v02/hurt_right_sheet.png")
 const ImpactProbe = preload("res://scripts/debug/impact_probe.gd")
 const Geometry = preload("res://scripts/combat/attack_geometry.gd")
 const Contacts = preload("res://scripts/combat/contact_evaluation.gd")

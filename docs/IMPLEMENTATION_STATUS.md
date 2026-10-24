@@ -1,90 +1,5 @@
 # Implementation Status
 
-## Castle remasters main merge — October 24
-
-Status: `AWAITING_USER_VALIDATION`. The user authorized merging the published
-Castle source candidate and pushing while preserving current work. Pre-merge
-main `97ba4024` retains camera-authoring commit `e1355179` and the saved Enemy
-reaction reference. Incoming Castle commit is `f6d2c8ec`.
-
-The runtime merge updates only the original seven Castle base actors' visual
-bindings and the equivalent Pikeman recovery-cell addresses. All fourteen
-Castle preview libraries / 225 groups are retained. Current 28-creature cycling,
-Castle upgrades, Necropolis actors, Fire Player art/registration, T1 timing,
-shared reactions, camera settings and other current tuning remain in main.
-The source-branch receipt below is not a new result for this merged tree.
-
-Merge verification is static only: source diff preservation, resource paths,
-JSON readability, catalog retention and conflict/whitespace checks. Resource
-metadata re-saved during integration is preserved without treating it as a new
-behavior decision. No Godot/editor/build/test run or human visual acceptance is
-added by this merge. Source-branch 4.6.3 evidence does not establish matching-
-version gameplay correctness; its recorded warnings and pending reviews remain.
-
-## Complete Castle group asset coverage — October 23
-
-Status: `AWAITING_USER_VALIDATION`. Following the audit, the user authorized
-generating missing high-resolution artwork from OG flipbooks and required a
-counterpart for every original Castle group in the depot.
-
-- All 14 base/upgraded creatures: 225 group PNGs, 1,324 original frame positions,
-  847 registered poses (633 newly painted, 214 existing high-resolution drawings).
-  Each original identity/order/alias remains recorded; no OG pixel frame is
-  enlarged as a deliverable. Fourteen native SpriteFrames preview resources expose
-  every group with explicitly provisional 10 fps playback.
-- Actual Pikeman, Archer, Griffin, Swordsman, Monk, Cavalier and Angel load the
-  new group sheets through their existing state/Animation pipeline. All 37 active
-  visual bindings are updated. The 17-file integration diff preserves clocks,
-  markers, hitbox curves, collision, combat settings and behavior; Pikeman's
-  corrected recovery repeats now address physical group12 cells8/9.
-- Geometryv2 excludes original semitransparent palette shadows when determining
-  body bounds and retains original-coordinate displacement/elevation. Raw model
-  artwork, exact prompts where recorded, technical crop/isolation provenance,
-  per-pose registration and source hashes remain in the depot.
-- Independent asset checks and isolated engine evidence are retained with the
-  [complete inventory](art/remasters/castle-v01/README.md). Human animation and
-  matching-version gameplay acceptance remain pending. Original CrAnim timing is
-  still unavailable; existing Laema timing is preserved. The source-branch evidence covered seven base actors. Main's existing
-  28-creature catalog, Castle upgrades and Necropolis behavior remain; this merge
-  does not add execution states for every preview group or rebind those other
-  actors automatically.
-
-Final validation: independent checks passed for all 225 groups, 1,324 frame
-positions and 847 poses, including original DEF/indexed source hashes and source
-registration. Godot 4.6.3 loaded all 14 native libraries/225 groups/1,324 cells;
-the actual seven configured Gym actors passed 392 state-frame and 168 private
-attack-key samples across both facings. Nine native attack marker/duration/key
-timings match the pre-integration resources. All 225 lossless/no-mipmap import
-descriptors are saved. Chromium loaded every group comparison without page errors.
-These are agent-run checks. Project Godot 4.7 is unavailable; the known earlier
-4.6 ObjectiveWidget UI API error and unrelated exit/editor warnings persist.
-
-## Historical Castle source specification and Pikeman recovery repair — October 23
-
-At this earlier stage, missing artwork blocked bulk remastering. The subsequent
-user-authorized generation above supersedes that artwork blocker; original
-timing and human gameplay evidence remain open.
-The user requested the remaining Phase 2 specification work, followed by Phase 5.
-
-- Primary VCMI/H3API research refines legacy timing fields and action transitions
-  but does not recover the fourteen original Castle CrAnim rows or certify the
-  original executable. The accepted Laema one-second melee clock is preserved;
-  its earlier original-timing attribution is qualified in the GDD.
-- Only two visual region keys in config/attack_animations/melee_swing.tres change:
-  0.8s uses existing v02 cell2, 0.9s uses cell1. The actual Pikeman now samples
-  the original recovery-repeat pattern using existing high-resolution pixels.
-  No PNG, script, scene, import descriptor, time, marker, geometry or balance
-  value changes. The existing resource reload/clone route owns live playback.
-- The physical v02 atlas remains unchanged. Pikeman Hurt has missing original
-  recovery-pose equivalents and is now classified Partial in follow-up evidence;
-  unrelated Idle/Walk poses are not substituted. Angel15 remains a verified
-  original-source alias candidate, without an invented shooting behavior.
-
-Detailed source, parity and validation evidence:
-[Phase 2 / Phase 5 follow-up](art/reviews/2026-10-23-castle-animation-parity-audit/phase-2-and-5-progress.md).
-The original audit remains its pre-repair snapshot. Engine/import and user-run
-validation results are recorded in the follow-up with their actual limits.
-
 ## Camera feedback Inspector / Portal authoring — October 24
 
 Status: `AWAITING_USER_VALIDATION`. This is a new human-approved task after
@@ -576,7 +491,7 @@ and raised-hand Fireball implementation remain unchanged.
 The brief acceptance of immediate overlap correction in the cfa537d record
 below is historical and superseded by this selected exception. Only isolated
 headless checks run here; Combat owns rendered observation and local merge.
-Before main reconciliation: isolated Godot 4.7.1 import and focused suite passed
+Before main reconciliation: isolated Godot4.7.1 import and focused suite passed
 513 assertions, process/runner exit0; shared-combat suite passed87, exit0.
 These are controlled real-physics fixtures with a post-contact observer and a
 zero-delta presentation-selector call, not rendered/controller/feel proof.
@@ -678,7 +593,7 @@ displacement can change follow-up contact/spacing; it does not guarantee a
 subsequent Cast hit. Human/controller/feel acceptance remains pending.
 
 Later Combat-reported agent-rendered evidence applies **only to cfa537d**:
-clean isolated Godot 4.7.1 Windows Gym, ordinary bound inputs, no forced actor/AI/
+clean isolated Godot4.7.1 Windows Gym, ordinary bound inputs, no forced actor/AI/
 resource/clock writes, unexpected inputs0. Both left and right FireLv1 shots
 were observed at raised-hand height. One earlier right-facing attempt was
 legitimately rejected during hurt, not an origin failure. A normal five-X chain
@@ -863,7 +778,7 @@ main/local HEAD equality. See the [publication receipt](iterations/2026-10-22-fi
 That first lunch receipt is historical; later candidate publication state belongs
 to Main's receipts/source identities. Repository publication is source publication,
 not Web export, whole-tree/submission, art, numerical or human-feel clearance.
-Main's isolated Godot 4.7.1 rendered bound-input
+Main's isolated Godot4.7.1 rendered bound-input
 runs, source snapshots and captures are recorded in the
 [daytime ledger](iterations/2026-10-22-fire-combat-daytime/PROGRESS.md); the
 [iteration report](iterations/2026-10-22-fire-combat-daytime/REPORT.md) is Main-owned.
@@ -1044,7 +959,7 @@ down. Width is sampled at row rebuild, not generic dynamic resizing. Strings,
 fonts/colors, token HBoxes/order, evaluator/progress, prompt and flinch are untouched.
 This is an addition to the retained lunch C2 source, not new acceptance; publication state is recorded in the Main-owned receipt.
 
-Main's isolated Godot 4.7.1 PID49476/session49476_718694 rendered observations:
+Main's isolated Godot4.7.1 PID49476/session49476_718694 rendered observations:
 
 - Stage7's whole long sentence fits at1280x720 below80 and at naturally earned100
   Heat. Forty-eight normal Lv1 Casts had zero failures; this is not Stage7's
@@ -1069,7 +984,7 @@ their historical snapshot, not evidence that C4 is already published.
 ### Retained-C4 encounter review — October 22, through14:01 HKT
 
 Main's [post-C5 play review](iterations/2026-10-22-fire-combat-daytime/POST_C5_PLAY_REVIEW.md)
-records one isolated Godot 4.7.1 Gym encounter, PID77216/session77216_597317,
+records one isolated Godot4.7.1 Gym encounter, PID77216/session77216_597317,
 on unchanged retained-C4 source (b57d1b3f;26fa5890 adds evidence only). Normal bound
 inputs reached victory37.5/0 without Retry, healing or actor/resource/AI/clock writes:
 
@@ -1629,7 +1544,7 @@ The new tools/tests/art_hitbox_alignment_test.gd and its UID own focused evidenc
 GDD, TDD and ATTACK_STYLES record the approved behavior/current authoring values.
 
 Evidence: the existing runner imported and checked a fresh isolated project with
-Godot 4.7.1.stable.official.a13da4feb; all324 focused assertions passed. Cases cover
+Godot4.7.1.stable.official.a13da4feb; all324 focused assertions passed. Cases cover
 both facings, all Fire moves/pikeman active sprite poses, measured tip/near-hand
 contact, outside-tip misses, actor collectors, per-target spending, artwork/query
 frame agreement, head/torso/leg body reception, school switches during melee/Cast,
