@@ -1,61 +1,55 @@
-[gd_resource type="Resource" script_class="CharacterReactionSettings" format=3]
+[gd_resource type="Resource" script_class="CharacterReactionSettings" format=3 uid="uid://ofr5cl2hkd32"]
 
-[ext_resource type="Script" path="res://scripts/config/character_reaction_settings.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/config/combat_reaction_level_tuning.gd" id="level_script"]
+[ext_resource type="Script" uid="uid://dhtpf2cpqmdai" path="res://scripts/config/character_reaction_settings.gd" id="1"]
+[ext_resource type="Script" uid="uid://cvbk41an50p0f" path="res://scripts/config/combat_reaction_level_tuning.gd" id="level_script"]
 
 [sub_resource type="Resource" id="Level_1"]
 resource_name = "Level 1"
 script = ExtResource("level_script")
-camera_strength = 0.5
-camera_duration = 0.04
 duration = 0.25
 motion_duration = 0.25
 
 [sub_resource type="Resource" id="Level_2"]
 resource_name = "Level 2"
 script = ExtResource("level_script")
-camera_strength = 1.0
-camera_duration = 0.06
 minimum_value = 11
 duration = 0.55
 motion_duration = 0.55
 distance = 10.0
+camera_strength = 1.0
+camera_duration = 0.06
 
 [sub_resource type="Resource" id="Level_3"]
 resource_name = "Level 3"
 script = ExtResource("level_script")
-camera_strength = 1.5
-camera_duration = 0.08
 minimum_value = 21
 duration = 0.85
 motion_duration = 0.85
 distance = 15.0
+camera_strength = 1.5
+camera_duration = 0.08
 
 [sub_resource type="Resource" id="Level_4"]
 resource_name = "Level 4"
 script = ExtResource("level_script")
-camera_strength = 2.0
-camera_duration = 0.10
 minimum_value = 31
 duration = 1.15
 motion_duration = 0.15
 distance = 20.0
+camera_strength = 2.0
+camera_duration = 0.1
 
 [sub_resource type="Resource" id="Level_5"]
 resource_name = "Level 5"
 script = ExtResource("level_script")
-camera_strength = 3.0
-camera_duration = 0.12
 minimum_value = 41
 duration = 1.45
 motion_duration = 1.45
 distance = 25.0
+camera_strength = 3.0
+camera_duration = 0.12
 
 [resource]
 resource_name = "Shared Hit Reaction"
-impact_precise_camera_strength = 1.0
-impact_precise_camera_duration = 0.08
-impact_weight_camera_strength = 3.0
-impact_weight_camera_duration = 0.11
 script = ExtResource("1")
 combat_levels = Array[ExtResource("level_script")]([SubResource("Level_1"), SubResource("Level_2"), SubResource("Level_3"), SubResource("Level_4"), SubResource("Level_5")])

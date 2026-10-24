@@ -1,0 +1,277 @@
+[gd_resource type="Resource" script_class="PlayerCombatSettings" format=3 uid="uid://dgnwvwmxw2n26"]
+
+[ext_resource type="Script" uid="uid://c175qwtman1pe" path="res://scripts/config/player_combat_settings.gd" id="1"]
+[ext_resource type="Resource" uid="uid://5rb1srdbi23w" path="res://config/attack_styles/air_x1.tres" id="air_x1"]
+[ext_resource type="Resource" uid="uid://e2pj3awo2503" path="res://config/attack_styles/air_x2.tres" id="air_x2"]
+[ext_resource type="Resource" uid="uid://butxfn88tqk3j" path="res://config/attack_styles/air_x3.tres" id="air_x3"]
+[ext_resource type="Resource" uid="uid://bfhnfh3vqgmf1" path="res://config/attack_styles/air_x4.tres" id="air_x4"]
+[ext_resource type="Resource" uid="uid://cjlrtipexpxsq" path="res://config/attack_styles/air_x5.tres" id="air_x5"]
+[ext_resource type="Resource" uid="uid://drxxfd0adxrs0" path="res://config/attack_styles/earth_x1.tres" id="earth_x1"]
+[ext_resource type="Resource" uid="uid://cuyk0s4hoxrj7" path="res://config/attack_styles/earth_x2.tres" id="earth_x2"]
+[ext_resource type="Resource" uid="uid://cffiigocr3uy7" path="res://config/attack_styles/earth_x3.tres" id="earth_x3"]
+[ext_resource type="Resource" uid="uid://dyxale3al03lb" path="res://config/attack_styles/earth_x4.tres" id="earth_x4"]
+[ext_resource type="Resource" uid="uid://dpwbadernqjf8" path="res://config/attack_styles/earth_x5.tres" id="earth_x5"]
+[ext_resource type="Resource" uid="uid://bjrwc5em632ft" path="res://config/attack_styles/fire_x1.tres" id="fire_x1"]
+[ext_resource type="Resource" uid="uid://cf5s4eqch8nwo" path="res://config/attack_styles/fire_x2.tres" id="fire_x2"]
+[ext_resource type="Resource" uid="uid://ctnbyqb71ecds" path="res://config/attack_styles/fire_x3.tres" id="fire_x3"]
+[ext_resource type="Resource" uid="uid://chogjf0ga7txb" path="res://config/attack_styles/fire_x4.tres" id="fire_x4"]
+[ext_resource type="Resource" uid="uid://poa2y4kef1av" path="res://config/attack_styles/fire_x5.tres" id="fire_x5"]
+[ext_resource type="Resource" uid="uid://c62n18h65kjtq" path="res://config/characters/hit_reaction.tres" id="reaction"]
+[ext_resource type="Script" uid="uid://cc0mtdcaa323o" path="res://scripts/config/move_style_tuning.gd" id="style_script"]
+[ext_resource type="Resource" uid="uid://e7abttpene8g" path="res://config/attack_styles/water_x1.tres" id="water_x1"]
+[ext_resource type="Resource" uid="uid://b2ua5hu2vvnln" path="res://config/attack_styles/water_x2.tres" id="water_x2"]
+[ext_resource type="Resource" uid="uid://b20c2t2skho2u" path="res://config/attack_styles/water_x3.tres" id="water_x3"]
+[ext_resource type="Resource" uid="uid://jt7515i8ji57" path="res://config/attack_styles/water_x4.tres" id="water_x4"]
+[ext_resource type="Resource" uid="uid://5hp477ucq3oe" path="res://config/attack_styles/water_x5.tres" id="water_x5"]
+
+[resource]
+resource_name = "Player Settings"
+script = ExtResource("1")
+player = {
+"max_health": 100,
+"one_hp_floor_enabled": false,
+"poise": 0
+}
+movement = {
+"gravity_scale": 1,
+"speed": 300
+}
+combat = {
+"attack_duration": 1.2,
+"casting_damage": 10,
+"collect_orb_without_contact": false,
+"direct_impact": 1,
+"hit_phase": 0.36,
+"input_window_start": 0.48,
+"light_damage": 10,
+"x_buffer_width": 0.2
+}
+casting = {
+"charge_step_duration": 0.5,
+"empowered_primary_multiplier": 1.3,
+"max_marked_capacity": 8,
+"max_storage_capacity": 10,
+"orb_lifetime": 10.0000001490116,
+"projectile_screen_ratio": 0.5,
+"projectile_travel_duration": 1,
+"trigger_charge_min": 0.95,
+"trigger_release_max": 0.05
+}
+heat = {
+"depletion_per_second": 3,
+"gain_per_charged_orb": 2.00000002980232,
+"loss_per_direct_hit": 5,
+"max_heat": 100,
+"reset_timer": 5
+}
+defence = {
+"blocked_damage_to_guard": 1,
+"fire_block_absorption": 0.75,
+"fire_control_commitment": 0.5,
+"fire_miss_recovery": 0.6,
+"fire_tap_parry_window": 0.37,
+"guard_break_recovery": 0.5,
+"guard_capacity": 100,
+"guard_warning_ratio": 0.25,
+"heat_drain_per_second": 5,
+"parry_window": 0.2,
+"water_block_defensive_level": 1
+}
+fire = {
+"damage_per_stack": 1,
+"dot_duration": 4,
+"dot_tick_interval": 1,
+"vfx_fps": 12,
+"visual_motion_exponent": 1
+}
+water = {
+"base_radius": 28,
+"levels": [{
+"duration": 1,
+"slow_percent": 0,
+"status": "wet"
+}, {
+"duration": 2,
+"slow_percent": 0,
+"status": "wet"
+}, {
+"duration": 2,
+"slow_percent": 0.2,
+"status": "slow"
+}, {
+"duration": 2.5,
+"slow_percent": 0.4,
+"status": "slow"
+}, {
+"duration": 1,
+"slow_percent": 1,
+"status": "frozen"
+}],
+"radius_per_level": 10,
+"vfx_fps": 14,
+"visual_motion_exponent": 0.65
+}
+air = {
+"chain_radius": 160,
+"damage_per_level": 0.25,
+"max_chain_targets": 3,
+"visual_motion_exponent": 0.5
+}
+earth = {
+"base_radius": 28,
+"levels": [{
+"duration": 1.5,
+"slow_percent": 0.15
+}, {
+"duration": 2,
+"slow_percent": 0.25
+}, {
+"duration": 2.5,
+"slow_percent": 0.4
+}, {
+"duration": 3,
+"slow_percent": 0.4
+}, {
+"duration": 4,
+"slow_percent": 0.4
+}],
+"radius_per_level": 10,
+"visual_motion_exponent": 1.4
+}
+moves = {
+"air_x1": {
+"animation": "air_x1",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"air_x2": {
+"animation": "air_x2",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"air_x3": {
+"animation": "air_x3",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"air_x4": {
+"animation": "air_x4",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"air_x5": {
+"animation": "air_x5",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"cast": {
+"animation": "attack_clock",
+"damage_key": "casting_damage",
+"duration_key": "attack_duration",
+"forward_lunge": null,
+"impact": 1,
+"level_impacts": {
+"1": 10,
+"2": 20,
+"3": 30,
+"4": 40
+}
+},
+"earth_x1": {
+"animation": "earth_x1",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"earth_x2": {
+"animation": "earth_x2",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"earth_x3": {
+"animation": "earth_x3",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"earth_x4": {
+"animation": "earth_x4",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"earth_x5": {
+"animation": "earth_x5",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"fire_x1": {
+"animation": "fire_x1",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 10
+},
+"fire_x2": {
+"animation": "fire_x2",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 20
+},
+"fire_x3": {
+"animation": "fire_x3",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 30
+},
+"fire_x4": {
+"animation": "fire_x4",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 40
+},
+"fire_x5": {
+"animation": "fire_x5",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 50
+},
+"water_x1": {
+"animation": "water_x1",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"water_x2": {
+"animation": "water_x2",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"water_x3": {
+"animation": "water_x3",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"water_x4": {
+"animation": "water_x4",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+},
+"water_x5": {
+"animation": "water_x5",
+"damage_key": "light_damage",
+"duration_key": "attack_duration",
+"impact": 1
+}
+}
+attack_styles = Array[ExtResource("style_script")]([ExtResource("fire_x1"), ExtResource("fire_x2"), ExtResource("fire_x3"), ExtResource("fire_x4"), ExtResource("fire_x5"), ExtResource("water_x1"), ExtResource("water_x2"), ExtResource("water_x3"), ExtResource("water_x4"), ExtResource("water_x5"), ExtResource("air_x1"), ExtResource("air_x2"), ExtResource("air_x3"), ExtResource("air_x4"), ExtResource("air_x5"), ExtResource("earth_x1"), ExtResource("earth_x2"), ExtResource("earth_x3"), ExtResource("earth_x4"), ExtResource("earth_x5")])
+hit_reaction = ExtResource("reaction")

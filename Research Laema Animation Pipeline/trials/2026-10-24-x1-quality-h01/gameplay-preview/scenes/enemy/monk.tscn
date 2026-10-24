@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemy/archer.tscn" id="base"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/monk/highres_v01/Idle.png" id="idle"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/monk/highres_v01/Walk.png" id="walk"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/monk/highres_v01/Hurt.png" id="hurt"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/monk/highres_v01/Dead.png" id="dead"]
+[ext_resource type="Animation" path="res://config/attack_animations/monk_melee.tres" id="melee"]
+[ext_resource type="Animation" path="res://config/attack_animations/monk_shoot.tres" id="shoot"]
+[ext_resource type="PackedScene" path="res://scenes/combat/monk_bolt.tscn" id="bolt"]
+
+[sub_resource type="AnimationLibrary" id="animations"]
+_data = {
+&"melee_swing": ExtResource("melee"),
+&"archer_shoot": ExtResource("shoot")
+}
+
+[node name="Monk" instance=ExtResource("base")]
+idle_texture = ExtResource("idle")
+walk_texture = ExtResource("walk")
+dead_texture = ExtResource("dead")
+hurt_texture = ExtResource("hurt")
+sheet_cell_size = Vector2(768, 640)
+sheet_columns = 4
+idle_frames = 6
+walk_frames = 6
+dead_frames = 11
+hurt_frames = 8
+mirror_sprite_offset = true
+use_shared_melee_geometry = false
+ranged_projectile_scene = ExtResource("bolt")
+
+[node name="BodyVisual" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("idle")
+offset = Vector2(0, -128)
+region_rect = Rect2(0, 0, 768, 640)
+
+[node name="HitReactionAudio" parent="." index="9"]
+stream = null
+
+[node name="AnimationPlayer" parent="." index="15"]
+libraries/ = SubResource("animations")
+
+[node name="PikemanAttackAudio" parent="."]
+stream = null
+
+[node name="PikemanDeathAudio" parent="."]
+stream = null
+
+[node name="PikemanMovementAudio" parent="."]
+stream = null

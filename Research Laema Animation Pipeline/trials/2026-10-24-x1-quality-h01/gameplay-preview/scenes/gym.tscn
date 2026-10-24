@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://k2wsd224vuxg"]
+
+[ext_resource type="PackedScene" uid="uid://botreihvj2l3f" path="res://scenes/prototype_arena.tscn" id="1_arena"]
+[ext_resource type="Script" uid="uid://srcoav8aoqt7" path="res://scripts/prototype/gym.gd" id="2_gym"]
+
+[node name="Gym" unique_id=420555610 instance=ExtResource("1_arena")]
+script = ExtResource("2_gym")
+
+[node name="HUD" parent="." index="7"]
+compact_bottom_panels = true

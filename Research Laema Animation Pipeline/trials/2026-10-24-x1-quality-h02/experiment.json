@@ -1,0 +1,238 @@
+{
+  "id": "H02",
+  "created_at_utc": "2026-10-24T05:49:48.128828+00:00",
+  "source_revision": "98676e1e4aefcb9453040ae24bd1c30a9dcc4bfd",
+  "baseline": {
+    "id": "h01",
+    "file": "inputs/baseline-h01.png",
+    "sha256": "9162558ffc4a38ae67da020f2c7617885ff68d020e031e26a0086762c6730eb8",
+    "times": [
+      0,
+      0.05,
+      0.075,
+      0.1,
+      0.126,
+      0.142,
+      0.158,
+      0.184,
+      0.21,
+      0.265,
+      0.34,
+      0.425,
+      0.5075,
+      0.565,
+      0.62,
+      0.72
+    ],
+    "duration": 0.72,
+    "columns": 8
+  },
+  "feedback_snapshot": "inputs/feedback-snapshot.json",
+  "feedback_interpretation": "v08 preparation2\u20134 criticism transfers to H01 because those cells are byte-identical. The game2 preparation is a quality/principle reference only, not a generation/tracing input. Game3\u20134 elbow and6 thrust observations remain separate. The v08 release-comparison note does not establish a positive H01 verdict.",
+  "stage": "Blocking / preparation performance",
+  "problem": "The inherited three-key chamber is one static pose and reads weaker than the preferred game preparation.",
+  "hypothesis": "A clear rear-leg load, peak coil and beginning drive within the existing preparation span will read more powerful than the static H01 chamber.",
+  "scope": "Replace only preparation frames2\u20134. Coordinated body/arm/sword loading is one phase treatment; this is not a pure hip-only causal test.",
+  "changed_frames": [
+    2,
+    3,
+    4
+  ],
+  "protected": [
+    "All16 saved key times",
+    "13 non-preparation cells exact, including H01 grip edits5\u20137",
+    "Duration.720/.480 at fixed Heat0/100",
+    "Gameplay code/settings, contact geometry, active window, lunge, input and damage unchanged",
+    "Both source boot contact positions are registration targets"
+  ],
+  "intended_modification": "Three distinct original body-load poses following the guide, with consistent character/equipment and planted feet.",
+  "predicted_improvement": "At native size/normal speed the preparation visibly loads then releases, without foot skating or an abrupt return into frame5.",
+  "remaining_feedback": [
+    "Game reference elbow handoff3\u20134\u21925",
+    "Game reference6 reads as thrust",
+    "H01 grip improvement not established",
+    "Later body braking and appearance drift"
+  ],
+  "actual_modifications": {
+    "candidate": "outputs/x1-h02-preparation.png",
+    "candidate_sha256": "d02cdb9571c6c18d21d559d2b5b969e68290c5b356de5226613de1dc4f8287b2",
+    "changed_frames": [
+      {
+        "frame": 2,
+        "translation_native_px": [
+          -1,
+          2
+        ],
+        "front_sole_before": [
+          271.0,
+          397.0
+        ],
+        "front_sole_target": [
+          270.0,
+          399.0
+        ],
+        "front_registration_residual": [
+          0.0,
+          0.0
+        ],
+        "rear_registration_residual_before_sole_cleanup": [
+          -5.0,
+          0.0
+        ],
+        "raw_rear_contact_registration_is_not_anatomical_validation": true,
+        "source_sole_pixels_y393_to447_exact": true,
+        "sole_transition_rows": [
+          388,
+          392
+        ],
+        "body_alpha_pixels_changed": 1163,
+        "changed_rgba_pixels": 14025
+      },
+      {
+        "frame": 3,
+        "translation_native_px": [
+          -6,
+          2
+        ],
+        "front_sole_before": [
+          275.5,
+          397.0
+        ],
+        "front_sole_target": [
+          270.0,
+          399.0
+        ],
+        "front_registration_residual": [
+          -0.5,
+          0.0
+        ],
+        "rear_registration_residual_before_sole_cleanup": [
+          -7.5,
+          0.0
+        ],
+        "raw_rear_contact_registration_is_not_anatomical_validation": true,
+        "source_sole_pixels_y393_to447_exact": true,
+        "sole_transition_rows": [
+          388,
+          392
+        ],
+        "body_alpha_pixels_changed": 1932,
+        "changed_rgba_pixels": 14886
+      },
+      {
+        "frame": 4,
+        "translation_native_px": [
+          -4,
+          2
+        ],
+        "front_sole_before": [
+          274.0,
+          397.0
+        ],
+        "front_sole_target": [
+          270.0,
+          399.0
+        ],
+        "front_registration_residual": [
+          0.0,
+          0.0
+        ],
+        "rear_registration_residual_before_sole_cleanup": [
+          -5.0,
+          0.0
+        ],
+        "raw_rear_contact_registration_is_not_anatomical_validation": true,
+        "source_sole_pixels_y393_to447_exact": true,
+        "sole_transition_rows": [
+          388,
+          392
+        ],
+        "body_alpha_pixels_changed": 1257,
+        "changed_rgba_pixels": 14131
+      }
+    ],
+    "other_cells_exact": 13,
+    "all_key_times_unchanged": true,
+    "one_common_crop_scale": 0.29582366589327147,
+    "raw_size": [
+      1724,
+      912
+    ],
+    "pairwise_core_body_silhouette_change_pixels": [
+      957,
+      1179
+    ],
+    "processing_seconds": 0.22793940000701696,
+    "scope": "Preparation whole-pose redraw; body/arm/shield/chamber placement may move. Release and recovery5\u201316 remain source-exact. Sole cleanup is explicit, not proof of perfect generated registration."
+  },
+  "generation_calls": [
+    {
+      "attempt": 1,
+      "tool": "built-in image_gen",
+      "prompt": "prompts/attempt01.txt",
+      "inputs": [
+        "inputs/preparation-edit-target.png",
+        "inputs/original-preparation-guide.png"
+      ],
+      "raw": "raw/attempt01.png",
+      "elapsed_wall_seconds_UTC_1s_resolution": 30,
+      "decision": "rejected",
+      "reason": "Guide landmark error and enlarged/reframed output",
+      "model_revision": "not exposed",
+      "seed": "not exposed",
+      "input_sha256": [
+        "2e40967c85ad1ba89b68ccadecfc8cf579d2a947d80fe635b21d5b997011a35e",
+        "22aabf85e542fd2c223f308d30b9061c1b69bb2268672b551de67ba57879a3ce"
+      ],
+      "raw_sha256": "4d16287d1e80ac47e0e26c3249d463c54b7def739e14fbcfd35e3b26e8cedb43"
+    },
+    {
+      "attempt": 2,
+      "tool": "built-in image_gen",
+      "prompt": "prompts/attempt02.txt",
+      "inputs": [
+        "inputs/preparation-cropped-target.png",
+        "inputs/corrected-preparation-guide.png"
+      ],
+      "raw": "raw/attempt02.png",
+      "elapsed_wall_seconds_UTC_1s_resolution": 27,
+      "decision": "exported for human review",
+      "model_revision": "not exposed",
+      "seed": "not exposed",
+      "input_sha256": [
+        "2ae57aa9b21cc4149f909a9b0b1ecdeb317dffaf6b3ee84f8bb4ea1bf30c4024",
+        "ea8a89ec616f823e50574f3c2d152977e8ca1a3fa54969b872bd1fdb9540c9bf"
+      ],
+      "raw_sha256": "ff4cee8acf4572c841160870e38abd5787c9cf5eddca3f1e3f04072934c58de0"
+    }
+  ],
+  "human_verdict": {
+    "decision": "pending",
+    "quality_improved": null
+  },
+  "agent_assessment": {
+    "hypothesis_verdict": "pending_human_review",
+    "quality_improved": null,
+    "observation": "Three preparation drawings now differ in core body silhouette. Native-speed power and transition quality require human judgment. Appearance/cuff/boot shape drift remains a review risk."
+  },
+  "gameplay_changed": false,
+  "production_approved": false,
+  "workflow_winner": null,
+  "agent_elapsed_wall_seconds": 3333.500014,
+  "effort_limit": "Includes agent reasoning, generation waits, source correction and separately reusable overlay implementation. Not active artist labor or a per-action production benchmark.",
+  "human_artist_minutes": 0,
+  "human_review_minutes": null,
+  "review": {
+    "url": "../2026-10-23-v08-game-integration/review.html?experiment=H02",
+    "mode": "character-only three versions plus optional aligned overlays",
+    "annotations": "annotations.json",
+    "prior_annotations": "../2026-10-24-x1-quality-h01/annotations.json",
+    "gameplay_run_this_trial": false
+  },
+  "feedback_preservation": {
+    "original_snapshot_revision": 9,
+    "current_revision": 9,
+    "file_unchanged_since_snapshot": true,
+    "all_snapshot_note_ids_present": true
+  }
+}

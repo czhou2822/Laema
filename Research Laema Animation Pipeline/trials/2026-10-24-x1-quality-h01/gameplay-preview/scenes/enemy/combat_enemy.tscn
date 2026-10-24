@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://ch5qwe8equpbo"]
+
+[ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="1_base"]
+[ext_resource type="Resource" path="res://config/characters/combat_enemy.tres" id="character_settings"]
+
+[ext_resource type="Script" uid="uid://cw7ssygia5ccn" path="res://scripts/enemy/combat_enemy.gd" id="2_script"]
+[ext_resource type="Texture2D" path="res://assets/prototype/enemy/pikeman/repaint_v02/idle_right_sheet.png" id="3_3cx6u"]
+[ext_resource type="BehaviorTree" uid="uid://cvt502b6f13r0" path="res://ai/trees/final_enemy.tres" id="3_tree"]
+[ext_resource type="Animation" path="res://config/attack_animations/melee_swing.tres" id="4_animation"]
+[ext_resource type="AudioStream" path="res://assets/prototype/audio/enemy/pikeman/PIKEATTK.wav" id="pikeman_attack_audio"]
+[ext_resource type="AudioStream" path="res://assets/prototype/audio/enemy/pikeman/PIKEWNCE.wav" id="pikeman_hurt_audio"]
+[ext_resource type="AudioStream" path="res://assets/prototype/audio/enemy/pikeman/PIKEKILL.wav" id="pikeman_death_audio"]
+[ext_resource type="AudioStream" path="res://assets/prototype/audio/enemy/pikeman/PIKEMOVE.wav" id="pikeman_movement_audio"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vo27k"]
+radius = 30.0
+height = 180.0
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_3cx6u"]
+
+[sub_resource type="CircleShape2D" id="attack_shape"]
+resource_local_to_scene = true
+radius = 24.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_enemy"]
+_data = {
+&"melee_swing": ExtResource("4_animation")
+}
+
+[node name="CombatEnemy" unique_id=1397537664 instance=ExtResource("1_base")]
+collision_layer = 10
+collision_mask = 5
+script = ExtResource("2_script")
+settings = ExtResource("character_settings")
+encounter_id = &"final_enemy"
+refills_at_zero = false
+is_final_enemy = true
+
+[node name="BodyVisual" parent="." index="0"]
+texture_filter = 2
+modulate = Color(1, 1, 1, 1)
+position = Vector2(-11, 31)
+scale = Vector2(1, 1)
+texture = ExtResource("3_3cx6u")
+offset = Vector2(0, -192)
+region_rect = Rect2(0, 0, 768, 512)
+
+[node name="HealthLabel" parent="." index="2"]
+offset_left = -81.0
+offset_top = -244.0
+offset_right = 59.0
+offset_bottom = -218.0
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-11, -59)
+shape = SubResource("CapsuleShape2D_vo27k")
+
+[node name="HitReactionAudio" parent="." index="9"]
+stream = ExtResource("pikeman_hurt_audio")
+
+[node name="BTPlayer" type="BTPlayer" parent="." index="11" unique_id=1856016948]
+behavior_tree = ExtResource("3_tree")
+update_mode = 2
+active = false
+blackboard_plan = SubResource("BlackboardPlan_3cx6u")
+
+[node name="AttackCast" type="ShapeCast2D" parent="." index="12" unique_id=1944267804]
+position = Vector2(0, 8)
+shape = SubResource("attack_shape")
+target_position = Vector2(72, 0)
+
+[node name="WarningMarker" type="Polygon2D" parent="." index="13" unique_id=141884518]
+visible = false
+z_index = 4
+position = Vector2(-11, -268)
+color = Color(1, 0.18, 0.12, 1)
+polygon = PackedVector2Array(-10, 10, 0, -10, 10, 10)
+
+[node name="AttackFlash" type="Polygon2D" parent="." index="14" unique_id=1868232673]
+visible = false
+z_index = 5
+position = Vector2(52, 4)
+color = Color(1, 0.22, 0.12, 0.78)
+polygon = PackedVector2Array(-8, -22, 58, -8, 58, 8, -8, 22)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="15" unique_id=527696533]
+callback_mode_process = 2
+libraries/ = SubResource("AnimationLibrary_enemy")
+
+[node name="PikemanAttackAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("pikeman_attack_audio")
+bus = &"SFX"
+
+[node name="PikemanDeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("pikeman_death_audio")
+bus = &"SFX"
+
+[node name="PikemanMovementAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("pikeman_movement_audio")
+bus = &"SFX"

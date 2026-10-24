@@ -1,0 +1,348 @@
+{
+  "id": "H01",
+  "created_at_utc": "2026-10-24T03:41:30.088719+00:00",
+  "source_revision": "574270f66bcbeed72db07778ef612ee37ea8d932",
+  "stage": "blocking correction, tested in complete X1 context; not polish",
+  "problem": "The user reports an unconvincing wrist-to-sword relationship; local hand detail alone did not fix the pose.",
+  "competing_explanations": {
+    "H1": "Incoherent wrist/palm/handle construction across the three release drawings.",
+    "H2": "Torso/hip sequencing and body weight are the principal cause.",
+    "H3": "Whole-character redraw drift produces the perceived hitch."
+  },
+  "selected_hypothesis": "H1",
+  "hypothesis": "Consistent closed-hand/handle construction and connected forearms across drawings5\u20137 will make the release read more convincingly without changing the blade path or body performance.",
+  "intended_modification": "AI edits of the three local sword-arm crops, composited through explicit arm-only masks. Source alpha may change inside masks; surrounding body and weapon pixels are protected.",
+  "predicted_improvement": "At native scale and normal speed the fist stays attached to the hilt and the wrist/forearm relationship reads coherently through release.",
+  "baseline": {
+    "file": "inputs/baseline-v08.png",
+    "sha256": "530b98887f3b9b3285f154e6715960c74d86a7da3ac52c4791071198b1c3283d",
+    "times": [
+      0,
+      0.05,
+      0.075,
+      0.1,
+      0.126,
+      0.142,
+      0.158,
+      0.184,
+      0.21,
+      0.265,
+      0.34,
+      0.425,
+      0.5075,
+      0.565,
+      0.62,
+      0.72
+    ],
+    "duration": 0.72,
+    "columns": 8
+  },
+  "changed_keys_1_based": [
+    5,
+    6,
+    7
+  ],
+  "crop_in_source_cell": [
+    196,
+    208,
+    324,
+    336
+  ],
+  "protected_variables": [
+    "Other13 cells exact",
+    "All16 key times exact",
+    "Body/feet/equipment outside masks exact",
+    "Blade/guard outside glove exact",
+    "Native gameplay source, clocks, active window, contact curves, lunge, input, damage and other actions exact"
+  ],
+  "reference": {
+    "kind": "Original manually specified wrist/palm/hilt construction; no downloaded sequence",
+    "file": "inputs/release-grip-construction.png",
+    "purpose": "Closed fingers enclose handle, guard beyond thumb/index side, continuous wrist/forearm; existing blade axes retained"
+  },
+  "actual_modifications": {
+    "keys": [
+      {
+        "key": 5,
+        "translation_native_px": [
+          0,
+          0
+        ],
+        "guard_gold_template_dice": 0.7466666666666667,
+        "registration": "Translation only maximizing fixed-guard gold overlap; one common strip scale, no per-key rescale or anatomical warp.",
+        "changed_rgba_pixels": 1094,
+        "alpha_silhouette_pixels_changed": 22,
+        "outside_mask_rgba_exact": true,
+        "protected_blade_guard_halfplane_and_pommel_exact": true
+      },
+      {
+        "key": 6,
+        "translation_native_px": [
+          -1,
+          1
+        ],
+        "guard_gold_template_dice": 0.7543859649122807,
+        "registration": "Translation only maximizing fixed-guard gold overlap; one common strip scale, no per-key rescale or anatomical warp.",
+        "changed_rgba_pixels": 1253,
+        "alpha_silhouette_pixels_changed": 1,
+        "outside_mask_rgba_exact": true,
+        "protected_blade_guard_halfplane_and_pommel_exact": true
+      },
+      {
+        "key": 7,
+        "translation_native_px": [
+          -2,
+          1
+        ],
+        "guard_gold_template_dice": 0.8403361344537815,
+        "registration": "Translation only maximizing fixed-guard gold overlap; one common strip scale, no per-key rescale or anatomical warp.",
+        "changed_rgba_pixels": 1077,
+        "alpha_silhouette_pixels_changed": 49,
+        "outside_mask_rgba_exact": true,
+        "protected_blade_guard_halfplane_and_pommel_exact": true
+      }
+    ],
+    "other_cells_exact": 13,
+    "saved_key_times_exact": true,
+    "candidate": "outputs/x1-h01-grip-continuity.png",
+    "raw_size": [
+      2172,
+      724
+    ],
+    "one_strip_scale_to_native": 0.17679558011049723,
+    "bounds": "Explicit polygons with feathered edges. Source alpha is allowed to change inside them; protected source pixels are restored exactly.",
+    "processing_seconds": 1.4708964999881573,
+    "candidate_sha256": "9162558ffc4a38ae67da020f2c7617885ff68d020e031e26a0086762c6730eb8"
+  },
+  "technical_result": "Bounded candidate exported and exercised in paired real-game runs. Does not establish artistic quality, production acceptance or a workflow winner.",
+  "observed_improvement": {
+    "objective": "Edits stay bounded; the13 untouched cells and source pixels outside masks remain exact. All drawing times and native game tracks remain exact.",
+    "agent_closeup_impression": "Closed fingers/hilt overlap appears clearer; subjective and not a whole-action quality verdict."
+  },
+  "regressions": {
+    "observed": "Glove/cuff/sleeve shading changes inside the edit masks; assess the new local seams. No outside-mask body or blade-path drift.",
+    "risk": "The correction may be too subtle at normal speed, especially drawing6 whose alpha silhouette changes by only1 pixel."
+  },
+  "remaining_problems": [
+    "Existing body stiffness/braking",
+    "v08 body/equipment drift in key7",
+    "Unapproved surrounding poses and art/contact mismatch"
+  ],
+  "human_verdict": {
+    "decision": "pending",
+    "quality_improved": null,
+    "source": null
+  },
+  "agent_assessment": {
+    "hypothesis_verdict": "inconclusive_pending_human_review",
+    "quality_improved": null,
+    "reason": "Close-up detail improvement is insufficient evidence for a convincing normal-speed action. H01 does not address body stiffness, braking or the existing key7 whole-body drift."
+  },
+  "generation_calls": [
+    {
+      "tool": "built-in image_gen",
+      "model_revision": "not exposed",
+      "seed": "not exposed",
+      "prompt": "prompts/attempt01.txt",
+      "inputs": [
+        "inputs/release-arms-edit-target-4x.png",
+        "inputs/release-grip-construction.png"
+      ],
+      "raw": "raw/attempt01.png",
+      "started_at_utc": "2026-10-24T03:43:53Z",
+      "completed_at_utc": "2026-10-24T03:44:21Z",
+      "elapsed_wall_seconds_UTC_1s_resolution": 28,
+      "human_artist_labor": false,
+      "input_sha256": [
+        "8d2d9196f0209ef32de9916c141bf3aa8e2a95aae8a125af8fab6a42d747429d",
+        "80f9cb861fbcb602715f76b4514f73c05a733bc04ec9ef38a33d323b6de8f404"
+      ],
+      "raw_sha256": "b9c86ba7bb9d41b150af06ad5d49c3744bcf36aa61ab85f20d16d22fae29d4d9"
+    }
+  ],
+  "human_artist_minutes": 0,
+  "human_review_minutes": null,
+  "agent_total_elapsed_seconds": 1948.402021,
+  "production_approved": false,
+  "gameplay_changed": false,
+  "workflow_winner": null,
+  "runtime_evidence": {
+    "runs": [
+      {
+        "run": "baseline-run",
+        "captured_frames": 401,
+        "sample_interval_median_ms": 21.0,
+        "sample_interval_max_ms": 26,
+        "input_lateness_max_ms": 6,
+        "external_events_before_command": 0,
+        "external_events_during_command": 0,
+        "outcomes": {
+          "pressure_state_changed": 3,
+          "action_accepted": 3,
+          "charging_started": 1,
+          "orb_created": 1,
+          "light_contact_resolved": 1,
+          "orb_marked": 2,
+          "action_finished": 2,
+          "cast_committed": 1,
+          "cast_launched": 1,
+          "cast_attempt_resolved": 1,
+          "cast_launch_phase_reached": 1,
+          "spell_projectile_impacted": 1,
+          "chain_terminated": 2,
+          "chain_reset": 1,
+          "dodge_started": 1,
+          "dodge_ended": 1,
+          "action_interrupted": 1
+        },
+        "player_hp_at_command_end": 87.5,
+        "enemy_hp_at_command_end": 180.0,
+        "observed_events": [
+          {
+            "name": "light_contact_resolved",
+            "t_from_first_X1_ms": 197,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          },
+          {
+            "name": "action_finished",
+            "t_from_first_X1_ms": 728,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          },
+          {
+            "name": "cast_launched",
+            "t_from_first_X1_ms": 1737,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          },
+          {
+            "name": "spell_projectile_impacted",
+            "t_from_first_X1_ms": 1996,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          },
+          {
+            "name": "action_finished",
+            "t_from_first_X1_ms": 2648,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          }
+        ],
+        "startup": "Paused only during fixture initialization; original clock after synthetic action routing.",
+        "scope": "Real game fixture from d97c7280; not current-main gameplay acceptance or hardware validation"
+      },
+      {
+        "run": "candidate-run",
+        "captured_frames": 410,
+        "sample_interval_median_ms": 21,
+        "sample_interval_max_ms": 27,
+        "input_lateness_max_ms": 6,
+        "external_events_before_command": 0,
+        "external_events_during_command": 0,
+        "outcomes": {
+          "pressure_state_changed": 3,
+          "action_accepted": 3,
+          "charging_started": 1,
+          "orb_created": 1,
+          "light_contact_resolved": 1,
+          "orb_marked": 2,
+          "action_finished": 2,
+          "cast_committed": 1,
+          "cast_launched": 1,
+          "cast_attempt_resolved": 1,
+          "cast_launch_phase_reached": 1,
+          "spell_projectile_impacted": 1,
+          "chain_terminated": 2,
+          "chain_reset": 1,
+          "dodge_started": 1,
+          "dodge_ended": 1,
+          "action_interrupted": 1
+        },
+        "player_hp_at_command_end": 87.5,
+        "enemy_hp_at_command_end": 180.0,
+        "observed_events": [
+          {
+            "name": "light_contact_resolved",
+            "t_from_first_X1_ms": 182,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          },
+          {
+            "name": "action_finished",
+            "t_from_first_X1_ms": 713,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          },
+          {
+            "name": "cast_launched",
+            "t_from_first_X1_ms": 1747,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          },
+          {
+            "name": "spell_projectile_impacted",
+            "t_from_first_X1_ms": 1947,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          },
+          {
+            "name": "action_finished",
+            "t_from_first_X1_ms": 2647,
+            "source": "observed combat_outcome, not an inferred impact drawing"
+          }
+        ],
+        "startup": "Paused only during fixture initialization; original clock after synthetic action routing.",
+        "scope": "Real game fixture from d97c7280; not current-main gameplay acceptance or hardware validation"
+      }
+    ],
+    "viewer": "../2026-10-23-v08-game-integration/review.html?experiment=H01",
+    "matched_pose_bookmark": {
+      "recorded_drawing7_overlap_ms": [
+        179,
+        188
+      ],
+      "bookmark_ms": 183,
+      "meaning": "Both sampled viewports show the same saved drawing7; this is not a contact event."
+    },
+    "source_revision_boundary": "Frozen d97c7280 game copy; main574270f6 left unchanged.",
+    "shutdown_warnings": "Both retain13 ObjectDB /9 resources in use at exit; not resolved here.",
+    "import_warning": "Candidate first editor pass attempted loading its PNG before import. Actual game subsequently loaded it.",
+    "outcome_counts_equal": true
+  },
+  "elapsed_measurement_limit": "Wall time from experiment preparation through first completed technical handoff; includes reasoning, tools and waits. Not active artist labor. Investigation before experiment creation was not separately timed.",
+  "verdict_history": [
+    {
+      "at_utc": "2026-10-24T04:01:30.132369+00:00",
+      "source": "agent evidence review",
+      "decision": "inconclusive_pending_human_review",
+      "scope": "Bounded export/runtime conformance established; normal-speed artistic improvement not accepted."
+    },
+    {
+      "at_utc": "2026-10-24T04:13:58.490740+00:00",
+      "source": "agent evidence review",
+      "decision": "inconclusive_pending_human_review",
+      "scope": "Bounded export/runtime/browser conformance established; normal-speed artistic improvement not accepted."
+    }
+  ],
+  "human_observations": [],
+  "review_interface": {
+    "updated_at_utc": "2026-10-24T05:02:44.604609+00:00",
+    "primary_mode": "character_only_source_flipbooks",
+    "versions": [
+      "Current game",
+      "v08 previous",
+      "H01 this iteration"
+    ],
+    "focus_trial_frames": [
+      5,
+      6,
+      7
+    ],
+    "main_focus_frame": 7,
+    "annotation_file": "annotations.json",
+    "annotation_binding": [
+      "version_id",
+      "sprite_sha256",
+      "from_frame",
+      "through_frame",
+      "Heat",
+      "facing",
+      "optional native-cell point"
+    ],
+    "integration_recordings": "retained separately; no new scene recording required for this UI update",
+    "user_artistic_verdict": "pending",
+    "reason": "User requested a simple three-character comparison and direct frame-specific notes; gameplay-scene captures obscured the animation review."
+  }
+}

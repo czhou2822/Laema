@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MoveStyleTuning" format=3 uid="uid://bjrwc5em632ft"]
+
+[ext_resource type="Script" uid="uid://cc0mtdcaa323o" path="res://scripts/config/move_style_tuning.gd" id="1_style"]
+[ext_resource type="Animation" uid="uid://ciifelblcvs06" path="res://config/attack_animations/fire_x1.tres" id="2_animation"]
+
+[resource]
+resource_name = "fire_x1"
+script = ExtResource("1_style")
+animation = ExtResource("2_animation")
+move_id = &"fire_x1"
+windup_duration = 0.21
+recovery_duration = 0.51
+lunge_distance = 3.0
+lunge_start_phase = 0.15
+lunge_end_phase = 0.55

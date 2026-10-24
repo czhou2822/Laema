@@ -1,0 +1,68 @@
+{
+  "source_package": "castle-creature-assets-v01/animations",
+  "creature": "cavalier",
+  "source_index_sha256": "56a4bc391a035c785d833a62b906a57b5301461dd6235c4682f1a7374d731321",
+  "source_manifest": "cavalier/manifest.json",
+  "source_manifest_sha256": "20daa1959c21ad125e7f0c097809469e20796004c0b91a3b9ae92aca9079cf3b",
+  "source_notes": "cavalier/QA.md",
+  "source_notes_sha256": "1627f868d50118b681cc6c75dbf959eea60adc05d7cd7c552274b2e12792866e",
+  "status": "generated prototype review artwork; no Godot or final art approval",
+  "cell_size": [
+    768,
+    640
+  ],
+  "columns": 4,
+  "anchor": [
+    384,
+    448
+  ],
+  "orientation": "source-orientation; Sprite2D supplies the facing mirror",
+  "sheets": [
+    {
+      "file": "Idle.png",
+      "source_sheet": "cavalier/sheets/source-orientation/group_02_block_02.png",
+      "group": 2,
+      "block": 2,
+      "frames": 4,
+      "sha256": "e06152138775b3d7b94f3e8f468d7f76a172466460143775a20ab0572080a314"
+    },
+    {
+      "file": "Walk.png",
+      "source_sheet": "cavalier/sheets/source-orientation/group_00_block_00.png",
+      "group": 0,
+      "block": 0,
+      "frames": 8,
+      "sha256": "109692caae0440140bc9dec43ba9ceb41e3379fc6cee823a9b529f245432203d"
+    },
+    {
+      "file": "Hurt.png",
+      "source_sheet": "cavalier/sheets/source-orientation/group_03_block_03.png",
+      "group": 3,
+      "block": 3,
+      "frames": 8,
+      "sha256": "6631c7151e0e752d6a04a43c9aedd47932ea37b5a45ccbb2f0bc1e3aa0888f4d"
+    },
+    {
+      "file": "Dead.png",
+      "source_sheet": "cavalier/sheets/source-orientation/group_05_block_05.png",
+      "group": 5,
+      "block": 5,
+      "frames": 8,
+      "sha256": "56eeadffe58a5b68326f437f9b7cf6c29def6a02f420b841993db14fdb084d76"
+    },
+    {
+      "file": "Attack.png",
+      "source_sheet": "cavalier/sheets/source-orientation/group_12_block_11.png",
+      "group": 12,
+      "block": 11,
+      "frames": 10,
+      "sha256": "cfefbefa8d0009ccc1487385d8b6a681d615db1b2bf389a859f1e4318036cb7f"
+    }
+  ],
+  "static_verification": {
+    "copied_sheets_byte_identical": 5,
+    "atlas_cells_equal_indexed_individual_rgba": 38,
+    "transparent_padding_cells": 2,
+    "godot_import_or_runtime": "not run"
+  }
+}

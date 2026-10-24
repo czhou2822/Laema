@@ -1,0 +1,786 @@
+{
+  "schema_version": 1,
+  "prepared_at_utc": "2026-10-24T08:14:40.463234+00:00",
+  "status": "local_preparation_only_commit_push_and_cloud_task_not_performed",
+  "task_key": "original_character_animation_pipeline_rnd_2026_10_23",
+  "department": "combat",
+  "base_commit": "98676e1e4aefcb9453040ae24bd1c30a9dcc4bfd",
+  "proposed_branch": "codex/laema-animation-cloud-2026-10-24",
+  "repository": "https://github.com/czhou2822/Laema",
+  "scope": "animation-research delta only; apply over the exact base commit; not a full repository archive",
+  "files": [
+    {
+      "path": "Research Laema Animation Pipeline/CLOUD_HANDOFF.md",
+      "status": "untracked",
+      "bytes": 7223,
+      "sha256": "cabd2fd02aef12febefe0153f8908d3e0582145a6e37f14a9f3aa36e55086aaa"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/CONTINUE_LOCAL.md",
+      "status": "modified",
+      "bytes": 12596,
+      "sha256": "94df7893abc91e6f4f26833edb4a572a837749d628f0a8e44514fa723fae8cde"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/FINDINGS.md",
+      "status": "modified",
+      "bytes": 17375,
+      "sha256": "6db5055f2e0fb45fac2b161fbac89be6d068f3ea3ecf3bafeea84b4bcbafbe0d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/PIPELINE_AUDIT.md",
+      "status": "untracked",
+      "bytes": 4804,
+      "sha256": "e7a56dd314d0d4a84fa5f6b741a9a630a19841b5346de0a92ef6e416ad46593b"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/QUALITY_WORKFLOW.md",
+      "status": "untracked",
+      "bytes": 3595,
+      "sha256": "b1b5d4588ad165805fb677815030e98a6b3661cf733bf4aa98bbf466127f19da"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/README.md",
+      "status": "modified",
+      "bytes": 5873,
+      "sha256": "206202dedce3db3edd15ef6beb62e3103d7d41ed2c62b779641b24a5c83df813"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/artifact-manifest.json",
+      "status": "modified",
+      "bytes": 1140998,
+      "sha256": "81144e80f5c447d5adf3bf38a66dadd57a4f83653a7f3ccc61a7413d4f8f0c3e"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/evidence/round-record.json",
+      "status": "modified",
+      "bytes": 5112,
+      "sha256": "760d2feae6ba46b3a4fce599563600c8e85e4b510bdb3d37de2d41567d81b8b1"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/review_server.py",
+      "status": "untracked",
+      "bytes": 8520,
+      "sha256": "8a3873d97931a020404951cbc3007f60aaf8bdde925abef000a690e0cd464bbb"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-23-v08-game-integration/character-review.js",
+      "status": "untracked",
+      "bytes": 23840,
+      "sha256": "8d2d42b842e29659859f4f04dad732c143334805abf758de65dcc312697a34a1"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-23-v08-game-integration/overlay-review.js",
+      "status": "untracked",
+      "bytes": 6984,
+      "sha256": "ce495e204cb8c40403b92bc8202156b47d236da6fb8f6d759974919724cdadf2"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-23-v08-game-integration/replay.js",
+      "status": "modified",
+      "bytes": 6903,
+      "sha256": "559adb6429af5ca43886780f912e58968917d09d00592436956ccdb0fdada6a1"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-23-v08-game-integration/review.html",
+      "status": "modified",
+      "bytes": 6133,
+      "sha256": "3f6feba08b4712147efce997b5e2a8022733f386b86beaadf554721860d8330c"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/README.md",
+      "status": "untracked",
+      "bytes": 8987,
+      "sha256": "f62b20d4f3c0d62f074fbf63bf68d6a06948dee6dc6fcda774174a4e729b5e70"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/annotations.backup.json",
+      "status": "untracked",
+      "bytes": 6915,
+      "sha256": "5365c815a8b371cf5e474eb2549f42682dae6014d3af2a4a75c984b2b8e120e6"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/annotations.json",
+      "status": "untracked",
+      "bytes": 7786,
+      "sha256": "af30b73ccb37b73a0dab84010c66b7da67c6debae93fe6c162f39e31883e6c00"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/artifact-manifest.json",
+      "status": "untracked",
+      "bytes": 10491,
+      "sha256": "a8c0c30994a09c623cacfd0751c5d90e1cf04e96ff8c4c620d8bceefd75cdf23"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/build_character_data.py",
+      "status": "untracked",
+      "bytes": 3685,
+      "sha256": "ed20466ce9ef3642177126f196a2b35c23cea51fe7c6be74afcfea2f4ce77857"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/build_review.py",
+      "status": "untracked",
+      "bytes": 6955,
+      "sha256": "ba51ebbd52c0f7375780ae9f9c8b81467ce3ff191d7889f7f8b77ce3a2c2c2ba"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/effort.csv",
+      "status": "untracked",
+      "bytes": 918,
+      "sha256": "f15024901e887ea93608f1f74b7ccbe4822971585fd4bc97616784b275ea2ae7"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/annotation-store-verification.json",
+      "status": "untracked",
+      "bytes": 673,
+      "sha256": "3aa0677d3943ef9594baeb49b8c00cdca191418148cf3872e40b3758fbf7cbe8"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/annotation-test-363c93f9.backup.json",
+      "status": "untracked",
+      "bytes": 3519,
+      "sha256": "ee41f10ddda8409ed88d91e4044d45c997edfc1c298f58782e0afc986cf8db46"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/annotation-test-363c93f9.json",
+      "status": "untracked",
+      "bytes": 4379,
+      "sha256": "8fe87bc21ce3aab0fc4b402e64f0081f175c822274e15d208d0547046238ceed"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/annotation-test-9c2f0fbf.backup.json",
+      "status": "untracked",
+      "bytes": 3631,
+      "sha256": "1eec4e1f34cf3b683ba69732e5c593939ff6782b1b87618006732ff3437e4516"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/annotation-test-9c2f0fbf.json",
+      "status": "untracked",
+      "bytes": 4520,
+      "sha256": "165ed6ad53e698bad520d7cf4ed4ec0f68835866ababc6e5f0ea0640971bfefa"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/arm-comparison-4x.png",
+      "status": "untracked",
+      "bytes": 111780,
+      "sha256": "a650b31c5c1095c341233f467f77ccffa0a37a8097bc1ef608403aa10e9200d6"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/baseline-run/command.json",
+      "status": "untracked",
+      "bytes": 2519,
+      "sha256": "2306bff2ab04a8596193214bd7854616f3e2d42aad40d7424b48e7543bc7abe7"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/baseline-run/events.jsonl",
+      "status": "untracked",
+      "bytes": 905267,
+      "sha256": "ea375bef94cd58c9cb472319fc2f237f16ae697192a9918a8ac4de96a027a578"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/baseline-run/state.json",
+      "status": "untracked",
+      "bytes": 2452,
+      "sha256": "723985b76a2155639ef7bb9c2e32ff68bb23d51c437f3e95cb18156ed04642bd"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/browser-review.png",
+      "status": "untracked",
+      "bytes": 319692,
+      "sha256": "e59acb4a7cb747ebda49b5250aea64e4438773c2982d4191a69e0dfe8937756e"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/browser-verification.json",
+      "status": "untracked",
+      "bytes": 714,
+      "sha256": "e7ac4cfc95e87d96d611e98c35728ffb8a5c5b3839f0927586bf973cfc4721a2"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/candidate-run/command.json",
+      "status": "untracked",
+      "bytes": 2519,
+      "sha256": "2306bff2ab04a8596193214bd7854616f3e2d42aad40d7424b48e7543bc7abe7"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/candidate-run/events.jsonl",
+      "status": "untracked",
+      "bytes": 923284,
+      "sha256": "47a5587240c03ce050f11f617cf2ba20935ae7d1abba232a2f1839aff27a8c39"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/candidate-run/state.json",
+      "status": "untracked",
+      "bytes": 2453,
+      "sha256": "3a4a2d811609194e4dfc4b32ee62b781db1a2ce0d7e1e716f8e4f5e5116ffaea"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/character-review-verification.json",
+      "status": "untracked",
+      "bytes": 862,
+      "sha256": "9a0973c49eaa98fc6d656a4a0927a59ed5b028b17c08d0786840adafa503e01c"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/character-review.png",
+      "status": "untracked",
+      "bytes": 93838,
+      "sha256": "fa3cf83f8c059b2e4e09609327068acd287717fc831bf976b90f0e0c5c26890d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/frozen-fixture.json",
+      "status": "untracked",
+      "bytes": 136746,
+      "sha256": "c43534c412334f27360f56f685eb470415c016aea26d2b81cdf186a8bd37599d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/evidence/runtime-preservation.json",
+      "status": "untracked",
+      "bytes": 503,
+      "sha256": "6ac323fff0cf663d14fd56782356af74917335de41ffbdeaf6dc65a140994480"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/experiment.json",
+      "status": "untracked",
+      "bytes": 13526,
+      "sha256": "37efdfb2ed391ec113ca0cd514614fe13bc0d9e72f2d55e48b89540f44b247a7"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/finalize.py",
+      "status": "untracked",
+      "bytes": 6999,
+      "sha256": "687e8656629fbeb745fcecde19965ca933c2b63036d37f31b5d06e0115c7095e"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/arm-key05-native.png",
+      "status": "untracked",
+      "bytes": 21078,
+      "sha256": "fccf174255af6fd4a974c8c34edc5de411b52aebf1f63f7c6d25470ecbbd5010"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/arm-key06-native.png",
+      "status": "untracked",
+      "bytes": 24236,
+      "sha256": "ff8b180f4ad75c01539731134e3cd22afc9928c8b9df2b90af56d1cd9585e01f"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/arm-key07-native.png",
+      "status": "untracked",
+      "bytes": 22836,
+      "sha256": "984e0d17372ab5a22f96b302ac2bc6aecff10e01dfb81eb6a95628c289ffec35"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/baseline-fire_x1.tres",
+      "status": "untracked",
+      "bytes": 6066,
+      "sha256": "98ae04f28f1e6c48913e22504207a5661fd92e7988e00fdd77c7e3e9eb01fe87"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/baseline-v08.png",
+      "status": "untracked",
+      "bytes": 566362,
+      "sha256": "530b98887f3b9b3285f154e6715960c74d86a7da3ac52c4791071198b1c3283d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/construction.json",
+      "status": "untracked",
+      "bytes": 3364,
+      "sha256": "acb02a96ebbebbf0669356c1ba4bda2a02585f1134f7b13a28fd5a54147f779c"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/current-game-x1.png",
+      "status": "untracked",
+      "bytes": 355825,
+      "sha256": "7bf37e3393201daeae2ad6fc58a0f87f16a79ea37b971983c765a40a4d2fef9d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/key05.png",
+      "status": "untracked",
+      "bytes": 41926,
+      "sha256": "76fd5534fef86d4462be9822c6cd90aec472119c0c76a02a3effbcc85c161bba"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/key06.png",
+      "status": "untracked",
+      "bytes": 43704,
+      "sha256": "4e556400afb1d8d87f9e2304e51ef089baad51f5e47393ce88d917426a6642e7"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/key07.png",
+      "status": "untracked",
+      "bytes": 44944,
+      "sha256": "97c0d925bd8398a89ecc81b6ac677c9571f0e87404d545025c21e3b187f06246"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/release-arms-edit-target-4x.png",
+      "status": "untracked",
+      "bytes": 98531,
+      "sha256": "8d2d9196f0209ef32de9916c141bf3aa8e2a95aae8a125af8fab6a42d747429d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/release-grip-construction.png",
+      "status": "untracked",
+      "bytes": 106376,
+      "sha256": "80f9cb861fbcb602715f76b4514f73c05a733bc04ec9ef38a33d323b6de8f404"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/make_guide.py",
+      "status": "untracked",
+      "bytes": 4869,
+      "sha256": "3949f474efeaec79eebcb19b41dbca5ca03bc17ddb5f41c0d5d3cd356ef16da3"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/baseline-near-grip-time.jpg",
+      "status": "untracked",
+      "bytes": 515821,
+      "sha256": "da82ca7f79b44c098b3fb5dfd7ddd07c7a599be839d577f83a8f20a2e78d79b7"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/candidate-grip-in-game.jpg",
+      "status": "untracked",
+      "bytes": 515754,
+      "sha256": "1e10f5f28b151d9976be1e7ddc4e63dbc78ce764be2ac00733b2c76c9780ddb7"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/character-data.json",
+      "status": "untracked",
+      "bytes": 6490,
+      "sha256": "c6e59d2c98ee52f67dab63d2e56b388f4835cdfcaaae2c601bc202e3fd35cc5a"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/generated-crops-native.png",
+      "status": "untracked",
+      "bytes": 67318,
+      "sha256": "827798f8a903133c57cef65845514ebd7fbfb9b412929de255e4357333991eb9"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/key05-candidate.png",
+      "status": "untracked",
+      "bytes": 41843,
+      "sha256": "a0f118eb6609cc1f494c664ffd67b950f1c68e50eae3288c22ea745deaa72767"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/key05-edit-mask.png",
+      "status": "untracked",
+      "bytes": 911,
+      "sha256": "b45174f892450454232ad29730121cd8db4b6ab8128b8131f09b437f75457f99"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/key05-registered-proposal.png",
+      "status": "untracked",
+      "bytes": 24002,
+      "sha256": "0de892a3caf317a1b1ee73e2b61647bf4fffe45320e821619f68e912431746a4"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/key06-candidate.png",
+      "status": "untracked",
+      "bytes": 43651,
+      "sha256": "8a9217c64e78238634585ca5353facf7bc98460ec87d2e63c14a254c93e0c8df"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/key06-edit-mask.png",
+      "status": "untracked",
+      "bytes": 934,
+      "sha256": "6195ee0ef8b668a7edb7db76e102894c109a7222ec552d63548caa0a71024393"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/key06-registered-proposal.png",
+      "status": "untracked",
+      "bytes": 27712,
+      "sha256": "725c9cda564e80073b39015c06d758cb9af9cef8f5a3e31f3766501598fdccca"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/key07-candidate.png",
+      "status": "untracked",
+      "bytes": 44870,
+      "sha256": "f35eeef196741aced2c11737d464930b9ba202d3da525e829e4f10414a235b6d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/key07-edit-mask.png",
+      "status": "untracked",
+      "bytes": 887,
+      "sha256": "8a96b2d0ee9ecd7d196584f053088b0a7fd9f3654baf1d589c37a8a4aa5c44cf"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/key07-registered-proposal.png",
+      "status": "untracked",
+      "bytes": 25933,
+      "sha256": "812bfea5bacb6d21aeec6dec6e92eed8c7b5d9c8e78a40f9271da71127e736c8"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/replay-data.json",
+      "status": "untracked",
+      "bytes": 196088,
+      "sha256": "6fa2948c129e4d8c440b35de08a3599d23f27b3aa9cf254604396287dba1691a"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/x1-h01-grip-continuity.png",
+      "status": "untracked",
+      "bytes": 566106,
+      "sha256": "9162558ffc4a38ae67da020f2c7617885ff68d020e031e26a0086762c6730eb8"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/prepare.py",
+      "status": "untracked",
+      "bytes": 4032,
+      "sha256": "93b0d941b7fff170ef5969d9ffb242729ec0df90220259e74f10f9f9f7640990"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/prepare_runtime.py",
+      "status": "untracked",
+      "bytes": 6131,
+      "sha256": "8b2f69a5bbc8ef812dd4b969448ca871ea8b488bffdd9875a1ee5192fa8cd6ec"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/process_candidate.py",
+      "status": "untracked",
+      "bytes": 5190,
+      "sha256": "8048890b0a787218e01bf6acfe1957979c4571f3e586560042773decb09d9211"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/prompts/attempt01.txt",
+      "status": "untracked",
+      "bytes": 2370,
+      "sha256": "41df68dd29597c1137a4f1a28eb82bec2aae1492713553296377fe3046bd9877"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/raw/attempt01.png",
+      "status": "untracked",
+      "bytes": 1248867,
+      "sha256": "b9c86ba7bb9d41b150af06ad5d49c3744bcf36aa61ab85f20d16d22fae29d4d9"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/update_character_review_records.py",
+      "status": "untracked",
+      "bytes": 10209,
+      "sha256": "03cbc9795875b9beb745e7fbdf19825eb4b5abb54cbce90109a27ae9f88bcd7e"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/verify_annotation_store.py",
+      "status": "untracked",
+      "bytes": 3173,
+      "sha256": "c0e7a660fb645568b8d5ecbf28bccfc55937435123e516710477f55f4ac4aa39"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/README.md",
+      "status": "untracked",
+      "bytes": 6615,
+      "sha256": "89b158cf7f8f8e4b643f269b5b8379f5c9c85208e7adc193ce1cd0dbabfb3708"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/annotations.json",
+      "status": "untracked",
+      "bytes": 101,
+      "sha256": "10a0c088142dd52d84014419f77b631e930fc5869a678ff5b9399115c38985c7"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/artifact-manifest.json",
+      "status": "untracked",
+      "bytes": 6819,
+      "sha256": "5be7002859ec9616f1024265a72b870b565fc1c1436777490a3a11177c80b340"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/build_character_data.py",
+      "status": "untracked",
+      "bytes": 3006,
+      "sha256": "9fc89fb090fe29a118926a8f0e1c23508dcfd07d3a0c031eb51f7af68cdf98e8"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/effort.csv",
+      "status": "untracked",
+      "bytes": 847,
+      "sha256": "da0cd48070d8e3995e3b9252ce70e7b09549e14f8d845715bba7668405142061"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/evidence/annotation-verification.json",
+      "status": "untracked",
+      "bytes": 401,
+      "sha256": "98d884ff55ff35241138a36ef40e031f42240f3a6fc1ed8d7ce31e4a0cd7947d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/evidence/browser-review-overlay.png",
+      "status": "untracked",
+      "bytes": 116133,
+      "sha256": "3c42b1e4b48ca962eefd84c2b6d340ef3c1e163998c088ed0e58f1c81c953ba4"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/evidence/browser-verification.json",
+      "status": "untracked",
+      "bytes": 592,
+      "sha256": "da66766d475cb72bd476c06756a2f1cd72dd32621817ae4f950b4848bfc6b82c"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/evidence/overlay-note-test-a5dd0a22.json",
+      "status": "untracked",
+      "bytes": 1402,
+      "sha256": "fb387380e8fea3360f65a39d2daa7698e0f8974e51210b77e91c0a246ed6a571"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/evidence/overlay-pixel-verification.json",
+      "status": "untracked",
+      "bytes": 374,
+      "sha256": "f334e81e8372486028c131ec2c3e0c43b30f2340672ae2121f90761b8e74c990"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/evidence/overlay-unchanged-opacity0.png",
+      "status": "untracked",
+      "bytes": 18862,
+      "sha256": "37d0dab30dff228bb1f30fa3b6e2c795ac034d98af59bc45fff145ef9ef871a6"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/evidence/overlay-unchanged-opacity50.png",
+      "status": "untracked",
+      "bytes": 18862,
+      "sha256": "37d0dab30dff228bb1f30fa3b6e2c795ac034d98af59bc45fff145ef9ef871a6"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/evidence/preparation-comparison.png",
+      "status": "untracked",
+      "bytes": 140261,
+      "sha256": "3ee20866b7c76428ff0a957d2c1ffcbddff174964a72cbd1a7a74a8be3653acf"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/evidence/rejected-attempt01.json",
+      "status": "untracked",
+      "bytes": 589,
+      "sha256": "fa9e548eefe82eec05ccce9428fb85c80593430ef6575a687bd6d9a980093402"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/experiment.json",
+      "status": "untracked",
+      "bytes": 8003,
+      "sha256": "c80612426c4c94170d9088d5fb0030794335320b05728db43072e49e40f97d4e"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/finalize.py",
+      "status": "untracked",
+      "bytes": 7375,
+      "sha256": "a7193ca8538f77bbdc9df270300ab727b966e84b9052574480ad6f7bad754c66"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/baseline-h01.png",
+      "status": "untracked",
+      "bytes": 566106,
+      "sha256": "9162558ffc4a38ae67da020f2c7617885ff68d020e031e26a0086762c6730eb8"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/body-targets.json",
+      "status": "untracked",
+      "bytes": 1498,
+      "sha256": "e02afe5c5d452188b686d618784252cbe8a0d21cbf63e032ffb934475a02433d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/corrected-body-targets.json",
+      "status": "untracked",
+      "bytes": 2025,
+      "sha256": "c7be64c713352e750afec230cb20b7bcabc44bc1b79f963a78d495f3de75c58c"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/corrected-preparation-guide.png",
+      "status": "untracked",
+      "bytes": 57053,
+      "sha256": "ea8a89ec616f823e50574f3c2d152977e8ca1a3fa54969b872bd1fdb9540c9bf"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/current-game-x1.png",
+      "status": "untracked",
+      "bytes": 355825,
+      "sha256": "7bf37e3393201daeae2ad6fc58a0f87f16a79ea37b971983c765a40a4d2fef9d"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/feedback-snapshot.json",
+      "status": "untracked",
+      "bytes": 3440,
+      "sha256": "16f5c7b92b721d459159eb7ad41ce51837e3ec667bc37c466397db4a8d52e5eb"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/original-preparation-guide.png",
+      "status": "untracked",
+      "bytes": 43741,
+      "sha256": "22aabf85e542fd2c223f308d30b9061c1b69bb2268672b551de67ba57879a3ce"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/preparation-cropped-target.png",
+      "status": "untracked",
+      "bytes": 58991,
+      "sha256": "2ae57aa9b21cc4149f909a9b0b1ecdeb317dffaf6b3ee84f8bb4ea1bf30c4024"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/preparation-edit-target.png",
+      "status": "untracked",
+      "bytes": 45891,
+      "sha256": "2e40967c85ad1ba89b68ccadecfc8cf579d2a947d80fe635b21d5b997011a35e"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/character-data.json",
+      "status": "untracked",
+      "bytes": 6547,
+      "sha256": "529410b4a82559a024216c0e9933696dff5b41f34e35818dab1f2f47b037995f"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/frame02-before-sole-cleanup.png",
+      "status": "untracked",
+      "bytes": 44251,
+      "sha256": "ae678c1e91b609e39df7cef9997e2c768a930c5f11ac957b4453ff1c10e6f5bb"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/frame02-candidate.png",
+      "status": "untracked",
+      "bytes": 43955,
+      "sha256": "21d56d99456685d67aac0f7f763b0277a479b004e2f0c618dc0fae402fde788e"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/frame03-before-sole-cleanup.png",
+      "status": "untracked",
+      "bytes": 44988,
+      "sha256": "dbdf6dce8d857df901aaf52a99bc71e38e788c22433788dbd90f9dfcb9594067"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/frame03-candidate.png",
+      "status": "untracked",
+      "bytes": 44704,
+      "sha256": "8da8acb4dab0d43cf98ae49bf52da2f06db44e5aaeec7993c8fd90dd5eac79d2"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/frame04-before-sole-cleanup.png",
+      "status": "untracked",
+      "bytes": 44046,
+      "sha256": "b98e17abb7cc30c2984bb429d0559676b7ca419c821296cc8dbf56ae9cedf9a8"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/frame04-candidate.png",
+      "status": "untracked",
+      "bytes": 43746,
+      "sha256": "edc8859035d97adf9f3c06da88001ec23ba004341772958e7fc6da43f2658f79"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/generated-native-crops.png",
+      "status": "untracked",
+      "bytes": 121168,
+      "sha256": "2a889050ff783b08cf7bfe7aafdda2c9a8164d70774f83957e9fbaf70d822c36"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/x1-h02-before-registration.png",
+      "status": "untracked",
+      "bytes": 649054,
+      "sha256": "ec83781391c58874bc5ba8500441546a85d2e2d41de7194923dcd9a043136135"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/x1-h02-preparation.png",
+      "status": "untracked",
+      "bytes": 645100,
+      "sha256": "d02cdb9571c6c18d21d559d2b5b969e68290c5b356de5226613de1dc4f8287b2"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/prepare.py",
+      "status": "untracked",
+      "bytes": 9110,
+      "sha256": "b63dd96849c23cfc9006764b7e446754c93ef58ca6a081dad75dd828dcd53ca1"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/prepare_retry.py",
+      "status": "untracked",
+      "bytes": 5876,
+      "sha256": "9fa79d8b942aa432493e2a9fa3a6d7b350a082b73a2c7eb6c7240f3f17be32ba"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/process_candidate.py",
+      "status": "untracked",
+      "bytes": 5751,
+      "sha256": "6dcef4c8d19949984d669761f77e2fd894db27261c46e0359055c87dc9afbaf9"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/prompts/attempt01.txt",
+      "status": "untracked",
+      "bytes": 3108,
+      "sha256": "bb3888b56112178993025cad3361398866421dade61e8db2cf03b11d1c95eea1"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/prompts/attempt02.txt",
+      "status": "untracked",
+      "bytes": 2581,
+      "sha256": "ecf295a18e1e8e1a62466ed05cb66524f1230613939345d6860d3a491749aefb"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/raw/attempt01.png",
+      "status": "untracked",
+      "bytes": 658719,
+      "sha256": "4d16287d1e80ac47e0e26c3249d463c54b7def739e14fbcfd35e3b26e8cedb43"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/raw/attempt02.png",
+      "status": "untracked",
+      "bytes": 990179,
+      "sha256": "ff4cee8acf4572c841160870e38abd5787c9cf5eddca3f1e3f04072934c58de0"
+    },
+    {
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/verify_review.py",
+      "status": "untracked",
+      "bytes": 2541,
+      "sha256": "b3b7a58f2d2239c6962376457e270cc4785789df3a38b312808ce4d0337abaff"
+    }
+  ],
+  "included_file_count": 118,
+  "included_bytes": 13364214,
+  "excluded_local_artifacts": {
+    "Local engine logs; retained locally with summarized evidence in reports": {
+      "file_count": 4,
+      "bytes": 85956
+    },
+    "H01 frozen duplicate game fixture; preserved locally, not transferred": {
+      "file_count": 847,
+      "bytes": 133901826
+    },
+    "Full-resolution H01 scene capture frames; preserved locally, not transferred": {
+      "file_count": 811,
+      "bytes": 418779340
+    }
+  },
+  "viewer_sprite_checks": [
+    {
+      "experiment": "H01",
+      "version": "game",
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/current-game-x1.png",
+      "sha256_matches": true
+    },
+    {
+      "experiment": "H01",
+      "version": "v08",
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/inputs/baseline-v08.png",
+      "sha256_matches": true
+    },
+    {
+      "experiment": "H01",
+      "version": "h01",
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h01/outputs/x1-h01-grip-continuity.png",
+      "sha256_matches": true
+    },
+    {
+      "experiment": "H02",
+      "version": "game",
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/current-game-x1.png",
+      "sha256_matches": true
+    },
+    {
+      "experiment": "H02",
+      "version": "h01",
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/inputs/baseline-h01.png",
+      "sha256_matches": true
+    },
+    {
+      "experiment": "H02",
+      "version": "h02",
+      "path": "Research Laema Animation Pipeline/trials/2026-10-24-x1-quality-h02/outputs/x1-h02-preparation.png",
+      "sha256_matches": true
+    }
+  ],
+  "archive": {
+    "path": "animation-research-delta.zip",
+    "bytes": 9924760,
+    "sha256": "ec52beffa6b16b18564b8f6d274ec9517f0b54fd33f0bfb2d72a618d7290dd66"
+  },
+  "static_checks_only": true,
+  "cloud_preview_verified": false,
+  "cloud_image_editing_verified": false,
+  "persistent_online_annotation_storage_verified": false,
+  "human_quality_verdict": "pending",
+  "unrelated_local_gameplay_edits_included": false
+}

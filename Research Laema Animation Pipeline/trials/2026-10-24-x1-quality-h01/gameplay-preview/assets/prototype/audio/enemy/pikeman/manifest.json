@@ -1,0 +1,61 @@
+{
+  "source_manifest": "docs/art/references/heroes3-original-audio/pikeman/manifest.json",
+  "rights": "Original Heroes III copyrighted game audio; extracted from user installation. Not CC0 and no redistribution license granted by extraction.",
+  "decoder": "libsndfile-1.2.2",
+  "conversion": "IMA ADPCM to PCM16; preserve RIFF fact sample count, omit codec block padding; no resampling, pitch or gain change",
+  "reserved_not_imported": "PIKEDFND.wav",
+  "files": [
+    {
+      "name": "PIKEATTK.wav",
+      "role": "attack",
+      "original_sha256": "c77ecd49f65625c57c4e8f2587aa6680b76e221908133f0c8997a4e9d8fcc4fe",
+      "pcm_sha256": "40baa0d180b1d680f4ea5558f1718c328a08e59aadb31be0a1e43d8eaaa287b0",
+      "codec": "PCM signed 16-bit little-endian",
+      "codec_tag": 1,
+      "channels": 1,
+      "sample_rate": 22050,
+      "frames": 22975,
+      "decoder_frames_including_block_padding": 23391,
+      "duration_seconds": 1.0419501133786848
+    },
+    {
+      "name": "PIKEKILL.wav",
+      "role": "death",
+      "original_sha256": "e02d237ce765d0cc2c6810d51ea82ceee64362bdbc99c2c71a22dd6e3ba658ed",
+      "pcm_sha256": "cd030615ac11252ac11fa7cfcc0a2ab83f2c33611622c48f9d8681ef9485f455",
+      "codec": "PCM signed 16-bit little-endian",
+      "codec_tag": 1,
+      "channels": 1,
+      "sample_rate": 22050,
+      "frames": 20416,
+      "decoder_frames_including_block_padding": 21357,
+      "duration_seconds": 0.9258956916099773
+    },
+    {
+      "name": "PIKEMOVE.wav",
+      "role": "movement",
+      "original_sha256": "8650727f1ba2611b11232d20626f035cabb2147e3e394c457032d970b8ec3b98",
+      "pcm_sha256": "51bbc8d54631d769e9ccece5e252bbc708d01b3872c4b36ea1cf19b57d7525a1",
+      "codec": "PCM signed 16-bit little-endian",
+      "codec_tag": 1,
+      "channels": 1,
+      "sample_rate": 22050,
+      "frames": 21087,
+      "decoder_frames_including_block_padding": 21357,
+      "duration_seconds": 0.9563265306122449
+    },
+    {
+      "name": "PIKEWNCE.wav",
+      "role": "hurt/wince",
+      "original_sha256": "ae3f45115e153282d72aab7ca63f1d71d64d2fdaa36f6f5edab1ee4cf1bdaa49",
+      "pcm_sha256": "d8cc09feeaa10bd06025dc51be602ec7589a3ec8cff3b36380f3ac088c964b80",
+      "codec": "PCM signed 16-bit little-endian",
+      "codec_tag": 1,
+      "channels": 1,
+      "sample_rate": 22050,
+      "frames": 11775,
+      "decoder_frames_including_block_padding": 12204,
+      "duration_seconds": 0.5340136054421769
+    }
+  ]
+}
