@@ -1,5 +1,47 @@
 # Implementation Status
 
+## Fingerprint and documentation housekeeping — October 28
+
+Status: implemented within the approved six-file scope with the user's
+task-specific hands-on validation waiver. Source base is main `e5848b42`;
+review branch is `codex/laema-housekeeping-fingerprints`.
+
+- `scripts/config/character_settings_store.gd`: full fresh loading remains the
+  default for configuration application and saves. Fingerprinting uses the same
+  root-assignment discovery and hash loops without explicitly reloading the
+  external reaction and 20 style leaves. No persistent cache or assigned-path
+  constants are added.
+- `AGENTS.md`, `README.md`, `scripts/README.md`: correct historical checkpoint
+  and validation statements, current controls and native Settings ownership.
+  Workflow rules, authority order and validation requirements are unchanged.
+- `docs/TECH_ARCHITECTURE.md` and this status: synchronize ownership, merged
+  housekeeping receipts and evidence limits. No game data, assets or tests change.
+
+Static source comparison against `e5848b42` projects the new default-true path
+back to the previous source without differences. `_settings`, configuration
+application and save bodies are unchanged; only `load_resources` and
+`source_hash` change. Hash traversal retains the same ordered paths. A read-only
+declared-path snapshot follows two actor scenes, two assigned Settings, one
+shared reaction and 20 styles (25 files), with all bytes available for hashing.
+This is a comparison of source and declared paths, not an executed GDScript
+`source_hash` result or a ResourceLoader/UID-resolution check. The existing Store
+JSON/native-animation watch inputs and all fingerprint consumers are unchanged.
+`git diff --check` passed. The AGENTS workflow/authority suffix and README
+working cadence also compare unchanged against the base.
+
+Source tracing retains full validation and error returns on actual load/save,
+and the consumers keep their valid-state/draft preservation and retry paths.
+Runtime assigned-path swaps, malformed-file rejection/repair, live Resource
+identity, dirty-draft refresh and save-race behavior remain untested on this
+revision. No performance timings were measured. No Godot/editor, build, runtime
+or automated-test run occurred; no fixture or UID was created or modified. The
+declined independent-style runtime-Save regression remains untested. The waiver
+permits continuation and is not successful human validation or submission clearance.
+
+The three preceding housekeeping commits `dba87e7a`, `2c202a45` and `e5848b42`
+are merged and published on main through `e5848b42`. Earlier engine/check results
+retain their own revision-specific scope; none validates this increment.
+
 ## Creature roster housekeeping — October 28
 
 Status: implemented within the approved four-file scope, with the user's

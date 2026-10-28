@@ -23,14 +23,16 @@ static func _settings(scene_path: String) -> Resource:
 	return null
 
 
-static func load_resources() -> Dictionary:
+static func load_resources(refresh_external_leaves: bool = true) -> Dictionary:
 	var player := _settings(PLAYER_SCENE) as PlayerCombatSettings
 	var enemy := _settings(ENEMY_SCENE) as EnemyCombatSettings
 	if player == null or enemy == null or player.hit_reaction == null or enemy.hit_reaction == null:
 		return {"ok": false, "error": "Player and CombatEnemy require Settings and Hit Reaction Resources on their roots."}
 	if player.hit_reaction.resource_path != enemy.hit_reaction.resource_path:
 		return {"ok": false, "error": "Player and CombatEnemy must reference the same shared Hit Reaction Resource."}
-	var reaction := ResourceLoader.load(player.hit_reaction.resource_path, "", ResourceLoader.CACHE_MODE_IGNORE) as CharacterReactionSettings
+	var reaction: CharacterReactionSettings = player.hit_reaction
+	if refresh_external_leaves:
+		reaction = ResourceLoader.load(player.hit_reaction.resource_path, "", ResourceLoader.CACHE_MODE_IGNORE) as CharacterReactionSettings
 	if reaction == null:
 		return {"ok": false, "error": "Cannot load the character Hit Reaction Resource."}
 	player.hit_reaction = reaction
@@ -44,9 +46,10 @@ static func load_resources() -> Dictionary:
 		if ids.has(style.move_id) or not player.moves.has(String(style.move_id)):
 			return {"ok": false, "error": "Player Settings require unique, known attack-style IDs."}
 		ids[style.move_id] = true
-		player.attack_styles[index] = ResourceLoader.load(style.resource_path, "", ResourceLoader.CACHE_MODE_IGNORE) as MoveStyleTuning
-		if player.attack_styles[index] == null:
-			return {"ok": false, "error": "Cannot load Player attack style: %s" % style.resource_path}
+		if refresh_external_leaves:
+			player.attack_styles[index] = ResourceLoader.load(style.resource_path, "", ResourceLoader.CACHE_MODE_IGNORE) as MoveStyleTuning
+			if player.attack_styles[index] == null:
+				return {"ok": false, "error": "Cannot load Player attack style: %s" % style.resource_path}
 	if player.attack_styles.size() != 20:
 		return {"ok": false, "error": "Player Settings require all twenty school attack styles."}
 	return {"ok": true, "error": "", "player": player, "enemy": enemy, "reaction": reaction}
@@ -94,7 +97,8 @@ static func save_config(config: Dictionary) -> Dictionary:
 
 static func source_hash() -> String:
 	var hashes := FileAccess.get_sha256(PLAYER_SCENE) + FileAccess.get_sha256(ENEMY_SCENE)
-	var resources := load_resources()
+	# Fingerprint assigned paths and bytes; load/save still refresh and validate leaves.
+	var resources := load_resources(false)
 	if not resources["ok"]:
 		return hashes + str(resources["error"])
 	for key in ["player", "enemy", "reaction"]:

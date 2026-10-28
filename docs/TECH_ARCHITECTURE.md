@@ -5,6 +5,35 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
+## Fingerprint and documentation housekeeping — October 28
+
+The approved six-file increment builds on main `e5848b42` on
+`codex/laema-housekeeping-fingerprints`. CharacterSettingsStore still discovers
+Settings from the reusable actor roots and follows their assigned reaction and
+style Resources. Its existing loader defaults to refreshing external leaves;
+configuration application and saves retain that full fresh path and its errors.
+Only source fingerprinting opts out of the extra reaction/style reloads, because
+it needs their paths and raw file hashes rather than refreshed values.
+
+Root scene/Settings discovery, structural checks and hash traversal remain.
+This removes 21 explicit leaf reloads per normal fingerprint (one reaction and
+20 styles); it does not eliminate initial dependency loading or root loading.
+No persistent cache, hardcoded assigned leaf paths or Resource-identity change
+is introduced. The Store's existing JSON/native-animation hash inputs and
+save-time conflict checks are unchanged.
+
+Fingerprints are change tokens, not validity results. The unchanged editor
+consumers still load through full validation before accepting a changed source.
+Invalid sources retain their error reporting and do not replace valid Inspector
+state or an edited Portal draft. Poll cadence, retry and merge/save ownership
+remain. Static source/path/hash comparison does not establish runtime cache/UID,
+malformed-file repair or timing results; the task-specific hands-on validation
+waiver remains a waiver. Implementation Status records the evidence limits.
+
+AGENTS and the root/script guides now describe the historical checkpoint,
+revision-scoped evidence, current controls and character-owned configuration.
+Their workflow, authority and validation rules are retained.
+
 ## Creature roster ownership housekeeping — October 28
 
 The approved four-file increment builds on main `2c202a45` on
@@ -1236,8 +1265,10 @@ their effects; removing them is a separate cleanup scope.
 
 Both Portals and Local/Remote Inspector edit the same effective sources. The
 Store merges changed leaves against fresh files, preserves independent edits and
-rejects same-field conflicts. Hashes cover character scenes, Settings, styles,
-reaction, native Animations and preferences. Startup/reload are read-only.
+rejects same-field conflicts. Hashes cover character scenes, assigned Settings,
+styles, reaction, the existing native Animation watch list and preferences.
+Fingerprinting follows the same assignments without explicitly reloading the
+external leaves; configuration load/save still refreshes them. Startup/reload are read-only.
 Explicit save writes preferences, character/style Resources, changed Enemy
 active-start size keys and Inspector mirror. During a coordinated save, external
 styles are written by CharacterSettingsStore only; the mirror retains external
@@ -1677,12 +1708,13 @@ selects no new implementation or verification scope.
 
 ## History and handoff
 
-The current housekeeping handoff is the approved four-file creature-roster
-increment based on main `2c202a45`, on
-`codex/laema-housekeeping-creature-catalog`, described above and in
-Implementation Status. Its hands-on validation requirement is explicitly
-waived for this task. The preceding direct-wiring/Save increments `dba87e7a`
-and `2c202a45` were fast-forwarded and pushed to main at `2c202a45`.
+The current housekeeping handoff is the approved six-file documentation and
+fingerprint increment based on main `e5848b42`, on
+`codex/laema-housekeeping-fingerprints`, described above and in Implementation
+Status. Its hands-on validation requirement is explicitly waived for this task.
+The preceding direct-wiring/Save increments `dba87e7a` and `2c202a45`, followed
+by roster ownership `e5848b42`, were fast-forwarded and pushed to main through
+`e5848b42`.
 The following gameplay candidate receipts retain their own evidence limits;
 this waiver does not establish gameplay acceptance or submission clearance.
 

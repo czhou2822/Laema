@@ -25,11 +25,19 @@ own sprites, hitbox curves, melee active bounds and Cast launch timing.
 | Charge generated orbs | L2 in the 95–100% band | Hold right mouse button |
 | Deplete charging meter after the hold delay | L2 in the 5–95% band | — |
 | Cast | Release L2 below 5% | Release right mouse button |
-| Select Fire | D-pad Up | 1 |
-| Select Water | D-pad Down | 2 |
-| Select Air | D-pad Left | 3 |
-| Select Earth | D-pad Right | 4 |
-| Defend | L1 | Shift |
+| Select Fire | D-pad Up | — |
+| Select Water | D-pad Down | — |
+| Select Air | D-pad Left | — |
+| Select Earth | D-pad Right | — |
+| Defend | R1 | Shift |
+| Fire dodge | Circle | No default |
+| Pause / resume | Start | Esc |
+| Cycle Castle/Necropolis bases at tier 1–7; restart encounter | — | Top-row 1–7 |
+| Toggle base/upgraded within the selected faction; restart encounter | — | Shift + top-row 1–7 |
+
+Creature shortcuts apply in Gym/Final Arena, outside menus and transitions.
+Holding a key does not repeat them. Selection remains run-only until Save Tuning.
+See [GAME_DESIGN.md](docs/GAME_DESIGN.md#controls-and-movement) for the full input rules.
 
 Backtick opens the paused Developer Portal. Its header provides Pause/Unpause, Save Tuning, status, and Close controls; it also exposes the organized General, Audio, and Combat tuning tabs.
 
