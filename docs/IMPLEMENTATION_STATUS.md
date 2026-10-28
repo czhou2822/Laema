@@ -1,5 +1,49 @@
 # Implementation Status
 
+## Coordinated Save housekeeping — October 28
+
+Status: implemented for review with the user's task-specific hands-on validation
+waiver. This six-file increment is based on `dba87e7a` on
+`codex/laema-housekeeping-direct-wiring`. The waiver permits continuation;
+it is not successful human validation or submission clearance.
+
+Changed scope:
+
+- `scripts/config/combat_tuning_settings.gd`: existing standalone saves keep
+  their full-save defaults; coordinated callers can persist the mirror parent
+  without repeating external-style writes. Original external references are
+  restored after private projection edits in either mode.
+- `scripts/config/developer_config_store.gd`: after the character/style and
+  geometry stages succeed, save only the canonical mirror projection.
+- `scripts/config/combat_tuning_bridge.gd`: skip the completed canonical mirror
+  save; other assigned graphs retain their live parent and existing destination/
+  fallback, with external styles already saved by the Store. Run-only guards and
+  standalone save behavior remain.
+- `docs/TECH_ARCHITECTURE.md`, this status and
+  `addons/laema_dev_portal/README.md`: synchronize save ownership, partial-failure
+  limits and current shared Gym persistence descriptions.
+
+The merge/hash checks and preference → character/style → geometry → mirror
+ordering remain. Failure reporting still identifies the completed stages;
+there is no new multi-file transaction or rollback policy. Cached Inspector
+graphs, Resource identities, assigned paths, legacy storage and gameplay/data
+contracts are retained.
+
+Evidence is source/caller review and `git diff --check` only. Static review traces
+the canonical mirror, a hypothetical alternate `res://config/custom_view.tres`, pathless/
+built-in fallback graphs, standalone defaults and run-only rejection. These are
+source-path checks, not executed save/reload cases. No Godot/editor, build,
+runtime or automated-test run was performed for this increment, and no test was
+created or modified. Custom/fallback persistence, native serialization and
+failure injection remain untested. The declined independent-style runtime-Save
+regression fixture and its UID remain uncreated; that exact regression is untested.
+
+The preceding five-file cleanup is published as `dba87e7a`. Its isolated
+Godot 4.7.2 import and Gym/tutorial startup results belong to that earlier tree.
+Its existing shared-combat suite failed only two retired motion/stun-lifetime
+assertions; those results do not validate this Save refactor. Publication and the
+validation waiver do not clear the unrelated gameplay candidates below.
+
 ## Five shared hit-reaction shake levels — October 24
 
 Status: `AWAITING_USER_VALIDATION`. Approved 13-file follow-up to preserved main

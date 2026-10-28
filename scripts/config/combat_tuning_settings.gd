@@ -70,11 +70,13 @@ const Config = preload("res://scripts/config/prototype_config_loader.gd")
 		emit_changed()
 
 
-func save_resources(path: String) -> Dictionary:
+func save_resources(path: String, save_external_styles: bool = true) -> Dictionary:
 	# Saving the parent stores external references, not changes inside those files.
 	for style in attack_styles:
 		if style == null:
 			return {"ok": false, "error": "Cannot save a missing attack-style Resource."}
+		if not save_external_styles:
+			continue # Coordinated saves already persisted the character-owned styles.
 		var style_path := style.resource_path
 		if style_path.is_empty() or style_path.contains("::"):
 			continue
@@ -87,7 +89,11 @@ func save_resources(path: String) -> Dictionary:
 	return {"ok": true, "error": ""}
 
 
-static func save_config_mirror(config: Dictionary, path: String) -> Dictionary:
+static func save_config_mirror(
+	config: Dictionary,
+	path: String,
+	save_external_styles: bool = true
+) -> Dictionary:
 	# A separate graph avoids applying Portal saves to a running Inspector view.
 	# Ignore only the parent cache: reloading live Script dependencies is unsafe.
 	var mirror := ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE) as CombatTuningSettings
@@ -106,9 +112,10 @@ static func save_config_mirror(config: Dictionary, path: String) -> Dictionary:
 		var source: MoveStyleTuning = source_styles.get(style.move_id)
 		if source == null or source.resource_path.is_empty() or source.is_built_in():
 			continue
-		var error := ResourceSaver.save(style, source.resource_path)
-		if error != OK:
-			return {"ok": false, "error": "Cannot save %s: %s" % [source.resource_path, error_string(error)]}
+		if save_external_styles:
+			var error := ResourceSaver.save(style, source.resource_path)
+			if error != OK:
+				return {"ok": false, "error": "Cannot save %s: %s" % [source.resource_path, error_string(error)]}
 		# Serialize the original file reference without changing its cached values.
 		mirror.attack_styles[index] = source
 	var error := ResourceSaver.save(mirror, path)

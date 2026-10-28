@@ -63,7 +63,7 @@ func sync_from_config(config: Dictionary) -> void:
 	_syncing = false
 
 
-func save_resource() -> Dictionary:
+func save_resource(save_external_styles: bool = true) -> Dictionary:
 	if not persistence_enabled:
 		return {"ok": false, "error": "This encounter uses run-only tuning."}
 	if settings == null:
@@ -71,7 +71,7 @@ func save_resource() -> Dictionary:
 	var path := settings.resource_path
 	if path.is_empty() or path.contains("::"):
 		path = TUNING_PATH
-	return settings.save_resources(path)
+	return settings.save_resources(path, save_external_styles)
 
 
 func _reconnect_resources() -> void:
@@ -141,9 +141,12 @@ func _apply_editor_change() -> void:
 	_editor_config = result["data"].duplicate(true)
 	_json_hash = Store.source_hash()
 	sync_from_config(_editor_config)
-	result = save_resource()
-	if not result["ok"]:
-		push_warning("Settings saved; Inspector mirror save failed: %s" % result["error"])
+	# Store already saved the canonical view. Other assigned graphs retain their
+	# existing destination/fallback without rewriting the character-owned styles.
+	if settings.resource_path != TUNING_PATH:
+		result = save_resource(false)
+		if not result["ok"]:
+			push_warning("Settings saved; Inspector mirror save failed: %s" % result["error"])
 
 
 func _restore_last_valid() -> void:

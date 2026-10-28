@@ -28,7 +28,7 @@ Player and CombatEnemy root **Settings** own combat values in
 The JSON file holds audio, tutorial flow and UI preferences. Both the editor and
 in-game Portal use `developer_settings_catalog.gd` and
 `developer_settings_fields.gd`, including all existing Portal controls, move
-Impacts, five reaction duration/distance pairs, nested school levels, audio mix,
+Impacts, five shared reaction levels, nested school levels, audio mix,
 startup stage, transition duration and saved attack-hitbox visibility. Fixed
 gameplay invariants stay fixed. Gravity and compatibility fields retain their
 intentional Portal exclusions. Stage definitions and animation markers retain
@@ -53,7 +53,8 @@ wins when both are present, and the duplicate field is no longer shown or saved.
 ### Collapsible reactions and Impact
 
 **Combat → Hit-reaction levels** is the dedicated configuration for Levels 1–5.
-Each entry has **Starting value**, **Duration** and **Distance**. The displayed
+Each entry has **Starting value**, separate stun and motion durations, **Distance**
+and its camera strength/duration pair. The displayed
 range ends one below the next level's start; Level 5 extends upward without a
 ceiling. Starting values must be whole numbers in increasing order. Level 1 is
 anchored at 0; these ranges choose the level only after hit eligibility is decided.
@@ -107,16 +108,25 @@ is resizable and bounded to the editor window; smaller windows scroll the form
 instead of wrapping numeric values vertically. Fill/Cancel remain outside the
 scrolling content.
 
-The legacy combat Inspector view mirrors character Settings and native Animation
-contact geometry. Native tracks own hitbox poses and sprite frames. Inspector/Portal
-geometry saves update the same contact keys; other combat values save to the
-Resources assigned on the reusable character roots. Combined file hashes include
-character Settings and native geometry. Opening the dock or starting a game does
-not save files. Gym and PrototypeArena have no combat profile of their own.
+The combat Inspector view mirrors character Settings. Native Animation tracks
+alone own Player-X hitbox curves and sprite frames; Portal Save does not rewrite
+those curves. The existing Pikeman size shortcut can update its active-start
+geometry keys. Combat values save to the Resources assigned on the reusable
+character roots. Combined file hashes include character Settings and native
+geometry. Opening the dock or starting a game does not save files. Gym and
+PrototypeArena share character settings.
+
+Coordinated Save writes external style assets through the character store once,
+then saves the Inspector mirror projection. The canonical Inspector bridge does
+not save that mirror a second time. Other assigned Inspector graphs retain their
+existing parent-save destination/fallback. Explicit standalone save helpers
+still persist their external style edits. Resource identities and live Inspector
+graphs retain their existing roles.
 
 From a move-settings resource, **Edit fire_x1 animation & hitbox** opens the native
 Player AnimationPlayer editor on that move. Scrub, select AttackCast, edit/key its
-position, target and radius at contact, then save the external Animation resource.
+position, target and radius throughout the active window, then save the external
+Animation resource.
 Enemy uses CombatEnemy / AnimationPlayer / melee_swing. Both editor and runtime
 Portals expose Attack styles; Enemy hitbox size is separate from AI attack range.
 Full instructions: `docs/ATTACK_STYLES.md`.
@@ -126,17 +136,17 @@ Full instructions: `docs/ATTACK_STYLES.md`.
 ### Gym
 
 Use **Run gym**, F5, or open `scenes/gym.tscn` and press F6. These launch the
-same canonical Fire-only Gym: one Player and one killable opponent, 160 pixels
-apart, with slower attack timings, unchanged Charging, victory/defeat and retry.
+same canonical Gym: one shared Player and one selected killable opponent,
+with shared combat settings, victory/defeat and retry.
 The separate benchmark entry point is retired. The contact-time formula panel
 and ordinary telemetry share Developer Overlay Visible/F4.
 
 **Retry gym** and **Load stage in current session** reload the complete encounter,
-restore its local profile and clear captured hit history while retaining run
-visibility. Runtime Portal and Remote Inspector edits are previews for the
-current attempt. Gym refuses Save Tuning, Inspector mirror saves and shared
-editor apply. Use the Gym root Inspector for its encounter values and the normal
-editor Review & save for shared future-run defaults. Edit starting positions in
+reload saved character settings and clear captured hit history while retaining
+the selected opponent and run visibility. Runtime Portal and Remote Inspector
+edits apply to the current attempt; **Save Tuning** persists them to the shared
+character assets. Gym also supports explicit saved-editor apply through the same
+Store. Edit character values through their root Settings or the Portal, and positions in
 `scenes/stages/gym_area.tscn`. See `docs/GYM.md` for controls and observation goals.
 
 ### Connected session
@@ -153,9 +163,9 @@ gameplay is paused. The pause menu and in-game Portal replace one another rather
 than stacking conflicting pause states.
 
 Saving the editor draft does not automatically apply it. Changing settings in the
-in-game Portal retains its immediate-preview behavior. The tutorial can persist
-changes through **Save Tuning** and apply saved editor configuration; the Gym
-rejects both shared persistence and saved-editor apply. Multiple game sessions disable editor
+in-game Portal retains its immediate-preview behavior. Both tutorial and Gym can
+persist changes through **Save Tuning** and apply saved editor configuration.
+Multiple game sessions disable editor
 commands rather than selecting one implicitly.
 
 Startup stage and initial school affect the next run. Reaction changes affect
@@ -167,11 +177,19 @@ changes require a restart. Existing AI decision-tuning resets remain intact.
 The dock watches the config while stopped or running. A clean draft reloads a
 valid external change. An edited draft is preserved. Saving merges independent
 field edits, rejects conflicting changes to the same field and validates the
-whole result. Saves use a temporary sibling file and rename, with a file-identity
-check before replacing the original. An invalid file is reported and not
-overwritten. Reload deliberately after resolving a same-field conflict.
+whole result. The JSON preference save uses a temporary sibling file and rename,
+with a file-identity check before replacement. Character/style, geometry and
+mirror Resources are saved in subsequent stages; the complete save is not an
+atomic multi-file transaction. A partial failure reports completed stages. An
+invalid configuration is reported before persistence. Reload deliberately after
+resolving a same-field conflict.
 
 ## Validation
+
+The October 28 coordinated-Save refactor has source/diff review only and the
+user's hands-on validation waiver. No new engine or test result is claimed;
+see `docs/IMPLEMENTATION_STATUS.md` for revision-specific evidence and untested
+paths. The existing runner below is a reference for separately authorized work.
 
 Run `python tools/test-dev-portal.py --godot <Godot executable>`. When needed, add
 `--work-root output` to keep isolated copies in a writable workspace. The runner
@@ -190,8 +208,6 @@ Older saved files without any range starts receive the previous five starts in
 memory on load. Loading does not rewrite the file; the next explicit save includes
 them. A partially specified or invalid table is rejected. Range, duration and
 distance edits affect subsequent combat reactions; an active reaction retains its
-captured duration and motion. The receiver-side clash calculation uses incoming Attack Impact minus receiver
-Poise minus receiver move Impact only during hit-capable active frames. Attack
-Impact and Poise are constrained to 0–100. Other than the exact 0/0 Player-winning
-active-clash exception, non-positive values do not cause a reaction; connected
-hits still deal damage and both moves continue.
+captured duration and motion. Current reaction eligibility and signed simultaneous
+clash rules belong to `docs/GAME_DESIGN.md`; `docs/GYM.md` and
+`docs/ATTACK_STYLES.md` own current tuning and native-authoring instructions.

@@ -5,6 +5,27 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
+## Coordinated Save ownership — October 28
+
+Approved housekeeping builds on review commit `dba87e7a` on
+`codex/laema-housekeeping-direct-wiring`. The existing DeveloperConfigStore
+remains the coordinator. CharacterSettingsStore writes the character-owned
+styles once; the following canonical Inspector-mirror save writes its projection
+without saving those external styles again. The editor bridge does not repeat
+the completed canonical mirror save.
+
+Other assigned Inspector graphs retain their existing destination, including
+the canonical fallback for pathless or built-in graphs. Their final parent save
+also skips the already persisted external styles. Explicit standalone bridge
+and mirror saves retain their default external-style persistence. Resource
+references, cached live graphs, independent inactive compatibility fields,
+conflict rejection, run-only restrictions and partial-failure stages are retained.
+
+This changes save routing, not gameplay, data formats or migration policy. The
+user waived hands-on validation for this housekeeping work; source/diff review
+does not establish runtime save/reload or experiential acceptance. The exact
+scope and evidence limits are in Implementation Status.
+
 ## Current five-level shared hit-reaction camera — October 24
 
 Approved follow-up to local main `98676e1e4aefcb9453040ae24bd1c30a9dcc4bfd`.
@@ -1201,8 +1222,13 @@ Store merges changed leaves against fresh files, preserves independent edits and
 rejects same-field conflicts. Hashes cover character scenes, Settings, styles,
 reaction, native Animations and preferences. Startup/reload are read-only.
 Explicit save writes preferences, character/style Resources, changed Enemy
-active-start size keys and Inspector mirror. Player-X native Animation files
-are never written by Portal tuning. Partial failures report stages;
+active-start size keys and Inspector mirror. During a coordinated save, external
+styles are written by CharacterSettingsStore only; the mirror retains external
+references and writes its parent projection. The editor bridge skips the second
+canonical mirror save. Other assigned graphs still save their parent through
+the existing path/fallback, without repeating external-style writes. Standalone
+save entry points retain their full-save defaults. Player-X native Animation
+files are never written by Portal tuning. Partial failures report stages;
 these writes are not a multi-file atomic transaction. The old Player-side
 CombatTuning mirror is a view, not a source/profile.
 
@@ -1634,6 +1660,12 @@ selects no new implementation or verification scope.
 
 ## History and handoff
 
+The current housekeeping handoff is the approved six-file coordinated-Save
+increment based on `dba87e7a`, described above and in Implementation Status.
+Its hands-on validation requirement is explicitly waived for this task.
+The following gameplay candidate receipts retain their own evidence limits;
+this waiver does not establish gameplay acceptance or submission clearance.
+
 The [pre-consolidation TDD](history/2026-10-20-tdd-housekeeping/README.md) preserves
 all earlier wording, alternatives, source IDs, check totals, matrices and waivers.
 The [first housekeeping snapshot](history/2026-10-20-document-housekeeping/README.md),
@@ -1644,7 +1676,7 @@ chronological chapters.
 
 Heat timing, shorter shared reactions, Air X5, the editor's post-reaction wait
 and the later art-aligned collision choices are settled as above.
-Current source remains a candidate awaiting relevant user validation.
+Gameplay candidates retain their recorded user-validation requirements.
 Historical prepublication documentation/collision-task scope:
 
 A documentation-only
@@ -1691,7 +1723,7 @@ C7 is not new gameplay/architecture, a reason widget, a high-Heat safety pass or
 human acceptance; no further rule or visual treatment was selected by that
 daytime record.
 
-Current bounded handoff: the October23–24 retained shared-Level4 motion, X5 T1
+Retained October23–24 bounded handoff: shared-Level4 motion, X5 T1
 and optional-feedback/label/lifecycle candidates at the top of this report,
 locally integrated through3200279f over f6ccfbe0.
 The earlier46-file geometry/ownership migration is already inherited; it is not

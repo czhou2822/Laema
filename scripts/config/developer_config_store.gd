@@ -101,7 +101,8 @@ static func save_changes(base: Dictionary, draft: Dictionary, path: String = CON
 	var geometry := Geometry.save_changes(loaded["data"], result["data"])
 	if not bool(geometry["ok"]):
 		return {"ok": false, "data": result["data"], "error": "Preferences and character Settings saved; animation geometry save failed: %s" % geometry["error"]}
-	var mirror := Settings.save_config_mirror(result["data"], TUNING_PATH)
+	# CharacterSettingsStore already saved the external styles; finish the view only.
+	var mirror := Settings.save_config_mirror(result["data"], TUNING_PATH, false)
 	if not bool(mirror["ok"]):
 		return {"ok": false, "data": result["data"], "error": "Preferences, character Settings and geometry saved; Inspector mirror save failed: %s" % mirror["error"]}
 	return result
