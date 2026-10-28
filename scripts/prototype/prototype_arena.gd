@@ -17,15 +17,7 @@ const DevSession = preload("res://scripts/config/developer_portal_session.gd")
 const Creatures = preload("res://scripts/config/creature_catalog.gd")
 
 const AUDIO_BUS_NAMES := {"ambient": &"Ambient", "sfx": &"SFX", "bgm": &"BGM"}
-const CREATURE_SHORTCUTS := {
-	KEY_1: [["pikeman", "halberdier"], ["skeleton", "skeleton_warrior"]],
-	KEY_2: [["archer", "marksman"], ["walking_dead", "zombie"]],
-	KEY_3: [["griffin", "royal_griffin"], ["wight", "wraith"]],
-	KEY_4: [["swordsman", "crusader"], ["vampire", "vampire_lord"]],
-	KEY_5: [["monk", "zealot"], ["lich", "power_lich"]],
-	KEY_6: [["cavalier", "champion"], ["black_knight", "dread_knight"]],
-	KEY_7: [["angel", "archangel"], ["bone_dragon", "ghost_dragon"]],
-}
+const CREATURE_SHORTCUT_KEYS := [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7]
 
 @onready var combat_tuning: CombatTuningBridge = $Player/CombatTuning
 @onready var player = $Player
@@ -129,28 +121,15 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		return
 	if event.alt_pressed or event.ctrl_pressed or event.meta_pressed:
 		return
-	var tier_pairs: Array = CREATURE_SHORTCUTS.get(event.physical_keycode, [])
-	if tier_pairs.is_empty() or _config.is_empty() or _transitioning or _current_area == null:
+	var tier := CREATURE_SHORTCUT_KEYS.find(event.physical_keycode) + 1
+	if tier == 0 or _config.is_empty() or _transitioning or _current_area == null:
 		return
 	if _current_area.get_node_or_null("FinalEnemy") == null:
 		return
 	if _developer_overlay._overlay_root.visible or pause_menu.is_open():
 		return
 	var selected_id := str(_config["ui"].get("enemy_creature", Creatures.DEFAULT_ID))
-	var creature_id: String
-	if event.shift_pressed:
-		# Shift toggles the chosen tier within the current faction, never factions.
-		var faction_index := 0
-		for pairs in CREATURE_SHORTCUTS.values():
-			if selected_id in pairs[1]:
-				faction_index = 1
-				break
-		var pair: Array = tier_pairs[faction_index]
-		creature_id = str(pair[0] if selected_id == pair[1] else pair[1])
-	else:
-		# Another tier starts at Castle; repeating this tier alternates its bases.
-		var next_faction := 1 if selected_id in tier_pairs[0] else 0
-		creature_id = str(tier_pairs[next_faction][0])
+	var creature_id := Creatures.shortcut_target(tier, selected_id, event.shift_pressed)
 	get_viewport().set_input_as_handled()
 	_on_creature_spawn_requested(creature_id)
 

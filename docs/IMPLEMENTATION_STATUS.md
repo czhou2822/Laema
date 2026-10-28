@@ -1,5 +1,40 @@
 # Implementation Status
 
+## Creature roster housekeeping — October 28
+
+Status: implemented within the approved four-file scope, with the user's
+task-specific hands-on validation waiver. Source base is main `2c202a45`;
+review branch is `codex/laema-housekeeping-creature-catalog`.
+
+- `scripts/config/creature_catalog.gd`: the existing 28 entries now own faction,
+  tier and base/upgraded metadata as well as their unchanged IDs, labels and
+  scene paths. The catalog resolves shortcut target IDs from those entries.
+- `scripts/prototype/prototype_arena.gd`: map the same seven physical keys to
+  tiers and use the catalog instead of a second full roster. Input guards,
+  availability checks and encounter restart ownership remain.
+- `docs/TECH_ARCHITECTURE.md` and this status: synchronize roster ownership and
+  revision-specific evidence. No assets, scenes, preferences or tests changed.
+
+Read-only static comparison against `2c202a45` found zero mapping differences
+across 420 combinations: 28 current IDs plus empty/unknown fallback IDs, seven
+tiers and plain/Shift selection. The comparison parsed source constants and
+compared the old and new selection rules in Python; it did not execute GDScript.
+It also checked all 28 IDs, labels, scene paths and declaration order, plus one
+unique entry for every faction/tier/variant. The seven physical key identifiers
+retain their order. Existing catalog lookup/availability/option functions and
+every arena function except `_unhandled_key_input` remain unchanged.
+`git diff --check` passed.
+
+No Godot/editor, build, runtime or automated-test run was performed for this
+increment. Actual key delivery, menu/transition gating, encounter restarts,
+Portal display and save/reload remain untested on this revision. No regression
+fixture or UID was created or modified. The waiver permits continuation; it
+does not mean successful human validation, gameplay acceptance or submission
+clearance. Saved creature IDs and selection persistence are unchanged.
+
+The preceding approved increments `dba87e7a` and `2c202a45` are merged and
+published on main at `2c202a45`. Their earlier evidence retains its stated scope.
+
 ## Coordinated Save housekeeping — October 28
 
 Status: implemented for review with the user's task-specific hands-on validation

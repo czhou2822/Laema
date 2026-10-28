@@ -5,6 +5,23 @@ technical record; it is not an independent implementation audit or submission
 clearance. The [GDD](GAME_DESIGN.md) owns gameplay intent and
 [Implementation Status](IMPLEMENTATION_STATUS.md) owns revision-specific evidence.
 
+## Creature roster ownership housekeeping — October 28
+
+The approved four-file increment builds on main `2c202a45` on
+`codex/laema-housekeeping-creature-catalog`. The existing creature catalog owns
+each stable ID, label, scene path, faction, tier and base/upgraded variant.
+Portal choices retain the same declaration order and availability filter.
+PrototypeArena maps the existing physical top-row keys to tiers and requests a
+target ID from the catalog; input guards, availability errors and the existing
+encounter-restart owner remain in the arena.
+
+There is no second creature inventory, mutable cycle cursor, new manager or
+saved field. The selected creature ID remains the only selection state. Plain
+and Shift behavior, including another tier's upgraded selection, is preserved.
+The user's hands-on validation waiver applies to this housekeeping task;
+static mapping comparison and source review do not establish runtime input,
+restart or save/reload results. Implementation Status records the evidence.
+
 ## Coordinated Save ownership — October 28
 
 Approved housekeeping builds on review commit `dba87e7a` on
@@ -479,12 +496,12 @@ The runtime Portal emits the spawn request; the editor sends the equivalent
 `spawn_creature` debugger command. Both call the arena's existing restart path.
 Training stages without a final-enemy slot reject that action with a message.
 
-PrototypeArena owns physical top-row 1–7 creature shortcuts in
-`_unhandled_key_input`. The October23 extension stores the seven tier mappings
-as Castle/Necropolis base-upgrade pairs in its existing shortcut table. Plain
+PrototypeArena owns physical top-row 1–7 creature input in
+`_unhandled_key_input`. The catalog's faction, tier and upgraded metadata now
+derives the target ID without duplicating all creature IDs in an arena table. Plain
 presses alternate faction bases at the selected tier; from a different tier
 they start at Castle base. Either variant identifies its faction when advancing.
-Shift+number locates the selected ID's faction across the table, then toggles
+Shift+number reads the selected ID's faction from the catalog, then toggles
 the requested tier's pair: its selected upgrade returns to base, otherwise it
 selects that faction's upgrade. It never cycles factions. Thus Shift+another
 tier selects that faction's upgrade. No mutable cycle cursor, new config field
@@ -1660,9 +1677,12 @@ selects no new implementation or verification scope.
 
 ## History and handoff
 
-The current housekeeping handoff is the approved six-file coordinated-Save
-increment based on `dba87e7a`, described above and in Implementation Status.
-Its hands-on validation requirement is explicitly waived for this task.
+The current housekeeping handoff is the approved four-file creature-roster
+increment based on main `2c202a45`, on
+`codex/laema-housekeeping-creature-catalog`, described above and in
+Implementation Status. Its hands-on validation requirement is explicitly
+waived for this task. The preceding direct-wiring/Save increments `dba87e7a`
+and `2c202a45` were fast-forwarded and pushed to main at `2c202a45`.
 The following gameplay candidate receipts retain their own evidence limits;
 this waiver does not establish gameplay acceptance or submission clearance.
 
