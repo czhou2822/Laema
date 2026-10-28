@@ -366,9 +366,6 @@ func _save_runtime_tuning() -> Dictionary:
 	if not bool(result["ok"]):
 		return result
 	_persisted_config = _config.duplicate(true)
-	result = combat_tuning.save_resource()
-	if not bool(result["ok"]):
-		result["error"] = "Character Settings saved; Inspector view save failed: %s" % result["error"]
 	return result
 
 

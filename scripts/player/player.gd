@@ -10,10 +10,6 @@ signal defence_status_changed(label: String, current_guard: float, maximum_guard
 signal orb_queue_changed(snapshot: Array, marked_count: int, marking_progress: float)
 signal spell_projectile_requested(payload: Dictionary)
 
-const FireResolver = preload("res://scripts/combat/fire_resolver.gd")
-const WaterResolver = preload("res://scripts/combat/water_resolver.gd")
-const AirResolver = preload("res://scripts/combat/air_resolver.gd")
-const EarthResolver = preload("res://scripts/combat/earth_resolver.gd")
 const SHARED_IDLE: Texture2D = preload("res://assets/prototype/player/animation/shared_idle.png")
 const SHARED_WALK: Texture2D = preload("res://assets/prototype/player/animation/shared_walk.png")
 const HURT_TEXTURE: Texture2D = preload("res://assets/prototype/player/animation/hurt.png")
@@ -188,13 +184,7 @@ func configure(config: Dictionary) -> void:
 		might,
 		magic,
 		heat,
-		defence,
-		{
-			&"fire": FireResolver.new(),
-			&"water": WaterResolver.new(),
-			&"air": AirResolver.new(),
-			&"earth": EarthResolver.new(),
-		}
+		defence
 	)
 	configure_entity(
 		float(config["player"]["max_health"]),

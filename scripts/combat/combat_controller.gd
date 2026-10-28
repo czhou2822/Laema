@@ -45,8 +45,7 @@ func configure(
 	might: MightComponent,
 	magic: MagicComponent,
 	heat: HeatComponent,
-	defence: DefenceController,
-	resolvers: Dictionary
+	defence: DefenceController
 ) -> void:
 	_config = config
 	_owner_entity = owner_entity
@@ -56,7 +55,7 @@ func configure(
 	_defence = defence
 	_heat.configure(_config["heat"])
 	_defence.configure(_config["defence"])
-	_magic.configure(_config, _heat, {}, _owner_entity, attack_cast, resolvers)
+	_magic.configure(_config, _heat, {}, _owner_entity)
 	_might.configure(_config, _owner_entity, animation_player, attack_cast, input_combo, _magic, _heat)
 	_connect_public_interfaces(input_combo)
 	active_school_changed.emit(_might.get_active_school())

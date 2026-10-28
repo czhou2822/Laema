@@ -20,9 +20,7 @@ var _config: Dictionary = {}
 var _casting_config: Dictionary = {}
 var _heat: HeatComponent
 var _owner_entity: Entity
-var _attack_cast: ShapeCast2D
 var _loadout: Dictionary = {}
-var _resolvers: Dictionary = {}
 var _queue: Array[StringName] = []
 var _front_remaining := 0.0
 var _partial_mark_time := 0.0
@@ -41,17 +39,13 @@ func configure(
 	config: Dictionary,
 	heat: HeatComponent,
 	loadout: Dictionary,
-	owner_entity: Entity,
-	attack_cast: ShapeCast2D,
-	resolvers: Dictionary
+	owner_entity: Entity
 ) -> void:
 	_config = config
 	_casting_config = _config["casting"]
 	_heat = heat
 	_loadout = loadout.duplicate(true)
 	_owner_entity = owner_entity
-	_attack_cast = attack_cast
-	_resolvers = resolvers.duplicate()
 	_clear_orb_state()
 	_committed_casts.clear()
 	_next_commit_id = 1
